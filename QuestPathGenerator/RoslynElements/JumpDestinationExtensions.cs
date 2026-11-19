@@ -16,14 +16,11 @@ internal static class JumpDestinationExtensions
                 SyntaxKind.ObjectInitializerExpression,
                 SeparatedList<ExpressionSyntax>(
                     SyntaxNodeList(
-                        Assignment<Vector3?>(nameof(JumpDestination.Position), jumpDestination.Position,
-                                null)
+                        Assignment<Vector3?>(nameof(JumpDestination.Position), jumpDestination.Position, defaultValue: null)
                             .AsSyntaxNodeOrToken(),
-                        Assignment(nameof(JumpDestination.StopDistance), jumpDestination.StopDistance,
-                                null)
+                        Assignment(nameof(JumpDestination.StopDistance), jumpDestination.StopDistance, defaultValue: null)
                             .AsSyntaxNodeOrToken(),
-                        Assignment(nameof(JumpDestination.DelaySeconds), jumpDestination.DelaySeconds,
-                                null)
+                        Assignment(nameof(JumpDestination.DelaySeconds), jumpDestination.DelaySeconds, defaultValue: null)
                             .AsSyntaxNodeOrToken(),
                         Assignment(nameof(JumpDestination.Type), jumpDestination.Type, default)
                             .AsSyntaxNodeOrToken()))));

@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,17 +17,16 @@
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "$": "Alberic"
         },
         {
           "TerritoryId": 155,
           "InteractionType": "EquipItem",
           "ItemId": 4545
+        },
+        {
+          "TerritoryId": 155,
+          "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006748,
@@ -50,6 +51,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Jump",
+          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": 264.47205,
@@ -72,6 +74,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Jump",
+          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": 263.72516,
@@ -113,6 +116,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Jump",
+          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": 264.47205,
@@ -129,6 +133,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Jump",
+          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": 263.72516,

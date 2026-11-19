@@ -1,0 +1,26 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011061,
+          "Position": {
+            "X": -79.2615,
+            "Y": 0.0543141,
+            "Z": 66.7463
+          },
+          "TerritoryId": 144,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Entrance & Card Squares"
+          ]
+        }
+      ]
+    }
+  ]
+}

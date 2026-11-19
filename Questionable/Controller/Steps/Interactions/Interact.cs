@@ -1,37 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.External;
-using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
 
+// TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent ~12 levels).
 internal static class Interact
 {
-    internal sealed class Factory(AutomatonIpc automatonIpc, Configuration configuration) : ITaskFactory
+    internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
                 or EInteractionType.SinglePlayerDuty)
             {
-                if (step.InteractionType is EInteractionType.CompleteQuest)
+                if (step.InteractionType == EInteractionType.SinglePlayerDuty &&
+                    bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions))
+                    yield return new SinglePlayerDuty.LeaveParty();
+
+                if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsRedoActive())
+                {
+                    // Can't accept other quests during NG+
+                    yield break;
+                }
+                if (step.InteractionType is EInteractionType.CompleteQuest ||
+                    (step.InteractionType is EInteractionType.AcceptQuest && quest.GetQuestInfo().CompletesInstantly)) // instant quest
                 {
                     yield return new LogQuestCompletion.Task(quest);
                     if (configuration.Advanced.PreventQuestCompletion)
@@ -67,6 +69,13 @@ internal static class Interact
             else if (step.InteractionType == EInteractionType.UnlockTaxiStand)
             {
                 if (step.TaxiStandId == null)
+                    yield break;
+                var skip = false;
+                unsafe
+                {
+                    skip = PlayerState.Instance()->CurrentLevel < 10 || UIState.Instance()->IsChocoboTaxiStandUnlocked(step.TaxiStandId.Value);
+                }
+                if (skip)
                     yield break;
             }
             else if (step.InteractionType != EInteractionType.Interact)
@@ -119,9 +128,11 @@ internal static class Interact
         GameFunctions gameFunctions,
         CameraFunctions cameraFunctions,
         Configuration configuration,
-        ICondition condition,
         IChatGui chatGui,
+        ICondition condition,
         IObjectTable objectTable,
+        ClassJobUtils classJobUtils,
+        //DalamudInitializer dalamudInitializer,
         ILogger<DoInteract> logger)
         : TaskExecutor<Task>, IConditionChangeAware
     {
@@ -130,6 +141,8 @@ internal static class Interact
         private bool _needsFacing;
         private bool _needsUnmount;
         private bool _reportedGameObjNull;
+        private bool _reportedWrongJob;
+        private ushort _unequipItem;
 
         /// <summary>
         ///     A slight delay when we think an interaction has ended, to make sure that we're processing "Action cancelled"
@@ -145,6 +158,31 @@ internal static class Interact
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
 
+            if (_unequipItem != 0)
+            {
+                logger.LogDebug($"unequipping item {_unequipItem}");
+                unsafe
+                {
+                    InventoryManager* inventoryManager = InventoryManager.Instance();
+                    var armoryType = InventoryType.ArmorySoulCrystal;
+                    ushort srcSlot = 13;
+                    InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
+                    if (UnequipItem.DoUnequip.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
+                    {
+                        logger.LogDebug($"Moving {_unequipItem} to {targetSlot} in soul crystal inv");
+                        _ = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, srcSlot, armoryType, targetSlot, a6: true);
+                        //if (result != 0)
+                        //    throw new Exception($"UnequipItem failed to move {_unequipItem} to {targetSlot} in soul crystal inv");
+                    }
+                    else
+                    {
+                        logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
+                            armoryType, _unequipItem);
+                        throw new Exception("Unable to unequip gear - armory chest is full.");
+                    }
+                }
+                _unequipItem = 0;
+            }
             if (_needsUnmount)
             {
                 if (condition[ConditionFlag.Mounted])
@@ -153,8 +191,8 @@ internal static class Interact
                     _continueAt = DateTime.Now.AddSeconds(1);
                     return ETaskResult.StillRunning;
                 }
-                else
-                    _needsUnmount = false;
+
+                _needsUnmount = false;
             }
             else if (Task.PickUpItemId is { } pickUpItemId)
             {
@@ -189,8 +227,20 @@ internal static class Interact
             {
                 if (ProgressContext.WasInterrupted())
                     return ETaskResult.StillRunning;
-                else if (ProgressContext.WasSuccessful() ||
-                         _interactionState == EInteractionState.InteractionConfirmed)
+
+                // started this, realised i don't have a good way to test it. in theory there's a way here to catch
+                // 'unable to execute command while x' and recover to retry the interact
+                //if (dalamudInitializer.FlagUnableExecuteCommand)
+                //{
+                //    logger.LogDebug("FlagUnableExecuteCommand");
+                //    dalamudInitializer.FlagUnableExecuteCommand = false;
+                //    // might just be landing, retry interaction
+                //    _interactionState = EInteractionState.None;
+                //    _continueAt = DateTime.Now.AddSeconds(1);
+                //    return ETaskResult.StillRunning;
+                //}
+
+                if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.InteractionConfirmed)
                 {
                     if (delayedFinalCheck)
                         return ETaskResult.TaskComplete;
@@ -225,63 +275,96 @@ internal static class Interact
                 return ETaskResult.StillRunning;
             }
 
-            if (objectTable[0] is IPlayerCharacter player && Task.Quest != null && InteractionType == EInteractionType.AcceptQuest)
+            if (!_reportedWrongJob &&
+                objectTable[0] is IPlayerCharacter player &&
+                Task.Quest != null &&
+                InteractionType == EInteractionType.AcceptQuest)
             {
-                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs];
+                var jobGearSets = classJobUtils.GetJobGearSets(combatOnly: false);
+                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))];
+                logger.LogInformation($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs)}");
+                if (acceptableJobs.Count == 0)
+                    throw new Exception(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
+
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
-                if (acceptableJobs.Count >= 1 && !acceptableJobs.Contains(playerJob))
+                // Reference first candidate to determine type of quest
+                Job firstItem = acceptableJobs[0];
+                Job candidate = firstItem;
+                if (!acceptableJobs.Contains(playerJob))
                 {
-                    if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
-                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CombatJob)];
-                    else if (acceptableJobs[0].IsCrafter())
+                    if (acceptableJobs.Count > 1)
                     {
-                        if (acceptableJobs.Contains(configuration.General.CraftingJob))
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
-                        else
-                            logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}, changing to {AcceptableJob}",
-                                configuration.General.CraftingJob, Task.Quest.Id, acceptableJobs[0]);
+                        if (!firstItem.IsCrafter() && !firstItem.IsGatherer())
+                        {
+                            candidate = configuration.General.CombatJob;
+                            if (acceptableJobs.Contains(candidate))
+                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
+                            else
+                                logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}",
+                                    candidate, Task.Quest.Id);
+                        }
+                        if (firstItem.IsCrafter() ||
+                            (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && configuration.Advanced.NamazuPreferCraft && !firstItem.IsCrafter()))
+                        {
+                            candidate = configuration.General.CraftingJob;
+                            if (acceptableJobs.Contains(candidate))
+                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
+                            else
+                                logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}",
+                                    candidate, Task.Quest.Id);
+                        }
+                        else if (firstItem.IsGatherer() ||
+                            (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && !configuration.Advanced.NamazuPreferCraft && !firstItem.IsGatherer()))
+                        {
+                            candidate = configuration.General.GatheringJob;
+                            if (acceptableJobs.Contains(candidate))
+                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
+                            else
+                                logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}",
+                                    candidate, Task.Quest.Id);
+                        }
                     }
-                    else if (acceptableJobs[0].IsGatherer())
+                    if (acceptableJobs.Count == 0)
+                        throw new Exception(_LF("_JobGearsetError", firstItem.ToFriendlyString(), Task.Quest.Info.Name));
+                    if (ClassJobUtils.ClassToJobStone(candidate) is (Job job, ushort item))
                     {
-                        if (acceptableJobs.Contains(configuration.General.GatheringJob))
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
-                        else
-                            logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}, changing to {AcceptableJob}",
-                                configuration.General.GatheringJob, Task.Quest.Id, acceptableJobs[0]);
-                    }
-                    if (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu))
-                    {
-                        if (configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsCrafter())
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
-                        else if (!configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsGatherer())
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
+                        _unequipItem = item;
+                        logger.LogInformation("Current job {ClassJob} is not valid for {QuestId}, changing to {AcceptableJob} via {MiddleJob}",
+                            playerJob, Task.Quest.Id, candidate, job);
+                        candidate = job;
                     }
 
-                    logger.LogInformation("Current ClassJob {PlayerJob} not valid for {QuestId}, attempting to switch", playerJob, Task.Quest.Id);
-                    unsafe
-                    {
-                        bool changed = false;
-                        RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
-                        if (gearsetModule != null)
-                        {
-                            for (int i = 0; i < 100; ++i)
-                            {
-                                RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
-                                if (gearset == null)
-                                    continue;
-                                if (acceptableJobs[0].Equals((Job)gearset->ClassJob))
-                                {
-                                    gearsetModule->EquipGearset(gearset->Id);
-                                    changed = true;
-                                }
-                            }
-                        }
+                    if (!classJobUtils.SwitchClassJob(candidate) && !_reportedWrongJob)
+                        throw new Exception(_LF("_JobGearsetError", candidate.ToFriendlyString(), Task.Quest.Info.Name));
+                    logger.LogInformation($"Switched from {playerJob} to {candidate}");
 
-                        if (!changed)
-                        {
-                            chatGui.PrintError($"Quest {Task.Quest.Info.Name} requires a job like {acceptableJobs[0]}, " +
-                                               "but you do not have a valid job configured in QST Settings.");
-                        }
+                    _continueAt = DateTime.Now.AddSeconds(0.2);
+                    return ETaskResult.StillRunning;
+                }
+            }
+
+            // A class/job quest can only be progressed on the class it was accepted with — otherwise the game
+            // blocks with "You cannot continue this quest until the following conditions are met: Required
+            // Class/Job: X". Accepting a batch of quests (e.g. the accept-only flow) can leave a different
+            // class active, so before interacting to progress/complete an accepted quest, switch back to its
+            // accept class if needed. LookupQuestStartJob returns Job.ADV for quests with no such lock.
+            // So, even if a user manually interferes this allows us to resume questing with the correct class type :)
+            if (!_reportedWrongJob && Task.Quest != null &&
+                InteractionType is EInteractionType.CompleteQuest or EInteractionType.Interact &&
+                objectTable[0] is IPlayerCharacter completionPlayer &&
+                configuration.General.SameJobThroughoutQuest)
+            {
+                Job requiredJob = classJobUtils.LookupQuestStartJob(Task.Quest.Id);
+                if (requiredJob != Job.ADV && (Job)completionPlayer.ClassJob.Value.RowId != requiredJob)
+                {
+                    logger.LogInformation("Quest {QuestId} should be continued as {RequiredJob}, switching from {CurrentJob}",
+                        Task.Quest.Id, requiredJob, (Job)completionPlayer.ClassJob.Value.RowId);
+                    if (!classJobUtils.SwitchClassJob(requiredJob))
+                    {
+                        chatGui.PrintError(_LF(
+                            "Quest {0} should be continued as {1}, but you do not have a gearset for that job.",
+                            Task.Quest.Info.Name, requiredJob));
+                        _reportedWrongJob = true;
                     }
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
@@ -289,8 +372,14 @@ internal static class Interact
                 }
             }
 
-            if (!gameObject.IsTargetable || !HasAnyMarker(gameObject))
+            bool isTargetable = gameObject.IsTargetable;
+            bool hasAnyMarker = HasAnyMarker(gameObject);
+            if (!isTargetable || !hasAnyMarker)
+            {
+                if (EzThrottler.Throttle("skipTarget", miliseconds: 1000))
+                    logger.LogDebug($"IsTargetable: {isTargetable} / HasAnyMarker: {hasAnyMarker}");
                 return ETaskResult.StillRunning;
+            }
 
             TriggerInteraction(gameObject);
             return ETaskResult.StillRunning;

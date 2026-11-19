@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 3x Crawler Silk HQ // Autocraft requires: 6x Crawler Cocoon, 4x Silkworm Cocoon, 2x Effervescent Water",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,17 +16,13 @@
           },
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
+              "InTerritory": [418, 419]
             }
           }
         }

@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025653,
+          "Position": {
+            "X": 77.1594,
+            "Y": -1.19209E-07,
+            "Z": 67.7007
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "$": "auto: issuer 1025653 (perky peddler)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024010,
+          "Position": {
+            "X": -267.014,
+            "Y": 17.9904,
+            "Z": 167.163
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "$": "auto: todo location -> 1024010 (Wiscar)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1025654,
+          "Position": {
+            "X": -299.349,
+            "Y": 11.2229,
+            "Z": 159.936
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "$": "auto: todo location -> 1025654 (Wiscar)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1025655,
+          "Position": {
+            "X": -236.787,
+            "Y": -0.0026437,
+            "Z": 175.2
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_STMBDZ980_03030_Q1_000_000",
+              "Answer": "TEXT_STMBDZ980_03030_A1_000_001",
+              "Type": "List"
+            }
+          ],
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "$": "auto: todo location -> 1025655 (Wiscar)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025115,
+          "Position": {
+            "X": -285.975,
+            "Y": 11.1543,
+            "Z": 185.846
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "$": "auto: todo turn-in -> 1025115 (Watt)"
+        }
+      ]
+    }
+  ]
+}

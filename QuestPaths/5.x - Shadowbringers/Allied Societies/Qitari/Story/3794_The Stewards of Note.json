@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,8 @@
             "Z": 310.6278
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough"
         }
       ]
     },
@@ -29,8 +31,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "AetheryteShortcut": "Rak'tika - Fanow"
         }
       ]
     },
@@ -45,8 +46,7 @@
             "Z": -281.8189
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +61,7 @@
             "Z": -194.01855
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,9 +93,21 @@
         {
           "TerritoryId": 817,
           "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": ["Miner"],
           "ItemsToGather": [
             {
               "ItemId": 29512,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "TerritoryId": 817,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": ["Botanist"],
+          "ItemsToGather": [
+            {
+              "ItemId": 29538,
               "ItemCount": 1
             }
           ]

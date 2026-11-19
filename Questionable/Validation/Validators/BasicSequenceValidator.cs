@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Questionable.Model;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, BasicSequenceValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class BasicSequenceValidator : IQuestValidator
 {
     /// <summary>
@@ -22,7 +20,7 @@ internal sealed class BasicSequenceValidator : IQuestValidator
                 Step = null,
                 Type = EIssueType.MissingSequence0,
                 Severity = EIssueSeverity.Error,
-                Description = "Missing quest start"
+                Description = _L("Missing quest start")
             };
             yield break;
         }
@@ -41,7 +39,7 @@ internal sealed class BasicSequenceValidator : IQuestValidator
                     Step = null,
                     Type = EIssueType.InstantQuestWithMultipleSteps,
                     Severity = EIssueSeverity.Error,
-                    Description = "Instant quest should not have any sequences after the start"
+                    Description = _L("Instant quest should not have any sequences after the start")
                 };
             }
         }
@@ -77,10 +75,11 @@ internal sealed class BasicSequenceValidator : IQuestValidator
                 Step = null,
                 Type = EIssueType.MissingSequence,
                 Severity = EIssueSeverity.Error,
-                Description = "Missing sequence"
+                Description = _L("Missing sequence")
             };
         }
-        else if (foundSequences.Count == 2)
+
+        if (foundSequences.Count == 2)
         {
             return new()
             {
@@ -89,10 +88,10 @@ internal sealed class BasicSequenceValidator : IQuestValidator
                 Step = null,
                 Type = EIssueType.DuplicateSequence,
                 Severity = EIssueSeverity.Error,
-                Description = "Duplicate sequence"
+                Description = _L("Duplicate sequence")
             };
         }
-        else
-            return null;
+
+        return null;
     }
 }

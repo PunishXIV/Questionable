@@ -1,22 +1,11 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona"
-        },
         {
           "DataId": 1026990,
           "Position": {
@@ -33,28 +22,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "DataId": 2002879,
-          "Position": {
-            "X": 0,
-            "Y": 3,
-            "Z": 27.5
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 156
-        },
-        {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "$": "Rising Stones Door"
-        },
         {
           "DataId": 1029791,
           "Position": {
@@ -98,12 +65,13 @@
       "Steps": [
         {
           "Position": {
-            "X": 549.9286,
-            "Y": 8.932568,
-            "Z": 335.04544
+            "X": 512.48956,
+            "Y": 8.383925,
+            "Z": 331.34665
           },
           "TerritoryId": 877,
           "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
           "RestartNavigationIfCancelled": false
         }
       ]

@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Weak Blinding Potion HQ\nAutocraft requires:\n 1x Quicksilver,\n 1x Bat Wing,\n 1x Bat Fang",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,13 +10,13 @@
         {
           "DataId": 1002299,
           "Position": {
-            "X": -98.8938,
-            "Y": 40.200146,
-            "Z": 120.83618
+            "X": -103.62651,
+            "Y": 41.50014,
+            "Z": 120.44341
           },
+          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Alchemists' Guild"
@@ -36,7 +37,7 @@
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 419,
+          "TerritoryId": 131,
           "ItemId": 4575,
           "ItemCount": 3,
           "SkipConditions": {
@@ -50,12 +51,17 @@
         {
           "DataId": 1002299,
           "Position": {
-            "X": -98.8938,
-            "Y": 40.200146,
-            "Z": 120.83618
+            "X": -103.62651,
+            "Y": 41.50014,
+            "Z": 120.44341
           },
+          "StopDistance": 0.25,
           "TerritoryId": 131,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ]
         }
       ]
     },
@@ -84,10 +90,11 @@
         {
           "DataId": 1002299,
           "Position": {
-            "X": -98.8938,
-            "Y": 40.200146,
-            "Z": 120.83618
+            "X": -103.62651,
+            "Y": 41.50014,
+            "Z": 120.44341
           },
+          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [

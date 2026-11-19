@@ -1,24 +1,27 @@
-﻿using System.Linq;
-using ECommons.ExcelServices;
+﻿using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Questionable.Controller.Steps.Common;
-using Questionable.Data;
-using Questionable.Model;
+using Questionable.Controller.Steps.Interactions;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class SwitchClassJob
 {
-    internal sealed class Factory(ClassJobUtils classJobUtils) : SimpleTaskFactory
+    internal sealed class Factory(ClassJobUtils classJobUtils) : ITaskFactory
     {
-        public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
+        public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.SwitchClass)
-                return null;
+                yield break;
 
             Job classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
-            return new Task(classJob);
+            if (ClassJobUtils.ClassToJobStone(classJob) is (Job job, ushort jobStone))
+            {
+                yield return new Task(job);
+                yield return new UnequipItem.Task(jobStone);
+                yield break;
+            }
+            yield return new Task(classJob);
         }
     }
 
@@ -27,31 +30,24 @@ internal static class SwitchClassJob
         public override string ToString() => $"SwitchJob({ClassJob})";
     }
 
-    internal sealed class SwitchClassJobExecutor : AbstractDelayedTaskExecutor<Task>
+    internal sealed class SwitchClassJobExecutor(ClassJobUtils classJobUtils) : AbstractDelayedTaskExecutor<Task>
     {
         protected override unsafe bool StartInternal()
         {
-            if (PlayerState.Instance()->CurrentClassJobId == (uint)Task.ClassJob)
-                return false;
-
-            RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
-            if (gearsetModule != null)
-            {
-                for (int i = 0; i < 100; ++i)
-                {
-                    RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
-                    if (gearset->ClassJob == (byte)Task.ClassJob)
-                    {
-                        gearsetModule->EquipGearset(gearset->Id);
-                        return true;
-                    }
-                }
-            }
-
-            throw new TaskException($"No gearset found for {Task.ClassJob}");
+            var result = classJobUtils.SwitchClassJob(Task.ClassJob);
+            if (!result)
+                throw new TaskException($"No gearset found for {Task.ClassJob}");
+            return !result;
         }
 
-        protected override ETaskResult UpdateInternal() => ETaskResult.TaskComplete;
+        protected unsafe override ETaskResult UpdateInternal()
+        {
+            if (PlayerState.Instance()->CurrentClassJobId == (uint)Task.ClassJob)
+                return ETaskResult.TaskComplete;
+            if (EzThrottler.Throttle("SwitchJob"))
+                StartInternal();
+            return ETaskResult.StillRunning;
+        }
 
         // can we even take damage while switching jobs? we should be out of combat...
         public override bool ShouldInterruptOnDamage() => false;

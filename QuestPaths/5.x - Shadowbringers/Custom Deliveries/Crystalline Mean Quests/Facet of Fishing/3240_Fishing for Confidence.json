@@ -1,16 +1,11 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
-  "Comment": "WIP; Manual fishing step",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "TerritoryId": 819,
-          "InteractionType": "SwitchClass",
-          "TargetClass": "Fisher"
-        },
         {
           "DataId": 1027237,
           "Position": {
@@ -31,6 +26,29 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "DataId": 1027269,
+          "Position": {
+            "X": -74.01829,
+            "Y": 19.999794,
+            "Z": -89.22188
+          },
+          "TerritoryId": 819,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262988
+          },
+          "ItemId": 27582,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
         {
           "DataId": 1028473,
           "Position": {
@@ -115,11 +133,14 @@
         {
           "TerritoryId": 816,
           "Comment": "Fish for 1x Calico Trout (!) using Fruit Worm or Versatile Lure",
-          "InteractionType": "Gather",
+          "InteractionType": "Fish",
           "ItemsToGather": [
             {
               "ItemId": 26750,
-              "ItemCount": 1
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 27582
+              }
             }
           ]
         },

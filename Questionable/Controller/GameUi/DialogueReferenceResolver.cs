@@ -1,7 +1,5 @@
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.GameUi;
 
@@ -10,6 +8,7 @@ namespace Questionable.Controller.GameUi;
 ///     string) into a concrete <see cref="StringOrRegex"/>. Shared by the dialogue-choice and yes/no
 ///     interaction handlers.
 /// </summary>
+[RegisterSingleton]
 internal sealed class DialogueReferenceResolver(ExcelFunctions excelFunctions)
 {
     public StringOrRegex? Resolve(Quest? quest, string? excelSheet, ExcelRef? excelRef, bool isRegExp)
@@ -19,9 +18,10 @@ internal sealed class DialogueReferenceResolver(ExcelFunctions excelFunctions)
 
         if (excelRef.Type == ExcelRef.EType.Key)
             return excelFunctions.GetDialogueText(quest, excelSheet, excelRef.AsKey(), isRegExp);
-        else if (excelRef.Type == ExcelRef.EType.RowId)
+        if (excelRef.Type == ExcelRef.EType.RowId)
             return excelFunctions.GetDialogueTextByRowId(excelSheet, excelRef.AsRowId(), isRegExp);
-        else if (excelRef.Type == ExcelRef.EType.RawString)
+
+        if (excelRef.Type == ExcelRef.EType.RawString)
             return new(excelRef.AsRawString());
 
         return null;

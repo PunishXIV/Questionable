@@ -35,10 +35,11 @@
         {
           "DataId": 1020337,
           "Position": {
-            "X": 171.31299,
+            "X": 165.61469,
             "Y": 13.02367,
-            "Z": -89.951965
+            "Z": -90.53424
           },
+          "StopDistance": 1,
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest"
         }
@@ -57,12 +58,7 @@
           "TerritoryId": 620,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Ghiri",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": false
-            }
-          }
+          "AetheryteShortcut": "Peaks - Ala Ghiri"
         }
       ]
     },
@@ -80,12 +76,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "StopDistance": 1,
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": false
-            }
-          }
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
         }
       ]
     },
@@ -101,12 +92,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": false
-            }
-          }
+          "AetheryteShortcut": "Fringes - Peering Stones"
         }
       ]
     },
@@ -143,10 +129,11 @@
         {
           "DataId": 1020337,
           "Position": {
-            "X": 171.31299,
+            "X": 165.61469,
             "Y": 13.02367,
-            "Z": -89.951965
+            "Z": -90.53424
           },
+          "StopDistance": 1,
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest"
         }

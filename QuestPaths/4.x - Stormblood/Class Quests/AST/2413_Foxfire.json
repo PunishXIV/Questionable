@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "kaiser",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -48,12 +49,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Kugane"
         }
       ]
     },
@@ -74,12 +70,7 @@
           "AethernetShortcut": [
             "[Kugane] Thavnairian Consulate",
             "[Kugane] Kogane Dori Markets"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -101,11 +92,6 @@
             "[Kugane] Kogane Dori Markets",
             "[Kugane] The Ruby Bazaar"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }

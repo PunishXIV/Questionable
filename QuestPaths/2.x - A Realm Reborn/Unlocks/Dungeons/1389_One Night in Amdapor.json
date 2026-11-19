@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,20 +15,15 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Conjurers' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -46,12 +42,7 @@
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "South Shroud - Camp Tranquil"
         },
         {
           "DataId": 1006751,
@@ -81,7 +72,6 @@
           "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 153
               ]

@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           "TerritoryId": 419,
           "InteractionType": "Interact",
           "TargetTerritoryId": 427,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Saint Reymanaud's Cathedral"

@@ -1,6 +1,6 @@
 ﻿namespace Questionable.Validation;
 
-internal enum EIssueSeverity
+public enum EIssueSeverity
 {
     None,
     Error

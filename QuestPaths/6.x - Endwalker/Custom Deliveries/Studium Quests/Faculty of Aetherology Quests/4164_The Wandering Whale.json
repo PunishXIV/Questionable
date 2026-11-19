@@ -1,0 +1,248 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038551,
+          "Position": {
+            "X": -348.539,
+            "Y": 21.846,
+            "Z": -79.9565
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: issuer 1038551 (T'laqa Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1037054,
+          "Position": {
+            "X": 79.11792,
+            "Y": 5.1499996,
+            "Z": -46.52478
+          },
+          "TerritoryId": 962,
+          "InteractionType": "PurchaseItem",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] Aetheryte Plaza"
+          ],
+          "ItemId": 36589,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": { "NotInInventory": false },
+              "ExtraCondition": "NewGamePlus"
+            }
+          }
+        },
+        {
+          "DataId": 1038553,
+          "Position": {
+            "X": -117.204,
+            "Y": -16.1593,
+            "Z": 183.001
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] Scholar's Harbor"
+          ],
+          "$": "auto: todo location -> 1038553 (T'laqa Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011753,
+          "Position": {
+            "X": -345.963,
+            "Y": 21.8356,
+            "Z": -81.6981
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Scholar's Harbor",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo location -> 2011753 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038569,
+          "Position": {
+            "X": 159.772,
+            "Y": 5.50929,
+            "Z": 599.157
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "$": "auto: todo location -> 1038569 (T'laqa Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038566,
+          "Position": {
+            "X": 211.4368,
+            "Y": 9.768845,
+            "Z": 556.4662
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 14y from lua ACTOR11 -> 1038566 (preoccupied alchemist)"
+        },
+        {
+          "DataId": 1038568,
+          "Position": {
+            "X": 206.9044,
+            "Y": 15.13672,
+            "Z": 520.7289
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 13y from lua ACTOR13 -> 1038568 (merchant)"
+        },
+        {
+          "DataId": 1038567,
+          "Position": {
+            "X": 212.9792,
+            "Y": -1.192093e-7,
+            "Z": 718.4195
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo area 16y from lua ACTOR12 -> 1038567 (fisherman)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1038569,
+          "Position": {
+            "X": 159.772,
+            "Y": 5.50929,
+            "Z": 599.157
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1038569 (T'laqa Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1037054,
+          "Comment": "Bait not in inventory, purchasing",
+          "Position": {
+            "X": 79.11792,
+            "Y": 5.1499996,
+            "Z": -46.52478
+          },
+          "TerritoryId": 962,
+          "InteractionType": "PurchaseItem",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] Aetheryte Plaza"
+          ],
+          "ItemId": 36589,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": { "NotInInventory": false }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 382.83023,
+            "Y": 4.2018614,
+            "Z": -54.77434
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Fish",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "Fly": true,
+          "ItemsToGather": [
+            {
+              "ItemId": 35849,
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 36589,
+                "HookType": { "Normal": { "Strong": true } }
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1038569,
+          "Position": {
+            "X": 159.772,
+            "Y": 5.50929,
+            "Z": 599.157
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "$": "auto: todo location -> 1038569 (T'laqa Tia); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038551,
+          "Position": {
+            "X": -348.539,
+            "Y": 21.846,
+            "Z": -79.9565
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
+        }
+      ]
+    }
+  ]
+}

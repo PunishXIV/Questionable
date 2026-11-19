@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023342,
+          "Position": {
+            "X": -114.641,
+            "Y": 0.598048,
+            "Z": -25.2232
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Rhalgr's Reach] Aetheryte Plaza","[Rhalgr's Reach] Western Rhalgr's Reach"],
+          "$": "auto: issuer 1023342 (elderly private)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019519,
+          "Position": {
+            "X": -613.092,
+            "Y": 129.992,
+            "Z": -529.839
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 1019519 (Serpent Marshal Brookstone)"
+        },
+        {
+          "DataId": 1019517,
+          "Position": {
+            "X": -652.979,
+            "Y": 129.9,
+            "Z": -510.643
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 1019517 (Loezkirz)"
+        },
+        {
+          "DataId": 1019518,
+          "Position": {
+            "X": -601.099,
+            "Y": 129.992,
+            "Z": -487.48
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo location -> 1019518 (Kakalai)"
+        },
+        {
+          "DataId": 1019522,
+          "Position": {
+            "X": -625.91,
+            "Y": 130.068,
+            "Z": -493.98
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
+          "$": "auto: todo location -> 1019522 (Pip)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023343,
+          "Position": {
+            "X": -650.172,
+            "Y": 130.123,
+            "Z": -555.413
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo turn-in -> 1023343 (serpent recruit)"
+        }
+      ]
+    }
+  ]
+}

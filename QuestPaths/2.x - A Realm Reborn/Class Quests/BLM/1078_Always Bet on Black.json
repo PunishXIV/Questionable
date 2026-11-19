@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +17,7 @@
           "TerritoryId": 145,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -36,14 +33,12 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Weavers' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 130,
                 131
@@ -200,11 +195,6 @@
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 1678
         }
       ]

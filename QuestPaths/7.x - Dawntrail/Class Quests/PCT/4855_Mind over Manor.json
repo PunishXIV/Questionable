@@ -20,9 +20,6 @@
               "Item": {
                 "NotInInventory": true
               }
-            },
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
             }
           }
         },
@@ -40,7 +37,78 @@
         },
         {
           "TerritoryId": 132,
-          "InteractionType": "EquipRecommended"
+          "InteractionType": "EquipItem",
+          "ItemId": 43183,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43184,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43185,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43186,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43187,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "CreateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipRecommended",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "UpdateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1049795,
@@ -85,6 +153,8 @@
           },
           "TerritoryId": 133,
           "InteractionType": "SinglePlayerDuty",
+          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AethernetShortcut": [
             "[Gridania] Conjurers' Guild",
             "[Gridania] Lancers' Guild"
@@ -111,8 +181,7 @@
           },
           "StopDistance": 5,
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "NextQuestId": 4856
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Questionable.Model.Common;
 using Questionable.Model.Questing.Converter;
 namespace Questionable.Model.Questing;
 
@@ -11,6 +12,7 @@ public sealed class DialogueChoice
     [JsonConverter(typeof(ExcelRefConverter))]
     public ExcelRef? Prompt { get; set; }
 
+    [DefaultTrue]
     public bool Yes { get; set; } = true;
 
     [JsonConverter(typeof(ExcelRefConverter))]

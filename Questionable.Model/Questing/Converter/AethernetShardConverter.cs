@@ -3,7 +3,7 @@ using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 namespace Questionable.Model.Questing.Converter;
 
-public sealed class AethernetShardConverter() : EnumConverter<EAetheryteLocation>(Values)
+public sealed class AethernetShardConverter() : EnumConverter<EAetheryteLocation>(Values, shard: true)
 {
     public static readonly Dictionary<EAetheryteLocation, string> Values = new()
     {

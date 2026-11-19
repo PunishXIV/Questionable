@@ -4,6 +4,7 @@
     "liza",
     "JerryWester"
   ],
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -150,14 +151,6 @@
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Wonder Square East",
           "StopDistance": 7
-        },
-        {
-          "TerritoryId": 144,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Wonder Square East",
-            "[Gold Saucer] Aetheryte Plaza"
-          ]
         },
         {
           "TerritoryId": 144,

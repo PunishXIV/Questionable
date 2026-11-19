@@ -1,0 +1,72 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013644,
+          "Position": {
+            "X": 91.90525,
+            "Y": 65.11965,
+            "Z": -182.77684
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013644,
+          "Position": {
+            "X": 91.90525,
+            "Y": 65.11965,
+            "Z": -182.77684
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            4061
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013644,
+          "Position": {
+            "X": 91.90525,
+            "Y": 65.11965,
+            "Z": -182.77684
+          },
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    }
+  ]
+}

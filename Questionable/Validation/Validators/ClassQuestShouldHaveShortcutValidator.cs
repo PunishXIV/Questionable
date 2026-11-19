@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using ECommons.ExcelServices;
-using Questionable.Data;
-using Questionable.Model;
+﻿using ECommons.ExcelServices;
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
@@ -31,7 +28,8 @@ internal sealed class ClassQuestShouldHaveShortcutValidator : IQuestValidator
             yield break;
 
         bool isTeleportable = false;
-        quest.FindSequence(0)?.Steps.ForEach(step => {
+        quest.FindSequence(0)?.Steps.ForEach(step =>
+        {
             if (step == null || step.IsTeleportableForPriorityQuests())
                 isTeleportable = true;
         });
@@ -45,7 +43,7 @@ internal sealed class ClassQuestShouldHaveShortcutValidator : IQuestValidator
             Step = 0,
             Type = EIssueType.ClassQuestWithoutAetheryteShortcut,
             Severity = EIssueSeverity.Error,
-            Description = "Class quest should have an aetheryte shortcut to be done automatically"
+            Description = _L("Class quest should have an aetheryte shortcut to be done automatically")
         };
     }
 }

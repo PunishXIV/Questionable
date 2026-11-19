@@ -1,0 +1,83 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012134 (Notched Bone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014352,
+          "Position": {
+            "X": -521.556,
+            "Y": 146.198,
+            "Z": -367.135
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014354,
+          "Position": {
+            "X": -515.058,
+            "Y": 153.32,
+            "Z": -162.222
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012134 (Notched Bone)"
+        }
+      ]
+    }
+  ]
+}

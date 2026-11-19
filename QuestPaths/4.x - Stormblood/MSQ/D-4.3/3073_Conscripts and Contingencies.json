@@ -1,10 +1,29 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDD104_03073_EVENTAREA_WARP_100_004",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        },
         {
           "DataId": 1024999,
           "Position": {
@@ -23,11 +42,12 @@
         {
           "DataId": 1021505,
           "Position": {
-            "X": 79.42322,
+            "X": 80.49649,
             "Y": 33.00897,
-            "Z": -669.9474
+            "Z": -669.84753
           },
           "TerritoryId": 613,
+          "StopDistance": 1,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Ruby Sea - Onokoro",
           "Fly": true

@@ -1,0 +1,162 @@
+# Authored with LLM assistance, changes must be reviewed and owned by a human.
+# Initial version reviewed and owned by @alydevs
+
+name: PR - Build & Test
+
+on:
+  pull_request:
+    branches: [ new-main, testing ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.head_ref }}
+          submodules: recursive
+          # Need PR base + head so we can diff to find which QuestPaths files changed.
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+            6.0.x
+            10.0.x
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Download and setup Dalamud
+        run: |
+          echo "Downloading Dalamud..."
+          wget -q https://goatcorp.github.io/dalamud-distrib/stg/latest.zip -O dalamud.zip
+          unzip -q dalamud.zip -d .dalamud
+          echo "DALAMUD_HOME=$PWD/.dalamud/" >> $GITHUB_ENV
+
+      - name: Restore
+        run: dotnet restore /p:Configuration=Release --packages .nuget
+
+      - name: Verify formatting
+        run: |
+          dotnet format Questionable.sln --no-restore --severity warn -v diag
+
+      - name: Update i18n
+        run: |
+          cd Questionable
+          dotnet msbuild -t:PopulateI18N Questionable.csproj
+
+      - name: Apply formatting
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Apply formatting"
+          git push
+
+      - name: Build test projects
+        run: |
+          export SIXLABORS_LICENSE_KEY="`curl https://static.qstxiv.dev/sixlabors.lic 2>/dev/null`"
+          dotnet build Questionable.Tests/Questionable.Tests.csproj \
+            -c Release --no-restore \
+            -p:DalamudLibPath=$DALAMUD_HOME \
+            --source $PWD/.nuget
+          dotnet build QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
+            -c Release --no-restore \
+            --source $PWD/.nuget
+
+      - name: Compute changed quest files
+        id: changed-quests
+        run: |
+          # List QuestPaths/**/*.json files added/modified/renamed relative to the PR base.
+          # Fed to Questionable.Tests via QUESTIONABLE_CHANGED_QUESTS so the semantic-validation
+          # theory only re-runs on files touched by this PR. Empty => run everything (local dev).
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          CHANGED=$(git diff --name-only --diff-filter=AMR "$BASE_SHA" "$HEAD_SHA" -- 'QuestPaths/**/*.json' 'GatheringPaths/**/*.json' | tr '\n' ';')
+          echo "Changed quest files:"
+          echo "$CHANGED" | tr ';' '\n'
+          echo "QUESTIONABLE_CHANGED_QUESTS=$CHANGED" >> "$GITHUB_ENV"
+
+      - name: Run tests
+        run: |
+          dotnet test Questionable.Tests/Questionable.Tests.csproj \
+            -c Release --no-build \
+            -p:DalamudLibPath=$DALAMUD_HOME \
+            --logger "trx;LogFileName=Questionable.Tests.trx" \
+            --results-directory TestResults
+          dotnet test QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
+            -c Release --no-build \
+            --logger "trx;LogFileName=QuestPathGenerator.Tests.trx" \
+            --results-directory TestResults
+
+      - name: Annotate failed quests
+        if: failure()
+        shell: bash
+        run: |
+          # Parse trx results and emit one GitHub file annotation per failing quest,
+          # so the offending QuestPaths JSON is called out inline in the PR's
+          # "Files changed" view instead of only in the workflow log.
+          python3 - <<'PY'
+          import glob
+          import re
+          import xml.etree.ElementTree as ET
+
+          NS = {"t": "http://microsoft.com/schemas/VisualStudio/TeamTest/2010"}
+          # Anchor on the trailing sentinel so paths that contain apostrophes
+          # (e.g. "Ul'dah") are captured in full via a non-greedy match.
+          PATH_RE = re.compile(r"Quest '(QuestPaths/.+?\.json)' failed semantic validation")
+
+          annotations = {}
+          for trx in sorted(glob.glob("TestResults/*.trx")):
+              try:
+                  root = ET.parse(trx).getroot()
+              except ET.ParseError:
+                  continue
+              for result in root.iterfind(".//t:UnitTestResult[@outcome='Failed']", NS):
+                  msg = result.find("./t:Output/t:ErrorInfo/t:Message", NS)
+                  if msg is None or not msg.text:
+                      continue
+                  match = PATH_RE.search(msg.text)
+                  if not match:
+                      continue
+                  path = match.group(1)
+                  # Collapse to a single line and escape per GitHub workflow-command rules.
+                  body = msg.text.replace("\r", "").strip()
+                  body = msg.text.replace("\n", "")
+                  body = body.replace("%", "%25")
+                  annotations.setdefault(path, body)
+
+          if not annotations:
+              print("No quest-path failures found in trx output.")
+          for path, body in annotations.items():
+              print(f"::error file={path}::{body}")
+          PY
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults/*.trx

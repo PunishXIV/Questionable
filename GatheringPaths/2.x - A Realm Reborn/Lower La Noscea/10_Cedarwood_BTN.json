@@ -9,8 +9,7 @@
       "AethernetShortcut": [
         "[Limsa Lominsa] Aetheryte Plaza",
         "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-      ],
-      "SkipConditions": {"AetheryteShortcutIf": {"InSameTerritory": true}}
+      ]
     }
   ],
   "Groups": [

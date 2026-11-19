@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000640,
+          "Position": {
+            "X": 320.543,
+            "Y": -5.8932,
+            "Z": -79.8655
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: issuer 1000640 (Eadbert)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000008,
+          "Position": {
+            "X": 400,
+            "Y": -4.95893,
+            "Z": 79.5273
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            113
+          ],
+          "$": "auto: todo location -> 2000008 (Hedgetree); spawns enemies 113"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000640,
+          "Position": {
+            "X": 320.543,
+            "Y": -5.8932,
+            "Z": -79.8655
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 99,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo turn-in -> 1000640 (Eadbert)"
+        }
+      ]
+    }
+  ]
+}

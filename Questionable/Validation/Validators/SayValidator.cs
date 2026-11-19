@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
 using Lumina.Text.ReadOnly;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, SayValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class SayValidator(ExcelFunctions excelFunctions) : IQuestValidator
 {
     private readonly ExcelFunctions _excelFunctions = excelFunctions;
@@ -32,7 +29,7 @@ internal sealed class SayValidator(ExcelFunctions excelFunctions) : IQuestValida
                     Step = StepId,
                     Type = EIssueType.InvalidChatMessage,
                     Severity = EIssueSeverity.Error,
-                    Description = $"Invalid chat message: {excelString.Value}"
+                    Description = _LF("Invalid chat message: {0}", excelString.Value)
                 };
             }
         }

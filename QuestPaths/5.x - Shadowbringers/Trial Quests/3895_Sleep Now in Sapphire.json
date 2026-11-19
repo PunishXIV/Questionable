@@ -14,12 +14,7 @@
           },
           "TerritoryId": 621,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
         }
       ]
     },
@@ -87,7 +82,9 @@
             "Z": 122.78931
           },
           "TerritoryId": 829,
-          "InteractionType": "SinglePlayerDuty"
+          "InteractionType": "SinglePlayerDuty",
+          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -195,12 +192,7 @@
           "TerritoryId": 621,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
         },
         {
           "DataId": 1032586,

@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
-using Questionable.Controller;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Windows.Utils;
 
+[RegisterTransient]
 internal sealed class QuestSelector(QuestRegistry questRegistry)
 {
     private string _searchString = string.Empty;
@@ -21,10 +17,10 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
             throw new InvalidOperationException("QuestSelected action must be set before drawing the quest selector.");
 
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-        if (ImGui.BeginCombo("##QuestSelection", "Add Quest...", ImGuiComboFlags.HeightLarge))
+        if (ImGui.BeginCombo("##QuestSelection", _L("Add Quest..."), ImGuiComboFlags.HeightLarge))
         {
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-            bool addFirst = ImGui.InputTextWithHint("", "Filter...", ref _searchString, 256,
+            bool addFirst = ImGui.InputTextWithHint("##", _L("Filter..."), ref _searchString, 256,
                 ImGuiInputTextFlags.AutoSelectAll | ImGuiInputTextFlags.EnterReturnsTrue);
 
             IEnumerable<Quest> foundQuests;

@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "AnimaMachinae",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 397,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
         }
       ]
     },
@@ -35,16 +31,10 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

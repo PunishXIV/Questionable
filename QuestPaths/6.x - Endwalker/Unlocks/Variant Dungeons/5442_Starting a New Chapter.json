@@ -1,0 +1,55 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1056462,
+          "Position": {
+            "X": 176.615,
+            "Y": 4.58709,
+            "Z": -7.25093
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Old Sharlayan] Aetheryte Plaza","[Old Sharlayan] Journey's End"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2015036,
+          "Position": {
+            "X": -7.2001,
+            "Y": 41.376,
+            "Z": -139.513
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Old Sharlayan] Journey's End","[Old Sharlayan] The Rostra"]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1056462,
+          "Position": {
+            "X": 176.615,
+            "Y": 4.58709,
+            "Z": -7.25093
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Old Sharlayan] The Rostra","[Old Sharlayan] Journey's End"]
+        }
+      ]
+    }
+  ]
+}

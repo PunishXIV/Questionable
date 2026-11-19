@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "Anonymous", "Date": "2026-08-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +15,6 @@
             "Z": -27.267883
           },
           "TerritoryId": 133,
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Conjurers' Guild"
@@ -21,7 +22,6 @@
           "InteractionType": "AcceptQuest",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]
@@ -65,7 +65,6 @@
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "AetheryteLocked": "East Shroud - Hawthorne Hut"
             }
           }
@@ -152,7 +151,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Conjurers' Guild"

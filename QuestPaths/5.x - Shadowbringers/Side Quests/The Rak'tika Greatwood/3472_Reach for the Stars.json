@@ -1,0 +1,91 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027712,
+          "Position": {
+            "X": 454.194,
+            "Y": 6.95506,
+            "Z": -193.072
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 11122,
+          "Position": {
+            "X": 253.427,
+            "Y": -19.5168,
+            "Z": -427.718
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002580,
+          "KillEnemyDataIds": [
+            11123
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 11122,
+          "Position": {
+            "X": 270.817,
+            "Y": -12.9606,
+            "Z": -588.606
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002580,
+          "KillEnemyDataIds": [
+            11123
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 447.179,
+            "Y": 9.284755,
+            "Z": -193.96558
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1027712,
+          "Position": {
+            "X": 454.1847,
+            "Y": 6.955061,
+            "Z": -193.07245
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

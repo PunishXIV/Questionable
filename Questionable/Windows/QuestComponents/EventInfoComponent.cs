@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Humanizer;
 using Humanizer.Localisation;
-using Questionable.Controller;
-using Questionable.Data;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class EventInfoComponent
 (
     QuestData questData,
@@ -27,88 +17,126 @@ internal sealed class EventInfoComponent
     QuestTooltipComponent questTooltipComponent,
     Configuration configuration)
 {
-    private readonly Configuration _configuration = configuration;
-    private readonly List<EventQuest> _eventQuests =
+    internal static readonly List<EventQuest> EventQuests =
     [
-        new("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
-        new("Make It Rain 2026", [new QuestId(5443)], AtDailyReset(new(2026,6,24))) // May 25, 2026 at 3pm (GMT)
-        //new("Valentione's Day 2026", [new QuestId(5325)], AtDailyReset(new(2026, 2, 16))) // January 15, 2026 at 6:59 a.m. (PST) 
+        // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
+        // Comment out inactive events so they can be reused in future, don't delete blocks
+        //new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
+        // Yokai
+        //new(
+        //    $"{_T<Lumina.Excel.Sheets.BannerBg>(233)} {DateTime.UtcNow.Year}",
+        //    [new QuestId(434), new QuestId(2141)],
+        //    AtDailyReset(2026, 10, 5)
+        //),
+        // FFXV
+        //new(
+        //    $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} {DateTime.UtcNow.Year}",
+        //    [new QuestId(3158), new QuestId(3159), new QuestId(3160)],
+        //    AtDailyReset(2026, 10, 13)
+        //),
+        // All Saints 2026
+        //new(
+        //    $"{_T<Lumina.Excel.Sheets.FittingShopCategory>(109)} {DateTime.UtcNow.Year}",
+        //    [new QuestId(5467), new QuestId(5468)],
+        //    AtDailyReset(2026, 11, 2)
+        //),
+        // Fall Guys
+        //new(
+        //    $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} {DateTime.UtcNow.Year}",
+        //    [new QuestId(434), new QuestId(4801)],
+        //    EndsAtUtc: AtDailyReset(2026, 10, 27),
+        //    StartsAtUtc: AtDailyReset(2026, 10, 7),
+        //    staysActive: true
+        //),
+        // FFVII Keybound Brawlers
+        new(
+            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(200)} {DateTime.UtcNow.Year}",
+            [new QuestId(434), new QuestId(5466)],
+            EndsAtUtc: AtDailyReset(2027, 2, 23),
+            StartsAtUtc: AtDailyReset(2026, 10, 27),
+            staysActive: true
+        ),
+        // FFXVI
+        new(
+            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(71)} {DateTime.UtcNow.Year}",
+            [new QuestId(4796), new QuestId(4797), new QuestId(4798)],
+            AtDailyReset(2026, 12, 9)
+        ),
     ];
-    private readonly QuestController _questController = questController;
 
-    private readonly QuestData _questData = questData;
-    private readonly QuestFunctions _questFunctions = questFunctions;
-    private readonly QuestRegistry _questRegistry = questRegistry;
-    private readonly QuestTooltipComponent _questTooltipComponent = questTooltipComponent;
-    private readonly UiUtils _uiUtils = uiUtils;
+    public bool ShouldDraw => configuration.General.ShowIncompleteSeasonalEvents && EventQuests.Any(IsIncomplete);
 
-    public bool ShouldDraw => _configuration.General.ShowIncompleteSeasonalEvents && _eventQuests.Any(IsIncomplete);
-
-    private static DateTime AtDailyReset(DateOnly date) => new(date, new(14, 59), DateTimeKind.Utc);
+    private static DateTime AtDailyReset(int year, int month, int day) => new(new(year, month, day), new(14, 59), DateTimeKind.Utc);
 
     public void Draw()
     {
-        foreach (EventQuest eventQuest in _eventQuests)
+        foreach (EventQuest eventQuest in EventQuests.Where(x =>
+            x.EndsAtUtc >= DateTime.UtcNow &&
+            (x.QuestIds.All(ShouldShowQuest) ||
+            x.StartsAtUtc < DateTime.UtcNow)))
         {
-            if (IsIncomplete(eventQuest))
-                DrawEventQuest(eventQuest);
+            DrawEventQuest(eventQuest);
         }
     }
 
     private void DrawEventQuest(EventQuest eventQuest)
     {
-        if (eventQuest.EndsAtUtc != DateTime.MaxValue)
+        ImGui.Text(eventQuest.Name);
+        if (eventQuest.StartsAtUtc != null && eventQuest.StartsAtUtc.Value >= DateTime.UtcNow)
+        {
+            string time = (eventQuest.StartsAtUtc.Value - DateTime.UtcNow).Humanize(
+                1,
+                CultureInfo.InvariantCulture,
+                minUnit: TimeUnit.Minute,
+                maxUnit: TimeUnit.Day);
+            ImGui.SameLine();
+            ImGui.Text(_LF("starts in {0}", time));
+        }
+        else if (eventQuest.EndsAtUtc != DateTime.MaxValue)
         {
             string time = (eventQuest.EndsAtUtc - DateTime.UtcNow).Humanize(
                 1,
                 CultureInfo.InvariantCulture,
                 minUnit: TimeUnit.Minute,
                 maxUnit: TimeUnit.Day);
-            ImGui.Text($"{eventQuest.Name} ({time})");
+            ImGui.SameLine();
+            ImGui.Text(_LF("ends in {0}", time));
         }
-        else
-            ImGui.Text(eventQuest.Name);
 
         List<ElementId> startableQuests = eventQuest.QuestIds.Where(x =>
-                _questRegistry.IsKnownQuest(x) &&
-                _questFunctions.IsReadyToAcceptQuest(x) &&
-                x != _questController.StartedQuest?.Quest.Id &&
-                x != _questController.NextQuest?.Quest.Id)
+                questRegistry.IsKnownQuest(x) &&
+                questFunctions.IsReadyToAcceptQuest(x) &&
+                x != questController.StartedQuest?.Quest.Id &&
+                x != questController.NextQuest?.Quest.Id)
             .ToList();
         foreach (ElementId questId in eventQuest.QuestIds)
         {
-            if (_questFunctions.IsQuestComplete(questId))
+            if (!configuration.General.ShowCompleteSeasonalEvents && questFunctions.IsQuestComplete(questId))
                 continue;
 
             using (ImRaii.PushId($"##EventQuestSelection{questId}"))
             {
-                string questName = _questData.GetQuestInfo(questId).Name;
+                string questName = questData.GetQuestInfo(questId).Name;
+
+                bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_L("Add to priority quests"));
+                if (priority)
+                    questController.PriorityManager.Add(questId);
+                ImGui.SameLine();
                 if (startableQuests.Contains(questId) &&
-                    _questRegistry.TryGetQuest(questId, out Quest? quest))
+                    questRegistry.TryGetQuest(questId, out Quest? quest))
                 {
-                    if (ImGuiComponents.IconButton(FontAwesomeIcon.Play))
-                    {
-                        _questController.SetNextQuest(quest);
-                        _questController.Start("SeasonalEventSelection");
-                    }
-
-                    bool hovered = ImGui.IsItemHovered();
-
-                    ImGui.SameLine();
-                    ImGui.AlignTextToFramePadding();
-                    ImGui.Text(questName);
-                    hovered |= ImGui.IsItemHovered();
-
-                    if (hovered)
-                        _questTooltipComponent.Draw(quest.Info);
+                    if (ImGuiComponentsLocal.QuestNotice(questController, quest))
+                        questTooltipComponent.Draw(quest.Info);
                 }
                 else
                 {
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX());
 
-                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = _uiUtils.GetQuestStyle(questId);
-                    if (_uiUtils.ChecklistItem(questName, Color, Icon, ImGui.GetStyle().FramePadding.X))
-                        _questTooltipComponent.Draw(_questData.GetQuestInfo(questId));
+                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = uiUtils.GetQuestStyle(questId);
+                    if (uiUtils.ChecklistItem(questName, Color, Icon, ImGui.GetStyle().FramePadding.X))
+                        questTooltipComponent.Draw(questData.GetQuestInfo(questId));
                 }
             }
         }
@@ -116,25 +144,33 @@ internal sealed class EventInfoComponent
 
     private bool IsIncomplete(EventQuest eventQuest)
     {
+        // if event end time is in the past, event is complete
         if (eventQuest.EndsAtUtc <= DateTime.UtcNow)
             return false;
+        // if event start time is in the future, event is complete
+        if (eventQuest.StartsAtUtc != null && eventQuest.StartsAtUtc > DateTime.UtcNow)
+            return false;
+        if (eventQuest.staysActive)
+            return true;
 
         return eventQuest.QuestIds.Any(ShouldShowQuest);
     }
 
     public IEnumerable<ElementId> GetCurrentlyActiveEventQuests()
     {
-        return _eventQuests
-            .Where(x => x.EndsAtUtc >= DateTime.UtcNow)
-            .SelectMany(x => x.QuestIds)
-            .Where(ShouldShowQuest);
+        return EventQuests
+            .Where(x =>
+                (x.StartsAtUtc == null || x.StartsAtUtc < DateTime.UtcNow) &&
+                x.EndsAtUtc >= DateTime.UtcNow &&
+                x.QuestIds.Any(ShouldShowQuest))
+            .SelectMany(x => x.QuestIds);
     }
 
     private bool ShouldShowQuest(ElementId elementId)
     {
-        return !_questFunctions.IsQuestComplete(elementId) &&
-               !_questFunctions.IsQuestUnobtainable(elementId);
+        return !questFunctions.IsQuestUnobtainable(elementId) &&
+               (configuration.General.ShowCompleteSeasonalEvents || !questFunctions.IsQuestComplete(elementId));
     }
 
-    private sealed record EventQuest(string Name, List<ElementId> QuestIds, DateTime EndsAtUtc);
+    internal sealed record EventQuest(string Name, List<ElementId> QuestIds, DateTime EndsAtUtc, DateTime? StartsAtUtc = null, bool staysActive = false);
 }

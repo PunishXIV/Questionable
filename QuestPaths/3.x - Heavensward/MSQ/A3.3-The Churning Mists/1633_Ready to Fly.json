@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-01"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,6 +15,7 @@
           },
           "StopDistance": 5,
           "TerritoryId": 351,
+          "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -31,7 +32,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Skysteel Manufactory"

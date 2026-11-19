@@ -9,8 +9,7 @@
       "AethernetShortcut": [
         "[Gridania] Aetheryte Plaza",
         "[Gridania] White Wolf Gate (Central Shroud)"
-      ],
-      "SkipConditions": {"AetheryteShortcutIf": {"InSameTerritory": true}}
+      ]
     }
   ],
   "Groups": [

@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +15,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
         }
       ]
     },
@@ -68,6 +63,17 @@
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 153
+        },
+        {
+          "DataId": 1000600,
+          "Position": {
+            "X": -203.50964,
+            "Y": 8.961965,
+            "Z": -57.114563
+          },
+          "TerritoryId": 153,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179652
         },
         {
           "DataId": 1000590,

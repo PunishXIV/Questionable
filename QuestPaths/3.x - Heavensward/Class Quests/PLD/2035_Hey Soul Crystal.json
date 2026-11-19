@@ -1,7 +1,8 @@
-{
+﻿{
 	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
 	"Author": "goatzone",
-	"QuestSequence": [
+	"LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
+  "QuestSequence": [
 		{
 			"Sequence": 0,
 			"Steps": [
@@ -80,9 +81,6 @@
 					"InteractionType": "CompleteQuest",
 					"Fly": true,
 					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-					"SkipConditions": {
-						"AetheryteShortcutIf": { "InSameTerritory": true }
-					},
 					"NextQuestId": 2036
 				}
 			]

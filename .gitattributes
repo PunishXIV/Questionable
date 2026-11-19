@@ -4,6 +4,16 @@
 * text=auto
 
 ###############################################################################
+# Force CRLF for files that .editorconfig / dotnet format expect as CRLF.
+# Without this, Linux CI runners check these out as LF and dotnet format
+# --verify-no-changes fails with ENDOFLINE / WHITESPACE errors.
+###############################################################################
+*.cs         text eol=crlf
+*.csproj     text eol=crlf
+*.sln        text eol=crlf
+*.editorconfig text eol=crlf
+
+###############################################################################
 # Set default behavior for command prompt diff.
 #
 # This is need for earlier builds of msysgit that does not have it on by

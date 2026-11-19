@@ -6,6 +6,30 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2009985,
+          "Position": {
+            "X": 385.0918,
+            "Y": -63.279236,
+            "Z": 511.49768
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 878,
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"InTerritory": [857]}}
+        },
+        {
+          "DataId": 2009981,
+          "Position": {
+            "X": -14.66394,
+            "Y": -2.609314,
+            "Z": 23.819275
+          },
+          "TerritoryId": 878,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 857
+        },
+        {
           "DataId": 1030110,
           "Position": {
             "X": 99.99231,

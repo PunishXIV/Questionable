@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -8,19 +10,29 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 1601,
-          "TerritoryId": 131
+          "TerritoryId": 131,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 131
+          "TerritoryId": 131,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 131
+          "TerritoryId": 131,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 131
+          "TerritoryId": 131,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1001739,
@@ -132,7 +144,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Gladiators' Guild"

@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Walnut Lumber HQ\nAutocraft requires:\n 3x Walnut Log",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -18,7 +19,6 @@
           "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 132
               ]
@@ -47,7 +47,8 @@
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": false}}}
         },
         {
           "DataId": 1000153,

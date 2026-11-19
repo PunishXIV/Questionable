@@ -1,61 +1,45 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Linq;
 using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Data;
-using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Quest = Questionable.Model.Quest;
+using Questionable.Windows.Common.Ui;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Windows.ConfigComponents;
 
-internal sealed class SinglePlayerDutyConfigComponent
-(
-    IDalamudPluginInterface pluginInterface,
-    Configuration configuration,
-    TerritoryData territoryData,
-    QuestRegistry questRegistry,
-    QuestData questData,
-    IDataManager dataManager,
-    ClassJobUtils classJobUtils,
-    ILogger<SinglePlayerDutyConfigComponent> logger) : ConfigComponent(pluginInterface, configuration)
+// TODO: refactor — heavy nesting (39 lines indented ≥6 levels, max indent ~8 levels). Likely mirrors DutyConfigComponent structure.
+[RegisterSingleton]
+internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
 {
     private const string SinglePlayerDutyClipboardPrefix = "qst:single:";
 
     private static readonly List<(Job ClassJob, string Name)> RoleQuestCategories =
     [
-        (Job.PLD, "Tank Role Quests"),
-        (Job.WHM, "Healer Role Quests"),
-        (Job.LNC, "Melee Role Quests"),
-        (Job.BRD, "Physical Ranged Role Quests"),
-        (Job.BLM, "Magical Ranged Role Quests")
+        (Job.PLD, _L("Tank Role Quests")),
+        (Job.WHM, _L("Healer Role Quests")),
+        (Job.LNC, _L("Melee Role Quests")),
+        (Job.BRD, _L("Physical Ranged Role Quests")),
+        (Job.BLM, _L("Magical Ranged Role Quests"))
     ];
+    private Vector2 Size;
 
 #if false
-    private readonly string[] _retryDifficulties = ["Normal", "Easy", "Very Easy"];
+    private readonly string[] _retryDifficulties = [_L("Normal"), _L("Easy"), _L("Very Easy")];
 #endif
 
-    private readonly TerritoryData _territoryData = territoryData;
-    private readonly QuestRegistry _questRegistry = questRegistry;
-    private readonly QuestData _questData = questData;
-    private readonly IDataManager _dataManager = dataManager;
-    private readonly ClassJobUtils _classJobUtils = classJobUtils;
-    private readonly ILogger<SinglePlayerDutyConfigComponent> _logger = logger;
+    private readonly TerritoryData _territoryData;
+    private readonly QuestRegistry _questRegistry;
+    private readonly QuestData _questData;
+    private readonly IDataManager _dataManager;
+    private readonly ClassJobUtils _classJobUtils;
+    private readonly ILogger<SinglePlayerDutyConfigComponent> _logger;
 
     private ImmutableDictionary<EAetheryteLocation, List<SinglePlayerDutyInfo>> _startingCityBattles =
         ImmutableDictionary<EAetheryteLocation, List<SinglePlayerDutyInfo>>.Empty;
@@ -74,11 +58,35 @@ internal sealed class SinglePlayerDutyConfigComponent
     private ImmutableList<(string Label, List<SinglePlayerDutyInfo>)> _otherQuestBattles =
         ImmutableList<(string Label, List<SinglePlayerDutyInfo>)>.Empty;
 
-    public void Reload()
+    public SinglePlayerDutyConfigComponent(
+        IDalamudPluginInterface pluginInterface,
+        Configuration configuration,
+        TerritoryData territoryData,
+        QuestRegistry questRegistry,
+        QuestData questData,
+        IDataManager dataManager,
+        ClassJobUtils classJobUtils,
+        ILogger<SinglePlayerDutyConfigComponent> logger) : base(pluginInterface, configuration)
+    {
+        _territoryData = territoryData;
+        _questRegistry = questRegistry;
+        _questData = questData;
+        _dataManager = dataManager;
+        _classJobUtils = classJobUtils;
+        _logger = logger;
+        _questRegistry.Reloaded += Reload;
+    }
+
+    public void Dispose()
+    {
+        _questRegistry.Reloaded -= Reload;
+    }
+
+    public void Reload(object? sender = null, EventArgs? e = null)
     {
         List<ElementId> questsWithMultipleBattles = _territoryData.GetAllQuestsWithQuestBattles()
             .GroupBy(x => x.QuestId)
-            .Where(x => x.Count() > 1)
+            .Where(x => x.Skip(1).Any())
             .Select(x => x.Key)
             .ToList();
 
@@ -94,9 +102,9 @@ internal sealed class SinglePlayerDutyConfigComponent
         List<SinglePlayerDutyInfo> otherBattles = [];
 
         Dictionary<ElementId, Job> questIdsToJob = Enum.GetValues<Job>()
-            .Where(x => x != Job.ADV && !x.IsCrafter() && !x.IsGatherer())
-            .Where(x => x.IsClass() || !x.HasBaseClass())
-            .SelectMany(x => _questRegistry.GetKnownClassJobQuests(x, false).Select(y => (y.QuestId, ClassJob: x)))
+            .Where(x => x != Job.ADV && !x.IsCrafter() && !x.IsGatherer() && (x.IsClass() || !x.HasBaseClass()))
+            .SelectMany(x => _questRegistry.GetKnownClassJobQuests(x, includeRoleQuests: false)
+            .Select(y => (y.QuestId, ClassJob: x)))
             .ToDictionary(x => x.QuestId, x => x.ClassJob);
         Dictionary<Job, List<SinglePlayerDutyInfo>> jobQuestBattles = questIdsToJob.Values.Distinct()
             .ToDictionary(x => x, _ => new List<SinglePlayerDutyInfo>());
@@ -116,12 +124,12 @@ internal sealed class SinglePlayerDutyConfigComponent
 
             string name = $"{FormatLevel(questInfo.Level)} {questInfo.Name}";
             if (!string.IsNullOrEmpty(cfcData.Name) && !questInfo.Name.EndsWith(cfcData.Name, StringComparison.Ordinal))
-                name += $" ({cfcData.Name})";
+                name += _LF(" ({0})", cfcData.Name);
 
             if (questsWithMultipleBattles.Contains(questId))
-                name += $" (Part {options.Index + 1})";
+                name += _LF(" (Part {0})", options.Index + 1);
             else if (cfcData.ContentFinderConditionId is 674 or 691)
-                name += " (Melee/Phys. Ranged)";
+                name += _L(" (Melee/Phys. Ranged)");
 
             SinglePlayerDutyInfo dutyInfo = new(name, questInfo, cfcData, options, enabled);
 
@@ -200,29 +208,25 @@ internal sealed class SinglePlayerDutyConfigComponent
                 _logger.LogDebug("Disabling quest battle for quest {QuestId}, quest is disabled", questId);
                 return (false, options);
             }
-            else
+
+            QuestStep? foundStep = quest.AllSteps()
+                .Select(x => x.Step)
+                .FirstOrDefault(x =>
+                    x.InteractionType == EInteractionType.SinglePlayerDuty &&
+                    x.SinglePlayerDutyIndex == index);
+            if (foundStep == null)
             {
-                QuestStep? foundStep = quest.AllSteps()
-                    .Select(x => x.Step)
-                    .FirstOrDefault(x =>
-                        x.InteractionType == EInteractionType.SinglePlayerDuty &&
-                        x.SinglePlayerDutyIndex == index);
-                if (foundStep == null)
-                {
-                    _logger.LogWarning(
-                        "Disabling quest battle for quest {QuestId}, no battle with index {Index} found", questId,
-                        index);
-                    return (false, options);
-                }
-                else
-                    return (true, foundStep.SinglePlayerDutyOptions ?? options);
+                _logger.LogWarning(
+                    "Disabling quest battle for quest {QuestId}, no battle with index {Index} found", questId,
+                    index);
+                return (false, options);
             }
+
+            return (true, foundStep.SinglePlayerDutyOptions ?? options);
         }
-        else
-        {
-            _logger.LogDebug("Disabling quest battle for quest {QuestId}, unknown quest", questId);
-            return (false, options);
-        }
+
+        _logger.LogDebug("Disabling quest battle for quest {QuestId}, unknown quest", questId);
+        return (false, options);
     }
 
     private string BuildJournalGenreLabel(uint journalGenreId)
@@ -233,17 +237,19 @@ internal sealed class SinglePlayerDutyConfigComponent
         string genreName = journalGenre.Name.ExtractText();
         string categoryName = journalCategory.Name.ExtractText();
 
-        return $"{categoryName} \u203B {genreName}";
+        return _LF("{0} \u203B {1}", categoryName, genreName);
     }
 
     public override void DrawTab()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Quest Battles###QuestBattles");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Quest Battles") + "###QuestBattles");
         if (!tab)
             return;
+        Size = ImGui.GetWindowContentRegionMax();
+        var wrap = ImRaii.TextWrapPos(Size.X + 10);
 
         bool runSoloInstancesWithBossMod = Configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod;
-        if (ImGui.Checkbox("Run quest battles with BossMod", ref runSoloInstancesWithBossMod))
+        if (ImGui.Checkbox(_L("Run quest battles with BossMod"), ref runSoloInstancesWithBossMod))
         {
             Configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod = runSoloInstancesWithBossMod;
             Save();
@@ -251,13 +257,13 @@ internal sealed class SinglePlayerDutyConfigComponent
 
         using (ImRaii.PushIndent(ImGui.GetFrameHeight() + ImGui.GetStyle().ItemInnerSpacing.X))
         {
-            using (_ = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudRed))
+            using (_ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Danger))
             {
-                ImGui.TextUnformatted("Work in Progress:");
-                ImGui.BulletText("Will always use BossMod for combat (ignoring the configured combat module).");
-                ImGui.BulletText("Only a small subset of quest battles have been tested - most of which are in the MSQ.");
-                ImGui.BulletText("When retrying a failed battle, it will always start at 'Very Easy' difficulty.");
-                ImGui.BulletText("Please don't enable this option when using a BossMod fork (such as Reborn);\nwith the missing combat module configuration, it is unlikely to be compatible.");
+                ImGui.TextUnformatted(_L("Work in Progress:"));
+                ImGui.BulletText(_L("Will always use BossMod for combat (ignoring the configured combat module)."));
+                ImGui.BulletText(_L("Only a small subset of quest battles have been tested - most of which are in the MSQ."));
+                ImGui.BulletText(_L("It will always try to start at 'Very Easy' difficulty, including the first attempt."));
+                ImGui.BulletText(_L("BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable."));
             }
 
 #if false
@@ -265,7 +271,7 @@ internal sealed class SinglePlayerDutyConfigComponent
             {
                 ImGui.Spacing();
                 int retryDifficulty = Configuration.SinglePlayerDuties.RetryDifficulty;
-                if (ImGui.Combo("Difficulty when retrying a quest battle", ref retryDifficulty, _retryDifficulties,
+                if (ImGui.Combo(_L("Difficulty when retrying a quest battle"), ref retryDifficulty, _retryDifficulties,
                         _retryDifficulties.Length))
                 {
                     Configuration.SinglePlayerDuties.RetryDifficulty = (byte)retryDifficulty;
@@ -280,11 +286,11 @@ internal sealed class SinglePlayerDutyConfigComponent
         using (ImRaii.Disabled(!runSoloInstancesWithBossMod))
         {
             ImGui.Text(
-                "Questionable includes a default list of quest battles that work if BossMod is installed.");
-            ImGui.Text("The included list of quest battles can change with each update.");
+                _L("Questionable includes a default list of quest battles that work if BossMod is installed."));
+            ImGui.Text(_L("The included list of quest battles can change with each update."));
 
             ImGui.Separator();
-            ImGui.Text("You can override the settings for each individual quest battle:");
+            ImGui.Text(_L("You can override the settings for each individual quest battle:"));
 
 
             using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("QuestionableConfigTabs");
@@ -298,41 +304,42 @@ internal sealed class SinglePlayerDutyConfigComponent
 
             DrawEnableAllButton();
             ImGui.SameLine();
-            DrawClipboardButtons();
-            ImGui.SameLine();
             DrawResetButton();
+            if (Size.X > 500)
+                ImGui.SameLine();
+            DrawClipboardButtons();
         }
     }
 
     private void DrawMainScenarioConfigTable()
     {
         (int totalEnabled, int totalCount) = GetMainScenarioQuestCounts();
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem($"Main Scenario Quests ({totalEnabled}/{totalCount})###MSQ");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_LF("Main Scenario Quests ({0}/{1})", totalEnabled, totalCount) + "###MSQ");
         if (!tab)
             return;
 
-        using ImRaii.ChildDisposable child = BeginChildArea();
+        using ImRaii.ChildDisposable child = BeginChildArea(Size.X);
         if (!child)
             return;
 
         (int limsaEnabled, int limsaTotal) = GetQuestBattleCounts(_startingCityBattles[EAetheryteLocation.Limsa]);
-        string limsaHeaderText = $"Limsa Lominsa ({FormatLevel(5)} - {FormatLevel(14)}) ({limsaEnabled}/{limsaTotal})";
+        string limsaHeaderText = _L("Limsa Lominsa") + $" ({FormatLevel(5)} - {FormatLevel(14)}) ({limsaEnabled}/{limsaTotal})";
         string limsaKey = "Limsa";
-        bool isLimsaHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(limsaKey, false);
+        bool isLimsaHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(limsaKey, defaultValue: false);
         ImGui.SetNextItemOpen(isLimsaHeaderOpen, ImGuiCond.Always);
         if (ImGui.CollapsingHeader(limsaHeaderText))
         {
-            if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(limsaKey, false))
+            if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(limsaKey, defaultValue: false))
             {
                 Configuration.SinglePlayerDuties.HeaderStates[limsaKey] = true;
                 Save();
             }
 
-            DrawQuestTable("LimsaLominsa", _startingCityBattles[EAetheryteLocation.Limsa]);
+            DrawQuestTable(_L("Limsa Lominsa"), _startingCityBattles[EAetheryteLocation.Limsa]);
         }
         else
         {
-            if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(limsaKey, false))
+            if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(limsaKey, defaultValue: false))
             {
                 Configuration.SinglePlayerDuties.HeaderStates[limsaKey] = false;
                 Save();
@@ -340,23 +347,23 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
 
         (int gridaniaEnabled, int gridaniaTotal) = GetQuestBattleCounts(_startingCityBattles[EAetheryteLocation.Gridania]);
-        string gridaniaHeaderText = $"Gridania ({FormatLevel(5)} - {FormatLevel(14)}) ({gridaniaEnabled}/{gridaniaTotal})";
+        string gridaniaHeaderText = _L("Gridania") + $" ({FormatLevel(5)} - {FormatLevel(14)}) ({gridaniaEnabled}/{gridaniaTotal})";
         string gridaniaKey = "Gridania";
-        bool isGridaniaHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(gridaniaKey, false);
+        bool isGridaniaHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(gridaniaKey, defaultValue: false);
         ImGui.SetNextItemOpen(isGridaniaHeaderOpen, ImGuiCond.Always);
         if (ImGui.CollapsingHeader(gridaniaHeaderText))
         {
-            if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(gridaniaKey, false))
+            if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(gridaniaKey, defaultValue: false))
             {
                 Configuration.SinglePlayerDuties.HeaderStates[gridaniaKey] = true;
                 Save();
             }
 
-            DrawQuestTable("Gridania", _startingCityBattles[EAetheryteLocation.Gridania]);
+            DrawQuestTable(_L("Gridania"), _startingCityBattles[EAetheryteLocation.Gridania]);
         }
         else
         {
-            if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(gridaniaKey, false))
+            if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(gridaniaKey, defaultValue: false))
             {
                 Configuration.SinglePlayerDuties.HeaderStates[gridaniaKey] = false;
                 Save();
@@ -364,23 +371,23 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
 
         (int uldahEnabled, int uldahTotal) = GetQuestBattleCounts(_startingCityBattles[EAetheryteLocation.Uldah]);
-        string uldahHeaderText = $"Ul'dah ({FormatLevel(4)} - {FormatLevel(14)}) ({uldahEnabled}/{uldahTotal})";
+        string uldahHeaderText = _L("Ul'dah") + $" ({FormatLevel(4)} - {FormatLevel(14)}) ({uldahEnabled}/{uldahTotal})";
         string uldahKey = "Uldah";
-        bool isUldahHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(uldahKey, false);
+        bool isUldahHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(uldahKey, defaultValue: false);
         ImGui.SetNextItemOpen(isUldahHeaderOpen, ImGuiCond.Always);
         if (ImGui.CollapsingHeader(uldahHeaderText))
         {
-            if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(uldahKey, false))
+            if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(uldahKey, defaultValue: false))
             {
                 Configuration.SinglePlayerDuties.HeaderStates[uldahKey] = true;
                 Save();
             }
 
-            DrawQuestTable("Uldah", _startingCityBattles[EAetheryteLocation.Uldah]);
+            DrawQuestTable(_L("Uldah"), _startingCityBattles[EAetheryteLocation.Uldah]);
         }
         else
         {
-            if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(uldahKey, false))
+            if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(uldahKey, defaultValue: false))
             {
                 Configuration.SinglePlayerDuties.HeaderStates[uldahKey] = false;
                 Save();
@@ -394,11 +401,11 @@ internal sealed class SinglePlayerDutyConfigComponent
                 (int enabledCount, int totalCountForExpansion) = GetQuestBattleCounts(dutyInfos);
                 string expansionHeaderText = $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCountForExpansion})";
                 string expansionKey = expansion.ToString();
-                bool isExpansionHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(expansionKey, false);
+                bool isExpansionHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(expansionKey, defaultValue: false);
                 ImGui.SetNextItemOpen(isExpansionHeaderOpen, ImGuiCond.Always);
                 if (ImGui.CollapsingHeader(expansionHeaderText))
                 {
-                    if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(expansionKey, false))
+                    if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(expansionKey, defaultValue: false))
                     {
                         Configuration.SinglePlayerDuties.HeaderStates[expansionKey] = true;
                         Save();
@@ -408,7 +415,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 }
                 else
                 {
-                    if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(expansionKey, false))
+                    if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(expansionKey, defaultValue: false))
                     {
                         Configuration.SinglePlayerDuties.HeaderStates[expansionKey] = false;
                         Save();
@@ -421,11 +428,11 @@ internal sealed class SinglePlayerDutyConfigComponent
     private void DrawJobQuestConfigTable()
     {
         (int totalEnabled, int totalCount) = GetJobQuestCounts();
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem($"Class/Job Quests ({totalEnabled}/{totalCount})###JobQuests");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_LF("Class/Job Quests ({0}/{1})", totalEnabled, totalCount) + "###JobQuests");
         if (!tab)
             return;
 
-        using ImRaii.ChildDisposable child = BeginChildArea();
+        using ImRaii.ChildDisposable child = BeginChildArea(Size.X);
         if (!child)
             return;
 
@@ -452,11 +459,11 @@ internal sealed class SinglePlayerDutyConfigComponent
                 (int enabledCount, int totalCountForJob) = GetQuestBattleCounts(dutyInfos);
                 string jobHeaderText = $"{jobName} ({enabledCount}/{totalCountForJob})";
                 string jobKey = classJob.ToString();
-                bool isJobHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(jobKey, false);
+                bool isJobHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(jobKey, defaultValue: false);
                 ImGui.SetNextItemOpen(isJobHeaderOpen, ImGuiCond.Always);
                 if (ImGui.CollapsingHeader(jobHeaderText))
                 {
-                    if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(jobKey, false))
+                    if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(jobKey, defaultValue: false))
                     {
                         Configuration.SinglePlayerDuties.HeaderStates[jobKey] = true;
                         Save();
@@ -466,7 +473,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 }
                 else
                 {
-                    if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(jobKey, false))
+                    if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(jobKey, defaultValue: false))
                     {
                         Configuration.SinglePlayerDuties.HeaderStates[jobKey] = false;
                         Save();
@@ -479,11 +486,11 @@ internal sealed class SinglePlayerDutyConfigComponent
     private void DrawRoleQuestConfigTable()
     {
         (int totalEnabled, int totalCount) = GetRoleQuestCounts();
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem($"Role Quests ({totalEnabled}/{totalCount})###RoleQuests");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_LF("Role Quests ({0}/{1})", totalEnabled, totalCount) + "###RoleQuests");
         if (!tab)
             return;
 
-        using ImRaii.ChildDisposable child = BeginChildArea();
+        using ImRaii.ChildDisposable child = BeginChildArea(Size.X);
         if (!child)
             return;
 
@@ -494,11 +501,11 @@ internal sealed class SinglePlayerDutyConfigComponent
                 (int enabledCount, int totalCountForRole) = GetQuestBattleCounts(dutyInfos);
                 string roleHeaderText = $"{label} ({enabledCount}/{totalCountForRole})";
                 string roleKey = $"Role_{classJob}";
-                bool isRoleHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(roleKey, false);
+                bool isRoleHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(roleKey, defaultValue: false);
                 ImGui.SetNextItemOpen(isRoleHeaderOpen, ImGuiCond.Always);
                 if (ImGui.CollapsingHeader(roleHeaderText))
                 {
-                    if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(roleKey, false))
+                    if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(roleKey, defaultValue: false))
                     {
                         Configuration.SinglePlayerDuties.HeaderStates[roleKey] = true;
                         Save();
@@ -508,7 +515,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 }
                 else
                 {
-                    if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(roleKey, false))
+                    if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(roleKey, defaultValue: false))
                     {
                         Configuration.SinglePlayerDuties.HeaderStates[roleKey] = false;
                         Save();
@@ -518,13 +525,13 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
 
         (int otherEnabled, int otherTotal) = GetQuestBattleCounts(_otherRoleQuestBattles);
-        string otherRoleHeaderText = $"General Role Quests ({otherEnabled}/{otherTotal})";
+        string otherRoleHeaderText = _LF("General Role Quests ({0}/{1})", otherEnabled, otherTotal);
         string otherRoleKey = "Role_General";
-        bool isOtherRoleHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherRoleKey, false);
+        bool isOtherRoleHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherRoleKey, defaultValue: false);
         ImGui.SetNextItemOpen(isOtherRoleHeaderOpen, ImGuiCond.Always);
         if (ImGui.CollapsingHeader(otherRoleHeaderText))
         {
-            if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherRoleKey, false))
+            if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherRoleKey, defaultValue: false))
             {
                 Configuration.SinglePlayerDuties.HeaderStates[otherRoleKey] = true;
                 Save();
@@ -534,7 +541,7 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
         else
         {
-            if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherRoleKey, false))
+            if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherRoleKey, defaultValue: false))
             {
                 Configuration.SinglePlayerDuties.HeaderStates[otherRoleKey] = false;
                 Save();
@@ -545,11 +552,11 @@ internal sealed class SinglePlayerDutyConfigComponent
     private void DrawOtherQuestConfigTable()
     {
         (int totalEnabled, int totalCount) = GetOtherQuestCounts();
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem($"Other Quests ({totalEnabled}/{totalCount})###MiscQuests");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_LF("Other Quests ({0}/{1})", totalEnabled, totalCount) + "###MiscQuests");
         if (!tab)
             return;
 
-        using ImRaii.ChildDisposable child = BeginChildArea();
+        using ImRaii.ChildDisposable child = BeginChildArea(Size.X);
         if (!child)
             return;
 
@@ -558,11 +565,11 @@ internal sealed class SinglePlayerDutyConfigComponent
             (int enabledCount, int totalCountForCategory) = GetQuestBattleCounts(dutyInfos);
             string otherHeaderText = $"{label} ({enabledCount}/{totalCountForCategory})";
             string otherKey = $"Other_{label}";
-            bool isOtherHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherKey, false);
+            bool isOtherHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherKey, defaultValue: false);
             ImGui.SetNextItemOpen(isOtherHeaderOpen, ImGuiCond.Always);
             if (ImGui.CollapsingHeader(otherHeaderText))
             {
-                if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherKey, false))
+                if (!Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherKey, defaultValue: false))
                 {
                     Configuration.SinglePlayerDuties.HeaderStates[otherKey] = true;
                     Save();
@@ -572,7 +579,7 @@ internal sealed class SinglePlayerDutyConfigComponent
             }
             else
             {
-                if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherKey, false))
+                if (Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherKey, defaultValue: false))
                 {
                     Configuration.SinglePlayerDuties.HeaderStates[otherKey] = false;
                     Save();
@@ -586,8 +593,8 @@ internal sealed class SinglePlayerDutyConfigComponent
         using ImRaii.TableDisposable table = ImRaii.Table(label, 2, ImGuiTableFlags.SizingFixedFit);
         if (table)
         {
-            ImGui.TableSetupColumn("Quest", ImGuiTableColumnFlags.WidthStretch);
-            ImGui.TableSetupColumn("Options", ImGuiTableColumnFlags.WidthFixed, 200f);
+            ImGui.TableSetupColumn(_L("Quest"), ImGuiTableColumnFlags.WidthStretch);
+            ImGui.TableSetupColumn(_L("Options"), ImGuiTableColumnFlags.WidthFixed, 200f);
 
             foreach (SinglePlayerDutyInfo dutyInfo in dutyInfos)
             {
@@ -612,14 +619,14 @@ internal sealed class SinglePlayerDutyConfigComponent
                         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
                         ImGui.TextUnformatted(dutyInfo.Name);
                         ImGui.Separator();
-                        ImGui.BulletText($"TerritoryId: {dutyInfo.TerritoryId}");
-                        ImGui.BulletText($"ContentFinderConditionId: {dutyInfo.ContentFinderConditionId}");
+                        ImGui.BulletText(_LF("TerritoryId: {0}", dutyInfo.TerritoryId));
+                        ImGui.BulletText(_LF("ContentFinderConditionId: {0}", dutyInfo.ContentFinderConditionId));
                     }
 
                     if (!dutyInfo.Enabled)
                     {
-                        ImGuiComponents.HelpMarker("Questionable doesn't include support for this quest.",
-                            FontAwesomeIcon.Times, ImGuiColors.DalamudRed);
+                        ImGuiComponents.HelpMarker(_L("Questionable doesn't include support for this quest yet."),
+                            FontAwesomeIcon.Times, QstTheme.Danger);
                     }
                     else if (dutyInfo.Notes.Count > 0)
                         DrawNotes(dutyInfo.EnabledByDefault, dutyInfo.Notes);
@@ -649,11 +656,11 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
     }
 
-    private static ImRaii.ChildDisposable BeginChildArea() => ImRaii.Child("DutyConfiguration", new(675, 400), true);
+    private static ImRaii.ChildDisposable BeginChildArea(float X) => ImRaii.Child("DutyConfiguration", new(X - 5, 300), border: true);
 
     private void DrawEnableAllButton()
     {
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.CheckCircle, "Enable All"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.CheckCircle, _L("Enable All")))
         {
             Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Clear();
             Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Clear();
@@ -667,7 +674,7 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Enable all of the quest battles, use at your own risk.");
+            ImGui.SetTooltip(_L("Enable all of the quest battles, use at your own risk."));
     }
 
     private void DrawClipboardButtons()
@@ -675,7 +682,7 @@ internal sealed class SinglePlayerDutyConfigComponent
         using (ImRaii.Disabled(Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Count +
             Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Count == 0))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Copy, "Export to clipboard"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to clipboard")))
             {
                 IEnumerable<string> whitelisted =
                     Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Select(x => $"{DutyWhitelistPrefix}{x}");
@@ -693,7 +700,7 @@ internal sealed class SinglePlayerDutyConfigComponent
         using (ImRaii.Disabled(string.IsNullOrEmpty(clipboardText) ||
                                !clipboardText.StartsWith(SinglePlayerDutyClipboardPrefix, StringComparison.InvariantCulture)))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Paste, "Import from Clipboard"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
             {
                 clipboardText = clipboardText.Substring(SinglePlayerDutyClipboardPrefix.Length);
                 string text = Encoding.UTF8.GetString(Convert.FromBase64String(clipboardText));
@@ -702,15 +709,15 @@ internal sealed class SinglePlayerDutyConfigComponent
                 Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Clear();
                 foreach (string part in text.Split(DutyClipboardSeparator))
                 {
-                    if (part.StartsWith(DutyWhitelistPrefix, StringComparison.InvariantCulture) &&
-                        uint.TryParse(part.AsSpan(DutyWhitelistPrefix.Length), CultureInfo.InvariantCulture,
+                    if (part.StartsWith(DutyWhitelistPrefix) &&
+                        uint.TryParse(part.AsSpan(start: 1), CultureInfo.InvariantCulture,
                             out uint whitelistedCfcId))
                     {
                         Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Add(whitelistedCfcId);
                     }
 
-                    if (part.StartsWith(DutyBlacklistPrefix, StringComparison.InvariantCulture) &&
-                        uint.TryParse(part.AsSpan(DutyBlacklistPrefix.Length), CultureInfo.InvariantCulture,
+                    if (part.StartsWith(DutyBlacklistPrefix) &&
+                        uint.TryParse(part.AsSpan(start: 1), CultureInfo.InvariantCulture,
                             out uint blacklistedCfcId))
                     {
                         Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Add(blacklistedCfcId);
@@ -726,7 +733,7 @@ internal sealed class SinglePlayerDutyConfigComponent
     {
         using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Undo, "Reset to default"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Undo, _L("Reset to default")))
             {
                 Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Clear();
                 Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Clear();
@@ -735,7 +742,7 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip("Hold CTRL to enable this button.");
+            ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
     }
 
     private IEnumerable<SinglePlayerDutyInfo> GetAllEnabledSinglePlayerDuties()

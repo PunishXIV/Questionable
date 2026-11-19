@@ -6,6 +6,7 @@ internal sealed class ExtendedClassJobConverter() : EnumConverter<EExtendedClass
 {
     private static readonly Dictionary<EExtendedClassJob, string> Values = new()
     {
+        // TODO can all one-word jobs be removed from this dict safely
         { EExtendedClassJob.None, "None" },
         { EExtendedClassJob.Gladiator, "Gladiator" },
         { EExtendedClassJob.Pugilist, "Pugilist" },
@@ -49,6 +50,10 @@ internal sealed class ExtendedClassJobConverter() : EnumConverter<EExtendedClass
         { EExtendedClassJob.Sage, "Sage" },
         { EExtendedClassJob.Viper, "Viper" },
         { EExtendedClassJob.Pictomancer, "Pictomancer" },
+        { EExtendedClassJob.Beastmaster, "Beastmaster" },
+        { EExtendedClassJob.Bastion, "Bastion" },
+        { EExtendedClassJob.Zephyr, "Zephyr" },
+
         { EExtendedClassJob.DoW, "DoW" },
         { EExtendedClassJob.DoM, "DoM" },
         { EExtendedClassJob.DoH, "DoH" },

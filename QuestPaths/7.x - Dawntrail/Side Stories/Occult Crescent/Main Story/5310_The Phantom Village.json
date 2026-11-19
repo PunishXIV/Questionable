@@ -6,6 +6,18 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1052325,
+          "Position": {
+            "X": 206.31714,
+            "Y": -17.990417,
+            "Z": 64.309692
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1269,
+          "AethernetShortcut": ["[Tuliyollal] Aetheryte Plaza","[Tuliyollal] Wachumeqimeqi"]
+        },
+        {
           "DataId": 1052330,
           "Position": {
             "X": 46.066895,

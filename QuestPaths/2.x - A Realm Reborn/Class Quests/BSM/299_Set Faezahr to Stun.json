@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Steel Bhuj HQ\nAutocraft requires:\n 2x Steel Ingot,\n 1x Oak Lumber,\n 1x Iron Ingot",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
@@ -70,7 +70,11 @@
             "Z": 211.5968
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     }

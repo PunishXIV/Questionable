@@ -1,0 +1,56 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Anonymous",
+  "Comment": "Becomes available after acquiring all ARR EX mounts",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Comment": "This quest was automatically generated and is untested. Please report in Discord if it works.",
+          "DataId": 1008278,
+          "Position": {
+            "X": 15.2975,
+            "Y": 21.2527,
+            "Z": -634.826
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005120,
+          "Position": {
+            "X": -121,
+            "Y": 46.4597,
+            "Z": -188
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2005120,
+          "Position": {
+            "X": -121,
+            "Y": 46.4597,
+            "Z": -188
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

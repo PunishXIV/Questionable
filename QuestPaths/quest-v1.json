@@ -107,6 +107,11 @@
           "description": "The data id of the NPC/Object/Aetheryte/Aether Current",
           "exclusiveMinimum": 0
         },
+        "MacroId": {
+          "type": "integer",
+          "description": "The ID of the macro to insert",
+          "exclusiveMinimum": 0
+        },
         "Position": {
           "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
         },
@@ -173,7 +178,10 @@
             "Instruction",
             "AcceptQuest",
             "CompleteQuest",
-            "InitiateLeve"
+            "InitiateLeve",
+            "Fish",
+            "Macro",
+            "CleanUpOtherQuests"
           ]
         },
         "Disabled": {
@@ -307,6 +315,20 @@
                     "type": "integer"
                   }
                 },
+                "DutiesUnlocked": {
+                  "description": "Skip this step if all listed ContentFinderConditionId are unlocked",
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "DutiesCompleted": {
+                  "description": "Skip this step if all listed ContentFinderConditionId are completed",
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
                 "AetheryteLocked": {
                   "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
                 },
@@ -362,7 +384,10 @@
                     "RoguesGuild",
                     "NotRoguesGuild",
                     "DockStorehouse",
-                    "SkipFreeFantasia"
+                    "SkipFreeFantasia",
+                    "CostaDelSol",
+                    "NewGamePlus",
+                    "NotNewGamePlus"
                   ]
                 }
               },
@@ -375,7 +400,9 @@
                   "type": "boolean"
                 },
                 "InSameTerritory": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "deprecated": true,
+                  "description": "No longer evaluated for aetheryte shortcuts; proximity/distance checks are used instead. Kept for backward compatibility with existing quest files."
                 },
                 "InTerritory": {
                   "type": "array",
@@ -450,10 +477,22 @@
                   ],
                   "additionalProperties": false
                 },
+                "Item": {
+                  "type": "object",
+                  "properties": {
+                    "NotInInventory": {
+                      "type": "boolean",
+                      "description": "Skip this aetheryte teleport if the item is NOT in inventory."
+                    }
+                  }
+                },
                 "ExtraCondition": {
                   "type": "string",
                   "enum": [
-                    "SkipFreeFantasia"
+                    "SkipFreeFantasia",
+                    "CostaDelSol",
+                    "NewGamePlus",
+                    "NotNewGamePlus"
                   ]
                 }
               },
@@ -467,6 +506,12 @@
                 },
                 "InSameTerritory": {
                   "type": "boolean"
+                },
+                "InTerritory": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
                 },
                 "AetheryteLocked": {
                   "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
@@ -1337,6 +1382,7 @@
                 "type": "string",
                 "description": "The action to use",
                 "enum": [
+                  "Return",
                   "Duty Action I",
                   "Duty Action II",
                   "Heavy Swing",
@@ -1654,6 +1700,11 @@
                     "type": "boolean",
                     "description": "Indicates that this dungeon is included in the 'Skip certain optional dungeons and raids' option"
                   },
+                  "CanUnsync": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "When false, Questionable will not run this duty unsynced even if 'Run content unsynced where safe' is enabled"
+                  },
                   "$": {
                     "type": "string"
                   }
@@ -1691,6 +1742,9 @@
                   "Enabled": {
                     "type": "boolean"
                   },
+                  "Passive": {
+                    "type": "boolean"
+                  },
                   "Notes": {
                     "type": "array",
                     "items": {
@@ -1702,6 +1756,10 @@
                     "minimum": 0,
                     "maximum": 1,
                     "description": "If a quest has multiple solo instances (which affects 5 quests total), indicates which one this is"
+                  },
+                  "Target": {
+                    "type": "integer",
+                    "description": "The DataId to target at the start of the instance"
                   },
                   "TestedBossModVersion": {
                     "type": "string",
@@ -1890,6 +1948,63 @@
           "if": {
             "properties": {
               "InteractionType": {
+                "const": "Fish"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ItemsToGather": {
+                "type": "array",
+                "description": "The items to gather from the fishing spot.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ItemId": {
+                      "type": "number"
+                    },
+                    "ItemCount": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "Collectability": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000
+                    },
+                    "FishingOptions": {
+                      "type": "object",
+                      "description": "The options for generating the Autohook preset. Can be overridden by a preset in FishingData.",
+                      "properties": {
+                        "BaitId": {
+                          "type": "number"
+                        },
+                        "HookType": {
+                          "$ref": "#/$defs/HookType"
+                        },
+                        "Preset": {
+                          "type": "string",
+                          "description": "AutoHook preset export string (alternative for adding to FishingData.cs)"
+                        }
+                      },
+                      "required": [
+                        "BaitId"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ItemId",
+                    "ItemCount"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
                 "anyOf": [
                   {
                     "const": "WaitForManualProgress"
@@ -1954,8 +2069,68 @@
               "TargetClass"
             ]
           }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Macro"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "MacroId"
+            ]
+          }
         }
       ]
+    },
+    "HookType": {
+      "type": "object",
+      "description": "Omit to enable all hook types and hooksets.",
+      "properties": {
+        "Normal": {
+          "$ref": "#/$defs/HookTypeFilter"
+        },
+        "Double": {
+          "$ref": "#/$defs/HookTypeFilter"
+        },
+        "Triple": {
+          "$ref": "#/$defs/HookTypeFilter"
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "HookTypeFilter": {
+      "description": "true enables all hooksets for this hook type; otherwise specify which hooksets to enable.",
+      "oneOf": [
+        {
+          "type": "boolean",
+          "const": true
+        },
+        {
+          "$ref": "#/$defs/Hookset"
+        }
+      ]
+    },
+    "Hookset": {
+      "type": "object",
+      "description": "Which hooksets to enable for this hook type.",
+      "properties": {
+        "Weak": {
+          "type": "boolean"
+        },
+        "Strong": {
+          "type": "boolean"
+        },
+        "Legendary": {
+          "type": "boolean"
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
     }
   }
 }

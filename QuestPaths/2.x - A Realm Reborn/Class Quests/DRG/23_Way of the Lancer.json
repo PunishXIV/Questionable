@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,14 +16,12 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Lancers' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 132
               ]
@@ -35,15 +35,18 @@
       "Steps": [
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 133
+          "TerritoryId": 133,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 133
+          "TerritoryId": 133,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 133
+          "TerritoryId": 133,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000254,
@@ -161,7 +164,6 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Lancers' Guild"

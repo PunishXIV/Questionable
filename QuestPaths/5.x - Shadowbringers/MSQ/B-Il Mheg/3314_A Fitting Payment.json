@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -25,6 +26,17 @@
           "TerritoryId": 816,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Il Mheg - Pla Enni"
+        },
+        {
+          "DataId": 2010637,
+          "Position": {
+            "X": 50.30896,
+            "Y": 101.73181,
+            "Z": -850.6142
+          },
+          "TerritoryId": 816,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179714
         },
         {
           "DataId": 1029572,

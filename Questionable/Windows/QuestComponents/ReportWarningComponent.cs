@@ -1,9 +1,9 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class ReportWarningComponent(Configuration configuration)
 {
     private readonly Configuration _configuration = configuration;
@@ -12,7 +12,7 @@ internal sealed class ReportWarningComponent(Configuration configuration)
 
     private void DrawReportWarning()
     {
-        ImGui.TextColored(ImGuiColors.DPSRed, "Future message");
+        ImGui.TextColored(QstTheme.Danger, "Future message");
         ImGui.TextWrapped("As of version xxxx, QST includes a feature where you can click the " +
                           "! button next to the quest progress buttons to report an issue with the current quest. " +
                           "This message is to notify you that if you choose to make use of this new feature and submit a " +
@@ -25,14 +25,14 @@ internal sealed class ReportWarningComponent(Configuration configuration)
         ImGui.TextWrapped("This feature will never send any information to the bug report service unless you click " +
                           "the ! button highlighted in red below. If you would like to opt out of seeing this button, click the " +
                           "orange \"Opt Out\" button below. Otherwise, click the green \"Dismiss\" button to hide this warning.");
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Opt Out", ImGuiColors.DalamudOrange))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Opt Out", QstTheme.Accent))
         {
             _configuration.General.DismissedReportWarning = true;
             _configuration.General.ReportsDisabled = true;
         }
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Dismiss", ImGuiColors.ParsedGreen))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Dismiss", QstTheme.Success))
             _configuration.General.DismissedReportWarning = true;
     }
 }

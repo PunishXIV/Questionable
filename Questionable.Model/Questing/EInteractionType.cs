@@ -23,6 +23,7 @@ public enum EInteractionType
     Action,
     StatusOff,
     WaitForObjectAtPosition,
+    WaitForNpcAtPosition,
     WaitForManualProgress,
     Duty,
     SinglePlayerDuty,
@@ -42,5 +43,8 @@ public enum EInteractionType
     Instruction,
 
     AcceptQuest,
-    CompleteQuest
+    CompleteQuest,
+    Fish,
+    Macro,
+    CleanUpOtherQuests,
 }

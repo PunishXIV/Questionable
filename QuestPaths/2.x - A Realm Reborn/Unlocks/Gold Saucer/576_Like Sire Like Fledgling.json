@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Comment": "Becomes available after training a race chocobo to Rank 40",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,11 @@
             "Z": -68.589294
           },
           "TerritoryId": 388,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Chocobo Square"
+          ]
         }
       ]
     },

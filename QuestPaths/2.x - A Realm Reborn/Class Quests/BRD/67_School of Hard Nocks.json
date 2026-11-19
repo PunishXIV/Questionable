@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,16 +17,10 @@
           "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -213,7 +209,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
@@ -298,7 +293,6 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "AetheryteLocked": "East Shroud - Hawthorne Hut"
             }
           }
@@ -317,7 +311,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"

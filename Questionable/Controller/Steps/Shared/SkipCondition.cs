@@ -1,18 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
@@ -94,6 +85,12 @@ internal static class SkipCondition
             if (CheckNameplateCondition(step, skipConditions))
                 return true;
 
+            if (CheckDutiesUnlockedCondition(skipConditions))
+                return true;
+
+            if (CheckDutiesCompletedCondition(skipConditions))
+                return true;
+
             if (CheckItemCondition(step, skipConditions))
                 return true;
 
@@ -115,7 +112,7 @@ internal static class SkipCondition
             if (skipConditions.ExtraCondition != null && skipConditions.ExtraCondition != EExtraSkipCondition.None &&
                 extraConditionUtils.MatchesExtraCondition(skipConditions.ExtraCondition.Value))
             {
-                logger.LogInformation("Skipping step, extra condition {} matches", skipConditions.ExtraCondition);
+                logger.LogInformation("Skipping step, extra condition {ExtraCondition} matches", skipConditions.ExtraCondition);
                 return true;
             }
 
@@ -131,14 +128,14 @@ internal static class SkipCondition
         private bool CheckFlyingCondition(QuestStep step, SkipStepConditions skipConditions)
         {
             if (skipConditions.Flying == ELockedSkipCondition.Unlocked &&
-                gameFunctions.IsFlyingUnlocked(step.TerritoryId))
+                GameFunctions.IsFlyingUnlocked(step.TerritoryId))
             {
                 logger.LogInformation("Skipping step, as flying is unlocked");
                 return true;
             }
 
             if (skipConditions.Flying == ELockedSkipCondition.Locked &&
-                !gameFunctions.IsFlyingUnlocked(step.TerritoryId))
+                !GameFunctions.IsFlyingUnlocked(step.TerritoryId))
             {
                 logger.LogInformation("Skipping step, as flying is locked");
                 return true;
@@ -259,6 +256,32 @@ internal static class SkipCondition
             return false;
         }
 
+        private bool CheckDutiesUnlockedCondition(SkipStepConditions skipConditions)
+        {
+            if (skipConditions.DutiesUnlocked.Count > 0)
+            {
+                if (skipConditions.DutiesUnlocked.All(x =>
+                        gameFunctions.ContentFinderConditionToContentId.TryGetValue(x, out var contentId) &&
+                        UIState.IsInstanceContentUnlocked(contentId)))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private bool CheckDutiesCompletedCondition(SkipStepConditions skipConditions)
+        {
+            if (skipConditions.DutiesCompleted.Count > 0)
+            {
+                if (skipConditions.DutiesCompleted.All(x =>
+                        gameFunctions.ContentFinderConditionToContentId.TryGetValue(x, out var contentId) &&
+                        UIState.IsInstanceContentCompleted(contentId)))
+                    return true;
+            }
+
+            return false;
+        }
+
         private unsafe bool CheckItemCondition(QuestStep step, SkipStepConditions skipConditions)
         {
             // Skip step if specified item is not in inventory (checks both NQ and HQ)
@@ -266,8 +289,20 @@ internal static class SkipCondition
                 return false;
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
-            int itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false)
-                            + inventoryManager->GetInventoryItemCount(step.ItemId.Value, true, false);
+            int itemCount = 0;
+            switch (step.ItemQuality)
+            {
+                case EItemQuality.NQ:
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: false, checkEquipped: false);
+                    break;
+                case EItemQuality.HQ:
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: true, checkEquipped: false);
+                    break;
+                case EItemQuality.Any:
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: false, checkEquipped: false)
+                                + inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: true, checkEquipped: false);
+                    break;
+            }
 
             if (itemCount == 0 && skipConditions.Item is { NotInInventory: true })
             {
@@ -275,11 +310,15 @@ internal static class SkipCondition
                     step.ItemId.Value);
                 return true;
             }
-            else if (itemCount > 0 && skipConditions.Item is { NotInInventory: false })
+
+            if (itemCount > 0 && skipConditions.Item is { NotInInventory: false })
             {
-                logger.LogInformation("Skipping step, item with itemId {ItemId} in inventory",
-                    step.ItemId.Value);
-                return true;
+                if (step.ItemCount != null && itemCount >= step.ItemCount)
+                {
+                    logger.LogInformation("Skipping step, item with itemId {ItemId} in inventory",
+                        step.ItemId.Value);
+                    return true;
+                }
             }
 
             return false;
@@ -383,7 +422,7 @@ internal static class SkipCondition
                         .SelectMany(x => classJobUtils.AsIndividualJobs(x, elementId)).ToList();
                     Job questJob = questWork.ClassJob;
                     logger.LogInformation("Checking quest job {QuestJob} against {ExpectedJobs}", questJob,
-                        string.Join(",", expectedJobs));
+                        string.Join(',', expectedJobs));
                     if (questJob != Job.ADV && !expectedJobs.Contains(questJob))
                     {
                         logger.LogInformation("Skipping step, as quest was accepted on a different job");
@@ -403,7 +442,7 @@ internal static class SkipCondition
                     step.RequiredCurrentJob.SelectMany(x => classJobUtils.AsIndividualJobs(x, elementId)).ToList();
                 Job currentJob = (Job)PlayerState.Instance()->CurrentClassJobId;
                 logger.LogInformation("Checking current job {CurrentJob} against {ExpectedJobs}", currentJob,
-                    string.Join(",", expectedJobs));
+                    string.Join(',', expectedJobs));
                 if (!expectedJobs.Contains(currentJob))
                 {
                     logger.LogInformation("Skipping step, as step requires a different job");
@@ -451,9 +490,9 @@ internal static class SkipCondition
                     return true;
                 }
 
-                if ((configuration.Advanced.SkipAetherCurrents &&
-                    QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId)) ||
-                    gameFunctions.IsFlyingUnlocked(step.TerritoryId)) // story skip apparently makes 1748 impossible to complete -alydev
+                if (QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId) &&
+                    (configuration.Advanced.SkipAetherCurrents ||
+                     GameFunctions.IsFlyingUnlocked(step.TerritoryId))) // story skip apparently makes 1748 impossible to complete -alydev
                 {
                     logger.LogInformation("Skipping step, as aether current quests should be skipped");
                     return true;

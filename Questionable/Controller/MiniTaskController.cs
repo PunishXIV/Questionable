@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using Mount = Questionable.Controller.Steps.Common.Mount;
+using static Questionable.Controller.Steps.ITaskExecutor;
+using MountStep = Questionable.Controller.Steps.Common.MountStep;
 
 namespace Questionable.Controller;
 
@@ -40,9 +32,9 @@ internal abstract class MiniTaskController<T> : IDisposable
         _interruptHandler = interruptHandler;
         _condition = condition;
 
-        _eventCanceledText = DataManagerAdapter.GetString<LogMessage>(dataManager, 1318, x => x.Text)!;
-        _actionCanceledText = DataManagerAdapter.GetRegex<LogMessage>(dataManager, 1314, x => x.Text)!;
-        _cantExecuteDueToStatusText = DataManagerAdapter.GetString<LogMessage>(dataManager, 7728, x => x.Text)!;
+        _eventCanceledText = DataManagerAdapter.GetString<LogMessage>(dataManager, 1318, x => x.Text)!; // Event canceled.
+        _actionCanceledText = DataManagerAdapter.GetRegex<LogMessage>(dataManager, 1314, x => x.Text)!; // Action canceled. You are under attack.
+        _cantExecuteDueToStatusText = DataManagerAdapter.GetString<LogMessage>(dataManager, 7728, x => x.Text)!; // Unable to execute command while suffering status affliction.
         _interruptHandler.Interrupted += HandleInterruption;
     }
 
@@ -64,23 +56,23 @@ internal abstract class MiniTaskController<T> : IDisposable
                         _taskQueue.CurrentTaskExecutor = taskExecutor;
                         return;
                     }
-                    else
-                    {
-                        _logger.LogTrace("Task {TaskName} was skipped", upcomingTask.ToString());
-                        return;
-                    }
+
+                    _logger.LogTrace("Task {TaskName} was skipped", upcomingTask.ToString());
+                    return;
                 }
                 catch (Exception e)
                 {
                     _logger.LogError(e, "Failed to start task {TaskName}", upcomingTask.ToString());
+                    var msg = _LF("Failed to start task '{0}'", upcomingTask);
                     _chatGui.PrintError(
-                        $"Failed to start task '{upcomingTask}', please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                        _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
+                    _serviceProvider.GetRequiredService<NotificationMasterIpc>().NotifyOnFailure(msg);
                     Stop("Task failed to start");
                     return;
                 }
             }
-            else
-                return;
+
+            return;
         }
 
         ETaskResult result;
@@ -98,8 +90,10 @@ internal abstract class MiniTaskController<T> : IDisposable
         {
             _logger.LogError(e, "Failed to update task {TaskName}",
                 _taskQueue.CurrentTaskExecutor.CurrentTask.ToString());
+            var msg = _LF("Could not complete '{0}': {1}.", _taskQueue.CurrentTaskExecutor.CurrentTask, e.Message);
             _chatGui.PrintError(
-                $"Could not complete '{_taskQueue.CurrentTaskExecutor.CurrentTask}': {e.Message}. Please check /xllog for more details.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
+            _serviceProvider.GetRequiredService<NotificationMasterIpc>().NotifyOnFailure(msg);
             Stop("Task failed to update");
             return;
         }
@@ -193,9 +187,9 @@ internal abstract class MiniTaskController<T> : IDisposable
         {
             List<ITask> tasks = [];
             if (_condition[ConditionFlag.Mounted])
-                tasks.Add(new Mount.UnmountTask());
+                tasks.Add(new MountStep.UnmountTask());
 
-            tasks.Add(Combat.Factory.CreateTask(null, -1, false, EEnemySpawnType.QuestInterruption, [], [], [], null));
+            tasks.Add(Combat.Factory.CreateTask(elementId: null, -1, isLastStep: false, EEnemySpawnType.QuestInterruption, [], [], [], combatItemUse: null));
             tasks.Add(new WaitAtEnd.WaitDelay());
             _taskQueue.InterruptWith(tasks);
         }

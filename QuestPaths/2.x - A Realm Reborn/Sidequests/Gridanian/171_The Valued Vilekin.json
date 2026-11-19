@@ -1,0 +1,95 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000629,
+          "Position": {
+            "X": 345.51,
+            "Y": -5.56958,
+            "Z": 343.892
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "$": "auto: issuer 1000629 (Bodwine)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000140,
+          "Position": {
+            "X": 200.882,
+            "Y": -30.2729,
+            "Z": 346.107
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            163
+          ],
+          "$": "auto: todo location -> 2000140 (tangled undergrowth); spawns enemies 163"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2000142,
+          "Position": {
+            "X": 200.943,
+            "Y": -29.9671,
+            "Z": 346.17
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "$": "auto: todo location -> 2000142 (tangled undergrowth)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000612,
+          "Position": {
+            "X": 357.983,
+            "Y": 8.93414,
+            "Z": 214.492
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 174,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "$": "auto: todo turn-in -> 1000612 (Guithrit)"
+        }
+      ]
+    }
+  ]
+}

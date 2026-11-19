@@ -1,15 +1,12 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin.Services;
 using ECommons.Automation;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
 
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed class ChatFunctions
 (
     IDataManager dataManager,
@@ -18,8 +15,7 @@ internal sealed class ChatFunctions
     ILogger<ChatFunctions> logger)
 {
     private readonly ReadOnlyDictionary<EEmote, string> _emoteCommands = dataManager.GetExcelSheet<Emote>()
-        .Where(x => x.RowId > 0)
-        .Where(x => x.TextCommand.IsValid)
+        .Where(x => x.RowId > 0 && x.TextCommand.IsValid)
         .Select(x => (x.RowId, Command: x.TextCommand.Value.Command.ToString()))
         .Where(x => !string.IsNullOrEmpty(x.Command) && x.Command.StartsWith('/'))
         .ToDictionary(x => (EEmote)x.RowId, x => x.Command)

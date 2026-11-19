@@ -1,10 +1,34 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "erdelf", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 478,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [399, 463, 478]}}
+        },
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.79227,
+            "Y": 138.93335,
+            "Z": 741.0543
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463,
+          "Fly": true,
+          "Land": true
+        },
         {
           "DataId": 1016560,
           "Position": {
@@ -37,7 +61,6 @@
               "Yes": true
             }
           ],
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"

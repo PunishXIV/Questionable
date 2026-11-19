@@ -1,15 +1,5 @@
-using System;
-using System.IO;
-using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Model;
 
 namespace Questionable.PathData;
 
@@ -18,9 +8,16 @@ namespace Questionable.PathData;
 ///     full plugin release. The bundle is stored in <c>{ConfigDirectory}/PathData/</c> and picked up
 ///     by <see cref="QuestRegistry" />'s downloaded-bundle load tier.
 /// </summary>
+[RegisterSingleton]
 internal sealed class PathDataUpdater : IDisposable
 {
-    private const string RepositoryUrl = "https://github.com/PunishXIV/Questionable";
+    private static readonly string[] Domains =
+    [
+        "gh.qstxiv.dev",
+        "github.com",
+    ];
+    private static readonly HashSet<string> AllowedHosts = new(Domains, StringComparer.OrdinalIgnoreCase);
+    private const string RepositoryUrl = "/PunishXIV/Questionable";
 
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly Configuration _configuration;
@@ -31,6 +28,7 @@ internal sealed class PathDataUpdater : IDisposable
     private readonly string _channel;
     private readonly string _pluginVersion;
     private int _running;
+    internal bool WaitingForPluginUpdate;
 
     public PathDataUpdater(
         IDalamudPluginInterface pluginInterface,
@@ -45,14 +43,27 @@ internal sealed class PathDataUpdater : IDisposable
         _framework = framework;
         _logger = logger;
 
-        _channel = (pluginInterface.IsTesting || pluginInterface.IsDev) ? "testing" : "latest";
+        _channel = pluginInterface.IsTesting ? "testing" : "latest";
         _pluginVersion = typeof(PathDataUpdater).Assembly.GetName().Version?.ToString() ?? "0";
 
         DiscardStaleBundle();
     }
 
+    public DateTime StatusLastChanged { get; private set; } = DateTime.Now;
+    private string _status = _L("Idle");
     /// <summary>Human-readable status for the config UI.</summary>
-    public string Status { get; private set; } = "Idle";
+    public string Status
+    {
+        get
+        {
+            return _status;
+        }
+        private set
+        {
+            _status = value;
+            StatusLastChanged = DateTime.Now;
+        }
+    }
 
     public void Dispose()
     {
@@ -114,29 +125,50 @@ internal sealed class PathDataUpdater : IDisposable
         _configuration.PathData.BundlePluginVersion = null;
     }
 
-    private async Task CheckForUpdatesAsync()
+    private async Task RetryAfterDelay(int retryCount = 1)
     {
-        Status = "Checking for path updates…";
+        if (retryCount >= 10)
+        {
+            Status = _L("Update check failed; will retry next launch");
+            return;
+        }
+        int delayMs = Math.Min(1000 * (1 << retryCount), 60_000);
+        await Task.Delay(delayMs).ConfigureAwait(false);
+        _configuration.PathData.InstalledDataVersion = 0;
+        _configuration.PathData.BundlePluginVersion = null;
+        Save();
+        retryCount++;
+        await CheckForUpdatesAsync(retryCount).ConfigureAwait(false);
+    }
+
+    private async Task CheckForUpdatesAsync(int retryCount = 1)
+    {
+        Status = _L("Checking for path updates…");
         using HttpClient http = new() { Timeout = TimeSpan.FromSeconds(30) };
 
-        string manifestUrl = $"{RepositoryUrl}/releases/download/paths-{_channel}/manifest-{_channel}.json";
+        string host = Domains[retryCount % Domains.Length];
+        string manifestUrl = $"https://{host}{RepositoryUrl}/releases/download/paths-{_channel}/manifest-{_channel}.json";
         _logger.LogDebug($"Requesting path updates from {manifestUrl}");
+        string manifestJson;
         PathDataManifest? manifest;
         try
         {
-            string manifestJson = await http.GetStringAsync(new Uri(manifestUrl)).ConfigureAwait(false);
+            manifestJson = await http.GetStringAsync(new Uri(manifestUrl)).ConfigureAwait(false);
             manifest = JsonSerializer.Deserialize<PathDataManifest>(manifestJson);
         }
         catch (Exception e)
         {
-            _logger.LogWarning(e, "Failed to fetch the path data manifest");
-            Status = "Update check failed";
+            _logger.LogWarning(e, "Failed to fetch the path data manifest; retrying");
+            Status = _L("Update check failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
         if (manifest == null)
         {
-            Status = "Update check failed";
+            _logger.LogWarning("manifest was null; retrying");
+            Status = _L("Update check failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -146,27 +178,44 @@ internal sealed class PathDataUpdater : IDisposable
         if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
         {
             _logger.LogInformation("Newer path data is available but requires a newer plugin version");
-            Status = "Update the plugin for newer path data";
+            Status = _L("Update the plugin for newer path data");
+            WaitingForPluginUpdate = true;
             Save();
             return;
         }
 
         if (manifest.DataVersion <= _configuration.PathData.InstalledDataVersion)
         {
-            Status = "Path data is up to date";
+            if (_questRegistry.Count >= 500)
+            {
+                Status = _L("Path data is up to date");
+                Save();
+                return;
+            }
+
+            Status = _L("Path data from previous run missing, downloading path data...");
             Save();
+        }
+
+        if (!Uri.TryCreate(manifest.BundleUrl, UriKind.Absolute, out var bundleUri) ||
+                bundleUri.Scheme != Uri.UriSchemeHttps ||
+                !AllowedHosts.Contains(bundleUri.Host))
+        {
+            Status = _L("Update check failed: bundle download URL is invalid");
+            _logger.LogWarning("Bundle URL had invalid domain: {Url}", manifest.BundleUrl);
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
         if (string.IsNullOrEmpty(manifest.BundleUrl))
         {
-            _logger.LogWarning("Path data manifest has no bundle URL");
-            Status = "Update check failed";
-            Save();
+            _logger.LogWarning("Path data manifest has no bundle URL; retrying");
+            Status = _L("Update check failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
-        Status = "Downloading path data…";
+        Status = _L("Downloading path data…");
         byte[] zipBytes;
         try
         {
@@ -174,9 +223,9 @@ internal sealed class PathDataUpdater : IDisposable
         }
         catch (Exception e)
         {
-            _logger.LogWarning(e, "Failed to download the path data bundle");
-            Status = "Download failed";
-            Save();
+            _logger.LogWarning(e, "Failed to download the path data bundle; retrying");
+            Status = _L("Download failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -185,9 +234,9 @@ internal sealed class PathDataUpdater : IDisposable
             string actualSha = Convert.ToHexString(SHA256.HashData(zipBytes));
             if (!string.Equals(actualSha, manifest.BundleSha256, StringComparison.OrdinalIgnoreCase))
             {
-                _logger.LogError("Path data bundle checksum mismatch; discarding the download");
-                Status = "Download failed (checksum mismatch)";
-                Save();
+                _logger.LogWarning("Path data bundle checksum mismatch; retrying");
+                Status = _L("Download failed (checksum mismatch)") + $" ({retryCount})";
+                await RetryAfterDelay(retryCount).ConfigureAwait(false);
                 return;
             }
         }
@@ -203,9 +252,9 @@ internal sealed class PathDataUpdater : IDisposable
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to install the downloaded path data bundle");
-            Status = "Install failed";
-            Save();
+            _logger.LogWarning(e, "Failed to install the downloaded path data bundle; retrying");
+            Status = _L("Install failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -214,7 +263,7 @@ internal sealed class PathDataUpdater : IDisposable
         Save();
 
         _logger.LogInformation("Installed path data bundle (data version {DataVersion})", manifest.DataVersion);
-        Status = $"Updated to data version {manifest.DataVersion}";
+        Status = _LF("Updated to data version {0}", manifest.DataVersion);
 
         await _framework.RunOnFrameworkThread(_questRegistry.Reload).ConfigureAwait(false);
     }

@@ -4,7 +4,8 @@
     "alydev",
     "Kiarra"
   ],
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-25"},
+  "$": "https://discord.com/channels/1001823907193552978/1408201462722596945/1517277274645336206",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -86,7 +87,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
@@ -135,7 +135,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
@@ -184,7 +183,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
@@ -227,7 +225,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
@@ -273,7 +270,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],

@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Questionable.Data;
-using Questionable.Model;
-using Questionable.Model.Common;
+﻿using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, AethernetShortcutValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class AethernetShortcutValidator(AetheryteData aetheryteData) : IQuestValidator
 {
     private readonly AetheryteData _aetheryteData = aetheryteData;
@@ -34,7 +31,7 @@ internal sealed class AethernetShortcutValidator(AetheryteData aetheryteData) : 
                 Step = stepId,
                 Type = EIssueType.InvalidAethernetShortcut,
                 Severity = EIssueSeverity.Error,
-                Description = $"Invalid aethernet shortcut: {aethernetShortcut.From} to {aethernetShortcut.To}"
+                Description = _LF("Invalid aethernet shortcut: {0} to {1}", aethernetShortcut.From, aethernetShortcut.To)
             };
         }
 

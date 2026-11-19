@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "xan",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,10 +16,7 @@
           },
           "TerritoryId": 137,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
         }
       ]
     },

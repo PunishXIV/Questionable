@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Theo",
+  "LastChecked": {"Username": "jigain", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -19,11 +20,6 @@
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] Brightploom Post"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",
@@ -47,11 +43,6 @@
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Yak T'el - Mamook",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -74,12 +65,7 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Yak T'el - Mamook"
         }
       ]
     },

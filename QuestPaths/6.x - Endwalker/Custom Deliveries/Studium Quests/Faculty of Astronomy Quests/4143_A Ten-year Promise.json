@@ -1,0 +1,146 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038525,
+          "Position": {
+            "X": -296.547,
+            "Y": 21.846,
+            "Z": -162.13
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: issuer 1038525 (Jude)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038534,
+          "Position": {
+            "X": 201.794,
+            "Y": 18.9069,
+            "Z": -89.3902
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_AKTKLA205_04143_Q1_000_000",
+              "Answer": "TEXT_AKTKLA205_04143_A1_000_002",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: lua ACTOR1 -> 1038534 (cocksure student)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Craft",
+          "ItemId": 35840,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1038534,
+          "Position": {
+            "X": 201.794,
+            "Y": 18.9069,
+            "Z": -89.3902
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1038534 (cocksure student); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038536,
+          "Position": {
+            "X": 99.1611,
+            "Y": -16.335,
+            "Z": 130.712
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Leveilleur Estate",
+            "[Old Sharlayan] Scholar's Harbor"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_AKTKLA205_04143_Q2_000_000",
+              "Answer": "TEXT_AKTKLA205_04143_A2_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: todo location -> 1038536 (Jeromere)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039238,
+          "Position": {
+            "X": -154.959,
+            "Y": 5.36445,
+            "Z": 124.293
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Scholar's Harbor",
+            "[Old Sharlayan] The Baldesion Annex"
+          ],
+          "$": "auto: todo location -> 1039238 (Jeromere)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038525,
+          "Position": {
+            "X": -296.547,
+            "Y": 21.846,
+            "Z": -162.13
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_AKTKLA205_04143_Q4_000_000",
+              "Answer": "TEXT_AKTKLA205_04143_A4_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: todo turn-in -> 1038525 (Jude)"
+        }
+      ]
+    }
+  ]
+}

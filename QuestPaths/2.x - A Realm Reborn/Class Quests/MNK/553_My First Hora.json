@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -8,19 +10,29 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 1680,
-          "TerritoryId": 130
+          "TerritoryId": 130,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 130
+          "TerritoryId": 130,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 130
+          "TerritoryId": 130,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 130
+          "TerritoryId": 130,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1003817,

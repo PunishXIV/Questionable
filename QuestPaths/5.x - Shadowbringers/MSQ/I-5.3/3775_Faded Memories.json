@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -67,7 +68,7 @@
           "TerritoryId": 918,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.0.0.292",
             "Notes": [
               "(phase 2) AI doesn't target Ardbert to start combat",

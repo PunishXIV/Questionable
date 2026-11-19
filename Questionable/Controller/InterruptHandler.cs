@@ -1,29 +1,27 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using Dalamud.Hooking;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
-using FFXIVClientStructs.FFXIV.Common.Math;
 using JetBrains.Annotations;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
 namespace Questionable.Controller;
 
+[RegisterSingleton]
 internal sealed unsafe class InterruptHandler : IDisposable
 {
     private readonly IClientState _clientState;
+    private readonly IFramework _framework;
     private readonly ILogger<InterruptHandler> _logger;
     private readonly IObjectTable _objectTable;
     private readonly Hook<ProcessActionEffect> _processActionEffectHook;
     private readonly TerritoryData _territoryData;
 
     public InterruptHandler(IGameInteropProvider gameInteropProvider, IClientState clientState,
-        IObjectTable objectTable, TerritoryData territoryData, ILogger<InterruptHandler> logger)
+        IObjectTable objectTable, TerritoryData territoryData, IFramework framework, ILogger<InterruptHandler> logger)
     {
         _clientState = clientState;
         _objectTable = objectTable;
         _territoryData = territoryData;
+        _framework = framework;
         _logger = logger;
         _processActionEffectHook =
             gameInteropProvider.HookFromAddress<ProcessActionEffect>(ActionEffectHandler.Addresses.Receive.Value,
@@ -33,8 +31,11 @@ internal sealed unsafe class InterruptHandler : IDisposable
 
     public void Dispose()
     {
-        _processActionEffectHook.Disable();
-        _processActionEffectHook.Dispose();
+        IpcInvoke.TryOnFrameworkThread(_framework, () =>
+        {
+            _processActionEffectHook.Disable();
+            _processActionEffectHook.Dispose();
+        }, _logger);
     }
 
     public event EventHandler? Interrupted;

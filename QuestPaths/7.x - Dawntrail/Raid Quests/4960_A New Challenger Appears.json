@@ -18,12 +18,7 @@
           "AethernetShortcut": [
             "[Solution Nine] Aetheryte Plaza",
             "[Solution Nine] The Arcadion"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

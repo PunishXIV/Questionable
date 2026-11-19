@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -34,7 +35,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Adventurers' Guild"
@@ -106,7 +106,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Adventurers' Guild"

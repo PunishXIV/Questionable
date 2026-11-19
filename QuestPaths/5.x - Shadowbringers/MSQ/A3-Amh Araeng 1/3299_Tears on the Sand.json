@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -28,7 +29,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Crystarium",
           "AethernetShortcut": [
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] The Amaro Launch"
@@ -53,7 +53,14 @@
             "Z": -651.3619
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKMA309_03299_Q2_000_000",
+              "Answer": "TEXT_LUCKMA309_03299_A2_000_001",
+              "Type": "List"
+            }
+          ]
         }
       ]
     },

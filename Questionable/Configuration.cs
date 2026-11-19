@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Dalamud.Configuration;
 using Dalamud.Game.Text;
@@ -7,6 +5,7 @@ using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
@@ -14,6 +13,13 @@ namespace Questionable;
 
 internal sealed class Configuration : IPluginConfiguration
 {
+    internal static Configuration Instance()
+    {
+        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
+        if (pluginConfig is Configuration config)
+            return config;
+        throw new Exception(_L("Could not get plugin config"));
+    }
     #region Serialised data
     // Variables that are not affected by profile switches
     public const int PluginSetupVersion = 5;
@@ -31,6 +37,13 @@ internal sealed class Configuration : IPluginConfiguration
     public PriorityConfiguration Priority { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
+
+    /// <summary>
+    /// One-time flag: the release that defaulted auto-redeem off forces it off once on first load,
+    /// then never touches <see cref="AdvancedConfiguration.AutoRedeemRewardItems"/> again.
+    /// </summary>
+    public bool AutoRedeemOffResetApplied { get; set; }
+
     // --- Persisted profile data ---
     /// <summary>
     /// Named profiles. Each profile is a sparse patch — only fields that differ from
@@ -38,7 +51,7 @@ internal sealed class Configuration : IPluginConfiguration
     /// fall through to the base values transparently.
     /// </summary>
     public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
-    
+
     /// <summary>
     /// Maps a character's PlayerState.ContentId to a named profile in
     /// <see cref="Profiles"/>. Characters with no entry use the base configuration.
@@ -130,12 +143,12 @@ internal sealed class Configuration : IPluginConfiguration
     private void ApplyPatches(string profileName, Dictionary<string, JObject> patches)
     {
         ActiveProfileName = profileName;
-        _activeProfileGeneral            = MergeSection(_general,            patches, "General");
-        _activeProfileStop               = MergeSection(_stop,               patches, "Stop");
-        _activeProfileDuties             = MergeSection(_duties,             patches, "Duties");
+        _activeProfileGeneral = MergeSection(_general, patches, "General");
+        _activeProfileStop = MergeSection(_stop, patches, "Stop");
+        _activeProfileDuties = MergeSection(_duties, patches, "Duties");
         _activeProfileSinglePlayerDuties = MergeSection(_singlePlayerDuties, patches, "SinglePlayerDuties");
-        _activeProfileNotifications      = MergeSection(_notifications,      patches, "Notifications");
-        _activeProfileAdvanced           = MergeSection(_advanced,           patches, "Advanced");
+        _activeProfileNotifications = MergeSection(_notifications, patches, "Notifications");
+        _activeProfileAdvanced = MergeSection(_advanced, patches, "Advanced");
     }
 
     /// <summary>
@@ -148,7 +161,7 @@ internal sealed class Configuration : IPluginConfiguration
     {
         if (!patches.TryGetValue(sectionKey, out var patch))
             return null;
- 
+
         var merged = JObject.FromObject(@base);
         merged.Merge(patch, new JsonMergeSettings
         {
@@ -189,27 +202,46 @@ internal sealed class Configuration : IPluginConfiguration
     #region Variables
     internal sealed class GeneralConfiguration
     {
+        // Preferences
+        public string Language { get; set; } = "en";
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
-        public uint MountId { get; set; } = 71;
-        public string ChocoboName { get; set; } = "Chicken";
+        public uint MountId { get; set; } = 1;
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
         public Job CombatJob { get; set; } = Job.ADV;
         public Job CraftingJob { get; set; } = Job.CRP;
         public Job GatheringJob { get; set; } = Job.MIN;
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
-        public bool HideInAllInstances { get; set; } = true;
+        public string ChocoboName { get; set; } = string.Empty;
+        public string DisplayName { get; set; } = "Anonymous";
+        // UI
         public bool UseEscToCancelQuesting { get; set; } = true;
+        public bool UseQuestionableTheme { get; set; } = true;
         public bool ShowIncompleteSeasonalEvents { get; set; } = true;
-        public bool SkipLowPriorityDuties { get; set; }
+        public bool ShowCompleteSeasonalEvents { get; set; }
+        public bool QuestIcons { get; set; } = true;
+        public bool HideSponsorButton { get; set; }
+        public bool HideRemainingTasks { get; set; }
+        public bool HideInAllInstances { get; set; } = true;
+        public bool HidePatch { get; set; }
+        public bool HideQuestStartedJob { get; set; }
+        public bool HideThingsNotAvailable { get; set; }
+        public bool HideQuestRequiredLevel { get; set; }
+        // Questing
         public bool ConfigureTextAdvance { get; set; } = true;
         public bool DontSkipCutscenes { get; set; }
-        public bool AutoStepRefreshEnabled { get; set; }
-        public int AutoStepRefreshDelaySeconds { get; set; } = 30;
+        public bool DontShowAnswerSuggestions { get; set; }
+        public bool SkipLowPriorityDuties { get; set; }
         public bool UseTickets { get; set; }
-        public bool HideSponsorButton { get; set; }
+        public bool SameJobThroughoutQuest { get; set; }
+        public bool IgnoreNextQuestIfPrioSet { get; set; }
+        // Unimplemented/hidden
+        public bool TitleBarPillCenter { get; set; } = true;
         public bool DismissedReportWarning { get; set; }
         public bool ReportsDisabled { get; set; }
         public string ReportMessage { get; set; } = "";
+        public bool ClaimMail { get; set; }
+        public bool AutoStepRefreshEnabled { get; set; }
+        public int AutoStepRefreshDelaySeconds { get; set; } = 30;
     }
 
     internal sealed class StopConfiguration
@@ -224,6 +256,9 @@ internal sealed class Configuration : IPluginConfiguration
 
         public bool LevelToStopAfter { get; set; }
         public int TargetLevel { get; set; } = 50;
+        public bool RunCommandAfterStop { get; set; }
+        public string CommandAfterStop { get; set; } = "/li auto";
+        public bool RemoveWhenCompleteConditionMet { get; set; }
     }
 
     internal sealed class DutyConfiguration
@@ -253,11 +288,15 @@ internal sealed class Configuration : IPluginConfiguration
         public XivChatType ChatType { get; set; } = XivChatType.Debug;
         public bool ShowTrayMessage { get; set; }
         public bool FlashTaskbar { get; set; }
+        public bool NotifyOnStopCondition { get; set; }
+        public bool NotifyOnCriticalFailure { get; set; } = true;
     }
 
     internal sealed class AdvancedConfiguration
     {
         public bool DebugOverlay { get; set; }
+        public bool ShowSavedPos { get; set; }
+        public bool ShowFlagPos { get; set; }
         public bool CombatDataOverlay { get; set; }
         public bool HighlightSelectedNpc { get; set; } = true;
         public ObjectHighlightColor HighlightColor { get; set; } = ObjectHighlightColor.Yellow;
@@ -268,11 +307,14 @@ internal sealed class Configuration : IPluginConfiguration
         public bool ShowDirector { get; set; }
         public bool ShowActionManager { get; set; }
         public bool ShowNewGamePlus { get; set; }
+        public bool ShowHoveredItem { get; set; }
         public bool DisableAutoDutyBareMode { get; set; }
         public bool SkipAetherCurrents { get; set; }
         public bool SkipClassJobQuests { get; set; }
         public bool SkipARealmRebornHardModePrimals { get; set; }
         public bool SkipCrystalTowerRaids { get; set; }
+        public bool SkipFeistyLittleChocobo { get; set; }
+        public bool StopMSQ { get; set; }
         public bool PreventQuestCompletion { get; set; }
         public bool AbandonQuestBeforeCompletion { get; set; }
         public bool RemoveFromPriorityWhenAbandoned { get; set; }
@@ -280,6 +322,32 @@ internal sealed class Configuration : IPluginConfiguration
         public bool StartMinimized { get; set; }
         public bool OpenEditor { get; set; }
         public bool NamazuPreferCraft { get; set; }
+        public bool Debug { get; set; }
+        public bool DebugLocalisation { get; set; }
+
+        /// <summary>
+        ///     Gates the experimental questpath auto-generation (Journal Progress right-click). Generated paths
+        ///     are unreviewed machine drafts and must not be run unattended.
+        /// </summary>
+        public bool AllowPathGeneration { get; set; }
+        public bool AutoRedeemRewardItems { get; set; }
+        public HashSet<uint> AutoRedeemItemBlacklist { get; set; } = [];
+        public bool BMRestoreMovement { get; set; }
+    }
+
+    internal void ApplyAutoRedeemRewardItemsInitialReset()
+    {
+        _advanced.AutoRedeemRewardItems = false;
+
+        foreach (Dictionary<string, JObject> profile in Profiles.Values)
+        {
+            if (!profile.TryGetValue(nameof(Advanced), out JObject? advancedPatch))
+                continue;
+
+            advancedPatch.Remove(nameof(AdvancedConfiguration.AutoRedeemRewardItems));
+            if (!advancedPatch.HasValues)
+                profile.Remove(nameof(Advanced));
+        }
     }
 
     internal sealed class PriorityConfiguration
@@ -302,21 +370,6 @@ internal sealed class Configuration : IPluginConfiguration
         public DateTimeOffset? LastCheck { get; set; }
     }
     #endregion
-
-    internal enum EGearsetUpdateSource
-    {
-        Vanilla,
-        Stylist
-    }
-
-    internal enum ECombatModule
-    {
-        None,
-        BossMod,
-        WrathCombo,
-        RotationSolverReborn
-    }
-
     public sealed class ElementIdNConverter : JsonConverter<ElementId>
     {
         public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());

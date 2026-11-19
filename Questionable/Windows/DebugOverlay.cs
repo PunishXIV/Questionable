@@ -1,20 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin.Services;
-using Questionable.Controller;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.Functions;
-using Questionable.Model;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Questionable.Model.Questing;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class DebugOverlay : Window
 {
     private readonly AetheryteData _aetheryteData;
@@ -27,13 +19,17 @@ internal sealed class DebugOverlay : Window
     private readonly IObjectTable _objectTable;
     private readonly QuestController _questController;
     private readonly QuestRegistry _questRegistry;
+    private readonly NavmeshIpc _navmeshIpc;
+    internal Vector3? SavedPos;
+    internal readonly Dictionary<int, Vector2> ScreenPosCache = [];
 
     public DebugOverlay(QuestController questController, QuestRegistry questRegistry, IGameGui gameGui,
         IClientState clientState, ICondition condition, AetheryteData aetheryteData, IObjectTable objectTable,
-        CombatController combatController, Configuration configuration, HighlightObject highlightObject)
-        : base("Questionable Debug Overlay###QuestionableDebugOverlay",
+        CombatController combatController, Configuration configuration, HighlightObject highlightObject,
+        NavmeshIpc navmeshIpc)
+        : base(_L("Questionable Debug Overlay") + "###QuestionableDebugOverlay",
             ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoBackground |
-            ImGuiWindowFlags.NoInputs | ImGuiWindowFlags.NoSavedSettings, true)
+            ImGuiWindowFlags.NoInputs | ImGuiWindowFlags.NoSavedSettings, forceMainWindow: true)
     {
         _questController = questController;
         _questRegistry = questRegistry;
@@ -45,6 +41,7 @@ internal sealed class DebugOverlay : Window
         _combatController = combatController;
         _configuration = configuration;
         _highlightObject = highlightObject;
+        _navmeshIpc = navmeshIpc;
 
         Position = Vector2.Zero;
         PositionCondition = ImGuiCond.Always;
@@ -77,6 +74,8 @@ internal sealed class DebugOverlay : Window
 
         DrawCurrentQuest();
         DrawHighlightedQuest();
+        DrawSavedPos();
+        DrawFlagPos();
 
         if (_configuration.Advanced.CombatDataOverlay)
             DrawCombatTargets();
@@ -137,9 +136,10 @@ internal sealed class DebugOverlay : Window
         if (!visible)
             return;
 
-        ImGui.GetWindowDrawList().AddCircleFilled(screenPos, 3f, color);
-        ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), color,
-            $"{counter}: {step.InteractionType} {step.DataId ?? '-'}\n{position.ToString("G", CultureInfo.InvariantCulture)} [{(position - _objectTable[0]!.Position).Length():N2}]\n{step.Comment}");
+        Vector2 smoothedPos = GetSmoothedScreenPos(position.GetHashCode(), screenPos);
+        ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, color);
+        ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), color,
+            $"{counter}: {step.InteractionType} {step.DataId ?? '-'}\n{position.ToString("G5", CultureInfo.InvariantCulture)} [{(position - _objectTable[0]!.Position).Length():N2}]\n{step.Comment}");
     }
 
     private void DrawCombatTargets()
@@ -157,6 +157,7 @@ internal sealed class DebugOverlay : Window
                 continue;
 
             (int priority, string reason) = _combatController.GetKillPriority(x);
+            // no smoothing for combat target overlay, caching the position of moving objects is pointless (is that a pun?)
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
                 $"{x.Name}/{x.GameObjectId:X}, {GameFunctions.GetBaseID(x)}, {priority} - {reason}, {Vector3.Distance(x.Position, _objectTable[0]!.Position):N2}, {x.IsTargetable}");
         }
@@ -169,20 +170,78 @@ internal sealed class DebugOverlay : Window
             position = step.Position;
             return true;
         }
-        else if (step is { InteractionType: EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryteLocation })
+
+        if (step is { InteractionType: EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryteLocation })
         {
             position = _aetheryteData.Locations[aetheryteLocation];
             return true;
         }
-        else if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
+
+        if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
         {
             position = _aetheryteData.Locations[aethernetShard];
             return true;
         }
-        else
+
+        position = null;
+        return false;
+    }
+
+    private void DrawSavedPos()
+    {
+        if (SavedPos == null)
+            return;
+
+        if (!_configuration.Advanced.DebugOverlay || !_configuration.Advanced.ShowSavedPos)
+            return;
+
+        bool visible = _gameGui.WorldToScreen(SavedPos.Value, out Vector2 screenPos);
+        if (!visible)
+            return;
+        Vector2 smoothedPos = GetSmoothedScreenPos(SavedPos.Value.GetHashCode(), screenPos);
+        ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, 0xFF02B8FA);
+        ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), 0xFF02B8FA,
+            $"SavedPos\n{SavedPos.Value.ToString("G5", CultureInfo.InvariantCulture)} [{(SavedPos.Value - _objectTable[0]!.Position).Length():N2}]");
+    }
+
+    readonly Dictionary<Vector2, float> _flagFloorPos = [];
+    private unsafe void DrawFlagPos()
+    {
+        if (!_configuration.Advanced.DebugOverlay || !_configuration.Advanced.ShowFlagPos)
+            return;
+        AgentMap* agentMap = AgentMap.Instance();
+        if (agentMap is null || agentMap->FlagMarkerCount == 0)
+            return;
+        var marker = agentMap->FlagMapMarkers[0];
+        if (marker.TerritoryId != _clientState.TerritoryType)
+            return;
+        if (!_flagFloorPos.TryGetValue(new(marker.XFloat, marker.YFloat), out float height))
         {
-            position = null;
-            return false;
+            height = _navmeshIpc.GetPointOnFloor(new Vector3(marker.XFloat, 1024, marker.YFloat), unlandable: true)?.Y ?? 0;
         }
+        Vector3 flagPos = new(marker.XFloat, height, marker.YFloat);
+        bool visible = _gameGui.WorldToScreen(flagPos, out Vector2 screenPos);
+        if (!visible)
+            return;
+        Vector2 smoothedPos = GetSmoothedScreenPos(flagPos.GetHashCode(), screenPos);
+        ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, 0xFF4444FF);
+        ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), 0xFF4444FF,
+            $"FlagPos\n{flagPos.ToString("G5", CultureInfo.InvariantCulture)} [{(flagPos - _objectTable[0]!.Position).Length():N2}]");
+    }
+
+    private Vector2 GetSmoothedScreenPos(int key, Vector2 rawPos, float smoothing = 0.35f, float snapThresholdSq = 1f)
+    {
+        var smoothed = rawPos;
+        if (ScreenPosCache.TryGetValue(key, out var lastPos) &&
+            (rawPos - lastPos).LengthSquared() < snapThresholdSq)
+        {
+            smoothed = Vector2.Lerp(lastPos, rawPos, smoothing);
+        }
+
+        ScreenPosCache[key] = smoothed;
+        var stablePos = new Vector2(
+            MathF.Round(smoothed.X / 2f, MidpointRounding.ToEven) * 2f,
+            MathF.Round(smoothed.Y / 2f, MidpointRounding.ToEven) * 2f);
+        return stablePos;
     }
 }

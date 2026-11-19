@@ -1,21 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Text.Json;
-using Dalamud.Plugin;
 using ECommons.ExcelServices;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
 using Questionable.GatheringPaths;
-using Questionable.Model;
 using Questionable.Model.Gathering;
-using Questionable.PathData;
 namespace Questionable.Controller;
 
+[RegisterSingleton]
 internal sealed class GatheringPointRegistry : IDisposable
 {
     private readonly GatheringData _gatheringData;
@@ -24,16 +15,19 @@ internal sealed class GatheringPointRegistry : IDisposable
     private readonly ILogger<QuestRegistry> _logger;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestRegistry _questRegistry;
+    private readonly Configuration _configuration;
 
     public GatheringPointRegistry(IDalamudPluginInterface pluginInterface,
         QuestRegistry questRegistry,
         GatheringData gatheringData,
+        Configuration configuration,
         ILogger<QuestRegistry> logger)
     {
         _pluginInterface = pluginInterface;
         _questRegistry = questRegistry;
         _gatheringData = gatheringData;
         _logger = logger;
+        _configuration = configuration;
 
         _questRegistry.Reloaded += OnReloaded;
     }
@@ -46,9 +40,15 @@ internal sealed class GatheringPointRegistry : IDisposable
     {
         _gatheringPoints.Clear();
 
-        LoadGatheringPointsFromAssembly();
-        LoadGatheringPointsFromProjectDirectory();
-        LoadGatheringPointsFromDownloadedBundle();
+        if (!LoadGatheringPointsFromDownloadedBundle())
+            //LoadGatheringPointsFromAssembly();
+            _logger.LogWarning("Bundled gathering points were not loaded, we have no gathering points!");
+        if (_configuration.Advanced.Debug || Svc.PluginInterface.IsDev
+#if DEBUG
+        || true
+#endif
+        )
+            LoadGatheringPointsFromProjectDirectory();
 
         try
         {
@@ -63,7 +63,6 @@ internal sealed class GatheringPointRegistry : IDisposable
         _logger.LogInformation("Loaded {Count} gathering points in total", _gatheringPoints.Count);
     }
 
-    [Conditional("RELEASE")]
     private void LoadGatheringPointsFromAssembly()
     {
         _logger.LogInformation("Loading gathering points from assembly");
@@ -96,7 +95,6 @@ internal sealed class GatheringPointRegistry : IDisposable
         _logger.LogInformation("Loaded {Count} gathering points from assembly", _gatheringPoints.Count);
     }
 
-    [Conditional("DEBUG")]
     private void LoadGatheringPointsFromProjectDirectory()
     {
         DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
@@ -128,11 +126,11 @@ internal sealed class GatheringPointRegistry : IDisposable
     ///     the compiled baseline but are themselves overridden by the hand-authored user
     ///     directory. A single bad entry is skipped rather than aborting the rest of the bundle.
     /// </summary>
-    private void LoadGatheringPointsFromDownloadedBundle()
+    private bool LoadGatheringPointsFromDownloadedBundle()
     {
         string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
         if (!File.Exists(bundlePath))
-            return;
+            return false;
 
         try
         {
@@ -142,7 +140,7 @@ internal sealed class GatheringPointRegistry : IDisposable
             // Gate A: skip a bundle missing its manifest or requiring a newer plugin.
             // QuestRegistry already logs the detailed reason during its own load pass.
             if (manifest == null || !manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
-                return;
+                return false;
 
             int loaded = 0, failed = 0;
             foreach (ZipArchiveEntry entry in archive.Entries)
@@ -171,7 +169,9 @@ internal sealed class GatheringPointRegistry : IDisposable
         catch (Exception e)
         {
             _logger.LogError(e, "Failed to load gathering points from downloaded path bundle");
+            return false;
         }
+        return true;
     }
 
     private void LoadGatheringPointFromStream(string fileName, Stream stream)
@@ -241,7 +241,8 @@ internal sealed class GatheringPointRegistry : IDisposable
         return GatheringPointId.FromString(parts[0]);
     }
 
-    public bool TryGetGatheringPoint(GatheringPointId gatheringPointId, [NotNullWhen(true)] out GatheringRoot? gatheringRoot) => _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
+    public bool TryGetGatheringPoint(GatheringPointId gatheringPointId, [NotNullWhen(true)] out GatheringRoot? gatheringRoot) =>
+        _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
 
     public bool TryGetGatheringPointId(uint itemId, Job classJobId,
         [NotNullWhen(true)] out GatheringPointId? gatheringPointId)
@@ -257,7 +258,8 @@ internal sealed class GatheringPointRegistry : IDisposable
                 .FirstOrDefault(x => _gatheringData.MinerGatheringPoints.Contains(x));
             return gatheringPointId != null;
         }
-        else if (classJobId == Job.BTN)
+
+        if (classJobId == Job.BTN)
         {
             if (_gatheringData.TryGetBotanistGatheringPointByItemId(itemId, out gatheringPointId))
                 return true;
@@ -268,10 +270,8 @@ internal sealed class GatheringPointRegistry : IDisposable
                 .FirstOrDefault(x => _gatheringData.BotanistGatheringPoints.Contains(x));
             return gatheringPointId != null;
         }
-        else
-        {
-            gatheringPointId = null;
-            return false;
-        }
+
+        gatheringPointId = null;
+        return false;
     }
 }

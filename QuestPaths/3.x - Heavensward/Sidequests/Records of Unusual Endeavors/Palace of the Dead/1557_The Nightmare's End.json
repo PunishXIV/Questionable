@@ -1,0 +1,123 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000334,
+          "Position": {
+            "X": 177.3367,
+            "Y": 8.812641,
+            "Z": -44.246864
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -168.9977,
+            "Y": 9.467051,
+            "Z": -66.248146
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1017256,
+          "Position": {
+            "X": -171.89288,
+            "Y": 9.869229,
+            "Z": -76.798706
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -168.9977,
+            "Y": 9.467051,
+            "Z": -66.248146
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1017257,
+          "Position": {
+            "X": -121.965,
+            "Y": 3.61633,
+            "Z": -59.4949
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007071,
+          "Position": {
+            "X": -100.11096,
+            "Y": 1.8072963,
+            "Z": -23.737047
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1017258,
+          "Position": {
+            "X": -112.07974,
+            "Y": 2.0419316,
+            "Z": -68.24627
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017259,
+          "Position": {
+            "X": -249.104,
+            "Y": 40.0243,
+            "Z": -164.843
+          },
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

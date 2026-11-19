@@ -1,12 +1,18 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
   "Disabled": true,
   "Comment": "This is a FATE Allied Society Quest\nThere are other FATEs that spawn in the\narea that may need to be cleared first\nbefore the correct FATE will spawn.\nThis quest requires manual interaction.",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 152,
+          "InteractionType": "Instruction",
+          "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
+        },
         {
           "DataId": 1005561,
           "Position": {

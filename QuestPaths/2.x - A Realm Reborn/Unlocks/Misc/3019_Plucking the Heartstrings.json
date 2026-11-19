@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,7 +15,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Mih Khetto's Amphitheatre"

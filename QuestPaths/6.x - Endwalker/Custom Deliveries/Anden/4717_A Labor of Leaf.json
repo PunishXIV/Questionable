@@ -15,12 +15,7 @@
           "StopDistance": 5,
           "TerritoryId": 816,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Il Mheg - Lydha Lran"
         }
       ]
     },

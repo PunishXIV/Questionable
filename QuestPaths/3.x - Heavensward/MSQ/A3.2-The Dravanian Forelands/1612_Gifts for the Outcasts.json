@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -24,7 +24,19 @@
         {
           "TerritoryId": 398,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "The Dravanian Forelands - Anyx Trine"
+          "Aetheryte": "The Dravanian Forelands - Anyx Trine",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "The Dravanian Forelands - Anyx Trine"}}
+        },
+        {
+          "DataId": 2005696,
+          "Position": {
+            "X": -209.36908,
+            "Y": -35.41626,
+            "Z": 162.92053
+          },
+          "TerritoryId": 398,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179688
         },
         {
           "DataId": 1011916,

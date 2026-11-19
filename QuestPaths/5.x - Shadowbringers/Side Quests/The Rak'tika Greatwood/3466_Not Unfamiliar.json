@@ -1,0 +1,91 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+  "Sequence": 0,
+  "Steps": [
+    {
+      "Position": {
+        "X": 392.00415,
+        "Y": 33.637783,
+        "Z": -127.34448
+      },
+      "TerritoryId": 817,
+      "InteractionType": "WalkTo",
+      "Fly": true,
+      "Land": true
+    },
+    {
+      "DataId": 1031380,
+          "Position": {
+            "X": 390.5,
+            "Y": 33.6378,
+            "Z": -128.446
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031380,
+          "Position": {
+            "X": 390.5,
+            "Y": 33.6378,
+            "Z": -128.446
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZF007_03466_Q1_000_000",
+              "Answer": "TEXT_LUCKZF007_03466_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZF007_03466_Q2_000_000",
+              "Answer": "TEXT_LUCKZF007_03466_A2_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZF007_03466_Q3_000_000",
+              "Answer": "TEXT_LUCKZF007_03466_A3_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031529,
+          "Position": {
+            "X": 291.128,
+            "Y": 34.5424,
+            "Z": -169.485
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}

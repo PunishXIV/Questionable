@@ -1,51 +1,11 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-29"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "TerritoryId": 156,
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                351
-              ]
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                351
-              ]
-            }
-          }
-        },
-        {
-          "DataId": 2002878,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.0223389,
-            "Z": -26.779602
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "SkipConditions": {
-            "StepIf": {
-              "ExtraCondition": "RisingStonesSolar"
-            }
-          }
-        },
         {
           "DataId": 1010897,
           "Position": {
@@ -54,6 +14,7 @@
             "Z": -45.609253
           },
           "TerritoryId": 351,
+          "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -70,7 +31,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] The Chamber of Rule"

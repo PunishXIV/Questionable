@@ -1,0 +1,56 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Fisher",
+          "TerritoryId": 613,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1021362,
+          "Position": {
+            "X": 374.77686,
+            "Y": -119.99256,
+            "Z": -277.05804
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Exit the bubble",
+          "Position": {
+            "X": 322.1539,
+            "Y": -121.22571,
+            "Z": -314.2446
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false,
+          "Mount": true
+        },
+        {
+          "DataId": 1023621,
+          "Position": {
+            "X": 294.1786,
+            "Y": -98.435974,
+            "Z": -413.35162
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

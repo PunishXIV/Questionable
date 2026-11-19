@@ -41,7 +41,7 @@
 * [Companion Plugins](#deps)
 * [Installation](#installation)
 * [Commands](#commands)
-* [Contributing](#contributing)
+* [Contributing](CONTRIBUTING.md)
 
 </section>
 
@@ -69,10 +69,7 @@
 
 # Contributing
 
-Contributions to the project are always welcome and much appreciated!<br><br>
-
-Please feel free to submit a [pull request](https://github.com/PunishXIV/Questionable/pulls) here on GitHub,
-or you can get in contact with us over on the [Puni.sh Discord](https://discord.gg/Zzrcc8kmvy) server inside the `#questionable-General` channel.
+See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 </section><br>
 
@@ -126,9 +123,11 @@ CBT is a tweak collection plugin that largely focuses on automating small and fr
 - ### [Pandora's Box](https://github.com/PunishXIV/PandorasBox)
 Pandora's Box is a tweak collection plugin. Questionable uses it for the "Auto Active Time Maneuver" tweak, which automatically completes active time maneuvers in duties.
 
-
 - ### [Artisan](https://github.com/PunishXIV/Artisan)
 Artisan is a plugin for automating crafting. Questionable uses it for quests that involve crafting.
+
+- ### [Autohook](https://github.com/PunishXIV/Autohook)
+Autohook is a plugin for automating fishing. Questionable uses it for quests that involve fishing.
 
 - ### [AutoDuty](https://github.com/ffxivcode/AutoDuty)
 AutoDuty is a plugin that serves as a tool to assist in the creation and following of paths through dungeons and duties. Questionable uses it to automate the completion of duties that are required for certain quests.

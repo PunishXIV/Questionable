@@ -1,0 +1,55 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053611,
+          "Position": {
+            "X": -77.958374,
+            "Y": 5,
+            "Z": -15.396423
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1252,
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "Comment": "This requires queueing into Occult Crescent: South Horn, so isn't started automatically"
+        },
+        {
+          "DataId": 1053802,
+          "Position": {
+            "X": 825.445,
+            "Y": 72.6786,
+            "Z": -676.53
+          },
+          "TerritoryId": 1252,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1053802 (Archive)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053802,
+          "Position": {
+            "X": 825.445,
+            "Y": 72.6786,
+            "Z": -676.53
+          },
+          "TerritoryId": 1252,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1053802 (Archive)"
+        }
+      ]
+    }
+  ]
+}

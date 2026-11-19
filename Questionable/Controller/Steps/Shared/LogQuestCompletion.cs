@@ -1,21 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text.Encodings.Web;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
-using System.Text.Json.Serialization.Metadata;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
-using Microsoft.Extensions.Logging;
-using Questionable.Model;
-using Questionable.Utils;
 
 namespace Questionable.Controller.Steps.Shared;
+
 internal static class LogQuestCompletion
 {
     private readonly static string LogPath = Path.Combine(Svc.PluginInterface.ConfigDirectory.FullName, "QuestCompletionLog.json");
@@ -52,9 +39,10 @@ internal static class LogQuestCompletion
             logger.LogInformation($"Logging quest completion: {Task.Quest?.Id.Value}");
             string path = Path.Combine(pluginInterface.ConfigDirectory.FullName, "QuestCompletionLog.json");
             List<QuestCompletion> data = ReadQuestCompletions();
+            QuestInfo? info = (QuestInfo?)Task.Quest?.Info;
             data.Add(new()
             {
-                Quest = $"{Task.Quest?.Id}_{Task.Quest?.Info.SimplifiedName}",
+                Quest = $"{info?.QuestId}_{info?.SimplifiedName}",
                 LastChecked = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
             });
             WriteQuestCompletions(data);
@@ -98,6 +86,17 @@ internal static class LogQuestCompletion
             Indented = JsonOptions.Default.WriteIndented
         });
         node.WriteTo(writer, JsonOptions.Default);
+    }
 
+    internal static void ClearQuestCompletions()
+    {
+        JsonNode? node = JsonSerializer.SerializeToNode(new List<QuestCompletion>(), JsonOptions.Default)!;
+        using FileStream writeStream = File.Create(LogPath);
+        using Utf8JsonWriter writer = new(writeStream, new()
+        {
+            Encoder = JsonOptions.Default.Encoder,
+            Indented = JsonOptions.Default.WriteIndented
+        });
+        node.WriteTo(writer, JsonOptions.Default);
     }
 }

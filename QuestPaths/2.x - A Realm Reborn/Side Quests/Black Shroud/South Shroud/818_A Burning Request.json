@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "croizat",
+  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-09"},
   "QuestSequence": [
     {
       "Sequence": 0,

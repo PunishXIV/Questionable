@@ -1,10 +1,27 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 844,
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "SkipConditions": {"StepIf": {"InTerritory": [844]}}
+        },
         {
           "DataId": 1032121,
           "Position": {
@@ -47,7 +64,7 @@
           "TerritoryId": 817,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.0.0.292",
             "Notes": [
               "Doesn't walk to the teleporter to finish the duty"

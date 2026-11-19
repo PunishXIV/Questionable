@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +16,7 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ul'dah"
         }
       ]
     },
@@ -41,8 +38,7 @@
               "Prompt": "TEXT_CLSPGL011_00532_Q1_000_1",
               "Yes": true
             }
-          ],
-          "NextQuestId": 553
+          ]
         }
       ]
     }

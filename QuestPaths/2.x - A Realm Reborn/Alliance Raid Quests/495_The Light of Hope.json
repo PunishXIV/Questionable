@@ -1,9 +1,10 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": [
     "JerryWester",
     "Kiarra"
   ],
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -17,12 +18,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         }
       ]
     },
@@ -78,6 +74,17 @@
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "Never": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 40.024292,
+                  "Y": 24.002441,
+                  "Z": -668.0247
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 30
+              }
             }
           }
         },

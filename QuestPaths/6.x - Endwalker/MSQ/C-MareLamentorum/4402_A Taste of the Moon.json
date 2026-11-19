@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -30,6 +31,22 @@
           "TerritoryId": 959,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818362
+        },
+        {
+          "Position": {
+            "X": -40.836445,
+            "Y": -47.894978,
+            "Z": -534.5437
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -175.4516,
+              "Y": -136.78821,
+              "Z": -511.22217
+            }
+          }
         },
         {
           "DataId": 1038908,

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053906,
+          "Position": {
+            "X": 25.802979,
+            "Y": -2.2634694E-07,
+            "Z": 13.38208
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2015436,
+          "Position": {
+            "X": 27.2428,
+            "Y": 0,
+            "Z": 11.2162
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053906,
+          "Position": {
+            "X": 25.802979,
+            "Y": -2.2634694E-07,
+            "Z": 13.38208
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

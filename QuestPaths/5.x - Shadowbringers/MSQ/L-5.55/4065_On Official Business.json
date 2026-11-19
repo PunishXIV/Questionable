@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -30,7 +31,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Lancers' Guild"
@@ -67,7 +67,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
+          "TargetTerritoryId": 205,
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Conjurers' Guild"

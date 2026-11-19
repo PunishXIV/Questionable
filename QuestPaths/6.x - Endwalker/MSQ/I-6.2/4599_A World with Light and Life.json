@@ -1,10 +1,26 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1043847,
+          "Position": {
+            "X": -350.24036,
+            "Y": 55,
+            "Z": -81.28485
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1078,
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Meghaduta"
+          ]
+        },
         {
           "DataId": 1043848,
           "Position": {
@@ -38,7 +54,8 @@
           "StopDistance": 4,
           "TerritoryId": 1078,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 963
+          "TargetTerritoryId": 963,
+          "SkipConditions": {"StepIf": {"NotInTerritory": [1078]}}
         },
         {
           "DataId": 1037381,

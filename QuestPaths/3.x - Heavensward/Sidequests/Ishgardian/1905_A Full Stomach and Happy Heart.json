@@ -1,0 +1,116 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012178,
+          "Position": {
+            "X": -128.117,
+            "Y": 5.46316,
+            "Z": 34.3825
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014724,
+          "Position": {
+            "X": -31.693054,
+            "Y": 5.479126,
+            "Z": 56.87024
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] Aetheryte Plaza"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
+        },
+        {
+          "DataId": 1014722,
+          "Position": {
+            "X": 9.597839,
+            "Y": 1.2791282,
+            "Z": 113.05408
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
+        },
+        {
+          "DataId": 1014725,
+          "Position": {
+            "X": 117.96753,
+            "Y": -22.009796,
+            "Z": 35.8739
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
+        },
+        {
+          "DataId": 1014726,
+          "Position": {
+            "X": 37.27771,
+            "Y": 16.49931,
+            "Z": -33.61566
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Ishgard] The Brume","[Ishgard] The Last Vigil"]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012178,
+          "Position": {
+            "X": -128.117,
+            "Y": 5.46316,
+            "Z": 34.3825
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Ishgard] The Last Vigil","[Ishgard] Skysteel Manufactory"]
+        }
+      ]
+    }
+  ]
+}

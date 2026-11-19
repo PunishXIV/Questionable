@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Boarskin Ringbands HQ\nAutocraft requires:\n 1x Boar Leather,\n 1x Steel Ingot",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Leatherworkers' Guild & Shaded Bower"
@@ -55,7 +55,11 @@
             "Z": -166.52173
           },
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
         }
       ]
     }

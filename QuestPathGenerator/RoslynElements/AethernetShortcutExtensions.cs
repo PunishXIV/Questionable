@@ -17,10 +17,10 @@ internal static class AethernetShortcutExtensions
                     SyntaxNodeList(
                         Assignment<EAetheryteLocation?>(nameof(AethernetShortcut.From),
                                 aethernetShortcut.From,
-                                null)
+                                defaultValue: null)
                             .AsSyntaxNodeOrToken(),
                         Assignment<EAetheryteLocation?>(nameof(AethernetShortcut.To),
                                 aethernetShortcut.To,
-                                null)
+                                defaultValue: null)
                             .AsSyntaxNodeOrToken()))));
 }

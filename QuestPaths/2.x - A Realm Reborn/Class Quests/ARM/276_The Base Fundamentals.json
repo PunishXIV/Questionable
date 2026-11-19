@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 12x Bronze Plate\nAutocraft requires:\n 36x Bronze Ingot",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
@@ -56,7 +56,11 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true
+          "AllowHighQuality": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     }

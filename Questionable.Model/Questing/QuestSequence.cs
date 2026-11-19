@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Questionable.Model.Common;
 namespace Questionable.Model.Questing;
 
 public sealed class QuestSequence
 {
+    [AlwaysSerialize]
     public byte Sequence { get; set; }
     public string? Comment { get; set; }
     public List<QuestStep> Steps { get; set; } = new();

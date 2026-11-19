@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
   "$": "This quest rewards a Han Lemon",
+  "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -19,9 +20,6 @@
           "Land": true,
           "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -61,12 +59,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },

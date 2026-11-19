@@ -6,6 +6,22 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1053611,
+          "Position": {
+            "X": -77.958374,
+            "Y": 5,
+            "Z": -15.396423
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1252,
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "Comment": "This requires queueing into Occult Crescent: South Horn, so isn't started automatically"
+        },
+        {
           "DataId": 1053798,
           "Position": {
             "X": 841.9165,
@@ -14,8 +30,7 @@
           },
           "StopDistance": 5,
           "TerritoryId": 1252,
-          "InteractionType": "AcceptQuest",
-          "Comment": "This requires queueing into Occult Crescent: South Horn, so isn't started automatically"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

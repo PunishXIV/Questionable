@@ -4,7 +4,7 @@
     "liza",
     "JerryWester"
   ],
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -18,12 +18,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Gridania"
         }
       ]
     },
@@ -31,11 +26,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -75.48645,
-            "Y": -0.5013741,
-            "Z": -5.081299
-          },
           "TerritoryId": 132,
           "InteractionType": "UseItem",
           "ItemId": 6001,
@@ -93,6 +83,17 @@
           }
         },
         {
+          "DataId": 1002981,
+          "Position": {
+            "X": -194.32367,
+            "Y": 1.001574,
+            "Z": 278.0652
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179651
+        },
+        {
           "DataId": 1006188,
           "Position": {
             "X": -236.92688,
@@ -101,12 +102,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
         }
       ]
     }

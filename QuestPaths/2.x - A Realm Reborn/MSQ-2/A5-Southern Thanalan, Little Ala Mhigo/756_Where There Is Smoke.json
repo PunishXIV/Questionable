@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +15,7 @@
           },
           "TerritoryId": 145,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     },
@@ -29,12 +24,13 @@
       "Steps": [
         {
           "Position": {
-            "X": 318.09802,
-            "Y": 20.949646,
-            "Z": -263.94977
+            "X": 319.00192,
+            "Y": 20.684546,
+            "Z": -263.7031
           },
           "TerritoryId": 145,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "StopDistance": 1
         },
         {
           "Position": {

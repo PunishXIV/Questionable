@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-20"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +15,7 @@
           },
           "TerritoryId": 147,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
         }
       ]
     },
@@ -31,6 +26,17 @@
           "TerritoryId": 147,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Northern Thanalan - Ceruleum Processing Plant"
+        },
+        {
+          "DataId": 1004241,
+          "Position": {
+            "X": -41.306213,
+            "Y": 48,
+            "Z": -52.933594
+          },
+          "TerritoryId": 147,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179668
         },
         {
           "DataId": 1006647,

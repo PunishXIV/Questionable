@@ -1,35 +1,35 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Data;
-using System.Linq;
 using System.Reflection;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller.Steps;
+using Questionable.Model.Common;
 using WrathCombo.API;
 using WrathCombo.API.Enum;
 using WrathError = WrathCombo.API.Error;
 
 namespace Questionable.Controller.CombatModules;
 
+[RegisterSingleton<ICombatModule, WrathComboModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class WrathComboModule : ICombatModule, IDisposable
 {
     private const string CallbackPrefix = "Questionable$Wrath";
     private readonly ICallGateProvider<int, string, object> _callback;
     private readonly Configuration _configuration;
 
+    private readonly IFramework _framework;
     private readonly ILogger<WrathComboModule> _logger;
 
     private Guid? _lease;
 
     public WrathComboModule(ILogger<WrathComboModule> logger,
         Configuration configuration,
-        IDalamudPluginInterface pluginInterface)
+        IDalamudPluginInterface pluginInterface,
+        IFramework framework)
     {
         _logger = logger;
         _configuration = configuration;
+        _framework = framework;
 
         _callback =
             pluginInterface.GetIpcProvider<int, string, object>(
@@ -40,8 +40,12 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (_configuration.General.CombatModule !=
-            Configuration.ECombatModule.WrathCombo)
+            ECombatModule.WrathCombo)
             return false;
+
+        //if (GameFunctions.GetMountId() == Mount128Module.MountId ||
+        //    GameFunctions.GetMountId() == Mount147Module.MountId)
+        //    return false;
 
         try
         {
@@ -114,48 +118,39 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                     HealerRotationMode.Lowest_Current);
             SetResult healerMagicTargeting = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.HealerAlwaysHardTarget,
-                    false);
+                    AutoRotationConfigOption.HealerAlwaysHardTarget, value: false);
             SetResult combatOnly = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.InCombatOnly,
-                    false);
+                    AutoRotationConfigOption.InCombatOnly, value: false);
 
             // Make Wrath Work well
             SetResult includeNPCs = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.IncludeNPCs,
-                    true);
+                    AutoRotationConfigOption.IncludeNPCs, value: true);
             SetResult targetCombatOnly = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.OnlyAttackInCombat,
-                    false);
+                    AutoRotationConfigOption.OnlyAttackInCombat, value: false);
             SetResult cleanse = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoCleanse,
-                    true);
+                    AutoRotationConfigOption.AutoCleanse, value: true);
 
             // Nice-to-haves
             SetResult rez = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRez,
-                    true);
+                    AutoRotationConfigOption.AutoRez, value: true);
             SetResult rezAsDPS = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRezDPSJobs,
-                    true);
+                    AutoRotationConfigOption.AutoRezDPSJobs, value: true);
             SetResult kardia = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.ManageKardia,
-                    true);
+                    AutoRotationConfigOption.ManageKardia, value: true);
             SetResult aoeTargetThreshold = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
                     AutoRotationConfigOption.DPSAoETargets,
                     3);
             SetResult rezNonParty = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRezOutOfParty,
-                    false);
+                    AutoRotationConfigOption.AutoRezOutOfParty, value: false);
 
             if (!WrathResultExtensions.AllSuccessful(out string failed,
                 ("HealerRotationMode", healerRotationMode),
@@ -228,7 +223,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
 
     public void Dispose()
     {
-        Stop();
+        IpcInvoke.TryOnFrameworkThread(_framework, () => Stop(), _logger);
         _callback.UnregisterAction();
     }
 
@@ -241,22 +236,4 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
             description, realReason.ToString(), additionalInfo);
         _lease = null;
     }
-}
-
-internal static class WrathResultExtensions
-{
-    public static bool AllSuccessful
-    (out string failedVariableNames,
-        params (string name, SetResult result)[] results)
-    {
-        string[] failed = results
-            .Where(r => !r.result.IsSuccess())
-            .Select(r => r.name)
-            .ToArray();
-
-        failedVariableNames = string.Join(", ", failed);
-        return failed.Length == 0;
-    }
-
-    public static bool IsSuccess(this SetResult result) => result is SetResult.Okay or SetResult.OkayWorking;
 }

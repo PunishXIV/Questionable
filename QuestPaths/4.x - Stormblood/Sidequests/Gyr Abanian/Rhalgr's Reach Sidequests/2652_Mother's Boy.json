@@ -1,0 +1,43 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021173,
+          "Position": {
+            "X": -138.82114,
+            "Y": 0.6204792,
+            "Z": -59.722023
+          },
+          "TerritoryId": 635,
+          "StopDistance": 0.25,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Rhalgr's Reach] Aetheryte Plaza","[Rhalgr's Reach] Western Rhalgr's Reach"],
+          "$": "auto: issuer 1021173 (wounded Resistance fighter)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021174,
+          "Position": {
+            "X": 142.29,
+            "Y": 134.146,
+            "Z": -797.909
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "$": "auto: turn-in 1021174 (Resistance fighter's mother)"
+        }
+      ]
+    }
+  ]
+}

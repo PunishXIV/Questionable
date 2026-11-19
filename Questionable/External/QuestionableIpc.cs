@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Ipc;
+﻿using Dalamud.Plugin.Ipc;
 using ECommons.ExcelServices;
 using JetBrains.Annotations;
-using Lumina.Text.ReadOnly;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
-using Questionable.Windows;
-using Questionable.Windows.QuestComponents;
-using Questionable.Windows.Utils;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class QuestionableIpc : IDisposable
 {
     private const string IpcIsRunning = "Questionable.IsRunning";
@@ -26,6 +14,7 @@ internal sealed class QuestionableIpc : IDisposable
     private const string IpcStartQuest = "Questionable.StartQuest";
     private const string IpcStartSingleQuest = "Questionable.StartSingleQuest";
     private const string IpcIsQuestLocked = "Questionable.IsQuestLocked";
+    private const string IpcIsQuestLockedReason = "Questionable.IsQuestLockedReason";
     private const string IpcIsQuestComplete = "Questionable.IsQuestComplete";
     private const string IpcIsReadyToAcceptQuest = "Questionable.IsReadyToAcceptQuest";
     private const string IpcIsQuestAccepted = "Questionable.IsQuestAccepted";
@@ -51,6 +40,7 @@ internal sealed class QuestionableIpc : IDisposable
     private readonly ICallGateProvider<string, bool> _isQuestAccepted;
     private readonly ICallGateProvider<string, bool> _isQuestComplete;
     private readonly ICallGateProvider<string, bool> _isQuestLocked;
+    private readonly ICallGateProvider<string, (bool, string)> _isQuestLockedReason;
     private readonly ICallGateProvider<string, bool> _isQuestUnobtainable;
     private readonly ICallGateProvider<string, bool> _isReadyToAcceptQuest;
 
@@ -100,13 +90,16 @@ internal sealed class QuestionableIpc : IDisposable
             [.. eventInfoComponent.GetCurrentlyActiveEventQuests().Select(q => q.ToString())]);
 
         _startQuest = pluginInterface.GetIpcProvider<string, bool>(IpcStartQuest);
-        _startQuest.RegisterFunc(questId => StartQuest(questId, false));
+        _startQuest.RegisterFunc(questId => StartQuest(questId, single: false));
 
         _startSingleQuest = pluginInterface.GetIpcProvider<string, bool>(IpcStartSingleQuest);
-        _startSingleQuest.RegisterFunc(questId => StartQuest(questId, true));
+        _startSingleQuest.RegisterFunc(questId => StartQuest(questId, single: true));
 
         _isQuestLocked = pluginInterface.GetIpcProvider<string, bool>(IpcIsQuestLocked);
         _isQuestLocked.RegisterFunc(IsQuestLocked);
+
+        _isQuestLockedReason = pluginInterface.GetIpcProvider<string, (bool, string)>(IpcIsQuestLockedReason);
+        _isQuestLockedReason.RegisterFunc(IsQuestLockedReason);
 
         _isQuestComplete = pluginInterface.GetIpcProvider<string, bool>(IpcIsQuestComplete);
         _isQuestComplete.RegisterFunc(IsQuestComplete);
@@ -226,10 +219,24 @@ internal sealed class QuestionableIpc : IDisposable
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? _))
         {
-            return _questFunctions.IsQuestLocked(elementId);
+            (var isLocked, string[]? _) = _questFunctions.IsQuestLocked(elementId);
+            return isLocked;
         }
 
         return true;
+    }
+
+    private (bool, string) IsQuestLockedReason(string questId)
+    {
+        _logger.LogDebug("IsQuestLockedReason({QuestId})", questId);
+        if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
+            _questRegistry.TryGetQuest(elementId, out Quest? _))
+        {
+            (var isLocked, string[]? reasons) = _questFunctions.IsQuestLocked(elementId);
+            return (isLocked, reasons != null ? string.Join(',', reasons) : "");
+        }
+
+        return (true, "");
     }
 
     private bool IsQuestComplete(string questId)
@@ -323,15 +330,15 @@ internal sealed class QuestionableIpc : IDisposable
     {
         if (questId >= 131072)
             return "";
-        return _redoUtil.GetChapter(questId).Name.ToString();
+        return _redoUtil.GetChapter((ushort)questId).Chapter.ToString() ?? "???";
     }
 
     private Tuple<string, int> RedoLookupIndex(uint questId)
     {
         if (questId >= 131072)
             return new("", -1);
-        RedoIndex outp = _redoUtil.GetChapter(questId);
-        return new(outp.Name.ToString(), outp.Index);
+        RedoIndex outp = _redoUtil.GetChapter((ushort)questId);
+        return new(outp.Chapter.ToString() ?? "???", outp.Index);
     }
 
     [UsedImplicitly(ImplicitUseKindFlags.Access, ImplicitUseTargetFlags.WithMembers)]

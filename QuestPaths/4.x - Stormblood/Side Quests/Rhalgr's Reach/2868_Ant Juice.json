@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
   "$": "This quest rewards the Head Bandage glamour",
+  "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +17,7 @@
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest",
           "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         }
       ]
     },
@@ -43,12 +39,7 @@
           "KillEnemyDataIds": [
             7213
           ],
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Fringes - Peering Stones"
         }
       ]
     },
@@ -65,12 +56,7 @@
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest",
           "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         }
       ]
     }

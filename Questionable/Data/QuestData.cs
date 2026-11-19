@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class QuestData
 {
     public static readonly IReadOnlyList<QuestId> HardModePrimals = [new(1048), new(1157), new(1158)];
@@ -64,6 +61,116 @@ internal sealed class QuestData
             }
             .ToImmutableDictionary(x => x.Key, x => x.Value.Select(y => new QuestId(y)).ToImmutableList());
 
+
+    internal static readonly ImmutableDictionary<Job, ImmutableList<uint>> JobToClassQuestChapterIds = new Dictionary<Job, ImmutableList<uint>>()
+    {
+        { Job.ADV, [] },
+        // ARR
+        { Job.GLA, [63] },
+        { Job.PLD, [72, 73, 74, 75] },
+        { Job.MRD, [64] },
+        { Job.WAR, [76, 77, 78, 79] },
+        { Job.CNJ, [65] },
+        { Job.WHM, [86, 87, 88, 89] },
+        { Job.ACN, [66] },
+        { Job.SMN, [127, 128, 129, 130] },
+        { Job.SCH, [90, 91, 92, 93] },
+        { Job.PGL, [67] },
+        { Job.MNK, [98, 99, 100, 101] },
+        { Job.LNC, [68] },
+        { Job.DRG, [102, 103, 104, 105] },
+        { Job.ROG, [69] },
+        { Job.NIN, [106, 107, 108, 109] },
+        { Job.ARC, [70] },
+        { Job.BRD, [113, 114, 115, 116] },
+        { Job.THM, [71] },
+        { Job.BLM, [123, 124, 125, 126] },
+        // HW
+        { Job.DRK, [80, 81, 82, 83] },
+        { Job.AST, [94, 95, 96, 97] },
+        { Job.MCH, [117, 118, 119, 120] },
+        // SB
+        { Job.SAM, [110, 111, 112] },
+        { Job.RDM, [131, 132, 133] },
+        { Job.BLU, [134, 135, 146, 170] },
+        // ShB
+        { Job.GNB, [84, 85] },
+        { Job.DNC, [121, 122] },
+        // EW
+        { Job.SGE, [152] },
+        { Job.RPR, [153] },
+        // DT
+        { Job.VPR, [176] },
+        { Job.PCT, [177] },
+        // EC
+        { Job.BST, [206] },
+        // Crafter
+        { Job.ALC, [48, 49, 50] },
+        { Job.ARM, [36, 37, 38] },
+        { Job.BSM, [33, 34, 35] },
+        { Job.CRP, [30, 31, 32] },
+        { Job.CUL, [51, 52, 53] },
+        { Job.GSM, [39, 40, 41] },
+        { Job.LTW, [42, 43, 44] },
+        { Job.WVR, [45, 46, 47] },
+        // Gatherer
+        { Job.MIN, [54, 55, 56] },
+        { Job.BTN, [57, 58, 59] },
+        { Job.FSH, [60, 61, 62] },
+    }.ToImmutableDictionary();
+
+    public static readonly IReadOnlyList<ElementId> DeliveryMoogleQuests = (
+        (ushort[])[
+            // postmoogle quests
+            1481, 1483, 1482, 1484, 1531, 1532, 1533, 1485, 33, 1571, 36, 1573, 1570, 1576, 1577, 241, 242, 1574, 1572, 1575, 243, 244, 240, 496, 362,
+            // prereqs
+            // fungal frolic chain
+            804, 805, 807,
+            // aesthetician
+            1210,
+            // hildibrand 1 (picks up following quest, may not be ideal)
+            1204
+        ]).FromNumericListOfQuests();
+    public static readonly IReadOnlyList<ElementId> UnlockMoogleSocietyQuests = (
+        (ushort[])[
+            // Side quests that are pre-requisites for Moogle Society
+            1821,1824,1831,1832,1863,1864,1865,1866,1867,1868,1872,1878,1881,1882,1879,1883,1884,1880,1871,
+            // Tricks and Stones, the blue quest that unlocks the Moogle society
+            2320
+        ]).FromNumericListOfQuests();
+    public static readonly IReadOnlyList<ElementId> CollaborationQuests = (
+        (ushort[])[
+            1153, 1154, 1155, 1156, // ffxiii 2013
+            1287, // ffxi 2014
+            1288, // dqx
+            2141, // yokai
+            2206, // ffxi 2015
+            3158, 3159, 3160, // ffxv
+            4796, 4797, 4798, // ffxvi
+            4801, // fall guys
+        ]).FromNumericListOfQuests();
+
+    /// <summary>
+    /// if any of these quests are done, all citystate aethernet locations should be attuned
+    /// </summary>
+    public static readonly Dictionary<EAetheryteLocation, (char Letter, ushort[] QuestIds)> AethernetUnlockQuests = new()
+    {
+        [EAetheryteLocation.Gridania] = ('g', [85, 12, 124, 546, 528]),
+        [EAetheryteLocation.Limsa] = ('l', [108, 109, 507, 528]),
+        [EAetheryteLocation.Uldah] = ('u', [568, 569, 570, 546, 507]),
+        [EAetheryteLocation.Ishgard] = ('i', [1580]),
+        [EAetheryteLocation.Idyllshire] = ('y', [1656]),
+        [EAetheryteLocation.RhalgrsReach] = ('r', [2448]),
+        [EAetheryteLocation.Kugane] = ('k', [2475]),
+        [EAetheryteLocation.DomanEnclave] = ('d', [3026]),
+        [EAetheryteLocation.Crystarium] = ('c', [3282]),
+        [EAetheryteLocation.Eulmore] = ('e', [3289]),
+        [EAetheryteLocation.OldSharlayan] = ('s', [4359]),
+        [EAetheryteLocation.RadzAtHan] = ('z', [4418]),
+        [EAetheryteLocation.Tuliyollal] = ('t', [4878]),
+        [EAetheryteLocation.SolutionNine] = ('n', [4937]),
+    };
+
     private static readonly IReadOnlyList<uint> TankRoleQuestChapters = [136, 154, 178];
     private static readonly IReadOnlyList<uint> HealerRoleQuestChapters = [137, 155, 179];
     private static readonly IReadOnlyList<uint> MeleeRoleQuestChapters = [138, 156, 180];
@@ -82,12 +189,14 @@ internal sealed class QuestData
     public static readonly IReadOnlyList<QuestId> FinalShadowbringersRoleQuests =
         [new(3248), new(3272), new(3278), new(3628)];
     private readonly IPluginLog? _pluginLog;
+    private readonly IServiceProvider _serviceProvider;
 
     private readonly Dictionary<ElementId, IQuestInfo> _quests;
 
-    public QuestData(IDataManager dataManager, ClassJobUtils classJobUtils, IPluginLog? pluginLog = null)
+    public QuestData(IServiceProvider serviceProvider, IDataManager dataManager, ClassJobUtils classJobUtils, IPluginLog? pluginLog = null)
     {
         _pluginLog = pluginLog;
+        _serviceProvider = serviceProvider;
         JournalGenreOverrides journalGenreOverrides = new()
         {
             ARelicRebornQuests = dataManager.GetExcelSheet<Quest>().GetRow(65742).JournalGenre.RowId,
@@ -111,8 +220,7 @@ internal sealed class QuestData
         List<IQuestInfo> quests =
         [
             ..dataManager.GetExcelSheet<Quest>()
-                .Where(x => x.RowId > 0)
-                .Where(x => x.IssuerLocation.RowId > 0)
+                .Where(x => x.RowId > 0 && x.IssuerLocation.RowId > 0)
                 .Select(x => new QuestInfo(x, questChapters.GetValueOrDefault(x.RowId),
                     startingCities.GetValueOrDefault(x.RowId), journalGenreOverrides)),
             ..dataManager.GetExcelSheet<SatisfactionNpc>()
@@ -136,17 +244,25 @@ internal sealed class QuestData
                             ])
                             .Select(rank => new AlliedSocietyDailyInfo(x, rank, classJobUtils));
                     }
-                    else
-                        return [new(x, 0, classJobUtils)];
+
+                    return [new(x, 0, classJobUtils)];
                 }));
 
-        quests.Add(new UnlockLinkQuestInfo(new(506), "Patch 7.2 Fantasia", 1052475));
-        quests.Add(new UnlockLinkQuestInfo(new(568), "Patch 7.3 Fantasia", 1052475));
+        quests.Add(new UnlockLinkQuestInfo(new(506), _L("Patch 7.2 Fantasia"), issuerDataId: 1052475));
+        quests.Add(new UnlockLinkQuestInfo(new(568), _L("Patch 7.3 Fantasia"), issuerDataId: 1052475));
 
         _quests = quests.ToDictionary(x => x.QuestId, x => x);
 
+        AddPreviousQuest(new(5008), new(4933));
+        AddPreviousQuest(new(5012), new(4959));
         // workaround because the game doesn't require completion of the CT questline through normal means
         AddPreviousQuest(new(425), new(495));
+
+        // white wolf gate
+        AddPreviousQuest(new(803), new(802));
+
+        // unlocking LB to use material supplier for craft mats
+        //AddPreviousQuest(new(142), new(1212));
 
         // "In order to undertake this quest" [...]
         const int mountaintopDiplomacy = 1619;
@@ -154,6 +270,7 @@ internal sealed class QuestData
         const int tideGoesIn = 2490;
         const int firstOfMany = 2534;
         const int achtIaOrmhInn = 3320;
+        AddPreviousQuest(new(2898), new(2922));
         AddPreviousQuest(new(1480), new(2373));
         AddPreviousQuest(new(1717), new(mountaintopDiplomacy));
         AddPreviousQuest(new(2088), new(mountaintopDiplomacy));
@@ -217,6 +334,28 @@ internal sealed class QuestData
         AddPreviousQuest(new(4966), new(inscrutableTastes));
         AddPreviousQuest(new(5000), new(4908));
         AddPreviousQuest(new(5001), new(4912));
+        AddPreviousQuest(new(5443), new(434));
+        AddPreviousQuest(new(3242), new(3654));
+        AddPreviousQuest(new(3153), new(3141));
+
+        // ARR intersocietal prereq
+        AddPreviousQuest(new(1465), new(1221)); // amaljaa
+        AddPreviousQuest(new(1465), new(1256)); // sylph
+        AddPreviousQuest(new(1465), new(1324)); // kobold
+        AddPreviousQuest(new(1465), new(1378)); // sahagin
+        AddPreviousQuest(new(1465), new(1493)); // ixal
+
+        AddPreviousQuest(new(1466), new(1221)); // amaljaa
+        AddPreviousQuest(new(1466), new(1256)); // sylph
+        AddPreviousQuest(new(1466), new(1324)); // kobold
+        AddPreviousQuest(new(1466), new(1378)); // sahagin
+        AddPreviousQuest(new(1466), new(1493)); // ixal
+
+        AddPreviousQuest(new(1467), new(1221)); // amaljaa
+        AddPreviousQuest(new(1467), new(1256)); // sylph
+        AddPreviousQuest(new(1467), new(1324)); // kobold
+        AddPreviousQuest(new(1467), new(1378)); // sahagin
+        AddPreviousQuest(new(1467), new(1493)); // ixal
 
         // "In order to proceed with this quest" [...]
         /* my little chocobo
@@ -284,9 +423,27 @@ internal sealed class QuestData
             .FirstOrDefault() ?? new QuestId(0);
         RedeemableItems = quests.Where(x => x is QuestInfo)
             .Cast<QuestInfo>()
-            .SelectMany(x => x.ItemRewards)
+            .SelectMany(x => x.ItemRewards.Union(x.TripleTriadCardRewards))
             .ToImmutableHashSet();
     }
+
+    public List<ElementId> GetQuestsMatching(Func<QuestInfo, bool> predicate, bool onlyAvailable = true)
+    {
+        var questFunctions = _serviceProvider.GetRequiredService<QuestFunctions>();
+        return _quests.Values
+            .OfType<QuestInfo>()
+            .Where(predicate)
+            .Where(x => !onlyAvailable ||
+                (!questFunctions.IsQuestUnobtainable(x.QuestId) &&
+                 !questFunctions.IsQuestComplete(x.QuestId) &&
+                 !questFunctions.IsQuestLocked(x.QuestId).Item1))
+            .OrderBy(x => x.ToDoLocations.Count > 0 ? x.ToDoLocations[0].Territory.RowId : x.QuestId.Value)
+            .Select(x => x.QuestId)
+            .ToList();
+    }
+
+    public List<ElementId> GetQuestsWithItemReward(bool onlyAvailable = true, params uint[] itemId)
+        => GetQuestsMatching(x => x.ItemRewardsRaw.ContainsAny(itemId), onlyAvailable: onlyAvailable);
 
     public static ImmutableHashSet<QuestId> AetherCurrentQuests { get; } =
         AetherCurrentQuestsByTerritory.Values.SelectMany(x => x).ToImmutableHashSet();
@@ -295,6 +452,11 @@ internal sealed class QuestData
     public ImmutableHashSet<ItemReward> RedeemableItems { get; }
     public QuestId LastMainScenarioQuestId { get; }
 
+    /// <summary>
+    /// Adds a manual link to indicate that questToUpdate requires requiredQuestId to be completed first, so the former can be marked as locked
+    /// </summary>
+    /// <param name="questToUpdate">The QuestId of the quest that needs a prereq added</param>
+    /// <param name="requiredQuestId">The QuestId of the prereq</param>
     private void AddPreviousQuest(QuestId questToUpdate, QuestId requiredQuestId)
     {
         if (_quests.TryGetValue(questToUpdate, out IQuestInfo? quest) && quest is QuestInfo questInfo)
@@ -327,8 +489,7 @@ internal sealed class QuestData
     public List<IQuestInfo> GetAllByJournalGenre(uint journalGenre)
     {
         return _quests.Values
-            .Where(x => x is QuestInfo { IsSeasonalEvent: false } or not QuestInfo)
-            .Where(x => x.JournalGenre == journalGenre)
+            .Where(x => x is QuestInfo { IsSeasonalEvent: false } or not QuestInfo && x.JournalGenre == journalGenre)
             .OrderBy(x => x.SortKey)
             .ThenBy(x => x.QuestId)
             .ToList();
@@ -346,75 +507,22 @@ internal sealed class QuestData
 
     public List<QuestInfo> GetClassJobQuests(Job classJob, bool includeRoleQuests = false)
     {
-        List<uint> chapterIds = classJob switch
-        {
-            Job.ADV => [],
-            // ARR
-            Job.GLA => [63],
-            Job.PLD => [72, 73, 74],
-            Job.MRD => [64],
-            Job.WAR => [76, 77, 78],
-            Job.CNJ => [65],
-            Job.WHM => [86, 87, 88],
-            Job.ACN => [66],
-            Job.SMN => [127, 128, 129],
-            Job.SCH => [90, 91, 92],
-            Job.PGL => [67],
-            Job.MNK => [98, 99, 100],
-            Job.LNC => [68],
-            Job.DRG => [102, 103, 104],
-            Job.ROG => [69],
-            Job.NIN => [106, 107, 108],
-            Job.ARC => [70],
-            Job.BRD => [113, 114, 115],
-            Job.THM => [71],
-            Job.BLM => [123, 124, 125],
-            // HW
-            Job.DRK => [80, 81, 82],
-            Job.AST => [94, 95, 96],
-            Job.MCH => [117, 118, 119],
-            // SB
-            Job.SAM => [110, 111],
-            Job.RDM => [131, 132],
-            Job.BLU => [134, 135, 146, 170],
-            // ShB
-            Job.GNB => [84],
-            Job.DNC => [121],
-            // EW
-            Job.SGE => [152],
-            Job.RPR => [153],
-            // DT
-            Job.VPR => [176],
-            Job.PCT => [177],
-            // Crafter
-            Job.ALC => [48, 49, 50],
-            Job.ARM => [36, 37, 38],
-            Job.BSM => [33, 34, 35],
-            Job.CRP => [30, 31, 32],
-            Job.CUL => [51, 52, 53],
-            Job.GSM => [39, 40, 41],
-            Job.LTW => [42, 43, 44],
-            Job.WVR => [45, 46, 47],
-            // Gatherer
-            Job.MIN => [54, 55, 56],
-            Job.BTN => [57, 58, 59],
-            Job.FSH => [60, 61, 62],
-            var _ => LogUnsupportedClassJobAndReturnEmpty(classJob)
-        };
+        if (!JobToClassQuestChapterIds.TryGetValue(classJob, out var chapterIds))
+            chapterIds = LogUnsupportedClassJobAndReturnEmpty(classJob);
 
         if (includeRoleQuests)
-            chapterIds.AddRange(GetRoleQuestIds(classJob));
+            chapterIds = [.. chapterIds, .. GetRoleQuestIds(classJob)];
 
         return GetQuestsInNewGamePlusChapters(chapterIds);
     }
 
-    private List<uint> LogUnsupportedClassJobAndReturnEmpty(Job classJob)
+    private ImmutableList<uint> LogUnsupportedClassJobAndReturnEmpty(Job classJob)
     {
         _pluginLog?.Debug("Ignoring unsupported class job in GetClassJobQuests: {ClassJob}", classJob);
         return [];
     }
 
-    public List<QuestInfo> GetRoleQuests(Job referenceClassJob) => GetQuestsInNewGamePlusChapters(GetRoleQuestIds(referenceClassJob).ToList());
+    public List<QuestInfo> GetRoleQuests(Job referenceClassJob) => GetQuestsInNewGamePlusChapters(GetRoleQuestIds(referenceClassJob).ToImmutableList());
 
     private static IEnumerable<uint> GetRoleQuestIds(Job classJob)
     {
@@ -429,7 +537,7 @@ internal sealed class QuestData
         };
     }
 
-    private List<QuestInfo> GetQuestsInNewGamePlusChapters(List<uint> chapterIds)
+    private List<QuestInfo> GetQuestsInNewGamePlusChapters(ImmutableList<uint> chapterIds)
     {
         return _quests.Values
             .Where(x => x is QuestInfo)
@@ -440,14 +548,12 @@ internal sealed class QuestData
 
     public List<QuestId> GetLockedClassQuests()
     {
-        Job startingClass;
+        Job startingClass = Job.ADV;
         unsafe
         {
             PlayerState* playerState = PlayerState.Instance();
             if (playerState != null)
                 startingClass = (Job)playerState->FirstClass;
-            else
-                startingClass = Job.ADV;
         }
 
         if (startingClass == Job.ADV)

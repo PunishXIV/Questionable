@@ -6,3 +6,10 @@ bin/
 !**/.vscode/*.code-snippets
 !.vscode/settings.json
 *.user
+.pi/
+TestResults/
+*.trx
+.nuget/
+*.zip
+.dalamud
+sixlabors.lic

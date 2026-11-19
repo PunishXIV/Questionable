@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,7 +15,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Jeweled Crozier"
@@ -23,8 +23,7 @@
             "AetheryteShortcutIf": {
               "InTerritory": [
                 419
-              ],
-              "InSameTerritory": true
+              ]
             }
           }
         }

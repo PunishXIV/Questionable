@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["liza", "Oblituarius"],
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,14 +16,12 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] The Chamber of Rule"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 131
               ]
@@ -128,9 +128,9 @@
         },
         {
           "Position": {
-            "X": -97.35628,
+            "X": -98.86582,
             "Y": -14.397484,
-            "Z": -176.70825
+            "Z": -172.42706
           },
           "StopDistance": 0.5,
           "TerritoryId": 146,
@@ -292,7 +292,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] The Chamber of Rule"

@@ -3,23 +3,20 @@
   "Author": "alydev",
   "Steps": [
     {
-      "DataId": 1003587,
       "Position": {
-        "X": 221.64778,
-        "Y": -0.95919776,
-        "Z": 257.986
+        "X": 410.0716,
+        "Y": 30.872314,
+        "Z": -11.414045
       },
+      "TerritoryId": 138,
+      "InteractionType": "WalkTo",
+      "AetheryteShortcut": "Western La Noscea - Aleport",
+      "TargetTerritoryId": 139,
+      "Fly": true
+    },
+    {
       "TerritoryId": 139,
-      "InteractionType": "Interact",
-      "StopDistance": 1,
-      "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-      "SkipConditions": {
-        "StepIf": {
-          "InTerritory": [
-            139
-          ]
-        }
-      }
+      "InteractionType": "None"
     }
   ],
   "Groups": [

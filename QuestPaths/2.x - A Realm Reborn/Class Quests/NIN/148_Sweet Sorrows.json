@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -145,7 +147,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Fishermen's Guild"
@@ -219,12 +220,7 @@
           "TerritoryId": 137,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
         },
         {
           "DataId": 1010251,
@@ -249,7 +245,8 @@
             "Z": 406.69873
           },
           "TerritoryId": 137,
-          "InteractionType": "SinglePlayerDuty"
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -281,7 +278,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Fishermen's Guild"

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using System.Collections.ObjectModel;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -12,6 +8,7 @@ using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class ClassJobUtils
 {
     private readonly ReadOnlyDictionary<Job, sbyte> _classJobToExpArrayIndex;
@@ -84,6 +81,9 @@ internal sealed class ClassJobUtils
             EExtendedClassJob.Sage => [Job.SGE],
             EExtendedClassJob.Viper => [Job.VPR],
             EExtendedClassJob.Pictomancer => [Job.PCT],
+            EExtendedClassJob.Beastmaster => [Job.BST],
+            //EExtendedClassJob.Bastion => [Job.BAS],
+            //EExtendedClassJob.Zephyr => [Job.ZPH],
 
             EExtendedClassJob.DoW => Enum.GetValues<Job>().Where(GameDataAdapter.DealsPhysicalDamage),
             EExtendedClassJob.DoM => Enum.GetValues<Job>().Where(GameDataAdapter.DealsMagicDamage),
@@ -106,11 +106,11 @@ internal sealed class ClassJobUtils
                 ? [gatherJob]
                 : [],
 
-            var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
+            var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, message: null)
         };
     }
 
-    private Job LookupConfiguredJob(EExtendedClassJob jobType)
+    internal Job LookupConfiguredJob(EExtendedClassJob jobType)
     {
         Job configuredJob;
         if (jobType is EExtendedClassJob.ConfiguredCombatJob)
@@ -120,7 +120,7 @@ internal sealed class ClassJobUtils
         else if (jobType is EExtendedClassJob.DoL)
             configuredJob = _configuration.General.GatheringJob;
         else
-            return Job.ADV;
+            return (ushort)jobType < Enum.GetNames(typeof(Job)).Length ? (Job)jobType : Job.ADV;
         ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob);
         HashSet<Job> jobsWithGearSet = jobGearSets
             .Select(x => x.ClassJob)
@@ -143,6 +143,7 @@ internal sealed class ClassJobUtils
             .ThenByDescending(x => x.ItemLevel)
             .ThenByDescending(x => x.ClassJob switch
             {
+                var _ when GameDataAdapter.IsClass(x.ClassJob) => 0,
                 var _ when GameDataAdapter.IsCaster(x.ClassJob) => 50,
                 var _ when GameDataAdapter.IsPhysicalRanged(x.ClassJob) => 40,
                 var _ when GameDataAdapter.IsMelee(x.ClassJob) => 30,
@@ -155,7 +156,7 @@ internal sealed class ClassJobUtils
             .FirstOrDefault();
     }
 
-    private unsafe ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> GetJobGearSets(bool combat = true)
+    internal unsafe ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> GetJobGearSets(bool combatOnly = true)
     {
         List<(Job, short, short)> jobs = [];
 
@@ -170,7 +171,7 @@ internal sealed class ClassJobUtils
             if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists))
             {
                 Job classJob = (Job)gearset->ClassJob;
-                if (combat && (GameDataAdapter.IsCrafter(classJob) || GameDataAdapter.IsGatherer(classJob)))
+                if (combatOnly && (GameDataAdapter.IsCrafter(classJob) || GameDataAdapter.IsGatherer(classJob)))
                     continue;
 
                 short level = playerState->ClassJobLevels[_classJobToExpArrayIndex[classJob]];
@@ -185,11 +186,11 @@ internal sealed class ClassJobUtils
         return jobs.AsReadOnly();
     }
 
-    private unsafe Job LookupQuestStartJob(ElementId? elementId)
+    internal unsafe Job LookupQuestStartJob(ElementId? elementId)
     {
         ArgumentNullException.ThrowIfNull(elementId);
 
-        if (elementId is QuestId questId)
+        if (elementId is QuestId questId && QuestFunctions.IsQuestAccepted(questId))
         {
             QuestWork* questWork = QuestManager.Instance()->GetQuestById(questId.Value);
             if (questWork->AcceptClassJob != 0)
@@ -197,5 +198,57 @@ internal sealed class ClassJobUtils
         }
 
         return Job.ADV;
+    }
+
+    private static readonly Dictionary<Job, (Job, ushort)> ClassToJobStoneData = new() {
+                { Job.GLA, (Job.PLD, 4542) },
+                { Job.PGL, (Job.MNK, 4543) },
+                { Job.MRD, (Job.WAR, 4544) },
+                { Job.LNC, (Job.DRG, 4545) },
+                { Job.ARC, (Job.BRD, 4546) },
+                { Job.CNJ, (Job.WHM, 4547) },
+                { Job.THM, (Job.BLM, 4548) },
+                { Job.ACN, (Job.SMN, 4549) },
+                { Job.ROG, (Job.NIN, 7886) }
+            };
+    public static (Job?, ushort?) ClassToJobStone(Job classJob)
+    {
+        if (ClassToJobStoneData.TryGetValue(classJob, out var value))
+        {
+            (var job, var item) = value;
+            bool unlocked = false;
+            unsafe
+            {
+                InventoryManager* inventoryManager = InventoryManager.Instance();
+                if (inventoryManager->GetInventoryItemCount(item) > 0)
+                    unlocked = true;
+            }
+            if (unlocked)
+            {
+                return (job, item);
+            }
+        }
+        return (null, null);
+    }
+
+    public unsafe bool SwitchClassJob(Job classJob)
+    {
+        if (PlayerState.Instance()->CurrentClassJobId == (uint)classJob)
+            return true;
+
+        RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
+        if (gearsetModule != null)
+        {
+            for (int i = 0; i < 100; ++i)
+            {
+                RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
+                if (gearset->ClassJob == (byte)classJob)
+                {
+                    gearsetModule->EquipGearset(gearset->Id);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -87,6 +87,17 @@
           "TerritoryId": 398,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "The Dravanian Forelands - Tailfeather"
+        },
+        {
+          "DataId": 1012304,
+          "Position": {
+            "X": 549.82825,
+            "Y": -51.27571,
+            "Z": 68.955444
+          },
+          "TerritoryId": 398,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179687
         },
         {
           "DataId": 1011916,

@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,11 +16,6 @@
           "TerritoryId": 137,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "Fly": true,
           "DialogueChoices": [
             {

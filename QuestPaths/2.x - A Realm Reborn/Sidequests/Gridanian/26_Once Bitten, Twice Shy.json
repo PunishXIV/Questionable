@@ -1,0 +1,49 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000297,
+          "Position": {
+            "X": -234.18,
+            "Y": 1.19476,
+            "Z": -184.436
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Botanists' Guild"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000315,
+          "Position": {
+            "X": -164.313,
+            "Y": 4.18506,
+            "Z": -17.4719
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gridania] Botanists' Guild",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

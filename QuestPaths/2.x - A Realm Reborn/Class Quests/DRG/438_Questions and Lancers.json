@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,14 +16,12 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Lancers' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]
@@ -208,14 +208,23 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         }
       ]
     },
     {
       "Sequence": 8,
       "Steps": [
+        {
+          "Position": {
+            "X": -32.55554,
+            "Y": -40.683945,
+            "Z": 196.98996
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
+        },
         {
           "Position": {
             "X": -39.98818,
@@ -259,6 +268,17 @@
       "Sequence": 10,
       "Steps": [
         {
+          "Position": {
+            "X": -32.55554,
+            "Y": -40.683945,
+            "Z": 196.98996
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
+        },
+        {
           "DataId": 1002815,
           "Position": {
             "X": -27.328918,
@@ -266,8 +286,7 @@
             "Z": 173.05249
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -282,7 +301,6 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Lancers' Guild"

@@ -6,6 +6,20 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2012870,
+          "Position": {
+            "X": 154.46704,
+            "Y": -26.29132,
+            "Z": -437.46094
+          },
+          "StopDistance": 1,
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "TargetTerritoryId": 1061
+        },
+        {
           "DataId": 1042278,
           "Position": {
             "X": 12.130859,

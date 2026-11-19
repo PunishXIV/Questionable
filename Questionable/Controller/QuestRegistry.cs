@@ -1,29 +1,23 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Model;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using Questionable.AutoGen.Plugin;
 using Questionable.Model.Questing;
-using Questionable.PathData;
 using Questionable.QuestPaths;
-using Questionable.Validation;
-using Questionable.Validation.Validators;
+using static Questionable.Domain.QuestInfo;
+using static Questionable.Utils.CacheUtils;
+using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Controller;
 
+// TODO: refactor — heavy nesting (29 lines indented ≥6 levels, max indent ~8 levels).
+[RegisterSingleton]
 internal sealed class QuestRegistry
 {
     private readonly IChatGui _chatGui;
@@ -36,9 +30,12 @@ internal sealed class QuestRegistry
     private readonly QuestData _questData;
     private readonly Dictionary<ElementId, Quest> _quests = [];
     private readonly QuestValidator _questValidator;
+    private readonly Configuration _configuration;
+    private readonly DraftQuestPathService _draftQuestPathService;
 
     private readonly ICallGateProvider<object> _reloadDataIpc;
     private readonly TerritoryData _territoryData;
+    private EExpansionVersion _characterExpansion;
 
     public QuestRegistry(
         IDalamudPluginInterface pluginInterface,
@@ -47,6 +44,8 @@ internal sealed class QuestRegistry
         JsonSchemaValidator jsonSchemaValidator,
         ILogger<QuestRegistry> logger,
         TerritoryData territoryData,
+        Configuration configuration,
+        DraftQuestPathService draftQuestPathService,
         IDataManager dataManager,
         IChatGui chatGui)
     {
@@ -58,11 +57,21 @@ internal sealed class QuestRegistry
         _territoryData = territoryData;
         _chatGui = chatGui;
         _dataManager = dataManager;
+        _configuration = configuration;
+        _draftQuestPathService = draftQuestPathService;
         _reloadDataIpc = _pluginInterface.GetIpcProvider<object>("Questionable.ReloadData");
+        unsafe
+        {
+            _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
+        }
     }
 
+    public EExpansionVersion CharacterExpansion => _characterExpansion;
+
     public IEnumerable<Quest> AllQuests => _quests.Values;
-    public int Count => _quests.Count(x => !x.Value.Root.Disabled);
+    private CachedValue<int> _count = new(ttlSeconds: 1);
+    public int Count => _count.Get(() => _quests.Count(x => !x.Value.Root.Disabled));
+    public bool ValidationRunning => _questValidator.Running;
     public int ValidationIssueCount => _questValidator.IssueCount;
     public int ValidationErrorCount => _questValidator.ErrorCount;
 
@@ -78,19 +87,27 @@ internal sealed class QuestRegistry
         _contentFinderConditionIds.Clear();
         _lowPriorityContentFinderConditionQuests.Clear();
 
-        LoadQuestsFromAssembly();
-        LoadQuestsFromDownloadedBundle();
-        LoadQuestsFromProjectDirectory();
+        if (!LoadQuestsFromDownloadedBundle())
+            //LoadQuestsFromAssembly();
+            _logger.LogWarning("Bundled quests were not loaded, we have no quests!");
+        if (_configuration.Advanced.Debug || Svc.PluginInterface.IsDev
+#if DEBUG
+        || true
+#endif
+        )
+        {
+            LoadQuestsFromProjectDirectory();
 
-        try
-        {
-            LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
-                Quest.ESource.UserDirectory);
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e,
-                "Failed to load all quests from user directory (some may have been successfully loaded)");
+            try
+            {
+                var _ = LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
+                    Quest.ESource.UserDirectory);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e,
+                    "Failed to load all quests from user directory (some may have been successfully loaded)");
+            }
         }
 
         LoadCfcIds();
@@ -107,6 +124,10 @@ internal sealed class QuestRegistry
         }
 
         _logger.LogInformation("Loaded {Count} quests in total", _quests.Count);
+        unsafe
+        {
+            _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
+        }
     }
 
     [Conditional("RELEASE")]
@@ -137,7 +158,6 @@ internal sealed class QuestRegistry
         _logger.LogInformation("Loaded {Count} quests from assembly", _quests.Count);
     }
 
-    [Conditional("DEBUG")]
     private void LoadQuestsFromProjectDirectory()
     {
         DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
@@ -148,13 +168,15 @@ internal sealed class QuestRegistry
             {
                 try
                 {
+                    uint count = 0;
                     foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
                     {
-                        LoadFromDirectory(
+                        count += LoadFromDirectory(
                             new(Path.Combine(pathProjectDirectory.FullName, expansionFolder)),
                             Quest.ESource.ProjectDirectory,
                             LogLevel.Trace);
                     }
+                    _logger.LogInformation("Loaded {Count} quests from project directory", count);
                 }
                 catch (Exception e)
                 {
@@ -173,11 +195,11 @@ internal sealed class QuestRegistry
     ///     overridden by the hand-authored user directory. A single bad entry is skipped rather
     ///     than aborting the rest of the bundle.
     /// </summary>
-    private void LoadQuestsFromDownloadedBundle()
+    private bool LoadQuestsFromDownloadedBundle()
     {
         string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
         if (!File.Exists(bundlePath))
-            return;
+            return false;
 
         try
         {
@@ -186,7 +208,7 @@ internal sealed class QuestRegistry
             if (manifest == null)
             {
                 _logger.LogWarning("Downloaded path bundle has no manifest; ignoring it");
-                return;
+                return false;
             }
 
             // Gate A: never load a bundle that needs a newer plugin than this one.
@@ -195,7 +217,7 @@ internal sealed class QuestRegistry
                 _logger.LogWarning(
                     "Ignoring downloaded path bundle (data version {DataVersion}): it requires plugin data format {MinFormat}, this plugin supports {CurrentFormat}",
                     manifest.DataVersion, manifest.MinPluginDataFormat, PathDataFormat.CurrentVersion);
-                return;
+                return false;
             }
 
             int loaded = 0, failed = 0;
@@ -225,7 +247,9 @@ internal sealed class QuestRegistry
         catch (Exception e)
         {
             _logger.LogError(e, "Failed to load downloaded path bundle; falling back to the compiled baseline");
+            return false;
         }
+        return true;
     }
 
     private void LoadCfcIds()
@@ -290,16 +314,17 @@ internal sealed class QuestRegistry
         _quests[quest.Id] = quest;
     }
 
-    private void LoadFromDirectory(DirectoryInfo directory, Quest.ESource source,
+    private uint LoadFromDirectory(DirectoryInfo directory, Quest.ESource source,
         LogLevel logLevel = LogLevel.Information)
     {
+        uint count = 0;
         if (!directory.Exists)
         {
             _logger.LogInformation("Not loading quests from {DirectoryName} (doesn't exist)", directory);
-            return;
+            return count;
         }
 
-        if (source == Quest.ESource.UserDirectory)
+        if (source == Quest.ESource.UserDirectory || source == Quest.ESource.ProjectDirectory)
             _logger.Log(logLevel, "Loading quests from {DirectoryName}", directory);
         foreach (FileInfo fileInfo in directory.GetFiles("*.json"))
         {
@@ -307,6 +332,7 @@ internal sealed class QuestRegistry
             {
                 using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
                 LoadQuestFromStream(fileInfo.Name, stream, source);
+                count += 1;
             }
             catch (Exception e)
             {
@@ -315,7 +341,8 @@ internal sealed class QuestRegistry
         }
 
         foreach (DirectoryInfo childDirectory in directory.GetDirectories())
-            LoadFromDirectory(childDirectory, source, logLevel);
+            count += LoadFromDirectory(childDirectory, source, logLevel);
+        return count;
     }
 
     private static ElementId? ExtractQuestIdFromName(string resourceName)
@@ -340,9 +367,21 @@ internal sealed class QuestRegistry
         if (classJob.AsJob() != classJob)
             allQuests.AddRange(_questData.GetClassJobQuests(classJob.AsJob(), includeRoleQuests));
 
+        if (classJob.Equals(Job.FSH) && allQuests.Any(x => x.QuestId.Value.Equals(2898)))
+            allQuests.Insert(allQuests.IndexOf(x => x.QuestId.Value.Equals(2898)), (QuestInfo)_questData.GetQuestInfo(new QuestId(2922)));
+
         return allQuests
             .Where(x => IsKnownQuest(x.QuestId))
             .ToList();
+    }
+
+    public bool TryGetQuestByContentFinderConditionId(uint cfcId, out IQuestInfo? questInfo)
+    {
+        if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId qId, QuestStep step) value) &&
+                _questData.TryGetQuestInfo(value.qId, out questInfo))
+            return questInfo != null;
+        questInfo = null;
+        return false;
     }
 
     public bool TryGetDutyByContentFinderConditionId(uint cfcId, [NotNullWhen(true)] out DutyOptions? dutyOptions)
@@ -358,17 +397,222 @@ internal sealed class QuestRegistry
     }
 
     internal static FileInfo AssemblyLocation => Svc.PluginInterface.AssemblyLocation;
-    public static string GetFilename(IQuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
-#if DEBUG
-    public static (bool, string) OpenEditor(IQuestInfo info)
+    public static string GetFilename(IQuestInfo info) => GetFilename((QuestInfo)info);
+    public static string GetFilename(QuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
+    public static QuestRoot CreateQuestRoot(QuestInfo info)
     {
-        return OpenEditor(GetFilename(info));
+        QuestSequence seq0 = new()
+        {
+            Sequence = 0,
+            Steps = [
+                    new QuestStep(
+                        EInteractionType.AcceptQuest,
+                        info.IssuerDataId,
+                        info.IssuerLocation.Position,
+                        info.IssuerLocation.Territory.RowId
+                    ) {
+                        Fly = GameFunctions.IsFlyingUnlocked(info.IssuerLocation.Territory.RowId) ? true : null
+                    }
+                ]
+        };
+        List<QuestSequence> sequences = [seq0];
+        Svc.Log.Debug($"NumSequences: {info.NumSequences}");
+        for (var i = 0; i <= info.NumSequences; i++)
+        {
+            SheetLevel? level = i < info.ToDoLocations.Count ? info.ToDoLocations[i] : null;
+            if (level?.Position == null || i == 255)
+                continue;
+            sequences.Add(new QuestSequence
+            {
+                Sequence = (byte)(i + 1),
+                Steps = [
+                    new QuestStep(
+                        level?.Object != null && level?.Object.RowId != 0 ? EInteractionType.Interact : EInteractionType.WalkTo,
+                        level?.Object.RowId != 0 ? level?.Object.RowId : null,
+                        level?.Position + new System.Numerics.Vector3(0,level?.Object.RowId == 0 ? 30 : 0,0),
+                        level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId
+                    ) {
+                        Fly = GameFunctions.IsFlyingUnlocked(level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId) ? true : null
+                    }
+                ]
+            });
+        }
+        QuestSequence seq255 = new()
+        {
+            Sequence = 255,
+            Steps = [
+                    new QuestStep(
+                        EInteractionType.CompleteQuest,
+                        info.ToDoLocations[^1].Object.RowId,
+                        info.ToDoLocations[^1].Position,
+                        info.ToDoLocations[^1].Territory.RowId
+                    ) {
+                        Fly = GameFunctions.IsFlyingUnlocked(info.ToDoLocations[^1].Territory.RowId) ? true : null
+                    }
+                ]
+        };
+        sequences.Add(seq255);
+        var name = "Anonymous";
+        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
+        if (pluginConfig is Configuration config)
+            name = config.General.DisplayName;
+        return new QuestRoot()
+        {
+            Author = [name],
+            QuestSequence = sequences
+        };
     }
+    public static string GetQuestPathsDirectory()
+    {
+        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
+        if (pluginConfig is Configuration config && config.Advanced.Debug && Svc.PluginInterface.IsDev)
+            return Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths");
+        return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+    }
+    public static string? GetFullPath(IQuestInfo info, bool withFilename = true) => GetFullPath((QuestInfo)info, withFilename);
+    public static string? GetFullPath(QuestInfo info, bool withFilename = true)
+    {
+        var filename = GetFilename(info);
+        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
+        if (pluginConfig is Configuration config && config.Advanced.Debug && Svc.PluginInterface.IsDev)
+        {
+            DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
+            if (targetFolder == null)
+                return null;
+            string? path = "";
+            if (info.JournalGenre != null && info.JournalGenre != uint.MaxValue)
+            {
+                var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
+                path = $"{genre.Name}";
+                Svc.Log.Debug($"Genre: {genre.Name}");
+                if (genre.JournalCategory.ValueNullable != null)
+                {
+                    var category = genre.JournalCategory.Value;
+                    Svc.Log.Debug($"Category: {category.Name}");
+                    if (category.Name != genre.Name)
+                        path = Path.Combine($"{category.Name}", path);
+                    if (category.JournalSection.ValueNullable != null)
+                    {
+                        var section = category.JournalSection.Value;
+                        Svc.Log.Debug($"Section: {section.Name}");
+                        if (section.Name != category.Name)
+                        {
+                            var catPath = $"{category.Name}".Replace($"{section.Name}", "").Trim();
+                            path = Path.Combine($"{section.Name}", catPath, category.Name != genre.Name ? $"{genre.Name}" : "");
+                        }
+                    }
+                }
+            }
+            if (path == null || path.Length == 0)
+            {
+                if (withFilename)
+                    return Path.Combine(targetFolder.FullName, "Unsorted", filename);
+                return Path.Combine(targetFolder.FullName, "Unsorted");
+            }
+            if (withFilename)
+                return Path.Combine(targetFolder.FullName, path, filename);
+            return Path.Combine(targetFolder.FullName, path);
+        }
+        if (withFilename)
+            return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests", filename);
+        return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+    }
+    public static (bool, FileInfo?, string) CreatePath(IQuestInfo info) => CreatePath((QuestInfo)info);
+    public static (bool, FileInfo?, string) CreatePath(QuestInfo info, Quest? quest = null, bool dryrun = false)
+    {
+        var path = GetFullPath(info);
+        if (path == null)
+            return (false, null, "No directory path returned");
+        if (!dryrun)
+        {
+            var dirName = Path.GetDirectoryName(path);
+            if (dirName == null)
+                return (false, null, "GetDirectoryName failed");
+            Directory.CreateDirectory(dirName);
+        }
+        FileInfo file = new(path);
+        FileStream? stream = null;
+        if (!dryrun)
+            if (!file.Exists)
+                stream = file.Create();
+        stream ??= file.OpenRead();
+        if (stream.Length > 0)
+            return (true, file, "Path already exists");
+        stream.Dispose();
+        if (!dryrun)
+        {
+            JsonObject? jsonNode;
+            JsonObject newNode;
+            if (quest == null)
+            {
+                jsonNode = (JsonObject)JsonSerializer.SerializeToNode(CreateQuestRoot(info), JsonOptions.Default)!;
+                newNode = new()
+                {
+                    {
+                        "$schema",
+                        "https://qstxiv.github.io/schema/quest-v1.json"
+                    }
+                };
+                foreach ((string key, JsonNode? value) in jsonNode)
+                    newNode.Add(key, value?.DeepClone());
+            }
+            else
+            {
+                newNode = (JsonObject)JsonSerializer.SerializeToNode(quest.Root, JsonOptions.Default)!;
+            }
+            using FileStream writeStream = file.OpenWrite();
+            using Utf8JsonWriter writer = new(writeStream, new()
+            {
+                Encoder = JsonOptions.Default.Encoder,
+                Indented = JsonOptions.Default.WriteIndented
+            });
+            newNode.WriteTo(writer, JsonOptions.Default);
+        }
+        return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
+    }
+
+    public static (bool Success, string Message) SaveUserPath(QuestInfo info, QuestRoot root)
+    {
+        string directory = Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+        Directory.CreateDirectory(directory);
+        string path = Path.Combine(directory, GetFilename(info));
+
+        JsonObject serialized = (JsonObject)JsonSerializer.SerializeToNode(root, JsonOptions.Default)!;
+        JsonObject withSchema = new()
+        {
+            {
+                "$schema",
+                "https://qstxiv.github.io/schema/quest-v1.json"
+            }
+        };
+        foreach ((string key, JsonNode? value) in serialized)
+            withSchema.Add(key, value?.DeepClone());
+
+        using (FileStream stream = new(path, FileMode.Create))
+        using (Utf8JsonWriter writer = new(stream, new()
+        {
+            Encoder = JsonOptions.Default.Encoder,
+            Indented = JsonOptions.Default.WriteIndented
+        }))
+        {
+            withSchema.WriteTo(writer, JsonOptions.Default);
+        }
+
+        Svc.Log.Information($"Saved user quest path to {path}");
+        return (true, path);
+    }
+
+    public static string OpenEditorDescription = _L("Clicking this button writes the quest path to a file and opens it in your default text editor.") +
+               _L("After making a change, click Reload Data below.") + "\n" +
+               _L("To revert to the official version, delete the file and click Reload Data again.") + "\n" +
+               _L("Left click: Open this quest in your default .json text editor\nRight click: Open Quests folder");
+    public static (bool, string) OpenEditor(IQuestInfo info) => OpenEditor((QuestInfo)info);
+    public static (bool, string) OpenEditor(QuestInfo info) => OpenEditor(GetFilename(info), info);
     public (bool, string) OpenEditor(ushort questId)
     {
         if (TryGetQuest(new QuestId(questId), out Quest? quest))
-            return OpenEditor(GetFilename(quest.Info));
-        return (false, $"could not get quest from {questId}");
+            return OpenEditor(GetFilename(quest.Info), (QuestInfo)quest.Info, quest);
+        return OpenEditor(_questData.GetQuestInfo(new QuestId(questId)));
     }
     public unsafe (bool, string) OpenEditor()
     {
@@ -399,21 +643,41 @@ internal sealed class QuestRegistry
         return (false, "could not get tracked quest");
     }
 
-    public static (bool, string) OpenEditor(string filename)
+    public static (bool, string) OpenEditor(string filename, QuestInfo info, Quest? quest = null)
     {
-        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
+        var parentDirectory = GetQuestPathsDirectory();
+        DirectoryInfo? targetFolder = Directory.CreateDirectory(parentDirectory);
         if (targetFolder == null)
             return (false, "couldn't find QuestPaths folder");
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
         if (file == null)
-            return (false, $"couldn't find {filename}");
+        {
+            (bool success, FileInfo? path, string message) = CreatePath(info, quest);
+            Svc.Log.Debug($"CreatePath: {success}, {path}, {message}");
+            if (success && path != null)
+                file = path;
+            else
+                return (false, $"couldn't find {filename}");
+        }
         Process.Start(new ProcessStartInfo
         {
-            FileName = filename,
+            FileName = file.FullName,
             WorkingDirectory = file.DirectoryName,
             UseShellExecute = true
         });
         return (true, file.FullName);
+    }
+
+    public static void OpenFolder()
+    {
+        var parentDirectory = GetQuestPathsDirectory();
+        Directory.CreateDirectory(parentDirectory);
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = parentDirectory,
+            UseShellExecute = true,
+            Verb = "open"
+        });
     }
 
     public static FileInfo? FindFilenameInDirectory(DirectoryInfo root, string filename)
@@ -421,7 +685,7 @@ internal sealed class QuestRegistry
         foreach (FileInfo file in root.GetFiles())
         {
             if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase) || // if filename match case insensitive
-                file.Name.StartsWith( filename[..(filename.IndexOf('_')+1)] )) // if ID at start of filename match
+                file.Name.StartsWith(filename[..(filename.IndexOf('_') + 1)])) // if ID at start of filename match
                 return file;
         }
 
@@ -433,5 +697,4 @@ internal sealed class QuestRegistry
 
         return null;
     }
-#endif
 }

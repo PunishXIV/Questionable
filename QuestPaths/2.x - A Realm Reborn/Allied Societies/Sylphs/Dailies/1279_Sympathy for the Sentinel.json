@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -194,30 +194,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Comment": "Moving out of combat range",
-          "Position": {
-            "X": 45.215626,
-            "Y": -20.8526,
-            "Z": -510.42453
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 45.215626,
-                  "Y": -20.8526,
-                  "Z": -510.42453
-                },
-                "TerritoryId": 152,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
         {
           "DataId": 1005563,
           "Position": {

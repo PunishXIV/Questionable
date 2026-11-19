@@ -1,14 +1,29 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": [
     "JerryWester",
     "Kiarra"
   ],
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-29"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1011217,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433,
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Last Vigil"
+          ]
+        },
         {
           "DataId": 1012329,
           "Position": {
@@ -87,6 +102,17 @@
           "TerritoryId": 401,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "The Sea of Clouds - Camp Cloudtop"
+        },
+        {
+          "DataId": 1012303,
+          "Position": {
+            "X": -630.5791,
+            "Y": -119.631645,
+            "Z": 484.33655
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179694
         },
         {
           "DataId": 1011952,

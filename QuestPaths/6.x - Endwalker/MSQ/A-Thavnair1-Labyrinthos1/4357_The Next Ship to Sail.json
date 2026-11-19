@@ -1,22 +1,11 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "jigain", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona"
-        },
         {
           "DataId": 1036452,
           "Position": {
@@ -25,6 +14,7 @@
             "Z": -8.835022
           },
           "TerritoryId": 351,
+          "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -41,7 +31,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Arcanists' Guild"

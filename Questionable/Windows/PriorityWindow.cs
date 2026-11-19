@@ -1,34 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Controller;
-using Questionable.Data;
-using Questionable.Functions;
-using Questionable.Model;
+using Humanizer;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
-using Questionable.Windows.QuestComponents;
-using Questionable.Windows.Utils;
+using Questionable.Windows.Common.Ui;
+using AchievementCategory = Lumina.Excel.Sheets.AchievementCategory;
+using Addon = Lumina.Excel.Sheets.Addon;
+using BeastTribe = Lumina.Excel.Sheets.BeastTribe;
+using ExVersion = Lumina.Excel.Sheets.ExVersion;
+using JournalCategory = Lumina.Excel.Sheets.JournalCategory;
+using JournalGenre = Lumina.Excel.Sheets.JournalGenre;
+using ContentRoulette = Lumina.Excel.Sheets.ContentRoulette;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class PriorityWindow : LWindow
 {
     private const string ClipboardPrefix = "qst:priority:";
     private const string LegacyClipboardPrefix = "qst:v1:";
     private const char ClipboardSeparator = ';';
-    private const string JobQuestsPresetName = "Job Quests";
+    private readonly string JobQuestsPresetName = _L("Job Quests");
     private readonly IChatGui _chatGui;
 
     private readonly Configuration _configuration;
@@ -41,6 +36,7 @@ internal sealed class PriorityWindow : LWindow
     private readonly QuestSelector _questSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
+    private readonly QuestJournalUtils _questJournalUtils;
     private Dictionary<string, List<ElementId>>? _builtInPresets;
     private ElementId? _draggedItem;
     private Job? _lastKnownJob;
@@ -49,8 +45,8 @@ internal sealed class PriorityWindow : LWindow
 
     public PriorityWindow(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, QuestRegistry questRegistry,
-        IDalamudPluginInterface pluginInterface, Configuration configuration, QuestData questData)
-        : base("Priority Quests###QuestionableQuestPriority")
+        IDalamudPluginInterface pluginInterface, Configuration configuration, QuestData questData, QuestJournalUtils questJournalUtils)
+        : base(_L("Priority Quests") + "###QuestionableQuestPriority")
     {
         _questController = questController;
         _questFunctions = questFunctions;
@@ -62,6 +58,7 @@ internal sealed class PriorityWindow : LWindow
         _pluginInterface = pluginInterface;
         _configuration = configuration;
         _questData = questData;
+        _questJournalUtils = questJournalUtils;
 
         _questSelector.SuggestionPredicate = quest =>
             !quest.Info.IsMainScenarioQuest &&
@@ -86,50 +83,54 @@ internal sealed class PriorityWindow : LWindow
             LoadPreset(JobQuestsPresetName);
         _lastKnownJob = currentJob;
 
-        if (ImGui.CollapsingHeader("Explanation"))
+        if (QstWidgets.SectionHeader(_L("Explanation"), "PriorityExplanation", defaultOpen: false))
         {
             ImGui.TextWrapped(
-                "Questionable will generally try to do:");
-            ImGui.BulletText("Priority quests added below, in order");
-            ImGui.BulletText("'Priority' quests: class quests, ARR primals, ARR raids");
-            ImGui.BulletText(
-                "Supported quests in your 'To-Do list'\n(quests from your Quest Journal that are always on-screen)");
-            ImGui.BulletText("MSQ quest (if available, unless it is marked as 'ignored'\nin your Journal)");
+                _L("Questionable will generally try to do:"));
+            QstWidgets.BulletTextWrapped(_L("Priority quests added below, in order"));
+            QstWidgets.BulletTextWrapped(_L("'Priority' quests: class quests, ARR primals, ARR raids"));
+            QstWidgets.BulletTextWrapped(
+                _L("Supported quests in your 'To-Do list' (quests from your Quest Journal that are always on-screen)"));
+            QstWidgets.BulletTextWrapped(_L("MSQ quest (if available, unless it is marked as 'ignored' in your Journal)"));
             ImGui.TextWrapped(
-                "If you don't have any active MSQ quest and there is no Priority Quest added here, it will always try to pick up the next quest in the MSQ first.");
+                _L("If you don't have any active MSQ quest and there is no Priority Quest added here, " +
+                "it will always try to pick up the next quest in the MSQ first."));
         }
 
         DrawPresets();
 
         ImGui.Separator();
         ImGui.Spacing();
-        ImGui.Text("Quests to do first:");
+        ImGui.Text(_L("Quests to do first:"));
         _questSelector.DrawSelection();
         DrawQuestList();
 
+        DrawCleanUpButton();
+
         List<ElementId> clipboardItems = ParseClipboardItems();
-        ImGui.BeginDisabled(clipboardItems.Count == 0);
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Download, "Import from Clipboard"))
-            ImportFromClipboard(clipboardItems);
-        ImGui.EndDisabled();
-        ImGui.SameLine();
-        ImGui.BeginDisabled(_questController.PriorityManager.IsEmpty);
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Upload, "Export to Clipboard"))
-            ExportToClipboard();
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Check, "Remove finished Quests"))
-            _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestComplete);
-        ImGui.SameLine();
-
-        using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+        using (ImRaii.Disabled(clipboardItems.Count == 0))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
-                _questController.PriorityManager.Clear();
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Import from Clipboard")))
+                ImportFromClipboard(clipboardItems);
         }
+        ImGui.SameLine();
+        using (ImRaii.Disabled(_questController.PriorityManager.IsEmpty))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Upload, _L("Export to Clipboard")))
+                ExportToClipboard();
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Remove finished Quests")))
+                _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestFinishedForPriorityRemoval, _questFunctions.IsQuestAccepted);
+            ImGui.SameLine();
 
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip("Hold CTRL to enable this button.");
+            using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+            {
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear All")))
+                    _questController.PriorityManager.Clear();
+            }
 
-        ImGui.EndDisabled();
+            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+        }
     }
 
     private void DrawQuestList()
@@ -166,32 +167,44 @@ internal sealed class PriorityWindow : LWindow
                 if (hovered)
                     _questTooltipComponent.Draw(quest.Info);
 
+                _questJournalUtils.ShowContextMenu(quest.Info, quest, nameof(PriorityWindow));
+
+                if (_questController.PriorityManager.IsAcceptOnly(quest.Id))
+                {
+                    bool accepted = _questFunctions.IsQuestAccepted(quest.Id);
+                    ImGui.SameLine();
+                    ImGui.AlignTextToFramePadding();
+                    using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                        ImGui.TextColored(accepted ? QstTheme.Success : QstTheme.Accent,
+                            FontAwesomeIcon.Inbox.ToIconString());
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(accepted
+                            ? _L("Accepted — completion follows the normal quest order.")
+                            : _L("Accept only — picked up before any queued quest is completed."));
+                }
+
                 if (priorityQuests.Count > 1)
                 {
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
-                        int _pad = 4;
-#if DEBUG
-                        _pad += 4;
-#endif
+                        int _pad = 8;
+
                         ImGui.SameLine(ImGui.GetContentRegionAvail().X +
                                        ImGui.GetStyle().WindowPadding.X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.ArrowsUpDown.ToIconString()).X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
-#if DEBUG
                                        ImGui.CalcTextSize(FontAwesomeIcon.Edit.ToIconString()).X -
-#endif
                                        ImGui.GetStyle().FramePadding.X * _pad -
                                        ImGui.GetStyle().ItemSpacing.X);
                     }
 
                     if (_draggedItem == quest.Id)
                     {
-                        ImGuiComponents.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown,
+                        ImGuiComponentsLocal.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown,
                             ImGui.ColorConvertU32ToFloat4(ImGui.GetColorU32(ImGuiCol.ButtonActive)));
                     }
                     else
-                        ImGuiComponents.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown);
+                        ImGuiComponentsLocal.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown);
 
                     if (_draggedItem == null && ImGui.IsItemActive() && ImGui.IsMouseDragging(ImGuiMouseButton.Left))
                         _draggedItem = quest.Id;
@@ -202,27 +215,21 @@ internal sealed class PriorityWindow : LWindow
                 {
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
-                        int _pad = 2;
-#if DEBUG
-                        _pad += 4;
-#endif
+                        int _pad = 6;
+
                         ImGui.SameLine(ImGui.GetContentRegionAvail().X +
                                        ImGui.GetStyle().WindowPadding.X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
-#if DEBUG
                                        ImGui.CalcTextSize(FontAwesomeIcon.Edit.ToIconString()).X -
-#endif
                                        ImGui.GetStyle().FramePadding.X * _pad);
                     }
                 }
 
-#if DEBUG
-                if (ImGuiComponents.IconButton(FontAwesomeIcon.Edit))
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     (bool success, string filename) = QuestRegistry.OpenEditor(quest.Info);
                 ImGui.SameLine();
-#endif
 
-                if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
+                if (ImGuiComponentsLocal.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
                     itemToRemove = quest;
             }
 
@@ -239,10 +246,10 @@ internal sealed class PriorityWindow : LWindow
             int oldIndex = priorityQuests.IndexOf(draggedItem);
 
             (Vector2 topLeft, Vector2 bottomRight) = itemPositions[oldIndex];
-            ImGui.GetWindowDrawList().AddRect(topLeft, bottomRight, ImGui.GetColorU32(ImGuiColors.DalamudGrey), 3f,
+            ImGui.GetWindowDrawList().AddRect(topLeft, bottomRight, ImGui.GetColorU32(QstTheme.TextMuted), 3f,
                 ImDrawFlags.RoundCornersAll);
 
-            int newIndex = itemPositions.FindIndex(x => ImGui.IsMouseHoveringRect(x.TopLeft, x.BottomRight, true));
+            int newIndex = itemPositions.FindIndex(x => ImGui.IsMouseHoveringRect(x.TopLeft, x.BottomRight, clip: true));
             if (newIndex >= 0 && oldIndex != newIndex)
             {
                 itemToAdd = priorityQuests.Single(x => x.Id == _draggedItem);
@@ -255,6 +262,34 @@ internal sealed class PriorityWindow : LWindow
 
         if (itemToAdd != null)
             _questController.PriorityManager.Move(priorityQuests.IndexOf(itemToAdd), indexToAdd);
+    }
+
+    private void DrawCleanUpButton()
+    {
+        int openQuestCount = _questFunctions.OpenQuests.Count(x => !_questController.PriorityManager.Contains(x));
+        using (ImRaii.Disabled(openQuestCount == 0))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Broom, _L("Clean Up")))
+                AddOpenQuests();
+        }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+        {
+            ImGui.SetTooltip(openQuestCount == 0
+                ? _L("Every open quest Questionable can continue is already in this list.")
+                : _LF("Add the {0} quest(s) you already have open to this list, finished ones first.",
+                    openQuestCount));
+        }
+    }
+
+    private void AddOpenQuests()
+    {
+        IReadOnlyList<Quest> added = _questController.QueueOpenQuests();
+        _chatGui.Print(
+            added.Count == 0
+                ? _L("No open quests to clean up.")
+                : _LF("Added {0} open quest(s) to the priority list.", added.Count),
+            CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
     private static List<ElementId> ParseClipboardItems()
@@ -307,37 +342,27 @@ internal sealed class PriorityWindow : LWindow
     {
         string clipboardText = EncodeQuestPriority();
         ImGui.SetClipboardText(clipboardText);
-        _chatGui.Print("Copied quests to clipboard.", CommandHandler.MessageTag, CommandHandler.TagColor);
+        _chatGui.Print(_L("Copied quests to clipboard."), CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
     private void ImportFromClipboard(List<ElementId> questElements) => _questController.PriorityManager.Import(questElements);
 
     private void DrawPresets()
     {
-        if (!ImGui.CollapsingHeader("Presets"))
+        if (!QstWidgets.SectionHeader(_L("Presets"), "Presets", defaultOpen: false))
             return;
 
         Dictionary<string, List<ElementId>> builtInPresets = GetOrCreateBuiltInPresets();
         Dictionary<string, List<string>> userPresets = _configuration.Priority.Presets;
 
-        string preview = _selectedPresetName ?? "Select a preset...";
+        string preview = _selectedPresetName ?? _L("Select a preset...");
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
         if (ImGui.BeginCombo("##PresetSelection", preview, ImGuiComboFlags.HeightLarge))
         {
-            ImGui.TextDisabled("Built-in");
-            foreach (string name in builtInPresets.Keys)
-            {
-                if (ImGui.Selectable(name, _selectedPresetName == name))
-                {
-                    _selectedPresetName = name;
-                    LoadPreset(name);
-                }
-            }
-
             if (userPresets.Count > 0)
             {
                 ImGui.Separator();
-                ImGui.TextDisabled("Custom");
+                ImGui.TextDisabled(_L("Custom"));
                 foreach (string name in userPresets.Keys)
                 {
                     if (ImGui.Selectable(name, _selectedPresetName == name))
@@ -348,13 +373,26 @@ internal sealed class PriorityWindow : LWindow
                 }
             }
 
+            ImGui.TextDisabled(_L("Built-in"));
+            foreach (string name in builtInPresets.Keys)
+            {
+                if (ImGui.Selectable(name, _selectedPresetName == name))
+                {
+                    _selectedPresetName = name;
+                    LoadPreset(name);
+                }
+            }
+
             ImGui.EndCombo();
         }
+
+        ImGui.TextColoredWrapped(QstTheme.Danger, _L("Selecting a preset will override your current priority list and activate the preset. " +
+            "You can save your current list as a preset by entering a name below and selecting Save."));
 
         ImGui.Spacing();
 
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-        ImGui.InputTextWithHint("##PresetName", "Preset name...", ref _presetName, 128);
+        ImGui.InputTextWithHint("##PresetName", _L("Preset name..."), ref _presetName, 128);
 
         bool nameEmpty = string.IsNullOrWhiteSpace(_presetName);
         bool nameIsBuiltIn = !nameEmpty && builtInPresets.ContainsKey(_presetName.Trim());
@@ -363,12 +401,15 @@ internal sealed class PriorityWindow : LWindow
 
         using (ImRaii.Disabled(nameEmpty || nameIsBuiltIn || noQuests || (nameExists && !ImGui.IsKeyDown(ImGuiKey.ModCtrl))))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Save, "Save Preset"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, _L("Save Preset")))
             {
                 SavePreset(_presetName.Trim());
                 _presetName = string.Empty;
             }
         }
+        ImGui.SameLine();
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Redo))
+            _builtInPresets = null;
 
         bool isUserPreset = _selectedPresetName != null && userPresets.ContainsKey(_selectedPresetName);
         if (isUserPreset)
@@ -376,7 +417,7 @@ internal sealed class PriorityWindow : LWindow
             ImGui.SameLine();
             using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
             {
-                if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Delete Preset"))
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Delete Preset")))
                 {
                     userPresets.Remove(_selectedPresetName!);
                     _selectedPresetName = null;
@@ -385,13 +426,13 @@ internal sealed class PriorityWindow : LWindow
             }
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                ImGui.SetTooltip("Hold CTRL to enable this button.");
+                ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
         }
 
         if (nameIsBuiltIn)
-            ImGui.TextColored(ImGuiColors.DalamudRed, "Cannot overwrite a built-in preset.");
+            ImGui.TextColored(QstTheme.Danger, _L("Cannot overwrite a built-in preset."));
         else if (nameExists)
-            ImGui.TextColored(ImGuiColors.DalamudYellow, "Hold CTRL to overwrite existing preset.");
+            ImGui.TextColored(QstTheme.Amber, _L("Hold CTRL to overwrite existing preset."));
     }
 
     //TODO Add all jobs for all role quests
@@ -404,22 +445,167 @@ internal sealed class PriorityWindow : LWindow
             835, 903, 916, 918, 919, 920, 929, 928, 930, 931, 932, 945, 1010, 1011, 1015, 1017, 1019, 1553, 1021, 1023,
             1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035
         ]).FromNumericListOfQuests();
-        _builtInPresets = new()
+        List<ElementId> DoHDoLUnlocks = ((ushort[])[
+            152,  // desynth
+            639,  // melding
+            3018, 1422, // craft glamour prisms (blocks the other)
+            2095, // inscrutable
+            2096, // specialist
+            2097, // reduction
+            2098, // collectables lv60
+            1551, // zhloe custom delivery
+        ]).FromNumericListOfQuests();
+        List<ElementId> postARRUnlocks = ((ushort[])[
+            // don't add DoH/DoL unlocks to this
+            // Features
+            434, 435, 488, 3081, 3201, 437, 489, 436,  // gold saucer
+            1212, 565, // unlock LB, then second part of 436 ^, then unlock rest of housing districts
+            1213, 1214, // housing districts
+            160, 1463, // materia
+            699, 3017, 1558, // dyes, glams
+            1210, // aesthetician
+            1211, // treasure maps
+            1431, // challenge log
+            1432, 1433, 1434, // retainers
+            1563, 1564, 1565, // hunts
+            1004, 1005, 1006, // pvp
+            4644, // island sanc visit
+            3759, // new game+
+            5187, // free fantasia
+            // Duties
+            94, // sastacha hard
+            697, 1410, // halatali
+            764, 96, // qarn
+            870, 431, // wanderer's palace
+            921, // cutter's cry
+            1128, 1129, 1130, // dzemael gc
+            1131, 1132, 1133, // aurum gc
+            1135, // amdapor (requires aurum)
+            430, // amdapor hard
+            1208, 1209, // pharos sirius
+            1215, // haukke hard
+            1216, // copperbell hard
+            1389, // lost city of amdapor
+            1411, // brayflox hard
+            1524, // tamtara hard
+            1525, // stone vigil hard
+            1526, // hullbreaker isle
+            //2248, // hullbreaker hard requires HW
+            1556, // palace of the dead
+            1308, // ultimates
+            705, // ARR relics
+            1048,1157,1158,1194,1195,1196,1197,1198,1412,1413,1530,90, // primal EX
+            1008, 1009, 1012, 433, // urth's fount chain
+        ]).FromNumericListOfQuests();
+        List<ElementId> postHWUnlocks = ((ushort[])[
+            2248, // hullbreaker hard
+            2201, // sirius hard
+            2282, // lost city amdapor hard
+            2203, // thordan ex
+            2119, // hw hunts
+            2113, // fractal continuum
+            2112, // neverreap
+            2202, // arboretum
+            2118, // stone sky sea
+            2392, // WT
+            2386, // gubal hard
+            2402, // sohm al hard
+        ]).FromNumericListOfQuests();
+        List<ElementId> jobUnlocks = ((ushort[])[
+            // Gridania
+            181,131,219, // Archer
+            180,132,218, // Lancer
+            182,133,211, // Conjurer
+            184,138,205, // Carpenter
+            188,105,209, // Leatherworker
+            193,3,208, // Botanist
+            3261,3262, // Gunbreaker
+            4854,4855, // Pictomancer
+            5490,5491, // Beastmaster
+            // Limsa
+            179,310,312, // Marauder
+            451,452,454, // Arcanist
+            101,102,104, // Rogue
+            1134,1107,1108, // Fisher
+            185,291,292, // Blacksmith
+            186,273,274, // Armorer
+            191,271,254, // Culinarian
+            3249,3250, // Dancer
+            3192,3193, // Blue Mage
+            4067,4068, // Sage
+            // Uldah
+            177,285,286, // Gladiator
+            183,344,346, // Thaumaturge
+            178,532,553, // Pugilist
+            187,608,610, // Goldsmith
+            189,534,535, // Weaver
+            190,575,577, // Alchemist
+            192,597,599, // Miner
+            2559,2560, // Samurai
+            2576,2577, // Red Mage
+            4073,4074, // Reaper
+            4848,4849, // Viper
+            // Ishgard
+            2109,1696,1697, // Machinist
+            2110,2053,2054, // Dark Knight
+            2123,2012,2013, // Astrologian
+        ]).FromNumericListOfQuests();
+        List<ElementId> unlockCustomDeliveries = ((ushort[])[
+            2095,2097,2098,1551,                                // zhloe aliapoh
+            2941,3005,                                          // m'naago
+            2632,2704,2705,2706,2707,3139,                      // kurenai
+            2758,3177,                                          // adkiragh
+            3603,3729,                                          // kai-shirr
+            3672,3725,3726,3727,3728,3837,3889,                 // ehll tou
+            3955,3956,3957,3958,3960,3999,4000,4001,4002,4079,  // charlemend
+            4175,4523,                                          // ameliance
+            4715,                                               // anden
+            4815,                                               // margrat
+            5008,5239,                                          // nitowikwe
+            5460,                                               // tiisol ja
+        ]).FromNumericListOfQuests();
+        List<ElementId> unlockLeves = ((ushort[])[
+            693,220,687,    // Initial unlock
+            58,59,60,       // hest
+            694,695,696,14, // la noscea
+            221,443,444,    // shroud
+            688,692,15,     // thanalan
+            16,17,          // coerthas
+            18,             // mor dhona
+        ]).FromNumericListOfQuests();
+        var aetherCurrents = _T<Addon>(2445);
+        var roleQuests = _T<JournalCategory>(95);
+        var gilQuestsList = _questData.GetQuestsWithItemReward(onlyAvailable: true, 5825, 5826, 27994);
+        var questHealthPercent = _questData.GetQuestsMatching(q =>
+            _questRegistry.TryGetQuest(q.QuestId, out var quest) &&
+            quest.AllSteps().Any(a => a.Step.CombatItemUse?.Condition is ECombatItemUseCondition.HealthPercent), onlyAvailable: false);
+        _builtInPresets = new(StringComparer.Ordinal)
         {
-            [JobQuestsPresetName] = [],
-            ["ARR Hard Mode Primals"] = QuestData.HardModePrimals.Cast<ElementId>().ToList(),
-            ["Crystal Tower Raids"] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(),
-            ["Aether Currents: Heavensward"] = GetAetherCurrentQuests(397, 398, 399, 400, 401),
-            ["Aether Currents: Stormblood"] = GetAetherCurrentQuests(612, 613, 614, 620, 621, 622),
-            ["Aether Currents: Shadowbringers"] = GetAetherCurrentQuests(813, 814, 815, 816, 817, 818),
-            ["Aether Currents: Endwalker"] = GetAetherCurrentQuests(956, 957, 958, 959, 960, 961),
-            ["Aether Currents: Dawntrail"] = GetAetherCurrentQuests(1187, 1188, 1189, 1190, 1191, 1192),
-            ["Role Quests: Tank"] = _questData.GetRoleQuests(Job.PLD).Select(x => x.QuestId).ToList(),
-            ["Role Quests: Healer"] = _questData.GetRoleQuests(Job.WHM).Select(x => x.QuestId).ToList(),
-            ["Role Quests: Melee DPS"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
-            ["Role Quests: Physical Ranged"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
-            ["Role Quests: Caster"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList(),
-            ["Gil (set TextAdvance to prefer Gil sacks)"] = gilList
+            [JobQuestsPresetName] = [], // Job Quests
+            [_T<ContentRoulette>(8)] = ((ushort[])[4959, 5013, 5014]).FromNumericListOfQuests(), // Level Cap Dungeons
+            [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilList,
+            [_L("Unlock all jobs")] = jobUnlocks,
+            [_L("DoH/DoL unlocks")] = DoHDoLUnlocks,
+            [_L("Post-ARR unlocks")] = postARRUnlocks,
+            [_L("Post-HW unlocks")] = postHWUnlocks,
+            [_T<Addon>(455)] = unlockLeves, // Levequests
+            [_T<JournalGenre>(94)] = QuestData.DeliveryMoogleQuests.ToList(), // Delivery Moogle Quests
+            [_T<JournalCategory>(16)] = QuestData.HardModePrimals.Cast<ElementId>().ToList(), // Primals
+            [_T<JournalCategory>(18)] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(), // Crystal Tower
+            [_T<Addon>(5700)] = unlockCustomDeliveries, // Custom Deliveries
+            [$"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(8).Titleize()}"] = QuestData.UnlockMoogleSocietyQuests.ToList(), // Moogles
+            [$"{aetherCurrents}: {_T<ExVersion>(1)}"] = GetAetherCurrentQuests(397, 398, 399, 400, 401), // Aether Currents
+            [$"{aetherCurrents}: {_T<ExVersion>(2)}"] = GetAetherCurrentQuests(612, 613, 614, 620, 621, 622),
+            [$"{aetherCurrents}: {_T<ExVersion>(3)}"] = GetAetherCurrentQuests(813, 814, 815, 816, 817, 818),
+            [$"{aetherCurrents}: {_T<ExVersion>(4)}"] = GetAetherCurrentQuests(956, 957, 958, 959, 960, 961),
+            [$"{aetherCurrents}: {_T<ExVersion>(5)}"] = GetAetherCurrentQuests(1187, 1188, 1189, 1190, 1191, 1192),
+            [$"{roleQuests}: {_T<Addon>(1082)}"] = _questData.GetRoleQuests(Job.PLD).Select(x => x.QuestId).ToList(), // Role Quests
+            [$"{roleQuests}: {_T<Addon>(1083)}"] = _questData.GetRoleQuests(Job.WHM).Select(x => x.QuestId).ToList(),
+            [$"{roleQuests}: {_T<Addon>(1084)}"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
+            [$"{roleQuests}: {_T<Addon>(1085)}"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
+            [$"{roleQuests}: {_T<Addon>(1086)}"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList(),
+            ["Experimental: Available quests rewarding silver/gold gil sacks"] = gilQuestsList,
+            ["Experimental: Quests that require a mob to be damaged to a certain health%"] = questHealthPercent,
         };
 
         return _builtInPresets;
@@ -447,7 +633,8 @@ internal sealed class PriorityWindow : LWindow
         Dictionary<string, List<ElementId>> builtInPresets = GetOrCreateBuiltInPresets();
         if (builtInPresets.TryGetValue(name, out List<ElementId>? questIds))
         {
-            _questController.PriorityManager.Import(questIds);
+            _questController.PriorityManager.Import(
+                questIds.Where(q => !_questFunctions.IsQuestUnobtainable(q) && !_questFunctions.IsQuestComplete(q)));
         }
         else if (_configuration.Priority.Presets.TryGetValue(name, out List<string>? questIdStrings))
         {
@@ -478,7 +665,7 @@ internal sealed class PriorityWindow : LWindow
         if (currentJob == Job.ADV)
             return [];
 
-        return _questRegistry.GetKnownClassJobQuests(currentJob, false)
+        return _questRegistry.GetKnownClassJobQuests(currentJob, includeRoleQuests: false)
             .Select(x => x.QuestId)
             .ToList();
     }

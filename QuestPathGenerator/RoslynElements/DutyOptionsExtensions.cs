@@ -27,6 +27,9 @@ internal static class DutyOptionsExtensions
                             Assignment(nameof(DutyOptions.LowPriority),
                                     dutyOptions.LowPriority, emptyOptions.LowPriority)
                                 .AsSyntaxNodeOrToken(),
+                            Assignment(nameof(DutyOptions.CanUnsync),
+                                    dutyOptions.CanUnsync, emptyOptions.CanUnsync)
+                                .AsSyntaxNodeOrToken(),
                             AssignmentList(nameof(DutyOptions.Notes), dutyOptions.Notes)
                                 .AsSyntaxNodeOrToken()))));
     }

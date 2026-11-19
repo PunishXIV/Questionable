@@ -1,10 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
-  "LastChecked": {
-    "Username": "alydev",
-    "Date": "2026-05-19"
-  },
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -19,16 +17,10 @@
           "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -133,7 +125,6 @@
           "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"

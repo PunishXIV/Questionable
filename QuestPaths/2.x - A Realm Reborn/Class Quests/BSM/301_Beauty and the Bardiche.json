@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Cobalt Knuckles HQ,\n 1x Buccaneer's Bardiche HQ,\n 1x Cobalt Shamshir HQ\nAutocraft requires:\n 6x Cobalt Ingot,\n 1x Boar Leather,\n 1x Rosewood Branch,\n 1x Horn Glue,\n 1x Aldgoat Horn,\n 1x Basilisk Whetstone",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
@@ -64,7 +64,7 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 155,
+          "TerritoryId": 128,
           "ItemId": 1796,
           "ItemCount": 1,
           "SkipConditions": {
@@ -77,7 +77,7 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 155,
+          "TerritoryId": 128,
           "ItemId": 1659,
           "ItemCount": 1,
           "SkipConditions": {
@@ -96,35 +96,17 @@
             "Z": 211.5968
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -273.8263,
-            "Y": 11.32725,
-            "Z": 188.87677
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
-        },
-        {
-          "Position": {
-            "X": -272.05493,
-            "Y": 11.852232,
-            "Z": 188.80086
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1001539,
           "Position": {
@@ -133,7 +115,11 @@
             "Z": 193.19446
           },
           "TerritoryId": 129,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ]
         }
       ]
     }

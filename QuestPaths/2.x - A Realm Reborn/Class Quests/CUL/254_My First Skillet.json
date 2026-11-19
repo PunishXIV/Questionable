@@ -1,11 +1,32 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
-  "Comment": "Crafted Item:\n 1x Maple Syrup\nWill buy from Jossy",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "InteractionType": "EquipItem",
+          "ItemId": 2493,
+          "TerritoryId": 128,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
+        },
+        {
+          "InteractionType": "CreateGearset",
+          "TerritoryId": 128,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
+        },
+        {
+          "InteractionType": "EquipRecommended",
+          "TerritoryId": 128,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
+        },
+        {
+          "InteractionType": "UpdateGearset",
+          "TerritoryId": 128,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
+        },
         {
           "DataId": 1000947,
           "Position": {
@@ -15,17 +36,13 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Culinarians' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         }
@@ -79,7 +96,11 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true
+          "AllowHighQuality": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
         }
       ]
     }

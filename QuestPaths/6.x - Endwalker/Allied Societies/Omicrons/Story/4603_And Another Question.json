@@ -1,10 +1,46 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "plogon_enjoyer",
+  "Author": ["plogon_enjoyer","alydev"],
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 2013072,
+          "Position": {
+            "X": 456.65674,
+            "Y": 438.04077,
+            "Z": 310.2312
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960,
+          "AetheryteShortcut": "Ultima Thule - Base Omicron",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 314.9004,
+                  "Y": 481.99442,
+                  "Z": 148.11926
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 26
+              }
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 314.9004,
+                  "Y": 481.99442,
+                  "Z": 148.11926
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 26
+              }
+            }
+          }
+        },
         {
           "DataId": 1043951,
           "Position": {
@@ -29,14 +65,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "Prompt": "TEXT_BANOMI003_04603_Q9_000_000",
-              "Yes": true
-            }
-          ],
-          "Mount": true
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043539,
@@ -172,9 +201,32 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "TargetTerritoryId": 960,
-          "Mount": true
+          "AetheryteShortcut": "Ultima Thule - Base Omicron",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 314.9004,
+                  "Y": 481.99442,
+                  "Z": 148.11926
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 26
+              }
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 314.9004,
+                  "Y": 481.99442,
+                  "Z": 148.11926
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 26
+              }
+            }
+          }
         },
         {
           "DataId": 1043865,
@@ -185,8 +237,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "Fly": true
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043585,
@@ -213,14 +264,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "Prompt": "TEXT_BANOMI003_04603_Q8_000_000",
-              "Yes": true
-            }
-          ]
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043951,

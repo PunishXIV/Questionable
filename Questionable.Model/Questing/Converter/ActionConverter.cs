@@ -6,10 +6,13 @@ public sealed class ActionConverter() : EnumConverter<EAction>(Values)
 {
     private static readonly Dictionary<EAction, string> Values = new()
     {
+        { EAction.Return, "Return" },
         { EAction.DutyAction1, "Duty Action I" },
         { EAction.DutyAction2, "Duty Action II" },
         { EAction.HeavySwing, "Heavy Swing" },
         { EAction.Bootshine, "Bootshine" },
+        { EAction.TrueStrike, "True Strike" },
+        { EAction.SnapPunch, "Snap Punch" },
         { EAction.TwinSnakes, "Twin Snakes" },
         { EAction.Demolish, "Demolish" },
         { EAction.DragonKick, "Dragon Kick" },
@@ -58,6 +61,31 @@ public sealed class ActionConverter() : EnumConverter<EAction>(Values)
         { EAction.RoaringEggscapade, "Roaring Eggscapade" },
         { EAction.TheSpriganator, "The Spriganator" },
         { EAction.FSHCast, "FSHCast" },
-        { EAction.FSHQuit, "FSHQuit" }
+        { EAction.FSHQuit, "FSHQuit" },
+        { EAction.Triangulate, "Triangulate" },
+        { EAction.FieldMastery1, "Field Mastery I" },
+        { EAction.FieldMastery2, "Field Mastery II" },
+        { EAction.FieldMastery3, "Field Mastery III" },
+        { EAction.Prospect, "Prospect" },
+        { EAction.SharpVision1, "Sharp Vision I" },
+        { EAction.SharpVision2, "Sharp Vision II" },
+        { EAction.SharpVision3, "Sharp Vision III" },
+        { EAction.CollectMiner, "Collect (Miner)" },
+        { EAction.CollectBotanist, "Collect (Botanist)" },
+        { EAction.Ten, "Ten" },
+        { EAction.Ninjutsu, "Ninjutsu" },
+        { EAction.Chi, "Chi" },
+        { EAction.Jin, "Jin" },
+        { EAction.RabbitMedium, "Rabbit Medium" },
+        { EAction.LuckOfTheMountaineer, "Luck of the Mountaineer" },
+        { EAction.LuckOfThePioneer, "Luck of the Pioneer" },
+        { EAction.MagitekPulse, "Magitek Pulse" },
+        { EAction.MagitekThunder, "Magitek Thunder" },
+        { EAction.ScourMiner, "Scour (Miner)" },
+        { EAction.MeticulousMiner, "Meticulous (Miner)" },
+        { EAction.ScrutinyMiner, "Scrutiny (Miner)" },
+        { EAction.ScourBotanist, "Scour (Botanist)" },
+        { EAction.MeticulousBotanist, "Meticulous (Botanist)" },
+        { EAction.ScrutinyBotanist, "Scrutiny (Botanist)" }
     };
 }

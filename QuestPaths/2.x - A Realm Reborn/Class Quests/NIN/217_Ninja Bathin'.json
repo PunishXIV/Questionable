@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "xan",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,9 +16,6 @@
           },
           "TerritoryId": 139,
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          },
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -94,12 +93,13 @@
         {
           "DataId": 1010622,
           "Position": {
-            "X": 488.365,
-            "Y": 16.907331,
-            "Z": 86.71704
+            "X": 486.644,
+            "Y": 16.907333,
+            "Z": 84.17361
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "StopDistance": 0.25
         }
       ]
     },
@@ -188,9 +188,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "SinglePlayerDuty",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -208,7 +206,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }

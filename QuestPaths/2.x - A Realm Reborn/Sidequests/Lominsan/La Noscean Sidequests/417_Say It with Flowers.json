@@ -1,0 +1,59 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002445,
+          "Position": {
+            "X": 136.85,
+            "Y": 58.9528,
+            "Z": 937.438
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: issuer 1002445 (Rostnzeh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000775,
+          "Position": {
+            "X": 34.754475,
+            "Y": 48.102093,
+            "Z": 718.8136
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "$": "auto: todo location -> 2000775 (La Noscean lilybell); spawns enemies 22"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002237,
+          "Position": {
+            "X": 167.559,
+            "Y": 14.0959,
+            "Z": 683.925
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: todo turn-in -> 1002237 (Ghimthota)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,16 +1,26 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-01"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
+          "Position": {
+            "X": -214.67926,
+            "Y": 11.971041,
+            "Z": 25.192627
+          },
+          "StopDistance": 7,
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+        },
+        {
           "TerritoryId": 152,
           "InteractionType": "EquipItem",
           "ItemId": 27357,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -18,6 +28,11 @@
               }
             }
           }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "CreateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "Position": {
@@ -40,7 +55,73 @@
         },
         {
           "TerritoryId": 152,
-          "InteractionType": "EquipRecommended"
+          "InteractionType": "EquipItem",
+          "ItemId": 27256,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "EquipItem",
+          "ItemId": 27257,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "EquipItem",
+          "ItemId": 27258,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "EquipItem",
+          "ItemId": 27259,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "EquipItem",
+          "ItemId": 27260,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "EquipRecommended",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "UpdateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1029033,
@@ -234,12 +315,10 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Adventurers' Guild"
-          ],
-          "NextQuestId": 3263
+          ]
         }
       ]
     }

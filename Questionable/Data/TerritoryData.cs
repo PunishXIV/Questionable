@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
 using Dalamud.Game;
-using Dalamud.Plugin.Services;
 using Dalamud.Utility;
 using Lumina.Excel.Sheets;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using Quest = Lumina.Excel.Sheets.Quest;
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class TerritoryData
 {
     private readonly ImmutableDictionary<uint, ContentFinderConditionData> _contentFinderConditions;
@@ -20,8 +18,11 @@ internal sealed class TerritoryData
     private readonly ImmutableHashSet<uint> _territoriesWithMount;
     private readonly ImmutableDictionary<uint, string> _territoryNames;
 
+    private static TerritoryData _instance;
+
     public TerritoryData(IDataManager dataManager)
     {
+        _instance = this;
         _territoryNames = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0)
             .Select(x =>
@@ -61,13 +62,14 @@ internal sealed class TerritoryData
 
     public string? GetName(uint territoryId) => _territoryNames.GetValueOrDefault(territoryId);
 
-    public string GetNameAndId(uint territoryId)
+    public static string GetNameAndId(uint territoryId) => _instance.GetNameAndIdImpl(territoryId);
+    private string GetNameAndIdImpl(uint territoryId)
     {
         string? territoryName = GetName(territoryId);
         if (territoryName != null)
-            return string.Create(CultureInfo.InvariantCulture, $"{territoryName} ({territoryId})");
-        else
-            return territoryId.ToString(CultureInfo.InvariantCulture);
+            return $"{territoryName} ({territoryId})";
+
+        return territoryId.ToString(CultureInfo.InvariantCulture);
     }
 
     public bool CanUseMount(uint territoryId) => _territoriesWithMount.Contains(territoryId);
@@ -88,11 +90,9 @@ internal sealed class TerritoryData
     {
         if (_questBattlesToContentFinderCondition.TryGetValue((questId, index), out uint cfcId))
             return _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
-        else
-        {
-            contentFinderConditionData = null;
-            return false;
-        }
+
+        contentFinderConditionData = null;
+        return false;
     }
 
     public IEnumerable<(ElementId QuestId, byte Index, ContentFinderConditionData Data)> GetAllQuestsWithQuestBattles() => _questBattlesToContentFinderCondition.Select(x => (x.Key.QuestId, x.Key.Index, _contentFinderConditions[x.Value]));
@@ -122,8 +122,8 @@ internal sealed class TerritoryData
     {
         if (questBattleId >= 5000)
             return dataManager.GetExcelSheet<InstanceContent>().GetRow(questBattleId).ContentFinderCondition.RowId;
-        else
-            return dataManager.GetExcelSheet<QuestBattleResident>().GetRow(questBattleId).SoloDuty.RowId;
+
+        return dataManager.GetExcelSheet<QuestBattleResident>().GetRow(questBattleId).SoloDuty.RowId;
     }
 
     public sealed record ContentFinderConditionData
@@ -132,11 +132,13 @@ internal sealed class TerritoryData
         string Name,
         uint TerritoryId,
         ushort RequiredItemLevel,
-        byte ClassJobLevelSync)
+        byte ClassJobLevelSync,
+        EContentType? ContentType)
     {
         public ContentFinderConditionData(ContentFinderCondition condition, ClientLanguage clientLanguage)
             : this(condition.RowId, FixName(condition.Name.ToDalamudString().ToString(), clientLanguage),
-                condition.TerritoryType.RowId, condition.ItemLevelRequired, condition.ClassJobLevelSync)
+                condition.TerritoryType.RowId, condition.ItemLevelRequired, condition.ClassJobLevelSync,
+                (EContentType?)condition.ContentType.ValueNullable?.RowId)
         {
         }
     }

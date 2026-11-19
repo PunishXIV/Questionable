@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-20"},
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -42,7 +43,20 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 156
+          "TargetTerritoryId": 156,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 0.7476196,
+                  "Y": -156.93909,
+                  "Z": 16.281311
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 30
+              }
+            }
+          }
         },
         {
           "DataId": 1007537,
@@ -155,13 +169,10 @@
             "Z": -273.82324
           },
           "TerritoryId": 335,
+          "Comment": "Magitek field generators on both sides of south gate",
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "(outside) Doesn't use obstacle maps or vnav to move to the shield generators, gets stuck on the big crates"
-            ]
+            "Enabled": true
           }
         }
       ]

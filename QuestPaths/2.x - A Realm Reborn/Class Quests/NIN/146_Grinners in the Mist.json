@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -166,7 +168,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Fishermen's Guild"
@@ -197,6 +198,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": false},
           "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "Fly": true
         }
@@ -231,7 +233,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Fishermen's Guild"

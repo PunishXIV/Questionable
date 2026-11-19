@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "kaiser",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,17 +16,13 @@
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
           "StopDistance": 5,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
-              "InTerritory": [
-                419
-              ]
+              "InTerritory": [419]
             }
           }
         }
@@ -45,12 +42,7 @@
           "InteractionType": "Interact",
           "StopDistance": 5,
           "Fly": true,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
         }
       ]
     },
@@ -68,12 +60,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "StopDistance": 5,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
         }
       ]
     },
@@ -118,12 +105,7 @@
             }
           ],
           "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -223,7 +205,6 @@
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
           "StopDistance": 5,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"

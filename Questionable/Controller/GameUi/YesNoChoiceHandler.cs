@@ -1,22 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
-using Dalamud.Plugin.Services;
+using Dalamud.Game.ClientState.Conditions;
 using ECommons.UIHelpers.AddonMasterImplementations;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.External;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
-using Questionable.Utils;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.GameUi;
 
@@ -24,6 +16,7 @@ namespace Questionable.Controller.GameUi;
 ///     Handles the in-game "SelectYesno" and "DifficultySelectYesNo" addons — answering quest
 ///     dialogue prompts, travel confirmations, HQ-trade prompts and quest-battle difficulty selection.
 /// </summary>
+[RegisterSingleton]
 internal sealed class YesNoChoiceHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
@@ -42,12 +35,15 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly IToastGui _toastGui;
     private readonly DialogueReferenceResolver _dialogueReferenceResolver;
     private readonly TravelDestinationResolver _travelDestinationResolver;
+    private readonly IFramework _framework;
+    private readonly ICondition _condition;
     private readonly ILogger<YesNoChoiceHandler> _logger;
 
     private readonly Regex _returnRegex;
     private readonly Regex _purchaseItemRegex;
     private readonly Regex _ticketRegex;
     private readonly Regex _hqTradeRegex;
+    private readonly Regex _fcInviteRegex;
 
     public YesNoChoiceHandler(
         IAddonLifecycle addonLifecycle,
@@ -68,6 +64,8 @@ internal sealed class YesNoChoiceHandler : IDisposable
         IPluginLog pluginLog,
         DialogueReferenceResolver dialogueReferenceResolver,
         TravelDestinationResolver travelDestinationResolver,
+        IFramework framework,
+        ICondition condition,
         ILogger<YesNoChoiceHandler> logger)
     {
         _addonLifecycle = addonLifecycle;
@@ -86,12 +84,15 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _toastGui = toastGui;
         _dialogueReferenceResolver = dialogueReferenceResolver;
         _travelDestinationResolver = travelDestinationResolver;
+        _framework = framework;
+        _condition = condition;
         _logger = logger;
 
         _returnRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 196, addon => addon.Text, pluginLog)!;
         _purchaseItemRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 3406, addon => addon.Text, pluginLog)!;
         _ticketRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102686, addon => addon.Text, pluginLog)!;
         _hqTradeRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102434, addon => addon.Text, pluginLog)!;
+        _fcInviteRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 2873, addon => addon.Text, pluginLog)!;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectYesno", SelectYesnoPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultySelectYesNoPostSetup);
@@ -275,7 +276,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
             }
 
             string notif = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} {(dialogueChoice.Yes ? "Yes" : "No")}";
-            if (_configuration.General.DontSkipCutscenes)
+            if (_configuration.General.DontSkipCutscenes && !_configuration.General.DontShowAnswerSuggestions)
                 _toastGui.ShowQuest(notif);
             _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
             _logger.LogInformation("Returning {YesNo} for '{Prompt}'", dialogueChoice.Yes ? "Yes" : "No", actualPrompt);
@@ -286,7 +287,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
 
         if (CheckSinglePlayerDutyYesNo(quest.Id, step))
         {
-            addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
+            ConfirmSinglePlayerDutyStart(addonSelectYesno);
             return true;
         }
 
@@ -298,17 +299,46 @@ internal sealed class YesNoChoiceHandler : IDisposable
         if (step is { InteractionType: EInteractionType.SinglePlayerDuty } &&
             _bossModIpc.IsConfiguredToRunSoloInstance(questId, step.SinglePlayerDutyOptions))
         {
-            // Most of these are yes/no dialogs "Duty calls, ...".
-            //
-            // For 'Vows of Virtue, Deeds of Cruelty', there's no such dialog, and it just puts you into the instance
-            // after you confirm 'Wait for Krile?'. However, if you fail that duty, you'll get a DifficultySelectYesNo.
-
-            // DifficultySelectYesNo → [0, 2] for very easy
+            // "Duty calls" yes/no. After a wipe the game uses DifficultySelectYesNo instead.
             _logger.LogInformation("SinglePlayerDutyYesNo: probably Single Player Duty");
             return true;
         }
 
         return false;
+    }
+
+    // 823 requests the configured difficulty. Click Yes (Normal) if the duty does not start.
+    private unsafe void ConfirmSinglePlayerDutyStart(AddonSelectYesno* addonSelectYesno)
+    {
+        byte difficulty = _configuration.SinglePlayerDuties.RetryDifficulty;
+        _logger.LogInformation("Requesting solo quest battle at difficulty {Difficulty}", difficulty);
+
+        if (!GameMain.ExecuteCommand((int)GameCommand.StartSoloQuestBattle, difficulty))
+        {
+            _logger.LogInformation("StartSoloQuestBattle was rejected; confirming Yes (Normal)");
+            addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
+            return;
+        }
+
+        _ = _framework.RunOnTick(ConfirmNormalIfDutyDidNotStart, TimeSpan.FromSeconds(2));
+    }
+
+    private unsafe void ConfirmNormalIfDutyDidNotStart()
+    {
+        if (!_questController.IsRunning)
+            return;
+
+        if (_condition[ConditionFlag.BoundByDuty] ||
+            _condition[ConditionFlag.BetweenAreas] ||
+            _condition[ConditionFlag.OccupiedInCutSceneEvent])
+            return;
+
+        if (!_gameGui.TryGetAddonByName("SelectYesno", out AddonSelectYesno* addon) ||
+            !addon->AtkUnitBase.IsVisible)
+            return;
+
+        _logger.LogInformation("StartSoloQuestBattle did not enter the duty; confirming Yes (Normal)");
+        addon->AtkUnitBase.FireCallbackInt(0);
     }
 
     private unsafe bool HandleTravelYesNo(AddonSelectYesno* addonSelectYesno,

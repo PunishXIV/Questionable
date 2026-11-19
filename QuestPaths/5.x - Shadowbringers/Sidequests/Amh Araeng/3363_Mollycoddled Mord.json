@@ -1,0 +1,81 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027879,
+          "Position": {
+            "X": 321.474,
+            "Y": 1.48004,
+            "Z": -277.762
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: issuer 1027879 (Ghin Gin)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 411.544,
+            "Y": -31.1231,
+            "Z": -413.118
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UseItem",
+          "GroundTarget": true,
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "ItemId": 2002622,
+          "$": "auto: todo area 10y from lua EOBJECT0 -> 2010132; use item ITEM1=2002623 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 576.706,
+            "Y": -56.2161,
+            "Z": -583.608
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UseItem",
+          "GroundTarget": true,
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "ItemId": 2002622,
+          "$": "auto: todo area 12y from lua EOBJECT1 -> 2010133; use item ITEM0=2002622 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027865,
+          "Position": {
+            "X": 669.9928,
+            "Y": -41.975555,
+            "Z": -666.3531
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo turn-in -> 1027865 (Thaymoth)"
+        }
+      ]
+    }
+  ]
+}

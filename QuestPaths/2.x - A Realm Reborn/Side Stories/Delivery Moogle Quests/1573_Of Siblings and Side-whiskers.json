@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Limsa Lominsa"
         }
       ]
     },
@@ -69,7 +65,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Alchemists' Guild"
@@ -78,11 +73,11 @@
         {
           "DataId": 1002299,
           "Position": {
-            "X": -98.8938,
-            "Y": 40.200146,
-            "Z": 120.83618
+            "X": -103.62651,
+            "Y": 41.50014,
+            "Z": 120.44341
           },
-          "StopDistance": 7,
+          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "Interact"
         }
@@ -100,7 +95,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"

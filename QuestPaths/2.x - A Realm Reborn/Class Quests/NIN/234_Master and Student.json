@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "xan",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,7 +18,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }
@@ -124,10 +125,7 @@
           "TerritoryId": 135,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
         }
       ]
     },
@@ -143,6 +141,8 @@
           },
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
+          "StopDistance": 0.25,
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "Fly": true
         }
       ]
@@ -161,7 +161,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }

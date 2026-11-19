@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Malachite Earrings HQ\nAutocraft requires:\n 2x Malachite,\n 1x Silver Ingot",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Goldsmiths' Guild"
@@ -55,7 +55,11 @@
             "Z": 110.795654
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ]
         }
       ]
     },

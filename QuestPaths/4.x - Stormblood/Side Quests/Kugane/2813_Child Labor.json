@@ -1,6 +1,6 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "Fronti",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -8,9 +8,9 @@
         {
           "DataId": 1022620,
           "Position": {
-            "X": -4.7455444,
-            "Y": 0.022830343,
-            "Z": -113.96973
+            "X": -4.74213,
+            "Y": 0.0226175,
+            "Z": -113.951
           },
           "TerritoryId": 628,
           "InteractionType": "AcceptQuest"
@@ -23,84 +23,70 @@
         {
           "DataId": 1023127,
           "Position": {
-            "X": -102.9527,
-            "Y": 11.80004,
-            "Z": -114.76312
+            "X": -102.936,
+            "Y": 11.8,
+            "Z": -114.763
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "DataId": 1023131,
-          "Position": {
-            "X": -88.304016,
-            "Y": -6.9999995,
-            "Z": -63.09613
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Bokairo Inn",
-            "[Kugane] Shiokaze Hostelry"
-          ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"High": 4}]
         },
         {
           "DataId": 1023126,
           "Position": {
-            "X": 32.60852,
-            "Y": 2.9999993,
-            "Z": -49.881836
+            "X": 32.6276,
+            "Y": 2.97547,
+            "Z": -49.8601
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Shiokaze Hostelry",
-            "[Kugane] Aetheryte Plaza"
-          ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "AethernetShortcut": ["[Kugane] Bokairo Inn", "[Kugane] Aetheryte Plaza"],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"High": 8}]
         },
         {
-          "DataId": 1023130,
+          "DataId": 1023131,
           "Position": {
-            "X": 80.460815,
-            "Y": 4.000001,
-            "Z": 71.488525
+            "X": -88.304,
+            "Y": -7,
+            "Z": -63.0961
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-        },
-        {
-          "DataId": 1023128,
-          "Position": {
-            "X": -34.103943,
-            "Y": 15.000004,
-            "Z": 68.86389
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"Low": 4}]
         },
         {
           "DataId": 1023129,
           "Position": {
-            "X": 17.593567,
-            "Y": 11.44387,
-            "Z": 174.45642
+            "X": 17.5936,
+            "Y": 11.4439,
+            "Z": 174.456
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Thavnairian Consulate"
-          ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "AethernetShortcut": ["[Kugane] Shiokaze Hostelry", "[Kugane] Thavnairian Consulate"],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"High": 1}]
+        },
+        {
+          "DataId": 1023130,
+          "Position": {
+            "X": 80.4608,
+            "Y": 4,
+            "Z": 71.5189
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Thavnairian Consulate", "[Kugane] Kogane Dori Markets"],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"Low": 8}]
+        },
+        {
+          "DataId": 1023128,
+          "Position": {
+            "X": -34.1039,
+            "Y": 15,
+            "Z": 68.8944
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -110,16 +96,12 @@
         {
           "DataId": 1022620,
           "Position": {
-            "X": -4.7455444,
-            "Y": 0.022830343,
-            "Z": -113.96973
+            "X": -4.74213,
+            "Y": 0.0226175,
+            "Z": -113.951
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] Thavnairian Consulate",
-            "[Kugane] Rakuza District"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",

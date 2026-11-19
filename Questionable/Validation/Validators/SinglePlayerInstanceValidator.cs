@@ -1,10 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
-using Questionable.Data;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, SinglePlayerInstanceValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData) : IQuestValidator
 {
     private readonly Dictionary<ElementId, List<byte>> _questIdToDutyIndexes = territoryData.GetAllQuestsWithQuestBattles()
@@ -31,7 +28,7 @@ internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData)
                     Step = null,
                     Type = EIssueType.UnusedSinglePlayerInstance,
                     Severity = EIssueSeverity.Error,
-                    Description = $"Single player instance {index} not used"
+                    Description = _LF("Single player instance {0} not used", index)
                 };
             }
         }

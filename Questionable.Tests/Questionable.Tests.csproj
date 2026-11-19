@@ -27,6 +27,37 @@
         <ProjectReference Include="..\Questionable\Questionable.csproj" />
     </ItemGroup>
 
+    <!--
+        The questpath generator tests construct QuestGameData against an installed game, which needs Lumina at
+        both compile and run time. The plugin itself binds Dalamud's copy (assembly version 7.0.0.0, not
+        redistributed), so the test host brings its own matching one.
+    -->
+    <ItemGroup>
+        <PackageReference Include="Lumina" Version="7.6.1" />
+        <PackageReference Include="Lumina.Excel" Version="7.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="..\QuestPaths\2.x - A Realm Reborn\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\3.x - Heavensward\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\4.x - Stormblood\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\5.x - Shadowbringers\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\6.x - Endwalker\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\7.x - Dawntrail\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+    </ItemGroup>
+
     <PropertyGroup>
         <NoWarn>$(NoWarn);CA1707</NoWarn>
     </PropertyGroup>

@@ -1,20 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
+﻿using FFXIVClientStructs.FFXIV.Component.GUI;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.Steps;
 
 internal static class QuestCleanUp
 {
-    internal sealed class CheckAlliedSocietyMount(GameFunctions gameFunctions, AetheryteData aetheryteData, AlliedSocietyData alliedSocietyData, ILogger<CheckAlliedSocietyMount> logger) : SimpleTaskFactory
+    internal sealed class CheckAlliedSocietyMount(AetheryteData aetheryteData, AlliedSocietyData alliedSocietyData, ILogger<CheckAlliedSocietyMount> logger) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -22,7 +15,7 @@ internal static class QuestCleanUp
                 return null;
 
             // if you are on a allied society mount
-            if (gameFunctions.GetMountId() is { } mountId &&
+            if (GameFunctions.GetMountId() is { } mountId &&
                 alliedSocietyData.Mounts.TryGetValue(mountId, out AlliedSocietyMountConfiguration? mountConfiguration))
             {
                 logger.LogInformation("We are on a known allied society mount with id = {MountId}", mountId);
@@ -38,7 +31,7 @@ internal static class QuestCleanUp
                 // it doesn't particularly matter if we teleport to the same aetheryte twice in the same quest step, as
                 // the second (normal) teleport instance should detect that we're within range and not do anything
                 EAetheryteLocation targetAetheryte = step.AetheryteShortcut ?? mountConfiguration.ClosestAetheryte;
-                AetheryteShortcut.Task teleportTask = new(null, quest.Id, targetAetheryte, aetheryteData.TerritoryIds[targetAetheryte]);
+                AetheryteShortcut.Task teleportTask = new(Step: null, quest.Id, targetAetheryte, aetheryteData.TerritoryIds[targetAetheryte]);
 
                 // turn-in step can never be done while mounted on an allied society mount
                 if (sequence.Sequence == 255)
@@ -52,7 +45,7 @@ internal static class QuestCleanUp
                     (x.Step.InteractionType == EInteractionType.Combat && x.Step.KillEnemyDataIds.Contains(8593))))
                 {
                     logger.LogInformation("Quest doesn't use any mount actions, unmounting");
-                    return new Mount.UnmountTask();
+                    return new MountStep.UnmountTask();
                 }
 
                 // have any of the previous sequences interacted with the issuer?

@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002659,
+          "Position": {
+            "X": 532.86,
+            "Y": 88.9753,
+            "Z": -72.0989
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: issuer 1002659 (Arenlona)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001488,
+          "Position": {
+            "X": 440.57,
+            "Y": 68.3146,
+            "Z": -176.038
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "ItemId": 2000438,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            49
+          ],
+          "$": "auto: todo location -> 2001488 (Althyk lavender); spawns enemies 49; use item ITEM0=2000438 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002659,
+          "Position": {
+            "X": 532.86,
+            "Y": 88.9753,
+            "Z": -72.0989
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: todo turn-in -> 1002659 (Arenlona)"
+        }
+      ]
+    }
+  ]
+}

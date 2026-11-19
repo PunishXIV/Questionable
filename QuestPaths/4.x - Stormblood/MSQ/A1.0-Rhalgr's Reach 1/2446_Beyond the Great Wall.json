@@ -1,35 +1,11 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "TerritoryId": 156,
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                351
-              ]
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                351
-              ]
-            }
-          }
-        },
         {
           "DataId": 1018330,
           "Position": {
@@ -38,6 +14,7 @@
             "Z": -6.6377563
           },
           "TerritoryId": 351,
+          "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -104,6 +81,17 @@
           "TerritoryId": 612,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Fringes - Castrum Oriens"
+        },
+        {
+          "DataId": 1019512,
+          "Position": {
+            "X": -603.357,
+            "Y": 130.18283,
+            "Z": -470.63403
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179696
         },
         {
           "Position": {

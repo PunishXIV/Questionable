@@ -1,0 +1,55 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "Autocraft requires:\n6x Red Pine Lumber\n6x Snow Linen\n6x Saiga Lumber",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038525,
+          "Position": {
+            "X": -296.547,
+            "Y": 21.846,
+            "Z": -162.13
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: issuer 1038525 (Jude)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Craft",
+          "ItemId": 35594,
+          "ItemCount": 6,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
+        },
+        {
+          "DataId": 1038525,
+          "Position": {
+            "X": -296.547,
+            "Y": 21.846,
+            "Z": -162.13
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo turn-in -> 1038525 (Jude)"
+        }
+      ]
+    }
+  ]
+}

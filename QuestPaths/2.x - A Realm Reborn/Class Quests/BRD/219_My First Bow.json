@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -8,19 +10,29 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 1889,
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000200,
@@ -31,16 +43,10 @@
           },
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -83,7 +89,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 148
               ]
@@ -131,16 +136,10 @@
           "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 46
         }
       ]

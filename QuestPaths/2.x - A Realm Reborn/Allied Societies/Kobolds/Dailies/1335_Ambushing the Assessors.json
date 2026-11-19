@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-26"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -32,6 +32,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Combat",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001256,
           "KillEnemyDataIds": [

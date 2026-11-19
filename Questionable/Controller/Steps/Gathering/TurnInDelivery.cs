@@ -1,19 +1,21 @@
 ﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
-using Questionable.Model;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class TurnInDelivery
 {
-    internal sealed class Factory : SimpleTaskFactory
+    internal sealed class Factory
+    //(QuestController questController)
+    : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (quest.Id is not SatisfactionSupplyNpcId || sequence.Sequence != 1)
+            if (quest.Id is not SatisfactionSupplyNpcId ||
+                    sequence.Sequence != 1
+                    //|| questController.AutomationType is QuestController.EAutomationType.GatheringOnly
+                    )
                 return null;
 
             return new Task();

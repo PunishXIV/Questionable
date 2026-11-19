@@ -14,12 +14,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Limsa Lominsa"
         }
       ]
     },

@@ -1,11 +1,32 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2026-01-28"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1052581,
+          "Position": {
+            "X": 27.232807,
+            "Y": -137.41669,
+            "Z": -411.65918
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1291,
+          "Fly": true,
+          "Comment": "Select the destination Phaenna (#2)",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_000",
+              "Answer": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_005",
+              "Type": "List",
+              "ExcelSheet": "custom/009/CtsWksEntrance_00921"
+            }
+          ]
+        },
         {
           "DataId": 1053328,
           "Position": {
@@ -51,7 +72,8 @@
             "Z": 67.429565
           },
           "TerritoryId": 1310,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5449
         }
       ]
     }

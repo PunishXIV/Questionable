@@ -1,9 +1,6 @@
-using System;
 using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
-using Microsoft.Extensions.Logging;
 namespace Questionable.Controller.Steps.Movement;
 
 internal sealed class LandExecutor(IObjectTable objectTable, ICondition condition, ILogger<LandExecutor> logger)
@@ -57,6 +54,13 @@ internal sealed class LandExecutor(IObjectTable objectTable, ICondition conditio
         }
 
         return false;
+    }
+
+    internal static unsafe bool TryLanding()
+    {
+        if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 23) != 0)
+            return false;
+        return ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23);
     }
 
     public override bool ShouldInterruptOnDamage() => false;

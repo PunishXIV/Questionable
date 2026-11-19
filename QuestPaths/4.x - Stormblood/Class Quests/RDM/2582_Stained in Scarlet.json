@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +16,7 @@
           "TerritoryId": 147,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -151,6 +147,12 @@
           },
           "TerritoryId": 156,
           "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "Notes": [
+              "VBM does not switch target fireball, ally dies consistently"
+            ]
+          },
           "Fly": true
         }
       ]

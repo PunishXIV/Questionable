@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -339,6 +341,7 @@
           },
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
+          "TargetTerritoryId": 180,
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
           "Fly": false
         },

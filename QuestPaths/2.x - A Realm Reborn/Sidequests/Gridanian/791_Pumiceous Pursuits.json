@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006248,
+          "Position": {
+            "X": -293.717,
+            "Y": -14.4056,
+            "Z": 204.261
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1006248 (Oriane)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -279.87,
+            "Y": -54.6372,
+            "Z": 484.74
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "CombatItemUse": {
+            "Condition": "Health%",
+            "Value": 30,
+            "ItemId": 2000621
+          },
+          "KillEnemyDataIds": [
+            2265
+          ],
+          "$": "auto: lua overworld enemies -> 2265"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+            "Position": {
+            "X": -29.342073,
+            "Y": -40.708473,
+            "Z": 188.48846
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
+        },
+        {
+          "DataId": 1006685,
+          "Position": {
+            "X": -29.8789,
+            "Y": -40.7051,
+            "Z": 176.964
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1006685 (Yhom Epocan)"
+        }
+      ]
+    }
+  ]
+}

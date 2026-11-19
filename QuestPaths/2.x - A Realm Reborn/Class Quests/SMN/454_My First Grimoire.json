@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -8,19 +10,29 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 2142,
-          "TerritoryId": 129
+          "TerritoryId": 129,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 129
+          "TerritoryId": 129,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 129
+          "TerritoryId": 129,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 129
+          "TerritoryId": 129,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000909,
@@ -31,16 +43,10 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Arcanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -124,7 +130,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Arcanists' Guild"

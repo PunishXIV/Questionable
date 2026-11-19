@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +15,6 @@
             "Z": 43.900146
           },
           "TerritoryId": 132,
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
@@ -26,12 +27,7 @@
               "$": "No Godbert prompt"
             }
           ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     }

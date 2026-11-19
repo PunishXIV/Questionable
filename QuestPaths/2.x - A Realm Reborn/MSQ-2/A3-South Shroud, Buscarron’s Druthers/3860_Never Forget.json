@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -27,6 +27,18 @@
           "TerritoryId": 153
         },
         {
+          "$": "Unlock Quarrymill taxi",
+          "DataId": 1002982,
+          "Position": {
+            "X": 172.47266,
+            "Y": 8.362776,
+            "Z": -47.470886
+          },
+          "TerritoryId": 153,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179653
+        },
+        {
           "DataId": 1003272,
           "Position": {
             "X": -262.92822,
@@ -35,7 +47,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Hawkers' Alley"
@@ -87,7 +98,7 @@
           "Aetheryte": "Middle La Noscea - Summerford Farms",
           "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
           ],
           "SkipConditions": {
@@ -101,6 +112,18 @@
               "AetheryteUnlocked": "Middle La Noscea - Summerford Farms"
             }
           }
+        },
+        {
+          "DataId": 1002721,
+          "Position": {
+            "X": 187.9148,
+            "Y": 98.5214,
+            "Z": -193.19452
+          },
+          "TerritoryId": 134,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179670,
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
         },
         {
           "DataId": 1003584,
@@ -142,6 +165,29 @@
           }
         },
         {
+          "DataId": 1002720,
+          "Position": {
+            "X": 49.271362,
+            "Y": 29.315498,
+            "Z": 605.27954
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179675,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+        },
+        {
+          "DataId": 1002719,
+          "Position": {
+            "X": 503.13562,
+            "Y": 79.24584,
+            "Z": -74.815
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179676
+        },
+        {
           "TerritoryId": 138,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Western La Noscea - Swiftperch",
@@ -154,6 +200,18 @@
               "AetheryteUnlocked": "Western La Noscea - Swiftperch"
             }
           }
+        },
+        {
+          "DataId": 1002722,
+          "Position": {
+            "X": 667.68884,
+            "Y": 9.882242,
+            "Z": 487.32727
+          },
+          "TerritoryId": 138,
+          "InteractionType": "UnlockTaxiStand",
+          "AetheryteShortcut": "Western La Noscea - Swiftperch",
+          "TaxiStandId": 1179671
         },
         {
           "DataId": 1003393,

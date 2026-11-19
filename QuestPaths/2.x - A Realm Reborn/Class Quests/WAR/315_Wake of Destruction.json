@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,14 +16,12 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Marauders' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 128
               ]
@@ -71,7 +71,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Marauders' Guild"
@@ -121,7 +120,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Marauders' Guild"

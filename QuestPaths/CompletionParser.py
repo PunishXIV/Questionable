@@ -4,6 +4,9 @@ update_quest_checked.py
 
 Reads a JSON array of quest completion entries and updates the LastChecked
 field in each matching quest file found in a directory tree.
+
+Authored with LLM assistance, changes must be reviewed and owned by a human.
+Initial version reviewed and owned by @alydevs
 """
 
 import argparse
@@ -11,7 +14,9 @@ import json
 import shutil
 import sys
 from pathlib import Path
+from datetime import datetime
 
+skipped = 0
 
 def find_quest_file(quest_id: str, search_dir: Path) -> tuple[Path | None, bool]:
     """
@@ -28,17 +33,18 @@ def find_quest_file(quest_id: str, search_dir: Path) -> tuple[Path | None, bool]
 
     # Second pass: prefix match (filename starts with quest_id)
     for candidate in search_dir.rglob("*.json"):
-        if candidate.name.startswith(quest_id):
+        if candidate.name.startswith(quest_id[:5]):
             return candidate, False
 
     return None, False
 
 
-def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: str | None, dry_run: bool = False) -> bool:
+def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: str | None, dry_run: bool = False, verbose: bool = False) -> bool:
     """
     Process a single quest completion entry.
     Returns True on success, False on failure.
     """
+    global skipped
     quest_id = entry.get("Quest")
     last_checked = entry.get("LastChecked")
 
@@ -53,7 +59,20 @@ def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: s
         return False
 
     if not exact:
-        print(f"[WARN] Exact match not found for '{quest_id}'; using '{path.name}' (prefix match)")
+        desired_name = f"{quest_id}.json"
+        new_path = path.with_name(desired_name)
+        print(f"[WARN] Exact match not found for '{quest_id}'; renaming '{path.name}' -> '{desired_name}' (prefix match)")
+        if new_path.exists() and new_path != path:
+            print(f"[ERROR] Cannot rename '{path.name}' to '{desired_name}': target already exists", file=sys.stderr)
+            return False
+        if not dry_run:
+            try:
+                path = path.rename(new_path)
+            except OSError as e:
+                print(f"[ERROR] Failed to rename '{path}' -> '{new_path}': {e}", file=sys.stderr)
+                return False
+        else:
+            path = new_path
 
     # Optionally back up the file before modifying
     if backup_suffix:
@@ -70,7 +89,13 @@ def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: s
     LastChecked = '"LastChecked": {"Username": "%s", "Date": "%s"},\n  ' % (username, last_checked)
     
     if '"LastChecked":' in data:
-        before = data.split('"LastChecked":')[0]
+        before, date = data.split('"LastChecked":',1)
+        date = date.split('"Date":',1)[1].split('"',1)[1].split('"',1)[0]
+        if date == last_checked or datetime.strptime(date,"%Y-%m-%d") > datetime.strptime(last_checked,"%Y-%m-%d"):
+            if verbose:
+                print(f"[WARN] {date} >= {last_checked}, skipping: '{quest_id}'", file=sys.stderr)
+            skipped += 1
+            return True
     else:
         before = data.split('"QuestSequence":')[0]
     after = data.split('"QuestSequence":')[1]
@@ -84,7 +109,8 @@ def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: s
             print(f"[ERROR] Could not write '{path}': {e}", file=sys.stderr)
             return False
 
-    print(f"[OK] Updated '{path}' with Username:'{username}' Date:'{last_checked}'" + (" (sim)" if dry_run else ""))
+    if verbose:
+        print(f"[OK] Updated '{path}' with Username:'{username}' Date:'{last_checked}'" + (" (sim)" if dry_run else ""))
     return True
 
 
@@ -119,10 +145,13 @@ def main():
     )
     parser.add_argument(
         "-s", "--dry-run",
-        default=False,
-        metavar="SIMULATE",
-        dest="dry_run",
+        action="store_true",
         help="If set, no changes will occur."
+    )
+    parser.add_argument(
+        "-v", "--verbose",
+        action="store_true",
+        help="Prints successful entries as well"
     )
     args = parser.parse_args()
 
@@ -130,12 +159,17 @@ def main():
         print(f"[ERROR] Input file not found: {args.input}", file=sys.stderr)
         sys.exit(1)
 
+    delete = False
     # If the user didn't explicitly supply a username, derive one from the
     # input filename — unless it's the default log name, in which case keep
     # "Anonymous" so generic runs don't accidentally stamp a log filename.
     if args.username == "Anonymous" and args.input.stem != "QuestCompletionLog":
         args.username = args.input.stem
         print(f"[INFO] No username supplied; using '{args.username}' (derived from input filename).")
+        delete = True
+
+    if args.dry_run:
+        print(f"[INFO] Dry run enabled", file=sys.stderr)
 
     if not args.directory.is_dir():
         print(f"[ERROR] Search directory not found: {args.directory}", file=sys.stderr)
@@ -153,16 +187,20 @@ def main():
         sys.exit(1)
 
     ok = sum(
-        process_entry(entry, args.directory, args.username, args.backup_suffix, args.dry_run)
+        process_entry(entry, args.directory, args.username, args.backup_suffix, args.dry_run, args.verbose)
         for entry in entries
     )
     total = len(entries)
-    print(f"\nDone: {ok}/{total} entries updated.")
+    print(f"\nDone: {ok}/{total} entries updated." + (f" ({skipped} skipped)" if skipped != 0 else ""))
     if ok < total:
         sys.exit(1)
     elif ok == total and ok != 0:
-        with args.input.open("w", encoding="utf-8-sig") as f:
-            f.write("[]")
+        if not args.dry_run:
+            if delete:
+                args.input.unlink()
+            else:
+                with args.input.open("w", encoding="utf-8-sig") as f:
+                    f.write("[]")
 
 
 if __name__ == "__main__":

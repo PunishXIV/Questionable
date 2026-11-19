@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +16,7 @@
           "StopDistance": 5,
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
         }
       ]
     },
@@ -31,22 +26,18 @@
         {
           "DataId": 1020337,
           "Position": {
-            "X": 171.31299,
+            "X": 165.61469,
             "Y": 13.02367,
-            "Z": -89.951965
+            "Z": -90.53424
           },
+          "StopDistance": 1,
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Rhalgr's Reach",
           "AethernetShortcut": [
             "[Rhalgr's Reach] Aetheryte Plaza",
             "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     }

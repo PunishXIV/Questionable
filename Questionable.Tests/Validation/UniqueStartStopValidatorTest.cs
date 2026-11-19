@@ -1,9 +1,9 @@
-﻿using NSubstitute;
-using Questionable.Model;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Questing;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
 using Xunit;
+
+using static Questionable.Tests.TestData.QuestTestData;
 
 namespace Questionable.Tests.Validation;
 
@@ -12,22 +12,6 @@ public sealed class UniqueStartStopValidatorTest
     private readonly UniqueStartStopValidator _validator = new();
 
     // --- helpers ---
-
-    private static Quest CreateQuest(ElementId id, params QuestSequence[] sequences)
-    {
-        var info = Substitute.For<IQuestInfo>();
-        info.QuestId.Returns(id);
-        return new Quest
-        {
-            Id = id,
-            Source = Quest.ESource.Assembly,
-            Root = new QuestRoot { QuestSequence = [..sequences] },
-            Info = info,
-        };
-    }
-
-    private static QuestSequence Seq(byte sequence, params QuestStep[] steps) =>
-        new() { Sequence = sequence, Steps = [..steps] };
 
     private static QuestStep Step(EInteractionType type,
         ElementId? pickUpQuestId = null, ElementId? turnInQuestId = null) =>
@@ -93,7 +77,7 @@ public sealed class UniqueStartStopValidatorTest
             Seq(255, Step(EInteractionType.CompleteQuest)));
 
         var issues = _validator.Validate(quest).ToList();
-        
+
         Assert.Single(issues);
         Assert.Equal(EIssueType.UnexpectedAcceptQuestStep, issues[0].Type);
     }

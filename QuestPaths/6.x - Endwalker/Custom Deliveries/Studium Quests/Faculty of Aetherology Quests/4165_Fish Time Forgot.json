@@ -1,0 +1,90 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "!!Requires manual interaction!!\nSky Spoon Lure is a scrip bait, and qst doesn't support buying scrip items yet\nPlease buy 3x Sky Spoon Lure from Scrip Exchange for 90 Purple Gatherer Scrip",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-01"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038551,
+          "Position": {
+            "X": -348.539,
+            "Y": 21.846,
+            "Z": -79.9565
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: issuer 1038551 (T'laqa Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Purchase 3x Sky Spoon Lure from Scrip Exchange with 90x Purple Gatherer Scrip\nGatherers' Scrip (Regional Folklore/Materials/...)\n  Lv. 80 Materials/Bait/...",
+          "DataId": 1037262,
+          "Position": {
+            "X": -314.4427,
+            "Y": 20.1375,
+            "Z": -93.003784
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Instruction",
+          "ItemId": 36590,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": { "NotInInventory": false },
+              "ExtraCondition": "NewGamePlus"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 445.06152,
+            "Y": 138.58499,
+            "Z": -144.78017
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Fish",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "ItemsToGather": [
+            {
+              "ItemId": 35607,
+              "ItemCount": 6,
+              "Collectability": 503,
+              "FishingOptions": {
+                "BaitId": 36590,
+                "HookType": { "Normal": { "Strong": true } }
+              }
+            }
+          ],
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
+        },
+        {
+          "DataId": 1038551,
+          "Position": {
+            "X": -348.539,
+            "Y": 21.846,
+            "Z": -79.9565
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
+        }
+      ]
+    }
+  ]
+}

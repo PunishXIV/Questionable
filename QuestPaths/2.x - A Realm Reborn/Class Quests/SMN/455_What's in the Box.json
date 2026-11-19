@@ -1,7 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-22"},
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,16 +16,10 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Arcanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -98,7 +93,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Arcanists' Guild"
@@ -163,7 +157,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Arcanists' Guild"

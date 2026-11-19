@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,8 @@
             "Z": 696.9557
           },
           "TerritoryId": 399,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Prologue Gate (Western Hinterlands)"]
         }
       ]
     },

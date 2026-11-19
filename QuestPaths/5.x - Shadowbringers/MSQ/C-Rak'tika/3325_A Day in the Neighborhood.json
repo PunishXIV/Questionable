@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -46,6 +47,17 @@
           "TerritoryId": 817,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Rak'tika - Slitherbough"
+        },
+        {
+          "DataId": 1027740,
+          "Position": {
+            "X": -105.9129,
+            "Y": -18.247393,
+            "Z": 271.10706
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179718
         },
         {
           "DataId": 1029198,

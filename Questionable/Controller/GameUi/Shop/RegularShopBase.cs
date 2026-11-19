@@ -1,10 +1,7 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.NativeWrapper;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Questionable.Controller.GameUi.Shop.Model;
@@ -82,7 +79,7 @@ public class RegularShopBase
             addon->GetPosition(&x, &y);
 
             ushort width = 0, height = 0;
-            addon->GetSize(&width, &height, true);
+            addon->GetSize(&width, &height, scaled: true);
             x += (short)width;
 
             if (_parentWindow.Position is { } position && ((short)position.X != x || (short)position.Y != y))

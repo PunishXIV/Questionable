@@ -1,19 +1,19 @@
-﻿using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using FFXIVClientStructs.FFXIV.Common.Math;
-using Questionable.Data;
-using Questionable.Functions;
 using Questionable.Model.Questing;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class ARealmRebornComponent
 (
+    GameFunctions gameFunctions,
     QuestFunctions questFunctions,
     QuestData questData,
+    QuestController questController,
+    QuestRegistry questRegistry,
     TerritoryData territoryData,
     UiUtils uiUtils,
     Configuration configuration)
@@ -21,20 +21,15 @@ internal sealed class ARealmRebornComponent
     private static readonly QuestId ATimeForEveryPurpose = new(425);
     private static readonly QuestId TheUltimateWeapon = new(524);
     private static readonly QuestId GoodIntentions = new(363);
-    private static readonly ushort[] RequiredPrimalInstances = [20004, 20006, 20005];
-    private readonly Configuration _configuration = configuration;
-    private readonly QuestData _questData = questData;
+    private static readonly Dictionary<ushort, ushort> RequiredPrimalInstances =
+        new() { { 20004, 59 }, { 20006, 60 }, { 20005, 61 } };
 
-    private readonly QuestFunctions _questFunctions = questFunctions;
-    private readonly TerritoryData _territoryData = territoryData;
-    private readonly UiUtils _uiUtils = uiUtils;
-
-    public bool ShouldDraw => !_questFunctions.IsQuestAcceptedOrComplete(ATimeForEveryPurpose) &&
-                              _questFunctions.IsQuestComplete(TheUltimateWeapon);
+    public bool ShouldDraw => !questFunctions.IsQuestAcceptedOrComplete(ATimeForEveryPurpose) &&
+                              questFunctions.IsQuestComplete(TheUltimateWeapon);
 
     public void Draw()
     {
-        if (!_questFunctions.IsQuestAcceptedOrComplete(GoodIntentions))
+        if (!questFunctions.IsQuestAcceptedOrComplete(GoodIntentions))
             DrawPrimals();
 
         DrawAllianceRaids();
@@ -42,33 +37,66 @@ internal sealed class ARealmRebornComponent
 
     private void DrawPrimals()
     {
-        bool complete = UIState.IsInstanceContentCompleted(RequiredPrimalInstances.Last());
-        bool hover = _uiUtils.ChecklistItem("Hard Mode Primals", complete,
-            _configuration.Advanced.SkipARealmRebornHardModePrimals ? ImGuiColors.DalamudGrey : null);
+        bool complete = UIState.IsInstanceContentCompleted(RequiredPrimalInstances.Keys.Last());
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
+        {
+            foreach (ushort qId in new ushort[] { 1048, 1157, 1158 })
+                if (questRegistry.TryGetQuest(new QuestId(qId), out var quest) &&
+                        !questFunctions.IsQuestComplete(quest.Id))
+                    questController.PriorityManager.Add(quest);
+            foreach (ushort instanceId in RequiredPrimalInstances.Keys)
+            {
+                if (!UIState.IsInstanceContentCompleted(instanceId) &&
+                    UIState.IsInstanceContentUnlocked(instanceId))
+                {
+                    gameFunctions.OpenDutyFinder(contentFinderConditionId: RequiredPrimalInstances[instanceId]);
+                    break;
+                }
+            }
+        }
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("Add to priority quests"));
+        ImGui.SameLine();
+        bool hover = uiUtils.ChecklistItem(_L("Hard Mode Primals"), complete,
+            configuration.Advanced.SkipARealmRebornHardModePrimals ? QstTheme.TextMuted : null);
         if (complete || !hover)
             return;
 
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-        foreach (ushort instanceId in RequiredPrimalInstances)
+        foreach (ushort instanceId in RequiredPrimalInstances.Keys)
         {
             (Vector4 color, FontAwesomeIcon icon) = UiUtils.GetInstanceStyle(instanceId);
-            _uiUtils.ChecklistItem(_territoryData.GetInstanceName(instanceId) ?? "?", color, icon, ImGui.GetStyle().FramePadding.X);
+            uiUtils.ChecklistItem(territoryData.GetInstanceName(instanceId) ?? _L("?"), color, icon, ImGui.GetStyle().FramePadding.X);
         }
     }
 
     private void DrawAllianceRaids()
     {
-        bool complete = _questFunctions.IsQuestComplete(QuestData.CrystalTowerQuests[^1]);
-        bool hover = _uiUtils.ChecklistItem("Crystal Tower Raids", complete,
-            _configuration.Advanced.SkipCrystalTowerRaids ? ImGuiColors.DalamudGrey : null);
+        bool complete = questFunctions.IsQuestComplete(QuestData.CrystalTowerQuests[^1]);
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
+        {
+            foreach (QuestId qId in QuestData.CrystalTowerQuests)
+                if (questRegistry.TryGetQuest(qId, out var quest) &&
+                        !questFunctions.IsQuestComplete(qId))
+                    questController.PriorityManager.Add(quest);
+        }
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("Add to priority quests"));
+        ImGui.SameLine();
+        bool hover = uiUtils.ChecklistItem(_L("Crystal Tower Raids"), complete,
+            configuration.Advanced.SkipCrystalTowerRaids ? QstTheme.TextMuted : null);
         if (complete || !hover)
             return;
 
+        ImGui.SetNextWindowSize(new(300, -1));
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
+        ImGui.TextWrapped(_L("The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode (\"unsync\"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter."));
         foreach (QuestId questId in QuestData.CrystalTowerQuests)
         {
-            (Vector4 color, FontAwesomeIcon icon, string _) = _uiUtils.GetQuestStyle(questId);
-            _uiUtils.ChecklistItem(_questData.GetQuestInfo(questId).Name, color, icon, ImGui.GetStyle().FramePadding.X);
+            if (questFunctions.IsQuestComplete(questId))
+                continue;
+            (Vector4 color, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(questId);
+            uiUtils.ChecklistItem(questData.GetQuestInfo(questId).Name, color, icon, ImGui.GetStyle().FramePadding.X);
         }
     }
 }

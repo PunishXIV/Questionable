@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 400,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Churning Mists - Moghome"
         }
       ]
     },
@@ -205,7 +201,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"

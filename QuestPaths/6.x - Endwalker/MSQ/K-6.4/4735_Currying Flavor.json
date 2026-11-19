@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,8 @@
             "Z": -68.40625
           },
           "TerritoryId": 963,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Radz-at-Han] Aetheryte Plaza","[Radz-at-Han] Meghaduta"]
         }
       ]
     },

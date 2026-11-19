@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -45,12 +46,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
         }
       ]
     },
@@ -67,12 +63,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
         }
       ]
     },
@@ -89,12 +80,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
         }
       ]
     },

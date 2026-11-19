@@ -1,15 +1,31 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "jigain", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 987,
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        },
+        {
           "DataId": 1038670,
           "Position": {
             "X": -2.609314,
-            "Y": 1.9073486E-06,
+            "Y": 1.9073486e-6,
             "Z": 0.16778564
           },
           "StopDistance": 5,
@@ -33,27 +49,14 @@
           "TargetTerritoryId": 962,
           "SkipConditions": {
             "StepIf": {
-              "NotInTerritory": [
-                987
-              ]
+              "NotInTerritory": [987]
             }
           }
         },
         {
           "TerritoryId": 962,
           "InteractionType": "AttuneAethernetShard",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShard": "[Old Sharlayan] The Baldesion Annex",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
-        },
-        {
-          "TerritoryId": 962,
-          "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Old Sharlayan] The Studium"
+          "AethernetShard": "[Old Sharlayan] The Baldesion Annex"
         },
         {
           "DataId": 1038675,
@@ -63,7 +66,11 @@
             "Z": 10.849121
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Baldesion Annex",
+            "[Old Sharlayan] The Studium"
+          ]
         }
       ]
     },
@@ -79,7 +86,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -99,7 +106,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -118,7 +125,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
           "DialogueChoices": [
             {
               "Type": "YesNo",

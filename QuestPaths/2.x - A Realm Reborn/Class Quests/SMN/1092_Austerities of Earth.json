@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,19 +11,21 @@
           "TerritoryId": 133,
           "InteractionType": "EquipItem",
           "ItemId": 4549,
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Mih Khetto's Amphitheatre"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]
             }
           }
+        },
+        {
+          "TerritoryId": 133,
+          "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006756,
@@ -47,6 +51,7 @@
           },
           "TerritoryId": 154,
           "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "Fly": true
         }
@@ -80,7 +85,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Mih Khetto's Amphitheatre"

@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -38,6 +38,17 @@
           },
           "TerritoryId": 400,
           "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2005700,
+          "Position": {
+            "X": -521.2329,
+            "Y": 49.973267,
+            "Z": 362.08118
+          },
+          "TerritoryId": 400,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179692
         },
         {
           "TerritoryId": 400,

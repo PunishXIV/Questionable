@@ -1,0 +1,98 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019524,
+          "Position": {
+            "X": -647.246,
+            "Y": 129.793,
+            "Z": -549.604
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: issuer 1019524 (Lucinne)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008828,
+          "Position": {
+            "X": -380.388,
+            "Y": 43.0134,
+            "Z": 465.429
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 41y from lua EOBJECT2 -> 2008828 (destination)"
+        },
+        {
+          "DataId": 2008829,
+          "Position": {
+            "X": -360.317,
+            "Y": 38.97,
+            "Z": 496.646
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
+          "$": "auto: todo area 40y from lua EOBJECT3 -> 2008829 (destination)"
+        },
+        {
+          "DataId": 2008827,
+          "Position": {
+            "X": -408.54,
+            "Y": 39.7058,
+            "Z": 482.642
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 20y from lua EOBJECT1 -> 2008827 (destination)"
+        },
+        {
+          "DataId": 2008826,
+          "Position": {
+            "X": -439.811,
+            "Y": 39.3805,
+            "Z": 509.987
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 42y from lua EOBJECT0 -> 2008826 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019524,
+          "Position": {
+            "X": -647.246,
+            "Y": 129.793,
+            "Z": -549.604
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo turn-in -> 1019524 (Lucinne)"
+        }
+      ]
+    }
+  ]
+}

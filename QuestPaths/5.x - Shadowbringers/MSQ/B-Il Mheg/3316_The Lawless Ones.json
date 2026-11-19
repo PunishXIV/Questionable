@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -128,6 +129,17 @@
           "Aetheryte": "Il Mheg - Wolekdorf"
         },
         {
+          "DataId": 2010638,
+          "Position": {
+            "X": 351.67468,
+            "Y": 84.15344,
+            "Z": -647.05884
+          },
+          "TerritoryId": 816,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179715
+        },
+        {
           "DataId": 1029575,
           "Position": {
             "X": 477.46997,
@@ -144,30 +156,68 @@
       "Steps": [
         {
           "Position": {
-            "X": 519.60034,
-            "Y": 110.94924,
-            "Z": -171.57602
+            "X": 515.41943,
+            "Y": 109.21057,
+            "Z": -173.5137
           },
           "TerritoryId": 816,
-          "InteractionType": "WalkTo",
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [10249, 10250, 10251],
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
             }
           }
         },
         {
           "Position": {
-            "X": 524.02466,
-            "Y": 117.10437,
-            "Z": -161.2614
+            "X": 523.48444,
+            "Y": 113.16365,
+            "Z": -169.21333
           },
           "TerritoryId": 816,
           "InteractionType": "WalkTo",
           "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 524.98083,
+            "Y": 117.055916,
+            "Z": -160.94905
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
             }
           }
         },
@@ -180,7 +230,49 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
+        },
+        {
+          "Position": {
+            "X": 508.26013,
+            "Y": 103.6317,
+            "Z": -152.83453
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 514.45776,
+                  "Y": 122.45361,
+                  "Z": -158.28192
+                },
+                "TerritoryId": 816,
+                "MaximumDistance": 5
+              },
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 533.1536,
+            "Y": 109.112404,
+            "Z": -154.17346
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 816,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [10249, 10250, 10251]
         },
         {
           "Position": {
@@ -203,7 +295,14 @@
           },
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
             }
           }
         },
@@ -227,7 +326,14 @@
           },
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
             }
           }
         },
@@ -251,7 +357,14 @@
           },
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
             }
           }
         },
@@ -275,7 +388,14 @@
           },
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
             }
           }
         },
@@ -288,7 +408,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2009834,

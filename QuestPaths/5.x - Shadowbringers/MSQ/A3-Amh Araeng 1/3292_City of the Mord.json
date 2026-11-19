@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -24,6 +25,17 @@
           "TerritoryId": 815,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Amh Araeng - Mord Souq"
+        },
+        {
+          "DataId": 1027900,
+          "Position": {
+            "X": 281.87976,
+            "Y": 1.4685826,
+            "Z": -265.3697
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179720
         },
         {
           "DataId": 1027872,

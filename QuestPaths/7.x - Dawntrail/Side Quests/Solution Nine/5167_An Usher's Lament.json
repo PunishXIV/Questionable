@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,11 @@
             "Z": 18.20398
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Nexus Arcade"
+          ]
         }
       ]
     },

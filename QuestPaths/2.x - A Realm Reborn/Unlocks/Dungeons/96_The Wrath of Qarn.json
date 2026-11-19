@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +17,7 @@
           "Fly": true,
           "Land": true,
           "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         },
         {
           "DataId": 1005524,
@@ -48,20 +44,15 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Miners' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 131
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -83,7 +74,6 @@
           "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 146
               ]
@@ -122,7 +112,8 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 26,
-            "Enabled": false
+            "Enabled": false,
+            "LowPriority": true
           }
         }
       ]
@@ -139,20 +130,15 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Miners' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 131
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }

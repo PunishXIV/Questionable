@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Game.ClientState.Objects.SubKinds;
+﻿using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
-using Questionable.Data;
-using Questionable.Model;
+using Questionable.Controller.Steps.Interactions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using Action = Questionable.Controller.Steps.Interactions.Action;
+using static Questionable.Controller.Steps.ITaskExecutor;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -40,7 +33,6 @@ internal static class Gather
     internal sealed class DelayedGatheringExecutor
     (
         GatheringPointRegistry gatheringPointRegistry,
-        TerritoryData territoryData,
         IClientState clientState,
         IObjectTable objectTable,
         IServiceProvider serviceProvider,
@@ -69,9 +61,9 @@ internal static class Gather
                 yield break;
 
             if (currentClassJob == Job.MIN)
-                yield return new Action.TriggerStatusIfMissing(EStatus.Prospect, EAction.Prospect);
+                yield return new ActionStep.TriggerStatusIfMissing(EStatus.Prospect, EAction.Prospect);
             else if (currentClassJob == Job.BTN)
-                yield return new Action.TriggerStatusIfMissing(EStatus.Triangulate, EAction.Triangulate);
+                yield return new ActionStep.TriggerStatusIfMissing(EStatus.Triangulate, EAction.Triangulate);
 
             using (IDisposable? _ = logger.BeginScope("Gathering(inner)"))
             {
@@ -93,9 +85,9 @@ internal static class Gather
                 }
             }
 
-            uint territoryId = gatheringRoot.Steps.Last().TerritoryId;
+            uint territoryId = gatheringRoot.Steps[^1].TerritoryId;
             yield return new WaitCondition.Task(() => clientState.TerritoryType == territoryId,
-                $"Wait(territory: {territoryData.GetNameAndId(territoryId)})");
+                $"Wait(territory: {TerritoryData.GetNameAndId(territoryId)})");
 
             yield return new WaitNavmesh.Task();
 
@@ -125,11 +117,9 @@ internal static class Gather
         {
             if (GatheredItem.Collectability == 0)
                 return $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId})";
-            else
-            {
-                return
-                    $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId} {SeIconChar.Collectible.ToIconString()} {GatheredItem.Collectability})";
-            }
+
+            return
+                $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId} {SeIconChar.Collectible.ToIconString()} {GatheredItem.Collectability})";
         }
     }
 

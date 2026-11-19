@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Questionable.Model;
+﻿using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using static Questionable.Utils.CacheUtils;
 namespace Questionable.Validation;
 
+[RegisterSingleton]
 internal sealed class QuestValidator
 {
     private readonly ILogger<QuestValidator> _logger;
@@ -25,8 +21,10 @@ internal sealed class QuestValidator
     }
 
     public IReadOnlyList<ValidationIssue> Issues => _validationIssues;
+    private CachedValue<int> _errorCount = new(ttlSeconds: 1);
+    public volatile bool Running;
     public int IssueCount => _validationIssues.Count;
-    public int ErrorCount => _validationIssues.Count(x => x.Severity == EIssueSeverity.Error);
+    public int ErrorCount => _errorCount.Get(() => _validationIssues.Count(x => x.Severity == EIssueSeverity.Error));
 
     public void Reset()
     {
@@ -41,6 +39,9 @@ internal sealed class QuestValidator
         {
             try
             {
+                if (Running)
+                    return;
+                Running = true;
                 _validationIssues.Clear();
 
                 List<ValidationIssue> issues = [];
@@ -61,13 +62,13 @@ internal sealed class QuestValidator
                                     "Validation failed: {QuestId} ({QuestName}) / {QuestSequence} / {QuestStep} - {Description}",
                                     issue.ElementId, quest.Info.Name, issue.Sequence, issue.Step, issue.Description);
                                 */
-                                if (issue.Type == EIssueType.QuestDisabled && quest.Info.AlliedSociety != EAlliedSociety.None)
-                                {
-                                    disabledTribeQuests.TryAdd(quest.Info.AlliedSociety, 0);
-                                    disabledTribeQuests[quest.Info.AlliedSociety]++;
-                                }
-                                else
-                                    issues.Add(issue);
+                                //if (issue.Type == EIssueType.QuestDisabled && quest.Info.AlliedSociety != EAlliedSociety.None)
+                                //{
+                                //    disabledTribeQuests.TryAdd(quest.Info.AlliedSociety, 0);
+                                //    disabledTribeQuests[quest.Info.AlliedSociety]++;
+                                //}
+                                //else
+                                issues.Add(issue);
                             }
                         }
                         catch (ArgumentException e)
@@ -95,6 +96,7 @@ internal sealed class QuestValidator
             {
                 _logger.LogError(e, "Unable to validate quests");
             }
+            Running = false;
         }, CancellationToken.None, TaskCreationOptions.LongRunning, TaskScheduler.Default);
     }
 
@@ -112,7 +114,7 @@ internal sealed class QuestValidator
                 AlliedSociety = x.Key,
                 Type = EIssueType.QuestDisabled,
                 Severity = EIssueSeverity.None,
-                Description = $"{x.Value} disabled quest(s)"
+                Description = _LF("{0} disabled quest(s)", x.Value)
             });
     }
 }

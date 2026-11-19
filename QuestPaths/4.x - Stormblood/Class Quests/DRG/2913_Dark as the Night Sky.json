@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -18,12 +19,7 @@
           "AethernetShortcut": [
             "[Kugane] Aetheryte Plaza",
             "[Kugane] Bokairo Inn"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

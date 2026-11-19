@@ -1,0 +1,141 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021654,
+          "Position": {
+            "X": -620.124,
+            "Y": 130.205,
+            "Z": -480.908
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: issuer 1021654 (Resistance fighter)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021655,
+          "Position": {
+            "X": -256.825,
+            "Y": 44.6326,
+            "Z": -303.7
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo location -> 1021655 (Resistance fighter)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008260,
+          "Position": {
+            "X": -272.328,
+            "Y": 43.5339,
+            "Z": -292.042
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "ItemId": 2002184,
+          "$": "auto: todo location -> 2008260 (destination); use item ITEM0=2002184 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021655,
+          "Position": {
+            "X": -256.825,
+            "Y": 44.6326,
+            "Z": -303.7
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo location -> 1021655 (Resistance fighter)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -271.97974,
+            "Y": 43.28432,
+            "Z": -289.64096
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -278.45758,
+            "Y": 18.711428,
+            "Z": -291.00757
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "DisableNavmesh": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [7507],
+          "$": "auto: lua enemies spawn here -> 7507"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021655,
+          "Position": {
+            "X": -256.825,
+            "Y": 44.6326,
+            "Z": -303.7
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo location -> 1021655 (Resistance fighter)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021654,
+          "Position": {
+            "X": -620.124,
+            "Y": 130.205,
+            "Z": -480.908
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo turn-in -> 1021654 (Resistance fighter)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,16 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
-using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class DoGatherCollectable
@@ -188,21 +183,19 @@ internal static class DoGatherCollectable
                 actions.Enqueue(PickAction(EAction.MeticulousMiner, EAction.MeticulousBotanist));
                 return actions;
             }
-            else
-            {
-                logger.LogTrace("Scrutiny active, need {NeededCollectability} and we expect {Collectability}~ scour",
-                    neededCollectability, nodeCondition.CollectabilityFromScour);
-                actions.Enqueue(PickAction(EAction.ScourMiner, EAction.ScourBotanist));
-                return actions;
-            }
+
+            logger.LogTrace("Scrutiny active, need {NeededCollectability} and we expect {Collectability}~ scour",
+                neededCollectability, nodeCondition.CollectabilityFromScour);
+            actions.Enqueue(PickAction(EAction.ScourMiner, EAction.ScourBotanist));
+            return actions;
         }
 
         private unsafe EAction PickAction(EAction minerAction, EAction botanistAction)
         {
             if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
                 return minerAction;
-            else
-                return botanistAction;
+
+            return botanistAction;
         }
 
         public override bool ShouldInterruptOnDamage() => false;

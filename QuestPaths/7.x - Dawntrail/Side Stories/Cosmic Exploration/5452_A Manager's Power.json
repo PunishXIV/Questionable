@@ -1,0 +1,194 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-02"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052581,
+          "Position": {
+            "X": 27.232807,
+            "Y": -137.41669,
+            "Z": -411.65918
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1310,
+          "Fly": true,
+          "Comment": "Select the destination Oizys (#3)",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_000",
+              "Answer": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_005",
+              "Type": "List",
+              "ExcelSheet": "custom/009/CtsWksEntrance_00921"
+            }
+          ]
+        },
+        {
+          "DataId": 1053352,
+          "Position": {
+            "X": -161.05902,
+            "Y": 0.49999338,
+            "Z": 147.05115
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGWZ303_05452_Q1_000_000",
+              "Answer": "TEXT_KINGWZ303_05452_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053361,
+          "Position": {
+            "X": -254.81042,
+            "Y": 0.10001525,
+            "Z": 163.50037
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
+        },
+        {
+          "DataId": 2015123,
+          "Position": {
+            "X": -223.6874,
+            "Y": 1.782013,
+            "Z": 147.8397
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1310,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "High": 2 }
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1053362,
+          "Position": {
+            "X": -173.57141,
+            "Y": 62.24827,
+            "Z": 183.12354
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
+        },
+        {
+          "DataId": 2015124,
+          "Position": {
+            "X": -223.9777,
+            "Y": 65.25887,
+            "Z": 154.5914
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1310,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "High": 2 }
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1053360,
+          "Position": {
+            "X": -256.00067,
+            "Y": 0.5000022,
+            "Z": -38.986816
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2015124,
+          "Position": {
+            "X": -223.9777,
+            "Y": 65.25887,
+            "Z": 154.5914
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1310,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -173.57141,
+                  "Y": 62.24827,
+                  "Z": 183.12354
+                },
+                "TerritoryId": 1310,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1053352,
+          "Position": {
+            "X": -161.05902,
+            "Y": 0.49999338,
+            "Z": 147.05115
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "Saionji", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,12 +14,7 @@
           },
           "TerritoryId": 635,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         },
         {
           "DataId": 1019459,

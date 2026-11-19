@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "UcanPatates",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,15 +15,11 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Mih Khetto's Amphitheatre"
           ],
           "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            },
             "AetheryteShortcutIf": {
               "InTerritory": [
                 132,
@@ -47,11 +44,6 @@
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 970
         }
       ]

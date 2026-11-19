@@ -1,0 +1,68 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": ["alydev", "OmegaJackie"],
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058756,
+          "Position": {
+            "X": -33.7745,
+            "Y": 0,
+            "Z": 45.1991
+          },
+          "TerritoryId": 144,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Entrance & Card Squares"
+          ],
+          "$": "auto: issuer 1058756 (catlike mammet)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058754,
+          "Position": {
+            "X": 0.804425,
+            "Y": 3.98254,
+            "Z": 61.2062
+          },
+          "TerritoryId": 144,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1360,
+          "$": "auto: todo location -> 1058754 (W'zazanh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058752,
+          "Position": {
+            "X": -13.6017,
+            "Y": 0.332853,
+            "Z": -28.1275
+          },
+          "TerritoryId": 1360,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_SUBGSC801_05466_YESNOCHECK_000_029",
+              "Type": "YesNo",
+              "Yes": true,
+              "PromptIsRegularExpression": true
+            }
+          ],
+          "$": "auto: todo turn-in -> 1058752 (magitype master)"
+        }
+      ]
+    }
+  ]
+}

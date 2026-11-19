@@ -1,0 +1,162 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030500,
+          "Position": {
+            "X": 302.672,
+            "Y": 1.44958,
+            "Z": -217.281
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: issuer 1030500 (flea-bitten scavenger)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030501,
+          "Position": {
+            "X": 369.636,
+            "Y": -10.4015,
+            "Z": -146.008
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo location -> 1030501 (flea-bitten scavenger)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010130,
+          "Position": {
+            "X": 423.742,
+            "Y": -23.9445,
+            "Z": -14.8134
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UseItem",
+          "GroundTarget": true,
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "ItemId": 2002619,
+          "$": "auto: lua EOBJECT0 -> 2010130 (destination); use item ITEM0=2002619 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010129,
+          "Position": {
+            "X": 425.853,
+            "Y": -24.0622,
+            "Z": -15.4388
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
+          "ItemId": 2002620,
+          "$": "auto: todo area 9y from lua EOBJECT4 -> 2010129 (sand wriggler); use item ITEM1=2002620 on it"
+        },
+        {
+          "DataId": 2010127,
+          "Position": {
+            "X": 421.959,
+            "Y": -23.9277,
+            "Z": -17.4994
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "ItemId": 2002620,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 9y from lua EOBJECT2 -> 2010127 (sand wriggler); use item ITEM1=2002620 on it"
+        },
+        {
+          "DataId": 2010126,
+          "Position": {
+            "X": 420.256,
+            "Y": -23.9158,
+            "Z": -14.5775
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "ItemId": 2002620,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 10y from lua EOBJECT1 -> 2010126 (sand wriggler); use item ITEM1=2002620 on it"
+        },
+        {
+          "DataId": 2010128,
+          "Position": {
+            "X": 423.87,
+            "Y": -23.7693,
+            "Z": -12.0355
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "ItemId": 2002620,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 10y from lua EOBJECT3 -> 2010128 (sand wriggler); use item ITEM1=2002620 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030501,
+          "Position": {
+            "X": 369.636,
+            "Y": -10.4015,
+            "Z": -146.008
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo location -> 1030501 (flea-bitten scavenger); hands over ITEM1=2002620"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030502,
+          "Position": {
+            "X": 191.953,
+            "Y": 7.15583,
+            "Z": -275.526
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo turn-in -> 1030502 (flea-bitten scavenger)"
+        }
+      ]
+    }
+  ]
+}

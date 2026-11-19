@@ -1,16 +1,13 @@
-using System;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
 
 namespace Questionable.Controller.GameUi;
 
 /// <summary>
 ///     Handles the in-game "HousingSelectBlock" addon by confirming the selected housing ward.
 /// </summary>
+[RegisterSingleton]
 internal sealed class HousingSelectBlockHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;

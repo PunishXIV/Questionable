@@ -1,0 +1,103 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031390,
+          "Position": {
+            "X": 413.182,
+            "Y": 33.6378,
+            "Z": -93.2044
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031391,
+          "Position": {
+            "X": 165.1178,
+            "Y": -0.3133182,
+            "Z": -579.61395
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 161.23354,
+            "Y": 1.2180228,
+            "Z": -765.8135
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            10279
+          ],
+          "CombatItemUse": {
+            "ItemId": 2002884,
+            "Condition": "Health%",
+            "Value": 50
+          },
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031391,
+          "Position": {
+            "X": 165.1178,
+            "Y": -0.3133182,
+            "Z": -579.61395
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031390,
+          "Position": {
+            "X": 413.182,
+            "Y": 33.6378,
+            "Z": -93.2044
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}

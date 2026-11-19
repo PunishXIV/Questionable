@@ -1,10 +1,26 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 131,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Gladiator",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [131]
+            }
+          }
+        },
         {
           "DataId": 1002277,
           "Position": {
@@ -14,17 +30,13 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Gladiators' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
-              "InTerritory": [
-                131
-              ]
+              "InTerritory": [131]
             }
           }
         }
@@ -63,10 +75,7 @@
           "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            18,
-            19
-          ],
+          "KillEnemyDataIds": [18, 19],
           "Fly": true
         }
       ]
@@ -99,7 +108,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] The Chamber of Rule"

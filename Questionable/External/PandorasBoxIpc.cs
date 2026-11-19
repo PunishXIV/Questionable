@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using Dalamud.Plugin;
+﻿using System.Collections.Immutable;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Data;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
-internal sealed class PandorasBoxIpc : IDisposable
+[RegisterSingleton]
+internal sealed class PandorasBoxIpc : Ipc, IDisposable
 {
+    public override string InternalName => "PandorasBox";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
+        {
+            var _ = _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
+            return GetVersion() != null && _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
+        }, fallback: false);
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>
     {
         // Actions
@@ -72,6 +74,10 @@ internal sealed class PandorasBoxIpc : IDisposable
             {
                 return _getFeatureEnabled.InvokeFunc("Auto Active Time Maneuver") == true;
             }
+            catch (IpcNotReadyError)
+            {
+                return false;
+            }
             catch (IpcError e)
             {
                 if (!_loggedIpcError)
@@ -85,10 +91,28 @@ internal sealed class PandorasBoxIpc : IDisposable
         }
     }
 
+    public bool SetAutoActiveTimeManeuverEnabled(bool enabled)
+    {
+        try
+        {
+            _setFeatureEnabled.InvokeAction("Auto Active Time Maneuver", enabled);
+            return IsAutoActiveTimeManeuverEnabled == enabled;
+        }
+        catch (IpcNotReadyError)
+        {
+            return false;
+        }
+        catch (IpcError e)
+        {
+            _logger.LogWarning(e, "Could not set Pandora's Box auto active time maneuver to {Enabled}", enabled);
+            return false;
+        }
+    }
+
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
-        RestoreConflictingFeatures();
+        IpcInvoke.TryOnFrameworkThread(_framework, RestoreConflictingFeatures, _logger);
     }
 
     private void OnUpdate(IFramework framework)
@@ -139,7 +163,7 @@ internal sealed class PandorasBoxIpc : IDisposable
                 _setFeatureEnabled.InvokeAction(feature, true);
                 _logger.LogInformation("Restored Pandora's Box feature: {Feature}", feature);
             }
-            catch (IpcError e)
+            catch (Exception e)
             {
                 _logger.LogWarning(e, "Failed to restore Pandora's Box feature: {Feature}", feature);
             }

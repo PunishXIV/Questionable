@@ -1,0 +1,107 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030825,
+          "Position": {
+            "X": -105.329,
+            "Y": -19.6756,
+            "Z": 377.143
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -149.15567,
+            "Y": -17.420284,
+            "Z": 293.8361
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -237.4252,
+            "Y": -2.634516,
+            "Z": 325.70593
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1030826,
+          "Position": {
+            "X": -235.70612,
+            "Y": 15.298737,
+            "Z": -34.28705
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031190,
+          "Position": {
+            "X": -234.394,
+            "Y": 15.6813,
+            "Z": -35.3247
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Emote",
+          "Emote": "doubt",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZE014_03448_Q1_000_000",
+              "Answer": "TEXT_LUCKZE014_03448_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZE014_03448_Q1_000_000",
+              "Answer": "TEXT_LUCKZE014_03448_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031191,
+          "Position": {
+            "X": -124.193,
+            "Y": -19.0535,
+            "Z": 282.856
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

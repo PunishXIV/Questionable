@@ -1,0 +1,74 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "Iskierka", "Date": "2026-07-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006698,
+          "Position": {
+            "X": -409.344,
+            "Y": 225.135,
+            "Z": -297.03
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006477,
+          "Position": {
+            "X": -454.822,
+            "Y": 207.061,
+            "Z": -291.844
+          },
+          "StopDistance": 3,
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002165,
+          "Position": {
+            "X": -185.07672,
+            "Y": 293.04944,
+            "Z": -70.634094
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006698,
+          "Position": {
+            "X": -409.344,
+            "Y": 225.135,
+            "Z": -297.03
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

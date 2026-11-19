@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-28"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -94,6 +94,17 @@
           "TerritoryId": 814,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kholusia - Tomra"
+        },
+        {
+          "DataId": 1027470,
+          "Position": {
+            "X": -412.253,
+            "Y": 417.13983,
+            "Z": -599.4812
+          },
+          "TerritoryId": 814,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179710
         },
         {
           "DataId": 1030216,

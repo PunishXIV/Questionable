@@ -1,0 +1,99 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002058,
+          "Position": {
+            "X": 59.617,
+            "Y": 45.1453,
+            "Z": -215.9
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "$": "auto: issuer 1002058 (Fufulupa)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001374,
+          "Position": {
+            "X": 101.867,
+            "Y": 49.3657,
+            "Z": -171.121
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UseItem",
+          "ItemId": 2000373,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 2001374 (trap point)"
+        },
+        {
+          "DataId": 2001377,
+          "Position": {
+            "X": 106.859,
+            "Y": 49.3354,
+            "Z": -173.693
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UseItem",
+          "ItemId": 2000373,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
+          "$": "auto: todo location -> 2001377 (trap point)"
+        },
+        {
+          "DataId": 2001375,
+          "Position": {
+            "X": 111.437,
+            "Y": 49.1711,
+            "Z": -177.997
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UseItem",
+          "ItemId": 2000373,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 2001375 (trap point)"
+        },
+        {
+          "DataId": 2001376,
+          "Position": {
+            "X": 115.19,
+            "Y": 49.1434,
+            "Z": -183.032
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UseItem",
+          "ItemId": 2000373,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo location -> 2001376 (trap point)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002064,
+          "Position": {
+            "X": 83.8139,
+            "Y": 45.2081,
+            "Z": -211.827
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "$": "auto: todo turn-in -> 1002064 (Chechezan)"
+        }
+      ]
+    }
+  ]
+}

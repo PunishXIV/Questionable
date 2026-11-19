@@ -44,6 +44,30 @@ Horizon side of the gate:
 
 ```
 
+## Upper La Noscea
+
+Western Half of Upper La Noscea (via Western La Noscea)
+
+```json
+        {
+          "Position": {
+            "X": 407.71924,
+            "Y": 32.11566,
+            "Z": -14.989758
+          },
+          "TerritoryId": 138,
+          "TargetTerritoryId": 139,
+          "Fly": true,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [139] },
+            "StepIf": { "InTerritory": [139] }
+          }
+        }
+```
+
+
 ## Mor Dhona
 
 ```json

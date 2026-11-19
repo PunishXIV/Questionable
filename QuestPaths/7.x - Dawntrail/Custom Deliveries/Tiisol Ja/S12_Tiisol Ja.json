@@ -1,0 +1,58 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "DataId": 1058167,
+          "Position": {
+            "X": 88.48706,
+            "Y": -14,
+            "Z": 56.687256
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/009/CtsSfsCharacter12_00963",
+              "Prompt": "TEXT_CTSSFSCHARACTER12_00963_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER12_00963_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1185,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/009/CtsSfsCharacter12_00963",
+              "Prompt": "TEXT_CTSSFSCHARACTER12_00963_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER12_00963_TOPMENU_000_003"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

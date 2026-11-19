@@ -1,0 +1,168 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012134 (Notched Bone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.368,
+            "Y": 205.873,
+            "Z": 23.4836
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012097 (Slowfix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012134 (Notched Bone); hands over ITEM0=2001777"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014374,
+          "Position": {
+            "X": 131.165,
+            "Y": 205.971,
+            "Z": 106.586
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1014374 (malicious moneylender)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012134 (Notched Bone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014375,
+          "Position": {
+            "X": -214.496,
+            "Y": 102.937,
+            "Z": -582.208
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.368,
+            "Y": 205.873,
+            "Z": 23.4836
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012097 (Slowfix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1014332,
+          "Position": {
+            "X": 302.478,
+            "Y": 68.2588,
+            "Z": -151.692
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012134 (Notched Bone)"
+        }
+      ]
+    }
+  ]
+}

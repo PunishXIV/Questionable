@@ -1,24 +1,14 @@
-﻿using System;
-using ECommons.DalamudServices;
-using ECommons.EzIpcManager;
-using ECommons.Reflection;
-namespace Questionable.External;
+﻿namespace Questionable.External;
 
 internal interface IPCUtils
 {
-    internal sealed class IPCSubscriber_Common
+    internal sealed class IPCSubscriber
     {
-        internal static bool IsInstalled(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, false, true);
+        internal static bool IsInstalled(string pluginName) =>
+            Svc.PluginInterface.InstalledPlugins.Any(p => p.InternalName == pluginName && p.IsLoaded);
 
-        internal static Version Version(string pluginName)
-        {
-            Version _version;
-            if (DalamudReflector.TryGetDalamudPlugin(pluginName, out object? dalamudPlugin, false, true))
-                _version = dalamudPlugin.GetType().Assembly.GetName().Version ?? new Version(0, 0, 0, 0);
-            else
-                _version = new(0, 0, 0, 0);
-            return _version;
-        }
+        internal static Version? Version(string pluginName) =>
+            Svc.PluginInterface.InstalledPlugins.FirstOrDefault(p => p.Name == pluginName && p.IsLoaded)?.Version;
 
         internal static void DisposeAll(EzIPCDisposalToken[] _disposalTokens)
         {

@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -21,12 +22,7 @@
               "Answer": "TEXT_STMBDA312_02488_A1_000_014"
             }
           ],
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
         }
       ]
     },

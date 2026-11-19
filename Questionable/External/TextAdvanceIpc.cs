@@ -1,13 +1,17 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Services;
-using Questionable.Controller;
+﻿using Dalamud.Plugin.Ipc;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
-internal sealed class TextAdvanceIpc : IDisposable
+[RegisterSingleton]
+internal sealed class TextAdvanceIpc : Ipc, IDisposable
 {
+    public override string InternalName => "TextAdvance";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
+        {
+            var _ = _isInExternalControl.InvokeFunc();
+            return GetVersion() != null;
+        }, fallback: false);
     private readonly Configuration _configuration;
     private readonly ICallGateSubscriber<string, bool> _disableExternalControl;
     private readonly ICallGateSubscriber<string, ExternalTerritoryConfig, bool> _enableExternalControl;
@@ -36,7 +40,7 @@ internal sealed class TextAdvanceIpc : IDisposable
     {
         _framework.Update -= OnUpdate;
         if (_isExternalControlActivated)
-            _disableExternalControl.InvokeFunc(_pluginName);
+            IpcInvoke.TryOnFrameworkThread(_framework, () => _disableExternalControl.InvokeFunc(_pluginName));
     }
 
     private void OnUpdate(IFramework framework)

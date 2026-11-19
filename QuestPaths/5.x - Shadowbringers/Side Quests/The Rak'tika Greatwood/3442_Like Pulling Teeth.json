@@ -1,0 +1,110 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-08"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029874,
+          "Position": {
+            "X": -29.0446,
+            "Y": -25.0005,
+            "Z": 286.103
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -168.82904,
+            "Y": -12.455409,
+            "Z": 294.79294
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1029875,
+          "Position": {
+            "X": -511.116,
+            "Y": 0,
+            "Z": 262.62
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Snipe",
+          "Fly": true,
+          "Comment": "Use the blowgun on the razor-tusked swine"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029875,
+          "Position": {
+            "X": -511.116,
+            "Y": 0,
+            "Z": 262.62
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010621,
+          "Position": {
+            "X": -563.888,
+            "Y": 1.06593,
+            "Z": 164.296
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -62.4685,
+            "Y": -19.246405,
+            "Z": 305.7575
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1029874,
+          "Position": {
+            "X": -29.0446,
+            "Y": -25.0005,
+            "Z": 286.103
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough"
+        }
+      ]
+    }
+  ]
+}

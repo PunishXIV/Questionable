@@ -1,10 +1,27 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1000460,
+          "Position": {
+            "X": -159.41101,
+            "Y": 4.054107,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 205,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "SkipConditions": {"StepIf": {"InTerritory": [205]}}
+        },
         {
           "DataId": 1003027,
           "Position": {
@@ -47,7 +64,7 @@
           "TerritoryId": 132,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.0.0.293",
             "Notes": [
               "(Lunar Odin) AI doesn't pull Odin to start combat",

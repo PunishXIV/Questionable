@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -77,6 +79,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "Fly": true
         }

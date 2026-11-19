@@ -1,0 +1,175 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039220,
+          "Position": {
+            "X": -287.15,
+            "Y": 21.846,
+            "Z": -150.752
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_AKTKLA305_04150_Q1_000_000",
+              "Answer": "TEXT_AKTKLA305_04150_A1_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: issuer 1039220 (Debroye)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039229,
+          "Position": {
+            "X": 172.586,
+            "Y": 5.76694,
+            "Z": 602.996
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "$": "auto: todo location -> 1039229 (Debroye)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039230,
+          "Position": {
+            "X": -12.849,
+            "Y": -2,
+            "Z": 89.7766
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han",
+          "$": "auto: todo location -> 1039230 (Debroye)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039231,
+          "Position": {
+            "X": 131.548,
+            "Y": 4.78412,
+            "Z": -164.207
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Alzadaal's Peace",
+            "[Radz-at-Han] The High Crucible of Al-Kimiya"
+          ],
+          "$": "auto: todo location -> 1039231 (apprentice alchemist)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039232,
+          "Position": {
+            "X": 87.2466,
+            "Y": -24.6933,
+            "Z": -219.061
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1039232 (amiable alchemist)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039230,
+          "Position": {
+            "X": -13.850028,
+            "Y": 3.0150015,
+            "Z": -215.53165
+          },
+          "TerritoryId": 963,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] The High Crucible of Al-Kimiya",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_AKTKLA305_04150_Q3_000_000",
+              "Answer": "TEXT_AKTKLA305_04150_A3_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: lua ACTOR2 -> 1039230 (Debroye)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Craft",
+          "ItemId": 35844,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1039233,
+          "Position": {
+            "X": -9.61604,
+            "Y": 3.03,
+            "Z": -214.05
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han",
+          "$": "auto: todo location -> 1039233 (Debroye); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039220,
+          "Position": {
+            "X": -287.15,
+            "Y": 21.846,
+            "Z": -150.752
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo turn-in -> 1039220 (Debroye)"
+        }
+      ]
+    }
+  ]
+}

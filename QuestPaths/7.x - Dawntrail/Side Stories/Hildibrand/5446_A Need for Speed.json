@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -18,12 +19,7 @@
           "AethernetShortcut": [
             "[Solution Nine] Aetheryte Plaza",
             "[Solution Nine] Neon Stein"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -80,12 +76,7 @@
           "AethernetShortcut": [
             "[Solution Nine] Aetheryte Plaza",
             "[Solution Nine] Neon Stein"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

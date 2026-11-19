@@ -1,6 +1,6 @@
 ﻿{
   "Name": "Questionable",
-  "Author": "liza, qstxiv, & various contributors",
+  "Author": "the Puni.sh Quest Squad",
   "Punchline": "A tiny quest helper plugin.",
   "Description": "A tiny little quest helper plugin, which does quests for you automatically where possible. Uses navmesh to automatically walk to all quest waypoints, and tries to automatically complete all steps along the way (excluding dungeons, single player duties and combat).\n\nNot all quests are supported, check the discord or git repository for an up-to-date list.\n\nRequired Plugins: vnavmesh, TextAdvance, Lifestream",
   "Tags": [

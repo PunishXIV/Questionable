@@ -1,0 +1,45 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053803,
+          "Position": {
+            "X": 0.843973,
+            "Y": 0,
+            "Z": -20.7418
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "$": "auto: issuer 1053803 (Ketenramm)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053805,
+          "Position": {
+            "X": 193.093,
+            "Y": -17.9643,
+            "Z": 45.0256
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "$": "auto: todo turn-in -> 1053805 (expedition messenger)"
+        }
+      ]
+    }
+  ]
+}

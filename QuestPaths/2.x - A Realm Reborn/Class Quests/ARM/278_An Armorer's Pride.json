@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!! Crafted Item:\n 1x Iron Hoplon with any Materia\nAutocraft requires:\n 2x Iron Plate,\n 1x Elm Lumber",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
@@ -56,7 +56,11 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true
+          "AllowHighQuality": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     }

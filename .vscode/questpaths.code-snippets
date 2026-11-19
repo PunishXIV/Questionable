@@ -6,7 +6,7 @@
 			"{",
 			"  \"\\$schema\": \"https://qstxiv.github.io/schema/quest-v1.json\",",
 			"  \"Author\": \"${0:alydev}\",",
-			"  \"LastChecked\":{\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},",
+			"  \"LastChecked\": {\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},",
 			"  \"QuestSequence\": [",
 			"    $1",
 			"  ]",
@@ -17,7 +17,16 @@
 	"Sequence": {
 		"scope": "json",
 		"prefix": "seq",
-		"body": "{\"Sequence\":${1:0},\"Steps\":[{$0}]}",
+		"body": [
+			"{",
+			"  \"Sequence\": ${1:0},",
+			"  \"Steps\": [",
+			"    {",
+			"      $0",
+			"    }",
+			"  ]",
+			"}"
+		],
 		"description": "new sequence"
 	},
 // 	"skipcon": {
@@ -43,6 +52,6 @@
 	"LastChecked": {
 		"scope": "json",
 		"prefix": "LastChecked",
-		"body": "\"LastChecked\":{\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},"
+		"body": "\"LastChecked\": {\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},"
 	}
 }

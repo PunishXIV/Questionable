@@ -1,10 +1,23 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1043847,
+          "Position": {
+            "X": -350.24036,
+            "Y": 55,
+            "Z": -81.28485
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1161,
+          "SkipConditions": {"StepIf": {"InTerritory": [1161]}}
+        },
         {
           "DataId": 1045397,
           "Position": {
@@ -162,10 +175,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 822,
-            "Enabled": false,
-            "Notes": [
-              "Navigation issues for area transitions"
-            ]
+            "Enabled": true
           }
         }
       ]

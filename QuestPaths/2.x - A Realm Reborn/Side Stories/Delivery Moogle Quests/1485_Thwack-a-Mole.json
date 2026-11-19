@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Limsa Lominsa"
         }
       ]
     },
@@ -35,12 +31,7 @@
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
         },
         {
           "DataId": 1006261,
@@ -66,7 +57,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Gate of Nald (Central Thanalan)"

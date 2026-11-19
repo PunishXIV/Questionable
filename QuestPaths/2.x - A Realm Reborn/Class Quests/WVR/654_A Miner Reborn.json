@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Patrician's Bottoms HQ,\n 1x Patrician's Coatee HQ,\n 1x Patrician's Wedge Cap HQ\nAutocraft requires:\n 5x Undyed Felt,\n 1x Undyed Woolen Cloth,\n 4x Woolen Yarn,\n 3x Linen Yarn,\n 3x Electrum Ingot",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Weavers' Guild"
@@ -81,7 +81,11 @@
             "Z": 98.924194
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
         }
       ]
     },

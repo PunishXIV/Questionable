@@ -1,21 +1,24 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Services;
-using Questionable.Data;
 using Questionable.Model.Questing;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class BossModIpc
 (
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     TerritoryData territoryData,
-    ICommandManager commandManager)
+    ICommandManager commandManager) : Ipc
 {
+    public override string InternalName => PluginName;
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
+        {
+            var _ = _getActivePreset.InvokeFunc();
+            return GetVersion() != null;
+        }, fallback: false);
     public enum EPreset
     {
         Overworld,
@@ -38,14 +41,26 @@ internal sealed class BossModIpc
     private readonly ICallGateSubscriber<string, string?> _getPreset = pluginInterface.GetIpcSubscriber<string, string?>($"{PluginName}.Presets.Get");
     private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
     private readonly ICallGateSubscriber<string, bool> _deletePreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.Delete");
+    private readonly ICallGateSubscriber<IReadOnlyList<string>, bool, IReadOnlyList<string>> _configuration =
+        pluginInterface.GetIpcSubscriber<IReadOnlyList<string>, bool, IReadOnlyList<string>>($"{PluginName}.Configuration");
 
     private bool _soloDutyZoneConfigured;
+    private bool _enableQuestBattlesOverridden;
+    private bool _bossmodRebornDetected;
 
-    public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, false);
+    public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, fallback: false);
+    public bool BossModRebornDetected()
+    {
+        if (EzThrottler.Throttle("BossModRebornDetected", miliseconds: 1000))
+            _bossmodRebornDetected = IPCSubscriber.IsInstalled("BossModReborn");
+        return _bossmodRebornDetected;
+    }
 
     public PresetDefinition AddPreset(EPreset preset) => AddPreset(PresetDefinitions[preset]);
-    public PresetDefinition AddPreset(PresetDefinition definition)
+    public PresetDefinition AddPreset(PresetDefinition definition, bool bulk = false)
     {
+        if (!bulk)
+            ClearObstacleMaps();
         if (_getPreset.InvokeFunc(definition.Name) == null)
             _createPreset.InvokeFunc(definition.Content, true);
         return definition;
@@ -53,11 +68,12 @@ internal sealed class BossModIpc
 
     public void AddAllPresets(bool delete = false)
     {
+        ClearObstacleMaps();
         foreach (PresetDefinition definition in PresetDefinitions.Values)
         {
             if (delete)
                 DeletePreset(definition);
-            AddPreset(definition);
+            AddPreset(definition, bulk: true);
         }
     }
 
@@ -74,8 +90,16 @@ internal sealed class BossModIpc
 
     public void SetPresetForSoloDuty(EPreset preset)
     {
-        ConfigureZoneForQuestBattle(true);
+        UnsetBasicSettings();
+        ConfigureZoneForQuestBattle();
         SetActivePreset(preset);
+    }
+
+    // i guess we're doing plugin subtweeting now
+    public void UnsetBasicSettings()
+    {
+        if (configuration.Advanced.BMRestoreMovement)
+            _configuration.InvokeFunc(["ActionTweaksConfig", "PreventMovingWhileCasting", "false"], false);
     }
 
     public void LoadPresets()
@@ -112,26 +136,53 @@ internal sealed class BossModIpc
         ClearActivePresets();
     }
 
-    private void ConfigureZoneForQuestBattle(bool enable)
+    public void ClearObstacleMaps() => commandManager.ProcessCommand("/vbm clear-maps");
+
+    private void ConfigureZoneForQuestBattle()
     {
-        commandManager.ProcessCommand(enable
-            ? "/vbm cfg ZoneModuleConfig EnableQuestBattles true"
-            : "/vbm cfg ZoneModuleConfig EnableQuestBattles false");
-        if (enable)
+        if (!_soloDutyZoneConfigured)
         {
             commandManager.ProcessCommand("/vbm cfg Autorotation ClearPresetOnCombatEnd false");
             _soloDutyZoneConfigured = true;
         }
+
+        bool? enableQuestBattles = TryGetEnableQuestBattles();
+        if (enableQuestBattles is not true)
+            SetEnableQuestBattles(enabled: true);
+        _enableQuestBattlesOverridden = enableQuestBattles == false;
     }
 
     private void ReleaseSoloDutyZone()
     {
-        if (!_soloDutyZoneConfigured)
-            return;
+        if (_enableQuestBattlesOverridden)
+        {
+            SetEnableQuestBattles(enabled: false);
+            _enableQuestBattlesOverridden = false;
+        }
 
-        commandManager.ProcessCommand("/vbm cfg ZoneModuleConfig EnableQuestBattles false");
         _soloDutyZoneConfigured = false;
     }
+
+    private bool? TryGetEnableQuestBattles()
+    {
+        if (!_configuration.HasFunction)
+            return null;
+
+        return IpcInvoke.SafeFunc(() =>
+        {
+            IReadOnlyList<string> result = _configuration.InvokeFunc(
+                ["cfg", "ZoneModuleConfig", "EnableQuestBattles"], false);
+            if (result.Count == 0)
+                return (bool?)null;
+
+            return bool.TryParse(result[0], out bool value) ? value : null;
+        }, fallback: null);
+    }
+
+    private void SetEnableQuestBattles(bool enabled) =>
+        commandManager.ProcessCommand(enabled
+            ? "/vbm cfg ZoneModuleConfig EnableQuestBattles true"
+            : "/vbm cfg ZoneModuleConfig EnableQuestBattles false");
 
     public bool IsConfiguredToRunSoloInstance(ElementId questId, SinglePlayerDutyOptions? dutyOptions)
     {
@@ -164,7 +215,7 @@ internal sealed class BossModIpc
             Stream stream =
                 typeof(BossModIpc).Assembly.GetManifestResourceStream(
                     $"Questionable.Controller.CombatModules.BossModPreset.{name}") ??
-                throw new InvalidOperationException($"Preset {name} was not found");
+                throw new InvalidOperationException(_LF("Preset {0} was not found", name));
             using StreamReader reader = new(stream);
             return reader.ReadToEnd();
         }

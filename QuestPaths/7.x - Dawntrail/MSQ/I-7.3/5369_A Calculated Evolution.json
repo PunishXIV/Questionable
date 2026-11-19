@@ -1,10 +1,26 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-27"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1054872,
+          "Position": {
+            "X": -57.41974,
+            "Y": 42.8066,
+            "Z": -546.7765
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1299,
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Resolution"
+          ]
+        },
         {
           "DataId": 1054916,
           "Position": {

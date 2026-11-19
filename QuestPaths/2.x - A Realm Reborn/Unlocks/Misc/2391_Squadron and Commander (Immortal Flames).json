@@ -1,0 +1,29 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002391,
+          "Position": {
+            "X": -144.39618,
+            "Y": 4.1,
+            "Z": -107.22516
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_COMULD101_02391_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

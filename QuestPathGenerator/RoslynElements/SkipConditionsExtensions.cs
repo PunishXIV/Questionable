@@ -70,6 +70,10 @@ internal static class SkipConditionsExtensions
                                 skipStepConditions.QuestsCompleted).AsSyntaxNodeOrToken(),
                             AssignmentList(nameof(SkipStepConditions.NotNamePlateIconId),
                                 skipStepConditions.NotNamePlateIconId).AsSyntaxNodeOrToken(),
+                            AssignmentList(nameof(SkipStepConditions.DutiesUnlocked),
+                                skipStepConditions.DutiesUnlocked).AsSyntaxNodeOrToken(),
+                            AssignmentList(nameof(SkipStepConditions.DutiesCompleted),
+                                skipStepConditions.DutiesCompleted).AsSyntaxNodeOrToken(),
                             Assignment(nameof(SkipStepConditions.AetheryteLocked),
                                     skipStepConditions.AetheryteLocked, emptyStep.AetheryteLocked)
                                 .AsSyntaxNodeOrToken(),
@@ -159,6 +163,9 @@ internal static class SkipConditionsExtensions
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(skipAetheryteCondition.NotNearPosition), skipAetheryteCondition.NotNearPosition,
                                     emptyAetheryte.NotNearPosition)
+                                .AsSyntaxNodeOrToken(),
+                            Assignment(nameof(SkipAetheryteCondition.Item), skipAetheryteCondition.Item,
+                                    emptyAetheryte.Item)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(skipAetheryteCondition.ExtraCondition), skipAetheryteCondition.ExtraCondition,
                                     emptyAetheryte.ExtraCondition)

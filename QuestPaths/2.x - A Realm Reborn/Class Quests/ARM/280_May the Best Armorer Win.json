@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Steel Chainmail HQ\nAutocraft requires:\n 3x Steel Rings,\n 1x Undyed Velveteen",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
@@ -93,7 +93,11 @@
             "Z": 178.72888
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     }

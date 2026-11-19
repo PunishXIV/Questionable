@@ -1,18 +1,12 @@
-﻿using System;
 using System.Diagnostics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using Questionable.Controller;
-using Questionable.Controller.GameUi;
-using Questionable.Data;
+using Dalamud.Interface.Utility.Raii;
 using Questionable.Windows.Common;
-using Questionable.Windows.QuestComponents;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 {
     private static readonly Version PluginVersion = typeof(QuestionablePlugin).Assembly.GetName().Version!;
@@ -25,6 +19,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly IFramework _framework;
     private readonly InteractionUiController _interactionUiController;
     private readonly TitleBarButton _minimizeButton;
+    //private readonly TitleBarButton _collapseButton;
     private readonly IObjectTable _objectTable;
 
     private readonly IDalamudPluginInterface _pluginInterface;
@@ -33,6 +28,9 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly RemainingTasksComponent _remainingTasksComponent;
     private readonly ReportWarningComponent _reportWarningComponent;
     private readonly TerritoryData _territoryData;
+    private readonly BossModIpc _bossModIpc;
+
+    private bool _wasRunning;
 
     public QuestWindow(IDalamudPluginInterface pluginInterface,
         QuestController questController,
@@ -49,9 +47,10 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         ReportWarningComponent reportWarningComponent,
         IFramework framework,
         InteractionUiController interactionUiController,
-        ConfigWindow configWindow)
-        : base($"QST v{PluginVersion.ToString(4)}###Questionable",
-            ImGuiWindowFlags.AlwaysAutoResize)
+        ConfigWindow configWindow,
+        BossModIpc bossModIpc)
+        : base((configuration.Advanced.Debug ? "(!) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
+            ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing)
     {
         _pluginInterface = pluginInterface;
         _questController = questController;
@@ -68,59 +67,90 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         _reportWarningComponent = reportWarningComponent;
         _framework = framework;
         _interactionUiController = interactionUiController;
+        _bossModIpc = bossModIpc;
 
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new(240, 30),
+            MinimumSize = new(320, 30),
             MaximumSize = default
         };
         RespectCloseHotkey = false;
+        ShowCloseButton = true;//false;
         AllowClickthrough = false;
 
+        // Close button
+        //TitleBarButtons.Add(new()
+        //{
+        //    Icon = FontAwesomeIcon.Times,
+        //    Priority = int.MinValue,
+        //    IconOffset = new(1, 1),
+        //    Click = _ =>
+        //    {
+        //        IsOpen = false;
+        //    },
+        //    AvailableClickthrough = true
+        //});
+
+        // Collapse button
+        //_collapseButton = new()
+        //{
+        //    Icon = FontAwesomeIcon.ArrowDown,
+        //    Priority = int.MinValue,
+        //    IconOffset = new(1, 1),
+        //    Click = _ =>
+        //    {
+        //        Collapsed = !Collapsed ?? true;
+        //        _collapseButton!.Icon = (bool)Collapsed ? FontAwesomeIcon.ArrowRight : FontAwesomeIcon.ArrowDown;
+        //    },
+        //    AvailableClickthrough = true
+        //};
+        //TitleBarButtons.Add(_collapseButton);
+
+        // Minimize button
         _minimizeButton = new()
         {
             Icon = FontAwesomeIcon.Minus,
-            Priority = int.MinValue,
-            IconOffset = new(1.5f, 1),
+            Priority = TitleBarButtonPriority,
+            IconOffset = TitleBarIconOffset,
             Click = _ =>
             {
+                IsOpenAndUncollapsed = true;
                 IsMinimized = !IsMinimized;
                 _minimizeButton!.Icon = IsMinimized ? FontAwesomeIcon.WindowMaximize : FontAwesomeIcon.Minus;
             },
             AvailableClickthrough = true
         };
-        TitleBarButtons.Insert(0, _minimizeButton);
+        TitleBarButtons.Add(_minimizeButton);
 
+        // Settings button
         TitleBarButtons.Add(new()
         {
             Icon = FontAwesomeIcon.Cog,
-            IconOffset = new(1.5f, 1),
+            IconOffset = TitleBarIconOffset,
             Click = _ => configWindow.IsOpenAndUncollapsed = true,
-            Priority = int.MinValue,
+            Priority = TitleBarButtonPriority,
             ShowTooltip = () =>
             {
-                ImGui.BeginTooltip();
-                ImGui.Text("Open Configuration");
-                ImGui.EndTooltip();
+                using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
+                ImGui.Text(_L("Open Configuration"));
             }
         });
 
+        // Sponsor button
         if (!_configuration.General.HideSponsorButton)
             TitleBarButtons.Add(new()
             {
                 Icon = FontAwesomeIcon.Heart,
-                IconOffset = new(1.5f, 1),
-                Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://github.com/sponsors/alydevs", UseShellExecute = true }),
-                Priority = int.MinValue,
+                IconOffset = TitleBarIconOffset,
+                Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://ko-fi.com/alydev", UseShellExecute = true }),
+                Priority = TitleBarButtonPriority,
                 ShowTooltip = () =>
                 {
-                    ImGui.BeginTooltip();
-                    ImGui.Text("Sponsor QST development");
-                    ImGui.EndTooltip();
+                    using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
+                    ImGui.Text(_L("Sponsor QST development"));
                 }
             });
 
-        _activeQuestComponent.Reload += OnReload;
         _quickAccessButtonsComponent.Reload += OnReload;
         _questController.IsQuestWindowOpenFunction = () => IsOpen;
     }
@@ -132,17 +162,11 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 
     public override void PreOpenCheck()
     {
-        if (_questController.IsRunning)
-        {
+        bool isRunning = _questController.IsRunning;
+
+        if (isRunning && !_wasRunning)
             IsOpen = true;
-            Flags |= ImGuiWindowFlags.NoCollapse;
-            ShowCloseButton = false;
-        }
-        else
-        {
-            Flags &= ~ImGuiWindowFlags.NoCollapse;
-            ShowCloseButton = true;
-        }
+        _wasRunning = isRunning;
     }
 
     public override bool DrawConditions()
@@ -171,44 +195,45 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             }
 #endif
             string notice = "";
+            if (_bossModIpc.BossModRebornDetected())
+                notice = _L("Questionable is not compatible with BossMod Reborn!");
             if (notice.Length != 0)
             {
-                ImGui.TextColored(ImGuiColors.DPSRed, "Notice");
+                ImGui.TextColored(QstTheme.Danger, _L("Notice"));
                 ImGui.TextWrapped(notice);
                 ImGui.Separator();
             }
 
+            _activeQuestComponent.DrawTitleBarPill(WindowName);
             _activeQuestComponent.Draw(IsMinimized);
             if (!IsMinimized)
             {
-                ImGui.Separator();
-
                 if (false)
                 {
                     // TODO add tests
                 }
 
-                if (_aRealmRebornComponent.ShouldDraw)
-                {
-                    _aRealmRebornComponent.Draw();
-                    ImGui.Separator();
-                }
-
-                if (_eventInfoComponent.ShouldDraw)
-                {
-                    _eventInfoComponent.Draw();
-                    ImGui.Separator();
-                }
-                
                 _quickAccessButtonsComponent.Draw();
-                ImGui.Separator();
-                _creationUtilsComponent.Draw();
-                _remainingTasksComponent.Draw();
+
+                if (_aRealmRebornComponent.ShouldDraw
+                    && QstWidgets.SectionHeader(_L("A Realm Reborn"), "ARealmReborn"))
+                    _aRealmRebornComponent.Draw();
+
+                if (_eventInfoComponent.ShouldDraw
+                    && QstWidgets.SectionHeader(_L("Events"), "Events"))
+                    _eventInfoComponent.Draw();
+
+                if (QstWidgets.SectionHeader(_L("Path Tools"), "PathTools", defaultOpen: false))
+                    _creationUtilsComponent.Draw();
+
+                if (!_configuration.General.HideRemainingTasks &&
+                        QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: _remainingTasksComponent.Tasks.Count))
+                    _remainingTasksComponent.Draw();
             }
         }
         catch (Exception e)
         {
-            ImGui.TextColored(ImGuiColors.DalamudRed, e.ToString());
+            ImGui.TextColored(QstTheme.Danger, e.ToString());
         }
     }
 
@@ -217,7 +242,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     internal void Reload()
     {
         _questController.Reload();
-        _framework.RunOnTick(() => _interactionUiController.HandleCurrentDialogueChoices(),
+        _ = _framework.RunOnTick(_interactionUiController.HandleCurrentDialogueChoices,
             TimeSpan.FromMilliseconds(200));
     }
 }

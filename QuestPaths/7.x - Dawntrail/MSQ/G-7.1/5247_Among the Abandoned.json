@@ -1,10 +1,23 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1052240,
+          "Position": {
+            "X": -614.7097,
+            "Y": -3.3880177,
+            "Z": -510.70422
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1254,
+          "Fly": true
+        },
         {
           "DataId": 1052217,
           "Position": {

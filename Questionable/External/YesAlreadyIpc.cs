@@ -1,15 +1,17 @@
-﻿using System;
-using Dalamud.Plugin.Services;
-using ECommons.EzIpcManager;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Data;
-using static Questionable.External.IPCUtils;
+﻿using static Questionable.External.IPCUtils;
 #pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
 namespace Questionable.External;
 
-internal sealed class YesAlreadyIpc : IDisposable
+[RegisterSingleton]
+internal sealed class YesAlreadyIpc : Ipc, IDisposable
 {
+    public override string InternalName => "YesAlready";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
+        {
+            var _ = IsPluginEnabled;
+            return GetVersion() != null;
+        }, fallback: false);
     private static readonly EzIPCDisposalToken[] _disposalTokens = EzIPC.Init(typeof(YesAlreadyIpc), "YesAlready", SafeWrapper.IPCException);
     [EzIPC("IsPluginEnabled")] public static readonly Func<bool> IsPluginEnabled;
     [EzIPC("SetPluginEnabled")] private static readonly Action<bool> SetPluginEnabled;
@@ -42,18 +44,21 @@ internal sealed class YesAlreadyIpc : IDisposable
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
-        if (IPCSubscriber_Common.IsInstalled("YesAlready") && _wasEnabled && !IsPluginEnabled())
+        IpcInvoke.TryOnFrameworkThread(_framework, () =>
         {
-            _logger.LogDebug("Re-enabling YesAlready on dispose");
-            SetPluginEnabled(true);
-        }
+            if (IPCSubscriber.IsInstalled("YesAlready") && _wasEnabled && !IsPluginEnabled())
+            {
+                _logger.LogDebug("Re-enabling YesAlready on dispose");
+                SetPluginEnabled(true);
+            }
 
-        IPCSubscriber_Common.DisposeAll(_disposalTokens);
+            IPCSubscriber.DisposeAll(_disposalTokens);
+        }, _logger);
     }
 
     private void OnUpdate(IFramework framework)
     {
-        if (IPCSubscriber_Common.IsInstalled("YesAlready"))
+        if (IPCSubscriber.IsInstalled("YesAlready"))
         {
             bool hasActiveQuest = (_questController.IsRunning ||
                                    _questController.AutomationType != QuestController.EAutomationType.Manual) &&

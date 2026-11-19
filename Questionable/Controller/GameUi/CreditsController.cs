@@ -1,11 +1,9 @@
-﻿using System;
-using Dalamud.Game.Addon.Lifecycle;
+﻿using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
 namespace Questionable.Controller.GameUi;
 
+[RegisterSingleton]
 internal sealed class CreditsController : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
@@ -53,6 +51,6 @@ internal sealed class CreditsController : IDisposable
     {
         _logger.LogInformation("Closing CreditPlayer");
         AtkUnitBase* addon = (AtkUnitBase*)args.Addon.Address;
-        addon->Close(true);
+        addon->Close(fireCallback: true);
     }
 }

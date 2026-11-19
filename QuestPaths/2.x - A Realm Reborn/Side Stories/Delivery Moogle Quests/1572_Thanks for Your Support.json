@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Limsa Lominsa"
         }
       ]
     },
@@ -29,10 +25,11 @@
         {
           "DataId": 1000856,
           "Position": {
-            "X": -155.10797,
-            "Y": 4.070978,
-            "Z": 202.71606
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
           },
+          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "AethernetShortcut": [
@@ -106,7 +103,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "PurchaseItem",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"

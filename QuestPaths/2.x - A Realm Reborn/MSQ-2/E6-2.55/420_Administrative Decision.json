@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-29"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,6 +14,7 @@
             "Z": -45.609253
           },
           "TerritoryId": 351,
+          "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -21,17 +22,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "DataId": 2002880,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.0223389,
-            "Z": -29.251587
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
         {
           "DataId": 2005060,
           "Position": {
@@ -63,37 +53,14 @@
       "Sequence": 3,
       "Steps": [
         {
-          "DataId": 2002879,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 2.9754639,
-            "Z": 27.481445
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 156
-        },
-        {
-          "Position": {
-            "X": 29.414328,
-            "Y": 21.232033,
-            "Z": -652.65454
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1010979,
           "Position": {
-            "X": 27.023682,
-            "Y": 32.412476,
-            "Z": -697.35254
+            "X": 26.135948,
+            "Y": 32.412502,
+            "Z": -698.5209
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
           "StopDistance": 1
         }
       ]
@@ -101,38 +68,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 29.414328,
-            "Y": 21.232033,
-            "Z": -652.65454
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "TerritoryId": 156,
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
-        {
-          "DataId": 2002878,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.0223389,
-            "Z": -26.779602
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
         {
           "DataId": 1008969,
           "Position": {

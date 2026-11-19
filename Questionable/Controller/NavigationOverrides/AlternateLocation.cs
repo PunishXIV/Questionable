@@ -1,5 +1,3 @@
-using System.Globalization;
-using System.Numerics;
 namespace Questionable.Controller.NavigationOverrides;
 
 public sealed record AlternateLocation(Vector3 Point, bool RecalculateNavmesh)

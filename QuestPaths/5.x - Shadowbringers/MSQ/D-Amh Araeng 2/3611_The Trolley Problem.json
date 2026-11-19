@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-28"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -50,7 +50,55 @@
     },
     {
       "Sequence": 3,
+      "Comment": "We take a huge detour here to attune to Twine, because dying before that happens puts us at your home aetheryte and we don't have an easy way to recover and get back here",
       "Steps": [
+        {
+          "Position": {
+            "X": -341.64484,
+            "Y": 46.191288,
+            "Z": -244.7952
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2010050,
+          "Position": {
+            "X": -343.80103,
+            "Y": 46.98242,
+            "Z": -235.43152
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818259,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -341.64484,
+            "Y": 46.191288,
+            "Z": -244.7952
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Amh Araeng - Twine"
+        },
+        {
+          "DataId": 1027902,
+          "Position": {
+            "X": -492.69858,
+            "Y": 45.12982,
+            "Z": -284.96228
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179719
+        },
         {
           "DataId": 2009906,
           "Position": {

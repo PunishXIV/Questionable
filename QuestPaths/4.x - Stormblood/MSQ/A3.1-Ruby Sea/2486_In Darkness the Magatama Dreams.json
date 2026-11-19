@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["JerryWester", "Kiarra"],
-  "LastChecked": {"Username": "alydev", "Date": "2026-05-31"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -42,23 +42,15 @@
         },
         {
           "Position": {
-            "X": 21.086666,
-            "Y": -197.73204,
-            "Z": -153.08989
+            "X": 21.067955,
+            "Y": -197.78902,
+            "Z": -155.23956
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
-        },
-        {
-          "Position": {
-            "X": 54.259586,
-            "Y": -183.91911,
-            "Z": -174.03053
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Go around Sui-no-Sato"
+          "$": "Sui-no-Sato, NE inside",
+          "RestartNavigationIfCancelled": false,
+          "SkipConditions": {"StepIf": {"Diving": true}}
         },
         {
           "Position": {

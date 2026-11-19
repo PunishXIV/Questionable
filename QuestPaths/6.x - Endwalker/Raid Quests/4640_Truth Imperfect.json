@@ -6,6 +6,28 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2012293,
+          "Position": {
+            "X": 809.9336,
+            "Y": 151.81189,
+            "Z": -243.42719
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1025
+        },
+        {
+          "DataId": 2013031,
+          "Position": {
+            "X": 99.96179,
+            "Y": 8.8349,
+            "Z": -71.03082
+          },
+          "TerritoryId": 1025,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1093
+        },
+        {
           "DataId": 1043497,
           "Position": {
             "X": 95.93347,

@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Natron HQ\nAutocraft requires:\n 1x Effervescent Water,\n 1x Rock Salt",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,13 +10,13 @@
         {
           "DataId": 1002299,
           "Position": {
-            "X": -98.8938,
-            "Y": 40.200146,
-            "Z": 120.83618
+            "X": -103.62651,
+            "Y": 41.50014,
+            "Z": 120.44341
           },
+          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Alchemists' Guild"
@@ -36,9 +37,10 @@
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 419,
+          "TerritoryId": 131,
           "ItemId": 5522,
           "ItemCount": 1,
+          "ItemQuality": "HQ",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -50,12 +52,17 @@
         {
           "DataId": 1002299,
           "Position": {
-            "X": -98.8938,
-            "Y": 40.200146,
-            "Z": 120.83618
+            "X": -103.62651,
+            "Y": 41.50014,
+            "Z": 120.44341
           },
+          "StopDistance": 0.25,
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ]
         }
       ]
     }

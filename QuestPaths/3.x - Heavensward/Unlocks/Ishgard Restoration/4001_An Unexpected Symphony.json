@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,19 @@
             "Z": -13.290649
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                886
+              ]
+            }
+          }
         }
       ]
     },
@@ -35,8 +48,7 @@
               "Prompt": "TEXT_LUCKHA303_04001_Q2_000_000",
               "Answer": "TEXT_LUCKHA303_04001_A2_000_001"
             }
-          ],
-          "Comment": "Concert can be skipped via ESC → Quit Game"
+          ]
         }
       ]
     },

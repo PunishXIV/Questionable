@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -52,12 +53,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
     },
@@ -137,12 +133,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
     },

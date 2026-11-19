@@ -1,11 +1,9 @@
-﻿using System;
-using System.IO;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using System.Text;
-using ECommons.DalamudServices;
 using Newtonsoft.Json;
 
 namespace Questionable.Utils;
+
 internal static class CompressUtils
 {
     // https://stackoverflow.com/questions/25134897/gzip-compression-and-decompression-in-c-sharp

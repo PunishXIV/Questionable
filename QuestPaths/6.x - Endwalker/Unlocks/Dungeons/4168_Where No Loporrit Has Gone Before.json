@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "Saionji", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -81,12 +82,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ultima Thule - Reah Tahra"
         }
       ]
     },
@@ -147,13 +143,9 @@
             "Z": 366.32324
           },
           "TerritoryId": 960,
+          "StopDistance": 6,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ultima Thule - Base Omicron"
         }
       ]
     },

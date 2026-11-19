@@ -1,0 +1,188 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Speak with Sybell",
+          "DataId": 1003629,
+          "Position": {
+            "X": -171.89,
+            "Y": 4,
+            "Z": 175.33
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "Speak with Chuchuroon",
+          "DataId": 1003516,
+          "Position": {
+            "X": -185.837,
+            "Y": 4,
+            "Z": 169.625
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Comment": "Speak with Wawalago",
+          "DataId": 1000856,
+          "Position": {
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
+          },
+          "StopDistance": 1,
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Comment": "If you purchase the fish from the marketboard, click Skip until it is disabled, then click Play",
+      "Steps": [
+        {
+          "DataId": 1003254,
+          "Position": {
+            "X": -246.52553,
+            "Y": 16.2,
+            "Z": 39.870853
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2587,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "Item": {
+                "NotInInventory": false
+              },
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Position": {
+            "X": 559.52716,
+            "Y": 15.584612,
+            "Z": 102.16865
+          },
+          "TerritoryId": 137,
+          "Fly": true,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Fish for 1x Mazlaya Marlin",
+          "TerritoryId": 137,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 4917,
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 2587,
+                "Preset": "AH9_G8AjACwKbGPDan9h0MmN442zSqSx5nVN1Wn1MRupYzSmVrSmPPyDcAHVpD9bovKnn4Yxla6CG8Y0TZauvtLpCxGfb61VaEe7FBHLdKKndPdnZudEgSSi1Ye92UHMEyQeXSKlQWqEire4t0gSe4xZLbtfwwFooJUcNwp+9ZegPdVrOrGO+WPGh1qO9nvGDBsiQIkoXQDX/lfIcNanEtbM0Kdf1P2ib7uRJlK1BFwxqVjRDK/SLb9/xZrQyz99I2u+i9F0jvwzrgKvzVNEsx5CRO7/T7aEFdRVn3TLYQHAQ1NCJQIwmO2rwa9+Ch2gAjjng3Oy8I4yood9CbnI1Xl9trRKp4s+ggRYaN9BAW8wIaNZNjNjBqU0ooC3z2Pw8+bTAa5w65z8EWZPwTApzU1GbGNUiLZm9D+kD4mLlrfJcVQMVI+2g72H3aTMKryOoZtQIdHFx97pD2ov+UugSqxE4bKhi3HHJTE8Wrlx0ooKkBovG4JoNDnOKERbUqyGeCaJriPYaqf6hD7Ag46UW41lfNUZ0U4FQ0sUjWNhdtQ8k2eRZUsN4K5vlc+YTfnjlBeC7ixhSA1ufSTJFqrYrKWaWfBgqfBO4PEfkAOhRpczKrW95r8sPI1foawKP4SVTzTnmjWgvolGELPOvNG+gLsbov7BpcbjcDEExAJRWIij4LqsqmmPQ6F262RKQ0y8UfYimsLmJTI0GB5NNle6AKBlbCTtGw7j4gZ0feo5IBbRcPopCNqkVy8jTa746KCJmmuZRG/1o/AdIpsPtkvkDCcCMHz2czooTXunxBSFXCJaY81u1eZGtiBhSZgXQjXR0/SgqdnDU2fM85NHebGTB8A+DBMq08gOTytLdvSLDEstS7S1SIoVSEIn9ekPGi5ohRh07s+lhCNt8/b7IRgHBXW4ZgeeMpRmi63XDsT2NsLkLXoB/Bpz7Jt3sXm9CqEp5QNcujPoKy+Xygb0pA1qS9keAjl6QKA7unT+YNDRTPWEZVUIZpX8t+jt39nF2PJUdDmhrYc7K7F5I0cASxdZoyshWWvvHD+ibVQGWULqzXOQaqrZmioARZL+zsLkEu75qaknYbIUNFpCSwmYabqWo2vt/FiPvONN7zCPmyPAngkPn9XqDPa4pYOC3YLGdrWHHsyk2Sl7nc4pw3ujxN0l1dONVA8j2WV/CQHP749phKGEa66wjf2i9DVCapWe8seezLY2qs9SLwDapMdwIY6UNxOzKsgCgRGFex97zmWY3LNRNIintjlkRLf2istlg+EGC5lTRltkcfXflTnosKiVT//yzOF8wvoJq8Ozm81wJ+wGJlRBjzAuTm9DQ1aLwjKr7Shi4+jiWPARuyEymM4BIb+WlZEFXPgLcUmPbgssrpv1jFpOTq2sBDzf+SZKPfefDSVZS0I4vs1g34TFx9J56qRNRb3yiiSmfjhA1pdM0SAY4C4OMbzdfqwMf1YqPh1PpRDw3s6VvThee5DIkkhMPGlePlnYA7Gy+HHvyynh1ro1CW/CZg0="
+              }
+            }
+          ]
+        },
+        {
+          "Comment": "Deliver a Mazlaya Marlin to Sisipu",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          },
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2085
+        }
+      ]
+    }
+  ]
+}

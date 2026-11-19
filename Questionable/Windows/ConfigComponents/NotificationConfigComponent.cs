@@ -1,27 +1,26 @@
-using System;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
 using Dalamud.Utility;
 namespace Questionable.Windows.ConfigComponents;
 
+[RegisterSingleton]
 internal sealed class NotificationConfigComponent
 (
     IDalamudPluginInterface pluginInterface,
-    Configuration configuration) : ConfigComponent(pluginInterface, configuration)
+    Configuration configuration,
+    NotificationMasterIpc notificationMasterIpc) : ConfigComponent(pluginInterface, configuration)
 {
 
     public override void DrawTab()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Notifications###Notifications");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Notifications") + "###Notifications");
         if (!tab)
             return;
 
         bool enabled = Configuration.Notifications.Enabled;
-        if (ImGui.Checkbox("Enable notifications when manual interaction is required", ref enabled))
+        if (ImGui.Checkbox(_L("Enable notifications when manual interaction is required"), ref enabled))
         {
             Configuration.Notifications.Enabled = enabled;
             Save();
@@ -37,28 +36,44 @@ internal sealed class NotificationConfigComponent
                 string[] chatTypeNames = xivChatTypes
                     .Select(t => t.GetAttribute<XivChatTypeInfoAttribute>()?.FancyName ?? t.ToString())
                     .ToArray();
-                DrawComboOption("Chat channel", xivChatTypes, chatTypeNames,
+                DrawComboOption(_L("Chat channel"), xivChatTypes, chatTypeNames,
                     () => Configuration.Notifications.ChatType,
                     v => Configuration.Notifications.ChatType = v);
 
                 ImGui.Separator();
-                ImGui.Text("Desktop notifications");
-                ImGuiComponents.HelpMarker("Desktop tray and taskbar notifications are currently unavailable.");
-                using (ImRaii.Disabled())
+                ImGui.Text(_L("NotificationMaster settings"));
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(_L("Requires the plugin 'NotificationMaster' to be installed."));
+                ImGui.SameLine();
+                using (ImRaii.Disabled(!notificationMasterIpc.Enabled))
                 {
+                    if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.NotesMedical, _L("Test")))
+                        notificationMasterIpc.Notify(_L("Test message"));
                     bool showTrayMessage = Configuration.Notifications.ShowTrayMessage;
-                    if (ImGui.Checkbox("Show tray notification", ref showTrayMessage))
+                    if (ImGui.Checkbox(_L("Show tray notification"), ref showTrayMessage))
                     {
                         Configuration.Notifications.ShowTrayMessage = showTrayMessage;
                         Save();
                     }
 
                     bool flashTaskbar = Configuration.Notifications.FlashTaskbar;
-                    if (ImGui.Checkbox("Flash taskbar icon", ref flashTaskbar))
+                    if (ImGui.Checkbox(_L("Flash taskbar icon"), ref flashTaskbar))
                     {
                         Configuration.Notifications.FlashTaskbar = flashTaskbar;
                         Save();
                     }
+                }
+                bool notifyOnStopCondition = Configuration.Notifications.NotifyOnStopCondition;
+                if (ImGui.Checkbox(_L("Notify when stop condition is reached"), ref notifyOnStopCondition))
+                {
+                    Configuration.Notifications.NotifyOnStopCondition = notifyOnStopCondition;
+                    Save();
+                }
+                bool notifyOnCriticalFailure = Configuration.Notifications.NotifyOnCriticalFailure;
+                if (ImGui.Checkbox(_L("Notify when QST is unable to continue automatic questing"), ref notifyOnCriticalFailure))
+                {
+                    Configuration.Notifications.NotifyOnCriticalFailure = notifyOnCriticalFailure;
+                    Save();
                 }
             }
         }

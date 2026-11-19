@@ -1,15 +1,12 @@
-﻿using System;
-using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Action = Lumina.Excel.Sheets.Action;
 
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed unsafe class AetheryteFunctions
 (
     IServiceProvider serviceProvider,
@@ -113,7 +110,8 @@ internal sealed unsafe class AetheryteFunctions
         {
             if (playerState->FavouriteAetherytes[i] == (ushort)aetheryteLocation)
                 return AetheryteRegistrationResult.NotPossible;
-            else if (playerState->FavouriteAetherytes[i] == 0)
+
+            if (playerState->FavouriteAetherytes[i] == 0)
             {
                 freeFavoredSlotsAvailable = true;
                 break;
@@ -131,15 +129,4 @@ internal sealed unsafe class AetheryteFunctions
             ? AetheryteRegistrationResult.FavoredDestinationAvailable
             : AetheryteRegistrationResult.NotPossible;
     }
-}
-
-/// <remarks>
-///     The whole free/favored aetheryte situation is primarily relevant for early ARR anyhow, since teleporting to
-///     each class quest the moment it becomes available might end up with the character running out of gil.
-/// </remarks>
-public enum AetheryteRegistrationResult
-{
-    NotPossible,
-    SecurityTokenFreeDestinationAvailable,
-    FavoredDestinationAvailable
 }

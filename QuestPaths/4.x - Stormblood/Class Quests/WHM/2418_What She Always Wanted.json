@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
         }
       ]
     },
@@ -92,6 +88,15 @@
       "Steps": [
         {
           "Position": {
+            "X": -650.58673,
+            "Y": 39.856243,
+            "Z": 371.54846
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
             "X": -381.88757,
             "Y": 40.283813,
             "Z": 484.82483
@@ -118,6 +123,8 @@
           },
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SinglePlayerDutyOptions": {"Enabled": false},
           "ItemId": 2002053
         }
       ]

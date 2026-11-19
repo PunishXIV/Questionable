@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +16,7 @@
           "TerritoryId": 153,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -36,16 +32,10 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -111,9 +101,7 @@
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            4684
-          ]
+          "KillEnemyDataIds": [4684]
         }
       ]
     },
@@ -160,16 +148,10 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -187,11 +169,6 @@
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Ishgard",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 1714
         }
       ]

@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -21,6 +21,17 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "DataId": 1012302,
+          "Position": {
+            "X": -266.2547,
+            "Y": 127.133354,
+            "Z": 16.159302
+          },
+          "TerritoryId": 397,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179686
+        },
         {
           "DataId": 1011910,
           "Position": {

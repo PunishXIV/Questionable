@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Theo",
+  "LastChecked": {"Username": "jigain", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },
@@ -70,12 +66,7 @@
           "AethernetShortcut": [
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] Brightploom Post"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     }

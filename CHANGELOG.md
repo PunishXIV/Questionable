@@ -1,2 +1,1 @@
-- Testing feature: Per-character profiles -alydev
-- Implemented: Saving/loading profile overlays with full backwards compatibility -alydev
+- Change: fix end date of typing event now that we know when evercold is releasing -alydev

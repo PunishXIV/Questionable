@@ -1,9 +1,10 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": [
     "JerryWester",
     "ewlame"
   ],
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -18,12 +19,7 @@
           "TerritoryId": 620,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Peaks - Ala Ghiri",
-          "StopDistance": 6,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "StopDistance": 6
         }
       ]
     },

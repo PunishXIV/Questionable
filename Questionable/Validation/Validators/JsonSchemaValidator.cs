@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Text.Json.Nodes;
+﻿using System.Text.Json.Nodes;
 using Json.Schema;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 namespace Questionable.Validation.Validators;
 
+// Registered as both JsonSchemaValidator (self) and IQuestValidator via a factory forward in QuestionablePlugin
+// so the same instance is used for both service registrations.
+[RegisterSingleton]
 internal sealed class JsonSchemaValidator : IQuestValidator
 {
     private readonly Dictionary<ElementId, JsonNode> _questNodes = [];
@@ -51,7 +51,7 @@ internal sealed class JsonSchemaValidator : IQuestValidator
                     Step = null,
                     Type = EIssueType.InvalidJsonSchema,
                     Severity = EIssueSeverity.Error,
-                    Description = "JSON Validation failed"
+                    Description = _L("JSON Validation failed")
                 };
             }
         }

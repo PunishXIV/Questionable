@@ -6,6 +6,32 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1043621,
+          "Position": {
+            "X": 174.12073,
+            "Y": 14.095924,
+            "Z": 667.5669
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1055,
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/007/CtsMjiEntrance_00798",
+              "Prompt": "TEXT_CTSMJIENTRANCE_00798_SYSTEM_000_000",
+              "Answer": "TEXT_CTSMJIENTRANCE_00798_Q1_000_000"
+            },
+            {
+              "Type": "YesNo",
+              "ExcelSheet": "custom/007/CtsMjiEntrance_00798",
+              "Prompt": "TEXT_CTSMJIENTRANCE_00798_SYSTEM_000_005",
+              "Yes": true
+            }
+          ]
+        },
+        {
           "DataId": 1044156,
           "Position": {
               "X": -276.3562,

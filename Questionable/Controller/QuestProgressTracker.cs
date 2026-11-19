@@ -1,9 +1,5 @@
-using Microsoft.Extensions.Logging;
-using Questionable.Controller.Utils;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 
@@ -13,6 +9,7 @@ namespace Questionable.Controller;
 ///     that pick the currently-active one, and the setters that mutate them. Extracted from
 ///     <see cref="QuestController"/>.
 /// </summary>
+[RegisterSingleton]
 internal sealed class QuestProgressTracker(
     QuestFunctions questFunctions,
     QuestRegistry questRegistry,
@@ -35,14 +32,14 @@ internal sealed class QuestProgressTracker(
         {
             if (SimulatedQuest != null)
                 return (SimulatedQuest, QuestController.ECurrentQuestType.Simulated);
-            else if (NextQuest != null && questFunctions.IsReadyToAcceptQuest(NextQuest.Quest.Id))
+            if (NextQuest != null && questFunctions.IsReadyToAcceptQuest(NextQuest.Quest.Id))
                 return (NextQuest, QuestController.ECurrentQuestType.Next);
-            else if (GatheringQuest != null)
+            if (GatheringQuest != null)
                 return (GatheringQuest, QuestController.ECurrentQuestType.Gathering);
-            else if (StartedQuest != null)
+            if (StartedQuest != null)
                 return (StartedQuest, QuestController.ECurrentQuestType.Normal);
-            else
-                return null;
+
+            return null;
         }
     }
 

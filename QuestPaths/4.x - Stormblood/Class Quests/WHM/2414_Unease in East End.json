@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -77,7 +78,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Conjurers' Guild"

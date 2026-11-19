@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -63,6 +64,17 @@
           "TerritoryId": 612,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Fringes - Peering Stones"
+        },
+        {
+          "DataId": 1020801,
+          "Position": {
+            "X": 461.9973,
+            "Y": 114.210846,
+            "Z": 230.12122
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179697
         },
         {
           "DataId": 1020578,

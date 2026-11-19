@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 namespace Questionable.Model.Common.Converter;
 
-public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Values)
+public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Values, shard: false)
 {
-    private static readonly Dictionary<EAetheryteLocation, string> Values = new()
+    public static readonly Dictionary<EAetheryteLocation, string> Values = new()
     {
         { EAetheryteLocation.Gridania, "Gridania" },
         { EAetheryteLocation.CentralShroudBentbranchMeadows, "Central Shroud - Bentbranch Meadows" },
@@ -62,6 +62,7 @@ public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Val
         { EAetheryteLocation.AzimSteppeReunion, "Azim Steppe - Reunion" },
         { EAetheryteLocation.AzimSteppeDawnThrone, "Azim Steppe - Dawn Throne" },
         { EAetheryteLocation.AzimSteppeDhoroIloh, "Azim Steppe - Dhoro Iloh" },
+
         { EAetheryteLocation.DomanEnclave, "Doman Enclave" },
 
         { EAetheryteLocation.Crystarium, "Crystarium" },

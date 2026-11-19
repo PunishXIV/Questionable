@@ -14,14 +14,12 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Mih Khetto's Amphitheatre"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]
@@ -207,12 +205,7 @@
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Botanists' Guild"
-          ],
-          "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

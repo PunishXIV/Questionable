@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,16 +15,10 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -84,8 +79,11 @@
               "MinimumKillCount": 3,
               "CompletionQuestVariablesFlags": [
                 null,
-            {"High": 3},
-          null,null,null,null
+                { "High": 3 },
+                null,
+                null,
+                null,
+                null
               ]
             }
           ],
@@ -122,11 +120,7 @@
           "TerritoryId": 401,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            4619,
-            5044,
-            5045
-          ],
+          "KillEnemyDataIds": [4619, 5044, 5045],
           "Fly": true
         }
       ]
@@ -159,7 +153,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"

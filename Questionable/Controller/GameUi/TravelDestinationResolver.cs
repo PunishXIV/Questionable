@@ -1,16 +1,9 @@
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 
 namespace Questionable.Controller.GameUi;
 
@@ -19,6 +12,7 @@ namespace Questionable.Controller.GameUi;
 ///     quest step, and the warp entry matching a given prompt. Shared by the dialogue-choice and
 ///     yes/no interaction handlers.
 /// </summary>
+[RegisterSingleton]
 internal sealed class TravelDestinationResolver(
     IClientState clientState,
     GatheringPointRegistry gatheringPointRegistry,
@@ -89,6 +83,13 @@ internal sealed class TravelDestinationResolver(
     public bool TryFindWarp(ushort targetTerritoryId, string actualPrompt, [NotNullWhen(true)] out uint? warpId,
         [NotNullWhen(true)] out string? warpText)
     {
+        // Override for island sanc, this is not good and should be cleaner
+        if (targetTerritoryId == 1055)
+        {
+            warpId = 131497;
+            warpText = actualPrompt;
+            return true;
+        }
         IEnumerable<Warp> warps = dataManager.GetExcelSheet<Warp>()
             .Where(x => x.RowId > 0 && x.TerritoryType.RowId == targetTerritoryId);
         foreach (Warp entry in warps)
@@ -102,14 +103,15 @@ internal sealed class TravelDestinationResolver(
                 warpText = excelQuestion;
                 return true;
             }
-            else if (!string.IsNullOrEmpty(excelName) && GameFunctions.GameStringEquals(excelName, actualPrompt))
+
+            if (!string.IsNullOrEmpty(excelName) && GameFunctions.GameStringEquals(excelName, actualPrompt))
             {
                 warpId = entry.RowId;
                 warpText = excelName;
                 return true;
             }
-            else
-                logger.LogDebug("Ignoring prompt '{Prompt}'", excelQuestion);
+
+            logger.LogDebug("Ignoring prompt '{Prompt}'", excelQuestion);
         }
 
         warpId = null;

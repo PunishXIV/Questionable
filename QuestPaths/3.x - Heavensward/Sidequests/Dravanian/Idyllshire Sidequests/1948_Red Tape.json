@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014335,
+          "Position": {
+            "X": 72.3259,
+            "Y": 205.988,
+            "Z": 22.3532
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1014335 (Dripwix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012132,
+          "Position": {
+            "X": 43.0156,
+            "Y": 206.033,
+            "Z": 56.5204
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012132 (Drydox); hands over ITEM0=2001771"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014335,
+          "Position": {
+            "X": 72.3259,
+            "Y": 205.988,
+            "Z": 22.3532
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1014335 (Dripwix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012287,
+          "Position": {
+            "X": -28.3962,
+            "Y": 100.969,
+            "Z": -186.404
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014335,
+          "Position": {
+            "X": 72.3259,
+            "Y": 205.988,
+            "Z": 22.3532
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1014335 (Dripwix)"
+        }
+      ]
+    }
+  ]
+}

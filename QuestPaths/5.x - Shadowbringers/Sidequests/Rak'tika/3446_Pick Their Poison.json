@@ -1,0 +1,148 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -310.43918,
+            "Y": 7.1430855,
+            "Z": 705.8183
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -301.534,
+                  "Y": 8.68231,
+                  "Z": 711.299
+                },
+                "TerritoryId": 817,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1029024,
+          "Position": {
+            "X": -301.534,
+            "Y": 8.68231,
+            "Z": 711.299
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -310.43918,
+            "Y": 7.1430855,
+            "Z": 705.8183
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -310.43918,
+                  "Y": 7.1430855,
+                  "Z": 705.8183
+                },
+                "TerritoryId": 817,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2009929,
+          "Position": {
+            "X": -341.848,
+            "Y": 1.72418,
+            "Z": 577.264
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "ItemId": 2002540,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 2009929 (destination); use item ITEM0=2002540 on it"
+        },
+        {
+          "DataId": 2009930,
+          "Position": {
+            "X": -344.778,
+            "Y": 1.66321,
+            "Z": 547.722
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002540,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 2009930 (destination); use item ITEM0=2002540 on it"
+        },
+        {
+          "DataId": 2009931,
+          "Position": {
+            "X": -375.174,
+            "Y": 1.60217,
+            "Z": 510.735
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002540,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo location -> 2009931 (destination); use item ITEM0=2002540 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029881,
+          "Position": {
+            "X": -431.632,
+            "Y": 0.808655,
+            "Z": 628.015
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "$": "auto: todo location -> 1029881 (Karnes)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029883,
+          "Position": {
+            "X": -130.378,
+            "Y": -16.542,
+            "Z": 316.755
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "$": "auto: todo turn-in -> 1029883 (Karnes)"
+        }
+      ]
+    }
+  ]
+}

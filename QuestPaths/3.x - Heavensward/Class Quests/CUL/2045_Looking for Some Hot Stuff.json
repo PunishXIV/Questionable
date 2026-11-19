@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
-  "Comment": "Crafted Item:\n1x Beet Soup HQ\n1x Kaiser Roll HQ\n1x Grilled Sweetfish HQ\nAutocrafting requires:\n1x Abalathian Rock Salt\n2x Loaghtan Chump\n2x Magma Beet\n2x Mist Dill\n2x Pearl Sprouts\n2x Sesame Seeds\n1x Sweetfish\n2x Volcanic Rock Salt\n4x Yak Milk(crystarium))",
+  "Comment": "Crafted Item: 1x Beet Soup HQ, 1x Kaiser Roll HQ, 1x Grilled Sweetfish HQ\nAutocrafting requires:\n1x Abalathian Rock Salt\n2x Loaghtan Chump\n2x Magma Beet\n2x Mist Dill\n2x Pearl Sprouts\n2x Sesame Seeds\n1x Sweetfish\n2x Volcanic Rock Salt\n4x Yak Milk(crystarium))",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,17 +16,13 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         }
@@ -100,17 +97,13 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Jeweled Crozier"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
+              "InTerritory": [418, 419]
             }
           }
         }
@@ -127,77 +120,19 @@
           },
           "TerritoryId": 128,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12894,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12862,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12881,
-          "ItemCount": 3
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12849,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12855,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
+          "TerritoryId": 128
         },
         {
           "DataId": 1012568,
@@ -207,17 +142,13 @@
             "Z": 135.9425
           },
           "TerritoryId": 128,
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           },
           "InteractionType": "CompleteQuest",

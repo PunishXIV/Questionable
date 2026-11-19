@@ -1,22 +1,26 @@
-﻿using System;
-using Dalamud.Game.ClientState.Objects.Types;
+﻿using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc.Exceptions;
-using Microsoft.Extensions.Logging;
-using Questionable.External;
+using Questionable.Model.Common;
 namespace Questionable.Controller.CombatModules;
 
+[RegisterSingleton<ICombatModule, BossModModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class BossModModule
 (
     ILogger<BossModModule> logger,
     BossModIpc bossModIpc,
-    Configuration configuration) : ICombatModule, IDisposable
+    Configuration configuration,
+    IFramework framework) : ICombatModule, IDisposable
 {
     private bool _justLoaded = true;
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
-        if (configuration.General.CombatModule != Configuration.ECombatModule.BossMod)
+        if (configuration.General.CombatModule != ECombatModule.BossMod)
             return false;
+
+        //if (GameFunctions.GetMountId() == Mount128Module.MountId ||
+        //    GameFunctions.GetMountId() == Mount147Module.MountId)
+        //    return false;
 
         return bossModIpc.IsSupported();
     }
@@ -27,7 +31,7 @@ internal sealed class BossModModule
         {
             if (_justLoaded)
             {
-                bossModIpc.AddAllPresets(delete:true);
+                bossModIpc.AddAllPresets(delete: true);
                 _justLoaded = false;
             }
             bossModIpc.SetActivePreset(BossModIpc.EPreset.Overworld);
@@ -47,7 +51,7 @@ internal sealed class BossModModule
             bossModIpc.Cleanup();
             return true;
         }
-        catch (IpcError e)
+        catch (Exception e)
         {
             logger.LogWarning(e, "Could not turn off combat");
             return false;
@@ -60,5 +64,5 @@ internal sealed class BossModModule
 
     public bool CanAttack(IBattleNpc target) => true;
 
-    public void Dispose() => Stop();
+    public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, () => Stop(), logger);
 }

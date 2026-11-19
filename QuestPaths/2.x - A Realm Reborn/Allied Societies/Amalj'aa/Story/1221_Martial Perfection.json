@@ -1,0 +1,284 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Iskierka",
+  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-24"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005552,
+          "Position": {
+            "X": 87.78486,
+            "Y": 15.243345,
+            "Z": -355.75388
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.606,
+            "Y": 16.3853,
+            "Z": -362.085
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005552,
+          "Position": {
+            "X": 85.6442,
+            "Y": 15.2945,
+            "Z": -355.697
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1008371,
+          "Position": {
+            "X": 208.58916,
+            "Y": 6.1036606,
+            "Z": -2.7632384
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 322.43076,
+            "Y": 9.526134,
+            "Z": -35.83542
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 387.11707,
+            "Y": 16.397493,
+            "Z": -69.644165
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002978,
+          "Position": {
+            "X": 405.56946,
+            "Y": 16.525452,
+            "Z": -71.39697
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "CombatDelaySecondsAtStart": 3,
+          "KillEnemyDataIds": [
+            2454
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 444.468,
+            "Y": 17.320108,
+            "Z": -123.62381
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002976,
+          "Position": {
+            "X": 540.1478,
+            "Y": 11.106065,
+            "Z": -132.31355
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2001137
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 557.139,
+            "Y": 7.5996222,
+            "Z": -162.2317
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            2453
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 1
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 554.6501,
+            "Y": 7.599622,
+            "Z": -67.24658
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            2453
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 2
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 444.468,
+            "Y": 17.320108,
+            "Z": -123.62381
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 413.7178,
+            "Y": 17.934443,
+            "Z": -60.31891
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            2453
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2002977,
+          "Position": {
+            "X": 463.58435,
+            "Y": 18.539673,
+            "Z": -98.00879
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "Position": {
+            "X": 463.58435,
+            "Y": 18.539673,
+            "Z": -98.00879
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.606,
+            "Y": 16.3853,
+            "Z": -362.085
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.637,
+            "Y": 4.09995,
+            "Z": -114.663
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

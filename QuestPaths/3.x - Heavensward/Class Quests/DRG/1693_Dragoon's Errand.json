@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "AnimaMachinae",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,11 +17,6 @@
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "Land": true,
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "$": "Alberic"
         },
         {
@@ -77,11 +73,8 @@
           "Fly": true,
           "Land": true,
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [
-            4482,
-            5049
-          ],
-          "CompletionQuestVariablesFlags": [2,null,null,null,null,null]
+          "KillEnemyDataIds": [4482, 5049],
+          "CompletionQuestVariablesFlags": [2, null, null, null, null, null]
         },
         {
           "DataId": 1013466,
@@ -107,16 +100,10 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

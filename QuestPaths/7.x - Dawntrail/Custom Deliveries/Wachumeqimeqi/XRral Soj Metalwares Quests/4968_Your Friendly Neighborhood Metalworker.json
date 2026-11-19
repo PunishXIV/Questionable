@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-03"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047135,
+          "Position": {
+            "X": 180.407,
+            "Y": -13.9926,
+            "Z": 1.98725
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: issuer 1047135 (Rral Soj)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -9.894745,
+            "Y": -10.00001,
+            "Z": 139.20522
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ]
+        },
+        {
+          "DataId": 1047136,
+          "Position": {
+            "X": 1.25696,
+            "Y": -10,
+            "Z": 158.245
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
+          "$": "auto: todo location -> 1047136 (Papawni)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -9.894745,
+            "Y": -10.00001,
+            "Z": 139.20522
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 180.407,
+                  "Y": -13.9926,
+                  "Z": 1.98725
+                },
+                "TerritoryId": 1185,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1047135,
+          "Position": {
+            "X": 180.407,
+            "Y": -13.9926,
+            "Z": 1.98725
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Bayside Bevy Marketplace",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
+        }
+      ]
+    }
+  ]
+}

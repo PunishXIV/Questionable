@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +17,7 @@
           "Fly": true,
           "Land": true,
           "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         },
         {
           "DataId": 1006975,
@@ -49,12 +45,7 @@
           "TerritoryId": 137,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
         }
       ]
     },

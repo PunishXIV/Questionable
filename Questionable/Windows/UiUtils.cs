@@ -1,75 +1,105 @@
-﻿using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
-using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Functions;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
-internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInterface pluginInterface)
+[RegisterSingleton]
+internal sealed class UiUtils(
+    QuestFunctions questFunctions,
+    IDalamudPluginInterface pluginInterface,
+    QuestData questData,
+    GameIcons gameIcons)
 {
-    private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
-    private readonly QuestFunctions _questFunctions = questFunctions;
-
-    public (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
+    public unsafe (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
-        if (_questFunctions.IsQuestAccepted(elementId))
-            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.PersonWalkingArrowRight, "Active");
-        else if (elementId is QuestId questId && _questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
+        string lockedReason = string.Empty;
+        IQuestInfo? qInfo = null;
+        questFunctions.prereqCache.TryGetValue(elementId.Value, out var prereqValue);
+        if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, string[] reasons) && isLocked)
+            lockedReason = string.Join("\n  ", reasons);
+        else if (questData.TryGetQuestInfo(elementId, out qInfo) && qInfo is IQuestInfo questInfo &&
+                questInfo.PreviousQuestJoin is EQuestJoin.All)
         {
-            if (!_questFunctions.IsReadyToAcceptQuest(questId))
-                return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, "Complete");
-            else if (_questFunctions.IsQuestComplete(questId))
-                return (ImGuiColors.ParsedBlue, FontAwesomeIcon.Running, "Available");
-            else
-                return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, "Available");
+            List<string> preReasons = [];
+            if (prereqValue != null)
+                foreach (IQuestInfo q in prereqValue)
+                    if (questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] _reasons) && qIsLocked &&
+                        !questFunctions.IsQuestUnobtainable(q.QuestId))
+                        foreach (string _reason in _reasons)
+                            preReasons.Add($"{q.QuestId.Value}: {_reason}");
+            if (preReasons.Count != 0)
+                lockedReason = _L("Prev quest") + $" ({preReasons[0]}{(preReasons.Count > 1 ? $" +{preReasons.Count - 1}" : "")})";
         }
-        else if (_questFunctions.IsQuestAcceptedOrComplete(elementId))
-            return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, "Complete");
-        else if (_questFunctions.IsQuestUnobtainable(elementId))
-            return (ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus, "Unobtainable");
-        else if (_questFunctions.IsQuestLocked(elementId))
-            return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times, "Locked");
-        else
-            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, "Available");
+
+        if (questFunctions.IsQuestAccepted(elementId))
+            return (QstTheme.Amber, FontAwesomeIcon.PersonWalkingArrowRight, _L("Active"));
+        if (elementId is QuestId questId && questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
+        {
+            if (!questFunctions.IsReadyToAcceptQuest(questId))
+                return (QstTheme.Success, FontAwesomeIcon.Check, _L("Complete"));
+            if (questFunctions.IsQuestComplete(questId))
+                return (QstTheme.Info, FontAwesomeIcon.Running, _L("Available"));
+
+            return (QstTheme.Amber, FontAwesomeIcon.Running, _L("Available"));
+        }
+
+        if (questFunctions.IsQuestAcceptedOrComplete(elementId))
+            return (QstTheme.Success, FontAwesomeIcon.Check, _L("Complete"));
+        if (questFunctions.IsQuestUnobtainable(elementId))
+            return (QstTheme.TextMuted, FontAwesomeIcon.Minus, _L("Unobtainable"));
+        if (!string.IsNullOrEmpty(lockedReason))
+            return (QstTheme.Danger, FontAwesomeIcon.Times, $"{_L("Locked")}:\n  {lockedReason}");
+        if (prereqValue == null)
+            return (QstTheme.Info, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
+
+        return (QstTheme.Amber, FontAwesomeIcon.Running, _L("Available"));
     }
 
     public static (Vector4 color, FontAwesomeIcon icon) GetInstanceStyle(ushort instanceId)
     {
         if (UIState.IsInstanceContentCompleted(instanceId))
-            return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check);
-        else if (UIState.IsInstanceContentUnlocked(instanceId))
-            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running);
-        else
-            return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times);
+            return (QstTheme.Success, FontAwesomeIcon.Check);
+        if (UIState.IsInstanceContentUnlocked(instanceId))
+            return (QstTheme.Amber, FontAwesomeIcon.Running);
+
+        return (QstTheme.Danger, FontAwesomeIcon.Times);
     }
 
-    public bool ChecklistItem(string text, Vector4 color, FontAwesomeIcon icon, float extraPadding = 0)
+    /// <returns>bool: IsItemHovered for whole widget</returns>
+    /// <param name="onClick">Invoked once if any part of the widget was clicked this frame.</param>
+    public bool ChecklistItem(string text, Vector4 color, FontAwesomeIcon icon, float extraPadding = 0, uint? iconOverride = null, Action? onClick = null)
     {
         if (extraPadding > 0)
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + extraPadding);
-
-        using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        if (iconOverride is not { } iconId || !gameIcons.DrawInline(iconId))
         {
-            ImGui.TextColored(color, icon.ToIconString());
+            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+            {
+                ImGui.TextColored(color, icon.ToIconString());
+            }
         }
 
         bool hover = ImGui.IsItemHovered();
+        bool click = ImGui.IsItemClicked();
 
         ImGui.SameLine();
         if (extraPadding > 0)
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + extraPadding);
         ImGui.TextUnformatted(text);
         hover |= ImGui.IsItemHovered();
+        click |= ImGui.IsItemClicked();
+        if (click)
+            onClick?.Invoke();
         return hover;
     }
 
     public bool ChecklistItem(string text, bool complete, Vector4? colorOverride = null)
     {
         return ChecklistItem(text,
-            colorOverride ?? (complete ? ImGuiColors.ParsedGreen : ImGuiColors.DalamudRed),
+            colorOverride ?? (complete ? QstTheme.Success : QstTheme.Danger),
             complete ? FontAwesomeIcon.Check : FontAwesomeIcon.Times);
     }
 }

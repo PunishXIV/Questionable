@@ -5,7 +5,6 @@ namespace Questionable.Model.Questing;
 public class LastChecked
 {
     public string? Username { get; set; }
-    //[JsonConverter(typeof(DateConverter))]
     public string? Date { get; set; }
 
     public DateTime? ToDateTime() => Date != null ? DateTime.ParseExact(Date, "yyyy-MM-dd", CultureInfo.InvariantCulture) : null;

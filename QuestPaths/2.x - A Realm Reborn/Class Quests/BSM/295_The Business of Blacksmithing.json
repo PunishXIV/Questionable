@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Bronze Spatha,\n 1x Spiked Bronze Labrys\nAutocraft requires:\n 4x Bronze Ingot,\n 1x Hard Leather,\n 1x Ram Horn,\n 1x Ash Lumber",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
@@ -84,7 +84,11 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true
+          "AllowHighQuality": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     }

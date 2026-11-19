@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -25,6 +25,17 @@
           "TerritoryId": 620,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Peaks - Ala Gannha"
+        },
+        {
+          "DataId": 1020836,
+          "Position": {
+            "X": 49.240845,
+            "Y": 118.35526,
+            "Z": -728.96924
+          },
+          "TerritoryId": 620,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179698
         },
         {
           "DataId": 2007976,

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Game.Text.SeStringHandling;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -152,13 +146,13 @@ internal static class UnequipItem
                     InventoryType.EquippedItems, equippedSlot, armoryType, targetSlot);
 
                 int result = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, equippedSlot,
-                    armoryType, targetSlot, true);
+                    armoryType, targetSlot, a6: true); // TODO define a6
                 logger.LogInformation("MoveItemSlot result: {Result}", result);
                 return;
             }
         }
 
-        private static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
+        internal static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
         {
             for (ushort i = 0; i < container->Size; i++)
             {

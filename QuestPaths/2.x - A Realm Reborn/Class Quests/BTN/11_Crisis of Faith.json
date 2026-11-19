@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-14"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +15,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Botanists' Guild"
@@ -35,7 +34,7 @@
       "Sequence": 1,
       "Steps": [
         {
-          "TerritoryId": 138,
+          "TerritoryId": 133,
           "InteractionType": "EquipRecommended"
         },
         {
@@ -64,7 +63,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Botanists' Guild"
@@ -106,7 +104,6 @@
             "Z": -171.03839
           },
           "TerritoryId": 133,
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Botanists' Guild"
@@ -119,7 +116,8 @@
                 133
               ]
             }
-          }
+          },
+          "NextQuestId": 12
         }
       ]
     }

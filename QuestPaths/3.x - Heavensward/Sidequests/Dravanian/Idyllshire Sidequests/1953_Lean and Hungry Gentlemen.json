@@ -1,0 +1,175 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012134 (Notched Bone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": -587.975,
+            "Y": 162.156,
+            "Z": -211.823
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            4024
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006104,
+          "Position": {
+            "X": -408.898,
+            "Y": 150.862,
+            "Z": -174.006
+          },
+          "TerritoryId": 399,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "ItemId": 2001773
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012134 (Notched Bone); hands over ITEM1=2001774"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014351,
+          "Position": {
+            "X": -407.578,
+            "Y": 150.501,
+            "Z": -173.805
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012134 (Notched Bone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "UseItem",
+          "AetheryteShortcut": "Idyllshire",
+          "ItemId": 2001776,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 1012134 (Notched Bone); use item ITEM3=2001776 on it"
+        },
+        {
+          "DataId": 1012136,
+          "Position": {
+            "X": 6.30194,
+            "Y": 206.165,
+            "Z": 97.2155
+          },
+          "TerritoryId": 478,
+          "InteractionType": "UseItem",
+          "ItemId": 2001776,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 1012136 (Dedean); use item ITEM3=2001776 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012134 (Notched Bone)"
+        }
+      ]
+    }
+  ]
+}

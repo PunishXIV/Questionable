@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Questionable.Model;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, NextQuestValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class NextQuestValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
@@ -17,7 +15,7 @@ internal sealed class NextQuestValidator : IQuestValidator
                 Step = StepId,
                 Type = EIssueType.InvalidNextQuestId,
                 Severity = EIssueSeverity.Error,
-                Description = "Next quest should not reference itself"
+                Description = _L("Next quest should not reference itself")
             };
         }
     }

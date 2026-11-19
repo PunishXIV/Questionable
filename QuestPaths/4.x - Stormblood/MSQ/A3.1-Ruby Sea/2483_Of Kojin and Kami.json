@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-05-31"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -56,6 +56,17 @@
           "TerritoryId": 613,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1019174,
+          "Position": {
+            "X": 318.44043,
+            "Y": -119.15506,
+            "Z": -207.90424
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179704
         },
         {
           "Position": {

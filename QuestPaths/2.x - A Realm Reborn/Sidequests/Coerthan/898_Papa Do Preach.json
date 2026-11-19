@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006397,
+          "Position": {
+            "X": 205.061,
+            "Y": 310.024,
+            "Z": -298.045
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006398,
+          "Position": {
+            "X": 565.188,
+            "Y": 348.103,
+            "Z": -756.671
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006399,
+          "Position": {
+            "X": 527.242,
+            "Y": 350.47812,
+            "Z": -697.21075
+          },
+          "TerritoryId": 155,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002124,
+          "Position": {
+            "X": 530.3273,
+            "Y": 352.43762,
+            "Z": -696.0708
+          },
+          "TerritoryId": 155,
+          "StopDistance": 4,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006398,
+          "Position": {
+            "X": 565.188,
+            "Y": 348.103,
+            "Z": -756.671
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006397,
+          "Position": {
+            "X": 205.061,
+            "Y": 310.024,
+            "Z": -298.045
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

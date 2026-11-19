@@ -1,50 +1,11 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "TerritoryId": 156,
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                351
-              ]
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                351
-              ]
-            }
-          }
-        },
-        {
-          "DataId": 2002878,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.0223389,
-            "Z": -26.779602
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "SkipConditions": {
-            "StepIf": {
-              "ExtraCondition": "RisingStonesSolar"
-            }
-          }
-        },
         {
           "DataId": 1014565,
           "Position": {
@@ -61,6 +22,29 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "Position": {
+            "X": 212.12222,
+            "Y": 256.37268,
+            "Z": -3.8163254
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 155.45001,
+                  "Y": 245.1,
+                  "Z": -5.448744
+                },
+                "TerritoryId": 402,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
         {
           "DataId": 1017115,
           "Position": {
@@ -86,7 +70,14 @@
             "Z": -4.1047363
           },
           "TerritoryId": 402,
-          "InteractionType": "SinglePlayerDuty"
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "Notes": [
+              "failed to pull all mob packs, ran into wall before Colossus miniboss until pointed at missed pack",
+              "doesn't pull end boss"
+            ]
+          }
         }
       ]
     },
@@ -111,29 +102,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "TerritoryId": 156,
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
-          "DataId": 2002878,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.0223389,
-            "Z": -26.779602
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
         {
           "DataId": 1014565,
           "Position": {

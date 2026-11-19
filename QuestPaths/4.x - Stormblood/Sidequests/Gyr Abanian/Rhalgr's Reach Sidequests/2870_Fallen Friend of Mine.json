@@ -1,0 +1,115 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023170,
+          "Position": {
+            "X": -31.9676,
+            "Y": 1.61313,
+            "Z": 53.2997
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "$": "auto: issuer 1023170 (Ananta battlemaid)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023172,
+          "Position": {
+            "X": 10.9102,
+            "Y": 114.033,
+            "Z": -761.746
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "$": "auto: todo location -> 1023172 (Ananta battlemaid)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023171,
+          "Position": {
+            "X": 182.666,
+            "Y": 116.54,
+            "Z": -725.704
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "$": "auto: lua ACTOR2 -> 1023171 (stonemason)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023172,
+          "Position": {
+            "X": 10.9102,
+            "Y": 114.033,
+            "Z": -761.746
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "$": "auto: todo location -> 1023172 (Ananta battlemaid)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2008777,
+          "Position": {
+            "X": 139.48973,
+            "Y": 115.74521,
+            "Z": -649.7475
+          },
+          "TerritoryId": 620,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "$": "auto: todo location with no object - check what actually happens here"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023173,
+          "Position": {
+            "X": 13.5347,
+            "Y": 114.391,
+            "Z": -761.44
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "$": "auto: todo turn-in -> 1023173 (stonemason)"
+        }
+      ]
+    }
+  ]
+}

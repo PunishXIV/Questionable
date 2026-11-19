@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -172,6 +173,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
           "Fly": true
         }

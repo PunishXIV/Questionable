@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2026-02-07"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -35,25 +35,15 @@
           "EnemySpawnType": "AfterInteraction",
           "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "KillEnemyDataIds": [79],
-          "RequiredQuestVariables": [null,null,null,null,[
-            {"Low": 2},{"Low": 5}
-          ],null],
-          "Fly": true
-        },
-        {
-          "DataId": 79,
-          "Position": {
-            "X": -84.30609,
-            "Y": -4.7733727,
-            "Z": -105.85187
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001191
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2},{"Low": 5}
           ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
-          "ItemId": 2001191
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2003169,
@@ -70,22 +60,12 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3},{"Low": 4},{"Low": 5}
           ],null],
-          "Fly": true
-        },
-        {
-          "DataId": 80,
-          "Position": {
-            "X": -198.6194,
-            "Y": 4.4395595,
-            "Z": -156.7357
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001191
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
-          "RequiredQuestVariables": [null,null,null,null,[
-            {"Low": 3},{"Low": 4},{"Low": 5}
-          ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
-          "ItemId": 2001191
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
           "DataId": 2003168,
@@ -98,25 +78,15 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [80],
-          "RequiredQuestVariables": [null,null,null,null,[
-            {"Low": 4},{"Low": 5}
-          ],null],
-          "Fly": true
-        },
-        {
-          "DataId": 80,
-          "Position": {
-            "X": -159.83832,
-            "Y": 4.2440715,
-            "Z": -136.43097
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001191
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 4},{"Low": 5}
           ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
-          "ItemId": 2001191
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 2003170,
@@ -129,25 +99,15 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [80],
-          "RequiredQuestVariables": [null,null,null,null,[
-            {"Low": 3}
-          ],null],
-          "Fly": true
-        },
-        {
-          "DataId": 80,
-          "Position": {
-            "X": -156.54236,
-            "Y": 6.3934937,
-            "Z": -54.76471
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001191
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3}
           ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}],
-          "ItemId": 2001191
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         },
         {
           "DataId": 2003171,
@@ -159,26 +119,16 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [80],
-          "RequiredQuestVariables": [null,null,null,null,[
-            {"Low": 1},{"Low": 2},{"Low": 3}
-          ],null],
-          "Fly": true
-        },
-        {
-          "DataId": 81,
-          "Position": {
-            "X": -18.387146,
-            "Y": 1.3274536,
-            "Z": -26.993225
+          "KillEnemyDataIds": [81],
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001191
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2},{"Low": 3}
           ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}],
-          "ItemId": 2001191
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
         },
         {
           "DataId": 2003172,
@@ -190,26 +140,16 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [80],
-          "RequiredQuestVariables": [null,null,null,null,[
-            {"Low": 1},{"Low": 2},{"Low": 4}
-          ],null],
-          "Fly": true
-        },
-        {
-          "DataId": 81,
-          "Position": {
-            "X": -19.760498,
-            "Y": 0.97421986,
-            "Z": 19.790894
+          "KillEnemyDataIds": [81],
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001191
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2},{"Low": 4}
           ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 2}],
-          "ItemId": 2001191
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 2}]
         },
         {
           "DataId": 2003166,
@@ -222,25 +162,15 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [79],
-          "RequiredQuestVariables": [null,null,null,null,[
-            {"Low": 1}
-          ],null],
-          "Fly": true
-        },
-        {
-          "DataId": 79,
-          "Position": {
-            "X": -69.44385,
-            "Y": -1.3275757,
-            "Z": -106.49274
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001191
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}
           ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
-          "ItemId": 2001191
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         }
       ]
     },

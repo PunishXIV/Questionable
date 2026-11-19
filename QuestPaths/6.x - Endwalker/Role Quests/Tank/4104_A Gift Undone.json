@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -21,12 +22,7 @@
               "Prompt": "TEXT_AKTKBA121_04104_Q0_000_000",
               "Answer": "TEXT_AKTKBA121_04104_A0_000_001"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

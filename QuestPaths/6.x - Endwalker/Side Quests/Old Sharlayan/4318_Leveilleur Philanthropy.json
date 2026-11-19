@@ -19,11 +19,6 @@
             "[Old Sharlayan] Aetheryte Plaza",
             "[Old Sharlayan] The Leveilleur Estate"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",

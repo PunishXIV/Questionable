@@ -14,9 +14,9 @@
             "[Ishgard] Firmament"
           ],
           "SkipConditions": {
-            "StepIf": {
+            "AetheryteShortcutIf": {
               "InTerritory": [
-                154
+                886
               ]
             }
           }

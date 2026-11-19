@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
   "Comment": "Requires a DoH class at level 30 or higher",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,20 +16,15 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Sapphire Avenue Exchange"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 131
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -48,12 +44,7 @@
           "TerritoryId": 141,
           "InteractionType": "CompleteQuest",
           "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
         }
       ],
       "$": "Possible consideration to have other quests at the Bonfire (Waking the Spirit, Melding Materia Muchly, Marvelously Mutable Materia) as NextQuestIds?"

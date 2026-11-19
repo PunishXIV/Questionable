@@ -14,12 +14,7 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Tuliyollal"
         }
       ]
     },
@@ -65,12 +60,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan"
         }
       ]
     },
@@ -86,12 +76,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
     },
@@ -108,12 +93,7 @@
           "TerritoryId": 1187,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     }

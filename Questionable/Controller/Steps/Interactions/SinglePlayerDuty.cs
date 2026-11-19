@@ -1,23 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin.Services;
-using ECommons;
-using ECommons.Throttlers;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.External;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Controller.Steps.ITaskExecutor;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class SinglePlayerDuty
@@ -51,6 +42,12 @@ internal static class SinglePlayerDuty
         public const ushort ItsProbablyATrap = 665;
         public const ushort Naadam = 688;
         public const ushort Patisserie = 1298;
+        public const ushort ViperTutorial = 1235;
+        public const ushort EgistentialCrisis = 701;
+        public const ushort Nightkin = 676;
+        public const ushort WarmthOfFamily = 1244;
+        public const ushort BarThePassage = 1246;
+        public const ushort Holyfist = 261;
     }
 
     internal sealed class Factory
@@ -58,7 +55,6 @@ internal static class SinglePlayerDuty
         BossModIpc bossModIpc,
         TerritoryData territoryData,
         IObjectTable objectTable,
-        ICondition condition,
         IClientState clientState) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -85,7 +81,8 @@ internal static class SinglePlayerDuty
                     tId = cfcData.TerritoryId;
                 }
 
-                yield return new Mount.UnmountTask();
+                yield return new MountStep.UnmountTask();
+
                 if (tId == SpecialTerritories.Patisserie)
                     yield return new Commence(cfcId);
                 yield return new StartSinglePlayerDuty(cfcId);
@@ -94,20 +91,24 @@ internal static class SinglePlayerDuty
                 {
                     yield return new SetTarget(14643);
                     yield return new EnableAi();
-                    yield return new WaitCondition.Task(
-                        () => condition[ConditionFlag.Unconscious] || clientState.TerritoryType != SpecialTerritories.Lahabrea,
-                        "Wait(death)");
+                    yield return new WaitAtEnd.WaitForConditionActive(
+                        ConditionFlag.Unconscious,
+                        SpecialTerritories.Lahabrea,
+                        FriendlyText: "Fake death");
                     yield return new DisableAi();
-                    yield return new WaitCondition.Task(
-                        () => !condition[ConditionFlag.Unconscious] || clientState.TerritoryType != SpecialTerritories.Lahabrea,
-                        "Wait(resurrection)");
+                    yield return new WaitAtEnd.WaitForConditionCleared(
+                        ConditionFlag.Unconscious,
+                        SpecialTerritories.Lahabrea,
+                        FriendlyText: "Resurrection");
                     yield return new EnableAi();
                 }
                 else if (tId is SpecialTerritories.ItsProbablyATrap)
                 {
+                    yield return new EnableAi();
                     yield return new WaitCondition.Task(() => DutyActionsAvailable() || clientState.TerritoryType != SpecialTerritories.ItsProbablyATrap,
                         "Wait(Phase 2)");
-                    yield return new EnableAi(true);
+                    yield return new DisableAi();
+                    yield return new EnableAi(Passive: true);
                 }
                 else if (tId is SpecialTerritories.Naadam)
                 {
@@ -121,13 +122,182 @@ internal static class SinglePlayerDuty
                             return (new Vector3(352.01f, -1.45f, 288.59f) - pos).Length() < 10f;
                         },
                         "Wait(moving to Ovoo)");
-                    yield return new Mount.UnmountTask();
+                    yield return new MountStep.UnmountTask();
                     yield return new EnableAi();
                 }
                 else if (tId == SpecialTerritories.Patisserie)
                     yield return new SetPreset(BossModIpc.EPreset.NormalMovement);
+                else if (tId == SpecialTerritories.EgistentialCrisis)
+                {
+                    yield return new EnableAi();
+
+                    yield return new MoveTask(SpecialTerritories.EgistentialCrisis, new(-173.63245f, 23.428497f, 67.91785f));
+                    yield return new WaitAtEnd.WaitForConditionCleared(
+                        ConditionFlag.InCombat,
+                        SpecialTerritories.EgistentialCrisis);
+
+                    yield return new MoveTask(SpecialTerritories.EgistentialCrisis, new(-81.944534f, 17.852749f, 28.01129f));
+                    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(10));
+
+                    yield return new MoveTask(SpecialTerritories.EgistentialCrisis, new(-3.189148f, 15.807038f, -2.7008667f));
+                    yield return new WaitAtEnd.WaitForConditionCleared(
+                        ConditionFlag.InCombat,
+                        SpecialTerritories.EgistentialCrisis);
+                    yield return new MoveTask(SpecialTerritories.EgistentialCrisis, new(54.61206f, 11.988899f, 0.56451416f));
+                    yield return new SetTarget(7256);
+                    yield return new WaitAtEnd.WaitForConditionCleared(
+                        ConditionFlag.InCombat,
+                        SpecialTerritories.EgistentialCrisis);
+                }
+                else if (tId == SpecialTerritories.Nightkin)
+                {
+                    yield return new EnableAi();
+
+                    foreach (Vector3 pos in new Vector3[] {
+                        new(296.57343f, -23.999998f, -46.911057f),
+                        new(252.63516f, -24f, -30.802874f),
+                        new(292.96347f, -40.000004f, -58.68649f)
+                    })
+                    {
+                        yield return new MoveTask(SpecialTerritories.Nightkin, pos, Mount: false);
+                        yield return new WaitAtEnd.WaitForConditionCleared(
+                            ConditionFlag.InCombat,
+                            SpecialTerritories.Nightkin);
+                    }
+
+                    foreach (Vector3 pos in new Vector3[] {
+                        new(368.9174f, -39.0174f, -67.61273f),
+                        new(364.1259f, -39.0174f, -61.63129f),
+                        new(376.7352f, -39f, -72.19662f),
+                        new(376.9069f, -39f, -47.19531f),
+                        new(384.6841f, -39f, -51.21257f)
+                    })
+                    {
+                        yield return new MoveTask(SpecialTerritories.Nightkin, pos, Mount: false);
+                        yield return new Interact.Task(2007939, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                    }
+                    yield return new WaitCondition.Task(
+                        () =>
+                        {
+                            if (clientState.TerritoryType != SpecialTerritories.Nightkin)
+                                return true;
+                            return objectTable.Any(o => o.BaseId.Equals(7075));
+                        },
+                        "Wait(voidsphere spawn)");
+                    yield return new MoveTask(SpecialTerritories.Nightkin, new(368.9174f, -39.0174f, -67.61273f), Mount: false);
+                    yield return new WaitAtEnd.WaitForConditionCleared(
+                        ConditionFlag.InCombat,
+                        SpecialTerritories.Nightkin);
+                    yield return new MoveTask(SpecialTerritories.Nightkin, new(376.36014f, -39f, -60.74992f), Mount: false);
+                    yield return new Interact.Task(2007939, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                }
+
+                else if (tId == SpecialTerritories.WarmthOfFamily)
+                {
+                    yield return new MoveTask(SpecialTerritories.WarmthOfFamily, new(328.9248f, -16.66298f, -310.9581f));
+                    yield return new Interact.Task(2014395, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                    yield return new MoveTask(SpecialTerritories.WarmthOfFamily, new(336.6056f, -16.60183f, -300.5593f));
+                    yield return new Interact.Task(2014403, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                    yield return new MoveTask(SpecialTerritories.WarmthOfFamily, new(414.32892f, -16.524708f, -127.3352f));
+                    yield return new EnableAi();
+                    yield return new WaitAtEnd.WaitForConditionActive(
+                        ConditionFlag.SufferingStatusAffliction63,
+                        SpecialTerritories.WarmthOfFamily,
+                        FriendlyText: "Phase 2");
+                    yield return new WaitAtEnd.WaitForConditionCleared(
+                        ConditionFlag.SufferingStatusAffliction63,
+                        SpecialTerritories.WarmthOfFamily,
+                        FriendlyText: "In event");
+                    yield return new SetTarget(17976);
+                    yield return new WaitCondition.Task(
+                        () =>
+                        {
+                            if (clientState.TerritoryType != SpecialTerritories.WarmthOfFamily)
+                                return true;
+                            return objectTable.Any(o => o.BaseId.Equals(17992));
+                        },
+                        "Wait(leg exposed)");
+                    yield return new SetTarget(17992);
+                }
+                else if (tId == SpecialTerritories.BarThePassage)
+                {
+                    yield return new WaitAtEnd.WaitForConditionCleared(
+                        ConditionFlag.SufferingStatusAffliction63,
+                        SpecialTerritories.BarThePassage,
+                        FriendlyText: "In Event");
+                    yield return new EnableAi();
+                    Vector3[] points = [
+                            new(0f, 0f, -300f),
+                            new(0f, 0f, -300f),
+                            new(0f, 0f, -300f),
+                            new(0f, 0f, -267f),
+                            new(0f, 0f, 81f),
+                            new(0f, 0f, 106f),
+                            new(0f, 0f, 364f),
+                    ];
+                    foreach (Vector3 point in points)
+                    {
+                        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(5));
+                        yield return new WaitAtEnd.WaitForConditionCleared(
+                            ConditionFlag.InCombat,
+                            SpecialTerritories.BarThePassage);
+                        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(5));
+                        yield return new WaitAtEnd.WaitForConditionCleared(
+                            ConditionFlag.InCombat,
+                            SpecialTerritories.BarThePassage);
+                        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(5));
+                        yield return new WaitAtEnd.WaitForConditionCleared(
+                            ConditionFlag.InCombat,
+                            SpecialTerritories.BarThePassage);
+                        yield return new MoveTask(SpecialTerritories.BarThePassage, point);
+                    }
+                    yield return new SetTarget(18032);
+                }
+                else if (tId == SpecialTerritories.Holyfist)
+                {
+                    for (var _ = 0; _ < 3; _++)
+                        foreach (EAction action in new List<EAction>()
+                                { EAction.Bootshine, EAction.TrueStrike, EAction.SnapPunch })
+                            yield return new ActionStep.UseOnObject(879, quest, action, CompletionQuestVariablesFlags: null, IgnoreResult: true, Timeout: 3);
+                    yield return new EnableAi();
+                }
+
+                //else if (tId == SpecialTerritories.ViperTutorial)
+                //{
+                //    yield return new WaitCondition.Task(
+                //    () =>
+                //    {
+                //        if (clientState.TerritoryType != SpecialTerritories.ViperTutorial)
+                //            return true;
+                //        return !condition[ConditionFlag.SufferingStatusAffliction63];
+                //    },
+                //    "Wait(in event)");
+                //    yield return new Interact.Task(17055, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                //    yield return new SetTarget(17057);
+                //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(255.8717f, 15.075876f, 471.1717f), Mount: false);
+                //    IEnumerable<EAction> actions = [
+                //        EAction.WrithingSnap,
+                //        EAction.SteelFangs,
+                //        EAction.WrithingSnap,
+                //        EAction.HuntersSting,
+                //        EAction.WrithingSnap,
+                //        EAction.FlankstingStrike,
+                //        EAction.WrithingSnap,
+                //        EAction.DeathRattle
+                //    ];
+                //    foreach (EAction action in actions)
+                //    {
+                //        yield return new SetTarget(17057);
+                //        yield return new ActionStep.UseOnObject(17057, quest, action, CompletionQuestVariablesFlags: null);
+                //        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
+                //    }
+                //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(251.17833f, 15.400139f, 465.84366f), Mount: false);
+                //}
                 else
                     yield return new EnableAi(tId == SpecialTerritories.Naadam);
+
+                if (step.SinglePlayerDutyOptions?.Target != null)
+                    yield return new SetTarget((uint)step.SinglePlayerDutyOptions.Target);
 
                 yield return new WaitSinglePlayerDuty(cfcId);
                 yield return new DisableAi();
@@ -226,8 +396,8 @@ internal static class SinglePlayerDuty
         {
             if (!movementController.IsNavmeshReady)
                 return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
-            else
-                return null;
+
+            return null;
         }
 
         public override unsafe ETaskResult Update()
@@ -281,7 +451,10 @@ internal static class SinglePlayerDuty
             if (GameFunctions.GetBaseID(targetManager.Target) == Task.DataId)
                 return ETaskResult.TaskComplete;
 
-            IGameObject? gameObject = objectTable.FirstOrDefault(x => GameFunctions.GetBaseID(x) == Task.DataId);
+            IGameObject? gameObject = objectTable
+                .Where(x => GameFunctions.GetBaseID(x) == Task.DataId)
+                .OrderBy(x => Vector3.Distance(x.Position, objectTable[0]!.Position))
+                .FirstOrDefault();
             if (gameObject == null)
                 return ETaskResult.StillRunning;
 
@@ -416,6 +589,34 @@ internal static class SinglePlayerDuty
             return DateTime.Now - _enteredAt >= TimeSpan.FromSeconds(2)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record LeaveParty : ITask
+    {
+        public override string ToString() => "LeaveParty()";
+    }
+
+    internal sealed class LeavePartyExecutor : TaskExecutor<LeaveParty>
+    {
+        protected override bool Start() => LeavePartyAction();
+
+        public override ETaskResult Update()
+        {
+            return LeavePartyAction() ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+        }
+
+        public unsafe static bool LeavePartyAction()
+        {
+            if (InfoProxyCrossRealm.IsLocalPlayerInParty())
+            {
+                if (InfoProxyCrossRealm.IsLocalPlayerPartyLeader())
+                    return InfoProxyPartyMember.Instance()->DisbandParty();
+                return InfoProxyPartyMember.Instance()->LeaveParty();
+            }
+            return true;
         }
 
         public override bool ShouldInterruptOnDamage() => false;

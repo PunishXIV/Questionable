@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Thavnair - Yedlihmad"
         }
       ]
     },
@@ -35,6 +31,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true, "Target": 17034},
           "AetheryteShortcut": "Radz-at-Han",
           "AethernetShortcut": [
             "[Radz-at-Han] Aetheryte Plaza",

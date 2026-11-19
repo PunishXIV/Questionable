@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +16,7 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ul'dah"
         }
       ]
     },
@@ -44,11 +41,12 @@
         {
           "DataId": 2001391,
           "Position": {
-            "X": -215.99152,
-            "Y": -29.495728,
-            "Z": 203.78418
+            "X": -216.40947,
+            "Y": -30.56079,
+            "Z": 204.89229
           },
           "TerritoryId": 145,
+          "StopDistance": 1,
           "InteractionType": "Action",
           "Action": "Bootshine",
           "Fly": true,

@@ -122,3 +122,55 @@ jobs:
           draft: false
           prerelease: ${{ steps.channel.outputs.channel == 'testing' }}
           make_latest: false
+
+      - name: Collect changed path files
+        id: changes
+        run: |
+          # List files changed in this push that live under QuestPaths/ or GatheringPaths/.
+          # For a normal push, github.event.before points at the previous tip; for the first
+          # push to a branch (or workflow_dispatch) it can be all-zeros, so fall back to HEAD~1.
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE=$(git rev-parse HEAD~1 2>/dev/null || echo "")
+          fi
+
+          if [ -n "$BEFORE" ]; then
+            NUMSTAT=$(git diff --numstat "$BEFORE" HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
+          else
+            NUMSTAT=$(git diff-tree --no-commit-id --numstat -r HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
+          fi
+
+          # Drop files whose diff is exactly one line added and one line removed — these are
+          # almost always automated "last checked" date bumps and not interesting changes.
+          FILES=$(printf '%s\n' "$NUMSTAT" | awk '$1 != "1"|| $2 != "1" { $1=$2=""; print substr($0,3) }')
+
+          # Cap the list so the Discord message stays under the 2000-char limit.
+          MAX=5
+          TOTAL=$(printf '%s\n' "$NUMSTAT" | sed '/^$/d' | wc -l)
+          BULLETS=$(printf '%s\n' "$FILES" | sed '/^$/d' | head -n $MAX | sed 's|.*/||; s|^|- |')
+          if [ "$TOTAL" -gt "$MAX" ]; then
+            REMAINING=$((TOTAL - MAX))
+            BULLETS="${BULLETS}"$'\n'"- …and ${REMAINING} more"
+          fi
+
+          {
+            echo "files<<CHANGED_EOF"
+            echo "$BULLETS"
+            echo "CHANGED_EOF"
+          } >> $GITHUB_OUTPUT
+
+          echo "Changed path files ($TOTAL):"
+          echo "$BULLETS"
+
+      - name: Github Releases To Discord
+        if: steps.channel.outputs.channel == 'latest'
+        uses: cstuder/apprise-ga@master
+        env:
+          APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/paths-${{ steps.channel.outputs.channel }}"
+        with:
+          title: Questionable Paths v${{ steps.meta.outputs.data_version }}
+          message: |
+            New path data bundle has been released. This will be automatically downloaded by the plugin, or you can click "Check for path updates now" in Settings>Advanced.
+
+            Changed files:
+            ${{ steps.changes.outputs.files }}

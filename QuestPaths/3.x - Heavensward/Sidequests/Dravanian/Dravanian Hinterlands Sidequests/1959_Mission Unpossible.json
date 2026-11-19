@@ -1,0 +1,95 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013646,
+          "Position": {
+            "X": -491.235,
+            "Y": 156.249,
+            "Z": -238.297
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013646,
+          "Position": {
+            "X": -383.77573,
+            "Y": 153.02538,
+            "Z": 142.26056
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 386,
+              "MinimumKillCount": 5,
+              "RewardItemId": 2001697,
+              "RewardItemCount": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013646,
+          "Position": {
+            "X": -491.235,
+            "Y": 156.249,
+            "Z": -238.297
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012132,
+          "Position": {
+            "X": 43.0156,
+            "Y": 206.033,
+            "Z": 56.5204
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012132 (Drydox)"
+        }
+      ]
+    }
+  ]
+}

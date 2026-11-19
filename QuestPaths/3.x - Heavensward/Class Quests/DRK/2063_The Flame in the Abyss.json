@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,16 +15,10 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -56,14 +51,7 @@
           "TerritoryId": 400,
           "InteractionType": "Interact",
           "Fly": true,
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            128
-          ]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 2006347,
@@ -75,14 +63,7 @@
           "TerritoryId": 400,
           "InteractionType": "Interact",
           "Fly": true,
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            64
-          ]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2006348,
@@ -94,14 +75,7 @@
           "TerritoryId": 400,
           "InteractionType": "Interact",
           "Fly": true,
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            32
-          ]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 2006349,
@@ -113,14 +87,7 @@
           "TerritoryId": 400,
           "InteractionType": "Interact",
           "Fly": true,
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            16
-          ]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         }
       ]
     },
@@ -153,9 +120,7 @@
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            4675
-          ],
+          "KillEnemyDataIds": [4675],
           "Fly": true
         }
       ]
@@ -206,7 +171,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"

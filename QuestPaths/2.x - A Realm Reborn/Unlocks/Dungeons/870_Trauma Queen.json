@@ -1,12 +1,13 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 128,
+          "TerritoryId": 1,
           "InteractionType": "UseItem",
           "ItemId": 30362,
           "TargetTerritoryId": 140,
@@ -52,12 +53,7 @@
           "TerritoryId": 139,
           "InteractionType": "CompleteQuest",
           "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     }

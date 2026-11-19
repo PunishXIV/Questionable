@@ -1,0 +1,80 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027865,
+          "Position": {
+            "X": 669.9928,
+            "Y": -41.975555,
+            "Z": -666.3531
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: issuer 1027865 (Thaymoth)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027864,
+          "Position": {
+            "X": 680.964,
+            "Y": -48.2338,
+            "Z": -643.885
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "StopDistance": 0.25,
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo location -> 1027864 (Lorotte)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027865,
+          "Position": {
+            "X": 669.9928,
+            "Y": -41.975555,
+            "Z": -666.3531
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo location -> 1027865 (Thaymoth)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027879,
+          "Position": {
+            "X": 321.474,
+            "Y": 1.48004,
+            "Z": -277.762
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo turn-in -> 1027879 (Ghin Gin)"
+        }
+      ]
+    }
+  ]
+}

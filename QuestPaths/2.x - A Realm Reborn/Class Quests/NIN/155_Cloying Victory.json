@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -43,17 +45,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 2004936,
-          "Position": {
-            "X": -151.90363,
-            "Y": -128.16058,
-            "Z": 256.8551
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129
-        },
-        {
           "DataId": 2004863,
           "Position": {
             "X": 4.4403076,
@@ -62,6 +53,7 @@
           },
           "TerritoryId": 128,
           "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AethernetShortcut": [
             "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] The Aftcastle"

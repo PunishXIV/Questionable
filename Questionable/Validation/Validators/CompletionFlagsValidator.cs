@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Questionable.Controller.Utils;
-using Questionable.Model;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, CompletionFlagsValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class CompletionFlagsValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
@@ -33,8 +29,8 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                             })
                             .Sum();
                     }
-                    else
-                        return 0;
+
+                    return 0;
                 })
                 .ToList();
 
@@ -54,7 +50,7 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                         Type = EIssueType.DuplicateCompletionFlags,
                         Severity = EIssueSeverity.Error,
                         Description =
-                            $"Duplicate completion flags: {string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags)}"
+                            _LF("Duplicate completion flags: {0}", string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags))
                     };
                 }
             }

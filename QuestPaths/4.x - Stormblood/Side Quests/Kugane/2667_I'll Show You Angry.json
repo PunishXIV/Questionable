@@ -1,0 +1,69 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Fronti",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022447,
+          "Position": {
+            "X": 114.488,
+            "Y": 12,
+            "Z": 53.1166
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] The Ruby Bazaar"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019064,
+          "Position": {
+            "X": 59.2415,
+            "Y": 4,
+            "Z": 67.7075
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Emote",
+          "Emote": "angry"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019064,
+          "Position": {
+            "X": 59.2415,
+            "Y": 4,
+            "Z": 67.7075
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Emote",
+          "Emote": "angry"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022447,
+          "Position": {
+            "X": 114.488,
+            "Y": 12,
+            "Z": 53.1166
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

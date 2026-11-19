@@ -1,0 +1,102 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "FalconTaterz",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001285,
+          "Position": {
+            "X": -68.77246,
+            "Y": 4.0411124,
+            "Z": -126.51257
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CHRHDB101_01204_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005709,
+          "Position": {
+            "X": -464.16425,
+            "Y": -26.945036,
+            "Z": 85.40466
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -273.9414,
+            "Y": 9.756445,
+            "Z": 222.65837
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FateEnemies",
+          "Fly": true,
+          "KillEnemyDataIds": [2390,2391]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005709,
+          "Position": {
+            "X": -464.16425,
+            "Y": -26.945036,
+            "Z": 85.40466
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005710,
+          "Position": {
+            "X": 4.4403076,
+            "Y": 7.2767544,
+            "Z": 885.55725
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB101_01204_Q2_000_1",
+              "Answer": "TEXT_CHRHDB101_01204_Q2A2_000_2"
+            }
+          ],
+          "NextQuestId": 1205
+        }
+      ]
+    }
+  ]
+}

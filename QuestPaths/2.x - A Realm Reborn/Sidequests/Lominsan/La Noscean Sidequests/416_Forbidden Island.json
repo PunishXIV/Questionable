@@ -1,0 +1,67 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002446,
+          "Position": {
+            "X": -34.6964,
+            "Y": 8.92135,
+            "Z": 844.97
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: issuer 1002446 (A'zumyn)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000772,
+          "Position": {
+            "X": 97.9275,
+            "Y": 20.6464,
+            "Z": 773.438
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2000221,
+          "KillEnemyDataIds": [
+            9,
+            10
+          ],
+          "$": "auto: todo location -> 2000772 (suspicious mound); spawns enemies 9, 10"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002446,
+          "Position": {
+            "X": -34.6964,
+            "Y": 8.92135,
+            "Z": 844.97
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: todo turn-in -> 1002446 (A'zumyn)"
+        }
+      ]
+    }
+  ]
+}

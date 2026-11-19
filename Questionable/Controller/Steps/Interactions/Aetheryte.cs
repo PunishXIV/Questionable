@@ -1,15 +1,12 @@
-﻿using System;
-using Dalamud.Game.ClientState.Objects.Enums;
-using Microsoft.Extensions.Logging;
-using Questionable.Functions;
-using Questionable.Model;
+﻿using Dalamud.Game.ClientState.Objects.Enums;
+using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Aetheryte
 {
-    internal sealed class Factory : SimpleTaskFactory
+    internal sealed class Factory(AetheryteFunctions aetheryteFunctions) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -17,12 +14,14 @@ internal static class Aetheryte
                 return null;
             if (!step.Aetheryte.HasValue)
                 throw new ArgumentNullException(nameof(step.Aetheryte));
+            if (aetheryteFunctions.IsAetheryteUnlocked(step.Aetheryte.Value))
+                return null;
 
-            return new Attune(step.Aetheryte.Value);
+            return new Attune(step.Aetheryte.Value, step.SkipConditions?.StepIf);
         }
     }
 
-    internal sealed record Attune(EAetheryteLocation AetheryteLocation) : ITask
+    internal sealed record Attune(EAetheryteLocation AetheryteLocation, SkipStepConditions? SkipStepConditions) : ITask
     {
         public bool ShouldRedoOnInterrupt() => true;
         public override string ToString() => $"AttuneAetheryte({AetheryteLocation})";
@@ -36,7 +35,7 @@ internal static class Aetheryte
     {
         protected override bool Start()
         {
-            if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
+            if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation) || (Task.SkipStepConditions != null && Task.SkipStepConditions.Never))
             {
                 logger.LogInformation("Attuning to aetheryte {Aetheryte}", Task.AetheryteLocation);
                 ProgressContext =

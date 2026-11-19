@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using Dalamud.Plugin.Services;
-using ECommons;
-using ECommons.DalamudServices;
+﻿using System.Collections.ObjectModel;
 using Lumina.Excel.Sheets;
-using Questionable.Functions;
 using Questionable.Model.Common;
 namespace Questionable.Data;
 
-internal sealed class AetheryteData
+[RegisterSingleton]
+internal sealed class AetheryteData : IAetheryteTerritoryProvider
 {
+    IReadOnlyCollection<uint> IAetheryteTerritoryProvider.AetheryteTerritoryIds => TerritoryIds.Values;
+
     public AetheryteData(IDataManager dataManager)
     {
         Dictionary<EAetheryteLocation, uint> territoryIds = [];
@@ -52,6 +46,9 @@ internal sealed class AetheryteData
 
         TerritoryIds = territoryIds.AsReadOnly();
         AethernetGroups = aethernetGroups.AsReadOnly();
+        TerritoryRoutes = new Dictionary<uint, AethernetShortcut>() {
+            { 419, new() { From = EAetheryteLocation.Ishgard, To = EAetheryteLocation.IshgardLastVigil } }
+        }.AsReadOnly();
 
         TownTerritoryIds = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0 && !string.IsNullOrEmpty(x.Name.ToString()) && x.TerritoryIntendedUse.RowId == 0)
@@ -59,8 +56,9 @@ internal sealed class AetheryteData
             .ToList();
     }
 
-    public ReadOnlyDictionary<EAetheryteLocation, Vector3> Locations { get; } =
-        new Dictionary<EAetheryteLocation, Vector3>
+    public ReadOnlyDictionary<EAetheryteLocation, Vector3> Locations { get; } = OrderedLocations.AsReadOnly<EAetheryteLocation, Vector3>();
+    public static OrderedDictionary<EAetheryteLocation, Vector3> OrderedLocations { get; } =
+        new OrderedDictionary<EAetheryteLocation, Vector3>
             {
                 { EAetheryteLocation.Gridania, new(32.913696f, 2.670288f, 30.014404f) },
                 { EAetheryteLocation.GridaniaArcher, new(166.58276f, -1.7243042f, 86.13721f) },
@@ -319,8 +317,18 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.LivingMemoryLeynodeMnemo, new(-0.22894287f, 57.175537f, 796.9634f) },
                 { EAetheryteLocation.LivingMemoryLeynodePyro, new(657.98413f, 28.976807f, -284.01617f) },
                 { EAetheryteLocation.LivingMemoryLeynodeAero, new(-255.26825f, 59.433838f, -397.6654f) }
-            }
-            .AsReadOnly();
+            };
+    public static List<EAetheryteLocation> Aetherytes
+    {
+        get
+        {
+            var a = OrderedLocations.Keys.ToList();
+            foreach (var b in Enum.GetValues<EAetheryteLocation>())
+                if (!a.Contains(b))
+                    a.Add(b);
+            return a;
+        }
+    }
 
     /// <summary>
     ///     Airship landings are special as they're one-way only (except for Radz-at-Han, which is a normal aetheryte).
@@ -339,15 +347,17 @@ internal sealed class AetheryteData
     public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
     private IReadOnlyList<uint> TownTerritoryIds { get; }
 
+    public ReadOnlyDictionary<uint, AethernetShortcut> TerritoryRoutes { get; }
+
     public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3? position)
     {
         var outp = TerritoryIds
-                .Where(item => item.Value == territoryId && 
+                .Where(item => item.Value == territoryId &&
                                !item.Key.IsAethernetShard() &&
                                AetheryteFunctions.IsAetheryteUnlocked((uint)item.Key, out var _))
                 .Select(item => item.Key)
                 .OrderBy(key => CalculateDistance(position ?? new(), territoryId, key));
-        Svc.Log.Debug($"NearestAetheryteTo: {(outp.Any() ? string.Join(',',outp) : "no results")}");
+        Svc.Log.Debug($"NearestAetheryteTo: {(outp.Any() ? string.Join(',', outp) : "no results")}");
         return outp.FirstOrNull();
     }
 
@@ -385,10 +395,4 @@ internal sealed class AetheryteData
     public bool IsAirshipLanding(EAetheryteLocation aetheryte) => AirshipLandingLocations.ContainsKey(aetheryte);
 
     public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte) => TerritoryIds[aetheryte] is 144 or 388;
-}
-
-internal static class AetheryteLocationExtensions
-{
-    [MethodImpl( MethodImplOptions.AggressiveInlining )]
-	internal static Vector3 Position(this EAetheryteLocation aetheryteLocation, AetheryteData aetheryteData) => aetheryteData.Locations[aetheryteLocation];
 }

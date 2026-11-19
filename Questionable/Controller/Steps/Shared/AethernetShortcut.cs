@@ -1,26 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Questionable.Controller.Steps.Common;
-using Questionable.Data;
-using Questionable.External;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
+// TODO: refactor — heavy nesting (20 lines indented ≥6 levels, max indent 11 levels).
 internal static class AethernetShortcut
 {
     internal sealed class Factory
     (
         AetheryteData aetheryteData,
-        TerritoryData territoryData,
         IClientState clientState)
         : ITaskFactory
     {
@@ -37,7 +27,7 @@ internal static class AethernetShortcut
             {
                 yield return new WaitCondition.Task(
                     () => clientState.TerritoryType == aetheryteData.TerritoryIds[step.AethernetShortcut.To],
-                    $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[step.AethernetShortcut.To])})");
+                    $"Wait(territory: {TerritoryData.GetNameAndId(aetheryteData.TerritoryIds[step.AethernetShortcut.To])})");
                 yield return new AetheryteShortcut.MoveAwayFromAetheryte(step.AethernetShortcut.To);
             }
         }
@@ -122,6 +112,11 @@ internal static class AethernetShortcut
                     logger.LogInformation("Skipping aethernet shortcut because the target aetheryte is unlocked");
                     return false;
                 }
+                if (Task.SkipConditions.InTerritory.Contains(clientState.TerritoryType))
+                {
+                    logger.LogInformation("Skipping aethernet teleport due to SkipCondition (InTerritory)");
+                    return false;
+                }
             }
 
             if (aetheryteFunctions.IsAetheryteUnlocked(Task.From) &&
@@ -140,7 +135,8 @@ internal static class AethernetShortcut
                         DoTeleport();
                         return true;
                     }
-                    else if (Task.From == EAetheryteLocation.SolutionNine)
+
+                    if (Task.From == EAetheryteLocation.SolutionNine)
                     {
                         logger.LogInformation("Moving to S9 aetheryte");
                         List<Vector3> nearbyPoints =
@@ -160,23 +156,31 @@ internal static class AethernetShortcut
                         });
                         return true;
                     }
-                    else
-                    {
-                        if (territoryData.CanUseMount(territoryType) &&
-                            aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From) > 30 &&
-                            !gameFunctions.HasStatusPreventingMount())
-                        {
-                            _triedMounting = gameFunctions.Mount();
-                            if (_triedMounting)
-                            {
-                                _continueAt = DateTime.Now.AddSeconds(0.5);
-                                return true;
-                            }
-                        }
 
-                        MoveTo();
-                        return true;
+                    if (territoryData.CanUseMount(territoryType) &&
+                        aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From) > 30 &&
+                        !gameFunctions.HasStatusPreventingMount())
+                    {
+                        _triedMounting = gameFunctions.Mount();
+                        if (_triedMounting)
+                        {
+                            _continueAt = DateTime.Now.AddSeconds(0.5);
+                            return true;
+                        }
                     }
+                    if (Task.To is EAetheryteLocation.UldahAirship && territoryType == 130 && playerPosition.Y > 80)
+                    {
+                        logger.LogInformation("Skipping aethernet teleport, already in Uldah airship landing");
+                        return false;
+                    }
+                    if (Task.To is EAetheryteLocation.LimsaAirship && territoryType == 128 && playerPosition.Y > 90)
+                    {
+                        logger.LogInformation("Skipping aethernet teleport, already in Limsa airship landing");
+                        return false;
+                    }
+
+                    MoveTo();
+                    return true;
                 }
             }
             else if (clientState.TerritoryType == aetheryteData.TerritoryIds[Task.To])
@@ -232,8 +236,8 @@ internal static class AethernetShortcut
                     MoveTo();
                     return ETaskResult.StillRunning;
                 }
-                else
-                    return ETaskResult.StillRunning;
+
+                return ETaskResult.StillRunning;
             }
 
             if (_moving)

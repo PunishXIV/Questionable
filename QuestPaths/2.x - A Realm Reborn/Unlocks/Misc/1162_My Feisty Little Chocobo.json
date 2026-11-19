@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-20"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +15,7 @@
           },
           "TerritoryId": 153,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "South Shroud - Camp Tranquil"
         }
       ]
     },
@@ -74,14 +69,33 @@
       "Sequence": 4,
       "Steps": [
         {
+          "TerritoryId": 148,
+          "InteractionType": "UseItem",
+          "ItemId": 4868
+        },
+        {
           "Position": {
-            "X": -44.43882,
-            "Y": -4.7683716E-7,
-            "Z": -15.861683
+            "X": -50.086567,
+            "Y": -9.536743e-7,
+            "Z": -18.283287
           },
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
-          "Mount": true
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -50.086567,
+                  "Y": -9.536743e-7,
+                  "Z": -18.283287
+                },
+                "TerritoryId": 148,
+                "MaximumDistance": 40
+              },
+              "Flying": "Locked"
+            }
+          }
         },
         {
           "Position": {
@@ -90,7 +104,7 @@
             "Z": -52.496593
           },
           "TerritoryId": 148,
-          "InteractionType": "UseItem",
+          "InteractionType": "WalkTo",
           "ItemId": 4868,
           "Fly": true
         },
@@ -115,6 +129,31 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "DataId": 1000220,
+          "Position": {
+            "X": 15.749301,
+            "Y": -8.011559,
+            "Z": -13.498969
+          },
+          "TerritoryId": 148,
+          "StopDistance": 1,
+          "InteractionType": "PurchaseItem",
+          "ItemId": 4868,
+          "ItemCount": 99,
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262773
+          },
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
         {
           "DataId": 1000471,
           "Position": {

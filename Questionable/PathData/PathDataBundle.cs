@@ -1,7 +1,5 @@
-using System.IO;
 using System.IO.Compression;
 using System.Text.Json;
-using Dalamud.Plugin;
 
 namespace Questionable.PathData;
 

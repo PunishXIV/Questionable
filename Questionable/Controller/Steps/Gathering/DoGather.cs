@@ -1,20 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
 using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
-using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.Steps.Gathering;
 
+// TODO: refactor — heavy nesting (24 lines indented ≥6 levels, max indent 10 levels).
 internal static class DoGather
 {
     internal sealed record Task
@@ -107,7 +102,8 @@ internal static class DoGather
                                 addonGathering->FireCallbackInt(-1);
                                 return ETaskResult.TaskComplete;
                             }
-                            else if (_actionQueue.Count == 0)
+
+                            if (_actionQueue.Count == 0)
                             {
                                 SlotInfo? slot = _slotToGather ?? slots.SingleOrDefault(x => x.ItemId == Task.Request.ItemId) ?? slots.MinBy(x => x.ItemId);
                                 if (slot?.ItemId is >= 2 and <= 19)
@@ -166,7 +162,7 @@ internal static class DoGather
         }
 
         [SuppressMessage("ReSharper", "UnusedParameter.Local")]
-        private Queue<EAction>? GetNextActions(NodeCondition nodeCondition, List<SlotInfo> slots)
+        private unsafe Queue<EAction>? GetNextActions(NodeCondition nodeCondition, List<SlotInfo> slots)
         {
             // it's possible the item has disappeared
             if (_slotToGather != null && slots.All(x => x.Index != _slotToGather.Index))
@@ -231,7 +227,8 @@ internal static class DoGather
                     actions.Enqueue(PickAction(EAction.LuckOfTheMountaineer, EAction.LuckOfThePioneer));
                     return actions;
                 }
-                else if (_usedLuck)
+
+                if (_usedLuck)
                 {
                     // we still can't find the item, if this node has been hit at least once we just close it
                     logger.LogDebug("Didn't find item after using Luck, moving on...");
@@ -240,7 +237,18 @@ internal static class DoGather
 
                     logger.LogDebug("Actually there's crystals, let's get those");
                     // otherwise, there most likely is -any- other item available, probably a shard/crystal
-                    _slotToGather = slots.MinBy(x => x.ItemId);
+                    InventoryManager* inventoryManager = InventoryManager.Instance();
+                    _slotToGather = slots
+                        .Where(x =>
+                            new uint[]{
+                                6688,6689,6690,6691,6692, // ARR maps
+                                12241,12242,12243,        // HW maps
+                                17835,17836,              // StB maps
+                                26744,26745,              // ShB maps
+                                36611,36612,39591,        // EW maps
+                                43556,43557,46185,        // DT maps
+                                }.Contains(x.ItemId) && inventoryManager->GetInventoryItemCount(x.ItemId) == 0
+                            ).FirstOrDefault<SlotInfo?>() ?? slots.MinBy(x => x.ItemId);
                     return actions;
                 }
             }
@@ -281,8 +289,8 @@ internal static class DoGather
         {
             if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
                 return minerAction;
-            else
-                return botanistAction;
+
+            return botanistAction;
         }
 
         private unsafe bool CanUseAction(EAction minerAction, EAction botanistAction)

@@ -1,0 +1,88 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002653,
+          "Position": {
+            "X": 707.705,
+            "Y": 66.974,
+            "Z": -309.2
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: issuer 1002653 (Loetrswys)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002654,
+          "Position": {
+            "X": 603.255,
+            "Y": 78.7008,
+            "Z": -307.637
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 1002654 (R'jumani)"
+        },
+        {
+          "DataId": 1002655,
+          "Position": {
+            "X": 689.375,
+            "Y": 61.6597,
+            "Z": -189.49
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 1002655 (Eshushu)"
+        },
+        {
+          "DataId": 1002656,
+          "Position": {
+            "X": 609.644,
+            "Y": 65.6801,
+            "Z": -187.243
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo location -> 1002656 (Waentzirn)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002652,
+          "Position": {
+            "X": 704.859,
+            "Y": 67.3173,
+            "Z": -308.454
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: todo turn-in -> 1002652 (Weitzaren)"
+        }
+      ]
+    }
+  ]
+}

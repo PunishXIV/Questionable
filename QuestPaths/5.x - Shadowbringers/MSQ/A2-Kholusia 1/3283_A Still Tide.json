@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -60,6 +61,17 @@
           "TerritoryId": 814,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kholusia - Stilltide"
+        },
+        {
+          "DataId": 1027959,
+          "Position": {
+            "X": 692.37805,
+            "Y": 28.117111,
+            "Z": 298.02393
+          },
+          "TerritoryId": 814,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179712
         },
         {
           "Position": {

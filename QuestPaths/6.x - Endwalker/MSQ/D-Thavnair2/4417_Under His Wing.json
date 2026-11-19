@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -39,6 +40,15 @@
       "Steps": [
         {
           "Position": {
+            "X": 574.4025,
+            "Y": 55.259148,
+            "Z": -679.02185
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
             "X": 579.50446,
             "Y": 55.259193,
             "Z": -683.829
@@ -47,7 +57,7 @@
           "InteractionType": "WalkTo",
           "Comment": "Travel to Radz-at-Han",
           "TargetTerritoryId": 963,
-          "Fly": true
+          "DisableNavmesh": true
         },
         {
           "DataId": 1040354,

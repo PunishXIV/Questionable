@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -17,13 +18,8 @@
           "AetheryteShortcut": "Crystarium",
           "AethernetShortcut": [
             "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+            "[Crystarium] The Pendants"
+          ]
         }
       ]
     },
@@ -94,11 +90,6 @@
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] Musica Universalis Markets"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 3268
         }
       ]

@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
         }
       ]
     },
@@ -83,6 +79,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "Fly": true
         }
       ]

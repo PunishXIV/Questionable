@@ -1,9 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, UniqueSinglePlayerInstanceValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class UniqueSinglePlayerInstanceValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
@@ -23,7 +21,7 @@ internal sealed class UniqueSinglePlayerInstanceValidator : IQuestValidator
                     Step = StepId,
                     Type = EIssueType.DuplicateSinglePlayerInstance,
                     Severity = EIssueSeverity.Error,
-                    Description = $"Duplicate singleplayer duty index: {SinglePlayerDutyIndex}"
+                    Description = _LF("Duplicate singleplayer duty index: {0}", SinglePlayerDutyIndex)
                 };
             }
         }

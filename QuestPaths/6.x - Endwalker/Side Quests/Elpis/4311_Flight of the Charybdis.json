@@ -14,12 +14,7 @@
           },
           "TerritoryId": 961,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Elpis - Poieten Oikos"
         }
       ]
     },

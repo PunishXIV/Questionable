@@ -8,7 +8,8 @@ public enum EExpansionVersion : byte
     Stormblood = 2,
     Shadowbringers = 3,
     Endwalker = 4,
-    Dawntrail = 5
+    Dawntrail = 5,
+    Evercold = 6
 }
 
 public static class ExpansionData
@@ -21,7 +22,8 @@ public static class ExpansionData
             { EExpansionVersion.Stormblood, "4.x - Stormblood" },
             { EExpansionVersion.Shadowbringers, "5.x - Shadowbringers" },
             { EExpansionVersion.Endwalker, "6.x - Endwalker" },
-            { EExpansionVersion.Dawntrail, "7.x - Dawntrail" }
+            { EExpansionVersion.Dawntrail, "7.x - Dawntrail" },
+            { EExpansionVersion.Evercold, "8.x - Evercold" }
         };
 
     public static string ToFriendlyString(this EExpansionVersion expansionVersion) => expansionVersion switch

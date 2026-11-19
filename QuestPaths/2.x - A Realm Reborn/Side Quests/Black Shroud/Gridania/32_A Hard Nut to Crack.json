@@ -1,0 +1,75 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000372,
+          "Position": {
+            "X": 39.505493,
+            "Y": -8.041565,
+            "Z": 112.13855
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000311,
+          "Position": {
+            "X": -195.17822,
+            "Y": 10.195216,
+            "Z": -98.64966
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Walk out of North Shroud gate",
+          "Position": {
+            "X": -208.7749,
+            "Y": 10.333714,
+            "Z": -96.01662
+          },
+          "TerritoryId": 133,
+          "TargetTerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": { "InTerritory": [154] }
+          }
+        },
+        {
+          "DataId": 1000629,
+          "Position": {
+            "X": 345.51,
+            "Y": -5.5506706,
+            "Z": 343.89246
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

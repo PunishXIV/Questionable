@@ -48,12 +48,16 @@ public enum EExtendedClassJob
     Sage,
     Viper,
     Pictomancer,
-    DoW,
-    DoM,
-    DoH,
-    DoL,
-    ConfiguredCombatJob,
-    QuestStartJob,
-    ConfiguredCraftingJob,
-    ConfiguredGatheringJob
+    Beastmaster,
+    Bastion,
+    Zephyr,
+
+    DoW = 247,
+    DoM = 248,
+    DoH = 249,
+    DoL = 250,
+    ConfiguredCombatJob = 251,
+    QuestStartJob = 252,
+    ConfiguredCraftingJob = 253,
+    ConfiguredGatheringJob = 254
 }

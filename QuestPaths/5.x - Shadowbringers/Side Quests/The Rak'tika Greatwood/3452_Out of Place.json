@@ -1,0 +1,115 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031191,
+          "Position": {
+            "X": -124.193,
+            "Y": -19.0535,
+            "Z": 282.856
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -321.58942,
+            "Y": 20.166122,
+            "Z": 86.88705
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 2010610,
+          "Position": {
+            "X": -320.21063,
+            "Y": 20.828491,
+            "Z": 85.74036
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -423.8814,
+            "Y": 10.179164,
+            "Z": 65.81899
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 2010611,
+          "Position": {
+            "X": -425.28424,
+            "Y": 11.764648,
+            "Z": 65.659546
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -567.3167,
+            "Y": 3.972926,
+            "Z": 31.589968
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 2010612,
+          "Position": {
+            "X": -569.90924,
+            "Y": 3.829956,
+            "Z": 30.71643
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11118
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031191,
+          "Position": {
+            "X": -124.193,
+            "Y": -19.0535,
+            "Z": 282.856
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

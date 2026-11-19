@@ -1,10 +1,30 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDC108_03029_EVENTAREA_WARP_000_011",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        },
         {
           "DataId": 1025008,
           "Position": {

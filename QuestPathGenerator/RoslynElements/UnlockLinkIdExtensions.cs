@@ -5,7 +5,7 @@ using static Questionable.QuestPathGenerator.RoslynShortcuts;
 
 namespace Questionable.QuestPathGenerator.RoslynElements;
 
-internal static class UnlockLinkIdExtension
+internal static class UnlockLinkIdExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this UnlockLinkId unlockLinkId) => ObjectCreationExpression(
             IdentifierName(nameof(UnlockLinkId)))

@@ -1,13 +1,12 @@
-﻿using System;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
+﻿using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Game.ClientState.Objects.SubKinds;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using FFXIVClientStructs.Interop;
-using Questionable.External;
-using Questionable.Model;
+using Questionable.Controller.Steps.Shared;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -24,16 +23,37 @@ internal static class EquipRecommended
         }
     }
 
-    internal sealed class BeforeDutyOrInstance : SimpleTaskFactory
+    internal sealed class BeforeDutyOrInstance(IObjectTable objectTable) : ITaskFactory
     {
-        public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
+        public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Duty &&
                 step.InteractionType != EInteractionType.SinglePlayerDuty &&
                 step.InteractionType != EInteractionType.Combat)
-                return null;
+                yield break;
 
-            return new EquipTask();
+            // If step equips something, we probably want to leave the manually equipped item
+            if (sequence.Steps.Any(x => x.InteractionType is EInteractionType.EquipItem))
+                yield break;
+            // If there's an unequipped job stone, find it and equip it
+            if (objectTable[0] is IPlayerCharacter player &&
+                ClassJobUtils.ClassToJobStone((Job)player.ClassJob.Value.RowId) is (Job targetJob, ushort jobStone))
+            {
+                bool hasJobStone = false;
+                unsafe
+                {
+                    InventoryManager* inventoryManager = InventoryManager.Instance();
+                    InventoryContainer* equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.ArmorySoulCrystal);
+                    if (inventoryManager->GetItemCountInContainer(jobStone, InventoryType.ArmorySoulCrystal) != 0)
+                        hasJobStone = true;
+                }
+                if (hasJobStone && quest.GetQuestInfo().ClassJobs.Contains(targetJob))
+                {
+                    yield return new EquipItem.Task(jobStone);
+                    yield return new CreateGearset.Task();
+                }
+            }
+            yield return new EquipTask();
         }
     }
 
@@ -53,18 +73,18 @@ internal static class EquipRecommended
             if (condition[ConditionFlag.InCombat])
                 return false;
 
-            if (!StylistIpc.IsInstalled && config.General.GearsetUpdateSource is Configuration.EGearsetUpdateSource.Stylist)
+            if (!StylistIpc.IsInstalled && config.General.GearsetUpdateSource is EGearsetUpdateSource.Stylist)
             {
                 chatGui.Print("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.", CommandHandler.MessageTag, CommandHandler.TagColor);
-                config.General.GearsetUpdateSource = Configuration.EGearsetUpdateSource.Vanilla;
+                config.General.GearsetUpdateSource = EGearsetUpdateSource.Vanilla;
                 Svc.PluginInterface.SavePluginConfig(config);
             }
             switch (config.General.GearsetUpdateSource)
             {
-                case Configuration.EGearsetUpdateSource.Vanilla:
+                case EGearsetUpdateSource.Vanilla:
                     RecommendEquipModule.Instance()->SetupForClassJob(PlayerState.Instance()->CurrentClassJobId);
                     break;
-                case Configuration.EGearsetUpdateSource.Stylist:
+                case EGearsetUpdateSource.Stylist:
                     RaptureGearsetModule.Instance()->UpdateGearset(RaptureGearsetModule.Instance()->CurrentGearsetIndex);
                     break;
             }
@@ -76,18 +96,18 @@ internal static class EquipRecommended
         {
             switch (config.General.GearsetUpdateSource)
             {
-                case Configuration.EGearsetUpdateSource.Vanilla:
+                case EGearsetUpdateSource.Vanilla:
                     RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
                     if (recommendedEquipModule->IsUpdating)
                         return ETaskResult.StillRunning;
 
                     if (!_checkedOrTriggeredEquipmentUpdate)
                     {
-                    if (!IsAllRecommendedGearEquipped())
+                        if (!IsAllRecommendedGearEquipped())
                         {
                             chatGui.Print("Equipping recommended gear.", CommandHandler.MessageTag, CommandHandler.TagColor);
                             recommendedEquipModule->EquipRecommendedGear();
-                            _continueAt = DateTime.Now.AddSeconds(1);
+                            _continueAt = DateTime.Now.AddSeconds(0.25);
                         }
 
                         _checkedOrTriggeredEquipmentUpdate = true;
@@ -95,15 +115,18 @@ internal static class EquipRecommended
                     }
 
                     break;
-                case Configuration.EGearsetUpdateSource.Stylist:
-                    if (stylist.IsBusy)
-                        return ETaskResult.StillRunning;
-                    else if (!_checkedOrTriggeredEquipmentUpdate)
+                case EGearsetUpdateSource.Stylist:
                     {
-                        stylist.UpdateGearset();
-                        _checkedOrTriggeredEquipmentUpdate = true;
-                        _continueAt = DateTime.Now.AddSeconds(1);
-                        return ETaskResult.StillRunning;
+                        if (stylist.IsBusy)
+                            return ETaskResult.StillRunning;
+
+                        if (!_checkedOrTriggeredEquipmentUpdate)
+                        {
+                            stylist.UpdateGearset();
+                            _checkedOrTriggeredEquipmentUpdate = true;
+                            _continueAt = DateTime.Now.AddSeconds(0.25);
+                            return ETaskResult.StillRunning;
+                        }
                     }
 
                     break;

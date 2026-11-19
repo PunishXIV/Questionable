@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "xan",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,7 +17,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }
@@ -55,10 +55,7 @@
               "Answer": "TEXT_JOBNIN540_01685_A1_000_020"
             }
           ],
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
         }
       ]
     },
@@ -122,7 +119,8 @@
           },
           "TerritoryId": 135,
           "Fly": true,
-          "InteractionType": "SinglePlayerDuty"
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -153,7 +151,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
@@ -176,7 +173,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }

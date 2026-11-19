@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,16 +17,10 @@
           "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -35,7 +31,7 @@
           "DataId": 1000199,
           "Position": {
             "X": 211.13904,
-            "Y": 1.5032018E-05,
+            "Y": 1.5032018e-5,
             "Z": 28.580078
           },
           "TerritoryId": 132,
@@ -55,7 +51,12 @@
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null, null, null, null, null, 2]
+            }
+          }
         },
         {
           "DataId": 2001177,
@@ -68,7 +69,7 @@
           "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,2]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 2]
         },
         {
           "Position": {
@@ -80,7 +81,7 @@
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
+              "CompletionQuestVariablesFlags": [null, null, null, null, null, 4]
             }
           }
         },
@@ -95,7 +96,7 @@
           "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 4]
         },
         {
           "Position": {
@@ -107,7 +108,7 @@
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
+              "CompletionQuestVariablesFlags": [null, null, null, null, null, 8]
             }
           }
         },
@@ -122,7 +123,7 @@
           "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 8]
         },
         {
           "Position": {
@@ -134,7 +135,14 @@
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                16
+              ]
             }
           }
         },
@@ -149,7 +157,7 @@
           "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
           "Position": {
@@ -161,7 +169,14 @@
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
             }
           }
         },
@@ -176,7 +191,7 @@
           "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "Position": {
@@ -185,7 +200,19 @@
             "Z": -190.44055
           },
           "TerritoryId": 148,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
         },
         {
           "DataId": 2000956,
@@ -197,7 +224,8 @@
           "TerritoryId": 148,
           "StopDistance": 15,
           "InteractionType": "Action",
-          "Action": "Heavy Shot"
+          "Action": "Heavy Shot",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         }
       ]
     },
@@ -208,12 +236,11 @@
           "DataId": 1000199,
           "Position": {
             "X": 211.13904,
-            "Y": 1.5032018E-05,
+            "Y": 1.5032018e-5,
             "Z": 28.580078
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
@@ -266,8 +293,11 @@
               "$": "Slay northern vultures.",
               "CompletionQuestVariablesFlags": [
                 null,
-            {"High": 8},
-          null,null,null,null
+                { "High": 8 },
+                null,
+                null,
+                null,
+                null
               ]
             },
             {
@@ -275,15 +305,19 @@
               "MinimumKillCount": 8,
               "$": "Slay tree slugs.",
               "CompletionQuestVariablesFlags": [
-            {"Low": 8},
-          null,null,null,null,null]
+                { "Low": 8 },
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
             }
           ],
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "AetheryteLocked": "East Shroud - Hawthorne Hut"
             }
           }
@@ -297,12 +331,11 @@
           "DataId": 1000199,
           "Position": {
             "X": 211.13904,
-            "Y": 1.5032018E-05,
+            "Y": 1.5032018e-5,
             "Z": 28.580078
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"

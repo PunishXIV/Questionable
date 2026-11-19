@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
-using Questionable.Model;
+﻿using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, QuestDisabledValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class QuestDisabledValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        if (quest.Root.Disabled)
+        _ = !quest.AllSequences().TryGetFirst(out QuestSequence? seq);
+        bool firstSequenceHasNotice = seq?.Steps.Any(step => step.InteractionType is EInteractionType.Instruction && step.Comment != null) ?? false;
+        if (quest.Root.Disabled && !firstSequenceHasNotice)
         {
             yield return new()
             {
@@ -15,7 +17,7 @@ internal sealed class QuestDisabledValidator : IQuestValidator
                 Step = null,
                 Type = EIssueType.QuestDisabled,
                 Severity = EIssueSeverity.None,
-                Description = "Quest is disabled"
+                Description = _L("Quest is disabled")
             };
         }
     }

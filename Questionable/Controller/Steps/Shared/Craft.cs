@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Plugin.Services;
-using ECommons.ExcelServices;
+﻿using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.External;
-using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Controller.Steps.Common;
 using Questionable.Model.Questing;
-using Mount = Questionable.Controller.Steps.Common.Mount;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -30,7 +21,7 @@ internal static class Craft
 
             return
             [
-                new Mount.UnmountTask(),
+                new MountStep.UnmountTask(),
                 new CraftTask(quest, step.ItemId, step.ItemCount)
             ];
         }
@@ -57,7 +48,9 @@ internal static class Craft
         private int _startingItemCount;
         protected override unsafe bool Start()
         {
-            if (artisanIpc.CraftList(Task.Quest.Id))
+            byte currentClassJobId = PlayerState.Instance()->CurrentClassJobId;
+            if (artisanIpc.CraftList(Task.Quest.Id) ||
+                artisanIpc.CraftList(int.Parse($"{Task.Quest.Id.Value | 0x10000}{currentClassJobId % 8}", CultureInfo.InvariantCulture)))
             {
                 logger.LogInformation("Craft list started");
                 return true;
@@ -85,19 +78,19 @@ internal static class Craft
             QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
             uint recipeId = (questWork != null && questWork.ClassJob.IsCrafter() ?
                     questWork.ClassJob :
-                    (Job)PlayerState.Instance()->CurrentClassJobId
+                    (Job)currentClassJobId
                 ) switch
-                {
-                    Job.CRP => recipeLookup.Value.CRP.RowId,
-                    Job.BSM => recipeLookup.Value.BSM.RowId,
-                    Job.ARM => recipeLookup.Value.ARM.RowId,
-                    Job.GSM => recipeLookup.Value.GSM.RowId,
-                    Job.LTW => recipeLookup.Value.LTW.RowId,
-                    Job.WVR => recipeLookup.Value.WVR.RowId,
-                    Job.ALC => recipeLookup.Value.ALC.RowId,
-                    Job.CUL => recipeLookup.Value.CUL.RowId,
-                    var _ => 0
-                };
+            {
+                Job.CRP => recipeLookup.Value.CRP.RowId,
+                Job.BSM => recipeLookup.Value.BSM.RowId,
+                Job.ARM => recipeLookup.Value.ARM.RowId,
+                Job.GSM => recipeLookup.Value.GSM.RowId,
+                Job.LTW => recipeLookup.Value.LTW.RowId,
+                Job.WVR => recipeLookup.Value.WVR.RowId,
+                Job.ALC => recipeLookup.Value.ALC.RowId,
+                Job.CUL => recipeLookup.Value.CUL.RowId,
+                var _ => 0
+            };
 
             if (recipeId == 0)
             {
@@ -198,10 +191,11 @@ internal static class Craft
             InventoryManager* inventoryManager = InventoryManager.Instance();
             return _itemQuality switch
             {
-                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, false, false),
-                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, true, false),
-                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, false, false)
-                                    + inventoryManager->GetInventoryItemCount(Task.ItemId.Value, true, false),
+                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: false, checkEquipped: false),
+                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: true, checkEquipped: false),
+                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: false, checkEquipped: false)
+                                    + inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: true, checkEquipped: false)
+                                    + inventoryManager->GetInventoryItemCount(Task.ItemId.Value + 500000, isHq: false, checkEquipped: false),
                 var _ => 0
             };
         }

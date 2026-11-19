@@ -1,0 +1,88 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Fronti",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019048,
+          "Position": {
+            "X": -157.177,
+            "Y": 4.00001,
+            "Z": 92.1372
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Kogane Dori Markets"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019002,
+          "Position": {
+            "X": -48.0507,
+            "Y": -2.9,
+            "Z": -50.248
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1018982,
+          "Position": {
+            "X": -83.0655,
+            "Y": 18.05,
+            "Z": -191.127
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Shiokaze Hostelry", "[Kugane] Bokairo Inn"],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 1019030,
+          "Position": {
+            "X": 65.7206,
+            "Y": 10.504,
+            "Z": -167.163
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Bokairo Inn", "[Kugane] Rakuza District"],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1019065,
+          "Position": {
+            "X": 80.4913,
+            "Y": 3.98254,
+            "Z": 56.4685
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Rakuza District", "[Kugane] Kogane Dori Markets"]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019048,
+          "Position": {
+            "X": -157.177,
+            "Y": 4.00001,
+            "Z": 92.1372
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

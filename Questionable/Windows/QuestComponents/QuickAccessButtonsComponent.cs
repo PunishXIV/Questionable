@@ -1,34 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Numerics;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
-using Dalamud.Interface.Utility;
-using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
-using Questionable.Controller;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Functions;
-using Questionable.Utils;
+using Questionable.Model.Questing;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class QuickAccessButtonsComponent
 (
     QuestController questController,
+    QuestFunctions questFunctions,
     QuestRegistry questRegistry,
     QuestValidationWindow questValidationWindow,
     JournalProgressWindow journalProgressWindow,
     PriorityWindow priorityWindow,
+    BossModIpc bossModIpc,
     ICommandManager commandManager,
+    IObjectTable objectTable,
+    IClientState clientState,
+    IChatGui chatGui,
     IDalamudPluginInterface pluginInterface)
 {
 
@@ -36,71 +29,126 @@ internal sealed class QuickAccessButtonsComponent
 
     public void Draw()
     {
-        DrawPriorityQuestsButton();
-        ImGui.SameLine();
-        DrawJournalProgressButton();
-
         DrawReloadDataButton();
         ImGui.SameLine();
+        DrawPriorityQuestsButton();
+        ImGui.SameLine();
+        DrawCleanUpButton();
+        ImGui.SameLine();
+        DrawJournalProgressButton();
+        ImGui.SameLine();
         DrawRebuildNavmeshButton();
+        ImGui.SameLine();
+        DrawClearVBMMapsButton();
 
-        DrawTroubleshootingButton(questController.CurrentQuest);
-
-        if (questRegistry.ValidationIssueCount > 0)
+        if (pluginInterface.IsDev)
         {
             ImGui.SameLine();
             DrawValidationIssuesButton();
         }
     }
 
-    private void DrawPriorityQuestsButton()
+    internal void DrawPriorityQuestsButton(bool showLabel = false)
     {
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, "Priority Quests"))
+        if (QstWidgets.RailButton(FontAwesomeIcon.ExclamationCircle,
+                _L("Priority Quests"),
+                _L("Configure priority quests which will be done as soon as possible."),
+                enabled: objectTable[0] != null,
+                showLabel: showLabel))
             priorityWindow.ToggleOrUncollapse();
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Configure priority quests which will be done as soon as possible.");
     }
 
-    private void DrawRebuildNavmeshButton()
+    internal void DrawCleanUpButton(bool showLabel = false)
+    {
+        List<ElementId> openQuests = questFunctions.OpenQuests;
+        int queueable = openQuests.Count(x => !questController.PriorityManager.Contains(x));
+        bool loggedIn = objectTable[0] != null;
+
+        string tooltip;
+        if (!loggedIn)
+            tooltip = _L("Unavailable while not logged in.");
+        else if (openQuests.Count == 0)
+            tooltip = _L("No open quests in your journal that Questionable knows how to continue.");
+        else if (queueable == 0)
+            tooltip = _LF("All {0} open quest(s) are already in your priority list.", openQuests.Count);
+        else
+            tooltip = _LF("Queue the {0} quest(s) you already have open, finished ones first.", queueable) +
+                      "\n" +
+                      _L("Long or blocked quests are queued too - check the priority list afterwards.");
+
+        if (QstWidgets.RailButton(FontAwesomeIcon.Broom,
+                _L("Clean Up"),
+                tooltip,
+                enabled: loggedIn && queueable > 0,
+                showLabel: showLabel))
+            QueueOpenQuests();
+    }
+
+    internal void QueueOpenQuests()
+    {
+        IReadOnlyList<Quest> added = questController.QueueOpenQuests();
+        if (added.Count == 0)
+        {
+            chatGui.Print(_L("No open quests to clean up."), CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
+        chatGui.Print(_LF("Added {0} open quest(s) to the priority list:", added.Count) + " " +
+                      string.Join(", ", added.Select(x => x.Info.Name)),
+            CommandHandler.MessageTag, CommandHandler.TagColor);
+    }
+
+    internal void DrawRebuildNavmeshButton(bool showLabel = false)
     {
         bool isNavmeshAvailable = commandManager.Commands.ContainsKey("/vnav");
-        using (ImRaii.Disabled(!isNavmeshAvailable || !ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
-        {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.GlobeEurope, "Rebuild Navmesh"))
-                commandManager.ProcessCommand("/vnav rebuild");
-        }
-
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-        {
-            if (!isNavmeshAvailable)
-                ImGui.SetTooltip("vnavmesh is not available.\nPlease install it first.");
-            else
-                ImGui.SetTooltip("Hold CTRL to enable this button.\nRebuilding the navmesh will take some time.");
-        }
+        string tooltip = isNavmeshAvailable
+            ? _L("Hold CTRL to enable this button. Rebuilding the navmesh will take some time.")
+            : _L("vnavmesh is not available. Please install it first.");
+        if (QstWidgets.RailButton(FontAwesomeIcon.GlobeEurope, _L("Rebuild Navmesh"), tooltip,
+                enabled: isNavmeshAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
+                showLabel: showLabel))
+            commandManager.ProcessCommand("/vnav rebuild");
     }
 
-    private void DrawReloadDataButton()
+    internal void DrawClearVBMMapsButton(bool showLabel = false)
     {
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.RedoAlt, "Reload Data"))
+        bool isNavmeshAvailable = commandManager.Commands.ContainsKey("/vbm");
+        string tooltip = isNavmeshAvailable
+            ? _L("Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button")
+            : _L("VBM is not available. Please install it first.");
+        if (QstWidgets.RailButton(FontAwesomeIcon.Directions, _L("Clear VBM obstacle maps"), tooltip,
+                enabled: isNavmeshAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
+                showLabel: showLabel))
+            bossModIpc.ClearObstacleMaps();
+    }
+
+    internal void DrawReloadDataButton(bool showLabel = false)
+    {
+        if (QstWidgets.RailButton(FontAwesomeIcon.RedoAlt, _L("Reload Data"),
+                _L("Reset sequence progess and reload quest data from disk"),
+                showLabel: showLabel))
             Reload?.Invoke(this, EventArgs.Empty);
     }
 
-    private void DrawJournalProgressButton()
+    internal void DrawJournalProgressButton(bool showLabel = false)
     {
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.BookBookmark, "Journal Progress"))
-            journalProgressWindow.IsOpenAndUncollapsed = true;
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Journal Progress");
+        if (QstWidgets.RailButton(FontAwesomeIcon.BookBookmark, _L("Journal Progress"),
+                _L("Utility to browse quest data used by this plugin"),
+                showLabel: showLabel))
+            journalProgressWindow.ToggleOrUncollapse();
     }
 
-    private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress)
+    internal void DrawTroubleshootingButton(bool showLabel = false, bool highlighted = false)
     {
-        bool leftClicked = ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Handshake, "Stuck?");
+        QuestController.QuestProgress? questProgress = questController.CurrentQuest;
+        bool isRunning = highlighted || questController.IsRunning;
+        bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.Handshake,
+            _L("Stuck?"),
+            _L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"),
+            tint: isRunning ? QstTheme.Accent : null,
+            enabled: objectTable[0] != null,
+            showLabel: showLabel);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard");
         if (leftClicked || rightClicked)
         {
             string output = "";
@@ -109,22 +157,24 @@ internal sealed class QuickAccessButtonsComponent
             {
                 output = JsonSerializer.Serialize(questCompletions, JsonOptions.Default);
                 ImGui.SetClipboardText(output);
-                Svc.Chat.Print("List of completed quests has been copied to clipboard.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                chatGui.Print(_L("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
+                        "'/qst clearlog' to reset the log.") + "\nhttps://discord.com/channels/1001823907193552978/1447612869431656508/1447612869431656508",
+                        CommandHandler.MessageTag, CommandHandler.TagColor);
             }
             else
             {
                 // Dalamud troubleshooting json is written after plugin manager changes; we can't access the data from dalamud directly
-                SortedDictionary<string,string>? plugins = [];
+                SortedDictionary<string, string>? plugins = [];
                 try
                 {
                     JsonNode? dalTrouble = JsonNode.Parse(
-                            File.ReadAllText(Path.Join(Svc.PluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"))
+                            File.ReadAllText(Path.Join(pluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"))
                         );
                     var pluginNames = dalTrouble?["PluginStates"]
                         .Deserialize<SortedDictionary<string, string>>()
                         ?.Where(kvp => kvp.Value == "Loaded")
                         .Select(kvp => kvp.Key)
-                        .ToHashSet();
+                        .ToHashSet(StringComparer.Ordinal);
                     plugins = new(dalTrouble?["LoadedPlugins"]
                         ?.AsArray()
                         .Where(node =>
@@ -134,102 +184,52 @@ internal sealed class QuickAccessButtonsComponent
                         .ToDictionary(
                             node => node!["Name"]!.GetValue<string>(),
                             node => node!["AssemblyVersion"]!.GetValue<string>() ?? "unknown"
-                        ) ?? []);
+                            , StringComparer.Ordinal) ?? [], StringComparer.Ordinal);
                 }
-                catch (Exception) {}
-                Dictionary<string, object?> troubleshooting = new(){
+                catch (Exception) { }
+                Configuration? config = (Configuration?)pluginInterface.GetPluginConfig();
+                IPlayerCharacter player = (IPlayerCharacter)objectTable[0]!;
+                Dictionary<string, object?> troubleshooting = new(StringComparer.Ordinal){
                     { "LoadedPlugins", plugins },
-                    { "QST", new Dictionary<string,string>(){
+                    { "QST", new Dictionary<string,string>(StringComparer.Ordinal){
                         { "Version", CommandHandler.MessageTag },
-                        { "Debug", 
-                        #if DEBUG
-                        "true"
-                        #else
-                        "false"
-                        #endif
-                        }
+                        { "Debug", config?.Advanced.Debug.ToString() ?? "false" }
                     } },
-                    { "Configuration", Svc.PluginInterface.GetPluginConfig() },
+                    { "Configuration", config },
                     { "CompletedQuests", questCompletions.Count },
-                    { "QuestProgress", new Dictionary<string,object?>(){
+                    { "Quest", new Dictionary<string,object?>(StringComparer.Ordinal){
                         { "ToString", questProgress?.ToString() },
-                        { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id) : "Error: questProgress is null" }
+                        { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" },
+                        { "Source", questProgress?.Quest.Source }
+                    }},
+                    { "Character", new Dictionary<string,object>(StringComparer.Ordinal){
+                        { "ClassJob", (EExtendedClassJob?)player.ClassJob.RowId },
+                        { "Level", player.Level },
+                        { "Position", player.Position.ToInternalString() },
+                        { "Territory", TerritoryData.GetNameAndId(clientState.TerritoryType) }
                     }},
                 };
                 output = JsonSerializer.Serialize(troubleshooting, JsonOptions.Default);
                 ImGui.SetClipboardText(output);
-                Svc.Chat.Print("Troubleshooting information has been copied to clipboard. " +
-                    "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information.",
+                chatGui.Print(_L("Troubleshooting information has been copied to clipboard. " +
+                    "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information."),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
         }
     }
 
-    private void DrawValidationIssuesButton()
+    internal void DrawValidationIssuesButton(bool showLabel = false)
     {
+        bool running = questRegistry.ValidationRunning;
         int errorCount = questRegistry.ValidationErrorCount;
         int infoCount = questRegistry.ValidationIssueCount - questRegistry.ValidationErrorCount;
-        if (errorCount == 0 && infoCount == 0)
-            return;
+        bool hasErrors = errorCount > 0;
 
-        int partsToRender = errorCount == 0 || infoCount == 0 ? 1 : 2;
-        using ImRaii.IdDisposable id = ImRaii.PushId("validationissues");
-
-        FontAwesomeIcon icon1 = FontAwesomeIcon.ExclamationTriangle;
-        FontAwesomeIcon icon2 = FontAwesomeIcon.InfoCircle;
-        Vector2 iconSize1, iconSize2;
-        using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-        {
-            iconSize1 = errorCount > 0 ? ImGui.CalcTextSize(icon1.ToIconString()) : Vector2.Zero;
-            iconSize2 = infoCount > 0 ? ImGui.CalcTextSize(icon2.ToIconString()) : Vector2.Zero;
-        }
-
-        string text1 = errorCount > 0 ? errorCount.ToString(CultureInfo.InvariantCulture) : string.Empty;
-        string text2 = infoCount > 0 ? infoCount.ToString(CultureInfo.InvariantCulture) : string.Empty;
-        Vector2 textSize1 = errorCount > 0 ? ImGui.CalcTextSize(text1) : Vector2.Zero;
-        Vector2 textSize2 = infoCount > 0 ? ImGui.CalcTextSize(text2) : Vector2.Zero;
-        ImDrawListPtr dl = ImGui.GetWindowDrawList();
-        Vector2 cursor = ImGui.GetCursorScreenPos();
-
-        float iconPadding = 3 * ImGuiHelpers.GlobalScale;
-
-        // Draw an ImGui button with the icon and text
-        float buttonWidth = iconSize1.X + iconSize2.X + textSize1.X + textSize2.X +
-                            (ImGui.GetStyle().FramePadding.X * 2) + iconPadding * 2 * partsToRender;
-        float buttonHeight = ImGui.GetFrameHeight();
-        bool button = ImGui.Button(string.Empty, new(buttonWidth, buttonHeight));
-
-        // Draw the icon on the window drawlist
-        Vector2 position = new(cursor.X + ImGui.GetStyle().FramePadding.X,
-            cursor.Y + ImGui.GetStyle().FramePadding.Y);
-        if (errorCount > 0)
-        {
-            using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-            {
-                dl.AddText(position, ImGui.GetColorU32(ImGuiColors.DalamudRed), icon1.ToIconString());
-            }
-
-            position = position with { X = position.X + iconSize1.X + iconPadding };
-
-            // Draw the text on the window drawlist
-            dl.AddText(position, ImGui.GetColorU32(ImGuiCol.Text), text1);
-            position = position with { X = position.X + textSize1.X + 2 * iconPadding };
-        }
-
-        if (infoCount > 0)
-        {
-            using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-            {
-                dl.AddText(position, ImGui.GetColorU32(ImGuiColors.ParsedBlue), icon2.ToIconString());
-            }
-
-            position = position with { X = position.X + iconSize2.X + iconPadding };
-
-            // Draw the text on the window drawlist
-            dl.AddText(position, ImGui.GetColorU32(ImGuiCol.Text), text2);
-        }
-
-        if (button)
+        if (QstWidgets.RailButton(hasErrors ? FontAwesomeIcon.ExclamationTriangle : FontAwesomeIcon.InfoCircle,
+                _L("Quest Validation"),
+                (running ? "(!) " : "") + _LF("Quest validation: {0} errors, {1} infos", errorCount, infoCount),
+                tint: hasErrors ? QstTheme.Danger : (running || infoCount > 0 ? QstTheme.Info : null),
+                showLabel: showLabel))
             questValidationWindow.ToggleOrUncollapse();
     }
 }

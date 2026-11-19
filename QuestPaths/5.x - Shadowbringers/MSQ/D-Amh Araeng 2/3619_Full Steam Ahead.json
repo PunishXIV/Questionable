@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-28"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -58,11 +58,7 @@
           "TerritoryId": 815,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "(before Ran'jit wears the veil) AI doesn't pull, doesn't attack and VBM doesn't recognize any AOEs."
-            ]
+            "Enabled": true
           }
         }
       ]

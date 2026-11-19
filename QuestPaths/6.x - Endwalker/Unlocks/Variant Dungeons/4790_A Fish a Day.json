@@ -1,8 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Disabled": true,
-  "Comment": "WIP",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -10,12 +9,48 @@
         {
           "DataId": 1045924,
           "Position": {
-            "X": 155.35205,
-            "Y": 2.9754639,
-            "Z": 780.9414
+            "X": 156.79335,
+            "Y": 1.8741739,
+            "Z": 780.9961
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013448,
+          "Position": {
+            "X": 373.287,
+            "Y": 3.11688,
+            "Z": -246.773
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045924,
+          "Position": {
+            "X": 156.79335,
+            "Y": 1.8741739,
+            "Z": 780.9961
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
         }
       ]
     }

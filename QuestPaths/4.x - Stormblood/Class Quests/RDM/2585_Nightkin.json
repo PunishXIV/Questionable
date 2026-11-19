@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +16,7 @@
           "StopDistance": 7,
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Idyllshire"
         }
       ]
     },
@@ -86,7 +82,7 @@
           },
           "TerritoryId": 399,
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "TODO Navigation doesn't work if flying is locked",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AethernetShortcut": [
             "[Idyllshire] Aetheryte Plaza",
             "[Idyllshire] Prologue Gate (Western Hinterlands)"

@@ -38,9 +38,9 @@ public class ExcelRef
 
     public EType Type { get; }
 
-    public static ExcelRef FromKey(string value) => new(value, null, EType.Key);
-    public static ExcelRef FromRowId(uint rowId) => new(null, rowId, EType.RowId);
-    public static ExcelRef FromSheetValue(string value) => new(value, null, EType.RawString);
+    public static ExcelRef FromKey(string value) => new(value, rowIdValue: null, EType.Key);
+    public static ExcelRef FromRowId(uint rowId) => new(stringValue: null, rowId, EType.RowId);
+    public static ExcelRef FromSheetValue(string value) => new(value, rowIdValue: null, EType.RawString);
 
     public string AsKey()
     {

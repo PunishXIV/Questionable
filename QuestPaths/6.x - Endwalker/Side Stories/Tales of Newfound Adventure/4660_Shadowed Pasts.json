@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -18,12 +19,7 @@
           "AethernetShortcut": [
             "[Radz-at-Han] Aetheryte Plaza",
             "[Radz-at-Han] Meghaduta"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

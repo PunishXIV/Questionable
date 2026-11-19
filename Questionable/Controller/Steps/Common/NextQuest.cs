@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Questionable.Functions;
-using Questionable.Model;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Common;
 
 internal static class NextQuest
 {
-    internal sealed class Factory(QuestFunctions questFunctions) : SimpleTaskFactory
+    internal sealed class Factory(QuestFunctions questFunctions, QuestController questController, Configuration configuration) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -21,6 +18,9 @@ internal static class NextQuest
 
             // probably irrelevant, since pick up is handled elsewhere (and, in particular, checks for aetherytes and stuff)
             if (questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true).Contains(step.NextQuestId))
+                return null;
+
+            if (configuration.General.IgnoreNextQuestIfPrioSet && questController.PriorityManager.Quests.Any(q => questFunctions.IsReadyToAcceptQuest(q.Id)))
                 return null;
 
             return new SetQuestTask(step.NextQuestId, quest.Id);
@@ -42,26 +42,27 @@ internal static class NextQuest
     {
         protected override bool Start()
         {
+            var isUnobtainable = questFunctions.IsQuestUnobtainable(Task.NextQuestId, Task.CurrentQuestId);
+            (var isLocked, string[]? reasons) = questFunctions.IsQuestLocked(Task.NextQuestId, Task.CurrentQuestId);
+            Quest? nextQuest = null;
             if (questController.AutomationType is QuestController.EAutomationType.SingleQuestA or QuestController.EAutomationType.SingleQuestB)
-            {
                 logger.LogInformation("Won't set next quest to {QuestId}, automation type is CurrentQuestOnly", Task.NextQuestId);
-                questController.SetNextQuest(null);
-            }
-            else if (questFunctions.IsQuestLocked(Task.NextQuestId, Task.CurrentQuestId))
-            {
-                logger.LogInformation("Can't set next quest to {QuestId}, quest is locked", Task.NextQuestId);
-                questController.SetNextQuest(null);
-            }
-            else if (questRegistry.TryGetQuest(Task.NextQuestId, out Quest? quest))
-            {
-                logger.LogInformation("Setting next quest to {QuestId}: '{QuestName}'", Task.NextQuestId, quest.Info.Name);
-                questController.SetNextQuest(quest);
-            }
+
+            else if (isLocked)
+                logger.LogInformation("Can't set next quest to {QuestId}, quest is locked. {Reasons}", Task.NextQuestId,
+                    (reasons != null ? string.Join(',', reasons) : ""));
+
+            else if (isUnobtainable)
+                logger.LogInformation("Can't set next quest to {QuestId}, quest is unobtainable.", Task.NextQuestId);
+
+            else if (questRegistry.TryGetQuest(Task.NextQuestId, out nextQuest))
+                logger.LogInformation("Setting next quest to {QuestId}: '{QuestName}'", Task.NextQuestId, nextQuest.Info.Name);
+
             else
-            {
                 logger.LogInformation("Next quest with id {QuestId} not found", Task.NextQuestId);
-                questController.SetNextQuest(null);
-            }
+
+            if (nextQuest != null)
+                questController.SetNextQuest(quest: nextQuest);
 
             return true;
         }

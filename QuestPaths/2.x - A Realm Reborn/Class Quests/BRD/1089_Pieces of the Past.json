@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -17,11 +18,6 @@
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "South Shroud - Quarrymill",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -45,7 +41,7 @@
           "TerritoryId": 153,
           "InteractionType": "Interact",
           "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2002530,
@@ -57,8 +53,7 @@
           "TerritoryId": 152,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
           "Position": {
@@ -69,7 +64,8 @@
           "TerritoryId": 138,
           "Fly": true,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]}}
         },
         {
           "DataId": 2002527,
@@ -81,7 +77,7 @@
           "TerritoryId": 138,
           "InteractionType": "Interact",
           "Fly": false,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "Comment": "Detour to unlock Northern Thanalan for job quests",
@@ -129,7 +125,8 @@
           },
           "TerritoryId": 147,
           "InteractionType": "WalkTo",
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]}}
         },
         {
           "DataId": 2002529,
@@ -140,7 +137,7 @@
           },
           "TerritoryId": 147,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         }
       ]
     },
@@ -158,11 +155,6 @@
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "South Shroud - Quarrymill",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 1090
         }
       ]

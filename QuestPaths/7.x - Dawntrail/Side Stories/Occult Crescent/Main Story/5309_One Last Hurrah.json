@@ -18,12 +18,7 @@
           "AethernetShortcut": [
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] Wachumeqimeqi"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

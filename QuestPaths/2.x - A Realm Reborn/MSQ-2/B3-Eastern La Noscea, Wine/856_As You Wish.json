@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +15,7 @@
           },
           "TerritoryId": 137,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
         }
       ]
     },
@@ -54,6 +49,18 @@
           "InteractionType": "AttuneAetheryte",
           "StopDistance": 5,
           "Aetheryte": "Upper La Noscea - Camp Bronze Lake"
+        },
+        {
+          "$": "Camp Bronze Lake Taxi",
+          "DataId": 1002716,
+          "Position": {
+            "X": 413.35156,
+            "Y": 4.109605,
+            "Z": 88.7312
+          },
+          "TerritoryId": 139,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179674
         },
         {
           "DataId": 2002084,

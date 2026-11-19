@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["liza", "alydev"],
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-22"},
+  "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -54,12 +54,7 @@
           "AethernetShortcut": [
             "[Limsa Lominsa] The Aftcastle",
             "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -125,18 +120,30 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Western La Noscea - Aleport"
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
+        {
+          "TerritoryId": 138,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Western La Noscea - Swiftperch"
+        },
+        {
+          "DataId": 1002722,
+          "Position": {
+            "X": 667.68884,
+            "Y": 9.882242,
+            "Z": 487.32727
+          },
+          "TerritoryId": 138,
+          "InteractionType": "UnlockTaxiStand",
+          "AetheryteShortcut": "Western La Noscea - Swiftperch",
+          "TaxiStandId": 1179671
+        },
         {
           "TerritoryId": 138,
           "InteractionType": "Duty",
@@ -159,7 +166,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"

@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -44,6 +45,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Jump",
+          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": -759.4263,
@@ -92,6 +94,17 @@
           "TerritoryId": 401,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "The Sea of Clouds - Ok' Zundu"
+        },
+        {
+          "DataId": 2005695,
+          "Position": {
+            "X": -621.51526,
+            "Y": -58.51837,
+            "Z": -319.4171
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179693
         },
         {
           "DataId": 1013095,

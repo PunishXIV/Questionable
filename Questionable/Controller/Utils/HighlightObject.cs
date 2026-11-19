@@ -1,17 +1,15 @@
-﻿using System;
-using System.Linq;
+﻿using System.Runtime.CompilerServices;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
 using GameObject = FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject;
 
 namespace Questionable.Controller.Utils;
 
 // Adapted from https://github.com/electr0sheep/ItemVendorLocation/blob/main/ItemVendorLocation/HighlightObject.cs
+[RegisterSingleton]
 internal sealed class HighlightObject : IDisposable
 {
     private readonly ICondition _condition;
@@ -60,44 +58,50 @@ internal sealed class HighlightObject : IDisposable
             _condition[ConditionFlag.Casting] || _condition[ConditionFlag.MountOrOrnamentTransition] ||
             _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51] ||
             _condition[ConditionFlag.Mounting71])
-            ToggleHighlight(false);
+            ToggleHighlight(on: false);
         else
-            ToggleHighlight(true);
+            ToggleHighlight(on: true);
     }
 
-    public void AddHighlight(uint Id)
+    public void AddHighlight(uint Id,
+                   [CallerFilePath] string file = "",
+                 [CallerLineNumber] int line = 0)
     {
         _ = _framework.Run(() =>
         {
             if (!_targetNpcDataId.Contains(Id))
             {
-                _logger.LogDebug("Adding {Id} to highlight", Id);
+                _logger.LogDebug("Adding {Id} to highlight ({Caller})", Id, $"{Path.GetFileName(file)}:{line}");
                 _targetNpcDataId = _targetNpcDataId.Append(Id).ToArray();
             }
         });
     }
 
-    public void RemoveHighlight(uint Id)
+    public void RemoveHighlight(uint Id,
+                   [CallerFilePath] string file = "",
+                 [CallerLineNumber] int line = 0)
     {
         _ = _framework.Run(() =>
         {
-            _logger.LogDebug("Removing {Id} from highlight", Id);
+            _logger.LogDebug("Removing {Id} from highlight ({Caller})", Id, $"{Path.GetFileName(file)}:{line}");
             _targetNpcDataId = _targetNpcDataId.Where(n => n != Id).ToArray();
         });
     }
 
     public void HighlightQuestObjects(ElementId questId) => SetHighlight(_dataManager.GetExcelSheet<EObj>().Where(obj => obj.Data.Equals((uint)questId.Value)).Select(obj => obj.RowId).ToArray());
 
-    public void SetHighlight(uint[] Ids)
+    public void SetHighlight(uint[] Ids,
+                   [CallerFilePath] string file = "",
+                 [CallerLineNumber] int line = 0)
     {
         _ = _framework.Run(() =>
         {
-            ToggleHighlight(false);
+            ToggleHighlight(on: false);
             if (_targetNpcDataId.Length == 0 && Ids.Length == 0)
                 return;
-            _logger.LogDebug("Setting highlight to {Ids}", string.Join(',', Ids));
+            _logger.LogDebug("Setting highlight to {Ids} ({Caller})", string.Join(',', Ids), $"{Path.GetFileName(file)}:{line}");
             _targetNpcDataId = Ids;
-            ToggleHighlight(true);
+            ToggleHighlight(on: true);
         });
     }
 

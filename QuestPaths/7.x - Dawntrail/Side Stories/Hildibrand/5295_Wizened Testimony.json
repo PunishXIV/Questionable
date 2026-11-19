@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Solution Nine",
           "AethernetShortcut": [
             "[Solution Nine] Aetheryte Plaza",
             "[Solution Nine] True Vue"

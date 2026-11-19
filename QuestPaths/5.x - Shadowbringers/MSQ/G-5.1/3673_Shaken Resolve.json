@@ -1,22 +1,11 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona"
-        },
         {
           "DataId": 1031257,
           "Position": {
@@ -25,6 +14,7 @@
             "Z": -9.10968
           },
           "TerritoryId": 351,
+          "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -40,25 +30,14 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 2002879,
           "Position": {
-            "X": 0,
-            "Y": 3,
-            "Z": 27.5
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 156
-        },
-        {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
+            "X": 51.626358,
+            "Y": 50,
+            "Z": -774.2433
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Mount": true
+          "Fly": true
         },
         {
           "DataId": 1018433,
@@ -76,27 +55,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
         {
           "DataId": 1032081,
           "Position": {

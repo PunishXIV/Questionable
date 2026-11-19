@@ -1,5 +1,3 @@
-using System.Globalization;
-using System.Numerics;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Movement;
 
@@ -36,5 +34,5 @@ internal sealed record MoveTask
 
     public bool ShouldRedoOnInterrupt() => true;
 
-    public override string ToString() => $"MoveTo({Destination.ToString("G", CultureInfo.InvariantCulture)})";
+    public override string ToString() => $"MoveTo({Destination.ToString("G5", CultureInfo.InvariantCulture)})";
 }

@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -24,6 +25,17 @@
           "TerritoryId": 620,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Peaks - Ala Ghiri"
+        },
+        {
+          "DataId": 1020865,
+          "Position": {
+            "X": -258.77777,
+            "Y": 257.71973,
+            "Z": 721.21765
+          },
+          "TerritoryId": 620,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179699
         },
         {
           "DataId": 1020604,

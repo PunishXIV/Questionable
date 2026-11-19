@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -42,15 +43,10 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Crystarium",
           "AethernetShortcut": [
-            "[Crystarium] The Pendants",
+            "[Crystarium] Aetheryte Plaza",
             "[Crystarium] The Dossal Gate"
           ],
-          "TargetTerritoryId": 844,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "TargetTerritoryId": 844
         }
       ]
     },

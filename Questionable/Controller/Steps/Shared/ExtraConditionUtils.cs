@@ -1,10 +1,8 @@
-using System;
-using System.Numerics;
-using Dalamud.Plugin.Services;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
-internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable objectTable)
+[RegisterSingleton]
+internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable objectTable, RedoUtil redoUtil)
 {
     private readonly IClientState _clientState = clientState;
     private readonly IObjectTable _objectTable = objectTable;
@@ -17,7 +15,7 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
                MatchesExtraCondition(skipCondition, position.Value, _clientState.TerritoryType);
     }
 
-    public static bool MatchesExtraCondition(EExtraSkipCondition skipCondition, Vector3 position, uint territoryType)
+    public bool MatchesExtraCondition(EExtraSkipCondition skipCondition, Vector3 position, uint territoryType)
     {
         return skipCondition switch
         {
@@ -27,7 +25,10 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
             EExtraSkipCondition.RoguesGuild => territoryType == 129 && position.Y <= -115,
             EExtraSkipCondition.NotRoguesGuild => territoryType == 129 && position.Y > -115,
             EExtraSkipCondition.DockStorehouse => territoryType == 137 && position.Y <= -20,
-            var _ => throw new ArgumentOutOfRangeException(nameof(skipCondition), skipCondition, null)
+            EExtraSkipCondition.CostaDelSol => territoryType == 137 && position.Z > 55 && position.X > 165,
+            EExtraSkipCondition.NewGamePlus => redoUtil.IsRedoActive(),
+            EExtraSkipCondition.NotNewGamePlus => !redoUtil.IsRedoActive(),
+            var _ => throw new ArgumentOutOfRangeException(nameof(skipCondition), skipCondition, message: null)
         };
     }
 }

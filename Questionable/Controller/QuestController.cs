@@ -1,37 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using System.Threading;
+﻿using System.Diagnostics.CodeAnalysis;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Keys;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using ECommons.GameFunctions;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.Utils;
-using Questionable.Windows.ConfigComponents;
-using Quest = Questionable.Model.Quest;
+using static Questionable.Controller.Steps.ITaskExecutor;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 
+// TODO: refactor — heavy nesting (35 lines indented ≥6 levels, max indent ~9 levels).
+[RegisterSingleton]
 internal sealed class QuestController : MiniTaskController<QuestController>
 {
     public delegate void AutomationTypeChangedEventHandler(object sender, EAutomationType e);
@@ -103,8 +92,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly QuestPriorityManager _priorityManager;
     private readonly QuestProgressTracker _tracker;
     private readonly SinglePlayerDutyConfigComponent _singlePlayerDutyConfigComponent;
+    private readonly StopConditionComponent _stopConditionComponent;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
+    private readonly ICommandManager _commandManager;
+    private readonly NotificationMasterIpc _notificationMasterIpc;
     private EAutomationType _automationType;
     private DateTime _lastAutoRefresh = DateTime.MinValue;
 
@@ -141,6 +133,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     /// </summary>
     private DateTime _safeAnimationEnd = DateTime.MinValue;
 
+    //private bool _retriedLastStep;
+
     public QuestController(
         IClientState clientState,
         IObjectTable objectTable,
@@ -165,7 +159,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         InterruptHandler interruptHandler,
         IDataManager dataManager,
         IGameGuiAdapter gameGui,
+        ICommandManager commandManager,
         SinglePlayerDutyConfigComponent singlePlayerDutyConfigComponent,
+        StopConditionComponent stopConditionComponent,
         AlliedSocietyQuestFunctions alliedSocietyQuestFunctions)
         : base(chatGui, condition, serviceProvider, interruptHandler, dataManager, logger)
     {
@@ -188,9 +184,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _configuration = configuration;
         _taskCreator = taskCreator;
         _singlePlayerDutyConfigComponent = singlePlayerDutyConfigComponent;
+        _stopConditionComponent = stopConditionComponent;
         _alliedSocietyQuestFunctions = alliedSocietyQuestFunctions;
         _logger = logger;
         _highlightObject = highlightObject;
+        _commandManager = commandManager;
+        _notificationMasterIpc = serviceProvider.GetRequiredService<NotificationMasterIpc>();
 
         _condition.ConditionChange += OnConditionChange;
         _toastGui.Toast += OnNormalToast;
@@ -269,8 +268,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         {
             if (_taskQueue.CurrentTaskExecutor is IDebugStateProvider debugStateProvider)
                 return debugStateProvider.GetDebugState();
-            else
-                return null;
+
+            return null;
+        }
+    }
+
+    public bool IsQuestingStopped
+    {
+        get
+        {
+            return AutomationType == EAutomationType.Manual && !IsRunning && !IsQuestWindowOpen;
         }
     }
 
@@ -278,7 +285,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public void Reload()
     {
-        lock(_progressLock)
+        lock (_progressLock)
         {
             _logger.LogInformation("Reload, resetting curent quest progress");
 
@@ -295,6 +302,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         _tracker.Reset();
         _safeAnimationEnd = DateTime.MinValue;
+        //_retriedLastStep = false;
 
         DebugState = null;
     }
@@ -325,7 +333,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             }
         }
 
-        if (AutomationType == EAutomationType.Manual && !IsRunning && !IsQuestWindowOpen)
+        if (IsQuestingStopped)
             return;
 
         UpdateCurrentQuest();
@@ -375,7 +383,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 if (currentLevel >= _configuration.Stop.TargetLevel && IsRunning)
                 {
                     _logger.LogInformation("Reached level stop condition (level: {CurrentLevel}, target: {TargetLevel})", currentLevel, _configuration.Stop.TargetLevel);
-                    _chatGui.Print($"Reached or exceeded target level {_configuration.Stop.TargetLevel}.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                    var msg = _LF("Reached or exceeded target level {0}.", _configuration.Stop.TargetLevel);
+                    _chatGui.Print(msg, CommandHandler.MessageTag, CommandHandler.TagColor);
+                    if (_configuration.Notifications.NotifyOnStopCondition)
+                        _notificationMasterIpc.Notify(msg);
                     Stop($"Level stop condition reached [{currentLevel}]");
                     return;
                 }
@@ -387,7 +398,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: CompletedStepValue }
             && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(QuestAcceptStalledTimeoutSeconds))
         {
-            lock(_progressLock)
+            lock (_progressLock)
             {
                 _logger.LogWarning("Quest accept apparently didn't work out, resetting progress");
                 CurrentQuest.SetStep(0);
@@ -399,9 +410,18 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
         //CheckAutoRefreshCondition();
 
-        UpdateCurrentTask();
+        try
+        {
+            UpdateCurrentTask();
+        }
+        catch (Exception ex)
+        {
+            if (EzThrottler.Throttle(ex.Message))
+                throw;
+        }
     }
 
+    // kept for reference
     private void CheckAutoRefreshCondition()
     {
         if (!_configuration.General.AutoStepRefreshEnabled ||
@@ -480,7 +500,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private void UpdateCurrentQuest()
     {
-        lock(_progressLock)
+        lock (_progressLock)
         {
             DebugState = null;
 
@@ -498,15 +518,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     DebugState = $"Waiting for Leve {PendingQuest.Quest.Id}";
                     return;
                 }
-                else
-                {
-                    StartedQuest = PendingQuest;
-                    PendingQuest = null;
-                    TryStopOnQuestAccepted(StartedQuest.Quest.Id);
-                    if (AutomationType == EAutomationType.Manual)
-                        return;
-                    CheckNextTasks("Pending quest accepted");
-                }
+
+                StartedQuest = PendingQuest;
+                PendingQuest = null;
+                TryStopOnQuestAccepted(StartedQuest.Quest.Id);
+                if (AutomationType == EAutomationType.Manual)
+                    return;
+                CheckNextTasks("Pending quest accepted");
             }
 
             if (SimulatedQuest == null && NextQuest != null)
@@ -537,6 +555,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 }
             }
 
+            // any priority quest is flagged accept-only and can be picked up right now,
+            // queue it as the next quest so only its accept step (sequence 0) runs.
+            // Completing the accepted quests is deferred until every flagged quest has been accepted,
+            // so the user can several allied societies / quests and have them all picked up before any turn-ins start.
+            if (SimulatedQuest == null && NextQuest == null && GatheringQuest == null &&
+                (AutomationType == EAutomationType.Automatic || StartedQuest == null))
+            {
+                TryQueueNextAcceptOnlyQuest();
+            }
+
             // Stop checks run before the NextQuest/priority cascade — otherwise a
             // queued NextQuest (e.g. an MSQ chain or priority list pick) is started
             // before the user's "stop after this quest" toggle is ever consulted.
@@ -551,9 +579,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 {
                     ElementId questId = StartedQuest.Quest.Id;
                     _logger.LogInformation("Reached stopping point (quest: {QuestId})", questId);
-                    _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', which is configured as a stopping point.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                    var msg = _LF("Completed quest '{0}', which is configured as a stopping point.", StartedQuest.Quest.Info.Name);
+                    _chatGui.Print(msg, CommandHandler.MessageTag, CommandHandler.TagColor);
+                    _notificationMasterIpc.Notify(msg);
                     StartedQuest = null;
                     Stop($"Stopping point [{questId}] reached");
+                    if (_configuration.Stop.RemoveWhenCompleteConditionMet)
+                        _configuration.Stop.QuestsToStopAfter.Remove(questId);
                     return;
                 }
 
@@ -561,7 +593,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 {
                     ElementId questId = StartedQuest.Quest.Id;
                     _logger.LogInformation("Stopping after current quest as requested (quest: {QuestId})", questId);
-                    _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', stopping as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                    var msg = _LF("Completed quest '{0}', stopping as requested.", StartedQuest.Quest.Info.Name);
+                    _chatGui.Print(msg, CommandHandler.MessageTag, CommandHandler.TagColor);
+                    if (_configuration.Notifications.NotifyOnStopCondition)
+                        _notificationMasterIpc.Notify(msg);
                     StartedQuest = null;
                     Stop($"Stop after quest [{questId}]");
                     return;
@@ -595,10 +630,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             }
             else
             {
-                (ElementId? currentQuestId, currentSequence, MainScenarioQuestState msqState) = _questFunctions.GetCurrentQuest(allowNewMsq: AutomationType != EAutomationType.SingleQuestB);
+                (ElementId? currentQuestId, currentSequence, MainScenarioQuestState msqState) =
+                    _questFunctions.GetCurrentQuest(allowNewMsq: AutomationType != EAutomationType.SingleQuestB);
                 (ElementId, byte)? priorityQuestOption =
                     _priorityManager.Quests
-                        .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id) || _questFunctions.IsQuestAccepted(x.Id))
+                        .Where(x => !_priorityManager.IsAcceptOnly(x.Id))
+                        .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id, ignoreLevel: true) ||
+                                    _questFunctions.IsQuestAccepted(x.Id))
                         .Select(x => (x.Id, QuestFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
                         .FirstOrDefault();
                 if (priorityQuestOption is { Item1: not null } priorityQuest)
@@ -615,13 +653,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         {
                             return;
                         }
-                        else if (msqState == MainScenarioQuestState.LoadingScreen)
+
+                        if (msqState == MainScenarioQuestState.LoadingScreen)
                         {
-                            _logger.LogWarning("On loading screen, no MSQ - doing nothing");
+                            //_logger.LogWarning("On loading screen, no MSQ - doing nothing");
                             return;
                         }
 
-                        _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
+                        _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
                         StartedQuest = null;
                         Stop("Resetting current quest");
                     }
@@ -638,14 +677,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         TryStopOnQuestAccepted(quest.Id);
 
                         StartedQuest = new(quest, currentSequence);
-#if DEBUG
-                        if (_configuration.Advanced.OpenEditor && 
-                            (quest.Root.LastChecked.Date == null || (quest.Root.LastChecked.Since(DateTime.Now) is { } since && since.TotalDays > 90)))
+                        if (_configuration.Advanced.Debug && _configuration.Advanced.OpenEditor &&
+                            (quest.Root.LastChecked.Date == null || (quest.Root.LastChecked.Since(DateTime.Now) is { } since && since.TotalDays > 30)))
                         {
                             (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
                             _logger.LogDebug("OpenEditor {Success}: {Msg}", success, msg);
                         }
-#endif
 
                         if (AutomationType == EAutomationType.Manual)
                             return;
@@ -720,7 +757,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 _highlightObject.SetHighlight([]);
                 questToRun.SetSequence(currentSequence);
                 CheckNextTasks(
-                    $"New sequence {questToRun == StartedQuest}/{_questFunctions.GetCurrentQuestInternal(true)}");
+                    $"New sequence {questToRun == StartedQuest}/{_questFunctions.GetCurrentQuestInternal(allowNewMsq: true)}");
             }
 
             Quest q = questToRun.Quest;
@@ -755,7 +792,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public void IncreaseStepCount(ElementId? questId, int? sequence, bool shouldContinue = false)
     {
-        lock(_progressLock)
+        lock (_progressLock)
         {
             (QuestSequence? seq, QuestStep? step, bool _) = GetNextStep();
             if (CurrentQuest == null || seq == null || step == null)
@@ -850,13 +887,21 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _handlingDeath = false;
         _deathStreakKey = null;
         _deathStreakCount = 0;
+        //_retriedLastStep = false;
         _highlightObject.SetHighlight([]);
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         if (IsRunning || AutomationType != EAutomationType.Manual)
         {
             ClearTasksInternal();
+            if (AutomationType is EAutomationType.Automatic && !_stopConditionComponent.commandExceptions.Any(e => label.Equals(e, StringComparison.OrdinalIgnoreCase)))
+            {
+                _notificationMasterIpc.NotifyOnFailure(_L("Automatic questing has stopped."));
+                if (_configuration.Stop is { RunCommandAfterStop: true } stop && stop.CommandAfterStop.StartsWith('/'))
+                    _commandManager.ProcessCommand(stop.CommandAfterStop);
+            }
             _logger.LogInformation("Stopping automatic questing");
             AutomationType = EAutomationType.Manual;
+            StartedQuest = null;
             NextQuest = null;
             GatheringQuest = null;
             _lastTaskUpdate = DateTime.Now;
@@ -1019,8 +1064,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             _taskQueue.TryPeek(out ITask? nextTask) &&
             TeleportTaskDetector.IsUpcomingTeleport(nextTask, _clientState.TerritoryType))
         {
-            _logger.LogInformation("Stopping before teleport as requested (upcoming task: {Task})", nextTask);
-            _chatGui.Print("Stopping before teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            string stopping = _L("Stopping before teleport as requested.");
+            _logger.LogInformation("{Stopping} (upcoming task: {Task})", stopping, nextTask);
+            _chatGui.Print(stopping, CommandHandler.MessageTag, CommandHandler.TagColor);
+            if (_configuration.Notifications.NotifyOnStopCondition)
+                _notificationMasterIpc.Notify(stopping);
             _movementController.Stop();
             Stop("Stop before teleport");
             return;
@@ -1032,11 +1080,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     protected override void OnTaskComplete(ITask task)
     {
         if (task is WaitAtEnd.WaitQuestCompleted)
-            SimulatedQuest = null;
+            SimulatedQuest = StartedQuest = null;
 
     }
 
-    protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, true);
+    protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, shouldContinue: true);
 
     protected override void OnRetryStep()
     {
@@ -1046,14 +1094,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return;
         }
 
-        _logger.LogInformation("Retrying current step for quest {QuestId} (sequence {Sequence}, step {Step})",
-            CurrentQuest.Quest.Id, CurrentQuest.Sequence, CurrentQuest.Step);
+        _logger.LogInformation("Retrying current step [{QuestId}, {Sequence}, {Step}]",
+                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
         CheckNextTasks("RetryStep");
     }
 
     public void Start(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"Q/{label}");
+        RedeemRewardItems.ResetAttemptedItems();
         AutomationType = EAutomationType.Automatic;
         ExecuteNextStep();
     }
@@ -1061,6 +1110,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public void StartGatheringQuest(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"GQ/{label}");
+        RedeemRewardItems.ResetAttemptedItems();
         AutomationType = EAutomationType.GatheringOnly;
         ExecuteNextStep();
     }
@@ -1068,6 +1118,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public void StartSingleQuest(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"SQ/{label}");
+        RedeemRewardItems.ResetAttemptedItems();
         AutomationType = EAutomationType.SingleQuestA;
         ExecuteNextStep();
     }
@@ -1075,6 +1126,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public void StartSingleStep(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"SS/{label}");
+        RedeemRewardItems.ResetAttemptedItems();
         AutomationType = EAutomationType.Manual;
         ExecuteNextStep();
     }
@@ -1082,6 +1134,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private void ExecuteNextStep()
     {
         ClearTasksInternal();
+
+        if (AutomationType == EAutomationType.Automatic && TryQueueNextAcceptOnlyQuest())
+            _logger.LogInformation("Accepting queued accept-only quests before other work");
 
         if (TryPickPriorityQuest())
             _logger.LogInformation("Using priority quest over current quest");
@@ -1095,14 +1150,32 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 CurrentQuestDetails?.Type == ECurrentQuestType.Gathering)
             {
                 _logger.LogInformation("Completed delivery quest");
-                SetGatheringQuest(null);
+                SetGatheringQuest(quest: null);
                 Stop("Gathering quest complete");
             }
             else
             {
+                //if (!_retriedLastStep &&
+                //    CurrentQuestDetails?.Progress.Sequence is byte _seq &&
+                //    CurrentQuestDetails?.Progress.Quest.FindSequence(_seq) is QuestSequence _sequence &&
+                //    _sequence.LastStep() is QuestStep lastStep)
+                //{
+                //    _logger.LogWarning(
+                //        "Could not retrieve next quest step, retrying last step once [{QuestId}, {Sequence}, {Step}]",
+                //        CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, _sequence.Steps.IndexOf(lastStep));
+
+                //    CurrentQuest?.SetStep(_sequence.Steps.IndexOf(lastStep));
+                //    seq = _sequence;
+                //    step = lastStep;
+                //    _retriedLastStep = true;
+                //}
+                //else
+                //{
                 _logger.LogWarning(
                     "Could not retrieve next quest step, not doing anything [{QuestId}, {Sequence}, {Step}]",
                     CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
+                //_notificationMasterIpc.NotifyOnFailure(_L("Could not retrieve next quest step, pausing.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
+                //}
             }
 
             if (CurrentQuest == null || !createTasks)
@@ -1135,8 +1208,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to create tasks");
+            _logger.LogError(e, "Failed to create tasks [{QuestId}, {Sequence}, {Step}]",
+                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
             _chatGui.PrintError("Failed to start next task sequence, please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            _notificationMasterIpc.NotifyOnFailure(_L("Failed to start next task sequence, stopping.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
             Stop("Tasks failed to create");
         }
     }
@@ -1156,11 +1231,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             task = t;
             return true;
         }
-        else
-        {
-            task = null;
-            return false;
-        }
+
+        task = null;
+        return false;
     }
 
     public bool HasCurrentTaskMatching<T>([NotNullWhen(true)] out T? task)
@@ -1171,16 +1244,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             task = t;
             return true;
         }
-        else
-        {
-            task = null;
-            return false;
-        }
+
+        task = null;
+        return false;
     }
 
     public void Skip(ElementId elementId, byte currentQuestSequence)
     {
-        lock(_progressLock)
+        lock (_progressLock)
         {
             if (_taskQueue.CurrentTaskExecutor?.CurrentTask is ISkippableTask)
                 _taskQueue.CurrentTaskExecutor = null;
@@ -1244,12 +1315,67 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
     }
 
-    public bool TryPickPriorityQuest()
+    /// <summary>
+    ///     While any priority quest is flagged accept-only and is ready to be accepted, it is queued as <see cref="NextQuest"/> 
+    ///     so only its accept step (sequence 0) runs; the quest stays in the priority list to be completed later. 
+    ///     The completion phase is therefore deferred until every flagged quest has been accepted (or can no longer be accepted this session)
+    /// </summary>
+    private bool TryQueueNextAcceptOnlyQuest()
     {
-        if (!IsInterruptible() || NextQuest != null || GatheringQuest != null || SimulatedQuest != null)
+        if (!_priorityManager.HasPendingAcceptOnly)
             return false;
 
-        ElementId? priorityQuestId = _questFunctions.GetNextPriorityQuestsThatCanBeAccepted()
+        Quest? next = _priorityManager.AcceptOnlyQuests
+            .FirstOrDefault(quest => _questFunctions.IsReadyToAcceptQuest(quest.Id));
+        if (next == null)
+            return false;
+
+        // We are already trying to accept this quest: don't call SetNextQuest again. It rebuilds NextQuest with Step = 0,
+        // which would reset the accept sequence every step boundary and loop it forever before it ever reaches the Interact/accept step.
+        if (NextQuest?.Quest.Id == next.Id)
+            return true;
+
+        _logger.LogInformation("Accept-all: queueing {QuestId} to be accepted before other work", next.Id);
+        SetNextQuest(next);
+        return true;
+    }
+
+    public IReadOnlyList<Quest> QueueOpenQuests()
+    {
+        List<Quest> added = [];
+        foreach (ElementId questId in _questFunctions.OpenQuests)
+        {
+            if (_priorityManager.Contains(questId))
+                continue;
+
+            if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
+                continue;
+
+            _priorityManager.Add(quest);
+            added.Add(quest);
+        }
+
+        if (added.Count > 0)
+        {
+            _logger.LogInformation("Clean up: queued {Count} open quest(s): {QuestIds}",
+                added.Count, string.Join(", ", added.Select(x => x.Id)));
+        }
+
+        return added;
+    }
+
+    public bool TryPickPriorityQuest()
+    {
+        if (!IsInterruptible() ||
+            NextQuest != null ||
+            GatheringQuest != null ||
+            SimulatedQuest != null ||
+            StopAfterCurrentQuest ||
+            StopAfterAcceptingNextQuest ||
+            StopBeforeTeleport)
+            return false;
+
+        ElementId? priorityQuestId = _questFunctions.NextPriorityQuestsThatCanBeAccepted
             .Where(x => x.IsAvailable)
             .Select(x => x.QuestId)
             .FirstOrDefault();
@@ -1271,7 +1397,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public bool WasLastTaskUpdateWithin(TimeSpan timeSpan)
     {
-        _logger.LogInformation("Last update: {Update}", _lastTaskUpdate);
+        if (EzThrottler.Throttle("WasLastTaskUpdateWithin"))
+            _logger.LogTrace("Last update: {Update}", _lastTaskUpdate);
         return IsRunning || DateTime.Now <= _lastTaskUpdate.Add(timeSpan);
     }
 
@@ -1313,7 +1440,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             {
                 Job.MIN => EExtendedClassJob.Miner,
                 Job.BTN => EExtendedClassJob.Botanist,
-                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
+                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, message: null)
             };
 
             QuestStep gatherStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.Gather);
@@ -1330,12 +1457,18 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             StartGatheringQuest("SatisfactionSupply prepare gathering");
             return true;
         }
-        else
-        {
-            _chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
-            return false;
-        }
+
+        _chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
+        return false;
     }
+
+    /// <summary>
+    /// Caller should ensure _taskQueue.AllTasksComplete before enqueueing.
+    /// See: CommandHandler's impl of /qst redeem
+    /// </summary>
+    /// <param name="task">An instance of a task produced by a factory or other generator</param>
+    internal void UnsafeEnqueueManualTask(ITask task) =>
+        _taskQueue.Enqueue(task);
 
     public override void Dispose()
     {
@@ -1352,7 +1485,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             Quest = quest;
             SetSequence(sequence, step);
         }
-        public override string ToString() => $"{Quest.Id}_{Quest.Info.Name} / {Sequence} / {Step}";
+        public override string ToString() => $"{Quest.Id}_{Quest.Info.SimplifiedName} / {Sequence} / {Step}";
         public Quest Quest { get; }
         public byte Sequence { get; private set; }
         public int Step { get; private set; }

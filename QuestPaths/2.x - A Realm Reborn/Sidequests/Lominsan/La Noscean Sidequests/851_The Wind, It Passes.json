@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.7284,
+            "Y": 23.936245,
+            "Z": 456.43982
+          },
+          "TerritoryId": 137,
+          "StopDistance": 1,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "$": "auto: issuer 1006273 (Gegeruju)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 510.406,
+            "Y": 53.3862,
+            "Z": 549.375
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 133,
+              "MinimumKillCount": 3,
+              "RewardItemId": 2000660,
+              "RewardItemCount": 3
+            }
+          ],
+          "$": "auto: lua overworld enemies -> 133; until 3x item 2000660 drops"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002063,
+          "Position": {
+            "X": 558.114,
+            "Y": 43.7939,
+            "Z": 553.655
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            1891
+          ],
+          "$": "auto: todo location -> 2002063 (destination); spawns enemies 1891; hands over ITEM0=2000660"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.7284,
+            "Y": 23.936245,
+            "Z": 456.43982
+          },
+          "TerritoryId": 137,
+          "StopDistance": 1,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "$": "auto: todo turn-in -> 1006273 (Gegeruju)"
+        }
+      ]
+    }
+  ]
+}

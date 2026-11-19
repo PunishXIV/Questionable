@@ -1,0 +1,82 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058957,
+          "Position": {
+            "X": -252.342,
+            "Y": 37,
+            "Z": -495.573
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Heritage Found - The Outskirts",
+          "$": "auto: issuer 1058957 (Hardiboiled)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2015340,
+          "Position": {
+            "X": 218.085,
+            "Y": 88.3212,
+            "Z": 633.312
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false
+          },
+          "Fly": true,
+          "AetheryteShortcut": "Heritage Found - Yyasulani Station",
+          "$": "auto: todo location -> 2015340 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058959,
+          "Position": {
+            "X": 95.6384,
+            "Y": 12.04,
+            "Z": 147.112
+          },
+          "TerritoryId": 1254,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058959 (Hardiboiled)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058961,
+          "Position": {
+            "X": 233.506,
+            "Y": 50.7499,
+            "Z": 210.164
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Solution Nine",
+          "$": "auto: todo turn-in -> 1058961 (Noirshu)"
+        }
+      ]
+    }
+  ]
+}

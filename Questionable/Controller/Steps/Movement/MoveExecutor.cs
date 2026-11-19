@@ -1,49 +1,40 @@
-using System;
-using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Controller.Steps.Common;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Action = System.Action;
-using Mount = Questionable.Controller.Steps.Common.Mount;
 
 namespace Questionable.Controller.Steps.Movement;
 
 internal sealed class MoveExecutor
 (
     MovementController movementController,
-    GameFunctions gameFunctions,
     ILogger<MoveExecutor> logger,
     IClientState clientState,
     IObjectTable objectTable,
     ICondition condition,
     IDataManager dataManager,
-    Mount.MountEvaluator mountEvaluator,
+    MountStep.MountEvaluator mountEvaluator,
     IServiceProvider serviceProvider) : TaskExecutor<MoveTask>, IToastAware
 {
     private readonly string _cannotExecuteAtThisTime = DataManagerAdapter.GetString<LogMessage>(dataManager, 579, x => x.Text)!;
     private readonly IClientState _clientState = clientState;
     private readonly ICondition _condition = condition;
-    private readonly GameFunctions _gameFunctions = gameFunctions;
     private readonly ILogger<MoveExecutor> _logger = logger;
-    private readonly Mount.MountEvaluator _mountEvaluator = mountEvaluator;
+    private readonly MountStep.MountEvaluator _mountEvaluator = mountEvaluator;
     private readonly MovementController _movementController = movementController;
     private readonly IObjectTable _objectTable = objectTable;
     private readonly IServiceProvider _serviceProvider = serviceProvider;
     private bool _canRestart;
     private Vector3 _destination;
 
-    private (Mount.MountExecutor Executor, Mount.MountTask Task)? _mountBeforeMovement;
-    private (Mount.MountExecutor Executor, Mount.MountTask Task)? _mountDuringMovement;
+    private (MountStep.MountExecutor Executor, MountStep.MountTask Task)? _mountBeforeMovement;
+    private (MountStep.MountExecutor Executor, MountStep.MountTask Task)? _mountDuringMovement;
 
     private Action? _startAction;
-    private (Mount.UnmountExecutor Executor, Mount.UnmountTask Task)? _unmountBeforeMovement;
+    private (MountStep.UnmountExecutor Executor, MountStep.UnmountTask Task)? _unmountBeforeMovement;
 
     public override ETaskResult Update()
     {
@@ -71,11 +62,9 @@ internal sealed class MoveExecutor
                 _startAction();
                 return ETaskResult.StillRunning;
             }
-            else
-            {
-                _logger.LogInformation(
-                    "Looks like movement was interrupted, do nothing since we're in a different territory now");
-            }
+
+            _logger.LogInformation(
+                "Looks like movement was interrupted, do nothing since we're in a different territory now");
         }
 
         return ETaskResult.TaskComplete;
@@ -86,7 +75,7 @@ internal sealed class MoveExecutor
         DateTime retryAt = DateTime.Now;
         if (Task.Fly && _condition[ConditionFlag.InCombat] && !_condition[ConditionFlag.Mounted] &&
             _mountBeforeMovement is { Task: { } mountTask } &&
-            _mountEvaluator.EvaluateMountState(mountTask, true, ref retryAt) == Mount.MountResult.WhenOutOfCombat)
+            _mountEvaluator.EvaluateMountState(mountTask, dryRun: true, ref retryAt) == MountStep.MountResult.WhenOutOfCombat)
             return true;
 
         return base.WasInterrupted();
@@ -109,7 +98,7 @@ internal sealed class MoveExecutor
 
     private void PrepareMovementIfNeeded()
     {
-        if (!_gameFunctions.IsFlyingUnlocked(Task.TerritoryId))
+        if (!GameFunctions.IsFlyingUnlocked(Task.TerritoryId))
             Task = Task with { Fly = false, Land = false };
 
         MovementController.NavigationOptions options = new()
@@ -141,15 +130,15 @@ internal sealed class MoveExecutor
 
         if (Task.Mount == true)
         {
-            Mount.MountTask mountTask = new(Task.TerritoryId, Mount.EMountIf.Always);
-            _mountBeforeMovement = (_serviceProvider.GetRequiredService<Mount.MountExecutor>(), mountTask);
+            MountStep.MountTask mountTask = new(Task.TerritoryId, MountStep.EMountIf.Always);
+            _mountBeforeMovement = (_serviceProvider.GetRequiredService<MountStep.MountExecutor>(), mountTask);
             if (!_mountBeforeMovement.Value.Executor.Start(mountTask))
                 _mountBeforeMovement = null;
         }
         else if (Task.Mount == false)
         {
-            Mount.UnmountTask unmountTask = new();
-            _unmountBeforeMovement = (_serviceProvider.GetRequiredService<Mount.UnmountExecutor>(), unmountTask);
+            MountStep.UnmountTask unmountTask = new();
+            _unmountBeforeMovement = (_serviceProvider.GetRequiredService<MountStep.UnmountExecutor>(), unmountTask);
             if (!_unmountBeforeMovement.Value.Executor.Start(unmountTask))
                 _unmountBeforeMovement = null;
         }
@@ -157,18 +146,18 @@ internal sealed class MoveExecutor
         {
             if (!Task.DisableNavmesh)
             {
-                Mount.EMountIf mountIf =
+                MountStep.EMountIf mountIf =
                     actualDistance > stopDistance && Task.Fly &&
-                    _gameFunctions.IsFlyingUnlocked(Task.TerritoryId)
-                        ? Mount.EMountIf.Always
-                        : Mount.EMountIf.AwayFromPosition;
-                Mount.MountTask mountTask = new(Task.TerritoryId, mountIf, _destination);
+                    GameFunctions.IsFlyingUnlocked(Task.TerritoryId)
+                        ? MountStep.EMountIf.Always
+                        : MountStep.EMountIf.AwayFromPosition;
+                MountStep.MountTask mountTask = new(Task.TerritoryId, mountIf, _destination);
                 DateTime retryAt = DateTime.Now;
-                (Mount.MountExecutor Executor, Mount.MountTask)? move;
+                (MountStep.MountExecutor Executor, MountStep.MountTask)? move;
 
-                if (_mountEvaluator.EvaluateMountState(mountTask, true, ref retryAt) != Mount.MountResult.DontMount)
+                if (_mountEvaluator.EvaluateMountState(mountTask, dryRun: true, ref retryAt) != MountStep.MountResult.DontMount)
                 {
-                    move = (_serviceProvider.GetRequiredService<Mount.MountExecutor>(), mountTask);
+                    move = (_serviceProvider.GetRequiredService<MountStep.MountExecutor>(), mountTask);
                     move.Value.Executor.Start(mountTask);
                 }
                 else
@@ -202,7 +191,8 @@ internal sealed class MoveExecutor
 
             return ETaskResult.StillRunning;
         }
-        else if (_unmountBeforeMovement is { Executor: { } unmountBeforeMoveExecutor })
+
+        if (_unmountBeforeMovement is { Executor: { } unmountBeforeMoveExecutor })
         {
             if (unmountBeforeMoveExecutor.Update() == ETaskResult.TaskComplete)
             {
@@ -214,7 +204,8 @@ internal sealed class MoveExecutor
 
             return ETaskResult.StillRunning;
         }
-        else if (_mountDuringMovement is { Executor: { } mountDuringMoveExecutor, Task: { } mountTask })
+
+        if (_mountDuringMovement is { Executor: { } mountDuringMoveExecutor, Task: { } mountTask })
         {
             if (mountDuringMoveExecutor.Update() == ETaskResult.TaskComplete)
             {
@@ -224,7 +215,7 @@ internal sealed class MoveExecutor
             }
 
             DateTime retryAt = DateTime.Now;
-            if (_mountEvaluator.EvaluateMountState(mountTask, true, ref retryAt) == Mount.MountResult.DontMount)
+            if (_mountEvaluator.EvaluateMountState(mountTask, dryRun: true, ref retryAt) == MountStep.MountResult.DontMount)
             {
                 _logger.LogInformation("MountDuringMovement implicitly complete (shouldn't mount anymore)");
                 _mountDuringMovement = null;
@@ -233,8 +224,8 @@ internal sealed class MoveExecutor
 
             return null; // still keep moving
         }
-        else
-            return null;
+
+        return null;
     }
 
     private bool ShouldResolveCombatBeforeNextInteraction() => Task.InteractionType is EInteractionType.Jump;

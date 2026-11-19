@@ -1,12 +1,7 @@
-using System;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 
 namespace Questionable.Controller.GameUi;
 
@@ -14,6 +9,7 @@ namespace Questionable.Controller.GameUi;
 ///     Handles the in-game "PointMenu" addon (used by quest steps that require picking a map point),
 ///     picking the choice configured on the current quest step.
 /// </summary>
+[RegisterSingleton]
 internal sealed class PointMenuHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;

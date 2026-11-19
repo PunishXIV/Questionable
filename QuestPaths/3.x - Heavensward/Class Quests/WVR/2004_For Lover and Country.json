@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Holy Rainbow Hat of Healing HQ // Autocraft requires: 3x Holy Rainbow Cloth, 1x Rainbow Thread, 1x Mythrite Nugget",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,17 +16,13 @@
           },
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
+              "InTerritory": [418, 419]
             }
           }
         }
@@ -91,7 +88,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Weavers' Guild"
@@ -124,7 +120,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"

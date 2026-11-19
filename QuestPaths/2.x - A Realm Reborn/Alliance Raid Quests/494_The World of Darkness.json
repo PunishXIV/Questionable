@@ -1,9 +1,10 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": [
     "JerryWester",
     "Kiarra"
   ],
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -17,12 +18,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         }
       ]
     },
@@ -84,6 +80,7 @@
         {
           "TerritoryId": 156,
           "InteractionType": "Duty",
+          "Comment": "The ARR Alliance Raids must be completed to progress to Heavensward.\nWorld of Darkness can be completed by one max level player or a light party, but they must form an Alliance Raid with three parties of at least one person each to enter.",
           "DutyOptions": {
             "ContentFinderConditionId": 111,
             "Enabled": false,
@@ -108,6 +105,17 @@
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "Never": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 40.024292,
+                  "Y": 24.002441,
+                  "Z": -668.0247
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 30
+              }
             }
           }
         },

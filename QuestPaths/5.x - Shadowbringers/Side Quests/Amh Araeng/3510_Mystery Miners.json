@@ -1,0 +1,66 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -481.02628,
+            "Y": 45.55725,
+            "Z": -226.64441
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1027925,
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Amh Araeng - Twine"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -286.0449,
+            "Y": 20.617725,
+            "Z": -223.41017
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Emote",
+          "Emote": "kneel",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -481.02628,
+            "Y": 45.55725,
+            "Z": -226.64441
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1027925,
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Amh Araeng - Twine"
+        }
+      ]
+    }
+  ]
+}

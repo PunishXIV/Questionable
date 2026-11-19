@@ -1,11 +1,8 @@
-using System;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
-using Dalamud.Plugin.Services;
 using ECommons.Automation;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 
 namespace Questionable.Controller.GameUi;
 
@@ -18,10 +15,11 @@ namespace Questionable.Controller.GameUi;
 ///     (<c>[0 = OK, name, ""]</c>), then the follow-up "Name your chocobo?" <c>SelectYesno</c> is
 ///     accepted by <see cref="YesNoChoiceHandler" /> via <see cref="IsAwaitingYesNo" />.
 /// </remarks>
+[RegisterSingleton]
 internal sealed unsafe class ChocoboNamingController : IDisposable
 {
     private const string AddonName = "InputString";
-    private const string DefaultName = "Chicken";
+    //private const string DefaultName = "Chicken";
     private static readonly TimeSpan YesNoTimeout = TimeSpan.FromSeconds(10);
 
     private readonly QuestController _questController;
@@ -86,7 +84,7 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
             // SelectYesno follows, which YesNoChoiceHandler accepts via IsAwaitingYesNo.
             if (_gameGuiAdapter.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
             {
-                Callback.Fire(addon, true, 0, GetConfiguredName(), "");
+                Callback.Fire(addon, updateState: true, 0, GetConfiguredName(), "");
                 IsAwaitingYesNo = true;
                 _yesNoDeadline = DateTime.Now + YesNoTimeout;
             }
@@ -104,7 +102,7 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
     private string GetConfiguredName()
     {
         string name = (_configuration.General.ChocoboName ?? string.Empty).Trim();
-        return IsValidChocoboName(name) ? name : DefaultName;
+        return IsValidChocoboName(name) ? name : NameGenerator.GenerateFirstName();
     }
 
     private static bool IsValidChocoboName(string name)

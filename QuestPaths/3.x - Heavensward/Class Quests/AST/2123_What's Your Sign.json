@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,17 +16,13 @@
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
           "StopDistance": 5,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
-              "InTerritory": [
-                419
-              ]
+              "InTerritory": [419]
             }
           },
           "DialogueChoices": [

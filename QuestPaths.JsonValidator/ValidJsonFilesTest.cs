@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text.Json.Nodes;
+using System.Text.RegularExpressions;
 using Json.Schema;
 using Questionable.Model;
 using Questionable.QuestPaths;
@@ -7,7 +8,7 @@ using Xunit;
 
 namespace QuestPaths.JsonValidator;
 
-public sealed class ValidJsonFilesTest
+public sealed partial class ValidJsonFilesTest
 {
     private static readonly JsonSchema QuestSchema = JsonSchema.FromStream(AssemblyQuestLoader.QuestSchemaStream).AsTask().Result;
 
@@ -43,6 +44,25 @@ public sealed class ValidJsonFilesTest
         });
 
         if (!evaluationResult.IsValid)
-            Assert.Fail($"Quest '{quest.ManifestName}' validation failed");
+        {
+            IEnumerable<string> failures = evaluationResult.Details
+                .Where(detail => detail is { IsValid: false, HasErrors: true } &&
+                    !detail.EvaluationPath.ToString().Contains("/if/"))
+                .SelectMany(detail => detail.Errors!.Select(error =>
+                    $"  instance '{detail.InstanceLocation}' (schema '{detail.EvaluationPath}'): {error.Key} - {Unescape(error.Value)}")
+                );
+
+            Assert.Fail($"Quest '{quest.ManifestName}' validation failed:{Environment.NewLine}"
+                        + string.Join(Environment.NewLine, failures));
+        }
     }
+
+    /// <summary>
+    /// Decodes <c>\uXXXX</c> escapes that System.Text.Json's default HTML-safe encoder produces
+    /// (e.g. <c>"</c> as <c>\u0022</c>, <c>'</c> as <c>\u0027</c>) so error messages render readably.
+    /// </summary>
+    private static string Unescape(string value) =>
+        UnicodeEscapeRegex().Replace(value, match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
+    [GeneratedRegex(@"\\u([0-9a-fA-F]{4})", RegexOptions.CultureInvariant, matchTimeoutMilliseconds: 1000)]
+    private static partial Regex UnicodeEscapeRegex();
 }

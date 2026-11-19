@@ -6,6 +6,28 @@
       "Sequence": 0,
       "Steps": [
         {
+          "Position": {
+            "X": -431.53903,
+            "Y": -220.1193,
+            "Z": 301.76364
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"InTerritory": [1158]}}
+        },
+        {
+          "DataId": 2012229,
+          "Position": {
+            "X": -232.56274,
+            "Y": -224.41449,
+            "Z": 340.6272
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1158
+        },
+        {
           "DataId": 1045347,
           "Position": {
             "X": 98.98523,

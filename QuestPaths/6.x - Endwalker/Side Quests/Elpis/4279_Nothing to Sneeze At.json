@@ -22,12 +22,7 @@
             }
           ],
           "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

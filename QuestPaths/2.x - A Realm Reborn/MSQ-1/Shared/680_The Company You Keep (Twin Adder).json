@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-22"},
+  "LastChecked": {"Username": "erdelf", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,6 +14,7 @@
             "Z": 3.463745
           },
           "TerritoryId": 212,
+          "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -94,12 +95,7 @@
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
           },
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
         }
       ]
     },

@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 
@@ -12,6 +7,7 @@ namespace Questionable.Controller;
 ///     Holds and mutates the user's manually-prioritised quest list. Extracted from
 ///     <see cref="QuestController"/> so the list logic lives in one focused, testable place.
 /// </summary>
+[RegisterSingleton]
 internal sealed class QuestPriorityManager(
     QuestRegistry questRegistry,
     ILogger<QuestPriorityManager> logger,
@@ -20,9 +16,36 @@ internal sealed class QuestPriorityManager(
     private const char ClipboardSeparator = ';';
     private readonly List<Quest> _quests = [];
 
+    /// <summary>
+    ///     Quests in the priority list that should only be <em>accepted</em>, not driven to completion.
+    ///     They are initially automated to acceptance; once accepted they are left to the normal questing rules (to-do list order, same-society batch turn-ins, ...)
+    ///     to complete. They remain visible in the priority list, and marked as accepted, but the priority completion selection always skips them once accepted.
+    /// </summary>
+    private readonly HashSet<ElementId> _acceptOnly = [];
+
     public IReadOnlyList<Quest> Quests => _quests;
     public int Count => _quests.Count;
     public bool IsEmpty => _quests.Count == 0;
+
+    /// <summary>Priority-list quests flagged accept-only, in list order.</summary>
+    public IEnumerable<Quest> AcceptOnlyQuests => _quests.Where(q => _acceptOnly.Contains(q.Id));
+
+    public bool HasPendingAcceptOnly => _acceptOnly.Count > 0;
+
+    public bool IsAcceptOnly(ElementId elementId) => _acceptOnly.Contains(elementId);
+
+    /// <summary>Adds the quest to the priority list (if needed) and flags it as accept-only.</summary>
+    public void MarkAcceptOnly(ElementId elementId)
+    {
+        Add(elementId);
+        if (Contains(elementId))
+            _acceptOnly.Add(elementId);
+    }
+
+    public void ClearAcceptOnly(ElementId elementId) => _acceptOnly.Remove(elementId);
+
+    /// <summary>Clears every accept-only flag (the quests remain in the priority list).</summary>
+    public void ClearAllAcceptOnly() => _acceptOnly.Clear();
 
     public bool Contains(Quest quest) => _quests.Any(q => q.Id == quest.Id);
 
@@ -74,6 +97,8 @@ internal sealed class QuestPriorityManager(
             logger.LogDebug($"Removing {index}: {_quests[index].Info.Name}");
             _quests.RemoveAt(index);
         }
+
+        _acceptOnly.Remove(elementId);
     }
 
     /// <summary>Moves the quest at <paramref name="oldIndex"/> to <paramref name="newIndex"/> (used by drag-drop).</summary>
@@ -87,9 +112,21 @@ internal sealed class QuestPriorityManager(
         _quests.Insert(newIndex, quest);
     }
 
-    public void RemoveCompleted(Func<ElementId, bool> isComplete) => _quests.RemoveAll(q => isComplete(q.Id));
+    public void RemoveCompleted(Func<ElementId, bool> isComplete, Func<ElementId, bool> isAccepted)
+    {
+        // First remove everything that's completed (any kind), then remove accept-only quests that have
+        // been accepted (picked up) but not completed. Normal priority quests that are merely accepted and
+        // still in progress are left alone. Keeps the accept-only flags in sync with whatever remains.
+        _quests.RemoveAll(q => isComplete(q.Id));
+        _quests.RemoveAll(q => _acceptOnly.Contains(q.Id) && isAccepted(q.Id));
+        _acceptOnly.RemoveWhere(id => _quests.All(q => q.Id != id));
+    }
 
-    public void Clear() => _quests.Clear();
+    public void Clear()
+    {
+        _quests.Clear();
+        _acceptOnly.Clear();
+    }
 
     public void Import(IEnumerable<ElementId> questElements)
     {

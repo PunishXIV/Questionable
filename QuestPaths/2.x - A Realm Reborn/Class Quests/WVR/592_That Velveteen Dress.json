@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Undyed Velveteen HQ\nAutocraft requires:\n 1x Cotton Yarn,\n 1x Dew Thread",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,17 +16,13 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Weavers' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
+              "InTerritory": [130, 131]
             }
           }
         }
@@ -42,7 +39,12 @@
             "Z": 6.8512573
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Weavers' Guild",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 1003821,
@@ -52,7 +54,8 @@
             "Z": 6.454529
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         }
       ]
     },
@@ -67,7 +70,11 @@
             "Z": 98.924194
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Weavers' Guild"
+          ]
         }
       ]
     },
@@ -95,7 +102,11 @@
             "Z": 98.924194
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
         }
       ]
     }

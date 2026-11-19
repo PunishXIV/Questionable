@@ -1,16 +1,10 @@
-﻿using System;
-using Dalamud.Game.Gui.Toast;
+﻿using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Controller.Utils;
-using Questionable.External;
-using Questionable.Windows;
+using I18N.DotNet;
+using Lumina.Excel.Sheets;
 namespace Questionable;
 
+[RegisterSingleton]
 internal sealed class DalamudInitializer : IDisposable
 {
     private readonly Configuration _configuration;
@@ -27,6 +21,9 @@ internal sealed class DalamudInitializer : IDisposable
     private readonly IChatGui _chatGui;
     private readonly IToastGui _toastGui;
     private readonly WindowSystem _windowSystem;
+    private bool _disposed;
+    internal bool FlagGearUnequippable;
+    internal bool FlagUnableExecuteCommand;
 
     public DalamudInitializer(
         IDalamudPluginInterface pluginInterface,
@@ -42,6 +39,7 @@ internal sealed class DalamudInitializer : IDisposable
         QuestValidationWindow questValidationWindow,
         JournalProgressWindow journalProgressWindow,
         PriorityWindow priorityWindow,
+        PathEditorWindow pathEditorWindow,
         IChatGui chatGui,
         IToastGui toastGui,
         Configuration configuration,
@@ -63,6 +61,7 @@ internal sealed class DalamudInitializer : IDisposable
         _highlightObject = highlightObject;
         _partyWatchDog = partyWatchDog;
         _logger = logger;
+        SetupI18N(_configuration.General.Language);
 
         _windowSystem.AddWindow(oneTimeSetupWindow);
         _windowSystem.AddWindow(questWindow);
@@ -72,6 +71,7 @@ internal sealed class DalamudInitializer : IDisposable
         _windowSystem.AddWindow(questValidationWindow);
         _windowSystem.AddWindow(journalProgressWindow);
         _windowSystem.AddWindow(priorityWindow);
+        _windowSystem.AddWindow(pathEditorWindow);
 
         _pluginInterface.UiBuilder.Draw += _windowSystem.Draw;
         _pluginInterface.UiBuilder.OpenMainUi += ToggleQuestWindow;
@@ -91,6 +91,13 @@ internal sealed class DalamudInitializer : IDisposable
 
     public void Dispose()
     {
+        // Idempotent: QuestionablePlugin.DisposeAsync calls this up-front to unhook Dalamud event
+        // sources before the DI container is disposed, and MS.DI then calls it again during the
+        // container's own disposal walk. Second call must be a no-op.
+        if (_disposed)
+            return;
+        _disposed = true;
+
         _toastGui.QuestToast -= OnQuestToast;
         _toastGui.ErrorToast -= OnErrorToast;
         _toastGui.Toast -= OnToast;
@@ -111,16 +118,53 @@ internal sealed class DalamudInitializer : IDisposable
         {
             _movementController.Update();
         }
-        catch (MovementController.PathfindingFailedException)
+        catch (MovementController.PathfindingFailedException e)
         {
-            _chatGui.PrintError($"vnavmesh was not able to find a path! Please report this to Questionable developers. {_questController.CurrentQuest}", CommandHandler.MessageTag, CommandHandler.TagColor);
-            _questController.Stop("Pathfinding failed");
+            _logger.LogError(e, $"PathfindingFailedException NeverFly:{_configuration.Advanced.NeverFly}");
+            if (_configuration.Advanced.NeverFly)
+                _chatGui.PrintError(_L("vnavmesh was not able to find a path. This may be due to the " +
+                    "'Disable flying' setting in QST config > Advanced. Please uncheck this if you expected this " +
+                    "to run fine.") + $" {e.Message}", CommandHandler.MessageTag, CommandHandler.TagColor);
+            else
+                _chatGui.PrintError(_LF("vnavmesh was not able to find a path! Please report this to " +
+                    "Questionable developers. {0}", _questController.CurrentQuest?.ToString() ?? "") + $" {e.Message}",
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+            _questController.Stop(_L("Pathfinding failed"));
         }
     }
 
     private void OnToast(ref SeString message, ref ToastOptions options, ref bool isHandled) => _logger.LogTrace("Normal Toast: {Message}", message);
 
-    private void OnErrorToast(ref SeString message, ref bool isHandled) => _logger.LogTrace("Error Toast: {Message}", message);
+    private void OnErrorToast(ref SeString message, ref bool isHandled)
+    {
+        if (DialogueReferenceResolver.IsMatch(
+                message.ToString(),
+                new(Svc.Data.GetExcelSheet<LogMessage>().GetRow(1951).Text.ToRegex())) // 'contains gear unequippable'
+            && _questController.IsRunning)
+        {
+            FlagGearUnequippable = true;
+            _logger.LogDebug("Toast: Gear Unequippable");
+        }
+        else if (FlagGearUnequippable)
+        {
+            FlagGearUnequippable = false;
+        }
+
+        if (DialogueReferenceResolver.IsMatch(
+                message.ToString(),
+                new(Svc.Data.GetExcelSheet<LogMessage>().GetRow(7777).Text.ToRegex())) // 'unable to execute command while in flight'
+            && _questController.IsRunning)
+        {
+            FlagUnableExecuteCommand = true;
+            _logger.LogDebug("Toast: UnableExecuteCommand");
+        }
+        else if (FlagUnableExecuteCommand)
+        {
+            FlagUnableExecuteCommand = false;
+        }
+
+        _logger.LogTrace("Error Toast: {Message}", message);
+    }
 
     private void OnQuestToast(ref SeString message, ref QuestToastOptions options, ref bool isHandled) => _logger.LogTrace("Quest Toast: {Message}", message);
 
@@ -134,5 +178,15 @@ internal sealed class DalamudInitializer : IDisposable
         {
             _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
         }
+    }
+
+    internal static void SetupI18N(CultureInfo culture) => GlobalLocalizer.Localizer.Load(culture);
+    internal static void SetupI18N(string language)
+    {
+        CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(language);
+        GlobalLocalizer.Localizer.LoadXML(
+            Path.Combine(Svc.PluginInterface.AssemblyLocation.Directory?.FullName ??
+                new FileInfo(typeof(DalamudInitializer).Assembly.Location).DirectoryName ?? "", "Resources", "I18N.xml"),
+            CultureInfo.CurrentUICulture);
     }
 }

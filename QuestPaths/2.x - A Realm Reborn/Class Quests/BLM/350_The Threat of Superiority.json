@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,16 +16,10 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Thaumaturges' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -111,17 +107,11 @@
             "Enabled": true,
             "TestedBossModVersion": "0.3.2.4",
             "Notes": [
-              "vbm doesn't move to the enemies automatically",
-              "vbm doesn't interact with the urn"
+              "vbm takes a while to move to the enemies, but it does fight as well as interact -alydev"
             ]
           },
           "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     },
@@ -137,7 +127,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Thaumaturges' Guild"

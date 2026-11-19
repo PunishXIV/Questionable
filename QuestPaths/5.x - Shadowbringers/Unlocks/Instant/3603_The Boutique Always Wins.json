@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,6 +14,7 @@
             "Z": -25.223206
           },
           "TerritoryId": 820,
+          "AetheryteShortcut": "Eulmore",
           "InteractionType": "AcceptQuest"
         }
       ]

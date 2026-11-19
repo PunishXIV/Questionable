@@ -1,0 +1,68 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047109,
+          "Position": {
+            "X": 155.056,
+            "Y": -13.98,
+            "Z": 2.99969
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: issuer 1047109 (Xeerol Ja)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047110,
+          "Position": {
+            "X": -35.4151,
+            "Y": -10,
+            "Z": 126.733
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
+          "$": "auto: todo location -> 1047110 (Halnaruk)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047109,
+          "Position": {
+            "X": 155.056,
+            "Y": -13.98,
+            "Z": 2.99969
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4983,
+          "AethernetShortcut": [
+            "[Tuliyollal] Bayside Bevy Marketplace",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: todo turn-in -> 1047109 (Xeerol Ja)"
+        }
+      ]
+    }
+  ]
+}

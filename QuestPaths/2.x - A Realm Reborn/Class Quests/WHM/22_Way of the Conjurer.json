@@ -1,10 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked": {
-    "Username": "alydev",
-    "Date": "2025-11-10"
-  },
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -17,7 +15,6 @@
             "Z": -11.093384
           },
           "TerritoryId": 133,
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Conjurers' Guild"
@@ -25,7 +22,6 @@
           "InteractionType": "AcceptQuest",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]
@@ -40,19 +36,29 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 1995,
-          "TerritoryId": 133
+          "TerritoryId": 133,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 133
+          "TerritoryId": 133,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 133
+          "TerritoryId": 133,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 133
+          "TerritoryId": 133,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000692,
@@ -157,7 +163,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Conjurers' Guild"

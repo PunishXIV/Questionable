@@ -13,11 +13,6 @@
             "Z": 42.86255
           },
           "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "TerritoryId": 1190,
           "Fly": true,
           "InteractionType": "AcceptQuest"

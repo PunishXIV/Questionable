@@ -8,6 +8,11 @@
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 478,
+          "InteractionType": "Instruction",
+          "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
+        },
+        {
           "DataId": 1017654,
           "Position": {
             "X": 79.72839,
@@ -16,12 +21,7 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Idyllshire"
         }
       ]
     },
@@ -50,12 +50,7 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Idyllshire"
         }
       ]
     }

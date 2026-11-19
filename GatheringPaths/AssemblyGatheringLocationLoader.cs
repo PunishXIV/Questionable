@@ -19,7 +19,7 @@ public static partial class AssemblyGatheringLocationLoader
             {
                 _locations = [];
 #if RELEASE
-                LoadLocations();
+                //LoadLocations();
 #endif
             }
 

@@ -1,10 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {
-    "Username": "alydev",
-    "Date": "2025-10-28"
-  },
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -19,12 +16,7 @@
           "InteractionType": "WalkTo",
           "Fly": true,
           "Land": true,
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Churning Mists - Moghome"
         },
         {
           "DataId": 1014442,

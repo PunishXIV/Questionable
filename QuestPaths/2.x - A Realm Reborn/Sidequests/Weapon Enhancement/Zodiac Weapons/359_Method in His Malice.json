@@ -1,0 +1,174 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010810,
+          "Position": {
+            "X": 109.4834,
+            "Y": 31,
+            "Z": -388.8457
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 141,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "Enabled": true,
+            "ContentFinderConditionId": 10
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010810,
+          "Position": {
+            "X": 109.4834,
+            "Y": 31,
+            "Z": -388.8457
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 141,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "Enabled": true,
+            "ContentFinderConditionId": 18
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1010810,
+          "Position": {
+            "X": 109.4834,
+            "Y": 31,
+            "Z": -388.8457
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 141,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "Enabled": true,
+            "ContentFinderConditionId": 23
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1010810,
+          "Position": {
+            "X": 109.4834,
+            "Y": 31,
+            "Z": -388.8457
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "TerritoryId": 141,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "Enabled": true,
+            "ContentFinderConditionId": 26
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1010810,
+          "Position": {
+            "X": 109.4834,
+            "Y": 31,
+            "Z": -388.8457
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1010810,
+          "Position": {
+            "X": 109.4834,
+            "Y": 31,
+            "Z": -388.8457
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010810,
+          "Position": {
+            "X": 109.4834,
+            "Y": 31,
+            "Z": -388.8457
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

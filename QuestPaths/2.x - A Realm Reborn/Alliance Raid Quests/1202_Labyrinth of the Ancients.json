@@ -1,9 +1,10 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": [
     "JerryWester",
     "Kiarra"
   ],
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -17,12 +18,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         }
       ]
     },
@@ -57,6 +53,7 @@
         {
           "TerritoryId": 156,
           "InteractionType": "Duty",
+          "Comment": "The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode (\"unsync\"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter.",
           "DutyOptions": {
             "ContentFinderConditionId": 92,
             "Enabled": false,
@@ -70,29 +67,43 @@
       "Steps": [
         {
           "Position": {
-            "X": 445.96164,
-            "Y": -5.3604937,
-            "Z": -466.67636
+            "X": 446.19678,
+            "Y": -5.403494,
+            "Z": -467.83466
           },
           "TerritoryId": 156,
+          "StopDistance": 1,
           "InteractionType": "WalkTo",
           "Fly": true,
           "AetheryteShortcut": "Mor Dhona",
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "Never": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 40.024292,
+                  "Y": 24.002441,
+                  "Z": -668.0247
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 30
+              }
             }
           }
         },
         {
           "DataId": 1007763,
           "Position": {
-            "X": 447.4403,
-            "Y": -5.3500423,
-            "Z": -467.7959
+            "X": 446.19678,
+            "Y": -5.403494,
+            "Z": -467.83466
           },
           "TerritoryId": 156,
+          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
+          "Fly": true,
           "NextQuestId": 1203
         }
       ]

@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using AethernetShortcut = Questionable.Controller.Steps.Shared.AethernetShortcut;
@@ -25,7 +14,6 @@ internal static class UseItem
     internal sealed class Factory
     (
         IClientState clientState,
-        TerritoryData territoryData,
         ILogger<Factory> logger)
         : ITaskFactory
     {
@@ -59,17 +47,23 @@ internal static class UseItem
                 [
                     task,
                     new WaitCondition.Task(() => clientState.TerritoryType == 140,
-                        $"Wait(territory: {territoryData.GetNameAndId(140)})"),
-                    new Mount.MountTask(140,
-                        nextPosition != null ? Mount.EMountIf.AwayFromPosition : Mount.EMountIf.Always,
+                        $"Wait(territory: {TerritoryData.GetNameAndId(140)})"),
+                    new MountStep.MountTask(140,
+                        nextPosition != null ? MountStep.EMountIf.AwayFromPosition : MountStep.EMountIf.Always,
                         nextPosition),
-                    new MoveTask(140, new(-408.92343f, 23.167036f, -351.16223f), null, 0.25f,
-                        null, true, false,
+                    new MoveTask(
+                        TerritoryId: 140,
+                        new(-408.92343f, 23.167036f, -351.16223f),
+                        Mount: null,
+                        StopDistance: 0.25f,
+                        DataId: null,
+                        DisableNavmesh: true,
+                        Sprint: false,
                         InteractionType: EInteractionType.WalkTo)
                 ];
             }
 
-            Mount.UnmountTask unmount = new();
+            MountStep.UnmountTask unmount = new();
             if (step.GroundTarget == true)
             {
                 ITask task;
@@ -87,7 +81,7 @@ internal static class UseItem
                         step.CompletionQuestVariablesFlags);
                 }
 
-                return [unmount, new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1)), task];
+                return [unmount, new WaitAtEnd.WaitDelay(), task];
             }
             else if (step.DataId != null)
             {
@@ -109,12 +103,12 @@ internal static class UseItem
             uint npcId = 1003540;
             ushort territoryId = 129;
             Vector3 destination = new(-360.9217f, 8f, 38.92566f);
-            yield return new AetheryteShortcut.Task(null, null, EAetheryteLocation.Limsa, territoryId);
+            yield return new AetheryteShortcut.Task(Step: null, ElementId: null, EAetheryteLocation.Limsa, territoryId);
             yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaArcanist);
             yield return new WaitAtEnd.WaitDelay();
             yield return new MoveTask(territoryId, destination, DataId: npcId, Sprint: false,
                 InteractionType: EInteractionType.WalkTo);
-            yield return new Interact.Task(npcId, null, EInteractionType.None, true);
+            yield return new Interact.Task(npcId, Quest: null, EInteractionType.None, SkipMarkerCheck: true);
         }
     }
 
@@ -208,8 +202,8 @@ internal static class UseItem
         {
             if (ItemId == QuestStep.VesperBayAetheryteTicket)
                 return TimeSpan.FromSeconds(11);
-            else
-                return TimeSpan.FromSeconds(5);
+
+            return TimeSpan.FromSeconds(5);
         }
 
         public override bool ShouldInterruptOnDamage() => true;
@@ -244,7 +238,7 @@ internal static class UseItem
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString() => $"UseItem({ItemId} on ground at {Position.ToString("G", CultureInfo.InvariantCulture)})";
+        public override string ToString() => $"UseItem({ItemId} on ground at {Position.ToString("G5", CultureInfo.InvariantCulture)})";
     }
 
     internal sealed class UseOnPositionExecutor

@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 12x Undyed Hempen Cloth\nAutocraft requires:\n 24x Hempen Yarn",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Weavers' Guild"
@@ -56,7 +56,11 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true
+          "AllowHighQuality": true,
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
         }
       ]
     }

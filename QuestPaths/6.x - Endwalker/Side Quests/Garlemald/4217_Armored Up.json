@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "goatzone",
+  "Comment": "Magitek armor does not yet automate reliably, manual interaction may be required -alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -38,6 +39,16 @@
     {
       "Sequence": 2,
       "Steps": [
+        {
+          "DataId": 1041119,
+          "Position": {
+            "X": 135.85095,
+            "Y": -17.135998,
+            "Z": 567.8645
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        },
         {
           "Position": {
             "X": 73.64728,

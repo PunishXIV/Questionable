@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "Saionji", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,8 +15,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "SkipConditions": {"AetheryteShortcutIf": {"InSameTerritory": true}}
+          "AetheryteShortcut": "Crystarium"
         }
       ]
     },

@@ -49,12 +49,7 @@
           "TerritoryId": 1190,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
         }
       ]
     },
@@ -71,12 +66,7 @@
           "TerritoryId": 1190,
           "InteractionType": "Interact",
           "StopDistance": 4,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
         }
       ]
     },
@@ -210,12 +200,7 @@
               "Type": "YesNo",
               "Yes": true
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -240,12 +225,7 @@
               "Type": "YesNo",
               "Yes": true
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

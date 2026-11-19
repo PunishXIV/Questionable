@@ -1,12 +1,15 @@
-﻿using System;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Ipc;
-using Microsoft.Extensions.Logging;
+﻿using Dalamud.Plugin.Ipc;
 using Questionable.Model.Common;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
-internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILogger<LifestreamIpc> logger)
+[RegisterSingleton]
+internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILogger<LifestreamIpc> logger) : Ipc
 {
+    public override string InternalName => "Lifestream";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy.InvokeFunc(), fallback: false);
+#pragma warning disable CA1823 // Avoid unused private fields
     private readonly ICallGateSubscriber<string, bool> _aethernetTeleport =
         pluginInterface.GetIpcSubscriber<string, bool>("Lifestream.AethernetTeleport");
     private readonly ICallGateSubscriber<uint, bool> _aethernetTeleportById =
@@ -17,8 +20,9 @@ internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILo
         pluginInterface.GetIpcSubscriber<bool>("Lifestream.AethernetTeleportToFirmament");
     private readonly ICallGateSubscriber<bool> _isBusy =
         pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
+#pragma warning restore CA1823 // Avoid unused private fields
 
-    public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy.InvokeFunc(), false);
+    public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy.InvokeFunc(), fallback: false);
 
     public bool Teleport(string destination)
     {

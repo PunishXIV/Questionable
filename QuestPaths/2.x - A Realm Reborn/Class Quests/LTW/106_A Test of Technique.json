@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Leather Choker\nAutocraft requires:\n 3x Leather,\n 3x Animal Sinew",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +16,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Leatherworkers' Guild & Shaded Bower"
@@ -56,7 +56,11 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true
+          "AllowHighQuality": true,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
         }
       ]
     }

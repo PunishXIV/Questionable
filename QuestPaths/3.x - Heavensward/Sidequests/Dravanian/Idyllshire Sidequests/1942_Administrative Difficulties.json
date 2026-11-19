@@ -1,0 +1,87 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.368,
+            "Y": 205.873,
+            "Z": 23.4836
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012097 (Slowfix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012133,
+          "Position": {
+            "X": -26.8102,
+            "Y": 206.47,
+            "Z": 28.6716
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012133 (Midnight Dew)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012133,
+          "Position": {
+            "X": 300.668,
+            "Y": 68.4309,
+            "Z": -149.941
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4779
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014332,
+          "Position": {
+            "X": 302.478,
+            "Y": 68.2588,
+            "Z": -151.692
+          },
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    }
+  ]
+}

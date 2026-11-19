@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-28"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -26,15 +26,8 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 843.4621,
-            "Y": 5.923009,
-            "Z": 845.776
-          },
           "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Kugane",
+          "InteractionType": "None",
           "AethernetShortcut": [
             "[Kugane] Aetheryte Plaza",
             "[Kugane] The Ruby Price"
@@ -75,7 +68,8 @@
             ],
             null,
             null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 8250,
@@ -112,7 +106,8 @@
             ],
             null,
             null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 8250,
@@ -149,7 +144,8 @@
             ],
             null,
             null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "Position": {
@@ -185,7 +181,8 @@
             ],
             null,
             null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
           "Position": {
@@ -221,7 +218,8 @@
             ],
             null,
             null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         }
       ]
     },

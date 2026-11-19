@@ -1,12 +1,13 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["liza", "Friendly"],
+  "LastChecked": {"Username": "erdelf", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 128,
+          "TerritoryId": 1,
           "InteractionType": "UseItem",
           "ItemId": 30362,
           "TargetTerritoryId": 140,

@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "Saionji", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         }
       ]
     },
@@ -82,7 +78,8 @@
           },
           "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "SinglePlayerDuty"
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": false}
         }
       ]
     },

@@ -1,11 +1,17 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+            "TerritoryId": 132,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Archer"
+        },
         {
           "DataId": 1000200,
           "Position": {
@@ -16,16 +22,10 @@
           "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -42,12 +42,7 @@
           "TerritoryId": 153,
           "InteractionType": "Interact",
           "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -57,11 +52,12 @@
         {
           "DataId": 1007834,
           "Position": {
-            "X": 447.2876,
-            "Y": 2.147105,
-            "Z": 21.86615
+            "X": 445.78363,
+            "Y": 2.5410807,
+            "Z": 23.423607
           },
           "TerritoryId": 153,
+          "StopDistance": 1,
           "InteractionType": "Interact",
           "Fly": true
         }

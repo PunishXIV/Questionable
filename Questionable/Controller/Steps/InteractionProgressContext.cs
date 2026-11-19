@@ -1,5 +1,4 @@
-﻿using System;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 namespace Questionable.Controller.Steps;
 
 internal sealed class InteractionProgressContext
@@ -34,7 +33,7 @@ internal sealed class InteractionProgressContext
         int newSequence = ActionManager.Instance()->LastUsedActionSequence;
         if (oldSequence == newSequence)
             return (true, null);
-        return (true, Create(true));
+        return (true, Create(checkSequence: true));
     }
 
     public static InteractionProgressContext? FromActionUse(Func<bool> func) => FromActionUseInternal(func).Item2;
@@ -44,7 +43,7 @@ internal sealed class InteractionProgressContext
         (bool, InteractionProgressContext?) result = FromActionUseInternal(func);
         if (!result.Item1)
             return null;
-        return result.Item2 ?? Create(false);
+        return result.Item2 ?? Create(checkSequence: false);
     }
 
     public unsafe void Update()

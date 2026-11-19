@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000172,
+          "Position": {
+            "X": 358.968,
+            "Y": 8.93414,
+            "Z": 231.281
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "$": "auto: issuer 1000172 (Paulemont)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000143,
+          "Position": {
+            "X": 299.316,
+            "Y": -15.0989,
+            "Z": 294.85
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 2000143 (dusty malmstone)"
+        },
+        {
+          "DataId": 2000144,
+          "Position": {
+            "X": 282.124,
+            "Y": -25.3148,
+            "Z": 160.052
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 2000144 (dusty malmstone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000627,
+          "Position": {
+            "X": 301.167,
+            "Y": -5.57012,
+            "Z": 321.126
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "NextQuestId": 103,
+          "$": "auto: todo turn-in -> 1000627 (Q'djawana)"
+        }
+      ]
+    }
+  ]
+}

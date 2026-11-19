@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Model;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed class AlliedSocietyQuestFunctions
 {
     private readonly Dictionary<EAlliedSociety, byte> _alliedSocietyLastSeenRank = [];
     private readonly Dictionary<(uint NpcDataId, byte Seed, bool OutranksAll, bool RankedUp), List<QuestId>> _dailyQuests = [];
     private readonly ILogger<AlliedSocietyQuestFunctions> _logger;
     private readonly QuestData _questData;
+    private readonly QuestRegistry _questRegistry;
     private readonly Dictionary<EAlliedSociety, List<NpcData>> _questsByAlliedSociety = [];
 
-    public AlliedSocietyQuestFunctions(QuestData questData, ILogger<AlliedSocietyQuestFunctions> logger)
+    public unsafe AlliedSocietyQuestFunctions(QuestData questData, QuestRegistry questRegistry, ILogger<AlliedSocietyQuestFunctions> logger)
     {
         _questData = questData;
+        _questRegistry = questRegistry;
         _logger = logger;
         Initialize();
     }
@@ -36,7 +35,7 @@ internal sealed class AlliedSocietyQuestFunctions
             foreach ((uint issuerDataId, List<QuestInfo> quests) in questsByIssuer)
             {
                 NpcData npcData = new()
-                    { IssuerDataId = issuerDataId, AllQuests = quests };
+                { IssuerDataId = issuerDataId, AllQuests = quests };
                 if (_questsByAlliedSociety.TryGetValue(alliedSociety, out List<NpcData>? existingNpcs))
                     existingNpcs.Add(npcData);
                 else
@@ -45,11 +44,41 @@ internal sealed class AlliedSocietyQuestFunctions
         }
     }
 
-    public void Reload()
+    public unsafe void Reload()
     {
         foreach ((uint NpcDataId, byte Seed, bool OutranksAll, bool RankedUp) item in _dailyQuests.Keys)
             _dailyQuests.Remove(item);
     }
+
+    public EAlliedSociety[] GetAlliedSocieties(bool all = false) =>
+        AlliedSocietyUnlockQuest
+            .Where(s => all || ((QuestInfo)_questData.GetQuestInfo(new QuestId(s.Value))).Expansion <= _questRegistry.CharacterExpansion)
+            .Select(s => s.Key)
+            .ToArray();
+
+    public static readonly Dictionary<EAlliedSociety, ushort> AlliedSocietyUnlockQuest = new()
+    {
+        [EAlliedSociety.Amaljaa] = 1217,
+        [EAlliedSociety.Sylphs] = 1252,
+        [EAlliedSociety.Kobolds] = 1320,
+        [EAlliedSociety.Sahagin] = 1374,
+        [EAlliedSociety.Ixal] = 1486,
+        [EAlliedSociety.VanuVanu] = 2164,
+        [EAlliedSociety.Vath] = 2255,
+        [EAlliedSociety.Moogles] = 2320,
+        [EAlliedSociety.Kojin] = 2973,
+        [EAlliedSociety.Ananta] = 3036,
+        [EAlliedSociety.Namazu] = 3096,
+        [EAlliedSociety.Pixies] = 3683,
+        [EAlliedSociety.Qitari] = 3794,
+        [EAlliedSociety.Dwarves] = 3896,
+        [EAlliedSociety.Arkasodara] = 4545,
+        [EAlliedSociety.Omicrons] = 4601,
+        [EAlliedSociety.Loporrits] = 4681,
+        [EAlliedSociety.YokHuy] = 5330,
+        [EAlliedSociety.MamoolJa] = 5255,
+        [EAlliedSociety.Pelupelu] = 5193,
+    };
 
     public unsafe List<QuestId> GetAvailableAlliedSocietyQuests(EAlliedSociety alliedSociety)
     {
@@ -73,7 +102,7 @@ internal sealed class AlliedSocietyQuestFunctions
             else
             {
                 List<QuestId> quests = CalculateAvailableQuests(npcData.AllQuests, seed, outranksAll, currentRank, rankedUp);
-                _logger.LogInformation("Available for {Tribe} (Seed: {Seed}, Issuer: {IssuerId}): {Quests}", alliedSociety, seed, npcData.IssuerDataId, string.Join(", ", quests));
+                _logger.LogInformation("Available for {Tribe} (Seed: {Seed}, Issuer: {IssuerId}, RankedUp: {RankedUp}): {Quests}", alliedSociety, seed, npcData.IssuerDataId, rankedUp, string.Join(", ", quests));
 
                 _dailyQuests[key] = quests;
                 result.AddRange(quests);
@@ -128,7 +157,8 @@ internal sealed class AlliedSocietyQuestFunctions
         return available.Select(x => (QuestId)x.QuestId).ToList();
     }
 
-    private static bool IsEligible(QuestInfo questInfo, EAlliedSocietyRank currentRank, bool rankedUp) => rankedUp ? questInfo.AlliedSocietyRank == currentRank : questInfo.AlliedSocietyRank <= currentRank;
+    private static bool IsEligible(QuestInfo questInfo, EAlliedSocietyRank currentRank, bool rankedUp) =>
+        rankedUp ? questInfo.AlliedSocietyRank == currentRank : questInfo.AlliedSocietyRank <= currentRank;
 
     private sealed class NpcData
     {

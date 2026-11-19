@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -24,6 +25,17 @@
           "TerritoryId": 814,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kholusia - Wright"
+        },
+        {
+          "DataId": 1027431,
+          "Position": {
+            "X": -236.95734,
+            "Y": 21.472721,
+            "Z": 346.79175
+          },
+          "TerritoryId": 814,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179711
         },
         {
           "DataId": 1027516,

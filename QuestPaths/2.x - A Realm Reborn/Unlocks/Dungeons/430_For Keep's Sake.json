@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +17,7 @@
           "Fly": true,
           "Land": true,
           "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         },
         {
           "DataId": 1005523,
@@ -50,12 +46,7 @@
           "InteractionType": "Interact",
           "Fly": false,
           "Mount": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "South Shroud - Camp Tranquil"
         }
       ]
     },
@@ -119,7 +110,8 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 29,
-            "Enabled": false
+            "Enabled": false,
+            "LowPriority": true
           }
         }
       ]

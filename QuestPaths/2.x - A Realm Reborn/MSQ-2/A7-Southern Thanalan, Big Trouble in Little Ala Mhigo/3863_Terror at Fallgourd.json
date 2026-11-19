@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,6 +14,7 @@
             "Z": 0.8086548
           },
           "TerritoryId": 212,
+          "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -21,17 +22,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "DataId": 2001717,
-          "Position": {
-            "X": 25.497803,
-            "Y": 2.090454,
-            "Z": -0.015319824
-          },
-          "TerritoryId": 212,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212
-        },
         {
           "DataId": 1007417,
           "Position": {
@@ -48,6 +38,52 @@
       "Sequence": 2,
       "Steps": [
         {
+          "TerritoryId": 132,
+          "TargetTerritoryId": 154,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "North Shroud - Fallgourd Float",
+              "InTerritory": [154]
+            },
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "North Shroud - Fallgourd Float",
+              "InTerritory": [132,154]
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "North Shroud - Fallgourd Float",
+              "InTerritory": [154]
+            }
+          }
+        },
+        {
+          "DataId": 1002985,
+          "Position": {
+            "X": 320.57666,
+            "Y": -6.266033,
+            "Z": -72.80078
+          },
+          "TerritoryId": 154,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179655
+        },
+        {
+          "DataId": 1002984,
+          "Position": {
+            "X": 1.2054443,
+            "Y": -46.518444,
+            "Z": 238.5747
+          },
+          "TerritoryId": 154,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179656
+        },
+        {
           "DataId": 1006240,
           "Position": {
             "X": 14.389221,
@@ -55,12 +91,7 @@
             "Z": 262.65344
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

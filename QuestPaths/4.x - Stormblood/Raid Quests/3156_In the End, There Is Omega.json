@@ -6,6 +6,25 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1021947,
+          "Position": {
+            "X": 476.73767,
+            "Y": 69.83099,
+            "Z": 526.604
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "TargetTerritoryId": 807,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_STMBDR303_03156_SYSTEM_000_006",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        },
+        {
           "DataId": 1026450,
           "Position": {
             "X": -35.01947,

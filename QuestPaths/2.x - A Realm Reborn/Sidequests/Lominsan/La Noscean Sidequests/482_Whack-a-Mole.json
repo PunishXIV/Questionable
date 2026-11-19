@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002659,
+          "Position": {
+            "X": 532.86,
+            "Y": 88.9753,
+            "Z": -72.0989
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: issuer 1002659 (Arenlona)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001497,
+          "Position": {
+            "X": 470.6833,
+            "Y": 68.30606,
+            "Z": -173.7573
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            205
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 10y from lua EOBJECT2 -> 2001497 (pumpkin vine); spawns enemies 205"
+        },
+        {
+          "DataId": 2001496,
+          "Position": {
+            "X": 472.2397,
+            "Y": 68.3989,
+            "Z": -185.9114
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            205
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 13y from lua EOBJECT1 -> 2001496 (pumpkin vine); spawns enemies 205"
+        },
+        {
+          "DataId": 2001495,
+          "Position": {
+            "X": 455.8068,
+            "Y": 68.45988,
+            "Z": -186.8453
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            205
+          ],
+          "$": "auto: todo area 14y from lua EOBJECT0 -> 2001495 (pumpkin vine); spawns enemies 205"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002659,
+          "Position": {
+            "X": 532.86,
+            "Y": 88.9753,
+            "Z": -72.0989
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: todo turn-in -> 1002659 (Arenlona)"
+        }
+      ]
+    }
+  ]
+}

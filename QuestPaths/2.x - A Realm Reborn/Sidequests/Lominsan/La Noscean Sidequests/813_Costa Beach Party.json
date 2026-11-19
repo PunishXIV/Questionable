@@ -1,0 +1,114 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.7284,
+            "Y": 23.936245,
+            "Z": 456.43982
+          },
+          "TerritoryId": 137,
+          "StopDistance": 1,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "$": "auto: issuer 1006273 (Gegeruju)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006274,
+          "Position": {
+            "X": 426.963,
+            "Y": 16.4733,
+            "Z": 410.757
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1006274 (carriage driver)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006275,
+          "Position": {
+            "X": 556.518,
+            "Y": 8.69466,
+            "Z": 337.744
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: lua ACTOR2 -> 1006275 (leggy dancer)"
+        },
+        {
+          "DataId": 1006276,
+          "Position": {
+            "X": 551.90356,
+            "Y": 8.682312,
+            "Z": 303.79175
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 1006277,
+          "Position": {
+            "X": 536.4614,
+            "Y": 8.72472,
+            "Z": 286.2439
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1006278,
+          "Position": {
+            "X": 512.62683,
+            "Y": 8.8349,
+            "Z": 290.48596
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.7284,
+            "Y": 23.936245,
+            "Z": 456.43982
+          },
+          "TerritoryId": 137,
+          "StopDistance": 1,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "$": "auto: todo turn-in -> 1006273 (Gegeruju)"
+        }
+      ]
+    }
+  ]
+}

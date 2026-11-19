@@ -1,0 +1,169 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027715,
+          "Position": {
+            "X": 411.241,
+            "Y": 33.6378,
+            "Z": -128.5
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031351,
+          "Position": {
+            "X": 155.542,
+            "Y": -8.71511,
+            "Z": 324.084
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009938,
+          "Position": {
+            "X": 185.8396,
+            "Y": -11.7647705,
+            "Z": 396.07837
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2009938,
+          "Position": {
+            "X": 185.8396,
+            "Y": -11.7647705,
+            "Z": 396.07837
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002568,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
+        },
+        {
+          "DataId": 2009939,
+          "Position": {
+            "X": 86.900024,
+            "Y": -20.706482,
+            "Z": 523.58276
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2009939,
+          "Position": {
+            "X": 86.900024,
+            "Y": -20.706482,
+            "Z": 523.58276
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002568,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
+        },
+        {
+          "DataId": 2009940,
+          "Position": {
+            "X": 109.30029,
+            "Y": -25.28424,
+            "Z": 595.6664
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2009940,
+          "Position": {
+            "X": 109.30029,
+            "Y": -25.28424,
+            "Z": 595.6664
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002568,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
+        },
+        {
+          "DataId": 2009941,
+          "Position": {
+            "X": 168.5664,
+            "Y": -27.634155,
+            "Z": 710.2921
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2009941,
+          "Position": {
+            "X": 168.5664,
+            "Y": -27.634155,
+            "Z": 710.2921
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002568,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 411.241,
+            "Y": 33.6378,
+            "Z": -128.5
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true
+        },
+        {
+          "DataId": 1027715,
+          "Position": {
+            "X": 411.241,
+            "Y": 33.6378,
+            "Z": -128.5
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

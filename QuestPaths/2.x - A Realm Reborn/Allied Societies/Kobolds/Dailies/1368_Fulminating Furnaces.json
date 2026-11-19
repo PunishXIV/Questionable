@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "vicyorus",
-  "LastChecked": { "Username": "alydev", "Date": "2026-05-24" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -33,6 +33,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "Fly": true
         }
       ]

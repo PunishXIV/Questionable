@@ -55,10 +55,10 @@ internal sealed class EditorWindow : Window
         _clientState = clientState;
         _objectTable = objectTable;
 
-        SizeConstraints = new WindowSizeConstraints
-        {
-            MinimumSize = new(-1, 100)
-        };
+        //SizeConstraints = new WindowSizeConstraints
+        //{
+        //    MinimumSize = new(-1, 100)
+        //};
 
         TitleBarButtons.Add(new()
         {
@@ -68,9 +68,7 @@ internal sealed class EditorWindow : Window
             Priority = int.MinValue,
             ShowTooltip = () =>
             {
-                ImGui.BeginTooltip();
-                ImGui.Text("Open Configuration");
-                ImGui.EndTooltip();
+                ImGui.SetTooltip("Open Configuration");
             }
         });
 
@@ -283,25 +281,25 @@ internal sealed class EditorWindow : Window
         );
         List<RendererPlugin.GatheringLocationContext> loadedPoints = _plugin.GatheringLocations;
         bool shownNone = true;
-        if (ImGuiComponents.IconButton(FontAwesomeIcon.Stop))
+        if (ImGuiComponents.IconButton("gprStopBtn", FontAwesomeIcon.Stop))
             _commandManager.ProcessCommand("/vnav stop");
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("vnav stop");
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButton(compact ? FontAwesomeIcon.Expand : FontAwesomeIcon.Compress))
+        if (ImGuiComponents.IconButton("gprCompactBtn", compact ? FontAwesomeIcon.Expand : FontAwesomeIcon.Compress))
             compact = !compact;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("compact");
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButton(_plugin.DistantRange ? FontAwesomeIcon.Binoculars : FontAwesomeIcon.Eye))
+        if (ImGuiComponents.IconButton("gprRangeBtn", _plugin.DistantRange ? FontAwesomeIcon.Binoculars : FontAwesomeIcon.Eye))
             _plugin.DistantRange = !_plugin.DistantRange;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("distant");
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButton(sortByDistance ? FontAwesomeIcon.SortNumericUp : FontAwesomeIcon.SortAlphaDown))
+        if (ImGuiComponents.IconButton("gprSortDistanceBtn", sortByDistance ? FontAwesomeIcon.SortNumericUp : FontAwesomeIcon.SortAlphaDown))
             sortByDistance = !sortByDistance;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("sort by distance/class");
@@ -310,13 +308,13 @@ internal sealed class EditorWindow : Window
         FontAwesomeIcon filterClassIcon = FontAwesomeIcon.Notdef;
         if (filterClass.Equals(FilterClass.Miner)) filterClassIcon = FontAwesomeIcon.HandRock;
         if (filterClass.Equals(FilterClass.Botanist)) filterClassIcon = FontAwesomeIcon.HandPaper;
-        if (ImGuiComponents.IconButton(filterClassIcon))
+        if (ImGuiComponents.IconButton("gprFilterClassBtn", filterClassIcon))
             filterClass = (FilterClass)(((int)filterClass + 1) % Enum.GetValues<FilterClass>().Length);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("filter none/min/btn");
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButton(showAll ? FontAwesomeIcon.Eye : FontAwesomeIcon.EyeSlash))
+        if (ImGuiComponents.IconButton("gprShowAllBtn", showAll ? FontAwesomeIcon.Eye : FontAwesomeIcon.EyeSlash))
             showAll = !showAll;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("show nodes inc added");
@@ -325,7 +323,7 @@ internal sealed class EditorWindow : Window
         List<string> seen = [];
         count = 0;
         Dictionary<uint, Tuple<string, string, bool, float, bool>> output = [];
-        foreach (GatheringPoint _point in gatheringPoints.OrderBy(x => x.PlaceName.Value.Name.ToMacroString()))
+        foreach (GatheringPoint _point in gatheringPoints.OrderBy(x => x.PlaceName.Value.Name.ToMacroString(), StringComparer.Ordinal))
         {
             if (_point.GatheringPointBase.RowId >= 653 && _point.GatheringPointBase.RowId <= 680) continue; // obsolete skybuilders stuff
             bool alreadyAdded = false;
@@ -382,7 +380,9 @@ internal sealed class EditorWindow : Window
         }
         if (!shownNone)
         {
-            IOrderedEnumerable<Tuple<string, string, bool, float, bool>> sorted = sortByDistance ? output.Values.OrderBy(t => t.Item4) : output.Values.OrderBy(t => t.Item1);
+            IOrderedEnumerable<Tuple<string, string, bool, float, bool>> sorted = sortByDistance ?
+                output.Values.OrderBy(t => t.Item4) :
+                output.Values.OrderBy(t => t.Item1, StringComparer.Ordinal);
             foreach ((string line, string coords, bool orange, float distance, bool alreadyAdded) in sorted)
             {
                 if (alreadyAdded)
@@ -418,16 +418,4 @@ internal sealed class EditorWindow : Window
         Miner,
         Botanist
     }
-}
-
-internal sealed class LocationOverride
-{
-    public int? MinimumAngle { get; set; }
-    public int? MaximumAngle { get; set; }
-    public float? MinimumDistance { get; set; }
-    public float? MaximumDistance { get; set; }
-
-    public bool IsCone() => MinimumAngle != null && MaximumAngle != null && MinimumAngle != MaximumAngle;
-
-    public bool NeedsSave() => (MinimumAngle != null && MaximumAngle != null) || (MinimumDistance != null && MaximumDistance != null);
 }

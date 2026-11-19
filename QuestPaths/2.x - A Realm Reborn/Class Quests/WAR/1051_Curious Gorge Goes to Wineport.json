@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,9 +18,7 @@
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
+            "AetheryteShortcutIf": { "ExtraCondition": "CostaDelSol" }
           }
         }
       ]
@@ -52,10 +52,7 @@
           "TerritoryId": 137,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            2,
-            12
-          ]
+          "KillEnemyDataIds": [2, 12]
         }
       ]
     },
@@ -102,7 +99,7 @@
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {"AetheryteShortcutIf": {"Never": true}},
+          "SkipConditions": { "AetheryteShortcutIf": { "ExtraCondition": "CostaDelSol" } },
           "NextQuestId": 1052,
           "Fly": true
         }

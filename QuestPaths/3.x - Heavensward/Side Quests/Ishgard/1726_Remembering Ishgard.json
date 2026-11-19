@@ -1,0 +1,75 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "Iskierka", "Date": "2026-07-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014704,
+          "Position": {
+            "X": -37.43042,
+            "Y": 5.474268,
+            "Z": 37.55237
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014705,
+          "Position": {
+            "X": -84.18408,
+            "Y": 15.23318,
+            "Z": -43.533997
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014706,
+          "Position": {
+            "X": 58.6709,
+            "Y": 24.07172,
+            "Z": -16.281433
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012213,
+          "Position": {
+            "X": -166.39972,
+            "Y": 14.95313,
+            "Z": -175.7077
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Saint Reymanaud's Cathedral"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Titanium Lump Hammer HQ // Autocraft requires: 2x Titanium Ingot, 1x Hallowed Chestnut Lumber, 1x Mythrite Ingot, 1x Wing Glue",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,10 +23,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
+              "InTerritory": [418, 419]
             }
           }
         }
@@ -43,7 +41,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
@@ -68,9 +65,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
@@ -111,9 +108,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
@@ -132,17 +129,13 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Jeweled Crozier"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
+              "InTerritory": [418, 419]
             }
           }
         }

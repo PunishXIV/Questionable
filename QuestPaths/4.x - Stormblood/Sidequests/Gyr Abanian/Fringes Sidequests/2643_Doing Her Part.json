@@ -1,0 +1,95 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019524,
+          "Position": {
+            "X": -647.246,
+            "Y": 129.793,
+            "Z": -549.604
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: issuer 1019524 (Lucinne)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008074,
+          "Position": {
+            "X": -517.577,
+            "Y": 100.383,
+            "Z": -337.519
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo location -> 2008074 (destination)"
+        },
+        {
+          "DataId": 2008075,
+          "Position": {
+            "X": -318.736,
+            "Y": 83.0609,
+            "Z": -497.248
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 2008075 (destination)"
+        },
+        {
+          "DataId": 2008076,
+          "Position": {
+            "X": -527.105,
+            "Y": 117.019,
+            "Z": -421.643
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 2008076 (destination)"
+        },
+        {
+          "DataId": 2008077,
+          "Position": {
+            "X": -211.866,
+            "Y": 58.3333,
+            "Z": -545.896
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 2008077 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019524,
+          "Position": {
+            "X": -647.246,
+            "Y": 129.793,
+            "Z": -549.604
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo turn-in -> 1019524 (Lucinne)"
+        }
+      ]
+    }
+  ]
+}

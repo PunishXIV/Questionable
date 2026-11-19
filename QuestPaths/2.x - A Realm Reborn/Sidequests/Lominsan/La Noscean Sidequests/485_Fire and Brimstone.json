@@ -1,0 +1,93 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002658,
+          "Position": {
+            "X": 312.493,
+            "Y": 75.9426,
+            "Z": -308.204
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: issuer 1002658 (Broenruht)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001500,
+          "Position": {
+            "X": 278.79,
+            "Y": 74.9491,
+            "Z": -307.793
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2000440,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 2001500 (gas plume); use item ITEM0=2000440 on it"
+        },
+        {
+          "DataId": 2001501,
+          "Position": {
+            "X": 270.25,
+            "Y": 73.624,
+            "Z": -263.29
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "ItemId": 2000440,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            57
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 2001501 (gas plume); spawns enemies 57; use item ITEM0=2000440 on it"
+        },
+        {
+          "DataId": 2001502,
+          "Position": {
+            "X": 294.39,
+            "Y": 73.2362,
+            "Z": -270.22
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "ItemId": 2000440,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            57
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo location -> 2001502 (gas plume); spawns enemies 57; use item ITEM0=2000440 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002658,
+          "Position": {
+            "X": 312.493,
+            "Y": 75.9426,
+            "Z": -308.204
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1002658 (Broenruht)"
+        }
+      ]
+    }
+  ]
+}

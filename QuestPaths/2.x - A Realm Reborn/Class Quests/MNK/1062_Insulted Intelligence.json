@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,7 +11,6 @@
           "TerritoryId": 131,
           "InteractionType": "EquipItem",
           "ItemId": 4543,
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Goldsmiths' Guild"
@@ -20,11 +21,12 @@
                 130,
                 131
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006749,
@@ -87,7 +89,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Goldsmiths' Guild"

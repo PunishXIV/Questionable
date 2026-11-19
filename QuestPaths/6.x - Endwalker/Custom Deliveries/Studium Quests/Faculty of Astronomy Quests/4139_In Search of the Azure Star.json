@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038562,
+          "Position": {
+            "X": -353.895,
+            "Y": 22.306,
+            "Z": -102.947
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: issuer 1038562 (Jude)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038528,
+          "Position": {
+            "X": -368.496,
+            "Y": 19.19,
+            "Z": 91.8438
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1038528 (Jude)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011749,
+          "Position": {
+            "X": -355.3979,
+            "Y": 20.1571,
+            "Z": 87.14417
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 6y from lua EOBJECT0 -> 2011749 (A History of Observatories)"
+        },
+        {
+          "DataId": 2011750,
+          "Position": {
+            "X": -383.0585,
+            "Y": 20.31925,
+            "Z": 107.6649
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 6y from lua EOBJECT1 -> 2011750 (The Encyclopedia of Astronomical Telescopes)"
+        },
+        {
+          "DataId": 2011751,
+          "Position": {
+            "X": -399.3134,
+            "Y": 20.09607,
+            "Z": 93.94971
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "$": "auto: todo area 7y from lua EOBJECT2 -> 2011751 (An Astronomer's Comprehensive Overview of the Starlens)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038528,
+          "Position": {
+            "X": -368.496,
+            "Y": 19.19,
+            "Z": 91.8438
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1038528 (Jude); hands over ITEM0=2003101"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038525,
+          "Position": {
+            "X": -296.547,
+            "Y": 21.846,
+            "Z": -162.13
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo turn-in -> 1038525 (Jude)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +16,7 @@
           "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ishgard"
         }
       ]
     },
@@ -69,9 +65,7 @@
           "TerritoryId": 397,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            4680
-          ],
+          "KillEnemyDataIds": [4680],
           "Fly": true
         }
       ]

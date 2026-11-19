@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -62,6 +63,17 @@
           "TerritoryId": 817,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Rak'tika - Fanow"
+        },
+        {
+          "DataId": 1027710,
+          "Position": {
+            "X": 506.52307,
+            "Y": -6.5944357,
+            "Z": -267.628
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179717
         },
         {
           "DataId": 1027719,

@@ -1,30 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
+﻿using System.Runtime.CompilerServices;
 using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
-using Questionable.Controller;
 using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.External;
-using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
+// TODO: refactor — heavy nesting (27 lines indented ≥6 levels, max indent ~9 levels).
 internal static class WaitAtEnd
 {
     internal sealed class Factory
     (
-        IClientState clientState,
         IObjectTable objectTable,
         ICondition condition,
-        TerritoryData territoryData,
         AutoDutyIpc autoDutyIpc,
-        BossModIpc bossModIpc)
+        IAutoHookIpc autoHookIpc,
+        BossModIpc bossModIpc,
+        RedoUtil redoUtil,
+        QuestData questData,
+        IDataManager dataManager)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -46,9 +38,9 @@ internal static class WaitAtEnd
                     WaitCondition.Task notInCombat = new(() => !condition[ConditionFlag.InCombat], "Wait(not in combat)");
                     return
                     [
-                        new WaitDelay(),
+                        new WaitDelay(TimeSpan.FromSeconds(1)),
                         notInCombat,
-                        new WaitDelay(),
+                        new WaitDelay(TimeSpan.FromSeconds(1)),
                         Next(quest, sequence)
                     ];
 
@@ -59,6 +51,7 @@ internal static class WaitAtEnd
 
                 case EInteractionType.Duty when !autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions):
                 case EInteractionType.SinglePlayerDuty when !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions):
+                case EInteractionType.Fish when !autoHookIpc.IsAvailable():
                     return [new EndAutomation()];
 
                 case EInteractionType.WalkTo:
@@ -67,6 +60,7 @@ internal static class WaitAtEnd
                     return [Next(quest, sequence)];
 
                 case EInteractionType.WaitForObjectAtPosition:
+                case EInteractionType.WaitForNpcAtPosition:
                     if (!step.DataId.HasValue)
                         throw new ArgumentNullException(nameof(step.DataId));
                     if (!step.Position.HasValue)
@@ -75,7 +69,7 @@ internal static class WaitAtEnd
                     return
                     [
                         new WaitObjectAtPosition(step.DataId.Value, step.Position.Value, step.NpcWaitDistance ?? 0.5f),
-                        new WaitDelay(),
+                        new WaitDelay(TimeSpan.FromSeconds(1)),
                         Next(quest, sequence)
                     ];
 
@@ -85,9 +79,7 @@ internal static class WaitAtEnd
                     if (step.TerritoryId != step.TargetTerritoryId)
                     {
                         // interaction moves to a different territory
-                        waitInteraction = new WaitCondition.Task(
-                            () => clientState.TerritoryType == step.TargetTerritoryId,
-                            $"Wait(tp to territory: {territoryData.GetNameAndId(step.TargetTerritoryId.Value)})");
+                        waitInteraction = new WaitForTerritory(step.TargetTerritoryId.Value);
                     }
                     else
                     {
@@ -103,7 +95,7 @@ internal static class WaitAtEnd
                                 //   - waking sands' solar
                                 //   - rising stones' solar + dawn's respite
                                 return (lastPosition - currentPosition.Value).Length() > 2;
-                            }, $"Wait(tp away from {lastPosition.ToString("G", CultureInfo.InvariantCulture)})");
+                            }, $"Wait(tp away from {lastPosition.ToString("G5", CultureInfo.InvariantCulture)})");
                     }
 
                     return
@@ -116,24 +108,30 @@ internal static class WaitAtEnd
                 case EInteractionType.AcceptQuest:
                     {
                         WaitQuestAccepted accept = new(step.PickUpQuestId ?? quest.Id);
-                        WaitDelay delay = new();
+                        WaitDelay delay = new(TimeSpan.FromSeconds(1));
                         if (step.PickUpQuestId != null)
+                        {
+                            if (redoUtil.IsRedoActive()) // Can't accept other quests during NG+
+                                return [delay, Next(quest, sequence)];
                             return [accept, delay, Next(quest, sequence)];
-                        else
-                            return [accept, delay];
+                        }
+
+                        return [accept, delay];
                     }
 
                 case EInteractionType.CompleteQuest:
                     {
                         WaitQuestCompleted complete = new(step.TurnInQuestId ?? quest.Id);
-                        WaitDelay delay = new();
+                        WaitDelay delay = new(TimeSpan.FromSeconds(1));
+                        List<ITask> tasks = [complete, delay, .. RedeemRewardItems.CreateRedeemTasks(questData, dataManager)];
                         if (step.TurnInQuestId != null)
-                            return [complete, delay, Next(quest, sequence)];
-                        else
-                            return [complete, delay];
+                            tasks.Add(Next(quest, sequence));
+                        return tasks;
                     }
 
                 case EInteractionType.Interact:
+                    return [new WaitDelay { InterruptOnDamage = true }, Next(quest, sequence)];
+
                 default:
                     return [new WaitDelay(), Next(quest, sequence)];
             }
@@ -142,19 +140,24 @@ internal static class WaitAtEnd
         private static NextStep Next(Quest quest, QuestSequence sequence) => new(quest.Id, sequence.Sequence);
     }
 
-    internal sealed record WaitDelay(TimeSpan Delay, string? Message) : ITask
+    internal sealed record WaitDelay(TimeSpan Delay, string? Message,
+                   [CallerFilePath] string file = "", [CallerLineNumber] int line = 0) : ITask
     {
-        public WaitDelay()
-            : this(TimeSpan.FromSeconds(1), null)
+        public bool InterruptOnDamage { get; init; }
+
+        public WaitDelay([CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
+            : this(TimeSpan.FromMilliseconds(750), Message: null, file: file, line: line)
         {
         }
-        public WaitDelay(TimeSpan Delay) : this(Delay, null)
+        public WaitDelay(TimeSpan Delay, [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
+            : this(Delay, Message: null, file: file, line: line)
         {
         }
 
         public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString() => $"Wait(seconds: {Delay.TotalSeconds}{(Message != null ? $", message: {Message}" : "")})";
+        public override string ToString() =>
+            $"Wait(seconds: {Delay.TotalSeconds}{(Message != null ? $", message: {Message}" : "")}, {Path.GetFileNameWithoutExtension(file)}:L{line})";
     }
 
     internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>
@@ -165,7 +168,7 @@ internal static class WaitAtEnd
             return true;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage() => Task.InterruptOnDamage;
     }
 
     internal sealed class WaitNextStepOrSequence : ITask
@@ -210,7 +213,7 @@ internal static class WaitAtEnd
         Vector3 Destination,
         float Distance) : ITask
     {
-        public override string ToString() => $"WaitObj({DataId} at {Destination.ToString("G", CultureInfo.InvariantCulture)} < {Distance})";
+        public override string ToString() => $"WaitObj({DataId} at {Destination.ToString("G5", CultureInfo.InvariantCulture)} < {Distance})";
     }
 
     internal sealed class WaitObjectAtPositionExecutor(GameFunctions gameFunctions) : TaskExecutor<WaitObjectAtPosition>
@@ -263,6 +266,27 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => false;
     }
 
+    internal sealed record WaitForTerritory
+    (
+        ushort TerritoryId) : ITask
+    {
+        public override string ToString() => $"WaitForTerritory({TerritoryId})";
+    }
+
+    internal sealed class WaitForTerritoryExecutor(IClientState clientState) : TaskExecutor<WaitForTerritory>
+    {
+        protected override bool Start() => true;
+
+        public override ETaskResult Update()
+        {
+            return clientState.TerritoryType == Task.TerritoryId
+                ? ETaskResult.TaskComplete
+                : ETaskResult.StillRunning;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
     internal sealed record NextStep(ElementId ElementId, int Sequence) : ILastTask
     {
         public override string ToString() => "NextStep";
@@ -290,6 +314,50 @@ internal static class WaitAtEnd
         protected override bool Start() => true;
 
         public override ETaskResult Update() => ETaskResult.End;
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record WaitForConditionActive
+    (
+        ConditionFlag Condition, uint TerritoryType, string? FriendlyText = null) : ITask
+    {
+        public override string ToString() =>
+            $"WaitForConditionActive({FriendlyText ?? $"{Condition.ToFormattedText()}"})";
+    }
+
+    internal sealed class WaitForConditionActiveExecutor(ICondition conditions, IClientState clientState) : TaskExecutor<WaitForConditionActive>
+    {
+        protected override bool Start() => true;
+
+        public override ETaskResult Update()
+        {
+            return (conditions[Task.Condition] || clientState.TerritoryType != Task.TerritoryType)
+                ? ETaskResult.TaskComplete
+                : ETaskResult.StillRunning;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record WaitForConditionCleared
+    (
+        ConditionFlag Condition, uint TerritoryType, string? FriendlyText = null) : ITask
+    {
+        public override string ToString() =>
+            $"WaitForConditionCleared({FriendlyText ?? $"{Condition.ToFormattedText()}"})";
+    }
+
+    internal sealed class WaitForConditionClearedExecutor(ICondition conditions, IClientState clientState) : TaskExecutor<WaitForConditionCleared>
+    {
+        protected override bool Start() => true;
+
+        public override ETaskResult Update()
+        {
+            return (!conditions[Task.Condition] || clientState.TerritoryType != Task.TerritoryType)
+                ? ETaskResult.TaskComplete
+                : ETaskResult.StillRunning;
+        }
 
         public override bool ShouldInterruptOnDamage() => false;
     }

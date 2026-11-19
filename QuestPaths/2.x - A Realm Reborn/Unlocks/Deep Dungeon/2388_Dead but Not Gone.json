@@ -1,0 +1,40 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017324,
+          "Position": {
+            "X": 176.462,
+            "Y": 7.76749,
+            "Z": -47.5406
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017325,
+          "Position": {
+            "X": -195.651,
+            "Y": 6.89674,
+            "Z": 24.9987
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

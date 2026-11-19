@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,8 @@
             "Z": 482.2307
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
         }
       ]
     },

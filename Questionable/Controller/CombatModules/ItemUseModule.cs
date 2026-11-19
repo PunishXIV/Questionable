@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Questionable.Functions;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.CombatModules;
 
+[RegisterSingleton<ICombatModule, ItemUseModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, MovementController movementController, ILogger<ItemUseModule> logger) : ICombatModule
 {
     private CombatController.CombatData? _combatData;
@@ -29,8 +22,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             return false;
 
         _delegate = serviceProvider.GetRequiredService<IEnumerable<ICombatModule>>()
-            .Where(x => x is not ItemUseModule)
-            .FirstOrDefault(x => x.CanHandleFight(combatData));
+            .FirstOrDefault(x => x is not ItemUseModule && x.CanHandleFight(combatData));
         logger.LogInformation("ItemUse delegate: {Delegate}", _delegate?.GetType().Name);
         return _delegate != null;
     }
@@ -83,7 +75,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             if (nextTarget.Position.DistanceTo_XZ(Svc.Objects[0]!.Position) > 3f)
             {
                 logger.LogInformation("Too far from target, moving closer");
-                movementController.NavigateTo(Model.EMovementType.Combat, nextTarget.BaseId, nextTarget.Position, new(){ StopDistance = 3f });
+                movementController.NavigateTo(EMovementType.Combat, nextTarget.BaseId, nextTarget.Position, new() { StopDistance = 3f });
                 _continueAt = DateTime.Now.AddSeconds(1);
                 return;
             }
