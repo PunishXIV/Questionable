@@ -17,6 +17,8 @@ internal sealed class QuestStarter(
     IChatGui chatGui,
     ILogger<QuestStarter> logger)
 {
+    private ElementId? _single;
+
     public bool CanStartQuest(string label)
     {
         if (questController.CanPrepareQuestTasks())
@@ -37,9 +39,13 @@ internal sealed class QuestStarter(
         using IDisposable? scope = logger.BeginScope($"Q/{label}");
         RedeemRewardItems.ResetAttemptedItems();
         stopPolicy.CancelEnding();
+        _single = null;
         questController.AutomationType = EAutomationType.Automatic;
         questController.ExecuteNextStep();
     }
+
+    // Play after a stopped single-quest run (IPC event quests) continues only that quest, not the lists.
+    public bool ResumesSingle => _single is { } id && id.Equals(questController.CurrentQuest?.Quest.Id);
 
     public void StartSingleQuest(string label)
     {
@@ -49,6 +55,7 @@ internal sealed class QuestStarter(
         using IDisposable? scope = logger.BeginScope($"SQ/{label}");
         RedeemRewardItems.ResetAttemptedItems();
         stopPolicy.CancelEnding();
+        _single = (questController.NextQuest ?? questController.CurrentQuest)?.Quest.Id;
         questController.AutomationType = EAutomationType.SingleQuestA;
         questController.ExecuteNextStep();
     }

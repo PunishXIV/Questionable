@@ -767,13 +767,15 @@ internal sealed partial class ActiveQuestComponent
                 if (questProgressInfo == null)
                     questController.SetNextQuest(currentQuest.Quest);
 
-                if (characterRun.StartsList)
+                if (questStarter.ResumesSingle)
+                    questStarter.StartSingleQuest(_L("UI start"));
+                else if (characterRun.StartsList)
                     characterRun.Start();
                 else
                     questStarter.Start(_L("UI start"));
             }
 
-            if (characterRun.StartsList && ImGui.IsItemHovered())
+            if (!questStarter.ResumesSingle && characterRun.StartsList && ImGui.IsItemHovered())
                 QstWidgets.Tooltip(_L("On the character list: when this run ends, Questionable switches to the next ticked character."));
 
             if (configuration.Advanced.Debug)

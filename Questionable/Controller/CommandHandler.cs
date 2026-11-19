@@ -147,7 +147,9 @@ internal sealed class CommandHandler : IDisposable
 
             case "start":
                 _questWindow.IsOpenAndUncollapsed = true;
-                if (_characterRun.StartsList)
+                if (_questStarter.ResumesSingle)
+                    _questStarter.StartSingleQuest(_L("Start command"));
+                else if (_characterRun.StartsList)
                     _characterRun.Start();
                 else
                     _questStarter.Start(_L("Start command"));
