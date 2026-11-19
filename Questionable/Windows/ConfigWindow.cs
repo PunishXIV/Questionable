@@ -40,7 +40,7 @@ internal sealed class ConfigWindow
         _notificationConfigComponent = notificationConfigComponent;
 
         // Page ids are saved as the last open page; don't rename them.
-        string playing = _L("Playing"), content = _L("Content"), automation = _L("Automation"), plugin = _L("Plugin");
+        string playing = _L("Playing"), content = _L("Content"), automation = _L("Automation"), plugin = _L("Setup");
         _pages =
         [
             new(playing, "General", _L("Basics"), FontAwesomeIcon.SlidersH),
@@ -51,7 +51,7 @@ internal sealed class ConfigWindow
             new(automation, "Stop", _L("Stopping"), FontAwesomeIcon.HandPaper),
             new(automation, "Notifications", _L("Alerts"), FontAwesomeIcon.Bullhorn),
             new(automation, "Profiles", _L("Profiles"), FontAwesomeIcon.IdCard),
-            new(plugin, "Plugins", _L("Helper plugins"), FontAwesomeIcon.PuzzlePiece),
+            new(plugin, "Plugins", _L("Plugins"), FontAwesomeIcon.PuzzlePiece),
             new(plugin, "Advanced", _L("Expert"), FontAwesomeIcon.Wrench),
         ];
 

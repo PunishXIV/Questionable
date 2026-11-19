@@ -69,18 +69,8 @@ internal sealed class DutyConfigComponent : ConfigComponent
         ImGuiComponents.HelpMarker(
             _L("AutoDuty runs the duty with its own settings, including which rotation plugin to use. The combat plugin picked on the Basics page isn't used."));
 
-        bool setAside = Configuration.Duties.SetAsideManualDuties;
-        if (ImGui.Checkbox(_L("Set aside quests waiting on a duty you run yourself"), ref setAside))
-        {
-            Configuration.Duties.SetAsideManualDuties = setAside;
-            Save();
-        }
-
-        ImGui.SameLine();
-        ImGuiComponents.HelpMarker(
-            _L("When Questionable can't run a quest's duty, it opens the Duty Finder, sets the quest aside and carries on with other quests. Once you've run the duty, the quest comes back on its own."));
-
         using (ImRaii.Disabled(!_useAutoDuty))
+        using (ImRaii.PushIndent())
         {
             bool catchUp = Configuration.Duties.CatchUpForStory;
             if (ImGui.Checkbox(_L("Catch up when the story is too high"), ref catchUp))
@@ -102,10 +92,8 @@ internal sealed class DutyConfigComponent : ConfigComponent
             int levelGap = Math.Clamp(Configuration.Duties.UnsyncLevelGap, Duty.MinLevelGap, Duty.MaxLevelGap);
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
-                _LF("If your current job is at least {0} levels above a duty's sync level, or your average item level is at least 200 above " +
+                _LF("Experimental. If your current job is at least {0} levels above a duty's sync level, or your average item level is at least 200 above " +
                     "its required item level, Questionable asks AutoDuty to run it solo as an Unrestricted Party. This includes trials.", levelGap));
-            ImGui.SameLine();
-            ImGui.TextColored(QstTheme.Danger, _L("Experimental feature"));
 
             using (ImRaii.Disabled(!runUnsynced))
             using (ImRaii.PushIndent())
@@ -118,6 +106,17 @@ internal sealed class DutyConfigComponent : ConfigComponent
                 }
             }
         }
+
+        bool setAside = Configuration.Duties.SetAsideManualDuties;
+        if (ImGui.Checkbox(_L("Set aside quests waiting on a duty you run yourself"), ref setAside))
+        {
+            Configuration.Duties.SetAsideManualDuties = setAside;
+            Save();
+        }
+
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(
+            _L("When Questionable can't run a quest's duty, it opens the Duty Finder, sets the quest aside and carries on with other quests. Once you've run the duty, the quest comes back on its own."));
 
         ImGui.Separator();
 

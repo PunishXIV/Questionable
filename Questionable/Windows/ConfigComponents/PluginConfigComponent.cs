@@ -263,7 +263,7 @@ internal sealed class PluginConfigComponent
         ImGuiComponents.HelpMarker(_L("Questionable is built and tested with Boss Mod. Wrath Combo and Rotation Solver Reborn are there for compatibility and testing."));
 
         if (!IsCombatPluginReady())
-            ImGui.TextColored(QstTheme.Danger, _LF("{0} isn't installed or loaded; install it on the Helper plugins page.",
+            ImGui.TextColored(QstTheme.Danger, _LF("{0} isn't installed or loaded; install it on the Plugins page.",
                 CombatPlugins[_configuration.General.CombatModule].DisplayName));
     }
 

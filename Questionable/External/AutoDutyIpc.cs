@@ -6,15 +6,13 @@ namespace Questionable.External;
 [RegisterSingleton]
 internal sealed class AutoDutyIpc : Ipc, IDisposable
 {
-    public delegate void RunForPluginDelegate(string pluginName, uint territoryType, int loops = 0, bool bareMode = false);
-
     [EzIPC] public Func<uint, bool> ContentHasPath { get; private set; } = null!;
     [EzIPC] public Func<bool> IsStopped { get; private set; } = null!;
     [EzIPC] public Action Stop { get; private set; } = null!;
     [EzIPC] public Func<string, string> GetConfig { get; private set; } = null!;
     [EzIPC] public Action<string, object> SetConfig { get; private set; } = null!;
     [EzIPC] public Action<string, bool> PluginConfig { get; private set; } = null!;
-    [EzIPC] public RunForPluginDelegate RunForPlugin { get; private set; } = null!;
+    [EzIPC] public Action<uint, int, bool> Run { get; private set; } = null!;
 
     private readonly EzIPCDisposalToken[] _disposalTokens;
 
@@ -175,13 +173,15 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
             ApplySetting("Meta.Unsynced", (dutyMode == Duty.Mode.Regular).ToString());
             ApplySetting("Meta.DutyModeEnum", dutyMode.ToString());
             ApplySetting("DutyConfig.AutoExitDuty", "True");
+            ApplySetting("DutyConfig.LootTreasure", "True");
+            ApplySetting("DutyConfig.LootBossTreasureOnly", "False");
             if (_ipc.GetStopped() != true)
             {
                 Operation.RequireConfirmation("AutoDuty started something else during setup; check it before restarting");
                 throw new TaskException("AutoDuty became busy during configuration.");
             }
             Operation.MarkRunRequested();
-            _ipc.RunForPlugin(ProfileName, data.TerritoryId, 1, true);
+            _ipc.Run(data.TerritoryId, 1, true);
             // Run returns nothing; watch for activity instead of retrying it.
             PollOperation();
         }
@@ -270,7 +270,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
     private static bool Matches(string? actual, string expected) =>
         string.Equals(actual, expected, StringComparison.OrdinalIgnoreCase);
 
-    // AutoDuty switches back itself when a run stops; this covers runs that never started.
+    // Run never switches AutoDuty's profile back; only this does.
     private bool SwitchProfileBack()
     {
         try
@@ -290,7 +290,13 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
         }
     }
 
-    public void Dispose() => _dutyState.DutyCompleted -= _dutyCompleted;
+    public void Dispose()
+    {
+        _dutyState.DutyCompleted -= _dutyCompleted;
+        // AutoDuty stops when Questionable unloads but would stay on our profile.
+        if (HasOperation)
+            SwitchProfileBack();
+    }
 }
 
 // AutoDuty's Run/Stop API provides no remote operation ID.

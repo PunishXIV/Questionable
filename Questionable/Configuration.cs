@@ -259,8 +259,8 @@ internal sealed class Configuration : IPluginConfiguration
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
         public Job CombatJob { get; set; } = Job.ADV;
         public Job ArcanistJob { get; set; } = Job.SMN;
-        public Job CraftingJob { get; set; } = Job.CRP;
-        public Job GatheringJob { get; set; } = Job.MIN;
+        public Job CraftingJob { get; set; } = Job.ADV;
+        public Job GatheringJob { get; set; } = Job.ADV;
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
         public string ChocoboName { get; set; } = string.Empty;
         public bool SummonChocobo { get; set; }

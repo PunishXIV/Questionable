@@ -48,9 +48,9 @@ internal sealed class AlliedSocietyQuestFunctions
             _dailyQuests.Remove(item);
     }
 
-    public EAlliedSociety[] GetAlliedSocieties(bool all = false) =>
+    public EAlliedSociety[] GetAlliedSocieties() =>
         UnlockQuests
-            .Where(s => all || ((QuestInfo)_questData.GetQuestInfo(new QuestId(s.Value))).Expansion <= _questRegistry.CharacterExpansion)
+            .Where(s => ((QuestInfo)_questData.GetQuestInfo(new QuestId(s.Value))).Expansion <= _questRegistry.CharacterExpansion)
             .Select(s => s.Key)
             .ToArray();
 

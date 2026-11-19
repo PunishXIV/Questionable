@@ -96,7 +96,7 @@ public sealed class DialogueChoiceHandlerTests
         Set(handler, "_territoryData", territory);
         Set(handler, "_travelDestinationResolver", new TravelDestinationResolver(manager!, NullLogger<TravelDestinationResolver>.Instance));
         Set(handler, "_dialogueReferenceResolver", new DialogueReferenceResolver(null!));
-        Set(handler, "_configuration", new Configuration { General = { DontShowAnswerSuggestions = true } });
+        Set(handler, "_configuration", new Configuration());
         Set(handler, "_logger", NullLogger<DialogueChoiceHandler>.Instance);
         List<string?> answers = ["Purchase Passage to Gridania", "Purchase Passage to Limsa Lominsa",
             "Seek Passage to the Gold Saucer", "Nothing"];

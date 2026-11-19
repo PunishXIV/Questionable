@@ -59,6 +59,18 @@ public sealed class InteractJobSelectionTests
             EAlliedSociety.Namazu));
     }
 
+    [Theory]
+    [InlineData(false, Job.MIN)]
+    [InlineData(true, Job.BSM)]
+    public void NamazuAuto_TakesHighestOfKind(bool preferCraft, Job expected)
+    {
+        var configuration = new Configuration();
+        configuration.Advanced.NamazuPreferCraft = preferCraft;
+
+        Assert.Equal(expected, SelectJob([Job.BSM, Job.MIN, Job.BTN, Job.CRP], configuration,
+            EAlliedSociety.Namazu));
+    }
+
     private static Job SelectJob(Job[] eligibleJobs, Configuration configuration,
         EAlliedSociety alliedSociety) => Interact.SelectQuestJob(eligibleJobs, configuration, alliedSociety,
         eligibleJobs[0] is Job.CRP or Job.BSM or Job.ARM,

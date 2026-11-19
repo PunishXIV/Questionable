@@ -60,7 +60,7 @@ internal sealed class AlliedSocietyComponent
 
         DrawDailies();
 
-        foreach (EAlliedSociety alliedSociety in alliedSocietyFunctions.GetAlliedSocieties(!configuration.General.HideThingsNotAvailable))
+        foreach (EAlliedSociety alliedSociety in alliedSocietyFunctions.GetAlliedSocieties())
             DrawSociety(alliedSociety, addPending, debug);
     }
 

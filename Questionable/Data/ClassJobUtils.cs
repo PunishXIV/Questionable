@@ -118,7 +118,13 @@ internal sealed class ClassJobUtils
             configuredJob = _configuration.General.GatheringJob;
         else
             return (ushort)jobType < Enum.GetNames(typeof(Job)).Length ? (Job)jobType : Job.ADV;
-        ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob);
+        List<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = [.. GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob)
+            .Where(x => jobType switch
+            {
+                EExtendedClassJob.DoH => x.ClassJob.IsCrafter(),
+                EExtendedClassJob.DoL => x.ClassJob is Job.MIN or Job.BTN,
+                _ => true,
+            })];
         HashSet<Job> jobsWithGearSet = jobGearSets
             .Select(x => x.ClassJob)
             .Distinct()

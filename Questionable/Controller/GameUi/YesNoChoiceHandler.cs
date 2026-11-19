@@ -33,6 +33,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
 
     private readonly Regex _returnRegex;
     private readonly Regex _ticketRegex;
+    private bool _ticketHintShown;
     private readonly Regex _hqTradeRegex;
     private readonly Regex _fcInviteRegex;
     private readonly Regex[] _overCapRegexes;
@@ -287,10 +288,9 @@ internal sealed class YesNoChoiceHandler : IDisposable
             }
 
             string message = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} {(dialogueChoice.Yes ? "Yes" : "No")}";
-            if (!_configuration.General.DontShowAnswerSuggestions)
+            if (_configuration.General.DontSkipCutscenes)
             {
-                if (_configuration.General.DontSkipCutscenes)
-                    _toastGui.ShowQuest(message);
+                _toastGui.ShowQuest(message);
                 _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
             }
             _logger.LogInformation("Returning {YesNo} for '{Prompt}'", dialogueChoice.Yes ? "Yes" : "No", actualPrompt);
@@ -449,8 +449,15 @@ internal sealed class YesNoChoiceHandler : IDisposable
 
         if (_ticketRegex.IsMatch(actualPrompt))
         {
-            _logger.LogInformation("Check UseTickets: {UseTickets}", _configuration.General.UseTickets);
-            addonSelectYesno->AtkUnitBase.FireCallbackInt(_configuration.General.UseTickets ? 0 : 1);
+            _logger.LogInformation("Paying gil instead of using an aetheryte ticket");
+            if (!_ticketHintShown)
+            {
+                _chatGui.Print(_L("Paid gil instead of using an aetheryte ticket. To use tickets, change 'Aetheryte Ticket Usage' in the game's Teleport settings."),
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+                _ticketHintShown = true;
+            }
+
+            addonSelectYesno->AtkUnitBase.FireCallbackInt(1);
             return true;
         }
 
@@ -472,7 +479,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
             else
             {
                 _logger.LogInformation("Reward would go over the currency cap, stopping: {Prompt}", actualPrompt);
-                _chatGui.Print(_L("Stopped: this reward would go over a currency cap. Spend some first, or allow it on the Questing settings page."), CommandHandler.MessageTag, CommandHandler.TagColor);
+                _chatGui.Print(_L("Stopped: this reward would go over a currency cap. Spend some first, or turn on 'Allow overcap' on the Questing settings page."), CommandHandler.MessageTag, CommandHandler.TagColor);
                 _questController.Stop("Currency over cap");
             }
 

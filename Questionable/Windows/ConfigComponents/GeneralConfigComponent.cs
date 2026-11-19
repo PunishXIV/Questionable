@@ -49,10 +49,10 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             prependDefault: true));
         _craftJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x != Job.ADV && x.IsCrafter()),
-            prependDefault: false));
+            prependDefault: true));
         _gatherJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x == Job.MIN || x == Job.BTN),
-            prependDefault: false));
+            prependDefault: true));
     }
 
     private (Job[] Ids, string[] Names) BuildJobList(IEnumerable<Job> source, bool prependDefault)
@@ -217,6 +217,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
 
             using (ImRaii.Disabled(!showIncompleteEvents))
+            using (ImRaii.PushIndent())
             {
                 bool showCompleteEvents = Configuration.General.ShowCompleteSeasonalEvents;
                 if (ImGui.Checkbox(_L("Also show finished event quests"), ref showCompleteEvents))
@@ -224,13 +225,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Configuration.General.ShowCompleteSeasonalEvents = showCompleteEvents;
                     Save();
                 }
-            }
-
-            bool questIcons = Configuration.General.QuestIcons;
-            if (ImGui.Checkbox(_L("Show quest icons"), ref questIcons))
-            {
-                Configuration.General.QuestIcons = questIcons;
-                Save();
             }
 
             bool hideInAllInstances = Configuration.General.HideInAllInstances;
@@ -249,43 +243,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             if (ImGui.IsItemHovered())
                 QstWidgets.Tooltip(_L("Takes effect the next time the plugin loads."));
 
-            bool hideRemainingTasks = Configuration.General.HideRemainingTasks;
-            if (ImGui.Checkbox(_L("Hide remaining tasks"), ref hideRemainingTasks))
-            {
-                Configuration.General.HideRemainingTasks = hideRemainingTasks;
-                Save();
-            }
-
-            bool hidePatch = Configuration.General.HidePatch;
-            if (ImGui.Checkbox(_L("Hide quest patch badge"), ref hidePatch))
-            {
-                Configuration.General.HidePatch = hidePatch;
-                Save();
-            }
-
-            bool hideLevel = Configuration.General.HideQuestRequiredLevel;
-            if (ImGui.Checkbox(_L("Hide quest level badge"), ref hideLevel))
-            {
-                Configuration.General.HideQuestRequiredLevel = hideLevel;
-                Save();
-            }
-
-            bool hideQuestStartedJob = Configuration.General.HideQuestStartedJob;
-            if (ImGui.Checkbox(_L("Hide which job a quest was started with"), ref hideQuestStartedJob))
-            {
-                Configuration.General.HideQuestStartedJob = hideQuestStartedJob;
-                Save();
-            }
-
-            bool hideThingsNotAvailable = Configuration.General.HideThingsNotAvailable;
-            if (ImGui.Checkbox(_L("Hide things unavailable in your account's unlocked expansions"), ref hideThingsNotAvailable))
-            {
-                Configuration.General.HideThingsNotAvailable = hideThingsNotAvailable;
-                Save();
-            }
-            if (ImGui.IsItemHovered())
-                QstWidgets.Tooltip(_L("Hides content from expansions you don't own (or on the free trial)."));
-
             DrawCheckbox(_L("Show window on start"),
                 () => Configuration.Advanced.ShowWindowOnStart,
                 value => Configuration.Advanced.ShowWindowOnStart = value,
@@ -303,7 +260,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         using (QstWidgets.TitledCard(_L("While questing")))
         {
             bool configureTextAdvance = Configuration.General.ConfigureTextAdvance;
-            if (ImGui.Checkbox(_L("Automatically configure TextAdvance with the recommended settings"),
+            if (ImGui.Checkbox(_L("Set up TextAdvance for questing"),
                 ref configureTextAdvance))
             {
                 Configuration.General.ConfigureTextAdvance = configureTextAdvance;
@@ -322,13 +279,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     }
                 }
             }
-            bool dontShowAnswerSuggestions = Configuration.General.DontShowAnswerSuggestions;
-            if (ImGui.Checkbox(_L("Hide dialogue answer suggestions/notifications"), ref dontShowAnswerSuggestions))
-            {
-                Configuration.General.DontShowAnswerSuggestions = dontShowAnswerSuggestions;
-                Save();
-            }
-
             bool useEscToCancelQuesting = Configuration.General.UseEscToCancelQuesting;
             if (ImGui.Checkbox(_L("Use ESC to cancel questing/movement"), ref useEscToCancelQuesting))
             {
@@ -345,20 +295,8 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             ImGuiComponents.HelpMarker(_L("Pressing a movement key while Questionable runs stops it. Typing in chat doesn't count."));
 
-            bool useTickets = Configuration.General.UseTickets;
-            if (ImGui.Checkbox(_L("Use aetheryte tickets where available"), ref useTickets))
-            {
-                Configuration.General.UseTickets = useTickets;
-                Save();
-            }
-
-            if (ImGui.IsItemHovered())
-            {
-                QstWidgets.Tooltip(_L("Answers Yes to the game's aetheryte ticket prompt."));
-            }
-
             bool confirmCurrencyOverCap = Configuration.General.ConfirmCurrencyOverCap;
-            if (ImGui.Checkbox(_L("Accept losing gil, company seals or tomestones over the cap"), ref confirmCurrencyOverCap))
+            if (ImGui.Checkbox(_L("Allow overcap"), ref confirmCurrencyOverCap))
             {
                 Configuration.General.ConfirmCurrencyOverCap = confirmCurrencyOverCap;
                 Save();
@@ -366,20 +304,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             if (ImGui.IsItemHovered())
             {
-                QstWidgets.Tooltip(_L("Off: Questionable stops so you can spend them. On: it accepts the loss and keeps going."));
+                QstWidgets.Tooltip(_L("When a quest reward would take your gil, company seals or tomestones over the cap. Off: Questionable stops so you can spend them. On: it keeps going and the extra is lost."));
             }
 
             bool sameJobThroughoutQuest = Configuration.General.SameJobThroughoutQuest;
-            if (ImGui.Checkbox(_L("Switch back to the job a quest was started with before each interaction"), ref sameJobThroughoutQuest))
+            if (ImGui.Checkbox(_L("Switch back to the job a quest was started with"), ref sameJobThroughoutQuest))
             {
                 Configuration.General.SameJobThroughoutQuest = sameJobThroughoutQuest;
-                Save();
-            }
-
-            bool ignoreNextQuestIfPrioSet = Configuration.General.IgnoreNextQuestIfPrioSet;
-            if (ImGui.Checkbox(_L("When a quest finishes, do ready Priority Quests before its follow-up quest"), ref ignoreNextQuestIfPrioSet))
-            {
-                Configuration.General.IgnoreNextQuestIfPrioSet = ignoreNextQuestIfPrioSet;
                 Save();
             }
 
@@ -477,9 +408,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             if (ImGui.IsItemHovered())
             {
-                QstWidgets.Tooltip(_L("If you haven't moved and the step hasn't changed for the set time, Questionable retries the step.") + "\n" +
-                    _L("Only movement and simple interactions (talking, attuning, emotes) are retried.") + "\n" +
-                    _L("Combat, cutscenes, dialogs and duties pause the timer."));
+                QstWidgets.Tooltip(_L("Retries movement and simple interactions (talking, attuning, emotes) when nothing has changed for the set time. Combat, cutscenes, dialogue and duties pause the timer."));
             }
 
             using (ImRaii.Disabled(!autoStepRefreshEnabled))
@@ -554,7 +483,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 _L("'My Feisty Little Chocobo' lets your companion chocobo fight with you in the overworld. When ticked, it is done automatically after 'My Little Chocobo'."));
 
             bool skipLowPriorityInstances = Configuration.General.SkipLowPriorityDuties;
-            if (ImGui.Checkbox(_L("Unlock certain optional dungeons and raids (instead of waiting for completion)"), ref skipLowPriorityInstances))
+            if (ImGui.Checkbox(_L("Don't wait on optional dungeons and raids"), ref skipLowPriorityInstances))
             {
                 Configuration.General.SkipLowPriorityDuties = skipLowPriorityInstances;
                 Save();
@@ -589,7 +518,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     {
         using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Quest reward choice"));
         using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted))
-            ImGui.TextWrapped(_L("When a quest lets you choose a reward, the first ticked rule that matches wins. If none matches, Questionable takes the highest vendor value, then the first option. Needs \"Automatically configure TextAdvance\" on the Questing page."));
+            ImGui.TextWrapped(_L("The first ticked rule that matches picks the reward; otherwise the highest vendor value. Needs \"Set up TextAdvance for questing\" on the Questing page."));
 
         List<Configuration.ERewardRule> order = Configuration.General.RewardOrder
             .Concat(RewardPickHandler.DefaultOrder).Distinct().ToList();

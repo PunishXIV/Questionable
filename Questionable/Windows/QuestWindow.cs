@@ -221,8 +221,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             && QstWidgets.SectionHeader(_L("Events"), "Events"))
             _eventInfoComponent.Draw();
 
-        if (!_configuration.General.HideRemainingTasks &&
-                QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: _remainingTasksComponent.Tasks.Count))
+        if (QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: _remainingTasksComponent.Tasks.Count))
             _remainingTasksComponent.Draw();
 
         if (QstWidgets.SectionHeader(_L("Target Tools"), "PathTools", defaultOpen: false))

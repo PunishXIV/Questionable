@@ -464,8 +464,7 @@ internal sealed partial class ActiveQuestComponent
             QstWidgets.Chip(questController.AutomationType.ToString(), QstTheme.Accent);
         }
 
-        if (!configuration.General.HideQuestStartedJob)
-            DrawStartedJobChip(currentQuest);
+        DrawStartedJobChip(currentQuest);
 
         QstWidgets.ThinProgressBar(CalculateQuestProgress(currentQuest),
             questController.IsRunning ? QstTheme.Success : QstTheme.Amber);
@@ -594,20 +593,17 @@ internal sealed partial class ActiveQuestComponent
         ImGui.Unindent();
     }
 
-    private void DrawPatchChip(QuestController.QuestProgress currentQuest)
+    private static void DrawPatchChip(QuestController.QuestProgress currentQuest)
     {
         var patch = QuestPatchMapper.GetPatch(currentQuest.Quest.Id.Value);
         Job? classQuestJob = currentQuest.Quest.Info.ClassJobs.Count < 2 ? currentQuest.Quest.Info.ClassJobs[^1] : null;
-        bool showPatch = !configuration.General.HidePatch;
-        bool showLevel = !configuration.General.HideQuestRequiredLevel;
         var parts = new List<string> { $"#{currentQuest.Quest.Id}" };
 
         if (classQuestJob != null)
             parts.Add($"{classQuestJob}");
-        if (showPatch && patch != null)
+        if (patch != null)
             parts.Add(patch);
-        if (showLevel)
-            parts.Add(SeIconChar.LevelEn.ToIconString() + currentQuest.Quest.GetQuestInfo().Level);
+        parts.Add(SeIconChar.LevelEn.ToIconString() + currentQuest.Quest.GetQuestInfo().Level);
 
         string levelPatchText = string.Join(' ', parts);
         var chipWidth = ImGui.CalcTextSize(levelPatchText).X + ImGui.GetScrollX() + 4 * ImGui.GetStyle().ItemSpacing.X * ImGuiHelpers.GlobalScale;

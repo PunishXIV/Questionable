@@ -58,7 +58,7 @@ internal static class Travel
                 logger.LogInformation("{DataId} walks with the player, travelling to the step's position", Task.DataId);
 
             if (!mappingTheRealm.IsReady())
-                throw new NeedsPlayerException("MappingTheRealm is needed for travel between zones. Install it from the Helper plugins page in settings.");
+                throw new NeedsPlayerException("MappingTheRealm is needed for travel between zones. Install it from the Plugins page in settings.");
 
             // A route from a stopped run can still be moving; Stop only cancels routes Questionable started.
             mappingTheRealm.Stop();

@@ -2,7 +2,7 @@
 
 internal static class NextQuest
 {
-    internal sealed class Factory(QuestFunctions questFunctions, QuestController questController, Configuration configuration) : SimpleTaskFactory
+    internal sealed class Factory(QuestFunctions questFunctions, QuestController questController) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -18,7 +18,7 @@ internal static class NextQuest
             if (questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true).Contains(step.NextQuestId))
                 return null;
 
-            if (configuration.General.IgnoreNextQuestIfPrioSet && questController.PriorityManager.Quests.Any(q => questFunctions.IsReadyToAcceptQuest(q.Id)))
+            if (questController.PriorityManager.Quests.Any(q => questFunctions.IsReadyToAcceptQuest(q.Id)))
                 return null;
 
             return new SetQuestTask(step.NextQuestId, quest.Id);

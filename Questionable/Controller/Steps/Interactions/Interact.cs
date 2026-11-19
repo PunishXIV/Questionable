@@ -20,15 +20,22 @@ internal static class Interact
         if (acceptableJobs.Count == 1)
             return fallback;
 
-        Job preferred;
-        if (isCrafter || (alliedSociety == EAlliedSociety.Namazu && configuration.Advanced.NamazuPreferCraft))
-            preferred = configuration.General.CraftingJob;
-        else if (isGatherer || alliedSociety == EAlliedSociety.Namazu)
-            preferred = configuration.General.GatheringJob;
-        else
-            preferred = configuration.General.CombatJob;
+        bool namazu = alliedSociety == EAlliedSociety.Namazu;
+        bool craft = namazu ? configuration.Advanced.NamazuPreferCraft : isCrafter;
+        bool gather = namazu ? !craft : isGatherer;
+        Job preferred = craft ? configuration.General.CraftingJob
+            : gather ? configuration.General.GatheringJob
+            : configuration.General.CombatJob;
 
-        return acceptableJobs.Contains(preferred) ? preferred : fallback;
+        if (acceptableJobs.Contains(preferred))
+            return preferred;
+
+        // Auto: the caller lists jobs highest level first.
+        if (preferred == Job.ADV && acceptableJobs.FirstOrDefault(x => craft ? x is >= Job.CRP and <= Job.CUL : !gather || x is Job.MIN or Job.BTN or Job.FSH) is var best &&
+            best != Job.ADV)
+            return best;
+
+        return fallback;
     }
 
     internal const int MaxUnmountTries = 3;

@@ -502,10 +502,9 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
     private int? UseAnswer(string? actualPrompt, string? answer, int index)
     {
         string message = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} '{answer}'";
-        if (!_configuration.General.DontShowAnswerSuggestions)
+        if (_configuration.General.DontSkipCutscenes)
         {
-            if (_configuration.General.DontSkipCutscenes)
-                _toastGui.ShowQuest(message);
+            _toastGui.ShowQuest(message);
             _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
         }
         _logger.LogInformation("Returning {Index}: '{Answer}' for '{Prompt}'",

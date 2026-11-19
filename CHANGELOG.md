@@ -18,7 +18,7 @@
 - Feature: "Redeem Reward Items" (/qst redeem), /qst skipstep and "Add all to Priority Quests" in /qst zone -Kage
 - Change: Travel between zones uses MappingTheRealm, which is now a required plugin; it picks the route over aetherytes, aethernet and zone lines, keeps running through FATEs instead of stopping to fight, and your mount is picked in its settings -Kage
 - Change: Other plugins do more of the work: Gather & Chill, Feesh (replaces AutoHook), Knightshopper (also the chocobo license from your Grand Company), AutoDuty and Boss Mod's quest battle modules -Kage
-- Change: Settings and the journal have a side menu with grouped pages; the Helper plugins page lists every helper plugin with install and settings buttons -Kage
+- Change: Settings and the journal have a side menu with grouped pages; the Plugins page lists every plugin QST works with with install and settings buttons -Kage
 - Change: The Events list in the quest window shows whatever events are running in game, including the quests you need first, without waiting for a plugin update -Kage
 - Change: Sahagin dailies are batched like the other societies -Kage
 - Change: Problems you can fix yourself show as plain chat messages instead of red errors -Kage
