@@ -21,7 +21,8 @@ internal static class Travel
     // Skills need attack range; MappingTheRealm otherwise stops at interaction range (rock 2001481).
     internal static float StopRange(QuestStep step) => step.InteractionType == EInteractionType.Action ? 3f : 0;
 
-    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, float Range = 0, bool Walk = false) : ITask
+    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, float Range = 0, bool Walk = false,
+        uint? Leader = null) : ITask
     {
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
@@ -37,7 +38,9 @@ internal static class Travel
         private uint _zone;
         private bool _byPosition;
         private bool _escort;
+        private bool _pace;
         private bool _paused;
+        private Vector3? _heading;
         private bool _waiting;
         private DateTime _readyAfter;
         private int _retries;
@@ -50,14 +53,18 @@ internal static class Travel
             _retries = 0;
             _vnavSince = null;
             _paused = false;
+            _heading = null;
             _zone = clientState.TerritoryType;
             if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
 
             _byPosition = false;
-            _escort = FollowsPlayer();
+            _escort = Task.DataId is { } escorted && NearPlayer(escorted);
             if (_escort)
                 logger.LogInformation("{DataId} walks with the player, travelling to the step's position", Task.DataId);
+            _pace = Task is { Walk: true, Leader: { } leader } && NearPlayer(leader);
+            if (_pace)
+                logger.LogInformation("Walking behind {Leader}", Task.Leader);
 
             if (!mappingTheRealm.IsReady())
                 throw new NeedsPlayerException("MappingTheRealm is needed for travel between zones. Install it from the Plugins page in settings.");
@@ -71,8 +78,8 @@ internal static class Travel
         private bool UseId => Task.DataId != null && !_byPosition;
 
         // An escorted NPC walks with the player, so a route to it ends where the player stands (FF16 4797, Clive).
-        private bool FollowsPlayer() =>
-            Task is { DataId: { } id, Position: { } spot } && _zone == Task.TerritoryId &&
+        private bool NearPlayer(uint id) =>
+            Task is { Position: { } spot } && _zone == Task.TerritoryId &&
             gameFunctions.FindObjectByDataId(id) is { } target && objectTable[0] is { } player &&
             Vector3.Distance(target.Position, player.Position) < 10 && Vector3.Distance(target.Position, spot) > 10;
 
@@ -111,7 +118,7 @@ internal static class Travel
                     return;
                 }
 
-                if (!navmesh.WalkTo(walkTo))
+                if (!_pace && !navmesh.WalkTo(walkTo))
                     throw new TaskException("vnavmesh couldn't find a path on foot");
                 _vnavSince = DateTime.Now;
                 return;
@@ -129,30 +136,37 @@ internal static class Travel
                 : mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
         }
 
-        // Follow steps fail when the player passes the NPC while it waits (FF16 4798, Torgal).
-        internal static bool KeepWalking(bool walking, Vector3 player, Vector3 npc, Vector3 goal)
-        {
-            float gap = Vector3.Distance(player, npc);
-            bool ahead = Vector3.Distance(player, goal) < Vector3.Distance(npc, goal);
-            return walking ? !ahead && gap >= 4 : !ahead && gap > 6;
-        }
+        // Follow steps fail when the player passes the NPC, and the NPC waits until the player is close (FF16 4798, Torgal).
+        internal static bool KeepWalking(bool walking, float gap) => walking ? gap > 2 : gap > 4;
 
         private ETaskResult Pace(Vector3 goal, Vector3 player, Vector3 npc)
         {
-            if (Vector3.Distance(npc, goal) <= VnavArrival)
+            // The leader's last stop is near the step's position, not on it.
+            if (Vector3.Distance(npc, goal) <= 8)
             {
                 navmesh.Stop();
                 return ETaskResult.TaskComplete;
             }
 
-            bool walk = KeepWalking(!_paused, player, npc, goal);
-            if (walk == _paused)
+            _paused = !KeepWalking(!_paused, Vector3.Distance(player, npc));
+            if (!_paused)
             {
-                _paused = !walk;
-                if (_paused)
+                // vnavmesh rejects a new route while it is still pathfinding the last one.
+                if (navmesh.GetSimpleMoveInProgress() == true)
+                    return ETaskResult.StillRunning;
+                if (_heading is not { } heading || Vector3.Distance(heading, npc) > 2)
+                {
+                    if (!navmesh.WalkTo(npc))
+                        throw new TaskException("vnavmesh couldn't find a path on foot");
+                    _heading = npc;
+                }
+            }
+            else
+            {
+                _heading = null;
+                // A stop sent while vnavmesh is still pathfinding is ignored, and the route starts anyway.
+                if (navmesh.GetSimpleMoveInProgress() == true || navmesh.GetPathRunning() == true)
                     navmesh.Stop();
-                else if (!navmesh.WalkTo(goal))
-                    throw new TaskException("vnavmesh couldn't find a path on foot");
             }
 
             return ETaskResult.StillRunning;
@@ -160,8 +174,7 @@ internal static class Travel
 
         private ETaskResult FollowVnav(DateTime since)
         {
-            if (_escort && Task is { Walk: true, DataId: { } id } && objectTable[0] is { } player &&
-                gameFunctions.FindObjectByDataId(id) is { } npc)
+            if (_pace && objectTable[0] is { } player && gameFunctions.FindObjectByDataId(Task.Leader!.Value) is { } npc)
                 return Pace(Task.Position!.Value, player.Position, npc.Position);
 
             if (objectTable[0]?.Position is { } here && Vector3.Distance(here, Task.Position!.Value) <= VnavArrival)

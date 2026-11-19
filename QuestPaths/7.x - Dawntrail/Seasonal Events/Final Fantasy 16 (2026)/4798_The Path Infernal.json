@@ -65,9 +65,14 @@
       "TerritoryId": 145,
       "Steps": [
         {
-          "DataId": 1046052,
+          "DataId": 1046053,
           "Position": [457.37253, -3.6998415, 283.26285],
           "Mount": false,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1046052,
+          "Position": [457.37253, -3.6998415, 283.26285],
           "InteractionType": "Interact"
         }
       ]
