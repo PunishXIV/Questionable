@@ -1,0 +1,160 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046046,
+          "Position": {
+            "X": -86.8969,
+            "Y": 41,
+            "Z": 66.1701
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046047,
+          "Position": {
+            "X": -28.7227,
+            "Y": 82.9938,
+            "Z": -15.8795
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+          
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": {
+            "X": 35.2927,
+            "Y": -18.8,
+            "Z": 91.48
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": {
+            "X": 25.084028,
+            "Y": -8.2,
+            "Z": 124.763245
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": {
+            "X": 45.61473,
+            "Y": -0.8786694,
+            "Z": 69.8098
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": {
+            "X": 53.109238,
+            "Y": -0.063338876,
+            "Z": 34.89524
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": {
+            "X": -62.13559,
+            "Y": -2.4028428,
+            "Z": 21.061686
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1046049,
+          "Position": {
+            "X": -147.53722,
+            "Y": 4.0282764,
+            "Z": -32.21919
+          },
+          "TerritoryId": 133,
+          "StopDistance": 1,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046050,
+          "Position": {
+            "X": -146.138,
+            "Y": 4.1097,
+            "Z": -33.1762
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ]
+
+        }
+      ]
+    }
+  ]
+}
