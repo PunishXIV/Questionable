@@ -1476,17 +1476,35 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 }
 
                 if (_taskQueue.AllTasksComplete)
-                {
-                    Stop("Skip", clearQuest: false);
-                    IncreaseStepCount(elementId, sequence);
-                }
+                    SkipToNextStep(elementId, sequence, "Skip");
             }
             else
-            {
-                Stop("SkipNx", clearQuest: false);
-                IncreaseStepCount(elementId, sequence);
-            }
+                SkipToNextStep(elementId, sequence, "SkipNx");
         }
+    }
+
+    internal static bool ContinuesAfterSkip(EAutomationType automation, int? stepBefore, int? stepAfter) =>
+        automation != EAutomationType.Manual && stepAfter != null && stepAfter != stepBefore;
+
+    // A skip is the player saying the step is done: a running quest carries on, an idle one only moves the step.
+    private void SkipToNextStep(ElementId elementId, byte sequence, string label)
+    {
+        QuestProgress? current = CurrentQuest;
+        int? before = current?.Step;
+        bool running = AutomationType != EAutomationType.Manual;
+        if (running)
+            IncreaseStepCount(elementId, sequence);
+
+        if (!ContinuesAfterSkip(AutomationType, before, current?.Step))
+        {
+            Stop(label, clearQuest: false);
+            if (!running)
+                IncreaseStepCount(elementId, sequence);
+            return;
+        }
+
+        // Same as a finished step: drop the old tasks and plan the new one.
+        ExecuteNextStep();
     }
 
     public void SkipSimulatedTask()

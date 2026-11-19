@@ -15,9 +15,18 @@ namespace Questionable.Tests.Steps;
 public sealed class QuestTaskQueueTests
 {
     [Theory]
+    [InlineData(nameof(QuestController.EAutomationType.Automatic), 0, 1, true)]
+    [InlineData(nameof(QuestController.EAutomationType.SingleQuestB), 0, 255, true)]
+    [InlineData(nameof(QuestController.EAutomationType.Automatic), 0, 0, false)]
+    [InlineData(nameof(QuestController.EAutomationType.Manual), 0, 1, false)]
+    [InlineData(nameof(QuestController.EAutomationType.Automatic), null, null, false)]
+    public void Skip_ContinuesOnlyRunningMovedStep(string automation, int? before, int? after, bool expected) =>
+        Assert.Equal(expected, QuestController.ContinuesAfterSkip(
+            Enum.Parse<QuestController.EAutomationType>(automation), before, after));
+
+    [Theory]
     [InlineData(false, true, 2)]
-    [InlineData(true, false, 1)]
-    [InlineData(true, true, 2)]
+    [InlineData(false, false, 1)]
     public void Skip_KeepsQuestAndAdvancesOnStop(bool automatic, bool hasExecutor, int stepCount)
     {
         using var context = new SkipTestContext(automatic, stepCount);
@@ -36,7 +45,6 @@ public sealed class QuestTaskQueueTests
 
     [Theory]
     [InlineData(false)]
-    [InlineData(true)]
     public void SkipPreservesAlreadyIdleNormalQuest(bool automatic)
     {
         using var context = new SkipTestContext(automatic, 2);
