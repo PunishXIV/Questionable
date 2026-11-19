@@ -4,7 +4,7 @@
 		"prefix": "new",
 		"body": [
 			"{",
-			"  \"\\$schema\": \"https://qstxiv.github.io/schema/quest-v1.json\",",
+			"  \"\\$schema\": \"https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json\",",
 			"  \"Author\": \"${0:alydev}\",",
 			"  \"LastChecked\": {\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},",
 			"  \"QuestSequence\": [",

@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "Comment": "Autocraft requires:\n12x Chondrite Ingot\n6x Annite Whetstone\n6x Integral Lumber",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},

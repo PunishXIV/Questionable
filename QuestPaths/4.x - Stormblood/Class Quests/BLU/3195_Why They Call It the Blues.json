@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Comment": "Becomes available after acquiring the Blue Mage action Mind Blast from last boss in Tam Tara Deepcroft",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},

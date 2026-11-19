@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Hard Leather Caligae,\n 1x Hard Leather Choker\nAutocraft requires:\n 2x Hard Leather,\n 1x Bronze Rivets,\n 2x Beast Sinew",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},

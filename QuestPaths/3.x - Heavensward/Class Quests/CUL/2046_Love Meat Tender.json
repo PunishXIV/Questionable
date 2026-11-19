@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item: 1x Cockatrice Meatballs HQ\nAutocrafting requires:\n3x Cockatrice Thigh\n2x Cyclops Onion\n1x Abalathian Rock Salt",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},

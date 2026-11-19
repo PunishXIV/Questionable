@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["alydev", "ShermTank"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-23"},
   "QuestSequence": [

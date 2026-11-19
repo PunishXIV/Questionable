@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Mega-Potion of Intelligence HQ,\n 1x Mega-Potion of Mind HQ,\n 1x Mega-Potion of Vitality HQ\nAutocraft requires:\n 3x Rock Salt,\n 1x Black Scorpion,\n 1x Sandworm Fang,\n 1x Ahriman Wing,\n 1x Blue Yarzon Leg,\n 1x Grenade Ash,\n 1x Pudding Flesh",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},

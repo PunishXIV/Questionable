@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!!\nCrafts: 1x Iron Lance\nRequires: 1x * Materia I (not II+)\nAutocraft requires:\n 1x Elm Lumber,\n 2x Iron Ingot,\n 1x Hard Leather",
   "QuestSequence": [

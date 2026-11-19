@@ -30,28 +30,28 @@ public static class Utils
 
         SchemaRegistry.Global.Register(
             new(
-                "https://qstxiv.github.io/schema/common-aethernetshard.json"),
+                "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aethernetshard.json"),
             JsonSchema.FromText(commonAethernetShardFile.GetText(context.CancellationToken)!.ToString()));
         SchemaRegistry.Global.Register(
             new(
-                "https://qstxiv.github.io/schema/common-aetheryte.json"),
+                "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aetheryte.json"),
             JsonSchema.FromText(commonAetheryteFile.GetText(context.CancellationToken)!.ToString()));
         SchemaRegistry.Global.Register(
             new(
-                "https://qstxiv.github.io/schema/common-classjob.json"),
+                "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json"),
             JsonSchema.FromText(commonClassJobFile.GetText(context.CancellationToken)!.ToString()));
         SchemaRegistry.Global.Register(
             new(
-                "https://qstxiv.github.io/schema/common-completionflags.json"),
+                "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-completionflags.json"),
             JsonSchema.FromText(commonCompletionFlagsFile.GetText(context.CancellationToken)!.ToString()));
         SchemaRegistry.Global.Register(
-            new("https://qstxiv.github.io/schema/common-vector3.json"),
+            new("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"),
             JsonSchema.FromText(commonVector3File.GetText(context.CancellationToken)!.ToString()));
 
         if (questSchemaFile != null)
         {
             SchemaRegistry.Global.Register(
-                new("https://qstxiv.github.io/schema/quest-v2.json"),
+                new("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json"),
                 JsonSchema.FromText(questSchemaFile.GetText(context.CancellationToken)!.ToString()));
         }
 

@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Aurum Regis Cylinder // Autocraft requires: 1x Aurum Regis Nugget, 1x Cloud Mica Whetstone",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},

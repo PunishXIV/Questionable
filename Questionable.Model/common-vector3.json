@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://qstxiv.github.io/schema/common-vector3.json",
+  "$id": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json",
   "description": "Position in the world: [X, Y, Z], or the older {\"X\", \"Y\", \"Z\"} object",
   "oneOf": [
     {

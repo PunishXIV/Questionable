@@ -6,7 +6,7 @@ namespace Questionable.Utils;
 
 internal static partial class QuestPathJson
 {
-    internal const string SchemaUrl = "https://qstxiv.github.io/schema/quest-v2.json";
+    internal const string SchemaUrl = "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json";
 
     internal static string Write(JsonObject root, JsonSerializerOptions options) =>
         OneLinePositions().Replace(ToFile(root).ToJsonString(options), "[$1, $2, $3]");

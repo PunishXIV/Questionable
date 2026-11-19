@@ -15,19 +15,19 @@ public sealed partial class ValidJsonFilesTest
     static ValidJsonFilesTest()
     {
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-aethernetshard.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aethernetshard.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAethernetShardStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-aetheryte.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aetheryte.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAetheryteStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-classjob.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonClassJobStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-completionflags.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-completionflags.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonCompletionFlagsStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-vector3.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonVector3Stream).AsTask().Result);
     }
 

@@ -9,7 +9,7 @@
       "fileMatch": [
         "**/QuestPaths/**/*.json"
       ],
-      "url": "./QuestPaths/quest-v1.json"
+      "url": "./QuestPaths/quest-v2.json"
     }
   ],
   "files.watcherExclude": {

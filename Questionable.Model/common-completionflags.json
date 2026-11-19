@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://qstxiv.github.io/schema/common-completionflags.json",
+  "$id": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-completionflags.json",
   "type": "array",
   "description": "Quest Variables that dictate whether or not this step is skipped: null is don't check, positive values need to be set, negative values need to be unset",
   "items": {

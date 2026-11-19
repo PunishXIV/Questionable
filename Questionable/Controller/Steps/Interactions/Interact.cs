@@ -165,6 +165,7 @@ internal static class Interact
         private bool _needsFacing;
         private bool _needsUnmount;
         private int _unmountTries;
+        private int _landingTries;
         private bool _reportedStillMounted;
         private bool _reportedNoObject;
         private string? _loggedAcceptableJobs;
@@ -227,6 +228,14 @@ internal static class Interact
             // The game's own dismount on interact can pass for the finished interaction, so get off the mount first.
             bool mounted = condition[ConditionFlag.Mounted];
             bool isGatheringPoint = gameObject.ObjectKind == ObjectKind.GatheringPoint;
+            // While flying, dismount only makes the mount land.
+            if (mounted && !isGatheringPoint && condition[ConditionFlag.InFlight] && _landingTries++ < 20)
+            {
+                gameFunctions.Unmount();
+                _continueAt = DateTime.Now.AddSeconds(0.5);
+                return ETaskResult.StillRunning;
+            }
+
             if (ShouldUnmount(mounted, isGatheringPoint, _unmountTries))
             {
                 if (_unmountTries == 0)
@@ -454,6 +463,7 @@ internal static class Interact
             InteractionType = Task.InteractionType;
             _loggedAcceptableJobs = null;
             _unmountTries = 0;
+            _landingTries = 0;
             _reportedStillMounted = false;
 
             _needsFacing = true;

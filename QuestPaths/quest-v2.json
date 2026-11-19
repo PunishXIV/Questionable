@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$id": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "title": "Questionable V1",
   "description": "A series of quest sequences",
   "type": "object",
@@ -135,7 +135,7 @@
           "exclusiveMinimum": 0
         },
         "Position": {
-          "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+          "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"
         },
         "StopDistance": {
           "type": [
@@ -221,7 +221,7 @@
                   "type": "boolean"
                 },
                 "CompletionQuestVariablesFlags": {
-                  "$ref": "https://qstxiv.github.io/schema/common-completionflags.json"
+                  "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-completionflags.json"
                 },
                 "Flying": {
                   "type": "string",
@@ -306,10 +306,10 @@
                   }
                 },
                 "AetheryteLocked": {
-                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                  "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aetheryte.json"
                 },
                 "AetheryteUnlocked": {
-                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                  "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aetheryte.json"
                 },
                 "AetherCurrentUnlocked": {
                   "description": "Skip this step if this aether current is attuned",
@@ -319,7 +319,7 @@
                   "type": "object",
                   "properties": {
                     "Position": {
-                      "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+                      "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"
                     },
                     "MaximumDistance": {
                       "type": "number"
@@ -339,7 +339,7 @@
                   "type": "object",
                   "properties": {
                     "Position": {
-                      "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+                      "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"
                     },
                     "MaximumDistance": {
                       "type": "number"
@@ -377,7 +377,7 @@
           "additionalProperties": false
         },
         "CompletionQuestVariablesFlags": {
-          "$ref": "https://qstxiv.github.io/schema/common-completionflags.json"
+          "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-completionflags.json"
         },
         "RequiredQuestVariables": {
           "type": "array",
@@ -421,14 +421,14 @@
           "description": "Which class or job you are using whenever this step gets executed",
           "type": "array",
           "items": {
-            "$ref": "https://qstxiv.github.io/schema/common-classjob.json"
+            "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json"
           }
         },
         "RequiredQuestAcceptedJob": {
           "description": "Which class or job you were using when accepting this quest (e.g. for beast tribes)",
           "type": "array",
           "items": {
-            "$ref": "https://qstxiv.github.io/schema/common-classjob.json"
+            "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json"
           }
         },
         "DelaySecondsAtStart": {
@@ -529,7 +529,7 @@
           "then": {
             "properties": {
               "Aetheryte": {
-                "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aetheryte.json"
               },
               "DataId": {
                 "type": "null"
@@ -561,7 +561,7 @@
           "then": {
             "properties": {
               "AethernetShard": {
-                "$ref": "https://qstxiv.github.io/schema/common-aethernetshard.json"
+                "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aethernetshard.json"
               },
               "DataId": {
                 "type": "null"
@@ -661,7 +661,7 @@
                       "type": "integer"
                     },
                     "CompletionQuestVariablesFlags": {
-                      "$ref": "https://qstxiv.github.io/schema/common-completionflags.json"
+                      "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-completionflags.json"
                     },
                     "IgnoreQuestMarker": {
                       "type": "boolean"
@@ -1338,7 +1338,7 @@
                 "type": "object",
                 "properties": {
                   "Position": {
-                    "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+                    "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"
                   },
                   "StopDistance": {
                     "type": [
@@ -1872,7 +1872,7 @@
           "then": {
             "properties": {
               "TargetClass": {
-                "$ref": "https://qstxiv.github.io/schema/common-classjob.json",
+                "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json",
                 "description": "The class/job whose gearset should be updated. If not specified, updates the currently equipped gearset."
               }
             }
@@ -1889,7 +1889,7 @@
           "then": {
             "properties": {
               "TargetClass": {
-                "$ref": "https://qstxiv.github.io/schema/common-classjob.json"
+                "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json"
               }
             },
             "required": [

@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Toad Leather HQ\nAutocraft requires:\n 1x Gigantoad Skin,\n 1x Alumen",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},

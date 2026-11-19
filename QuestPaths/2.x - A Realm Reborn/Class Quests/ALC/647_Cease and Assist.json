@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Hi-Ether HQ\nAutocraft requires:\n 1x Distilled Water,\n 1x Matron's Mistletoe,\n 1x Mandrake",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},

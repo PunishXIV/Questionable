@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "Comment": "!!Requires manual interaction!!\nSky Spoon Lure is a scrip bait, and qst doesn't support buying scrip items yet\nPlease buy 3x Sky Spoon Lure from Scrip Exchange for 90 Purple Gatherer Scrip",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-01"},
