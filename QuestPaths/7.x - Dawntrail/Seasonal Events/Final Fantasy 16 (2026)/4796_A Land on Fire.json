@@ -1,0 +1,68 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "TerritoryId": 130,
+      "Steps": [
+        {
+          "DataId": 1046043,
+          "Position": [-117.614, 4, -67.1382],
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_FESSXT101_04796_Q3_100_001",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "TerritoryId": 145,
+      "Steps": [
+        {
+          "DataId": 1046044,
+          "Position": [346.337, -6.97824, 151.914],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "TerritoryId": 145,
+      "Steps": [
+        {
+          "DataId": 2013582,
+          "Position": [347.245, -6.66511, 155.074],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "TerritoryId": 131,
+      "Steps": [
+        {
+          "DataId": 2013507,
+          "Position": [-85.62081, 41, 66.82838],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "TerritoryId": 131,
+      "Steps": [
+        {
+          "DataId": 1046046,
+          "Position": [-86.8969, 41, 66.1701],
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

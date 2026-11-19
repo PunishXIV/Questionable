@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "TerritoryId": 131,
+      "Steps": [
+        {
+          "DataId": 1046046,
+          "Position": [-86.8969, 41, 66.1701],
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "TerritoryId": 130,
+      "Steps": [
+        {
+          "DataId": 1046047,
+          "Position": [-28.7227, 82.9938, -15.8795],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "TerritoryId": 132,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": [35.2927, -18.8, 91.48],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "TerritoryId": 132,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": [25.084028, -8.2, 124.763245],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "TerritoryId": 132,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": [45.61473, -0.8786694, 69.8098],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "TerritoryId": 132,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": [53.109238, -0.063338876, 34.89524],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "TerritoryId": 132,
+      "Steps": [
+        {
+          "DataId": 1046048,
+          "Position": [-62.13559, -2.4028428, 21.061686],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "TerritoryId": 133,
+      "Steps": [
+        {
+          "DataId": 1046049,
+          "Position": [-147.53722, 4.0282764, -32.21919],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "TerritoryId": 133,
+      "Steps": [
+        {
+          "DataId": 1046050,
+          "Position": [-146.138, 4.1097, -33.1762],
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
