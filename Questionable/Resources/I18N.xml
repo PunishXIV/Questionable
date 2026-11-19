@@ -9094,11 +9094,11 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
-    <Key>/qst stop, or a plugin such as Automaton or an SND script. The Stop button never alerts.</Key>
-    <Value lang="en">/qst stop, or a plugin such as Automaton or an SND script. The Stop button never alerts.</Value>
-    <Value lang="ja-jp">/qst stop、またはAutomatonやSNDスクリプトなどのプラグインによる停止。停止ボタンでは通知しません。</Value>
-    <Value lang="zh-cn">/qst stop，或 Automaton、SND 脚本等插件发起的停止。停止按钮从不提醒。</Value>
-    <Value lang="zh-tw">/qst stop，或 Automaton、SND 腳本等外掛發起的停止。停止按鈕從不提醒。</Value>
+    <Key>/qst stop, or a plugin such as CBT or an SND script. The Stop button never alerts.</Key>
+    <Value lang="en">/qst stop, or a plugin such as CBT or an SND script. The Stop button never alerts.</Value>
+    <Value lang="ja-jp">/qst stop、またはCBTやSNDスクリプトなどのプラグインによる停止。停止ボタンでは通知しません。</Value>
+    <Value lang="zh-cn">/qst stop，或 CBT、SND 脚本等插件发起的停止。停止按钮从不提醒。</Value>
+    <Value lang="zh-tw">/qst stop，或 CBT、SND 腳本等外掛發起的停止。停止按鈕從不提醒。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
