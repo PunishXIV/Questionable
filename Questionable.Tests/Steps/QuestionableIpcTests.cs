@@ -46,6 +46,43 @@ public sealed class QuestionableIpcTests
         Assert.Equal(false, result);
     }
 
+    [Theory]
+    [InlineData("AddQuestPriority", "abc")]
+    [InlineData("AddQuestPriority", "9999")]
+    [InlineData("InsertQuestPriority", "abc")]
+    [InlineData("InsertQuestPriority", "9999")]
+    public void UnknownQuest_IsNotAdded(string method, string questId)
+    {
+        var registry = (QuestRegistry)RuntimeHelpers.GetUninitializedObject(typeof(QuestRegistry));
+        SetField(registry, "_quests", new Dictionary<ElementId, Quest>());
+        var ipc = (QuestionableIpc)RuntimeHelpers.GetUninitializedObject(typeof(QuestionableIpc));
+        SetField(ipc, "_logger", NullLogger<QuestionableIpc>.Instance);
+        SetField(ipc, "_questRegistry", registry);
+
+        object?[] args = method == "AddQuestPriority" ? [questId] : [0, questId];
+        object? result = typeof(QuestionableIpc).GetMethod(method, BindingFlags.Instance | BindingFlags.NonPublic)!
+            .Invoke(ipc, args);
+
+        Assert.Equal(false, result);
+    }
+
+    [Fact]
+    public void EventQuests_PickFirstStartable()
+    {
+        var catalog = new FakeQuestCatalog();
+        Quest done = catalog.Add(TestQuestInfo.Create(4796));
+        Quest next = catalog.Add(TestQuestInfo.Create(4797));
+        Quest later = catalog.Add(TestQuestInfo.Create(4798));
+        var paths = new Dictionary<ElementId, Quest> { [next.Id] = next, [later.Id] = later };
+        ElementId noPath = new QuestId(4795);
+
+        Quest? picked = QuestionableIpc.NextEventQuest([noPath, done.Id, next.Id, later.Id],
+            id => paths.GetValueOrDefault(id), _ => false, id => !id.Equals(done.Id));
+
+        Assert.Same(next, picked);
+        Assert.Null(QuestionableIpc.NextEventQuest([done.Id], id => paths.GetValueOrDefault(id), _ => false, _ => false));
+    }
+
     private static void SetField(object target, string name, object value) =>
         target.GetType().GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(target, value);
 }

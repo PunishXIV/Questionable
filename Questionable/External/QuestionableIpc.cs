@@ -25,6 +25,11 @@ internal sealed class QuestionableIpc : IDisposable
     private const string IpcStop = "Questionable.Stop";
     private const string IpcRedoLookup = "Questionable.RedoLookup";
     private const string IpcRedoLookupIndex = "Questionable.RedoLookupIndex";
+    private const string IpcGetStopReason = "Questionable.GetStopReason";
+    private const string IpcStartEventQuests = "Questionable.StartEventQuests";
+    private readonly ICallGateProvider<string> _getStopReason;
+    private readonly ICallGateProvider<bool> _startEventQuests;
+    private readonly EventInfoComponent _eventInfo;
     private readonly ICallGateProvider<string, bool> _addQuestPriority;
     private readonly ICallGateProvider<bool> _clearQuestPriority;
     private readonly ICallGateProvider<string> _exportQuestPriority;
@@ -134,6 +139,13 @@ internal sealed class QuestionableIpc : IDisposable
 
         _redoLookupIndex = pluginInterface.GetIpcProvider<uint, Tuple<string, int>>(IpcRedoLookupIndex);
         _redoLookupIndex.RegisterFunc(RedoLookupIndex);
+
+        _eventInfo = eventInfoComponent;
+        _getStopReason = pluginInterface.GetIpcProvider<string>(IpcGetStopReason);
+        _getStopReason.RegisterFunc(() => questController.StopReason);
+
+        _startEventQuests = pluginInterface.GetIpcProvider<bool>(IpcStartEventQuests);
+        _startEventQuests.RegisterFunc(StartEventQuests);
     }
 
     public void Dispose()
@@ -158,7 +170,23 @@ internal sealed class QuestionableIpc : IDisposable
         _stop.UnregisterFunc();
         _redoLookup.UnregisterFunc();
         _redoLookupIndex.UnregisterFunc();
+        _getStopReason.UnregisterFunc();
+        _startEventQuests.UnregisterFunc();
     }
+
+    private bool StartEventQuests()
+    {
+        _logger.LogDebug("StartEventQuests()");
+        Quest? Next() => NextEventQuest(_eventInfo.GetActiveQuests(),
+            id => _questRegistry.TryGetQuest(id, out Quest? quest) ? quest : null,
+            id => _questFunctions.IsQuestAccepted(id), id => _questFunctions.IsReadyToAcceptQuest(id));
+
+        return Next() is { } first && _questStarter.StartEventQuests(first, Next, "IPCEventQuests");
+    }
+
+    internal static Quest? NextEventQuest(IEnumerable<ElementId> active, Func<ElementId, Quest?> path,
+        Func<ElementId, bool> accepted, Func<ElementId, bool> ready) =>
+        active.Where(id => accepted(id) || ready(id)).Select(path).FirstOrDefault(quest => quest != null);
 
     private bool StartQuest(string questId, bool single)
     {
@@ -295,7 +323,7 @@ internal sealed class QuestionableIpc : IDisposable
             return _questController.PriorityManager.Add(elementId);
         }
 
-        return true;
+        return false;
     }
 
     private bool InsertQuestPriority(int index, string questId)
@@ -307,7 +335,7 @@ internal sealed class QuestionableIpc : IDisposable
             return _questController.PriorityManager.Insert(index, elementId);
         }
 
-        return true;
+        return false;
     }
 
     private bool Stop(string label)

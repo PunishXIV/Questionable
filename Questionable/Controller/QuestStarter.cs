@@ -40,24 +40,46 @@ internal sealed class QuestStarter(
         RedeemRewardItems.ResetAttemptedItems();
         stopPolicy.CancelEnding();
         _single = null;
+        questController.NextInChain = null;
         questController.AutomationType = EAutomationType.Automatic;
         questController.ExecuteNextStep();
     }
 
-    // Play after a stopped single-quest run (IPC event quests) continues only that quest, not the lists.
-    public bool ResumesSingle => _single is { } id && id.Equals(questController.CurrentQuest?.Quest.Id);
+    // Play after a stopped single-quest run (IPC event quests) continues only that quest or chain, not the lists.
+    public bool ResumesSingle => questController.NextInChain != null ||
+        _single is { } id && id.Equals(questController.CurrentQuest?.Quest.Id);
 
-    public void StartSingleQuest(string label)
+    public void Resume(string label)
+    {
+        Func<Quest?>? chain = questController.NextInChain;
+        if (chain?.Invoke() is { } next)
+            questController.SetNextQuest(next);
+        if (StartSingleQuest(label))
+            questController.NextInChain = chain;
+    }
+
+    public bool StartEventQuests(Quest first, Func<Quest?> next, string label)
+    {
+        questController.SetNextQuest(first);
+        if (!StartSingleQuest(label))
+            return false;
+        questController.NextInChain = next;
+        return true;
+    }
+
+    public bool StartSingleQuest(string label)
     {
         if (!CanStartQuest(label))
-            return;
+            return false;
 
         using IDisposable? scope = logger.BeginScope($"SQ/{label}");
         RedeemRewardItems.ResetAttemptedItems();
         stopPolicy.CancelEnding();
         _single = (questController.NextQuest ?? questController.CurrentQuest)?.Quest.Id;
+        questController.NextInChain = null;
         questController.AutomationType = EAutomationType.SingleQuestA;
         questController.ExecuteNextStep();
+        return true;
     }
 
     public void StartSingleStep(string label)

@@ -325,6 +325,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
     }
 
+    internal const string FinishedReason = "Finished";
+
+    // Event quest paths have no next-quest data, so an event quest run picks each next quest itself.
+    internal Func<Quest?>? NextInChain { get; set; }
+
+    public string StopReason { get; private set; } = "";
+
     public EAutomationType AutomationType
     {
         get => _automationType;
@@ -338,6 +345,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             _logger.LogInformation("Setting automation type to {NewAutomationType} (previous: {OldAutomationType})",
                 value, _automationType);
+            if (_automationType == EAutomationType.Manual)
+                StopReason = "";
             _automationType = value;
             AutomationTypeChanged?.Invoke(this, value);
         }
@@ -845,8 +854,19 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 {
                     if (AutomationType == EAutomationType.SingleQuestB)
                     {
-                        _logger.LogInformation("Single quest is finished");
-                        AutomationType = EAutomationType.Manual;
+                        if (NextInChain?.Invoke() is { } next)
+                        {
+                            _logger.LogInformation("Event quest finished, continuing with {QuestId}", next.Id);
+                            SetNextQuest(next);
+                            AutomationType = EAutomationType.SingleQuestA;
+                        }
+                        else
+                        {
+                            _logger.LogInformation("Single quest is finished");
+                            NextInChain = null;
+                            AutomationType = EAutomationType.Manual;
+                            StopReason = FinishedReason;
+                        }
                     }
 
                     CheckNextTasks("Different Quest");
@@ -1079,6 +1099,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         _logger.LogInformation("Stopping automatic questing: {Label}", label);
         AutomationType = EAutomationType.Manual;
+        StopReason = policyReason ?? label;
         if (clearQuest)
         {
             StartedQuest = null;

@@ -768,7 +768,7 @@ internal sealed partial class ActiveQuestComponent
                     questController.SetNextQuest(currentQuest.Quest);
 
                 if (questStarter.ResumesSingle)
-                    questStarter.StartSingleQuest(_L("UI start"));
+                    questStarter.Resume(_L("UI start"));
                 else if (characterRun.StartsList)
                     characterRun.Start();
                 else
