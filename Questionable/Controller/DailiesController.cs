@@ -80,9 +80,9 @@ internal sealed class DailiesController(
             }
 
             List<QuestInfo> quests;
+            string unlockName = unlock != 0 ? questData.GetQuestInfo(new QuestId(unlock)).Name : "";
             if (locked)
             {
-                string unlockName = questData.GetQuestInfo(new QuestId(unlock)).Name;
                 (List<QuestId> chain, QuestId? story) = UnlockChain(new QuestId(unlock),
                     x => questData.TryGetQuestInfo(x, out IQuestInfo? y) ? y : null, questFunctions.IsPreviousQuestMet);
                 QuestId? noPath = chain.FirstOrDefault(x => !questRegistry.TryGetQuest(x, out Quest? path) || path.Root.Disabled);
@@ -115,7 +115,7 @@ internal sealed class DailiesController(
                 if (locked && !accepted && !ready)
                 {
                     string[]? reasons = questFunctions.IsQuestLocked(id).reasons;
-                    lockedReason ??= UnlockReason(questData.GetQuestInfo(new QuestId(unlock)).Name,
+                    lockedReason ??= UnlockReason(unlockName,
                         id.Value == unlock || reasons is not { Length: > 0 } ? reasons : [$"{info.Name}: {string.Join(". ", reasons)}"]);
                     continue;
                 }
@@ -131,9 +131,18 @@ internal sealed class DailiesController(
                     questFunctions.HasCraftMaterials(itemId)) == true;
                 bool hasJob = questFunctions.HasClassJobAtQuestLevel(id);
                 string? blocked = unavailable ?? GetBlockReason(quest, info, accepted, hasJob);
-                if (!info.IsRepeatable && quest != null && quest.AllSteps().Any(x =>
+                bool manualBattle = !info.IsRepeatable && quest != null && quest.AllSteps().Any(x =>
                     x.Sequence.Sequence >= sequence && x.Step.InteractionType == EInteractionType.SinglePlayerDuty &&
-                    !bossMod.CanRunQuestBattle(id, x.Step.SinglePlayerDutyOptions)))
+                    !bossMod.CanRunQuestBattle(id, x.Step.SinglePlayerDutyOptions));
+                // One society's unlock problem skips that society; the others still run.
+                if (locked && !accepted && (blocked != null || manualBattle))
+                {
+                    lockedReason ??= _LF("Not unlocked yet (unlock quest: {0}). {1}", unlockName,
+                        manualBattle ? _LF("{0} has a quest battle that can't run automatically; do it manually.", info.Name) : blocked!);
+                    continue;
+                }
+
+                if (manualBattle)
                     blocked = _LF("Do dailies stopped: the rank-up quest {0} has a quest battle that cannot run automatically. Complete it manually, then start dailies again.", info.Name);
                 entries.Add(new(id, society, info.IsRepeatable, accepted, ready && hasJob, info.AlliedSocietyRank,
                     sequence, target?.TerritoryId ?? 0, target?.Position, craftReady, blocked,
@@ -182,7 +191,9 @@ internal sealed class DailiesController(
             List<PreviousQuestInfo> missing = [.. quest.PreviousQuests.Where(x => !met(x))];
             bool anyOne = quest.PreviousQuestJoin == EQuestJoin.AtLeastOne;
             if (!anyOne || missing.Count == quest.PreviousQuests.Count)
-                foreach (PreviousQuestInfo previous in anyOne ? missing.Take(1) : missing)
+                foreach (PreviousQuestInfo previous in anyOne
+                             ? missing.OrderBy(x => info(x.QuestId)?.IsMainScenarioQuest == true).Take(1)
+                             : missing)
                     Visit(previous.QuestId);
             chain.Add(id);
         }

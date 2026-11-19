@@ -253,4 +253,40 @@ public sealed class DailiesSafetyTests
         Assert.Contains("Into the Sands", reason);
         Assert.Contains("can't be accepted", DailiesController.UnlockReason("Peace for Thanalan", []));
     }
+
+    private static (List<QuestId> Chain, QuestId? Story) Chain(ushort[] done, params QuestInfo[] quests) =>
+        DailiesController.UnlockChain(new QuestId(10), x => quests.FirstOrDefault(y => y.QuestId.Equals(x)),
+            x => done.Contains(x.QuestId.Value));
+
+    [Fact]
+    public void UnlockChain_RunsPrerequisitesFirst()
+    {
+        var (chain, story) = Chain([7],
+            TestQuestInfo.Create(10, previous: new PreviousQuestInfo(new QuestId(9))),
+            TestQuestInfo.Create(9, previous: [new PreviousQuestInfo(new QuestId(8)), new PreviousQuestInfo(new QuestId(7))]),
+            TestQuestInfo.Create(8));
+        Assert.Null(story);
+        Assert.Equal(new[] { 8, 9, 10 }, chain.Select(x => (int)x.Value));
+    }
+
+    [Fact]
+    public void UnlockChain_StopsAtMainStory()
+    {
+        var (_, story) = Chain([],
+            TestQuestInfo.Create(10, previous: new PreviousQuestInfo(new QuestId(9))),
+            TestQuestInfo.Create(9, mainScenario: true));
+        Assert.Equal(new QuestId(9), story);
+    }
+
+    [Fact]
+    public void UnlockChain_AnyOnePicksSideQuest()
+    {
+        var (chain, story) = Chain([],
+            TestQuestInfo.Create(10, previousJoin: EQuestJoin.AtLeastOne,
+                previous: [new PreviousQuestInfo(new QuestId(9)), new PreviousQuestInfo(new QuestId(8))]),
+            TestQuestInfo.Create(9, mainScenario: true),
+            TestQuestInfo.Create(8));
+        Assert.Null(story);
+        Assert.Equal(new[] { 8, 10 }, chain.Select(x => (int)x.Value));
+    }
 }

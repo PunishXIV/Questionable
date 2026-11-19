@@ -1057,7 +1057,7 @@ internal sealed class QuestFunctions
         return false;
     }
 
-    private bool IsPreviousQuestMet(PreviousQuestInfo previousQuestInfo)
+    internal bool IsPreviousQuestMet(PreviousQuestInfo previousQuestInfo)
     {
         if (IsQuestComplete(previousQuestInfo.QuestId))
             return true;
