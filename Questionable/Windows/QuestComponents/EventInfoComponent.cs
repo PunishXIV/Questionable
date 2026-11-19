@@ -72,7 +72,7 @@ internal sealed class EventInfoComponent
     {
         foreach (EventQuest eventQuest in EventQuests.Where(x =>
             x.EndsAtUtc >= DateTime.UtcNow &&
-            (x.QuestIds.All(ShouldShowQuest) ||
+            (x.QuestIds.Any(ShouldShowQuest) ||
             x.StartsAtUtc < DateTime.UtcNow)))
         {
             DrawEventQuest(eventQuest);

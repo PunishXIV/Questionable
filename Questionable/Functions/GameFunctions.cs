@@ -422,9 +422,20 @@ internal sealed unsafe partial class GameFunctions
 
         var _a = NormalizeGameString(a);
         var _b = NormalizeGameString(b);
-        var eq = _a == _b;
-        Svc.Log.Verbose($"GameStringEquals: {_a} {(eq ? "==" : "!=")} {_b}");
+        var eq = _a == _b || MacroMatches(a, b) || MacroMatches(b, a);
+        Svc.Log.Verbose("GameStringEquals: {A} {Op} {B}", _a, eq ? "==" : "!=", _b);
         return eq;
+    }
+
+    // A macro like <string(gstr1)> is text the game fills in (the player's name), so it matches anything.
+    private static bool MacroMatches(string pattern, string text)
+    {
+        // A text that is only macros would match every option.
+        if (!MacroLiteralRegex().IsMatch(pattern) || NormalizeGameString(pattern).Length == 0)
+            return false;
+
+        string regex = string.Join(".*", MacroLiteralRegex().Split(pattern).Select(x => Regex.Escape(NormalizeGameString(x))));
+        return Regex.IsMatch(NormalizeGameString(text), $"^{regex}$", RegexOptions.Singleline, TimeSpan.FromSeconds(1));
     }
 
     private static string NormalizeGameString(string value) =>
