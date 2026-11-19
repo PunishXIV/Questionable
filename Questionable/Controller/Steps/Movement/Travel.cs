@@ -72,7 +72,7 @@ internal static class Travel
         private bool FollowsPlayer() =>
             Task is { DataId: { } id, Position: { } spot } && _zone == Task.TerritoryId &&
             gameFunctions.FindObjectByDataId(id) is { } target && objectTable[0] is { } player &&
-            Vector3.Distance(target.Position, player.Position) < 5 && Vector3.Distance(target.Position, spot) > 10;
+            Vector3.Distance(target.Position, player.Position) < 10 && Vector3.Distance(target.Position, spot) > 10;
 
         private void Restart(TimeSpan settle)
         {

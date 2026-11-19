@@ -52,6 +52,10 @@ internal sealed class StuckWatch(TimeProvider? timeProvider = null)
     internal static bool CanRetry(EInteractionType? stepType, ITask? task) =>
         IsMovement(task) || (stepType is { } type && SafeSteps.Contains(type) && IsInteraction(task));
 
+    // After the last step QST waits for the game to start the next sequence; an interaction it didn't count leaves no task to retry.
+    internal static bool CanRedoSequence(QuestSequence? sequence) =>
+        sequence is { Steps.Count: > 0 } && sequence.Steps.All(x => SafeSteps.Contains(x.InteractionType));
+
     private static readonly HashSet<EInteractionType> SafeSteps =
     [
         EInteractionType.Interact, EInteractionType.WalkTo, EInteractionType.AcceptQuest,

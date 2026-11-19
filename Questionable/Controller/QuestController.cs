@@ -550,7 +550,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         int delay = Math.Clamp(general.AutoStepRefreshDelaySeconds, 30, 180);
         int maxTries = _dailies != null ? 1 : Math.Clamp(general.AutoStepRefreshMaxTries, 1, 10);
         ITask? task = _taskQueue.CurrentTaskExecutor?.CurrentTask;
-        bool paused = IsStuckPaused() || !StuckWatch.CanRetry(current.FindStep()?.InteractionType, task);
+        bool redoSequence = current.Step == CompletedStep && task == null &&
+                            StuckWatch.CanRedoSequence(current.FindSequence());
+        bool paused = IsStuckPaused() || !(redoSequence || StuckWatch.CanRetry(current.FindStep()?.InteractionType, task));
         StuckWatch.EResult result = _stuckWatch.Update((current.Quest.Id, current.Sequence, current.Step),
             task, player.Position, paused, TimeSpan.FromSeconds(delay), maxTries);
         switch (result)
@@ -563,6 +565,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                     return true;
                 }
                 _stopPolicy.ReportStuckRetry(current, delay, _stuckWatch.Tries, maxTries);
+                if (redoSequence)
+                    current.SetStep(0);
                 ExecuteNextStep();
                 return true;
             case StuckWatch.EResult.Stop:

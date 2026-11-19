@@ -135,6 +135,20 @@ public sealed class StuckWatchTests
     public void AfterWait_OnlySafeStepsRetry(EInteractionType stepType, bool expected) =>
         Assert.Equal(expected, StuckWatch.CanRetry(stepType, new WaitAtEnd.QuestCompleted(new QuestId(1))));
 
+    [Theory]
+    [InlineData(EInteractionType.Interact, EInteractionType.WalkTo, true)]
+    [InlineData(EInteractionType.Interact, EInteractionType.UseItem, false)]
+    [InlineData(EInteractionType.Interact, EInteractionType.Combat, false)]
+    public void FinishedSequence_RedoOnlyIfAllSafe(EInteractionType first, EInteractionType second, bool expected)
+    {
+        QuestSequence sequence = new()
+        {
+            Steps = [new QuestStep { InteractionType = first }, new QuestStep { InteractionType = second }],
+        };
+
+        Assert.Equal(expected, StuckWatch.CanRedoSequence(sequence));
+    }
+
     [Fact]
     public void Say_RetriesOnlyOnSayStep()
     {
