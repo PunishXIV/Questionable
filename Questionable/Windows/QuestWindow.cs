@@ -24,7 +24,9 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly TerritoryData _territoryData;
     private readonly BossModIpc _bossModIpc;
 
+    private readonly QueueComponent _queueComponent;
     private bool _wasRunning;
+    private bool _selectQueue;
 
     public QuestWindow(IDalamudPluginInterface pluginInterface,
         QuestController questController,
@@ -42,7 +44,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         IFramework framework,
         InteractionUiController interactionUiController,
         ConfigWindow configWindow,
-        BossModIpc bossModIpc)
+        BossModIpc bossModIpc,
+        QueueComponent queueComponent)
         : base((configuration.Advanced.Debug ? "(!) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
             ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing)
     {
@@ -113,6 +116,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 }
             });
 
+        _queueComponent = queueComponent;
+        _queueComponent.OpenRequested += OnQueueRequested;
         _quickAccessComponent.Reload += OnReload;
         _questController.IsQuestWindowOpenFunction = () => IsOpen;
     }
@@ -175,31 +180,61 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             }
 
             _activeQuestComponent.DrawTitleBarPill(WindowName);
-            _activeQuestComponent.Draw(IsMinimized);
-            if (!IsMinimized)
+            if (IsMinimized)
             {
-                _quickAccessComponent.Draw();
-
-                if (_aRealmRebornComponent.ShouldDraw
-                    && QstWidgets.SectionHeader(_L("A Realm Reborn"), "ARealmReborn"))
-                    _aRealmRebornComponent.Draw();
-
-                if (_eventInfoComponent.ShouldDraw
-                    && QstWidgets.SectionHeader(_L("Events"), "Events"))
-                    _eventInfoComponent.Draw();
-
-                if (!_configuration.General.HideRemainingTasks &&
-                        QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: _remainingTasksComponent.Tasks.Count))
-                    _remainingTasksComponent.Draw();
-
-                if (QstWidgets.SectionHeader(_L("Target Tools"), "PathTools", defaultOpen: false))
-                    _creationUtilsComponent.Draw();
+                _activeQuestComponent.Draw(true);
+                return;
             }
+
+            using ImRaii.TabBarDisposable tabs = ImRaii.TabBar("QuestWindowTabs");
+            if (!tabs)
+                return;
+
+            using (ImRaii.TabItemDisposable now = ImRaii.TabItem(_L("Now") + "###Now"))
+            {
+                if (now)
+                    DrawNow();
+            }
+
+            using ImRaii.TabItemDisposable upNext = ImRaii.TabItem(_L("Up next") + "###UpNext",
+                _selectQueue ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None);
+            _selectQueue = false;
+            if (upNext)
+                _queueComponent.Draw();
         }
         catch (Exception e)
         {
             ImGui.TextColored(QstTheme.Danger, e.ToString());
         }
+    }
+
+    private void DrawNow()
+    {
+        _activeQuestComponent.Draw(false);
+        _quickAccessComponent.Draw();
+
+        if (_aRealmRebornComponent.ShouldDraw
+            && QstWidgets.SectionHeader(_L("A Realm Reborn"), "ARealmReborn"))
+            _aRealmRebornComponent.Draw();
+
+        if (_eventInfoComponent.ShouldDraw
+            && QstWidgets.SectionHeader(_L("Events"), "Events"))
+            _eventInfoComponent.Draw();
+
+        if (!_configuration.General.HideRemainingTasks &&
+                QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: _remainingTasksComponent.Tasks.Count))
+            _remainingTasksComponent.Draw();
+
+        if (QstWidgets.SectionHeader(_L("Target Tools"), "PathTools", defaultOpen: false))
+            _creationUtilsComponent.Draw();
+    }
+
+    // /qst priority and the quest window's buttons open the queue.
+    private void OnQueueRequested(object? sender, EventArgs e)
+    {
+        IsOpenAndUncollapsed = true;
+        IsMinimized = false;
+        _selectQueue = true;
     }
 
     private void OnReload(object? sender, EventArgs e) => Reload();

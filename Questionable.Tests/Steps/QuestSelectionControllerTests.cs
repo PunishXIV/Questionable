@@ -42,6 +42,26 @@ public sealed class QuestSelectionControllerTests
     private static QuestSlots Slots(QuestProgress? started = null, QuestProgress? next = null,
         QuestProgress? simulated = null) => new(started, next, simulated);
 
+    [Theory]
+    [InlineData((int)EQuestSource.Journal, 5, true)]
+    [InlineData((int)EQuestSource.Next, 5, true)]
+    [InlineData((int)EQuestSource.Journal, 4, false)]
+    [InlineData((int)EQuestSource.Priority, 5, false)]
+    public void PriorityListEmpty_StopsOffList(int source, ushort questId, bool expected)
+    {
+        QuestChoice choice = new((EQuestSource)source, null, new QuestId(questId), 1);
+
+        Assert.Equal(expected, QuestSelectionController.IsPastPriorityList(choice, [NewQuest(4)], _ => false));
+    }
+
+    [Fact]
+    public void PriorityListEmpty_WaitsForAcceptOnly()
+    {
+        QuestChoice choice = new(EQuestSource.Journal, null, new QuestId(5), 1);
+
+        Assert.False(QuestSelectionController.IsPastPriorityList(choice, [NewQuest(4)], id => id == new QuestId(4)));
+    }
+
     [Fact]
     public void SimulatedBeatsEveryOtherSource()
     {

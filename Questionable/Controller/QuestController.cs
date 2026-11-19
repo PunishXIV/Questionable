@@ -630,6 +630,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             QuestChoice choice = QuestSelectionController.Choose(new QuestSelectionContext(Slots, _priorityManager.Quests,
                 _priorityManager.IsAcceptOnly, AutomationType, SelectionState, _priorityManager.CanInterrupt));
+            if (AutomationType == EAutomationType.Automatic && _configuration.Stop is { Enabled: true, PriorityListEmpty: true } &&
+                QuestSelectionController.IsPastPriorityList(choice, _priorityManager.Quests,
+                    x => _priorityManager.IsAcceptOnly(x) && !_questFunctions.IsQuestAccepted(x)))
+            {
+                _stopPolicy.ReportPriorityListDone();
+                StopFinished("Priority list done");
+                return;
+            }
+
             if (!TryGetQuestToRun(choice, out QuestProgress? questToRun))
                 return;
 

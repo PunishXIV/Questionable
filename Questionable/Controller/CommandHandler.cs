@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using Questionable.Controller.Steps.Shared;
@@ -23,7 +23,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly JournalProgressWindow _journalProgressWindow;
     private readonly MovementController _movementController;
     private readonly OneTimeSetupWindow _oneTimeSetupWindow;
-    private readonly PriorityWindow _priorityWindow;
+    private readonly QueueComponent _queueComponent;
     private readonly QuestController _questController;
     private readonly QuestStarter _questStarter;
     private readonly CharacterRun _characterRun;
@@ -55,7 +55,7 @@ internal sealed class CommandHandler : IDisposable
         QuestWindow questWindow,
         QuestSelectionWindow questSelectionWindow,
         JournalProgressWindow journalProgressWindow,
-        PriorityWindow priorityWindow,
+        QueueComponent queueComponent,
         QuestValidationWindow questValidationWindow,
         ITargetManager targetManager,
         QuestFunctions questFunctions,
@@ -84,7 +84,7 @@ internal sealed class CommandHandler : IDisposable
         _questWindow = questWindow;
         _questSelectionWindow = questSelectionWindow;
         _journalProgressWindow = journalProgressWindow;
-        _priorityWindow = priorityWindow;
+        _queueComponent = queueComponent;
         _questValidationWindow = questValidationWindow;
         _targetManager = targetManager;
         _questFunctions = questFunctions;
@@ -215,7 +215,7 @@ internal sealed class CommandHandler : IDisposable
 
             case "p":
             case "priority":
-                _priorityWindow.ToggleOrUncollapse();
+                _queueComponent.Open();
                 break;
 
             case "cleanup":
@@ -424,7 +424,7 @@ internal sealed class CommandHandler : IDisposable
         _L("/qst which - shows all quests starting with your selected target"),
         _L("/qst zone - shows all quests starting in the current zone (only includes quests with a known quest path, and currently visible unaccepted quests)"),
         _L("/qst journal - toggles the Journal Progress window"),
-        _L("/qst priority - toggles the Priority window"),
+        _L("/qst priority - opens the Up next tab"),
         _L("/qst validation - toggles the Quest Validation window"),
         _L("/qst cleanup - adds every quest you already have open to the priority list, finished ones first"),
         _L("/qst handle-interrupt - makes Questionable handle queued interrupts immediately (useful if you manually start combat)"),

@@ -119,8 +119,11 @@ public sealed class StuckWatchTests
     [InlineData(EInteractionType.UseItem)]
     [InlineData(EInteractionType.Combat)]
     [InlineData(null)]
-    public void Movement_RetriesOnAnyStep(EInteractionType? stepType) =>
+    public void Movement_RetriesOnAnyStep(EInteractionType? stepType)
+    {
         Assert.True(StuckWatch.CanRetry(stepType, new MoveTask(1, System.Numerics.Vector3.Zero)));
+        Assert.True(StuckWatch.CanRetry(stepType, new Travel.Task(1, System.Numerics.Vector3.Zero, null)));
+    }
 
     [Theory]
     [InlineData(EInteractionType.Interact, true)]

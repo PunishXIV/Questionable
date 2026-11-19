@@ -917,7 +917,7 @@ internal sealed partial class ActiveQuestComponent
             return;
 
         ImGui.TextDisabled(_L("When this run ends"));
-        if (ImGui.MenuItem(_LF("Stop tab setting ({0})", QuestStopPolicy.GetName(configuration.Stop.EndAction)),
+        if (ImGui.MenuItem(_LF("Stopping page setting ({0})", QuestStopPolicy.GetName(configuration.Stop.EndAction)),
                 string.Empty, questController.EndActionOnce == null))
             questController.EndActionOnce = null;
 

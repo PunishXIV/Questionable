@@ -27,7 +27,6 @@
         },
         {
           "$": "Unlock Camp Dragonhead aetheryte now so that we can TP back in case we die",
-          "StopDistance": 5,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Coerthas Central Highlands - Camp Dragonhead"
         },

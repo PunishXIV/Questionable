@@ -26,7 +26,6 @@
         },
         {
           "InteractionType": "AttuneAetheryte",
-          "StopDistance": 7,
           "Aetheryte": "Southern Thanalan - Little Ala Mhigo",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"}}
         },

@@ -201,6 +201,7 @@ internal sealed class QuestInfo : IQuestInfo
     {
         public readonly Vector3 Position = level.AsVector3();
         public readonly RowRef Object => level.Object;
+        public readonly uint TerritoryId => level.Territory.RowId;
         public readonly float X => Position.X;
         public readonly float Y => Position.Y;
         public readonly float Z => Position.Z;

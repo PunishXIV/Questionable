@@ -66,8 +66,7 @@
       "Steps": [
         {
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Coerthas Western Highlands - Falcon's Nest",
-          "StopDistance": 7
+          "Aetheryte": "Coerthas Western Highlands - Falcon's Nest"
         },
         {
           "DataId": 1011226,

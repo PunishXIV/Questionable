@@ -50,7 +50,6 @@
       "TerritoryId": 958,
       "Steps": [
         {
-          "StopDistance": 7,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Garlemald - Camp Broken Glass"
         },

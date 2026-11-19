@@ -39,7 +39,7 @@ internal sealed class QuestJournalUtils
         }));
 
         bool inPriority = quest != null && questController.PriorityManager.Contains(quest);
-        if (source != nameof(PriorityWindow) || inPriority)
+        if (source != QueueComponent.Source || inPriority)
         {
             using (ImRaii.Disabled(disabled: true))
             {
@@ -48,7 +48,7 @@ internal sealed class QuestJournalUtils
 
             using (ImRaii.PushIndent())
             {
-                if (source != nameof(PriorityWindow))
+                if (source != QueueComponent.Source)
                 {
                     using (ImRaii.Disabled(quest == null))
                     {

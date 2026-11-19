@@ -19,7 +19,6 @@
       "TerritoryId": 957,
       "Steps": [
         {
-          "StopDistance": 5,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Thavnair - Yedlihmad"
         },

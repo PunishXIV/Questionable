@@ -19,7 +19,6 @@
       "TerritoryId": 1185,
       "Steps": [
         {
-          "StopDistance": 5,
           "InteractionType": "Instruction",
           "Comment": "Purchase Dragonfly bait from:\n* Scrip Exchange (Purple Gatherer's)\n* Mesouaidonque (Cosmocredit)\nThen click Skip"
         },

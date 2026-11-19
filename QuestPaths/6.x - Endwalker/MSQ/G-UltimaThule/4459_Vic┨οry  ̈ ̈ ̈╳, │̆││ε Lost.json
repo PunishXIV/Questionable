@@ -159,7 +159,6 @@
       "TerritoryId": 960,
       "Steps": [
         {
-          "StopDistance": 5,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Ultima Thule - Base Omicron"
         },

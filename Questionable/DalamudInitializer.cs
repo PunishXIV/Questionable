@@ -37,7 +37,6 @@ internal sealed class DalamudInitializer : IDisposable
         QuestSelectionWindow questSelectionWindow,
         QuestValidationWindow questValidationWindow,
         JournalProgressWindow journalProgressWindow,
-        PriorityWindow priorityWindow,
         PathEditorWindow pathEditorWindow,
         QuestReportsWindow questReportsWindow,
         IChatGui chatGui,
@@ -68,7 +67,6 @@ internal sealed class DalamudInitializer : IDisposable
         _windowSystem.AddWindow(questSelectionWindow);
         _windowSystem.AddWindow(questValidationWindow);
         _windowSystem.AddWindow(journalProgressWindow);
-        _windowSystem.AddWindow(priorityWindow);
         _windowSystem.AddWindow(pathEditorWindow);
         _windowSystem.AddWindow(questReportsWindow);
 
@@ -139,7 +137,7 @@ internal sealed class DalamudInitializer : IDisposable
         MovementController.PathfindingFailureReason.MovementBlocked =>
             _L("Navigation stopped because another plugin is moving your character. Wait for it to finish before resuming QST."),
         MovementController.PathfindingFailureReason.Unavailable =>
-            _L("Navigation stopped because MappingTheRealm is not available. Install or enable it on the Plugins tab, then resume QST."),
+            _L("Navigation stopped because MappingTheRealm is not available. Install or enable it on the Helper plugins page in settings, then resume QST."),
         MovementController.PathfindingFailureReason.Cancelled =>
             _L("Navigation stopped because MappingTheRealm cancelled the route. Resume QST when you're ready."),
         _ => _L("MappingTheRealm couldn't finish the route. Use Stuck? to copy troubleshooting information if this keeps happening."),

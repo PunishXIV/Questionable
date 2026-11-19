@@ -444,8 +444,9 @@ internal sealed class QuestRegistry : IDisposable
     public List<QuestInfo> GetKnownClassJobQuests(Job classJob, bool includeRoleQuests = true)
     {
         List<QuestInfo> allQuests = [.. _questData.GetClassJobQuests(classJob, includeRoleQuests)];
-        if (classJob.AsJob() != classJob)
-            allQuests.AddRange(_questData.GetClassJobQuests(classJob.AsJob(), includeRoleQuests));
+        Job followUp = ClassJobUtils.FollowUpJob(classJob, _configuration.General.ArcanistJob);
+        if (followUp != classJob)
+            allQuests.AddRange(_questData.GetClassJobQuests(followUp, includeRoleQuests));
 
         if (classJob.Equals(Job.FSH) && allQuests.Any(x => x.QuestId.Value.Equals(2898)))
             allQuests.Insert(allQuests.IndexOf(x => x.QuestId.Value.Equals(2898)), (QuestInfo)_questData.GetQuestInfo(new QuestId(2922)));

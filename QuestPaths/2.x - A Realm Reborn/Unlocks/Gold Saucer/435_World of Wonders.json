@@ -57,8 +57,7 @@
         },
         {
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gold Saucer] Entrance & Card Squares",
-          "StopDistance": 7
+          "AethernetShard": "[Gold Saucer] Entrance & Card Squares"
         },
         {
           "DataId": 1010448,
@@ -160,14 +159,12 @@
         {
           "TerritoryId": 388,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gold Saucer] Minion Square",
-          "StopDistance": 5
+          "AethernetShard": "[Gold Saucer] Minion Square"
         },
         {
           "TerritoryId": 388,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gold Saucer] Chocobo Square",
-          "StopDistance": 7
+          "AethernetShard": "[Gold Saucer] Chocobo Square"
         },
         {
           "InteractionType": "AttuneAetheryte",
@@ -192,18 +189,15 @@
         {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Wonder Square West",
-          "StopDistance": 7,
           "DelaySecondsAtStart": 3
         },
         {
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gold Saucer] Wonder Square East",
-          "StopDistance": 7
+          "AethernetShard": "[Gold Saucer] Wonder Square East"
         },
         {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Event Square",
-          "StopDistance": 7,
           "DelaySecondsAtStart": 3
         },
         {
@@ -213,8 +207,7 @@
         },
         {
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gold Saucer] Cactpot Board",
-          "StopDistance": 7
+          "AethernetShard": "[Gold Saucer] Cactpot Board"
         },
         {
           "DataId": 1011079,
@@ -241,8 +234,7 @@
       "Steps": [
         {
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gold Saucer] Round Square",
-          "StopDistance": 7
+          "AethernetShard": "[Gold Saucer] Round Square"
         },
         {
           "DataId": 1010448,

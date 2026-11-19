@@ -130,6 +130,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             () => Configuration.General.CombatJob,
             v => Configuration.General.CombatJob = v);
 
+        ImGui.SetNextItemWidth(size.X / 2);
+        DrawComboOption(_L("Arcanist job line"), [Job.SMN, Job.SCH], [_L("Summoner"), _L("Scholar")],
+            () => Configuration.General.ArcanistJob,
+            v => Configuration.General.ArcanistJob = v);
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("Which job's quests and soul crystal an Arcanist works towards."));
+
         (Job[] craftJobIds, string[] craftJobNames) = _craftJobs.Value;
         ImGui.SetNextItemWidth(size.X / 2);
         DrawComboOption(_L("Preferred Crafting Job"), craftJobIds, craftJobNames,

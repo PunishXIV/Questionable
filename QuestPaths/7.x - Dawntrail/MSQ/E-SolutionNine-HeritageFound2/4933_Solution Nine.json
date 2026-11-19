@@ -82,7 +82,6 @@
           "InteractionType": "WalkTo"
         },
         {
-          "StopDistance": 11,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Solution Nine"
         },

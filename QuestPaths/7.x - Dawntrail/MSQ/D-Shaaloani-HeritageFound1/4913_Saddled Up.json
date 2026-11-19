@@ -19,7 +19,6 @@
       "TerritoryId": 1190,
       "Steps": [
         {
-          "StopDistance": 8,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Shaaloani - Hhusatahwi"
         },
@@ -53,7 +52,6 @@
       "TerritoryId": 1190,
       "Steps": [
         {
-          "StopDistance": 8,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Shaaloani - Sheshenewezi Springs"
         },

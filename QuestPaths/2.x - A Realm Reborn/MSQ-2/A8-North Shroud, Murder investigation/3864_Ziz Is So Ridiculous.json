@@ -20,7 +20,6 @@
       "Steps": [
         {
           "InteractionType": "AttuneAetheryte",
-          "StopDistance": 5,
           "Aetheryte": "North Shroud - Fallgourd Float"
         },
         {

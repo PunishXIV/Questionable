@@ -13,7 +13,7 @@ internal sealed class QuickAccessComponent
     QuestRegistry questRegistry,
     QuestValidationWindow questValidationWindow,
     JournalProgressWindow journalProgressWindow,
-    PriorityWindow priorityWindow,
+    QueueComponent queueComponent,
     OpenQuestCleanUp openQuestCleanUp,
     BossModIpc bossModIpc,
     SatisfyIpc satisfy,
@@ -63,11 +63,11 @@ internal sealed class QuickAccessComponent
     internal void DrawPriorityQuestsButton(bool showLabel = false)
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.AngleDoubleUp,
-                _L("Priority Quests"),
-                _L("Configure priority quests which will be done as soon as possible."),
+                _L("Up next"),
+                _L("Priority quests, done as soon as possible."),
                 enabled: objectTable[0] != null,
                 showLabel: showLabel))
-            priorityWindow.ToggleOrUncollapse();
+            queueComponent.Open();
     }
 
     internal void DrawRedeemButton(bool showLabel = false)

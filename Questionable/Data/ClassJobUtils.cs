@@ -208,11 +208,21 @@ internal sealed class ClassJobUtils
                 { Job.ACN, (Job.SMN, 4549) },
                 { Job.ROG, (Job.NIN, 7886) }
             };
+    // Arcanist is the only class with two jobs; the setting picks which line QST follows.
+    internal static Job FollowUpJob(Job classJob, Job arcanistJob) =>
+        classJob == Job.ACN ? (arcanistJob == Job.SCH ? Job.SCH : Job.SMN) : classJob.AsJob();
+
+    // Soul of the Scholar; quest 1098 equips it, 1097 swaps out Summoner's 4549.
+    private const ushort ScholarStone = 4550;
+
+    internal static (Job Job, ushort Item)? JobStoneFor(Job classJob, Job arcanistJob) =>
+        classJob == Job.ACN && arcanistJob == Job.SCH ? (Job.SCH, ScholarStone)
+        : JobStones.TryGetValue(classJob, out var value) ? value : null;
+
     public static (Job?, ushort?) ClassToJobStone(Job classJob)
     {
-        if (JobStones.TryGetValue(classJob, out var value))
+        if (JobStoneFor(classJob, Configuration.Instance().General.ArcanistJob) is var (job, item))
         {
-            (var job, var item) = value;
             bool hasStone = false;
             unsafe
             {

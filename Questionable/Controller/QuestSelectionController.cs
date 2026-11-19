@@ -138,6 +138,12 @@ internal sealed class QuestSelectionController(Configuration configuration)
         return questId;
     }
 
+    // Accept-only entries are queued apart from the priority pick, so the list isn't done while one waits to be accepted.
+    internal static bool IsPastPriorityList(QuestChoice choice, IReadOnlyList<Quest> priorityQuests,
+        Func<ElementId, bool> waitingToAccept) =>
+        choice is { Source: EQuestSource.Journal or EQuestSource.Next, QuestId: { } questId } &&
+        priorityQuests.All(x => x.Id != questId && !waitingToAccept(x.Id));
+
     private sealed class SimulatedRule : IQuestRule
     {
         public QuestChoice? Offer(QuestSelectionContext context) =>

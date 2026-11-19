@@ -86,7 +86,6 @@
       "TerritoryId": 956,
       "Steps": [
         {
-          "StopDistance": 6,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Labyrinthos - Aporia"
         },

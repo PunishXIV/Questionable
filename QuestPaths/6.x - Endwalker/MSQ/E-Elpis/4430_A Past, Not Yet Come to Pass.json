@@ -19,7 +19,6 @@
       "TerritoryId": 961,
       "Steps": [
         {
-          "StopDistance": 7,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Elpis - Poieten Oikos"
         },

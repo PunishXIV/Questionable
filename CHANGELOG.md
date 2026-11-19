@@ -1,30 +1,28 @@
 - Feature: Questionable 2.0, rebuilt from the ground up -Kage
-- Feature: Configuration profiles -Kage
-- Feature: Quest on several characters in a row (AutoRetainer characters, Profiles tab) -Kage
+- Feature: Configuration profiles, and questing on several characters in a row (AutoRetainer characters, Profiles page) -Kage
 - Feature: Choose what happens when a run ends: run commands, travel with Lifestream, wait, log out or close the game; a stop quest can also switch to a priority preset -Kage
+- Feature: More ways to stop: once the priority list is done, when you move your character, or at the next aetheryte; copy and paste for the stop lists -Kage
 - Feature: Community quest results: if you opt in, the quest window and journal show how often a path worked for others ("19/20 worked"), journal names are coloured by reports, and the ! button sends a report -Kage
 - Feature: Do dailies: tick allied societies in the journal and Questionable does their dailies, unlocking a society first when needed (/qst dailies) -Kage
-- Feature: Custom Deliveries tab: every NPC's progress and this week's items; Satisfy does the ticked ones (/qst deliveries, needs Satisfy) -Kage
-- Feature: Between quests: collects the free job gear at 80, 89 and 99, claims Mog Station mail (needs Mogmail) and runs the new Hall of the Novice for the Neophyte's Ring (needs AutoDuty) -Kage
-- Feature: Uses Vesper Bay tickets, keeps your chocobo out (needs Knightshopper) and skips fishing when you already have the fish -Kage
-- Feature: Option to retry a stuck step before stopping -Kage
-- Feature: Repairs worn gear between quests, with Dark Matter or at your Grand Company's mender -Kage
+- Feature: Custom Deliveries page: every NPC's progress and this week's items; Satisfy does the ticked ones (/qst deliveries, needs Satisfy) -Kage
+- Feature: Between quests: collects the free job gear at 80, 89 and 99, repairs worn gear (Dark Matter or your Grand Company's mender), claims Mog Station mail (needs Mogmail) and runs the new Hall of the Novice for the Neophyte's Ring (needs AutoDuty) -Kage
 - Feature: Picks quest rewards by rules you can reorder: new mounts, minions and other collectibles first, then gear upgrades, coffers, Allagan pieces and the best sale price -Kage
 - Feature: Quests waiting on a duty you run yourself are set aside while Questionable carries on with other quests -Kage
 - Feature: Optional catch-up when the story is too high: AutoDuty dungeons for levels, tomestone accessories and dungeons for item level -Kage
-- Feature: Stop when you move your character, a setting for deaths before stopping, and notification sounds that can play only while the game is in the background -Kage
+- Feature: Recovery: retries a stuck step before stopping, gets back up after dying (deaths before stopping is a setting) and retries quest battles up to 5 times -Kage
 - Feature: Duties without Duty Support open the Duty Finder or run unsynced (the level gap is a setting) -Kage
-- Feature: Journal Progress: XP and gil columns, saved filters, "Hide Completed Quests" and Mentor Roulette unlocks -Kage
-- Feature: Priority Quests: interrupt switch, XP and gil total, and more presets (Dawntrail tribes, field aether currents, "Unlock All Jobs", highest society rank) -Kage
-- Feature: Stop at the next aetheryte, "Redeem Reward Items" (/qst redeem), /qst skipstep and "Add all to Priority Quests" in /qst zone -Kage
-- Change: Travel between zones uses MappingTheRealm, which is now a required plugin -Kage
+- Feature: Journal: duty progress, aetherytes and aether currents per zone, a zone map with every quest on it, quest lines showing what a quest needs and unlocks, XP and gil columns, saved filters, "Hide Completed Quests" and Mentor Roulette unlocks -Kage
+- Feature: Priority quests live in the quest window's "Up next" tab, with an interrupt switch, XP and gil total, and more presets (Dawntrail tribes, field aether currents, "Unlock All Jobs", highest society rank) -Kage
+- Feature: Uses Vesper Bay tickets, keeps your chocobo out (needs Knightshopper), skips fishing when you already have the fish, and lets you pick Summoner or Scholar for Arcanist -Kage
+- Feature: Notification sounds that can play only while the game is in the background -Kage
+- Feature: "Redeem Reward Items" (/qst redeem), /qst skipstep and "Add all to Priority Quests" in /qst zone -Kage
+- Change: Travel between zones uses MappingTheRealm, which is now a required plugin; it picks the route over aetherytes, aethernet and zone lines, keeps running through FATEs instead of stopping to fight, and your mount is picked in its settings -Kage
 - Change: Other plugins do more of the work: Gather & Chill, Feesh (replaces AutoHook), Knightshopper (also the chocobo license from your Grand Company), AutoDuty and Boss Mod's quest battle modules -Kage
-- Change: Settings and the journal have a side menu with grouped pages; the Plugins page lists every helper plugin with install and settings buttons; your mount is now picked in MappingTheRealm's settings -Kage
+- Change: Settings and the journal have a side menu with grouped pages; the Helper plugins page lists every helper plugin with install and settings buttons -Kage
 - Change: Sahagin dailies are batched like the other societies -Kage
 - Change: Problems you can fix yourself show as plain chat messages instead of red errors -Kage
-- Change: Quest battles retry up to 5 times (a setting) -Kage
 - Change: Removed "Mine/Harvest with Questionable" (use Custom Deliveries) and quest battle/duty settings import/export; path-editing tools need Debug -Kage
 - Bug fix: The quest window no longer opens by itself during a duty -Kage
 - Bug fix: No more stalls when dismounting to talk to someone -Kage
-- Bug fix: Steps that start in another zone teleport there instead of stopping with "no route" -Kage
+- Bug fix: Steps that start in another zone travel there instead of stopping with "no route" -Kage
 - Bug fix: "Start minimized" shows the right minimize button -Kage

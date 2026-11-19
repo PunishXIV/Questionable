@@ -117,7 +117,7 @@ internal sealed class ProfilesConfigComponent
 
         ImGui.TextWrapped(_L("Tick characters to quest on them in a row. Start Questionable on a ticked character: when its run ends, Questionable switches to the next ticked one. Each one uses its own profile, including its stop conditions."));
         ImGui.SameLine();
-        ImGuiComponents.HelpMarker(_L("The run-end commands on the Stop tab run for every character; logging out or closing the game only happens after the last one."));
+        ImGuiComponents.HelpMarker(_L("The run-end commands on the Stopping page run for every character; logging out or closing the game only happens after the last one."));
         DrawRun();
         DrawTable([.. _characters.Select(x => (x.ContentId.ToString(CultureInfo.InvariantCulture), $"{x.Name}@{x.World}"))],
             canTick: true);

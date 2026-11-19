@@ -259,6 +259,7 @@ internal sealed class Configuration : IPluginConfiguration
         public int MountDistance { get; set; } = 50;
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
         public Job CombatJob { get; set; } = Job.ADV;
+        public Job ArcanistJob { get; set; } = Job.SMN;
         public Job CraftingJob { get; set; } = Job.CRP;
         public Job GatheringJob { get; set; } = Job.MIN;
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
@@ -316,6 +317,7 @@ internal sealed class Configuration : IPluginConfiguration
 
         public bool LevelToStopAfter { get; set; }
         public int TargetLevel { get; set; } = 50;
+        public bool PriorityListEmpty { get; set; }
         public bool RunCommandAfterStop { get; set; }
         public string CommandAfterStop { get; set; } = "";
         public bool RemoveWhenCompleteConditionMet { get; set; }

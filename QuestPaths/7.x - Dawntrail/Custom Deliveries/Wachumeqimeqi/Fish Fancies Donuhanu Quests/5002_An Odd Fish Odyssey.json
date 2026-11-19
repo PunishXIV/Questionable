@@ -42,7 +42,6 @@
       "TerritoryId": 1191,
       "Steps": [
         {
-          "StopDistance": 5,
           "InteractionType": "Instruction",
           "Comment": "Purchase a Popper Lure (or 5) from:\n* Scrip Exchange (Purple Gatherer's)\n* Mesouaidonque (Cosmocredit)\nThen click Skip"
         },

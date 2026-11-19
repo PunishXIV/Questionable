@@ -46,7 +46,6 @@
         {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "East Shroud - Hawthorne Hut",
-          "StopDistance": 5,
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "East Shroud - Hawthorne Hut"

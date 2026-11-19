@@ -116,6 +116,16 @@ internal sealed class StopConditionComponent : ConfigComponent
             }
         }
 
+        bool priorityListEmpty = Configuration.Stop.PriorityListEmpty;
+        if (ImGui.Checkbox(_L("Stop when the priority list is empty"), ref priorityListEmpty))
+        {
+            Configuration.Stop.PriorityListEmpty = priorityListEmpty;
+            Save();
+        }
+
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("Questionable only does the quests on your priority list, then stops instead of going on with the story or other quests."));
+
         ImGui.Spacing();
 
         DrawQuestStopSection(
@@ -226,8 +236,27 @@ internal sealed class StopConditionComponent : ConfigComponent
             ImGui.Text(label);
             selector.DrawSelection();
 
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Paste")))
+            {
+                foreach (ElementId questId in QuestClipboard.Paste())
+                {
+                    if (!quests.Contains(questId) && _questRegistry.IsKnownQuest(questId))
+                        quests.Add(questId);
+                }
+
+                Save();
+            }
+
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(_L("Adds quests copied from a stop list or the priority list."));
+
             if (quests.Count > 0)
             {
+                ImGui.SameLine();
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Copy")))
+                    QuestClipboard.Copy(quests);
+
+                ImGui.SameLine();
                 using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
                 {
                     if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear All")))

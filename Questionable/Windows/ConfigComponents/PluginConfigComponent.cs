@@ -222,7 +222,7 @@ internal sealed class PluginConfigComponent
             ImGui.TextColored(QstTheme.Danger, _L("Required plugins are missing, Questionable will not work properly."));
     }
 
-    // The setup window asks for the combat plugin here; otherwise it is picked on the General tab.
+    // The setup window asks for the combat plugin here; otherwise it is picked on the Basics page.
     public void Draw(out bool allRequiredInstalled, bool combatPicker = false)
     {
         allRequiredInstalled = !HasMissingRequiredPlugins() && IsCombatPluginReady();
@@ -265,7 +265,7 @@ internal sealed class PluginConfigComponent
         ImGuiComponents.HelpMarker(_L("Questionable is built and tested with Boss Mod. Wrath Combo and Rotation Solver Reborn are there for compatibility and testing."));
 
         if (!IsCombatPluginReady())
-            ImGui.TextColored(QstTheme.Danger, _LF("{0} isn't installed or loaded; install it on the Plugins tab.",
+            ImGui.TextColored(QstTheme.Danger, _LF("{0} isn't installed or loaded; install it on the Helper plugins page.",
                 CombatPlugins[_configuration.General.CombatModule].DisplayName));
     }
 

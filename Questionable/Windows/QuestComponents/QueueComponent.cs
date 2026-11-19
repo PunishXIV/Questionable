@@ -1,15 +1,15 @@
-using System.Text;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-namespace Questionable.Windows;
+namespace Questionable.Windows.QuestComponents;
 
 [RegisterSingleton]
-internal sealed class PriorityWindow : LWindow
+internal sealed class QueueComponent
 {
-    private const string ClipboardPrefix = "qst:priority:";
-    private const string LegacyClipboardPrefix = "qst:v1:";
-    private const char ClipboardSeparator = ';';
+    // Quest journal menus compare against this to tell the queue's own rows apart.
+    internal const string Source = "PriorityWindow";
+
     private readonly IChatGui _chatGui;
+    private bool _showPresets;
 
     private readonly Configuration _configuration;
     private readonly IDalamudPluginInterface _pluginInterface;
@@ -27,11 +27,10 @@ internal sealed class PriorityWindow : LWindow
     private string _presetName = string.Empty;
     private string? _selectedPresetName;
 
-    public PriorityWindow(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
+    public QueueComponent(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, PriorityPresets presets,
         IDalamudPluginInterface pluginInterface, Configuration configuration, QuestJournalUtils questJournalUtils,
         OpenQuestCleanUp openQuestCleanUp)
-        : base(_L("Priority Quests") + "###QuestionableQuestPriority")
     {
         _questController = questController;
         _questFunctions = questFunctions;
@@ -51,22 +50,34 @@ internal sealed class PriorityWindow : LWindow
             questController.PriorityManager.Quests.All(x => x.Id != quest.Id);
         _questSelector.DefaultPredicate = quest => questFunctions.IsQuestAccepted(quest.Id);
         _questSelector.OnSelect = quest => _questController.PriorityManager.Add(quest);
-
-        Size = new Vector2(400, 400);
-        SizeCondition = ImGuiCond.Once;
-        SizeConstraints = new WindowSizeConstraints
-        {
-            MinimumSize = new(400, 30),
-            MaximumSize = default
-        };
     }
 
-    public override unsafe void DrawContent()
+    // The quest window listens and switches to its Up next tab.
+    public event EventHandler? OpenRequested;
+
+    public void Open() => OpenRequested?.Invoke(this, EventArgs.Empty);
+
+    public unsafe void Draw()
     {
         Job currentJob = (Job)(PlayerState.Instance()->CurrentClassJobId);
         if (_lastKnownJob != null && currentJob != _lastKnownJob && _selectedPresetName == _presets.JobQuestsName)
             LoadPreset(_presets.JobQuestsName);
         _lastKnownJob = currentJob;
+
+        using (QstWidgets.SegmentGroup(armed: false))
+        {
+            if (QstWidgets.SegmentToggle(FontAwesomeIcon.ListOl, !_showPresets, _L("List"), _L("Show the list")))
+                _showPresets = false;
+            ImGui.SameLine();
+            if (QstWidgets.SegmentToggle(FontAwesomeIcon.Bookmark, _showPresets, _L("Presets"), _L("Show presets")))
+                _showPresets = true;
+        }
+
+        if (_showPresets)
+        {
+            DrawPresets();
+            return;
+        }
 
         if (QstWidgets.SectionHeader(_L("Explanation"), "PriorityExplanation", defaultOpen: false))
         {
@@ -86,10 +97,6 @@ internal sealed class PriorityWindow : LWindow
                 _L("With 'Interrupt the current quest' off, quests added here wait until the current quest is done."));
         }
 
-        DrawPresets();
-
-        ImGui.Separator();
-        ImGui.Spacing();
         ImGui.Text(_L("Quests to do first:"));
         bool canInterrupt = _questController.PriorityManager.CanInterrupt;
         if (ImGui.Checkbox(_L("Interrupt the current quest"), ref canInterrupt))
@@ -160,7 +167,7 @@ internal sealed class PriorityWindow : LWindow
                 if (_uiUtils.DrawQuestRow(quest.Id, quest.Info.Name))
                     _questTooltipComponent.Draw(quest.Info);
 
-                _questJournalUtils.ShowContextMenu(quest.Info, quest, nameof(PriorityWindow));
+                _questJournalUtils.ShowContextMenu(quest.Info, quest, Source);
 
                 if (_questController.PriorityManager.IsAcceptOnly(quest.Id))
                 {
@@ -228,56 +235,11 @@ internal sealed class PriorityWindow : LWindow
             _questController.PriorityManager.Move(from, to);
     }
 
-    private static List<ElementId> ParseClipboardItems()
-    {
-        string clipboardText = ImGui.GetClipboardText().Trim();
-        return DecodeQuests(clipboardText);
-    }
-
-    public static List<ElementId> DecodeQuests(string clipboardText)
-    {
-        List<ElementId> clipboardItems = [];
-        try
-        {
-            if (!string.IsNullOrEmpty(clipboardText))
-            {
-                string? prefixToRemove = null;
-
-                if (clipboardText.StartsWith(ClipboardPrefix, StringComparison.InvariantCulture))
-                    prefixToRemove = ClipboardPrefix;
-                else if (clipboardText.StartsWith(LegacyClipboardPrefix, StringComparison.InvariantCulture))
-                    prefixToRemove = LegacyClipboardPrefix;
-
-                if (prefixToRemove != null)
-                {
-                    clipboardText = clipboardText.Substring(prefixToRemove.Length);
-                    string text = Encoding.UTF8.GetString(Convert.FromBase64String(clipboardText));
-                    foreach (string part in text.Split(ClipboardSeparator))
-                    {
-                        ElementId elementId = ElementId.FromString(part);
-                        clipboardItems.Add(elementId);
-                    }
-                }
-            }
-        }
-        catch (Exception)
-        {
-            clipboardItems.Clear();
-        }
-
-        return clipboardItems;
-    }
-
-    public string EncodeQuests()
-    {
-        return ClipboardPrefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
-            string.Join(ClipboardSeparator, _questController.PriorityManager.Quests.Select(x => x.Id.ToString()))));
-    }
+    private static List<ElementId> ParseClipboardItems() => QuestClipboard.Paste();
 
     private void ExportToClipboard()
     {
-        string clipboardText = EncodeQuests();
-        ImGui.SetClipboardText(clipboardText);
+        QuestClipboard.Copy(_questController.PriorityManager.Quests.Select(x => x.Id));
         _chatGui.Print(_L("Copied quests to clipboard."), CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
@@ -285,9 +247,6 @@ internal sealed class PriorityWindow : LWindow
 
     private void DrawPresets()
     {
-        if (!QstWidgets.SectionHeader(_L("Presets"), "Presets", defaultOpen: false))
-            return;
-
         IReadOnlyList<PriorityPresets.Preset> builtInPresets = _presets.BuiltIn;
         Dictionary<string, List<string>> userPresets = _configuration.Priority.Presets;
 

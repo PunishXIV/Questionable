@@ -30,7 +30,6 @@
       "TerritoryId": 961,
       "Steps": [
         {
-          "StopDistance": 6,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Elpis - Anagnorisis"
         },

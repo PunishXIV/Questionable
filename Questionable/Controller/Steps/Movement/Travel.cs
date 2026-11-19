@@ -44,7 +44,7 @@ internal static class Travel
                 return false;
 
             if (!mappingTheRealm.IsReady())
-                throw new NeedsPlayerException("MappingTheRealm is needed for travel between zones. Install it from the Plugins tab.");
+                throw new NeedsPlayerException("MappingTheRealm is needed for travel between zones. Install it from the Helper plugins page in settings.");
 
             // A route from a stopped run can still be moving; Stop only cancels routes Questionable started.
             mappingTheRealm.Stop();

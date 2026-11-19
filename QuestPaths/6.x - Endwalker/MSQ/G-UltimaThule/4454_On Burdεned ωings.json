@@ -35,7 +35,6 @@
           "$.1": "QuestVariables if done after [1]: 2 0 0 0 0 96"
         },
         {
-          "StopDistance": 10,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Ultima Thule - Reah Tahra"
         },

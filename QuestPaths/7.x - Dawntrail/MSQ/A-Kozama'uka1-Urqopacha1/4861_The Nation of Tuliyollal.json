@@ -52,7 +52,6 @@
       "TerritoryId": 1185,
       "Steps": [
         {
-          "StopDistance": 7,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Tuliyollal"
         },

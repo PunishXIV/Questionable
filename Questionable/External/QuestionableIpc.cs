@@ -60,7 +60,6 @@ internal sealed class QuestionableIpc : IDisposable
         EventInfoComponent eventInfoComponent,
         QuestRegistry questRegistry,
         QuestFunctions questFunctions,
-        PriorityWindow priorityWindow,
         RedoUtil redoUtil,
         ILogger<QuestionableIpc> logger,
         IDalamudPluginInterface pluginInterface)
@@ -123,7 +122,7 @@ internal sealed class QuestionableIpc : IDisposable
         _insertQuestPriority.RegisterFunc(InsertQuestPriority);
 
         _exportQuestPriority = pluginInterface.GetIpcProvider<string>(IpcExportQuestPriority);
-        _exportQuestPriority.RegisterFunc(priorityWindow.EncodeQuests);
+        _exportQuestPriority.RegisterFunc(() => QuestClipboard.Encode(questController.PriorityManager.Quests.Select(x => x.Id)));
 
         _stop = pluginInterface.GetIpcProvider<string, bool>(IpcStop);
         _stop.RegisterFunc(Stop);
@@ -275,7 +274,7 @@ internal sealed class QuestionableIpc : IDisposable
     private bool ImportQuestPriority(string encodedQuestPriority)
     {
         _logger.LogDebug("ImportQuestPriority({EncodedQuestPriority})", encodedQuestPriority);
-        List<ElementId> questElements = PriorityWindow.DecodeQuests(encodedQuestPriority);
+        List<ElementId> questElements = QuestClipboard.Decode(encodedQuestPriority);
         _questController.PriorityManager.Import(questElements);
         return true;
     }

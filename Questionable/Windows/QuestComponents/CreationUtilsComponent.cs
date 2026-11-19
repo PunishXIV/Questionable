@@ -19,7 +19,7 @@ internal sealed class CreationUtilsComponent
     CameraFunctions cameraFunctions,
     QuestData questData,
     QuestSelectionWindow questSelectionWindow,
-    PriorityWindow priorityWindow,
+    QueueComponent queueComponent,
     PathEditorWindow pathEditorWindow,
     RedoUtil redoUtil,
     IClientState clientState,
@@ -153,9 +153,7 @@ internal sealed class CreationUtilsComponent
                                     if (ImGui.IsItemClicked())
                                     {
                                         questController.PriorityManager.Add(quest.Id);
-                                        if (!priorityWindow.IsOpen)
-                                            priorityWindow.ToggleOrUncollapse();
-                                        priorityWindow.BringToFront();
+                                        queueComponent.Open();
                                     }
                                 }
                             }

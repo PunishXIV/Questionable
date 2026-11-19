@@ -255,6 +255,12 @@ internal sealed class QuestStopPolicy
         PrintAndNotify(_LF("Completed quest '{0}', stopping as requested.", quest.Info.Name));
     }
 
+    public void ReportPriorityListDone()
+    {
+        _logger.LogInformation("Priority list done, stopping as configured");
+        PrintAndNotify(_L("The priority list is done, stopping as configured."));
+    }
+
     public void ReportStopBeforeTeleport(ITask nextTask)
     {
         string stopping = _L("Stopping before teleport as requested.");
