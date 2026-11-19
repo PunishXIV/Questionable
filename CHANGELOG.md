@@ -1,1 +1,1 @@
-- Change: fix end date of typing event now that we know when evercold is releasing -alydev
+- Add the FF 16 event. - Alydev
