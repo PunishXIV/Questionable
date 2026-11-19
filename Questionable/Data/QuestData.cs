@@ -210,6 +210,7 @@ internal sealed class QuestData
     private readonly IServiceProvider _serviceProvider;
 
     private readonly Dictionary<ElementId, IQuestInfo> _quests;
+    private readonly HashSet<uint> _issuers;
 
     public QuestData(IServiceProvider serviceProvider, IDataManager dataManager, ClassJobUtils classJobUtils, IPluginLog? pluginLog = null)
     {
@@ -439,6 +440,7 @@ internal sealed class QuestData
             .Cast<QuestInfo>()
             .ToList();
         SeasonalQuests = [.. _quests.Values.OfType<QuestInfo>().Where(x => x.IsSeasonalEvent).OrderBy(x => x.QuestId.Value)];
+        _issuers = [.. _quests.Values.Select(x => x.IssuerDataId)];
 
         LastMainScenarioQuestId = MainScenarioQuests
             .Where(x => !MainScenarioQuests.Any(y => y.PreviousQuests.Any(z => z.QuestId == x.QuestId)))
@@ -520,7 +522,7 @@ internal sealed class QuestData
             .ToList();
     }
 
-    public bool IsIssuerOfAnyQuest(uint targetId) => _quests.Values.Any(x => x.IssuerDataId == targetId);
+    public bool IsIssuerOfAnyQuest(uint targetId) => _issuers.Contains(targetId);
 
     public List<IQuestInfo> GetAllByJournalGenre(uint journalGenre)
     {
