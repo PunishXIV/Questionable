@@ -49,13 +49,20 @@ internal sealed class QuestStarter(
     public bool ResumesSingle => questController.NextInChain != null ||
         _single is { } id && id.Equals(questController.CurrentQuest?.Quest.Id);
 
-    public void Resume(string label)
+    public bool TryResume(string label)
     {
         Func<Quest?>? chain = questController.NextInChain;
         if (chain?.Invoke() is { } next)
             questController.SetNextQuest(next);
+        else
+            // The event quests were finished some other way.
+            chain = questController.NextInChain = null;
+
+        if (chain == null && !(_single is { } id && id.Equals(questController.CurrentQuest?.Quest.Id)))
+            return false;
         if (StartSingleQuest(label))
             questController.NextInChain = chain;
+        return true;
     }
 
     public bool StartEventQuests(Quest first, Func<Quest?> next, string label)

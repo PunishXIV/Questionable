@@ -147,12 +147,13 @@ internal sealed class CommandHandler : IDisposable
 
             case "start":
                 _questWindow.IsOpenAndUncollapsed = true;
-                if (_questStarter.ResumesSingle)
-                    _questStarter.Resume(_L("Start command"));
-                else if (_characterRun.StartsList)
-                    _characterRun.Start();
-                else
-                    _questStarter.Start(_L("Start command"));
+                if (!_questStarter.TryResume(_L("Start command")))
+                {
+                    if (_characterRun.StartsList)
+                        _characterRun.Start();
+                    else
+                        _questStarter.Start(_L("Start command"));
+                }
                 break;
 
             case "dailies":

@@ -852,6 +852,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 }
                 else
                 {
+                    bool finished = false;
                     if (AutomationType == EAutomationType.SingleQuestB)
                     {
                         if (NextInChain?.Invoke() is { } next)
@@ -865,11 +866,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                             _logger.LogInformation("Single quest is finished");
                             NextInChain = null;
                             AutomationType = EAutomationType.Manual;
-                            StopReason = FinishedReason;
+                            finished = true;
                         }
                     }
 
                     CheckNextTasks("Different Quest");
+                    // CheckNextTasks stops a manual run with its own label.
+                    if (finished)
+                        StopReason = FinishedReason;
                 }
             }
         }

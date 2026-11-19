@@ -767,12 +767,13 @@ internal sealed partial class ActiveQuestComponent
                 if (questProgressInfo == null)
                     questController.SetNextQuest(currentQuest.Quest);
 
-                if (questStarter.ResumesSingle)
-                    questStarter.Resume(_L("UI start"));
-                else if (characterRun.StartsList)
-                    characterRun.Start();
-                else
-                    questStarter.Start(_L("UI start"));
+                if (!questStarter.TryResume(_L("UI start")))
+                {
+                    if (characterRun.StartsList)
+                        characterRun.Start();
+                    else
+                        questStarter.Start(_L("UI start"));
+                }
             }
 
             if (!questStarter.ResumesSingle && characterRun.StartsList && ImGui.IsItemHovered())

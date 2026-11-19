@@ -12,6 +12,7 @@ public sealed class GameStringComparisonTests
     [InlineData("<italic(1)>Proceed?<italic(0)>", "Proceed?", true)]
     [InlineData("Proceed?", "Proceed? (Yes)", false)]
     [InlineData("Pay 1,000 gil.", "Pay 1,000 gil.", true)]
+    [InlineData("<string(gstr1)>", "Any option at all", false)]
     public void Matches_TreatsMacrosAsFilledText(string excel, string shown, bool expected) =>
         Assert.Equal(expected, GameStringComparison.Matches(excel, shown));
 }

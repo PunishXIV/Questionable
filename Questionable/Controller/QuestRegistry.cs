@@ -31,7 +31,6 @@ internal sealed class QuestRegistry : IDisposable
 
     private readonly ICallGateProvider<object> _reloadDataIpc;
     private readonly TerritoryData _territoryData;
-    private EExpansionVersion _characterExpansion;
     private CancellationTokenSource? _projectLoad;
 
     public QuestRegistry(
@@ -57,13 +56,10 @@ internal sealed class QuestRegistry : IDisposable
         _configuration = configuration;
         _draftQuestPathService = draftQuestPathService;
         _reloadDataIpc = _pluginInterface.GetIpcProvider<object>("Questionable.ReloadData");
-        unsafe
-        {
-            _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
-        }
     }
 
-    public EExpansionVersion CharacterExpansion => _characterExpansion;
+    // Read live: QST loads before login, when the game still reports A Realm Reborn.
+    public unsafe EExpansionVersion CharacterExpansion => (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
 
     public IEnumerable<Quest> AllQuests => _quests.Values;
     private CachedValue<int> _count = new(ttlSeconds: 1);
@@ -146,10 +142,6 @@ internal sealed class QuestRegistry : IDisposable
         }
 
         _logger.LogInformation("Loaded {Count} quests in total", _quests.Count);
-        unsafe
-        {
-            _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
-        }
     }
 
     private void LoadFromProject()

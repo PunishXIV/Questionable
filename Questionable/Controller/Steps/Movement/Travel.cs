@@ -190,8 +190,11 @@ internal static class Travel
 
         private ETaskResult FollowVnav(DateTime since)
         {
-            if (_pace && objectTable[0] is { } player && gameFunctions.FindObjectByDataId(Task.Leader!.Value) is { } npc)
-                return Pace(Task.Position!.Value, player.Position, npc.Position);
+            // A leader missing for a moment must not end the follow; the stuck retry covers one that's gone.
+            if (_pace)
+                return objectTable[0] is { } player && gameFunctions.FindObjectByDataId(Task.Leader!.Value) is { } npc
+                    ? Pace(Task.Position!.Value, player.Position, npc.Position)
+                    : ETaskResult.StillRunning;
 
             if (objectTable[0]?.Position is { } here && Vector3.Distance(here, Task.Position!.Value) <= VnavArrival)
             {

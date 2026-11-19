@@ -357,7 +357,7 @@ internal sealed unsafe partial class GameFunctions
             return false;
 
         bool eq = GameStringComparison.Matches(a, b);
-        Svc.Log.Verbose($"GameStringEquals: {a} {(eq ? "==" : "!=")} {b}");
+        Svc.Log.Verbose("GameStringEquals: {A} {Op} {B}", a, eq ? "==" : "!=", b);
         return eq;
     }
 

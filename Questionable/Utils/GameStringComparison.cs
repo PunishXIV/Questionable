@@ -20,7 +20,8 @@ internal static partial class GameStringComparison
             return false;
         if (MacroLiteralRegex().IsMatch(right))
             (left, right) = (right, left);
-        if (!MacroLiteralRegex().IsMatch(left))
+        // A text that is only macros would match every option.
+        if (!MacroLiteralRegex().IsMatch(left) || Normalize(left).Length == 0)
             return false;
 
         string pattern = string.Join(".*", MacroLiteralRegex().Split(left).Select(x => Regex.Escape(Normalize(x))));
