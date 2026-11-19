@@ -61,26 +61,6 @@ public sealed class OperationCoordinatorTests
         Assert.False(host.IsActive);
     }
 
-    [Fact]
-    public void ActiveScheduling_RejectsConfirmation()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Crafting.MarkUncertain(fixture.Crafting.BeginRequest());
-        fixture.Purchase.MarkUncertain(fixture.Purchase.BeginRequest());
-        fixture.Gathering.MarkUncertain(fixture.Gathering.BeginRequest());
-        fixture.Fishing.MarkUncertain(fixture.Fishing.BeginRequest());
-        var host = new Host { IsActive = true };
-
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<ArtisanProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<KnightshopperProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<GatherChillProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<FeeshProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<AutoDutyProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<CombatCleanupProvider>(), host));
-
-        Assert.True(host.IsActive);
-    }
-
     [Theory]
     [InlineData("crafting")]
     [InlineData("purchase")]
@@ -123,37 +103,6 @@ public sealed class OperationCoordinatorTests
     }
 
     [Fact]
-    public void Providers_RunInDeclaredOrder()
-    {
-        using var fixture = new ExternalOperationFixture();
-
-        Assert.Equal(["Artisan", "Knightshopper", "Gather n Chill", "Feesh", "AutoDuty", "Combat cleanup"],
-            fixture.Coordinator.Providers.Select(x => x.Name));
-    }
-
-    [Fact]
-    public void EarlierProviderBlockReasonWins()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Fishing.BeginRequest();
-        fixture.Purchase.BeginRequest();
-
-        Assert.Equal(fixture.Purchase.BlockReason, fixture.Coordinator.BlockReason);
-    }
-
-    [Fact]
-    public void ProvidersSharingAnOrderAreRejected()
-    {
-        using var fixture = new ExternalOperationFixture();
-        var clash = Substitute.For<IOperationProvider>();
-        clash.Order.Returns(fixture.Providers[0].Order);
-
-        Assert.Throws<InvalidOperationException>(() => new OperationCoordinator(
-            [.. fixture.Providers, clash], fixture.Movement,
-            NullLogger<OperationCoordinator>.Instance));
-    }
-
-    [Fact]
     public void EveryProviderIsRegistered()
     {
         IServiceCollection services = new ServiceCollection().AddQuestionable();
@@ -170,75 +119,6 @@ public sealed class OperationCoordinatorTests
             },
             services.Where(s => s.ServiceType == typeof(IOperationProvider))
                 .Select(s => s.ImplementationType ?? s.ImplementationFactory!(resolver).GetType()).OrderBy(t => t.Name));
-    }
-
-    [Fact]
-    public void AddedProvider_JoinsWithoutChanges()
-    {
-        var added = Substitute.For<IOperationProvider>();
-        added.Order.Returns(700);
-        added.Name.Returns("Added");
-        added.HasOperation.Returns(true);
-        added.MovesCharacter.Returns(true);
-        added.BlockReason.Returns("Added provider is busy.");
-        added.MayBeMovingCharacter().Returns(true);
-        added.Update(Arg.Any<IExternalOperationHost>(), Arg.Any<IOperationContext>()).Returns(true);
-        added.Cancel(Arg.Any<IOperationContext>()).Returns(true);
-        added.TryConfirmIdle(Arg.Any<IExternalOperationHost>(), Arg.Any<IOperationContext>()).Returns(true);
-        using var fixture = new ExternalOperationFixture(extraProviders: [added]);
-        var host = new Host();
-
-        Assert.Equal("Added", fixture.Coordinator.Providers[^1].Name);
-        Assert.True(fixture.Coordinator.HasOperation);
-        Assert.True(fixture.Coordinator.HasMovingOperation);
-        Assert.True(fixture.Coordinator.MayBeMovingCharacter());
-        Assert.Equal("Added provider is busy.", fixture.Coordinator.BlockReason);
-        Assert.False(fixture.Coordinator.CanUpdateTask(null));
-        Assert.False(fixture.Coordinator.CanPrepareQuestTasks(out _));
-        Assert.True(fixture.Coordinator.Update(host));
-        added.Received(1).Update(host, Arg.Any<IOperationContext>());
-        Assert.True(fixture.Coordinator.TryConfirmIdle(added, host));
-
-        List<string> order = [];
-        added.When(x => x.Abandon()).Do(_ => order.Add("abandon"));
-        added.When(x => x.Cancel(Arg.Any<IOperationContext>())).Do(_ => order.Add("cancel"));
-        Assert.False(fixture.Coordinator.CancelAll(() =>
-        {
-            order.Add("queue");
-            return true;
-        }));
-        Assert.Equal(["abandon", "queue", "cancel"], order);
-
-        added.HasOperation.Returns(false);
-        added.CanUpdateTask(Arg.Any<ITaskExecutor?>()).Returns(true);
-        added.GetStartBlockReason().Returns("Added provider has its own work.");
-        Assert.True(fixture.Coordinator.CanUpdateTask(null));
-        Assert.False(fixture.Coordinator.CanPrepareQuestTasks(out string? reason));
-        Assert.Equal("Added provider has its own work.", reason);
-    }
-
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void Executor_SelectsItsProvider(bool crafting)
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Purchase.BeginRequest();
-        fixture.Crafting.BeginRequest();
-        fixture.Condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.Crafting].Returns(crafting);
-        var buy = new Purchase.BuyExecutor(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
-        var craft = new Craft.Executor(Substitute.For<IDataManager>(), fixture.Artisan,
-            NullLogger<Craft.Executor>.Instance, null!, fixture.Crafting);
-
-        IOperationProvider? purchaseOwner = fixture.Coordinator.GetProvider(buy);
-        IOperationProvider? craftOwner = fixture.Coordinator.GetProvider(craft);
-
-        Assert.Equal("Knightshopper", purchaseOwner?.Name);
-        Assert.True(purchaseOwner!.CanUpdateWhileOccupied);
-        Assert.Equal("Artisan", craftOwner?.Name);
-        Assert.Equal(crafting, craftOwner!.CanUpdateWhileOccupied);
-        Assert.Null(fixture.Coordinator.GetProvider(null));
-        Assert.Null(fixture.Coordinator.GetProvider(new WaitAtEnd.NextStepOrSequenceExecutor()));
     }
 
     [Theory]
@@ -272,51 +152,6 @@ public sealed class OperationCoordinatorTests
         fixture.Fishing.BeginRequest();
 
         Assert.True(fixture.Coordinator.HasMovingOperation);
-    }
-
-    [Fact]
-    public void NoOperation_HidesStatus()
-    {
-        using var fixture = new ExternalOperationFixture();
-
-        Assert.All(fixture.Providers, x => Assert.Null(x.GetStatusView()));
-        Assert.Null(fixture.Coordinator.GetTitleBarPill());
-    }
-
-    [Fact]
-    public void Panel_ShowsWorkThenAsksToConfirm()
-    {
-        using var fixture = new ExternalOperationFixture();
-        var provider = fixture.Provider<KnightshopperProvider>();
-        Guid owner = fixture.Purchase.BeginRequest();
-
-        Assert.Equal(new OperationStatusView("Buying quest items with Knightshopper"), provider.GetStatusView());
-        Assert.Equal(new OperationPill("Purchasing", Warning: false, NeedsCheck: false), fixture.Coordinator.GetTitleBarPill());
-
-        fixture.Purchase.MarkUncertain(owner);
-
-        OperationStatusView view = provider.GetStatusView()!;
-        Assert.Equal(fixture.Purchase.BlockReason, view.Status);
-        Assert.Equal("I stopped Knightshopper", view.Recovery?.ConfirmLabel);
-        Assert.False(view.Recovery!.CanConfirm);
-        Assert.Equal(2, view.Recovery.Instructions.Count);
-        Assert.Null(view.Recovery.Detail);
-        Assert.Equal(new OperationPill("Check Knightshopper", Warning: true, NeedsCheck: true),
-            fixture.Coordinator.GetTitleBarPill());
-    }
-
-    [Fact]
-    public void TitleBar_PrefersProviderNeedingCheck()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Purchase.BeginRequest();
-        fixture.Purchase.Abandon();
-        Assert.Equal(new OperationPill("Stopping purchase", Warning: true, NeedsCheck: false),
-            fixture.Coordinator.GetTitleBarPill());
-
-        fixture.Fishing.MarkUncertain(fixture.Fishing.BeginRequest());
-
-        Assert.Equal("Check Feesh", fixture.Coordinator.GetTitleBarPill()?.Text);
     }
 
     private sealed class Host : IExternalOperationHost

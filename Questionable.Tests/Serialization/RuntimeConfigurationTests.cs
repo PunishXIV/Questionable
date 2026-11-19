@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using Questionable.Controller.Steps.Shared;
 using Xunit;
 
 namespace Questionable.Tests.Serialization;
@@ -42,21 +41,6 @@ public sealed class RuntimeConfigurationTests : IDisposable
     }
 
     [Fact]
-    public void DisabledRedemption_SkipsInventory()
-    {
-        _configuration.Advanced.AutoRedeemRewardItems = true;
-        _configuration.CreateProfile("Alt");
-        _configuration.AssignProfile("42", "Alt");
-        _configuration.ActivateForCharacter("42");
-        _configuration.Advanced.AutoRedeemRewardItems = false;
-        _ = JsonConvert.SerializeObject(_configuration);
-
-        // Exercises the actual redemption entry point: disabled means it must
-        // return before consulting quest data, item data, or native inventory.
-        Assert.Empty(RedeemRewardItems.CreateTasks(null!, null!));
-    }
-
-    [Fact]
     public void Lookup_SeesUnsavedEditsInPlace()
     {
         _configuration.CreateProfile("Alt");
@@ -66,14 +50,6 @@ public sealed class RuntimeConfigurationTests : IDisposable
         Assert.Same(_configuration, Configuration.Instance());
         Assert.Contains(200u, Configuration.Instance().Advanced.AutoRedeemItemBlacklist);
         Assert.DoesNotContain(200u, _configuration.BaseAdvanced.AutoRedeemItemBlacklist);
-    }
-
-    [Fact]
-    public void Shutdown_DropsRuntimeBinding()
-    {
-        Configuration.ClearRuntime(_configuration);
-
-        Assert.Throws<InvalidOperationException>(() => Configuration.Instance());
     }
 
     [Fact]

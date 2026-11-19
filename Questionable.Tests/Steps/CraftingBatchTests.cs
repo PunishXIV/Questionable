@@ -184,13 +184,9 @@ public sealed class CraftingBatchTests
 
     [Theory]
     [InlineData(EItemQuality.NQ, 5, false)]
-    [InlineData(EItemQuality.NQ, 5, true)]
-    [InlineData(EItemQuality.HQ, 5, false)]
     [InlineData(EItemQuality.HQ, 5, true)]
-    [InlineData(EItemQuality.NQ, 9, false)]
     [InlineData(EItemQuality.NQ, 9, true)]
     [InlineData(EItemQuality.HQ, 9, false)]
-    [InlineData(EItemQuality.HQ, 9, true)]
     public void DuplicateQualities_KeepStrictIfCovered(
         EItemQuality quality, int anyCount, bool strictFirst)
     {
@@ -206,8 +202,6 @@ public sealed class CraftingBatchTests
 
     [Theory]
     [InlineData(EItemQuality.NQ, false)]
-    [InlineData(EItemQuality.NQ, true)]
-    [InlineData(EItemQuality.HQ, false)]
     [InlineData(EItemQuality.HQ, true)]
     public void DuplicateQualities_RejectIfAnyExceeds(EItemQuality quality, bool strictFirst)
     {

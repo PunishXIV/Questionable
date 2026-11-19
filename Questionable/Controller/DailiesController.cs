@@ -79,9 +79,31 @@ internal sealed class DailiesController(
                 continue;
             }
 
-            IEnumerable<QuestInfo> quests = locked
-                ? [(QuestInfo)questData.GetQuestInfo(new QuestId(unlock))]
-                : questData.GetAllByAlliedSociety(society);
+            List<QuestInfo> quests;
+            if (locked)
+            {
+                string unlockName = questData.GetQuestInfo(new QuestId(unlock)).Name;
+                (List<QuestId> chain, QuestId? story) = UnlockChain(new QuestId(unlock),
+                    x => questData.TryGetQuestInfo(x, out IQuestInfo? y) ? y : null, questFunctions.IsPreviousQuestMet);
+                QuestId? noPath = chain.FirstOrDefault(x => !questRegistry.TryGetQuest(x, out Quest? path) || path.Root.Disabled);
+                string? chainBlock = story != null
+                    ? _LF("Not unlocked yet (unlock quest: {0}). Do the main story quest {1} first.", unlockName, questData.GetQuestInfo(story).Name)
+                    : noPath != null
+                        ? _LF("Not unlocked yet (unlock quest: {0}). {1} has no quest path; do it manually.", unlockName, questData.GetQuestInfo(noPath).Name)
+                        : null;
+                if (chainBlock != null)
+                {
+                    _societyReasons[society] = chainBlock;
+                    continue;
+                }
+
+                quests = [.. chain.Select(x => (QuestInfo)questData.GetQuestInfo(x))];
+            }
+            else
+                quests = questData.GetAllByAlliedSociety(society);
+
+            int added = entries.Count;
+            string? lockedReason = null;
             foreach (QuestInfo info in quests)
             {
                 QuestId id = (QuestId)info.QuestId;
@@ -92,7 +114,9 @@ internal sealed class DailiesController(
                 bool ready = questFunctions.IsReadyToAcceptQuest(id, ignoreLevel: true);
                 if (locked && !accepted && !ready)
                 {
-                    _societyReasons[society] = UnlockReason(info.Name, questFunctions.IsQuestLocked(id).reasons);
+                    string[]? reasons = questFunctions.IsQuestLocked(id).reasons;
+                    lockedReason ??= UnlockReason(questData.GetQuestInfo(new QuestId(unlock)).Name,
+                        id.Value == unlock || reasons is not { Length: > 0 } ? reasons : [$"{info.Name}: {string.Join(". ", reasons)}"]);
                     continue;
                 }
 
@@ -115,6 +139,9 @@ internal sealed class DailiesController(
                     sequence, target?.TerritoryId ?? 0, target?.Position, craftReady, blocked,
                     current?.Quest.Id == id && accepted && quest != null && questFunctions.KeepDaily(quest, sequence)));
             }
+
+            if (locked && entries.Count == added && lockedReason != null)
+                _societyReasons[society] = lockedReason;
         }
         DailiesPlan.Entry? next = _plan.Choose(entries, (int)questFunctions.SocietyAllowances,
             gameState.TerritoryType, objectTable.LocalPlayer?.Position, current?.Quest.Id);
@@ -128,8 +155,38 @@ internal sealed class DailiesController(
 
     internal static string UnlockReason(string name, IReadOnlyCollection<string>? missing) =>
         missing is { Count: > 0 }
-            ? _LF("Not unlocked yet; its unlock quest {0} needs: {1}", name, string.Join(", ", missing))
-            : _LF("Not unlocked yet; its unlock quest {0} can't be accepted yet.", name);
+            ? _LF("Not unlocked yet (unlock quest: {0}). {1}", name, string.Join(". ", missing))
+            : _LF("Not unlocked yet (unlock quest: {0}); it can't be accepted yet.", name);
+
+    // Unfinished quests the unlock quest waits on, earliest first, ending with the unlock quest.
+    // Stops at an unfinished main story quest: Do dailies never runs the story.
+    internal static (List<QuestId> Chain, QuestId? Story) UnlockChain(QuestId unlock,
+        Func<QuestId, IQuestInfo?> info, Func<PreviousQuestInfo, bool> met)
+    {
+        List<QuestId> chain = [];
+        HashSet<QuestId> seen = [];
+        QuestId? story = null;
+        Visit(unlock);
+        return (chain, story);
+
+        void Visit(QuestId id)
+        {
+            if (story != null || !seen.Add(id) || info(id) is not { } quest)
+                return;
+            if (quest.IsMainScenarioQuest && id != unlock)
+            {
+                story = id;
+                return;
+            }
+
+            List<PreviousQuestInfo> missing = [.. quest.PreviousQuests.Where(x => !met(x))];
+            bool anyOne = quest.PreviousQuestJoin == EQuestJoin.AtLeastOne;
+            if (!anyOne || missing.Count == quest.PreviousQuests.Count)
+                foreach (PreviousQuestInfo previous in anyOne ? missing.Take(1) : missing)
+                    Visit(previous.QuestId);
+            chain.Add(id);
+        }
+    }
 
     internal static string? GetBlockReason(Quest? quest, QuestInfo info, bool accepted, bool hasJob) =>
         quest == null ? _LF("No quest path for {0}.", info.Name) :

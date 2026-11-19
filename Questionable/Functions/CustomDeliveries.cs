@@ -61,6 +61,7 @@ internal sealed unsafe class CustomDeliveries : IDisposable
             : null;
 
         List<DeliveryNpc> result = [];
+        bool loading = false;
         foreach (SatisfactionNpc row in _dataManager.GetExcelSheet<SatisfactionNpc>().Where(x => x.RowId > 0 && x.Npc.RowId > 0))
         {
             int index = (int)row.RowId - 1;
@@ -94,9 +95,12 @@ internal sealed unsafe class CustomDeliveries : IDisposable
 
             int used = inst->UsedAllowances[index];
             uint achievementId = AchievementIds().GetValueOrDefault(row.RowId);
-            if (!_achievements.TryGetValue(achievementId, out var achievement) && achievementId != 0 && rank > 0 &&
-                !_asked.Contains(achievementId) && RequestAchievement(achievementId))
-                _asked.Add(achievementId);
+            if (!_achievements.TryGetValue(achievementId, out var achievement) && achievementId != 0 && rank > 0)
+            {
+                if (!_asked.Contains(achievementId) && RequestAchievement(achievementId))
+                    _asked.Add(achievementId);
+                loading |= !_asked.Contains(achievementId) || IsRequesting;
+            }
 
             result.Add(new(row.RowId, row.Npc.Value.Singular.ToString(),
                 QuestManager.IsQuestComplete(row.QuestRequired.RowId), rank, inst->Satisfaction[index],
@@ -104,8 +108,15 @@ internal sealed unsafe class CustomDeliveries : IDisposable
                 Math.Min(achievement.Start + (uint)used, achievement.Max), achievement.Max, requests));
         }
 
+        Loading = loading;
         return result;
     }
+
+    // The game sends one achievement progress request at a time, so callers should ask again soon while this is set.
+    public bool Loading { get; private set; }
+
+    private static bool IsRequesting =>
+        UIState.Instance()->Achievement.ProgressRequestState == GameAchievement.AchievementState.Requested;
 
     private static bool RequestAchievement(uint id)
     {

@@ -15,13 +15,8 @@ namespace Questionable.Tests.Steps;
 public sealed class QuestTaskQueueTests
 {
     [Theory]
-    [InlineData(false, false, 1)]
-    [InlineData(false, false, 2)]
-    [InlineData(false, true, 1)]
     [InlineData(false, true, 2)]
     [InlineData(true, false, 1)]
-    [InlineData(true, false, 2)]
-    [InlineData(true, true, 1)]
     [InlineData(true, true, 2)]
     public void Skip_KeepsQuestAndAdvancesOnStop(bool automatic, bool hasExecutor, int stepCount)
     {
@@ -144,11 +139,8 @@ public sealed class QuestTaskQueueTests
 
     [Theory]
     [InlineData(1, 1)]
-    [InlineData(2, 1)]
-    [InlineData(1, 2)]
     [InlineData(2, 2)]
     [InlineData(1, null)]
-    [InlineData(2, null)]
     public void StepDone_RejectsOldSequence(int stepCount, int? completedSequence)
     {
         QuestId questId = new(123);

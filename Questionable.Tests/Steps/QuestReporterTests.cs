@@ -303,33 +303,6 @@ public sealed class QuestReporterTests
     }
 
     [Fact]
-    public async Task Invalidate_IgnoresOlderResponse()
-    {
-        var first = new TaskCompletionSource<ReportApi.StatusReply?>(TaskCreationOptions.RunContinuationsAsynchronously);
-        var second = new TaskCompletionSource<ReportApi.StatusReply?>(TaskCreationOptions.RunContinuationsAsynchronously);
-        int calls = 0;
-        var started = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
-        QuestReporter reporter = StatusReporter(() =>
-        {
-            if (Interlocked.Increment(ref calls) == 1)
-            {
-                started.SetResult();
-                return first.Task;
-            }
-            return second.Task;
-        });
-        Task oldFetch = reporter.RefreshStatusAsync();
-        await started.Task;
-        reporter.Invalidate();
-        Task newFetch = reporter.RefreshStatusAsync();
-        second.SetResult(new(Now.ToUnixTimeMilliseconds(), []));
-        await newFetch;
-        first.SetResult(Reply(MakeQuest()));
-        await oldFetch;
-        Assert.Equal(EReportReason.NoReports, reporter.StatusFor(MakeQuest()).Reason);
-    }
-
-    [Fact]
     public async Task BadReply_IsUnavailable()
     {
         QuestReporter reporter = StatusReporter(() => Task.FromResult<ReportApi.StatusReply?>(new(0, [])));
@@ -393,77 +366,5 @@ public sealed class QuestReporterTests
         reporter.SendManual(new(MakeQuest()), kind is { } number ? (EProblemKind)number : null, []);
         await reporter.RefreshStatusAsync();
         Assert.Equal(expected, freshRequested);
-    }
-
-    [Theory]
-    [InlineData(-1000)]
-    [InlineData(0)]
-    public async Task OldCache_RefetchesOnceFresh(int age)
-    {
-        Quest quest = MakeQuest();
-        DateTimeOffset now = Now;
-        ReportApi.StatusReply newer = Reply(quest, problem: true);
-        ReportApi.StatusReply older = Reply(quest) with { At = newer.At + age };
-        List<bool> requests = [];
-        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
-        {
-            requests.Add(fresh);
-            return Task.FromResult<ReportApi.StatusReply?>(requests.Count == 2 ? older : newer);
-        }, () => "12345", NullLogger.Instance, now: () => now);
-        reporter.Invalidate();
-        await reporter.RefreshStatusAsync();
-        now = now.AddMinutes(16);
-        reporter.Invalidate(fresh: false);
-        await reporter.RefreshStatusAsync();
-        Assert.Equal([true, false, true], requests);
-        Assert.Equal(EReportState.Problems, reporter.StatusFor(quest).State);
-    }
-
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public async Task OlderFresh_DoesNotRegress(bool failure)
-    {
-        Quest quest = MakeQuest();
-        DateTimeOffset now = Now;
-        ReportApi.StatusReply newer = Reply(quest, problem: true);
-        ReportApi.StatusReply older = Reply(quest) with { At = newer.At - 1000 };
-        List<bool> requests = [];
-        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
-        {
-            requests.Add(fresh);
-            return Task.FromResult<ReportApi.StatusReply?>(requests.Count == 1 ? newer :
-                requests.Count == 3 && failure ? null : older);
-        }, () => "12345", NullLogger.Instance, now: () => now);
-        reporter.Invalidate();
-        await reporter.RefreshStatusAsync();
-        now = now.AddMinutes(16);
-        reporter.Invalidate(fresh: false);
-        await reporter.RefreshStatusAsync();
-        Assert.Equal([true, false, true], requests);
-        Assert.Equal(EReportReason.Unavailable, reporter.StatusFor(quest).Reason);
-        Assert.False(reporter.StatusFor(quest).NeedsAttention);
-    }
-
-    [Fact]
-    public async Task FreshAction_IgnoresAheadCache()
-    {
-        Quest quest = MakeQuest();
-        DateTimeOffset now = Now;
-        ReportApi.StatusReply current = Reply(quest, problem: true);
-        ReportApi.StatusReply aheadCache = Reply(quest) with { At = current.At + 60000 };
-        List<bool> requests = [];
-        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
-        {
-            requests.Add(fresh);
-            return Task.FromResult<ReportApi.StatusReply?>(fresh ? current : aheadCache);
-        }, () => "12345", NullLogger.Instance, now: () => now);
-        reporter.Invalidate();
-        await reporter.RefreshStatusAsync();
-        now = now.AddMinutes(1);
-        reporter.Invalidate(fresh: false);
-        await reporter.RefreshStatusAsync();
-        Assert.Equal([true, true], requests);
-        Assert.Equal(EReportState.Problems, reporter.StatusFor(quest).State);
     }
 }

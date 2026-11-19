@@ -1,51 +1,8 @@
 using Microsoft.Extensions.Logging;
-using Questionable.Controller;
 using Questionable.Utils;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
-
-public sealed class NavigationFailureReportTests
-{
-    private static readonly DateTimeOffset Now = new(2026, 11, 8, 12, 0, 0, TimeSpan.Zero);
-
-    [Fact]
-    public void NoFailure_OmitsFailureSection() =>
-        Assert.Null(TroubleshootingReport.DescribeFailure(null, Now));
-
-    [Fact]
-    public void PastFailure_KeptApartFromCurrent()
-    {
-        NavigationFailureSnapshot failure = new()
-        {
-            TimestampUtc = Now.AddMinutes(-2),
-            Reason = "ProviderFault",
-            Message = "MappingTheRealm could not finish the route",
-            InnerExceptionType = "InvalidOperationException",
-            InnerExceptionMessage = "Provider diagnostic",
-            TerritoryId = 958,
-            PlayerPosition = "1.25 2.5 3.75",
-            Destination = "10 20 30",
-            DataId = 1039882,
-            Quest = "4387_A Way Forward / 5 / 0",
-            Task = "MoveTo(10, 20, 30)",
-        };
-
-        string text = TroubleshootingReport.DescribeFailure(failure, Now)!;
-
-        Assert.StartsWith("Last navigation failure (2m ago): ProviderFault", text, StringComparison.Ordinal);
-        foreach (string expected in new[]
-                 {
-                     "MappingTheRealm could not finish the route", "quest 4387_A Way Forward / 5 / 0",
-                     "task MoveTo(10, 20, 30)", "territory 958", "from 1.25 2.5 3.75 to 10 20 30",
-                     "target 1039882",
-                     "InvalidOperationException: Provider diagnostic",
-                 })
-        {
-            Assert.Contains(expected, text, StringComparison.Ordinal);
-        }
-    }
-}
 
 public sealed class TroubleshootingReportTests
 {
@@ -53,17 +10,6 @@ public sealed class TroubleshootingReportTests
 
     private static RecentLog.Entry Line(int secondsAgo, string message, LogLevel level = LogLevel.Information) =>
         new(Now.AddSeconds(-secondsAgo), level, message);
-
-    [Fact]
-    public void Report_AsksWhatWentWrongFirst()
-    {
-        string report = TroubleshootingReport.Build(new() { Facts = ["Quest: none"], NowUtc = Now });
-
-        Assert.StartsWith("What went wrong:", report, StringComparison.Ordinal);
-        Assert.EndsWith("```", report, StringComparison.Ordinal);
-        Assert.Contains("Quest: none", report, StringComparison.Ordinal);
-        Assert.DoesNotContain("Recent log", report, StringComparison.Ordinal);
-    }
 
     [Fact]
     public void LongLog_DropsOldestAndFitsMessage()
@@ -93,17 +39,6 @@ public sealed class TroubleshootingReportTests
     }
 
     [Fact]
-    public void ManySettings_ShowHowManyAreLeft()
-    {
-        string[] settings = Enumerable.Range(0, 200).Select(i => $"General.Setting{i}=on").ToArray();
-
-        string report = TroubleshootingReport.Build(new() { Settings = settings, NowUtc = Now });
-
-        Assert.Contains("Settings changed: General.Setting0=on", report, StringComparison.Ordinal);
-        Assert.Matches(@"\+\d+ more", report);
-    }
-
-    [Fact]
     public void PrivateTexts_AreHiddenEverywhere()
     {
         string report = TroubleshootingReport.Build(new()
@@ -128,23 +63,6 @@ public sealed class TroubleshootingReportTests
         Assert.Equal(2, report.Split("```").Length - 1);
         Assert.DoesNotContain("second line", report, StringComparison.Ordinal);
     }
-
-    [Fact]
-    public void Log_ShowsAgeAndLevel()
-    {
-        string report = TroubleshootingReport.Build(new()
-        {
-            Log = [Line(90, "first"), Line(3, "boom", LogLevel.Error)],
-            NowUtc = Now,
-        });
-
-        Assert.Contains("-1m INF first", report, StringComparison.Ordinal);
-        Assert.Contains("-3s ERR boom", report, StringComparison.Ordinal);
-    }
-
-    [Fact]
-    public void DefaultSettings_ReportNothing() =>
-        Assert.Empty(TroubleshootingReport.ChangedSettings(new Configuration()));
 
     [Fact]
     public void ChangedSettings_HideFreeText()

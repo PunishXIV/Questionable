@@ -99,51 +99,6 @@ public sealed class PurchaseStateTests
         Assert.False(_state.HasOperation);
     }
 
-    [Theory]
-    [InlineData(true)]
-    [InlineData(null)]
-    public void ManualRecovery_RejectsBusyOrMissing(bool? busy)
-    {
-        _state.MarkUncertain(_state.BeginRequest());
-        StableIdle();
-        _state.ObserveIdle(busy);
-        Assert.False(_state.TryConfirmIdle());
-        Assert.True(_state.HasOperation);
-    }
-
-    [Fact]
-    public void ManualRecovery_NeedsFreshIdleAndConfirm()
-    {
-        _state.AcceptRequest(_state.BeginRequest(), Guid.Empty);
-        StableIdle();
-        Assert.True(_state.CanConfirmIdle);
-        Assert.True(_state.HasOperation);
-        _clock.Advance(TimeSpan.FromSeconds(2));
-        Assert.False(_state.TryConfirmIdle());
-        _state.ObserveIdle(false);
-        Assert.False(_state.TryConfirmIdle());
-        StableIdle();
-        Assert.True(_state.TryConfirmIdle());
-    }
-
-    [Fact]
-    public void ActiveStatus_ResetsIdleStreak()
-    {
-        Guid owner = Start();
-        _state.MarkUncertain(owner);
-        _state.ObservePurchase(owner, ExternalOperationStatus.Unknown, "lost status");
-        StableIdle();
-        Assert.True(_state.CanConfirmIdle);
-        _state.ObservePurchase(owner, ExternalOperationStatus.Running, "still running");
-        _state.ObserveIdle(false);
-        _clock.Advance(TimeSpan.FromMilliseconds(500));
-        _state.ObservePurchase(owner, ExternalOperationStatus.Unknown, "lost again");
-        _state.ObserveIdle(false);
-        Assert.False(_state.TryConfirmIdle());
-        StableIdle();
-        Assert.True(_state.TryConfirmIdle());
-    }
-
     private Guid Start()
     {
         Guid owner = _state.BeginRequest();

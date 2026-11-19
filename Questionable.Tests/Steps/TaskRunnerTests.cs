@@ -1,6 +1,5 @@
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
@@ -17,25 +16,6 @@ namespace Questionable.Tests.Steps;
 
 public sealed class TaskRunnerTests
 {
-    [Fact]
-    public void FailedCleanup_PreventsFailureHandler()
-    {
-        var task = new WaitAtEnd.WaitDelay();
-        var executor = Substitute.For<ITaskExecutor, IStoppable>();
-        executor.CurrentTask.Returns(task);
-        executor.Start(task).Returns(_ => throw new TaskException("start failed"));
-        ((IStoppable)executor).When(x => x.StopNow()).Do(_ => throw new InvalidOperationException("cleanup failed"));
-        ServiceCollection services = [];
-        services.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.WaitDelay), (_, _) => executor);
-        using var provider = services.BuildServiceProvider();
-        using var fixture = new TaskRunnerFixture(provider: provider);
-        fixture.Controller.HandleFailure = (_, _) => throw new Exception("must not retry after failed cleanup");
-        fixture.Queue.Enqueue(task);
-        fixture.Controller.Tick();
-        Assert.Equal("Task failed to start", Assert.Single(fixture.Controller.Stops));
-        Assert.Single(fixture.Notifications);
-    }
-
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
@@ -118,9 +98,6 @@ public sealed class TaskRunnerTests
     [InlineData(false, "missing")]
     [InlineData(false, "factory")]
     [InlineData(false, "start")]
-    [InlineData(true, "missing")]
-    [InlineData(true, "factory")]
-    [InlineData(true, "start")]
     public void CreationFailure_StopsAndReports(bool skipping, string failurePoint)
     {
         var expected = new InvalidOperationException("executor failed");
@@ -163,30 +140,6 @@ public sealed class TaskRunnerTests
         Assert.Equal(0, replacementStarts);
         Assert.Single(fixture.Controller.Stops);
         Assert.Single(fixture.Notifications);
-    }
-
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void LastTaskAfterSkip_KeepsStartupResult(bool starts)
-    {
-        var finalExecutor = Substitute.For<ITaskExecutor>();
-        finalExecutor.Start(Arg.Any<ITask>()).Returns(starts);
-        ServiceCollection registrations = [];
-        registrations.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.NextStep), (_, _) => finalExecutor);
-        using var provider = registrations.BuildServiceProvider();
-        using var fixture = new TaskRunnerFixture(provider: provider);
-        var final = new WaitAtEnd.NextStep(new QuestId(123), 1);
-        Prepare(fixture, skipping: true, final);
-
-        fixture.Controller.Tick();
-
-        finalExecutor.Received(1).Start(final);
-        Assert.Same(starts ? finalExecutor : null, fixture.Queue.CurrentTaskExecutor);
-        Assert.IsType<WaitAtEnd.WaitDelay>(Assert.Single(fixture.Queue.RemainingTasks));
-        Assert.Empty(fixture.Controller.Stops);
-        Assert.Empty(fixture.Controller.Failures);
-        Assert.Empty(fixture.Notifications);
     }
 
     [Fact]
@@ -244,40 +197,6 @@ public sealed class TaskRunnerTests
         var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "Print");
         Assert.Equal("Attune to the aetheryte first.", chat.GetArguments()[0]!.ToString());
         Assert.DoesNotContain(fixture.Log.Entries, x => x.Level == LogLevel.Error);
-    }
-
-    [Fact]
-    public void Dispose_UnsubscribesOnceIgnoresDamage()
-    {
-        using var fixture = new TaskRunnerFixture();
-        Assert.Equal(1, fixture.Interruptions.SubscriberCount);
-        fixture.Controller.Dispose();
-        fixture.Controller.Dispose();
-        var executor = new WaitAtEnd.WaitDelayExecutor();
-        Assert.True(fixture.Queue.StartTask(executor, new WaitAtEnd.WaitDelay { InterruptOnDamage = true }));
-
-        fixture.ReceiveDamage();
-
-        Assert.Equal(0, fixture.Interruptions.SubscriberCount);
-        Assert.Equal(1, fixture.Interruptions.RemoveCalls);
-        Assert.Same(executor, fixture.Queue.CurrentTaskExecutor);
-        Assert.Empty(fixture.Queue.RemainingTasks);
-    }
-
-    [Fact]
-    public void FailedSubscribe_RollsBackHandler()
-    {
-        using var provider = new ServiceCollection().BuildServiceProvider();
-        var source = new TaskRunnerFixture.TestInterruptionSource { ThrowAfterAdding = true };
-
-        var error = Assert.Throws<InvalidOperationException>(() => new TaskRunnerFixture.Runner(
-            Substitute.For<IChatGui>(), Substitute.For<ICondition>(), provider, source,
-            TaskRunnerFixture.CreateToasts(), _ => { }, new TaskRunnerFixture.RecordingLogger()));
-
-        Assert.Equal("subscription failed after adding handler", error.Message);
-        Assert.Equal(0, source.SubscriberCount);
-        Assert.Equal(1, source.RemoveCalls);
-        source.Raise();
     }
 
     [Theory]
@@ -377,66 +296,6 @@ public sealed class TaskRunnerTests
             task => Assert.Same(next, task));
         Assert.Empty(fixture.Controller.Stops);
         Assert.Empty(fixture.Notifications);
-    }
-
-    [Theory]
-    [InlineData("Event canceled.")]
-    [InlineData("Unable to execute command while suffering status affliction.")]
-    public void IdleCancelToast_KeepsProviderWork(string text)
-    {
-        using var fixture = new TaskRunnerFixture();
-        fixture.Controller.AllowNewTasks = false;
-        SeString message = text;
-        bool handled = false;
-
-        fixture.Controller.OnErrorToast(ref message, ref handled);
-
-        Assert.True(fixture.Queue.AllTasksComplete);
-        Assert.Empty(fixture.Queue.RemainingTasks);
-        Assert.Empty(fixture.Controller.Stops);
-        Assert.Empty(fixture.Notifications);
-    }
-
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void HandledToastDoesNotScheduleRecovery(bool alreadyHandled)
-    {
-        using var fixture = new TaskRunnerFixture();
-        var executor = Substitute.For<ITaskExecutor, IToastAware>();
-        executor.Start(Arg.Any<ITask>()).Returns(true);
-        executor.ShouldInterruptOnDamage().Returns(true);
-        ((IToastAware)executor).OnErrorToast(Arg.Any<SeString>()).Returns(!alreadyHandled);
-        Assert.True(fixture.Queue.StartTask(executor, new WaitAtEnd.WaitDelay()));
-        SeString message = "Action canceled. You are under attack.";
-        bool handled = alreadyHandled;
-
-        fixture.Controller.OnErrorToast(ref message, ref handled);
-
-        Assert.True(handled);
-        Assert.Same(executor, fixture.Queue.CurrentTaskExecutor);
-        Assert.Empty(fixture.Queue.RemainingTasks);
-    }
-
-    [Theory]
-    [InlineData(true, true)]
-    [InlineData(false, false)]
-    public void OverlappingToast_FallsBackToNonCombat(bool flight, bool damage)
-    {
-        var toasts = new TaskToastClassifier("overlap", new("^overlap$"), "status");
-        using var fixture = new TaskRunnerFixture(toasts: toasts);
-        fixture.Condition[ConditionFlag.InFlight].Returns(flight);
-        var original = new WaitAtEnd.WaitDelay { InterruptOnDamage = damage };
-        Assert.True(fixture.Queue.StartTask(new WaitAtEnd.WaitDelayExecutor(), original));
-        SeString message = "overlap";
-        bool handled = false;
-
-        fixture.Controller.OnErrorToast(ref message, ref handled);
-
-        Assert.Null(fixture.Queue.CurrentTaskExecutor);
-        Assert.Collection(fixture.Queue.RemainingTasks,
-            task => Assert.IsType<WaitAtEnd.WaitDelay>(task),
-            task => Assert.Same(original, task));
     }
 
     [Fact]

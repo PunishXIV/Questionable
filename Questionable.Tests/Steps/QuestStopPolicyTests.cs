@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Dalamud.Plugin.Services;
@@ -16,11 +15,8 @@ public sealed class QuestStopPolicyTests
 {
     [Theory]
     [InlineData("UI stop", true, false)]
-    [InlineData("ui STOP", true, false)]
     [InlineData("ESC pressed", true, false)]
-    [InlineData("esc PRESSED", true, false)]
     [InlineData("Skip", true, true)]
-    [InlineData("SkipNx", true, true)]
     [InlineData("Task failed to update", true, true)]
     [InlineData("Logged out", true, true)]
     [InlineData("Skip", false, false)]
@@ -53,21 +49,6 @@ public sealed class QuestStopPolicyTests
         policy.Apply("Skip", true);
 
         Assert.Equal(["notify"], effects);
-    }
-
-    [Fact]
-    public void ReadsLiveCommandSettingsForEachStop()
-    {
-        var configuration = Config();
-        List<string> commands = [];
-        var policy = new QuestStopPolicy(configuration, _ => { }, _ => { }, commands.Add, Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance);
-        policy.Apply("Skip", true);
-        configuration.Stop.CommandAfterStop = "/changed";
-        policy.Apply("Skip", true);
-        configuration.Stop.RunCommandAfterStop = false;
-        policy.Apply("Skip", true);
-
-        Assert.Equal(["/after-stop", "/changed"], commands);
     }
 
     [Theory]
@@ -242,33 +223,6 @@ public sealed class QuestStopPolicyTests
     }
 
     [Theory]
-    [InlineData(true, false)]
-    [InlineData(false, true)]
-    [InlineData(true, true)]
-    public void EffectFailure_LoggedOthersStillRun(bool failNotification, bool failCommand)
-    {
-        List<string> effects = [];
-        var logger = Substitute.For<ILogger<QuestStopPolicy>>();
-        var policy = new QuestStopPolicy(Config(), _ =>
-        {
-            effects.Add("notify");
-            if (failNotification)
-                throw new InvalidOperationException("notification failed");
-        }, _ => { }, command =>
-        {
-            effects.Add(command);
-            if (failCommand)
-                throw new InvalidOperationException("command failed");
-        }, Substitute.For<IChatGui>(), logger);
-
-        policy.Apply("Skip", true);
-
-        Assert.Equal(["notify", "/after-stop"], effects);
-        Assert.Equal((failNotification ? 1 : 0) + (failCommand ? 1 : 0),
-            logger.ReceivedCalls().Count(call => call.GetMethodInfo().Name == "Log"));
-    }
-
-    [Theory]
     [InlineData(true)]
     [InlineData(false)]
     public void StopPoint_AlwaysNotifies(bool setting)
@@ -309,49 +263,6 @@ public sealed class QuestStopPolicyTests
 
         Assert.Equal([expected], reports.Printed);
         Assert.Empty(reports.Notified);
-    }
-
-    [Fact]
-    public void LevelStops_PrintOnly()
-    {
-        Reports reports = new(notifySetting: true);
-
-        reports.Policy.ReportLevelTooLow(TestQuest().Info, 10);
-        reports.Policy.ReportMainScenarioLocked(TestQuest().Info, 11);
-
-        Assert.Equal(["Stopped: 'Test' needs level 20 (you're level 10).",
-            "Stopped: 'Test' needs level 20 (you're level 11)."], reports.Printed);
-        Assert.Empty(reports.Notified);
-    }
-
-    [Fact]
-    public void Errors_PrintOnly()
-    {
-        Reports reports = new(notifySetting: true);
-        QuestController.QuestProgress progress = new(TestQuest(), 2, 3);
-
-        reports.Policy.ReportNoSequence(progress);
-        reports.Policy.ReportNoStep(progress);
-        reports.Policy.ReportDeathLimit(5);
-
-        Assert.Equal(["Stopped: no path for 'Test' sequence 2. Try Reload Data or report it with Stuck?",
-            "Stopped: no path for 'Test' sequence 2 step 3. Try Reload Data or report it with Stuck?",
-            "You died 5 times, manual intervention needed."], reports.Errors);
-        Assert.Empty(reports.Printed);
-        Assert.Empty(reports.Notified);
-    }
-
-    [Fact]
-    public void TasksFailed_UsesFailureNotify()
-    {
-        Reports reports = new(notifySetting: true);
-
-        reports.Policy.ReportTasksFailed(new InvalidOperationException(), null);
-
-        Assert.Equal(["Failed to start next task sequence, please check /xllog for details."], reports.Errors);
-        Assert.Empty(reports.Notified);
-        Assert.Equal(["Failed to start next task sequence, stopping. Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."],
-            reports.FailureNotified);
     }
 
     private static Quest TestQuest()

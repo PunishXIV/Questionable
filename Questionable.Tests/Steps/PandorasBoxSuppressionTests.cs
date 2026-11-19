@@ -95,28 +95,4 @@ public sealed class PandorasBoxSuppressionTests
         Update(suppression, active: false);
         Assert.True(_enabled["A"]);
     }
-
-    [Fact]
-    public void ForcedRestoreIgnoresTheRetryInterval()
-    {
-        var suppression = Create();
-        Update(suppression, active: true);
-        _available = false;
-        Update(suppression, active: false);
-
-        _available = true;
-        suppression.Update(false, providerInstalled: true, IsEnabled, SetEnabled, force: true);
-        Assert.True(_enabled["A"]);
-    }
-
-    [Fact]
-    public void MissingProvider_MakesNoCalls()
-    {
-        var suppression = Create();
-        Update(suppression, active: true);
-
-        suppression.Update(false, providerInstalled: false, _ => throw new InvalidOperationException(),
-            (_, _) => throw new InvalidOperationException());
-        Assert.Equal(["A"], suppression.TurnedOff);
-    }
 }

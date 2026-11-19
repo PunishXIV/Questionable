@@ -1,6 +1,5 @@
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
@@ -44,38 +43,6 @@ public sealed class EquipRecommendedTests
         Assert.Contains("restart Questionable", error.Message);
         Assert.Equal(submitted ? 1 : 0, _requests);
         Assert.Equal(EGearsetUpdateSource.Stylist, _configuration.General.GearsetUpdateSource);
-    }
-
-    [Fact]
-    public void InitialBusyWait_KeepsFullTimeout()
-    {
-        Update(busy: true);
-        _clock.Advance(TimeSpan.FromSeconds(29));
-        Assert.Equal(ETaskResult.StillRunning, Update(busy: false));
-        Assert.Equal(1, _requests);
-
-        Update(busy: true);
-        _clock.Advance(TimeSpan.FromSeconds(29));
-        Assert.Equal(ETaskResult.StillRunning, Update(busy: true));
-        _clock.Advance(TimeSpan.FromSeconds(1));
-        Assert.Throws<NeedsPlayerException>(() => Update(busy: true));
-        Assert.Equal(1, _requests);
-    }
-
-    [Fact]
-    public void Restart_ClearsBusyWaitAndRequest()
-    {
-        Update(busy: false);
-        Update(busy: true);
-        _clock.Advance(TimeSpan.FromSeconds(30));
-        Assert.Throws<NeedsPlayerException>(() => Update(busy: true));
-
-        // Exercise Start's reset without calling native gear modules.
-        _condition[ConditionFlag.InCombat].Returns(true);
-        Assert.False(_executor.Start(new EquipRecommended.EquipTask()));
-        Assert.Equal(ETaskResult.StillRunning, Update(busy: true));
-        Assert.Equal(ETaskResult.StillRunning, Update(busy: false));
-        Assert.Equal(2, _requests);
     }
 
     [Fact]

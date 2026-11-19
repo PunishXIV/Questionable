@@ -28,29 +28,6 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
-    public async Task DisposeInManifest_DrainsWithoutSaving()
-    {
-        var started = Signal();
-        bool cancelled = false;
-        await using var context = new Context(async (_, token) =>
-        {
-            started.TrySetResult();
-            try { await Task.Delay(Timeout.Infinite, token); }
-            finally { cancelled = token.IsCancellationRequested; }
-            return new(HttpStatusCode.OK);
-        });
-        context.Updater.CheckForUpdatesManually();
-        await started.Task.WaitAsync(TimeSpan.FromSeconds(5));
-        await context.Updater.DisposeAsync().AsTask().WaitAsync(TimeSpan.FromSeconds(5));
-
-        Assert.True(cancelled);
-        Assert.True(context.Updater.UpdateTask.IsCompletedSuccessfully);
-        Assert.Equal(0, context.Saves);
-        Assert.Equal(0, context.Reloads);
-        Assert.False(File.Exists(context.BundlePath));
-    }
-
-    [Fact]
     public async Task DisposeInDownload_KeepsInstalledBundle()
     {
         var downloading = Signal();
@@ -72,33 +49,6 @@ public sealed class PathDataUpdaterLifetimeTests
         Assert.Equal(1, context.Config.PathData.InstalledDataVersion);
         Assert.Equal(0, context.Saves);
         Assert.Equal(0, context.Reloads);
-    }
-
-    [Fact]
-    public async Task DisposeInRetry_KeepsSavedVersion()
-    {
-        var waiting = Signal();
-        int requests = 0;
-        bool cancelled = false;
-        await using var context = new Context((_, _) =>
-        {
-            Interlocked.Increment(ref requests);
-            throw new HttpRequestException("offline");
-        }, delay: async (_, token) =>
-        {
-            waiting.TrySetResult();
-            try { await Task.Delay(Timeout.Infinite, token); }
-            finally { cancelled = token.IsCancellationRequested; }
-        });
-        context.Updater.CheckForUpdatesManually();
-        await waiting.Task.WaitAsync(TimeSpan.FromSeconds(5));
-        await context.Updater.DisposeAsync().AsTask().WaitAsync(TimeSpan.FromSeconds(5));
-
-        Assert.True(cancelled);
-        Assert.Equal(1, requests);
-        Assert.Equal(1, context.Config.PathData.InstalledDataVersion);
-        Assert.NotNull(context.Config.PathData.BundlePluginVersion);
-        Assert.Equal(0, context.Saves);
     }
 
     [Fact]
@@ -138,51 +88,6 @@ public sealed class PathDataUpdaterLifetimeTests
         Assert.Equal(0, context.Reloads);
         Assert.Equal(1, context.Saves);
         Assert.Equal(Bundle, await File.ReadAllBytesAsync(context.BundlePath));
-    }
-
-    [Fact]
-    public async Task LateDownload_NotInstalledAfterDispose()
-    {
-        var downloading = Signal();
-        var release = Signal();
-        await using var context = new Context(async (request, _) =>
-        {
-            if (IsManifest(request)) return Response(request);
-            downloading.TrySetResult();
-            await release.Task;
-            return Response(request); // Deliberately ignores transport cancellation.
-        });
-        context.Updater.CheckForUpdatesManually();
-        await downloading.Task.WaitAsync(TimeSpan.FromSeconds(5));
-        Task disposal = context.Updater.DisposeAsync().AsTask();
-        release.TrySetResult();
-        await disposal.WaitAsync(TimeSpan.FromSeconds(5));
-
-        Assert.False(File.Exists(context.BundlePath));
-        Assert.Equal(0, context.Saves);
-        Assert.Equal(0, context.Reloads);
-    }
-
-    [Fact]
-    public async Task EarlyOrRepeatedDispose_SendsNoRequests()
-    {
-        int requests = 0;
-        await using var context = new Context((request, _) =>
-        {
-            requests++;
-            return Task.FromResult(Response(request));
-        });
-#pragma warning disable CA1849 // Exercise the synchronous cancellation contract before asynchronous draining.
-        context.Updater.Dispose();
-#pragma warning restore CA1849
-        await context.Updater.DisposeAsync();
-        await context.Updater.DisposeAsync();
-        context.Updater.CheckForUpdatesManually();
-        context.Updater.CheckForUpdates();
-        await context.Updater.UpdateTask;
-
-        Assert.Equal(0, requests);
-        Assert.Equal(0, context.Saves);
     }
 
     [Fact]

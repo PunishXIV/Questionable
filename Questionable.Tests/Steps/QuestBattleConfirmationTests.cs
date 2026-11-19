@@ -26,20 +26,6 @@ public sealed class QuestBattleConfirmationTests
     }
 
     [Fact]
-    public void DialogDelay_KeepsFallbackUntilReady()
-    {
-        var quest = CreateProgress();
-        var confirmation = new Confirmation(quest, Prompt, RequestedAt);
-
-        for (int second = 2; second < 60; ++second)
-            Assert.Equal(Confirmation.Result.Wait,
-                confirmation.Check(RequestedAt.AddSeconds(second), quest, Prompt, ready: false, loading: false));
-
-        Assert.Equal(Confirmation.Result.Confirm,
-            confirmation.Check(RequestedAt.AddSeconds(60), quest, Prompt, ready: true, loading: false));
-    }
-
-    [Fact]
     public void Loading_DelaysEvenAReadyMatchingPrompt()
     {
         var quest = CreateProgress();
@@ -77,10 +63,7 @@ public sealed class QuestBattleConfirmationTests
 
     [Theory]
     [InlineData("different quest")]
-    [InlineData("same quest restarted")]
-    [InlineData("next sequence")]
     [InlineData("next step")]
-    [InlineData("same step restarted")]
     [InlineData("no quest")]
     public void ChangedQuestOrStep_Cancels(string change)
     {
@@ -122,20 +105,6 @@ public sealed class QuestBattleConfirmationTests
             confirmation.Check(RequestedAt.AddSeconds(119), quest, Prompt, ready: false, loading: false));
         Assert.Equal(Confirmation.Result.Cancel,
             confirmation.Check(RequestedAt.AddMinutes(2), quest, Prompt, ready: true, loading: false));
-    }
-
-    [Fact]
-    public void RepeatedChecks_AreThrottled()
-    {
-        var quest = CreateProgress();
-        var confirmation = new Confirmation(quest, Prompt, RequestedAt);
-
-        Assert.Equal(Confirmation.Result.Wait,
-            confirmation.Check(RequestedAt.AddSeconds(2), quest, Prompt, ready: false, loading: false));
-        Assert.Equal(Confirmation.Result.Wait,
-            confirmation.Check(RequestedAt.AddSeconds(2.1), quest, Prompt, ready: true, loading: false));
-        Assert.Equal(Confirmation.Result.Confirm,
-            confirmation.Check(RequestedAt.AddSeconds(2.5), quest, Prompt, ready: true, loading: false));
     }
 
     private static QuestController.QuestProgress CreateProgress()

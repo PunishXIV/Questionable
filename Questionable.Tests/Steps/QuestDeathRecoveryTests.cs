@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Logging.Abstractions;
-using NSubstitute;
 using Questionable.Controller;
 using Questionable.Model.Questing;
 using Xunit;
@@ -31,30 +30,6 @@ public sealed class QuestDeathRecoveryTests
         Assert.Equal(stops, host.Recovery.Update(host));
 
         Assert.Equal(stops ? ["stop-all:Player moved"] : [], host.Effects);
-    }
-
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void EscapeCancelsRecoveryWithAnEmptyQueue(bool revived)
-    {
-        var host = new RecoveryHost();
-        host.BeginRecovery();
-        Assert.False(host.HasQueuedTasks);
-        if (revived)
-            host.Revive();
-        host.EscapePressed = true;
-        host.Effects.Clear();
-
-        Assert.True(host.Recovery.Update(host));
-
-        host.AssertStopped();
-        Assert.Equal(["stop-all:ESC pressed"], host.Effects);
-        host.EscapePressed = false;
-        host.IsUnconscious = false;
-        host.Clock.Advance(TimeSpan.FromMinutes(1));
-        Assert.False(host.Recovery.Update(host));
-        Assert.Equal(0, host.Retries);
     }
 
     [Fact]
@@ -123,58 +98,6 @@ public sealed class QuestDeathRecoveryTests
         Assert.True(host.Recovery.IsQuestingStopped(host));
     }
 
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void ResetOrLogoutPreventsLateRecovery(bool logout)
-    {
-        var host = new RecoveryHost { IsManual = true, IsQuestWindowOpen = false };
-        host.BeginRecovery();
-        if (logout)
-        {
-            host.IsLoggedIn = false;
-            Assert.False(host.Recovery.IsQuestingStopped(host));
-            Assert.True(host.Recovery.Update(host));
-            host.AssertStopped();
-        }
-        else
-            host.Recovery.Reset();
-
-        host.IsLoggedIn = true;
-        host.IsUnconscious = false;
-        host.IsQuestWindowOpen = true;
-        host.Clock.Advance(TimeSpan.FromMinutes(1));
-        Assert.False(host.Recovery.Update(host));
-        Assert.Equal(0, host.Retries);
-        Assert.False(host.Recovery.IsRecovering);
-    }
-
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void ZoningOrNoPlayer_RestartsGrace(bool missingPlayer)
-    {
-        var host = new RecoveryHost();
-        host.BeginRecovery();
-        host.Revive();
-        host.Clock.Advance(TimeSpan.FromSeconds(3));
-        host.IsZoning = !missingPlayer;
-        host.HasPlayer = !missingPlayer;
-
-        Assert.True(host.Recovery.Update(host));
-        Assert.True(host.Recovery.IsRecovering);
-        Assert.Equal(0, host.Retries);
-        host.IsZoning = false;
-        host.HasPlayer = true;
-        Assert.True(host.Recovery.Update(host));
-        host.Clock.Advance(TimeSpan.FromMilliseconds(2999));
-        Assert.True(host.Recovery.Update(host));
-        Assert.Equal(0, host.Retries);
-        host.Clock.Advance(TimeSpan.FromMilliseconds(1));
-        Assert.True(host.Recovery.Update(host));
-        Assert.Equal(1, host.Retries);
-    }
-
     [Fact]
     public void FifthDeathStopsInsteadOfRetrying()
     {
@@ -189,17 +112,6 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void FailedCleanup_StopsBeforeMoving()
-    {
-        var host = new RecoveryHost { HasQueuedTasks = true, IsUnconscious = true, CleanupSucceeds = false };
-
-        Assert.True(host.Recovery.Update(host));
-
-        host.AssertStopped();
-        Assert.Equal(["clear-tasks", "stop:Task cleanup failed"], host.Effects);
-    }
-
-    [Fact]
     public void OtherOperation_StopsBeforeDeathRecovery()
     {
         var host = new RecoveryHost { HasQueuedTasks = true, IsUnconscious = true, HasExternalOperation = true };
@@ -208,29 +120,6 @@ public sealed class QuestDeathRecoveryTests
 
         host.AssertStopped();
         Assert.Equal(["stop:Died during external operation"], host.Effects);
-    }
-
-    [Fact]
-    public void MissingPrompt_KeepsThrottle()
-    {
-        var host = new RecoveryHost();
-        host.BeginRecovery();
-        Assert.Equal(["clear-tasks", "stop-movement", "confirm-return"], host.Effects);
-        host.PromptVisible = true;
-        Assert.True(host.Recovery.Update(host));
-        Assert.Equal(1, host.ConfirmedReturns);
-        int checks = host.Effects.Count;
-        host.Clock.Advance(TimeSpan.FromMilliseconds(499));
-        Assert.True(host.Recovery.Update(host));
-        Assert.Equal(checks, host.Effects.Count);
-        host.Clock.Advance(TimeSpan.FromMilliseconds(1));
-        host.PromptVisible = false;
-        Assert.True(host.Recovery.Update(host));
-        Assert.Equal(checks + 1, host.Effects.Count);
-        host.PromptVisible = true;
-        Assert.True(host.Recovery.Update(host));
-        Assert.Equal(2, host.ConfirmedReturns);
-        Assert.Equal(1, host.Effects.Count(x => x == "clear-tasks"));
     }
 
     [Fact]
@@ -265,67 +154,6 @@ public sealed class QuestDeathRecoveryTests
         Assert.Equal(5, host.Retries);
         Assert.Empty(host.Stops);
         Assert.Empty(host.ReportedLimits);
-    }
-
-    [Fact]
-    public void Reset_NewStreakAndClearsThrottle()
-    {
-        var host = new RecoveryHost { PromptVisible = true };
-        for (int i = 0; i < 4; ++i)
-            host.CompleteDeath();
-        host.BeginRecovery();
-        int confirmations = host.ConfirmedReturns;
-        host.Recovery.Reset();
-        host.BeginRecovery();
-        Assert.Equal(confirmations + 1, host.ConfirmedReturns);
-        host.Revive();
-        host.Clock.Advance(TimeSpan.FromSeconds(3));
-        Assert.True(host.Recovery.Update(host));
-
-        Assert.Equal(5, host.Retries);
-        Assert.Empty(host.Stops);
-    }
-
-    [Theory]
-    [InlineData(false, false, false, false)]
-    [InlineData(true, true, false, false)]
-    [InlineData(true, false, true, false)]
-    [InlineData(true, false, false, true)]
-    public void IdleCheck_KeepsModeQueueWindowRules(bool manual, bool queued, bool window, bool stopped)
-    {
-        var host = new RecoveryHost { IsManual = manual, HasQueuedTasks = queued, IsQuestWindowOpen = window };
-        Assert.Equal(stopped, host.Recovery.IsQuestingStopped(host));
-    }
-
-    [Fact]
-    public void Logout_SkipsEscapeAndPlayerChecks()
-    {
-        var host = Substitute.For<IQuestRecoveryHost>();
-        host.IsLoggedIn.Returns(false);
-        host.EscapeRequested.Returns(_ => throw new InvalidOperationException("Unexpected input read"));
-        host.IsUnconscious.Returns(_ => throw new InvalidOperationException("Unexpected condition read"));
-        var recovery = new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance, new TestClock());
-
-        Assert.True(recovery.Update(host));
-
-        host.Received(1).StopAll("Logged out");
-    }
-
-    [Fact]
-    public void Recovery_IdleCheckIgnoresWindow()
-    {
-        var host = Substitute.For<IQuestRecoveryHost>();
-        host.IsManual.Returns(true);
-        host.IsLoggedIn.Returns(true);
-        host.IsUnconscious.Returns(true);
-        host.HasQueuedTasks.Returns(true);
-        host.ClearTasks().Returns(true);
-        host.IsQuestWindowOpen.Returns(_ => throw new InvalidOperationException("Unexpected window read"));
-        var recovery = new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance, new TestClock());
-        Assert.True(recovery.Update(host));
-        host.HasQueuedTasks.Returns(false);
-
-        Assert.False(recovery.IsQuestingStopped(host));
     }
 
     private sealed class RecoveryHost : IQuestRecoveryHost

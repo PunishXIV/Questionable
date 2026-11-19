@@ -87,7 +87,7 @@ public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, IT
                    out questId);
     }
 
-    internal static (int Compared, int Matched, bool QuestMatched) CompareQuest(
+    private static (int Compared, int Matched, bool QuestMatched) CompareQuest(
         QuestRoot hand, QuestRoot? generated, string name, List<string> mismatches)
     {
         int compared = 0, matched = 0;

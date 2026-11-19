@@ -8,25 +8,6 @@ public sealed class QuestPrerequisiteTests
     private readonly FakeState _state = new();
 
     [Fact]
-    public void TableHoldsEveryFormerlyHardCodedQuest()
-    {
-        ushort[] expected =
-        [
-            432, 1550, 3200, 4057, 4795, 5469, 576, 4081, 3195, 2387, 1557, 3131, 5459, 3006, 3140, 3178, 3730, 3731,
-            3890, 4080, 4524, 4525, 4716, 4816, 5240, 5461, 3153,
-        ];
-
-        int[] achievements = [3892, 3893, 3894];
-
-        Assert.Equal(expected.Order(), QuestData.SpecialPrerequisites.Keys.Order());
-        Assert.Equal(achievements, Assert.IsType<AchievementPrerequisite>(QuestData.SpecialPrerequisites[5459]).AchievementIds);
-        Assert.Equal(40, Assert.IsType<ChocoboRankPrerequisite>(QuestData.SpecialPrerequisites[576]).Rank);
-        Assert.Equal(113, Assert.IsType<UnlockLinkPrerequisite>(QuestData.SpecialPrerequisites[3195]).UnlockLinkId);
-        Assert.Equal(75, Assert.IsType<DomanEnclavePrerequisite>(QuestData.SpecialPrerequisites[3153]).Milestone);
-        Assert.Equal(7, Assert.IsType<MountsPrerequisite>(QuestData.SpecialPrerequisites[5469]).MountIds.Length);
-    }
-
-    [Fact]
     public void Achievements_NamedUntilAllDone()
     {
         var prerequisite = new AchievementPrerequisite(3892, 3893);

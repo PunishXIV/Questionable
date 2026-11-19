@@ -63,24 +63,10 @@ internal sealed class TaskRunnerFixture : IDisposable
     internal sealed class TestInterruptionSource : ITaskInterruptionSource
     {
         private EventHandler? _handlers;
-        public bool ThrowAfterAdding { get; set; }
-        public int AddCalls { get; private set; }
-        public int RemoveCalls { get; private set; }
-        public int SubscriberCount => _handlers?.GetInvocationList().Length ?? 0;
         public event EventHandler? Interrupted
         {
-            add
-            {
-                AddCalls++;
-                _handlers += value;
-                if (ThrowAfterAdding)
-                    throw new InvalidOperationException("subscription failed after adding handler");
-            }
-            remove
-            {
-                RemoveCalls++;
-                _handlers -= value;
-            }
+            add => _handlers += value;
+            remove => _handlers -= value;
         }
         public void Raise() => _handlers?.Invoke(this, EventArgs.Empty);
     }

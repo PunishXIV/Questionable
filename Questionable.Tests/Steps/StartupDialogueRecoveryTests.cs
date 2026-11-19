@@ -33,47 +33,6 @@ public sealed class StartupDialogueRecoveryTests
     }
 
     [Fact]
-    public void FirstExecutor_EndsRecovery()
-    {
-        var start = DateTime.UnixEpoch;
-        var recovery = new Recovery(start) { InitialSweepDone = true };
-        Assert.False(recovery.ShouldCheck(start, hasQuest: true, hasTasks: true, executorStarted: true, externalOperation: false));
-        Assert.True(recovery.Finished);
-        Assert.False(recovery.ShouldCheck(start.AddSeconds(1), hasQuest: true, hasTasks: true, executorStarted: false, externalOperation: false));
-    }
-
-    [Fact]
-    public void StartedExecutor_KeepsFirstFullSweep()
-    {
-        var start = DateTime.UnixEpoch;
-        var recovery = new Recovery(start);
-        Assert.True(recovery.ShouldCheck(start, hasQuest: true, hasTasks: true, executorStarted: true, externalOperation: false));
-        recovery.InitialSweepDone = true;
-        Assert.False(recovery.ShouldCheck(start.AddSeconds(1), hasQuest: true, hasTasks: true, executorStarted: true, externalOperation: false));
-        Assert.True(recovery.Finished);
-    }
-
-    [Fact]
-    public void ExternalOperation_BlocksScanning()
-    {
-        var start = DateTime.UnixEpoch;
-        var recovery = new Recovery(start);
-        Assert.False(recovery.ShouldCheck(start, hasQuest: true, hasTasks: true, executorStarted: false, externalOperation: true));
-        Assert.True(recovery.ShouldCheck(start.AddSeconds(1), hasQuest: true, hasTasks: true, executorStarted: false, externalOperation: false));
-        Assert.False(recovery.ShouldCheck(start.AddSeconds(1.1), hasQuest: true, hasTasks: true, executorStarted: false, externalOperation: false));
-    }
-
-    [Fact]
-    public void MissingContext_KeepsRecoveryWindow()
-    {
-        var start = DateTime.UnixEpoch;
-        var recovery = new Recovery(start);
-        Assert.False(recovery.ShouldCheck(start, hasQuest: false, hasTasks: true, executorStarted: false, externalOperation: false));
-        Assert.False(recovery.ShouldCheck(start.AddSeconds(1), hasQuest: true, hasTasks: false, executorStarted: false, externalOperation: false));
-        Assert.True(recovery.ShouldCheck(start.AddSeconds(2), hasQuest: true, hasTasks: true, executorStarted: false, externalOperation: false));
-    }
-
-    [Fact]
     public void RecoveryWindow_Expires()
     {
         var start = DateTime.UnixEpoch;

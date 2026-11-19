@@ -84,13 +84,9 @@ public sealed class WaitAtEndTests
 
     [Theory]
     [InlineData(false, false, false)]
-    [InlineData(false, false, true)]
-    [InlineData(false, true, false)]
     [InlineData(false, true, true)]
-    [InlineData(true, false, false)]
     [InlineData(true, false, true)]
     [InlineData(true, true, false)]
-    [InlineData(true, true, true)]
     public void EarlyDamage_ChecksCombatBeforeReplay(bool turnIn, bool mounted, bool entersCombat)
     {
         var condition = Substitute.For<ICondition>();

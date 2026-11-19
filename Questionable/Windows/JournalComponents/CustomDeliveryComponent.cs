@@ -41,7 +41,7 @@ internal sealed class CustomDeliveryComponent(
         ImGui.SameLine();
         ImGui.TextUnformatted(_LF("Deliveries left this week: {0}/12", CustomDeliveries.WeeklyLeft));
 
-        if (Environment.TickCount64 - _rowsAt >= 1000)
+        if (Environment.TickCount64 - _rowsAt >= (deliveries.Loading ? 100 : 1000))
         {
             _rows = deliveries.GetNpcs();
             _rowsAt = Environment.TickCount64;
@@ -51,11 +51,13 @@ internal sealed class CustomDeliveryComponent(
         ImGui.TextDisabled(_L("Deliver: what Satisfy does for that NPC (craft, gather or fish). Amber items are this week's bonus."));
 
         using ImRaii.TableDisposable table = ImRaii.Table("CustomDeliveries", 9,
-            ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersInnerH | ImGuiTableFlags.SizingFixedFit);
+            ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersInnerH | ImGuiTableFlags.SizingFixedFit |
+            ImGuiTableFlags.ScrollX | ImGuiTableFlags.ScrollY);
         if (!table)
             return;
 
-        ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.WidthStretch);
+        ImGui.TableSetupScrollFreeze(1, 1);
+        ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.NoHide);
         ImGui.TableSetupColumn(_L("Rank"));
         ImGui.TableSetupColumn(_L("Satisfaction"));
         ImGui.TableSetupColumn(_L("Turn-ins"));

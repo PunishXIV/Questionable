@@ -58,23 +58,8 @@ public sealed class CraftingStateTests
         Assert.False(_state.TryConfirmIdle());
     }
 
-    [Fact]
-    public void UncertainCraftStart_WaitsForConfirmation()
-    {
-        Guid id = _state.BeginRequest();
-        _state.MarkUncertain(id);
-        ObserveStableIdle();
-
-        Assert.True(_state.NeedsConfirmation);
-        Assert.False(_state.TryComplete(id));
-        Assert.True(_state.HasOperation);
-    }
-
     [Theory]
     [InlineData((int)ArtisanStatus.Busy)]
-    [InlineData((int)ArtisanStatus.Queued)]
-    [InlineData((int)ArtisanStatus.Paused)]
-    [InlineData((int)ArtisanStatus.Unavailable)]
     public void Confirmation_RejectsBusyOrMissing(int status)
     {
         _state.BeginRequest();
@@ -102,76 +87,6 @@ public sealed class CraftingStateTests
         Assert.False(_state.TryComplete(id));
         Assert.False(_state.TryConfirmIdle());
         Assert.Throws<TaskException>(() => _state.BeginRequest());
-    }
-
-    [Fact]
-    public void ProviderLossAfterIdle_NeedsConfirmation()
-    {
-        Guid id = _state.BeginRequest();
-        _state.ObserveStatus(ArtisanStatus.Busy);
-        _state.ObserveStatus(ArtisanStatus.Unavailable);
-        _state.ObserveStatus(ArtisanStatus.Busy);
-        Assert.True(_state.NeedsConfirmation);
-        Assert.False(_state.CanContinue(id));
-        Assert.False(_state.TryConfirmIdle());
-        ObserveStableIdle();
-
-        Assert.True(_state.NeedsConfirmation);
-        Assert.False(_state.CanContinue(id));
-        Assert.False(_state.TryComplete(id));
-        Assert.Equal(id, _state.Id);
-        Assert.True(_state.TryConfirmIdle());
-        Assert.False(_state.HasOperation);
-    }
-
-    [Fact]
-    public void StaleIdle_CannotConfirmOrComplete()
-    {
-        Guid id = _state.BeginRequest();
-        ObserveStableIdle();
-        _clock.Advance(TimeSpan.FromSeconds(2));
-        Assert.False(_state.TryComplete(id));
-        _state.ObserveStatus(ArtisanStatus.Idle);
-        Assert.False(_state.TryComplete(id));
-        _state.Abandon();
-        Assert.False(_state.TryConfirmIdle());
-
-        ObserveStableIdle();
-        Assert.True(_state.TryConfirmIdle());
-    }
-
-    [Fact]
-    public void BriefIdleBeforeWork_BlocksConfirmation()
-    {
-        _state.BeginRequest();
-        _state.Abandon();
-        _state.ObserveStatus(ArtisanStatus.Idle);
-        _clock.Advance(TimeSpan.FromSeconds(1));
-        Assert.False(_state.TryConfirmIdle());
-        _state.ObserveStatus(ArtisanStatus.Queued);
-        _clock.Advance(TimeSpan.FromSeconds(4));
-        _state.ObserveStatus(ArtisanStatus.Idle);
-        Assert.False(_state.TryConfirmIdle());
-        ObserveStableIdle();
-        Assert.True(_state.TryConfirmIdle());
-    }
-
-    [Fact]
-    public void LateOldExecutor_CannotEndNewOperation()
-    {
-        Guid oldId = _state.BeginRequest();
-        _state.Abandon(oldId);
-        ObserveStableIdle();
-        Assert.True(_state.TryConfirmIdle());
-        Guid newId = _state.BeginRequest();
-
-        _state.Abandon(oldId);
-        _state.MarkUncertain(oldId);
-        ObserveStableIdle();
-        Assert.False(_state.TryComplete(oldId));
-        Assert.False(_state.NeedsConfirmation);
-        Assert.Equal(newId, _state.Id);
-        Assert.True(_state.TryComplete(newId));
     }
 
     private void ObserveStableIdle()

@@ -62,7 +62,7 @@ internal sealed class QuestJournalComponent
 
         ImGui.SameLine();
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize("9999").X - ImGui.GetStyle().ItemSpacing.X);
-        if (ImGui.InputTextWithHint(string.Empty, _L("Search quests and categories"), ref Filter.SearchText, 256))
+        if (ImGui.InputTextWithHint("##QuestSearch", _L("Search quests and categories"), ref Filter.SearchText, 256))
         {
             var openAll = Filter.SearchText.Length > 1;
             if (openAll != _allOpen)
