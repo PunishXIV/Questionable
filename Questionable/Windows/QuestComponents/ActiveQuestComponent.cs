@@ -101,7 +101,7 @@ internal sealed partial class ActiveQuestComponent
         if (currentQuest != null)
         {
             ImGui.SameLine();
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.CommentDots))
                 ImGui.OpenPopup("##QuestReport");
             if (ImGui.IsItemHovered())
                 QstWidgets.Tooltip(_L("Report how this quest's path went"));
@@ -706,7 +706,7 @@ internal sealed partial class ActiveQuestComponent
 
         if (questWork != null)
         {
-            if (isMinimized)
+            if (isMinimized || !configuration.Advanced.Debug)
                 return questWork;
 
 
