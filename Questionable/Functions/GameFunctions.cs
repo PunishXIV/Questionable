@@ -356,10 +356,8 @@ internal sealed unsafe partial class GameFunctions
         if (b == null)
             return false;
 
-        var normalA = GameStringComparison.Normalize(a);
-        var normalB = GameStringComparison.Normalize(b);
-        var eq = normalA == normalB;
-        Svc.Log.Verbose($"GameStringEquals: {normalA} {(eq ? "==" : "!=")} {normalB}");
+        bool eq = GameStringComparison.Matches(a, b);
+        Svc.Log.Verbose($"GameStringEquals: {a} {(eq ? "==" : "!=")} {b}");
         return eq;
     }
 
