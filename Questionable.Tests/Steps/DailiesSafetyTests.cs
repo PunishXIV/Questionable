@@ -40,9 +40,9 @@ public sealed class DailiesSafetyTests
 
     private DailiesPlan.Entry Entry(Quest quest, byte sequence, bool daily = true)
     {
-        QuestStep target = quest.FindSequence(sequence)!.Steps.First(x => x.Position != null);
+        QuestStep? target = quest.FindSequence(sequence)!.Steps.FirstOrDefault(x => x.Position != null);
         return new((QuestId)quest.Id, quest.Info.AlliedSociety, daily, true, false,
-            EAlliedSocietyRank.Neutral, sequence, target.TerritoryId, target.Position,
+            EAlliedSocietyRank.Neutral, sequence, target?.TerritoryId ?? 0, target?.Position,
             KeepCurrent: _functions.KeepDaily(quest, sequence));
     }
 

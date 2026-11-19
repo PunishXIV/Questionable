@@ -78,8 +78,7 @@
             "items": {
               "$ref": "#/$defs/Step"
             },
-            "minItems": 1,
-            "description": "All steps necessary to complete the quest sequence. If a sequence has no steps (e.g. if it is cutscene-only), this element should not be used."
+            "description": "All steps necessary to complete the quest sequence. If a sequence has no steps (e.g. if it is cutscene-only), this element should not be used. Sequence 0 and 255 may be empty: Questionable then accepts or turns in at the quest giver from game data."
           },
           "Comment": {
             "type": "string"
@@ -93,6 +92,20 @@
           "Sequence"
         ],
         "additionalProperties": false,
+        "if": {
+          "properties": {
+            "Sequence": {
+              "enum": [0, 255]
+            }
+          }
+        },
+        "else": {
+          "properties": {
+            "Steps": {
+              "minItems": 1
+            }
+          }
+        },
         "anyOf": [
           {
             "required": [

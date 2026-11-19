@@ -28,7 +28,7 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
             }
         }
 
-        if (quest.FindSequence(0) != null && questAccepts.Count == 0)
+        if (quest.FindSequence(0) is { Steps.Count: > 0 } && questAccepts.Count == 0)
         {
             yield return new()
             {
@@ -61,7 +61,7 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
             }
         }
 
-        if (quest.FindSequence(255) != null && questCompletes.Count == 0)
+        if (quest.FindSequence(255) is { Steps.Count: > 0 } && questCompletes.Count == 0)
         {
             yield return new()
             {

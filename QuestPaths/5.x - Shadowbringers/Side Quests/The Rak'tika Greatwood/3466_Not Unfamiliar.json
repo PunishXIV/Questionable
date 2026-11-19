@@ -7,15 +7,8 @@
   },
   "QuestSequence": [
     {
-  "Sequence": 0,
-  "TerritoryId": 817,
-  "Steps": [
-    {
-      "DataId": 1031380,
-          "Position": [390.5, 33.6378, -128.446],
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Sequence": 0,
+      "Steps": []
     },
     {
       "Sequence": 1,

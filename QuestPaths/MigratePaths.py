@@ -18,10 +18,14 @@ Rewrites quest path files in place, touching only the text that changes.
     strip-fly      Remove WalkTo waypoints that only run with flying unlocked (skip "Flying: Locked", nothing but a
                    position and a note) when the next step in the same zone has a position.
 
+    strip-implicit Empty sequence 0/255 when its only step is a plain accept/turn-in Questionable derives from game
+                   data. --list names the sequences (<path> TAB <sequence>); the list comes from game data (same NPC,
+                   within 3 yalms), which this script can't read.
+
 Every edited file is checked to parse to exactly the expected data. Re-runnable after merging from new-main.
 
 Usage:
-    python MigratePaths.py strip-routing|v2|strip-travel|strip-fly [ROOT] [--write] [--list FILE]
+    python MigratePaths.py strip-routing|v2|strip-travel|strip-fly|strip-implicit [ROOT] [--write] [--list FILE]
 """
 from __future__ import annotations
 
@@ -405,6 +409,56 @@ def strip_travel(text: str, kind_of=travel_kind) -> tuple[str, list[tuple[int, i
     return new, removed
 
 
+def strip_implicit(text: str, numbers: set[int]) -> str:
+    """Empty the listed sequences (0 and/or 255): Questionable then accepts or turns in at the quest giver."""
+    data = json.loads(text.lstrip("﻿"))
+    root, _ = parse(text, 1 if text.startswith("﻿") else 0)
+    newline = "\r\n" if "\r\n" in text else "\n"
+    expected = copy.deepcopy(data)
+    sequences_node = next(n for k, _, n in root["members"] if k == "QuestSequence")
+    edits = []
+    for seq, node, seq_expected in zip(data["QuestSequence"], sequences_node["items"], expected["QuestSequence"]):
+        if seq["Sequence"] not in numbers:
+            continue
+        assert set(seq) <= {"Sequence", "TerritoryId", "Steps"} and len(seq["Steps"]) == 1, f"sequence {seq['Sequence']} isn't plain"
+        indent = text[text.rfind("\n", 0, node["start"]) + 1:node["start"]]
+        replacement = (f"{{{newline}{indent}  \"Sequence\": {seq['Sequence']},{newline}"
+                       f"{indent}  \"Steps\": []{newline}{indent}}}")
+        edits.append((node["start"], node["end"], replacement))
+        seq_expected.clear()
+        seq_expected.update({"Sequence": seq["Sequence"], "Steps": []})
+    for start, end, replacement in sorted(edits, reverse=True):
+        text = text[:start] + replacement + text[end:]
+    assert json.loads(text.lstrip("﻿")) == expected, "edited text doesn't parse to the expected data"
+    return text
+
+
+def run_strip_implicit(root: Path, write: bool, listing: Path) -> int:
+    wanted: dict[str, set[int]] = {}
+    for line in listing.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            rel, number = line.split("\t")
+            wanted.setdefault(rel, set()).add(int(number))
+    counts = {0: 0, 255: 0}
+    errors = 0
+    for rel, numbers in sorted(wanted.items()):
+        path = root / rel
+        raw = path.read_bytes().decode("utf-8")
+        try:
+            new = strip_implicit(raw, numbers)
+        except (AssertionError, json.JSONDecodeError, StopIteration) as e:
+            print(f"[skip] {rel}: {e}", file=sys.stderr)
+            errors += 1
+            continue
+        for number in numbers:
+            counts[number] += 1
+        if write:
+            path.write_bytes(new.encode("utf-8"))
+    print(f"{'Emptied' if write else 'Would empty'} {counts[0]} accept and {counts[255]} turn-in sequences "
+          f"in {len(wanted) - errors} files; errors: {errors}")
+    return 1 if errors else 0
+
+
 def run_strip_travel(root: Path, write: bool, listing: Path | None, kind_of=travel_kind) -> int:
     files = errors = 0
     kinds: dict[str, int] = {}
@@ -438,10 +492,11 @@ def run_strip_travel(root: Path, write: bool, listing: Path | None, kind_of=trav
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["strip-routing", "v2", "strip-travel", "strip-fly"])
+    ap.add_argument("command", choices=["strip-routing", "v2", "strip-travel", "strip-fly", "strip-implicit"])
     ap.add_argument("root", nargs="?", default=Path(__file__).resolve().parent, type=Path)
     ap.add_argument("--write", action="store_true", help="write changes (default: dry run)")
-    ap.add_argument("--list", type=Path, help="strip-travel/strip-fly: write a TSV of every removed step")
+    ap.add_argument("--list", type=Path, help="strip-travel/strip-fly: write a TSV of every removed step; "
+                                              "strip-implicit: read the TSV of <path>\\t<sequence> to empty")
     args = ap.parse_args()
 
     root = args.root.resolve()
@@ -451,6 +506,10 @@ def main() -> int:
         return run_strip_travel(root, args.write, args.list)
     if args.command == "strip-fly":
         return run_strip_travel(root, args.write, args.list, fly_kind)
+    if args.command == "strip-implicit":
+        if args.list is None:
+            ap.error("strip-implicit needs --list with the qualifying sequences")
+        return run_strip_implicit(root, args.write, args.list)
     totals = {"files": 0, "keys": 0, "steps": 0, "kept_only_step": 0, "errors": 0}
     for path in sorted(root.rglob("*.json")):
         if path.parent == root or "obj" in path.relative_to(root).parts:

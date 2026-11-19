@@ -4,15 +4,8 @@
 	"LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
 		{
-			"Sequence": 0,
-			"TerritoryId": 402,
-			"Steps": [
-				{
-					"DataId": 1012297,
-					"Position": [-554.95544, -89.69182, 771.87756],
-					"InteractionType": "AcceptQuest"
-				}
-			]
+		  "Sequence": 0,
+		  "Steps": []
 		},
 		{
 			"Sequence": 1,
@@ -32,15 +25,8 @@
 			]
 		},
 		{
-			"Sequence": 255,
-			"TerritoryId": 402,
-			"Steps": [
-				{
-					"DataId": 1012297,
-					"Position": [-554.95544, -89.69182, 771.87756],
-					"InteractionType": "CompleteQuest"
-				}
-			]
+		  "Sequence": 255,
+		  "Steps": []
 		}
 	]
 }

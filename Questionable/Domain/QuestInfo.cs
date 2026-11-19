@@ -45,6 +45,7 @@ internal sealed class QuestInfo : IQuestInfo
         };
         Level = levelOverrides.TryGetValue(QuestId.Value, out ushort requiredLevel) ? requiredLevel : quest.ClassJobLevel[0];
         IssuerDataId = quest.IssuerStart.RowId;
+        TargetEnd = quest.TargetEnd.RowId;
         IssuerLocation = new(quest.IssuerLocation.Value);
         IsRepeatable = quest.IsRepeatable;
         PreviousQuests =
@@ -161,6 +162,7 @@ internal sealed class QuestInfo : IQuestInfo
     public string BaseName { get; }
     public ushort Level { get; }
     public uint IssuerDataId { get; }
+    public uint TargetEnd { get; }
     public SheetLevel IssuerLocation { get; }
     public bool IsRepeatable { get; }
     public ImmutableList<PreviousQuestInfo> PreviousQuests { get; private set; }

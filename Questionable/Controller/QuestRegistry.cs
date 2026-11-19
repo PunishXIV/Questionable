@@ -380,11 +380,15 @@ internal sealed class QuestRegistry : IDisposable
         if (source != Quest.ESource.DownloadedBundle)
             _jsonSchemaValidator.Enqueue(parsed.QuestId, parsed.Node);
 
+        IQuestInfo info = _questData.GetQuestInfo(parsed.QuestId);
+        if (!ImplicitSteps.Fill(parsed.Root, info))
+            _logger.LogWarning("Quest {QuestId} has an empty sequence the game data can't fill", parsed.QuestId);
+
         _quests[parsed.QuestId] = new Quest
         {
             Id = parsed.QuestId,
             Root = parsed.Root,
-            Info = _questData.GetQuestInfo(parsed.QuestId),
+            Info = info,
             Source = source
         };
     }

@@ -5,14 +5,7 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "TerritoryId": 1188,
-      "Steps": [
-        {
-          "DataId": 1048836,
-          "Position": [-578.91205, 6.1739964, -472.80084],
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
@@ -48,14 +41,7 @@
     },
     {
       "Sequence": 255,
-      "TerritoryId": 1188,
-      "Steps": [
-        {
-          "DataId": 1048836,
-          "Position": [-578.91205, 6.1739964, -472.80084],
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

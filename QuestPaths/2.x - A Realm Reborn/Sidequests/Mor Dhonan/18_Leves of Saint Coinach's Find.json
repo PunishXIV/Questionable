@@ -33,14 +33,7 @@
     },
     {
       "Sequence": 255,
-      "TerritoryId": 156,
-      "Steps": [
-        {
-          "DataId": 1004348,
-          "Position": [415.97607, -6.0610375, -444.419],
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

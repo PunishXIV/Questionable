@@ -4,15 +4,8 @@
 	"LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
 		{
-			"Sequence": 0,
-			"TerritoryId": 397,
-			"Steps": [
-				{
-					"DataId": 1014065,
-					"Position": [509.17822, 212.5399, 695.796],
-					"InteractionType": "AcceptQuest"
-				}
-			]
+		  "Sequence": 0,
+		  "Steps": []
 		},
 		{
 			"Sequence": 1,
