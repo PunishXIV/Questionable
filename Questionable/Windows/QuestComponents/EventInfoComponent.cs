@@ -98,14 +98,29 @@ internal sealed class EventInfoComponent
     }
 
     public IEnumerable<ElementId> GetActiveQuests() => GetActiveQuests(Events,
-        questFunctions.IsQuestAccepted, questFunctions.IsQuestComplete, x => questFunctions.IsQuestUnobtainable(x));
+        questFunctions.IsQuestAccepted, questFunctions.IsQuestComplete, x => questFunctions.IsQuestUnobtainable(x),
+        x => questFunctions.IsReadyToAcceptQuest(x),
+        x => questData.GetQuestInfo(x).PreviousQuests.Select(p => (ElementId)p.QuestId));
 
-    internal static IEnumerable<ElementId> GetActiveQuests(IEnumerable<Event> events,
-        Func<ElementId, bool> isAccepted, Func<ElementId, bool> isComplete, Func<ElementId, bool> isUnobtainable) =>
-        events
-            .SelectMany(x => x.QuestIds)
-            .Where(x => isAccepted(x) || (!isComplete(x) && !isUnobtainable(x)))
-            .Distinct();
+    // IPC callers (Automaton) start these in order and give up at the first that won't start, so a locked
+    // quest is only listed when an earlier quest in the list unlocks it.
+    internal static List<ElementId> GetActiveQuests(IEnumerable<Event> events,
+        Func<ElementId, bool> isAccepted, Func<ElementId, bool> isComplete, Func<ElementId, bool> isUnobtainable,
+        Func<ElementId, bool> isReady, Func<ElementId, IEnumerable<ElementId>> previous)
+    {
+        List<ElementId> active = [];
+        foreach (ElementId id in events.SelectMany(x => x.QuestIds).Distinct())
+        {
+            if (isAccepted(id) || (!isComplete(id) && !isUnobtainable(id) &&
+                    (isReady(id) || UnlockedBy(previous(id).ToList(), active, isComplete))))
+                active.Add(id);
+        }
+
+        return active;
+    }
+
+    private static bool UnlockedBy(List<ElementId> before, List<ElementId> active, Func<ElementId, bool> isComplete) =>
+        before.Any(active.Contains) && before.All(x => isComplete(x) || active.Contains(x));
 
     internal static List<Event> GetEvents(IEnumerable<QuestInfo> seasonal, IReadOnlyList<(ushort Id, ushort Phase)> festivals,
         Func<QuestId, IQuestInfo?> info, Func<PreviousQuestInfo, bool> met, Func<ushort, EventDetails?> details) =>

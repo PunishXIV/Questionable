@@ -70,10 +70,29 @@ public sealed class EventInfoComponentTests
         ushort[] active = [.. EventInfoComponent.GetActiveQuests(events,
                 x => x.Value == 4,
                 x => x.Value is 2 or 4,
-                x => x.Value is 3 or 4)
+                x => x.Value is 3 or 4,
+                _ => true,
+                _ => [])
             .Select(x => x.Value)];
 
         Assert.Equal([1, 4], active);
+    }
+
+    [Fact]
+    public void ActiveQuests_SkipLockedUnlessChained()
+    {
+        var events = Events([(9, 0)], Seasonal(1, 9), Seasonal(2, 9, previous: 1), Seasonal(3, 9), Seasonal(4, 9, previous: 3));
+        Dictionary<ushort, ushort> previous = new() { [2] = 1, [4] = 3 };
+
+        ushort[] active = [.. EventInfoComponent.GetActiveQuests(events,
+                _ => false,
+                _ => false,
+                _ => false,
+                x => x.Value == 1,
+                x => previous.TryGetValue(x.Value, out ushort p) ? [new QuestId(p)] : [])
+            .Select(x => x.Value)];
+
+        Assert.Equal([1, 2], active);
     }
 
     private static QuestInfo Seasonal(ushort id, ushort festival, ushort begin = 0, ushort end = 1, ushort? previous = null) =>

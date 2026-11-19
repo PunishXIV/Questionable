@@ -58,7 +58,6 @@
             "StepIf": {
               "NearPosition": {
                 "Position": [-435.4137, 52.479874, -328.0926],
-                "Mount": false,
                 "TerritoryId": 816,
                 "MaximumDistance": 20
               }
@@ -67,6 +66,7 @@
         },
         {
           "Position": [-435.4137, 52.479874, -328.0926],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "Comment": "Fish for 1x Calico Trout (!) using Fruit Worm or Versatile Lure"
         },

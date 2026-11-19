@@ -15,7 +15,6 @@
             "StepIf": {
               "NearPosition": {
                 "Position": [470.02356, -49.89133, 20.370789],
-                "Mount": false,
                 "TerritoryId": 398,
                 "MaximumDistance": 10
               }
@@ -26,6 +25,7 @@
           "$": "Marcechamp",
           "DataId": 1011916,
           "Position": [470.02356, -49.89133, 20.370789],
+          "Mount": false,
           "InteractionType": "AcceptQuest"
         }
       ]
