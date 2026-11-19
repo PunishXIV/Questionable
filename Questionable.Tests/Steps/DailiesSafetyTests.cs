@@ -266,7 +266,7 @@ public sealed class DailiesSafetyTests
             TestQuestInfo.Create(9, previous: [new PreviousQuestInfo(new QuestId(8)), new PreviousQuestInfo(new QuestId(7))]),
             TestQuestInfo.Create(8));
         Assert.Null(story);
-        Assert.Equal(new[] { 8, 9, 10 }, chain.Select(x => (int)x.Value));
+        Assert.Equal([8, 9, 10], chain.Select(x => (int)x.Value));
     }
 
     [Fact]
@@ -287,6 +287,6 @@ public sealed class DailiesSafetyTests
             TestQuestInfo.Create(9, mainScenario: true),
             TestQuestInfo.Create(8));
         Assert.Null(story);
-        Assert.Equal(new[] { 8, 10 }, chain.Select(x => (int)x.Value));
+        Assert.Equal([8, 10], chain.Select(x => (int)x.Value));
     }
 }
