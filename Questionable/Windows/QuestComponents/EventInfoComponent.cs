@@ -163,7 +163,8 @@ internal sealed class EventInfoComponent
                 (x.StartsAtUtc == null || x.StartsAtUtc < DateTime.UtcNow) &&
                 x.EndsAtUtc >= DateTime.UtcNow &&
                 x.QuestIds.Any(ShouldShowQuest))
-            .SelectMany(x => x.QuestIds);
+            .SelectMany(x => x.QuestIds)
+            .Where(x => !questFunctions.IsQuestUnobtainable(x) && !questFunctions.IsQuestComplete(x));
     }
 
     private bool ShouldShowQuest(ElementId elementId)
