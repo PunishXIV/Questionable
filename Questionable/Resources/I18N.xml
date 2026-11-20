@@ -1155,8 +1155,8 @@
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Hold CTRL to enable this button.</Key>
     <Value lang="en">Hold CTRL to enable this button.</Value>
     <Value lang="ja-jp">このボタンを有効にするにはCTRLを押したままにしてください。</Value>
@@ -1427,10 +1427,10 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/GatheringJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Name</Key>
     <Value lang="en">Name</Value>
     <Value lang="ja-jp">名前</Value>
@@ -1459,8 +1459,8 @@
     <!--<Value lang="ko">우선 퀘스트에 추가</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
     <Key>Copy as file name</Key>
     <Value lang="en">Copy as file name</Value>
     <Value lang="ja-jp">ファイル名としてコピー</Value>
@@ -1510,8 +1510,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Quest</Key>
     <Value lang="en">Quest</Value>
     <Value lang="ja-jp">クエスト</Value>
@@ -1529,8 +1529,8 @@
     <!--<Value lang="ko">시퀀스</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PathEditorWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/PathEditorWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Step</Key>
     <Value lang="en">Step</Value>
@@ -1567,8 +1567,8 @@
     <Value lang="ko">설정 열기</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
     <Key>Sponsor QST development</Key>
     <Value lang="en">Sponsor QST development</Value>
     <Value lang="ja-jp">QSTの開発を支援する</Value>
@@ -1658,8 +1658,8 @@
     <!--<Value lang="ko">활성화</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/ConfigComponent.cs -->
     <Key>Disabled</Key>
     <Value lang="en">Disabled</Value>
@@ -1904,8 +1904,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <Key>Prevent quest completion</Key>
     <Value lang="en">Prevent quest completion</Value>
     <Value lang="ja-jp">クエスト完了を防ぐ</Value>
@@ -1923,8 +1923,8 @@
     <!--<Value lang="ko">활성화되면 Questionable은 퀘스트를 제출하고 완료하려고 시도하지 않습니다. 마지막 제출 단계 외에는 모든 작업이 자동으로 수행됩니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <Key>Abandon quest before completion</Key>
     <Value lang="en">Abandon quest before completion</Value>
     <Value lang="ja-jp">完了前にクエストを放棄する</Value>
@@ -1933,8 +1933,8 @@
     <!--<Value lang="ko">완료 전에 퀘스트 포기</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <Key>Remove from priority when abandoned</Key>
     <Value lang="en">Remove from priority when abandoned</Value>
     <Value lang="ja-jp">放棄時に優先リストから削除</Value>
@@ -1997,8 +1997,8 @@
     <!--<Value lang="ko">활성화되면 Questionable의 진행 창이 로드될 때 최소화된 상태로 표시됩니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Path data</Key>
     <Value lang="en">Path data</Value>
     <Value lang="ja-jp">パスデータ</Value>
@@ -2052,8 +2052,8 @@
     <!--<Value lang="ko">다운로드된 경로 데이터 버전: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>?</Key>
     <Value lang="en">?</Value>
@@ -2063,8 +2063,8 @@
     <!--<Value lang="ko">?</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <Key>Duties</Key>
     <Value lang="en">Duties</Value>
     <Value lang="ja-jp">コンテンツ</Value>
@@ -3236,8 +3236,8 @@
     <!--<Value lang="ko">모든 퀘스트 전투를 활성화합니다. 사용은 본인 책임입니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Stop</Key>
     <Value lang="en">Stop</Value>
     <Value lang="ja-jp">停止</Value>
@@ -3611,8 +3611,8 @@
     <!--<Value lang="ko">우선 순위 퀘스트에 추가</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Add all to Priority Quests</Key>
     <Value lang="en">Add all to Priority Quests</Value>
     <Value lang="ja-jp">すべて優先クエストに追加</Value>
@@ -3666,8 +3666,8 @@
     <!--<Value lang="ko">경로가 없는 퀘스트 숨기기</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Remove all from Priority Quests</Key>
     <Value lang="en">Remove all from Priority Quests</Value>
     <Value lang="ja-jp">すべて優先クエストから削除</Value>
@@ -3676,8 +3676,8 @@
     <!--<Value lang="ko">모두 우선 순위 퀘스트에서 제거</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Sim first quest</Key>
     <Value lang="en">Sim first quest</Value>
     <Value lang="ja-jp">最初のクエストをシミュレート</Value>
@@ -4954,8 +4954,8 @@
     <!--<Value lang="ko">퀘스트 시뮬레이션</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Start NG+ here</Key>
     <Value lang="en">Start NG+ here</Value>
     <Value lang="ja-jp">ここからNG+を開始</Value>
@@ -4964,8 +4964,8 @@
     <!--<Value lang="ko">여기서 NG+ 시작</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Stop NG+</Key>
     <Value lang="en">Stop NG+</Value>
     <Value lang="ja-jp">NG+を停止</Value>
@@ -5101,8 +5101,8 @@
     <!--<Value lang="ko">AcceptQuest 지역 {0}에는 에테라이트가 없으며, 텔레포트 바로 가기도 설정되어 있지 않습니다</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <Key>Run command when Questionable finishes automatic questing</Key>
     <Value lang="en">Run command when Questionable finishes automatic questing</Value>
     <Value lang="ja-jp">Questionableの自動クエストが完了した際にコマンドを実行</Value>
@@ -5472,8 +5472,8 @@
     <!--<Value lang="ko">QST 작업 중에 우편으로 받은 아이템을 수령합니다</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!</Key>
     <Value lang="en">Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!</Value>
     <Value lang="ja-jp">オレンジ色でマークされたクエストは、LastCheckedシステムで動作確認の報告が必要です。詳細はAlyに聞いてください！</Value>
@@ -5945,8 +5945,8 @@
     <!--<Value lang="ko">캡처</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
     <!-- Found in: ../Questionable/Windows/PathEditorComponents/StepCaptureComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
     <Key>Interaction type detected from the target's nameplate icon.</Key>
     <Value lang="en">Interaction type detected from the target's nameplate icon.</Value>
     <Value lang="ja-jp">ターゲットのネームプレートアイコンからインタラクションタイプを検出しました。</Value>
@@ -6872,8 +6872,8 @@
     <Value lang="zh-tw">解鎖</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Loading...</Key>
     <Value lang="en">Loading...</Value>
     <Value lang="zh-cn">加载中...</Value>
