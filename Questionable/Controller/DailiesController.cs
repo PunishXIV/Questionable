@@ -130,7 +130,8 @@ internal sealed class DailiesController(
                     x.InteractionType == EInteractionType.Craft && x.ItemId is { } itemId &&
                     questFunctions.HasCraftMaterials(itemId)) == true;
                 bool hasJob = questFunctions.HasClassJobAtQuestLevel(id);
-                string? blocked = unavailable ?? GetBlockReason(quest, info, accepted, hasJob);
+                string? blocked = unavailable ?? GetBlockReason(quest, info, accepted, hasJob,
+                    quest != null && questFunctions.NeedsPlayer(quest));
                 bool manualBattle = !info.IsRepeatable && quest != null && quest.AllSteps().Any(x =>
                     x.Sequence.Sequence >= sequence && x.Step.InteractionType == EInteractionType.SinglePlayerDuty &&
                     !bossMod.CanRunQuestBattle(id, x.Step.SinglePlayerDutyOptions));
@@ -166,9 +167,11 @@ internal sealed class DailiesController(
             ? _LF("Not unlocked yet (unlock quest: {0}). {1}", name, string.Join(". ", missing))
             : _LF("Not unlocked yet (unlock quest: {0}); it can't be accepted yet.", name);
 
-    internal static string? GetBlockReason(Quest? quest, QuestInfo info, bool accepted, bool hasJob) =>
+    internal static string? GetBlockReason(Quest? quest, QuestInfo info, bool accepted, bool hasJob,
+        bool needsPlayer = false) =>
         quest == null ? _LF("No quest path for {0}.", info.Name) :
         quest.Root.Disabled ? _LF("{0} has a disabled quest path; complete it manually.", info.Name) :
+        needsPlayer ? _LF("{0} has a step Questionable can't do on its own; complete it manually.", info.Name) :
         !accepted && !hasJob ? _LF("No suitable job at level {0} for {1}.", info.Level, info.Name) : null;
 
     public EDailiesFailure Fail(ElementId id, string reason)

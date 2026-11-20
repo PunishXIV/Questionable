@@ -5178,6 +5178,11 @@
     <Value lang="zh-tw">{0}: {1}</Value>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Controller/DailiesController.cs -->
+    <Key>{0} has a step Questionable can't do on its own; complete it manually.</Key>
+    <Value lang="en">{0} has a step Questionable can't do on its own; complete it manually.</Value>
+  </Entry>
+  <Entry>
     <!-- Found in: ../Questionable/Controller/GameUi/YesNoChoiceHandler.cs -->
     <Key>Paid gil instead of using an aetheryte ticket. To use tickets, change 'Aetheryte Ticket Usage' in the game's Teleport settings.</Key>
     <Value lang="en">Paid gil instead of using an aetheryte ticket. To use tickets, change 'Aetheryte Ticket Usage' in the game's Teleport settings.</Value>

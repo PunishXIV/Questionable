@@ -1546,9 +1546,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (!_priorityManager.HasPendingAcceptOnly)
             return false;
 
-        foreach (Quest quest in _priorityManager.AcceptOnlyQuests.Where(x => !QuestFunctions.CanQueueSociety(x)).ToList())
+        foreach (Quest quest in _priorityManager.AcceptOnlyQuests.Where(x => !_questFunctions.CanQueueSociety(x.Id)).ToList())
         {
-            _logger.LogInformation("Accept-all: {QuestId} has a disabled path, dropping it", quest.Id);
+            _logger.LogInformation("Accept-all: {QuestId} has a disabled path or a step that needs the player, dropping it", quest.Id);
             _priorityManager.Remove(quest);
         }
 

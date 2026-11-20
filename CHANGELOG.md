@@ -37,3 +37,4 @@
 - Bug fix: "Start minimized" shows the right minimize button -Kage
 - Bug fix: Yes/no questions that use your character's name are answered -Kage
 - Bug fix: The Allied Societies page shows every society you can reach, also right after logging in -Kage
+- Bug fix: Do dailies and "Accept all quests" skip society dailies that need you for a step (a Snipe without Automaton's auto-snipe, Ixal "Hot Cross Buns"), so the run no longer waits there -Kage

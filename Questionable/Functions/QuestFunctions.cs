@@ -13,7 +13,8 @@ internal sealed class QuestFunctions
     IQuestGameState state,
     AlliedSocietyData alliedSocietyData,
     Configuration configuration,
-    IChatGui chatGui)
+    IChatGui chatGui,
+    AutomatonIpc? automaton = null)
 {
     internal static readonly int[] WhiteWolfGateQuests = [439, 1080, 3870, 33];
     internal Dictionary<ushort, HashSet<IQuestInfo>> prereqCache = [];
@@ -378,7 +379,15 @@ internal sealed class QuestFunctions
     public bool CanQueueSociety(ElementId questId) =>
         catalog.TryGetQuestInfo(questId, out IQuestInfo? info) &&
         (info.AlliedSociety == EAlliedSociety.None ||
-         catalog.TryGetQuest(questId, out Quest? quest) && CanQueueSociety(quest));
+         catalog.TryGetQuest(questId, out Quest? quest) && CanQueueSociety(quest) && !NeedsPlayer(quest));
+
+    public bool NeedsPlayer(Quest quest) => NeedsPlayer(quest, automaton?.IsAutoSnipeEnabled == true);
+
+    // A daily that waits for the player would stall an unattended run and use up the allowance.
+    internal static bool NeedsPlayer(Quest quest, bool autoSnipe) =>
+        quest.Info.IsRepeatable && quest.AllSteps().Any(x =>
+            x.Step.InteractionType is EInteractionType.Instruction or EInteractionType.WaitForManualProgress ||
+            x.Step.InteractionType == EInteractionType.Snipe && !autoSnipe);
 
     internal static bool CanQueueSociety(Quest quest) =>
         quest.Info.AlliedSociety == EAlliedSociety.None || !quest.Root.Disabled;

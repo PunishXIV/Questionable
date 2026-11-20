@@ -24,14 +24,15 @@ public sealed class DailiesSafetyTests
     public DailiesSafetyTests() => _functions = new(_catalog, _state, new AlliedSocietyData(),
         new Configuration(), Substitute.For<IChatGui>());
 
-    private Quest Load(ushort id, EAlliedSociety society)
+    private Quest Load(ushort id, EAlliedSociety society, bool repeatable = false)
     {
         string resource = typeof(EmbeddedQuest).Assembly.GetManifestResourceNames()
             .Single(x => x.StartsWith("QuestPaths/", StringComparison.Ordinal) &&
                 x.Contains($"/{id}_", StringComparison.Ordinal) && x.EndsWith(".json", StringComparison.Ordinal));
         using Stream stream = new EmbeddedQuest(resource).OpenStream();
         QuestRoot root = JsonSerializer.Deserialize<QuestRoot>(stream)!;
-        Quest quest = _catalog.Add(TestQuestInfo.Create(id).With(nameof(QuestInfo.AlliedSociety), society),
+        Quest quest = _catalog.Add(TestQuestInfo.Create(id).With(nameof(QuestInfo.AlliedSociety), society)
+                .With(nameof(QuestInfo.IsRepeatable), repeatable),
             [.. root.QuestSequence]);
         quest.Root.Disabled = root.Disabled;
         quest.Root.Interruptible = root.Interruptible;
@@ -124,6 +125,25 @@ public sealed class DailiesSafetyTests
         Assert.Contains("disabled", DailiesController.GetBlockReason(quest, (QuestInfo)quest.Info, false, true)!);
         Assert.NotNull(quest.FindSequence(0));
     }
+
+    [Fact]
+    public void ManualDaily_IsNotAutomatic()
+    {
+        Quest quest = Load(1516, EAlliedSociety.Ixal, repeatable: true);
+        Assert.False(_functions.CanQueueSociety(quest.Id));
+        Assert.Contains("can't do on its own",
+            DailiesController.GetBlockReason(quest, (QuestInfo)quest.Info, false, true, needsPlayer: true)!);
+    }
+
+    [Theory]
+    [InlineData(false, true)]
+    [InlineData(true, false)]
+    public void SnipeDaily_NeedsAutoSnipe(bool autoSnipe, bool needsPlayer) =>
+        Assert.Equal(needsPlayer, QuestFunctions.NeedsPlayer(Load(2991, EAlliedSociety.Kojin, repeatable: true), autoSnipe));
+
+    [Fact]
+    public void ManualStory_NotSkipped() =>
+        Assert.False(QuestFunctions.NeedsPlayer(Load(2974, EAlliedSociety.Kojin), autoSnipe: false));
 
     [Fact]
     public void Disabled_DoesNotHoldCurrent()
