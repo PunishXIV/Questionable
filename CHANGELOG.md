@@ -13,7 +13,7 @@
 - Feature: Recovery: retries a stuck step before stopping, gets back up after dying (deaths before stopping is a setting) and retries quest battles up to 5 times -Kage
 - Feature: Duties without Duty Support open the Duty Finder or run unsynced (the level gap is a setting) -Kage
 - Feature: Journal: duty progress, aetherytes and aether currents per zone, a zone map with every quest on it, quest lines showing what a quest needs and unlocks, XP and gil columns, saved filters, "Hide Completed Quests" and Mentor Roulette unlocks -Kage
-- Feature: Priority quests live in the quest window's "Priority Quests" tab, with an interrupt switch, an XP and gil total, your own saved lists and grouped built-in ones (Dawntrail tribes, field aether currents, role quests, "Unlock All Jobs", highest society rank) -Kage
+- Feature: Priority quests live in the quest window's "Priority Quests" tab, with an interrupt switch, an XP and gil total, your own saved lists and grouped built-in ones (field aether currents, role quests, "Unlock All Jobs", highest society rank) -Kage
 - Feature: Follow and escort quests: Questionable walks on foot where a quest needs it, keeps behind an NPC you have to follow, and waits when it stops -Kage
 - Feature: AutoDuty runs started by Questionable open every treasure chest, for better gear on the way -Kage
 - Feature: Uses Vesper Bay tickets, keeps your chocobo out (needs Knightshopper), skips fishing when you already have the fish, and lets you pick Summoner or Scholar for Arcanist -Kage
@@ -25,6 +25,7 @@
 - Change: Settings and the journal have a side menu with grouped pages; the Plugins page lists every plugin QST works with with install and settings buttons -Kage
 - Change: The Events list in the quest window shows whatever events are running in game, including the quests you need first, without waiting for a plugin update -Kage
 - Change: Sahagin dailies are batched like the other societies -Kage
+- Change: The allied society lists in Priority Quests (Moogle unlock, Pelupelu, Mamool Ja, Yok Huy) are gone; Do dailies unlocks and runs every society within your daily allowances -Kage
 - Change: Problems you can fix yourself show as plain chat messages instead of red errors -Kage
 - Change: Fewer settings: things that should always happen now just happen, and Lifestream is only needed for "Go to" after a run -Kage
 - Change: Aetheryte tickets follow the game's own Teleport settings -Kage

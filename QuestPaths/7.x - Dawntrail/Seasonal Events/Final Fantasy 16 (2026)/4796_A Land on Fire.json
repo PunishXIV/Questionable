@@ -9,14 +9,15 @@
         {
           "DataId": 1046043,
           "Position": [-117.614, 4, -67.1382],
-          "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
-              "Type": "YesNo",
               "Prompt": "TEXT_FESSXT101_04796_Q3_100_001",
-              "Yes": true
+              "Type": "YesNo",
+              "Yes": true,
+              "PromptIsRegularExpression": true
             }
-          ]
+          ],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,8 +39,8 @@
         {
           "DataId": 2013582,
           "Position": [347.245, -6.66511, 155.074],
-          "Mount": false,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "Mount": false
         }
       ]
     },
@@ -61,8 +62,9 @@
         {
           "DataId": 1046046,
           "Position": [-86.8969, 41, 66.1701],
-          "InteractionType": "CompleteQuest"
-        }
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4797
+        } 
       ]
     }
   ]

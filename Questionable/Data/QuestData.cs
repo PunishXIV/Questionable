@@ -175,20 +175,6 @@ internal sealed class QuestData
         [1192] = [4950, 4951, 4952, 4953, 4955, 4957, 4958],
     };
 
-    public static readonly IReadOnlyList<ElementId> UnlockMoogleSocietyQuests = (
-        (ushort[])[
-            1821,1824,1831,1832,1863,1864,1865,1866,1867,1868,1872,1878,1881,1882,1879,1883,1884,1880,1871,
-            2320
-        ]).FromNumericListOfQuests();
-
-    // Story quests come first, so the rank goes up before dailies and rep doesn't cap.
-    public static readonly IReadOnlyList<ElementId> PelupeluQuests = GetQuestRange(5193, 5226);
-    public static readonly IReadOnlyList<ElementId> MamoolJaQuests = GetQuestRange(5255, 5288);
-    public static readonly IReadOnlyList<ElementId> YokHuyQuests = GetQuestRange(5330, 5363);
-
-    private static List<ElementId> GetQuestRange(ushort first, ushort last) =>
-        Enumerable.Range(first, last - first + 1).Select(x => (ushort)x).ToArray().FromNumericListOfQuests();
-
     private static readonly IReadOnlyList<uint> TankRoleQuestChapters = [136, 154, 178];
     private static readonly IReadOnlyList<uint> HealerRoleQuestChapters = [137, 155, 179];
     private static readonly IReadOnlyList<uint> MeleeRoleQuestChapters = [138, 156, 180];

@@ -1,10 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Humanizer;
-using AchievementCategory = Lumina.Excel.Sheets.AchievementCategory;
 using Addon = Lumina.Excel.Sheets.Addon;
-using BeastTribe = Lumina.Excel.Sheets.BeastTribe;
 using ContentRoulette = Lumina.Excel.Sheets.ContentRoulette;
 using ExVersion = Lumina.Excel.Sheets.ExVersion;
 using JournalCategory = Lumina.Excel.Sheets.JournalCategory;
@@ -26,7 +23,6 @@ internal sealed class PriorityPresets(
     internal enum EGroup
     {
         Story,
-        Societies,
         AetherCurrents,
         RoleQuests,
         Experimental,
@@ -40,7 +36,6 @@ internal sealed class PriorityPresets(
 
     public static string GroupName(EGroup group) => group switch
     {
-        EGroup.Societies => _T<AchievementCategory>(37),
         EGroup.AetherCurrents => _T<Addon>(2445),
         EGroup.RoleQuests => _T<JournalCategory>(95),
         EGroup.Experimental => _L("Experimental"),
@@ -274,10 +269,6 @@ internal sealed class PriorityPresets(
             new("Primals", _T<JournalCategory>(16), QuestData.HardModePrimals.Cast<ElementId>().ToList()),
             new("CrystalTower", _T<JournalCategory>(18), QuestData.CrystalTowerQuests.Cast<ElementId>().ToList()),
             new("CustomDeliveries", _T<Addon>(5700), unlockCustomDeliveries),
-            Society("SocietyMoogle", 8, QuestData.UnlockMoogleSocietyQuests.ToList()),
-            Society("SocietyPelupelu", 18, QuestData.PelupeluQuests.ToList()),
-            Society("SocietyMamoolJa", 19, QuestData.MamoolJaQuests.ToList()),
-            Society("SocietyYokHuy", 20, QuestData.YokHuyQuests.ToList()),
             Currents(1, GetAetherCurrentQuests(397, 398, 399, 400, 401)),
             Currents(2, GetAetherCurrentQuests(612, 613, 614, 620, 621, 622)),
             Currents(3, GetAetherCurrentQuests(813, 814, 815, 816, 817, 818)),
@@ -292,12 +283,6 @@ internal sealed class PriorityPresets(
             new("HealthPercent", "Experimental: Quests that require a mob to be damaged to a certain health%", healthPercentQuests,
                 EGroup.Experimental),
         ];
-
-        Preset Society(string key, uint tribe, List<ElementId> quests)
-        {
-            string name = _T<BeastTribe>(tribe).Titleize();
-            return new(key, $"{GroupName(EGroup.Societies)}: {name}", quests, EGroup.Societies, name);
-        }
 
         Preset Currents(uint expansion, List<ElementId> quests)
         {
