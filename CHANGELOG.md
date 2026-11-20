@@ -1,1 +1,1 @@
-- Fix solo duty accept hanging - Kage
+- Fix seasonal ipc trying to do completed seasonal quests - Kage
