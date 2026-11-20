@@ -4809,6 +4809,31 @@
     <Value lang="zh-tw">等待切換</Value>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Controller/RetainerPass.cs -->
+    <Key>Couldn't get back to {0} after AutoRetainer's pass.</Key>
+    <Value lang="en">Couldn't get back to {0} after AutoRetainer's pass.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/RetainerPass.cs -->
+    <Key>AutoRetainer's pass took over 2 hours; stopped it.</Key>
+    <Value lang="en">AutoRetainer's pass took over 2 hours; stopped it.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/RetainerPass.cs -->
+    <Key>AutoRetainer is doing one multi-mode pass; questing carries on afterwards.</Key>
+    <Value lang="en">AutoRetainer is doing one multi-mode pass; questing carries on afterwards.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/RetainerPass.cs -->
+    <Key>Not going back to {0} after AutoRetainer's pass.</Key>
+    <Value lang="en">Not going back to {0} after AutoRetainer's pass.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/RetainerPass.cs -->
+    <Key>AutoRetainer multi-mode pass, then back to {0}</Key>
+    <Value lang="en">AutoRetainer multi-mode pass, then back to {0}</Value>
+  </Entry>
+  <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <Key>'{0}' is not a number.</Key>
     <Value lang="en">'{0}' is not a number.</Value>
@@ -6897,6 +6922,16 @@
     <Value lang="ja-jp">クエスト中</Value>
     <Value lang="zh-cn">执行任务时</Value>
     <Value lang="zh-tw">執行任務時</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Send retainers and submarines out</Key>
+    <Value lang="en">Send retainers and submarines out</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Between quests, when a retainer or submarine is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Key>
+    <Value lang="en">Between quests, when a retainer or submarine is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs, ../Questionable/Windows/ConfigWindow.cs -->
@@ -9451,6 +9486,11 @@ Right click: Copy without .json</Value>
     <Value lang="ja-jp">手動操作</Value>
     <Value lang="zh-cn">需要手动操作</Value>
     <Value lang="zh-tw">需要手動操作</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Don't log back in to this character or resume questing after AutoRetainer's pass. The pass itself keeps going.</Key>
+    <Value lang="en">Don't log back in to this character or resume questing after AutoRetainer's pass. The pass itself keeps going.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->

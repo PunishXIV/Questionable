@@ -6,6 +6,7 @@
 - Feature: Do dailies: tick allied societies in the journal and Questionable does their dailies, unlocking a society first when needed (/qst dailies) -Kage
 - Feature: Custom Deliveries page: every NPC's progress and this week's items; Satisfy does the ticked ones (/qst deliveries, needs Satisfy) -Kage
 - Feature: Between quests: collects the free job gear at 80, 89 and 99, repairs worn gear (Dark Matter or your Grand Company's mender), claims Mog Station mail (needs Mogmail) and runs the new Hall of the Novice for the Neophyte's Ring (needs AutoDuty) -Kage
+- Feature: Between quests, AutoRetainer can send out the retainers and submarines of all your multi-mode characters; Questionable then logs back in to your questing character and carries on (off by default, needs AutoRetainer and Lifestream) -Kage
 - Feature: Picks quest rewards by rules you can reorder: new mounts, minions and other collectibles first, then gear upgrades, coffers, Allagan pieces and the best sale price -Kage
 - Feature: Quests waiting on a duty you run yourself are set aside while Questionable carries on with other quests -Kage
 - Feature: Optional catch-up when the story is too high: AutoDuty dungeons for levels, tomestone accessories and dungeons for item level -Kage

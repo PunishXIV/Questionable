@@ -92,7 +92,7 @@ internal sealed class CharacterRun : IDisposable
     public bool StartsList => !IsActive && CurrentId is { } id && _configuration.Characters.EnabledIds.Contains(id) &&
                               _autoRetainer.IsReady();
 
-    private static ulong? CurrentId =>
+    internal static ulong? CurrentId =>
         ulong.TryParse(ProfileController.CurrentContentId, CultureInfo.InvariantCulture, out ulong id) ? id : null;
 
     internal static List<Character> GetQueue(IReadOnlyList<Character> characters, IReadOnlyCollection<ulong> ticked,

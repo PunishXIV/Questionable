@@ -18,6 +18,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private readonly IDataManager _dataManager;
     private readonly ItemBlacklistSelector _itemBlacklistSelector;
     private readonly PluginConfigComponent _plugins;
+    private readonly AutoRetainerIpc _autoRetainer;
     private uint? _itemToRemove;
     private readonly Lazy<List<Job>> _sortedClassJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _combatJobs;
@@ -33,10 +34,12 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         QuestRegistry questRegistry,
         TerritoryData territoryData,
         PathDataUpdater pathDataUpdater,
-        PluginConfigComponent plugins)
+        PluginConfigComponent plugins,
+        AutoRetainerIpc autoRetainer)
         : base(pluginInterface, configuration)
     {
         _plugins = plugins;
+        _autoRetainer = autoRetainer;
         _questRegistry = questRegistry;
         _territoryData = territoryData;
         _pathDataUpdater = pathDataUpdater;
@@ -386,6 +389,20 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Between quests, at class level 49-59 without the Neophyte's Ring, AutoDuty runs the three new Hall of the Novice exercises. The ring gives 30% more EXP up to level 60. Needs AutoDuty with duties on."));
+
+            using (ImRaii.Disabled(!_autoRetainer.IsReady()))
+            {
+                bool sendRetainers = Configuration.General.SendRetainers;
+                if (ImGui.Checkbox(_L("Send retainers and submarines out"), ref sendRetainers))
+                {
+                    Configuration.General.SendRetainers = sendRetainers;
+                    Save();
+                }
+
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(
+                    _L("Between quests, when a retainer or submarine is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream."));
+            }
         }
     }
 

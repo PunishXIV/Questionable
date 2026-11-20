@@ -27,6 +27,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly QuestController _questController;
     private readonly QuestStarter _questStarter;
     private readonly CharacterRun _characterRun;
+    private readonly RetainerPass _retainerPass;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestSelectionWindow _questSelectionWindow;
@@ -47,6 +48,7 @@ internal sealed class CommandHandler : IDisposable
         QuestController questController,
         QuestStarter questStarter,
         CharacterRun characterRun,
+        RetainerPass retainerPass,
         MovementController movementController,
         QuestRegistry questRegistry,
         ConfigWindow configWindow,
@@ -76,6 +78,7 @@ internal sealed class CommandHandler : IDisposable
         _questController = questController;
         _questStarter = questStarter;
         _characterRun = characterRun;
+        _retainerPass = retainerPass;
         _movementController = movementController;
         _questRegistry = questRegistry;
         _configWindow = configWindow;
@@ -165,6 +168,7 @@ internal sealed class CommandHandler : IDisposable
                 if (!_questController.HasExternalOperation)
                     _movementController.Stop();
                 _questController.StopRequested(_L("Stop command"));
+                _retainerPass.Cancel();
                 break;
 
             case "reload":

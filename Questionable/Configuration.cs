@@ -294,6 +294,7 @@ internal sealed class Configuration : IPluginConfiguration
 
         public EDeliveryItem DeliveryItemFor(uint npc) => DeliveryItems.GetValueOrDefault(npc, EDeliveryItem.Gather);
         public bool RunNoviceHall { get; set; } = true;
+        public bool SendRetainers { get; set; }
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
         public int AutoStepRefreshMaxTries { get; set; } = 3;

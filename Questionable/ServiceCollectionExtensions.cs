@@ -64,6 +64,7 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<Mail.Done, Mail.DoneExecutor>();
         serviceCollection.AddTaskFactory<NoviceHall.Factory>();
         serviceCollection.AddTaskExecutor<NoviceHall.Done, NoviceHall.DoneExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Ventures.Task, Ventures.Factory, Ventures.Executor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<RedeemRewardItems.Task, RedeemRewardItems.Factory, RedeemRewardItems.Executor>();
         // Before class changes and travel, while the character is still on foot from the last step.

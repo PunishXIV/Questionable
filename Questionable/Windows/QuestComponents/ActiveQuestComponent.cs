@@ -15,6 +15,7 @@ internal sealed partial class ActiveQuestComponent
     QuestController questController,
     QuestStarter questStarter,
     CharacterRun characterRun,
+    RetainerPass retainerPass,
     QuestStopPolicy stopPolicy,
     OperationCoordinator operations,
     MovementController movementController,
@@ -164,6 +165,16 @@ internal sealed partial class ActiveQuestComponent
                 QstWidgets.Tooltip(_L("Cancel what is left after the run: travel, commands, logging out or the next character."));
             ImGui.SameLine();
             ImGui.TextColored(QstTheme.Amber, ending);
+        }
+
+        if (retainerPass.Status is { } pass)
+        {
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Times))
+                retainerPass.Cancel();
+            if (ImGui.IsItemHovered())
+                QstWidgets.Tooltip(_L("Don't log back in to this character or resume questing after AutoRetainer's pass. The pass itself keeps going."));
+            ImGui.SameLine();
+            ImGui.TextColored(QstTheme.Accent, pass);
         }
 
         if (characterRun.Status is not { } status)
@@ -841,6 +852,7 @@ internal sealed partial class ActiveQuestComponent
             questController.StopFromUi(_L("UI stop"));
             gatheringController.Stop(_L("UI stop"));
             characterRun.Cancel();
+            retainerPass.Cancel();
             stopPolicy.CancelEnding();
         }
         if (ImGui.IsItemHovered())

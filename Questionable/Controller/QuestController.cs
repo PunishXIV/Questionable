@@ -1086,16 +1086,22 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     // /qst stop and other plugins: a stop someone asked for, not a problem.
     public void StopRequested(string label) => Stop(label, clearQuest: true, requested: true);
 
+    // AutoRetainer's pass: questing resumes afterwards, so the after-run actions and stop options stay.
+    internal void StopForPass(string label) => Stop(label, clearQuest: true, pass: true);
+
     private void Stop(string label, bool clearQuest, string? policyReason = null, bool finished = false,
-        bool requested = false)
+        bool requested = false, bool pass = false)
     {
         FinishDailies(false);
         Configuration.EEndAction? endAction = EndActionOnce;
-        EndActionOnce = null;
-        StopAfterCurrentQuest = false;
-        StopAfterNextAccept = false;
-        StopBeforeTeleport = false;
-        StopAfterAttune = false;
+        if (!pass)
+        {
+            EndActionOnce = null;
+            StopAfterCurrentQuest = false;
+            StopAfterNextAccept = false;
+            StopBeforeTeleport = false;
+            StopAfterAttune = false;
+        }
         AttuneStopDue = false;
         _recovery.Reset();
         _highlightObject.SetHighlight([]);
@@ -1118,8 +1124,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
         _lastTaskUpdate = DateTime.Now;
 
-        _stopPolicy.Apply(policyReason ?? label, wasAutomatic, finished, endAction, idle: finished && !StartedAnyTask,
-            requested: requested);
+        if (!pass)
+            _stopPolicy.Apply(policyReason ?? label, wasAutomatic, finished, endAction, idle: finished && !StartedAnyTask,
+                requested: requested);
         unsafe
         {
             if (_objectTable[0] is IPlayerCharacter player)
