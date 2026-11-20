@@ -35,4 +35,13 @@ public sealed class StoryCatchUpTests
 
         Assert.Equal([10u, 30u], StoryCatchUp.PickAccessories(offered, slot => slot == 9 ? 110 : 90));
     }
+
+    [Theory]
+    [InlineData(101, 100, false, 0, 0, true)]
+    [InlineData(100, 100, true, 450, 300, true)]
+    [InlineData(100, 100, false, 450, 300, false)]
+    [InlineData(100, 100, true, 300, 300, false)]
+    public void Gained_CountsTomestonesForUpgrades(int itemLevel, int lastItemLevel, bool upgradesLeft, int tomestones,
+        int lastTomestones, bool expected) =>
+        Assert.Equal(expected, StoryCatchUp.Gained(itemLevel, lastItemLevel, upgradesLeft, tomestones, lastTomestones));
 }

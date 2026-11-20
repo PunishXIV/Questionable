@@ -205,7 +205,7 @@ internal sealed class JournalTable(
                 (acceptOnly ? FontAwesomeIcon.Inbox : FontAwesomeIcon.AngleDoubleUp).ToIconString());
         if (ImGui.IsItemHovered())
             QstWidgets.Tooltip(acceptOnly
-                ? (accepted ? _L("Accepted; completion follows the normal quest order.") : _L("Queued to be accepted"))
+                ? (accepted ? _L("Accepted; completion follows the normal quest order.") : _L("Accept only — picked up before any queued quest is completed."))
                 : _L("This quest is in Priority Quests."));
     }
 

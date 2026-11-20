@@ -137,7 +137,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         DrawComboOption(_L("Arcanist job line"), [Job.SMN, Job.SCH], [_L("Summoner"), _L("Scholar")],
             () => Configuration.General.ArcanistJob,
             v => Configuration.General.ArcanistJob = v);
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Which job's quests and soul crystal an Arcanist works towards."));
 
         (Job[] craftJobIds, string[] craftJobNames) = _craftJobs.Value;
@@ -324,7 +323,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Calls your chocobo in the open world with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs."));
         }
@@ -341,7 +339,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Between quests, fetches the free level 80, 89 and 99 job gear (The Tempest, Old Sharlayan, Tuliyollal) once its shop is unlocked and it beats what you wear, then equips your best gear. Once per character and job."));
 
@@ -352,7 +349,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Between quests, Questionable repairs gear below the set condition: with Dark Matter when one of your crafters can, otherwise at your Grand Company's mender (or your starting city's) for gil."));
 
@@ -375,7 +371,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Between quests, goes to a delivery moogle and has Mogmail claim waiting Mog Station and reward mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail."));
 
@@ -386,7 +381,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Between quests, at class level 49-59 without the Neophyte's Ring, AutoDuty runs the three new Hall of the Novice exercises. The ring gives 30% more EXP up to level 60. Needs AutoDuty with duties on."));
 
@@ -399,7 +393,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Save();
                 }
 
-                ImGui.SameLine();
                 ImGuiComponents.HelpMarker(
                     _L("Between quests, when a retainer or submarine is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream."));
             }
@@ -417,16 +410,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
-            using (ImRaii.PushFont(UiBuilder.IconFont))
-            {
-                ImGui.TextDisabled(FontAwesomeIcon.InfoCircle.ToIconString());
-            }
-
-            if (ImGui.IsItemHovered())
-            {
-                QstWidgets.Tooltip(_L("Retries movement and simple interactions (talking, attuning, emotes) when nothing has changed for the set time. Combat, cutscenes, dialogue and duties pause the timer."));
-            }
+            ImGuiComponents.HelpMarker(_L("Retries movement and simple interactions (talking, attuning, emotes) when nothing has changed for the set time. Combat, cutscenes, dialogue and duties pause the timer."));
 
             using (ImRaii.Disabled(!autoStepRefreshEnabled))
             using (ImRaii.PushIndent())
@@ -465,7 +449,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. Never your character's name, account or IP address. Kept for 180 days."));
         }
     }
@@ -506,28 +489,12 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
-            using (ImRaii.PushFont(UiBuilder.IconFont))
-            {
-                ImGui.TextDisabled(FontAwesomeIcon.InfoCircle.ToIconString());
-            }
-
-            if (ImGui.IsItemHovered())
-            {
-                using (ImRaii.Tooltip())
-                {
-                    using (ImRaii.TextWrapPos(ImGui.GetFontSize() * 35))
-                        ImGui.TextUnformatted(_L("Some optional quests (aether currents, ARR alliance raids) end in a duty. When ticked, Questionable moves on to other quests instead of waiting for you to run it."));
-
-                    ImGui.Separator();
-                    ImGui.Text(_L("This affects the following dungeons and raids:"));
-                    foreach ((uint CfcId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityCfcQuests)
-                    {
-                        if (_territoryData.TryGetCfc(lowPriorityCfc.CfcId, out TerritoryData.CfcData? cfcData))
-                            ImGui.BulletText($"{cfcData.Name}");
-                    }
-                }
-            }
+            ImGuiComponentsLocal.HelpMarker(
+                _L("Some optional quests (aether currents, ARR alliance raids) end in a duty. When ticked, Questionable moves on to other quests instead of waiting for you to run it.") +
+                "\n\n" + _L("This affects the following dungeons and raids:"),
+                [.. _questRegistry.LowPriorityCfcQuests
+                    .Select(x => _territoryData.TryGetCfc(x.CfcId, out TerritoryData.CfcData? cfc) ? cfc.Name : null)
+                    .OfType<string>()]);
         }
     }
 
@@ -601,7 +568,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L(
                 "After turning in a quest (or before accepting one), uses items that unlock mounts, minions, orchestrion rolls, emotes and similar. Turn off to open them yourself."));
 
@@ -681,7 +647,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("Downloads newer quest/gathering paths without needing a full plugin update."));
 
             bool showCounts = Configuration.Reports.ShowCounts;
@@ -691,7 +656,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("Shows how often each quest's path worked for others in the last 30 days: green works, orange needs more reports, red has problems, grey has no data. Sends nothing about you."));
 
             if (ImGui.Button(_L("Check for path updates now")))

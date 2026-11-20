@@ -41,14 +41,12 @@ internal sealed class AlliedSocietyComponent
 
         if (_incomplete > 0)
         {
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_LF("Quests marked with yellow have not been completed once yet on this character."),
+            ImGuiComponents.HelpMarker(_L("Quests marked with yellow have not been completed once yet on this character."),
                                        FontAwesomeIcon.InfoCircle, QstTheme.Amber);
         }
 
         if (debug && _needsAttention > 0)
         {
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("Societies needing tests: reported issues, old or insufficient reports, unreported paths, or missing paths. Hover a society for details. Unavailable reports do not add quests to the testing queue."),
                                        FontAwesomeIcon.InfoCircle, QstTheme.Accent);
             ImGui.SameLine();
@@ -127,40 +125,45 @@ internal sealed class AlliedSocietyComponent
         bool abandonBeforeComplete = configuration.Advanced.AbandonQuestBeforeCompletion;
         bool removeWhenAbandoned = configuration.Advanced.RemoveFromPriorityWhenAbandoned;
         bool runCommandAfterStop = configuration.Stop.RunCommandAfterStop;
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Stop, preventQuestCompletion ? QstTheme.Accent : null))
+        using (QstWidgets.SegmentGroup(preventQuestCompletion || runCommandAfterStop))
         {
-            configuration.Advanced.PreventQuestCompletion = !preventQuestCompletion;
-            pluginInterface.SavePluginConfig(configuration);
-        }
-        if (ImGui.IsItemHovered())
-            QstWidgets.Tooltip(_L("Prevent quest completion"));
+            if (QstWidgets.SegmentToggle(FontAwesomeIcon.Stop, preventQuestCompletion,
+                    _L("Prevent quest completion: on"), _L("Prevent quest completion: off")))
+            {
+                configuration.Advanced.PreventQuestCompletion = !preventQuestCompletion;
+                pluginInterface.SavePluginConfig(configuration);
+            }
 
-        ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.SignOutAlt, abandonBeforeComplete ? QstTheme.Accent : null))
-        {
-            configuration.Advanced.AbandonQuestBeforeCompletion = !abandonBeforeComplete;
-            pluginInterface.SavePluginConfig(configuration);
-        }
-        if (ImGui.IsItemHovered())
-            QstWidgets.Tooltip(_L("Abandon quest before completion"));
+            ImGui.SameLine();
+            using (ImRaii.Disabled(!preventQuestCompletion))
+            {
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.SignOutAlt, abandonBeforeComplete,
+                        _L("Abandon quest before completion: on"), _L("Abandon quest before completion: off")))
+                {
+                    configuration.Advanced.AbandonQuestBeforeCompletion = !abandonBeforeComplete;
+                    pluginInterface.SavePluginConfig(configuration);
+                }
+            }
 
-        ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MinusCircle, removeWhenAbandoned ? QstTheme.Accent : null))
-        {
-            configuration.Advanced.RemoveFromPriorityWhenAbandoned = !removeWhenAbandoned;
-            pluginInterface.SavePluginConfig(configuration);
-        }
-        if (ImGui.IsItemHovered())
-            QstWidgets.Tooltip(_L("Remove from Priority Quests when abandoned"));
+            ImGui.SameLine();
+            using (ImRaii.Disabled(!preventQuestCompletion || !abandonBeforeComplete))
+            {
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.MinusCircle, removeWhenAbandoned,
+                        _L("Remove from Priority Quests when abandoned: on"), _L("Remove from Priority Quests when abandoned: off")))
+                {
+                    configuration.Advanced.RemoveFromPriorityWhenAbandoned = !removeWhenAbandoned;
+                    pluginInterface.SavePluginConfig(configuration);
+                }
+            }
 
-        ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Terminal, runCommandAfterStop ? QstTheme.Accent : null))
-        {
-            configuration.Stop.RunCommandAfterStop = !runCommandAfterStop;
-            pluginInterface.SavePluginConfig(configuration);
+            ImGui.SameLine();
+            if (QstWidgets.SegmentToggle(FontAwesomeIcon.Terminal, runCommandAfterStop,
+                    _L("Run commands (Stopping page): on"), _L("Run commands (Stopping page): off")))
+            {
+                configuration.Stop.RunCommandAfterStop = !runCommandAfterStop;
+                pluginInterface.SavePluginConfig(configuration);
+            }
         }
-        if (ImGui.IsItemHovered())
-            QstWidgets.Tooltip(_L("Run command when Questionable finishes automatic questing"));
 
         ImGui.SameLine();
         return addPending;

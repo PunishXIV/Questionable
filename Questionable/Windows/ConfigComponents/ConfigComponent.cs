@@ -53,7 +53,6 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
         if (help != null)
         {
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(help);
         }
 

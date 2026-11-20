@@ -6,6 +6,15 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     protected static readonly Vector2 TitleBarIconOffset = new(2, 2);
 
+    protected void AddSponsorButton() => TitleBarButtons.Add(new()
+    {
+        Icon = FontAwesomeIcon.Heart,
+        IconOffset = TitleBarIconOffset,
+        Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://ko-fi.com/alydev", UseShellExecute = true }),
+        Priority = TitleBarButtonPriority,
+        ShowTooltip = () => QstWidgets.Tooltip(_L("Sponsor QST development")),
+    });
+
     private bool _initializedConfig;
     private bool _wasCollapsedLastFrame;
     private QstTheme.WindowStyleScope? _windowStyle;

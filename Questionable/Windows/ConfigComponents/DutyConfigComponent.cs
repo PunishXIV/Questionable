@@ -65,7 +65,6 @@ internal sealed class DutyConfigComponent : ConfigComponent
             Save();
         }
 
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(
             _L("AutoDuty runs the duty with its own settings, including which rotation plugin to use. The combat plugin picked on the Basics page isn't used."));
 
@@ -79,9 +78,8 @@ internal sealed class DutyConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(
-                _L("When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable first buys tomestone accessories (Knightshopper). Stops after 5 runs without an item level gain."));
+                _L("When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Stops after 5 runs that neither raise your item level nor earn tomestones toward an accessory."));
 
             bool runUnsynced = Configuration.Duties.RunUnsynced;
             if (ImGui.Checkbox(_L("Run content unsynced where safe"), ref runUnsynced))
@@ -90,7 +88,6 @@ internal sealed class DutyConfigComponent : ConfigComponent
                 Save();
             }
             int levelGap = Math.Clamp(Configuration.Duties.UnsyncLevelGap, Duty.MinLevelGap, Duty.MaxLevelGap);
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _LF("Experimental. If your current job is at least {0} levels above a duty's sync level, or your average item level is at least 200 above " +
                     "its required item level, Questionable asks AutoDuty to run it solo as an Unrestricted Party. This includes trials.", levelGap));
@@ -114,7 +111,6 @@ internal sealed class DutyConfigComponent : ConfigComponent
             Save();
         }
 
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(
             _L("When Questionable can't run a quest's duty, it opens the Duty Finder, sets the quest aside and carries on with other quests. Once you've run the duty, the quest comes back on its own."));
 

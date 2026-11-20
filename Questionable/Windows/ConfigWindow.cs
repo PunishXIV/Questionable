@@ -64,18 +64,7 @@ internal sealed class ConfigWindow
         };
 
         if (!_configuration.General.HideSponsorButton)
-            TitleBarButtons.Add(new()
-            {
-                Icon = FontAwesomeIcon.Heart,
-                IconOffset = TitleBarIconOffset,
-                Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://ko-fi.com/alydev", UseShellExecute = true }),
-                Priority = TitleBarButtonPriority,
-                ShowTooltip = () =>
-                {
-                    using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
-                    ImGui.Text(_L("Sponsor QST development"));
-                }
-            });
+            AddSponsorButton();
     }
     public WindowConfig WindowConfig => _configuration.ConfigWindowConfig;
 

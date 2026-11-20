@@ -121,7 +121,6 @@ internal sealed class StopConditionComponent : ConfigComponent
             Save();
         }
 
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Questionable only does your Priority Quests, then stops instead of going on with the story or other quests."));
 
         ImGui.Spacing();
@@ -169,7 +168,6 @@ internal sealed class StopConditionComponent : ConfigComponent
             : [.. Destinations, Configuration.Stop.Destination];
         DrawComboOption("##Destination", destinations, destinations.Select(QuestStopPolicy.GetName).ToArray(),
             () => Configuration.Stop.Destination, x => Configuration.Stop.Destination = x);
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Travels there with Lifestream first. The commands below wait until you have arrived."));
 
         bool runCommand = Configuration.Stop.RunCommandAfterStop;
@@ -211,7 +209,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         }
         ImGui.SameLine();
         ImGui.TextUnformatted(_L("seconds before the next step"));
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("For SND scripts or other long commands: wait this long before logging out, closing the game or switching characters. Lifestream travel is waited for anyway."));
 
         ImGui.AlignTextToFramePadding();
@@ -220,7 +217,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         ImGui.SetNextItemWidth(200 * ImGuiHelpers.GlobalScale);
         DrawComboOption("##EndAction", _endActions, _endActions.Select(QuestStopPolicy.GetName).ToArray(),
             () => Configuration.Stop.EndAction, x => Configuration.Stop.EndAction = x);
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("What Questionable does once the commands have run. The game shows its own countdown, which you can cancel. With a character list, this waits for the last character."));
 
         DrawCheckbox(_L("Do this after a problem stop too (stuck, too many deaths, missing path)"),

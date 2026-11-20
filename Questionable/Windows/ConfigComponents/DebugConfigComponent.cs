@@ -85,7 +85,6 @@ internal sealed class DebugConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("Lets you read problem reports from a quest's right-click menu (Community reports). Each admin has their own token."));
 
             DrawCheckbox(_L("Report project-folder paths too (testing)"),
@@ -194,7 +193,6 @@ internal sealed class DebugConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("When enabled, Questionable will not attempt to turn-in and complete quests. This will do everything automatically except the final turn-in step."));
 
             bool abandonBeforeComplete = Configuration.Advanced.AbandonQuestBeforeCompletion;
@@ -210,7 +208,6 @@ internal sealed class DebugConfigComponent
                     }
                 }
 
-                ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("When enabled, Questionable abandons the quest instead of turning it in. " +
                     "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
 
@@ -225,7 +222,6 @@ internal sealed class DebugConfigComponent
                         }
                     }
 
-                    ImGui.SameLine();
                     ImGuiComponents.HelpMarker(_L("When enabled, Questionable also removes an abandoned quest from Priority Quests. " +
                         "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
                 }
@@ -238,7 +234,6 @@ internal sealed class DebugConfigComponent
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("On starting a quest, Questionable will open the path for it in your default text editor."));
         }
     }

@@ -65,7 +65,6 @@ internal sealed class QueueComponent
         _lastKnownJob = currentJob;
 
         ImGui.Text(_L("Quests to do first:"));
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Order: this list, then class, primal and raid quests, then quests you track in the To-Do list, then the story."));
         bool canInterrupt = _questController.PriorityManager.CanInterrupt;
         if (ImGui.Checkbox(_L("Interrupt the current quest"), ref canInterrupt))

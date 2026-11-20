@@ -95,26 +95,11 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             IconOffset = TitleBarIconOffset,
             Click = _ => configWindow.IsOpenAndUncollapsed = true,
             Priority = TitleBarButtonPriority,
-            ShowTooltip = () =>
-            {
-                using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
-                ImGui.Text(_L("Open Configuration"));
-            }
+            ShowTooltip = () => QstWidgets.Tooltip(_L("Open Configuration"))
         });
 
         if (!_configuration.General.HideSponsorButton)
-            TitleBarButtons.Add(new()
-            {
-                Icon = FontAwesomeIcon.Heart,
-                IconOffset = TitleBarIconOffset,
-                Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://ko-fi.com/alydev", UseShellExecute = true }),
-                Priority = TitleBarButtonPriority,
-                ShowTooltip = () =>
-                {
-                    using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
-                    ImGui.Text(_L("Sponsor QST development"));
-                }
-            });
+            AddSponsorButton();
 
         _queueComponent = queueComponent;
         _queueComponent.OpenRequested += OnQueueRequested;

@@ -3494,16 +3494,6 @@
     <!--<Value lang="ko">설치 실패</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
-    <Key>Run command when Questionable finishes automatic questing</Key>
-    <Value lang="en">Run command when Questionable finishes automatic questing</Value>
-    <Value lang="ja-jp">Questionableの自動クエストが完了した際にコマンドを実行</Value>
-    <Value lang="zh-cn">Questionable 自动任务完成后执行命令</Value>
-    <Value lang="zh-tw">Questionable 自動任務完成後執行命令</Value>
-    <!--<Value lang="ko">Questionable 자동 퀘스트 완료 시 명령 실행</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <Key>This setting takes effect after the plugin is reloaded.</Key>
     <Value lang="en">This setting takes effect after the plugin is reloaded.</Value>
@@ -4332,15 +4322,6 @@
     <Value lang="zh-cn">已接取; 按正常任务顺序完成。</Value>
     <Value lang="zh-tw">已接取; 按正常任務順序完成。</Value>
     <!--<Value lang="ko">수락됨; 완료는 일반 퀘스트 순서를 따릅니다.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
-    <Key>Queued to be accepted</Key>
-    <Value lang="en">Queued to be accepted</Value>
-    <Value lang="ja-jp">受注待ちキューに追加済み</Value>
-    <Value lang="zh-cn">排队等待接取</Value>
-    <Value lang="zh-tw">排隊等待接取</Value>
-    <!--<Value lang="ko">수락 대기 중</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
@@ -6490,11 +6471,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
-    <Key>When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable first buys tomestone accessories (Knightshopper). Stops after 5 runs without an item level gain.</Key>
-    <Value lang="en">When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable first buys tomestone accessories (Knightshopper). Stops after 5 runs without an item level gain.</Value>
-    <Value lang="ja-jp">次のメインクエストに必要なレベルまで、AutoDutyが最適なコンテンツサポーター対応ダンジョンを周回します。IL不足なら先にKnightshopperでトームストーンのアクセサリを購入します。5周してもILが上がらなければ停止します。</Value>
-    <Value lang="zh-cn">下一主线任务等级不足时，AutoDuty 会反复运行最合适的任务助手迷宫直至达标。品级不足时，Questionable 会先通过 Knightshopper 购买神典石首饰。连续5次未提升品级则停止。</Value>
-    <Value lang="zh-tw">下一主線任務等級不足時，AutoDuty 會反覆執行最合適的任務輔助器迷宮直至達標。品級不足時，Questionable 會先透過 Knightshopper 購買神典石首飾。連續5次未提升品級則停止。</Value>
+    <Key>When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Stops after 5 runs that neither raise your item level nor earn tomestones toward an accessory.</Key>
+    <Value lang="en">When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Stops after 5 runs that neither raise your item level nor earn tomestones toward an accessory.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -7737,6 +7715,46 @@
     <Value lang="ja-jp">名前の前のチェックボックスで対象の友好部族を選択してください。</Value>
     <Value lang="zh-cn">勾选名称前的方框以选择要执行的友好部族。</Value>
     <Value lang="zh-tw">勾選名稱前的方框以選擇要執行的友好部族。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>Prevent quest completion: on</Key>
+    <Value lang="en">Prevent quest completion: on</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>Prevent quest completion: off</Key>
+    <Value lang="en">Prevent quest completion: off</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>Abandon quest before completion: on</Key>
+    <Value lang="en">Abandon quest before completion: on</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>Abandon quest before completion: off</Key>
+    <Value lang="en">Abandon quest before completion: off</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>Remove from Priority Quests when abandoned: on</Key>
+    <Value lang="en">Remove from Priority Quests when abandoned: on</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>Remove from Priority Quests when abandoned: off</Key>
+    <Value lang="en">Remove from Priority Quests when abandoned: off</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>Run commands (Stopping page): on</Key>
+    <Value lang="en">Run commands (Stopping page): on</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>Run commands (Stopping page): off</Key>
+    <Value lang="en">Run commands (Stopping page): off</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/ContentProgressComponent.cs -->

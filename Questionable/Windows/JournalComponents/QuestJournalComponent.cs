@@ -45,7 +45,6 @@ internal sealed class QuestJournalComponent
             }
         }
 
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Right-click a quest or a group to add it to Priority Quests."));
 
         ImGui.SameLine();

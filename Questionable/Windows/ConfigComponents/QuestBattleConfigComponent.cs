@@ -238,7 +238,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             Save();
         }
 
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(
             _L("Boss Mod fights every quest battle, whichever combat plugin you picked on the Basics page. Boss Mod forks (such as Reborn) don't work with Questionable."));
 
@@ -251,7 +250,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
                 Save();
             }
 
-            ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("Retries run at 'Very Easy'."));
 
             using (ImRaii.Disabled(!retryOnFailure))

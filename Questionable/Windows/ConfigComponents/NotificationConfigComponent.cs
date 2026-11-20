@@ -46,7 +46,6 @@ internal sealed class NotificationConfigComponent
                 DrawComboOption(_L("Chat channel"), chatTypes, chatTypeNames,
                     () => Configuration.Notifications.ChatType,
                     v => Configuration.Notifications.ChatType = v);
-                ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("Only for steps that need you. Stop and problem messages always show in Questionable's own chat line."));
 
                 string[] sounds = ["", .. GetSounds()];
@@ -70,7 +69,6 @@ internal sealed class NotificationConfigComponent
 
                 ImGui.Separator();
                 ImGui.Text("NotificationMaster");
-                ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("Requires the plugin 'NotificationMaster' to be installed."));
                 ImGui.SameLine();
                 using (ImRaii.Disabled(!notificationMasterIpc.Enabled))

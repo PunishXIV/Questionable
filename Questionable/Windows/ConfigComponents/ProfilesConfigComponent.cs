@@ -43,7 +43,6 @@ internal sealed class ProfilesConfigComponent
             Save();
         }
 
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("The other pages change the profile picked here, which is also in use while this window is open. Closing the window switches back to your character's profile."));
 
         if (Configuration.ActiveProfileName is not { } activeProfile)
@@ -117,7 +116,6 @@ internal sealed class ProfilesConfigComponent
         // Wrapping at the full width pushes the help marker past the card edge.
         using (ImRaii.TextWrapPos(ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - ImGui.GetFrameHeight() - ImGui.GetStyle().ItemSpacing.X))
             ImGui.TextUnformatted(_L("Tick characters to quest on them in a row. Start on a ticked one; when its run ends, Questionable moves to the next. Each uses its own profile and stop conditions."));
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("The run-end commands on the Stopping page run for every character; logging out or closing the game only happens after the last one."));
         DrawRun();
         DrawTable([.. _characters.Select(x => (x.ContentId.ToString(CultureInfo.InvariantCulture), $"{x.Name}@{x.World}"))],

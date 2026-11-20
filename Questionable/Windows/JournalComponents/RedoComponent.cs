@@ -60,7 +60,6 @@ internal sealed class RedoComponent
             if (ImGui.IsItemHovered())
                 QstWidgets.Tooltip(_L("Hide chapters whose paths all have current working reports or admin verification"));
         }
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Red has unresolved problems; orange needs more or newer reports; green is recently reported or verified working; grey has no reports or unavailable data. Hover a chapter for details."),
                                    FontAwesomeIcon.InfoCircle, QstTheme.Accent);
         ImGui.SameLine();

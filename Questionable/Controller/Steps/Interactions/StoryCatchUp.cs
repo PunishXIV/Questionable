@@ -20,8 +20,8 @@ internal sealed class StoryCatchUp(
 {
     private const int MaxRunsWithoutGain = 5;
     private const int EarSlot = 8, NeckSlot = 9, WristSlot = 10, RingSlot = 11, OtherRingSlot = 12;
-    private readonly HashSet<uint> _boughtFor = [];
-    private readonly Dictionary<uint, (int Runs, int ItemLevel)> _gearRuns = [];
+    private readonly Dictionary<uint, int> _boughtAt = [];
+    private readonly Dictionary<uint, (int Runs, int ItemLevel, int Tomestones)> _gearRuns = [];
 
     public bool Enabled => configuration.Duties.CatchUpForStory && configuration.Duties.RunInstancedContentWithAutoDuty;
 
@@ -43,6 +43,9 @@ internal sealed class StoryCatchUp(
             .Select(x => x.ItemId)
             .ToList();
 
+    internal static bool Gained(int itemLevel, int lastItemLevel, bool upgradesLeft, int tomestones, int lastTomestones) =>
+        itemLevel > lastItemLevel || upgradesLeft && tomestones > lastTomestones;
+
     public ITask? LevelRun(string reason, int playerLevel)
     {
         if (PickDungeon(territoryData.AllCfcs, playerLevel, territoryData.HasDutySupport, autoDuty.HasPath) is not { } dungeon)
@@ -59,15 +62,19 @@ internal sealed class StoryCatchUp(
     public List<ITask>? GearUp(TerritoryData.CfcData duty, int playerLevel, short itemLevel)
     {
         string reason = _LF("'{0}' needs item level {1} (you have {2})", duty.Name, duty.RequiredItemLevel, itemLevel);
-        if (_boughtFor.Add(duty.Id) && AccessoryBuys(playerLevel) is { Count: > 0 } buys)
+        int tomestones = Tomestones();
+        List<ITask> buys = AccessoryBuys(playerLevel);
+        // Tries again only once the tomestones changed, so an upgrade it can't afford yet doesn't loop.
+        if (buys.Count > 0 && _boughtAt.GetValueOrDefault(duty.Id, -1) != tomestones)
         {
+            _boughtAt[duty.Id] = tomestones;
             chatGui.Print(_LF("{0}: buying {1} accessories with tomestones.", reason, buys.Count),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             return [.. buys, new EquipRecommended.EquipTask(), new Replan()];
         }
 
-        (int runs, int lastItemLevel) = _gearRuns.GetValueOrDefault(duty.Id, (0, itemLevel));
-        if (itemLevel > lastItemLevel)
+        (int runs, int lastItemLevel, int lastTomestones) = _gearRuns.GetValueOrDefault(duty.Id, (0, itemLevel, tomestones));
+        if (Gained(itemLevel, lastItemLevel, buys.Count > 0, tomestones, lastTomestones))
             runs = 0;
         if (runs >= MaxRunsWithoutGain)
             return null;
@@ -75,11 +82,21 @@ internal sealed class StoryCatchUp(
         if (LevelRun(reason, playerLevel) is not { } run)
             return null;
 
-        _gearRuns[duty.Id] = (runs + 1, itemLevel);
+        _gearRuns[duty.Id] = (runs + 1, itemLevel, tomestones);
         return [run, new EquipRecommended.EquipTask(), new Replan()];
     }
 
     public short? ItemLevel() => Duty.StartAutoDutyExecutor.GetItemLevel(gearStats);
+
+    private unsafe int Tomestones()
+    {
+        InventoryManager* inventory = InventoryManager.Instance();
+        return inventory == null
+            ? 0
+            : dataManager.GetExcelSheet<TomestonesItem>()
+                .Where(x => x.Item.RowId != 0)
+                .Sum(x => inventory->GetInventoryItemCount(x.Item.RowId));
+    }
 
     private unsafe List<ITask> AccessoryBuys(int playerLevel)
     {
