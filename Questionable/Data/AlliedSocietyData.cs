@@ -9,7 +9,7 @@ internal sealed class AlliedSocietyData
         new Dictionary<ushort, AlliedSocietyMount>
         {
             { 23, new([1008327, 1005848, 1005860, 1005581], EAetheryteLocation.SouthernThanalanLittleAlaMhigo) }, // amaljaa
-            { 24, new([1052562, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }, // sylphs
+            { 24, new([1008334, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }, // sylphs
             { 66, new([1016093, 1016087], EAetheryteLocation.SeaOfCloudsOkZundu) }, //vanu
             { 79, new([1017031, 1016837, 1016838], EAetheryteLocation.DravanianForelandsAnyxTrine) }, //vath
             { 88, new([1017470, 1017432], EAetheryteLocation.ChurningMistsZenith) }, //moogle

@@ -98,6 +98,15 @@ public sealed class DailiesSafetyTests
     }
 
     [Fact]
+    public void SylphMount_HoldsAfterIssuer()
+    {
+        Quest quest = Load(1271, EAlliedSociety.Sylphs);
+        _state.Accepted.Add(1271);
+        _state.CurrentMountId = 24;
+        Assert.True(_functions.KeepDaily(quest, 2));
+    }
+
+    [Fact]
     public void Mount_UnrelatedOrLostDoesNotHold()
     {
         Quest quest = Load(2173, EAlliedSociety.VanuVanu);
