@@ -188,13 +188,14 @@ internal sealed class RetainerPass : IDisposable
                 {
                     State = EState.Starting;
                     _nextTry = now + SettleTime;
+                    _deadline = now + Timeout;
                 }
                 else if (_autoRetainer.CanRelog && _autoRetainer.Relog(home))
                 {
                     State = EState.Switching;
+                    _deadline = now + Timeout;
                 }
 
-                _deadline = now + Timeout;
                 break;
 
             case EState.Switching:

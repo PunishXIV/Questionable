@@ -27,6 +27,24 @@ public sealed class ConfigurationProfileTests
     }
 
     [Fact]
+    public void AbandonOptions_NeverSaved()
+    {
+        Configuration configuration = new();
+        configuration.CreateProfile("Alt");
+        configuration.ActivateProfile("Alt");
+        configuration.Advanced.AbandonQuestBeforeCompletion = true;
+        configuration.Advanced.RemoveFromPriorityWhenAbandoned = true;
+
+        string json = JsonConvert.SerializeObject(configuration);
+        configuration.ClearActiveProfile();
+        configuration.ActivateProfile("Alt");
+
+        Assert.DoesNotContain("Abandon", json, StringComparison.Ordinal);
+        Assert.False(configuration.Advanced.AbandonQuestBeforeCompletion);
+        Assert.False(configuration.Advanced.RemoveFromPriorityWhenAbandoned);
+    }
+
+    [Fact]
     public void ProfileEdit_StoresSparsePatch()
     {
         Configuration configuration = new();

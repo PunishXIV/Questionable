@@ -462,8 +462,8 @@ internal sealed class Configuration : IPluginConfiguration
         public bool StopMSQ { get; set; }
         public bool PreventQuestCompletion { get; set; }
         public bool SkipCraftworksDelivery { get; set; }
-        public bool AbandonQuestBeforeCompletion { get; set; }
-        public bool RemoveFromPriorityWhenAbandoned { get; set; }
+        [JsonIgnore] public bool AbandonQuestBeforeCompletion { get; set; }
+        [JsonIgnore] public bool RemoveFromPriorityWhenAbandoned { get; set; }
         public bool ShowWindowOnStart { get; set; }
         public bool StartMinimized { get; set; }
         public bool OpenEditor { get; set; }
