@@ -217,7 +217,7 @@ internal sealed class QuestRewardComponent
 
     private void DrawMentorRoulette()
     {
-        if (!ImGui.CollapsingHeader(_L("Mentor Roulette") + "###RewardMentorRoulette"))
+        if (!ImGui.CollapsingHeader(_L("Duty Roulette: Mentor") + "###RewardMentorRoulette"))
             return;
 
         using ImRaii.TableDisposable table = journalTable.Begin("RewardMentorRoulette");

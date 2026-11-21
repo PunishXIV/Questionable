@@ -317,14 +317,14 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
 
             bool summonChocobo = Configuration.General.SummonChocobo;
-            if (ImGui.Checkbox(_L("Keep your chocobo companion out"), ref summonChocobo))
+            if (ImGui.Checkbox(_L("Keep your chocobo companion summoned"), ref summonChocobo))
             {
                 Configuration.General.SummonChocobo = summonChocobo;
                 Save();
             }
 
             ImGuiComponents.HelpMarker(
-                _L("Summons your chocobo companion in the field with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs."));
+                _L("Summons your chocobo companion in the field with Gysahl Greens when it isn't summoned or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs."));
         }
     }
 

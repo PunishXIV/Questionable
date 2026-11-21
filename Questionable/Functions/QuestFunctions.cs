@@ -256,10 +256,10 @@ internal sealed class QuestFunctions
 
         ScenarioGuide guide = state.ReadScenarioGuide();
         if (guide.State == EScenarioGuideState.Missing)
-            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("The main scenario guide isn't available"));
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("The Main Scenario Guide isn't available"));
 
         if (guide.State == EScenarioGuideState.Loading)
-            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("Loading the main scenario guide"));
+            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("Loading the Main Scenario Guide"));
 
         QuestId currentQuest = new(guide.QuestId);
         return (new(currentQuest, state.GetQuestSequence(currentQuest.Value), MainScenarioQuestState.Available), $"sq: {currentQuest}");

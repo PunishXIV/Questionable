@@ -416,8 +416,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
-    <Key>The main scenario guide isn't available</Key>
-    <Value lang="en">The main scenario guide isn't available</Value>
+    <Key>The Main Scenario Guide isn't available</Key>
+    <Value lang="en">The Main Scenario Guide isn't available</Value>
     <Value lang="ja-jp">シナリオツリーはありません</Value>
     <Value lang="zh-cn">无剧情树</Value>
     <Value lang="zh-tw">無劇情樹</Value>
@@ -425,8 +425,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
-    <Key>Loading the main scenario guide</Key>
-    <Value lang="en">Loading the main scenario guide</Value>
+    <Key>Loading the Main Scenario Guide</Key>
+    <Value lang="en">Loading the Main Scenario Guide</Value>
     <Value lang="ja-jp">シナリオツリーデータが存在しません</Value>
     <Value lang="zh-cn">剧情树数据为空</Value>
     <Value lang="zh-tw">劇情樹資料為空</Value>
@@ -2965,8 +2965,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
-    <Key>Requires Carrier Level {0}</Key>
-    <Value lang="en">Requires Carrier Level {0}</Value>
+    <Key>Requires carrier level {0}</Key>
+    <Value lang="en">Requires carrier level {0}</Value>
     <Value lang="ja-jp">キャリアレベル {0} 必要</Value>
     <Value lang="zh-cn">需要邮递员等级 {0}</Value>
     <Value lang="zh-tw">需要郵遞員等級 {0}</Value>
@@ -5505,8 +5505,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Shared/SummonChocobo.cs -->
-    <Key>You're out of Gysahl Greens, so your chocobo wasn't summoned. Buy some to keep it out.</Key>
-    <Value lang="en">You're out of Gysahl Greens, so your chocobo wasn't summoned. Buy some to keep it out.</Value>
+    <Key>You're out of Gysahl Greens, so your chocobo wasn't summoned. Buy some to keep it summoned.</Key>
+    <Value lang="en">You're out of Gysahl Greens, so your chocobo wasn't summoned. Buy some to keep it summoned.</Value>
     <Value lang="ja-jp">ギサールの野菜がないためチョコボを呼び出せませんでした。呼び出すには補充してください。</Value>
     <Value lang="zh-cn">基萨尔野菜已用完，未召唤陆行鸟。请购买一些以继续召唤。</Value>
     <Value lang="zh-tw">基薩爾野菜已用完，未召喚陸行鳥。請購買一些以繼續召喚。</Value>
@@ -6400,8 +6400,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Summons your chocobo companion in the field with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs.</Key>
-    <Value lang="en">Summons your chocobo companion in the field with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs.</Value>
+    <Key>Summons your chocobo companion in the field with Gysahl Greens when it isn't summoned or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs.</Key>
+    <Value lang="en">Summons your chocobo companion in the field with Gysahl Greens when it isn't summoned or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs.</Value>
     <Value lang="ja-jp">フィールドでバディがいない、または残り5分未満ならギサールの野菜で呼び出します（「頼れる相棒」が必要）。野菜がなくなるとKnightshopperで99個補充します。Questionable実行中はPandora's Boxの自動召喚を一時停止します。</Value>
     <Value lang="zh-cn">野外陆行鸟未召唤或剩余时间不足5分钟时，使用基萨尔野菜召唤（需完成“可靠的搭档”）。用尽后 Knightshopper 会购买99个。Questionable 运行时暂停 Pandora's Box 自动召唤。</Value>
     <Value lang="zh-tw">野外陸行鳥未召喚或剩餘時間不足5分鐘時，使用基薩爾野菜召喚（需完成「可靠的搭檔」）。用盡後 Knightshopper 會購買99個。Questionable 執行時暫停 Pandora's Box 自動召喚。</Value>
@@ -6480,8 +6480,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Keep your chocobo companion out</Key>
-    <Value lang="en">Keep your chocobo companion out</Value>
+    <Key>Keep your chocobo companion summoned</Key>
+    <Value lang="en">Keep your chocobo companion summoned</Value>
     <Value lang="ja-jp">チョコボバディを維持</Value>
     <Value lang="zh-cn">保持召唤陆行鸟搭档</Value>
     <Value lang="zh-tw">保持召喚陸行鳥搭檔</Value>
@@ -7946,8 +7946,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
-    <Key>Mentor Roulette</Key>
-    <Value lang="en">Mentor Roulette</Value>
+    <Key>Duty Roulette: Mentor</Key>
+    <Value lang="en">Duty Roulette: Mentor</Value>
     <Value lang="ja-jp">コンテンツルーレット：メンター</Value>
     <Value lang="zh-cn">随机任务：指导者</Value>
     <Value lang="zh-tw">隨機任務：指導者</Value>
