@@ -15,6 +15,7 @@ internal sealed class QueueComponent
     private readonly IDalamudPluginInterface _pluginInterface;
 
     private readonly QuestController _questController;
+    private readonly QuestStarter _questStarter;
     private readonly QuestFunctions _questFunctions;
     private readonly PriorityPresets _presets;
     private readonly QuestSelector _questSelector;
@@ -31,9 +32,10 @@ internal sealed class QueueComponent
     public QueueComponent(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, PriorityPresets presets,
         IDalamudPluginInterface pluginInterface, Configuration configuration, QuestJournalUtils questJournalUtils,
-        OpenQuestCleanUp openQuestCleanUp)
+        OpenQuestCleanUp openQuestCleanUp, QuestStarter questStarter)
     {
         _questController = questController;
+        _questStarter = questStarter;
         _questFunctions = questFunctions;
         _questSelector = questSelector;
         _questTooltipComponent = questTooltipComponent;
@@ -73,6 +75,7 @@ internal sealed class QueueComponent
             QstWidgets.Tooltip(_L("When off, quests added here wait until the current quest is done.\nTurns back on when the plugin restarts."));
         _questSelector.DrawSelection();
         DrawSavedLists();
+        DrawStartButton();
         DrawQuestList();
         DrawRewardTotal();
         if (_questController.PriorityManager.IsEmpty)
@@ -217,11 +220,17 @@ internal sealed class QueueComponent
     private void DrawSavedLists()
     {
         Dictionary<string, List<string>> userLists = _configuration.Priority.Presets;
-        Vector2 square = new(ImGui.GetFrameHeight());
-        float button = square.X + ImGui.GetStyle().ItemSpacing.X;
 
         // Wider buttons than reserved here make the auto-resizing quest window grow every frame.
-        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 2 * button);
+        bool empty = _questController.PriorityManager.IsEmpty;
+        string replaceLabel = _L("Replace");
+        string addLabel = _L("Add");
+        float buttons = empty
+            ? 0
+            : ImGuiComponents.GetIconButtonWithTextWidth(FontAwesomeIcon.ExchangeAlt, replaceLabel) +
+              ImGuiComponents.GetIconButtonWithTextWidth(FontAwesomeIcon.Plus, addLabel) +
+              2 * ImGui.GetStyle().ItemSpacing.X;
+        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - buttons);
         if (ImGui.BeginCombo("##PresetSelection", _selectedPresetName ?? _L("Saved lists..."), ImGuiComboFlags.HeightLarge))
         {
             if (userLists.Count > 0)
@@ -230,7 +239,7 @@ internal sealed class QueueComponent
                 foreach (string name in userLists.Keys)
                 {
                     if (ImGui.Selectable(name, _selectedPresetName == name))
-                        _selectedPresetName = name;
+                        PickPreset(name, empty);
                 }
 
                 ImGui.Separator();
@@ -244,7 +253,7 @@ internal sealed class QueueComponent
                 foreach (PriorityPresets.Preset preset in group)
                 {
                     if (ImGui.Selectable(preset.Short ?? preset.Name, _selectedPresetName == preset.Name))
-                        _selectedPresetName = preset.Name;
+                        PickPreset(preset.Name, empty);
                     if (preset.Hint != null && ImGui.IsItemHovered())
                         QstWidgets.Tooltip(preset.Hint);
                 }
@@ -253,19 +262,22 @@ internal sealed class QueueComponent
             ImGui.EndCombo();
         }
 
-        using (ImRaii.Disabled(_selectedPresetName == null))
+        if (!empty)
         {
-            ImGui.SameLine();
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.FileImport, square))
-                LoadPreset(_selectedPresetName!, replace: true);
-            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                QstWidgets.Tooltip(_L("Replace the list with this saved list"));
+            using (ImRaii.Disabled(_selectedPresetName == null))
+            {
+                ImGui.SameLine();
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExchangeAlt, replaceLabel))
+                    LoadPreset(_selectedPresetName!, replace: true);
+                if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                    QstWidgets.Tooltip(_L("Replace the list with this saved list"));
 
-            ImGui.SameLine();
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus, square))
-                LoadPreset(_selectedPresetName!, replace: false);
-            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                QstWidgets.Tooltip(_L("Add this saved list to the end of the list"));
+                ImGui.SameLine();
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, addLabel))
+                    LoadPreset(_selectedPresetName!, replace: false);
+                if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                    QstWidgets.Tooltip(_L("Add this saved list to the end of the list"));
+            }
         }
 
         bool noQuests = _questController.PriorityManager.IsEmpty;
@@ -347,6 +359,26 @@ internal sealed class QueueComponent
             ImGui.TextColored(QstTheme.Danger, _L("A built-in list already has this name."));
         else if (exists)
             ImGui.TextColored(QstTheme.Amber, _L("Hold CTRL to overwrite your saved list."));
+    }
+
+    private void PickPreset(string name, bool load)
+    {
+        _selectedPresetName = name;
+        if (load)
+            LoadPreset(name, replace: true);
+    }
+
+    private void DrawStartButton()
+    {
+        using (ImRaii.Disabled(_questController.PriorityManager.IsEmpty || _questController.IsRunning ||
+                               _questController.HasExternalOperation))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Play, _L("Start"), QstTheme.Accent))
+                _questStarter.Start("Priority start");
+        }
+
+        if (ImGui.IsItemHovered())
+            QstWidgets.Tooltip(_L("Start questing. Quests in this list go first."));
     }
 
     private void LoadPreset(string name, bool replace)

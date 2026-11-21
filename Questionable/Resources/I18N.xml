@@ -8421,6 +8421,11 @@ Right click: Open in your default .json text editor</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <Key>Add</Key>
+    <Value lang="en">Add</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Add quests from the clipboard to the end of the list</Key>
     <Value lang="en">Add quests from the clipboard to the end of the list</Value>
     <Value lang="ja-jp">クリップボードのクエストをリストの末尾に追加</Value>
@@ -8517,6 +8522,11 @@ Right click: Open in your default .json text editor</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <Key>Replace</Key>
+    <Value lang="en">Replace</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Replace the list with this saved list</Key>
     <Value lang="en">Replace the list with this saved list</Value>
     <Value lang="ja-jp">この保存済みリストでリストを置き換える</Value>
@@ -8538,6 +8548,16 @@ Right click: Open in your default .json text editor</Value>
     <Value lang="ja-jp">保存済みリスト...</Value>
     <Value lang="zh-cn">已保存列表...</Value>
     <Value lang="zh-tw">已儲存清單...</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <Key>Start</Key>
+    <Value lang="en">Start</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <Key>Start questing. Quests in this list go first.</Key>
+    <Value lang="en">Start questing. Quests in this list go first.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
