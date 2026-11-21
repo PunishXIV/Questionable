@@ -10,7 +10,7 @@ The latest result per character per quest path, plus report history:
 - the quest id and a 16-character fingerprint of its path,
 - worked or problem; for a problem: the kind, sequence and step, plugin and path data versions, and Questionable's last few actions.
 
-Reports are deleted after 180 days, and 30 days after a newer path for the same quest first shows up. The client's IP address is only used by the rate limiter.
+Reports are deleted after 180 days, and once a path has been replaced: a newer path for the same quest has been around for 30 days and the old one got no reports in that time. The client's IP address is only used by the rate limiter.
 
 History records keep their own IDs. Resolving an old report therefore cannot accidentally resolve a later report from the same character. Admin verification records the admin, time and viewed report cutoff for one exact path fingerprint; it does not add successful player reports.
 

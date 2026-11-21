@@ -175,6 +175,16 @@ describe("pruning", () => {
     expect(await remaining()).toEqual([PATH_2]);
   });
 
+  it("keeps an older path that still gets reports", async () => {
+    const start = 1_000 * DAY;
+    await insert(PATH_1, start + 39 * DAY, start);
+    await insert(PATH_2, start + DAY, start + DAY);
+
+    await prune(env, start + 40 * DAY);
+
+    expect(await remaining()).toEqual([PATH_1, PATH_2]);
+  });
+
   it("runs from the cron trigger", async () => {
     await insert(PATH_1, 0, 0);
 
@@ -492,6 +502,7 @@ describe("admin status actions", () => {
     const now = Date.now();
     await env.DB.prepare("UPDATE paths SET first_seen = ? WHERE path_hash = ?").bind(now - 40 * DAY, PATH_1).run();
     await env.DB.prepare("UPDATE paths SET first_seen = ? WHERE path_hash = ?").bind(now - 31 * DAY, PATH_2).run();
+    await env.DB.prepare("UPDATE reports SET created_at = ? WHERE path_hash = ?").bind(now - 31 * DAY, PATH_1).run();
     await prune(env, now);
     const health = (await status()).quests["1190"];
     expect(health[PATH_1]).toBeUndefined();

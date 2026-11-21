@@ -11,6 +11,18 @@ namespace Questionable.Tests.Steps;
 
 public sealed class CraftingRequirementTests
 {
+    [Theory]
+    [InlineData(3, 2, true)]
+    [InlineData(3, 0, false)]
+    [InlineData(0, 2, false)]
+    public void CraftMaterials_NeedEveryIngredient(int first, int second, bool expected)
+    {
+        Dictionary<uint, int> owned = new() { [10] = first, [11] = second };
+
+        Assert.Equal(expected, Questionable.Functions.GameQuestState.HasAllIngredients(
+            [(10u, 3), (11u, 2), (0u, 0)], x => owned.GetValueOrDefault(x)));
+    }
+
     [Fact]
     public void PartialHighQuality_CraftsFullCount()
     {

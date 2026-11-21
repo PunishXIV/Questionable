@@ -21,6 +21,11 @@ public sealed class StoryCatchUpTests
         Assert.Equal(3u, StoryCatchUp.PickDungeon(Duties, 33, _ => true, _ => true)?.Id);
 
     [Fact]
+    public void Dungeon_SkipsItemLevelTooHigh() =>
+        Assert.Equal(1u, StoryCatchUp.PickDungeon(
+            [Duty(1, 15), Duty(2, 24) with { RequiredItemLevel = 110 }], 33, _ => true, _ => true, itemLevel: 100)?.Id);
+
+    [Fact]
     public void Dungeon_SkipsNoSupportOrPath() =>
         Assert.Equal(1u, StoryCatchUp.PickDungeon(Duties, 33, x => x != 3, x => x != 2)?.Id);
 

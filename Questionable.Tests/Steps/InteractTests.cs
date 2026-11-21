@@ -5,6 +5,18 @@ namespace Questionable.Tests.Steps;
 
 public sealed class InteractTests
 {
+    [Theory]
+    [InlineData(Questionable.Model.Questing.EInteractionType.CompleteQuest, true, true)]
+    [InlineData(Questionable.Model.Questing.EInteractionType.CompleteQuest, false, false)]
+    [InlineData(Questionable.Model.Questing.EInteractionType.AcceptQuest, true, false)]
+    public void PreventCompletion_SkipsTurnInExtras(Questionable.Model.Questing.EInteractionType type, bool prevent, bool expected)
+    {
+        Configuration configuration = new();
+        configuration.Advanced.PreventQuestCompletion = prevent;
+
+        Assert.Equal(expected, Say.IsPreventedTurnIn(new() { InteractionType = type }, configuration));
+    }
+
     [Fact]
     public void Mounted_UnmountsFirst()
     {

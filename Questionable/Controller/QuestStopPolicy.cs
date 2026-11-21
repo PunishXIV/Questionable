@@ -15,7 +15,7 @@ internal sealed class QuestStopPolicy
 
     internal const string UiStopReason = "UI stop";
 
-    public static IReadOnlyList<string> ExcludedStopReasons { get; } = Array.AsReadOnly<string>([UiStopReason, "ESC pressed"]);
+    public static IReadOnlyList<string> ExcludedStopReasons { get; } = Array.AsReadOnly<string>([UiStopReason, "ESC pressed", "Player moved"]);
 
     private readonly Configuration _configuration;
     private readonly Action<string> _notifyOnFailure;
@@ -97,7 +97,7 @@ internal sealed class QuestStopPolicy
         if (!requested || _configuration.Notifications.NotifyOnRequestedStop)
             TryRun(() => _notifyOnFailure(_L("Automatic questing has stopped.")), "stop notification");
 
-        if (!finished && !stop.RunAfterProblemStop)
+        if (requested || (!finished && !stop.RunAfterProblemStop))
         {
             StopHandler?.Invoke(false);
             return;

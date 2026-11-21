@@ -31,6 +31,8 @@ internal static class TestQuestController
         Set(controller, "_selection", new QuestSelectionController(configuration));
         Set(controller, "_recovery", recovery ?? new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
         Set(controller, "_stuckWatch", new StuckWatch());
+        Set(controller, "_priorityManager", new QuestPriorityManager(null!, NullLogger<QuestPriorityManager>.Instance,
+            Substitute.For<IChatGui>()));
         Set(controller, "_stopPolicy", stopPolicy ??
             new QuestStopPolicy(configuration, _ => { }, _ => { }, _ => { }, Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance));
         Set(controller, "_reports", new QuestReporter(configuration, _ => Task.FromResult(true),

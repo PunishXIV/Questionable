@@ -109,6 +109,10 @@ jobs:
             -c Release --no-build \
             --logger "trx;LogFileName=QuestPathGenerator.Tests.trx" \
             --results-directory TestResults
+          dotnet test QuestPaths.JsonValidator/QuestPaths.JsonValidator.csproj \
+            -c Release \
+            --logger "trx;LogFileName=QuestPaths.JsonValidator.trx" \
+            --results-directory TestResults
 
       - name: Annotate failed quests
         if: failure()

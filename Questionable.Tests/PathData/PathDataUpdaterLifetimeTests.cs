@@ -73,8 +73,16 @@ public sealed class PathDataUpdaterLifetimeTests
     {
         var queued = new TaskCompletionSource<Action>(TaskCreationOptions.RunContinuationsAsynchronously);
         var frameworkCompletion = Signal();
+        int dispatches = 0;
         await using var context = new Context((request, _) => Task.FromResult(Response(request)), dispatch: action =>
         {
+            // The last-check write and the install run at once; the third dispatch is the reload.
+            if (Interlocked.Increment(ref dispatches) < 3)
+            {
+                action();
+                return Task.CompletedTask;
+            }
+
             queued.TrySetResult(action);
             return frameworkCompletion.Task;
         });

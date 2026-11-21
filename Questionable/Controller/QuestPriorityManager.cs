@@ -17,6 +17,7 @@ internal sealed class QuestPriorityManager(
 
     public bool CanInterrupt { get; set; } = true;
     public bool IsDailiesRun { get; set; }
+    public bool IsManualRun { get; set; } = true;
     public int Count => _quests.Count;
     public bool IsEmpty => _quests.Count == 0;
 

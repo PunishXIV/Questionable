@@ -442,7 +442,9 @@ internal sealed partial class ActiveQuestComponent
     private void DrawStartedQuest(QuestController.QuestProgress currentQuest, QuestController.QuestProgress startedQuest)
     {
         QuestSequence? metaSequence = currentQuest.FindSequence();
-        uint? iconOverride = QuestJournalUtils.GetIconOverride((QuestInfo)currentQuest.Quest.Info, FontAwesomeIcon.PersonWalkingArrowRight);
+        uint? iconOverride = currentQuest.Quest.Info is QuestInfo startedInfo
+            ? QuestJournalUtils.GetIconOverride(startedInfo, FontAwesomeIcon.PersonWalkingArrowRight)
+            : null;
 
         bool hasLevelCondition = configuration.Stop.Enabled && configuration.Stop.LevelToStopAfter;
         bool hasCompleteConditions = configuration.Stop.Enabled &&
@@ -601,7 +603,7 @@ internal sealed partial class ActiveQuestComponent
             if (questRegistry.TryGetQuest(questId, out Quest? quest))
             {
                 (Vector4 color, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(questId);
-                uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon, iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)quest.Info, icon));
+                uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon, iconOverride: quest.Info is QuestInfo stopInfo ? QuestJournalUtils.GetIconOverride(stopInfo, icon) : null);
             }
         }
 
@@ -611,7 +613,7 @@ internal sealed partial class ActiveQuestComponent
     private static void DrawPatchChip(QuestController.QuestProgress currentQuest)
     {
         var patch = QuestPatchMapper.GetPatch(currentQuest.Quest.Id.Value);
-        Job? classQuestJob = currentQuest.Quest.Info.ClassJobs.Count < 2 ? currentQuest.Quest.Info.ClassJobs[^1] : null;
+        Job? classQuestJob = currentQuest.Quest.Info.ClassJobs.Count == 1 ? currentQuest.Quest.Info.ClassJobs[0] : null;
         var parts = new List<string> { $"#{currentQuest.Quest.Id}" };
 
         if (classQuestJob != null)

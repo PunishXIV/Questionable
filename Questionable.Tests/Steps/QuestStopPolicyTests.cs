@@ -84,6 +84,24 @@ public sealed class QuestStopPolicyTests
     }
 
     [Theory]
+    [InlineData("Stop command", true)]
+    [InlineData("Player moved", false)]
+    public void RequestedStop_SkipsEndActions(string label, bool requested)
+    {
+        var configuration = Config();
+        configuration.Stop.RunAfterProblemStop = true;
+        configuration.Stop.EndAction = Configuration.EEndAction.LogOut;
+        List<string> effects = [];
+        var policy = new QuestStopPolicy(configuration, _ => effects.Add("notify"), _ => { }, effects.Add,
+            Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance);
+
+        policy.Apply(label, true, requested: requested);
+
+        Assert.DoesNotContain("/after-stop", effects);
+        Assert.DoesNotContain("/logout", effects);
+    }
+
+    [Theory]
     [InlineData(false, "")]
     [InlineData(true, "notify,/after-stop")]
     public void IdleRun_SkipsEndActions(bool listRun, string expected)

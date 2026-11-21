@@ -107,28 +107,19 @@ export async function prune(env: Env, now: number): Promise<void> {
     env.DB.prepare("DELETE FROM reports WHERE created_at < ?").bind(now - RETENTION_DAYS * DAY_MS),
     env.DB.prepare("DELETE FROM report_events WHERE created_at < ?").bind(now - RETENTION_DAYS * DAY_MS),
     env.DB.prepare("DELETE FROM verifications WHERE verified_at < ?").bind(now - RETENTION_DAYS * DAY_MS),
-    // A path counts as replaced once a newer path for the same quest has been around long enough.
-    env.DB.prepare(`
-      DELETE FROM reports WHERE EXISTS (
+    // A path counts as replaced once a newer path has been around long enough and it gets no reports itself any more.
+    // reports goes last: the other two read it to see whether the path is still in use.
+    ...["report_events", "verifications", "reports"].map(table => env.DB.prepare(`
+      DELETE FROM ${table} WHERE EXISTS (
         SELECT 1 FROM paths old JOIN paths newer
           ON newer.quest_id = old.quest_id AND newer.first_seen > old.first_seen
-        WHERE old.quest_id = reports.quest_id AND old.path_hash = reports.path_hash
-          AND newer.first_seen < ?)`)
-      .bind(replacedBefore),
-    env.DB.prepare(`
-      DELETE FROM report_events WHERE EXISTS (
-        SELECT 1 FROM paths old JOIN paths newer
-          ON newer.quest_id = old.quest_id AND newer.first_seen > old.first_seen
-        WHERE old.quest_id = report_events.quest_id AND old.path_hash = report_events.path_hash
-          AND newer.first_seen < ?)`)
-      .bind(replacedBefore),
-    env.DB.prepare(`
-      DELETE FROM verifications WHERE EXISTS (
-        SELECT 1 FROM paths old JOIN paths newer
-          ON newer.quest_id = old.quest_id AND newer.first_seen > old.first_seen
-        WHERE old.quest_id = verifications.quest_id AND old.path_hash = verifications.path_hash
-          AND newer.first_seen < ?)`)
-      .bind(replacedBefore),
+        WHERE old.quest_id = ${table}.quest_id AND old.path_hash = ${table}.path_hash
+          AND newer.first_seen < ?1)
+        AND NOT EXISTS (
+          SELECT 1 FROM reports recent
+          WHERE recent.quest_id = ${table}.quest_id AND recent.path_hash = ${table}.path_hash
+            AND recent.created_at >= ?1)`)
+      .bind(replacedBefore)),
     env.DB.prepare(`DELETE FROM paths
       WHERE NOT EXISTS (SELECT 1 FROM reports WHERE reports.quest_id = paths.quest_id AND reports.path_hash = paths.path_hash)
         AND NOT EXISTS (SELECT 1 FROM report_events WHERE report_events.quest_id = paths.quest_id AND report_events.path_hash = paths.path_hash)

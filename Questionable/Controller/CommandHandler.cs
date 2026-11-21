@@ -168,6 +168,7 @@ internal sealed class CommandHandler : IDisposable
                 if (!_questController.HasExternalOperation)
                     _movementController.Stop();
                 _questController.StopRequested("Stop command");
+                _characterRun.Cancel();
                 _retainerPass.Cancel();
                 break;
 

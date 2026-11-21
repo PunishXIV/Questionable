@@ -22,7 +22,9 @@ internal static class JsonOptions
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
-            if (typeof(ICollection).IsAssignableFrom(property.PropertyType))
+            if (typeof(ICollection).IsAssignableFrom(property.PropertyType) ||
+                Array.Exists(property.PropertyType.GetInterfaces(),
+                    x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>)))
                 property.ShouldSerialize = (_, value) => value is ICollection { Count: > 0 };
         }
     }

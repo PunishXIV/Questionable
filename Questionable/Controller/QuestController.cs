@@ -41,6 +41,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     // The quest-accept addon can fail to appear at sequence 0/step 0.
     private const int AcceptStallSeconds = 15;
+    private (ElementId? Quest, int Count) _acceptStalls;
 
     private readonly QuestAcceptanceController _acceptance;
     private readonly QuestSelectionController _selection;
@@ -351,6 +352,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 StartedAnyTask = false;
             }
             _automationType = value;
+            _priorityManager.IsManualRun = value == EAutomationType.Manual;
             AutomationTypeChanged?.Invoke(this, value);
         }
     }
@@ -527,6 +529,18 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             {
                 _logger.LogWarning("Quest accept apparently didn't work out, resetting progress");
                 CurrentQuest.SetStep(0);
+            }
+
+            int stalls = Equals(_acceptStalls.Quest, CurrentQuest.Quest.Id) ? _acceptStalls.Count + 1 : 1;
+            int maxStalls = Math.Clamp(_configuration.General.AutoStepRefreshMaxTries, 1, 10);
+            _acceptStalls = (CurrentQuest.Quest.Id, stalls);
+            if (stalls > maxStalls)
+            {
+                _acceptStalls = default;
+                _stopPolicy.ReportStuckLimit(CurrentQuest.Quest, maxStalls);
+                _reports.Problem(EProblemKind.Stuck);
+                Stop("Stuck after retries");
+                return;
             }
 
             ExecuteNextStep();

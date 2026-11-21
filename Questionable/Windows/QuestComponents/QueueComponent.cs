@@ -206,8 +206,6 @@ internal sealed class QueueComponent
             _questController.PriorityManager.Move(from, to);
     }
 
-    private static List<ElementId> ParseClipboardItems() => QuestClipboard.Paste();
-
     private void ExportToClipboard()
     {
         QuestClipboard.Copy(_questController.PriorityManager.Quests.Select(x => x.Id));
@@ -305,14 +303,10 @@ internal sealed class QueueComponent
             QstWidgets.Tooltip(_L("Copy the list to the clipboard"));
 
         ImGui.SameLine();
-        List<ElementId> clipboardItems = ParseClipboardItems();
-        using (ImRaii.Disabled(clipboardItems.Count == 0))
-        {
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Paste))
-                ImportFromClipboard(clipboardItems);
-        }
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Paste))
+            ImportFromClipboard(QuestClipboard.Paste());
 
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+        if (ImGui.IsItemHovered())
             QstWidgets.Tooltip(_L("Add quests from the clipboard to the end of the list"));
 
         if (_configuration.Advanced.Debug)

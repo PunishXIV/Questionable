@@ -5,7 +5,8 @@ namespace Questionable.Controller.GameUi;
 [RegisterSingleton]
 internal sealed class TravelDestinationResolver(
     IDataManager dataManager,
-    ILogger<TravelDestinationResolver> logger)
+    ILogger<TravelDestinationResolver> logger,
+    IClientState? clientState = null)
 {
     public ushort? FindTargetTerritory(QuestController.QuestProgress currentQuest)
     {
@@ -48,8 +49,8 @@ internal sealed class TravelDestinationResolver(
     public bool TryFindWarp(ushort targetTerritoryId, string actualPrompt, [NotNullWhen(true)] out uint? warpId,
         [NotNullWhen(true)] out string? warpText)
     {
-        // Island Sanctuary workaround.
-        if (targetTerritoryId == 1055)
+        // Island Sanctuary workaround; off once on the island, where it would answer every menu.
+        if (targetTerritoryId == 1055 && clientState?.TerritoryType != 1055)
         {
             warpId = 131497;
             warpText = actualPrompt;

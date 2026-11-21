@@ -12,7 +12,7 @@ internal static class Aetheryte
                 return null;
             if (!step.Aetheryte.HasValue)
                 throw new ArgumentNullException(nameof(step.Aetheryte));
-            if (aetheryteFunctions.IsAetheryteUnlocked(step.Aetheryte.Value))
+            if (aetheryteFunctions.IsAetheryteUnlocked(step.Aetheryte.Value) && step.SkipConditions?.StepIf?.Never != true)
                 return null;
 
             return new Attune(step.Aetheryte.Value, step.SkipConditions?.StepIf);

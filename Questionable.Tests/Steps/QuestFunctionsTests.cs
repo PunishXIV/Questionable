@@ -236,6 +236,16 @@ public sealed class QuestFunctionsTests
         _state.Guide = new(EScenarioGuideState.Ready, questId);
     }
 
+    [Fact]
+    public void EmptyGuideAtFork_PicksKnownSide()
+    {
+        _catalog.Add(TestQuestInfo.Create(4359, "Hitting the Books", mainScenario: true));
+        _catalog.Add(TestQuestInfo.Create(4360, "For Thavnair Bound", mainScenario: true));
+        _state.Guide = new(EScenarioGuideState.Ready, 0);
+
+        Assert.Equal(new QuestId(4359), _functions.GetMainScenarioQuest().Item1.CurrentQuest);
+    }
+
     [Theory]
     [InlineData(88, false)]
     [InlineData(89, true)]

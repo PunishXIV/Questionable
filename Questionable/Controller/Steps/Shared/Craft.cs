@@ -239,7 +239,8 @@ internal static class Craft
             }
 
             // Quest-given materials (Ixal) mean the craft is still due; items left from an abandoned attempt don't count.
-            bool questMaterials = hasItemTarget && questFunctions.HasCraftMaterials(Task.ItemId!.Value);
+            bool questMaterials = hasItemTarget && Task.Quest.Info.AlliedSociety == EAlliedSociety.Ixal &&
+                                  questFunctions.HasCraftMaterials(Task.ItemId!.Value);
             IReadOnlyList<CraftingItem>? listTargets = questMaterials ? null : CraftingBatch.Resolve(Task, requiredItemIds);
             if (!questMaterials && ((listTargets != null && AreItemsSatisfied(listTargets, CountInInventory)) || IsObjectiveMet()))
             {
@@ -297,7 +298,7 @@ internal static class Craft
             int crafts;
             if (questMaterials)
             {
-                crafts = MaterialCrafts(recipe);
+                crafts = Math.Min(MaterialCrafts(recipe), GetCraftCount(target.ItemCount, recipe.AmountResult));
                 target = target with { ItemCount = startingItemCount + crafts * recipe.AmountResult };
                 _itemTargets = [target];
             }

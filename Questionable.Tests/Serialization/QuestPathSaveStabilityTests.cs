@@ -10,6 +10,14 @@ namespace Questionable.Tests.Serialization;
 
 public sealed class QuestPathSaveStabilityTests
 {
+    [Fact]
+    public void EmptyFlagLists_NotWritten()
+    {
+        string json = JsonSerializer.Serialize(new SkipStepConditions(), JsonOptions.Default);
+
+        Assert.DoesNotContain("CompletionQuestVariablesFlags", json, StringComparison.Ordinal);
+    }
+
     [Theory]
     [ClassData(typeof(EmbeddedQuestLoader))]
     public void SavingAQuestPathProducesIdenticalJson(EmbeddedQuest embedded)

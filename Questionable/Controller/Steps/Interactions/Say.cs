@@ -2,13 +2,16 @@
 
 internal static class Say
 {
-    internal sealed class Factory(ExcelFunctions excelFunctions) : ITaskFactory
+    internal static bool IsPreventedTurnIn(QuestStep step, Configuration configuration) =>
+        step.InteractionType == EInteractionType.CompleteQuest && configuration.Advanced.PreventQuestCompletion;
+
+    internal sealed class Factory(ExcelFunctions excelFunctions, Configuration configuration) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest)
             {
-                if (step.ChatMessage == null)
+                if (step.ChatMessage == null || IsPreventedTurnIn(step, configuration))
                     return [];
             }
             else if (step.InteractionType != EInteractionType.Say)

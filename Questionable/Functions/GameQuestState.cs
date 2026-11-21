@@ -129,18 +129,20 @@ internal sealed unsafe class GameQuestState(
                 continue;
 
             // The first six slots are items; the last two are crystals.
-            for (int i = 0; i < 6; i++)
-            {
-                uint ingredient = recipe.Ingredient[i].RowId;
-                InventoryManager* inventoryManager = InventoryManager.Instance();
-                if (ingredient != 0 && recipe.AmountIngredient[i] > 0 &&
-                    inventoryManager->GetInventoryItemCount(ingredient) +
-                    inventoryManager->GetInventoryItemCount(ingredient, isHq: true) >= recipe.AmountIngredient[i])
-                    return true;
-            }
+            InventoryManager* inventoryManager = InventoryManager.Instance();
+            if (HasAllIngredients(
+                    Enumerable.Range(0, 6).Select(i => (recipe.Ingredient[i].RowId, (int)recipe.AmountIngredient[i])),
+                    x => inventoryManager->GetInventoryItemCount(x) + inventoryManager->GetInventoryItemCount(x, isHq: true)))
+                return true;
         }
 
         return false;
+    }
+
+    internal static bool HasAllIngredients(IEnumerable<(uint Item, int Amount)> ingredients, Func<uint, int> owned)
+    {
+        List<(uint Item, int Amount)> needed = [.. ingredients.Where(x => x.Item != 0 && x.Amount > 0)];
+        return needed.Count > 0 && needed.All(x => owned(x.Item) >= x.Amount);
     }
 
     public short CurrentLevel => PlayerState.Instance()->CurrentLevel;

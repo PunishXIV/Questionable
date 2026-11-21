@@ -183,6 +183,13 @@ internal sealed class YesNoChoiceHandler : IDisposable
         if (HandleTravelYesNo(addonSelectYesno, currentQuest, actualPrompt))
             return true;
 
+        // After the travel checks: this takes any prompt during a quest battle step.
+        if (IsQuestBattleYesNo(quest.Id, step))
+        {
+            ConfirmQuestBattle(addonSelectYesno, quest, step!, actualPrompt);
+            return true;
+        }
+
         return false;
     }
 
@@ -296,12 +303,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
             _logger.LogInformation("Returning {YesNo} for '{Prompt}'", dialogueChoice.Yes ? "Yes" : "No", actualPrompt);
             if (!_configuration.General.DontSkipCutscenes)
                 addonSelectYesno->AtkUnitBase.FireCallbackInt(dialogueChoice.Yes ? 0 : 1);
-            return true;
-        }
-
-        if (IsQuestBattleYesNo(quest.Id, step))
-        {
-            ConfirmQuestBattle(addonSelectYesno, quest, step!, actualPrompt);
             return true;
         }
 

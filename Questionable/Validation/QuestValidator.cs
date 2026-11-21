@@ -40,7 +40,7 @@ internal sealed class QuestValidator
                 if (Running)
                     return;
                 Running = true;
-                _issues.Clear();
+                _issues = [];
 
                 List<ValidationIssue> issues = [];
                 foreach (Quest quest in quests)

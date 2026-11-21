@@ -178,11 +178,15 @@ internal sealed class RetainerPass : IDisposable
         switch (State)
         {
             case EState.Returning:
-                if (_lifestream.IsBusy || !IsPlayerReady())
+                if (_lifestream.IsBusy)
                 {
                     _deadline = now + Timeout;
                     return;
                 }
+
+                // Logged out (title screen) falls through to the relog.
+                if (_clientState.IsLoggedIn && !IsPlayerReady())
+                    return;
 
                 if (CharacterRun.CurrentId == home.ContentId)
                 {

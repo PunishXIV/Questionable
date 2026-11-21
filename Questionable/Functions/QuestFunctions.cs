@@ -318,7 +318,7 @@ internal sealed class QuestFunctions
                 else if (potentialQuests.Any(x => x.QuestId.Value == 4865))
                     currentQuest = new(4865); // DT: To Kozama'uk vs. To Urqopacha
 
-                if (potentialQuests.Count != 1)
+                if (currentQuest.Value == 0)
                 {
                     return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("Multiple potential quests found:") + " " +
                                                                                         string.Join(", ", potentialQuests.Select(x => x.QuestId.Value)));

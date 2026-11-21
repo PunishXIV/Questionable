@@ -231,34 +231,34 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
             return;
         }
 
-        WhileActive(() => _configuration.PathData.LastCheck = DateTimeOffset.UtcNow);
+        await OnGameThread(() => _configuration.PathData.LastCheck = DateTimeOffset.UtcNow).ConfigureAwait(false);
 
         // A bundle that needs a newer plugin can't be used.
         if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
         {
             _logger.LogInformation("Newer path data is available but requires a newer plugin version");
             Status = _L("Update the plugin for newer path data");
-            WhileActive(() =>
+            await OnGameThread(() =>
             {
                 WaitingForPluginUpdate = true;
                 Save();
-            });
+            }).ConfigureAwait(false);
             return;
         }
 
         if (manifest.DataVersion <= _configuration.PathData.InstalledDataVersion)
         {
             int questCount = 0;
-            WhileActive(() => questCount = _questCount());
+            await OnGameThread(() => questCount = _questCount()).ConfigureAwait(false);
             if (questCount >= 500)
             {
                 Status = _L("Path data is up to date");
-                WhileActive(Save);
+                await OnGameThread(Save).ConfigureAwait(false);
                 return;
             }
 
             Status = _L("Path data from previous run missing, downloading path data...");
-            WhileActive(Save);
+            await OnGameThread(Save).ConfigureAwait(false);
         }
 
         if (!Uri.TryCreate(manifest.BundleUrl, UriKind.Absolute, out var bundleUri) ||
@@ -303,13 +303,13 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         {
             WhileActive(() => Directory.CreateDirectory(PathDataBundle.GetDirectory(_pluginInterface)));
             await File.WriteAllBytesAsync(tempPath, zipBytes, _shutdownToken).ConfigureAwait(false);
-            WhileActive(() =>
+            await OnGameThread(() =>
             {
                 File.Move(tempPath, bundlePath, overwrite: true);
                 _configuration.PathData.InstalledDataVersion = manifest.DataVersion;
                 _configuration.PathData.BundlePluginVersion = _pluginVersion;
                 Save();
-            });
+            }).ConfigureAwait(false);
         }
         catch (Exception e) when (!_shutdownToken.IsCancellationRequested)
         {
@@ -337,6 +337,10 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
             }
         }).WaitAsync(_shutdownToken).ConfigureAwait(false);
     }
+
+    // Saving serializes the settings, which the game thread edits.
+    private Task OnGameThread(Action action) =>
+        _runOnFrameworkThread(() => WhileActive(action)).WaitAsync(_shutdownToken);
 
     private void WhileActive(Action action)
     {

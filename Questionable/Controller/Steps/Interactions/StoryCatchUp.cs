@@ -26,10 +26,10 @@ internal sealed class StoryCatchUp(
     public bool Enabled => configuration.Duties.CatchUpForStory && configuration.Duties.RunInstancedContentWithAutoDuty;
 
     internal static TerritoryData.CfcData? PickDungeon(IEnumerable<TerritoryData.CfcData> duties, int playerLevel,
-        Func<uint, bool> hasSupport, Func<uint, bool> hasPath) =>
+        Func<uint, bool> hasSupport, Func<uint, bool> hasPath, int? itemLevel = null) =>
         duties
             .Where(x => x.ContentType == EContentType.Dungeons && x.RequiredLevel > 0 && x.RequiredLevel <= playerLevel &&
-                        hasSupport(x.Id))
+                        (itemLevel == null || x.RequiredItemLevel <= itemLevel) && hasSupport(x.Id))
             .OrderByDescending(x => x.RequiredLevel)
             .ThenByDescending(x => x.ClassJobLevelSync)
             .FirstOrDefault(x => hasPath(x.Id));
@@ -48,7 +48,7 @@ internal sealed class StoryCatchUp(
 
     public ITask? LevelRun(string reason, int playerLevel)
     {
-        if (PickDungeon(territoryData.AllCfcs, playerLevel, territoryData.HasDutySupport, autoDuty.HasPath) is not { } dungeon)
+        if (PickDungeon(territoryData.AllCfcs, playerLevel, territoryData.HasDutySupport, autoDuty.HasPath, ItemLevel()) is not { } dungeon)
         {
             logger.LogInformation("No dungeon to level in at level {Level}", playerLevel);
             return null;

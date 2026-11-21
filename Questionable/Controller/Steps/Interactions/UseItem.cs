@@ -6,13 +6,13 @@ namespace Questionable.Controller.Steps.Interactions;
 
 internal static class UseItem
 {
-    internal sealed class Factory : ITaskFactory
+    internal sealed class Factory(Configuration configuration) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.SinglePlayerDuty or EInteractionType.CompleteQuest)
             {
-                if (step.ItemId == null)
+                if (step.ItemId == null || Say.IsPreventedTurnIn(step, configuration))
                     return [];
             }
             else if (step.InteractionType != EInteractionType.UseItem)

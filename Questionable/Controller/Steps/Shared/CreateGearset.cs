@@ -46,6 +46,18 @@ internal static class CreateGearset
                 throw new TaskException("Cannot create gearset while in combat");
             }
 
+            byte job = FFXIVClientStructs.FFXIV.Client.Game.UI.PlayerState.Instance()->CurrentClassJobId;
+            for (int i = 0; i < 100; ++i)
+            {
+                RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
+                if (gearset != null && gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) &&
+                    gearset->ClassJob == job)
+                {
+                    logger.LogInformation("Gearset {GearsetId} already exists for the current job", i);
+                    return false;
+                }
+            }
+
             int gearsetId = gearsetModule->CreateGearset();
 
             if (gearsetId < 0)
