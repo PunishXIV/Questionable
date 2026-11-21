@@ -138,7 +138,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             withPreset: true);
 
         bool removeOnComplete = Configuration.Stop.RemoveWhenCompleteConditionMet;
-        if (ImGui.Checkbox(_L("Remove from list after complete"), ref removeOnComplete))
+        if (ImGui.Checkbox(_L("Remove from the list once completed"), ref removeOnComplete))
         {
             Configuration.Stop.RemoveWhenCompleteConditionMet = removeOnComplete;
             Save();
@@ -255,7 +255,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                 ImGui.SameLine();
                 using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
                 {
-                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear All")))
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear all")))
                     {
                         clearAll();
                         Save();

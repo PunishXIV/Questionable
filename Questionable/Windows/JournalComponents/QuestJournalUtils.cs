@@ -55,7 +55,7 @@ internal sealed class QuestJournalUtils
                         if (ImGui.MenuItem(_L("Add to Priority Quests")) && quest != null)
                             questController.PriorityManager.Add(quest.Id);
 
-                        if (ImGui.MenuItem(_L("Add to Priority Quests as Accept Only")) && quest != null)
+                        if (ImGui.MenuItem(_L("Add to Priority Quests as accept only")) && quest != null)
                             questController.PriorityManager.MarkAcceptOnly(quest.Id);
                     }
                     using (ImRaii.Disabled(prereqs.Count == 0 || quest == null))
@@ -68,7 +68,7 @@ internal sealed class QuestJournalUtils
                             questController.PriorityManager.Add(quest.Id);
                         }
 
-                        if (ImGui.MenuItem(_L("Add all to Priority Quests as Accept Only")) && quest != null)
+                        if (ImGui.MenuItem(_L("Add all to Priority Quests as accept only")) && quest != null)
                         {
                             foreach (var prereq in prereqs)
                                 if (!questFunctions.IsQuestUnobtainable(prereq.QuestId) && !questFunctions.IsQuestComplete(prereq.QuestId))
@@ -211,12 +211,12 @@ internal sealed class QuestJournalUtils
         if (!popup)
             return;
 
-        if (ImGui.Checkbox(_L("Show only Available Quests"), ref journal.Filter.AvailableOnly) ||
-            ImGui.Checkbox(_L("Show only Blue Quests"), ref journal.Filter.BlueOnly) ||
-            ImGui.Checkbox(_L("Hide Quests Without Path"), ref journal.Filter.HideNoPaths) ||
-            ImGui.Checkbox(_L("Hide Completed Quests"), ref journal.Filter.HideCompleted) ||
-            ImGui.Checkbox(_L("Hide Unobtainable Quests"), ref journal.Filter.HideUnobtainable) ||
-            ImGui.Checkbox(_L("Hide Repeatable Quests"), ref journal.Filter.HideRepeatable))
+        if (ImGui.Checkbox(_L("Show only available quests"), ref journal.Filter.AvailableOnly) ||
+            ImGui.Checkbox(_L("Show only feature quests"), ref journal.Filter.BlueOnly) ||
+            ImGui.Checkbox(_L("Hide quests without a path"), ref journal.Filter.HideNoPaths) ||
+            ImGui.Checkbox(_L("Hide completed quests"), ref journal.Filter.HideCompleted) ||
+            ImGui.Checkbox(_L("Hide unobtainable quests"), ref journal.Filter.HideUnobtainable) ||
+            ImGui.Checkbox(_L("Hide repeatable quests"), ref journal.Filter.HideRepeatable))
         {
             journal.UpdateFilter();
             journal.SaveFilter();

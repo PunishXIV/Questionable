@@ -73,8 +73,8 @@ internal sealed class QuickAccessComponent
     internal void DrawRedeemButton(bool showLabel = false)
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.Gift,
-                _L("Redeem Reward Items"),
-                _L("Opens reward items in your bags now (mounts, minions, orchestrion rolls...), except blacklisted ones. Same as /qst redeem."),
+                _L("Redeem reward items"),
+                _L("Opens reward items in your inventory now (mounts, minions, orchestrion rolls...), except ones set to never open. Same as /qst redeem."),
                 enabled: objectTable[0] != null && !questController.IsRunning,
                 showLabel: showLabel))
             questStarter.RedeemRewards();
@@ -96,7 +96,7 @@ internal sealed class QuickAccessComponent
         string tooltip = isNavmeshAvailable
             ? _L("Hold CTRL to enable this button. Rebuilding the navmesh will take some time.")
             : _L("vnavmesh is not available. Please install it first.");
-        if (QstWidgets.RailButton(FontAwesomeIcon.Route, _L("Rebuild Navmesh"), tooltip,
+        if (QstWidgets.RailButton(FontAwesomeIcon.Route, _L("Rebuild navmesh"), tooltip,
                 enabled: isNavmeshAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
                 showLabel: showLabel))
             commandManager.ProcessCommand("/vnav rebuild");
@@ -116,7 +116,7 @@ internal sealed class QuickAccessComponent
 
     internal void DrawReloadDataButton(bool showLabel = false)
     {
-        if (QstWidgets.RailButton(FontAwesomeIcon.RedoAlt, _L("Reload Data"),
+        if (QstWidgets.RailButton(FontAwesomeIcon.RedoAlt, _L("Reload data"),
                 _L("Reset sequence progress and reload quest data from disk"),
                 showLabel: showLabel))
             Reload?.Invoke(this, EventArgs.Empty);
@@ -142,7 +142,7 @@ internal sealed class QuickAccessComponent
         if (rightClicked)
         {
             ImGui.SetClipboardText(JsonSerializer.Serialize(LogQuestCompletion.ReadLog(), JsonOptions.Default));
-            chatGui.Print(_L("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
+            chatGui.Print(_L("List of completed quests copied to the clipboard. Paste it in the Discord thread linked below, then run " +
                         "'/qst clearlog' to reset the log.") + "\nhttps://discord.com/channels/1001823907193552978/1447612869431656508/1447612869431656508",
                 CommandHandler.MessageTag, CommandHandler.TagColor);
         }
@@ -225,7 +225,7 @@ internal sealed class QuickAccessComponent
 
         if (QstWidgets.RailButton(hasErrors ? FontAwesomeIcon.ExclamationTriangle : FontAwesomeIcon.InfoCircle,
                 _L("Quest Validation"),
-                (running ? "(!) " : "") + _LF("Quest validation: {0} errors, {1} infos", errorCount, infoCount),
+                (running ? "(!) " : "") + _LF("Quest validation: {0} errors, {1} notes", errorCount, infoCount),
                 tint: hasErrors ? QstTheme.Danger : (running || infoCount > 0 ? QstTheme.Info : null),
                 showLabel: showLabel))
             questValidationWindow.ToggleOrUncollapse();

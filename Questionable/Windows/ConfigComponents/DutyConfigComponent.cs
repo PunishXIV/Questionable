@@ -79,7 +79,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
             }
 
             ImGuiComponents.HelpMarker(
-                _L("When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Stops after 5 runs that neither raise your item level nor earn tomestones toward an accessory."));
+                _L("When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Only gives up after 5 runs in a row that neither raise your item level nor earn tomestones toward an accessory."));
 
             bool runUnsynced = Configuration.Duties.RunUnsynced;
             if (ImGui.Checkbox(_L("Run content unsynced where safe"), ref runUnsynced))

@@ -95,7 +95,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             IconOffset = TitleBarIconOffset,
             Click = _ => configWindow.IsOpenAndUncollapsed = true,
             Priority = TitleBarButtonPriority,
-            ShowTooltip = () => QstWidgets.Tooltip(_L("Open Configuration"))
+            ShowTooltip = () => QstWidgets.Tooltip(_L("Open settings"))
         });
 
         if (!_configuration.General.HideSponsorButton)
@@ -207,10 +207,10 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             _eventInfoComponent.Draw();
 
         if (_configuration.Advanced.Debug &&
-            QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: _remainingTasksComponent.Tasks.Count))
+            QstWidgets.SectionHeader(_L("Remaining tasks"), "RemainingTasks", count: _remainingTasksComponent.Tasks.Count))
             _remainingTasksComponent.Draw();
 
-        if (QstWidgets.SectionHeader(_L("Target Tools"), "PathTools", defaultOpen: false))
+        if (QstWidgets.SectionHeader(_L("Target tools"), "PathTools", defaultOpen: false))
             _creationUtilsComponent.Draw();
     }
 

@@ -194,7 +194,7 @@ internal sealed partial class ActiveQuestComponent
         QuestProgressInfo? questWork = DrawQuestWork(currentQuest, isMinimized);
 
         if (combatController.IsRunning)
-            ImGui.TextColored(QstTheme.Accent, _L("In Combat"));
+            ImGui.TextColored(QstTheme.Accent, _L("In combat"));
         else if (questController.CurrentTaskState is { } currentTaskState)
         {
             using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
@@ -302,7 +302,7 @@ internal sealed partial class ActiveQuestComponent
                 QstWidgets.Tooltip(_LF("Data version {0}", configuration.PathData.InstalledDataVersion));
         }
         else if (questFunctions.GetLevelLockedMainScenarioQuest() is var (lockedMsq, _))
-            ImGui.TextColored(QstTheme.Amber, _LF("Next MSQ '{0}' needs level {1}", lockedMsq.Name, lockedMsq.Level));
+            ImGui.TextColored(QstTheme.Amber, _LF("Next story quest '{0}' needs level {1}", lockedMsq.Name, lockedMsq.Level));
         else
             ImGui.Text(_L("No supported quests"));
         DrawPriorityCrystal();
@@ -410,7 +410,7 @@ internal sealed partial class ActiveQuestComponent
         if (currentQuestType == QuestController.ECurrentQuestType.Simulated)
         {
             using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Danger);
-            ImGui.TextUnformatted(_L("Simulated Quest: ") +
+            ImGui.TextUnformatted(_L("Simulated quest: ") +
                 _LF("{0} ({1}) / {2} / {3}",
                     Shorten(currentQuest.Quest.Info.Name),
                     currentQuest.Quest.Id,
@@ -429,7 +429,7 @@ internal sealed partial class ActiveQuestComponent
             {
                 using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Amber);
                 ImGui.TextUnformatted(
-                    _L("Next Quest: ") +
+                    _L("Next quest: ") +
                     _LF("{0} ({1}) / {2} / {3}",
                         Shorten(nextQuest.Quest.Info.Name),
                         nextQuest.Quest.Id,
@@ -545,7 +545,7 @@ internal sealed partial class ActiveQuestComponent
         if (ImGui.IsItemHovered())
         {
             using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-            ImGui.Text(_L("Stop Conditions:"));
+            ImGui.Text(_L("Stop conditions:"));
             ImGui.Separator();
 
             if (hasLevelCondition)
@@ -646,9 +646,9 @@ internal sealed partial class ActiveQuestComponent
     {
         EInteractionType.Interact => _L("Interact"),
         EInteractionType.WalkTo => _L("Walk"),
-        EInteractionType.AttuneAethernetShard => _L("Attune shard"),
+        EInteractionType.AttuneAethernetShard => _L("Attune aethernet shard"),
         EInteractionType.AttuneAetheryte => _L("Attune aetheryte"),
-        EInteractionType.RegisterFreeOrFavoredAetheryte => _L("Favourite aetheryte"),
+        EInteractionType.RegisterFreeOrFavoredAetheryte => _L("Favored destination"),
         EInteractionType.AttuneAetherCurrent => _L("Aether current"),
         EInteractionType.Combat => _L("Combat"),
         EInteractionType.UseItem => _L("Use item"),
@@ -820,12 +820,12 @@ internal sealed partial class ActiveQuestComponent
                 if (questProgressInfo == null)
                     questController.SetNextQuest(currentQuest.Quest);
 
-                if (!questStarter.TryResume(_L("UI start")))
+                if (!questStarter.TryResume("UI start"))
                 {
                     if (characterRun.StartsList)
                         characterRun.Start();
                     else
-                        questStarter.Start(_L("UI start"));
+                        questStarter.Start("UI start");
                 }
             }
 
@@ -837,9 +837,9 @@ internal sealed partial class ActiveQuestComponent
                 ImGui.SameLine();
 
                 if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.StepForward, _L("Step")))
-                    questStarter.StartSingleStep(_L("UI step"));
+                    questStarter.StartSingleStep("UI step");
                 if (ImGui.IsItemHovered())
-                    QstWidgets.Tooltip(_L("Execute next step and then stop."));
+                    QstWidgets.Tooltip(_L("Do the next step, then stop."));
             }
         }
 
@@ -849,8 +849,8 @@ internal sealed partial class ActiveQuestComponent
         {
             if (!questController.HasExternalOperation)
                 movementController.Stop();
-            questController.StopFromUi(_L("UI stop"));
-            gatheringController.Stop(_L("UI stop"));
+            questController.StopFromUi("UI stop");
+            gatheringController.Stop("UI stop");
             characterRun.Cancel();
             retainerPass.Cancel();
             stopPolicy.CancelEnding();

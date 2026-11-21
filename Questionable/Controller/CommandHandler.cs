@@ -150,12 +150,12 @@ internal sealed class CommandHandler : IDisposable
 
             case "start":
                 _questWindow.IsOpenAndUncollapsed = true;
-                if (!_questStarter.TryResume(_L("Start command")))
+                if (!_questStarter.TryResume("Start command"))
                 {
                     if (_characterRun.StartsList)
                         _characterRun.Start();
                     else
-                        _questStarter.Start(_L("Start command"));
+                        _questStarter.Start("Start command");
                 }
                 break;
 
@@ -167,7 +167,7 @@ internal sealed class CommandHandler : IDisposable
             case "stop":
                 if (!_questController.HasExternalOperation)
                     _movementController.Stop();
-                _questController.StopRequested(_L("Stop command"));
+                _questController.StopRequested("Stop command");
                 _retainerPass.Cancel();
                 break;
 
@@ -419,7 +419,7 @@ internal sealed class CommandHandler : IDisposable
     private static string[] HelpLines() =>
     [
         _L("/qst help - lists these commands"),
-        _L("/qst config - opens the configuration window"),
+        _L("/qst config - opens the settings window"),
         _L("/qst start - starts doing quests"),
         _L("/qst stop - stops doing quests"),
         _L("/qst dailies - accepts and does the allied society dailies ticked in the journal"),

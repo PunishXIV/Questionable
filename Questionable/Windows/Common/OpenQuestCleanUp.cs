@@ -12,7 +12,7 @@ internal sealed class OpenQuestCleanUp(
     public void DrawRailButton()
     {
         (bool enabled, string tooltip) = GetState();
-        if (QstWidgets.RailButton(FontAwesomeIcon.Broom, _L("Clean Up"), tooltip, enabled: enabled))
+        if (QstWidgets.RailButton(FontAwesomeIcon.Broom, _L("Clean up"), tooltip, enabled: enabled))
             Run();
     }
 
@@ -21,7 +21,7 @@ internal sealed class OpenQuestCleanUp(
         (bool enabled, string tooltip) = GetState();
         using (ImRaii.Disabled(!enabled))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Broom, _L("Clean Up")))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Broom, _L("Clean up")))
                 Run();
         }
 

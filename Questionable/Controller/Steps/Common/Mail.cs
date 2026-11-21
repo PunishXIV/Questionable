@@ -180,7 +180,7 @@ internal static class Mail
             if (MogmailIpc.RewardLetters is > 0)
             {
                 _retryAt = DateTime.Now + RetryAfter;
-                chatGui.Print(_L("Some reward mail is still waiting, maybe because your bags are full. Trying again in 30 minutes."),
+                chatGui.Print(_L("Some reward mail is still waiting, maybe because your inventory is full. Trying again in 30 minutes."),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
 

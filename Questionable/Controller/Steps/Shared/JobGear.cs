@@ -116,7 +116,7 @@ internal static class JobGear
             if (inventory->GetEmptySlotsInBag() < missing.Count)
             {
                 RetryAt[key] = DateTime.Now + RetryAfter;
-                reason = _LF("Your level {0} job gear is ready to collect, but your bags need {1} free slots. Trying again in 30 minutes.",
+                reason = _LF("Your level {0} job gear is ready to collect, but you need {1} free inventory slots. Trying again in 30 minutes.",
                     choice.Level, missing.Count);
                 chatGui.Print(reason, CommandHandler.MessageTag, CommandHandler.TagColor);
                 return [];

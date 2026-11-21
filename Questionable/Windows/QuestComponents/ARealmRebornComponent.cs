@@ -52,7 +52,7 @@ internal sealed class ARealmRebornComponent
         if (ImGui.IsItemHovered())
             QstWidgets.Tooltip(_L("Add to Priority Quests"));
         ImGui.SameLine();
-        bool hover = uiUtils.ChecklistItem(_L("Hard Mode Primals"), complete,
+        bool hover = uiUtils.ChecklistItem(_L("Hard mode primals"), complete,
             configuration.Advanced.SkipARealmRebornHardModePrimals ? QstTheme.TextMuted : null);
         if (complete || !hover)
             return;
@@ -78,7 +78,7 @@ internal sealed class ARealmRebornComponent
         if (ImGui.IsItemHovered())
             QstWidgets.Tooltip(_L("Add to Priority Quests"));
         ImGui.SameLine();
-        bool hover = uiUtils.ChecklistItem(_L("Crystal Tower Raids"), complete,
+        bool hover = uiUtils.ChecklistItem(_L("Crystal Tower raids"), complete,
             configuration.Advanced.SkipCrystalTowerRaids ? QstTheme.TextMuted : null);
         if (complete || !hover)
             return;

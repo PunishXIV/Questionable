@@ -33,7 +33,7 @@ internal sealed class NotificationConfigComponent
                         () => Configuration.Notifications.NotifyOnCriticalFailure, x => Configuration.Notifications.NotifyOnCriticalFailure = x);
                     DrawCheckbox(_L("You or another plugin stops it"),
                         () => Configuration.Notifications.NotifyOnRequestedStop, x => Configuration.Notifications.NotifyOnRequestedStop = x,
-                        _L("/qst stop, or a plugin such as CBT or an SND script. The Stop button never alerts."));
+                        _L("/qst stop, or a plugin such as Automaton or a Something Need Doing (SND) script. The Stop button never alerts."));
                 }
 
                 ImGui.Spacing();

@@ -6,14 +6,14 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
     protected readonly string[] SupportedCfcOptions =
     [
-        $"{SeIconChar.Circle.ToIconChar()} " + _L("Enabled (Default)"),
+        $"{SeIconChar.Circle.ToIconChar()} " + _L("Enabled (default)"),
         $"{SeIconChar.Circle.ToIconChar()} " + _L("Enabled"),
         $"{SeIconChar.Cross.ToIconChar()} " + _L("Disabled")
     ];
 
     protected readonly string[] UnsupportedCfcOptions =
     [
-        $"{SeIconChar.Cross.ToIconChar()} " + _L("Disabled (Default)"),
+        $"{SeIconChar.Cross.ToIconChar()} " + _L("Disabled (default)"),
         $"{SeIconChar.Circle.ToIconChar()} " + _L("Enabled"),
         $"{SeIconChar.Cross.ToIconChar()} " + _L("Disabled")
     ];

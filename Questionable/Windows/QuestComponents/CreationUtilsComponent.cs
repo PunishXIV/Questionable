@@ -311,7 +311,7 @@ internal sealed class CreationUtilsComponent
                 }
             }
             if (ImGui.IsItemHovered())
-                QstWidgets.Tooltip(_L("Show all Quests starting with your current target."));
+                QstWidgets.Tooltip(_L("Show all quests starting with your current target."));
         }
         else
         {
@@ -322,7 +322,7 @@ internal sealed class CreationUtilsComponent
                 questSelectionWindow.OpenForCurrentZone();
             }
             if (ImGui.IsItemHovered())
-                QstWidgets.Tooltip(_L("Show all (currently visible) Quests starting in this zone."));
+                QstWidgets.Tooltip(_L("Show all (currently visible) quests starting in this zone."));
         }
 
         if (target != null)
@@ -332,7 +332,7 @@ internal sealed class CreationUtilsComponent
             {
                 if (!movementController.IsPathRunning)
                 {
-                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Bullseye, _L("To Target")))
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Bullseye, _L("To target")))
                     {
                         movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseId(target),
                             target.Position, new());

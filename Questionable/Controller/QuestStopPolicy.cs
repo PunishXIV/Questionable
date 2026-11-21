@@ -139,7 +139,7 @@ internal sealed class QuestStopPolicy
             if (_ending is not { } ending)
                 return null;
             if (!ending.CommandsSent)
-                return _L("Run ended: travelling first.");
+                return _L("Run ended: traveling first.");
             if (ending.Next == null)
                 return _L("Run ended: waiting for travel to finish.");
 
@@ -278,7 +278,7 @@ internal sealed class QuestStopPolicy
 
     public void ReportStopBeforeTeleport(ITask nextTask)
     {
-        string stopping = _L("Stopping before travelling to another zone, as requested.");
+        string stopping = _L("Stopping before traveling to another zone, as requested.");
         _logger.LogInformation("{Stopping} (upcoming task: {Task})", stopping, nextTask);
         PrintAndNotify(stopping);
     }
@@ -317,11 +317,11 @@ internal sealed class QuestStopPolicy
     }
 
     public void ReportNoSequence(QuestProgress progress) =>
-        PrintError(_LF("Stopped: no path for '{0}' sequence {1}. Try Reload Data or report it with Stuck?",
+        PrintError(_LF("Stopped: no path for '{0}' sequence {1}. Try 'Reload data' or report it with Stuck?",
             progress.Quest.Info.Name, progress.Sequence));
 
     public void ReportNoStep(QuestProgress progress) =>
-        PrintError(_LF("Stopped: no path for '{0}' sequence {1} step {2}. Try Reload Data or report it with Stuck?",
+        PrintError(_LF("Stopped: no path for '{0}' sequence {1} step {2}. Try 'Reload data' or report it with Stuck?",
             progress.Quest.Info.Name, progress.Sequence, progress.Step));
 
     public void ReportMissingCurrents(Quest quest, IReadOnlyList<uint> missing)
@@ -355,7 +355,7 @@ internal sealed class QuestStopPolicy
     {
         _logger.LogError(e, "Failed to create tasks [{QuestId}, {Sequence}, {Step}]",
             current?.Quest.Id, current?.Sequence, current?.Step);
-        string message = _L("Couldn't start the next quest step, stopping.") + " " + _L("Try Reload Data, or report it with Stuck?");
+        string message = _L("Couldn't start the next quest step, stopping.") + " " + _L("Try 'Reload data', or report it with Stuck?");
         PrintError(message);
         _notifyOnFailure(message);
     }

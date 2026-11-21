@@ -50,7 +50,7 @@ internal sealed class JournalTable(
         float scale = ImGui.GetIO().FontGlobalScale;
         ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.NoHide);
         ImGui.TableSetupColumn(_L("Level"), ImGuiTableColumnFlags.WidthFixed, 45 * scale);
-        ImGui.TableSetupColumn(_L("XP"), ImGuiTableColumnFlags.WidthFixed, 90 * scale);
+        ImGui.TableSetupColumn(_L("EXP"), ImGuiTableColumnFlags.WidthFixed, 90 * scale);
         ImGui.TableSetupColumn(_L("Gil"), ImGuiTableColumnFlags.WidthFixed, 75 * scale);
         if (repColumn)
             ImGui.TableSetupColumn(_L("Reputation"), ImGuiTableColumnFlags.WidthFixed, 70 * scale);

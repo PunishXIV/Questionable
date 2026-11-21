@@ -65,7 +65,7 @@ internal sealed class QueueComponent
         _lastKnownJob = currentJob;
 
         ImGui.Text(_L("Quests to do first:"));
-        ImGuiComponents.HelpMarker(_L("Order: this list, then class, primal and raid quests, then quests you track in the To-Do list, then the story."));
+        ImGuiComponents.HelpMarker(_L("Order: this list, then class, primal and raid quests, then quests you track in the Duty List, then the story."));
         bool canInterrupt = _questController.PriorityManager.CanInterrupt;
         if (ImGui.Checkbox(_L("Interrupt the current quest"), ref canInterrupt))
             _questController.PriorityManager.CanInterrupt = canInterrupt;
@@ -81,7 +81,7 @@ internal sealed class QueueComponent
         _openQuestCleanUp.DrawButton();
         using (ImRaii.Disabled(_questController.PriorityManager.IsEmpty))
         {
-            string removeLabel = _L("Remove Finished Quests");
+            string removeLabel = _L("Remove finished quests");
             SameLineIfFits(FontAwesomeIcon.Eraser, removeLabel);
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Eraser, removeLabel))
                 _questController.PriorityManager.RemoveCompleted(
@@ -89,7 +89,7 @@ internal sealed class QueueComponent
                          (!_questFunctions.IsQuestAccepted(x) && _questFunctions.IsQuestUnobtainable(x)),
                     _questFunctions.IsQuestAccepted);
 
-            string clearLabel = _L("Clear All");
+            string clearLabel = _L("Clear all");
             SameLineIfFits(FontAwesomeIcon.Trash, clearLabel);
             using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
             {
@@ -102,7 +102,7 @@ internal sealed class QueueComponent
         }
 
         if (_questController.PriorityManager.HasPendingAcceptOnly &&
-            ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Inbox, _L("Change All to Normal Priority")))
+            ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Inbox, _L("Change all to normal priority")))
             _questController.PriorityManager.ClearAllAcceptOnly();
     }
 
@@ -120,10 +120,10 @@ internal sealed class QueueComponent
             return;
 
         (ulong experience, ulong gil) = _questController.PriorityManager.GetRewardTotals(_questFunctions.IsPriorityQuestDone);
-        ImGui.TextUnformatted(_LF("Total: {0} XP, {1} gil",
+        ImGui.TextUnformatted(_LF("Total: {0} EXP, {1} gil",
             experience.ToString("N0", CultureInfo.CurrentCulture), gil.ToString("N0", CultureInfo.CurrentCulture)));
         if (ImGui.IsItemHovered())
-            QstWidgets.Tooltip(_L("Quests still to do. Synced quests (most society dailies) scale XP to your level."));
+            QstWidgets.Tooltip(_L("Quests still to do. Synced quests (most society dailies) scale EXP to your level."));
     }
 
     private void DrawQuestList()

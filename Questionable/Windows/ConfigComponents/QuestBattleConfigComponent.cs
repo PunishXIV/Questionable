@@ -641,7 +641,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 
     private void DrawEnableAllButton()
     {
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.CheckCircle, _L("Enable All")))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.CheckCircle, _L("Enable all")))
         {
             Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Clear();
             Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Clear();

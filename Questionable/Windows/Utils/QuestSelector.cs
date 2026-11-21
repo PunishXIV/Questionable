@@ -15,7 +15,7 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
             throw new InvalidOperationException("OnSelect must be set before drawing the quest selector.");
 
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-        if (ImGui.BeginCombo("##QuestSelection", _L("Add Quest..."), ImGuiComboFlags.HeightLarge))
+        if (ImGui.BeginCombo("##QuestSelection", _L("Add quest..."), ImGuiComboFlags.HeightLarge))
         {
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
             bool addFirst = ImGui.InputTextWithHint("##", _L("Quest name or ID..."), ref _searchString, 256,

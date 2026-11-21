@@ -113,7 +113,7 @@ internal sealed class QuestFunctions
             if (!state.IsAetheryteUnlocked(EAetheryteLocation.GridaniaBlueBadgerGate))
             {
                 chatGui.Print(_L("This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n") +
-                                   _L("This should have happened as part of the quest \"Close To Home\" if starting in Gridania, or \"The Ul'dahn/Lominsan Envoy\" for the other cities.\n") +
+                                   _L("This should have happened as part of the quest \"Close to Home\" if starting in Gridania, or \"The Ul'dahn/Lominsan Envoy\" for the other cities.\n") +
                                    _L("Please unlock the aethernet shards, or complete the current quest sequence manually before continuing."),
                                CommandHandler.MessageTag, CommandHandler.TagColor);
                 throw new TeleportLockedException("Required aethernet shard not unlocked");
@@ -256,10 +256,10 @@ internal sealed class QuestFunctions
 
         ScenarioGuide guide = state.ReadScenarioGuide();
         if (guide.State == EScenarioGuideState.Missing)
-            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("No Scenario Tree"));
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("The main scenario guide isn't available"));
 
         if (guide.State == EScenarioGuideState.Loading)
-            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("Scenario Tree Data is null"));
+            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("Loading the main scenario guide"));
 
         QuestId currentQuest = new(guide.QuestId);
         return (new(currentQuest, state.GetQuestSequence(currentQuest.Value), MainScenarioQuestState.Available), $"sq: {currentQuest}");
@@ -508,7 +508,7 @@ internal sealed class QuestFunctions
 
                 QuestStep? firstStep = quest.FindSequence(0)?.FindStep(0);
                 if (firstStep == null)
-                    return new(x, _L("No sequence 0 with steps"));
+                    return new(x, _L("The quest path has no first step"));
 
                 if (!state.IsTeleportUnlocked)
                 {

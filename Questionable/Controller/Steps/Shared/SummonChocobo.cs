@@ -72,7 +72,7 @@ internal static class SummonChocobo
                 if (!canBuy && !_warnedNoGreens && ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens: 1))
                 {
                     _warnedNoGreens = true;
-                    chatGui.Print(_L("You're out of Gysahl Greens, so your chocobo wasn't called. Buy some to keep it out."),
+                    chatGui.Print(_L("You're out of Gysahl Greens, so your chocobo wasn't summoned. Buy some to keep it out."),
                         CommandHandler.MessageTag, CommandHandler.TagColor);
                 }
 

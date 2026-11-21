@@ -129,7 +129,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
         (Job[] combatJobIds, string[] combatJobNames) = _combatJobs.Value;
         ImGui.SetNextItemWidth(size.X / 2);
-        DrawComboOption(_L("Preferred Combat Job"), combatJobIds, combatJobNames,
+        DrawComboOption(_L("Preferred combat job"), combatJobIds, combatJobNames,
             () => Configuration.General.CombatJob,
             v => Configuration.General.CombatJob = v);
 
@@ -141,17 +141,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
         (Job[] craftJobIds, string[] craftJobNames) = _craftJobs.Value;
         ImGui.SetNextItemWidth(size.X / 2);
-        DrawComboOption(_L("Preferred Crafting Job"), craftJobIds, craftJobNames,
+        DrawComboOption(_L("Preferred crafting job"), craftJobIds, craftJobNames,
             () => Configuration.General.CraftingJob,
             v => Configuration.General.CraftingJob = v);
 
         (Job[] gatherJobIds, string[] gatherJobNames) = _gatherJobs.Value;
         ImGui.SetNextItemWidth(size.X / 2);
-        DrawComboOption(_L("Preferred Gathering Job"), gatherJobIds, gatherJobNames,
+        DrawComboOption(_L("Preferred gathering job"), gatherJobIds, gatherJobNames,
             () => Configuration.General.GatheringJob,
             v => Configuration.General.GatheringJob = v);
 
-        DrawCheckbox(_L("Namazu: prefer Crafting job over Gatherer"),
+        DrawCheckbox(_L("Namazu: do them as a crafter, not a gatherer"),
             () => Configuration.Advanced.NamazuPreferCraft,
             value => Configuration.Advanced.NamazuPreferCraft = value,
             _L("Namazu quests can be done as a crafter or a gatherer; this picks which."));
@@ -324,7 +324,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
 
             ImGuiComponents.HelpMarker(
-                _L("Calls your chocobo in the open world with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs."));
+                _L("Summons your chocobo companion in the field with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs."));
         }
     }
 
@@ -387,14 +387,14 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             using (ImRaii.Disabled(!_autoRetainer.IsReady()))
             {
                 bool sendRetainers = Configuration.General.SendRetainers;
-                if (ImGui.Checkbox(_L("Send retainers and submarines out"), ref sendRetainers))
+                if (ImGui.Checkbox(_L("Send retainers and submersibles out"), ref sendRetainers))
                 {
                     Configuration.General.SendRetainers = sendRetainers;
                     Save();
                 }
 
                 ImGuiComponents.HelpMarker(
-                    _L("Between quests, when a retainer or submarine is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream."));
+                    _L("Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream."));
             }
         }
     }
@@ -480,7 +480,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             DrawPickUp(_L("Pick up \"My Feisty Little Chocobo\""),
                 () => Configuration.Advanced.SkipFeistyLittleChocobo,
                 value => Configuration.Advanced.SkipFeistyLittleChocobo = value,
-                _L("'My Feisty Little Chocobo' lets your companion chocobo fight with you in the overworld. When ticked, it is done automatically after 'My Little Chocobo'."));
+                _L("'My Feisty Little Chocobo' lets your chocobo companion fight with you in the field. When ticked, it is done automatically after 'My Little Chocobo'."));
 
             bool skipLowPriorityInstances = Configuration.General.SkipLowPriorityDuties;
             if (ImGui.Checkbox(_L("Don't wait on optional dungeons and raids"), ref skipLowPriorityInstances))
@@ -590,7 +590,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     {
                         using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
                         {
-                            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear All")))
+                            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear all")))
                             {
                                 blacklist.Clear();
                                 Save();

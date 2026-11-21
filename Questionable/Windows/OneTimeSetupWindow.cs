@@ -41,7 +41,7 @@ internal sealed class OneTimeSetupWindow : LWindow
         {
             using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Success))
             {
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Finish Setup")))
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Finish setup")))
                 {
                     _logger.LogInformation("Marking setup as complete");
                     _configuration.MarkPluginSetupComplete();

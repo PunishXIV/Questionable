@@ -196,7 +196,7 @@ internal sealed class QuestTooltipComponent
                 else
                 {
                     using ImRaii.DisabledDisposable _ = ImRaii.Disabled();
-                    uiUtils.ChecklistItem(_LF("Unknown Quest ({0})", previous.QuestId), QstTheme.TextMuted,
+                    uiUtils.ChecklistItem(_LF("Unknown quest ({0})", previous.QuestId), QstTheme.TextMuted,
                         FontAwesomeIcon.Question);
                 }
             }
@@ -214,12 +214,12 @@ internal sealed class QuestTooltipComponent
                 if (actualQuestInfo.QuestLocks.Count > 1)
                 {
                     if (actualQuestInfo.QuestLockJoin == EQuestJoin.All)
-                        ImGui.Text(_L("Blocked by (if all completed):"));
+                        ImGui.Text(_L("Blocked once all of these are completed:"));
                     else if (actualQuestInfo.QuestLockJoin == EQuestJoin.AtLeastOne)
-                        ImGui.Text(_L("Blocked by (if at least completed):"));
+                        ImGui.Text(_L("Blocked once any of these is completed:"));
                 }
                 else
-                    ImGui.Text(_L("Blocked by (if completed):"));
+                    ImGui.Text(_L("Blocked once this is completed:"));
 
                 foreach (QuestId lockId in actualQuestInfo.QuestLocks)
                 {
@@ -274,7 +274,7 @@ internal sealed class QuestTooltipComponent
             if (showItemRewards && actualQuestInfo.ItemRewards.Count > 0)
             {
                 ImGui.Separator();
-                ImGui.Text(_L("Item Rewards:"));
+                ImGui.Text(_L("Item rewards:"));
                 foreach (ItemReward reward in actualQuestInfo.ItemRewards)
                     ImGui.BulletText(reward.Name);
             }

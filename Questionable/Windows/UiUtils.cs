@@ -57,7 +57,7 @@ internal sealed class UiUtils(
         if (!string.IsNullOrEmpty(lockedReason))
             return (QstTheme.Danger, FontAwesomeIcon.Lock, $"{_L("Locked")}:\n  {lockedReason}");
         if (prerequisites == null)
-            return (QstTheme.Info, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
+            return (QstTheme.Info, FontAwesomeIcon.QuestionCircle, _L("Probably available"));
 
         return (QstTheme.Amber, FontAwesomeIcon.Running, _L("Available"));
     }

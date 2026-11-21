@@ -130,7 +130,7 @@ internal sealed class DebugConfigComponent
                 using (ImRaii.PushIndent())
                 {
                     ImGui.SetNextItemWidth(150f);
-                    DrawComboOption(_L("Highlight colour"),
+                    DrawComboOption(_L("Highlight color"),
                         Enum.GetValues<ObjectHighlightColor>(),
                         Enum.GetNames<ObjectHighlightColor>(),
                         () => Configuration.Advanced.HighlightColor,

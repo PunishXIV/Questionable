@@ -76,12 +76,12 @@ internal sealed class CombatController : IDisposable
     public void Dispose()
     {
         _clientState.TerritoryChanged -= OnTerritoryChanged;
-        IpcInvoke.TryOnFrameworkThread(_framework, () => Stop(_L("Dispose")), _logger);
+        IpcInvoke.TryOnFrameworkThread(_framework, () => Stop("Dispose"), _logger);
     }
 
     public bool Start(CombatData combatData)
     {
-        Stop(_L("Starting combat"));
+        Stop("Starting combat");
         if (HasPendingCleanup)
             throw new TaskException(BlockReason!);
         if (combatData.SpawnType == EEnemySpawnType.FinishCombatIfAny && !_condition[ConditionFlag.InCombat])
@@ -303,14 +303,14 @@ internal sealed class CombatController : IDisposable
         if (gameObject is IBattleNpc battleNpc && battleNpc.StatusFlags.HasFlag(StatusFlags.InCombat))
         {
             if (gameObject.TargetObjectId == _objectTable[0]?.GameObjectId)
-                return (rawPriority.Value + 150, reason + "/" + _L("Targeted"));
+                return (rawPriority.Value + 150, reason + "/" + "Targeted");
 
             Hater haters = UIState.Instance()->Hater;
             for (int i = 0; i < haters.HaterCount; ++i)
             {
                 HaterInfo hater = haters.Haters[i];
                 if (hater.EntityId == gameObject.GameObjectId)
-                    return (rawPriority.Value + 125, reason + "/" + _L("Enmity"));
+                    return (rawPriority.Value + 125, reason + "/" + "Enmity");
             }
         }
 
@@ -320,25 +320,25 @@ internal sealed class CombatController : IDisposable
     private unsafe (int? Priority, string Reason) GetRawKillPriority(IGameObject gameObject)
     {
         if (_currentFight == null)
-            return (null, _L("Not Fighting"));
+            return (null, "Not Fighting");
 
         if (gameObject is IBattleNpc battleNpc)
         {
             if (!_currentFight.Module.CanAttack(battleNpc))
-                return (null, _L("Can't attack"));
+                return (null, "Can't attack");
 
             if (battleNpc.IsDead)
-                return (null, _L("Dead"));
+                return (null, "Dead");
 
             if (!battleNpc.IsTargetable)
-                return (null, _L("Untargetable"));
+                return (null, "Untargetable");
 
             List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
             GameObject* gameObjectStruct = (GameObject*)gameObject.Address;
             if (gameObjectStruct->FateId != 0 &&
                 gameObject.TargetObjectId != _objectTable[0]?.GameObjectId &&
                 _currentFight.Data.SpawnType != EEnemySpawnType.FateEnemies)
-                return (null, _L("FATE mob"));
+                return (null, "FATE mob");
 
             Vector3 ownPosition = _objectTable[0]?.Position ?? Vector3.Zero;
             bool expectQuestMarker;
@@ -384,15 +384,15 @@ internal sealed class CombatController : IDisposable
             {
                 // FATE and turn-in NPCs the game marks as hostile.
                 if (gameObjectStruct->NamePlateIconId is 60093 or 60732)
-                    return (null, _L("FATE NPC"));
+                    return (null, "FATE NPC");
 
-                return (0, _L("Not part of quest"));
+                return (0, "Not part of quest");
             }
 
-            return (null, _L("Wrong BattleNpcKind"));
+            return (null, "Wrong BattleNpcKind");
         }
 
-        return (null, _L("Not BattleNpc"));
+        return (null, "Not BattleNpc");
     }
 
     // Entries without quest markers count only our kills; other players make that count unreliable.
@@ -595,7 +595,7 @@ internal sealed class CombatController : IDisposable
         }
     }
 
-    private void OnTerritoryChanged(uint territoryId) => Stop(_L("TerritoryChanged"));
+    private void OnTerritoryChanged(uint territoryId) => Stop("TerritoryChanged");
 
     private sealed class CurrentFight
     {

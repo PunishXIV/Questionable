@@ -28,135 +28,9 @@
     <!--<Value lang="ko">Questionable</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Dispose</Key>
-    <Value lang="en">Dispose</Value>
-    <Value lang="ja-jp">処分する</Value>
-    <Value lang="zh-cn">丢弃</Value>
-    <Value lang="zh-tw">丟棄</Value>
-    <!--<Value lang="ko">처분</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Starting combat</Key>
-    <Value lang="en">Starting combat</Value>
-    <Value lang="ja-jp">戦闘開始</Value>
-    <Value lang="zh-cn">战斗开始</Value>
-    <Value lang="zh-tw">戰鬥開始</Value>
-    <!--<Value lang="ko">전투 시작</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Targeted</Key>
-    <Value lang="en">Targeted</Value>
-    <Value lang="ja-jp">ターゲット済み</Value>
-    <Value lang="zh-cn">已选中目标</Value>
-    <Value lang="zh-tw">已選中目標</Value>
-    <!--<Value lang="ko">대상 지정됨</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Enmity</Key>
-    <Value lang="en">Enmity</Value>
-    <Value lang="ja-jp">ヘイト</Value>
-    <Value lang="zh-cn">仇恨</Value>
-    <Value lang="zh-tw">仇恨</Value>
-    <!--<Value lang="ko">적대감</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Not Fighting</Key>
-    <Value lang="en">Not Fighting</Value>
-    <Value lang="ja-jp">非戦闘中</Value>
-    <Value lang="zh-cn">非战斗状态</Value>
-    <Value lang="zh-tw">非戰鬥狀態</Value>
-    <!--<Value lang="ko">전투 중 아님</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Can't attack</Key>
-    <Value lang="en">Can't attack</Value>
-    <Value lang="ja-jp">攻撃不可</Value>
-    <Value lang="zh-cn">无法攻击</Value>
-    <Value lang="zh-tw">無法攻擊</Value>
-    <!--<Value lang="ko">공격할 수 없음</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Dead</Key>
-    <Value lang="en">Dead</Value>
-    <Value lang="ja-jp">死亡</Value>
-    <Value lang="zh-cn">死亡</Value>
-    <Value lang="zh-tw">死亡</Value>
-    <!--<Value lang="ko">죽음</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Untargetable</Key>
-    <Value lang="en">Untargetable</Value>
-    <Value lang="ja-jp">ターゲット不可</Value>
-    <Value lang="zh-cn">无法选中</Value>
-    <Value lang="zh-tw">無法選中</Value>
-    <!--<Value lang="ko">대상 지정 불가</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>FATE mob</Key>
-    <Value lang="en">FATE mob</Value>
-    <Value lang="ja-jp">FATEモブ</Value>
-    <Value lang="zh-cn">FATE 怪物</Value>
-    <Value lang="zh-tw">FATE 怪物</Value>
-    <!--<Value lang="ko">FATE 몹</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>FATE NPC</Key>
-    <Value lang="en">FATE NPC</Value>
-    <Value lang="ja-jp">FATE NPC</Value>
-    <Value lang="zh-cn">FATE NPC</Value>
-    <Value lang="zh-tw">FATE NPC</Value>
-    <!--<Value lang="ko">FATE NPC</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Not part of quest</Key>
-    <Value lang="en">Not part of quest</Value>
-    <Value lang="ja-jp">クエスト対象外</Value>
-    <Value lang="zh-cn">非任务目标</Value>
-    <Value lang="zh-tw">非任務目標</Value>
-    <!--<Value lang="ko">퀘스트 대상 아님</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Wrong BattleNpcKind</Key>
-    <Value lang="en">Wrong BattleNpcKind</Value>
-    <Value lang="ja-jp">BattleNpcKindが正しくありません</Value>
-    <Value lang="zh-cn">BattleNpcKind 错误</Value>
-    <Value lang="zh-tw">BattleNpcKind 錯誤</Value>
-    <!--<Value lang="ko">잘못된 BattleNpcKind</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>Not BattleNpc</Key>
-    <Value lang="en">Not BattleNpc</Value>
-    <Value lang="ja-jp">BattleNpcではありません</Value>
-    <Value lang="zh-cn">不是 BattleNpc</Value>
-    <Value lang="zh-tw">不是 BattleNpc</Value>
-    <!--<Value lang="ko">BattleNpc가 아닙니다</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CombatController.cs -->
-    <Key>TerritoryChanged</Key>
-    <Value lang="en">TerritoryChanged</Value>
-    <Value lang="ja-jp">エリア変更</Value>
-    <Value lang="zh-cn">区域已变更</Value>
-    <Value lang="zh-tw">區域已變更</Value>
-    <!--<Value lang="ko">영역 변경</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <Key>/qst config - opens the configuration window</Key>
-    <Value lang="en">/qst config - opens the configuration window</Value>
+    <Key>/qst config - opens the settings window</Key>
+    <Value lang="en">/qst config - opens the settings window</Value>
     <Value lang="ja-jp">/qst config - 設定ウィンドウを開く</Value>
     <Value lang="zh-cn">/qst config - 打开设置窗口</Value>
     <Value lang="zh-tw">/qst config - 開啟設定視窗</Value>
@@ -260,24 +134,6 @@
     <Value lang="zh-cn">/qst mountid - 输出当前坐骑信息</Value>
     <Value lang="zh-tw">/qst mountid - 輸出目前坐騎資訊</Value>
     <!--<Value lang="ko">/qst mountid - 현재 마운트 정보 출력</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <Key>Start command</Key>
-    <Value lang="en">Start command</Value>
-    <Value lang="ja-jp">開始コマンド</Value>
-    <Value lang="zh-cn">开始命令</Value>
-    <Value lang="zh-tw">開始命令</Value>
-    <!--<Value lang="ko">시작 커맨드</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <Key>Stop command</Key>
-    <Value lang="en">Stop command</Value>
-    <Value lang="ja-jp">停止コマンド</Value>
-    <Value lang="zh-cn">停止命令</Value>
-    <Value lang="zh-tw">停止命令</Value>
-    <!--<Value lang="ko">중지 커맨드</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
@@ -560,8 +416,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
-    <Key>No Scenario Tree</Key>
-    <Value lang="en">No Scenario Tree</Value>
+    <Key>The main scenario guide isn't available</Key>
+    <Value lang="en">The main scenario guide isn't available</Value>
     <Value lang="ja-jp">シナリオツリーはありません</Value>
     <Value lang="zh-cn">无剧情树</Value>
     <Value lang="zh-tw">無劇情樹</Value>
@@ -569,8 +425,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
-    <Key>Scenario Tree Data is null</Key>
-    <Value lang="en">Scenario Tree Data is null</Value>
+    <Key>Loading the main scenario guide</Key>
+    <Value lang="en">Loading the main scenario guide</Value>
     <Value lang="ja-jp">シナリオツリーデータが存在しません</Value>
     <Value lang="zh-cn">剧情树数据为空</Value>
     <Value lang="zh-tw">劇情樹資料為空</Value>
@@ -650,8 +506,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
-    <Key>No sequence 0 with steps</Key>
-    <Value lang="en">No sequence 0 with steps</Value>
+    <Key>The quest path has no first step</Key>
+    <Value lang="en">The quest path has no first step</Value>
     <Value lang="ja-jp">ステップのあるシーケンス0が存在しません</Value>
     <Value lang="zh-cn">步骤序列0不存在</Value>
     <Value lang="zh-tw">步驟序列0不存在</Value>
@@ -867,8 +723,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/OneTimeSetupWindow.cs -->
-    <Key>Finish Setup</Key>
-    <Value lang="en">Finish Setup</Value>
+    <Key>Finish setup</Key>
+    <Value lang="en">Finish setup</Value>
     <Value lang="ja-jp">セットアップを完了</Value>
     <Value lang="zh-cn">完成设置</Value>
     <Value lang="zh-tw">完成設定</Value>
@@ -914,8 +770,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <Key>Remove Finished Quests</Key>
-    <Value lang="en">Remove Finished Quests</Value>
+    <Key>Remove finished quests</Key>
+    <Value lang="en">Remove finished quests</Value>
     <Value lang="ja-jp">完了済みクエストを削除</Value>
     <Value lang="zh-cn">移除已完成的任务</Value>
     <Value lang="zh-tw">移除已完成的任務</Value>
@@ -930,8 +786,8 @@
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Clear All</Key>
-    <Value lang="en">Clear All</Value>
+    <Key>Clear all</Key>
+    <Value lang="en">Clear all</Value>
     <Value lang="ja-jp">すべてクリア</Value>
     <Value lang="zh-cn">清除全部</Value>
     <Value lang="zh-tw">清除全部</Value>
@@ -978,8 +834,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
-    <Key>Crystal Tower Raids</Key>
-    <Value lang="en">Crystal Tower Raids</Value>
+    <Key>Crystal Tower raids</Key>
+    <Value lang="en">Crystal Tower raids</Value>
     <Value lang="ja-jp">クリスタルタワーレイド</Value>
     <Value lang="zh-cn">水晶塔大型任务</Value>
     <Value lang="zh-tw">水晶塔團隊任務</Value>
@@ -1153,8 +1009,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
-    <Key>Open Configuration</Key>
-    <Value lang="en">Open Configuration</Value>
+    <Key>Open settings</Key>
+    <Value lang="en">Open settings</Value>
     <Value lang="ja-jp">設定を開く</Value>
     <Value lang="zh-cn">打开配置</Value>
     <Value lang="zh-tw">開啟設定</Value>
@@ -1226,8 +1082,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/UiUtils.cs -->
-    <Key>Available(?)</Key>
-    <Value lang="en">Available(?)</Value>
+    <Key>Probably available</Key>
+    <Value lang="en">Probably available</Value>
     <Value lang="ja-jp">受注可能(?)</Value>
     <Value lang="zh-cn">可接收(?)</Value>
     <Value lang="zh-tw">可接收(?)</Value>
@@ -1235,8 +1091,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/ConfigComponent.cs -->
-    <Key>Enabled (Default)</Key>
-    <Value lang="en">Enabled (Default)</Value>
+    <Key>Enabled (default)</Key>
+    <Value lang="en">Enabled (default)</Value>
     <Value lang="ja-jp">有効（デフォルト）</Value>
     <Value lang="zh-cn">已启用（默认）</Value>
     <Value lang="zh-tw">已啟用（預設）</Value>
@@ -1264,8 +1120,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/ConfigComponent.cs -->
-    <Key>Disabled (Default)</Key>
-    <Value lang="en">Disabled (Default)</Value>
+    <Key>Disabled (default)</Key>
+    <Value lang="en">Disabled (default)</Value>
     <Value lang="ja-jp">無効（デフォルト）</Value>
     <Value lang="zh-cn">已禁用（默认）</Value>
     <Value lang="zh-tw">已停用（預設）</Value>
@@ -1477,8 +1333,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Namazu: prefer Crafting job over Gatherer</Key>
-    <Value lang="en">Namazu: prefer Crafting job over Gatherer</Value>
+    <Key>Namazu: do them as a crafter, not a gatherer</Key>
+    <Value lang="en">Namazu: do them as a crafter, not a gatherer</Value>
     <Value lang="ja-jp">ナマズオ：採集より製作を優先</Value>
     <Value lang="zh-cn">鲶鱼精族：优先制作而非采集</Value>
     <Value lang="zh-tw">鯰魚精族：優先製作而非採集</Value>
@@ -1627,8 +1483,8 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
-    <Key>Enable All</Key>
-    <Value lang="en">Enable All</Value>
+    <Key>Enable all</Key>
+    <Value lang="en">Enable all</Value>
     <Value lang="ja-jp">すべて有効にする</Value>
     <Value lang="zh-cn">全部启用</Value>
     <Value lang="zh-tw">全部啟用</Value>
@@ -1699,8 +1555,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Preferred Combat Job</Key>
-    <Value lang="en">Preferred Combat Job</Value>
+    <Key>Preferred combat job</Key>
+    <Value lang="en">Preferred combat job</Value>
     <Value lang="ja-jp">優先する戦闘ジョブ</Value>
     <Value lang="zh-cn">首选战斗职业</Value>
     <Value lang="zh-tw">首選戰鬥職業</Value>
@@ -1708,8 +1564,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Preferred Crafting Job</Key>
-    <Value lang="en">Preferred Crafting Job</Value>
+    <Key>Preferred crafting job</Key>
+    <Value lang="en">Preferred crafting job</Value>
     <Value lang="ja-jp">優先するクラフタージョブ</Value>
     <Value lang="zh-cn">首选制作职业</Value>
     <Value lang="zh-tw">首選製作職業</Value>
@@ -1717,8 +1573,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Preferred Gathering Job</Key>
-    <Value lang="en">Preferred Gathering Job</Value>
+    <Key>Preferred gathering job</Key>
+    <Value lang="en">Preferred gathering job</Value>
     <Value lang="ja-jp">優先するギャザラージョブ</Value>
     <Value lang="zh-cn">首选采集职业</Value>
     <Value lang="zh-tw">首選採集職業</Value>
@@ -1913,8 +1769,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Open Config</Key>
-    <Value lang="en">Open Config</Value>
+    <Key>Open settings</Key>
+    <Value lang="en">Open settings</Value>
     <Value lang="ja-jp">設定を開く</Value>
     <Value lang="zh-cn">打开配置</Value>
     <Value lang="zh-tw">開啟設定</Value>
@@ -1922,8 +1778,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Open Website</Key>
-    <Value lang="en">Open Website</Value>
+    <Key>Open website</Key>
+    <Value lang="en">Open website</Value>
     <Value lang="ja-jp">ウェブサイトを開く</Value>
     <Value lang="zh-cn">打开网站</Value>
     <Value lang="zh-tw">開啟網站</Value>
@@ -2002,8 +1858,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Could not enable recommended options on {0}. Open the plugin config to enable them.</Key>
-    <Value lang="en">Could not enable recommended options on {0}. Open the plugin config to enable them.</Value>
+    <Key>Could not enable recommended options on {0}. Open the plugin's settings to enable them.</Key>
+    <Value lang="en">Could not enable recommended options on {0}. Open the plugin's settings to enable them.</Value>
     <Value lang="ja-jp">{0} の推奨オプションを有効にできませんでした。プラグイン設定を開いて手動で有効にしてください。</Value>
     <Value lang="zh-tw">無法在 {0} 上啟用建議選項。請開啟外掛設定後手動啟用。</Value>
   </Entry>
@@ -2433,8 +2289,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <Key>Show only Available Quests</Key>
-    <Value lang="en">Show only Available Quests</Value>
+    <Key>Show only available quests</Key>
+    <Value lang="en">Show only available quests</Value>
     <Value lang="ja-jp">受注可能なクエストのみ表示</Value>
     <Value lang="zh-cn">仅显示可接受任务</Value>
     <Value lang="zh-tw">僅顯示可接受任務</Value>
@@ -2442,8 +2298,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <Key>Hide Quests Without Path</Key>
-    <Value lang="en">Hide Quests Without Path</Value>
+    <Key>Hide quests without a path</Key>
+    <Value lang="en">Hide quests without a path</Value>
     <Value lang="ja-jp">パスのないクエストを非表示</Value>
     <Value lang="zh-cn">隐藏无路径的任务</Value>
     <Value lang="zh-tw">隱藏無路徑的任務</Value>
@@ -2569,8 +2425,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>In Combat</Key>
-    <Value lang="en">In Combat</Value>
+    <Key>In combat</Key>
+    <Value lang="en">In combat</Value>
     <Value lang="ja-jp">戦闘中</Value>
     <Value lang="zh-cn">战斗中</Value>
     <Value lang="zh-tw">戰鬥中</Value>
@@ -2596,8 +2452,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>Simulated Quest: </Key>
-    <Value lang="en">Simulated Quest: </Value>
+    <Key>Simulated quest: </Key>
+    <Value lang="en">Simulated quest: </Value>
     <Value lang="ja-jp">シミュレートクエスト：</Value>
     <Value lang="zh-cn">模拟任务：</Value>
     <Value lang="zh-tw">模擬任務：</Value>
@@ -2623,8 +2479,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>Stop Conditions:</Key>
-    <Value lang="en">Stop Conditions:</Value>
+    <Key>Stop conditions:</Key>
+    <Value lang="en">Stop conditions:</Value>
     <Value lang="ja-jp">停止条件：</Value>
     <Value lang="zh-cn">停止条件：</Value>
     <Value lang="zh-tw">停止條件：</Value>
@@ -2677,8 +2533,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>Next Quest: </Key>
-    <Value lang="en">Next Quest: </Value>
+    <Key>Next quest: </Key>
+    <Value lang="en">Next quest: </Value>
     <Value lang="ja-jp">次のクエスト：</Value>
     <Value lang="zh-cn">下一个任务：</Value>
     <Value lang="zh-tw">下一個任務：</Value>
@@ -2704,39 +2560,12 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>UI start</Key>
-    <Value lang="en">UI start</Value>
-    <Value lang="ja-jp">UI開始</Value>
-    <Value lang="zh-cn">UI 开始</Value>
-    <Value lang="zh-tw">UI 開始</Value>
-    <!--<Value lang="ko">UI 시작</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>UI step</Key>
-    <Value lang="en">UI step</Value>
-    <Value lang="ja-jp">UIステップ</Value>
-    <Value lang="zh-cn">UI 步骤</Value>
-    <Value lang="zh-tw">UI 步驟</Value>
-    <!--<Value lang="ko">UI 단계</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>Execute next step and then stop.</Key>
-    <Value lang="en">Execute next step and then stop.</Value>
+    <Key>Do the next step, then stop.</Key>
+    <Value lang="en">Do the next step, then stop.</Value>
     <Value lang="ja-jp">次のステップを実行して停止。</Value>
     <Value lang="zh-cn">执行下一步然后停止。</Value>
     <Value lang="zh-tw">執行下一步然後停止。</Value>
     <!--<Value lang="ko">다음 단계를 실행한 후 중지합니다.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>UI stop</Key>
-    <Value lang="en">UI stop</Value>
-    <Value lang="ja-jp">UI停止</Value>
-    <Value lang="zh-cn">UI 停止</Value>
-    <Value lang="zh-tw">UI 停止</Value>
-    <!--<Value lang="ko">UI 중지</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
@@ -2857,8 +2686,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
-    <Key>Hard Mode Primals</Key>
-    <Value lang="en">Hard Mode Primals</Value>
+    <Key>Hard mode primals</Key>
+    <Value lang="en">Hard mode primals</Value>
     <Value lang="ja-jp">真蛮神討滅戦</Value>
     <Value lang="zh-cn">真蛮神讨伐歼灭战</Value>
     <Value lang="zh-tw">真蠻神殲滅戰</Value>
@@ -2992,8 +2821,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
-    <Key>To Target</Key>
-    <Value lang="en">To Target</Value>
+    <Key>To target</Key>
+    <Value lang="en">To target</Value>
     <Value lang="ja-jp">ターゲットへ</Value>
     <Value lang="zh-cn">前往目标</Value>
     <Value lang="zh-tw">前往目標</Value>
@@ -3010,8 +2839,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
-    <Key>Show all Quests starting with your current target.</Key>
-    <Value lang="en">Show all Quests starting with your current target.</Value>
+    <Key>Show all quests starting with your current target.</Key>
+    <Value lang="en">Show all quests starting with your current target.</Value>
     <Value lang="ja-jp">現在のターゲットから始まるすべてのクエストを表示。</Value>
     <Value lang="zh-cn">显示从当前选中目标开始的所有任务。</Value>
     <Value lang="zh-tw">顯示從目前選中目標開始的所有任務。</Value>
@@ -3019,8 +2848,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
-    <Key>Show all (currently visible) Quests starting in this zone.</Key>
-    <Value lang="en">Show all (currently visible) Quests starting in this zone.</Value>
+    <Key>Show all (currently visible) quests starting in this zone.</Key>
+    <Value lang="en">Show all (currently visible) quests starting in this zone.</Value>
     <Value lang="ja-jp">このゾーンで始まる（現在表示中の）すべてのクエストを表示。</Value>
     <Value lang="zh-cn">显示在此区域开始的所有（当前可见的）任务。</Value>
     <Value lang="zh-tw">顯示在此區域開始的所有（目前可見的）任務。</Value>
@@ -3127,8 +2956,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
-    <Key>Unknown Quest ({0})</Key>
-    <Value lang="en">Unknown Quest ({0})</Value>
+    <Key>Unknown quest ({0})</Key>
+    <Value lang="en">Unknown quest ({0})</Value>
     <Value lang="ja-jp">不明なクエスト ({0})</Value>
     <Value lang="zh-cn">未知任务 ({0})</Value>
     <Value lang="zh-tw">未知任務 ({0})</Value>
@@ -3145,8 +2974,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
-    <Key>Blocked by (if all completed):</Key>
-    <Value lang="en">Blocked by (if all completed):</Value>
+    <Key>Blocked once all of these are completed:</Key>
+    <Value lang="en">Blocked once all of these are completed:</Value>
     <Value lang="ja-jp">ブロック（すべて完了時）：</Value>
     <Value lang="zh-cn">被阻止（全部已完成）：</Value>
     <Value lang="zh-tw">被阻止（全部已完成）：</Value>
@@ -3154,8 +2983,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
-    <Key>Blocked by (if at least completed):</Key>
-    <Value lang="en">Blocked by (if at least completed):</Value>
+    <Key>Blocked once any of these is completed:</Key>
+    <Value lang="en">Blocked once any of these is completed:</Value>
     <Value lang="ja-jp">ブロック（少なくとも完了時）：</Value>
     <Value lang="zh-cn">被阻止（至少已完成）：</Value>
     <Value lang="zh-tw">被阻止（至少已完成）：</Value>
@@ -3163,8 +2992,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
-    <Key>Blocked by (if completed):</Key>
-    <Value lang="en">Blocked by (if completed):</Value>
+    <Key>Blocked once this is completed:</Key>
+    <Value lang="en">Blocked once this is completed:</Value>
     <Value lang="ja-jp">ブロック（完了時）：</Value>
     <Value lang="zh-cn">被阻止（已完成）：</Value>
     <Value lang="zh-tw">被阻止（已完成）：</Value>
@@ -3199,8 +3028,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
-    <Key>Item Rewards:</Key>
-    <Value lang="en">Item Rewards:</Value>
+    <Key>Item rewards:</Key>
+    <Value lang="en">Item rewards:</Value>
     <Value lang="ja-jp">アイテム報酬：</Value>
     <Value lang="zh-cn">道具奖励：</Value>
     <Value lang="zh-tw">道具獎勵：</Value>
@@ -3217,8 +3046,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Rebuild Navmesh</Key>
-    <Value lang="en">Rebuild Navmesh</Value>
+    <Key>Rebuild navmesh</Key>
+    <Value lang="en">Rebuild navmesh</Value>
     <Value lang="ja-jp">ナビメッシュを再構築</Value>
     <Value lang="zh-cn">重建导航网格</Value>
     <Value lang="zh-tw">重建導航網格</Value>
@@ -3244,8 +3073,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Reload Data</Key>
-    <Value lang="en">Reload Data</Value>
+    <Key>Reload data</Key>
+    <Value lang="en">Reload data</Value>
     <Value lang="ja-jp">データを再読み込み</Value>
     <Value lang="zh-cn">重新加载数据</Value>
     <Value lang="zh-tw">重新載入資料</Value>
@@ -3262,8 +3091,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/Utils/QuestSelector.cs -->
-    <Key>Add Quest...</Key>
-    <Value lang="en">Add Quest...</Value>
+    <Key>Add quest...</Key>
+    <Value lang="en">Add quest...</Value>
     <Value lang="ja-jp">クエストを追加...</Value>
     <Value lang="zh-cn">添加任务...</Value>
     <Value lang="zh-tw">新增任務...</Value>
@@ -3683,15 +3512,6 @@
     <Value lang="ko">Stylist가 설치되어 있지 않습니다.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Utils/ImGuiComponentsLocal.cs -->
-    <Key>QuestNotice</Key>
-    <Value lang="en">QuestNotice</Value>
-    <Value lang="ja-jp">クエスト通知</Value>
-    <Value lang="zh-cn">任务通知</Value>
-    <Value lang="zh-tw">任務通知</Value>
-    <!--<Value lang="ko">퀘스트 알림</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
     <Key>Filter quest validation results</Key>
     <Value lang="en">Filter quest validation results</Value>
@@ -3963,8 +3783,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
-    <Key>Remove from list after complete</Key>
-    <Value lang="en">Remove from list after complete</Value>
+    <Key>Remove from the list once completed</Key>
+    <Value lang="en">Remove from the list once completed</Value>
     <Value lang="ja-jp">完了後にリストから削除</Value>
     <Value lang="zh-cn">完成后从列表移除</Value>
     <Value lang="zh-tw">完成後從列表移除</Value>
@@ -4217,8 +4037,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Quest validation: {0} errors, {1} infos</Key>
-    <Value lang="en">Quest validation: {0} errors, {1} infos</Value>
+    <Key>Quest validation: {0} errors, {1} notes</Key>
+    <Value lang="en">Quest validation: {0} errors, {1} notes</Value>
     <Value lang="ja-jp">クエスト検証: エラー {0} 件、情報 {1} 件</Value>
     <Value lang="zh-cn">任务验证: {0} 个错误，{1} 个信息</Value>
     <Value lang="zh-tw">任務驗證: {0} 個錯誤，{1} 個資訊</Value>
@@ -4226,8 +4046,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
-    <Key>Remaining Tasks</Key>
-    <Value lang="en">Remaining Tasks</Value>
+    <Key>Remaining tasks</Key>
+    <Value lang="en">Remaining tasks</Value>
     <Value lang="ja-jp">残りのタスク</Value>
     <Value lang="zh-cn">剩余任务</Value>
     <Value lang="zh-tw">剩餘任務</Value>
@@ -4325,8 +4145,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <Key>Add to Priority Quests as Accept Only</Key>
-    <Value lang="en">Add to Priority Quests as Accept Only</Value>
+    <Key>Add to Priority Quests as accept only</Key>
+    <Value lang="en">Add to Priority Quests as accept only</Value>
     <Value lang="ja-jp">受注のみとして優先クエストに追加</Value>
     <Value lang="zh-cn">添加到优先队列 (仅接取)</Value>
     <Value lang="zh-tw">新增到優先佇列 (僅接取)</Value>
@@ -4334,8 +4154,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <Key>Add all to Priority Quests as Accept Only</Key>
-    <Value lang="en">Add all to Priority Quests as Accept Only</Value>
+    <Key>Add all to Priority Quests as accept only</Key>
+    <Value lang="en">Add all to Priority Quests as accept only</Value>
     <Value lang="ja-jp">すべてを受注のみとして優先クエストに追加</Value>
     <Value lang="zh-cn">全部添加到优先队列 (仅接取)</Value>
     <Value lang="zh-tw">全部新增到優先佇列 (僅接取)</Value>
@@ -4442,8 +4262,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Interactions/Interact.cs -->
-    <Key>Quest {0} should be continued as {1}, but you do not have a gearset for that job.</Key>
-    <Value lang="en">Quest {0} should be continued as {1}, but you do not have a gearset for that job.</Value>
+    <Key>Quest {0} should be continued as {1}, but you don't have a gear set for that job.</Key>
+    <Value lang="en">Quest {0} should be continued as {1}, but you don't have a gear set for that job.</Value>
     <Value lang="ja-jp">クエスト {0} は {1} として続行する必要がありますが、そのジョブのギアセットがありません。</Value>
     <Value lang="zh-cn">任务 {0} 应该继续作为 {1}，但你没有该职业的装备套装。</Value>
     <Value lang="zh-tw">任務 {0} 應該繼續作為 {1}，但你沒有該職業的裝備套裝。</Value>
@@ -4503,24 +4323,24 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Clean Up</Key>
-    <Value lang="en">Clean Up</Value>
+    <Key>Clean up</Key>
+    <Value lang="en">Clean up</Value>
     <Value lang="ja-jp">クリーンアップ</Value>
     <Value lang="zh-cn">清理</Value>
     <Value lang="zh-tw">清理</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <Key>Show only Blue Quests</Key>
-    <Value lang="en">Show only Blue Quests</Value>
+    <Key>Show only feature quests</Key>
+    <Value lang="en">Show only feature quests</Value>
     <Value lang="ja-jp">青い開放クエストのみ表示</Value>
     <Value lang="zh-cn">仅显示蓝色任务</Value>
     <Value lang="zh-tw">僅顯示藍色任務</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <Key>Hide Completed Quests</Key>
-    <Value lang="en">Hide Completed Quests</Value>
+    <Key>Hide completed quests</Key>
+    <Value lang="en">Hide completed quests</Value>
     <Value lang="ja-jp">完了済みクエストを非表示</Value>
     <Value lang="zh-cn">隐藏已完成任务</Value>
     <Value lang="zh-tw">隱藏已完成任務</Value>
@@ -4528,16 +4348,16 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <Key>Hide Unobtainable Quests</Key>
-    <Value lang="en">Hide Unobtainable Quests</Value>
+    <Key>Hide unobtainable quests</Key>
+    <Value lang="en">Hide unobtainable quests</Value>
     <Value lang="ja-jp">取得不可能なクエストを非表示</Value>
     <Value lang="zh-cn">隐藏不可接取任务</Value>
     <Value lang="zh-tw">隱藏不可接取任務</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <Key>Hide Repeatable Quests</Key>
-    <Value lang="en">Hide Repeatable Quests</Value>
+    <Key>Hide repeatable quests</Key>
+    <Value lang="en">Hide repeatable quests</Value>
     <Value lang="ja-jp">繰り返し可能なクエストを非表示</Value>
     <Value lang="zh-cn">隐藏可重复任务</Value>
     <Value lang="zh-tw">隱藏可重複任務</Value>
@@ -4613,7 +4433,7 @@
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Interactions/Interact.cs -->
     <Key>_JobGearsetError</Key>
-    <Value lang="en">QST tried to find a gearset for a job like {0} to continue {1}, but no matching gearset was found. It may be fixed by manually updating the current gearset in Character, or equipping a missing job stone. Please report this error in Discord</Value>
+    <Value lang="en">QST tried to find a gear set for a job like {0} to continue {1}, but no matching gear set was found. Updating the current gear set in the Character window, or equipping a missing soul crystal, may fix it. Please report this error on Discord.</Value>
     <Value lang="zh-cn">QST 试图寻找适合 {0} 的装备套装以继续执行 {1}，但未找到匹配的套装。可尝试在角色面板中手动更新当前套装，或装备缺失的职业水晶来解决此问题。请在 Discord 中报告此错误。</Value>
     <Value lang="zh-tw">QST 試圖尋找適合 {0} 的裝備套裝以繼續執行 {1}，但未找到符合的套裝。可嘗試在角色面板中手動更新目前套裝，或裝備缺失的職業水晶來解決此問題。請在 Discord 中報告此錯誤。</Value>
   </Entry>
@@ -4626,8 +4446,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>'My Feisty Little Chocobo' lets your companion chocobo fight with you in the overworld. When ticked, it is done automatically after 'My Little Chocobo'.</Key>
-    <Value lang="en">'My Feisty Little Chocobo' lets your companion chocobo fight with you in the overworld. When ticked, it is done automatically after 'My Little Chocobo'.</Value>
+    <Key>'My Feisty Little Chocobo' lets your chocobo companion fight with you in the field. When ticked, it is done automatically after 'My Little Chocobo'.</Key>
+    <Value lang="en">'My Feisty Little Chocobo' lets your chocobo companion fight with you in the field. When ticked, it is done automatically after 'My Little Chocobo'.</Value>
     <Value lang="zh-cn">「可靠的搭档」任务可让搭档陆行鸟在野外与你一起战斗。勾选后，会在完成「我的专属陆行鸟」后自动完成该任务。</Value>
     <Value lang="zh-tw">「可靠的搭檔」任務可讓搭檔陸行鳥在野外與你一起戰鬥。勾選後，會在完成「我的專屬陸行鳥」後自動完成該任務。</Value>
   </Entry>
@@ -5437,8 +5257,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
-    <Key>Run ended: travelling first.</Key>
-    <Value lang="en">Run ended: travelling first.</Value>
+    <Key>Run ended: traveling first.</Key>
+    <Value lang="en">Run ended: traveling first.</Value>
     <Value lang="ja-jp">実行終了：先に移動します。</Value>
     <Value lang="zh-cn">运行结束：先进行移动。</Value>
     <Value lang="zh-tw">執行結束：先進行移動。</Value>
@@ -5485,16 +5305,16 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
-    <Key>Stopped: no path for '{0}' sequence {1} step {2}. Try Reload Data or report it with Stuck?</Key>
-    <Value lang="en">Stopped: no path for '{0}' sequence {1} step {2}. Try Reload Data or report it with Stuck?</Value>
+    <Key>Stopped: no path for '{0}' sequence {1} step {2}. Try 'Reload data' or report it with Stuck?</Key>
+    <Value lang="en">Stopped: no path for '{0}' sequence {1} step {2}. Try 'Reload data' or report it with Stuck?</Value>
     <Value lang="ja-jp">停止：「{0}」のシーケンス{1}・手順{2}に経路がありません。「データ再読込」を試すか「スタックしていますか？」で報告してください。</Value>
     <Value lang="zh-cn">已停止：“{0}”的序列 {1} 步骤 {2} 没有路径。请尝试重新加载数据，或通过“卡住了？”报告。</Value>
     <Value lang="zh-tw">已停止：「{0}」的序列 {1} 步驟 {2} 沒有路徑。請嘗試重新載入資料，或透過「卡住了？」回報。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
-    <Key>Stopped: no path for '{0}' sequence {1}. Try Reload Data or report it with Stuck?</Key>
-    <Value lang="en">Stopped: no path for '{0}' sequence {1}. Try Reload Data or report it with Stuck?</Value>
+    <Key>Stopped: no path for '{0}' sequence {1}. Try 'Reload data' or report it with Stuck?</Key>
+    <Value lang="en">Stopped: no path for '{0}' sequence {1}. Try 'Reload data' or report it with Stuck?</Value>
     <Value lang="ja-jp">停止：「{0}」のシーケンス{1}に経路がありません。「データ再読込」を試すか「スタックしていますか？」で報告してください。</Value>
     <Value lang="zh-cn">已停止：“{0}”的序列 {1} 没有路径。请尝试重新加载数据，或通过“卡住了？”报告。</Value>
     <Value lang="zh-tw">已停止：「{0}」的序列 {1} 沒有路徑。請嘗試重新載入資料，或透過「卡住了？」回報。</Value>
@@ -5533,8 +5353,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
-    <Key>Stopping before travelling to another zone, as requested.</Key>
-    <Value lang="en">Stopping before travelling to another zone, as requested.</Value>
+    <Key>Stopping before traveling to another zone, as requested.</Key>
+    <Value lang="en">Stopping before traveling to another zone, as requested.</Value>
     <Value lang="ja-jp">指定どおりエリア移動前に停止します。</Value>
     <Value lang="zh-cn">按要求在前往其他区域前停止。</Value>
     <Value lang="zh-tw">按要求在前往其他區域前停止。</Value>
@@ -5549,8 +5369,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
-    <Key>Try Reload Data, or report it with Stuck?</Key>
-    <Value lang="en">Try Reload Data, or report it with Stuck?</Value>
+    <Key>Try 'Reload data', or report it with Stuck?</Key>
+    <Value lang="en">Try 'Reload data', or report it with Stuck?</Value>
     <Value lang="ja-jp">「データ再読込」を試すか「スタックしていますか？」で報告してください。</Value>
     <Value lang="zh-cn">请尝试重新加载数据，或通过“卡住了？”报告。</Value>
     <Value lang="zh-tw">請嘗試重新載入資料，或透過「卡住了？」回報。</Value>
@@ -5573,8 +5393,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Common/Mail.cs -->
-    <Key>Some reward mail is still waiting, maybe because your bags are full. Trying again in 30 minutes.</Key>
-    <Value lang="en">Some reward mail is still waiting, maybe because your bags are full. Trying again in 30 minutes.</Value>
+    <Key>Some reward mail is still waiting, maybe because your inventory is full. Trying again in 30 minutes.</Key>
+    <Value lang="en">Some reward mail is still waiting, maybe because your inventory is full. Trying again in 30 minutes.</Value>
     <Value lang="ja-jp">未受領の報酬メールがあります。所持品が満杯の可能性があります。30分後に再試行します。</Value>
     <Value lang="zh-cn">仍有奖励邮件未领取，可能是背包已满。30 分钟后重试。</Value>
     <Value lang="zh-tw">仍有獎勵郵件未領取，可能是背包已滿。30 分鐘後重試。</Value>
@@ -5661,8 +5481,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Shared/JobGear.cs -->
-    <Key>Your level {0} job gear is ready to collect, but your bags need {1} free slots. Trying again in 30 minutes.</Key>
-    <Value lang="en">Your level {0} job gear is ready to collect, but your bags need {1} free slots. Trying again in 30 minutes.</Value>
+    <Key>Your level {0} job gear is ready to collect, but you need {1} free inventory slots. Trying again in 30 minutes.</Key>
+    <Value lang="en">Your level {0} job gear is ready to collect, but you need {1} free inventory slots. Trying again in 30 minutes.</Value>
     <Value lang="ja-jp">レベル{0}のジョブ専用装備を受領できますが、所持品に空き{1}枠が必要です。30分後に再試行します。</Value>
     <Value lang="zh-cn">可以领取 {0} 级职业装备，但背包需要 {1} 个空位。30 分钟后重试。</Value>
     <Value lang="zh-tw">可以領取 {0} 級職業裝備，但背包需要 {1} 個空位。30 分鐘後重試。</Value>
@@ -5685,8 +5505,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Shared/SummonChocobo.cs -->
-    <Key>You're out of Gysahl Greens, so your chocobo wasn't called. Buy some to keep it out.</Key>
-    <Value lang="en">You're out of Gysahl Greens, so your chocobo wasn't called. Buy some to keep it out.</Value>
+    <Key>You're out of Gysahl Greens, so your chocobo wasn't summoned. Buy some to keep it out.</Key>
+    <Value lang="en">You're out of Gysahl Greens, so your chocobo wasn't summoned. Buy some to keep it out.</Value>
     <Value lang="ja-jp">ギサールの野菜がないためチョコボを呼び出せませんでした。呼び出すには補充してください。</Value>
     <Value lang="zh-cn">基萨尔野菜已用完，未召唤陆行鸟。请购买一些以继续召唤。</Value>
     <Value lang="zh-tw">基薩爾野菜已用完，未召喚陸行鳥。請購買一些以繼續召喚。</Value>
@@ -6186,9 +6006,9 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
-    <Key>This should have happened as part of the quest "Close To Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.
+    <Key>This should have happened as part of the quest "Close to Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.
 </Key>
-    <Value lang="en">This should have happened as part of the quest "Close To Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.
+    <Value lang="en">This should have happened as part of the quest "Close to Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.
 </Value>
     <Value lang="ja-jp">グリダニア開始なら「冒険者への手引き」、他都市開始なら「砂都／海都の使者」で開放されているはずです。
 </Value>
@@ -6471,8 +6291,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
-    <Key>When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Stops after 5 runs that neither raise your item level nor earn tomestones toward an accessory.</Key>
-    <Value lang="en">When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Stops after 5 runs that neither raise your item level nor earn tomestones toward an accessory.</Value>
+    <Key>When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Only gives up after 5 runs in a row that neither raise your item level nor earn tomestones toward an accessory.</Key>
+    <Value lang="en">When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Only gives up after 5 runs in a row that neither raise your item level nor earn tomestones toward an accessory.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -6580,8 +6400,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Calls your chocobo in the open world with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs.</Key>
-    <Value lang="en">Calls your chocobo in the open world with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs.</Value>
+    <Key>Summons your chocobo companion in the field with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs.</Key>
+    <Value lang="en">Summons your chocobo companion in the field with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs.</Value>
     <Value lang="ja-jp">フィールドでバディがいない、または残り5分未満ならギサールの野菜で呼び出します（「頼れる相棒」が必要）。野菜がなくなるとKnightshopperで99個補充します。Questionable実行中はPandora's Boxの自動召喚を一時停止します。</Value>
     <Value lang="zh-cn">野外陆行鸟未召唤或剩余时间不足5分钟时，使用基萨尔野菜召唤（需完成“可靠的搭档”）。用尽后 Knightshopper 会购买99个。Questionable 运行时暂停 Pandora's Box 自动召唤。</Value>
     <Value lang="zh-tw">野外陸行鳥未召喚或剩餘時間不足5分鐘時，使用基薩爾野菜召喚（需完成「可靠的搭檔」）。用盡後 Knightshopper 會購買99個。Questionable 執行時暫停 Pandora's Box 自動召喚。</Value>
@@ -6908,13 +6728,13 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Send retainers and submarines out</Key>
-    <Value lang="en">Send retainers and submarines out</Value>
+    <Key>Send retainers and submersibles out</Key>
+    <Value lang="en">Send retainers and submersibles out</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Between quests, when a retainer or submarine is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Key>
-    <Value lang="en">Between quests, when a retainer or submarine is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Value>
+    <Key>Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Key>
+    <Value lang="en">Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs, ../Questionable/Windows/ConfigWindow.cs -->
@@ -8030,8 +7850,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
-    <Key>XP</Key>
-    <Value lang="en">XP</Value>
+    <Key>EXP</Key>
+    <Value lang="en">EXP</Value>
     <Value lang="ja-jp">経験値</Value>
     <Value lang="zh-cn">经验值</Value>
     <Value lang="zh-tw">經驗值</Value>
@@ -8384,8 +8204,8 @@ Right click: Show its quest graph.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>Next MSQ '{0}' needs level {1}</Key>
-    <Value lang="en">Next MSQ '{0}' needs level {1}</Value>
+    <Key>Next story quest '{0}' needs level {1}</Key>
+    <Value lang="en">Next story quest '{0}' needs level {1}</Value>
     <Value lang="ja-jp">次のメインクエスト「{0}」にはレベル{1}が必要</Value>
     <Value lang="zh-cn">下一个主线任务“{0}”需要等级{1}</Value>
     <Value lang="zh-tw">下一個主線任務「{0}」需要等級{1}</Value>
@@ -8617,8 +8437,8 @@ Right click: Open in your default .json text editor</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
-    <Key>Change All to Normal Priority</Key>
-    <Value lang="en">Change All to Normal Priority</Value>
+    <Key>Change all to normal priority</Key>
+    <Value lang="en">Change all to normal priority</Value>
     <Value lang="ja-jp">すべて通常優先度に変更</Value>
     <Value lang="zh-cn">全部改为普通优先级</Value>
     <Value lang="zh-tw">全部改為一般優先順序</Value>
@@ -8665,16 +8485,16 @@ Right click: Open in your default .json text editor</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
-    <Key>Order: this list, then class, primal and raid quests, then quests you track in the To-Do list, then the story.</Key>
-    <Value lang="en">Order: this list, then class, primal and raid quests, then quests you track in the To-Do list, then the story.</Value>
+    <Key>Order: this list, then class, primal and raid quests, then quests you track in the Duty List, then the story.</Key>
+    <Value lang="en">Order: this list, then class, primal and raid quests, then quests you track in the Duty List, then the story.</Value>
     <Value lang="ja-jp">実行順：このリスト、クラス・蛮神・レイドクエスト、To-Doリストで追跡中のクエスト、メインストーリー。</Value>
     <Value lang="zh-cn">执行顺序：此列表，然后是职业、蛮神及大型任务相关任务，再是任务追踪列表中的任务，最后是主线。</Value>
     <Value lang="zh-tw">執行順序：此清單，然後是職業、蠻神及大型任務相關任務，再是任務追蹤清單中的任務，最後是主線。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
-    <Key>Quests still to do. Synced quests (most society dailies) scale XP to your level.</Key>
-    <Value lang="en">Quests still to do. Synced quests (most society dailies) scale XP to your level.</Value>
+    <Key>Quests still to do. Synced quests (most society dailies) scale EXP to your level.</Key>
+    <Value lang="en">Quests still to do. Synced quests (most society dailies) scale EXP to your level.</Value>
     <Value lang="ja-jp">未完了のクエストです。レベルシンク対象（友好部族デイリーの大半）は、レベルに応じて経験値が変わります。</Value>
     <Value lang="zh-cn">尚未完成的任务。等级同步任务（多数部族每日任务）的经验值会随你的等级调整。</Value>
     <Value lang="zh-tw">尚未完成的任務。等級同步任務（多數部族每日任務）的經驗值會隨你的等級調整。</Value>
@@ -8721,8 +8541,8 @@ Right click: Open in your default .json text editor</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
-    <Key>Total: {0} XP, {1} gil</Key>
-    <Value lang="en">Total: {0} XP, {1} gil</Value>
+    <Key>Total: {0} EXP, {1} gil</Key>
+    <Value lang="en">Total: {0} EXP, {1} gil</Value>
     <Value lang="ja-jp">合計：経験値{0}、{1}ギル</Value>
     <Value lang="zh-cn">合计：{0}经验值，{1}金币</Value>
     <Value lang="zh-tw">合計：{0}經驗值，{1}金幣</Value>
@@ -8795,8 +8615,8 @@ Right click: Copy list of completed quests to clipboard</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Opens reward items in your bags now (mounts, minions, orchestrion rolls...), except blacklisted ones. Same as /qst redeem.</Key>
-    <Value lang="en">Opens reward items in your bags now (mounts, minions, orchestrion rolls...), except blacklisted ones. Same as /qst redeem.</Value>
+    <Key>Opens reward items in your inventory now (mounts, minions, orchestrion rolls...), except ones set to never open. Same as /qst redeem.</Key>
+    <Value lang="en">Opens reward items in your inventory now (mounts, minions, orchestrion rolls...), except ones set to never open. Same as /qst redeem.</Value>
     <Value lang="ja-jp">所持品内の報酬アイテム（マウント、ミニオン、オーケストリオン譜など）を今すぐ使用します。除外リストのアイテムは対象外です。/qst redeemと同じです。</Value>
     <Value lang="zh-cn">立即使用背包中的奖励物品（坐骑、宠物、管弦乐琴乐谱等），黑名单中的物品除外。等同于 /qst redeem。</Value>
     <Value lang="zh-tw">立即使用背包中的獎勵物品（坐騎、寵物、管弦樂琴樂譜等），黑名單中的物品除外。等同於 /qst redeem。</Value>
@@ -8819,8 +8639,8 @@ Right click: Copy list of completed quests to clipboard</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Redeem Reward Items</Key>
-    <Value lang="en">Redeem Reward Items</Value>
+    <Key>Redeem reward items</Key>
+    <Value lang="en">Redeem reward items</Value>
     <Value lang="ja-jp">報酬アイテムを使用</Value>
     <Value lang="zh-cn">使用奖励物品</Value>
     <Value lang="zh-tw">使用獎勵物品</Value>
@@ -9096,8 +8916,8 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
-    <Key>Target Tools</Key>
-    <Value lang="en">Target Tools</Value>
+    <Key>Target tools</Key>
+    <Value lang="en">Target tools</Value>
     <Value lang="ja-jp">ターゲットツール</Value>
     <Value lang="zh-cn">目标工具</Value>
     <Value lang="zh-tw">目標工具</Value>
@@ -9152,8 +8972,8 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
-    <Key>/qst stop, or a plugin such as CBT or an SND script. The Stop button never alerts.</Key>
-    <Value lang="en">/qst stop, or a plugin such as CBT or an SND script. The Stop button never alerts.</Value>
+    <Key>/qst stop, or a plugin such as Automaton or a Something Need Doing (SND) script. The Stop button never alerts.</Key>
+    <Value lang="en">/qst stop, or a plugin such as Automaton or a Something Need Doing (SND) script. The Stop button never alerts.</Value>
     <Value lang="ja-jp">/qst stop、またはCBTやSNDスクリプトなどのプラグインによる停止。停止ボタンでは通知しません。</Value>
     <Value lang="zh-cn">/qst stop，或 CBT、SND 脚本等插件发起的停止。停止按钮从不提醒。</Value>
     <Value lang="zh-tw">/qst stop，或 CBT、SND 腳本等外掛發起的停止。停止按鈕從不提醒。</Value>
@@ -9224,8 +9044,8 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Highlight colour</Key>
-    <Value lang="en">Highlight colour</Value>
+    <Key>Highlight color</Key>
+    <Value lang="en">Highlight color</Value>
     <Value lang="ja-jp">ハイライトの色</Value>
     <Value lang="zh-cn">高亮颜色</Value>
     <Value lang="zh-tw">醒目提示顏色</Value>
@@ -9296,8 +9116,8 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>Attune shard</Key>
-    <Value lang="en">Attune shard</Value>
+    <Key>Attune aethernet shard</Key>
+    <Value lang="en">Attune aethernet shard</Value>
     <Value lang="ja-jp">エーテライト・プラザ交感</Value>
     <Value lang="zh-cn">以太小水晶感应</Value>
     <Value lang="zh-tw">以太小水晶感應</Value>
@@ -9376,8 +9196,8 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>Favourite aetheryte</Key>
-    <Value lang="en">Favourite aetheryte</Value>
+    <Key>Favored destination</Key>
+    <Value lang="en">Favored destination</Value>
     <Value lang="ja-jp">お気に入りエーテライト</Value>
     <Value lang="zh-cn">收藏以太之光</Value>
     <Value lang="zh-tw">收藏以太之光</Value>

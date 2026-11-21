@@ -405,7 +405,7 @@ internal sealed class PluginConfigComponent
                 }
 
                 if (ImGui.IsItemHovered())
-                    QstWidgets.Tooltip(_L("Open Config"));
+                    QstWidgets.Tooltip(_L("Open settings"));
             }
         }
         else if (installedPlugin != null)
@@ -469,7 +469,7 @@ internal sealed class PluginConfigComponent
             QstWidgets.Tooltip(_LF("Install {0} from its plugin repository.", plugin.DisplayName));
 
         ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Globe, _L("Open Website")))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Globe, _L("Open website")))
             Util.OpenLink(plugin.WebsiteUri.ToString());
     }
 
@@ -861,7 +861,7 @@ internal sealed class PluginConfigComponent
 
             _logger.LogWarning("Could not enable recommended options for {Plugin}", plugin.InternalName);
             _chatGui.PrintError(
-                _LF("Could not enable recommended options on {0}. Open the plugin config to enable them.",
+                _LF("Could not enable recommended options on {0}. Open the plugin's settings to enable them.",
                     plugin.DisplayName),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
         }

@@ -435,7 +435,7 @@ internal static class Interact
                     if (!classJobUtils.SwitchJob(requiredJob))
                     {
                         chatGui.Print(_LF(
-                            "Quest {0} should be continued as {1}, but you do not have a gearset for that job.",
+                            "Quest {0} should be continued as {1}, but you don't have a gear set for that job.",
                             Task.Quest.Info.Name, requiredJob), CommandHandler.MessageTag, CommandHandler.TagColor);
                         _reportedWrongJob = true;
                     }
