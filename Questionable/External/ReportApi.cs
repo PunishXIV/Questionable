@@ -45,12 +45,17 @@ internal sealed class ReportApi : IDisposable
         }
     }
 
-    public async Task<StatusReply?> GetStatusAsync(bool fresh = false)
+    // The server only skips its cache for an admin token.
+    public async Task<StatusReply?> GetStatusAsync(string? adminToken = null)
     {
         try
         {
-            StatusReply? reply = await _http.GetFromJsonAsync<StatusReply>(fresh ? "/v2/status?fresh=1" : "/v2/status", Json)
-                .ConfigureAwait(false);
+            using HttpRequestMessage request = new(HttpMethod.Get, string.IsNullOrEmpty(adminToken) ? "/v2/status" : "/v2/status?fresh=1");
+            if (!string.IsNullOrEmpty(adminToken))
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", adminToken);
+            using HttpResponseMessage response = await _http.SendAsync(request).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            StatusReply? reply = await response.Content.ReadFromJsonAsync<StatusReply>(Json).ConfigureAwait(false);
             return CleanStatus(reply);
         }
         catch (Exception e) when (e is HttpRequestException or TaskCanceledException or JsonException)

@@ -99,9 +99,10 @@ public sealed class ReportApiTests
         using ReportApi api = Api(request =>
         {
             Assert.Equal("/v2/status?fresh=1", request.RequestUri!.PathAndQuery);
+            Assert.Equal("Bearer token", request.Headers.Authorization!.ToString());
             return Response("""{"at":1794823200000,"quests":{}}""");
         });
-        Assert.NotNull(await api.GetStatusAsync(fresh: true));
+        Assert.NotNull(await api.GetStatusAsync("token"));
     }
 
     [Fact]

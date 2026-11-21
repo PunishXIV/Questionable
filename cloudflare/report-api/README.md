@@ -48,7 +48,7 @@ PowerShell for a random salt: `$b = [byte[]]::new(32); [Security.Cryptography.Ra
 | --- | --- | --- |
 | `POST /v1/reports` | players | `{ character, quest, path, outcome: "worked" \| "problem", kind?, sequence?, step?, versions?, actions? }`. 30 per minute per IP. |
 | `GET /` | anyone | Status page: quests with issues, needing verification and verified, by the plugin's rules. Quest names come from XIVAPI in the viewer's browser. |
-| `GET /v2/status` | anyone | `{ at, quests: { "<quest>": { "<path>": status } } }`; timestamps are Unix milliseconds. No character or admin identities. Shared cache for 10 minutes. `?fresh=1` bypasses it after an admin action or a newly reported problem; 30 per minute per IP. |
+| `GET /v2/status` | anyone | `{ at, quests: { "<quest>": { "<path>": status } } }`; timestamps are Unix milliseconds. No character or admin identities. Shared cache for 10 minutes. `?fresh=1` with an admin `Authorization: Bearer` token bypasses it (used after an admin action); without a valid token it gets the cached reply. 30 per minute per IP. |
 | `GET /v2/admin/reports?quest=<quest>` | admins | `{ snapshot, reports }`, including historical problem reports, report IDs, resolution time/admin and whether each is the current meaningful report for that character/path. |
 | `POST /v2/admin/resolve` | admins | `{ quest, id }`; resolves that report ID only, preserving history. |
 | `POST /v2/admin/verify` | admins | `{ quest, path, snapshot }`; records verification and atomically resolves that path's problems through the viewed snapshot. Newer reports stay open. |

@@ -203,9 +203,12 @@ type AdminPage = {
 
 async function status(now?: number): Promise<StatusReply> {
   const response = now === undefined
-    ? await exports.default.fetch("https://reports.test/v2/status?fresh=1", {
-      headers: { "CF-Connecting-IP": `status-${++requestNumber}` },
-    })
+    ? await (async () => {
+      await addStatusAdmin();
+      return await exports.default.fetch("https://reports.test/v2/status?fresh=1", {
+        headers: { "CF-Connecting-IP": `status-${++requestNumber}`, Authorization: "Bearer status-token" },
+      });
+    })()
     : await getStatus(env, now);
   expect(response.status).toBe(200);
   expect(response.headers.get("Cache-Control")).toBe("no-store");
@@ -213,7 +216,7 @@ async function status(now?: number): Promise<StatusReply> {
 }
 
 async function addStatusAdmin(): Promise<void> {
-  await env.DB.prepare("INSERT INTO admins (name, token_hash) VALUES (?, ?)")
+  await env.DB.prepare("INSERT OR IGNORE INTO admins (name, token_hash) VALUES (?, ?)")
     .bind("kage", await sha256Hex("status-token")).run();
 }
 
@@ -286,6 +289,18 @@ describe("report status", () => {
     expect((await status()).quests["1190"][PATH_1].worked).toBe(1);
     const cachedAgain = await exports.default.fetch("https://reports.test/v2/status");
     expect((await cachedAgain.json() as StatusReply).quests).toEqual({});
+  });
+
+  it("serves the cache to fresh reads without an admin token", async () => {
+    await exports.default.fetch("https://reports.test/v2/status");
+    await post(report(CHARACTER_A, PATH_1, "worked"));
+    for (const token of [undefined, "wrong-token"]) {
+      const response = await exports.default.fetch("https://reports.test/v2/status?fresh=1", {
+        headers: { "CF-Connecting-IP": `status-${++requestNumber}`, ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      });
+      expect(response.headers.get("Cache-Control")).toBe("public, max-age=600");
+      expect((await response.json() as StatusReply).quests).toEqual({});
+    }
   });
 
   it("returns an empty successful snapshot rather than inventing health evidence", async () => {

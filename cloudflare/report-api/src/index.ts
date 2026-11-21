@@ -166,9 +166,10 @@ export default {
       }
 
       if (url.pathname === "/v2/status" && request.method === "GET") {
-        const fresh = url.searchParams.get("fresh") === "1";
-        const limited = fresh ? await rateLimited(env.ADMIN_IP_LIMITER, request) : null;
-        return limited ?? await getCachedStatus(env, ctx, fresh);
+        // Uncached reads run the full aggregate, so only admins get them; everyone else gets the cache.
+        const wantsFresh = url.searchParams.get("fresh") === "1";
+        const limited = wantsFresh ? await rateLimited(env.ADMIN_IP_LIMITER, request) : null;
+        return limited ?? await getCachedStatus(env, ctx, wantsFresh && await findAdmin(request, env) !== null);
       }
 
       if (url.pathname.startsWith("/v2/admin/")) {

@@ -50,7 +50,8 @@ internal sealed class QuestReporter
 
     public QuestReporter(Configuration configuration, ReportApi api, IDalamudPluginInterface pluginInterface,
         IChatGui chatGui, ILogger<QuestReporter> logger)
-        : this(configuration, api.SendAsync, api.GetStatusAsync, () => ProfileController.CurrentContentId, logger,
+        : this(configuration, api.SendAsync, fresh => api.GetStatusAsync(fresh ? configuration.Reports.AdminToken : null),
+            () => ProfileController.CurrentContentId, logger,
             pluginInterface, chatGui)
     {
     }
@@ -293,7 +294,8 @@ internal sealed class QuestReporter
                 return Task.CompletedTask;
 
             int generation = _generation;
-            bool fresh = _freshStatus || _now() < _freshUntil;
+            bool admin = _configuration.Reports.AdminToken.Length > 0;
+            bool fresh = admin && (_freshStatus || _now() < _freshUntil);
             long newest = _statusAt;
             long freshAt = _freshAt;
             _statusCheckedAt = _now();
@@ -306,13 +308,14 @@ internal sealed class QuestReporter
                 {
                     status = ReportApi.CleanStatus(await _fetchStatus(fresh).ConfigureAwait(false), _now());
                     valid = status != null;
-                    if (valid && !fresh && (status!.At < newest || status.At <= freshAt))
+                    if (valid && admin && !fresh && (status!.At < newest || status.At <= freshAt))
                     {
                         needsFresh = true;
                         status = ReportApi.CleanStatus(await _fetchStatus(true).ConfigureAwait(false), _now());
                         valid = status != null;
                     }
-                    valid &= status != null && status.At >= newest;
+                    // Without fresh reads, an older edge cache can answer after a newer one.
+                    valid &= status != null && (status.At >= newest || !admin);
                 }
                 catch (Exception e)
                 {
@@ -324,6 +327,12 @@ internal sealed class QuestReporter
                 {
                     if (generation != _generation)
                         return;
+                    if (valid && status!.At < newest && _status != null)
+                    {
+                        _fetchState = EReportFetch.Ready;
+                        _statusTask = null;
+                        return;
+                    }
                     _status = valid ? status : null;
                     _fetchState = valid ? EReportFetch.Ready : EReportFetch.Failed;
                     if (valid)

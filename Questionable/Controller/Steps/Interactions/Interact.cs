@@ -375,8 +375,10 @@ internal static class Interact
                 InteractionType == EInteractionType.AcceptQuest)
             {
                 var jobGearSets = classJobUtils.GetJobGearSets(combatOnly: false);
+                Job currentJob = (Job)player.ClassJob.Value.RowId;
+                // The current job needs no gear set to switch to (152 and 639 on FSH without one).
                 List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs
-                    .Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))
+                    .Where(x => jobGearSets.Count == 0 || x == currentJob || jobGearSets.Any(v => v.ClassJob.Equals(x)))
                     .OrderByDescending(x => jobGearSets.Where(v => v.ClassJob.Equals(x)).Select(v => (int)v.Level).DefaultIfEmpty().Max())
                     .ThenByDescending(x => jobGearSets.Where(v => v.ClassJob.Equals(x)).Select(v => (int)v.ItemLevel).DefaultIfEmpty().Max())];
                 string acceptableJobsText = string.Join(',', acceptableJobs);

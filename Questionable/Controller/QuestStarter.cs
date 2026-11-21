@@ -39,6 +39,7 @@ internal sealed class QuestStarter(
         using IDisposable? scope = logger.BeginScope($"Q/{label}");
         RedeemRewardItems.ResetAttemptedItems();
         stopPolicy.CancelEnding();
+        questController.RedoFinishedSequence();
         _single = null;
         questController.NextInChain = null;
         questController.AutomationType = EAutomationType.Automatic;
@@ -82,6 +83,7 @@ internal sealed class QuestStarter(
         using IDisposable? scope = logger.BeginScope($"SQ/{label}");
         RedeemRewardItems.ResetAttemptedItems();
         stopPolicy.CancelEnding();
+        questController.RedoFinishedSequence();
         _single = (questController.NextQuest ?? questController.CurrentQuest)?.Quest.Id;
         questController.NextInChain = null;
         questController.AutomationType = EAutomationType.SingleQuestA;
@@ -97,6 +99,7 @@ internal sealed class QuestStarter(
         using IDisposable? scope = logger.BeginScope($"SS/{label}");
         RedeemRewardItems.ResetAttemptedItems();
         stopPolicy.CancelEnding();
+        questController.RedoFinishedSequence();
         questController.AutomationType = EAutomationType.Manual;
         questController.ExecuteNextStep();
     }

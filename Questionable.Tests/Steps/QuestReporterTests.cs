@@ -12,7 +12,7 @@ namespace Questionable.Tests.Steps;
 
 public sealed class QuestReporterTests
 {
-    private readonly Configuration _configuration = new();
+    private readonly Configuration _configuration = new() { Reports = { AdminToken = "token" } };
     private readonly List<ReportApi.Body> _sent = [];
 
     private QuestReporter Reporter(string? character = "12345") =>
@@ -349,6 +349,25 @@ public sealed class QuestReporterTests
         reporter.Invalidate(fresh: false);
         await reporter.RefreshStatusAsync();
         Assert.Equal([true, false], requests);
+    }
+
+    [Fact]
+    public async Task NoAdmin_NeverAsksFresh()
+    {
+        _configuration.Reports.AdminToken = string.Empty;
+        List<bool> requests = [];
+        long at = Now.ToUnixTimeMilliseconds();
+        DateTimeOffset now = Now;
+        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
+        {
+            requests.Add(fresh);
+            return Task.FromResult<ReportApi.StatusReply?>(Reply(MakeQuest()) with { At = requests.Count == 2 ? at - 1 : at });
+        }, () => "12345", NullLogger.Instance, now: () => now);
+        await reporter.RefreshStatusAsync();
+        reporter.Invalidate();
+        await reporter.RefreshStatusAsync();
+        Assert.Equal([false, false], requests);
+        Assert.NotEqual(EReportReason.Unavailable, reporter.StatusFor(MakeQuest()).Reason);
     }
 
     [Theory]

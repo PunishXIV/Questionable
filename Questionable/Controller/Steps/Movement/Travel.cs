@@ -47,6 +47,7 @@ internal static class Travel
         private DateTime _readyAfter;
         private int _retries;
         private DateTime? _vnavSince;
+        private DateTime? _idleSince;
 
         protected override bool Start()
         {
@@ -92,6 +93,7 @@ internal static class Travel
         {
             _route = null;
             _started = false;
+            _idleSince = null;
             _waiting = true;
             _readyAfter = DateTime.Now + settle;
         }
@@ -233,7 +235,16 @@ internal static class Travel
             if (mappingTheRealm.GetPathing() == true)
             {
                 _started = true;
+                _idleSince = null;
                 return ETaskResult.StillRunning;
+            }
+
+            // IsPathing drops before a failed route's task faults (portal 2013565 in 132).
+            if (_started && _route is { IsCompleted: false })
+            {
+                _idleSince ??= DateTime.Now;
+                if (DateTime.Now - _idleSince < TimeSpan.FromSeconds(3))
+                    return ETaskResult.StillRunning;
             }
 
             // By-id lookups fail for objects MappingTheRealm hasn't indexed (rock 2001481); each retry can cost a teleport.

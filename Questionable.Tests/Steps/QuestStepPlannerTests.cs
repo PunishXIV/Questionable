@@ -55,4 +55,23 @@ public sealed class QuestStepPlannerTests
         Assert.Equal(EStepAdvance.OtherSequence, QuestStepPlanner.Advance(progress, sequence, step, QuestId, 2).Kind);
         Assert.Equal(EStepAdvance.Advanced, QuestStepPlanner.Advance(progress, sequence, step, QuestId, 1).Kind);
     }
+
+    [Fact]
+    public void PlayerStart_RedoesFinishedSequence()
+    {
+        QuestController controller = TestQuestController.Create();
+        QuestProgressTracker tracker = (QuestProgressTracker)typeof(QuestController)
+            .GetField("_tracker", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
+            .GetValue(controller)!;
+
+        tracker.StartedQuest = new(QuestTestData.CreateQuest(QuestId,
+            QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1049794, null, 133))), 1, QuestStepPlanner.CompletedStep);
+        controller.RedoFinishedSequence();
+        Assert.Equal(0, tracker.StartedQuest.Step);
+
+        tracker.StartedQuest = new(QuestTestData.CreateQuest(QuestId,
+            QuestTestData.Seq(1, new QuestStep(EInteractionType.Combat, null, null, 133))), 1, QuestStepPlanner.CompletedStep);
+        controller.RedoFinishedSequence();
+        Assert.Equal(QuestStepPlanner.CompletedStep, tracker.StartedQuest.Step);
+    }
 }

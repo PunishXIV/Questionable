@@ -1282,6 +1282,20 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return ready;
     }
 
+    // Only on a player start: right after the last step the game is still moving the quest on.
+    internal void RedoFinishedSequence()
+    {
+        lock (_progressLock)
+        {
+            if (CurrentQuest is { Step: CompletedStep } current && StuckWatch.CanRedoSequence(current.FindSequence()))
+            {
+                _logger.LogInformation("Sequence {Sequence} of {QuestId} finished without the game moving on, redoing it",
+                    current.Sequence, current.Quest.Id);
+                current.SetStep(0);
+            }
+        }
+    }
+
     // A manual provider stop clears only its block; it never resumes questing.
     public bool TryConfirmIdle(IOperationProvider provider) => _externalOperations.TryConfirmIdle(provider, this);
 
