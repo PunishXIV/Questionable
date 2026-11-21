@@ -11,8 +11,7 @@ internal static class Mail
 {
     // Delivery moogles talk through CustomTalk CmnDefMogLetter_00002.
     private const uint MoogleTalk = 720898;
-    private static readonly TimeSpan RetryAfter = TimeSpan.FromMinutes(30);
-    private static DateTime _retryAt = DateTime.MinValue;
+    private static readonly BetweenQuests.Backoff Retry = new();
     private static HashSet<uint>? _moogleIds;
 
     // Quest dialogue and yes/no handling stay out of the mailbox while this is set.
@@ -55,7 +54,7 @@ internal static class Mail
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (!configuration.General.ClaimMail || DateTime.Now < _retryAt || MogmailIpc.RewardLetters is not > 0 ||
+            if (!configuration.General.ClaimMail || Retry.Waiting || MogmailIpc.RewardLetters is not > 0 ||
                 !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager) || !mogmail.IsInstalled)
                 return [];
 
@@ -70,7 +69,7 @@ internal static class Mail
             if (ChooseRoute(gameState.StartTown, aetheryteFunctions.IsAetheryteUnlocked) is not { } moogle)
             {
                 logger.LogInformation("Reward mail is waiting, but no delivery moogle can be reached yet");
-                _retryAt = DateTime.Now + RetryAfter;
+                Retry.Failed();
                 return [];
             }
 
@@ -179,8 +178,8 @@ internal static class Mail
             logger.LogInformation("{Count} reward letters left after claiming", MogmailIpc.RewardLetters);
             if (MogmailIpc.RewardLetters is > 0)
             {
-                _retryAt = DateTime.Now + RetryAfter;
-                chatGui.Print(_L("Some reward mail is still waiting, maybe because your inventory is full. Trying again in 30 minutes."),
+                Retry.Failed();
+                chatGui.Print(_L("Some reward mail is still waiting, maybe because your inventory is full. Trying again later."),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
 
@@ -233,8 +232,8 @@ internal static class Mail
         public void OnFailed(Exception exception)
         {
             Active = false;
-            _retryAt = DateTime.Now + RetryAfter;
-            Svc.Chat.Print(_LF("Couldn't claim your reward mail: {0}. Carrying on; trying again in 30 minutes.",
+            Retry.Failed();
+            Svc.Chat.Print(_LF("Couldn't claim your reward mail: {0}. Carrying on; trying again later.",
                 exception.Message.TrimEnd('.')), CommandHandler.MessageTag, CommandHandler.TagColor);
         }
 

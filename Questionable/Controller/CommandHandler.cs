@@ -591,5 +591,9 @@ internal sealed class CommandHandler : IDisposable
             _chatGui.Print(_L("You are not mounted."), MessageTag, TagColor);
     }
 
-    private void OnLogout(int type, int code) => _lastUnlockLinks = [];
+    private void OnLogout(int type, int code)
+    {
+        _lastUnlockLinks = [];
+        SetAsideQuests.Clear();
+    }
 }

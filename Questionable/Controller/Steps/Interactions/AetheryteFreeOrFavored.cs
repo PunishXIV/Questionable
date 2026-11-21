@@ -28,6 +28,8 @@ internal static class AetheryteFreeOrFavored
         GameFunctions gameFunctions,
         ILogger<RegisterExecutor> logger) : TaskExecutor<Register>
     {
+        private readonly InteractRetry _retry = new(DateTime.Now);
+
         protected override bool Start()
         {
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
@@ -48,10 +50,12 @@ internal static class AetheryteFreeOrFavored
 
         public override ETaskResult Update()
         {
-            return aetheryteFunctions.CanRegisterFreeOrFavored(Task.AetheryteLocation) ==
-                   AetheryteRegistrationResult.NotPossible
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (aetheryteFunctions.CanRegisterFreeOrFavored(Task.AetheryteLocation) == AetheryteRegistrationResult.NotPossible)
+                return ETaskResult.TaskComplete;
+
+            if (_retry.Due(DateTime.Now, gameFunctions.IsOccupied()))
+                gameFunctions.InteractWith((uint)Task.AetheryteLocation, ObjectKind.Aetheryte);
+            return ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => true;

@@ -13,8 +13,7 @@ internal static class Repair
 {
     private const uint RepairAction = 6;
     private const float ConditionPerPercent = 300f;
-    private static readonly TimeSpan RetryAfter = TimeSpan.FromMinutes(30);
-    private static DateTime _retryAt = DateTime.MinValue;
+    private static readonly BetweenQuests.Backoff Retry = new();
 
     // Quest dialogue and yes/no handling stay out of the repair window while this is set.
     internal static bool Active { get; private set; }
@@ -82,7 +81,7 @@ internal static class Repair
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             int belowPercent = configuration.General.RepairBelowPercent;
-            if (!configuration.General.RepairGear || DateTime.Now < _retryAt ||
+            if (!configuration.General.RepairGear || Retry.Waiting ||
                 !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager))
                 return [];
 
@@ -210,8 +209,8 @@ internal static class Repair
         public void OnFailed(Exception exception)
         {
             Active = false;
-            _retryAt = DateTime.Now + RetryAfter;
-            Svc.Chat.Print(_LF("Couldn't repair your gear: {0}. Carrying on; trying again in 30 minutes.",
+            Retry.Failed();
+            Svc.Chat.Print(_LF("Couldn't repair your gear: {0}. Carrying on; trying again later.",
                 exception.Message.TrimEnd('.')), CommandHandler.MessageTag, CommandHandler.TagColor);
         }
 

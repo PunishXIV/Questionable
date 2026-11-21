@@ -17,6 +17,19 @@ internal static class BetweenQuests
         Func<ElementId, bool> isReady) =>
         acceptOnly.Any(isAccepted) && acceptOnly.Any(isReady);
 
+    // No reset on success: a detour that fails on and off still fades out over a long session.
+    internal sealed class Backoff
+    {
+        private int _failures;
+        private DateTime _until = DateTime.MinValue;
+
+        public bool Waiting => DateTime.Now < _until;
+
+        public void Failed() => _until = DateTime.Now + Delay(_failures++);
+
+        internal static TimeSpan Delay(int failures) => TimeSpan.FromMinutes(30 * (1 << Math.Min(failures, 4)));
+    }
+
     private static bool IsBusy(ICondition condition, GameFunctions gameFunctions) =>
         condition[ConditionFlag.InCombat] || condition[ConditionFlag.BoundByDuty] ||
         condition[ConditionFlag.BoundByDuty56] || condition[ConditionFlag.BoundByDuty95] ||

@@ -442,6 +442,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         {
             if (HasExternalOperation)
                 Stop("Reload during external operation");
+            else if (IsDailiesRun)
+                Stop("Reload during dailies");
 
             _logger.LogInformation("Reload, resetting curent quest progress");
 
@@ -504,7 +506,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             unsafe
             {
                 short currentLevel = PlayerState.Instance()->CurrentLevel;
-                if (QuestSelectionController.IsLevelStopDue(currentLevel, _configuration.Stop.TargetLevel, IsRunning,
+                if (QuestSelectionController.IsLevelStopDue(currentLevel, _configuration.Stop.TargetLevel,
+                        IsRunning && AutomationType != EAutomationType.Manual,
                         HasExternalOperation || SelectionState.InDuty))
                 {
                     _stopPolicy.ReportLevelReached(currentLevel);
@@ -922,7 +925,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             _stopPolicy.ReportMainScenarioLocked(lockedMsq, playerLevel);
         }
-        else if (AutomationType != EAutomationType.Manual && SetAsideQuests.All.Count > 0)
+        else if (AutomationType != EAutomationType.Manual && SetAsideQuests.Prune(_questFunctions.GetQuestSequence) > 0)
             _stopPolicy.ReportOnlySetAsideLeft(SetAsideQuests.All.Count);
 
         StopFinished("No quest active");

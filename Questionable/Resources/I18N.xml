@@ -5385,32 +5385,32 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Common/Mail.cs -->
-    <Key>Couldn't claim your reward mail: {0}. Carrying on; trying again in 30 minutes.</Key>
-    <Value lang="en">Couldn't claim your reward mail: {0}. Carrying on; trying again in 30 minutes.</Value>
+    <Key>Couldn't claim your reward mail: {0}. Carrying on; trying again later.</Key>
+    <Value lang="en">Couldn't claim your reward mail: {0}. Carrying on; trying again later.</Value>
     <Value lang="ja-jp">報酬メールを受領できませんでした：{0}。続行し、30分後に再試行します。</Value>
     <Value lang="zh-cn">无法领取奖励邮件：{0}。继续运行，30 分钟后重试。</Value>
     <Value lang="zh-tw">無法領取獎勵郵件：{0}。繼續執行，30 分鐘後重試。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Common/Mail.cs -->
-    <Key>Some reward mail is still waiting, maybe because your inventory is full. Trying again in 30 minutes.</Key>
-    <Value lang="en">Some reward mail is still waiting, maybe because your inventory is full. Trying again in 30 minutes.</Value>
+    <Key>Some reward mail is still waiting, maybe because your inventory is full. Trying again later.</Key>
+    <Value lang="en">Some reward mail is still waiting, maybe because your inventory is full. Trying again later.</Value>
     <Value lang="ja-jp">未受領の報酬メールがあります。所持品が満杯の可能性があります。30分後に再試行します。</Value>
     <Value lang="zh-cn">仍有奖励邮件未领取，可能是背包已满。30 分钟后重试。</Value>
     <Value lang="zh-tw">仍有獎勵郵件未領取，可能是背包已滿。30 分鐘後重試。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Common/NoviceHall.cs -->
-    <Key>Couldn't finish the Hall of the Novice exercises: {0}. Carrying on; trying again in 30 minutes.</Key>
-    <Value lang="en">Couldn't finish the Hall of the Novice exercises: {0}. Carrying on; trying again in 30 minutes.</Value>
+    <Key>Couldn't finish the Hall of the Novice exercises: {0}. Carrying on; trying again later.</Key>
+    <Value lang="en">Couldn't finish the Hall of the Novice exercises: {0}. Carrying on; trying again later.</Value>
     <Value lang="ja-jp">初心者の館の訓練を完了できませんでした：{0}。続行し、30分後に再試行します。</Value>
     <Value lang="zh-cn">无法完成新手学堂训练：{0}。继续运行，30 分钟后重试。</Value>
     <Value lang="zh-tw">無法完成新手學堂訓練：{0}。繼續執行，30 分鐘後重試。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Common/NoviceHall.cs -->
-    <Key>The Hall of the Novice exercises ended without the Neophyte's Ring. Carrying on; trying again in 30 minutes.</Key>
-    <Value lang="en">The Hall of the Novice exercises ended without the Neophyte's Ring. Carrying on; trying again in 30 minutes.</Value>
+    <Key>The Hall of the Novice exercises ended without the Neophyte's Ring. Carrying on; trying again later.</Key>
+    <Value lang="en">The Hall of the Novice exercises ended without the Neophyte's Ring. Carrying on; trying again later.</Value>
     <Value lang="ja-jp">初心者の館の訓練終了後もビギナーリングを入手できませんでした。続行し、30分後に再試行します。</Value>
     <Value lang="zh-cn">新手学堂训练结束后未获得新手指环。继续运行，30 分钟后重试。</Value>
     <Value lang="zh-tw">新手學堂訓練結束後未獲得新手指環。繼續執行，30 分鐘後重試。</Value>
@@ -5497,8 +5497,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Shared/Repair.cs -->
-    <Key>Couldn't repair your gear: {0}. Carrying on; trying again in 30 minutes.</Key>
-    <Value lang="en">Couldn't repair your gear: {0}. Carrying on; trying again in 30 minutes.</Value>
+    <Key>Couldn't repair your gear: {0}. Carrying on; trying again later.</Key>
+    <Value lang="en">Couldn't repair your gear: {0}. Carrying on; trying again later.</Value>
     <Value lang="ja-jp">装備を修理できませんでした：{0}。続行し、30分後に再試行します。</Value>
     <Value lang="zh-cn">无法修理装备：{0}。继续运行，30 分钟后重试。</Value>
     <Value lang="zh-tw">無法修理裝備：{0}。繼續執行，30 分鐘後重試。</Value>

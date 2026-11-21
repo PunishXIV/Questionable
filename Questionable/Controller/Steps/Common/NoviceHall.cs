@@ -14,8 +14,7 @@ internal static class NoviceHall
     internal const int MinLevel = 49;
     // The ring's EXP bonus stops at 60.
     internal const int MaxLevel = 59;
-    private static readonly TimeSpan RetryAfter = TimeSpan.FromMinutes(30);
-    private static DateTime _retryAt = DateTime.MinValue;
+    private static readonly BetweenQuests.Backoff Retry = new();
 
     // The game has no readable exercise-done flag; the ring from the last exercise stands in for it.
     internal static bool Wanted(Job job, int level, bool hasRing) =>
@@ -40,7 +39,7 @@ internal static class NoviceHall
     {
         public unsafe IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (!configuration.General.RunNoviceHall || DateTime.Now < _retryAt ||
+            if (!configuration.General.RunNoviceHall || Retry.Waiting ||
                 !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager))
                 return [];
 
@@ -66,7 +65,7 @@ internal static class NoviceHall
         public bool RetryStep => true;
 
         public void OnFailed(Exception exception) =>
-            Pause(_LF("Couldn't finish the Hall of the Novice exercises: {0}. Carrying on; trying again in 30 minutes.",
+            Pause(_LF("Couldn't finish the Hall of the Novice exercises: {0}. Carrying on; trying again later.",
                 exception.Message.TrimEnd('.')));
 
         public override string ToString() => "NoviceHallDone";
@@ -74,7 +73,7 @@ internal static class NoviceHall
 
     private static void Pause(string message)
     {
-        _retryAt = DateTime.Now + RetryAfter;
+        Retry.Failed();
         Svc.Chat.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
@@ -85,7 +84,7 @@ internal static class NoviceHall
         public override ETaskResult Update()
         {
             if (!HasRing())
-                Pause(_L("The Hall of the Novice exercises ended without the Neophyte's Ring. Carrying on; trying again in 30 minutes."));
+                Pause(_L("The Hall of the Novice exercises ended without the Neophyte's Ring. Carrying on; trying again later."));
             return ETaskResult.RetryStep;
         }
 

@@ -12,6 +12,13 @@ internal static class SetAsideQuests
 
     public static void Clear() => Quests.Clear();
 
+    public static int Prune(Func<ElementId, byte> sequenceOf)
+    {
+        foreach (ElementId questId in Quests.Where(x => sequenceOf(x.Key) != x.Value).Select(x => x.Key).ToList())
+            Quests.Remove(questId);
+        return Quests.Count;
+    }
+
     public static bool Contains(ElementId? questId, byte sequence) =>
         questId != null && Quests.TryGetValue(questId, out byte setAt) && setAt == sequence;
 }

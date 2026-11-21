@@ -1,7 +1,7 @@
 import { env, exports } from "cloudflare:workers";
 import { createScheduledController } from "cloudflare:test";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import worker, { prune } from "../src/index";
+import worker, { prune, rateKey } from "../src/index";
 import { getStatus, resetStatusCache, type PathStatus } from "../src/status";
 
 const CHARACTER_A = "a".repeat(64);
@@ -78,6 +78,7 @@ describe("reports", () => {
   it.each([
     ["bad character", report("nope", PATH_1, "worked")],
     ["bad quest", { ...report(CHARACTER_A, PATH_1, "worked"), quest: "1; DROP TABLE reports" }],
+    ["quest number too long", { ...report(CHARACTER_A, PATH_1, "worked"), quest: "123456" }],
     ["problem without kind", report(CHARACTER_A, PATH_1, "problem")],
     ["worked with kind", report(CHARACTER_A, PATH_1, "worked", { kind: "stuck" })],
     ["unknown kind", report(CHARACTER_A, PATH_1, "problem", { kind: "boring" })],
@@ -532,5 +533,15 @@ describe("legacy database upgrade", () => {
     expect(await counts()).toEqual({ "1190": { [PATH_1]: [1, 1] } });
     await env.DB.prepare("UPDATE reports SET worked = 0, kind = 'playerStopped', created_at = ? WHERE quest_id = '1190'").bind(Date.now()).run();
     expect((await status()).quests["1190"][PATH_1]).toMatchObject({ total: 1, worked: 1, recentProblems: 0 });
+  });
+});
+
+describe("rate limit key", () => {
+  it("counts one IPv6 /64 as one client and leaves IPv4 alone", () => {
+    expect(rateKey("2001:db8:1:2:aaaa::1")).toBe(rateKey("2001:0db8:0001:0002:bbbb:0:0:2"));
+    expect(rateKey("2001:db8::1")).toBe("2001:db8:0:0");
+    expect(rateKey("2001:db8:1:3::1")).not.toBe(rateKey("2001:db8:1:2::1"));
+    expect(rateKey("203.0.113.7")).toBe("203.0.113.7");
+    expect(rateKey(null)).toBe("local");
   });
 });

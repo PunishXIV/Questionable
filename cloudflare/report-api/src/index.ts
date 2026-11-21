@@ -20,12 +20,28 @@ async function sha256Hex(text: string): Promise<string> {
   return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, "0")).join("");
 }
 
+// One IPv6 customer usually owns a whole /64, so the limit counts those addresses together.
+export function rateKey(ip: string | null): string {
+  if (!ip) {
+    return "local";
+  }
+  if (!ip.includes(":")) {
+    return ip;
+  }
+
+  const [head, tail] = ip.split("::");
+  const first = head ? head.split(":") : [];
+  const last = tail ? tail.split(":") : [];
+  const groups = tail === undefined ? first : [...first, ...Array(8 - first.length - last.length).fill("0"), ...last];
+  return groups.slice(0, 4).map(group => group.replace(/^0+(?=.)/, "")).join(":");
+}
+
 async function rateLimited(limiter: RateLimit | undefined, request: Request): Promise<Response | null> {
   if (!limiter) {
     return null;
   }
 
-  const key = request.headers.get("CF-Connecting-IP") ?? "local";
+  const key = rateKey(request.headers.get("CF-Connecting-IP"));
   const { success } = await limiter.limit({ key });
   return success ? null : json({ error: "too many requests" }, 429, { "Retry-After": "60" });
 }

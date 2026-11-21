@@ -29,6 +29,8 @@ internal static class AethernetShard
         GameFunctions gameFunctions,
         ILogger<AttuneExecutor> logger) : TaskExecutor<Attune>
     {
+        private readonly InteractRetry _retry = new(DateTime.Now);
+
         protected override bool Start()
         {
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
@@ -45,9 +47,12 @@ internal static class AethernetShard
 
         public override ETaskResult Update()
         {
-            return aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
+                return ETaskResult.TaskComplete;
+
+            if (_retry.Due(DateTime.Now, gameFunctions.IsOccupied()))
+                gameFunctions.InteractWith((uint)Task.AetheryteLocation, ObjectKind.Aetheryte);
+            return ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => true;

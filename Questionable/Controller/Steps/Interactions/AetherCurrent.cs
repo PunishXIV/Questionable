@@ -40,6 +40,8 @@ internal static class AetherCurrent
         GameFunctions gameFunctions,
         ILogger<AttuneExecutor> logger) : TaskExecutor<Attune>
     {
+        private readonly InteractRetry _retry = new(DateTime.Now);
+
         protected override bool Start()
         {
             if (!gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId))
@@ -60,9 +62,12 @@ internal static class AetherCurrent
 
         public override ETaskResult Update()
         {
-            return gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId)
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId))
+                return ETaskResult.TaskComplete;
+
+            if (_retry.Due(DateTime.Now, gameFunctions.IsOccupied()))
+                gameFunctions.InteractWith(Task.DataId, ObjectKind.EventObj);
+            return ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => true;
