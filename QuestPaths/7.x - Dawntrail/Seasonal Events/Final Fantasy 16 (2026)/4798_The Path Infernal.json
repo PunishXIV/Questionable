@@ -37,12 +37,10 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true
           },
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild",
             "[Gridania] Lancers' Guild"
-          ],
-          "$": "auto: todo location -> 1046055 (Clive)"
+          ]
         }
       ]
     },
@@ -164,7 +162,7 @@
           "TerritoryId": 145,
           "InteractionType": "CompleteQuest",
           "Mount": false,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone" 
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     }
