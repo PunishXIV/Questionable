@@ -44,7 +44,7 @@ internal sealed class JournalData
         );
         genres = genres.Append(instantGenre).ToList();
 
-        Genre collabGenre = genres.Where(g => g.Id.Equals(GenreCollaborationQuests)).Single();
+        Genre collabGenre = genres.Single(g => g.Id.Equals(GenreCollaborationQuests));
         collabGenre.Quests.Add(((ushort[])[
             1153, 1154, 1155, 1156, // ffxiii 2013
             1287, // ffxi 2014
@@ -69,7 +69,7 @@ internal sealed class JournalData
             var info = questData.GetQuestInfo(kvp.Key);
             foreach (var genre in genres)
                 genre.Quests.Remove(info);
-            Genre target = genres.Where(g => g.Id.Equals(kvp.Value)).Single();
+            Genre target = genres.Single(g => g.Id.Equals(kvp.Value));
             target.Quests.Add(questData.GetQuestInfo(kvp.Key));
         }
 
@@ -124,7 +124,7 @@ internal sealed class JournalData
         public Genre(JournalGenre journalGenre, List<IQuestInfo> quests)
         {
             Id = journalGenre.RowId;
-            Name = journalGenre.Name.ToString();
+            Name = journalGenre.Name.ToString(null, CultureInfo.InvariantCulture);
             CategoryId = journalGenre.JournalCategory.RowId;
             Quests = quests;
         }
@@ -146,7 +146,7 @@ internal sealed class JournalData
     internal sealed class Category(uint id, string name, uint sectionId, IReadOnlyList<Genre> genres)
     {
         public Category(JournalCategory journalCategory, IReadOnlyList<Genre> genres)
-            : this(journalCategory.RowId, journalCategory.Name.ToString(), journalCategory.JournalSection.RowId, genres)
+            : this(journalCategory.RowId, journalCategory.Name.ToString(null, CultureInfo.InvariantCulture), journalCategory.JournalSection.RowId, genres)
         {
         }
 
@@ -159,7 +159,7 @@ internal sealed class JournalData
     internal sealed class Section(uint id, string name, IReadOnlyList<Category> categories)
     {
         public Section(JournalSection journalSection, IReadOnlyList<Category> categories)
-            : this(journalSection.RowId, journalSection.Name.ToString(), categories)
+            : this(journalSection.RowId, journalSection.Name.ToString(null, CultureInfo.InvariantCulture), categories)
         {
         }
 

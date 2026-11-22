@@ -63,8 +63,8 @@ internal sealed class QuestValidationWindow : LWindow
         {
             if (!_filter.IsNullOrEmpty() &&
                 issue.ElementId != null &&
-                !issue.ElementId.Value.ToString(CultureInfo.InvariantCulture).Contains(_filter) &&
-                !issue.Description.Contains(_filter))
+                !issue.ElementId.Value.ToString(CultureInfo.InvariantCulture).Contains(_filter, StringComparison.Ordinal) &&
+                !issue.Description.Contains(_filter, StringComparison.Ordinal))
                 continue;
             ImGui.TableNextRow();
             if (ImGui.TableNextColumn())

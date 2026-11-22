@@ -6,7 +6,7 @@ namespace Questionable.Domain;
 internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, ClassJobUtils classJobUtils) : IQuestInfo
 {
     public ElementId QuestId { get; } = new AlliedSocietyDailyId((byte)beastTribe.RowId, rank);
-    public string Name { get; } = beastTribe.Name.ToString();
+    public string Name { get; } = beastTribe.Name.ToString(null, CultureInfo.CurrentCulture);
     public uint IssuerDataId => 0;
     public ImmutableList<PreviousQuestInfo> PreviousQuests { get; } = [];
     public EQuestJoin PreviousQuestJoin => EQuestJoin.All;

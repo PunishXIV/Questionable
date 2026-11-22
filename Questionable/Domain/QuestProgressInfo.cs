@@ -28,9 +28,9 @@ internal sealed class QuestProgressInfo
             {
                 text += "(";
                 if (upper != 0)
-                    text += $"{upper}H";
+                    text += string.Create(CultureInfo.CurrentCulture, $"{upper}H");
                 if (lower != 0)
-                    text += $"{lower}L";
+                    text += string.Create(CultureInfo.CurrentCulture, $"{lower}L");
                 text += ") ";
             }
             else

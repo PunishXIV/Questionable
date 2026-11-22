@@ -25,7 +25,7 @@ public sealed class BossModIpcTests : IDisposable
         Set("_getPreset", new Func<string, string?>(name => _presets.GetValueOrDefault(name)));
         Set("_createPreset", new Func<string, bool, bool>((content, _) =>
         {
-            string name = content.Contains("Quest Battles") ? "Questionable - Quest Battles" : "Questionable";
+            string name = content.Contains("Quest Battles", StringComparison.Ordinal) ? "Questionable - Quest Battles" : "Questionable";
             _presets[name] = content;
             _created.Add(name);
             return true;

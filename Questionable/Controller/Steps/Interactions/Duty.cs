@@ -37,7 +37,8 @@ internal static class Duty
             if (step.InteractionType != EInteractionType.Duty)
                 yield break;
 
-            ArgumentNullException.ThrowIfNull(step.DutyOptions);
+            if (step.DutyOptions == null)
+                throw new ArgumentException($"{nameof(step.DutyOptions)} is missing", nameof(step));
 
             bool variant = quest.Id is QuestId { Value: 4646 or 4733 or 4789 or 5441 };
             if (!autoDuty.CanRunDuty(step.DutyOptions))
@@ -179,7 +180,7 @@ internal static class Duty
             short currentItemLevel = GetItemLevel(gearStatsCalculator) ?? throw new TaskException("Equipped items unavailable");
             if (cfcData.RequiredItemLevel > currentItemLevel)
                 throw new NeedsPlayerException(
-                    $"Could not use AutoDuty to queue for {cfcData.Name}, required item level: {cfcData.RequiredItemLevel}, current item level: {currentItemLevel}.");
+                    string.Create(CultureInfo.InvariantCulture, $"Could not use AutoDuty to queue for {cfcData.Name}, required item level: {cfcData.RequiredItemLevel}, current item level: {currentItemLevel}."));
             if (dutyMode == Mode.Regular &&
                 (!Task.AllowUnsync || !configuration.Duties.RunUnsynced))
                 dutyMode = Mode.Support;

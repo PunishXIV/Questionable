@@ -164,16 +164,16 @@ internal sealed class QuickAccessComponent
 
         List<string?> facts =
         [
-            $"{CommandHandler.MessageTag}{(pluginInterface.IsDev ? " dev" : "")} | paths {config.PathData.InstalledDataVersion} | client {clientState.ClientLanguage} | ui {config.General.Language} | profile: {(config.ActiveProfileName != null ? "yes" : "no")}",
+            string.Create(CultureInfo.InvariantCulture, $"{CommandHandler.MessageTag}{(pluginInterface.IsDev ? " dev" : "")} | paths {config.PathData.InstalledDataVersion} | client {clientState.ClientLanguage} | ui {config.General.Language} | profile: {(config.ActiveProfileName != null ? "yes" : "no")}"),
             progress == null
                 ? "Quest: none"
-                : $"Quest: {progress.Quest.Id} {progress.Quest.Info.Name} | seq {progress.Sequence} step {progress.Step} | source: {progress.Quest.Source}",
+                : string.Create(CultureInfo.InvariantCulture, $"Quest: {progress.Quest.Id} {progress.Quest.Info.Name} | seq {progress.Sequence} step {progress.Step} | source: {progress.Quest.Source}"),
             progress == null ? null : step == null
                 ? "Step: no path data for this step"
                 : $"Step: {step.InteractionType}, target {step.DataId?.ToString(CultureInfo.InvariantCulture) ?? "none"}, territory {TerritoryData.GetNameAndId(step.TerritoryId)}",
             progress == null ? null : $"Game quest state: {questFunctions.GetQuestProgressInfo(progress.Quest.Id)?.ToString() ?? "not accepted"}",
             $"State: {questController.AutomationType}, {(questController.IsRunning ? "running" : "idle")} | task: {questController.ToStatString()} | status: {questController.DebugState ?? "-"} | executor: {questController.CurrentTaskState ?? "-"}{(questController.HasExternalOperation ? " | plugin operation active" : "")}",
-            $"Character: {player.ClassJob.Value.Abbreviation} {player.Level} | {TerritoryData.GetNameAndId(clientState.TerritoryType)} | {player.Position.ToInternalString()} | target {targetManager.Target?.BaseId.ToString(CultureInfo.InvariantCulture) ?? "none"} | flags: {DescribeConditions()}",
+            string.Create(CultureInfo.InvariantCulture, $"Character: {player.ClassJob.Value.Abbreviation} {player.Level} | {TerritoryData.GetNameAndId(clientState.TerritoryType)} | {player.Position.ToInternalString()} | target {targetManager.Target?.BaseId.ToString(CultureInfo.InvariantCulture) ?? "none"} | flags: {DescribeConditions()}"),
             DescribePlugins(),
             TroubleshootingReport.DescribeFailure(movementController.LastFailure, DateTimeOffset.UtcNow),
         ];

@@ -35,7 +35,7 @@ internal sealed class ZoneMapComponent(
 
             if (!zones.TryGetValue(territory.RowId, out Zone? zone))
             {
-                string name = territory.PlaceName.ValueNullable?.Name.ToString() ?? string.Empty;
+                string name = territory.PlaceName.ValueNullable?.Name.ToString(null, CultureInfo.CurrentCulture) ?? string.Empty;
                 if (name.Length == 0)
                     continue;
                 zone = new(territory.RowId, name, territory.Map.Value, []);
@@ -75,7 +75,7 @@ internal sealed class ZoneMapComponent(
 
     private void DrawMap(Zone zone)
     {
-        string mapId = zone.Map.Id.ToString();
+        string mapId = zone.Map.Id.ToString(null, CultureInfo.InvariantCulture);
         var texture = textureProvider.GetFromGame($"ui/map/{mapId}/{mapId.Replace("/", "", StringComparison.Ordinal)}_m.tex")
             .GetWrapOrEmpty();
 

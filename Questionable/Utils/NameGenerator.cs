@@ -10,11 +10,11 @@ internal static class NameGenerator
     private static readonly Random Rand = new();
 
     private static readonly List<PropertyInfo> FemaleFirstNames = (from p in typeof(CharaMakeName).GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                                                                   where p.Name.EndsWith("Female", StringComparison.Ordinal) && !p.Name.Contains("Lalafell") && !p.Name.Contains("SeaWolf") && !p.Name.Contains("Viera")
+                                                                   where p.Name.EndsWith("Female", StringComparison.Ordinal) && !p.Name.Contains("Lalafell", StringComparison.Ordinal) && !p.Name.Contains("SeaWolf", StringComparison.Ordinal) && !p.Name.Contains("Viera", StringComparison.Ordinal)
                                                                    select p).ToList();
 
     private static readonly List<PropertyInfo> MaleFirstNames = (from p in typeof(CharaMakeName).GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                                                                 where p.Name.EndsWith("Male", StringComparison.Ordinal) && !p.Name.EndsWith("Female", StringComparison.Ordinal) && !p.Name.Contains("Lalafell") && !p.Name.Contains("SeaWolf") && !p.Name.Contains("Viera")
+                                                                 where p.Name.EndsWith("Male", StringComparison.Ordinal) && !p.Name.EndsWith("Female", StringComparison.Ordinal) && !p.Name.Contains("Lalafell", StringComparison.Ordinal) && !p.Name.Contains("SeaWolf", StringComparison.Ordinal) && !p.Name.Contains("Viera", StringComparison.Ordinal)
                                                                  select p).ToList();
 
     private static string? _firstName;

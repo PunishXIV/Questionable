@@ -38,8 +38,8 @@ internal sealed partial class ActiveQuestComponent
     ILogger<ActiveQuestComponent> logger)
 {
     [GeneratedRegex(@"\s\s+", RegexOptions.IgnoreCase, matchTimeoutMilliseconds: 1000, "en-US")]
-    private static partial Regex MultipleWhitespaceRegex();
-    private List<PriorityQuestInfo> priorityQuests => questFunctions.NextPriorityQuests;
+    private static partial Regex MultipleWhitespaceRegex { get; }
+    private List<PriorityQuestInfo> PriorityQuests => questFunctions.NextPriorityQuests;
     private bool anyAvailable;
     private bool anyUnavailable;
 
@@ -54,7 +54,7 @@ internal sealed partial class ActiveQuestComponent
 
         anyAvailable = false;
         anyUnavailable = false;
-        foreach (var p in priorityQuests)
+        foreach (var p in PriorityQuests)
         {
             if (p.IsAvailable) anyAvailable = true;
             else anyUnavailable = true;
@@ -742,7 +742,7 @@ internal sealed partial class ActiveQuestComponent
 
             if (ImGui.IsItemClicked())
             {
-                string progressText = MultipleWhitespaceRegex().Replace(questWork.ToString(), " ");
+                string progressText = MultipleWhitespaceRegex.Replace(questWork.ToString(), " ");
                 ImGui.SetClipboardText(progressText);
                 chatGui.Print(_LF("Copied '{0}' to clipboard", progressText));
             }
@@ -1130,11 +1130,11 @@ internal sealed partial class ActiveQuestComponent
         ImGui.TextColored(anyAvailable || anyUnavailable ? QstTheme.Amber : QstTheme.Text, SeIconChar.Hydaelyn.ToIconString());
         if (ImGui.IsItemHovered())
         {
-            List<ElementId> availablePriorityQuests = priorityQuests
+            List<ElementId> availablePriorityQuests = PriorityQuests
                 .Where(x => x.IsAvailable)
                 .Select(x => x.QuestId)
                 .ToList();
-            List<PriorityQuestInfo> unavailablePriorityQuests = priorityQuests
+            List<PriorityQuestInfo> unavailablePriorityQuests = PriorityQuests
                 .Where(x => !x.IsAvailable)
                 .ToList();
             using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();

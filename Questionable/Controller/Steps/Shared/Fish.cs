@@ -60,7 +60,7 @@ internal static class Fish
         }
 
         private string ItemName(uint itemId) =>
-            _dataManager.GetExcelSheet<Item>().GetRowOrDefault(itemId)?.Name.ToString() is { Length: > 0 } name
+            _dataManager.GetExcelSheet<Item>().GetRowOrDefault(itemId)?.Name.ToString(null, CultureInfo.InvariantCulture) is { Length: > 0 } name
                 ? name
                 : itemId.ToString(CultureInfo.InvariantCulture);
 

@@ -15,7 +15,7 @@ internal sealed class OperationCoordinator : IOperationContext
         _providers = providers.OrderBy(x => x.Order).ToList();
         IOperationProvider? duplicate = _providers.GroupBy(x => x.Order).FirstOrDefault(x => x.Count() > 1)?.First();
         if (duplicate != null)
-            throw new InvalidOperationException($"Operation providers share order {duplicate.Order}");
+            throw new InvalidOperationException(string.Create(CultureInfo.InvariantCulture, $"Operation providers share order {duplicate.Order}"));
         _movementController = movementController;
         _logger = logger;
     }

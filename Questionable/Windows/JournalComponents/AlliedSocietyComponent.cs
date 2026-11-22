@@ -178,7 +178,7 @@ internal sealed class AlliedSocietyComponent
 
         string rep = neededRep != 0 ? $"({rank} {currentRep}/{neededRep}) " : "";
         string type = TypeName(alliedSociety) is { } typeName ? $" - {typeName}" : "";
-        string label = $"{rep}{alliedSociety}{type}###AlliedSociety{(int)alliedSociety}";
+        string label = string.Create(CultureInfo.CurrentCulture, $"{rep}{alliedSociety}{type}###AlliedSociety{(int)alliedSociety}");
         bool isOpen;
 
         List<(string Name, ReportStatus Status)> reports = [];
@@ -222,7 +222,7 @@ internal sealed class AlliedSocietyComponent
         if (!isOpen)
             return;
 
-        using ImRaii.TableDisposable table = journalTable.Begin($"AlliedSociety{(int)alliedSociety}",
+        using ImRaii.TableDisposable table = journalTable.Begin(string.Create(CultureInfo.InvariantCulture, $"AlliedSociety{(int)alliedSociety}"),
             repColumn: neededRep != 0);
         if (!table)
             return;

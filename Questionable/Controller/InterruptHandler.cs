@@ -1,6 +1,7 @@
 ﻿using Dalamud.Hooking;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
+using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using JetBrains.Annotations;
 namespace Questionable.Controller;
 
@@ -11,7 +12,7 @@ internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSo
     private readonly IFramework _framework;
     private readonly ILogger<InterruptHandler> _logger;
     private readonly IObjectTable _objectTable;
-    private readonly Hook<ProcessActionEffect> _processActionEffectHook;
+    private readonly Hook<ActionEffectHandler.Delegates.Receive> _processActionEffectHook;
     private readonly TerritoryData _territoryData;
 
     public InterruptHandler(IGameInteropProvider gameInteropProvider, IClientState clientState,
@@ -23,7 +24,7 @@ internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSo
         _framework = framework;
         _logger = logger;
         _processActionEffectHook =
-            gameInteropProvider.HookFromAddress<ProcessActionEffect>(ActionEffectHandler.Addresses.Receive.Value,
+            gameInteropProvider.HookFromAddress<ActionEffectHandler.Delegates.Receive>(ActionEffectHandler.Addresses.Receive.Value,
                 HandleProcessActionEffect);
         _processActionEffectHook.Enable();
     }
@@ -67,7 +68,7 @@ internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSo
     }
 
     private void HandleProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
-        ActionEffectHandler.Header* effectHeader, ActionEffectHandler.Effect* effectArray, ulong* effectTail)
+        ActionEffectHandler.Header* effectHeader, ActionEffectHandler.TargetEffects* effects, GameObjectId* targetIds)
     {
         try
         {
@@ -78,7 +79,7 @@ internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSo
                     effectHeader->ActionId);
                 uint[] targets = new uint[effectHeader->NumTargets];
                 for (int i = 0; i < targets.Length; ++i)
-                    targets[i] = (uint)effectTail[i];
+                    targets[i] = targetIds[i].ObjectId;
                 Confirmations.Observe(effectHeader->SourceSequence, effectHeader->ActionType,
                     effectHeader->ActionId, targets);
             }
@@ -87,16 +88,11 @@ internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSo
             {
                 for (int i = 0; i < effectHeader->NumTargets; i++)
                 {
-                    uint targetId = (uint)(effectTail[i] & uint.MaxValue);
-                    // Eight effect slots per target.
-                    ActionEffectHandler.Effect* effect = effectArray + 8 * i;
-
-                    if (targetId == _objectTable[0]?.GameObjectId &&
-                        (EActionEffectType)effect->Type is EActionEffectType.Damage or EActionEffectType.BlockedDamage
-                            or EActionEffectType.ParriedDamage)
+                    if (targetIds[i].ObjectId == _objectTable[0]?.GameObjectId &&
+                        FindDamage(effects[i].Effects) is { } damage)
                     {
                         _logger.LogTrace("Damage action effect on self, from {SourceId} ({EffectType})", sourceId,
-                            (EActionEffectType)effect->Type);
+                            damage);
                         Interrupted?.Invoke(this, EventArgs.Empty);
                         break;
                     }
@@ -109,12 +105,21 @@ internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSo
         }
         finally
         {
-            _processActionEffectHook.Original(sourceId, sourceCharacter, pos, effectHeader, effectArray, effectTail);
+            _processActionEffectHook.Original(sourceId, sourceCharacter, pos, effectHeader, effects, targetIds);
         }
     }
 
-    private delegate void ProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
-        ActionEffectHandler.Header* effectHeader, ActionEffectHandler.Effect* effectArray, ulong* effectTail);
+    private static EActionEffectType? FindDamage(Span<ActionEffectHandler.Effect> slots)
+    {
+        foreach (ActionEffectHandler.Effect slot in slots)
+        {
+            if ((EActionEffectType)slot.Type is EActionEffectType.Damage or EActionEffectType.BlockedDamage
+                or EActionEffectType.ParriedDamage)
+                return (EActionEffectType)slot.Type;
+        }
+
+        return null;
+    }
 
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
     private enum EActionEffectType : byte

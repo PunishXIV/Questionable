@@ -266,7 +266,7 @@ internal sealed class GatheringController(
         if (satisfied)
             return EStatus.Complete;
 
-        throw new TaskException($"Gather & Chill ended ({status}) without completing {request.Quantity}x {request.ItemId} at collectability {request.Collectability}: {message}");
+        throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"Gather & Chill ended ({status}) without completing {request.Quantity}x {request.ItemId} at collectability {request.Collectability}: {message}"));
     }
 
     public void Stop(string label) => gatherChillIpc.CancelWork();
@@ -279,7 +279,7 @@ internal sealed class GatheringController(
 
     public IList<string> GetRemainingTaskNames() =>
         operation.HasOperation && _request is { } request
-            ? [$"Gather & Chill: {request.Quantity}x {request.ItemId}"]
+            ? [string.Create(CultureInfo.InvariantCulture, $"Gather & Chill: {request.Quantity}x {request.ItemId}")]
             : [];
 
     private static unsafe int GetItemCount(Request request)

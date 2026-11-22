@@ -143,7 +143,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         if (totalCount == 0)
             return;
 
-        string headerText = $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCount})";
+        string headerText = string.Create(CultureInfo.CurrentCulture, $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCount})");
 
         string expansionKey = expansion.ToString();
         bool wasOpen = Configuration.Duties.ExpansionHeaderStates.GetValueOrDefault(expansionKey, defaultValue: false);

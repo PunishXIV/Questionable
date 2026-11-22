@@ -116,7 +116,7 @@ internal static class Mail
             {
                 StopMogmail();
                 Finish();
-                throw new TaskException($"Mogmail didn't finish claiming within {GiveUpAfter.TotalMinutes} minutes");
+                throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"Mogmail didn't finish claiming within {GiveUpAfter.TotalMinutes} minutes"));
             }
 
             if (DateTime.Now < _nextTry)

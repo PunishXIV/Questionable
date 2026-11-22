@@ -30,7 +30,7 @@ internal sealed class UiUtils(
                         foreach (string reason in previousReasons)
                             blockers.Add($"{previous.QuestId.Value}: {reason}");
             if (blockers.Count != 0)
-                lockedReason = _L("Previous quest") + $" ({blockers[0]}{(blockers.Count > 1 ? $" +{blockers.Count - 1}" : "")})";
+                lockedReason = _L("Previous quest") + $" ({blockers[0]}{(blockers.Count > 1 ? string.Create(CultureInfo.CurrentCulture, $" +{blockers.Count - 1}") : "")})";
         }
 
         if (questFunctions.IsQuestAccepted(elementId))

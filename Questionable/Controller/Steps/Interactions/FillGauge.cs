@@ -13,7 +13,7 @@ internal static class FillGauge
             if (step.InteractionType != EInteractionType.FillGauge)
                 return null;
             if (!step.DataId.HasValue)
-                throw new ArgumentNullException(nameof(step.DataId));
+                throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
 
             return new Task(step.DataId.Value);
         }

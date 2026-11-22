@@ -10,7 +10,8 @@ internal static class Jump
             if (step.InteractionType != EInteractionType.Jump)
                 return null;
 
-            ArgumentNullException.ThrowIfNull(step.JumpDestination);
+            if (step.JumpDestination == null)
+                throw new ArgumentException($"{nameof(step.JumpDestination)} is missing", nameof(step));
 
             if (step.JumpDestination.Type == EJumpType.SingleJump)
                 return new SingleTask(step.DataId, step.JumpDestination, step.Comment);
@@ -118,15 +119,15 @@ internal static class Jump
                 return ETaskResult.StillRunning;
 
             float stopDistance = Task.Destination.CalculateStopDistance();
-            if (_objectTable[0] == null)
+            if (_objectTable[0] is not { } player)
                 return ETaskResult.StillRunning;
-            if ((_objectTable[0]!.Position - Task.Destination.Position).Length() <= stopDistance ||
-                _objectTable[0]?.Position.Y >= Task.Destination.Position.Y - 0.5f)
+            if ((player.Position - Task.Destination.Position).Length() <= stopDistance ||
+                player.Position.Y >= Task.Destination.Position.Y - 0.5f)
             {
                 return ETaskResult.TaskComplete;
             }
 
-            logger.LogTrace("Y-Heights for jumps: player={A}, target={B}", _objectTable[0]?.Position.Y,
+            logger.LogTrace("Y-Heights for jumps: player={A}, target={B}", player.Position.Y,
                 Task.Destination.Position.Y - 0.5f);
             unsafe
             {

@@ -291,7 +291,7 @@ internal sealed class CreationUtilsComponent
                     debugOverlay.SavedPos = objectTable[0]!.Position;
                 else
                     debugOverlay.SavedPos = null;
-                logger.LogDebug($"SavedPos: {debugOverlay.SavedPos?.ToString("G5", CultureInfo.InvariantCulture)}");
+                logger.LogDebug("SavedPos: {SavedPos}", debugOverlay.SavedPos?.ToString("G5", CultureInfo.InvariantCulture));
             }
             if (ImGui.IsItemHovered())
                 QstWidgets.Tooltip(_L("Save/clear current position as reference"));
@@ -306,7 +306,7 @@ internal sealed class CreationUtilsComponent
                 bool showQuests = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapMarkerAlt);
                 if (showQuests)
                 {
-                    logger.LogDebug($"Opening questselectionwindow for {target.Name} {targetId}");
+                    logger.LogDebug("Opening questselectionwindow for {Target} {TargetId}", target.Name, targetId);
                     questSelectionWindow.OpenForTarget(target, targetId);
                 }
             }
@@ -318,7 +318,7 @@ internal sealed class CreationUtilsComponent
             bool showZoneQuests = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapMarkerAlt);
             if (showZoneQuests)
             {
-                logger.LogDebug($"Opening questselectionwindow for current zone {TerritoryData.GetNameAndId(clientState.TerritoryType)}");
+                logger.LogDebug("Opening questselectionwindow for current zone {Zone}", TerritoryData.GetNameAndId(clientState.TerritoryType));
                 questSelectionWindow.OpenForCurrentZone();
             }
             if (ImGui.IsItemHovered())

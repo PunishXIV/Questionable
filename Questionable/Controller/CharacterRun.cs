@@ -227,7 +227,9 @@ internal sealed class CharacterRun : IDisposable
         // Set first: Start can stop and move on before it returns.
         State = EState.Questing;
         _questStarter.Start("Character list");
+#pragma warning disable CA1508 // Start's callbacks can change State.
         if (State == EState.Questing && _questController.AutomationType == EAutomationType.Manual)
+#pragma warning restore CA1508
             Fail(_LF("Character list stopped: questing would not start on {0}.", _queue[_index].Name));
     }
 

@@ -77,7 +77,7 @@ internal sealed class NavCheck(
 
                 Directory.CreateDirectory(Path.GetDirectoryName(path)!);
                 await File.WriteAllLinesAsync(path, rows, token).ConfigureAwait(false);
-                await PrintOnFramework($"Nav check done: {steps.Count - unreachable}/{steps.Count} reachable. Report: {path}")
+                await PrintOnFramework(string.Create(CultureInfo.InvariantCulture, $"Nav check done: {steps.Count - unreachable}/{steps.Count} reachable. Report: {path}"))
                     .ConfigureAwait(false);
             }
             catch (OperationCanceledException)

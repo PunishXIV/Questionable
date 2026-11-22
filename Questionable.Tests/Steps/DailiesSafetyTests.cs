@@ -131,7 +131,7 @@ public sealed class DailiesSafetyTests
         Assert.True(quest.Root.Disabled);
         Assert.Equal(EInteractionType.Instruction, quest.FindSequence(0)!.Steps[0].InteractionType);
         Assert.False(_functions.CanQueueSociety(quest.Id));
-        Assert.Contains("disabled", DailiesController.GetBlockReason(quest, (QuestInfo)quest.Info, false, true)!);
+        Assert.Contains("disabled", DailiesController.GetBlockReason(quest, (QuestInfo)quest.Info, false, true)!, System.StringComparison.Ordinal);
         Assert.NotNull(quest.FindSequence(0));
     }
 
@@ -141,7 +141,7 @@ public sealed class DailiesSafetyTests
         Quest quest = Load(1516, EAlliedSociety.Ixal, repeatable: true);
         Assert.False(_functions.CanQueueSociety(quest.Id));
         Assert.Contains("can't do on its own",
-            DailiesController.GetBlockReason(quest, (QuestInfo)quest.Info, false, true, needsPlayer: true)!);
+            DailiesController.GetBlockReason(quest, (QuestInfo)quest.Info, false, true, needsPlayer: true)!, StringComparison.Ordinal);
     }
 
     [Theory]
@@ -176,7 +176,7 @@ public sealed class DailiesSafetyTests
         _catalog.Add(TestQuestInfo.Create(1000, "Required quest"));
         _state.AvailableAlliedSocietyQuests[EAlliedSociety.Ixal] = [id];
 
-        Assert.Contains("Required quest", _functions.GetDailyBlock(id)!);
+        Assert.Contains("Required quest", _functions.GetDailyBlock(id)!, System.StringComparison.Ordinal);
         var plan = new DailiesPlan([EAlliedSociety.Ixal]);
         var blocked = new DailiesPlan.Entry(id, EAlliedSociety.Ixal, true, false, false,
             EAlliedSocietyRank.Neutral, 0, 154, Vector3.Zero, BlockReason: _functions.GetDailyBlock(id));
@@ -199,7 +199,7 @@ public sealed class DailiesSafetyTests
         _state.AvailableAlliedSocietyQuests[EAlliedSociety.Ixal] = [id];
         _state.LockedAetherytes.Add(EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead);
 
-        Assert.Contains("Aetheryte", _functions.GetDailyBlock(id)!);
+        Assert.Contains("Aetheryte", _functions.GetDailyBlock(id)!, System.StringComparison.Ordinal);
     }
 
     [Theory]
@@ -267,8 +267,8 @@ public sealed class DailiesSafetyTests
         QuestInfo info = TestQuestInfo.Create(123, "Daily", level: 50)
             .With(nameof(QuestInfo.AlliedSociety), EAlliedSociety.Ixal);
         Quest quest = _catalog.Add(info);
-        Assert.Contains("No quest path", DailiesController.GetBlockReason(null, info, false, true)!);
-        Assert.Contains("level 50", DailiesController.GetBlockReason(quest, info, false, false)!);
+        Assert.Contains("No quest path", DailiesController.GetBlockReason(null, info, false, true)!, System.StringComparison.Ordinal);
+        Assert.Contains("level 50", DailiesController.GetBlockReason(quest, info, false, false)!, System.StringComparison.Ordinal);
         Assert.Null(DailiesController.GetBlockReason(quest, info, true, false));
         Assert.Null(DailiesController.GetBlockReason(quest, info, false, true));
     }
@@ -277,9 +277,9 @@ public sealed class DailiesSafetyTests
     public void UnlockReason_NamesQuestAndMissing()
     {
         string reason = DailiesController.UnlockReason("Peace for Thanalan", ["Prev: Into the Sands"]);
-        Assert.Contains("Peace for Thanalan", reason);
-        Assert.Contains("Into the Sands", reason);
-        Assert.Contains("can't be accepted", DailiesController.UnlockReason("Peace for Thanalan", []));
+        Assert.Contains("Peace for Thanalan", reason, System.StringComparison.Ordinal);
+        Assert.Contains("Into the Sands", reason, System.StringComparison.Ordinal);
+        Assert.Contains("can't be accepted", DailiesController.UnlockReason("Peace for Thanalan", []), System.StringComparison.Ordinal);
     }
 
     private static (List<QuestId> Chain, QuestId? Story) Chain(ushort[] done, params QuestInfo[] quests) =>

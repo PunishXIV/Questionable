@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Dalamud.Game.ClientState.Objects.SubKinds;
+using Dalamud.Game.Text.SeStringHandling;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
@@ -112,7 +113,7 @@ internal static class Interact
             else if (step.InteractionType != EInteractionType.Interact)
                 yield break;
             if (!step.DataId.HasValue)
-                throw new ArgumentNullException(nameof(step.DataId));
+                throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
 
             // if we're fast enough, it is possible to get the smalltalk prompt
             if (sequence.Sequence == 0 && sequence.Steps.IndexOf(step) == 0)
@@ -164,10 +165,15 @@ internal static class Interact
         IObjectTable objectTable,
         ClassJobUtils classJobUtils,
         ILogger<Executor> logger,
-        IQuestGameState gameState)
-        : TaskExecutor<Task>, IConditionChangeAware
+        IQuestGameState gameState,
+        TaskToastClassifier toastClassifier)
+        : TaskExecutor<Task>, IConditionChangeAware, IToastAware
     {
+        private static readonly TimeSpan RefusalWindow = TimeSpan.FromSeconds(2);
+
         private DateTime _continueAt = DateTime.MinValue;
+        private DateTime? _triggeredAt;
+        private bool _tooFar;
         private EInteractionState _interactionState = EInteractionState.None;
         private bool _needsFacing;
         private bool _needsUnmount;
@@ -187,6 +193,9 @@ internal static class Interact
 
         public override ETaskResult Update()
         {
+            if (_tooFar)
+                return ETaskResult.RetryStep;
+
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
 
@@ -228,7 +237,7 @@ internal static class Interact
             if (!isTargetable || !hasAnyMarker)
             {
                 if (EzThrottler.Throttle("skipTarget", miliseconds: 1000))
-                    logger.LogDebug($"IsTargetable: {isTargetable} / HasAnyMarker: {hasAnyMarker}");
+                    logger.LogDebug("IsTargetable: {IsTargetable} / HasAnyMarker: {HasAnyMarker}", isTargetable, hasAnyMarker);
                 return ETaskResult.StillRunning;
             }
 
@@ -283,7 +292,7 @@ internal static class Interact
         {
             if (_unequipItem != 0)
             {
-                logger.LogDebug($"unequipping item {_unequipItem}");
+                logger.LogDebug("unequipping item {ItemId}", _unequipItem);
                 unsafe
                 {
                     InventoryManager* inventoryManager = InventoryManager.Instance();
@@ -292,14 +301,14 @@ internal static class Interact
                     InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
                     if (EquipmentSlots.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
                     {
-                        logger.LogDebug($"Moving {_unequipItem} to {targetSlot} in soul crystal inv");
+                        logger.LogDebug("Moving {ItemId} to {TargetSlot} in soul crystal inv", _unequipItem, targetSlot);
                         _ = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, srcSlot, armoryType, targetSlot, a6: true);
                     }
                     else
                     {
                         logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
                             armoryType, _unequipItem);
-                        throw new Exception("Unable to unequip gear - armory chest is full.");
+                        throw new InvalidOperationException("Unable to unequip gear - armory chest is full.");
                     }
                 }
                 _unequipItem = 0;
@@ -388,7 +397,7 @@ internal static class Interact
                     logger.LogInformation("{QuestId} acceptableJobs: {AcceptableJobs}", Task.Quest.Id, acceptableJobsText);
                 }
                 if (acceptableJobs.Count == 0)
-                    throw new Exception(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
+                    throw new InvalidOperationException(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
 
                 // The game won't offer the quest on a class below its level.
                 List<Job> levelledJobs = [.. acceptableJobs.Where(x => gameState.GetClassJobLevel(x) >= Task.Quest.Info.Level)];
@@ -410,8 +419,8 @@ internal static class Interact
                     }
 
                     if (!classJobUtils.SwitchJob(candidate) && !_reportedWrongJob)
-                        throw new Exception(_LF("_JobGearsetError", candidate.ToFriendlyString(), Task.Quest.Info.Name));
-                    logger.LogInformation($"Switched from {playerJob} to {candidate}");
+                        throw new InvalidOperationException(_LF("_JobGearsetError", candidate.ToFriendlyString(), Task.Quest.Info.Name));
+                    logger.LogInformation("Switched from {OldJob} to {NewJob}", playerJob, candidate);
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
                     return ETaskResult.StillRunning;
@@ -465,6 +474,23 @@ internal static class Interact
             }
         }
 
+        // The game answers an out-of-range interact with "Too far away." while the call still reports success.
+        public bool OnErrorToast(SeString message)
+        {
+            if (!IsRefusal(_interactionState == EInteractionState.Triggered, _triggeredAt, DateTime.Now) ||
+                !toastClassifier.IsTooFarAway(message.TextValue))
+                return false;
+
+            logger.LogInformation("Too far away to interact with {DataId}, travelling to it again", Task.DataId);
+            ProgressContext = null;
+            _interactionState = EInteractionState.None;
+            _tooFar = true;
+            return false;
+        }
+
+        internal static bool IsRefusal(bool triggered, DateTime? triggeredAt, DateTime now) =>
+            triggered && triggeredAt is { } at && now - at <= RefusalWindow;
+
         public override bool ShouldInterruptOnDamage() => true;
 
         protected override bool Start()
@@ -509,7 +535,10 @@ internal static class Interact
                 InteractionProgressContext.FromActionUseOrDefault(() =>
                 {
                     if (gameFunctions.InteractWith(gameObject))
+                    {
                         _interactionState = EInteractionState.Triggered;
+                        _triggeredAt = DateTime.Now;
+                    }
                     else
                         _interactionState = EInteractionState.None;
                     return _interactionState != EInteractionState.None;

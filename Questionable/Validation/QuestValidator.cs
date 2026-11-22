@@ -56,7 +56,7 @@ internal sealed class QuestValidator
                         }
                         catch (ArgumentException e)
                         {
-                            _logger.LogError(e, $"Unable to validate {quest.Info.QuestId} {quest.Info.Name}");
+                            _logger.LogError(e, "Unable to validate {QuestId} {Name}", quest.Info.QuestId, quest.Info.Name);
                         }
                     }
                 }

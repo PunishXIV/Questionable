@@ -139,7 +139,7 @@ internal static class Repair
             if (DateTime.Now > _giveUpAt)
             {
                 Finish();
-                throw new TaskException($"the gear wasn't repaired within {GiveUpAfter.TotalSeconds} seconds");
+                throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"the gear wasn't repaired within {GiveUpAfter.TotalSeconds} seconds"));
             }
 
             if (DateTime.Now < _nextTry)

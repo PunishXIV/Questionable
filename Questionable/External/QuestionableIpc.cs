@@ -371,7 +371,7 @@ internal sealed class QuestionableIpc : IDisposable
     }
 
     internal static string ChapterName(RedoIndex redo) =>
-        redo.Index == -1 ? "" : redo.Chapter.ChapterName.ToString();
+        redo.Index == -1 ? "" : redo.Chapter.ChapterName.ToString(null, CultureInfo.InvariantCulture);
 
     private Tuple<string, int> RedoLookupIndex(uint questId)
     {

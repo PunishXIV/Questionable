@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 using Microsoft.Extensions.Logging.Abstractions;
 using Questionable.Controller;
@@ -63,7 +64,7 @@ public sealed class QuestReporterTests
             ++count;
         }
 
-        Assert.True(count > 1000, $"only {count} paths found");
+        Assert.True(count > 1000, string.Create(CultureInfo.InvariantCulture, $"only {count} paths found"));
     }
 
     [Fact]

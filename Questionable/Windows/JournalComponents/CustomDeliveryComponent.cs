@@ -155,7 +155,7 @@ internal sealed class CustomDeliveryComponent(
 
     private void DrawRequest(DeliveryRequest request, bool picked)
     {
-        string name = dataManager.GetExcelSheet<Item>().GetRowOrDefault(request.ItemId)?.Name.ToString() ?? request.ItemId.ToString(CultureInfo.InvariantCulture);
+        string name = dataManager.GetExcelSheet<Item>().GetRowOrDefault(request.ItemId)?.Name.ToString(null, CultureInfo.CurrentCulture) ?? request.ItemId.ToString(CultureInfo.InvariantCulture);
         ImGui.TextColored(request.Bonus ? QstTheme.WithAlpha(QstTheme.Amber, picked ? 1f : 0.55f)
             : picked ? QstTheme.Text : QstTheme.TextMuted, name);
         if (request.Bonus && ImGui.IsItemHovered())

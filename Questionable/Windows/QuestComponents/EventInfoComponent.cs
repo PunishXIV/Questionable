@@ -17,12 +17,12 @@ internal sealed class EventInfoComponent
 {
     internal static readonly Dictionary<ushort, EventDetails> Details = new()
     {
-        [39] = new($"{_T<Lumina.Excel.Sheets.BannerBg>(233)} {DateTime.UtcNow.Year}"), // Yokai Watch
-        [84] = new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} {DateTime.UtcNow.Year}"), // FFXV
-        [147] = new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(71)} {DateTime.UtcNow.Year}", AtDailyReset(2026, 12, 9)), // FFXVI
-        [148] = new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} {DateTime.UtcNow.Year}"), // Fall Guys
-        [176] = new($"{_T<Lumina.Excel.Sheets.FittingShopCategory>(109)} {DateTime.UtcNow.Year}"), // All Saints' Wake
-        [257] = new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(200)} {DateTime.UtcNow.Year}", AtDailyReset(2027, 2, 23)), // FFVII Keybound Brawlers
+        [39] = new(string.Create(CultureInfo.CurrentCulture, $"{_T<Lumina.Excel.Sheets.BannerBg>(233)} {DateTime.UtcNow.Year}")), // Yokai Watch
+        [84] = new(string.Create(CultureInfo.CurrentCulture, $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} {DateTime.UtcNow.Year}")), // FFXV
+        [147] = new(string.Create(CultureInfo.CurrentCulture, $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(71)} {DateTime.UtcNow.Year}"), AtDailyReset(2026, 12, 9)), // FFXVI
+        [148] = new(string.Create(CultureInfo.CurrentCulture, $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} {DateTime.UtcNow.Year}")), // Fall Guys
+        [176] = new(string.Create(CultureInfo.CurrentCulture, $"{_T<Lumina.Excel.Sheets.FittingShopCategory>(109)} {DateTime.UtcNow.Year}")), // All Saints' Wake
+        [257] = new(string.Create(CultureInfo.CurrentCulture, $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(200)} {DateTime.UtcNow.Year}"), AtDailyReset(2027, 2, 23)), // FFVII Keybound Brawlers
     };
 
     private static DateTime AtDailyReset(int year, int month, int day) => new(new(year, month, day), new(14, 59), DateTimeKind.Utc);

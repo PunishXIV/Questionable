@@ -146,7 +146,7 @@ internal sealed class QuestJournalComponent
         {
             RedoIndex redoIndex = redoUtil.GetChapter(firstQuest.Id.Value);
             if (redoIndex.Index != -1)
-                genreName = $"{genre.Genre.Name} ({redoIndex.Chapter.ChapterName})";
+                genreName = string.Create(CultureInfo.CurrentCulture, $"{genre.Genre.Name} ({redoIndex.Chapter.ChapterName})");
         }
 
         if (_applyOpenState)

@@ -598,7 +598,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     {
                         using (ImRaii.PushId($"BlacklistItem{itemId}"))
                         {
-                            string name = _dataManager.GetExcelSheet<Item>()?.GetRowOrDefault(itemId)?.Name.ToString()
+                            string name = _dataManager.GetExcelSheet<Item>()?.GetRowOrDefault(itemId)?.Name.ToString(null, CultureInfo.CurrentCulture)
                                           ?? itemId.ToString(CultureInfo.InvariantCulture);
                             ImGui.AlignTextToFramePadding();
                             ImGui.Text($"{name} ({itemId})");

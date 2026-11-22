@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using Dalamud.Game;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
@@ -17,27 +16,20 @@ internal sealed unsafe class RewardPickHandler : IDisposable
 {
     internal static readonly ERewardRule[] DefaultOrder = Enum.GetValues<ERewardRule>();
 
-    // AtkComponentJournalCanvas.ReceiveEvent; picking reward i is event 9 with 7 + i (credit: TextAdvance's PickRewardItemUnsafe).
-    private const string CanvasReceiveEvent = "48 89 5C 24 ?? 48 89 74 24 ?? 4C 89 4C 24 ?? 55";
-    private delegate nint CanvasReceiveEventDelegate(nint canvas, ushort eventType, int eventParam, void* inputData, void* eventData);
-
     private readonly IAddonLifecycle _addonLifecycle;
     private readonly QuestController _questController;
     private readonly Configuration _configuration;
     private readonly IDataManager _dataManager;
-    private readonly ISigScanner _sigScanner;
     private readonly ILogger<RewardPickHandler> _logger;
-    private CanvasReceiveEventDelegate? _receiveEvent;
     private HashSet<uint>? _allaganPieces;
 
     public RewardPickHandler(IAddonLifecycle addonLifecycle, QuestController questController, Configuration configuration,
-        IDataManager dataManager, ISigScanner sigScanner, ILogger<RewardPickHandler> logger)
+        IDataManager dataManager, ILogger<RewardPickHandler> logger)
     {
         _addonLifecycle = addonLifecycle;
         _questController = questController;
         _configuration = configuration;
         _dataManager = dataManager;
-        _sigScanner = sigScanner;
         _logger = logger;
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "JournalResult", OnPostSetup);
     }
@@ -118,11 +110,17 @@ internal sealed unsafe class RewardPickHandler : IDisposable
         _logger.LogInformation("Picking reward {Index} ({ItemId}) of {Options}", index, options[index].ItemId,
             string.Join(", ", options.Select(x => x.ItemId)));
 
-        nint canvas = (nint)((AtkComponentNode*)addon->UldManager.NodeList[7])->Component;
-        _receiveEvent ??= Marshal.GetDelegateForFunctionPointer<CanvasReceiveEventDelegate>(_sigScanner.ScanText(CanvasReceiveEvent));
+        AtkComponentJournalCanvas* canvas = addon->UldManager.NodeList[7]->GetAsAtkComponentJournalCanvas();
+        if (canvas == null)
+        {
+            _logger.LogWarning("Reward window node 7 isn't the reward canvas, leaving the choice to the player");
+            return;
+        }
+
+        // Picking reward i is event 9 with 7 + i (credit: TextAdvance's PickRewardItemUnsafe).
         byte* inputData = stackalloc byte[100];
         byte* eventData = stackalloc byte[50];
-        _receiveEvent(canvas, 9, 7 + index, inputData, eventData);
+        canvas->ReceiveEvent((AtkEventType)9, 7 + index, (AtkEvent*)inputData, (AtkEventData*)eventData);
     }
 
     private Option Describe(uint itemId, uint amount)

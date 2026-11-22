@@ -26,7 +26,7 @@ internal sealed class TerritoryData
                 new
                 {
                     x.RowId,
-                    Name = x.PlaceName.ValueNullable?.Name.ToString() ?? x.PlaceNameZone.ValueNullable?.Name.ToString()
+                    Name = x.PlaceName.ValueNullable?.Name.ToString(null, CultureInfo.InvariantCulture) ?? x.PlaceNameZone.ValueNullable?.Name.ToString(null, CultureInfo.InvariantCulture)
                 })
             .Where(x => !string.IsNullOrEmpty(x.Name))
             .ToImmutableDictionary(x => x.RowId, x => x.Name!);
@@ -116,7 +116,7 @@ internal sealed class TerritoryData
             if (param.ScriptInstruction.IsEmpty)
                 break;
 
-            string instruction = param.ScriptInstruction.ToString();
+            string instruction = param.ScriptInstruction.ToString(null, CultureInfo.InvariantCulture);
             uint? instanceType = instruction.StartsWith("INSTANCEDUNGEON", StringComparison.Ordinal)
                 ? dataManager.GetExcelSheet<InstanceContent>().GetRowOrDefault(param.ScriptArg)?.InstanceContentType.RowId
                 : null;

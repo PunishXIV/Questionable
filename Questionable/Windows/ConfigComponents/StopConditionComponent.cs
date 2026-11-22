@@ -293,7 +293,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                                        ImGui.GetStyle().FramePadding.X * 2);
                     }
 
-                    if (ImGuiComponentsLocal.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
+                    if (ImGuiComponentsLocal.IconButton(string.Create(CultureInfo.InvariantCulture, $"##Remove{i}"), FontAwesomeIcon.Times))
                         itemToRemove = quest;
                 }
             }

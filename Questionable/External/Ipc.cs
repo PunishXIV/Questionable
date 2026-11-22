@@ -63,7 +63,9 @@ internal static class IpcInvoke
         }
         catch (Exception e) when (IsSafeFailure(e))
         {
+#pragma warning disable CA2254 // Callers pass a constant template.
             logger.LogWarning(e, message, args);
+#pragma warning restore CA2254
             return fallback;
         }
     }
@@ -90,7 +92,9 @@ internal static class IpcInvoke
         }
         catch (Exception e) when (IsSafeFailure(e))
         {
+#pragma warning disable CA2254 // Callers pass a constant template.
             logger.LogWarning(e, message, args);
+#pragma warning restore CA2254
         }
     }
 

@@ -11,7 +11,7 @@ internal static class Aetheryte
             if (step.InteractionType != EInteractionType.AttuneAetheryte)
                 return null;
             if (!step.Aetheryte.HasValue)
-                throw new ArgumentNullException(nameof(step.Aetheryte));
+                throw new ArgumentException($"{nameof(step.Aetheryte)} is missing", nameof(step));
             if (aetheryteFunctions.IsAetheryteUnlocked(step.Aetheryte.Value) && step.SkipConditions?.StepIf?.Never != true)
                 return null;
 

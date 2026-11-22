@@ -1,3 +1,4 @@
+using ECommons.UIHelpers.AddonMasterImplementations;
 using ECommons.UIHelpers.AtkReaderImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -14,7 +15,7 @@ internal static class AssignBattlehorn
             if (step.InteractionType != EInteractionType.AssignBattlehorn)
                 return null;
             if (step.PetId is not { } petId || step.Battlehorn is not { } slot || slot is < 1 or > 3)
-                throw new ArgumentException("AssignBattlehorn needs PetId and Battlehorn 1-3");
+                throw new ArgumentException("AssignBattlehorn needs PetId and Battlehorn 1-3", nameof(step));
 
             return new Task(petId, slot);
         }
@@ -35,9 +36,10 @@ internal static class AssignBattlehorn
         Wait,
     }
 
-    internal sealed class Executor(ILogger<Task> logger) : TaskExecutor<Task>
+    internal sealed class Executor(ILogger<Task> logger, IDataManager dataManager) : TaskExecutor<Task>
     {
         private const uint FirstEntryParam = 4;
+        private const uint AssignFirstBattlehorn = 17706; // Addon "Assign to First Battlehorn", then Second, Third
         private static readonly TimeSpan Timeout = TimeSpan.FromSeconds(30);
 
         private EStep _step;
@@ -104,16 +106,23 @@ internal static class AssignBattlehorn
                     return ETaskResult.StillRunning;
 
                 case EStep.Menu:
-                    if (!GenericHelpers.TryGetAddonByName<AtkUnitBase>("ContextMenu", out var menu) ||
-                        !GenericHelpers.IsAddonReady(menu))
+                    if (!GenericHelpers.TryGetAddonMaster<AddonMaster.ContextMenu>(out var menu) || !menu.IsAddonReady)
                     {
                         _step = EStep.Find;
                         return ETaskResult.StillRunning;
                     }
 
-                    logger.LogInformation("Choosing battlehorn {Slot}", Task.Battlehorn);
-                    Callback.Fire(menu, true, 0, Task.Battlehorn - 1, 0);
-                    _step = EStep.Wait;
+                    string label = dataManager.GetExcelSheet<Lumina.Excel.Sheets.Addon>()
+                        .GetRow(AssignFirstBattlehorn + Task.Battlehorn - 1u).Text.ExtractText();
+                    AddonMaster.ContextMenu.Entry[] entries = menu.Entries;
+                    int index = Array.FindIndex(entries, x => GameFunctions.GameStringEquals(x.Text, label));
+                    if (index < 0)
+                        throw new TaskException(
+                            $"The pet's menu has no '{label}' ({string.Join(", ", entries.Select(x => x.Text))}).");
+
+                    logger.LogInformation("Choosing '{Label}'", label);
+                    if (entries[index].Select())
+                        _step = EStep.Wait;
                     return ETaskResult.StillRunning;
 
                 default:

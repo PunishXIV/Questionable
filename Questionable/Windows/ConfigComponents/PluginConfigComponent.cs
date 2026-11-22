@@ -301,7 +301,7 @@ internal sealed class PluginConfigComponent
         IExposedPlugin? installedPlugin = FindInstalledPlugin(plugin, requireLoaded: false);
         bool isLoaded = installedPlugin is { IsLoaded: true };
         if (installedPlugin != null && installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) &&
-            installedPlugin.Manifest.Author.Contains("AtmoOmen"))
+            installedPlugin.Manifest.Author.Contains("AtmoOmen", StringComparison.Ordinal))
             plugin = new(
                 plugin.DisplayName,
                 plugin.InternalName,
@@ -759,7 +759,8 @@ internal sealed class PluginConfigComponent
             {
                 DirectoryInfo info => info.FullName,
                 string path => path,
-                _ => directory?.GetFoP("FullName") as string
+                null => null,
+                _ => directory.GetFoP("FullName") as string
             };
             if (string.IsNullOrEmpty(root))
                 return null;

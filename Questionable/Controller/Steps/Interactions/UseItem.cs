@@ -18,7 +18,7 @@ internal static class UseItem
             else if (step.InteractionType != EInteractionType.UseItem)
                 return [];
             if (!step.ItemId.HasValue)
-                throw new ArgumentNullException(nameof(step.ItemId));
+                throw new ArgumentException($"{nameof(step.ItemId)} is missing", nameof(step));
 
             MountStep.UnmountTask unmount = new();
             if (step.GroundTarget == true)
@@ -32,7 +32,7 @@ internal static class UseItem
                 else
                 {
                     if (!step.Position.HasValue)
-                        throw new ArgumentNullException(nameof(step.Position));
+                        throw new ArgumentException($"{nameof(step.Position)} is missing", nameof(step));
 
                     task = new UseOnPosition(quest.Id, step.Position.Value, step.ItemId.Value,
                         step.CompletionQuestVariablesFlags);

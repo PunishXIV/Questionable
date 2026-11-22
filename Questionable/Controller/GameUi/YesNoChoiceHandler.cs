@@ -346,9 +346,9 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _questBattleConfirmation = new QuestBattleConfirmation(currentQuest, actualPrompt, DateTime.UtcNow);
     }
 
-    private void OnAutomationTypeChanged(object sender, QuestController.EAutomationType automationType)
+    private void OnAutomationTypeChanged(object? sender, AutomationEventArgs e)
     {
-        if (automationType == QuestController.EAutomationType.Manual)
+        if (e.AutomationType == QuestController.EAutomationType.Manual)
             _questBattleConfirmation = null;
     }
 

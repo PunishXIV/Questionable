@@ -1,3 +1,4 @@
+using System.Globalization;
 using Questionable.Data;
 using Xunit;
 
@@ -87,7 +88,7 @@ public sealed class QuestPrerequisiteTests
         public bool IsAchievementComplete(int[] achievementIds) => achievementIds.All(Achievements.Contains);
         public bool IsMountUnlocked(ushort mountId) => Mounts.Contains(mountId);
         public bool IsUnlockLinkUnlocked(ushort unlockLinkId) => UnlockLinks.Contains(unlockLinkId);
-        public string AchievementName(int achievementId) => $"A{achievementId}";
+        public string AchievementName(int achievementId) => string.Create(CultureInfo.InvariantCulture, $"A{achievementId}");
         public string MountName(ushort mountId) => $"M{mountId}";
     }
 }

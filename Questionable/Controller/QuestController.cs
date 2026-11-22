@@ -17,8 +17,6 @@ namespace Questionable.Controller;
 [RegisterSingleton]
 internal sealed class QuestController : MiniTaskController<QuestController>, IExternalOperationHost, IQuestRecoveryHost
 {
-    public delegate void AutomationChangedHandler(object sender, EAutomationType e);
-
     public enum EAutomationType
     {
         Manual,
@@ -356,7 +354,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             }
             _automationType = value;
             _priorityManager.IsManualRun = value == EAutomationType.Manual;
-            AutomationTypeChanged?.Invoke(this, value);
+            AutomationTypeChanged?.Invoke(this, new AutomationEventArgs(value));
         }
     }
 
@@ -437,7 +435,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public bool IsQuestingStopped => _recovery.IsQuestingStopped(this);
 
-    public event AutomationChangedHandler? AutomationTypeChanged;
+    public event EventHandler<AutomationEventArgs>? AutomationTypeChanged;
 
     public void Reload()
     {
@@ -514,7 +512,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                         HasExternalOperation || SelectionState.InDuty))
                 {
                     _stopPolicy.ReportLevelReached(currentLevel);
-                    StopFinished($"Level stop condition reached [{currentLevel}]");
+                    StopFinished(string.Create(CultureInfo.InvariantCulture, $"Level stop condition reached [{currentLevel}]"));
                     return;
                 }
             }
@@ -572,8 +570,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private bool UpdateStuckWatch()
     {
         Configuration.GeneralConfiguration general = _configuration.General;
-        if (!general.AutoStepRefreshEnabled || AutomationType != EAutomationType.Automatic || !IsRunning ||
-            CurrentQuest is not { } current || _objectTable[0] is not { } player)
+        ITask? task = _taskQueue.CurrentTaskExecutor?.CurrentTask;
+        // After the last step the queue is empty, so IsRunning alone would never redo a sequence the game didn't count.
+        bool redoSequence = CurrentQuest is { Step: CompletedStep } finished && task == null &&
+                            StuckWatch.CanRedoSequence(finished.FindSequence());
+        if (!general.AutoStepRefreshEnabled || AutomationType != EAutomationType.Automatic ||
+            !(IsRunning || redoSequence) || CurrentQuest is not { } current || _objectTable[0] is not { } player)
         {
             _stuckWatch.Reset();
             return false;
@@ -581,9 +583,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         int delay = Math.Clamp(general.AutoStepRefreshDelaySeconds, 30, 180);
         int maxTries = _dailies != null ? 1 : Math.Clamp(general.AutoStepRefreshMaxTries, 1, 10);
-        ITask? task = _taskQueue.CurrentTaskExecutor?.CurrentTask;
-        bool redoSequence = current.Step == CompletedStep && task == null &&
-                            StuckWatch.CanRedoSequence(current.FindSequence());
         bool paused = IsStuckPaused() || !(redoSequence || StuckWatch.CanRetry(current.FindStep()?.InteractionType, task));
         StuckWatch.EResult result = _stuckWatch.Update((current.Quest.Id, current.Sequence, current.Step),
             task, player.Position, paused, TimeSpan.FromSeconds(delay), maxTries);
@@ -1403,7 +1402,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
 
         _logger.LogInformation("Retrying current step [{QuestId}, {Sequence}, {Step}]",
-                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
+                    CurrentQuest.Quest.Id, CurrentQuest.Sequence, CurrentQuest.Step);
         CheckNextTasks("RetryStep");
     }
 

@@ -135,7 +135,7 @@ internal sealed class QuestJournalUtils
             {
                 RedoIndex redoIndex = redoUtil.GetChapter(questInfo.QuestId.Value);
                 bool redoActive = redoUtil.IsActive();
-                using (ImRaii.Disabled(redoActive || redoIndex.Chapter.RowId == 0 || redoIndex.Chapter.ChapterName.ToString().Length == 0))
+                using (ImRaii.Disabled(redoActive || redoIndex.Chapter.RowId == 0 || redoIndex.Chapter.ChapterName.ToString(null, CultureInfo.CurrentCulture).Length == 0))
                 {
                     if (ImGui.MenuItem(_L("Start NG+ here")))
                     {

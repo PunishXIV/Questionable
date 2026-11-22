@@ -18,12 +18,12 @@ internal static class Say
                 return [];
 
 
-            ArgumentNullException.ThrowIfNull(step.ChatMessage);
+            if (step.ChatMessage == null)
+                throw new ArgumentException($"{nameof(step.ChatMessage)} is missing", nameof(step));
 
-            string? excelString =
+            string excelString =
                 excelFunctions.GetDialogueText(quest, step.ChatMessage.ExcelSheet, step.ChatMessage.Key, isRegex: false)
-                    .GetString();
-            ArgumentNullException.ThrowIfNull(excelString);
+                    .GetString() ?? throw new InvalidOperationException($"No text for {step.ChatMessage.Key}");
 
             MountStep.UnmountTask unmount = new();
             Task task = new(excelString);

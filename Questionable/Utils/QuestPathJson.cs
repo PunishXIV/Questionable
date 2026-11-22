@@ -9,7 +9,7 @@ internal static partial class QuestPathJson
     internal const string SchemaUrl = "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json";
 
     internal static string Write(JsonObject root, JsonSerializerOptions options) =>
-        OneLinePositions().Replace(ToFile(root).ToJsonString(options), "[$1, $2, $3]");
+        OneLinePositions.Replace(ToFile(root).ToJsonString(options), "[$1, $2, $3]");
 
     internal static JsonObject ToFile(JsonObject root)
     {
@@ -70,5 +70,5 @@ internal static partial class QuestPathJson
     }
 
     [GeneratedRegex(@"\[\s*(-?[0-9][0-9.eE+-]*),\s*(-?[0-9][0-9.eE+-]*),\s*(-?[0-9][0-9.eE+-]*)\s*\]")]
-    private static partial Regex OneLinePositions();
+    private static partial Regex OneLinePositions { get; }
 }

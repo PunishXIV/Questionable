@@ -66,7 +66,7 @@ internal sealed class RedoComponent
         ImGui.Text(_L("Active:"));
         ImGui.SameLine();
         redoUtil.TryGetActiveChapter(out var activeChapter);
-        ImGui.Text(activeChapter?.ChapterName.ToString() ?? ("None"));
+        ImGui.Text(activeChapter?.ChapterName.ToString(null, CultureInfo.CurrentCulture) ?? ("None"));
         ImGui.SameLine();
         ImGui.SetNextItemWidth(230 * ImGui.GetIO().FontGlobalScale);
         _ = ImGui.InputTextWithHint("###RedoComponentFilter", _L("Filter NG+ categories"), ref _filter, maxLength: 20);
@@ -80,9 +80,9 @@ internal sealed class RedoComponent
             var questCount = redoCache.Quests.Count;
             if (questCount == 0)
                 continue;
-            var chapterName = redoCache.Chapter.ChapterName.ToString() ?? "";
+            var chapterName = redoCache.Chapter.ChapterName.ToString(null, CultureInfo.CurrentCulture) ?? "";
             chapterName = chapterName.Length > 0 ? chapterName : _L("???");
-            string? categoryName = redoCache.Chapter.UITab.Value.Text.ToString();
+            string? categoryName = redoCache.Chapter.UITab.Value.Text.ToString(null, CultureInfo.CurrentCulture);
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
             if (!_filter.IsNullOrEmpty() &&
                 !chapterName.Contains(_filter, StringComparison.InvariantCultureIgnoreCase) &&

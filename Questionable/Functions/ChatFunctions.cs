@@ -14,7 +14,7 @@ internal sealed class ChatFunctions
 {
     private readonly ReadOnlyDictionary<EEmote, string> _emoteCommands = dataManager.GetExcelSheet<Emote>()
         .Where(x => x.RowId > 0 && x.TextCommand.IsValid)
-        .Select(x => (x.RowId, Command: x.TextCommand.Value.Command.ToString()))
+        .Select(x => (x.RowId, Command: x.TextCommand.Value.Command.ToString(null, CultureInfo.InvariantCulture)))
         .Where(x => !string.IsNullOrEmpty(x.Command) && x.Command.StartsWith('/'))
         .ToDictionary(x => (EEmote)x.RowId, x => x.Command)
         .AsReadOnly();

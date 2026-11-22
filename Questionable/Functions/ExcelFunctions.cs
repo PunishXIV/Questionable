@@ -21,7 +21,7 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
             _logger.LogWarning("Could not find dialogue text for key '{Key}' in sheet '{Sheet}'", key, excelSheetName);
             return new(string.Empty);
         }
-        _logger.LogDebug($"Resolved {key} to '{seString.Value.WithMacrosReplaced()}");
+        _logger.LogDebug("Resolved {Key} to '{Text}'", key, seString.Value.WithMacrosReplaced());
 
         if (isRegex)
             return new(seString.Value.ToRegex());
@@ -41,7 +41,7 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
                 return null;
             }
 
-            excelSheetName = $"quest/{(currentQuest.Id.Value / 100):000}/{questRow.Value.Id}";
+            excelSheetName = string.Create(CultureInfo.InvariantCulture, $"quest/{(currentQuest.Id.Value / 100):000}/{questRow.Value.Id}");
         }
 
         ArgumentNullException.ThrowIfNull(excelSheetName);
@@ -53,7 +53,7 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
         }
         catch (SheetNotFoundException e)
         {
-            throw new SheetNotFoundException($"Sheet '{excelSheetName}' not found", e);
+            throw new SheetNotFoundException($"Sheet '{excelSheetName}' not found", nameof(excelSheetName), e);
         }
     }
 

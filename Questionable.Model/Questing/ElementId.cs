@@ -37,17 +37,25 @@ public abstract class ElementId(ushort value) : IComparable<ElementId>, IEquatab
 
     public static bool operator !=(ElementId? left, ElementId? right) => !Equals(left, right);
 
+    public static bool operator <(ElementId? left, ElementId? right) => left is null ? right is not null : left.CompareTo(right) < 0;
+
+    public static bool operator <=(ElementId? left, ElementId? right) => left is null || left.CompareTo(right) <= 0;
+
+    public static bool operator >(ElementId? left, ElementId? right) => left is not null && left.CompareTo(right) > 0;
+
+    public static bool operator >=(ElementId? left, ElementId? right) => left is null ? right is null : left.CompareTo(right) >= 0;
+
     public static ElementId FromString(string value)
     {
-        if (value.StartsWith("S"))
+        if (value.StartsWith("S", StringComparison.Ordinal))
             return new SatisfactionSupplyNpcId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        if (value.StartsWith("U"))
+        if (value.StartsWith("U", StringComparison.Ordinal))
             return new UnlockLinkId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        if (value.StartsWith("N"))
+        if (value.StartsWith("N", StringComparison.Ordinal))
             return new AethernetId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        if (value.StartsWith("C"))
+        if (value.StartsWith("C", StringComparison.Ordinal))
             return new AetherCurrentId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        if (value.StartsWith("A"))
+        if (value.StartsWith("A", StringComparison.Ordinal))
         {
             value = value.Substring(1);
             string[] parts = value.Split('x');

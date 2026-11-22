@@ -102,7 +102,7 @@ internal sealed unsafe class CustomDeliveries : IDisposable
                 loading |= !_asked.Contains(achievementId) || IsRequesting;
             }
 
-            result.Add(new(row.RowId, row.Npc.Value.Singular.ToString(),
+            result.Add(new(row.RowId, row.Npc.Value.Singular.ToString(null, CultureInfo.InvariantCulture),
                 QuestManager.IsQuestComplete(row.QuestRequired.RowId), rank, inst->Satisfaction[index],
                 row.SatisfactionNpcParams[rank].SatisfactionRequired, used, row.DeliveriesPerWeek,
                 Math.Min(achievement.Start + (uint)used, achievement.Max), achievement.Max, requests));
@@ -155,13 +155,13 @@ internal sealed unsafe class CustomDeliveries : IDisposable
         _achievementIds = [];
         foreach (SatisfactionNpc row in _dataManager.GetExcelSheet<SatisfactionNpc>())
         {
-            string name = residents.GetRowOrDefault(row.Npc.RowId)?.Singular.ToString() ?? "";
+            string name = residents.GetRowOrDefault(row.Npc.RowId)?.Singular.ToString(null, CultureInfo.InvariantCulture) ?? "";
             if (row.RowId == 0 || name.Length == 0)
                 continue;
 
             foreach (Achievement achievement in achievements)
             {
-                if (achievement.Description.ToString().Contains(name, StringComparison.OrdinalIgnoreCase))
+                if (achievement.Description.ToString(null, CultureInfo.InvariantCulture).Contains(name, StringComparison.OrdinalIgnoreCase))
                 {
                     _achievementIds[row.RowId] = achievement.RowId;
                     break;
@@ -187,8 +187,7 @@ internal sealed unsafe class CustomDeliveries : IDisposable
         if (module == null)
             return -1;
 
-        // GetCurrentDeviceTime; the offset isn't in ClientStructs yet.
-        int timestamp = *(int*)((nint)module + 0xB54) + inst->TimeAdjustmentForBonusGuarantee;
+        int timestamp = module->CurrentDeviceTime + inst->TimeAdjustmentForBonusGuarantee;
         return (timestamp - 1657008000) / 604800 % _dataManager.GetExcelSheet<SatisfactionBonusGuarantee>().Count;
     }
 

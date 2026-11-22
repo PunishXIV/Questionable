@@ -108,7 +108,7 @@ internal sealed class DebugOverlay : Window
             {
                 QuestStep? step = sequence.FindStep(i);
                 if (step != null && TryGetPosition(step, out Vector3? position))
-                    DrawStep($"{quest.Id} / {sequence.Sequence} / {i}", step, position.Value, 0xFFFFFFFF);
+                    DrawStep(string.Create(CultureInfo.CurrentCulture, $"{quest.Id} / {sequence.Sequence} / {i}"), step, position.Value, 0xFFFFFFFF);
             }
         }
     }

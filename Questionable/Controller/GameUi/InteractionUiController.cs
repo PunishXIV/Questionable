@@ -43,9 +43,9 @@ internal sealed class InteractionUiController : IDisposable
         _questController.AutomationTypeChanged -= OnAutomationTypeChanged;
     }
 
-    private void OnAutomationTypeChanged(object sender, QuestController.EAutomationType automationType)
+    private void OnAutomationTypeChanged(object? sender, AutomationEventArgs e)
     {
-        _startupRecovery = automationType == QuestController.EAutomationType.Manual
+        _startupRecovery = e.AutomationType == QuestController.EAutomationType.Manual
             ? null : new StartupDialogueRecovery(DateTime.UtcNow);
     }
 

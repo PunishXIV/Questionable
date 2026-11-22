@@ -38,7 +38,7 @@ internal sealed class QuestInfo : IQuestInfo
             var _ => ""
         };
 
-        Name = $"{quest.Name}{suffix}";
+        Name = string.Create(CultureInfo.CurrentCulture, $"{quest.Name}{suffix}");
         BaseName = Name;
         Dictionary<ushort, ushort> levelOverrides = new() {
             { 5492, 16 } // BST Hearts Aligned
@@ -79,7 +79,7 @@ internal sealed class QuestInfo : IQuestInfo
         NumSequences = quest.TodoParams[0].ToDoCompleteSeq;
         ToDoLocations = quest.TodoParams.SelectMany(param => param.ToDoLocation).Where(rowRef => rowRef.RowId != 0).Select(rowRef => new SheetLevel(rowRef.Value)).ToList();
         CompletesInstantly = quest.TodoParams[0].ToDoCompleteSeq == 0;
-        ActionUnlock = quest.GeneralActionReward.Where(x => x.RowId != 0).Select(x => x.Value.Name.ToString()).ToList();
+        ActionUnlock = quest.GeneralActionReward.Where(x => x.RowId != 0).Select(x => x.Value.Name.ToString(null, CultureInfo.CurrentCulture)).ToList();
         InstanceContentUnlock = (ushort)quest.InstanceContentUnlock.RowId;
         PreviousInstanceContent = quest.InstanceContent.Select(x => (ushort)x.RowId).Where(x => x != 0).ToList();
         PreviousInstanceContentJoin = (EQuestJoin)quest.InstanceContentJoin;

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.Extensions.Logging;
 using Questionable.Utils;
 using Xunit;
@@ -15,7 +16,7 @@ public sealed class TroubleshootingReportTests
     public void LongLog_DropsOldestAndFitsMessage()
     {
         List<RecentLog.Entry> log = Enumerable.Range(0, 40)
-            .Select(i => Line(40 - i, $"line {i:D2} " + new string('x', 150)))
+            .Select(i => Line(40 - i, string.Create(CultureInfo.InvariantCulture, $"line {i:D2} ") + new string('x', 150)))
             .ToList();
 
         string report = TroubleshootingReport.Build(new() { Facts = ["Quest: none"], Log = log, NowUtc = Now });
@@ -30,7 +31,7 @@ public sealed class TroubleshootingReportTests
     public void HugeFacts_StillFitMessage()
     {
         string[] facts = Enumerable.Range(0, 30).Select(_ => new string('f', 500)).ToArray();
-        string[] settings = Enumerable.Range(0, 200).Select(i => $"General.Setting{i}=on").ToArray();
+        string[] settings = Enumerable.Range(0, 200).Select(i => string.Create(CultureInfo.InvariantCulture, $"General.Setting{i}=on")).ToArray();
 
         string report = TroubleshootingReport.Build(new() { Facts = facts, Settings = settings, NowUtc = Now });
 

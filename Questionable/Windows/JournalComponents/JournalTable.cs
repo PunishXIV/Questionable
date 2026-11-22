@@ -168,7 +168,7 @@ internal sealed class JournalTable(
     {
         string name = $"{questInfo.Name} ({questInfo.QuestId})";
         if (quest is { Id: QuestId } && redoUtil.GetChapter(quest.Id.Value) is { Index: 0 } redoIndex)
-            name = $"{name}   ({redoIndex.Chapter.ChapterName})";
+            name = string.Create(CultureInfo.CurrentCulture, $"{name}   ({redoIndex.Chapter.ChapterName})");
         return name;
     }
 

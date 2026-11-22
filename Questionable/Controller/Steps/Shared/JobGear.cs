@@ -26,7 +26,7 @@ internal static class JobGear
         return best is { Collected: false } && best.ItemLevel > equippedItemLevel ? best : null;
     }
 
-    internal static string Entry(Job job, int level) => $"{job}:{level}";
+    internal static string Entry(Job job, int level) => string.Create(CultureInfo.InvariantCulture, $"{job}:{level}");
 
     internal static void Remember(Configuration configuration, string contentId, Job job, int level)
     {
@@ -95,7 +95,7 @@ internal static class JobGear
                     gearStats.CalculateAverageItemLevel(equipped));
             if (choice == null)
             {
-                reason = $"No unlocked job gear set that {job} at level {playerLevel} can wear{(level != null ? $" at level {level}" : "")}.";
+                reason = string.Create(CultureInfo.InvariantCulture, $"No unlocked job gear set that {job} at level {playerLevel} can wear{(level != null ? string.Create(CultureInfo.InvariantCulture, $" at level {level}") : "")}.");
                 return [];
             }
 
@@ -109,7 +109,7 @@ internal static class JobGear
             {
                 Remember(configuration, contentId, job, choice.Level);
                 pluginInterface.SavePluginConfig(configuration);
-                reason = $"You already have every piece of the level {choice.Level} set for {job}.";
+                reason = string.Create(CultureInfo.InvariantCulture, $"You already have every piece of the level {choice.Level} set for {job}.");
                 return [];
             }
 
@@ -124,7 +124,7 @@ internal static class JobGear
 
             logger.LogInformation("Collecting level {Level} job gear from {Shop}: {Items}", choice.Level,
                 chosen.ShopName, string.Join(", ", missing));
-            reason = $"Collecting the level {choice.Level} set for {job} from {chosen.ShopName} ({missing.Count} pieces).";
+            reason = string.Create(CultureInfo.InvariantCulture, $"Collecting the level {choice.Level} set for {job} from {chosen.ShopName} ({missing.Count} pieces).");
             return
             [
                 new Travel.Task(chosen.Vendor.TerritoryId, chosen.Vendor.Position, chosen.Vendor.NpcId),
@@ -187,7 +187,7 @@ internal static class JobGear
             if (DateTime.Now > _giveUpAt)
             {
                 Finish();
-                throw new TaskException($"the vendor's shop didn't hand out the gear within {GiveUpAfter.TotalSeconds} seconds");
+                throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"the vendor's shop didn't hand out the gear within {GiveUpAfter.TotalSeconds} seconds"));
             }
 
             if (DateTime.Now < _nextTry)

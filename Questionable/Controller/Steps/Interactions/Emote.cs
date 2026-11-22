@@ -26,7 +26,7 @@ internal static class Emote
             else if (step.InteractionType != EInteractionType.Emote)
                 yield break;
             if (!step.Emote.HasValue)
-                throw new ArgumentNullException(nameof(step.Emote));
+                throw new ArgumentException($"{nameof(step.Emote)} is missing", nameof(step));
 
             yield return new MountStep.UnmountTask();
             if (step.DataId != null)

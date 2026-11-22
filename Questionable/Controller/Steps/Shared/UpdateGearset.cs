@@ -76,7 +76,7 @@ internal static class UpdateGearset
             if (result < 0)
             {
                 logger.LogError("Failed to update gearset {GearsetId}", gearsetId);
-                throw new TaskException($"Failed to update gearset {gearsetId}");
+                throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"Failed to update gearset {gearsetId}"));
             }
 
             logger.LogInformation("Successfully updated gearset {GearsetId}", gearsetId);

@@ -52,9 +52,9 @@ internal sealed class HelpUiController : IDisposable
         _questController.AutomationTypeChanged -= CloseHelpWindows;
     }
 
-    private unsafe void CloseHelpWindows(object sender, QuestController.EAutomationType e)
+    private unsafe void CloseHelpWindows(object? sender, AutomationEventArgs e)
     {
-        if (e is QuestController.EAutomationType.Manual)
+        if (e.AutomationType is QuestController.EAutomationType.Manual)
             return;
 
         if (_gameGui.TryGetAddonByName("Guide", out AtkUnitBase* addonGuide))

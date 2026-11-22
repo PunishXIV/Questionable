@@ -71,7 +71,7 @@
 
     <ItemGroup>
       <PackageReference Update="DotNet.ReproducibleBuilds" Version="2.0.5" />
-      <PackageReference Update="Meziantou.Analyzer" Version="3.0.340">
+      <PackageReference Update="Meziantou.Analyzer" Version="3.0.341">
         <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
     </ItemGroup>

@@ -55,9 +55,9 @@ internal static class WaitAtEnd
                 case EInteractionType.WaitForObjectAtPosition:
                 case EInteractionType.WaitForNpcAtPosition:
                     if (!step.DataId.HasValue)
-                        throw new ArgumentNullException(nameof(step.DataId));
+                        throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
                     if (!step.Position.HasValue)
-                        throw new ArgumentNullException(nameof(step.Position));
+                        throw new ArgumentException($"{nameof(step.Position)} is missing", nameof(step));
 
                     return
                     [
@@ -127,23 +127,23 @@ internal static class WaitAtEnd
     }
 
     internal sealed record WaitDelay(TimeSpan Delay, string? Message,
-                   [CallerFilePath] string file = "", [CallerLineNumber] int line = 0) : ITask
+                   [CallerFilePath] string File = "", [CallerLineNumber] int Line = 0) : ITask
     {
         public bool InterruptOnDamage { get; init; }
 
         public WaitDelay([CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
-            : this(TimeSpan.FromMilliseconds(750), Message: null, file: file, line: line)
+            : this(TimeSpan.FromMilliseconds(750), Message: null, File: file, Line: line)
         {
         }
         public WaitDelay(TimeSpan Delay, [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
-            : this(Delay, Message: null, file: file, line: line)
+            : this(Delay, Message: null, File: file, Line: line)
         {
         }
 
         public bool ShouldRedoOnInterrupt() => true;
 
         public override string ToString() =>
-            $"Wait(seconds: {Delay.TotalSeconds}{(Message != null ? $", message: {Message}" : "")}, {Path.GetFileNameWithoutExtension(file)}:L{line})";
+            $"Wait(seconds: {Delay.TotalSeconds}{(Message != null ? $", message: {Message}" : "")}, {Path.GetFileNameWithoutExtension(File)}:L{Line})";
     }
 
     internal sealed class WaitDelayExecutor : DelayedTaskExecutor<WaitDelay>

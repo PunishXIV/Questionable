@@ -53,17 +53,17 @@ public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, IT
         double sequenceRate = (double)sequencesMatched / Math.Max(sequencesCompared, 1);
         double questRate = (double)questsMatched / Math.Max(questsCompared, 1);
 
-        output.WriteLine($"quests    : {questsMatched}/{questsCompared} ({questRate:P1})");
-        output.WriteLine($"sequences : {sequencesMatched}/{sequencesCompared} ({sequenceRate:P1})");
+        output.WriteLine(string.Create(CultureInfo.InvariantCulture, $"quests    : {questsMatched}/{questsCompared} ({questRate:P1})"));
+        output.WriteLine(string.Create(CultureInfo.InvariantCulture, $"sequences : {sequencesMatched}/{sequencesCompared} ({sequenceRate:P1})"));
         foreach (string mismatch in mismatches)
             output.WriteLine($"  {mismatch}");
 
         Assert.True(sequenceRate >= SequenceMatchFloor,
-            $"Sequence agreement {sequenceRate:P1} fell below the {SequenceMatchFloor:P0} floor " +
-            $"({sequencesMatched}/{sequencesCompared}).");
+            string.Create(CultureInfo.InvariantCulture, $"Sequence agreement {sequenceRate:P1} fell below the {SequenceMatchFloor:P0} floor ") +
+            string.Create(CultureInfo.InvariantCulture, $"({sequencesMatched}/{sequencesCompared})."));
         Assert.True(questRate >= QuestMatchFloor,
-            $"Whole-quest agreement {questRate:P1} fell below the {QuestMatchFloor:P0} floor " +
-            $"({questsMatched}/{questsCompared}).");
+            string.Create(CultureInfo.InvariantCulture, $"Whole-quest agreement {questRate:P1} fell below the {QuestMatchFloor:P0} floor ") +
+            string.Create(CultureInfo.InvariantCulture, $"({questsMatched}/{questsCompared})."));
     }
 
     private static IEnumerable<EmbeddedQuest> SampledQuests()
@@ -80,7 +80,7 @@ public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, IT
     private static bool TryReadQuestId(EmbeddedQuest embedded, out ushort questId)
     {
         questId = 0;
-        int underscore = embedded.ShortName.IndexOf('_');
+        int underscore = embedded.ShortName.IndexOf('_', StringComparison.Ordinal);
         return underscore > 0 &&
                ushort.TryParse(embedded.ShortName[..underscore], NumberStyles.None, CultureInfo.InvariantCulture,
                    out questId);

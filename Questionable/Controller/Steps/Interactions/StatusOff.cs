@@ -9,7 +9,7 @@ internal static class StatusOff
             if (step.InteractionType != EInteractionType.StatusOff)
                 return null;
             if (!step.Status.HasValue)
-                throw new ArgumentNullException(nameof(step.Status));
+                throw new ArgumentException($"{nameof(step.Status)} is missing", nameof(step));
 
             return new Task(step.Status.Value);
         }

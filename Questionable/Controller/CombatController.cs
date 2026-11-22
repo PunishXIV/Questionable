@@ -93,7 +93,7 @@ internal sealed class CombatController : IDisposable
         combatModule ??= _modules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
             throw new NeedsPlayerException("No combat plugin is set up for this fight. Pick one on the Basics page.");
-        _logger.LogInformation($"Combat module: {combatModule}");
+        _logger.LogInformation("Combat module: {CombatModule}", combatModule);
 
         // Record cleanup first: a throwing or rejected start can still hold resources.
         _pendingCleanup = combatModule;

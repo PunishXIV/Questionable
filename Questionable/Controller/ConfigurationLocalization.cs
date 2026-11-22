@@ -25,7 +25,7 @@ internal sealed class ConfigurationLocalization : IDisposable
         }
     }
 
-    private void OnLanguageChanged(string language) => Synchronize();
+    private void OnLanguageChanged(object? sender, EventArgs e) => Synchronize();
 
     private void Synchronize()
     {

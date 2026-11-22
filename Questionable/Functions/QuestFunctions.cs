@@ -652,7 +652,7 @@ internal sealed class QuestFunctions
 
         if (!configuration.Advanced.SkipClassJobQuests)
         {
-            Job classJob = (Job?)state.CurrentClassJobId ?? Job.ADV;
+            Job classJob = (Job)state.CurrentClassJobId;
             uint[] shadowbringersChapters = QuestData.AllRoleQuestChapters.Select(x => x[0]).ToArray();
             if (classJob != Job.ADV)
             {

@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -89,7 +90,7 @@ internal sealed class FakeQuestGameState : IQuestGameState
     public bool IsMountUnlocked(ushort mountId) => false;
     public bool IsUnlockLinkUnlocked(ushort unlockLinkId) => UnlockLinks.Contains(unlockLinkId);
     public bool IsAetherCurrentUnlocked(uint aetherCurrentId) => AetherCurrents.Contains(aetherCurrentId);
-    public string AchievementName(int achievementId) => $"A{achievementId}";
+    public string AchievementName(int achievementId) => string.Create(CultureInfo.InvariantCulture, $"A{achievementId}");
     public string MountName(ushort mountId) => $"M{mountId}";
 }
 

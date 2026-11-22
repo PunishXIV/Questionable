@@ -57,7 +57,7 @@ public sealed class AetherCurrentZoneFileTests
         int waypoints = 0;
         foreach (EmbeddedQuest embedded in Resources().Where(x => x.ShortName.StartsWith('C')))
         {
-            ushort zone = ushort.Parse(embedded.ShortName[1..embedded.ShortName.IndexOf('_')], CultureInfo.InvariantCulture);
+            ushort zone = ushort.Parse(embedded.ShortName[1..embedded.ShortName.IndexOf('_', StringComparison.Ordinal)], CultureInfo.InvariantCulture);
             List<QuestStep> steps = QuestTestData.LoadQuest(new AetherCurrentId(zone), embedded).Root.QuestSequence.Single().Steps;
             for (int i = 0; i < steps.Count; i++)
             {

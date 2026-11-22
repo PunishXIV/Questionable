@@ -82,7 +82,7 @@ public sealed class ImplicitStepsTests
             checkedSequences++;
         }
 
-        Assert.True(checkedSequences > 3000, $"Only {checkedSequences} paths with empty sequences were checked");
+        Assert.True(checkedSequences > 3000, string.Create(CultureInfo.InvariantCulture, $"Only {checkedSequences} paths with empty sequences were checked"));
     }
 
     private static QuestRoot Root(byte sequence) => new() { QuestSequence = [new() { Sequence = sequence }] };

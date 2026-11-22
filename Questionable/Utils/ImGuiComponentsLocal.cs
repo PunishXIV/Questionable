@@ -32,7 +32,7 @@ internal static class ImGuiComponentsLocal
                  [CallerLineNumber] int line = 0,
                                     string? id = null)
     {
-        id ??= $"{Path.GetFileName(file)}:{line}";
+        id ??= string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}");
         ImGui.PushID(id);
         bool result = ImGuiComponents.IconButton(icon, defaultColor, activeColor, hoveredColor, size / ImGuiHelpers.GlobalScale);
         ImGui.PopID();
@@ -58,7 +58,7 @@ internal static class ImGuiComponentsLocal
                          [CallerLineNumber] int line = 0,
                                     string? id = null)
     {
-        id ??= $"{Path.GetFileName(file)}:{line}";
+        id ??= string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}");
         ImGui.PushID(id);
         bool result = ImGuiComponents.IconButtonWithText(icon, text, defaultColor, activeColor, hoveredColor, size);
         ImGui.PopID();

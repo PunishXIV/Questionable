@@ -192,10 +192,10 @@ internal sealed class QuestGameData : IDisposable
         if (underscore < 0 || underscore + 4 > id.Length)
             return [];
 
-        ExcelSheet<RawRow>? sheet;
+        ExcelSheet<QuestDialogueText>? sheet;
         try
         {
-            sheet = _gameData.Excel.GetSheet<RawRow>(name: $"quest/{id.Substring(underscore + 1, 3)}/{id}");
+            sheet = _gameData.Excel.GetSheet<QuestDialogueText>(name: $"quest/{id.Substring(underscore + 1, 3)}/{id}");
         }
         catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or NotSupportedException)
         {
@@ -206,14 +206,14 @@ internal sealed class QuestGameData : IDisposable
             return [];
 
         SortedDictionary<int, string> byIndex = [];
-        foreach (RawRow row in sheet)
+        foreach (QuestDialogueText row in sheet)
         {
-            string key = row.ReadStringColumn(0).ExtractText();
+            string key = row.Key.ExtractText();
             int marker = key.IndexOf("_TODO_", StringComparison.Ordinal);
-            if (marker < 0 || !int.TryParse(key[(marker + "_TODO_".Length)..], out int index))
+            if (marker < 0 || !int.TryParse(key[(marker + "_TODO_".Length)..], NumberStyles.Integer, CultureInfo.InvariantCulture, out int index))
                 continue;
 
-            byIndex[index] = row.ReadStringColumn(1).ExtractText();
+            byIndex[index] = row.Value.ExtractText();
         }
 
         return byIndex.Count == 0 ? [] : [.. Enumerable.Range(0, byIndex.Keys.Max() + 1)

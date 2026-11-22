@@ -13,7 +13,7 @@ internal static class Capture
             if (step.InteractionType != EInteractionType.Capture)
                 return null;
             if (step.DataId is not { } dataId || step.PetId is not { } petId || step.Position is not { } position)
-                throw new ArgumentException("Capture needs DataId, PetId and Position");
+                throw new ArgumentException("Capture needs DataId, PetId and Position", nameof(step));
 
             return new Task(dataId, petId, position);
         }

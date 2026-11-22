@@ -127,8 +127,8 @@ public sealed class TaskRunnerTests
             Assert.Same(expected, failure.Error);
         Assert.Single(fixture.Log.Entries, x => x.Level == LogLevel.Error && ReferenceEquals(x.Exception, failure.Error));
         var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
-        Assert.Contains("Could not start", chat.GetArguments()[0]!.ToString());
-        Assert.Contains("Could not start", Assert.Single(fixture.Notifications));
+        Assert.Contains("Could not start", chat.GetArguments()[0]!.ToString(), System.StringComparison.Ordinal);
+        Assert.Contains("Could not start", Assert.Single(fixture.Notifications), System.StringComparison.Ordinal);
         Assert.True(fixture.Queue.AllTasksComplete);
         Assert.Equal(0, fixture.Controller.CompletedTasks);
         if (skipping)
@@ -159,7 +159,7 @@ public sealed class TaskRunnerTests
 
         Assert.Equal("Task failed to update", Assert.Single(fixture.Controller.Stops));
         Assert.Same(expected, Assert.Single(fixture.Controller.Failures).Error);
-        Assert.Contains("update failed", Assert.Single(fixture.Notifications));
+        Assert.Contains("update failed", Assert.Single(fixture.Notifications), System.StringComparison.Ordinal);
         Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
         Assert.True(fixture.Queue.AllTasksComplete);
     }

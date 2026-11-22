@@ -34,8 +34,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         ];
         _unattributedEnemies.Clear();
         _unattributedEnemies.AddRange(symbols.All.Keys
-            .Where(QuestSymbols.IsEnemySymbol)
-            .Where(x => !attributed.Contains(x))
+            .Where(x => QuestSymbols.IsEnemySymbol(x) && !attributed.Contains(x))
             .Order(StringComparer.Ordinal));
 
         List<QuestSequence> sequences = [BuildAcceptSequence(quest)];
@@ -50,7 +49,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
         int emptySequences = sequences.Count(x => x.Steps.Count == 0);
         if (emptySequences > 0)
-            notes.Add($"{emptySequences} sequence(s) had no derivable target and were written without steps.");
+            notes.Add(string.Create(CultureInfo.InvariantCulture, $"{emptySequences} sequence(s) had no derivable target and were written without steps."));
 
         QuestRoot root = new()
         {
@@ -302,7 +301,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
                 used.Add(match.DataId);
                 QuestStep step = new(EInteractionType.Interact, match.DataId, match.Position,
                     todo.Territory.RowId);
-                Note(step, $"auto: todo area {bestDistance:F0}y from lua {match.Symbol} -> {Describe(match.DataId)}");
+                Note(step, string.Create(CultureInfo.InvariantCulture, $"auto: todo area {bestDistance:F0}y from lua {match.Symbol} -> {Describe(match.DataId)}"));
                 sequence.Steps.Add(step);
                 continue;
             }
@@ -565,7 +564,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
                 })
             ];
 
-            provenance += $"; until {needed}x item {itemId} drops";
+            provenance += string.Create(CultureInfo.InvariantCulture, $"; until {needed}x item {itemId} drops");
         }
         else
         {

@@ -35,9 +35,9 @@ internal static class LogQuestCompletion
         {
             if (Task.Quest == null)
                 return;
-            logger.LogInformation($"Logging quest completion: {Task.Quest?.Id.Value}");
+            logger.LogInformation("Logging quest completion: {QuestId}", Task.Quest.Id.Value);
             List<QuestCompletion> data = ReadLog();
-            QuestInfo? info = (QuestInfo?)Task.Quest?.Info;
+            QuestInfo? info = (QuestInfo?)Task.Quest.Info;
             string quest = $"{info?.QuestId}_{info?.SimplifiedName}";
             data.RemoveAll(x => x.Quest == quest);
             data.Add(new()

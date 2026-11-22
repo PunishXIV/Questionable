@@ -263,7 +263,7 @@ internal sealed class QuestData
             .Where(x => x.Territory.IsValid && AetherCurrentZoneQuests.ContainsKey((ushort)x.Territory.RowId))
             .Select(x => new AetherCurrentZoneInfo(
                 new AetherCurrentId((ushort)x.Territory.RowId),
-                $"{_T<Addon>(2445)}: {x.Territory.Value.PlaceName.Value.Name}",
+                string.Create(CultureInfo.CurrentCulture, $"{_T<Addon>(2445)}: {x.Territory.Value.PlaceName.Value.Name}"),
                 (EExpansionVersion)x.Territory.Value.ExVersion.RowId,
                 [.. x.AetherCurrents.Where(y => y.RowId > 0 && y.Value.Quest.RowId == 0).Select(y => y.RowId)],
                 [.. AetherCurrentZoneQuests[(ushort)x.Territory.RowId].Select(q => new PreviousQuestInfo(new QuestId(q)))])));
@@ -458,11 +458,10 @@ internal sealed class QuestData
         var questFunctions = _serviceProvider.GetRequiredService<QuestFunctions>();
         return _quests.Values
             .OfType<QuestInfo>()
-            .Where(predicate)
-            .Where(x => !onlyAvailable ||
+            .Where(x => predicate(x) && (!onlyAvailable ||
                 (!questFunctions.IsQuestUnobtainable(x.QuestId) &&
                  !questFunctions.IsQuestComplete(x.QuestId) &&
-                 !questFunctions.IsQuestLocked(x.QuestId).Item1))
+                 !questFunctions.IsQuestLocked(x.QuestId).Item1)))
             .OrderBy(x => x.ToDoLocations.Count > 0 ? x.ToDoLocations[0].Territory.RowId : x.QuestId.Value)
             .Select(x => x.QuestId)
             .ToList();

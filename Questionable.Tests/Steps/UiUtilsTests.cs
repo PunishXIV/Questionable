@@ -59,7 +59,7 @@ public sealed class UiUtilsTests
         _catalog.Add(TestQuestInfo.Create(1, "Prerequisite"));
         var style = _ui.GetQuestStyle(_daily);
         Assert.Equal(FontAwesomeIcon.Lock, style.Icon);
-        Assert.Contains("Prerequisite", style.Status);
+        Assert.Contains("Prerequisite", style.Status, System.StringComparison.Ordinal);
     }
 
     [Fact]

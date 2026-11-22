@@ -64,7 +64,7 @@ public class QuestSourceGenerator : ISourceGenerator
 
         List<IGrouping<string, (ElementId, QuestRoot)>> partitionedQuests = quests
             .OrderBy(x => x.Item1.Value)
-            .GroupBy(x => $"LoadQuests{x.Item1.Value / 50}", StringComparer.Ordinal)
+            .GroupBy(x => FormattableString.Invariant($"LoadQuests{x.Item1.Value / 50}"), StringComparer.Ordinal)
             .ToList();
 
         IReadOnlyList<MethodDeclarationSyntax> methods = Utils.CreateMethods("LoadQuests", partitionedQuests, CreateInitializer);

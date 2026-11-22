@@ -119,7 +119,7 @@ internal static class TroubleshootingReport
         StringBuilder text = new(title);
         for (int i = 0; i < settings.Count; ++i)
         {
-            string more = $"+{settings.Count - i} more";
+            string more = string.Create(CultureInfo.InvariantCulture, $"+{settings.Count - i} more");
             if (text.Length + settings[i].Length + 2 + more.Length > MaxSettingsLength)
                 return text.Append(more).ToString();
             text.Append(settings[i]);

@@ -57,7 +57,7 @@ internal static class AbandonQuest
             if (Task.Quest == null || !questFunctions.IsQuestAccepted(Task.Quest.Id))
             {
                 logger.LogInformation("Quest abandoned");
-                chatGui.Print($"Quest abandoned{(Task.Quest != null ? $": {Task.Quest?.Info.Name}" : "")}");
+                chatGui.Print($"Quest abandoned{(Task.Quest != null ? $": {Task.Quest.Info.Name}" : "")}");
                 return ETaskResult.TaskComplete;
             }
             if (EzThrottler.Throttle("AbandonQuest")) SendAbandon();
@@ -72,7 +72,7 @@ internal static class AbandonQuest
                 configuration.Save();
                 throw new TaskException("AbandonQuest failed, disabling config option and stopping automatic questing.");
             }
-            logger.LogInformation($"Firing AbandonQuest for {Task.Quest?.Id.Value}");
+            logger.LogInformation("Firing AbandonQuest for {QuestId}", Task.Quest?.Id.Value);
             GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)Task.Quest!.Id.Value);
             _attempts += 1;
             if (configuration.Advanced.RemoveFromPriorityWhenAbandoned)

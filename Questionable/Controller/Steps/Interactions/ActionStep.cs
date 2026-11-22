@@ -14,7 +14,7 @@ internal static class ActionStep
             if (step.InteractionType != EInteractionType.Action)
                 return [];
             if (!step.Action.HasValue)
-                throw new ArgumentNullException(nameof(step.Action));
+                throw new ArgumentException($"{nameof(step.Action)} is missing", nameof(step));
 
             ITask task = OnObject(step.DataId, quest, step.Action.Value, step.CompletionQuestVariablesFlags);
             if (step.Action.Value.RequiresMount())

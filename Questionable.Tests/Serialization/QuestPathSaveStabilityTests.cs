@@ -91,6 +91,6 @@ public sealed class QuestPathSaveStabilityTests
         Assert.Equal(5u, sequence["TerritoryId"]!.GetValue<uint>());
         Assert.Equal([7u, 0u, 0u], sequence["Steps"]!.AsArray().Select(x => x!["TerritoryId"]?.GetValue<uint>() ?? 0));
         Assert.Contains("\"Position\": [1, 2, 3]", QuestPathJson.Write(
-            (JsonObject)JsonSerializer.SerializeToNode(root, JsonOptions.Default)!, JsonOptions.Default));
+            (JsonObject)JsonSerializer.SerializeToNode(root, JsonOptions.Default)!, JsonOptions.Default), StringComparison.Ordinal);
     }
 }

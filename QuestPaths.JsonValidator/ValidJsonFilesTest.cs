@@ -47,7 +47,7 @@ public sealed partial class ValidJsonFilesTest
         {
             IEnumerable<string> failures = evaluationResult.Details
                 .Where(detail => detail is { IsValid: false, HasErrors: true } &&
-                    !detail.EvaluationPath.ToString().Contains("/if/"))
+                    !detail.EvaluationPath.ToString().Contains("/if/", StringComparison.Ordinal))
                 .SelectMany(detail => detail.Errors!.Select(error =>
                     $"  instance '{detail.InstanceLocation}' (schema '{detail.EvaluationPath}'): {error.Key} - {Unescape(error.Value)}")
                 );
@@ -59,7 +59,7 @@ public sealed partial class ValidJsonFilesTest
 
     // System.Text.Json's HTML-safe escapes make validation errors unreadable.
     private static string Unescape(string value) =>
-        UnicodeEscapeRegex().Replace(value, match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
+        UnicodeEscapeRegex.Replace(value, match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
     [GeneratedRegex(@"\\u([0-9a-fA-F]{4})", RegexOptions.CultureInvariant, matchTimeoutMilliseconds: 1000)]
-    private static partial Regex UnicodeEscapeRegex();
+    private static partial Regex UnicodeEscapeRegex { get; }
 }

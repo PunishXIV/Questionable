@@ -67,7 +67,7 @@ internal sealed class HighlightObject : IDisposable
         {
             if (!_targetDataIds.Contains(id))
             {
-                _logger.LogDebug("Adding {Id} to highlight ({Caller})", id, $"{Path.GetFileName(file)}:{line}");
+                _logger.LogDebug("Adding {Id} to highlight ({Caller})", id, string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}"));
                 _targetDataIds = _targetDataIds.Append(id).ToArray();
             }
         });
@@ -82,7 +82,7 @@ internal sealed class HighlightObject : IDisposable
             ToggleHighlight(on: false);
             if (_targetDataIds.Length == 0 && ids.Length == 0)
                 return;
-            _logger.LogDebug("Setting highlight to {Ids} ({Caller})", string.Join(',', ids), $"{Path.GetFileName(file)}:{line}");
+            _logger.LogDebug("Setting highlight to {Ids} ({Caller})", string.Join(',', ids), string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}"));
             _targetDataIds = ids;
             ToggleHighlight(on: true);
         });

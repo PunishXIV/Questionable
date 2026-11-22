@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using Questionable.Controller;
+using Questionable.Controller.Steps.Interactions;
 using Questionable.Utils;
 using Xunit;
 
@@ -35,6 +36,32 @@ public sealed class TaskToastClassifierTests
 
         Assert.False(classifier.IsEventOrStatusCancellation("anything"));
         Assert.True(classifier.IsActionCancellation("Action canceled."));
+    }
+
+    [Theory]
+    [InlineData("Too far away.", true)]
+    [InlineData("Trop loin.", true)]
+    [InlineData("Target not in line of sight.", false)]
+    public void TooFarAway_MatchesAnyRow(string text, bool expected)
+    {
+        var classifier = new TaskToastClassifier(null, new Regex("^Action canceled\\.$"), null,
+            [null, "Too far away.", "Trop loin."]);
+
+        Assert.Equal(expected, classifier.IsTooFarAway(text));
+    }
+
+    [Fact]
+    public void NoTooFarRows_MatchNothing() =>
+        Assert.False(TaskRunnerFixture.CreateToasts().IsTooFarAway("Too far away."));
+
+    [Theory]
+    [InlineData(true, 0.0, true)]
+    [InlineData(true, 2.5, false)]
+    [InlineData(false, 0.0, false)]
+    public void InteractRefusal_OnlyRightAfterTrigger(bool triggered, double secondsLater, bool expected)
+    {
+        DateTime at = new(2026, 11, 22, 14, 32, 50);
+        Assert.Equal(expected, Interact.Executor.IsRefusal(triggered, at, at.AddSeconds(secondsLater)));
     }
 
     [Theory]

@@ -60,7 +60,7 @@ internal sealed unsafe class CameraFunctions : IDisposable
 
     internal void Face(Vector3 pos)
     {
-        _logger.LogDebug("Facing " + pos);
+        _logger.LogDebug("Facing {Position}", pos);
         Enabled = true;
         if (_objectTable[0] == null)
             return;

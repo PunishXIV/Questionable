@@ -207,7 +207,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
 
         string host = Domains[retryCount % Domains.Length];
         string manifestUrl = $"https://{host}{RepositoryPath}/releases/download/paths-{_channel}/manifest-{_channel}.json";
-        _logger.LogDebug($"Requesting path updates from {manifestUrl}");
+        _logger.LogDebug("Requesting path updates from {ManifestUrl}", manifestUrl);
         string manifestJson;
         PathDataManifest? manifest;
         try
@@ -218,7 +218,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         catch (Exception e) when (!_shutdownToken.IsCancellationRequested)
         {
             _logger.LogWarning(e, "Failed to fetch the path data manifest; retrying");
-            Status = _L("Update check failed") + $" ({retryCount})";
+            Status = _L("Update check failed") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
             await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
@@ -226,7 +226,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         if (manifest == null)
         {
             _logger.LogWarning("manifest was null; retrying");
-            Status = _L("Update check failed") + $" ({retryCount})";
+            Status = _L("Update check failed") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
             await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
@@ -280,7 +280,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         catch (Exception e) when (!_shutdownToken.IsCancellationRequested)
         {
             _logger.LogWarning(e, "Failed to download the path data bundle; retrying");
-            Status = _L("Download failed") + $" ({retryCount})";
+            Status = _L("Download failed") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
             await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
@@ -291,7 +291,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
             if (!string.Equals(actualSha, manifest.BundleSha256, StringComparison.OrdinalIgnoreCase))
             {
                 _logger.LogWarning("Path data bundle checksum mismatch; retrying");
-                Status = _L("Download failed (checksum mismatch)") + $" ({retryCount})";
+                Status = _L("Download failed (checksum mismatch)") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
                 await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
                 return;
             }
@@ -314,7 +314,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         catch (Exception e) when (!_shutdownToken.IsCancellationRequested)
         {
             _logger.LogWarning(e, "Failed to install the downloaded path data bundle; retrying");
-            Status = _L("Install failed") + $" ({retryCount})";
+            Status = _L("Install failed") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
             await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }

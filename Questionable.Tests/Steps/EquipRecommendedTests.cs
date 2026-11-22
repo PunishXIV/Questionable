@@ -39,8 +39,8 @@ public sealed class EquipRecommendedTests
         _clock.Advance(TimeSpan.FromMilliseconds(1));
         var error = Assert.Throws<NeedsPlayerException>(() => Update(busy: true));
 
-        Assert.Contains("Stylist stayed busy for 30 seconds", error.Message);
-        Assert.Contains("restart Questionable", error.Message);
+        Assert.Contains("Stylist stayed busy for 30 seconds", error.Message, System.StringComparison.Ordinal);
+        Assert.Contains("restart Questionable", error.Message, System.StringComparison.Ordinal);
         Assert.Equal(submitted ? 1 : 0, _requests);
         Assert.Equal(EGearsetUpdateSource.Stylist, _configuration.General.GearsetUpdateSource);
     }

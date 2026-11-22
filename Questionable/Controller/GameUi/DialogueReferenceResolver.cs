@@ -31,7 +31,7 @@ internal sealed class DialogueReferenceResolver(ExcelFunctions excelFunctions)
             return false;
 
         return expectedAnswer.IsMatch(actualAnswer) ||
-               expectedAnswer.IsMatch(actualAnswer.Replace("\n", string.Empty)) ||
+               expectedAnswer.IsMatch(actualAnswer.Replace("\n", string.Empty, StringComparison.Ordinal)) ||
                expectedAnswer.IsMatch(actualAnswer.Split('\n')[0]);
     }
 }

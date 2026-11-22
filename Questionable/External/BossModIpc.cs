@@ -609,9 +609,9 @@ internal sealed class BossModPresetCleanup : IDisposable
 
     public void Dispose() => _questController.AutomationTypeChanged -= OnAutomationTypeChanged;
 
-    private void OnAutomationTypeChanged(object sender, QuestController.EAutomationType automationType)
+    private void OnAutomationTypeChanged(object? sender, AutomationEventArgs e)
     {
-        if (automationType == QuestController.EAutomationType.Manual)
+        if (e.AutomationType == QuestController.EAutomationType.Manual)
             _bossModIpc.RemovePresets();
         else
             _bossModIpc.KeepPresets();

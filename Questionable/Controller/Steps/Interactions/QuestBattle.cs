@@ -285,7 +285,7 @@ internal static class QuestBattle
                 return "Waiting for player to be idle";
             TimeSpan remaining = GracePeriod - (DateTime.Now - _readyAt);
             return remaining > TimeSpan.Zero
-                ? $"Outcome check in {remaining.TotalSeconds:F0}s"
+                ? string.Create(CultureInfo.InvariantCulture, $"Outcome check in {remaining.TotalSeconds:F0}s")
                 : "Outcome check pending";
         }
 

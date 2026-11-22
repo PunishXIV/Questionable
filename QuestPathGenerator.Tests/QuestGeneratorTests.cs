@@ -54,6 +54,6 @@ public sealed class QuestGeneratorTests
 
         string code = RoslynShortcuts.LiteralValue(step).NormalizeWhitespace().ToFullString();
 
-        Assert.Contains("Mount = false", code);
+        Assert.Contains("Mount = false", code, System.StringComparison.Ordinal);
     }
 }

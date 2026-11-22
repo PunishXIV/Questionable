@@ -13,7 +13,7 @@ internal static class Combat
             if (step.InteractionType != EInteractionType.Combat)
                 yield break;
             if (!step.EnemySpawnType.HasValue)
-                throw new ArgumentNullException(nameof(step.EnemySpawnType));
+                throw new ArgumentException($"{nameof(step.EnemySpawnType)} is missing", nameof(step));
 
             if (GameFunctions.GetMountId() != Mount128Id &&
                 GameFunctions.GetMountId() != Mount147Id)
@@ -29,7 +29,7 @@ internal static class Combat
             {
                 case EEnemySpawnType.AfterInteraction:
                     if (!step.DataId.HasValue)
-                        throw new ArgumentNullException(nameof(step.DataId));
+                        throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
 
                     yield return new Interact.Task(step.DataId.Value, quest, EInteractionType.None, SkipMarkerCheck: true);
                     yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(delayAfter));
@@ -38,7 +38,7 @@ internal static class Combat
 
                 case EEnemySpawnType.AfterItemUse:
                     if (!step.ItemId.HasValue)
-                        throw new ArgumentNullException(nameof(step.ItemId));
+                        throw new ArgumentException($"{nameof(step.ItemId)} is missing", nameof(step));
 
                     if (step.GroundTarget == true)
                     {
@@ -50,7 +50,7 @@ internal static class Combat
                         else
                         {
                             if (!step.Position.HasValue)
-                                throw new ArgumentNullException(nameof(step.Position));
+                                throw new ArgumentException($"{nameof(step.Position)} is missing", nameof(step));
 
                             yield return new UseItem.UseOnPosition(quest.Id, step.Position.Value, step.ItemId.Value,
                                 step.CompletionQuestVariablesFlags, StartingCombat: true);
@@ -73,9 +73,9 @@ internal static class Combat
 
                 case EEnemySpawnType.AfterAction:
                     if (!step.DataId.HasValue)
-                        throw new ArgumentNullException(nameof(step.DataId));
+                        throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
                     if (!step.Action.HasValue)
-                        throw new ArgumentNullException(nameof(step.Action));
+                        throw new ArgumentException($"{nameof(step.Action)} is missing", nameof(step));
 
                     if (!step.Action.Value.RequiresMount())
                         yield return new MountStep.UnmountTask();
@@ -86,7 +86,7 @@ internal static class Combat
 
                 case EEnemySpawnType.AfterEmote:
                     if (!step.Emote.HasValue)
-                        throw new ArgumentNullException(nameof(step.Emote));
+                        throw new ArgumentException($"{nameof(step.Emote)} is missing", nameof(step));
 
                     yield return new MountStep.UnmountTask();
                     if (step.DataId != null)
@@ -118,7 +118,7 @@ internal static class Combat
         private static Task CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (!step.EnemySpawnType.HasValue)
-                throw new ArgumentNullException(nameof(step.EnemySpawnType));
+                throw new ArgumentException($"{nameof(step.EnemySpawnType)} is missing", nameof(step));
 
             bool isLastStep = sequence.Steps[^1] == step;
             return CreateTask(quest.Id,

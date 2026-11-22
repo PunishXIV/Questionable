@@ -150,7 +150,7 @@ internal static class Purchase
                     "Knightshopper blocked the purchase. Enable its IPC permissions and add Questionable to its allowed plugins."),
                 KnightshopperIpc.EStartResult.InvalidCurrency when Task.Currency == CompanySeals => throw new TaskException(
                     "This Knightshopper version can't buy with company seals. Update Knightshopper, then restart Questionable."),
-                var _ => throw new TaskException($"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({result}): {message}")
+                var _ => throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({result}): {message}"))
             };
         }
 
@@ -174,13 +174,13 @@ internal static class Purchase
                     if (TimeProvider.System.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
                         return ETaskResult.StillRunning;
                     _state.TryClearFinished(_operationId);
-                    throw new TaskException($"Knightshopper finished, but the inventory does not contain {Task.ItemCount}x {Task.ItemId}");
+                    throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"Knightshopper finished, but the inventory does not contain {Task.ItemCount}x {Task.ItemId}"));
 
                 case ExternalOperationStatus.Failed:
                 case ExternalOperationStatus.Cancelled:
                     string message = _state.Message;
                     _state.TryClearFinished(_operationId);
-                    throw new TaskException($"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({status}): {message}");
+                    throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({status}): {message}"));
 
                 default:
                     return ETaskResult.StillRunning;
@@ -223,7 +223,7 @@ internal static class Purchase
     internal static string? GilShortage(uint price, int count, uint gil, string item)
     {
         long need = (long)price * count;
-        return need > gil ? $"Not enough gil to buy {count}x {item}: it costs {need} gil and you have {gil}." : null;
+        return need > gil ? string.Create(CultureInfo.InvariantCulture, $"Not enough gil to buy {count}x {item}: it costs {need} gil and you have {gil}.") : null;
     }
 
     internal static int CountItems(EItemQuality quality, int normal, int high) => quality switch

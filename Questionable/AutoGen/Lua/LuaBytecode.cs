@@ -20,7 +20,7 @@ internal static class LuaBytecode
 
         int sizeOfSizeT = data[8];
         if (sizeOfSizeT is not (4 or 8))
-            throw new InvalidDataException($"Unsupported size_t width {sizeOfSizeT}.");
+            throw new InvalidDataException(string.Create(CultureInfo.InvariantCulture, $"Unsupported size_t width {sizeOfSizeT}."));
 
         int position = 12;
         LuaProto root = ReadFunction(data, ref position, sizeOfSizeT);

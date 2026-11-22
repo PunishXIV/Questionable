@@ -50,7 +50,7 @@ internal sealed class ItemBlacklistSelector(IDataManager dataManager)
                 if (item.RowId == 0 || blacklist.Contains(item.RowId))
                     continue;
 
-                string name = item.Name.ToString();
+                string name = item.Name.ToString(null, CultureInfo.CurrentCulture);
                 if (!name.Contains(_searchString, StringComparison.CurrentCultureIgnoreCase) &&
                     !item.RowId.ToString(CultureInfo.InvariantCulture).Contains(_searchString, StringComparison.Ordinal))
                     continue;

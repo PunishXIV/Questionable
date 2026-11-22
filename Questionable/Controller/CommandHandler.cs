@@ -364,7 +364,7 @@ internal sealed class CommandHandler : IDisposable
                             ChocoboTaxiStand row = taxiStandNames.GetRow(i + 0x120000u);
                             // 0 and 1 are unused
                             if (row.TargetLocations[0].RowId >= 2)
-                                taxiStands.Add($"{row.PlaceName} ({i})");
+                                taxiStands.Add(string.Create(CultureInfo.InvariantCulture, $"{row.PlaceName} ({i})"));
                         }
                     }
 
@@ -553,7 +553,7 @@ internal sealed class CommandHandler : IDisposable
                     if (sequence != null)
                     {
                         sequenceId = sequence.Sequence;
-                        if (arguments.Length >= 3 && int.TryParse(arguments[2], out int parsedStep))
+                        if (arguments.Length >= 3 && int.TryParse(arguments[2], NumberStyles.Integer, CultureInfo.InvariantCulture, out int parsedStep))
                         {
                             QuestStep? step = sequence.FindStep(parsedStep);
                             if (step != null)
@@ -584,7 +584,7 @@ internal sealed class CommandHandler : IDisposable
         {
             Mount? row = _dataManager.GetExcelSheet<Mount>().GetRowOrDefault(mountId.Value);
             _chatGui.Print(
-                _LF("Mount ID: {0}, Name: {1}, Obtainable: {2}", mountId, row?.Singular.ToString() ?? "", (row?.Order == -1 ? "No" : "Yes")),
+                _LF("Mount ID: {0}, Name: {1}, Obtainable: {2}", mountId, row?.Singular.ToString(null, CultureInfo.InvariantCulture) ?? "", (row?.Order == -1 ? "No" : "Yes")),
                 MessageTag, TagColor);
         }
         else

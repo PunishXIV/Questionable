@@ -493,8 +493,8 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
             return false;
         }
 
-        if (excelAnswer?.GetString() is string answer && answer.Contains(@"\<click>"))
-            excelAnswer = new(answer.Replace(@"\<click>", "<click>"));
+        if (excelAnswer?.GetString() is string answer && answer.Contains(@"\<click>", StringComparison.Ordinal))
+            excelAnswer = new(answer.Replace(@"\<click>", "<click>", StringComparison.Ordinal));
 
         return true;
     }
@@ -519,7 +519,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
             Lumina.Excel.Sheets.Quest? questRow = _dataManager.GetExcelSheet<Lumina.Excel.Sheets.Quest>().GetRowOrDefault((uint)currentQuest.Id.Value + 0x10000);
             if (questRow != null)
             {
-                var excelSheetName = $"quest/{(currentQuest.Id.Value / 100):000}/{questRow.Value.Id}";
+                var excelSheetName = string.Create(CultureInfo.InvariantCulture, $"quest/{(currentQuest.Id.Value / 100):000}/{questRow.Value.Id}");
                 ExcelSheet<QuestDialogueText> excelSheet = _dataManager.GetExcelSheet<QuestDialogueText>(name: excelSheetName);
                 string lastPrompt = string.Empty;
                 foreach (var text in excelSheet)
@@ -528,9 +528,9 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                         lastPrompt = text.Key.ToMacroString();
                     if (AnswerRegex.IsMatch(text.Key.ToMacroString()))
                         if (YesNoAnswers.Any(s => s.EqualsIgnoreCase(text.Value.ToMacroString())))
-                            _logger.LogDebug($@"{{""Prompt"":""{lastPrompt}"",""Yes"":true,""Type"":""YesNo""}}");
+                            _logger.LogDebug(@"{{""Prompt"":""{Prompt}"",""Yes"":true,""Type"":""YesNo""}}", lastPrompt);
                         else
-                            _logger.LogDebug($@"{text.Value.ToMacroString()} {{""Prompt"":""{lastPrompt}"",""Answer"":""{text.Key.ToMacroString()}"",""Type"":""List""}}");
+                            _logger.LogDebug(@"{Text} {{""Prompt"":""{Prompt}"",""Answer"":""{Answer}"",""Type"":""List""}}", text.Value.ToMacroString(), lastPrompt, text.Key.ToMacroString());
                 }
             }
         }

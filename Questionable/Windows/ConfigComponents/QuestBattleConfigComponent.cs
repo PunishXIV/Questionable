@@ -304,7 +304,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             return;
 
         (int limsaEnabled, int limsaTotal) = GetQuestBattleCounts(_startingCityBattles[EAetheryteLocation.Limsa]);
-        string limsaHeaderText = _L("Limsa Lominsa") + $" ({FormatLevel(5)} - {FormatLevel(14)}) ({limsaEnabled}/{limsaTotal})";
+        string limsaHeaderText = _L("Limsa Lominsa") + string.Create(CultureInfo.CurrentCulture, $" ({FormatLevel(5)} - {FormatLevel(14)}) ({limsaEnabled}/{limsaTotal})");
         string limsaKey = "Limsa";
         bool isLimsaHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(limsaKey, defaultValue: false);
         ImGui.SetNextItemOpen(isLimsaHeaderOpen, ImGuiCond.Always);
@@ -328,7 +328,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
         }
 
         (int gridaniaEnabled, int gridaniaTotal) = GetQuestBattleCounts(_startingCityBattles[EAetheryteLocation.Gridania]);
-        string gridaniaHeaderText = _L("Gridania") + $" ({FormatLevel(5)} - {FormatLevel(14)}) ({gridaniaEnabled}/{gridaniaTotal})";
+        string gridaniaHeaderText = _L("Gridania") + string.Create(CultureInfo.CurrentCulture, $" ({FormatLevel(5)} - {FormatLevel(14)}) ({gridaniaEnabled}/{gridaniaTotal})");
         string gridaniaKey = "Gridania";
         bool isGridaniaHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(gridaniaKey, defaultValue: false);
         ImGui.SetNextItemOpen(isGridaniaHeaderOpen, ImGuiCond.Always);
@@ -352,7 +352,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
         }
 
         (int uldahEnabled, int uldahTotal) = GetQuestBattleCounts(_startingCityBattles[EAetheryteLocation.Uldah]);
-        string uldahHeaderText = _L("Ul'dah") + $" ({FormatLevel(4)} - {FormatLevel(14)}) ({uldahEnabled}/{uldahTotal})";
+        string uldahHeaderText = _L("Ul'dah") + string.Create(CultureInfo.CurrentCulture, $" ({FormatLevel(4)} - {FormatLevel(14)}) ({uldahEnabled}/{uldahTotal})");
         string uldahKey = "Uldah";
         bool isUldahHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(uldahKey, defaultValue: false);
         ImGui.SetNextItemOpen(isUldahHeaderOpen, ImGuiCond.Always);
@@ -380,7 +380,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             if (_mainScenarioBattles.TryGetValue(expansion, out List<BattleInfo>? battles))
             {
                 (int enabledCount, int totalCountForExpansion) = GetQuestBattleCounts(battles);
-                string expansionHeaderText = $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCountForExpansion})";
+                string expansionHeaderText = string.Create(CultureInfo.CurrentCulture, $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCountForExpansion})");
                 string expansionKey = expansion.ToString();
                 bool isExpansionHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(expansionKey, defaultValue: false);
                 ImGui.SetNextItemOpen(isExpansionHeaderOpen, ImGuiCond.Always);
@@ -438,7 +438,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
                     jobName += $" / {classJob.AsJob().ToFriendlyString()}";
 
                 (int enabledCount, int totalCountForJob) = GetQuestBattleCounts(battles);
-                string jobHeaderText = $"{jobName} ({enabledCount}/{totalCountForJob})";
+                string jobHeaderText = string.Create(CultureInfo.CurrentCulture, $"{jobName} ({enabledCount}/{totalCountForJob})");
                 string jobKey = classJob.ToString();
                 bool isJobHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(jobKey, defaultValue: false);
                 ImGui.SetNextItemOpen(isJobHeaderOpen, ImGuiCond.Always);
@@ -480,7 +480,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             if (_roleQuestBattles.TryGetValue(classJob, out List<BattleInfo>? battles))
             {
                 (int enabledCount, int totalCountForRole) = GetQuestBattleCounts(battles);
-                string roleHeaderText = $"{label} ({enabledCount}/{totalCountForRole})";
+                string roleHeaderText = string.Create(CultureInfo.CurrentCulture, $"{label} ({enabledCount}/{totalCountForRole})");
                 string roleKey = $"Role_{classJob}";
                 bool isRoleHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(roleKey, defaultValue: false);
                 ImGui.SetNextItemOpen(isRoleHeaderOpen, ImGuiCond.Always);
@@ -544,7 +544,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
         foreach ((string label, List<BattleInfo> battles) in _otherQuestBattles)
         {
             (int enabledCount, int totalCountForCategory) = GetQuestBattleCounts(battles);
-            string otherHeaderText = $"{label} ({enabledCount}/{totalCountForCategory})";
+            string otherHeaderText = string.Create(CultureInfo.CurrentCulture, $"{label} ({enabledCount}/{totalCountForCategory})");
             string otherKey = $"Other_{label}";
             bool isOtherHeaderOpen = Configuration.SinglePlayerDuties.HeaderStates.GetValueOrDefault(otherKey, defaultValue: false);
             ImGui.SetNextItemOpen(isOtherHeaderOpen, ImGuiCond.Always);

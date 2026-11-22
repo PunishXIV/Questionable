@@ -206,7 +206,7 @@ internal sealed class QueueComponent
                     QstWidgets.Tooltip(_L("Edit quest path"));
                 ImGui.SameLine();
 
-                if (ImGuiComponentsLocal.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
+                if (ImGuiComponentsLocal.IconButton(string.Create(CultureInfo.InvariantCulture, $"##Remove{i}"), FontAwesomeIcon.Times))
                     itemToRemove = quest;
                 if (ImGui.IsItemHovered())
                     QstWidgets.Tooltip(_L("Remove from Priority Quests"));

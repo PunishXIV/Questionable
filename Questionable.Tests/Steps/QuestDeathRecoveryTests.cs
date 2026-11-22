@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.Extensions.Logging.Abstractions;
 using Questionable.Controller;
 using Questionable.Model.Questing;
@@ -215,7 +216,7 @@ public sealed class QuestDeathRecoveryTests
 
         public void ReportDeathLimit(int deaths)
         {
-            Effects.Add($"limit:{deaths}");
+            Effects.Add(string.Create(CultureInfo.InvariantCulture, $"limit:{deaths}"));
             ReportedLimits.Add(deaths);
         }
 

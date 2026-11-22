@@ -110,7 +110,7 @@ internal static class EquipmentSlots
         protected override bool Start()
         {
             Item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(ItemId) ??
-                   throw new ArgumentOutOfRangeException(nameof(ItemId));
+                   throw new InvalidOperationException($"Item {ItemId} isn't in the Item sheet");
             TargetSlots = For(Item) ?? throw new InvalidOperationException("Not a piece of equipment");
             CheckItem(Item);
 

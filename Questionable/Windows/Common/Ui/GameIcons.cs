@@ -51,7 +51,7 @@ internal sealed class GameIcons(
         // these are bgra, not rgba
         byte[] bitmap = Downscale(file.ImageData, file.Header.Width, file.Header.Height, size);
         return textureProvider.CreateFromRaw(RawImageSpecification.Bgra32(size, size), bitmap,
-            $"Questionable icon {iconId}@{size}");
+            string.Create(CultureInfo.InvariantCulture, $"Questionable icon {iconId}@{size}"));
     }
 
     // GPU scaling 80px icons to text height looks grainy, so each pixel averages its source area.

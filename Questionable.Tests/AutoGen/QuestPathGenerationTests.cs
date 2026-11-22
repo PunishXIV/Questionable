@@ -1,3 +1,4 @@
+using System.Globalization;
 // Authored with LLM assistance, changes must be reviewed and owned by a human.
 // Initial version reviewed and owned by @Deckerz
 
@@ -123,7 +124,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
             Assert.Equal(EInteractionType.UseItem, pair.First.InteractionType);
             Assert.NotNull(pair.First.Position);
             Assert.True(Vector3.Distance(pair.First.Position!.Value, pair.Second) < 1f,
-                $"{pair.First.DataId} is at {pair.First.Position}, expected {pair.Second}");
+                string.Create(CultureInfo.InvariantCulture, $"{pair.First.DataId} is at {pair.First.Position}, expected {pair.Second}"));
         });
     }
 

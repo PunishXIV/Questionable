@@ -9,4 +9,6 @@ public sealed class NearPositionCondition
     public Vector3 Position { get; set; }
     public float MaximumDistance { get; set; }
     public ushort TerritoryId { get; set; }
+
+    public override string ToString() => $"{TerritoryId} {Position} within {MaximumDistance}";
 }

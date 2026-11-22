@@ -24,12 +24,14 @@ internal sealed class Configuration : IPluginConfiguration
     public const int PluginSetupVersion = 5;
     public const int PluginConfigVersion = 2;
     public int PluginSetupCompleteVersion { get; set; }
+#pragma warning disable IDE1006 // Configuration members are never renamed (AGENTS.md naming rules).
     [JsonProperty(nameof(General))] private GeneralConfiguration _general { get; } = new();
     [JsonProperty(nameof(Stop))] private StopConfiguration _stop { get; } = new();
     [JsonProperty(nameof(Duties))] private DutyConfiguration _duties { get; } = new();
     [JsonProperty(nameof(SinglePlayerDuties))] private SinglePlayerDutyConfiguration _singlePlayerDuties { get; } = new();
     [JsonProperty(nameof(Notifications))] private NotificationConfiguration _notifications { get; } = new();
     [JsonProperty(nameof(Advanced))] private AdvancedConfiguration _advanced { get; } = new();
+#pragma warning restore IDE1006
     public WindowConfig DebugWindowConfig { get; } = new();
     public WindowConfig ConfigWindowConfig { get; } = new();
     public WindowConfig JournalWindowConfig { get; } = new();
@@ -66,7 +68,7 @@ internal sealed class Configuration : IPluginConfiguration
     internal AdvancedConfiguration BaseAdvanced => _advanced;
 
     #region Character Profiles
-    internal event Action<string>? LanguageChanged;
+    internal event EventHandler? LanguageChanged;
 
     internal void SetLanguage(string language)
     {
@@ -78,7 +80,7 @@ internal sealed class Configuration : IPluginConfiguration
     private void NotifyLanguageChanged(string previousLanguage)
     {
         if (!string.Equals(previousLanguage, General.Language, StringComparison.OrdinalIgnoreCase))
-            LanguageChanged?.Invoke(General.Language);
+            LanguageChanged?.Invoke(this, EventArgs.Empty);
     }
 
     [JsonIgnore] private GeneralConfiguration? _activeGeneral;

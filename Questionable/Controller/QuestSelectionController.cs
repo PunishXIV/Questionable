@@ -18,8 +18,7 @@ internal sealed class QuestSelectionController(Configuration configuration)
 
     public static Quest? PickAcceptOnly(IEnumerable<Quest> acceptOnlyQuests, IQuestSelectionState state, uint? territory = null) =>
         acceptOnlyQuests
-            .Where(QuestFunctions.CanQueueSociety)
-            .Where(x => state.IsReadyToAccept(x.Id, ignoreLevel: true) && state.HasClassJobAtQuestLevel(x.Id))
+            .Where(x => QuestFunctions.CanQueueSociety(x) && state.IsReadyToAccept(x.Id, ignoreLevel: true) && state.HasClassJobAtQuestLevel(x.Id))
             .OrderByDescending(x => x.Info is QuestInfo info ? info.AlliedSocietyRank : EAlliedSocietyRank.None)
             .ThenBy(x => x.FindSequence(0)?.FindStep(0)?.TerritoryId == territory ? 0 : 1)
             .FirstOrDefault();
@@ -164,8 +163,8 @@ internal sealed class QuestSelectionController(Configuration configuration)
         public QuestChoice? Offer(QuestSelectionContext context)
         {
             Quest? candidate = context.PriorityQuests
-                .Where(x => !context.IsAcceptOnly(x.Id) && !SetAsideQuests.Contains(x.Id, context.State.GetSequence(x.Id)))
-                .FirstOrDefault(x => context.State.IsReadyToAccept(x.Id, ignoreLevel: true) || context.State.IsAccepted(x.Id));
+                .FirstOrDefault(x => !context.IsAcceptOnly(x.Id) && !SetAsideQuests.Contains(x.Id, context.State.GetSequence(x.Id)) &&
+                    (context.State.IsReadyToAccept(x.Id, ignoreLevel: true) || context.State.IsAccepted(x.Id)));
             if (candidate == null || !CanSwitchToPriorityQuest(context.Slots.Started, candidate.Id, context.State.InDuty))
                 return null;
 

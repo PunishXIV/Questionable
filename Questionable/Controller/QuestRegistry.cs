@@ -308,7 +308,7 @@ internal sealed class QuestRegistry : IDisposable
             }
 
             _logger.LogInformation("Loaded {Loaded} quests from downloaded path bundle (data version {DataVersion}){Failed}",
-                loaded, manifest.DataVersion, failed > 0 ? $", {failed} skipped" : string.Empty);
+                loaded, manifest.DataVersion, failed > 0 ? string.Create(CultureInfo.InvariantCulture, $", {failed} skipped") : string.Empty);
         }
         catch (Exception e)
         {
@@ -538,22 +538,22 @@ internal sealed class QuestRegistry : IDisposable
             return string.Empty;
 
         var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
-        string path = $"{genre.Name}";
-        Svc.Log.Debug($"Genre: {genre.Name}");
+        string path = string.Create(CultureInfo.InvariantCulture, $"{genre.Name}");
+        Svc.Log.Debug(string.Create(CultureInfo.InvariantCulture, $"Genre: {genre.Name}"));
         if (genre.JournalCategory.ValueNullable is not { } category)
             return path;
 
-        Svc.Log.Debug($"Category: {category.Name}");
+        Svc.Log.Debug(string.Create(CultureInfo.InvariantCulture, $"Category: {category.Name}"));
         if (category.Name != genre.Name)
-            path = Path.Combine($"{category.Name}", path);
+            path = Path.Combine(string.Create(CultureInfo.InvariantCulture, $"{category.Name}"), path);
         if (category.JournalSection.ValueNullable is not { } section)
             return path;
 
-        Svc.Log.Debug($"Section: {section.Name}");
+        Svc.Log.Debug(string.Create(CultureInfo.InvariantCulture, $"Section: {section.Name}"));
         if (section.Name != category.Name)
         {
-            var catPath = $"{category.Name}".Replace($"{section.Name}", "").Trim();
-            path = Path.Combine($"{section.Name}", catPath, category.Name != genre.Name ? $"{genre.Name}" : "");
+            var catPath = string.Create(CultureInfo.InvariantCulture, $"{category.Name}").Replace(string.Create(CultureInfo.InvariantCulture, $"{section.Name}"), "", StringComparison.Ordinal).Trim();
+            path = Path.Combine(string.Create(CultureInfo.InvariantCulture, $"{section.Name}"), catPath, category.Name != genre.Name ? string.Create(CultureInfo.InvariantCulture, $"{genre.Name}") : "");
         }
 
         return path;
@@ -642,9 +642,7 @@ internal sealed class QuestRegistry : IDisposable
     public static (bool, string) OpenEditor(string filename, QuestInfo info, Quest? quest = null)
     {
         var parentDirectory = GetQuestPathsDirectory();
-        DirectoryInfo? targetFolder = Directory.CreateDirectory(parentDirectory);
-        if (targetFolder == null)
-            return (false, "couldn't find QuestPaths folder");
+        DirectoryInfo targetFolder = Directory.CreateDirectory(parentDirectory);
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
         if (file == null)
         {
@@ -681,7 +679,7 @@ internal sealed class QuestRegistry : IDisposable
         foreach (FileInfo file in root.GetFiles())
         {
             if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase) ||
-                file.Name.StartsWith(filename[..(filename.IndexOf('_') + 1)], StringComparison.Ordinal))
+                file.Name.StartsWith(filename[..(filename.IndexOf('_', StringComparison.Ordinal) + 1)], StringComparison.Ordinal))
                 return file;
         }
 

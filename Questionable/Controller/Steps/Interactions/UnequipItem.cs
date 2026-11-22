@@ -13,7 +13,7 @@ internal static class UnequipItem
             if (step.InteractionType != EInteractionType.UnequipItem)
                 return null;
             if (!step.ItemId.HasValue)
-                throw new ArgumentNullException(nameof(step.ItemId));
+                throw new ArgumentException($"{nameof(step.ItemId)} is missing", nameof(step));
 
             return new Task(step.ItemId.Value);
         }
@@ -45,7 +45,7 @@ internal static class UnequipItem
         {
             if (IsDone(inventoryManager))
             {
-                logger.LogInformation("Already unequipped {Item}, skipping step", Item.Name.ToString());
+                logger.LogInformation("Already unequipped {Item}, skipping step", Item.Name.ToString(null, CultureInfo.InvariantCulture));
                 return;
             }
 

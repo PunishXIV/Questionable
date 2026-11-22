@@ -24,7 +24,7 @@ internal sealed class TravelUnlockComponent(
             if (!zones.TryGetValue(territoryId, out Zone? zone))
             {
                 TerritoryType? territory = dataManager.GetExcelSheet<TerritoryType>().GetRowOrDefault(territoryId);
-                zone = new(territoryId, territory?.PlaceName.ValueNullable?.Name.ToString() ?? territoryId.ToString(CultureInfo.InvariantCulture),
+                zone = new(territoryId, territory?.PlaceName.ValueNullable?.Name.ToString(null, CultureInfo.CurrentCulture) ?? territoryId.ToString(CultureInfo.InvariantCulture),
                     [], [], []);
                 zones[territoryId] = zone;
             }
@@ -39,7 +39,7 @@ internal sealed class TravelUnlockComponent(
                 continue;
 
             string? name = (aetheryte.IsAetheryte ? aetheryte.PlaceName.ValueNullable?.Name : aetheryte.AethernetName.ValueNullable?.Name)
-                ?.ToString();
+                ?.ToString(null, CultureInfo.CurrentCulture);
             if (string.IsNullOrEmpty(name))
                 continue;
 
@@ -54,14 +54,14 @@ internal sealed class TravelUnlockComponent(
 
             Zone zone = ZoneFor(set.Territory.RowId);
             foreach (RowRef<AetherCurrent> current in set.AetherCurrents.Where(x => x.RowId > 0))
-                zone.Currents.Add((current.RowId, current.ValueNullable?.Quest.ValueNullable?.Name.ToString()));
+                zone.Currents.Add((current.RowId, current.ValueNullable?.Quest.ValueNullable?.Name.ToString(null, CultureInfo.CurrentCulture)));
         }
 
         ExcelSheet<ExVersion> expansions = dataManager.GetExcelSheet<ExVersion>();
         return [.. zones
             .GroupBy(x => dataManager.GetExcelSheet<TerritoryType>().GetRowOrDefault(x.Key)?.ExVersion.RowId ?? 0)
             .OrderBy(x => x.Key)
-            .Select(x => (expansions.GetRowOrDefault(x.Key)?.Name.ToString() ?? string.Empty,
+            .Select(x => (expansions.GetRowOrDefault(x.Key)?.Name.ToString(null, CultureInfo.CurrentCulture) ?? string.Empty,
                 x.Select(y => y.Value).OrderBy(y => y.Name, StringComparer.CurrentCulture).ToList()))];
     }
 

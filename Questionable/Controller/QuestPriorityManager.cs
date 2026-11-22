@@ -122,7 +122,7 @@ internal sealed class QuestPriorityManager(
         int index = _quests.FindIndex(q => q.Id == elementId);
         if (index != -1)
         {
-            logger.LogDebug($"Removing {index}: {_quests[index].Info.Name}");
+            logger.LogDebug("Removing {Index}: {Name}", index, _quests[index].Info.Name);
             _quests.RemoveAt(index);
         }
 
