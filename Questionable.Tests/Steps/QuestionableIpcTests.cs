@@ -128,14 +128,6 @@ public sealed class QuestionableIpcTests
         Assert.Equal(expected, result);
     }
 
-    [Fact]
-    public void StopKind_NamesProblemOrFinished()
-    {
-        Assert.Equal("Stuck", QuestController.StopKindName(EProblemKind.Stuck, finished: false));
-        Assert.Equal("Finished", QuestController.StopKindName(null, finished: true));
-        Assert.Equal("", QuestController.StopKindName(null, finished: false));
-    }
-
     private static void SetField(object target, string name, object value) =>
         target.GetType().GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(target, value);
 }

@@ -1,42 +1,38 @@
 - Feature: Questionable 2.0, rebuilt from the ground up -Kage
-- Feature: Configuration profiles, and questing on several characters in a row (AutoRetainer characters, Profiles page) -Kage
-- Feature: Choose what happens when a run ends: run commands, travel with Lifestream, wait, log out or close the game; a stop quest can also switch to a priority preset -Kage
-- Feature: More ways to stop: once the priority list is done, when you move your character, or at the next aetheryte; copy and paste for the stop lists -Kage
-- Feature: Community quest results: if you opt in, the quest window and journal show how often a path worked for others ("19/20 worked"), journal names are coloured by reports, and the ! button sends a report -Kage
-- Feature: Do dailies: tick allied societies in the journal and Questionable does their dailies, unlocking a society first when needed (/qst dailies) -Kage
-- Feature: Other plugins can do more with Questionable: start Do dailies for the societies they pick, check whether a quest has a path, skip a step, stop after the current quest, and get told when Questionable stops, finishes a quest or moves to the next step -Kage
-- Feature: Custom Deliveries page: every NPC's progress and this week's items; Satisfy does the ticked ones (/qst deliveries, needs Satisfy) -Kage
-- Feature: Between quests: collects the free job gear at 80, 89 and 99, repairs worn gear (Dark Matter or your Grand Company's mender), claims Mog Station mail (needs Mogmail) and runs the new Hall of the Novice for the Neophyte's Ring (needs AutoDuty) -Kage
-- Feature: Between quests, AutoRetainer can send out the retainers and submarines of all your multi-mode characters; Questionable then logs back in to your questing character and carries on (off by default, needs AutoRetainer and Lifestream) -Kage
-- Feature: Picks quest rewards by rules you can reorder: new mounts, minions and other collectibles first, then gear upgrades, coffers, Allagan pieces and the best sale price -Kage
-- Feature: Quests waiting on a duty you run yourself are set aside while Questionable carries on with other quests -Kage
-- Feature: Optional catch-up when the story is too high: AutoDuty dungeons for levels, tomestone accessories and dungeons for item level -Kage
-- Feature: Recovery: retries a stuck step before stopping, gets back up after dying (deaths before stopping is a setting) and retries quest battles up to 5 times -Kage
-- Feature: Duties without Duty Support open the Duty Finder or run unsynced (the level gap is a setting) -Kage
-- Feature: Journal: duty progress, aetherytes and aether currents per zone, a zone map with every quest on it, quest lines showing what a quest needs and unlocks, XP and gil columns, saved filters, "Hide Completed Quests" and Mentor Roulette unlocks -Kage
-- Feature: Priority quests live in the quest window's "Priority Quests" tab, with an interrupt switch, an XP and gil total, your own saved lists and grouped built-in ones (field aether currents, role quests, "Unlock All Jobs", highest society rank) -Kage
-- Feature: Follow and escort quests: Questionable walks on foot where a quest needs it, keeps behind an NPC you have to follow, and waits when it stops -Kage
-- Feature: AutoDuty runs started by Questionable open every treasure chest, for better gear on the way -Kage
-- Feature: Uses Vesper Bay tickets, keeps your chocobo out (needs Knightshopper), skips fishing when you already have the fish, and lets you pick Summoner or Scholar for Arcanist -Kage
-- Feature: Alerts: pick when you get one (a step needs you, a stop condition, a problem), notification sounds that can play only while the game is in the background, and /qst stop or another plugin stopping Questionable no longer flashes the taskbar unless you want it to -Kage
-- Feature: Crafting and gathering jobs can be set to Auto, which uses your highest crafter or gatherer -Kage
-- Feature: "Redeem Reward Items" (/qst redeem), /qst skipstep and "Add all to Priority Quests" in /qst zone -Kage
-- Change: Travel between zones uses MappingTheRealm, which is now a required plugin; it picks the route over aetherytes, aethernet and zone lines, keeps running through FATEs instead of stopping to fight, and your mount is picked in its settings -Kage
-- Change: Other plugins do more of the work: Gather & Chill, Feesh (replaces AutoHook), Knightshopper (also the chocobo license from your Grand Company), AutoDuty and Boss Mod's quest battle modules -Kage
-- Change: Settings and the journal have a side menu with grouped pages; the Plugins page lists every plugin QST works with with install and settings buttons -Kage
-- Change: The Events list in the quest window shows whatever events are running in game, including the quests you need first, without waiting for a plugin update -Kage
-- Change: Sahagin dailies are batched like the other societies -Kage
-- Change: The allied society lists in Priority Quests (Moogle unlock, Pelupelu, Mamool Ja, Yok Huy) are gone; Do dailies unlocks and runs every society within your daily allowances -Kage
-- Change: Problems you can fix yourself show as plain chat messages instead of red errors -Kage
-- Change: Fewer settings: things that should always happen now just happen, and Lifestream is only needed for "Go to" after a run -Kage
-- Change: Aetheryte tickets follow the game's own Teleport settings -Kage
-- Change: Pressing Play with nothing left to do no longer logs you out or closes the game -Kage
-- Change: Plugins that start event quests for you only get the ones your character can take, and pressing Play after a stop finishes just that quest -Kage
-- Change: Removed "Mine/Harvest with Questionable" (use Custom Deliveries) and quest battle/duty settings import/export; path-editing tools need Debug -Kage
-- Bug fix: The quest window no longer opens by itself during a duty -Kage
-- Bug fix: No more stalls when dismounting to talk to someone -Kage
-- Bug fix: Steps that start in another zone travel there instead of stopping with "no route" -Kage
-- Bug fix: "Start minimized" shows the right minimize button -Kage
-- Bug fix: Yes/no questions that use your character's name are answered -Kage
-- Bug fix: The Allied Societies page shows every society you can reach, also right after logging in -Kage
-- Bug fix: Do dailies and "Accept all quests" skip society dailies that need you for a step (a Snipe without Automaton's auto-snipe, Ixal "Hot Cross Buns"), so the run no longer waits there -Kage
+- Feature: Profiles, and questing on several characters in a row -Kage
+- Feature: Choose what happens after a run: run commands, travel, wait, log out or close the game -Kage
+- Feature: More ways to stop: when the priority list is done, when you move, or at the next aetheryte -Kage
+- Feature: Do dailies: tick allied societies in the journal and Questionable does their dailies, unlocking them first (/qst dailies) -Kage
+- Feature: Custom Deliveries page with every NPC's progress; Satisfy does the ticked ones (/qst deliveries) -Kage
+- Feature: Between quests: free job gear at 80, 89 and 99, repairs, Mog Station mail and the Hall of the Novice ring -Kage
+- Feature: Between quests, AutoRetainer can send out your retainers and submarines, at most once every 10 minutes (off by default) -Kage
+- Feature: Picks quest rewards by rules you can reorder: collectibles first, then gear upgrades, coffers and sale price -Kage
+- Feature: Recovery: retries stuck steps, gets back up after dying and retries quest battles -Kage
+- Feature: Quests waiting on a duty you run yourself are set aside, and an optional catch-up runs dungeons when the story needs a higher level or item level -Kage
+- Feature: Duties without Duty Support open the Duty Finder or run unsynced; AutoDuty runs open every chest -Kage
+- Feature: Priority Quests tab with your own saved lists and built-in ones (aether currents, role quests, Unlock All Jobs) -Kage
+- Feature: Journal: duty progress, aether currents per zone, a zone map of every quest, quest lines and XP/gil columns -Kage
+- Feature: Follow and escort quests walk on foot and stay behind the NPC -Kage
+- Feature: Beastmaster and Blue Mage job quests: battlehorn pets, beast captures and levelling, and Blue Mage spells set up for you -Kage
+- Feature: Community quest results: opt in to see how often a path worked for others, and report problems with the ! button -Kage
+- Feature: Alerts: choose when you get one, with sounds; stops you asked for stay quiet -Kage
+- Feature: Smaller things: Vesper Bay tickets, chocobo companion, Auto crafting/gathering job, Summoner or Scholar for Arcanist, /qst redeem and /qst skipstep -Kage
+- Feature: Other plugins can do more with Questionable, such as starting Do dailies and getting told when it stops -Kage
+- Change: Travel uses MappingTheRealm (now required); pick your mount in its settings -Kage
+- Change: Gathering, fishing, shopping, duties and quest battles go through Gather & Chill, Feesh (replaces AutoHook), Knightshopper, AutoDuty and Boss Mod -Kage
+- Change: Settings and the journal have a side menu, and the Plugins page has install and settings buttons -Kage
+- Change: Fewer settings: things that should always happen now just happen -Kage
+- Change: The Events list shows whatever events are running in game -Kage
+- Change: Job quests switch back to the job you accepted them on, and the level check uses all your gear sets -Kage
+- Change: The allied society lists in Priority Quests are gone; Do dailies replaces them -Kage
+- Change: Problems you can fix yourself show as chat messages instead of red errors -Kage
+- Change: Removed "Mine/Harvest with Questionable" (use Custom Deliveries) and quest battle import/export -Kage
+- Bug fix: Pressing Play with nothing to do no longer logs you out -Kage
+- Bug fix: The quest window no longer opens by itself in duties -Kage
+- Bug fix: Fewer stalls: dismounting, "Too far away." talks and steps the game didn't count are retried -Kage
+- Bug fix: Steps in another zone travel there instead of stopping with "no route" -Kage
+- Bug fix: Yes/no questions with your character's name are answered -Kage
+- Bug fix: Unlocking a job no longer overwrites another job's gear set -Kage
+- Bug fix: The priority list no longer jumps to a journal quest between quests -Kage
+- Bug fix: Events and allied societies show correctly indoors and right after login -Kage
+- Bug fix: Do dailies skips dailies that need you for a step instead of waiting -Kage

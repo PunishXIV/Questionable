@@ -236,6 +236,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     // Combat can end before quest actions are safe again.
     private DateTime _safeAnimationEnd = DateTime.MinValue;
     private DateTime? _journalSince;
+    private (ITask? Task, DateTime Since) _acceptWait;
 
     public QuestController(
         IClientState clientState,
@@ -340,6 +341,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public event EventHandler<StopEventArgs>? Stopped;
     public event EventHandler<QuestCompletedEventArgs>? QuestCompleted;
+
+    // A long walk to the giver used up the 15 s before the accept was even tried (182, Sub Alt 17:50:43).
+    internal static DateTime AcceptStallStart(DateTime stepStart, DateTime? waitStart) =>
+        waitStart is { } wait && wait > stepStart ? wait : stepStart;
 
     internal static string StopKindName(EProblemKind? kind, bool finished) =>
         kind?.ToString() ?? (finished ? "Finished" : "");
@@ -536,10 +541,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             }
         }
 
+        ITask? acceptTask = _taskQueue.CurrentTaskExecutor?.CurrentTask as WaitAtEnd.QuestAccepted;
+        if (acceptTask != null && !ReferenceEquals(_acceptWait.Task, acceptTask))
+            _acceptWait = (acceptTask, DateTime.Now);
         if (!HasExternalOperation && AutomationType == EAutomationType.Automatic &&
-            (_taskQueue.AllTasksComplete || _taskQueue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.QuestAccepted)
+            (_taskQueue.AllTasksComplete || acceptTask != null)
             && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: CompletedStep }
-            && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(AcceptStallSeconds))
+            && DateTime.Now >= AcceptStallStart(CurrentQuest.StepProgress.StartedAt,
+                acceptTask != null ? _acceptWait.Since : null).AddSeconds(AcceptStallSeconds))
         {
             if (_dailies != null)
             {
@@ -822,6 +831,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private bool TryGetQuestToRun(QuestChoice choice, out QuestProgress? questToRun)
     {
+        // A wait left from an earlier journal frame would let the next one switch at once (5290, Sub Alt 17:50:43).
+        if (choice.Source != EQuestSource.Journal)
+            _journalSince = null;
+
         questToRun = choice.Progress;
         if (questToRun != null)
         {
