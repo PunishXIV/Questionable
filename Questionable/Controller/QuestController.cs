@@ -896,7 +896,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     // The next priority quest unlocks a frame after a turn-in, so the journal's quest would win that frame (2012 level stop, Sub Alt 17:01).
     private bool ShouldSettle(QuestChoice choice)
     {
-        if (choice.Source != EQuestSource.Journal || !_priorityManager.Quests.Any(x => !_questFunctions.IsQuestComplete(x.Id)))
+        // After 178 completed on accept, the journal showed 5290 for one frame and QST switched to Sage (Sub Alt 20:50).
+        bool justCompleted = StartedQuest != null && _questFunctions.IsQuestComplete(StartedQuest.Quest.Id);
+        if (choice.Source != EQuestSource.Journal ||
+            (!justCompleted && !_priorityManager.Quests.Any(x => !_questFunctions.IsQuestComplete(x.Id))))
         {
             _journalSince = null;
             return false;

@@ -70,8 +70,7 @@
           "Position": [-505.6382, -17.810839, 28.702148],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "Notes": ["Needs manual targeting and walking along path"]
+            "Enabled": true
           }
         }
       ]
