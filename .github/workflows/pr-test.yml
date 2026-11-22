@@ -58,7 +58,8 @@ jobs:
 
       - name: Verify formatting
         run: |
-          dotnet format Questionable.sln --no-restore --severity warn -v diag
+          # IDE1006 would rename members (Configuration names must never change); MA0011/MA0076 need a culture picked by hand.
+          dotnet format Questionable.sln --no-restore --severity warn --exclude-diagnostics IDE1006 MA0011 MA0076 -v diag
 
       - name: Update i18n
         run: |

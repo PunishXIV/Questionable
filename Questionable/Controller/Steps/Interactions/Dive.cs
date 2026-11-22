@@ -27,7 +27,7 @@ internal static class Dive
         public override string ToString() => "Dive";
     }
 
-    internal sealed class Executor(ICondition condition)
+    internal sealed class Executor(ICondition condition, ILogger<Executor> logger)
         : DelayedTaskExecutor<Task>(TimeSpan.FromSeconds(5))
     {
         private int _attempts;
@@ -65,8 +65,10 @@ internal static class Dive
             if (_attempts >= 3)
                 throw new NeedsPlayerException("Please dive manually.");
 
-            PerformDive();
             _attempts++;
+            logger.LogInformation("Not diving yet, trying again ({Attempt}/3; swimming: {Swimming}, mounted: {Mounted})",
+                _attempts, condition[ConditionFlag.Swimming], condition[ConditionFlag.Mounted]);
+            PerformDive();
             return ETaskResult.StillRunning;
         }
     }

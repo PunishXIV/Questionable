@@ -1,6 +1,5 @@
 ﻿{
   "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
-  "$": "There are several Feral Crocs in the area. UseItem targets the first one in the object table (?), which may not be at the same spot each time. It also does not execute movement to get closer to a target. In order to have this task complete automatically, we need to either path towards targets before UseItem, or ensure that UseItem's target is limited to a range around the character.",
   "Author": ["Censored", "alydev"],
   "Comment": "Requires manual interaction",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
@@ -17,8 +16,7 @@
           "DataId": 395,
           "Position": [326.40576, 256.4665, 129.65588],
           "Mount": false,
-          "InteractionType": "WaitForManualProgress",
-          "Comment": "Manual: Use Shearing Knife on Feral Croc",
+          "InteractionType": "UseItem",
           "ItemId": 2001403,
           "CompletionQuestVariablesFlags": [
             { "High": 1 },

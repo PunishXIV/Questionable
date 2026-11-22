@@ -45,7 +45,6 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": false,
-            "TestedBossModVersion": "0.1.1.4",
             "Notes": [
               "AI doesn't target Fafnir to start combat",
               "AI doesn't stand in towers",

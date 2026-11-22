@@ -202,15 +202,33 @@ internal static class WaitAtEnd
         public override string ToString() => $"WaitObj({DataId} at {Destination.ToString("G5", CultureInfo.InvariantCulture)} < {Distance})";
     }
 
-    internal sealed class ObjectAtPositionExecutor(GameFunctions gameFunctions) : TaskExecutor<ObjectAtPosition>
+    internal sealed class ObjectAtPositionExecutor(GameFunctions gameFunctions, ILogger<ObjectAtPositionExecutor> logger)
+        : TaskExecutor<ObjectAtPosition>
     {
-        protected override bool Start() => true;
+        private DateTime _reportAt;
+
+        protected override bool Start()
+        {
+            _reportAt = DateTime.Now.AddSeconds(10);
+            return true;
+        }
 
         public override ETaskResult Update()
         {
-            return gameFunctions.IsObjectAtPosition(Task.DataId, Task.Destination, Task.Distance)
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (gameFunctions.IsObjectAtPosition(Task.DataId, Task.Destination, Task.Distance))
+                return ETaskResult.TaskComplete;
+
+            if (DateTime.Now > _reportAt)
+            {
+                _reportAt = DateTime.MaxValue;
+                if (gameFunctions.FindObjectByDataId(Task.DataId) is { } npc)
+                    logger.LogInformation("Still waiting for {DataId}: it is {Distance:F1} y from its spot", Task.DataId,
+                        Vector3.Distance(npc.Position, Task.Destination));
+                else
+                    logger.LogInformation("Still waiting for {DataId}: it isn't loaded", Task.DataId);
+            }
+
+            return ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => false;

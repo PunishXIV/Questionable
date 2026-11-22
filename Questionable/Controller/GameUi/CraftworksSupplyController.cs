@@ -70,7 +70,6 @@ internal sealed class CraftworksSupplyController : IDisposable
         }
     }
 
-    // TODO: confirm on a real delivery that the item is picked with the cursor outside the game window.
     private unsafe void ContextIconMenuPostOpen(AddonEvent type, AddonArgs args)
     {
         if (!ShouldHandleUi)

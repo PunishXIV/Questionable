@@ -43,7 +43,6 @@ public enum EInteractionType
     AcceptQuest,
     CompleteQuest,
     Fish,
-    Macro,
     CleanUpOtherQuests,
     FillGauge,
     AssignBattlehorn,

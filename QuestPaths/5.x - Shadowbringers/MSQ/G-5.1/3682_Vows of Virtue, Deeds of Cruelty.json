@@ -28,8 +28,7 @@
           "Position": [-2.4262085, 0, -9.10968],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           },
           "$": "This doesn't have a duty confirmation dialog, so we're treating TEXT_LUCKMG110_03682_Q1_100_125 as one"
         }

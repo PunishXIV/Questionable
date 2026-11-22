@@ -680,7 +680,6 @@ internal sealed partial class ActiveQuestComponent
         EInteractionType.AcceptQuest => _L("Accept"),
         EInteractionType.CompleteQuest => _L("Turn in"),
         EInteractionType.Fish => _L("Fish"),
-        EInteractionType.Macro => _L("Macro"),
         EInteractionType.CleanUpOtherQuests => _L("Clean up"),
         _ => Regex.Replace(type.ToString(), "(?<=[a-z])(?=[A-Z])", " "),
     };

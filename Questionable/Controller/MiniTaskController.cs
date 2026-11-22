@@ -142,7 +142,8 @@ internal abstract class MiniTaskController<T> : IDisposable
                     return;
                 }
 
-                _logger.LogInformation("{Task} → {Result}, remaining tasks: {RemainingTaskCount}",
+                _logger.Log(LogLevelFor(_taskQueue.CurrentTaskExecutor.CurrentTask),
+                    "{Task} → {Result}, remaining tasks: {RemainingTaskCount}",
                     _taskQueue.CurrentTaskExecutor.CurrentTask, result, _taskQueue.RemainingTasks.Count());
 
                 OnTaskComplete(_taskQueue.CurrentTaskExecutor.CurrentTask);
@@ -161,7 +162,8 @@ internal abstract class MiniTaskController<T> : IDisposable
                     return;
                 }
 
-                _logger.LogInformation("{Task} → {Result}", _taskQueue.CurrentTaskExecutor.CurrentTask, result);
+                _logger.Log(LogLevelFor(_taskQueue.CurrentTaskExecutor.CurrentTask), "{Task} → {Result}",
+                    _taskQueue.CurrentTaskExecutor.CurrentTask, result);
 
                 ILastTask lastTask = (ILastTask)_taskQueue.CurrentTaskExecutor.CurrentTask;
                 _taskQueue.CurrentTaskExecutor = null;
@@ -195,6 +197,9 @@ internal abstract class MiniTaskController<T> : IDisposable
         }
     }
 
+    private static LogLevel LogLevelFor(ITask task) =>
+        task is WaitAtEnd.WaitDelay or WaitAtEnd.NextStep or SkipCondition.Task ? LogLevel.Debug : LogLevel.Information;
+
     // Created on first use: tests build controllers without running constructors.
     private Queue<string>? _recentTasks;
 
@@ -207,7 +212,7 @@ internal abstract class MiniTaskController<T> : IDisposable
         try
         {
             StartedAnyTask = true;
-            _logger.LogInformation("Starting task {TaskName}", task.ToString());
+            _logger.Log(LogLevelFor(task), "Starting task {TaskName}", task.ToString());
             (_recentTasks ??= new()).Enqueue(task.ToString() ?? string.Empty);
             while (_recentTasks.Count > 10)
                 _recentTasks.Dequeue();

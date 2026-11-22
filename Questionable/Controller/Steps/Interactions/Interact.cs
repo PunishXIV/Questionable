@@ -219,7 +219,7 @@ internal static class Interact
 
             if (_needsFacing)
             {
-                logger.LogInformation("Facing target");
+                logger.LogDebug("Facing target");
                 cameraFunctions.Face(gameObject.Position);
                 _continueAt = DateTime.Now.AddSeconds(0.2);
                 _needsFacing = false;
@@ -365,7 +365,11 @@ internal static class Interact
                 if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.Confirmed)
                 {
                     if (_delayedFinalCheck)
+                    {
+                        logger.LogInformation("Interacted with {DataId}: {How}", Task.DataId,
+                            _interactionState == EInteractionState.Confirmed ? "the game started the event" : "no event seen, assuming it worked");
                         return ETaskResult.TaskComplete;
+                    }
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
                     _delayedFinalCheck = true;

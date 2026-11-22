@@ -23,19 +23,21 @@
       "Steps": [
         {
           "Position": [-433.617, -156.24463, 776.9229],
-          "InteractionType": "Instruction",
-          "Comment": "TODO Needs item use; manual for now (also unsure on health percent)",
+          "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
               "DataId": 17267,
               "MinimumKillCount": 2,
-              "ItemId": 2003669,
-              "ItemUseHealthMaxPercent": 25,
               "RewardItemId": 2003670,
               "RewardItemCount": 2
             }
-          ]
+          ],
+          "CombatItemUse": {
+            "ItemId": 2003669,
+            "Condition": "Health%",
+            "Value": 25
+          }
         }
       ]
     },

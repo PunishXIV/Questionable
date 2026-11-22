@@ -36,7 +36,7 @@ internal static class AssignBattlehorn
         Wait,
     }
 
-    internal sealed class Executor(ILogger<Task> logger, IDataManager dataManager) : TaskExecutor<Task>
+    internal sealed class Executor(ILogger<Executor> logger, IDataManager dataManager) : TaskExecutor<Task>
     {
         private const uint FirstEntryParam = 4;
         private const uint AssignFirstBattlehorn = 17706; // Addon "Assign to First Battlehorn", then Second, Third

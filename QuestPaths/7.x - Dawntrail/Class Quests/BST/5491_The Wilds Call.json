@@ -112,7 +112,111 @@
           "$": "Lost lamb, Lv3-4"
         },
         {
-          "Comment": "* The next quest needs Lv8, the one after it Lv16. You can reach this by capturing other nearby creatures, although on a non-preferred world you may need to do some grinding to be able to reach the minimum level to capture each one:\n - Pugil, Puk Hatchling, Bogy, Tiny Mandragora, Wounded Aurochs\n* Go through the cave to the south, capture:\n - Cave Bat, Wild Dodo, Galago, Nesting Buzzard, Rivertoad\n* On a preferred world, this will get you to Lv10. Return to Middle La Noscea, head north, and capture:\n - Megalocrab, Wespe\n* Return to Bentbranch Meadows, capture:\n - Roselet, Black Eft, Anole, Diremite, Treant Sapling\n* On a preferred world, you should be at or near Lv16. If you need more exp, travel to Horizon and capture:\n - Sabotender (near Ul'dah gate), Rusty Coblyn, Thickshell, Scaphite\n* Travel to Central Thanalan, capture:\n - Spriggan Graverobber\n* If you've reached Lv16, you may also want to travel to Aleport and capture:\n - Killer Mantis, Rothlyt Pelican\n* At this point you have 27/50 of the Bestiary complete and should be around Lv16-17.",
+          "DataId": 383,
+          "Position": [68.19, 42.42, 32.76],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 4,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Pugil, Lv4"
+        },
+        {
+          "DataId": 118,
+          "Position": [47.83, 63.77, -193.16],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 12,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Tiny mandragora, Lv5-7"
+        },
+        {
+          "DataId": 342,
+          "Position": [-57.03, 34.96, -80.25],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 40,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Bogy, Lv7, inside the cave"
+        },
+        {
+          "DataId": 313,
+          "Position": [146.34, 36.52, 108.74],
+          "TerritoryId": 135,
+          "InteractionType": "Capture",
+          "PetId": 31,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Rivertoad, Lv4"
+        },
+        {
+          "DataId": 339,
+          "Position": [329.09, 48.38, -18.37],
+          "TerritoryId": 135,
+          "InteractionType": "Capture",
+          "PetId": 6,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Wild dodo, Lv4-7"
+        },
+        {
+          "DataId": 38,
+          "Position": [275.95, 71.15, -209.62],
+          "TerritoryId": 135,
+          "InteractionType": "Capture",
+          "PetId": 19,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Cave bat, Lv7"
+        },
+        {
+          "DataId": 341,
+          "Position": [-145.08, 46.38, -153.61],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 14,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Puk hatchling, Lv8"
+        },
+        {
+          "DataId": 323,
+          "Position": [-181.49, 42.51, -207.21],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 26,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Wounded aurochs, Lv8"
+        },
+        {
+          "Comment": "The captures above level Beastmaster to 8 for the next quest; on a non-preferred world you may still be short and need to fight a little more.",
           "DataId": 1059323,
           "Position": [119.923, -7.00342, -87.4736],
           "InteractionType": "CompleteQuest",

@@ -14,8 +14,18 @@
           "InteractionType": "Interact"
         },
         {
-          "InteractionType": "Instruction",
-          "Comment": "Equip upgraded weapon"
+          "InteractionType": "EquipItem",
+          "ItemId": 6259,
+          "RequiredCurrentJob": [
+            "Warrior"
+          ]
+        },
+        {
+          "InteractionType": "EquipItem",
+          "ItemId": 6265,
+          "RequiredCurrentJob": [
+            "Scholar"
+          ]
         },
         {
           "DataId": 1003075,

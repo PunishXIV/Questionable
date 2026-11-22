@@ -142,11 +142,6 @@
           "description": "The data id of the NPC/Object/Aetheryte/Aether Current",
           "exclusiveMinimum": 0
         },
-        "MacroId": {
-          "type": "integer",
-          "description": "The ID of the macro to insert",
-          "exclusiveMinimum": 0
-        },
         "Position": {
           "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"
         },
@@ -205,9 +200,7 @@
             "Instruction",
             "AcceptQuest",
             "CompleteQuest",
-            "InitiateLeve",
             "Fish",
-            "Macro",
             "CleanUpOtherQuests",
             "FillGauge",
             "AssignBattlehorn",
@@ -330,6 +323,12 @@
                 "AetherCurrentUnlocked": {
                   "description": "Skip this step if this aether current is attuned",
                   "type": "integer"
+                },
+                "LevelReached": {
+                  "description": "Skip this step once the current job is at least this level",
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
                 },
                 "NearPosition": {
                   "type": "object",
@@ -1567,14 +1566,6 @@
                       "type": "string"
                     }
                   },
-                  "TestedAutoDutyVersion": {
-                    "type": "string",
-                    "pattern": "^0\\.\\d+\\.\\d+\\.\\d+$"
-                  },
-                  "TestedBossModVersion": {
-                    "type": "string",
-                    "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
-                  },
                   "LowPriority": {
                     "type": "boolean",
                     "description": "Indicates that this dungeon is included in the 'Skip certain optional dungeons and raids' option"
@@ -1621,9 +1612,6 @@
                   "Enabled": {
                     "type": "boolean"
                   },
-                  "Passive": {
-                    "type": "boolean"
-                  },
                   "Notes": {
                     "type": "array",
                     "items": {
@@ -1635,10 +1623,6 @@
                     "minimum": 0,
                     "maximum": 1,
                     "description": "If a quest has multiple solo instances (which affects 5 quests total), indicates which one this is"
-                  },
-                  "TestedBossModVersion": {
-                    "type": "string",
-                    "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
                   },
                   "$": {
                     "type": "string"
@@ -1988,20 +1972,6 @@
             },
             "required": [
               "TargetClass"
-            ]
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "InteractionType": {
-                "const": "Macro"
-              }
-            }
-          },
-          "then": {
-            "required": [
-              "MacroId"
             ]
           }
         }

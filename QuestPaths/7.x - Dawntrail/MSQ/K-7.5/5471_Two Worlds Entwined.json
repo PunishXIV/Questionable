@@ -34,8 +34,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1011,
-            "Enabled": true,
-            "TestedAutoDutyVersion": "0.0.0.304"
+            "Enabled": true
           }
         }
       ]

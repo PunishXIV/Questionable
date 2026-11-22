@@ -39,7 +39,7 @@ internal static class Capture
         MovementController movementController,
         IObjectTable objectTable,
         ICondition condition,
-        ILogger<Task> logger) : TaskExecutor<Task>
+        ILogger<Executor> logger) : TaskExecutor<Task>
     {
         private const float WeakenedHp = 0.6f;
         private const float Reach = 3f;

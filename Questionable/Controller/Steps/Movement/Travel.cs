@@ -37,6 +37,8 @@ internal static class Travel
         private uint _zone;
         private bool _byPosition;
         private bool _escort;
+        private bool _escortTried;
+        private DateTime? _catchUpSince;
         private bool _pace;
         private bool _paused;
         private Vector3? _heading;
@@ -63,6 +65,8 @@ internal static class Travel
 
             _byPosition = false;
             _escort = Task.DataId is { } escorted && NearPlayer(escorted);
+            _escortTried = _escort;
+            _catchUpSince = null;
             if (_escort)
                 logger.LogInformation("{DataId} walks with the player, travelling to the step's position", Task.DataId);
             // The leader waits ahead of the player, often further than an escort walks (FF16 4798, Torgal).
@@ -87,6 +91,10 @@ internal static class Travel
             Task is { Position: { } spot } && _zone == Task.TerritoryId &&
             gameFunctions.FindObjectByDataId(id) is { } target && objectTable[0] is { } player &&
             Vector3.Distance(target.Position, player.Position) < 10 && Vector3.Distance(target.Position, spot) > 10;
+
+        private bool Followed(uint id) =>
+            gameFunctions.FindObjectByDataId(id) is not { } target || objectTable[0] is not { } player ||
+            Vector3.Distance(target.Position, player.Position) < 10;
 
         private void Restart(TimeSpan settle)
         {
@@ -269,7 +277,49 @@ internal static class Travel
                 throw new TaskException("MappingTheRealm's route was cancelled");
 
             // IsPathing reads false for a moment before the route starts.
-            return _started || _route is { IsCompleted: true } ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+            if (!_started && _route is not { IsCompleted: true })
+                return ETaskResult.StillRunning;
+
+            // An escort waiting away from the step only starts walking once the player reaches it (FF16 4797, Clive).
+            if (!_escortTried && Task.DataId is { } escorted && NearPlayer(escorted))
+            {
+                _escort = _escortTried = true;
+                logger.LogInformation("{DataId} walks with the player, travelling on to the step's position", escorted);
+                Restart(TimeSpan.Zero);
+                return ETaskResult.StillRunning;
+            }
+
+            // A step position that is just out of date leaves the NPC behind.
+            if (_escort && Task.DataId is { } left && !Followed(left))
+            {
+                _catchUpSince ??= DateTime.Now;
+                if (DateTime.Now - _catchUpSince < TimeSpan.FromSeconds(3))
+                    return ETaskResult.StillRunning;
+
+                _escort = false;
+                logger.LogInformation("{DataId} didn't follow, going back to it", left);
+                Restart(TimeSpan.Zero);
+                return ETaskResult.StillRunning;
+            }
+
+            LogArrival();
+            return ETaskResult.TaskComplete;
+        }
+
+        private void LogArrival()
+        {
+            Vector3? target = Task.DataId is { } id && gameFunctions.FindObjectByDataId(id) is { } found
+                ? found.Position
+                : Task.Position;
+            if (target is not { } goal || objectTable[0]?.Position is not { } here || clientState.TerritoryType != Task.TerritoryId)
+                return;
+
+            float across = Vector2.Distance(new(here.X, here.Z), new(goal.X, goal.Z));
+            float height = MathF.Abs(here.Y - goal.Y);
+            if (height > 5 || across > 10)
+                logger.LogWarning("MappingTheRealm finished {Across:F1} y across and {Height:F1} y above/below the target", across, height);
+            else
+                logger.LogDebug("MappingTheRealm finished {Across:F1} y across and {Height:F1} y above/below the target", across, height);
         }
 
         public void StopNow()

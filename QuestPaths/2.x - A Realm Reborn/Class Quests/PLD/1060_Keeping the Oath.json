@@ -28,8 +28,7 @@
           "Mount": false,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.4.21.1"
+            "Enabled": true
           }
         }
       ]

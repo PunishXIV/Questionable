@@ -19,13 +19,6 @@
       "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013074,
-          "Position": [304.3412, 483.4821, 143.1448],
-          "InteractionType": "Interact",
-          "SkipConditions": {"StepIf": {"InTerritory": [1073]}},
-          "TargetTerritoryId": 1073
-        },
-        {
           "TerritoryId": 1073,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [

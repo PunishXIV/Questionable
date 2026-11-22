@@ -35,6 +35,8 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
     // A range above 0 is yalms to the loaded object; 0 is the game's interaction range.
     public Task Travel(uint territoryId, Vector3? position, uint? dataId, float range = 0)
     {
+        _logger.LogDebug("Asking MappingTheRealm for a route to T{TerritoryId}, position {Position}, object {DataId}, range {Range}",
+            territoryId, position?.ToString("G5", CultureInfo.InvariantCulture) ?? "-", dataId?.ToString(CultureInfo.InvariantCulture) ?? "-", range);
         Task route;
         try
         {

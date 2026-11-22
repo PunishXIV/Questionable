@@ -190,7 +190,7 @@ internal sealed class QuestRegistry : IDisposable
         CancellationTokenSource load = new();
         CancellationToken token = load.Token;
         _projectLoad = load;
-        _logger.LogInformation("Loading quests from the project directory in the background");
+        _logger.LogDebug("Loading quests from the project directory in the background");
         _ = Task.Run(async () =>
         {
             try
@@ -359,8 +359,9 @@ internal sealed class QuestRegistry : IDisposable
 
     private static ParsedQuest? ParseQuest(string fileName, Stream stream)
     {
+        // Custom delivery paths (S*) were dropped in 2.0, but older downloaded bundles still carry them.
         ElementId? questId = ExtractQuestIdFromName(fileName);
-        if (questId == null)
+        if (questId is null or SatisfactionSupplyNpcId)
             return null;
 
         JsonNode questNode = JsonNode.Parse(stream)!;
@@ -391,7 +392,7 @@ internal sealed class QuestRegistry : IDisposable
         uint count = 0;
         if (!directory.Exists)
         {
-            _logger.LogInformation("Not loading quests from {DirectoryName} (doesn't exist)", directory);
+            _logger.LogDebug("Not loading quests from {DirectoryName} (doesn't exist)", directory);
             return count;
         }
 

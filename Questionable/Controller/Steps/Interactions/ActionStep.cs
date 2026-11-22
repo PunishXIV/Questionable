@@ -55,7 +55,7 @@ internal static class ActionStep
         GameFunctions gameFunctions,
         InterruptHandler interruptHandler,
         ICondition condition,
-        ILogger<UseOnObject> logger,
+        ILogger<UseOnObjectExecutor> logger,
         IQuestGameState gameState,
         IDataManager dataManager) : TaskExecutor<UseOnObject>
     {
@@ -251,7 +251,7 @@ internal static class ActionStep
     internal sealed class UseMudraOnObjectExecutor
     (
         GameFunctions gameFunctions,
-        ILogger<UseMudraOnObject> logger) : TaskExecutor<UseMudraOnObject>
+        ILogger<UseMudraOnObjectExecutor> logger) : TaskExecutor<UseMudraOnObject>
     {
         private static readonly ReadOnlyDictionary<EAction, Dictionary<EAction, EAction>> Combos =
             new Dictionary<EAction, Dictionary<EAction, EAction>>

@@ -14,7 +14,7 @@ internal static class MountStep
     internal sealed class UnmountExecutor
     (
         ICondition condition,
-        ILogger<UnmountTask> logger,
+        ILogger<UnmountExecutor> logger,
         GameFunctions gameFunctions,
         IObjectTable objectTable)
         : TaskExecutor<UnmountTask>

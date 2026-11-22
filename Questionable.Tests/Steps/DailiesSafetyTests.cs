@@ -138,7 +138,9 @@ public sealed class DailiesSafetyTests
     [Fact]
     public void ManualDaily_IsNotAutomatic()
     {
-        Quest quest = Load(1516, EAlliedSociety.Ixal, repeatable: true);
+        Quest quest = _catalog.Add(TestQuestInfo.Create(1516).With(nameof(QuestInfo.AlliedSociety), EAlliedSociety.Ixal)
+                .With(nameof(QuestInfo.IsRepeatable), true),
+            [QuestTestData.Seq(1, new QuestStep { InteractionType = EInteractionType.Instruction })]);
         Assert.False(_functions.CanQueueSociety(quest.Id));
         Assert.Contains("can't do on its own",
             DailiesController.GetBlockReason(quest, (QuestInfo)quest.Info, false, true, needsPlayer: true)!, StringComparison.Ordinal);

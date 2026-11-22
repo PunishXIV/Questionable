@@ -28,7 +28,6 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": false,
-            "TestedBossModVersion": "0.1.1.8",
             "Notes": [
               "(phase 1) AI doesn't move automatically",
               "(phase 2) AI doesn't target enemy"

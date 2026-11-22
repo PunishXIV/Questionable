@@ -16,8 +16,7 @@
           "Position": [-182.39111, -0.23098835, -70.72565],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1"
+            "Enabled": true
           },
           "$": "Changed aethernet from Jeweled Crozier, since navmesh thinks the pillar atop the stairs is walk-through"
         }

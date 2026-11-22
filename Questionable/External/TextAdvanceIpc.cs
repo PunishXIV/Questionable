@@ -19,13 +19,15 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly string _pluginName;
     private readonly QuestController _questController;
+    private readonly ILogger<TextAdvanceIpc> _logger;
     private bool _hasControl;
     private bool _sentDontSkipCutscenes;
     private bool _sentCompleteQuests;
 
     public TextAdvanceIpc(IDalamudPluginInterface pluginInterface, IFramework framework,
-        QuestController questController, Configuration configuration)
+        QuestController questController, Configuration configuration, ILogger<TextAdvanceIpc> logger)
     {
+        _logger = logger;
         _framework = framework;
         _questController = questController;
         _configuration = configuration;
@@ -61,6 +63,8 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
                 {
                     _sentDontSkipCutscenes = dontSkipCutscenes;
                     _sentCompleteQuests = completeQuests;
+                    _logger.LogDebug("Updated TextAdvance settings (skip cutscenes: {Skip}, turn in quests: {TurnIn})",
+                        !dontSkipCutscenes, completeQuests);
                 }
             }
             else if (IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false &&
@@ -70,6 +74,8 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
                 _hasControl = true;
                 _sentDontSkipCutscenes = dontSkipCutscenes;
                 _sentCompleteQuests = completeQuests;
+                _logger.LogInformation("Took control of TextAdvance (skip cutscenes: {Skip}, turn in quests: {TurnIn})",
+                    !dontSkipCutscenes, completeQuests);
             }
         }
         else
@@ -78,7 +84,10 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
             {
                 if (IpcInvoke.SafeFunc(() => _disableExternalControl(_pluginName), fallback: false) ||
                     IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false)
+                {
                     _hasControl = false;
+                    _logger.LogInformation("Gave TextAdvance control back");
+                }
             }
         }
     }

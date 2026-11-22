@@ -7,7 +7,7 @@ namespace Questionable.AutoGen.Lua;
 
 internal static class LuaBytecode
 {
-    private static ReadOnlySpan<byte> Signature => "Lua"u8;
+    private static ReadOnlySpan<byte> Signature => "\u001BLua"u8;
 
     internal static LuaProto Parse(byte[] data)
     {

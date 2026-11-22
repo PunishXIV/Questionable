@@ -86,8 +86,12 @@ internal sealed unsafe partial class GameFunctions
                playerState->IsAetherCurrentUnlocked(aetherCurrentId);
     }
 
+    // Several objects can share a data id (mobs, quest props); the nearest one is the one the step means.
     public IGameObject? FindObjectByDataId(uint dataId, ObjectKind? kind = null)
     {
+        Vector3? here = objectTable[0]?.Position;
+        IGameObject? nearest = null;
+        float nearestDistance = float.MaxValue;
         foreach (IGameObject gameObject in objectTable)
         {
             if (gameObject.ObjectKind is ObjectKind.Pc or ObjectKind.Companion or ObjectKind.Mount
@@ -98,14 +102,24 @@ internal sealed unsafe partial class GameFunctions
             if (gameObject is { ObjectKind: ObjectKind.GatheringPoint, IsTargetable: false })
                 continue;
 
-            if (GetBaseId(gameObject) == dataId && (kind == null || kind.Value == gameObject.ObjectKind))
+            if (GetBaseId(gameObject) != dataId || (kind != null && kind.Value != gameObject.ObjectKind))
+                continue;
+
+            float distance = here is { } position ? Vector3.DistanceSquared(position, gameObject.Position) : 0;
+            if (distance < nearestDistance)
             {
-                highlightObject.AddHighlight(GetBaseId(gameObject));
-                return gameObject;
+                nearest = gameObject;
+                nearestDistance = distance;
             }
         }
 
-        logger.LogWarning("Could not find GameObject with dataId {DataId}", dataId);
+        if (nearest != null)
+        {
+            highlightObject.AddHighlight(dataId);
+            return nearest;
+        }
+
+        logger.LogDebug("Could not find GameObject with dataId {DataId}", dataId);
         return null;
     }
 
@@ -121,7 +135,7 @@ internal sealed unsafe partial class GameFunctions
 
     public bool InteractWith(IGameObject gameObject)
     {
-        logger.LogInformation("Setting target with {DataId} to {ObjectId}", GetBaseId(gameObject), gameObject.EntityId);
+        logger.LogDebug("Setting target with {DataId} to {ObjectId}", GetBaseId(gameObject), gameObject.EntityId);
         targetManager.Target = null;
         targetManager.Target = gameObject;
 
@@ -134,7 +148,7 @@ internal sealed unsafe partial class GameFunctions
 
         long result = (long)TargetSystem.Instance()->InteractWithObject((GameObject*)gameObject.Address, checkLineOfSight: false);
 
-        logger.LogInformation("Interact result: {Result}", result);
+        logger.LogDebug("Interact result: {Result}", result);
         return result != 7 && result > 0;
     }
 
@@ -306,7 +320,7 @@ internal sealed unsafe partial class GameFunctions
             logger.LogDebug("Attempting to unmount...");
             if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23))
             {
-                logger.LogInformation("Unmounted");
+                logger.LogDebug("Unmounted");
                 return true;
             }
 

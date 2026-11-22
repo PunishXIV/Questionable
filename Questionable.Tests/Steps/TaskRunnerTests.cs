@@ -1,3 +1,4 @@
+using System.Globalization;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
 using Microsoft.Extensions.DependencyInjection;
@@ -127,7 +128,7 @@ public sealed class TaskRunnerTests
             Assert.Same(expected, failure.Error);
         Assert.Single(fixture.Log.Entries, x => x.Level == LogLevel.Error && ReferenceEquals(x.Exception, failure.Error));
         var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
-        Assert.Contains("Could not start", chat.GetArguments()[0]!.ToString(), System.StringComparison.Ordinal);
+        Assert.Contains("Could not start", Convert.ToString(chat.GetArguments()[0], CultureInfo.InvariantCulture), System.StringComparison.Ordinal);
         Assert.Contains("Could not start", Assert.Single(fixture.Notifications), System.StringComparison.Ordinal);
         Assert.True(fixture.Queue.AllTasksComplete);
         Assert.Equal(0, fixture.Controller.CompletedTasks);
@@ -195,7 +196,7 @@ public sealed class TaskRunnerTests
         Assert.Equal("Attune to the aetheryte first.", Assert.Single(fixture.Notifications));
         Assert.DoesNotContain(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
         var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "Print");
-        Assert.Equal("Attune to the aetheryte first.", chat.GetArguments()[0]!.ToString());
+        Assert.Equal("Attune to the aetheryte first.", Convert.ToString(chat.GetArguments()[0], CultureInfo.InvariantCulture));
         Assert.DoesNotContain(fixture.Log.Entries, x => x.Level == LogLevel.Error);
     }
 

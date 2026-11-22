@@ -26,7 +26,7 @@ internal static class FillGauge
         public override string ToString() => $"FillGauge({DataId})";
     }
 
-    internal sealed class Executor(GameFunctions gameFunctions, ICondition condition, ILogger<Task> logger)
+    internal sealed class Executor(GameFunctions gameFunctions, ICondition condition, ILogger<Executor> logger)
         : TaskExecutor<Task>
     {
         private const byte Full = 100;

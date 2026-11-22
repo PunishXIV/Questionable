@@ -578,7 +578,7 @@ internal sealed class Configuration : IPluginConfiguration
         public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
             bool hasExistingValue, JsonSerializer serializer)
         {
-            string? value = reader.Value?.ToString();
+            string? value = reader.Value is { } raw ? Convert.ToString(raw, CultureInfo.InvariantCulture) : null;
             return value != null ? ElementId.FromString(value) : null;
         }
     }

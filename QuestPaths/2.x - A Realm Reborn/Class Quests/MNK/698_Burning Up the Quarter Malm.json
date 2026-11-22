@@ -62,20 +62,7 @@
       "Steps": [
         {
           "Position": [-210.32118, 21.582167, -94.337494],
-          "Mount": false,
-          "InteractionType": "WalkTo",
-          "Comment": "Use Bootshine / True Strike / Snap Punch combo three times",
-          "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [
-            771
-          ],
-          "CombatDelaySecondsAtStart": 0,
-          "$": "Will stop once 3 Qiqirn Shellsweppers get hit by Snap Punch since it will move on to the next sequence"
-        },
-        {
-          "Position": [-210.32118, 21.582167, -94.337494],
-          "InteractionType": "WaitForManualProgress",
-          "Comment": "Use Bootshine / True Strike / Snap Punch combo three times",
+          "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             771

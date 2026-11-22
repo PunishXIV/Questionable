@@ -18,8 +18,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Index": 0,
-            "Enabled": true,
-            "TestedBossModVersion": "0.3.2.4"
+            "Enabled": true
           }
         }
       ]
@@ -81,8 +80,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Index": 1,
-            "Enabled": true,
-            "TestedBossModVersion": "0.3.2.4"
+            "Enabled": true
           }
         }
       ]

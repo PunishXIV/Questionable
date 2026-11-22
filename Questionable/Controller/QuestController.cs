@@ -1053,7 +1053,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                     return;
             }
 
-            _logger.LogInformation("Increasing step count from {CurrentValue}", current!.Step);
+            _logger.LogDebug("Increasing step count from {CurrentValue}", current!.Step);
             current.SetStep(advance.NextStep);
         }
 
@@ -1296,8 +1296,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         {
             if (CurrentQuest is { Step: CompletedStep } current && StuckWatch.CanRedoSequence(current.FindSequence()))
             {
-                _logger.LogInformation("Sequence {Sequence} of {QuestId} finished without the game moving on, redoing it",
-                    current.Sequence, current.Quest.Id);
+                _logger.LogInformation("Sequence {Sequence} of {QuestId} finished without the game moving on (game: {Progress}), redoing it",
+                    current.Sequence, current.Quest.Id, _questFunctions?.GetQuestProgressInfo(current.Quest.Id)?.ToString() ?? "not accepted");
                 current.SetStep(0);
             }
         }

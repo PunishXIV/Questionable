@@ -18,7 +18,7 @@ internal static class StepDisabled
         public override string ToString() => "StepDisabled";
     }
 
-    internal sealed class Executor(ILogger<Task> logger) : TaskExecutor<Task>
+    internal sealed class Executor(ILogger<Executor> logger) : TaskExecutor<Task>
     {
         protected override bool Start() => true;
 

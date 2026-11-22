@@ -80,9 +80,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 474,
-            "Enabled": true,
-            "TestedAutoDutyVersion": "0.0.0.255",
-            "TestedBossModVersion": "0.4.6.1"
+            "Enabled": true
           }
         }
       ]

@@ -68,7 +68,8 @@ internal static class UseItem
         ICondition condition,
         ILogger logger,
         IQuestGameState gameState,
-        IDataManager dataManager) : TaskExecutor<T>, IToastAware
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier) : TaskExecutor<T>, IToastAware
     where T : class, IUseTask
     {
         private const int MaxRefusals = 3;
@@ -124,6 +125,14 @@ internal static class UseItem
             if (!IsRefusalOfLastUse(_usedItem, _usedAt, DateTime.Now))
                 return false;
 
+            if (toastClassifier.IsTooFarAway(message.TextValue) && Approach())
+            {
+                _usedItem = false;
+                _usedAt = null;
+                _continueAt = DateTime.Now.AddSeconds(3);
+                return false;
+            }
+
             _usedItem = false;
             _usedAt = null;
             _refusals++;
@@ -164,6 +173,8 @@ internal static class UseItem
 
         private static TimeSpan GetRetryDelay() => TimeSpan.FromSeconds(5);
 
+        protected virtual bool Approach() => false;
+
         public override bool ShouldInterruptOnDamage() => true;
     }
 
@@ -184,8 +195,9 @@ internal static class UseItem
         ICondition condition,
         ILogger<UseOnGroundExecutor> logger,
         IQuestGameState gameState,
-        IDataManager dataManager)
-        : ExecutorBase<UseOnGround>(condition, logger, gameState, dataManager)
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier)
+        : ExecutorBase<UseOnGround>(condition, logger, gameState, dataManager, toastClassifier)
     {
         protected override bool Use() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
     }
@@ -205,10 +217,11 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnPosition> logger,
+        ILogger<UseOnPositionExecutor> logger,
         IQuestGameState gameState,
-        IDataManager dataManager)
-        : ExecutorBase<UseOnPosition>(condition, logger, gameState, dataManager)
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier)
+        : ExecutorBase<UseOnPosition>(condition, logger, gameState, dataManager, toastClassifier)
     {
         protected override bool Use() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
     }
@@ -227,13 +240,30 @@ internal static class UseItem
     internal sealed class UseOnObjectExecutor
     (
         GameFunctions gameFunctions,
+        MovementController movementController,
         ICondition condition,
-        ILogger<UseOnObject> logger,
+        ILogger<UseOnObjectExecutor> logger,
         IQuestGameState gameState,
-        IDataManager dataManager)
-        : ExecutorBase<UseOnObject>(condition, logger, gameState, dataManager)
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier)
+        : ExecutorBase<UseOnObject>(condition, logger, gameState, dataManager, toastClassifier)
     {
+        private const int MaxApproaches = 5;
+        private int _approaches;
+
         protected override bool Use() => gameFunctions.UseItem(Task.DataId, ItemId);
+
+        protected override bool Approach()
+        {
+            if (_approaches >= MaxApproaches || gameFunctions.FindObjectByDataId(Task.DataId) is not { } target)
+                return false;
+
+            _approaches++;
+            logger.LogInformation("Too far away to use item {ItemId} on {DataId}, moving closer ({Attempt}/{Max})",
+                ItemId, Task.DataId, _approaches, MaxApproaches);
+            movementController.NavigateTo(EMovementType.Quest, target.BaseId, target.Position, new() { StopDistance = 2f });
+            return true;
+        }
     }
 
     internal sealed record UseOnSelf
@@ -250,10 +280,11 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnSelf> logger,
+        ILogger<UseOnSelfExecutor> logger,
         IQuestGameState gameState,
-        IDataManager dataManager)
-        : ExecutorBase<UseOnSelf>(condition, logger, gameState, dataManager)
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier)
+        : ExecutorBase<UseOnSelf>(condition, logger, gameState, dataManager, toastClassifier)
     {
         protected override bool Use() => gameFunctions.UseItem(ItemId);
     }

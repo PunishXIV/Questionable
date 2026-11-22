@@ -9,6 +9,7 @@ internal sealed unsafe class ProfileController : IDisposable
     private readonly IFramework _framework;
     private readonly Configuration _configuration;
     private readonly ILogger<ProfileController> _logger;
+    private string? _loggedProfile;
 
     public ProfileController(IClientState clientState, IFramework framework, Configuration configuration,
         ILogger<ProfileController> logger)
@@ -43,7 +44,10 @@ internal sealed unsafe class ProfileController : IDisposable
         else
             _configuration.ActivateForCharacter(contentId);
 
-        _logger.LogInformation("Using settings profile: {Profile}", _configuration.ActiveProfileName ?? "default");
+        string profile = _configuration.ActiveProfileName ?? "default";
+        if (profile != _loggedProfile)
+            _logger.LogInformation("Using settings profile: {Profile}", profile);
+        _loggedProfile = profile;
     }
 
     private void OnLogin() => _framework.RunOnFrameworkThread(ActivateCharacterProfile);

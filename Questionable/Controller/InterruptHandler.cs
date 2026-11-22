@@ -75,8 +75,6 @@ internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSo
             // A non-zero source sequence means the client requested the action (not an auto-attack).
             if (sourceId == _objectTable[0]?.EntityId && effectHeader->SourceSequence != 0)
             {
-                _logger.LogDebug("Action effect for own action {ActionType} {ActionId}", (ActionType)effectHeader->ActionType,
-                    effectHeader->ActionId);
                 uint[] targets = new uint[effectHeader->NumTargets];
                 for (int i = 0; i < targets.Length; ++i)
                     targets[i] = targetIds[i].ObjectId;

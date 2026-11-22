@@ -167,7 +167,7 @@ public sealed class ActionStepTests
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.Casting].Returns(true);
         var executor = new ActionStep.UseOnObjectExecutor(null!, interrupt, condition,
-            NullLogger<ActionStep.UseOnObject>.Instance, new FakeQuestGameState(), null!);
+            NullLogger<ActionStep.UseOnObjectExecutor>.Instance, new FakeQuestGameState(), null!);
         var task = new ActionStep.UseOnObject(123, QuestTestData.CreateQuest(new QuestId(92)), EAction.Cure,
             withFlags ? [new QuestWorkValue(16), null, null, null, null, null] : []);
         typeof(TaskExecutor<ActionStep.UseOnObject>).GetProperty("Task", BindingFlags.Instance | BindingFlags.NonPublic)!

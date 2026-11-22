@@ -78,7 +78,7 @@ internal static class SkipCondition
             QuestStep step = Task.Step;
             ElementId elementId = Task.ElementId;
 
-            logger.LogInformation("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
+            logger.LogDebug("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
 
             if (CheckFishInBags(step))
                 return true;
@@ -114,6 +114,9 @@ internal static class SkipCondition
                 return true;
 
             if (CheckAetheryte(step, skipConditions))
+                return true;
+
+            if (CheckLevel(skipConditions))
                 return true;
 
             if (CheckAetherCurrent(elementId, step, skipConditions))
@@ -412,6 +415,15 @@ internal static class SkipCondition
             return false;
         }
 
+        private unsafe bool CheckLevel(SkipStepConditions skipConditions)
+        {
+            if (skipConditions.LevelReached is not { } level || PlayerState.Instance()->CurrentLevel < level)
+                return false;
+
+            logger.LogInformation("Skipping step, as the current job is level {Level} or higher", level);
+            return true;
+        }
+
         private bool CheckAetherCurrent(ElementId elementId, QuestStep step, SkipStepConditions skipConditions)
         {
             if (ShouldSkipForSetting(elementId, step, configuration.Advanced.SkipAetherCurrents))
@@ -546,7 +558,7 @@ internal static class SkipCondition
                     return true;
                 }
 
-                if (QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId) &&
+                if (step.PickUpQuestId is QuestId pickUpQuest && QuestData.AetherCurrentQuests.Contains(pickUpQuest) &&
                     (configuration.Advanced.SkipAetherCurrents ||
                      GameFunctions.IsFlyingUnlocked(step.TerritoryId))) // story skip apparently makes 1748 impossible to complete -alydev
                 {

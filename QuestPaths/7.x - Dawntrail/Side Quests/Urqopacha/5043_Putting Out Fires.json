@@ -14,8 +14,8 @@
         {
           "DataId": 2014126,
           "Position": [-182.69635, 51.68225, 164.56848],
-          "InteractionType": "Instruction",
-          "Comment": "TODO Needs item use",
+          "InteractionType": "UseItem",
+          "ItemId": 2003612,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -27,8 +27,8 @@
         {
           "DataId": 2014127,
           "Position": [-239.36829, 49.79016, 343.52625],
-          "InteractionType": "Instruction",
-          "Comment": "TODO Needs item use",
+          "InteractionType": "UseItem",
+          "ItemId": 2003612,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]

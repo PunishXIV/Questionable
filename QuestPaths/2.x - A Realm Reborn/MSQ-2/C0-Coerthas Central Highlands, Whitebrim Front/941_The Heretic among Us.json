@@ -16,8 +16,7 @@
           "Position": [-886.2593, 228.30641, 1.6021729],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1"
+            "Enabled": true
           }
         }
       ]
