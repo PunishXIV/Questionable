@@ -40,29 +40,10 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": [30.917934, 20.495003, -656.1909],
-          "InteractionType": "WalkTo",
-          "$": "Rising Stones Door",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
-        },
-        {
           "DataId": 1009826,
           "Position": [29.160034, 21.252728, -642.51166],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-        },
-        {
-          "Position": [18.883974, 53.583996, -702.24194],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
         },
         {
           "DataId": 1009823,

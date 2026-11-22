@@ -8,11 +8,6 @@
       "TerritoryId": 156,
       "Steps": [
         {
-          "Position": [30.917934, 20.495003, -656.1909],
-          "InteractionType": "WalkTo",
-          "$": "Rising Stones Door"
-        },
-        {
           "DataId": 1005523,
           "Position": [35.446655, 21.252728, -643.76294],
           "InteractionType": "AcceptQuest"

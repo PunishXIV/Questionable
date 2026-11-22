@@ -31,10 +31,6 @@
       "TerritoryId": 141,
       "Steps": [
         {
-          "Position": [-12.223117, -2.0482793, -145.75566],
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1001564,
           "Position": [-9.689575, -2.0480804, -145.09808],
           "InteractionType": "PurchaseItem",

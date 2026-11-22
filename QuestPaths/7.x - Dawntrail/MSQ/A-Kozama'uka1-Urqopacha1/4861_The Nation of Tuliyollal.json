@@ -49,10 +49,6 @@
           "Aetheryte": "Tuliyollal"
         },
         {
-          "Position": [9.706764, -10.00001, 38.266582],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Tuliyollal] Brightploom Post"
         },

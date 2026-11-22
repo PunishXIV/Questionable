@@ -8,17 +8,6 @@
       "TerritoryId": 140,
       "Steps": [
         {
-          "Position": [-492.96475, 20.999884, -380.82272],
-          "InteractionType": "WalkTo",
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [212],
-              "ExtraCondition": "WakingSandsSolar"
-            }
-          }
-        },
-        {
           "DataId": 2001711,
           "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
@@ -73,17 +62,6 @@
       "Sequence": 255,
       "TerritoryId": 141,
       "Steps": [
-        {
-          "Position": [-64.84354, -3.6581912, 186.08156],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {"AetheryteUnlocked": "Central Thanalan - Black Brush Station"}}
-        },
-        {
-          "Position": [-62.2836, -3.6582258, 144.35869],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Central Thanalan - Black Brush Station"}}
-        },
         {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Central Thanalan - Black Brush Station",

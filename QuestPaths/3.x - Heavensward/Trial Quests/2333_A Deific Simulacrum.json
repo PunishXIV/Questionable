@@ -12,45 +12,6 @@
       "TerritoryId": 402,
       "Steps": [
         {
-          "Position": [-523.8519, 22.025784, -512.0333],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [152.26978, 245.1, -6.2714844],
-                "TerritoryId": 402,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "Position": [-231.93713, 303.47726, -311.9725],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [152.26978, 245.1, -6.2714844],
-                "TerritoryId": 402,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "Position": [212.05304, 256.37265, 0.08028713],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [152.26978, 245.1, -6.2714844],
-                "TerritoryId": 402,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1016633,
           "Position": [152.26978, 245.1, -6.2714844],
           "InteractionType": "CompleteQuest"

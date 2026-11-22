@@ -11,14 +11,6 @@
       "TerritoryId": 961,
       "Steps": [
         {
-          "Position": [108.28996, 10.385857, 106.01689],
-          "InteractionType": "None"
-        },
-        {
-          "Position": [94.6636, 10.6655855, 107.03581],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1041366,
           "Position": [94.31604, 10.70921, 110.09375],
           "Mount": false,
@@ -51,10 +43,6 @@
       "Sequence": 255,
       "TerritoryId": 961,
       "Steps": [
-        {
-          "Position": [108.604225, 10.385857, 106.40102],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1041905,
           "Position": [184.43579, 10.385857, 164.66003],

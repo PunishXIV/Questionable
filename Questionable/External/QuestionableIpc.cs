@@ -55,6 +55,7 @@ internal sealed class QuestionableIpc : IDisposable
     private readonly ICallGateProvider<uint, string> _redoLookup;
     private readonly ICallGateProvider<uint, Tuple<string, int>> _redoLookupIndex;
     private readonly RedoUtil _redoUtil;
+    private readonly RetainerPass _retainerPass;
     private readonly ICallGateProvider<string, bool> _startQuest;
     private readonly ICallGateProvider<string, bool> _startSingleQuest;
     private readonly ICallGateProvider<string, bool> _stop;
@@ -66,6 +67,7 @@ internal sealed class QuestionableIpc : IDisposable
         QuestRegistry questRegistry,
         QuestFunctions questFunctions,
         RedoUtil redoUtil,
+        RetainerPass retainerPass,
         ILogger<QuestionableIpc> logger,
         IDalamudPluginInterface pluginInterface)
     {
@@ -73,6 +75,7 @@ internal sealed class QuestionableIpc : IDisposable
         _questStarter = questStarter;
         _questRegistry = questRegistry;
         _questFunctions = questFunctions;
+        _retainerPass = retainerPass;
         _logger = logger;
 
         _isRunning = pluginInterface.GetIpcProvider<bool>(IpcIsRunning);
@@ -177,6 +180,9 @@ internal sealed class QuestionableIpc : IDisposable
     private bool StartEventQuests()
     {
         _logger.LogDebug("StartEventQuests()");
+        if (IsPassRunning())
+            return false;
+
         Quest? Next() => NextEventQuest(_eventInfo.GetActiveQuests(),
             id => _questRegistry.TryGetQuest(id, out Quest? quest) ? quest : null,
             id => _questFunctions.IsQuestAccepted(id), id => _questFunctions.IsReadyToAcceptQuest(id));
@@ -191,6 +197,9 @@ internal sealed class QuestionableIpc : IDisposable
     private bool StartQuest(string questId, bool single)
     {
         _logger.LogDebug("StartQuest({QuestId},{Single})", questId, single);
+        if (IsPassRunning())
+            return false;
+
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? quest))
         {
@@ -213,6 +222,16 @@ internal sealed class QuestionableIpc : IDisposable
         }
 
         return false;
+    }
+
+    // Automaton's AutoRetainer x Questionable starts quests from AutoRetainer's per-character step, which would cancel our pass.
+    private bool IsPassRunning()
+    {
+        if (!_retainerPass.IsActive)
+            return false;
+
+        _logger.LogInformation("Ignoring a quest start from another plugin during the AutoRetainer pass");
+        return true;
     }
 
     private StepData? GetStepData()

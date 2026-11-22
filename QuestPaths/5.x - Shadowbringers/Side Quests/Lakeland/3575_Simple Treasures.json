@@ -37,11 +37,6 @@
       "TerritoryId": 813,
       "Steps": [
         {
-          "$": "Surface a bit to the side to avoid missing a step",
-          "Position": [-144.30661, 0.542001, 869.40643],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1031346,
           "Position": [-154.00934, -1.974393, 880.6134],
           "InteractionType": "Interact"

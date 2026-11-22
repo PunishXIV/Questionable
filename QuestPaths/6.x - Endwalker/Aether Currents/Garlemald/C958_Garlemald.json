@@ -20,15 +20,6 @@
           "AetherCurrentId": 2818350
         },
         {
-          "Position": [-210.6673, 15.799101, 451.78333],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetherCurrentUnlocked": 2818344
-            }
-          }
-        },
-        {
           "DataId": 2012000,
           "Position": [-184.22223, 31.937134, 423.6056],
           "InteractionType": "AttuneAetherCurrent",

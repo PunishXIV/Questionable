@@ -12,26 +12,6 @@
       "TerritoryId": 813,
       "Steps": [
         {
-          "Position": [-724.9727, 54.379677, -289.8897],
-          "InteractionType": "WalkTo",
-          "Comment": "Tower Bottom",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
-          "Position": [-757.78326, 97.68395, -372.66458],
-          "InteractionType": "WalkTo",
-          "Comment": "Tower Bottom Platform 1",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2010618,
           "Position": [-792.1111, 115.15979, -346.4256],
           "InteractionType": "UseItem",

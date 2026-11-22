@@ -13,15 +13,6 @@
       "$": "'Invalid target' messages can just be bad positioning?",
       "Steps": [
         {
-          "Position": [-148.50606, -0.6686005, -615.3246],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
-        },
-        {
           "DataId": 2002232,
           "Position": [-146.92914, 0.47296143, -616.0525],
           "InteractionType": "Combat",
@@ -43,41 +34,12 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": [-219.34567, 4.551038, -637.8296],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-            }
-          }
-        },
-        {
           "DataId": 2002234,
           "Position": [-216.81549, 5.6915283, -637.4762],
           "InteractionType": "UseItem",
           "ItemId": 2000766,
           "$": "48 17 1 16 0 88",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-        },
-        {
-          "Position": [-196.89899, 5.426553, -658.71454],
-          "InteractionType": "WalkTo",
-          "Comment": "Avoids pit",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
-          "Position": [-170.45108, 3.23747, -656.8099],
-          "InteractionType": "WalkTo",
-          "Comment": "Move into LOS",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
         },
         {
           "DataId": 2002230,

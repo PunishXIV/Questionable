@@ -12,11 +12,6 @@
       "TerritoryId": 958,
       "Steps": [
         {
-          "Position": [-340.87164, 10.803238, -694.511],
-          "InteractionType": "WalkTo",
-          "$": "need to land on the road to avoid awkward flypathing through the burned buildings."
-        },
-        {
           "Position": [-310.5188, 10.813947, -720.8323],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

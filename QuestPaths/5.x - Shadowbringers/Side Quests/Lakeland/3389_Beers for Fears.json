@@ -36,11 +36,6 @@
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
-          "$": "Exit house to not confuse vnavmesh",
-          "Position": [-660.9481, 55.757515, -144.9755],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1027395,
           "Position": [-618.06665, 56.75789, -148.24146],
           "InteractionType": "Interact"

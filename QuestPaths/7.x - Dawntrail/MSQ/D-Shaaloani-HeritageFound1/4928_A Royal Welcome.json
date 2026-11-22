@@ -23,11 +23,6 @@
       "TerritoryId": 1191,
       "Steps": [
         {
-          "Position": [-56.819763, 28.072628, -399.17023],
-          "InteractionType": "WalkTo",
-          "$": "Outskirts Navmesh workaround"
-        },
-        {
           "DataId": 1047397,
           "Position": [-149.03491, 25.971825, -500.63324],
           "InteractionType": "Interact"

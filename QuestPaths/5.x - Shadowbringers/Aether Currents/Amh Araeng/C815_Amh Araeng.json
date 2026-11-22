@@ -8,15 +8,6 @@
       "TerritoryId": 815,
       "Steps": [
         {
-          "Position": [-341.64484, 46.191288, -244.7952],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetherCurrentUnlocked": 2818259
-            }
-          }
-        },
-        {
           "DataId": 2010050,
           "Position": [-343.80103, 46.98242, -235.43152],
           "InteractionType": "AttuneAetherCurrent",

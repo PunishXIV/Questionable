@@ -7,11 +7,6 @@
       "TerritoryId": 959,
       "Steps": [
         {
-          "Position": [-193.89642, -49.19972, -262.13477],
-          "InteractionType": "None"
-        }
-        ,
-        {
           "DataId": 1044402,
           "Position": [-193.89642, -49.19972, -262.13477],
           "InteractionType": "AcceptQuest"

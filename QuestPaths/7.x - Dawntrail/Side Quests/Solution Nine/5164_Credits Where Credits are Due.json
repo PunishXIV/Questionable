@@ -23,11 +23,6 @@
       "TerritoryId": 1186,
       "Steps": [
         {
-          "Position": [-440.51483, 13.999909, 154.73817],
-          "InteractionType": "WalkTo",
-          "Comment": "For some reason navmesh wanders off through the whole area"
-        },
-        {
           "DataId": 1051388,
           "Position": [-185.47345, 0.66, -42.648987],
           "InteractionType": "CompleteQuest"

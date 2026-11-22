@@ -20,37 +20,10 @@
           "AetherCurrentId": 2818288
         },
         {
-          "Position": [-138.85619, -3.036951, 54.482983],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetherCurrentUnlocked": 2818285
-            }
-          }
-        },
-        {
           "DataId": 2010066,
           "Position": [-141.58856, -0.9003296, 49.759644],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818285
-        },
-        {
-          "Position": [-391.96292, 6.3778677, 509.45285],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetherCurrentUnlocked": 2818283
-            }
-          }
-        },
-        {
-          "Position": [-398.71173, 6.5935116, 505.39233],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetherCurrentUnlocked": 2818283
-            }
-          }
         },
         {
           "DataId": 2010064,

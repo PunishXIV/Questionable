@@ -12,16 +12,6 @@
       "TerritoryId": 1192,
       "Steps": [
         {
-          "Position": [3.7348669, 50.12495, 660.56006],
-          "InteractionType": "WalkTo",
-          "$": "Leynode Mnemo to Meso Terminal waypoint",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1048014,
           "Position": [-0.13739014, 50.124947, 363.05774],
           "InteractionType": "Interact"

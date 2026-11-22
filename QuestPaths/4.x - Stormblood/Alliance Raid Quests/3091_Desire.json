@@ -24,13 +24,6 @@
           }
         },
         {
-          "DataId": 1024156,
-          "Position": [-59.098206, 79.05602, 45.303955],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 735,
-          "SkipConditions": { "StepIf": { "InTerritory": [735] } }
-        },
-        {
           "DataId": 1025729,
           "Position": [-12.222534, 0.046870727, -3.2197266],
           "TerritoryId": 735,

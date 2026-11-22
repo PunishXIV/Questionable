@@ -7,19 +7,6 @@
       "TerritoryId": 814,
       "Steps": [
         {
-          "DataId": 2011154,
-          "Position": [703.1509, 295.3993, -160.20447],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 928,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                928
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1035135,
           "Position": [-361.37946, 105.987305, 347.12744],
           "TerritoryId": 928,
@@ -73,7 +60,6 @@
           "Position": [-366.50647, -241.32147, -311.57397],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "DataId": 2011269,
             "Position": [-366.558, -249.74661, -301.74612]
           },
           "DelaySecondsAtStart": 2

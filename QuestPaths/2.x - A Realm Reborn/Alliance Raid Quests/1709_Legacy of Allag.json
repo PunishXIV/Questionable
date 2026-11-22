@@ -40,60 +40,11 @@
       "TerritoryId": 180,
       "Steps": [
         {
-          "Position": [287.2875, 41.545933, -200.75758],
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [180],
-              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": [-114.35803, 64.464615, -217.34372],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": [72.39681, 58.74831, -517.9883],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": [111.84353, 28.346682, -610.36945],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": [102.67392, 21.581085, -633.5837],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
             }
           }
@@ -108,16 +59,6 @@
           ],
           "$": "0 0  0 0  0 0 -> 16 17  0 0  0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "Position": [-487.1432, -32.409756, -369.94928],
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
         },
         {
           "DataId": 2000076,

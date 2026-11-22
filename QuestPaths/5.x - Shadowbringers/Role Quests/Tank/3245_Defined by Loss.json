@@ -12,18 +12,6 @@
       "TerritoryId": 814,
       "Steps": [
         {
-          "Position": [173.40976, 58.977684, 883.3417],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Eulmore",
-              "InTerritory": [
-                820
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1029899,
           "Position": [34.561646, 83.001076, -67.00244],
           "TerritoryId": 820,

@@ -26,12 +26,6 @@
           ]
         },
         {
-          "Position": [21.067955, -197.78902, -155.23956],
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE inside",
-          "SkipConditions": {"StepIf": {"Diving": true}}
-        },
-        {
           "DataId": 1019978,
           "Position": [-227.86298, -178.2102, 185.74805],
           "InteractionType": "Interact"

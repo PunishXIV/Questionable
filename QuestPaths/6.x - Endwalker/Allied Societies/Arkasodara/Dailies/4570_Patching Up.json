@@ -12,15 +12,6 @@
       "TerritoryId": 957,
       "Steps": [
         {
-          "Position": [263.92963, 7.600955, 289.10162],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "DataId": 2012902,
           "Position": [264.88135, 8.773865, 287.98352],
           "InteractionType": "UseItem",
@@ -28,29 +19,11 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": [337.84723, 6.94503, 359.85526],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2012901,
           "Position": [340.07776, 8.2855835, 360.3723],
           "InteractionType": "UseItem",
           "ItemId": 2003405,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": [254.98802, 7.049597, 373.44046],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
         },
         {
           "DataId": 2012900,

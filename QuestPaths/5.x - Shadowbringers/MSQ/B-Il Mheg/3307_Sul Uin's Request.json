@@ -18,29 +18,11 @@
           "PickUpQuestId": 3395
         },
         {
-          "Position": [-359.70227, 69.40222, 546.2372],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2009820,
           "Position": [-375.29565, 76.06616, 550.4386],
           "InteractionType": "UseItem",
           "ItemId": 2002534,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": [-391.67172, 58.587833, 553.26294],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
         },
         {
           "DataId": 2009819,

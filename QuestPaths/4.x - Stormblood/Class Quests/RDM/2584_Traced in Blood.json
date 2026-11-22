@@ -56,26 +56,6 @@
           }
         },
         {
-          "Position": [-292.9197, 203.25142, -222.20459],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
-          "Position": [-262.3789, 106.614746, -206.86658],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2008292,
           "Position": [-262.3789, 106.614746, -206.86658],
           "InteractionType": "Interact",
@@ -119,15 +99,6 @@
       "Sequence": 3,
       "TerritoryId": 620,
       "Steps": [
-        {
-          "Position": [-213.96315, 107.1167, -305.87753],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
         {
           "DataId": 1021781,
           "Position": [-308.43066, 102.62436, -372.2744],

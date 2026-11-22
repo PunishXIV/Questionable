@@ -8,15 +8,6 @@
       "TerritoryId": 957,
       "Steps": [
         {
-          "Position": [543.0377, 15.147404, -147.8739],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetherCurrentUnlocked": 2818332
-            }
-          }
-        },
-        {
           "DataId": 2011996,
           "Position": [550.01135, 25.467285, -159.1059],
           "InteractionType": "AttuneAetherCurrent",
@@ -27,15 +18,6 @@
           "Position": [118.45581, 4.92865, -343.89258],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818331
-        },
-        {
-          "Position": [-78.47051, 99.96379, -711.17303],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetherCurrentUnlocked": 2818330
-            }
-          }
         },
         {
           "DataId": 2011991,

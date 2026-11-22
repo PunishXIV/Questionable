@@ -8,13 +8,6 @@
       "TerritoryId": 399,
       "Steps": [
         {
-          "DataId": 2005336,
-          "Position": [-488.38312, 137.788, 740.4025],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "SkipConditions": { "StepIf": { "InTerritory": [463] } }
-        },
-        {
           "DataId": 1012141,
           "Position": [35.7081, 38.4297, 13.0011],
           "TerritoryId": 463,
@@ -76,13 +69,6 @@
       "TerritoryId": 463,
       "Steps": [
         {
-          "DataId": 2005337,
-          "Position": [7.736328, 38.92566, -51.010986],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 399,
-          "SkipConditions": { "StepIf": { "InTerritory": [399, 478] } }
-        },
-        {
           "DataId": 2006080,
           "Position": [-81.7397, 152.541, 747.877],
           "TerritoryId": 399,
@@ -106,26 +92,6 @@
       "Sequence": 255,
       "TerritoryId": 399,
       "Steps": [
-        {
-          "Position": [-74.60284, 152.42711, 735.8858],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-73.7929, 152.727, 747.916],
-                "TerritoryId": 399,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "DataId": 2005336,
-          "Position": [-488.38312, 137.788, 740.4025],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "SkipConditions": { "StepIf": { "InTerritory": [463] } }
-        },
         {
           "DataId": 1012141,
           "Position": [35.7081, 38.4297, 13.0011],

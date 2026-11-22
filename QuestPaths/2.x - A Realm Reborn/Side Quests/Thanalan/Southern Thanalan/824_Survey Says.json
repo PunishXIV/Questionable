@@ -12,20 +12,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "$": "Walk out of building, if in it",
-          "Position": [-346.46524, 8.5170555, 420.88474],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-346.46524, 8.5170555, 420.88474],
-                "TerritoryId": 146,
-                "MaximumDistance": 15
-              }
-            }
-          }
-        },
-        {
           "$": "Drifting Cloud",
           "DataId": 1006291,
           "Position": [-269.4591, 7.368076, 420.5232],
@@ -33,45 +19,11 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "$": "Walk to outside of building if you have flying unlocked",
-          "Position": [-339.96478, 7.181939, 369.13275],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
-          "Position": [-335.16415, 9.101427, 353.49564],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "$": "Sidimund",
           "DataId": 1006292,
           "Position": [-333.33337, 9.101427, 352.25452],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-        },
-        {
-          "$": "Walk out of building, if you're in it",
-          "Position": [-339.96478, 7.181939, 369.13275],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-340.09122, 8.88795, 365.16626],
-                "TerritoryId": 146,
-                "MaximumDistance": 15
-              }
-            }
-          }
         },
         {
           "$": "Riridesu",

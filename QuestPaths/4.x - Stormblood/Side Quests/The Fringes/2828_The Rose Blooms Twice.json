@@ -12,17 +12,6 @@
       "TerritoryId": 612,
       "Steps": [
         {
-          "DataId": 1019531,
-          "Position": [-70.2984, 56.0216, 210.22351],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 612,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "Position": [-641.61725, 78.03014, 118.72834],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

@@ -12,15 +12,6 @@
       "TerritoryId": 135,
       "Steps": [
         {
-          "Position": [152.25397, 14.095841, 668.4288],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            }
-          }
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Lower La Noscea - Moraby Drydocks",
           "SkipConditions": {

@@ -30,33 +30,11 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": [364.1419, 5.9295864, 435.2963],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-              "Flying": "Locked"
-            }
-          },
-          "$": "Shaaloani Saloon Balcony"
-        },
-        {
           "DataId": 1051296,
           "Position": [369.92432, 5.9371996, 434.71423],
           "InteractionType": "Emote",
           "Emote": "dance",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "Position": [364.1419, 5.9295864, 435.2963],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-              "Flying": "Locked"
-            }
-          },
-          "$": "Shaaloani Saloon Balcony"
         },
         {
           "DataId": 1051298,

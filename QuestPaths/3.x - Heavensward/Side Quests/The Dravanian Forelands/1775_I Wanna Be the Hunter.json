@@ -30,16 +30,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "$": "Path to 'Under fallen tree/bridge to top'",
-          "Position": [833.9071, -7.1594114, 226.18608],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
-        },
-        {
           "$": "Under fallen tree/bridge to top",
           "DataId": 2006456,
           "Position": [832.4863, -7.370178, 222.70532],
@@ -47,32 +37,11 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
-          "$": "Path to 'By tree, top level'",
-          "Position": [866.2793, -4.5189195, 214.97252],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-            }
-          }
-        },
-        {
           "$": "By tree, top level",
           "DataId": 2006457,
           "Position": [870.3898, -4.715088, 216.23547],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-        },
-        {
-          "$": "Walk off ledge if flying not unlocked",
-          "Position": [876.73785, -17.366787, 206.0773],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,8],
-              "Flying": "Unlocked"
-            }
-          }
         },
         {
           "$": "By tree, low level",

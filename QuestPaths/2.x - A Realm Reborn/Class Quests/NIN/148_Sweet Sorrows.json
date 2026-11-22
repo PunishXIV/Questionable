@@ -46,28 +46,6 @@
           }
         },
         {
-          "Position": [202.81476, 65.189224, 285.26105],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
-        },
-        {
-          "Position": [212.54845, 65.80573, 285.71436],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
-        },
-        {
           "Position": [509.26575, 95.90476, -446.11078],
           "TerritoryId": 135,
           "InteractionType": "Combat",

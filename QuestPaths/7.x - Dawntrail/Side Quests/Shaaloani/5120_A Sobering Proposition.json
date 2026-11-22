@@ -37,16 +37,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": [359.11545, 1.9823306, 419.5714],
-          "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)"
-        },
-        {
-          "Position": [369.3906, 5.9371996, 417.16574],
-          "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)"
-        },
-        {
           "DataId": 1050640,
           "Position": [377.03516, 6.07724, 423.02576],
           "InteractionType": "UseItem",
@@ -59,16 +49,6 @@
       "Sequence": 255,
       "TerritoryId": 1190,
       "Steps": [
-        {
-          "Position": [369.3906, 5.9371996, 417.16574],
-          "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)"
-        },
-        {
-          "Position": [359.11545, 1.9823306, 419.5714],
-          "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)"
-        },
         {
           "DataId": 1049285,
           "Position": [372.70154, -0.26279598, 425.55872],

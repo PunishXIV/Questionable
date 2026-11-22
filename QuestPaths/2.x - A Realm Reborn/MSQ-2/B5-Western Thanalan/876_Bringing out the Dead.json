@@ -64,23 +64,6 @@
       "TerritoryId": 140,
       "Steps": [
         {
-          "Position": [-408.92343, 23.167036, -351.16223],
-          "InteractionType": "WalkTo",
-          "$": "Vesper Bay Gate",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                64,
-                null
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1006344,
           "Position": [-474.57086, 18.112427, -372.5796],
           "InteractionType": "Interact",

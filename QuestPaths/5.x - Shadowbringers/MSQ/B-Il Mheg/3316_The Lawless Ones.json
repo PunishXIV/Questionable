@@ -51,10 +51,6 @@
           "AetherCurrentId": 2818273
         },
         {
-          "Position": [17.588793, 102.26027, -859.4154],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Il Mheg - Wolekdorf"
         },
@@ -94,63 +90,10 @@
           }
         },
         {
-          "Position": [523.48444, 113.16365, -169.21333],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                32
-              ]
-            }
-          }
-        },
-        {
-          "Position": [524.98083, 117.055916, -160.94905],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                32
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2009836,
           "Position": [514.45776, 122.45361, -158.28192],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
-        },
-        {
-          "Position": [508.26013, 103.6317, -152.83453],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [514.45776, 122.45361, -158.28192],
-                "TerritoryId": 816,
-                "MaximumDistance": 5
-              },
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                64
-              ]
-            }
-          }
         },
         {
           "Position": [533.1536, 109.112404, -154.17346],

@@ -11,10 +11,6 @@
       "TerritoryId": 817,
       "Steps": [
         {
-          "Position": [346.97427, 7.4945126, -138.33932],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1027732,
           "Position": [336.812, 7.96076, -154.925],
           "InteractionType": "AcceptQuest"
@@ -25,14 +21,6 @@
       "Sequence": 1,
       "TerritoryId": 817,
       "Steps": [
-        {
-          "Position": [346.97427, 7.4945126, -138.33932],
-          "InteractionType": "None"
-        },
-        {
-          "Position": [356.29654, 38.27366, -129.45145],
-          "InteractionType": "None"
-        },
         {
           "Position": [579.638, 20.0514, 74.4075],
           "InteractionType": "Combat",
@@ -79,10 +67,6 @@
       "Sequence": 255,
       "TerritoryId": 817,
       "Steps": [
-        {
-          "Position": [346.97427, 7.4945126, -138.33932],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1027732,
           "Position": [336.812, 7.96076, -154.925],

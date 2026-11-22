@@ -23,10 +23,6 @@
       "TerritoryId": 1186,
       "Steps": [
         {
-          "Position": [5.0530143, 0.49999952, -117.162285],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Solution Nine] Resolution",
           "DelaySecondsAtStart": 2

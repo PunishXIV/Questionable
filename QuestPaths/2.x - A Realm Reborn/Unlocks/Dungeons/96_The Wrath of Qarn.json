@@ -8,11 +8,6 @@
       "TerritoryId": 156,
       "Steps": [
         {
-          "Position": [30.917934, 20.495003, -656.1909],
-          "InteractionType": "WalkTo",
-          "$": "Rising Stones Door"
-        },
-        {
           "DataId": 1005524,
           "Position": [27.29834, 21.271448, -635.98083],
           "InteractionType": "AcceptQuest"
@@ -34,19 +29,6 @@
       "Sequence": 2,
       "TerritoryId": 146,
       "Steps": [
-        {
-          "Position": [-157.07425, 24.884384, -354.37775],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-157.07425, 24.884384, -354.37775],
-                "TerritoryId": 146,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
         {
           "DataId": 1006220,
           "Position": [185.74805, 13.721187, -443.1983],

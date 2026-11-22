@@ -12,17 +12,6 @@
       "TerritoryId": 128,
       "Steps": [
         {
-          "Position": [25.29642, 44.499924, 184.26752],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
-        },
-        {
           "Position": [21.738638, 61.836372, 139.60422],
           "TerritoryId": 135,
           "InteractionType": "Combat",
@@ -46,17 +35,6 @@
       "Sequence": 255,
       "TerritoryId": 135,
       "Steps": [
-        {
-          "Position": [-67.00804, 75.84114, 116.815384],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                135
-              ]
-            }
-          }
-        },
         {
           "DataId": 1000972,
           "Position": [20.279175, 40.19993, -6.1189575],

@@ -23,15 +23,6 @@
       "TerritoryId": 957,
       "Steps": [
         {
-          "Position": [86.44138, 38.836067, 375.43958],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 2012887,
           "Position": [90.71484, 38.70359, 377.7981],
           "InteractionType": "Action",
@@ -39,29 +30,11 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": [-73.42284, 50.283375, 165.20433],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2012888,
           "Position": [-74.2962, 50.095337, 160.41797],
           "InteractionType": "Action",
           "Action": "Yellow Gulal",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": [-195.75089, 35.536575, 98.20429],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
         },
         {
           "DataId": 2012889,

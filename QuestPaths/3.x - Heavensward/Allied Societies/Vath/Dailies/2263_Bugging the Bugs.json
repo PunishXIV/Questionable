@@ -19,19 +19,6 @@
       "TerritoryId": 398,
       "Steps": [
         {
-          "Position": [74.20459, -48.533592, -171.12994],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [74.20459, -48.533592, -171.12994],
-                "MaximumDistance": 50,
-                "TerritoryId": 398
-              }
-            }
-          }
-        },
-        {
           "DataId": 1017031,
           "Position": [74.20459, -48.533592, -171.12994],
           "InteractionType": "Interact"

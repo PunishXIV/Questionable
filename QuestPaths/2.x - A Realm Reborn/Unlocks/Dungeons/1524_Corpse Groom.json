@@ -48,19 +48,6 @@
       "TerritoryId": 148,
       "Steps": [
         {
-          "Position": [-70.992165, -40, 311.87912],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-94.529724, -40.05186, 324.5747],
-                "TerritoryId": 148,
-                "MaximumDistance": 25
-              }
-            }
-          }
-        },
-        {
           "DataId": 1009367,
           "Position": [-94.529724, -40.05186, 324.5747],
           "InteractionType": "CompleteQuest"

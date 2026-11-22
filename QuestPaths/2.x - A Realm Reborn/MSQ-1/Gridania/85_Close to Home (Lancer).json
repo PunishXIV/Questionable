@@ -38,20 +38,12 @@
           "AethernetShard": "[Gridania] Leatherworkers' Guild & Shaded Bower"
         },
         {
-          "Position": [121.70568, 12.25941, -100.795494],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gridania] Lancers' Guild"
         },
         {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre"
-        },
-        {
-          "Position": [-174.09056, 10.91981, -162.12527],
-          "InteractionType": "WalkTo"
         },
         {
           "InteractionType": "AttuneAethernetShard",

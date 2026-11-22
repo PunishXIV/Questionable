@@ -12,15 +12,6 @@
       "TerritoryId": 958,
       "Steps": [
         {
-          "Position": [252.4148, 10.8, -659.2858],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "Position": [-80.826256, 10.8, -663.8825],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

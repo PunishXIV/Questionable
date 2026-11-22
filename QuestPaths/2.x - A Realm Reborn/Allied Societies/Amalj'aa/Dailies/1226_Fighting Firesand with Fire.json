@@ -23,58 +23,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "Position": [36.66458, 3.396969, -345.4249],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [45.303955, 4, -345.11334],
-                "TerritoryId": 146,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "Position": [33.486458, 3.4602835, -302.47876],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [36.66458, 3.396969, -345.4249],
-                "TerritoryId": 146,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "Position": [-14.683247, -0.5704321, -221.74307],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [33.486458, 3.4602835, -302.47876],
-                "TerritoryId": 146,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "Position": [-23.071724, -0.45480216, -182.84273],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-14.683247, -0.5704321, -221.74307],
-                "TerritoryId": 146,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 2003127,
           "Position": [-75.51697, -2.1820679, -73.47223],
           "InteractionType": "Action",

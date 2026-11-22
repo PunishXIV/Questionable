@@ -110,15 +110,6 @@
       "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": [780.3438, 13.823656, -238.32625],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Kozama'uka - Dock Poga"
-            }
-          }
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kozama'uka - Dock Poga",
           "SkipConditions": {

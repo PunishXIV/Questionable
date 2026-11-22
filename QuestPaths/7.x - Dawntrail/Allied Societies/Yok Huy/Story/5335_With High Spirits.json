@@ -8,19 +8,6 @@
       "TerritoryId": 1187,
       "Steps": [
         {
-          "Position": [506.70618, 142.24991, 800.2289],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [506.70618, 142.24991, 800.2289],
-                "TerritoryId": 1187,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1054636,
           "Position": [506.70618, 142.24991, 800.2289],
           "InteractionType": "AcceptQuest"
@@ -31,38 +18,6 @@
       "Sequence": 1,
       "TerritoryId": 1297,
       "Steps": [
-        {
-          "$": "Recovery",
-          "Position": [496.11658, 142.24991, 801.6022],
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                1297
-              ],
-              "NearPosition": {
-                "Position": [496.11658, 142.24991, 801.6022],
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1054640,
-          "Position": [496.11658, 142.24991, 801.6022],
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1187
-              ]
-            }
-          }
-        },
         {
           "DataId": 1054668,
           "Position": [-56.565247, 4.000225, 50.736206],
@@ -103,36 +58,6 @@
       "Sequence": 255,
       "TerritoryId": 1187,
       "Steps": [
-        {
-          "$": "Recovery",
-          "Position": [496.11658, 142.24991, 801.6022],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                1297
-              ],
-              "NearPosition": {
-                "Position": [496.11658, 142.24991, 801.6022],
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1054640,
-          "Position": [496.11658, 142.24991, 801.6022],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1187
-              ]
-            }
-          }
-        },
         {
           "DataId": 1054670,
           "Position": [-2.2736206, 38.852776, 304.82947],

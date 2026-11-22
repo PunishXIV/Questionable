@@ -12,16 +12,6 @@
       "TerritoryId": 958,
       "Steps": [
         {
-          "Position": [-189.97284, 15.907461, -169.83481],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 2012054,
           "Position": [-156.05408, 10.788086, -235.40094],
           "InteractionType": "Interact",
@@ -34,26 +24,6 @@
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "$": "1 16 0 0 0 128 -> 2 32 0 0 0 192"
-        },
-        {
-          "Position": [-223.12543, 10.826223, -368.8611],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
-          "Position": [-140.08179, 16.226164, -310.9478],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
         },
         {
           "DataId": 2012056,

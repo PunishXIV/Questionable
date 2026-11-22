@@ -34,17 +34,6 @@
       "TerritoryId": 621,
       "Steps": [
         {
-          "DataId": 1023048,
-          "Position": [497.76453, 69.99941, 583.7339],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 621,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1024057,
           "Position": [340.23022, 74.00002, 70.66455],
           "InteractionType": "CompleteQuest"

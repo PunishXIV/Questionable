@@ -40,10 +40,6 @@
           "AetherCurrentId": 2818068
         },
         {
-          "Position": [744.5929, -34.200893, 272.8362],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "The Dravanian Forelands - Tailfeather"
         },

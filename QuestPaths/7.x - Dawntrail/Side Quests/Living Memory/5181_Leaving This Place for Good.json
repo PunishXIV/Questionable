@@ -18,29 +18,11 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": [-647.346, -5.0000005, -455.4366],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "DataId": 2013916,
           "Position": [-648.85944, -3.7995605, -454.06274],
           "Mount": false,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-        },
-        {
-          "Position": [-572.3234, -2.729274, -703.2586],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
         },
         {
           "DataId": 2013917,

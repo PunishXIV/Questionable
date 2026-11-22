@@ -60,20 +60,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "$": "Path out of building",
-          "Position": [471.40442, -51.141407, 36.84344],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [470.02356, -49.89133, 20.370789],
-                "TerritoryId": 398,
-                "MaximumDistance": 5
-              }
-            }
-          }
-        },
-        {
           "$": "Loupard",
           "DataId": 1011917,
           "Position": [535.30164, -51.340645, 65.293335],

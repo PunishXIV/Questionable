@@ -8,20 +8,6 @@
       "TerritoryId": 398,
       "Steps": [
         {
-          "$": "Path to Hervoix",
-          "Position": [453.9474, -51.141403, 19.29933],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [455.5581, -51.141403, 21.591492],
-                "TerritoryId": 398,
-                "MaximumDistance": 5
-              }
-            }
-          }
-        },
-        {
           "$": "Hervoix",
           "DataId": 1014502,
           "Position": [455.5581, -51.141403, 21.591492],
@@ -45,20 +31,6 @@
       "TerritoryId": 398,
       "Steps": [
         {
-          "$": "Fly near target",
-          "Position": [650.8948, -24.096365, -479.5361],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [650.8948, -24.096365, -479.5361],
-                "TerritoryId": 398,
-                "MaximumDistance": 15
-              }
-            }
-          }
-        },
-        {
           "DataId": 1014505,
           "Position": [661.3717, -24.312466, -472.1599],
           "InteractionType": "Combat",
@@ -73,20 +45,6 @@
       "Sequence": 3,
       "TerritoryId": 398,
       "Steps": [
-        {
-          "$": "Fly near target",
-          "Position": [650.8948, -24.096365, -479.5361],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [650.8948, -24.096365, -479.5361],
-                "TerritoryId": 398,
-                "MaximumDistance": 15
-              }
-            }
-          }
-        },
         {
           "DataId": 1014505,
           "Position": [661.3717, -24.312466, -472.1599],

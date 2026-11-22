@@ -18,24 +18,6 @@
           "TargetTerritoryId": 139
         },
         {
-          "Position": [296.80457, -2.532362, 206.61223],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Upper La Noscea - Camp Bronze Lake"
-            }
-          }
-        },
-        {
-          "Position": [371.05414, -3.4, 126.733376],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Upper La Noscea - Camp Bronze Lake"
-            }
-          }
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Upper La Noscea - Camp Bronze Lake"
         },

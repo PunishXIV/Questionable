@@ -38,12 +38,6 @@
           "SkipConditions": { "StepIf": { "QuestsCompleted": [3017] } }
         },
         {
-          "Position": [-492.96475, 20.999884, -380.82272],
-          "InteractionType": "WalkTo",
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
           "DataId": 2001711,
           "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",

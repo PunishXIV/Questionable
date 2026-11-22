@@ -23,33 +23,6 @@
       "TerritoryId": 818,
       "Steps": [
         {
-          "Position": [-559.0543, 394.95718, -611.97614],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-681.43286, 404.5379, -693.3609],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-675.946, 408.10754, -711.8061],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 2010814,
           "Position": [-422.47656, 393.9115, -824.094],
           "InteractionType": "Interact"

@@ -100,20 +100,6 @@
       "TerritoryId": 154,
       "Steps": [
         {
-          "$": "Path out of The Bobbing Cork",
-          "Position": [-31.059683, -40.708477, 195.24632],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-31.059683, -40.708477, 195.24632],
-                "TerritoryId": 154,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1006406,
           "Position": [63.156982, -13.3626, 140.91699],
           "InteractionType": "Interact"
@@ -157,20 +143,6 @@
       "Sequence": 255,
       "TerritoryId": 154,
       "Steps": [
-        {
-          "$": "Path out of The Bobbing Cork",
-          "Position": [-31.059683, -40.708477, 195.24632],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-31.059683, -40.708477, 195.24632],
-                "TerritoryId": 154,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
         {
           "DataId": 1006406,
           "Position": [63.156982, -13.3626, 140.91699],

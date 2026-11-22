@@ -44,32 +44,6 @@
       "TerritoryId": 156,
       "Steps": [
         {
-          "Position": [27.21798, 29, -797.2569],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [40.93994, 29, -798.3673],
-                "TerritoryId": 156,
-                "MaximumDistance": 5
-              }
-            }
-          }
-        },
-        {
-          "Position": [28.032156, 29, -797.6099],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [38.115906, 29, -798.2466],
-                "TerritoryId": 156,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "Comment": "Fish for 2x Tangle Skipper (!!) using Moth Pupa",
           "Position": [-374.5691, -17.148396, -409.93008],
           "InteractionType": "Fish",

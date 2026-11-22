@@ -8,12 +8,6 @@
       "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 2015318,
-          "Position": [-171.58458, 55.822525, 405.80347],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1162
-        },
-        {
           "DataId": 1058818,
           "Position": [28.122314, 56.632263, 481.4984],
           "TerritoryId": 1162,
@@ -25,12 +19,6 @@
       "Sequence": 1,
       "TerritoryId": 959,
       "Steps": [
-        {
-          "DataId": 2015318,
-          "Position": [-171.58458, 55.822525, 405.80347],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1162
-        },
         {
           "DataId": 1058821,
           "Position": [7.9804688, 57.865685, 429.22095],
@@ -52,21 +40,6 @@
       "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 2015318,
-          "Position": [-171.58458, 55.822525, 405.80347],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1162,
-          "SkipConditions": {"StepIf": {"InTerritory": [1162, 1077]}}
-        },
-        {
-          "DataId": 2015308,
-          "Position": [4.514196, 59.75, 423.6393],
-          "TerritoryId": 1162,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1077,
-          "SkipConditions": {"StepIf": {"InTerritory": [1077]}}
-        },
-        {
           "DataId": 1058824,
           "Position": [-1.3275757, -0.40000772, -59.494934],
           "TerritoryId": 1077,
@@ -78,21 +51,6 @@
       "Sequence": 3,
       "TerritoryId": 959,
       "Steps": [
-        {
-          "DataId": 2015318,
-          "Position": [-171.58458, 55.822525, 405.80347],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1162,
-          "SkipConditions": {"StepIf": {"InTerritory": [1162, 1077]}}
-        },
-        {
-          "DataId": 2015308,
-          "Position": [4.514196, 59.75, 423.6393],
-          "TerritoryId": 1162,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1077,
-          "SkipConditions": {"StepIf": {"InTerritory": [1077]}}
-        },
         {
           "DataId": 1058827,
           "Position": [-35.996094, -0.21963452, 52.353638],

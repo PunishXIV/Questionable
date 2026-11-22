@@ -32,20 +32,6 @@
           }
         },
         {
-          "Position": [-369.33804, -4.500569, 183.48431],
-          "InteractionType": "WalkTo",
-          "Comment": "Move to next zone",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-55.165855, 199.67697, 470.63123],
-                "TerritoryId": 155,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
           "$": "QW: (-) (1H1L) (-) (-) (-) (-)",
           "Position": [-55.165855, 199.67697, 470.63123],
           "TerritoryId": 155,

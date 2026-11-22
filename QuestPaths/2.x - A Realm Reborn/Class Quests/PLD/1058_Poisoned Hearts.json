@@ -33,42 +33,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": [-195.88503, 4.1472216, -216.97708],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-89.94699, -4.7999415, -104.621376],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-58.741863, -16.84673, -170.08568],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-80.41123, -14.578715, -170.62582],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "Position": [-98.86582, -14.397484, -172.42706],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -89,24 +53,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": [-58.741863, -16.84673, -170.08568],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-75.59294, -1.9464281, -102.63653],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "Position": [137.78966, 10.371678, -427.8172],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -114,15 +60,6 @@
             1923,
             1924
           ],
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
-        },
-        {
-          "Position": [137.78966, 10.371678, -427.8172],
-          "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,16]

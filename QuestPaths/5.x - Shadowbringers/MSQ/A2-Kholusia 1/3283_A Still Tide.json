@@ -39,11 +39,6 @@
           "TaxiStandId": 1179712
         },
         {
-          "Position": [683.3415, 30.116053, 276.70578],
-          "InteractionType": "WalkTo",
-          "$": "Wright Hut Door"
-        },
-        {
           "DataId": 2009956,
           "Position": [687.9225, 30.07544, 279.40784],
           "InteractionType": "Interact",

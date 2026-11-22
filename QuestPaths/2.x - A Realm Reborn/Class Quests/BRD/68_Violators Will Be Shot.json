@@ -33,24 +33,6 @@
           }
         },
         {
-          "Position": [-326.03064, 9.169003, 323.19617],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "High": 1
-                }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2000944,
           "Position": [-330.12903, 16.708557, 329.67102],
           "InteractionType": "Action",
@@ -65,24 +47,6 @@
               "High": 1
             }
           ]
-        },
-        {
-          "Position": [-321.1917, 0.22361445, 297.61597],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "High": 2
-                }
-              ]
-            }
-          }
         },
         {
           "DataId": 2000943,
@@ -101,24 +65,6 @@
           ]
         },
         {
-          "Position": [-358.00266, 6.9801626, 306.18744],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "Low": 8
-                }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2000945,
           "Position": [-364.55334, 14.480774, 307.60657],
           "InteractionType": "Action",
@@ -135,24 +81,6 @@
           ]
         },
         {
-          "Position": [-378.32364, 6.10847, 269.35767],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "High": 4
-                }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2000942,
           "Position": [-378.53058, 9.048584, 262.68408],
           "InteractionType": "Action",
@@ -167,24 +95,6 @@
               "High": 4
             }
           ]
-        },
-        {
-          "Position": [-301.42407, 0.17268503, 257.9185],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "Low": 2
-                }
-              ]
-            }
-          }
         },
         {
           "DataId": 2001179,

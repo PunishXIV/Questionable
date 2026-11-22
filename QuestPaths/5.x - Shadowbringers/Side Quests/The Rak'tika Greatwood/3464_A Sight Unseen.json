@@ -15,10 +15,6 @@
       "TerritoryId": 817,
       "Steps": [
         {
-          "Position": [544.48724, 19.734953, -32.69986],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1029994,
           "Position": [544.09094, 19.614407, -34.28705],
           "InteractionType": "Interact"
@@ -29,10 +25,6 @@
       "Sequence": 2,
       "TerritoryId": 817,
       "Steps": [
-        {
-          "Position": [556.0911, 20.856443, 27.860317],
-          "InteractionType": "None"
-        },
         {
           "Position": [556.0911, 20.856443, 27.860317],
           "InteractionType": "Combat",
@@ -48,10 +40,6 @@
       "Sequence": 3,
       "TerritoryId": 817,
       "Steps": [
-        {
-          "Position": [544.2397, 19.726952, -32.682693],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1029994,
           "Position": [544.09094, 19.614407, -34.28705],

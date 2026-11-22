@@ -128,12 +128,6 @@
           "AethernetShard": "[Old Sharlayan] The Studium"
         },
         {
-          "DataId": 2011936,
-          "Position": [-108.56799, 5.0201416, 4.5318604],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 987
-        },
-        {
           "DataId": 1038586,
           "Position": [-0.015319824, 1.9073486e-6, -0.77819824],
           "TerritoryId": 987,

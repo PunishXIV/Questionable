@@ -43,17 +43,6 @@
       "TerritoryId": 180,
       "Steps": [
         {
-          "Position": [287.2875, 41.545933, -200.75758],
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
-        },
-        {
-          "Position": [-114.35803, 64.464615, -217.34372],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {
@@ -78,8 +67,7 @@
           "Position": [-295.46515, 70.620026, -271.55838],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": [-304.04395, 65.77775, -264.9213],
-            "TerritoryId": 180
+            "Position": [-304.04395, 65.77775, -264.9213]
           },
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },

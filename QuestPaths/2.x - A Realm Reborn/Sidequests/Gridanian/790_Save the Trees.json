@@ -54,22 +54,6 @@
           "$": "auto: lua EOBJECT2 -> 2001992 (scarred tree); spawns enemies 40; use item ITEM0=2000620 on it"
         },
         {
-          "Position": [-280.49484, -8.696266, 279.5596],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                { "High": 8 }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2001990,
           "Position": [-282.277, -5.83806, 273.823],
           "InteractionType": "Combat",
@@ -92,19 +76,6 @@
       "Sequence": 255,
       "TerritoryId": 154,
       "Steps": [
-        {
-          "Position": [-280.49484, -8.696266, 279.5596],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-282.277, -5.83806, 273.823],
-                "TerritoryId": 154,
-                "MaximumDistance": 5
-              }
-            }
-          }
-        },
         {
           "DataId": 1006248,
           "Position": [-292.96768, -14.530079, 203.2394],

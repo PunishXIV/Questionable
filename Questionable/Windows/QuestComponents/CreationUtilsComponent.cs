@@ -398,11 +398,7 @@ internal sealed class CreationUtilsComponent
             string positionJson =
                 $$"""
                   "DataId": {{GameFunctions.GetBaseId(target)}},
-                            "Position": {
-                              "X": {{position.X.ToString(CultureInfo.InvariantCulture)}},
-                              "Y": {{position.Y.ToString(CultureInfo.InvariantCulture)}},
-                              "Z": {{position.Z.ToString(CultureInfo.InvariantCulture)}}
-                            },
+                            "Position": [{{position.X.ToString(CultureInfo.InvariantCulture)}}, {{position.Y.ToString(CultureInfo.InvariantCulture)}}, {{position.Z.ToString(CultureInfo.InvariantCulture)}}],
                   """;
             uint? taxiStandId = GetTaxiStandId(target);
             string interactionType = taxiStandId != null ? "UnlockTaxiStand" : QuestStepCapture.GuessInteractionType(target).ToString();
@@ -410,13 +406,8 @@ internal sealed class CreationUtilsComponent
                 $$"""
 
                             "TerritoryId": {{clientState.TerritoryType}},
-                            "StopDistance": 1,
                             "InteractionType": "{{interactionType}}"
-                  """ + (taxiStandId == null && GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
-                $$"""
-                  ,
-                            "Fly": true
-                  """ : "") + (taxiStandId != null ?
+                  """ + (taxiStandId != null ?
                 $$"""
                   ,
                             "TaxiStandId": {{taxiStandId}}
@@ -461,23 +452,10 @@ internal sealed class CreationUtilsComponent
         if (copy)
         {
             ImGui.SetClipboardText($$"""
-                                     "Position": {
-                                                 "X": {{objectTable[0]!.Position.X.ToString(CultureInfo.InvariantCulture)}},
-                                                 "Y": {{objectTable[0]!.Position.Y.ToString(CultureInfo.InvariantCulture)}},
-                                                 "Z": {{objectTable[0]!.Position.Z.ToString(CultureInfo.InvariantCulture)}}
-                                               },
+                                     "Position": [{{objectTable[0]!.Position.X.ToString(CultureInfo.InvariantCulture)}}, {{objectTable[0]!.Position.Y.ToString(CultureInfo.InvariantCulture)}}, {{objectTable[0]!.Position.Z.ToString(CultureInfo.InvariantCulture)}}],
                                                "TerritoryId": {{clientState.TerritoryType}},
-
-                                     """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
-                                   $$"""
-                                               "InteractionType": "WalkTo",
-                                               "StopDistance": 1,
-                                               "Fly": true
-                                     """ :
-                                   $$"""
-                                               "InteractionType": "WalkTo",
-                                               "StopDistance": 1
-                                     """));
+                                               "InteractionType": "WalkTo"
+                                     """);
         }
         else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
         {

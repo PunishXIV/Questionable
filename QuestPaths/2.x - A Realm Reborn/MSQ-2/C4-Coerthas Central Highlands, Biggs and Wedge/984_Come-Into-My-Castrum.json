@@ -12,41 +12,6 @@
       "TerritoryId": 155,
       "Steps": [
         {
-          "Position": [-692.2779, 242.18399, 366.4715],
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-217.57614, 217.23946, 706.57166],
-                "TerritoryId": 155,
-                "MaximumDistance": 200
-              },
-              "AetheryteUnlocked": "Mor Dhona"
-            }
-          }
-        },
-        {
-          "Position": [-688.1699, 241.99994, 355.80283],
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-217.57614, 217.23946, 706.57166],
-                "TerritoryId": 155,
-                "MaximumDistance": 200
-              },
-              "AetheryteUnlocked": "Mor Dhona"
-            }
-          }
-        },
-        {
-          "Position": [-217.57614, 217.23946, 706.57166],
-          "InteractionType": "WalkTo",
-          "SkipConditions": { "StepIf": { "AetheryteUnlocked": "Mor Dhona" } }
-        },
-        {
           "TerritoryId": 156,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Mor Dhona"

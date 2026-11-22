@@ -23,11 +23,6 @@
       "TerritoryId": 155,
       "Steps": [
         {
-          "Position": [240.2761, 302.6276, -199.78418],
-          "InteractionType": "WalkTo",
-          "$": "Camp Dragonhead, door to Haurchefant"
-        },
-        {
           "DataId": 1006384,
           "Position": [263.5996, 303.1, -199.96954],
           "InteractionType": "Interact"

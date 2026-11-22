@@ -8,19 +8,6 @@
       "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011215,
-          "Position": [-145.37274, 14.80313, -129.25922],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                427
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1012266,
           "Position": [-7.950012, 0.20000005, -10.51355],
           "TerritoryId": 427,
@@ -32,12 +19,6 @@
       "Sequence": 1,
       "TerritoryId": 427,
       "Steps": [
-        {
-          "DataId": 2005332,
-          "Position": [-5.012468, 1.1515, 11.86189],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
         {
           "DataId": 1015977,
           "Position": [-177.35565, 15.06314, -174.36487],
@@ -62,12 +43,6 @@
       "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011215,
-          "Position": [-145.37274, 14.80313, -129.25922],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427
-        },
-        {
           "DataId": 1015944,
           "Position": [6.94281, 0.22499956, 7.4310913],
           "TerritoryId": 427,
@@ -79,13 +54,6 @@
       "Sequence": 4,
       "TerritoryId": 419,
       "Steps": [
-        {
-          "DataId": 2005332,
-          "Position": [-5.0202637, 1.1443481, 11.856201],
-          "TerritoryId": 427,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
         {
           "DataId": 1015949,
           "Position": [-62.180542, -4.734931, -36.514893],
@@ -102,12 +70,6 @@
       "Sequence": 255,
       "TerritoryId": 419,
       "Steps": [
-        {
-          "DataId": 1011215,
-          "Position": [-145.37274, 14.80313, -129.25922],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427
-        },
         {
           "DataId": 1015952,
           "Position": [-1.3886108, 0.20000005, -9.903137],

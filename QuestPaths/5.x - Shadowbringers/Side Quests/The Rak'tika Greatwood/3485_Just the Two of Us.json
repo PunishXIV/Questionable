@@ -12,10 +12,6 @@
       "TerritoryId": 817,
       "Steps": [
         {
-          "Position": [462.96976, 17.897255, -48.859463],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1031405,
           "Position": [456.9314, 18.978712, -73.10602],
           "Mount": false,
@@ -38,10 +34,6 @@
       "Sequence": 255,
       "TerritoryId": 817,
       "Steps": [
-        {
-          "Position": [462.96976, 17.897255, -48.859463],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1031405,
           "Position": [456.9314, 18.978712, -73.10602],

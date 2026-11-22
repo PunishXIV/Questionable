@@ -8,12 +8,6 @@
       "TerritoryId": 129,
       "Steps": [
         {
-          "DataId": 1001029,
-          "Position": [9.170593, 20.999403, -15.213318],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 198
-        },
-        {
           "DataId": 1002694,
           "Position": [-0.045776367, 1.6001425, -7.0039062],
           "TerritoryId": 198,
@@ -25,12 +19,6 @@
       "Sequence": 1,
       "TerritoryId": 198,
       "Steps": [
-        {
-          "DataId": 2001835,
-          "Position": [0.0235393, 2.330988, 9.8216],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129
-        },
         {
           "DataId": 1003611,
           "Position": [9.781006, 20.999247, 15.0911255],
@@ -152,20 +140,12 @@
           "AethernetShard": "[Gridania] Leatherworkers' Guild & Shaded Bower"
         },
         {
-          "Position": [121.70568, 12.25941, -100.795494],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gridania] Lancers' Guild"
         },
         {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre"
-        },
-        {
-          "Position": [-174.09056, 10.91981, -162.12527],
-          "InteractionType": "WalkTo"
         },
         {
           "InteractionType": "AttuneAethernetShard",

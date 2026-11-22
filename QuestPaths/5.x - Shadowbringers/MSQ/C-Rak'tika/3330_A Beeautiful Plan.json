@@ -23,11 +23,6 @@
       "TerritoryId": 817,
       "Steps": [
         {
-          "Position": [-761.0279, 36.49958, -337.04126],
-          "InteractionType": "WalkTo",
-          "Comment": "Moves out of aggro range of the door guard"
-        },
-        {
           "DataId": 1029764,
           "Position": [-763.79034, 36.49958, -332.29572],
           "InteractionType": "Interact"

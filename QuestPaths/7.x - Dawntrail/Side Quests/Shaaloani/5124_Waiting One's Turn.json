@@ -22,16 +22,6 @@
       "TerritoryId": 1190,
       "Steps": [
         {
-          "Position": [359.11545, 1.9823306, 419.5714],
-          "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)"
-        },
-        {
-          "Position": [369.3906, 5.9371996, 417.16574],
-          "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)"
-        },
-        {
           "DataId": 1050718,
           "Position": [365.5603, 5.957231, 424.58215],
           "InteractionType": "Interact",

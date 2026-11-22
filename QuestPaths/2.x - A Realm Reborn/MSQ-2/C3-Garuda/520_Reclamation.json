@@ -12,19 +12,6 @@
       "TerritoryId": 140,
       "Steps": [
         {
-          "Position": [-492.96475, 20.999884, -380.82272],
-          "InteractionType": "WalkTo",
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
-          "DataId": 2001711,
-          "Position": [-480.9181, 18.00103, -386.862],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212,
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
           "DataId": 1007630,
           "Position": [22.812195, 0.9999986, 2.1820068],
           "TerritoryId": 212,

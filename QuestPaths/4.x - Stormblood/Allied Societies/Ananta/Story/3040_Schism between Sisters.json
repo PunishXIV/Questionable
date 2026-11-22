@@ -55,8 +55,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": false
-          },
-          "Comment": "Solo Duty"
+          }
         }
       ]
     },

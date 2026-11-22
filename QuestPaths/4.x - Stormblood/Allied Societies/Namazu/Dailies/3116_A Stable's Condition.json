@@ -12,17 +12,6 @@
       "TerritoryId": 622,
       "Steps": [
         {
-          "DataId": 1025925,
-          "Position": [-702.17444, 127.5686, 112.291016],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 622,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1025797,
           "Position": [-364.7975, 76.98169, -579.2172],
           "InteractionType": "Interact",

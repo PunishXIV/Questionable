@@ -52,15 +52,6 @@
           }
         },
         {
-          "Position": [-2.1358607, 45.631218, -258.50027],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [128]
-            }
-          }
-        },
-        {
           "DataId": 1003282,
           "Position": [-3.03656, 48.168007, -261.70752],
           "InteractionType": "Interact",

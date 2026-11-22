@@ -23,17 +23,6 @@
       "TerritoryId": 128,
       "Steps": [
         {
-          "Position": [24.89683, 44.499924, 181.44658],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
-        },
-        {
           "Position": [219.17522, 42.332607, 54.36626],
           "TerritoryId": 135,
           "InteractionType": "Combat",

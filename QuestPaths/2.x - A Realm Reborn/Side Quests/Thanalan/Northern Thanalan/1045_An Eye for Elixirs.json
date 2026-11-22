@@ -8,32 +8,6 @@
       "TerritoryId": 147,
       "Steps": [
         {
-          "Position": [18.51536, 47.760452, -5.466947],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [22.049255, 48.638203, -15.823608],
-                "MaximumDistance": 5,
-                "TerritoryId": 147
-              }
-            }
-          }
-        },
-        {
-          "Position": [23.080175, 48.187943, -15.44315],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [22.049255, 48.638203, -15.823608],
-                "MaximumDistance": 5,
-                "TerritoryId": 147
-              }
-            }
-          }
-        },
-        {
           "DataId": 1006643,
           "Position": [22.049255, 48.638203, -15.823608],
           "InteractionType": "AcceptQuest"
@@ -44,19 +18,6 @@
       "Sequence": 1,
       "TerritoryId": 147,
       "Steps": [
-        {
-          "Position": [16.082373, 47, -0.62531114],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [22.049255, 48.638203, -15.823608],
-                "MaximumDistance": 5,
-                "TerritoryId": 147
-              }
-            }
-          }
-        },
         {
           "Position": [130.14093, 31.501945, 26.1174984],
           "InteractionType": "Combat",
@@ -69,32 +30,6 @@
       "Sequence": 255,
       "TerritoryId": 147,
       "Steps": [
-        {
-          "Position": [18.51536, 47.760452, -5.466947],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [22.049255, 48.638203, -15.823608],
-                "MaximumDistance": 5,
-                "TerritoryId": 147
-              }
-            }
-          }
-        },
-        {
-          "Position": [23.080175, 48.187943, -15.44315],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [22.049255, 48.638203, -15.823608],
-                "MaximumDistance": 5,
-                "TerritoryId": 147
-              }
-            }
-          }
-        },
         {
           "DataId": 1006643,
           "Position": [22.049255, 48.638203, -15.823608],

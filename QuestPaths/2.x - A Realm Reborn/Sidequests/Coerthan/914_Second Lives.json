@@ -12,32 +12,6 @@
       "TerritoryId": 155,
       "Steps": [
         {
-          "Position": [459.90317, 303.8891, -244.9968],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [207.325, 310.002, -297.373],
-                "TerritoryId": 155,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "Position": [458.56174, 251.5449, -234.30656],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [459.90317, 303.8891, -244.9968],
-                "TerritoryId": 155,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 2002414,
           "Position": [456.62622, 249.80542, -239.39886],
           "InteractionType": "Interact",

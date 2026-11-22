@@ -11,30 +11,6 @@
       "TerritoryId": 399,
       "Steps": [
         {
-          "Position": [73.05273, 205, 143.30833],
-          "TerritoryId": 478,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                399,
-                463
-              ]
-            }
-          }
-        },
-        {
-          "Position": [-488.692, 139.95807, 734.253],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                463
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2005336,
           "Position": [-488.79227, 138.93335, 741.0543],
           "Mount": false,

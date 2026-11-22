@@ -24,19 +24,6 @@
       "TerritoryId": 180,
       "Steps": [
         {
-          "Position": [110.73922, 28.232178, -598.52014],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [147.42166, 24.300901, -751.06976],
-                "TerritoryId": 180,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "Position": [147.42166, 24.300901, -751.06976],
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",

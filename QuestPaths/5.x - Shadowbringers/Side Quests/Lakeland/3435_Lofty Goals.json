@@ -26,11 +26,6 @@
       "TerritoryId": 813,
       "Steps": [
         {
-          "$": "Go to parapet to avoid awkward landing",
-          "Position": [32.79174, 161.10403, -238.76346],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 2010710,
           "Position": [39.108765, 163.65295, -236.59119],
           "Mount": false,

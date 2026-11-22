@@ -12,12 +12,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "Position": [-47.50145, 16.362688, -439.62503],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"}},
-          "$": "vnav sometimes attempts to walk to the aetheryte using exactly one waypoint between zone boundary and aetheryte, which means walking into walls"
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Southern Thanalan - Little Ala Mhigo",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"}}

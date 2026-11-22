@@ -32,16 +32,6 @@
       "Comment": "if Bump and Grind fate is up, probably going to end up dying here\nConsider buying better gear or waiting for fate to end",
       "Steps": [
         {
-          "Position": [235.23369, 2.747214, 673.64215],
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"
-            }
-          }
-        },
-        {
           "Aetheryte": "Southern Thanalan - Little Ala Mhigo",
           "InteractionType": "AttuneAetheryte",
           "SkipConditions": {

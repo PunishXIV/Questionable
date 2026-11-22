@@ -70,11 +70,6 @@
       "TerritoryId": 961,
       "Steps": [
         {
-          "$": "Dodge overworld mobs.",
-          "Position": [-669.89874, 162.07521, -30.204943],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1041919,
           "Position": [-669.3065, 152.56584, -30.35028],
           "InteractionType": "Interact"

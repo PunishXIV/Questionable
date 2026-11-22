@@ -12,20 +12,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "$": "Walk out of building, if in it",
-          "Position": [-346.46524, 8.5170555, 420.88474],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-346.46524, 8.5170555, 420.88474],
-                "TerritoryId": 146,
-                "MaximumDistance": 15
-              }
-            }
-          }
-        },
-        {
           "Position": [-407.2645, 7.170804, 527.3589],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",

@@ -20,19 +20,6 @@
       "TerritoryId": 156,
       "Steps": [
         {
-          "Position": [29.352629, 21.285944, -652.1081],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [29.352629, 21.285944, -652.1081],
-                "TerritoryId": 156,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1018044,
           "Position": [127.73328, -15.353702, -421.1338],
           "InteractionType": "SinglePlayerDuty",

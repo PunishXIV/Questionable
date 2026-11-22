@@ -51,16 +51,6 @@
       "TerritoryId": 956,
       "Steps": [
         {
-          "Position": [-601.1813, -24.48022, 633.1958],
-          "InteractionType": "WalkTo",
-          "Comment": "Avoids aggro + possible navmesh issue"
-        },
-        {
-          "Position": [-596.4733, -22.860794, 666.64417],
-          "InteractionType": "WalkTo",
-          "Comment": "Avoids aggro + possible navmesh issue"
-        },
-        {
           "DataId": 2011985,
           "Position": [-547.7532, -18.051514, 661.86],
           "InteractionType": "AttuneAetherCurrent",

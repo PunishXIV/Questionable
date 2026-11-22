@@ -12,10 +12,6 @@
       "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": [-176.0706, 6.27715, -486.288],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kozama'uka - Ok'hanu"
         },

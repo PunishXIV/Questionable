@@ -23,34 +23,6 @@
       "TerritoryId": 155,
       "Steps": [
         {
-          "Position": [-692.2779, 242.18399, 366.4715],
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-478.3551, 288.4877, 168.01697],
-                "TerritoryId": 155,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
-          "Position": [-688.1699, 241.99994, 355.80283],
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-478.3551, 288.4877, 168.01697],
-                "TerritoryId": 155,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1006525,
           "Position": [-478.3551, 288.4877, 168.01697],
           "InteractionType": "SinglePlayerDuty",

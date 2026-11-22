@@ -36,36 +36,6 @@
       "TerritoryId": 1187,
       "Steps": [
         {
-          "$": "Recovery",
-          "Position": [496.11658, 142.24991, 801.6022],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                1297
-              ],
-              "NearPosition": {
-                "Position": [496.11658, 142.24991, 801.6022],
-                "TerritoryId": 1187,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1054640,
-          "Position": [496.11658, 142.24991, 801.6022],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1187
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1055790,
           "Position": [124.98657, 3.9429288, 184.6189],
           "TerritoryId": 1297,

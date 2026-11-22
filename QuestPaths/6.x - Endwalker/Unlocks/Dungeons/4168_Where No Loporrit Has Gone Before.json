@@ -12,11 +12,6 @@
       "TerritoryId": 956,
       "Steps": [
         {
-          "$": "Currently only implemented with flying unlocked. Future devs, need interaction with lift operator for grounded.",
-          "Position": [-505.21997, -192.11905, 301.68753],
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1041892,
           "Position": [-350.3014, -224.2927, 309.71228],
           "InteractionType": "Interact"

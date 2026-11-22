@@ -12,24 +12,6 @@
       "TerritoryId": 401,
       "Steps": [
         {
-          "Position": [-343.27975, -169.12419, 800.5701],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": [-325.61444, -184.8876, 806.3595],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 1013498,
           "Position": [-293.04956, -183.73486, 812.6802],
           "InteractionType": "Emote",

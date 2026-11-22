@@ -105,15 +105,6 @@
           }
         },
         {
-          "Position": [-329.84186, -152.24591, -649.0854],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 1041789,
           "Position": [-329.3355, -151.26128, -657.2519],
           "InteractionType": "Say",

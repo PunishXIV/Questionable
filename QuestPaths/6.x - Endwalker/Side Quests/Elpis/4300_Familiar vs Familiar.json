@@ -11,11 +11,6 @@
       "TerritoryId": 961,
       "Steps": [
         {
-          "$": "Prevent vnavmesh from getting stuck on rock.",
-          "Position": [-714.6946, 153.37344, 90.81024],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 2012589,
           "Position": [-711.1162, 152.72742, 89.86035],
           "InteractionType": "Interact"

@@ -34,15 +34,6 @@
       "TerritoryId": 816,
       "Steps": [
         {
-          "Position": [-221.27931, 55.081436, -553.9665],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1033872,
           "Position": [-634.2717, 35.86156, -234.21082],
           "InteractionType": "CompleteQuest"

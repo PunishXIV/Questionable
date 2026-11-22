@@ -25,11 +25,6 @@
       "TerritoryId": 816,
       "Steps": [
         {
-          "$": "Attempt to avoid Garden Crocota combat",
-          "Position": [602.7202, 123.73922, -860.4524],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 2010721,
           "Position": [600.4271, 111.283936, -857.8469],
           "InteractionType": "Interact",

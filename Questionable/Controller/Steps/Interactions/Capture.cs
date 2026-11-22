@@ -166,7 +166,7 @@ internal static class Capture
                 return ETaskResult.StillRunning;
             }
 
-            if (Vector3.Distance(player.Position, target.Position) > Reach)
+            if (player.Position.DistanceToXZ(target.Position) > Reach)
             {
                 if (!movementController.IsPathRunning)
                     movementController.NavigateTo(EMovementType.Combat, target.BaseId, target.Position,
@@ -176,6 +176,12 @@ internal static class Capture
 
             if (movementController.IsPathRunning)
                 movementController.Stop();
+            if (condition[ConditionFlag.Mounted])
+            {
+                gameFunctions.Unmount();
+                _nextTry = DateTime.Now.AddSeconds(1);
+                return ETaskResult.StillRunning;
+            }
 
             float hp = (float)target.CurrentHp / target.MaxHp;
             float threshold = _killedEarly >= 2 ? 1f : WeakenedHp;

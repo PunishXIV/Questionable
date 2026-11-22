@@ -81,20 +81,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "$": "Cave navigation",
-          "Position": [107.37293, 14.995779, -361.19995],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [107.37293, 14.995779, -361.19995],
-                "TerritoryId": 146,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 2002971,
           "Position": [-206.5614, 5.9662476, 116.92981],
           "InteractionType": "Combat",

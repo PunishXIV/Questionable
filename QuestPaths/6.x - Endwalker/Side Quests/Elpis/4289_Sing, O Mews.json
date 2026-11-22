@@ -21,10 +21,6 @@
           "InteractionType": "Interact"
         },
         {
-          "Position": [-671.86664, -19.39482, 562.75574],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1037981,
           "Position": [-682.91754, -19.115084, 569.0242],
           "InteractionType": "Interact"
@@ -35,10 +31,6 @@
       "Sequence": 255,
       "TerritoryId": 961,
       "Steps": [
-        {
-          "Position": [-670.5783, -19.39482, 562.5401],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1037969,
           "Position": [-611.90204, -22.39482, 510.42944],

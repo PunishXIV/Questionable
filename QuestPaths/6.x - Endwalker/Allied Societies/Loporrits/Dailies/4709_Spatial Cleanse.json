@@ -77,22 +77,6 @@
           ]
         },
         {
-          "Position": [17.153883, -132.7894, -444.4903],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                64
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2013265,
           "Position": [15.060608, -131.27338, -444.0528],
           "InteractionType": "Interact",

@@ -66,10 +66,6 @@
       "TerritoryId": 819,
       "Steps": [
         {
-          "Position": [16.119648, -4.2178187, 176.1683],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Crystarium] The Pendants"
         },

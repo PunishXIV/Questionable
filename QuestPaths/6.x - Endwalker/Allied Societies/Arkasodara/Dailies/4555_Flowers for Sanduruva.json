@@ -70,15 +70,6 @@
           }
         },
         {
-          "Position": [236.26051, 2.3393192, 644.57275],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1042301,
           "Position": [-66.02582, 39.994705, 321.06494],
           "InteractionType": "CompleteQuest"

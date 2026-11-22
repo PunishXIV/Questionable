@@ -19,19 +19,6 @@
       "TerritoryId": 613,
       "Steps": [
         {
-          "Position": [318.03552, -82.86303, -227.4517],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [318.03552, -82.86303, -227.4517],
-                "TerritoryId": 613,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 2009119,
           "Position": [-229.26678, -308.73578, 449.485],
           "InteractionType": "Interact",

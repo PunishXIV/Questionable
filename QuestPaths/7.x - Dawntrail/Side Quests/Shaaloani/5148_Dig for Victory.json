@@ -85,24 +85,6 @@
       "TerritoryId": 1190,
       "Steps": [
         {
-          "Position": [364.1419, 5.9295864, 435.2963],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                128
-              ],
-              "Flying": "Locked"
-            }
-          },
-          "$": "Shaaloani Saloon Balcony"
-        },
-        {
           "DataId": 1051315,
           "Position": [362.87476, 5.9371996, 427.2068],
           "InteractionType": "Interact"
@@ -113,16 +95,6 @@
       "Sequence": 5,
       "TerritoryId": 1190,
       "Steps": [
-        {
-          "Position": [369.3906, 5.9371996, 417.16574],
-          "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)"
-        },
-        {
-          "Position": [359.11545, 1.9823306, 419.5714],
-          "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)"
-        },
         {
           "DataId": 1051321,
           "Position": [357.7782, -1.0164845, 438.37634],

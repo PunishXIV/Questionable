@@ -24,24 +24,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "Position": [-173.17781, 18.28456, -280.36884],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-180.27478, 3.2999475, -243.23695],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "Position": [-431.92166, 6.5580425, -17.561014],
           "Mount": false,
           "InteractionType": "SinglePlayerDuty",

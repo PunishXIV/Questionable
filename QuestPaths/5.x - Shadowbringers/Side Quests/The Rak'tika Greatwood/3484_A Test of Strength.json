@@ -12,10 +12,6 @@
       "TerritoryId": 817,
       "Steps": [
         {
-          "Position": [349.69202, 7.4945126, -127.00523],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1027714,
           "Position": [349.5078, 7.4945126, -124.80359],
           "InteractionType": "AcceptQuest"
@@ -26,10 +22,6 @@
       "Sequence": 1,
       "TerritoryId": 817,
       "Steps": [
-        {
-          "Position": [557.04913, 26.807156, 138.81181],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1031401,
           "Position": [556.75586, 26.861193, 139.8794],

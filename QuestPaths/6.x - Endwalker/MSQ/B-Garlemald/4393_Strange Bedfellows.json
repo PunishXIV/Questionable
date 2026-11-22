@@ -77,20 +77,6 @@
       "TerritoryId": 958,
       "Steps": [
         {
-          "Position": [539.89374, -36.65, -193.11551],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
-              "NearPosition": {
-                "Position": [496.94043, 10.887661, -418.57025],
-                "TerritoryId": 958,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1040633,
           "Position": [496.94043, 10.887661, -418.57025],
           "InteractionType": "AcceptQuest",
@@ -125,32 +111,12 @@
           "$.1": "QuestVariables if done after [1]: 32 17 1 0 0 96"
         },
         {
-          "Position": [88.57295, 1.3869624, 124.77198],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          },
-          "Comment": "Avoids combat"
-        },
-        {
           "DataId": 2012108,
           "Position": [79.42322, 0.62561035, 153.24634],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
           "$.0": "[3]",
           "$.1": "QuestVariables if done after [1, 2]: 49 17 1 0 0 224"
-        },
-        {
-          "Position": [-20.886705, -0.47744966, 353.66968],
-          "InteractionType": "WalkTo",
-          "Comment": "Avoids combat",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
         },
         {
           "DataId": 2012110,

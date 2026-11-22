@@ -40,17 +40,6 @@
           "PickUpQuestId": 5138
         },
         {
-          "Position": [386.84927, -0.84392637, 435.0579],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "QuestsCompleted": [
-                5140
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1051283,
           "Position": [374.19702, -0.24794838, 437.2472],
           "InteractionType": "AcceptQuest",

@@ -9,20 +9,6 @@
       "TerritoryId": 398,
       "Steps": [
         {
-          "$": "Path to Hervoix",
-          "Position": [453.9474, -51.141403, 19.29933],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [455.5581, -51.141403, 21.591492],
-                "TerritoryId": 398,
-                "MaximumDistance": 5
-              }
-            }
-          }
-        },
-        {
           "$": "Hervoix",
           "DataId": 1014502,
           "Position": [455.5581, -51.141403, 21.591492],
@@ -34,20 +20,6 @@
       "Sequence": 1,
       "TerritoryId": 398,
       "Steps": [
-        {
-          "$": "Fly to area",
-          "Position": [855.29456, -4.719991, 247.32393],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [855.29456, -4.719991, 247.32393],
-                "TerritoryId": 398,
-                "MaximumDistance": 15
-              }
-            }
-          }
-        },
         {
           "$": "Southwest",
           "Position": [847.1502, -4.925739, 275.1737],
@@ -69,16 +41,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "$": "Path to Northwest, around rock",
-          "Position": [844.26807, -6.1181707, 229.28525],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "$": "Northwest",
           "Position": [838.4255, -6.478032, 237.16998],
           "InteractionType": "Combat",
@@ -94,20 +56,6 @@
       "Sequence": 2,
       "TerritoryId": 398,
       "Steps": [
-        {
-          "$": "Path to Hervoix",
-          "Position": [453.9474, -51.141403, 19.29933],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [455.5581, -51.141403, 21.591492],
-                "TerritoryId": 398,
-                "MaximumDistance": 5
-              }
-            }
-          }
-        },
         {
           "$": "Hervoix",
           "DataId": 1014502,

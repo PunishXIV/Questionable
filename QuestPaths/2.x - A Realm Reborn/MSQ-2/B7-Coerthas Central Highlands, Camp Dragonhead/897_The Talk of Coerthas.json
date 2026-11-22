@@ -25,28 +25,6 @@
           ]
         },
         {
-          "Position": [205.61038, 256.0028, 83.6889],
-          "InteractionType": "WalkTo",
-          "$": "NW Skyfire Locks door (outside)"
-        },
-        {
-          "Position": [198.30511, 256.99997, 76.41981],
-          "InteractionType": "WalkTo",
-          "$": "NW Skyfire Locks door (inside)",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                64
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1006396,
           "Position": [193.1029, 257, 57.87744],
           "InteractionType": "Interact",
@@ -58,32 +36,6 @@
             null,
             64
           ]
-        },
-        {
-          "Position": [198.30511, 256.99997, 76.41981],
-          "InteractionType": "WalkTo",
-          "$": "NW Skyfire Locks door (inside)"
-        },
-        {
-          "Position": [205.61038, 256.0028, 83.6889],
-          "InteractionType": "WalkTo",
-          "$": "NW Skyfire Locks door (outside)"
-        },
-        {
-          "Position": [193.69463, 234.59601, 423.86096],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                32
-              ]
-            }
-          }
         },
         {
           "DataId": 1006377,

@@ -47,15 +47,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": [-93.72425, 11.799999, -147.28041],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "DataId": 1019034,
           "Position": [-95.84198, 11.8, -147.29541],
           "InteractionType": "Interact",

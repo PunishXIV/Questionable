@@ -63,16 +63,6 @@
           }
         },
         {
-          "$": "Magitek Converter #49 - PathTo",
-          "Position": [-643.4109, -2.9330235, -380.4485],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "$": "Magitek Converter #49 - Pickup",
           "DataId": 2004314,
           "Position": [-644.67847, -1.3580933, -382.1012],
@@ -84,16 +74,6 @@
           }
         },
         {
-          "$": "Magitek Cannon Barrel #51 - PathTo",
-          "Position": [-568.7724, -2.9615695, -316.0917],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "$": "Magitek Cannon Barrel #51 - Pickup",
           "DataId": 2004316,
           "Position": [-569.8787, -1.3886108, -318.07434],
@@ -101,16 +81,6 @@
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
-          "$": "Magitek Oscillator #50 - PathTo",
-          "Position": [-449.4682, -4.004792, -280.67694],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
             }
           }
         },

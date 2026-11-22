@@ -24,16 +24,6 @@
       "TerritoryId": 141,
       "Steps": [
         {
-          "Position": [-62.183617, -3.6582246, 145.88391],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
-            }
-          }
-        },
-        {
           "Position": [149.07747, -2, -225.21188],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",

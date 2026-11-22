@@ -7,24 +7,6 @@
       "TerritoryId": 1186,
       "Steps": [
         {
-          "DataId": 1049793,
-          "Position": [364.3396, 60.125, 357.1068],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1224,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [1.6021729, 0, -6.088379],
-                "MaximumDistance": 100,
-                "TerritoryId": 1224
-              },
-              "InTerritory": [
-                1224
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1049788,
           "Position": [1.6021729, 0, -6.088379],
           "TerritoryId": 1224,

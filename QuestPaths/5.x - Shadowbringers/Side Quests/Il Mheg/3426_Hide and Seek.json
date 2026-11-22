@@ -24,19 +24,6 @@
       "TerritoryId": 816,
       "Steps": [
         {
-          "$": "Make pathfinding a bit easier",
-          "Position": [543.39996, 189.17812, 136.01952],
-          "InteractionType": "None"
-        },
-        {
-          "Position": [495.16104, 152.8019, 61.648518],
-          "InteractionType": "None"
-        },
-        {
-          "Position": [499.35895, 147.40627, 58.37402],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1031526,
           "Position": [536.1256, 149.64941, 13.565186],
           "InteractionType": "Say",
@@ -50,10 +37,6 @@
       "Sequence": 3,
       "TerritoryId": 816,
       "Steps": [
-        {
-          "Position": [493.37753, 150.0216, 60.386654],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1031522,
           "Position": [676.2949, 186.37202, 323.5066],

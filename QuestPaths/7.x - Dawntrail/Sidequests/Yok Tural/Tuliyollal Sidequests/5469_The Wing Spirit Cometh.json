@@ -8,7 +8,6 @@
       "TerritoryId": 1185,
       "Steps": [
         {
-          "Comment": "This quest was automatically generated and is untested. Please report in Discord if it works.",
           "DataId": 1058935,
           "Position": [96.3417, 47, -170.779],
           "InteractionType": "AcceptQuest"

@@ -31,12 +31,6 @@
           "InteractionType": "EquipRecommended"
         },
         {
-          "DataId": 2000087,
-          "Position": [0.015197754, 1.449585, 7.7057495],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 132
-        },
-        {
           "DataId": 1000460,
           "Position": [-159.41101, 4.054107, -4.1047363],
           "TerritoryId": 133,

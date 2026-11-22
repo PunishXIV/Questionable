@@ -24,25 +24,6 @@
       "TerritoryId": 813,
       "Steps": [
         {
-          "Position": [55.589294, 2.0276523, 669.1557],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "$": "bridges have navmesh problems"
-        },
-        {
-          "Position": [20.713037, 1.7985868, 675.3628],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 2009924,
           "Position": [16.922241, 2.304016, 669.8862],
           "InteractionType": "Interact"

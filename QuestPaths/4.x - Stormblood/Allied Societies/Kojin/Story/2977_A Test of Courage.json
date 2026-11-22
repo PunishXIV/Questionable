@@ -33,19 +33,9 @@
       "TerritoryId": 613,
       "Steps": [
         {
-          "Position": [318.06195, -83.027016, -226.5931],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Diving": true
-            }
-          }
-        },
-        {
           "DataId": 1024270,
           "Position": [-666.89557, -33.707214, 268.17725],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": false}
         }
       ]

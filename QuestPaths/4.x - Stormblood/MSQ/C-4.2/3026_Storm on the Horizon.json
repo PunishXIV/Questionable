@@ -112,12 +112,6 @@
       "TerritoryId": 744,
       "Steps": [
         {
-          "DataId": 2009289,
-          "Position": [0.02468622, 0.9079783, 18.30971],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 759
-        },
-        {
           "DataId": 1024971,
           "Position": [6.0272217, 0, 18.631226],
           "TerritoryId": 759,

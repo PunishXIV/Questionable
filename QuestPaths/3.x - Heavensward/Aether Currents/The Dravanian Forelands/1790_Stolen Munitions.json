@@ -32,11 +32,6 @@
       "TerritoryId": 398,
       "Steps": [
         {
-          "Position": [70.535545, -49.45454, -149.54617],
-          "InteractionType": "WalkTo",
-          "$": "Loth ast Vath navmesh workaround"
-        },
-        {
           "DataId": 1011929,
           "Position": [70.81714, -49.2083, -141.55798],
           "InteractionType": "CompleteQuest"

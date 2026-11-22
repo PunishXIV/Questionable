@@ -8,12 +8,6 @@
       "TerritoryId": 1191,
       "Steps": [
         {
-          "DataId": 2014030,
-          "Position": [221.82031, 54.58142, -693.38525],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1171
-        },
-        {
           "DataId": 1047776,
           "Position": [-0.869812, -2.9624603E-06, -0.6256714],
           "TerritoryId": 1171,
@@ -77,10 +71,6 @@
       "Sequence": 255,
       "TerritoryId": 1186,
       "Steps": [
-        {
-          "Position": [-7.134756, 8.467899, 7.050073],
-          "InteractionType": "WalkTo"
-        },
         {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Solution Nine"

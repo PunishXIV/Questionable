@@ -69,11 +69,6 @@
           "PickUpQuestId": 1790
         },
         {
-          "Position": [70.535545, -49.45454, -149.54617],
-          "InteractionType": "WalkTo",
-          "$": "Loth ast Vath navmesh workaround"
-        },
-        {
           "Position": [291.1391, -64.697876, -5.7822924],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",

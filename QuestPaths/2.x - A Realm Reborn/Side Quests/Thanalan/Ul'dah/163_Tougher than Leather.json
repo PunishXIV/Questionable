@@ -24,17 +24,6 @@
       "TerritoryId": 141,
       "Steps": [
         {
-          "Position": [-118.17538, 18.35357, 341.3039],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                141
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1003898,
           "Position": [-109.91083, 4.500089, -73.80792],
           "TerritoryId": 130,

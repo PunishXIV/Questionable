@@ -12,34 +12,6 @@
       "TerritoryId": 813,
       "Steps": [
         {
-          "Position": [55.589294, 2.0276523, 669.1557],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "Comment": "these bridges have navmesh problems"
-        },
-        {
-          "Position": [15.410904, 2.2598603, 677.3755],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-82.79376, 11.970126, 765.8721],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1030346,
           "Position": [-145.09808, 9.572956, 704.6769],
           "InteractionType": "Interact"
@@ -68,24 +40,6 @@
       "Sequence": 3,
       "TerritoryId": 813,
       "Steps": [
-        {
-          "Position": [-573.45654, 0.39776123, 810.7269],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-619.98676, 24.866888, 794.4714],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
         {
           "DataId": 1030333,
           "Position": [-612.23773, 27.728632, 817.65466],

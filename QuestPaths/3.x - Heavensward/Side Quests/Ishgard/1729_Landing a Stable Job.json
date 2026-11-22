@@ -68,20 +68,6 @@
       "TerritoryId": 439,
       "Steps": [
         {
-          "$": "Exit Proving Grounds",
-          "DataId": 2005335,
-          "Position": [30.777344, 7.6447144, -21.439026],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 418,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                418
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1012176,
           "Position": [-164.69067, 2.1700032, 27.572998],
           "TerritoryId": 418,

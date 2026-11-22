@@ -24,21 +24,6 @@
           }
         },
         {
-          "DataId": 1024156,
-          "Position": [-59.098206, 79.05602, 45.303955],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 735,
-          "SkipConditions": { "StepIf": { "InTerritory": [735, 736] } }
-        },
-        {
-          "DataId": 2009042,
-          "Position": [34.073364, 1.6021729, -1.7853394],
-          "TerritoryId": 735,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 736,
-          "SkipConditions": { "StepIf": { "InTerritory": [736] } }
-        },
-        {
           "DataId": 1025741,
           "Position": [1.449585, -2.256812E-06, -9.658997],
           "TerritoryId": 736,

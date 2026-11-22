@@ -26,16 +26,6 @@
       "TerritoryId": 958,
       "Steps": [
         {
-          "Position": [545.40717, -36.616177, -267.17505],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          },
-          "$": "Without this step, it'll interact with the NPC in the wagon through the wall"
-        },
-        {
           "DataId": 1037766,
           "Position": [545.3115, -36.616177, -265.00348],
           "InteractionType": "Interact",

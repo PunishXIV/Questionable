@@ -12,11 +12,6 @@
       "TerritoryId": 155,
       "Steps": [
         {
-          "$": "Land here first; otherwise pathing gets caught on cliff",
-          "Position": [629.24475, 300.92084, -18.094275],
-          "InteractionType": "WalkTo"
-        },
-        {
           "DelaySecondsAtStart": 1,
           "DataId": 1009649,
           "Position": [627.8019, 300.56494, -16.434021],

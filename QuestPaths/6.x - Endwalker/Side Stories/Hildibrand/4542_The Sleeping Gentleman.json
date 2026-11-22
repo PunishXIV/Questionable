@@ -37,20 +37,6 @@
       "TerritoryId": 963,
       "Steps": [
         {
-          "$": "Path to aetheryte manually first; normal pathing bypasses the aethernet shortcut for some reason",
-          "Position": [33.341263, 0.09998739, -30.881794],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [129.59485, 26.993164, 13.473633],
-                "TerritoryId": 963,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1042489,
           "Position": [147.75305, 27.06, 36.057007],
           "InteractionType": "Interact"
@@ -72,34 +58,6 @@
       "Sequence": 4,
       "TerritoryId": 813,
       "Steps": [
-        {
-          "Position": [55.589294, 2.0276523, 669.1557],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "Comment": "these bridges have navmesh problems"
-        },
-        {
-          "Position": [15.410904, 2.2598603, 677.3755],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [-82.79376, 11.970126, 765.8721],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
         {
           "DataId": 1042493,
           "Position": [-106.73688, 14.173656, 756.4354],
@@ -135,15 +93,6 @@
       "TerritoryId": 813,
       "Steps": [
         {
-          "Position": [-82.79376, 11.970126, 765.8721],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1042494,
           "Position": [-54.032227, 2.015483, 677.9125],
           "InteractionType": "Interact"
@@ -154,34 +103,6 @@
       "Sequence": 255,
       "TerritoryId": 813,
       "Steps": [
-        {
-          "Position": [15.410904, 2.2598603, 677.3755],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [55.589294, 2.0276523, 669.1557],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "Comment": "these bridges have navmesh problems"
-        },
-        {
-          "Position": [105.453514, -1.5952542, 604.3535],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
         {
           "DataId": 1042497,
           "Position": [220.7522, 12.699311, 229.84656],

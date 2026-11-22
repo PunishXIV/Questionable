@@ -36,20 +36,6 @@
       "TerritoryId": 1187,
       "Steps": [
         {
-          "$": "Recovery",
-          "Position": [254.56616, 34.20388, 156.60327],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [254.56616, 34.20388, 156.60327],
-                "TerritoryId": 1187,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1055825,
           "Position": [254.56616, 34.20388, 156.60327],
           "InteractionType": "Say",

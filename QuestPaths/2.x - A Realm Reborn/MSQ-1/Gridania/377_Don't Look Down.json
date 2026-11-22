@@ -24,46 +24,10 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": [-180.18181, 31.66525, -91.84381],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": [-184.41872, 29.940958, -93.809525],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 2000748,
           "Position": [-189.25769, 30.44165, -98.83276],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "Position": [-179.84062, 31.476957, -91.05707],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
-        },
-        {
-          "Position": [-171.76294, 23.022184, -76.32822],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
         },
         {
           "DataId": 2000751,
@@ -77,11 +41,6 @@
       "Sequence": 255,
       "TerritoryId": 148,
       "Steps": [
-        {
-          "Position": [-166.56161, 0.63666093, -61.089085],
-          "InteractionType": "WalkTo",
-          "Comment": "Jumping back up isn't trivial"
-        },
         {
           "DataId": 1000436,
           "Position": [-193.22504, 56.264572, -116.47211],

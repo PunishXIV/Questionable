@@ -20,11 +20,6 @@
       "TerritoryId": 156,
       "Steps": [
         {
-          "Position": [31.505556, 20.295, -669.3887],
-          "InteractionType": "WalkTo",
-          "$": "Prevent getting stuck in the building"
-        },
-        {
           "Position": [-386.57956, -17.148407, -452.4295],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -51,11 +46,6 @@
       "Sequence": 3,
       "TerritoryId": 156,
       "Steps": [
-        {
-          "Position": [31.505556, 20.295, -669.3887],
-          "InteractionType": "WalkTo",
-          "$": "Prevent getting stuck in the building"
-        },
         {
           "DataId": 2002213,
           "Position": [-286.979, -16.8982, -361.23],

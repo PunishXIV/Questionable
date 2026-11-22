@@ -20,19 +20,6 @@
       "TerritoryId": 141,
       "Steps": [
         {
-          "Position": [2.7922537, 8.206551, -274.32318],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [123.33862, 30.999996, -384.9394],
-                "TerritoryId": 141,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1001426,
           "Position": [123.33862, 30.999996, -384.9394],
           "InteractionType": "AcceptQuest",
@@ -49,27 +36,6 @@
       "Sequence": 255,
       "TerritoryId": 140,
       "Steps": [
-        {
-          "Position": [-492.96475, 20.999884, -380.82272],
-          "InteractionType": "WalkTo",
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [212]
-            }
-          }
-        },
-        {
-          "DataId": 2001711,
-          "Position": [-480.9181, 18.00103, -386.862],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [212]
-            }
-          }
-        },
         {
           "DataId": 2001715,
           "Position": [23.23944, 2.090454, -0.015319824],

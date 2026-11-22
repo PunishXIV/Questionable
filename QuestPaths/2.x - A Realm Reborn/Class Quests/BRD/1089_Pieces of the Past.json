@@ -41,12 +41,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
-          "Position": [-143.16391, -25.75711, 34.669674],
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]}}
-        },
-        {
           "DataId": 2002527,
           "Position": [-168.29181, -21.5, 44.144287],
           "TerritoryId": 138,
@@ -78,11 +72,6 @@
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Northern Thanalan - Ceruleum Processing Plant",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Northern Thanalan - Ceruleum Processing Plant"}}
-        },
-        {
-          "Position": [-324.11298, 89.13572, -135.54353],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]}}
         },
         {
           "DataId": 2002529,

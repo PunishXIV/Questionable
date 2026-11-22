@@ -41,10 +41,6 @@
           "AetherCurrentId": 2818259
         },
         {
-          "Position": [-341.64484, 46.191288, -244.7952],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Amh Araeng - Twine"
         },

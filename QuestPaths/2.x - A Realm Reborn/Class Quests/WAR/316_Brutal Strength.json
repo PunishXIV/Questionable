@@ -29,15 +29,6 @@
           "Aetheryte": "Western La Noscea - Aleport"
         },
         {
-          "Position": [139.18224, -20.931536, 139.35034],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 2000288,
           "Position": [99.22937, -14.2977295, 141.86316],
           "InteractionType": "Combat",

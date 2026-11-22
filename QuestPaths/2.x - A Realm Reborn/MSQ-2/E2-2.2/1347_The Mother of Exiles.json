@@ -36,8 +36,7 @@
           "Position": [-5.6346426, 29.999994, 18.160692],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": [-6.9986115, 15.00001, 4.392646],
-            "TerritoryId": 131
+            "Position": [-6.9986115, 15.00001, 4.392646]
           },
           "SkipConditions": {"StepIf": {"InTerritory": [130]}}
         },

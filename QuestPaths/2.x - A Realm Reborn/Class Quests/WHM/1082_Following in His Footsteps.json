@@ -38,23 +38,6 @@
       "TerritoryId": 138,
       "Steps": [
         {
-          "Position": [-346.83008, -37.93451, -236.64346],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                128
-              ],
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 2002396,
           "Position": [-347.34113, -36.240234, -249.6529],
           "InteractionType": "Emote",

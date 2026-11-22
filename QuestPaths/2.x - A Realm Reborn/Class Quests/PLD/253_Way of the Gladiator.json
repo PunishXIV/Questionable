@@ -57,18 +57,6 @@
       "TerritoryId": 141,
       "Steps": [
         {
-          "Position": [45.13088, 3.889354, -166.51999],
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                141
-              ]
-            }
-          }
-        },
-        {
           "Position": [-116.10664, 10.801613, 276.979],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -122,17 +110,6 @@
       "Sequence": 255,
       "TerritoryId": 141,
       "Steps": [
-        {
-          "Position": [-118.17538, 18.35357, 341.3039],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                141
-              ]
-            }
-          }
-        },
         {
           "DataId": 1001739,
           "Position": [-94.529724, 6.4999976, 39.81079],

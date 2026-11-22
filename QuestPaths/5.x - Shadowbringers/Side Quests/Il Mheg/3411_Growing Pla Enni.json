@@ -11,10 +11,6 @@
       "TerritoryId": 816,
       "Steps": [
         {
-          "Position": [-354.8902, 47.989246, 495.83212],
-          "InteractionType": "None"
-        },
-        {
           "Position": [-725.7799, 93.38933, 569.39484],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",

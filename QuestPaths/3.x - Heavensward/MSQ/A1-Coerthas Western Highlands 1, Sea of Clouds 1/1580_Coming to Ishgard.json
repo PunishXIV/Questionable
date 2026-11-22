@@ -8,15 +8,6 @@
       "TerritoryId": 155,
       "Steps": [
         {
-          "DataId": 1009973,
-          "Position": [264.91187, 302.26236, -223.71259],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 395,
-          "SkipConditions": {
-            "StepIf": { "InTerritory": [395] }
-          }
-        },
-        {
           "DataId": 1010925,
           "Position": [-1.4191895, 0.014982708, -0.07635498],
           "TerritoryId": 395,
@@ -40,13 +31,6 @@
       "TerritoryId": 395,
       "$": "Starting point after ARR skip",
       "Steps": [
-        {
-          "DataId": 2004781,
-          "Position": [-4, 1.2, 11],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 155,
-          "SkipConditions": {"StepIf": {"InTerritory": [155]}}
-        },
         {
           "DataId": 1012309,
           "Position": [-163.89722, 304.1538, -333.05872],

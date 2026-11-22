@@ -11,11 +11,6 @@
       "TerritoryId": 816,
       "Steps": [
         {
-          "$": "Avoid Phooka combat",
-          "Position": [-69.011116, 95.166016, -159.66423],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1031507,
           "Position": [-52.0791, 87.9948, -180.31586],
           "InteractionType": "Interact"
@@ -37,27 +32,6 @@
       "Sequence": 3,
       "TerritoryId": 816,
       "Steps": [
-        {
-          "Position": [-175.66415, 102.020195, -833.0812],
-          "InteractionType": "None"
-        },
-        {
-          "Position": [-183.17235, 94.52451, -753.12067],
-          "InteractionType": "None"
-        },
-        {
-          "Position": [-142.48228, 74.786835, -707.13934],
-          "InteractionType": "None"
-        },
-        {
-          "Position": [-129.47108, 66.06374, -666.76575],
-          "InteractionType": "None"
-        },
-        {
-          "$": "Avoid Phooka combat",
-          "Position": [-69.011116, 95.166016, -159.66423],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1031507,
           "Position": [-52.0791, 87.9948, -180.31586],

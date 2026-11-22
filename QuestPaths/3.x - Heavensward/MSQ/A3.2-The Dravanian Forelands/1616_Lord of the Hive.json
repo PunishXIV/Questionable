@@ -71,32 +71,6 @@
           "PickUpQuestId": 1802
         },
         {
-          "Position": [-334.08136, 40.34739, 18.237068],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-334.08136, 40.34739, 18.237068],
-                "TerritoryId": 398,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
-          "Position": [-324.42703, -22.971008, 51.45664],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-334.08136, 40.34739, 18.237068],
-                "TerritoryId": 398,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1014544,
           "Position": [56.351562, -50.57729, -142.50409],
           "InteractionType": "CompleteQuest"

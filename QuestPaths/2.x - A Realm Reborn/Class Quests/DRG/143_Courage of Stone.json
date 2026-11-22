@@ -59,19 +59,6 @@
           ]
         },
         {
-          "Position": [211.82181, 23.457642, 163.4502],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [215.99133, 23.575134, 153.2157],
-                "TerritoryId": 148,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 2000918,
           "Position": [215.99133, 23.575134, 153.2157],
           "InteractionType": "Interact"

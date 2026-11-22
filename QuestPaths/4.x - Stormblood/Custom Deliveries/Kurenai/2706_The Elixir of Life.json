@@ -64,21 +64,6 @@
       "TerritoryId": 613,
       "Steps": [
         {
-          "Position": [198.4342, -162.28119, 115.91883],
-          "InteractionType": "WalkTo",
-          "$": "Exile, outside",
-          "SkipConditions": {
-            "StepIf": {
-              "Diving": false,
-              "NotNearPosition": {
-                "Position": [209.37341, -162.3906, 153.15836],
-                "TerritoryId": 613,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
           "DataId": 2008809,
           "Position": [163.43933, -172.01501, 262.0736],
           "InteractionType": "Combat",

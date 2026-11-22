@@ -31,29 +31,11 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,2]
         },
         {
-          "Position": [-113.806755, -3.824695, -61.20561],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
-            }
-          }
-        },
-        {
           "DataId": 2001171,
           "Position": [-115.58716, -3.402832, -51.07196],
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
-        },
-        {
-          "Position": [-142.90863, -1.355497, -69.45994],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-            }
-          }
         },
         {
           "DataId": 2000940,
@@ -63,29 +45,11 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         },
         {
-          "Position": [-154.95493, 4.0352364, -132.85217],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
-            }
-          }
-        },
-        {
           "DataId": 2000939,
           "Position": [-166.97955, 10.2387085, -138.41461],
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
-        },
-        {
-          "Position": [-114.08684, 7.6589117, -173.19547],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
-            }
-          }
         },
         {
           "DataId": 2000938,

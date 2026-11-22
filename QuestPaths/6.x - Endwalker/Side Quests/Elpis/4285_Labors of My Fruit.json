@@ -16,11 +16,6 @@
           "InteractionType": "Interact"
         },
         {
-          "$": "Prevent vnavmesh from getting stuck on tree",
-          "Position": [151.51833, 8.025645, 191.7166],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1041534,
           "Position": [152.33081, 8.025643, 184.03906],
           "InteractionType": "Interact"

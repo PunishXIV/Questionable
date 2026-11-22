@@ -23,13 +23,6 @@
       "TerritoryId": 1186,
       "Steps": [
         {
-          "DataId": 2014102,
-          "Position": [-0.015319824, 0.99176025, 16.03717],
-          "TerritoryId": 1207,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1186
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Solution Nine] Neon Stein"
         },
@@ -73,12 +66,6 @@
         {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Solution Nine] The Arcadion"
-        },
-        {
-          "DataId": 1048083,
-          "Position": [302.05237, 51.199978, 205.0354],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1207
         },
         {
           "DataId": 1048189,

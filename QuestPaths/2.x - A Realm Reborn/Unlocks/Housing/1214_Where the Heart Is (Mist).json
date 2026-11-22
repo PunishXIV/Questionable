@@ -53,17 +53,6 @@
       "TerritoryId": 339,
       "Steps": [
         {
-          "Position": [-9.527806, 50.23951, -129.5499],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                339
-              ]
-            }
-          }
-        },
-        {
           "Position": [-9.739164, 48.345356, -171],
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 135,

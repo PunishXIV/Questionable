@@ -36,16 +36,6 @@
       "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": [399.21567, -0.40000004, -384.69452],
-          "InteractionType": "WalkTo",
-          "Comment": "Waypoint after swimming through the river",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Kozama'uka - Dock Poga"
-            }
-          }
-        },
-        {
           "DataId": 1048826,
           "Position": [672.4802, 41.63828, -527.36707],
           "InteractionType": "Interact"

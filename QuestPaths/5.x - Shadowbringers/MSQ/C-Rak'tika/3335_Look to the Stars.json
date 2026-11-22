@@ -185,7 +185,6 @@
           "$": "Northwest",
           "JumpDestination": {
             "Position": [133.11566, -3.375117, -509.62543],
-            "Mount": false,
             "DelaySeconds": 0.2,
             "StopDistance": 2,
             "Type": "RepeatedJumps"
@@ -267,7 +266,6 @@
           "$": "Northwest",
           "JumpDestination": {
             "Position": [205.8763, -5.0838485, -515.7744],
-            "Mount": false,
             "DelaySeconds": 0.2,
             "StopDistance": 2,
             "Type": "RepeatedJumps"

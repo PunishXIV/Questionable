@@ -8,11 +8,6 @@
       "TerritoryId": 156,
       "Steps": [
         {
-          "Position": [30.917934, 20.495003, -656.1909],
-          "InteractionType": "WalkTo",
-          "$": "Rising Stones Door"
-        },
-        {
           "DataId": 1006977,
           "Position": [23.361511, 21.252728, -650.29376],
           "InteractionType": "AcceptQuest"
@@ -36,19 +31,6 @@
       "TerritoryId": 155,
       "$": "Walk back out of building, fly to destination",
       "Steps": [
-        {
-          "Position": [-433.32874, 210.7882, -222.11073],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-435.15427, 233.4, -197.7945],
-                "TerritoryId": 155,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
         {
           "DataId": 1006490,
           "Position": [-673.21277, 205.95982, -515.7702],

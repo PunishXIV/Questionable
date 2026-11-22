@@ -12,16 +12,6 @@
       "TerritoryId": 156,
       "Steps": [
         {
-          "Position": [123.6, 31.6, -768.8],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [155]
-            }
-          }
-        },
-        {
           "DataId": 1007625,
           "Position": [-354.1772, 214.60808, 692.65283],
           "TerritoryId": 155,

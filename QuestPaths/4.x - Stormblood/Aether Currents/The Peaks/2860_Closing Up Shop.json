@@ -60,25 +60,6 @@
           }
         },
         {
-          "Position": [1.7183262, 317.60666, 141.11252],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Lochs - Porta Praetoria"
-            }
-          }
-        },
-        {
-          "Position": [-791.2012, 46.3994, -15.904689],
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteLocked": "Lochs - Porta Praetoria"
-            }
-          }
-        },
-        {
           "DataId": 1020893,
           "Position": [283.77197, 322.87146, 752.34607],
           "InteractionType": "CompleteQuest"

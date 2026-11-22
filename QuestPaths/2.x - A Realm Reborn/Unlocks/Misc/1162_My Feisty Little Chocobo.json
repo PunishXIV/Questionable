@@ -49,20 +49,6 @@
           "ItemId": 4868
         },
         {
-          "Position": [-50.086567, -9.536743e-7, -18.283287],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-50.086567, -9.536743e-7, -18.283287],
-                "TerritoryId": 148,
-                "MaximumDistance": 40
-              },
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "Position": [-301.59653, 62.76247, -52.496593],
           "InteractionType": "WalkTo",
           "ItemId": 4868

@@ -70,14 +70,6 @@
       "TerritoryId": 818,
       "Steps": [
         {
-          "Position": [335.4814, 307.59262, -294.14676],
-          "InteractionType":"None"
-        },
-        {
-          "Position": [462.85025, 345.97366, -281.7148],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1031170,
           "Position": [569.54297, 371.87646, -131.76166],
           "InteractionType": "CompleteQuest"

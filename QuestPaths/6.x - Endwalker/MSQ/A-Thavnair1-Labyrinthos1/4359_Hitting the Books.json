@@ -8,12 +8,6 @@
       "TerritoryId": 962,
       "Steps": [
         {
-          "DataId": 2011936,
-          "Position": [-108.56799, 5.0201416, 4.5318604],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 987
-        },
-        {
           "DataId": 1038670,
           "Position": [-2.609314, 1.9073486e-6, 0.16778564],
           "TerritoryId": 987,
@@ -25,18 +19,6 @@
       "Sequence": 1,
       "TerritoryId": 962,
       "Steps": [
-        {
-          "DataId": 2011937,
-          "Position": [-0.009068698, 1.151502, 14.81335],
-          "TerritoryId": 987,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 962,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [987]
-            }
-          }
-        },
         {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Old Sharlayan] The Baldesion Annex"

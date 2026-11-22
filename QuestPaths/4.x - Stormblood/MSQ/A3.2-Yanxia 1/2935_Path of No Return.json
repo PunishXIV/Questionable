@@ -13,22 +13,6 @@
           "SkipConditions": {"StepIf": {"InTerritory": [681]}}
         },
         {
-          "Position": [365.84177, -50.164906, -309.3022],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"InTerritory": [681]}}
-        },
-        {
-          "Position": [301.059, -21.410977, -358.57938],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"InTerritory": [681]}}
-        },
-        {
-          "DataId": 1019292,
-          "Position": [276.35608, 3.6584158, -377.5235],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 681
-        },
-        {
           "DataId": 1020052,
           "Position": [-52.47583, -0.2509899, -25.742065],
           "TerritoryId": 681,

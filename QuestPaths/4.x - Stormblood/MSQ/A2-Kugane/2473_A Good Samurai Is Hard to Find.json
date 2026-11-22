@@ -8,12 +8,6 @@
       "TerritoryId": 628,
       "Steps": [
         {
-          "DataId": 1019070,
-          "Position": [151.20166, 14.7757225, 95.78088],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 639
-        },
-        {
           "DataId": 1020465,
           "Position": [1.5411377, 0, -0.96136475],
           "TerritoryId": 639,
@@ -110,10 +104,6 @@
             "Position": [-131.75923, 6.245034, 123.01645],
             "StopDistance": 0.5
           }
-        },
-        {
-          "Position": [-124.25544, -4.999999, 145.54941],
-          "InteractionType": "WalkTo"
         },
         {
           "InteractionType": "AttuneAethernetShard",

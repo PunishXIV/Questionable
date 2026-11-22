@@ -91,11 +91,6 @@
           "AethernetShard": "[Tuliyollal] Bayside Bevy Marketplace"
         },
         {
-          "Position": [-68.179695, 85.001854, -56.396465],
-          "InteractionType": "WalkTo",
-          "Comment": "Resplentend Quarter Lamp nav"
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Tuliyollal] Vollok Shoonsa"
         },

@@ -45,15 +45,6 @@
       "TerritoryId": 622,
       "Steps": [
         {
-          "Position": [-627.83246, 40.01948, 100.20593],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteLocked": "Azim Steppe - Dhoro Iloh"
-            }
-          }
-        },
-        {
           "DataId": 1025697,
           "Position": [-627.83246, 40.01948, 100.20593],
           "InteractionType": "Interact",

@@ -1,7 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
-  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
   "QuestSequence": [
     {
       "Sequence": 0,

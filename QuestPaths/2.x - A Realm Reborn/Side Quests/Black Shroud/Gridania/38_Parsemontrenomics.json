@@ -12,28 +12,10 @@
       "TerritoryId": 133,
       "Steps": [
         {
-          "Position": [157.92119, 15.700001, -122.177925],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "DataId": 1000238,
           "Position": [155.41309, 15.700001, -121.812805],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-        },
-        {
-          "Position": [162.74281, 15.699926, -59.43834],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
         },
         {
           "DataId": 1000218,

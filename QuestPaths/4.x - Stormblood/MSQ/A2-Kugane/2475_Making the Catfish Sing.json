@@ -26,13 +26,6 @@
       "TerritoryId": 628,
       "Steps": [
         {
-          "DataId": 2008134,
-          "Position": [-0.015319824, 1.1443481, 13.504211],
-          "TerritoryId": 639,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 628
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Kugane] Sekiseigumi Barracks"
         },

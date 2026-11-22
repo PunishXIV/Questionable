@@ -183,10 +183,6 @@
       "TerritoryId": 144,
       "Steps": [
         {
-          "Position": [46.78062, 11.798187, 20.328043],
-          "InteractionType": "WalkTo"
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Wonder Square West",
           "DelaySecondsAtStart": 3
