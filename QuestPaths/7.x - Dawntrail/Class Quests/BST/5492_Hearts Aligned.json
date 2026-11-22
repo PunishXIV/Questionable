@@ -21,13 +21,46 @@
       "TerritoryId": 148,
       "Steps": [
         {
-          "Comment": "Perform these actions twice:\nUse First Battlehorn\nAttack until both gauges have over 100 points\nUse Trick, then use Avalanche Axe",
-          "DataId": 1059323,
-          "Position": [127.99964, -6.9535503, -84.869156],
-          "InteractionType": "WaitForManualProgress",
-          "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [19456],
-          "$": "auto: lua overworld enemies -> 19456"
+          "InteractionType": "Action",
+          "Action": "First Battlehorn"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "FillGauge"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Trick"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Avalanche Axe"
+        },
+        {
+          "InteractionType": "Action",
+          "Action": "First Battlehorn"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "FillGauge"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Trick"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Avalanche Axe"
         }
       ]
     },
@@ -91,11 +124,23 @@
       "TerritoryId": 148,
       "Steps": [
         {
+          "Position": [-38.8953, -32.2804, 326.131],
+          "InteractionType": "Instruction",
+          "Comment": "Go into the crypt below and use Capture on Geshunpest, then continue"
+        },
+        {
+          "InteractionType": "AssignBattlehorn",
+          "PetId": 13,
+          "Battlehorn": 2
+        },
+        {
+          "InteractionType": "Action",
+          "Action": "Second Battlehorn"
+        },
+        {
           "DataId": 1059327,
           "Position": [-38.8953, -32.2804, 326.131],
-          "InteractionType": "WaitForManualProgress",
-          "Comment": "Go into the crypt below, capture Geshunpest, assign to Second Battlehorn, summon, then interact with J'yhuh Tia",
-          "$": "auto: todo location -> 1059327 (J'yhuh Tia)"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -116,13 +161,42 @@
       "TerritoryId": 148,
       "Steps": [
         {
-          "Comment": "Ensure Cu Sith is summoned by using First Battlehorn. Trick has different affinity based on which beast is summoned.\nAttack target dummy until both gauges have over 100 points\nUse Trick, then Mistral Axe to complete a Moonstalker combo\nAttack target dummy until both gauges have over 100 points\nUse Gale Axe, then Trick to complete a Sunstrider combo",
+          "InteractionType": "Action",
+          "Action": "First Battlehorn"
+        },
+        {
           "DataId": 19456,
           "Position": [126.783066, -6.9812546, -83.18186],
-          "InteractionType": "WaitForManualProgress",
-          "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [19456],
-          "$": "auto: lua overworld enemies -> 19456"
+          "InteractionType": "FillGauge"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Trick"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Mistral Axe"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "FillGauge"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Gale Axe"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Trick"
         }
       ]
     },

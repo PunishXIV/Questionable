@@ -63,8 +63,7 @@ internal sealed class ConfigWindow
             MaximumSize = default
         };
 
-        if (!_configuration.General.HideSponsorButton)
-            AddSponsorButton();
+        AddSponsorButton();
     }
     public WindowConfig WindowConfig => _configuration.ConfigWindowConfig;
 

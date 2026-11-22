@@ -326,10 +326,13 @@ internal sealed partial class ActiveQuestComponent
             var trackedQuests = GetTrackedQuests();
             if (trackedQuests.Count > 0)
             {
+                // Game-icon rows are a full line tall plus item spacing.
+                const int maxRows = 10;
+                float rowHeight = ImGui.GetTextLineHeightWithSpacing() + ImGui.GetStyle().ItemSpacing.Y;
                 using (ImRaii.Child(
                     "##trackedQuests",
-                    new Vector2(0, ImGui.GetTextLineHeightWithSpacing() * (trackedQuests.Count > 5 ? 5 : trackedQuests.Count)),
-                    border: trackedQuests.Count > 5))
+                    new Vector2(0, rowHeight * Math.Min(trackedQuests.Count, maxRows)),
+                    border: trackedQuests.Count > maxRows))
                 {
                     foreach (IQuestInfo info in trackedQuests)
                     {

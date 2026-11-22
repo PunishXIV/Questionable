@@ -1017,14 +1017,14 @@
     <Value lang="ko">설정 열기</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
-    <Key>Sponsor QST development</Key>
-    <Value lang="en">Sponsor QST development</Value>
-    <Value lang="ja-jp">QSTの開発を支援する</Value>
-    <Value lang="zh-cn">赞助 QST 开发</Value>
-    <Value lang="zh-tw">贊助 QST 開發</Value>
-    <!--<Value lang="ko">QST 개발 후원</Value>-->
+    <!-- Found in: ../Questionable/Windows/Common/LWindow.cs -->
+    <Key>Who makes Questionable</Key>
+    <Value lang="en">Who makes Questionable</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/Common/LWindow.cs -->
+    <Key>Questionable is written by:</Key>
+    <Value lang="en">Questionable is written by:</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
@@ -1650,15 +1650,6 @@
     <Value lang="zh-cn">使用 ESC 取消任务/移动</Value>
     <Value lang="zh-tw">使用 ESC 取消任務/移動</Value>
     <Value lang="ko">ESC 키를 사용해 퀘스트 진행 및 이동 취소</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Hide Sponsor button</Key>
-    <Value lang="en">Hide Sponsor button</Value>
-    <Value lang="ja-jp">スポンサーボタンを非表示</Value>
-    <Value lang="zh-cn">隐藏赞助按钮</Value>
-    <Value lang="zh-tw">隱藏贊助按鈕</Value>
-    <Value lang="ko">후원 버튼 숨김</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -6661,14 +6652,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Takes effect the next time the plugin loads.</Key>
-    <Value lang="en">Takes effect the next time the plugin loads.</Value>
-    <Value lang="ja-jp">次回のプラグイン読み込み時に反映されます。</Value>
-    <Value lang="zh-cn">下次加载插件时生效。</Value>
-    <Value lang="zh-tw">下次載入外掛時生效。</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>The first ticked rule that matches picks the reward; otherwise the highest vendor value. Needs "Set up TextAdvance for questing" on the Questing page.</Key>
     <Value lang="en">The first ticked rule that matches picks the reward; otherwise the highest vendor value. Needs "Set up TextAdvance for questing" on the Questing page.</Value>
     <Value lang="ja-jp">有効なルールのうち最初に一致したものを使用し、それ以外は売却価格が最高の報酬を選びます。クエストページの「TextAdvanceをクエスト用に設定」が必要です。</Value>
@@ -8460,6 +8443,11 @@ Right click: Open in your default .json text editor</Value>
     <Value lang="ja-jp">リストをクリップボードにコピー</Value>
     <Value lang="zh-cn">将列表复制到剪贴板</Value>
     <Value lang="zh-tw">將清單複製到剪貼簿</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <Key>Current list ({0}):</Key>
+    <Value lang="en">Current list ({0}):</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->

@@ -85,6 +85,16 @@ public enum EAction
     HuntersSting = 34608,
     FlankstingStrike = 34610,
     DeathRattle = 34634,
+
+    SmashAxe = 44879,
+    Capture = 44880,
+    FirstBattlehorn = 44881,
+    SecondBattlehorn = 44892,
+    ThirdBattlehorn = 44894,
+    Trick = 47093,
+    AvalancheAxe = 44884,
+    MistralAxe = 44887,
+    GaleAxe = 44889,
 }
 
 public static class EActionExtensions

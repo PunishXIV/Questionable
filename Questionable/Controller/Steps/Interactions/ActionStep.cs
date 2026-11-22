@@ -1,5 +1,8 @@
 using System.Collections.ObjectModel;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using AozAction = Lumina.Excel.Sheets.AozAction;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class ActionStep
@@ -53,9 +56,11 @@ internal static class ActionStep
         InterruptHandler interruptHandler,
         ICondition condition,
         ILogger<UseOnObject> logger,
-        IQuestGameState gameState) : TaskExecutor<UseOnObject>
+        IQuestGameState gameState,
+        IDataManager dataManager) : TaskExecutor<UseOnObject>
     {
         private const int MaxAttempts = 10;
+        private const int BlueMageSlots = 24;
 
         // The game accepting an action doesn't mean it went off, so give the server time to confirm before retrying.
         private static readonly TimeSpan AcceptedRetryDelay = TimeSpan.FromSeconds(3);
@@ -75,6 +80,13 @@ internal static class ActionStep
             _accepted = false;
             _continueAt = DateTime.MinValue;
             _retryAt = DateTime.MinValue;
+            if (SetBlueMageSpell())
+            {
+                // The spell can't be used until the server has the new action list.
+                _continueAt = DateTime.Now.AddSeconds(1);
+                return true;
+            }
+
             if (Task.DataId != null)
             {
                 IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId.Value);
@@ -159,6 +171,30 @@ internal static class ActionStep
 
             return ETaskResult.StillRunning;
         }
+
+        // Based on WrathCombo's BlueMageService.
+        private unsafe bool SetBlueMageSpell()
+        {
+            uint actionId = (uint)Task.Action & 0xFFFF;
+            if ((Job)PlayerState.Instance()->CurrentClassJobId != Job.BLU ||
+                !dataManager.GetExcelSheet<AozAction>().Any(x => x.Action.RowId == actionId))
+                return false;
+
+            ActionManager* actionManager = ActionManager.Instance();
+            uint[] slots = [.. Enumerable.Range(0, BlueMageSlots).Select(i => actionManager->GetActiveBlueMageActionInSlot(i))];
+            int? slot = BlueMageSlot(slots, actionId);
+            if (slot == null)
+                return false;
+            if (slot < 0)
+                throw new TaskException($"Your Blue Mage action list is full; free a slot for {Task.Action}.");
+
+            logger.LogInformation("Putting {Action} in Blue Mage slot {Slot}", Task.Action, slot.Value + 1);
+            actionManager->AssignBlueMageActionToSlot(slot.Value, actionId);
+            return true;
+        }
+
+        internal static int? BlueMageSlot(IReadOnlyList<uint> slots, uint actionId) =>
+            slots.Contains(actionId) ? null : slots.ToList().IndexOf(0);
 
         private void TryUseAction(IGameObject? gameObject)
         {

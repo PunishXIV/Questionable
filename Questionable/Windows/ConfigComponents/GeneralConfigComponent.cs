@@ -236,15 +236,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            bool hideSponsorButton = Configuration.General.HideSponsorButton;
-            if (ImGui.Checkbox(_L("Hide Sponsor button"), ref hideSponsorButton))
-            {
-                Configuration.General.HideSponsorButton = hideSponsorButton;
-                Save();
-            }
-            if (ImGui.IsItemHovered())
-                QstWidgets.Tooltip(_L("Takes effect the next time the plugin loads."));
-
             DrawCheckbox(_L("Show window on start"),
                 () => Configuration.Advanced.ShowWindowOnStart,
                 value => Configuration.Advanced.ShowWindowOnStart = value,

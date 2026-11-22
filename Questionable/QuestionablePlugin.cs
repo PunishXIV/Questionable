@@ -134,7 +134,6 @@ public sealed class QuestionablePlugin(
         PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin()
         {
             Developer = "alydev and Kagekazu",
-            Sponsor = "https://ko-fi.com/alydev"
         });
 
         HashSet<string> namespaces = typeof(QuestionablePlugin).Assembly.GetTypes()

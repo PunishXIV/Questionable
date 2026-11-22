@@ -27,31 +27,6 @@
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "InteractionType": "EquipItem",
-          "ItemId": 50727,
-          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 50728,
-          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 50729,
-          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 50730,
-          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 50731,
-          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
-        },
-        {
           "InteractionType": "UseItem",
           "ItemId": 49805,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
@@ -102,11 +77,18 @@
       "TerritoryId": 148,
       "Steps": [
         {
-          "Comment": "Assign Cu Sith to first battlehorn, summon, then interact with J'yhuh Tia",
+          "InteractionType": "AssignBattlehorn",
+          "PetId": 1,
+          "Battlehorn": 1
+        },
+        {
+          "InteractionType": "Action",
+          "Action": "First Battlehorn"
+        },
+        {
           "DataId": 1059323,
           "Position": [119.923, -7.00342, -87.4736],
-          "InteractionType": "WaitForManualProgress",
-          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+          "InteractionType": "Interact"
         }
       ]
     },

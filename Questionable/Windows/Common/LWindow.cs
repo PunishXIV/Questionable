@@ -6,14 +6,40 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     protected static readonly Vector2 TitleBarIconOffset = new(2, 2);
 
+    private static readonly (string Name, string Url)[] Contributors =
+    [
+        ("aly", "https://github.com/alydevs"),
+        ("Kagekazu", "https://github.com/Kagekazu"),
+    ];
+
+    private bool _openCredits;
+
     protected void AddSponsorButton() => TitleBarButtons.Add(new()
     {
         Icon = FontAwesomeIcon.Heart,
         IconOffset = TitleBarIconOffset,
-        Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://ko-fi.com/alydev", UseShellExecute = true }),
+        Click = _ => _openCredits = true,
         Priority = TitleBarButtonPriority,
-        ShowTooltip = () => QstWidgets.Tooltip(_L("Sponsor QST development")),
+        ShowTooltip = () => QstWidgets.Tooltip(_L("Who makes Questionable")),
     });
+
+    private void DrawCredits()
+    {
+        if (_openCredits)
+        {
+            ImGui.OpenPopup("##Credits");
+            _openCredits = false;
+        }
+
+        using ImRaii.PopupDisposable popup = ImRaii.Popup("##Credits");
+        if (!popup)
+            return;
+
+        ImGui.TextUnformatted(_L("Questionable is written by:"));
+        foreach ((string name, string url) in Contributors)
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExternalLinkAlt, name))
+                Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
+    }
 
     private bool _initializedConfig;
     private bool _wasCollapsedLastFrame;
@@ -133,6 +159,7 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
         _wasCollapsedLastFrame = false;
 
         DrawContent();
+        DrawCredits();
     }
 
     public abstract void DrawContent();

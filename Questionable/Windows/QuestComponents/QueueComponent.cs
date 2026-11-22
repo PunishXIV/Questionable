@@ -23,6 +23,7 @@ internal sealed class QueueComponent
     private readonly UiUtils _uiUtils;
     private readonly QuestJournalUtils _questJournalUtils;
     private readonly OpenQuestCleanUp _openQuestCleanUp;
+    private const int MaxVisibleRows = 10;
     private readonly DragOrder<ElementId> _drag = new();
     private Job? _lastKnownJob;
     private string _presetName = string.Empty;
@@ -76,6 +77,8 @@ internal sealed class QueueComponent
         _questSelector.DrawSelection();
         DrawSavedLists();
         DrawStartButton();
+        if (!_questController.PriorityManager.IsEmpty)
+            ImGui.TextDisabled(_LF("Current list ({0}):", _questController.PriorityManager.Quests.Count));
         DrawQuestList();
         DrawRewardTotal();
         if (_questController.PriorityManager.IsEmpty)
@@ -132,6 +135,16 @@ internal sealed class QueueComponent
     private void DrawQuestList()
     {
         List<Quest> priorityQuests = [.. _questController.PriorityManager.Quests];
+        if (priorityQuests.Count == 0)
+            return;
+
+        // Long lists (Unlock all jobs) would push the window off screen.
+        int rows = Math.Min(priorityQuests.Count, MaxVisibleRows);
+        using ImRaii.ChildDisposable child = ImRaii.Child("##PriorityList",
+            new Vector2(0, rows * ImGui.GetFrameHeightWithSpacing()), border: priorityQuests.Count > MaxVisibleRows);
+        if (!child)
+            return;
+
         Quest? itemToRemove = null;
         for (int i = 0; i < priorityQuests.Count; ++i)
         {
@@ -163,8 +176,7 @@ internal sealed class QueueComponent
                     {
                         int padCount = 8;
 
-                        ImGui.SameLine(ImGui.GetContentRegionAvail().X +
-                                       ImGui.GetStyle().WindowPadding.X -
+                        ImGui.SameLine(ImGui.GetWindowContentRegionMax().X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.ArrowsUpDown.ToIconString()).X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Edit.ToIconString()).X -
@@ -181,8 +193,7 @@ internal sealed class QueueComponent
                     {
                         int padCount = 6;
 
-                        ImGui.SameLine(ImGui.GetContentRegionAvail().X +
-                                       ImGui.GetStyle().WindowPadding.X -
+                        ImGui.SameLine(ImGui.GetWindowContentRegionMax().X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Edit.ToIconString()).X -
                                        ImGui.GetStyle().FramePadding.X * padCount);

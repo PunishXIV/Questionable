@@ -62,6 +62,8 @@ public sealed class QuestStep
     public EStatus? Status { get; set; }
     public EExtendedClassJob TargetClass { get; set; } = EExtendedClassJob.None;
     public uint? TaxiStandId { get; set; }
+    public uint? PetId { get; set; }
+    public byte? Battlehorn { get; set; }
 
     public EEnemySpawnType? EnemySpawnType { get; set; }
     public List<uint> KillEnemyDataIds { get; set; } = [];

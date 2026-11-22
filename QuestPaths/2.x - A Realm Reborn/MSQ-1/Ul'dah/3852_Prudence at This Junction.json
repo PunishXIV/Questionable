@@ -35,9 +35,6 @@
           "InteractionType": "WalkTo"
         },
         {
-          "InteractionType": "EquipRecommended"
-        },
-        {
           "DataId": 1001564,
           "Position": [-9.689575, -2.0480804, -145.09808],
           "InteractionType": "PurchaseItem",
@@ -73,26 +70,7 @@
           ]
         },
         {
-          "InteractionType": "EquipItem",
-          "ItemId": 2653,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 2655,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
+          "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 1001447,

@@ -1,6 +1,7 @@
 ﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Action = Lumina.Excel.Sheets.Action;
+using Lumina.Excel;
 
 namespace Questionable.Functions;
 
@@ -19,6 +20,45 @@ internal sealed unsafe class AetheryteFunctions
     private readonly IServiceProvider _serviceProvider = serviceProvider;
 
     public DateTime ReturnRequestedAt { get; set; } = DateTime.MinValue;
+
+    private Dictionary<uint, uint>? _cosmicAethernets;
+    private nint? _cosmicUnlockBase;
+
+    // Crystal object -> WKSAetheryte row; WKSAetheryteObjectGroup rows share the aetheryte's row id.
+    public bool IsCosmicAethernet(uint? dataId) => dataId is { } id && CosmicAethernets().ContainsKey(id);
+
+    private Dictionary<uint, uint> CosmicAethernets() => _cosmicAethernets ??= _dataManager.Excel
+        .GetSubrowSheet<RawSubrow>(name: "WKSAetheryteObjectGroup")
+        .SelectMany(rows => rows)
+        .Where(row => row.RowId != 0)
+        .GroupBy(row => Convert.ToUInt32(row.ReadColumn(2), CultureInfo.InvariantCulture))
+        .ToDictionary(g => g.Key, g => g.First().RowId);
+
+    // From ICE (Ices-Cosmic-Exploration, AgentWKSMissionEx.IsWKSAetheryteUnlocked): bit (row - 1) is set once unlocked.
+    public bool? IsCosmicAethernetUnlocked(uint dataId)
+    {
+        if (!CosmicAethernets().TryGetValue(dataId, out uint row))
+            return null;
+
+        if (_cosmicUnlockBase == null)
+        {
+            try
+            {
+                _cosmicUnlockBase = Svc.SigScanner.GetStaticAddressFromSig("48 89 05 ?? ?? ?? ?? 48 8B F8");
+            }
+            catch (Exception e)
+            {
+                _logger.LogWarning(e, "Couldn't find the Cosmic Exploration aethernet list");
+                _cosmicUnlockBase = nint.Zero;
+            }
+        }
+
+        if (_cosmicUnlockBase == nint.Zero || *(nint*)_cosmicUnlockBase.Value == nint.Zero)
+            return null;
+
+        uint bits = *(uint*)(*(nint*)_cosmicUnlockBase.Value + 3788);
+        return (bits & (1u << (int)(row - 1))) != 0;
+    }
 
     public static bool IsAetheryteUnlocked(uint aetheryteId, out byte subIndex)
     {

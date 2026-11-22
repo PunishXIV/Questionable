@@ -35,6 +35,36 @@
       "TerritoryId": 1237,
       "Steps": [
         {
+          "DataId": 2015100,
+          "Position": [-3.8, 1.64, -32.15],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Moongate Hub"
+        },
+        {
+          "DataId": 2015053,
+          "Position": [-540, 59.55, -526.75],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Calabash Cove"
+        },
+        {
+          "DataId": 2015054,
+          "Position": [427.23, 45.55, 497.46],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Weddingway's Bower"
+        },
+        {
+          "DataId": 2015055,
+          "Position": [-619.56, 50.55, 399.77],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Gleamslope"
+        },
+        {
+          "DataId": 2015056,
+          "Position": [629.8, -73.95, -572.78],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Lunar Nadir"
+        },
+        {
           "DataId": 1052618,
           "Position": [-51.255127, -3.3378603E-06, -72.64819],
           "InteractionType": "Interact"

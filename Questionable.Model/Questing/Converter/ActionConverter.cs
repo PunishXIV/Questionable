@@ -68,6 +68,15 @@ public sealed class ActionConverter() : EnumConverter<EAction>(Values)
         { EAction.Jin, "Jin" },
         { EAction.RabbitMedium, "Rabbit Medium" },
         { EAction.MagitekPulse, "Magitek Pulse" },
-        { EAction.MagitekThunder, "Magitek Thunder" }
+        { EAction.MagitekThunder, "Magitek Thunder" },
+        { EAction.SmashAxe, "Smash Axe" },
+        { EAction.Capture, "Capture" },
+        { EAction.FirstBattlehorn, "First Battlehorn" },
+        { EAction.SecondBattlehorn, "Second Battlehorn" },
+        { EAction.ThirdBattlehorn, "Third Battlehorn" },
+        { EAction.Trick, "Trick" },
+        { EAction.AvalancheAxe, "Avalanche Axe" },
+        { EAction.MistralAxe, "Mistral Axe" },
+        { EAction.GaleAxe, "Gale Axe" }
     };
 }

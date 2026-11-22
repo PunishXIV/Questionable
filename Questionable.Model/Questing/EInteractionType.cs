@@ -45,4 +45,6 @@ public enum EInteractionType
     Fish,
     Macro,
     CleanUpOtherQuests,
+    FillGauge,
+    AssignBattlehorn,
 }

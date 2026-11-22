@@ -98,8 +98,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             ShowTooltip = () => QstWidgets.Tooltip(_L("Open settings"))
         });
 
-        if (!_configuration.General.HideSponsorButton)
-            AddSponsorButton();
+        AddSponsorButton();
 
         _queueComponent = queueComponent;
         _queueComponent.OpenRequested += OnQueueRequested;

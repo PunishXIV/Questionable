@@ -17,7 +17,7 @@ internal static class SkipCondition
             : target;
     }
 
-    internal sealed class Factory : SimpleTaskFactory
+    internal sealed class Factory(AetheryteFunctions aetheryteFunctions) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -36,6 +36,7 @@ internal static class SkipCondition
                 step.RequiredCurrentJob.Count == 0 &&
                 step.RequiredQuestAcceptedJob.Count == 0 &&
                 step.InteractionType != EInteractionType.AttuneAetherCurrent &&
+                !(step.InteractionType == EInteractionType.Interact && aetheryteFunctions.IsCosmicAethernet(step.DataId)) &&
                 fishAhead.Count == 0)
             {
                 return null;
@@ -363,6 +364,13 @@ internal static class SkipCondition
 
         private bool CheckAetheryte(QuestStep step, SkipStepConditions skipConditions)
         {
+            if (step is { InteractionType: EInteractionType.Interact, DataId: { } crystal } &&
+                aetheryteFunctions.IsCosmicAethernetUnlocked(crystal) == true)
+            {
+                logger.LogInformation("Skipping step, as the Cosmic Exploration aethernet is unlocked");
+                return true;
+            }
+
             if (step is { Aetheryte: { } aetheryteLocation, InteractionType: EInteractionType.AttuneAetheryte } &&
                 aetheryteFunctions.IsAetheryteUnlocked(aetheryteLocation))
             {

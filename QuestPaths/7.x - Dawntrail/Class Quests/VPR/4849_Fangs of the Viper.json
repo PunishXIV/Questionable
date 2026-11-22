@@ -31,61 +31,6 @@
           }
         },
         {
-          "InteractionType": "EquipItem",
-          "ItemId": 43178,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 43179,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 43180,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 43181,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "EquipItem",
-          "ItemId": 43182,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
           "InteractionType": "CreateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },

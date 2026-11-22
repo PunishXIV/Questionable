@@ -272,7 +272,6 @@ internal sealed class Configuration : IPluginConfiguration
         public bool ShowIncompleteSeasonalEvents { get; set; } = true;
         public bool ShowCompleteSeasonalEvents { get; set; }
         public bool QuestIcons { get; set; } = true;
-        public bool HideSponsorButton { get; set; }
         public bool HideRemainingTasks { get; set; }
         public bool HideInAllInstances { get; set; } = true;
         public bool HidePatch { get; set; }

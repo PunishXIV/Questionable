@@ -167,12 +167,21 @@ public sealed class ActionStepTests
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.Casting].Returns(true);
         var executor = new ActionStep.UseOnObjectExecutor(null!, interrupt, condition,
-            NullLogger<ActionStep.UseOnObject>.Instance, new FakeQuestGameState());
+            NullLogger<ActionStep.UseOnObject>.Instance, new FakeQuestGameState(), null!);
         var task = new ActionStep.UseOnObject(123, QuestTestData.CreateQuest(new QuestId(92)), EAction.Cure,
             withFlags ? [new QuestWorkValue(16), null, null, null, null, null] : []);
         typeof(TaskExecutor<ActionStep.UseOnObject>).GetProperty("Task", BindingFlags.Instance | BindingFlags.NonPublic)!
             .SetValue(executor, task);
         return executor;
+    }
+
+    [Fact]
+    public void BlueMageSlot_PicksFirstFreeOrSkips()
+    {
+        uint[] slots = [11385, 0, 11386, 0];
+        Assert.Null(ActionStep.UseOnObjectExecutor.BlueMageSlot(slots, 11385));
+        Assert.Equal(1, ActionStep.UseOnObjectExecutor.BlueMageSlot(slots, 11387));
+        Assert.Equal(-1, ActionStep.UseOnObjectExecutor.BlueMageSlot([1, 2], 11387));
     }
 
     [Fact]
