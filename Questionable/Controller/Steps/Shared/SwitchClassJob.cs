@@ -1,4 +1,5 @@
 ﻿using ECommons.ExcelServices;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Controller.Steps.Interactions;
 namespace Questionable.Controller.Steps.Shared;
@@ -29,6 +30,18 @@ internal static class SwitchClassJob
             : sequence.Steps.Take(sequence.Steps.IndexOf(step)).LastOrDefault(x => x.InteractionType == EInteractionType.SwitchClass);
 
     internal static unsafe bool IsCurrentJob(Job job) => PlayerState.Instance()->CurrentClassJobId == (uint)job;
+
+    internal static unsafe Job? AcceptedJob(ElementId id, IReadOnlyList<Job> questJobs)
+    {
+        if (id is not QuestId questId || !QuestManager.Instance()->IsQuestAccepted(questId.Value))
+            return null;
+
+        Job accepted = (Job)QuestManager.Instance()->GetQuestById(questId.Value)->AcceptClassJob;
+        return NeedsSwitch(accepted, (Job)PlayerState.Instance()->CurrentClassJobId, questJobs) ? accepted : null;
+    }
+
+    internal static bool NeedsSwitch(Job accepted, Job current, IReadOnlyList<Job> questJobs) =>
+        accepted != Job.ADV && accepted != current && questJobs.Count > 0 && !questJobs.Contains(current);
 
     internal sealed record Task(Job ClassJob) : ITask
     {

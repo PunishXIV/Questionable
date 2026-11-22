@@ -864,7 +864,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             unsafe
             {
-                int playerLevel = PlayerState.Instance()->CurrentLevel;
+                int playerLevel = SwitchClassJob.AcceptedJob(quest.Id, quest.Info.ClassJobs) is { } acceptedJob
+                    ? _questFunctions.GetClassJobLevel(acceptedJob)
+                    : PlayerState.Instance()->CurrentLevel;
                 if (QuestSelectionController.IsLevelTooHigh(playerLevel, quest))
                 {
                     _stopPolicy.ReportLevelTooLow(quest.Info, playerLevel);
