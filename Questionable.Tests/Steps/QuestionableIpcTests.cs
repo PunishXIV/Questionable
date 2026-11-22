@@ -39,28 +39,9 @@ public sealed class QuestionableIpcTests
         SetField(ipc, "_logger", NullLogger<QuestionableIpc>.Instance);
         SetField(ipc, "_questRegistry", registry);
         SetField(ipc, "_questFunctions", functions);
-        SetField(ipc, "_retainerPass", RuntimeHelpers.GetUninitializedObject(typeof(RetainerPass)));
 
         object? result = typeof(QuestionableIpc).GetMethod("StartQuest", BindingFlags.Instance | BindingFlags.NonPublic)!
             .Invoke(ipc, ["435", true]);
-
-        Assert.Equal(false, result);
-    }
-
-    [Theory]
-    [InlineData("StartQuest")]
-    [InlineData("StartEventQuests")]
-    public void RetainerPass_RejectsStart(string method)
-    {
-        var pass = (RetainerPass)RuntimeHelpers.GetUninitializedObject(typeof(RetainerPass));
-        SetField(pass, "<State>k__BackingField", RetainerPass.EState.Waiting);
-        var ipc = (QuestionableIpc)RuntimeHelpers.GetUninitializedObject(typeof(QuestionableIpc));
-        SetField(ipc, "_logger", NullLogger<QuestionableIpc>.Instance);
-        SetField(ipc, "_retainerPass", pass);
-
-        object?[] args = method == "StartQuest" ? ["435", true] : [];
-        object? result = typeof(QuestionableIpc).GetMethod(method, BindingFlags.Instance | BindingFlags.NonPublic)!
-            .Invoke(ipc, args);
 
         Assert.Equal(false, result);
     }

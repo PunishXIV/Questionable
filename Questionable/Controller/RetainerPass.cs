@@ -39,6 +39,7 @@ internal sealed class RetainerPass : IDisposable
     private readonly ILogger<RetainerPass> _logger;
 
     private Character? _home;
+    private Quest? _nextQuest;
     private bool _seenOn;
     private DateTime _nextPass = DateTime.MinValue;
     private DateTime _startedAt;
@@ -70,6 +71,8 @@ internal sealed class RetainerPass : IDisposable
     public EState State { get; private set; }
 
     public bool IsActive => State != EState.Idle;
+
+    public bool PluginRun { get; set; }
 
     public string? Status => IsActive && _home != null
         ? _LF("AutoRetainer multi-mode pass, then back to {0}", _home.Name)
@@ -104,6 +107,7 @@ internal sealed class RetainerPass : IDisposable
         }
 
         _home = home;
+        _nextQuest = _questController.NextQuest?.Quest;
         State = EState.Handing;
         _logger.LogInformation("Handing over to AutoRetainer for one multi-mode pass; coming back to {Name}@{World}",
             home.Name, home.World);
@@ -150,9 +154,12 @@ internal sealed class RetainerPass : IDisposable
         {
             if (_questController.IsRunning)
             {
-                Cancel();
+                if (!PluginRun)
+                    Cancel();
                 return;
             }
+
+            PluginRun = false;
 
             if (now >= _deadline)
             {
@@ -220,6 +227,8 @@ internal sealed class RetainerPass : IDisposable
                     !_questController.CanPrepareQuestTasks())
                     return;
 
+                // Another plugin's quest start on an alt replaces the next quest.
+                _questController.SetNextQuest(_nextQuest);
                 End();
                 _questStarter.Start("AutoRetainer");
                 break;
@@ -259,7 +268,9 @@ internal sealed class RetainerPass : IDisposable
     private void End()
     {
         State = EState.Idle;
+        PluginRun = false;
         _home = null;
+        _nextQuest = null;
     }
 
     private void Print(string message) => _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);

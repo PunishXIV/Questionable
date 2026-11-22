@@ -180,14 +180,15 @@ internal sealed class QuestionableIpc : IDisposable
     private bool StartEventQuests()
     {
         _logger.LogDebug("StartEventQuests()");
-        if (IsPassRunning())
-            return false;
-
         Quest? Next() => NextEventQuest(_eventInfo.GetActiveQuests(),
             id => _questRegistry.TryGetQuest(id, out Quest? quest) ? quest : null,
             id => _questFunctions.IsQuestAccepted(id), id => _questFunctions.IsReadyToAcceptQuest(id));
 
-        return Next() is { } first && _questStarter.StartEventQuests(first, Next, "IPCEventQuests");
+        if (Next() is not { } first)
+            return false;
+
+        MarkPassRun();
+        return _questStarter.StartEventQuests(first, Next, "IPCEventQuests");
     }
 
     internal static Quest? NextEventQuest(IEnumerable<ElementId> active, Func<ElementId, Quest?> path,
@@ -197,9 +198,6 @@ internal sealed class QuestionableIpc : IDisposable
     private bool StartQuest(string questId, bool single)
     {
         _logger.LogDebug("StartQuest({QuestId},{Single})", questId, single);
-        if (IsPassRunning())
-            return false;
-
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? quest))
         {
@@ -213,6 +211,7 @@ internal sealed class QuestionableIpc : IDisposable
             if (!_questStarter.CanStartQuest("IPCQuestSelection"))
                 return false;
 
+            MarkPassRun();
             _questController.SetNextQuest(quest);
             if (single)
                 _questStarter.StartSingleQuest("IPCQuestSelection");
@@ -224,14 +223,14 @@ internal sealed class QuestionableIpc : IDisposable
         return false;
     }
 
-    // Automaton's AutoRetainer x Questionable starts quests from AutoRetainer's per-character step, which would cancel our pass.
-    private bool IsPassRunning()
+    // Automaton's AutoRetainer x Questionable runs event quests on each character mid-pass; that must not cancel the pass.
+    private void MarkPassRun()
     {
         if (!_retainerPass.IsActive)
-            return false;
+            return;
 
-        _logger.LogInformation("Ignoring a quest start from another plugin during the AutoRetainer pass");
-        return true;
+        _logger.LogInformation("Another plugin started questing during the AutoRetainer pass; the pass carries on");
+        _retainerPass.PluginRun = true;
     }
 
     private StepData? GetStepData()
