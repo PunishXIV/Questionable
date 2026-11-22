@@ -117,6 +117,12 @@ internal sealed class CharacterRun : IDisposable
             return;
         }
 
+        if (_lifestream.GetVersion() == null)
+        {
+            PrintError(_L("Lifestream is needed to switch characters."));
+            return;
+        }
+
         List<Character> queue = GetQueue(_autoRetainer.GetCharacters(), _configuration.Characters.EnabledIds, CurrentId);
         if (queue.Count == 0)
         {
@@ -189,10 +195,11 @@ internal sealed class CharacterRun : IDisposable
                     return;
                 }
 
-                if (!_autoRetainer.CanRelog)
+                // Logged out (title screen) falls through to the change.
+                if (_clientState.IsLoggedIn && !IsPlayerReady())
                     return;
 
-                if (_autoRetainer.Relog(target))
+                if (_lifestream.ChangeCharacter(target.Name, target.World))
                 {
                     State = EState.Switching;
                     _deadline = now + Timeout;

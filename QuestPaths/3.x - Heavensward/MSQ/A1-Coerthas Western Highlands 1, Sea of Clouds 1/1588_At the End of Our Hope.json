@@ -15,7 +15,6 @@
           "DataId": 2005408,
           "Position": [103.77649, 102.311646, -42.404846],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Walk straight to Gorgagne Mills basement, ignore footprints",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"

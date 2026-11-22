@@ -184,7 +184,7 @@ internal sealed class RetainerPass : IDisposable
                     return;
                 }
 
-                // Logged out (title screen) falls through to the relog.
+                // Logged out (title screen) falls through to the change.
                 if (_clientState.IsLoggedIn && !IsPlayerReady())
                     return;
 
@@ -194,7 +194,7 @@ internal sealed class RetainerPass : IDisposable
                     _nextTry = now + SettleTime;
                     _deadline = now + Timeout;
                 }
-                else if (_autoRetainer.CanRelog && _autoRetainer.Relog(home))
+                else if (_lifestream.ChangeCharacter(home.Name, home.World))
                 {
                     State = EState.Switching;
                     _deadline = now + Timeout;

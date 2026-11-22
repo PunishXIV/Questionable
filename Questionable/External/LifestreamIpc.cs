@@ -12,6 +12,7 @@ internal sealed class LifestreamIpc : Ipc, IDisposable
     [EzIPC("AethernetTeleportByPlaceNameId")] private readonly Func<uint, bool> _aethernetByPlaceNameId = null!;
     [EzIPC("AethernetTeleportToFirmament")] private readonly Func<bool> _aethernetToFirmament = null!;
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
+    [EzIPC("ChangeCharacter")] private readonly Func<string, string, ErrorCode> _changeCharacter = null!;
 
     public LifestreamIpc(ILogger<LifestreamIpc> logger)
     {
@@ -24,6 +25,15 @@ internal sealed class LifestreamIpc : Ipc, IDisposable
     public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy(), fallback: false);
 
     public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy(), fallback: false);
+
+    // Logs out first when in game; AutoRetainer's own relog call only works at the title screen.
+    public bool ChangeCharacter(string name, string world)
+    {
+        ErrorCode result = IpcInvoke.SafeFunc(() => _changeCharacter(name, world), ErrorCode.Plugin_is_busy, _logger,
+            "Unable to ask Lifestream to change character");
+        _logger.LogInformation("Asked Lifestream to change to {Name}@{World}: {Result}", name, world, result);
+        return result == ErrorCode.Success;
+    }
 
     public bool Teleport(string destination)
     {

@@ -26,7 +26,6 @@
           "DataId": 1046388,
           "Position": [-275.01337, 27.017544, 636.8047],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }

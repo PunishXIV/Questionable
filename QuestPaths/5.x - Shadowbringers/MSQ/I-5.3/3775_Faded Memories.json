@@ -37,7 +37,6 @@
           "Position": [1.822433, -200.0001, -448.3325],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true},
-          "Comment": "Fight NPCs, then Elidibus",
           "DialogueChoices": [
             {
               "Type": "List",

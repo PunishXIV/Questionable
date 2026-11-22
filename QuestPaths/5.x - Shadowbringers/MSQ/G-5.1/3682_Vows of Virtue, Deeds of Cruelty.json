@@ -33,7 +33,6 @@
           "DataId": 1032081,
           "Position": [-2.4262085, 0, -9.10968],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Estinien vs. Arch Ultima",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"

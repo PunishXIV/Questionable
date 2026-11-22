@@ -102,7 +102,6 @@
         {
           "DataId": 2002376,
           "Position": [-427.75616, -0.77819824, -273.82324],
-          "Comment": "Magitek field generators on both sides of south gate",
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true

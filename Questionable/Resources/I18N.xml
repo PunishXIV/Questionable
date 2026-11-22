@@ -4571,6 +4571,11 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/CharacterRun.cs -->
+    <Key>Lifestream is needed to switch characters.</Key>
+    <Value lang="en">Lifestream is needed to switch characters.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/CharacterRun.cs -->
     <Key>Tick at least one character on the Profiles page first.</Key>
     <Value lang="en">Tick at least one character on the Profiles page first.</Value>
     <Value lang="ja-jp">先にプロファイルページでキャラクターを1人以上選択してください。</Value>
