@@ -8,21 +8,6 @@
       "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": [456.65674, 438.04077, 310.2312],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [314.9004, 481.99442, 148.11926],
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
           "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "AcceptQuest"
@@ -67,20 +52,6 @@
           ]
         },
         {
-          "DataId": 2013072,
-          "Position": [456.65674, 438.04077, 310.2312],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "$": "Portal to A-4 Research"
-        },
-        {
-          "DataId": 1043865,
-          "Position": [301.8081, 482.13644, 165.02625],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "$": "Last Dregs Host Unit"
-        },
-        {
           "DataId": 1043936,
           "Position": [194.56775, 567.4998, 250.93457],
           "InteractionType": "Interact"
@@ -91,21 +62,6 @@
       "Sequence": 255,
       "TerritoryId": 960,
       "Steps": [
-        {
-          "DataId": 2013072,
-          "Position": [456.65674, 438.04077, 310.2312],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [314.9004, 481.99442, 148.11926],
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
         {
           "DataId": 1043417,
           "Position": [314.9004, 481.99442, 148.11926],

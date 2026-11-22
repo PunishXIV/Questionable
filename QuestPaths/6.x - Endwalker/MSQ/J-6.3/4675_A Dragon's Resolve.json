@@ -23,46 +23,6 @@
           "SkipConditions": { "StepIf": { "InTerritory": [1119] } }
         },
         {
-          "DataId": 2013228,
-          "Position": [-20.370789, 399.49634, -818.72284],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1119,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [40.10075, 365.8499, -591.2186],
-                "TerritoryId": 1119,
-                "MaximumDistance": 10
-              },
-              "NearPosition": {
-                "Position": [-249.92749, -173, 126.35986],
-                "TerritoryId": 1119,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
-          "DataId": 2013230,
-          "Position": [350.08765, 34.86682, -433.95135],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1119,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [316.7218, 70.88865, -116.9074],
-                "TerritoryId": 1119,
-                "MaximumDistance": 100
-              },
-              "NearPosition": {
-                "Position": [-249.92749, -173, 126.35986],
-                "TerritoryId": 1119,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1044271,
           "Position": [-249.92749, -173, 126.35986],
           "InteractionType": "AcceptQuest"
@@ -73,12 +33,6 @@
       "Sequence": 1,
       "TerritoryId": 1119,
       "Steps": [
-        {
-          "DataId": 2013231,
-          "Position": [-408.83502, -117.81494, 371.96924],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1119
-        },
         {
           "DataId": 1044274,
           "Position": [351.15576, 33.99946, -381.5824],
@@ -101,12 +55,6 @@
       "Sequence": 3,
       "TerritoryId": 1119,
       "Steps": [
-        {
-          "DataId": 2013230,
-          "Position": [350.08765, 34.86682, -433.95135],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1119
-        },
         {
           "DataId": 2013233,
           "Position": [-261.1582, -165.36206, 229.08362],

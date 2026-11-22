@@ -26,28 +26,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": [-456.7709, 43.310535, 387.23517],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": [-443.18756, 51.336708, 390.36755],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-441.0496, 53.51014, 385.287],
-            "StopDistance": 0.5
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 1013421,
           "Position": [-455.16138, 53.48893, 379.3545],
           "InteractionType": "Interact",

@@ -23,13 +23,6 @@
       "TerritoryId": 401,
       "Steps": [
         {
-          "Position": [-756.4804, -13.877342, -121.33485],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-759.4263, -9.201294, -110.85681]
-          }
-        },
-        {
           "DataId": 2006229,
           "Position": [-759.4263, -9.201294, -110.85681],
           "InteractionType": "AttuneAetherCurrent",

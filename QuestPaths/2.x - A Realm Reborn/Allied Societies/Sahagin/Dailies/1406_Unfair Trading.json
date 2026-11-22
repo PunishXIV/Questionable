@@ -54,21 +54,6 @@
       "TerritoryId": 138,
       "Steps": [
         {
-          "DataId": 2004014,
-          "Position": [-826.84064, -29.34314, 971.4656],
-          "TargetTerritoryId": 138,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-826.84064, -29.34314, 971.4656],
-                "TerritoryId": 138,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1005940,
           "Position": [-226.12347, -40.48583, 57.083984],
           "InteractionType": "CompleteQuest"

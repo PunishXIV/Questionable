@@ -43,14 +43,6 @@
           "AetherCurrentId": 2818374
         },
         {
-          "Position": [475.2184, -17.473314, 47.986946],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [477.34882, -16.407324, 43.802086],
-            "DelaySeconds": 0.25
-          }
-        },
-        {
           "DataId": 1040052,
           "Position": [349.14172, -14.766006, -111.61981],
           "InteractionType": "Interact"
@@ -100,13 +92,6 @@
       "Sequence": 6,
       "TerritoryId": 961,
       "Steps": [
-        {
-          "Position": [-55.662647, -16.696985, -81.29199],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-58.75509, -15.402463, -83.133934]
-          }
-        },
         {
           "Position": [-64.19198, -15.332472, -84.65695],
           "InteractionType": "Emote",

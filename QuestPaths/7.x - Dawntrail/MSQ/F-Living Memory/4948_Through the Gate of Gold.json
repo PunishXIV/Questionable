@@ -12,25 +12,6 @@
       "TerritoryId": 1189,
       "Steps": [
         {
-          "DataId": 1048029,
-          "Position": [-711.1162, -199.5873, 624.1703],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1189,
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "ExcelSheet": "EventPathMove",
-              "Prompt": 3997700,
-              "Yes": true
-            }
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1047813,
           "Position": [-826.32184, -297.8752, 875.15063],
           "InteractionType": "Interact"

@@ -64,14 +64,6 @@
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
-          "Position": [-295.46515, 70.620026, -271.55838],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-304.04395, 65.77775, -264.9213]
-          },
-          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
-        },
-        {
           "DataId": 2002382,
           "Position": [-326.9142, 64.60336, -267.98495],
           "InteractionType": "Interact",

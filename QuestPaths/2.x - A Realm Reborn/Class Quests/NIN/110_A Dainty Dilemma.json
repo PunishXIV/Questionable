@@ -42,19 +42,6 @@
       "TerritoryId": 129,
       "Steps": [
         {
-          "DataId": 2004936,
-          "Position": [-151.90363, -128.16058, 256.8551],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
-        },
-        {
           "Position": [174.3623, 39.811382, 52.27733],
           "TerritoryId": 135,
           "InteractionType": "Combat",

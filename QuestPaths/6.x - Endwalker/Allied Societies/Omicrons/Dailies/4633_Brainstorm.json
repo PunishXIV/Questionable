@@ -8,21 +8,6 @@
       "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": [456.65674, 438.04077, 310.2312],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [314.9004, 481.99442, 148.11926],
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
           "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "AcceptQuest"
@@ -62,21 +47,6 @@
       "Sequence": 255,
       "TerritoryId": 960,
       "Steps": [
-        {
-          "DataId": 2013072,
-          "Position": [456.65674, 438.04077, 310.2312],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [314.9004, 481.99442, 148.11926],
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
         {
           "DataId": 1043417,
           "Position": [314.9004, 481.99442, 148.11926],

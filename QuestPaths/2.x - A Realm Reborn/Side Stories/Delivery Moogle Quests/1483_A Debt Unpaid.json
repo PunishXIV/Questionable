@@ -12,20 +12,6 @@
       "TerritoryId": 129,
       "Steps": [
         {
-          "DataId": 1003611,
-          "Position": [9.781006, 20.999247, 15.0911255],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 128,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "Warp",
-              "Prompt": null,
-              "Answer": 131093
-            }
-          ]
-        },
-        {
           "DataId": 1000972,
           "Position": [20.279175, 40.19993, -6.1189575],
           "TerritoryId": 128,

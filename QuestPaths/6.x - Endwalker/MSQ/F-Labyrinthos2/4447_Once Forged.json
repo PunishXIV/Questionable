@@ -57,15 +57,6 @@
           "AetherCurrentId": 2818316
         },
         {
-          "Position": [-120.48093, -21.96263, 685.2332],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-124.55376, -19.659834, 686.864],
-            "StopDistance": 0.5,
-            "DelaySeconds": 0.25
-          }
-        },
-        {
           "DataId": 2011986,
           "Position": [-128.06903, -20.523438, 676.7223],
           "InteractionType": "AttuneAetherCurrent",

@@ -12,14 +12,6 @@
       "TerritoryId": 134,
       "Steps": [
         {
-          "Position": [202.80931, 111.89438, -216.29411],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [192.77504, 98.07924, -211.47052],
-            "StopDistance": 5
-          }
-        },
-        {
           "DataId": 1002629,
           "Position": [52.750366, 64.48143, -185.71759],
           "InteractionType": "Interact"

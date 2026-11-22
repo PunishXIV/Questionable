@@ -12,39 +12,6 @@
       "TerritoryId": 816,
       "Steps": [
         {
-          "Position": [33.10641, 106.830055, -842.54065],
-          "Mount": false,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [27.701914, 108.983986, -844.172],
-            "DelaySeconds": 0.25
-          }
-        },
-        {
-          "Position": [27.701914, 108.983986, -844.172],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [25.056326, 110.28013, -846.34796],
-            "DelaySeconds": 0.1
-          }
-        },
-        {
-          "Position": [25.056326, 110.28013, -846.34796],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [21.853422, 111.3742, -847.6101],
-            "DelaySeconds": 0.1
-          }
-        },
-        {
-          "Position": [21.853422, 111.3742, -847.6101],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [18.00289, 111.8963, -847.90894],
-            "DelaySeconds": 0.1
-          }
-        },
-        {
           "DataId": 2010059,
           "Position": [12.832764, 110.73462, -851.25507],
           "InteractionType": "AttuneAetherCurrent",
@@ -101,86 +68,6 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [10249, 10250, 10251]
-        },
-        {
-          "Position": [533.1536, 109.112404, -154.17346],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [536.68494, 111.31597, -155.06671],
-            "DelaySeconds": 0.2
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                64
-              ]
-            }
-          }
-        },
-        {
-          "Position": [536.68494, 111.31597, -155.06671],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [539.31104, 113.00041, -155.02728],
-            "DelaySeconds": 0.1
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                64
-              ]
-            }
-          }
-        },
-        {
-          "Position": [539.31104, 113.00041, -155.02728],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [542.8287, 114.6852, -154.211],
-            "DelaySeconds": 0.1
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                64
-              ]
-            }
-          }
-        },
-        {
-          "Position": [542.8287, 114.6852, -154.211],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [547.785, 116.76792, -152.87657],
-            "DelaySeconds": 0.2
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                64
-              ]
-            }
-          }
         },
         {
           "DataId": 2009835,

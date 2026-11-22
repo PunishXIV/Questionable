@@ -30,12 +30,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "DataId": 2008450,
-          "Position": [-126.54315, 306.50793, 186.26685],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 620
-        },
-        {
           "DataId": 1023834,
           "Position": [-148.4856, 300.39352, 265.73584],
           "InteractionType": "Interact",

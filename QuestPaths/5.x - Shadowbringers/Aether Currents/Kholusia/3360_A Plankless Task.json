@@ -23,14 +23,6 @@
       "TerritoryId": 814,
       "Steps": [
         {
-          "Position": [-447.98965, 7.657998, 532.0151],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-443.48367, 8.676657, 532.7491],
-            "DelaySeconds": 0.25
-          }
-        },
-        {
           "DataId": 2010260,
           "Position": [-444.38855, 8.987488, 532.6771],
           "InteractionType": "UseItem",

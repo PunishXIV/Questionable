@@ -12,14 +12,6 @@
       "TerritoryId": 958,
       "Steps": [
         {
-          "Position": [548.5352, -39.76098, -149.24379],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [540.68915, -36.65, -148.65724],
-            "Type": "RepeatedJumps"
-          }
-        },
-        {
           "Position": [-159.59418, 10.8, -468.8335],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",

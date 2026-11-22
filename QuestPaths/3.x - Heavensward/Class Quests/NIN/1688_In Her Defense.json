@@ -30,21 +30,6 @@
       "TerritoryId": 137,
       "Steps": [
         {
-          "DataId": 2004966,
-          "Position": [-16.128845, -23.300598, 258.13684],
-          "TargetTerritoryId": 137,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-6.8438888, 39.451496, 259.44324],
-                "TerritoryId": 137,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 2005940,
           "Position": [-4.867676, 39.414062, 263.7826],
           "InteractionType": "Combat",

@@ -27,18 +27,6 @@
       "TerritoryId": 1031,
       "Steps": [
         {
-          "Position": [-6.1157894, 2.0849845, -4.654831],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-1.5539734, 3.6164591, -1.1141448]
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
-        },
-        {
           "DataId": 2012128,
           "Position": [-0.001528129, 4.931927, 0.01416349],
           "InteractionType": "Interact",

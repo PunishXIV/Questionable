@@ -20,44 +20,6 @@
       "TerritoryId": 628,
       "Steps": [
         {
-          "Position": [-73.08532, 11.800039, -121.551636],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-66.46514, 11.201871, -121.663506]
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                { "High": 8 }
-              ]
-            }
-          }
-        },
-        {
-          "Position": [-62.787693, 12.727818, -119.47375],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-57.925667, 13.13041, -121.465996]
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                { "High": 8 }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1021264,
           "Position": [-55.0788, 13.0164, -121.712],
           "InteractionType": "Interact",
@@ -70,13 +32,6 @@
             { "High": 8 }
           ],
           "$": "auto: todo area 7y from lua ACTOR1 -> 1021264 (red panda cub)"
-        },
-        {
-          "Position": [-56.67938, 14.5379095, -119.54045],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-56.66354, 13.831044, -116.01323]
-          }
         },
         {
           "DataId": 1021265,

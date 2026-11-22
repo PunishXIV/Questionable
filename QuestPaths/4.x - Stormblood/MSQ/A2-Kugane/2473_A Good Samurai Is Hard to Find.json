@@ -98,14 +98,6 @@
       "TerritoryId": 628,
       "Steps": [
         {
-          "Position": [-132.33249, 4.510561, 117.53347],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-131.75923, 6.245034, 123.01645],
-            "StopDistance": 0.5
-          }
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Kugane] Pier #1"
         },

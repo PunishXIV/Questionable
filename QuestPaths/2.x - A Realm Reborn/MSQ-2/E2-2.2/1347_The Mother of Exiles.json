@@ -33,14 +33,6 @@
       "TerritoryId": 131,
       "Steps": [
         {
-          "Position": [-5.6346426, 29.999994, 18.160692],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-6.9986115, 15.00001, 4.392646]
-          },
-          "SkipConditions": {"StepIf": {"InTerritory": [130]}}
-        },
-        {
           "DataId": 1008604,
           "Position": [34.77527, 7.1999946, -93.91931],
           "TerritoryId": 130,

@@ -35,60 +35,6 @@
       "TerritoryId": 959,
       "Steps": [
         {
-          "Position": [-428.4264, -168, -676.6854],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-431.76593, -166.55412, -679.5478],
-            "DelaySeconds": 0.1
-          },
-          "Comment": "Platform 1"
-        },
-        {
-          "Position": [-431.76593, -166.55412, -679.5478],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-430.03564, -165.05414, -682.2485],
-            "DelaySeconds": 0.1
-          },
-          "Comment": "Platform 2"
-        },
-        {
-          "Position": [-430.03564, -165.05414, -682.2485],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-428.49857, -163.55414, -684.8062],
-            "DelaySeconds": 0.1
-          },
-          "Comment": "Platform 3"
-        },
-        {
-          "Position": [-428.49857, -163.55414, -684.8062],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-427.48633, -162.05414, -687.71533],
-            "DelaySeconds": 0.1
-          },
-          "Comment": "Platform 4"
-        },
-        {
-          "Position": [-427.48633, -162.05414, -687.71533],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-427.7118, -160.55414, -691.17804],
-            "DelaySeconds": 0.1
-          },
-          "Comment": "Platform 5"
-        },
-        {
-          "Position": [-427.7118, -160.55414, -691.17804],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-428.33154, -159.05412, -694.7048],
-            "DelaySeconds": 0.1
-          },
-          "Comment": "Platform 6"
-        },
-        {
           "DataId": 2012611,
           "Position": [-450.33954, -158.12933, -694.42285],
           "InteractionType": "Interact"

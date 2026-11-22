@@ -11,22 +11,6 @@
       "TerritoryId": 130,
       "Steps": [
         {
-          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
-          "DataId": 1004433,
-          "Position": [-23.605713, 83.19999, -2.3041382],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 144,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                144,
-                388
-              ],
-              "AetheryteUnlocked": "Gold Saucer"
-            }
-          }
-        },
-        {
           "DataId": 1011022,
           "Position": [-38.895264, -2.7930364E-06, 97.33728],
           "TerritoryId": 144,
@@ -38,23 +22,6 @@
       "Sequence": 1,
       "TerritoryId": 144,
       "Steps": [
-        {
-          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
-          "DataId": 1004433,
-          "Position": [-23.605713, 83.19999, -2.3041382],
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 144,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                144,
-                388
-              ],
-              "AetheryteUnlocked": "Gold Saucer"
-            }
-          }
-        },
         {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Entrance & Card Squares"
@@ -71,22 +38,6 @@
       "TerritoryId": 130,
       "Steps": [
         {
-          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
-          "DataId": 1004433,
-          "Position": [-23.605713, 83.19999, -2.3041382],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 144,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                144,
-                388
-              ],
-              "AetheryteUnlocked": "Gold Saucer"
-            }
-          }
-        },
-        {
           "DataId": 1011038,
           "Position": [-58.884644, 1.6000003, 27.634033],
           "TerritoryId": 144,
@@ -99,22 +50,6 @@
       "TerritoryId": 130,
       "Steps": [
         {
-          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
-          "DataId": 1004433,
-          "Position": [-23.605713, 83.19999, -2.3041382],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 144,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                144,
-                388
-              ],
-              "AetheryteUnlocked": "Gold Saucer"
-            }
-          }
-        },
-        {
           "DataId": 1010478,
           "Position": [-99.19891, -0.86297023, 66.11731],
           "TerritoryId": 144,
@@ -126,36 +61,6 @@
       "Sequence": 4,
       "TerritoryId": 144,
       "Steps": [
-        {
-          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
-          "DataId": 1004433,
-          "Position": [-23.605713, 83.19999, -2.3041382],
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 144,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                144,
-                388
-              ],
-              "AetheryteUnlocked": "Gold Saucer"
-            }
-          }
-        },
-        {
-          "DataId": 1011044,
-          "Position": [-84.45868, 3.7690625E-06, 29.06836],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 388,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                388
-              ]
-            }
-          }
-        },
         {
           "TerritoryId": 388,
           "InteractionType": "AttuneAethernetShard",

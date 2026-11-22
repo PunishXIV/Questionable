@@ -16,14 +16,6 @@
           "AethernetShard": "[Ul'dah] Alchemists' Guild"
         },
         {
-          "Position": [5.7796226, 30, -21.571625],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [3.6504946, 14.688499, -13.443354],
-            "StopDistance": 5
-          }
-        },
-        {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] Gladiators' Guild"
         },

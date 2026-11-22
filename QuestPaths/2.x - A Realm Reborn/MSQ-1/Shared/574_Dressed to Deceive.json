@@ -26,26 +26,6 @@
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
-          "Position": [-409.44067, -48.15, 101.391624],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-408.8825, -55.764168, 110.76053],
-            "StopDistance": 5
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                16
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1004506,
           "Position": [-416.64764, -54.15, 96.42175],
           "InteractionType": "Interact",

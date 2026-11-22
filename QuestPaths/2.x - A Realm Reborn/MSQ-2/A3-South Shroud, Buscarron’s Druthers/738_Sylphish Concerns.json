@@ -20,46 +20,11 @@
           "Comment": "Enemy loses aggro by the next waypoint"
         },
         {
-          "Position": [-108.2742, 5.6416674, -80.21974],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-111.25065, 8.312978, -82.8167],
-            "DelaySeconds": 0.25
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-            }
-          }
-        },
-        {
           "DataId": 2001953,
           "Position": [-116.41113, 11.032227, -84.97754],
           "InteractionType": "Interact",
           "$": "16 0  16 0  0 128 -> 32 1  16 0  0 136",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-        },
-        {
-          "Position": [-103.87269, 5.116502, -73.9041],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
-          "Position": [-90.467575, 3.3634722, -27.515985],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-84.96217, 6.1436205, -23.793756],
-            "DelaySeconds": 0.25
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
         },
         {
           "DataId": 2001951,

@@ -8,14 +8,6 @@
       "TerritoryId": 1346,
       "Steps": [
         {
-          "DataId": 1053611,
-          "Position": [-77.958374, 5, -15.396423],
-          "TerritoryId": 1278,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1346,
-          "Comment": "This requires queueing into Occult Crescent: North Horn, so isn't started automatically"
-        },
-        {
           "DataId": 2015429,
           "Position": [882.8706, 258.5, 878.4737],
           "InteractionType": "Interact",

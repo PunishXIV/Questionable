@@ -67,12 +67,6 @@
       "TerritoryId": 138,
       "Steps": [
         {
-          "DataId": 1008802,
-          "Position": [-814.84705, -42.154568, 694.3312],
-          "TargetTerritoryId": 138,
-          "InteractionType": "Interact"
-        },
-        {
           "DataId": 1005939,
           "Position": [-246.27802, -41.834713, 53.050713],
           "InteractionType": "CompleteQuest"

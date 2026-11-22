@@ -96,20 +96,6 @@
       "TerritoryId": 1309,
       "Steps": [
         {
-          "DataId": 1054364,
-          "Position": [-53.97119, 5.798081, -100.93848],
-          "TerritoryId": 133,
-          "TargetTerritoryId": 1309,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                1309
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1054370,
           "Position": [-13.01593, 0.0015269257, 24.429688],
           "InteractionType": "Interact",

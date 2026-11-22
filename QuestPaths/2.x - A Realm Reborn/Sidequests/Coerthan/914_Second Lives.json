@@ -38,14 +38,6 @@
           ]
         },
         {
-          "Position": [487.73697, 248.64696, -279.76614],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [489.87454, 250.22758, -281.01483]
-          },
-          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
-        },
-        {
           "DataId": 2002410,
           "Position": [497.52026, 252.52148, -289.63153],
           "InteractionType": "Interact",

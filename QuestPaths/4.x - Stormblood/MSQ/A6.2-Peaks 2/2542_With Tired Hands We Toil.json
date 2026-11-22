@@ -29,12 +29,6 @@
       "TerritoryId": 620,
       "Steps": [
         {
-          "DataId": 1021557,
-          "Position": [-130.02216, 305.38147, 189.71533],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 620
-        },
-        {
           "DataId": 2009009,
           "Position": [-115.40399, 305.47034, 161.3031],
           "InteractionType": "Combat",

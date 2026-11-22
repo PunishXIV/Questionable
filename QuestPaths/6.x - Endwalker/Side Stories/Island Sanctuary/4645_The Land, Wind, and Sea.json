@@ -8,26 +8,6 @@
       "TerritoryId": 135,
       "Steps": [
         {
-          "DataId": 1043621,
-          "Position": [174.12073, 14.095924, 667.5669],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1055,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "custom/007/CtsMjiEntrance_00798",
-              "Prompt": "TEXT_CTSMJIENTRANCE_00798_SYSTEM_000_000",
-              "Answer": "TEXT_CTSMJIENTRANCE_00798_Q1_000_000"
-            },
-            {
-              "Type": "YesNo",
-              "ExcelSheet": "custom/007/CtsMjiEntrance_00798",
-              "Prompt": "TEXT_CTSMJIENTRANCE_00798_SYSTEM_000_005",
-              "Yes": true
-            }
-          ]
-        },
-        {
           "DataId": 1044156,
           "Position": [-276.3562, 39.993896, 224.26172],
           "TerritoryId": 1055,

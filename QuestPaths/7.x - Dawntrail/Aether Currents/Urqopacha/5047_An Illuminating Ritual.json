@@ -48,19 +48,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": [530.3024, 111.13472, 604.9302],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [533.03186, 112.241264, 603.3909],
-            "DelaySeconds": 0.25
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2014134,
           "Position": [533.53174, 114.24426, 603.0823],
           "InteractionType": "UseItem",

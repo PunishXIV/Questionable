@@ -52,14 +52,6 @@
       "TerritoryId": 813,
       "Steps": [
         {
-          "Position": [794.2938, 33.028008, 6.1403913],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [783.8015, 21.431774, 6.478429],
-            "StopDistance": 0.25
-          }
-        },
-        {
           "DataId": 1028280,
           "Position": [784.0542, 21.414852, -9.414856],
           "InteractionType": "CompleteQuest"

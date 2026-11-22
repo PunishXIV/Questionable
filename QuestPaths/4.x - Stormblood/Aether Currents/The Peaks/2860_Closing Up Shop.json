@@ -49,17 +49,6 @@
       "TerritoryId": 620,
       "Steps": [
         {
-          "DataId": 1021557,
-          "Position": [-130.02216, 305.38147, 189.71533],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 620,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Lochs - Porta Praetoria"
-            }
-          }
-        },
-        {
           "DataId": 1020893,
           "Position": [283.77197, 322.87146, 752.34607],
           "InteractionType": "CompleteQuest"

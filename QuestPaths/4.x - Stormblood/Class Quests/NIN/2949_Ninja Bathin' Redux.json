@@ -90,27 +90,6 @@
       "TerritoryId": 628,
       "Steps": [
         {
-          "JumpDestination": {
-            "Position": [-70.46664, 19.583387, -163.98515]
-          },
-          "Position": [-75.76606, 18, -164.78288],
-          "InteractionType": "Jump"
-        },
-        {
-          "JumpDestination": {
-            "Position": [-67.09049, 20.600859, -163.70255]
-          },
-          "Position": [-70.54904, 19.550425, -163.96664],
-          "InteractionType": "Jump"
-        },
-        {
-          "JumpDestination": {
-            "Position": [-67.90176, 24.143099, -159.9363]
-          },
-          "Position": [-68.15528, 20.696194, -163.4804],
-          "InteractionType": "Jump"
-        },
-        {
           "DataId": 2008933,
           "Position": [-40.05493, 18.783813, -143.3891],
           "InteractionType": "Interact"

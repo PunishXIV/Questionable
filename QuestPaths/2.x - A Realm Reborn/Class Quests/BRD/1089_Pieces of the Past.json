@@ -49,17 +49,6 @@
         },
         {
           "Comment": "Detour to unlock Northern Thanalan for job quests",
-          "Position": [-26.738379, 33, -495.80618],
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Northern Thanalan - Camp Bluefog"
-            }
-          }
-        },
-        {
-          "Comment": "Detour to unlock Northern Thanalan for job quests",
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Northern Thanalan - Camp Bluefog",
           "SkipConditions": {

@@ -17,21 +17,6 @@
           "PickUpQuestId": 434
         },
         {
-          "$": "Airship to Gold Saucer if you haven't unlocked the aetheryte",
-          "DataId": 1004433,
-          "Position": [-23.605713, 83.19999, -2.3041382],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 144,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                144
-              ],
-              "AetheryteUnlocked": "Gold Saucer"
-            }
-          }
-        },
-        {
           "DataId": 1011022,
           "Position": [-38.895264, -2.7930364E-06, 97.33728],
           "TerritoryId": 144,

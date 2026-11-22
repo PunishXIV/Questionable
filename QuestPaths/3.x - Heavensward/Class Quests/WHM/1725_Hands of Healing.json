@@ -8,24 +8,6 @@
       "TerritoryId": 153,
       "Steps": [
         {
-          "Position": [-146.86935, 8.006159, 268.78055],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-137.77051, 7.7094107, 275.28036],
-            "DelaySeconds": 0.75
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "NearPosition": {
-                "Position": [-139.45221, 8.712891, 281.69678],
-                "MaximumDistance": 3,
-                "TerritoryId": 153
-              }
-            }
-          }
-        },
-        {
           "DataId": 1006751,
           "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "AcceptQuest"
@@ -47,24 +29,6 @@
       "Sequence": 2,
       "TerritoryId": 153,
       "Steps": [
-        {
-          "Position": [-146.86935, 8.006159, 268.78055],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-137.77051, 7.7094107, 275.28036],
-            "DelaySeconds": 0.75
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "NearPosition": {
-                "Position": [-139.45221, 8.712891, 281.69678],
-                "MaximumDistance": 3,
-                "TerritoryId": 153
-              }
-            }
-          }
-        },
         {
           "DataId": 1006751,
           "Position": [-139.45221, 8.712891, 281.69678],
@@ -121,24 +85,6 @@
       "Sequence": 255,
       "TerritoryId": 153,
       "Steps": [
-        {
-          "Position": [-146.86935, 8.006159, 268.78055],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-137.77051, 7.7094107, 275.28036],
-            "DelaySeconds": 0.75
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "NearPosition": {
-                "Position": [-139.45221, 8.712891, 281.69678],
-                "MaximumDistance": 3,
-                "TerritoryId": 153
-              }
-            }
-          }
-        },
         {
           "DataId": 1006751,
           "Position": [-139.45221, 8.712891, 281.69678],

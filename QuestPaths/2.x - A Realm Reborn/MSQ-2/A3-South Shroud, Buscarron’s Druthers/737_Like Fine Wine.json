@@ -12,12 +12,6 @@
       "TerritoryId": 139,
       "Steps": [
         {
-          "DataId": 1003586,
-          "Position": [-342.12262, -1.0249884, 111.46704],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 139
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Upper La Noscea - Camp Bronze Lake"
         },

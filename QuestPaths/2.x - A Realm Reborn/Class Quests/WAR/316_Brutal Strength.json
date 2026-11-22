@@ -55,18 +55,6 @@
       "TerritoryId": 134,
       "Steps": [
         {
-          "Position": [-182.58467, 39.786213, -46.777275],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-192.3236, 41.73779, -49.477997]
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1002111,
           "Position": [-206.80554, 41.757885, -39.627747],
           "InteractionType": "Interact"

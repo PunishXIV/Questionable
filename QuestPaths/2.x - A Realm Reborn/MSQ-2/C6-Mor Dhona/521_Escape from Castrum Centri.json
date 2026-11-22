@@ -23,21 +23,6 @@
           "Comment": "Can be re-bought from Glaumunt in Mor Dhona"
         },
         {
-          "DataId": 2002502,
-          "Position": [0.7476196, -156.93909, 16.281311],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 156,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [0.7476196, -156.93909, 16.281311],
-                "TerritoryId": 156,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1007537,
           "Position": [-358.23608, -16.248493, -481.13226],
           "InteractionType": "Interact"

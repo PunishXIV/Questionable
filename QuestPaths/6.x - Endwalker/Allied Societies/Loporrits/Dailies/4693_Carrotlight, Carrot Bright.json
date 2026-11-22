@@ -8,21 +8,6 @@
       "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 2013249,
-          "Position": [-26.34522, -132.0332, -445.35086],
-          "TargetTerritoryId": 959,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-201.89743, -49.149708, -273.6312],
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1044403,
           "Position": [-203.5401, -48.949707, -273.60956],
           "InteractionType": "AcceptQuest"
@@ -48,21 +33,6 @@
           "InteractionType": "Craft",
           "ItemId": 38863,
           "ItemCount": 3
-        },
-        {
-          "DataId": 2013249,
-          "Position": [-26.34522, -132.0332, -445.35086],
-          "TargetTerritoryId": 959,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-201.89743, -49.149708, -273.6312],
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            }
-          }
         },
         {
           "DataId": 1044403,

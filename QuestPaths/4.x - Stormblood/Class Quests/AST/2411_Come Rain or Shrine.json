@@ -79,15 +79,6 @@
       "TerritoryId": 628,
       "Steps": [
         {
-          "Position": [-53.109528, 15.469519, 22.387312],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Type": "RepeatedJumps",
-            "Position": [-57.846985, -3, 25.16211],
-            "StopDistance": 4
-          }
-        },
-        {
           "DataId": 1021261,
           "Position": [-57.846985, -3, 25.16211],
           "InteractionType": "SinglePlayerDuty",

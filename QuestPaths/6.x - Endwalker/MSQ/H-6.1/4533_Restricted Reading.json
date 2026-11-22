@@ -70,22 +70,7 @@
           "DataId": 2012847,
           "Position": [242.08435, 0.3508911, 119.43237],
           "Mount": false,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "DataId": 2012847,
-          "Position": [242.08435, 0.3508911, 119.43237],
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },

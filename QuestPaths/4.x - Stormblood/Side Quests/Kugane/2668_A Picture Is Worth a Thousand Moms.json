@@ -16,29 +16,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": [-74.28216, 18, -164.39622],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-67.259315, 20.530502, -163.86617],
-            "StopDistance": 0.5,
-            "Type": "RepeatedJumps"
-          }
-        },
-        {
-          "Position": [-37.806847, 21.332985, -161.45049],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-31.778416, 23.141376, -159.92921]
-          }
-        },
-        {
-          "Position": [-32.529102, 23.164635, -159.86409],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-28.255697, 24.146992, -159.81477]
-          }
-        },
-        {
           "Position": [-28.255697, 24.146992, -159.81477],
           "InteractionType": "Jump",
           "JumpDestination": {

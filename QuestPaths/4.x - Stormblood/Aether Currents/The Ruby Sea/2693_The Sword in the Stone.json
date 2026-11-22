@@ -45,22 +45,6 @@
       "TerritoryId": 613,
       "Steps": [
         {
-          "Position": [617.17053, -29.302427, -130.22484],
-          "Mount": false,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [604.2836, -34.756268, -136.64783]
-          }
-        },
-        {
-          "Position": [601.5953, -36.643044, -144.1365],
-          "Mount": false,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [598.6192, -43.845043, -154.23668]
-          }
-        },
-        {
           "Position": [594.64703, -43.869747, -156.01822],
           "InteractionType": "WalkTo"
         }

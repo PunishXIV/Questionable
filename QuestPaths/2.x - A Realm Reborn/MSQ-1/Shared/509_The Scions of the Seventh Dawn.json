@@ -12,22 +12,10 @@
       "TerritoryId": 140,
       "Steps": [
         {
-          "DataId": 1004019,
-          "Position": [-335.9579, 13.983717, -99.65674],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 140
-        },
-        {
           "DataId": 1002295,
           "Position": [-246.08228, 32.44368, 383.84058],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179661
-        },
-        {
-          "DataId": 1002039,
-          "Position": [-298.7564, 13.983702, 303.36462],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 140
         },
         {
           "$": "Unlock Vesper Bay taxi",

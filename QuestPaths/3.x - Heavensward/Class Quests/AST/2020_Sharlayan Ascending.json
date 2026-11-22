@@ -22,14 +22,6 @@
           }
         },
         {
-          "Position": [205.51671, 285.27087, 413.4063],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [198.82875, 234.59601, 424.70218],
-            "Type": "SingleJump"
-          }
-        },
-        {
           "DataId": 1006376,
           "Position": [195.3612, 234.79839, 419.3026],
           "InteractionType": "Interact"

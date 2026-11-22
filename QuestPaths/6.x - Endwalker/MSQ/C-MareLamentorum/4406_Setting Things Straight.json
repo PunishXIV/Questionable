@@ -68,14 +68,6 @@
       "TerritoryId": 959,
       "Steps": [
         {
-          "Position": [304.50522, -144, -558.8681],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [315.84082, -156.2339, -577.15063],
-            "StopDistance": 5
-          }
-        },
-        {
           "DataId": 2012012,
           "Position": [316.39575, -154.98596, -595.5444],
           "InteractionType": "AttuneAetherCurrent",

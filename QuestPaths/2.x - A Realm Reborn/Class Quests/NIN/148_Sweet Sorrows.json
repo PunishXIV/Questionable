@@ -31,21 +31,6 @@
       "TerritoryId": 134,
       "Steps": [
         {
-          "DataId": 2004936,
-          "Position": [-151.90363, -128.16058, 256.8551],
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                134,
-                135
-              ]
-            }
-          }
-        },
-        {
           "Position": [509.26575, 95.90476, -446.11078],
           "TerritoryId": 135,
           "InteractionType": "Combat",
@@ -74,12 +59,6 @@
       "TerritoryId": 129,
       "Steps": [
         {
-          "DataId": 1009944,
-          "Position": [-152.66656, 2.8562405, 243.18298],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129
-        },
-        {
           "DataId": 1009943,
           "Position": [-153.36847, -129.4397, 265.88843],
           "InteractionType": "Interact"
@@ -90,18 +69,6 @@
       "Sequence": 4,
       "TerritoryId": 129,
       "Steps": [
-        {
-          "DataId": 2004936,
-          "Position": [-151.90363, -128.16058, 256.8551],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
-            }
-          },
-          "$": "Pathfinder ref"
-        },
         {
           "TerritoryId": 137,
           "InteractionType": "AttuneAetheryte",
@@ -147,12 +114,6 @@
       "Sequence": 255,
       "TerritoryId": 129,
       "Steps": [
-        {
-          "DataId": 1009944,
-          "Position": [-152.66656, 2.8562405, 243.18298],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129
-        },
         {
           "DataId": 1009943,
           "Position": [-153.36847, -129.4397, 265.88843],

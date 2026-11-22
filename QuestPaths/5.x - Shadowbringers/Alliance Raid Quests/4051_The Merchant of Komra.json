@@ -48,12 +48,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "DataId": 2011234,
-          "Position": [-230.12134, -2.609314, 11.612061],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 928
-        },
-        {
           "Position": [-229.71193, -115.06235, -115.379684],
           "InteractionType": "WalkTo"
         },

@@ -51,21 +51,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "DataId": 1008802,
-          "Position": [-814.84705, -42.154568, 694.3312],
-          "TargetTerritoryId": 138,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-814.84705, -42.154568, 694.3312],
-                "TerritoryId": 138,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1008902,
           "Position": [-150.2251, -41.378696, -295.58252],
           "InteractionType": "Interact",

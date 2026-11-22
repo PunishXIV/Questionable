@@ -39,21 +39,6 @@
       "TerritoryId": 137,
       "Steps": [
         {
-          "DataId": 2004966,
-          "Position": [-16.128845, -23.300598, 258.13684],
-          "TargetTerritoryId": 137,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-6.8438888, 39.451496, 259.44324],
-                "TerritoryId": 137,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 2004927,
           "Position": [-10.605103, 41.397705, 267.87207],
           "InteractionType": "Action",

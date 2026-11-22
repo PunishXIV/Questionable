@@ -171,12 +171,6 @@
           }
         },
         {
-          "DataId": 2011234,
-          "Position": [-230.12134, -2.609314, 11.612061],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 928
-        },
-        {
           "Position": [-229.71193, -115.06235, -115.379684],
           "InteractionType": "WalkTo"
         },
@@ -273,13 +267,6 @@
       "TerritoryId": 928,
       "Steps": [
         {
-          "Position": [-366.50647, -241.32147, -311.57397],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-366.558, -249.74661, -301.74612]
-          }
-        },
-        {
           "DataId": 2011112,
           "Position": [-366.47595, -249.80548, -318.89832],
           "InteractionType": "Interact",
@@ -288,12 +275,6 @@
               "NotTargetable": true
             }
           }
-        },
-        {
-          "DataId": 2011269,
-          "Position": [-366.50647, -248.43219, -285.6947],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 928
         },
         {
           "DataId": 2011116,

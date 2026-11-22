@@ -55,13 +55,6 @@
           "TaxiStandId": 1179664
         },
         {
-          "DataId": 1004596,
-          "Position": [-471.27496, -2.650424, 95.628296],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 146,
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Southern Thanalan - Forgotten Springs",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}

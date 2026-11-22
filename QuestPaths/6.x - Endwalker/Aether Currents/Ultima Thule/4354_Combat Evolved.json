@@ -26,13 +26,6 @@
       "TerritoryId": 960,
       "Steps": [
         {
-          "Position": [588.5607, 437.99976, 299.7425],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [602.4677, 438.6276, 297.1612]
-          }
-        },
-        {
           "Position": [656.94653, 437.98502, 302.6322],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

@@ -32,30 +32,6 @@
       "TerritoryId": 155,
       "Steps": [
         {
-          "Position": [267.5908, 236.15701, -328.8527],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [264.47205, 237.91518, -336.72607]
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": [266.22034, 237.89253, -341.475],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [263.72516, 239.88335, -346.17166]
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1007856,
           "Position": [261.76843, 240.06624, -346.48663],
           "InteractionType": "Combat",
@@ -70,20 +46,6 @@
       "Sequence": 2,
       "TerritoryId": 155,
       "Steps": [
-        {
-          "Position": [267.5908, 236.15701, -328.8527],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [264.47205, 237.91518, -336.72607]
-          }
-        },
-        {
-          "Position": [266.22034, 237.89253, -341.475],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [263.72516, 239.88335, -346.17166]
-          }
-        },
         {
           "DataId": 1007856,
           "Position": [261.76843, 240.06624, -346.48663],

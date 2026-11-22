@@ -1,3 +1,4 @@
+using ECommons.ExcelServices;
 using Quest = Questionable.Domain.Quest;
 using EAutomationType = Questionable.Controller.QuestController.EAutomationType;
 using ECurrentQuestType = Questionable.Controller.QuestController.ECurrentQuestType;
@@ -36,6 +37,13 @@ internal sealed class QuestSelectionController(Configuration configuration)
     public static QuestChoice Choose(QuestSelectionContext context) => Rules.Select(x => x.Offer(context)).First(x => x != null)!;
 
     public static bool IsLevelTooHigh(int playerLevel, Quest quest) => playerLevel < quest.Info.Level;
+
+    public static int BestLevel(int currentLevel, IReadOnlyList<Job> questJobs,
+        IEnumerable<(Job ClassJob, short Level, short ItemLevel)> gearSets) =>
+        gearSets.Where(x => questJobs.Count == 0 || questJobs.Contains(x.ClassJob))
+            .Select(x => (int)x.Level)
+            .Append(currentLevel)
+            .Max();
 
     // Busy means in a duty or waiting on another plugin: the stop waits so neither is left half done.
     public static bool IsLevelStopDue(int level, int target, bool running, bool busy) =>

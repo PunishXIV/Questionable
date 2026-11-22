@@ -48,13 +48,6 @@
           "$": "auto: todo location -> 1002235 (Ruimo Falaimo)"
         },
         {
-          "Position": [216.00429, 9.406436, 589.8643],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [219.87828, 10.805254, 590.61914]
-          }
-        },
-        {
           "DataId": 2000765,
           "Position": [218.882, 11.1172, 593.682],
           "InteractionType": "Interact",
@@ -83,13 +76,6 @@
           "$": "auto: todo location -> 2000764 (forecastle planks)"
         },
         {
-          "Position": [210.704, 11.4332, 595.81],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [210.112, 12.5276, 591.434]
-          }
-        },
-        {
           "DataId": 2000760,
           "Position": [210.112, 12.5276, 591.434],
           "InteractionType": "Interact",
@@ -102,13 +88,6 @@
             { "High": 2 }
           ],
           "$": "auto: todo location -> 2000760 (forecastle planks)"
-        },
-        {
-          "Position": [176.8321, 8.973654, 593.45026],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [171.588, 10.3592, 589.783]
-          }
         },
         {
           "DataId": 2000761,

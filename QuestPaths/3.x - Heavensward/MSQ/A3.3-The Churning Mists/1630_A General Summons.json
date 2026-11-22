@@ -36,12 +36,6 @@
       "TerritoryId": 140,
       "Steps": [
         {
-          "DataId": 1004019,
-          "Position": [-335.9579, 13.983504, -99.65674],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 140
-        },
-        {
           "DataId": 1002295,
           "Position": [-246.08228, 32.44368, 383.84058],
           "InteractionType": "UnlockTaxiStand",

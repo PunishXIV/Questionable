@@ -40,22 +40,7 @@
         {
           "DataId": 2005574,
           "Position": [447.07397, -47.715027, -283.68048],
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "DataId": 2005574,
-          "Position": [447.07397, -47.715027, -283.68048],
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,27 +56,7 @@
           "ItemId": 2001590,
           "KillEnemyDataIds": [
             4373
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "DataId": 2005573,
-          "Position": [441.94702, -21.530518, -545.03705],
-          "InteractionType": "Combat",
-          "EnemySpawnType": "AfterItemUse",
-          "ItemId": 2001590,
-          "KillEnemyDataIds": [
-            4373
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
+          ]
         }
       ]
     },

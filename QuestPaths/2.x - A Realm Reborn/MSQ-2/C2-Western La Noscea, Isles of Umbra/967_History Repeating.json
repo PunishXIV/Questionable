@@ -50,21 +50,6 @@
       "TerritoryId": 138,
       "Steps": [
         {
-          "DataId": 1003584,
-          "Position": [317.43335, -36.325005, 352.86487],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 138,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [-312.03174, -41.36315, 682.70386],
-                "TerritoryId": 138,
-                "MaximumDistance": 300
-              }
-            }
-          }
-        },
-        {
           "DataId": 1007716,
           "Position": [-312.03174, -41.36315, 682.70386],
           "InteractionType": "Interact"
@@ -86,13 +71,6 @@
       "Sequence": 255,
       "TerritoryId": 138,
       "Steps": [
-        {
-          "Comment": "Ferry Skipper",
-          "DataId": 1005239,
-          "Position": [-289.9062, -41.2455, 406.51562],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 138
-        },
         {
           "DataId": 1006497,
           "Position": [321.1565, -18.197807, 276.5697],

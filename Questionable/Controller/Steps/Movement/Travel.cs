@@ -5,9 +5,8 @@ namespace Questionable.Controller.Steps.Movement;
 
 internal static class Travel
 {
-    // Territory 1 marks steps that must not travel; duty instances are entered through the duty finder.
-    internal static bool CanTravel(QuestStep step, uint territoryId, TerritoryData territoryData) =>
-        step.TerritoryId != 1 && (territoryId == step.TerritoryId || !territoryData.IsDutyInstance(step.TerritoryId));
+    // Territory 1 marks steps that must not travel.
+    internal static bool CanTravel(QuestStep step) => step.TerritoryId != 1;
 
     // An aetheryte's base id is its Aetheryte row; its own position is inside the crystal.
     internal static uint? InteractTarget(QuestStep step) => step.InteractionType switch

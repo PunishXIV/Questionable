@@ -47,12 +47,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "DataId": 1004596,
-          "Position": [-471.27496, -2.650424, 95.628296],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 146
-        },
-        {
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Southern Thanalan - Forgotten Springs"
         },

@@ -45,22 +45,6 @@
       "TerritoryId": 401,
       "Steps": [
         {
-          "Position": [-578.93396, -129.06596, 523.9582],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-576.6731, -157.6342, 542.19055]
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-693.8125, -109.83532, 490.95898],
-                "TerritoryId": 401,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        },
-        {
           "DataId": 1014075,
           "Position": [-272.17517, -184.2003, 736.0493],
           "InteractionType": "Interact"

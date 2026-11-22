@@ -20,21 +20,6 @@
       "TerritoryId": 198,
       "Steps": [
         {
-          "DataId": 1003611,
-          "Position": [9.781006, 20.999247, 15.0911255],
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 128,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "Warp",
-              "Prompt": null,
-              "Answer": 131093
-            }
-          ]
-        },
-        {
           "DataId": 1000972,
           "Position": [20.279175, 40.19993, -6.1189575],
           "TerritoryId": 128,
@@ -46,20 +31,6 @@
       "Sequence": 2,
       "TerritoryId": 128,
       "Steps": [
-        {
-          "DataId": 1003597,
-          "Position": [8.194031, 39.999973, 17.746216],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 128,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "Warp",
-              "Prompt": null,
-              "Answer": 131092
-            }
-          ]
-        },
         {
           "DataId": 1002695,
           "Position": [-25.92511, 91.999954, -3.6774292],
@@ -226,21 +197,6 @@
       "Sequence": 255,
       "TerritoryId": 131,
       "Steps": [
-        {
-          "DataId": 1004339,
-          "Position": [-25.986206, 81.799995, -31.99823],
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 131,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "Warp",
-              "Prompt": null,
-              "Answer": 131096
-            }
-          ]
-        },
         {
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] The Chamber of Rule"

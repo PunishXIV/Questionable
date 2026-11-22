@@ -8,21 +8,6 @@
       "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": [456.65674, 438.04077, 310.2312],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [314.9004, 481.99442, 148.11926],
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
           "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "AcceptQuest"
@@ -33,27 +18,6 @@
       "Sequence": 1,
       "TerritoryId": 960,
       "Steps": [
-        {
-          "DataId": 2013072,
-          "Position": [456.65674, 438.04077, 310.2312],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [314.9004, 481.99442, 148.11926],
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
-          "DataId": 2013073,
-          "Position": [334.37085, 483.17688, 158.28174],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960
-        },
         {
           "DataId": 1044066,
           "Position": [493.58362, 436.99985, 317.09766],
@@ -83,21 +47,6 @@
       "Sequence": 255,
       "TerritoryId": 960,
       "Steps": [
-        {
-          "DataId": 2013072,
-          "Position": [456.65674, 438.04077, 310.2312],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": [314.9004, 481.99442, 148.11926],
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
         {
           "DataId": 1043417,
           "Position": [314.9004, 481.99442, 148.11926],

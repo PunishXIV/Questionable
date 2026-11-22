@@ -8,19 +8,6 @@
       "TerritoryId": 1185,
       "Steps": [
         {
-          "DataId": 1046681,
-          "Position": [-194.78, 120.77, -359.24],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1170,
-          "DialogueChoices": [
-            {
-              "Prompt": "TEXT_KINGMD111_04922_SYSTEM_000_046",
-              "Yes": true,
-              "Type": "YesNo"
-            }
-          ]
-        },
-        {
           "DataId": 1047037,
           "Position": [1.296936, 3.095488, -64.9577],
           "TerritoryId": 1170,

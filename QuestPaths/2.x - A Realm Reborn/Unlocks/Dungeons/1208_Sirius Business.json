@@ -24,13 +24,6 @@
       "Comment": "Must complete dungeon and Why So Sirius quest\nfor the Hard mode quest to be available",
       "Steps": [
         {
-          "$": "Even with flying unlocked, taking the ferry is quicker",
-          "DataId": 1003584,
-          "Position": [317.43335, -36.325005, 352.86487],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 138
-        },
-        {
           "DataId": 1006503,
           "Position": [-266.5904, -40.040386, 461.72266],
           "InteractionType": "CompleteQuest"

@@ -36,12 +36,6 @@
           "DelaySecondsAtStart": 2
         },
         {
-          "DataId": 2011234,
-          "Position": [-230.12134, -2.609314, 11.612061],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 928
-        },
-        {
           "Position": [-229.96237, -168.28922, -329.79776],
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 2
@@ -55,20 +49,6 @@
           "Position": [-305.8408, -204.6433, -336.8385],
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 2
-        },
-        {
-          "Position": [-366.50647, -241.32147, -311.57397],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-366.558, -249.74661, -301.74612]
-          },
-          "DelaySecondsAtStart": 2
-        },
-        {
-          "DataId": 2011269,
-          "Position": [-366.50647, -248.43219, -285.6947],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 928
         },
         {
           "DataId": 2011440,

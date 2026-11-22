@@ -12,7 +12,6 @@ internal static class MoveTo
         IObjectTable objectTable,
         AetheryteData aetheryteData,
         IEnumerable<IOperationProvider> operationProviders,
-        TerritoryData territoryData,
         ILogger<Factory> logger) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -22,7 +21,7 @@ internal static class MoveTo
 
             // A walk onto a zone line zones the player mid-route, which MappingTheRealm counts as a failed move.
             if (step is { InteractionType: EInteractionType.WalkTo, TargetTerritoryId: { } nextZone } &&
-                nextZone != step.TerritoryId && Travel.CanTravel(step, clientState.TerritoryType, territoryData))
+                nextZone != step.TerritoryId && Travel.CanTravel(step))
                 return [new Travel.Task(nextZone, null, null)];
 
             if (step.Position != null)
@@ -42,7 +41,7 @@ internal static class MoveTo
 
             List<ITask> tasks = [];
             if (clientState.TerritoryType != step.TerritoryId &&
-                Travel.CanTravel(step, clientState.TerritoryType, territoryData) &&
+                Travel.CanTravel(step) &&
                 (Travel.InteractTarget(step) != null || PlaceBoundTerritories.Contains(step.TerritoryId)))
                 tasks.Add(new Travel.Task(step.TerritoryId, null, Travel.InteractTarget(step)));
             if (step is { DataId: not null, StopDistance: not null })
@@ -60,7 +59,7 @@ internal static class MoveTo
                 yield break;
             }
 
-            yield return Travel.CanTravel(step, clientState.TerritoryType, territoryData)
+            yield return Travel.CanTravel(step)
                 ? new Travel.Task(step.TerritoryId, destination, Travel.InteractTarget(step), Travel.StopRange(step), step.Mount == false,
                     step is { InteractionType: EInteractionType.WalkTo, Mount: false } ? step.DataId : null)
                 : new MoveTask(step, destination);

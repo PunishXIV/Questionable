@@ -29,13 +29,6 @@
           "PickUpQuestId": 3537
         },
         {
-          "Position": [-122.537926, 352.3582, -173.26604],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-119.30471, 349.90027, -158.2842]
-          }
-        },
-        {
           "DataId": 2010042,
           "Position": [-62.912964, 345.11328, -16.556091],
           "InteractionType": "AttuneAetherCurrent",
@@ -52,13 +45,6 @@
       "Sequence": 255,
       "TerritoryId": 814,
       "Steps": [
-        {
-          "Position": [-92.20083, 351.37643, -192.06285],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-106.80138, 352.33783, -196.68427]
-          }
-        },
         {
           "DataId": 1030294,
           "Position": [-142.13782, 352.3582, -189.47137],

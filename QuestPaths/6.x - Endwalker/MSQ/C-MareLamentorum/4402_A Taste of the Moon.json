@@ -18,13 +18,6 @@
           "AetherCurrentId": 2818362
         },
         {
-          "Position": [-40.836445, -47.894978, -534.5437],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-175.4516, -136.78821, -511.22217]
-          }
-        },
-        {
           "DataId": 1038908,
           "Position": [-456.10742, -168, -618.7686],
           "InteractionType": "Interact"
@@ -35,73 +28,6 @@
       "Sequence": 2,
       "TerritoryId": 959,
       "Steps": [
-        {
-          "Position": [-451.1233, -168, -623.01324],
-          "Mount": false,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-448.59048, -166.16438, -628.15826]
-          },
-          "Comment": "Platform 1"
-        },
-        {
-          "Position": [-448.59048, -166.16438, -628.15826],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-446.64853, -164.36438, -633.6268]
-          },
-          "Comment": "Platform 2"
-        },
-        {
-          "Position": [-446.64853, -164.36438, -633.6268],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-445.29623, -162.56439, -639.4988]
-          },
-          "Comment": "Platform 3"
-        },
-        {
-          "Position": [-445.29623, -162.56439, -639.4988],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-444.56757, -160.76439, -644.749],
-            "DelaySeconds": 0.7
-          },
-          "Comment": "Platform 4"
-        },
-        {
-          "Position": [-444.56757, -160.76439, -644.749],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-445.23477, -158.96439, -651.54956]
-          },
-          "Comment": "Platform 5"
-        },
-        {
-          "Position": [-445.23477, -158.96439, -651.54956],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-446.45673, -157.16441, -658.25415],
-            "DelaySeconds": 1
-          },
-          "Comment": "Platform 6"
-        },
-        {
-          "Position": [-446.45673, -157.16441, -658.25415],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-449.8167, -155.36438, -663.3387]
-          },
-          "Comment": "Platform 7"
-        },
-        {
-          "Position": [-449.8167, -155.36438, -663.3387],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-458.69357, -155.56349, -661.287]
-          },
-          "Comment": "Jump onto the big thing"
-        },
         {
           "DataId": 2012178,
           "Position": [-486.59497, -154.37555, -689.26526],
@@ -130,15 +56,6 @@
           "Position": [-482.7497, -154.95538, -595.72754],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818360
-        },
-        {
-          "DataId": 1038912,
-          "Position": [-462.06528, -155.5629, -625.5277],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-453.99258, -168, -618.5703],
-            "StopDistance": 8
-          }
         },
         {
           "DataId": 1038912,

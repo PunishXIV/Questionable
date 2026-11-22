@@ -15,18 +15,6 @@
           "Position": [-213.24487, 30.838379, -618.0362],
           "InteractionType": "UseItem",
           "ItemId": 2003594,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "DataId": 2014079,
-          "Position": [-213.24487, 30.838379, -618.0362],
-          "InteractionType": "UseItem",
-          "ItemId": 2003594,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -34,31 +22,7 @@
           "Position": [-272.8161, 37.857544, -504.9058],
           "InteractionType": "UseItem",
           "ItemId": 2003594,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "DataId": 2014078,
-          "Position": [-272.8161, 37.857544, -504.9058],
-          "InteractionType": "UseItem",
-          "ItemId": 2003594,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "DataId": 2014080,
-          "Position": [-349.1112, 37.857544, -610.5898],
-          "InteractionType": "UseItem",
-          "ItemId": 2003594,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2014080,

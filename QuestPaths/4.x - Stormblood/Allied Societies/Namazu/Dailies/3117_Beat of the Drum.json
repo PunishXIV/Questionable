@@ -14,22 +14,7 @@
         {
           "DataId": 1025799,
           "Position": [-175.03625, 66.81902, -437.43042],
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "DataId": 1025799,
-          "Position": [-175.03625, 66.81902, -437.43042],
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },

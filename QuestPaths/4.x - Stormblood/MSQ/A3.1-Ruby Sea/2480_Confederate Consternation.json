@@ -33,24 +33,10 @@
           "TaxiStandId": 1179703
         },
         {
-          "Position": [20.867485, 25.111027, -634.323],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [20.556915, 26.25455, -633.04]
-          }
-        },
-        {
           "DataId": 2007999,
           "Position": [21.286316, 24.002441, -623.621],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818182
-        },
-        {
-          "Position": [20.3128, 26.236794, -629.7924],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [20.867485, 25.111027, -634.323]
-          }
         },
         {
           "DataId": 1021505,

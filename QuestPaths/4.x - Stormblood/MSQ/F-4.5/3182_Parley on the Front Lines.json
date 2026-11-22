@@ -8,19 +8,6 @@
       "TerritoryId": 759,
       "Steps": [
         {
-          "DataId": 1024974,
-          "Position": [-10.330383, 0.19997318, 12.893799],
-          "InteractionType": "Interact",
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "Prompt": "TEXT_STMBDF104_03182_EVENTAREA_WARP_000_004",
-              "Yes": true
-            }
-          ],
-          "TargetTerritoryId": 744
-        },
-        {
           "DataId": 1025597,
           "Position": [0.19836426, 0.021091362, -3.0060425],
           "TerritoryId": 744,

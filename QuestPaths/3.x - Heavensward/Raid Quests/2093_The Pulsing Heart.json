@@ -25,19 +25,6 @@
       "TerritoryId": 505,
       "Steps": [
         {
-          "DataId": 2006431,
-          "Position": [0, -67, 15.5],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 399,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                505
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1014405,
           "Position": [69.62683, 53.404236, 201.5564],
           "TerritoryId": 399,

@@ -65,6 +65,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private readonly Lock _progressLock = new();
     private readonly QuestFunctions _questFunctions;
+    private readonly ClassJobUtils _classJobUtils;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestPriorityManager _priorityManager;
     private readonly QuestProgressTracker _tracker;
@@ -272,7 +273,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         StoryCatchUp storyCatchUp,
         PriorityPresets presets,
         AlliedSocietyQuestFunctions alliedSocietyQuests,
-        QuestReporter reports)
+        QuestReporter reports,
+        ClassJobUtils classJobUtils)
         : base(chatGui, condition, serviceProvider, interruptHandler, toastClassifier,
             notificationMasterIpc.NotifyOnFailure, logger)
     {
@@ -281,6 +283,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _gameFunctions = gameFunctions;
         _gameGui = gameGui;
         _questFunctions = questFunctions;
+        _classJobUtils = classJobUtils;
         _movementController = movementController;
         _combatController = combatController;
         _gatheringController = gatheringController;
@@ -866,7 +869,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             {
                 int playerLevel = SwitchClassJob.AcceptedJob(quest.Id, quest.Info.ClassJobs) is { } acceptedJob
                     ? _questFunctions.GetClassJobLevel(acceptedJob)
-                    : PlayerState.Instance()->CurrentLevel;
+                    : _questFunctions.IsQuestAccepted(quest.Id)
+                        ? PlayerState.Instance()->CurrentLevel
+                        : QuestSelectionController.BestLevel(PlayerState.Instance()->CurrentLevel, quest.Info.ClassJobs,
+                            _classJobUtils.GetJobGearSets(combatOnly: false));
                 if (QuestSelectionController.IsLevelTooHigh(playerLevel, quest))
                 {
                     _stopPolicy.ReportLevelTooLow(quest.Info, playerLevel);

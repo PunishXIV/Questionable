@@ -29,21 +29,6 @@
           "PickUpQuestId": 2782
         },
         {
-          "DataId": 1019424,
-          "Position": [66.056274, 114.904976, -8.377258],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 622,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [63.70642, 114.90497, 72.55664],
-                "TerritoryId": 622,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
           "Position": [-136.6883, 15.660965, 579.51746],
           "InteractionType": "Emote",
           "Emote": "lookout"

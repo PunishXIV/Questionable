@@ -43,19 +43,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": [-299.41455, 200.71986, -238.0671],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-299.78412, 202.14117, -229.18993]
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2008292,
           "Position": [-262.3789, 106.614746, -206.86658],
           "InteractionType": "Interact",
@@ -65,21 +52,6 @@
           "Position": [-207.53746, 108.3858, -304.68738],
           "Mount": false,
           "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
-          "Position": [-207.53746, 108.3858, -304.68738],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-210.40668, 109.666504, -299.794],
-            "StopDistance": 0.5,
-            "DelaySeconds": 0.2
-          },
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked",

@@ -11,12 +11,6 @@
       "TerritoryId": 816,
       "Steps": [
         {
-          "DataId": 1031893,
-          "Position": [-461.53967, 72.51729, 586.48047],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 892
-        },
-        {
           "DataId": 1031890,
           "Position": [55.649536, -6.167951, 8.041443],
           "TerritoryId": 892,
@@ -28,12 +22,6 @@
       "Sequence": 255,
       "TerritoryId": 892,
       "Steps": [
-        {
-          "DataId": 1032365,
-          "Position": [56.412598, 5.5911026, 116.16687],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 816
-        },
         {
           "DataId": 1031806,
           "Position": [-464.59143, 71.76874, 573.8766],

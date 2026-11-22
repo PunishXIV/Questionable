@@ -23,20 +23,6 @@
       "TerritoryId": 128,
       "Steps": [
         {
-          "DataId": 1003597,
-          "Position": [8.194031, 39.999973, 17.746216],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "Warp",
-              "Prompt": null,
-              "Answer": 131094
-            }
-          ]
-        },
-        {
           "DataId": 1003355,
           "Position": [-60.868286, 18.000334, 7.4921875],
           "TerritoryId": 129,
@@ -48,20 +34,6 @@
       "Sequence": 255,
       "TerritoryId": 129,
       "Steps": [
-        {
-          "DataId": 1003611,
-          "Position": [9.781006, 20.999247, 15.0911255],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 128,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "Warp",
-              "Prompt": null,
-              "Answer": 131093
-            }
-          ]
-        },
         {
           "DataId": 1000972,
           "Position": [20.279175, 40.19993, -6.1189575],

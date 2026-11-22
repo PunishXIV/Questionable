@@ -99,13 +99,6 @@
       "TerritoryId": 963,
       "Steps": [
         {
-          "Position": [-3.0175605, 27, 36.584843],
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": [-3.6922705, -1.9999962, 52.106045]
-          }
-        },
-        {
           "DataId": 1042509,
           "Position": [-29.373718, -1.9999962, 130.93762],
           "InteractionType": "Interact"

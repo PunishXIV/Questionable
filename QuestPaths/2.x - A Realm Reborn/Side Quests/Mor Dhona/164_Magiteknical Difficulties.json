@@ -47,22 +47,6 @@
       "TerritoryId": 156,
       "Steps": [
         {
-          "$": "Exit workshop",
-          "DataId": 2002502,
-          "Position": [0.7476196, -156.93909, 16.281311],
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 156,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": [-7.1260376, -158.5813, -2.3651733],
-                "TerritoryId": 156,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "$": "Magitek Converter #49 - Pickup",
           "DataId": 2004314,
           "Position": [-644.67847, -1.3580933, -382.1012],

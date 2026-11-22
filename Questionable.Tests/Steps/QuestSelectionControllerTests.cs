@@ -1,3 +1,4 @@
+using ECommons.ExcelServices;
 using NSubstitute;
 using Questionable.Controller;
 using Questionable.Domain;
@@ -365,6 +366,18 @@ public sealed class QuestSelectionControllerTests
     public void LevelIsTooHighOnlyBelowTheQuestLevel(int playerLevel, int questLevel, bool expected)
     {
         Assert.Equal(expected, QuestSelectionController.IsLevelTooHigh(playerLevel, NewQuest(10, questLevel)));
+    }
+
+    [Fact]
+    public void BestLevel_UsesHighestAllowedGearSet()
+    {
+        (Job, short, short)[] sets =
+            [(Job.WHM, 70, 0), (Job.CRP, 90, 0), (Job.DRK, 30, 0)];
+
+        Assert.Equal(70, QuestSelectionController.BestLevel(30,
+            [Job.WHM, Job.DRK], sets));
+        Assert.Equal(90, QuestSelectionController.BestLevel(30, [], sets));
+        Assert.Equal(30, QuestSelectionController.BestLevel(30, [Job.BLU], sets));
     }
 
     [Theory]
