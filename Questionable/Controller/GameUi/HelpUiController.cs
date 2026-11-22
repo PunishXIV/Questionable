@@ -1,5 +1,6 @@
 ﻿using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 namespace Questionable.Controller.GameUi;
 
@@ -95,13 +96,19 @@ internal sealed class HelpUiController : IDisposable
         }
     }
 
+    // A closed addon's id gets reused; the agent then refreshed the Crafting Log as its notice and crashed (Sub Alt 18:14).
     private unsafe void CloseActiveHelp(string addonName)
     {
         if (!_gameGui.TryGetAddonByName(addonName, out AtkUnitBase* addon) || !addon->IsVisible)
             return;
 
+        AgentInterface* agent = AgentModule.Instance()->GetAgentByInternalId(
+            addonName == "HowToNotice" ? AgentId.HowToNotice : AgentId.HowTo);
+        if (agent == null || !agent->IsAgentActive())
+            return;
+
         _logger.LogInformation("Closing {AddonName} window", addonName);
-        addon->Close(true);
+        agent->Hide();
     }
 
     private unsafe void UnendingCodexPostSetup(AddonEvent type, AddonArgs args)

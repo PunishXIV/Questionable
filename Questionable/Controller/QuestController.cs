@@ -893,6 +893,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return false;
         }
 
+        // The second can run out during the turn-in cutscene, before the next quest can unlock (Sub Alt 18:23:08).
+        if (_gameFunctions.IsOccupied())
+        {
+            _journalSince = null;
+            DebugState = "Waiting for the next priority quest";
+            return true;
+        }
+
         _journalSince ??= DateTime.Now;
         if (QuestSelectionController.IsSettling(_journalSince.Value, DateTime.Now))
         {

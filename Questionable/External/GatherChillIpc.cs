@@ -200,8 +200,13 @@ internal sealed class GatheringState(TimeProvider? timeProvider = null)
 internal sealed class GatheringController(
     GatherChillIpc gatherChillIpc,
     GatheringState operation,
-    MovementController movementController)
+    MovementController movementController,
+    ICondition condition,
+    IDataManager dataManager)
 {
+    // Gather & Chill can circle nodes it never finds valid (Latex on a Lv1 Botanist, Sub Alt 18:34); QST waited forever.
+    internal static readonly TimeSpan NoProgressLimit = TimeSpan.FromMinutes(5);
+
     public enum EStatus
     {
         Gathering,
@@ -210,6 +215,8 @@ internal sealed class GatheringController(
 
     private Request? _request;
     private long? _shortSince;
+    private long _progressSince;
+    private int _lastCount;
 
     public bool Start(Request request, out Guid? id)
     {
@@ -232,6 +239,8 @@ internal sealed class GatheringController(
         movementController.Stop();
         _request = request;
         _shortSince = null;
+        _progressSince = TimeProvider.System.GetTimestamp();
+        _lastCount = GetItemCount(request);
         GatherStartResult result = gatherChillIpc.StartRequest(request.ItemId, remaining, out string message);
         if (result is GatherStartResult.Started or GatherStartResult.Uncertain)
             id = operation.Id;
@@ -247,7 +256,10 @@ internal sealed class GatheringController(
         if (operation.NeedsConfirmation || operation.IsAbandoned)
             throw new TaskException(operation.BlockReason!);
         if (!operation.IsFinished)
+        {
+            CheckProgress(_request);
             return EStatus.Gathering;
+        }
 
         Request request = _request;
         ExternalOperationStatus status = operation.Status;
@@ -267,6 +279,47 @@ internal sealed class GatheringController(
             return EStatus.Complete;
 
         throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"Gather & Chill ended ({status}) without completing {request.Quantity}x {request.ItemId} at collectability {request.Collectability}: {message}"));
+    }
+
+    private void CheckProgress(Request request)
+    {
+        int count = GetItemCount(request);
+        bool gathering = condition[ConditionFlag.Gathering];
+        if (count > _lastCount || gathering)
+        {
+            _lastCount = count;
+            _progressSince = TimeProvider.System.GetTimestamp();
+            return;
+        }
+
+        if (!IsStalled(TimeProvider.System.GetElapsedTime(_progressSince), gathering))
+            return;
+
+        gatherChillIpc.CancelWork();
+        _request = null;
+        throw new NeedsPlayerException(string.Create(CultureInfo.InvariantCulture,
+            $"Gather & Chill gathered no {ItemName(request.ItemId)} for {NoProgressLimit.TotalMinutes} minutes, so Questionable stopped it. Gather them yourself or check Gather & Chill, then restart Questionable."));
+    }
+
+    internal static bool IsStalled(TimeSpan sinceProgress, bool gathering) =>
+        !gathering && sinceProgress >= NoProgressLimit;
+
+    private string ItemName(uint itemId)
+    {
+        try
+        {
+            string? name = itemId >= EventItemStart
+                ? dataManager.GetExcelSheet<Lumina.Excel.Sheets.EventItem>().GetRowOrDefault(itemId)?.Singular.ExtractText()
+                : dataManager.GetExcelSheet<Lumina.Excel.Sheets.Item>().GetRowOrDefault(itemId)?.Name.ExtractText();
+            if (!string.IsNullOrEmpty(name))
+                return name;
+        }
+        catch (Exception)
+        {
+            // Falls back to the id; the stop message matters more than the name.
+        }
+
+        return itemId.ToString(CultureInfo.InvariantCulture);
     }
 
     public void Stop(string label) => gatherChillIpc.CancelWork();

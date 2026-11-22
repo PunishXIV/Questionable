@@ -55,7 +55,7 @@ internal sealed class ExternalOperationFixture : IDisposable
             Framework, new Lazy<OperationCoordinator>(() => Coordinator!), NullLogger<MovementController>.Instance);
         Combat = new(combatModules ?? [], Movement, Substitute.For<ITargetManager>(), Objects,
             Condition, Client, null!, null!, Framework, NullLogger<CombatController>.Instance);
-        GatheringController = new(Gather, Gathering, Movement);
+        GatheringController = new(Gather, Gathering, Movement, Condition, Substitute.For<IDataManager>());
         _dutyProvider = new(AutoDuty, new Configuration(), null!, NullLogger<AutoDutyProvider>.Instance,
             new(), Client, Condition, Substitute.For<IDutyState>(), Navmesh);
         // Deliberately not in run order: the coordinator sorts by Order.
