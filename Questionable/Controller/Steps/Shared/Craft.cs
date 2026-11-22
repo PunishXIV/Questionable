@@ -34,7 +34,7 @@ internal static class Craft
     internal static void ThrowIfHeld(ArtisanStatus status)
     {
         if (status == ArtisanStatus.Stopped)
-            throw new NeedsPlayerException("Artisan has a stop request (it sets one when you queue for a duty); reload Artisan or turn on its resume-after-duty option, then restart Questionable");
+            throw new NeedsPlayerException("Artisan has a stop request; reload Artisan or turn on \"Resume Endurance and unpause lists when done\" in its settings, then restart Questionable");
         if (status == ArtisanStatus.Paused)
             throw new NeedsPlayerException("Artisan's crafting list is paused; resume or cancel it, then restart Questionable");
     }
@@ -79,6 +79,8 @@ internal static class Craft
         public override ETaskResult Update()
         {
             ArtisanStatus status = artisanIpc.GetStatus();
+            if (status == ArtisanStatus.Stopped && artisanIpc.TryClearDutyStop())
+                status = artisanIpc.GetStatus();
             if (status != _lastStatus && status != ArtisanStatus.Idle)
                 logger.LogInformation("Waiting for Artisan to finish ({Status}) before crafting", status);
             _lastStatus = status;

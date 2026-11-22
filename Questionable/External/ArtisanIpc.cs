@@ -9,22 +9,82 @@ internal sealed class ArtisanIpc : Ipc, IDisposable
 {
     private readonly ILogger<ArtisanIpc> _logger;
     private readonly CraftingState _operation;
+    private readonly ICondition _condition;
     private readonly EzIPCDisposalToken[] _disposalTokens;
+    private bool _stoppedBeforeQueue = true;
+    private bool _stopFromQueue;
 
     [EzIPC("CraftItem")] private readonly Action<ushort, int> _craftItem = null!;
     [EzIPC("GetLists")] private readonly Func<Dictionary<int, string>> _getLists = null!;
     [EzIPC("GetStopRequest")] private readonly Func<bool> _getStopRequest = null!;
+    [EzIPC("SetStopRequest")] private readonly Action<bool> _setStopRequest = null!;
     [EzIPC("IsListPaused")] private readonly Func<bool> _isListPaused = null!;
     [EzIPC("IsListRunning")] private readonly Func<bool> _isListRunning = null!;
     [EzIPC("GetEnduranceStatus")] private readonly Func<bool> _getEnduranceStatus = null!;
     [EzIPC("StartListById")] private readonly Action<int> _startListById = null!;
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
 
-    public ArtisanIpc(ILogger<ArtisanIpc> logger, CraftingState operation)
+    public ArtisanIpc(ILogger<ArtisanIpc> logger, CraftingState operation, ICondition condition)
     {
         _logger = logger;
         _operation = operation;
+        _condition = condition;
         _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
+        _condition.ConditionChange += OnConditionChange;
+    }
+
+    // Solo quest battles go through a Duty Finder pop too, and Artisan's "pause when Duty Finder is ready" stops it there.
+    private void OnConditionChange(ConditionFlag flag, bool value)
+    {
+        if (flag == ConditionFlag.InDutyQueue && value)
+            _stoppedBeforeQueue = StopRequested() ?? true;
+        else if (flag == ConditionFlag.WaitingForDutyFinder && !value)
+            _stopFromQueue |= StopFromQueue(_stoppedBeforeQueue, StopRequested() ?? false);
+    }
+
+    internal static bool StopFromQueue(bool stoppedBefore, bool stoppedAfter) => !stoppedBefore && stoppedAfter;
+
+    private bool? StopRequested()
+    {
+        try
+        {
+            return _getStopRequest();
+        }
+        catch (Exception e)
+        {
+            _logger.LogDebug(e, "Unable to read Artisan's stop request");
+            return null;
+        }
+    }
+
+    // Only the stop a duty pop left behind; a stop another plugin set, or a paused list or Endurance, stays.
+    public bool TryClearDutyStop()
+    {
+        if (!_stopFromQueue || _condition[ConditionFlag.InDutyQueue] || _condition[ConditionFlag.WaitingForDutyFinder] ||
+            _condition[ConditionFlag.BoundByDuty] || _condition[ConditionFlag.BoundByDuty56])
+            return false;
+
+        try
+        {
+            if (!_getStopRequest())
+            {
+                _stopFromQueue = false;
+                return false;
+            }
+
+            if (_isListPaused() || _isListRunning() || _getEnduranceStatus())
+                return false;
+
+            _logger.LogInformation("Clearing the stop request Artisan set at a Duty Finder pop");
+            _setStopRequest(false);
+            _stopFromQueue = false;
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogDebug(e, "Unable to clear Artisan's stop request");
+            return false;
+        }
     }
 
     public override string InternalName => "Artisan";
@@ -118,6 +178,7 @@ internal sealed class ArtisanIpc : Ipc, IDisposable
             // Never clear another caller's stop request or resume its paused list.
             if (_getStopRequest())
                 return ArtisanStatus.Stopped;
+            _stopFromQueue = false;
             if (_isListPaused())
                 return ArtisanStatus.Paused;
             if (_isListRunning() || _getEnduranceStatus())
@@ -131,7 +192,11 @@ internal sealed class ArtisanIpc : Ipc, IDisposable
         }
     }
 
-    public void Dispose() => IPCSubscriber.DisposeAll(_disposalTokens);
+    public void Dispose()
+    {
+        _condition.ConditionChange -= OnConditionChange;
+        IPCSubscriber.DisposeAll(_disposalTokens);
+    }
 }
 
 internal enum ArtisanStartResult
@@ -152,7 +217,7 @@ internal enum ArtisanStatus
     Queued,
     Busy,
     Paused,
-    // Artisan sets this itself when you queue for a duty and only clears it after the duty if its resume option is on.
+    // Artisan sets this itself at a Duty Finder pop (quest battles too) and only clears it after the duty if its resume option is on.
     Stopped,
 }
 

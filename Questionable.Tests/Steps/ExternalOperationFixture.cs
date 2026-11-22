@@ -43,7 +43,7 @@ internal sealed class ExternalOperationFixture : IDisposable
         Purchase = new(Clock);
         Gathering = new(Clock);
         Fishing = new(Clock);
-        Artisan = new(NullLogger<ArtisanIpc>.Instance, Crafting);
+        Artisan = new(NullLogger<ArtisanIpc>.Instance, Crafting, Condition);
         Knightshopper = new(NullLogger<KnightshopperIpc>.Instance, Purchase);
         Gather = new(NullLogger<GatherChillIpc>.Instance, Gathering);
         Feesh = new(NullLogger<FeeshIpc>.Instance, Fishing, Framework);
