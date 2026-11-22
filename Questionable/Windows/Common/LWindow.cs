@@ -8,8 +8,8 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     private static readonly (string Name, string Url)[] Contributors =
     [
-        ("aly", "https://github.com/alydevs"),
-        ("Kagekazu", "https://github.com/Kagekazu"),
+        ("aly", "https://ko-fi.com/alydev"),
+        ("Kagekazu", "https://ko-fi.com/kagekazu"),
     ];
 
     private bool _openCredits;
