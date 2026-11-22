@@ -47,4 +47,5 @@ public enum EInteractionType
     CleanUpOtherQuests,
     FillGauge,
     AssignBattlehorn,
+    Capture,
 }

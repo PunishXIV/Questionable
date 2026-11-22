@@ -136,7 +136,11 @@ internal sealed class RetainerPass : IDisposable
             _deadline = now + PassTimeout;
             State = EState.Waiting;
             if (_autoRetainer.StartPass())
+            {
+                // A pass with nothing to do turns multi-mode off again before the next frame.
+                _seenOn = _autoRetainer.IsMultiModeOn;
                 Print(_L("AutoRetainer is doing one multi-mode pass; questing carries on afterwards."));
+            }
             else
                 Return(now);
             return;

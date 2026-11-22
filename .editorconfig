@@ -41,11 +41,6 @@ dotnet_naming_style.pascal_case.required_prefix =
 dotnet_naming_style.pascal_case.required_suffix =
 dotnet_naming_style.pascal_case.word_separator =
 dotnet_naming_style.pascal_case.capitalization = pascal_case
-
-dotnet_naming_style.pascal_case.required_prefix =
-dotnet_naming_style.pascal_case.required_suffix =
-dotnet_naming_style.pascal_case.word_separator =
-dotnet_naming_style.pascal_case.capitalization = pascal_case
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 tab_width = 4
 indent_size = 4
@@ -55,14 +50,12 @@ dotnet_style_null_propagation = true : suggestion
 dotnet_style_prefer_is_null_check_over_reference_equality_method = true : suggestion
 dotnet_style_prefer_auto_properties = true : silent
 dotnet_style_object_initializer = true : suggestion
-dotnet_style_prefer_collection_expression = never 
+dotnet_style_prefer_collection_expression = never
 dotnet_style_collection_initializer = true : suggestion
 dotnet_style_prefer_simplified_boolean_expressions = true : suggestion
 
-# Meziantou.Analyzer (pinned via Directory.Build.props to 3.0.122):
-# opt-in strategy — every rule that's default-on in 3.0.122 is set to 'suggestion' below.
-# When bumping the package, any newly-added MA#### rules will default-on until this block
-# is regenerated (see docs/Rules in that repo).
+# Meziantou.Analyzer (version in Directory.Build.props): rules are listed here as of 3.0.122.
+# Rules added in later versions keep their default severity until they are listed here.
 dotnet_diagnostic.MA0001.severity = none
 dotnet_diagnostic.MA0002.severity = suggestion
 dotnet_diagnostic.MA0004.severity = suggestion
@@ -283,8 +276,6 @@ resharper_arrange_trailing_comma_in_multiline_lists_highlighting = none
 resharper_redundant_if_else_block_highlighting = none
 resharper_convert_to_primary_constructor_highlighting = hint
 resharper_redundant_using_directive_highlighting = warning
-
-[*.cs]
 
 ### Code Styles ###
 
@@ -1203,13 +1194,16 @@ dotnet_diagnostic.CA5405.severity = warning
 dotnet_diagnostic.IDE0320.severity = none
 
 # CS0618: Type or member is obsolete
-dotnet_diagnostic.CS0618.severity = none
+dotnet_diagnostic.CS0618.severity = warning
 
 # Default severity for analyzer diagnostics with category 'Globalization'
 dotnet_analyzer_diagnostic.category-Globalization.severity = none
 
+# CA1310: Specify StringComparison for correctness
+dotnet_diagnostic.CA1310.severity = warning
+
 # CS8618: Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-dotnet_diagnostic.CS8618.severity = none
+dotnet_diagnostic.CS8618.severity = warning
 
 # CA1873: Avoid potentially expensive logging
 dotnet_diagnostic.CA1873.severity = none
@@ -1220,6 +1214,7 @@ dotnet_diagnostic.IDE0057.severity = none
 # IDE0079: Remove unnecessary suppression
 dotnet_diagnostic.IDE0079.severity = none
 
+# IDE1006: Naming rule violation
 dotnet_diagnostic.IDE1006.severity = none
 
 [*.json]

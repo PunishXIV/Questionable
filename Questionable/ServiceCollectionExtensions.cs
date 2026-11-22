@@ -119,6 +119,7 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskFactoryAndExecutor<StatusOff.Task, StatusOff.Factory, StatusOff.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<FillGauge.Task, FillGauge.Factory, FillGauge.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<AssignBattlehorn.Task, AssignBattlehorn.Factory, AssignBattlehorn.Executor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Capture.Task, Capture.Factory, Capture.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<Interact.Task, Interact.Factory, Interact.Executor>();
         serviceCollection.AddTaskFactory<Jump.Factory>();
         serviceCollection.AddTaskExecutor<Jump.SingleTask, Jump.SingleExecutor>();

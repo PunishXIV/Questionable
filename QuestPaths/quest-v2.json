@@ -210,7 +210,8 @@
             "Macro",
             "CleanUpOtherQuests",
             "FillGauge",
-            "AssignBattlehorn"
+            "AssignBattlehorn",
+            "Capture"
           ]
         },
         "Disabled": {
@@ -1707,6 +1708,29 @@
             "required": [
               "PetId",
               "Battlehorn"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Capture"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "PetId": {
+                "type": "integer",
+                "description": "XBMPet row the captured beast counts as",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "DataId",
+              "Position",
+              "PetId"
             ]
           }
         },

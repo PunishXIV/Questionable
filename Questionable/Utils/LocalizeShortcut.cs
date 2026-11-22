@@ -6,8 +6,8 @@ namespace Questionable.Utils;
 internal static class LocalizeShortcut
 {
     private static bool _debug;
-    private static IDataManager _dataManager;
-    private static IClientState _clientState;
+    private static IDataManager _dataManager = null!;
+    private static IClientState _clientState = null!;
 
     internal static void Initialize(Configuration configuration, IDataManager dataManager, IClientState clientState)
     {

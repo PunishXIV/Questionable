@@ -48,13 +48,16 @@ internal sealed unsafe class GameQuestState(
 
     private CacheUtils.CachedValue<IReadOnlyList<(ushort Id, ushort Phase)>> _festivals = new(ttlSeconds: 1);
 
+    private IReadOnlyList<(ushort Id, ushort Phase)> _lastFestivals = [];
+
     public IReadOnlyList<(ushort Id, ushort Phase)> ActiveFestivals => _festivals.Get(ReadFestivals);
 
-    private static IReadOnlyList<(ushort Id, ushort Phase)> ReadFestivals()
+    // Inns and other indoor zones report no festivals even while an event runs.
+    private IReadOnlyList<(ushort Id, ushort Phase)> ReadFestivals()
     {
         GameMain* gameMain = GameMain.Instance();
         if (gameMain == null)
-            return [];
+            return _lastFestivals;
         List<(ushort, ushort)> festivals = [];
         foreach (GameMain.Festival festival in gameMain->ActiveFestivals)
         {
@@ -62,7 +65,9 @@ internal sealed unsafe class GameQuestState(
                 festivals.Add((festival.Id, festival.Phase));
         }
 
-        return festivals;
+        if (festivals.Count == 0)
+            return _lastFestivals;
+        return _lastFestivals = festivals;
     }
 
     public IReadOnlyList<ushort> TrackedQuestIds
@@ -176,17 +181,8 @@ internal sealed unsafe class GameQuestState(
     public bool HasRetainers => RetainerManager.Instance()->MaxRetainerEntitlement != 0;
     public bool IsInstanceContentCompleted(ushort instanceContentId) => UIState.IsInstanceContentCompleted(instanceContentId);
 
-    public bool IsFestivalActive(ushort festivalId, ushort? phase)
-    {
-        for (int i = 0; i < GameMain.Instance()->ActiveFestivals.Length; ++i)
-        {
-            GameMain.Festival festival = GameMain.Instance()->ActiveFestivals[i];
-            if (festival.Id == festivalId)
-                return phase == null || festival.Phase == phase;
-        }
-
-        return false;
-    }
+    public bool IsFestivalActive(ushort festivalId, ushort? phase) =>
+        ActiveFestivals.Any(x => x.Id == festivalId && (phase == null || x.Phase == phase));
 
     public bool IsAetheryteUnlocked(EAetheryteLocation aetheryte) => aetheryteFunctions.IsAetheryteUnlocked(aetheryte);
     public bool IsTeleportUnlocked => aetheryteFunctions.IsTeleportUnlocked();

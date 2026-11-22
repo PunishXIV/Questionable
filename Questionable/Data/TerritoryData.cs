@@ -15,7 +15,7 @@ internal sealed class TerritoryData
     private readonly ImmutableHashSet<uint> _supportCfcs;
     private readonly ImmutableDictionary<uint, string> _territoryNames;
 
-    private static TerritoryData _instance;
+    private static TerritoryData _instance = null!;
 
     public TerritoryData(IDataManager dataManager)
     {

@@ -1,5 +1,5 @@
 ﻿using static Questionable.External.IPCUtils;
-#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
+#pragma warning disable CS0649, CS8618 // EzIPC.Init fills these; an "= null!" would run after it and wipe them.
 namespace Questionable.External;
 
 [RegisterSingleton]

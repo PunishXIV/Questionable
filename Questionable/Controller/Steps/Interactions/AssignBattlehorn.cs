@@ -1,11 +1,10 @@
 using ECommons.UIHelpers.AtkReaderImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Callback = ECommons.Automation.Callback;
 namespace Questionable.Controller.Steps.Interactions;
 
-// Bestiary callbacks and event lookup follow AutoDuty's Crucible code (CrucibleUi).
+// Event lookup follows AutoDuty's Crucible code (CrucibleUi).
 internal static class AssignBattlehorn
 {
     internal sealed class Factory : SimpleTaskFactory
@@ -38,8 +37,6 @@ internal static class AssignBattlehorn
 
     internal sealed class Executor(ILogger<Task> logger) : TaskExecutor<Task>
     {
-        private const string Bestiary = "XBMMonsterNotebook";
-        private const uint BestiaryCommand = 100;
         private const uint FirstEntryParam = 4;
         private static readonly TimeSpan Timeout = TimeSpan.FromSeconds(30);
 
@@ -67,8 +64,7 @@ internal static class AssignBattlehorn
         {
             if (IsAssigned())
             {
-                if (GenericHelpers.TryGetAddonByName<AtkUnitBase>(Bestiary, out var open))
-                    Callback.Fire(open, true, 0);
+                Bestiary.Close();
                 return ETaskResult.TaskComplete;
             }
 
@@ -79,11 +75,10 @@ internal static class AssignBattlehorn
                 return ETaskResult.StillRunning;
             _nextTry = DateTime.Now.AddSeconds(1);
 
-            if (!GenericHelpers.TryGetAddonByName<AtkUnitBase>(Bestiary, out var bestiary) ||
-                !GenericHelpers.IsAddonReady(bestiary))
+            if (!Bestiary.TryGet(out var bestiary))
             {
                 logger.LogInformation("Opening the Master's Bestiary");
-                UIModule.Instance()->ExecuteMainCommand(BestiaryCommand);
+                Bestiary.Open();
                 return ETaskResult.StillRunning;
             }
 
@@ -97,7 +92,7 @@ internal static class AssignBattlehorn
                         if (reader.PageCount == 0 || ++_pagesTried > reader.PageCount)
                             throw new TaskException(
                                 $"Pet {Task.PetId} isn't in the Master's Bestiary (clear its filter if one is set).");
-                        Callback.Fire(bestiary, true, 3, (reader.CurrentPage + 1) % reader.PageCount);
+                        Bestiary.NextPage(bestiary, reader);
                         _step = EStep.Find;
                         return ETaskResult.StillRunning;
                     }

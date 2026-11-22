@@ -106,7 +106,8 @@ internal sealed class NavCheck(
         timeout.CancelAfter(Timeout);
         try
         {
-            return await framework.RunOnFrameworkThread(() => mappingTheRealm.CanReach(territoryId, position, timeout.Token))
+            return await framework.RunOnTick(() => mappingTheRealm.CanReach(territoryId, position, timeout.Token),
+                    cancellationToken: timeout.Token)
                 .ConfigureAwait(false)
                 ? "ok"
                 : "unreachable";

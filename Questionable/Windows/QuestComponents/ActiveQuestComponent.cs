@@ -1127,7 +1127,7 @@ internal sealed partial class ActiveQuestComponent
     {
         if (sameLine)
             ImGui.SameLine();
-        ImGui.TextColored(anyAvailable || anyUnavailable ? QstTheme.Amber : QstTheme.Text, SeIconChar.Hyadelyn.ToIconString());
+        ImGui.TextColored(anyAvailable || anyUnavailable ? QstTheme.Amber : QstTheme.Text, SeIconChar.Hydaelyn.ToIconString());
         if (ImGui.IsItemHovered())
         {
             List<ElementId> availablePriorityQuests = priorityQuests

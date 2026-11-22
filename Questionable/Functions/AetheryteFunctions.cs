@@ -128,8 +128,8 @@ internal sealed unsafe class AetheryteFunctions
     {
         PlayerState* playerState = PlayerState.Instance();
         return playerState != null &&
-               (playerState->FreeAetheryteId == (uint)aetheryteLocation ||
-                playerState->FreeAetherytePSPlus == (uint)aetheryteLocation);
+               (playerState->FreeAetheryteIds[0] == (uint)aetheryteLocation ||
+                playerState->FreeAetheryteIds[1] == (uint)aetheryteLocation);
     }
 
     public AetheryteRegistrationResult CanRegisterFreeOrFavored(EAetheryteLocation aetheryteLocation)
@@ -157,7 +157,7 @@ internal sealed unsafe class AetheryteFunctions
 
         // probably can't register a ps plus aetheryte on pc, so we don't check for that
         if (playerState->IsPlayerStateFlagSet(PlayerStateFlag.IsLoginSecurityToken) &&
-            playerState->FreeAetheryteId == 0)
+            playerState->FreeAetheryteIds[0] == 0)
         {
             return AetheryteRegistrationResult.FreeDestination;
         }

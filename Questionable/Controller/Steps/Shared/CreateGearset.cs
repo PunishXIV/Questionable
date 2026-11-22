@@ -53,8 +53,16 @@ internal static class CreateGearset
                 if (gearset != null && gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) &&
                     gearset->ClassJob == job)
                 {
-                    logger.LogInformation("Gearset {GearsetId} already exists for the current job", i);
-                    return false;
+                    // Equipping a job's weapon leaves another job's set marked as current; switch to this job's set.
+                    if (gearsetModule->CurrentGearsetIndex == i)
+                    {
+                        logger.LogInformation("Gearset {GearsetId} already exists for the current job", i);
+                        return false;
+                    }
+
+                    logger.LogInformation("Switching to gearset {GearsetId}, which already exists for the current job", i);
+                    gearsetModule->EquipGearset(i);
+                    return true;
                 }
             }
 

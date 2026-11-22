@@ -68,8 +68,8 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
 
     public ReadOnlySeString? GetRawDialogueByRowId(string? excelSheet, uint rowId)
     {
-        if (excelSheet?.StartsWith("quest/") == true || excelSheet?.StartsWith("custom/") == true ||
-            excelSheet?.StartsWith("cut_scene/") == true || excelSheet?.StartsWith("dungeon/") == true)
+        if (excelSheet?.StartsWith("quest/", StringComparison.Ordinal) == true || excelSheet?.StartsWith("custom/", StringComparison.Ordinal) == true ||
+            excelSheet?.StartsWith("cut_scene/", StringComparison.Ordinal) == true || excelSheet?.StartsWith("dungeon/", StringComparison.Ordinal) == true)
         {
             try
             {

@@ -111,12 +111,12 @@ internal static class ImGuiComponentsLocal
                     if (!string.IsNullOrEmpty(searchString) &&
                         !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
                         continue;
-                    if (labels[i].StartsWith("##D"))
+                    if (labels[i].StartsWith("##D", StringComparison.Ordinal))
                     {
                         ImGui.TextDisabled(labels[i].Substring(3));
                         continue;
                     }
-                    if (labels[i].StartsWith("##S"))
+                    if (labels[i].StartsWith("##S", StringComparison.Ordinal))
                     {
                         ImGui.Separator();
                         continue;

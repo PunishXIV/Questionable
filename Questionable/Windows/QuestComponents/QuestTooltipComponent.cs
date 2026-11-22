@@ -138,7 +138,7 @@ internal sealed class QuestTooltipComponent
     }
 
     private readonly HashSet<IQuestInfo> _shown = [];
-    private IQuestInfo _rootQuest;
+    private IQuestInfo _rootQuest = null!;
     private void DrawQuestUnlocks(IQuestInfo questInfo, int depth, bool showItemRewards)
     {
         if (depth == 0)

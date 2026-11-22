@@ -129,7 +129,7 @@ internal sealed class RedoComponent
                 {
                     questData.TryGetQuestInfo(new QuestId((ushort)q.RowId), out IQuestInfo? info);
                     return info;
-                }).OfType<IQuestInfo>().ToList(), redoCache, categoryName.StartsWith("???") || chapterName.StartsWith("???"));
+                }).OfType<IQuestInfo>().ToList(), redoCache, categoryName.StartsWith("???", StringComparison.Ordinal) || chapterName.StartsWith("???", StringComparison.Ordinal));
 
             if (_counts.TryGetValue(chapter, out (int Supported, int Completed, int Total) result))
                 journalTable.Counts(result.Supported, result.Total, result.Completed, result.Total);
