@@ -124,9 +124,11 @@
       "TerritoryId": 148,
       "Steps": [
         {
-          "Position": [-38.8953, -32.2804, 326.131],
-          "InteractionType": "Instruction",
-          "Comment": "Go into the crypt below and use Capture on Geshunpest, then continue"
+          "DataId": 19312,
+          "Position": [-137.27974, -25.445045, 373.85355],
+          "InteractionType": "Capture",
+          "PetId": 13,
+          "$": "Geshunpest, Lv14, crypt below"
         },
         {
           "InteractionType": "AssignBattlehorn",
@@ -359,6 +361,71 @@
             }
           },
           "$": "Rothlyt pelican, Lv16"
+        },
+        {
+          "DataId": 22,
+          "Position": [58.61, -17.29, 179.34],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 20,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Roselet, Lv10"
+        },
+        {
+          "DataId": 10,
+          "Position": [-96.53, 3.68, -159.78],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 8,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Diremite, Lv10"
+        },
+        {
+          "DataId": 1446,
+          "Position": [180.57, -0.92, -149.15],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 36,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Treant sapling, Lv12"
+        },
+        {
+          "DataId": 160,
+          "Position": [233.24, -5.64, -176.65],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 41,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Black eft, Lv6"
+        },
+        {
+          "DataId": 142,
+          "Position": [464.15, 20.49, -61.85],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 34,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Anole, Lv9"
         },
         {
           "Comment": "You might get stuck in HandleCombat with the target dummy; interact manually with the guy to finish the quest",
