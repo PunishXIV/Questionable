@@ -83,19 +83,20 @@ internal sealed class QuestReporter
 
     public void Problem(EProblemKind kind) => _pending = kind;
 
-    public void Stopped(QuestProgress? at, string reason, IReadOnlyList<string> recentTasks)
+    public EProblemKind? Stopped(QuestProgress? at, string reason, IReadOnlyList<string> recentTasks)
     {
         EProblemKind? kind = StopKind(_pending, reason);
         _pending = null;
         if (kind == null || at == null ||
             Build(at.Quest, at.Sequence, at.Step, kind, recentTasks) is not { } body)
-            return;
+            return kind;
 
         _problemSent.Add(at.Quest.Id);
         if (Sharing)
             Send(body);
         else if (kind != EProblemKind.PlayerStopped)
             Offer(body);
+        return kind;
     }
 
     public void Completed(Quest quest)

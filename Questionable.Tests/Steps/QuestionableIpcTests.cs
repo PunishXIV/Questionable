@@ -10,6 +10,7 @@ using Questionable.Data;
 using Questionable.Domain;
 using Questionable.External;
 using Questionable.Functions;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
 using Xunit;
@@ -81,6 +82,58 @@ public sealed class QuestionableIpcTests
 
         Assert.Same(next, picked);
         Assert.Null(QuestionableIpc.NextEventQuest([done.Id], id => paths.GetValueOrDefault(id), _ => false, _ => false));
+    }
+
+    [Fact]
+    public void Societies_ParseByName()
+    {
+        List<EAlliedSociety>? parsed = QuestionableIpc.ParseSocieties(["ixal", "Kobolds"]);
+        Assert.Equal([EAlliedSociety.Ixal, EAlliedSociety.Kobolds], parsed);
+    }
+
+    [Theory]
+    [InlineData("Moogle")]
+    [InlineData("None")]
+    [InlineData("999")]
+    public void UnknownSociety_FailsWholeList(string name) =>
+        Assert.Null(QuestionableIpc.ParseSocieties(["Ixal", name]));
+
+    [Fact]
+    public void StepChanged_OnlyOnChange()
+    {
+        (ElementId, byte, int) step = (new QuestId(4797), 3, 0);
+        Assert.False(QuestionableIpc.StepChanged(step, (new QuestId(4797), 3, 0)));
+        Assert.True(QuestionableIpc.StepChanged(step, (new QuestId(4797), 3, 1)));
+        Assert.True(QuestionableIpc.StepChanged(null, step));
+        Assert.False(QuestionableIpc.StepChanged(null, null));
+    }
+
+    [Theory]
+    [InlineData("4797", true)]
+    [InlineData("9999", false)]
+    [InlineData("abc", false)]
+    public void HasQuestPath_KnownQuestsOnly(string questId, bool expected)
+    {
+        var catalog = new FakeQuestCatalog();
+        Quest quest = catalog.Add(TestQuestInfo.Create(4797));
+        var registry = (QuestRegistry)RuntimeHelpers.GetUninitializedObject(typeof(QuestRegistry));
+        SetField(registry, "_quests", new Dictionary<ElementId, Quest> { [quest.Id] = quest });
+        var ipc = (QuestionableIpc)RuntimeHelpers.GetUninitializedObject(typeof(QuestionableIpc));
+        SetField(ipc, "_logger", NullLogger<QuestionableIpc>.Instance);
+        SetField(ipc, "_questRegistry", registry);
+
+        object? result = typeof(QuestionableIpc).GetMethod("HasQuestPath", BindingFlags.Instance | BindingFlags.NonPublic)!
+            .Invoke(ipc, [questId]);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void StopKind_NamesProblemOrFinished()
+    {
+        Assert.Equal("Stuck", QuestController.StopKindName(EProblemKind.Stuck, finished: false));
+        Assert.Equal("Finished", QuestController.StopKindName(null, finished: true));
+        Assert.Equal("", QuestController.StopKindName(null, finished: false));
     }
 
     private static void SetField(object target, string name, object value) =>

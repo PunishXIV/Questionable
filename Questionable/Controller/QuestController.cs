@@ -335,6 +335,22 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public string StopReason { get; private set; } = "";
 
+    // Problem kind name, "Finished", or "" for any other stop.
+    public string StopKind { get; private set; } = "";
+
+    public event EventHandler<StopEventArgs>? Stopped;
+    public event EventHandler<QuestCompletedEventArgs>? QuestCompleted;
+
+    internal static string StopKindName(EProblemKind? kind, bool finished) =>
+        kind?.ToString() ?? (finished ? "Finished" : "");
+
+    public bool IsWaitingOnPlayer =>
+        CurrentQuest?.FindStep()?.InteractionType is EInteractionType.Instruction or
+            EInteractionType.WaitForManualProgress or EInteractionType.Snipe &&
+        _taskQueue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.NextStepOrSequence;
+
+    public string CurrentTaskName => _taskQueue.CurrentTaskExecutor?.CurrentTask?.ToString() ?? "";
+
     public EAutomationType AutomationType
     {
         get => _automationType;
@@ -351,6 +367,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             if (_automationType == EAutomationType.Manual)
             {
                 StopReason = "";
+                StopKind = "";
                 StartedAnyTask = false;
             }
             _automationType = value;
@@ -1159,13 +1176,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         bool wasAutomatic = AutomationType == EAutomationType.Automatic;
         QuestProgress? stoppedAt = wasRunning && IsQuestRun() && SimulatedQuest == null ? StartedQuest : null;
         ClearTasksInternal();
-        _reports.Stopped(stoppedAt, policyReason ?? label, RecentTasks);
+        EProblemKind? problem = _reports.Stopped(stoppedAt, policyReason ?? label, RecentTasks);
         if (!wasRunning)
             return;
 
         _logger.LogInformation("Stopping automatic questing: {Label}", label);
         AutomationType = EAutomationType.Manual;
         StopReason = policyReason ?? label;
+        StopKind = StopKindName(problem, finished);
         if (clearQuest)
         {
             StartedQuest = null;
@@ -1187,6 +1205,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 }
             }
         }
+
+        Stopped?.Invoke(this, new StopEventArgs(StopKind, StopReason));
     }
 
     public void StopAll(string label) => StopAll(label, requested: false);
@@ -1399,6 +1419,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             if (_dailies != null && !_questFunctions.IsPriorityQuestDone(completed.ElementId))
                 return;
             NoteDailyCompleted(completed.ElementId);
+            QuestCompleted?.Invoke(this, new QuestCompletedEventArgs(completed.ElementId));
             if (SimulatedQuest == null && IsQuestRun() &&
                 _questRegistry.TryGetQuest(completed.ElementId, out Quest? quest))
                 _reports.Completed(quest);
@@ -1512,14 +1533,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public bool CanSkipStep() => CanSkipStep(CurrentQuest);
 
-    public void SkipStep()
+    public bool SkipStep()
     {
         if (CurrentQuest is not { } current || !CanSkipStep(current))
-            return;
+            return false;
 
         if (!HasExternalOperation)
             _movementController.Stop();
         Skip(current.Quest.Id, current.Sequence);
+        return true;
     }
 
     public void Skip(ElementId elementId, byte sequence)

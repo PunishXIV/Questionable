@@ -27,6 +27,31 @@ internal sealed class QuestionableIpc : IDisposable
     private const string IpcRedoLookupIndex = "Questionable.RedoLookupIndex";
     private const string IpcGetStopReason = "Questionable.GetStopReason";
     private const string IpcStartEventQuests = "Questionable.StartEventQuests";
+    private const string IpcGetStopKind = "Questionable.GetStopKind";
+    private const string IpcIsWaitingOnPlayer = "Questionable.IsWaitingOnPlayer";
+    private const string IpcHasQuestPath = "Questionable.HasQuestPath";
+    private const string IpcSkipStep = "Questionable.SkipStep";
+    private const string IpcSetStopAfterCurrentQuest = "Questionable.SetStopAfterCurrentQuest";
+    private const string IpcGetCurrentTask = "Questionable.GetCurrentTask";
+    private const string IpcGetRemainingTasks = "Questionable.GetRemainingTasks";
+    private const string IpcStartDailies = "Questionable.StartDailies";
+    private const string IpcStopped = "Questionable.Stopped";
+    private const string IpcQuestCompleted = "Questionable.QuestCompleted";
+    private const string IpcStepChanged = "Questionable.StepChanged";
+    private readonly ICallGateProvider<string> _getStopKind;
+    private readonly ICallGateProvider<bool> _isWaitingOnPlayer;
+    private readonly ICallGateProvider<string, bool> _hasQuestPath;
+    private readonly ICallGateProvider<bool> _skipStep;
+    private readonly ICallGateProvider<bool, bool> _setStopAfterCurrentQuest;
+    private readonly ICallGateProvider<string> _getCurrentTask;
+    private readonly ICallGateProvider<List<string>> _getRemainingTasks;
+    private readonly ICallGateProvider<List<string>, bool> _startDailies;
+    private readonly ICallGateProvider<string, string, object> _stopped;
+    private readonly ICallGateProvider<string, object> _questCompleted;
+    private readonly ICallGateProvider<string, byte, int, object> _stepChanged;
+    private readonly DailiesController _dailies;
+    private readonly IFramework _framework;
+    private (ElementId Quest, byte Sequence, int Step)? _lastStep;
     private readonly ICallGateProvider<string> _getStopReason;
     private readonly ICallGateProvider<bool> _startEventQuests;
     private readonly EventInfoComponent _eventInfo;
@@ -68,10 +93,14 @@ internal sealed class QuestionableIpc : IDisposable
         QuestFunctions questFunctions,
         RedoUtil redoUtil,
         RetainerPass retainerPass,
+        DailiesController dailies,
+        IFramework framework,
         ILogger<QuestionableIpc> logger,
         IDalamudPluginInterface pluginInterface)
     {
         _questController = questController;
+        _dailies = dailies;
+        _framework = framework;
         _questStarter = questStarter;
         _questRegistry = questRegistry;
         _questFunctions = questFunctions;
@@ -149,6 +178,90 @@ internal sealed class QuestionableIpc : IDisposable
 
         _startEventQuests = pluginInterface.GetIpcProvider<bool>(IpcStartEventQuests);
         _startEventQuests.RegisterFunc(StartEventQuests);
+
+        _getStopKind = pluginInterface.GetIpcProvider<string>(IpcGetStopKind);
+        _getStopKind.RegisterFunc(() => questController.StopKind);
+
+        _isWaitingOnPlayer = pluginInterface.GetIpcProvider<bool>(IpcIsWaitingOnPlayer);
+        _isWaitingOnPlayer.RegisterFunc(() => questController.IsWaitingOnPlayer);
+
+        _hasQuestPath = pluginInterface.GetIpcProvider<string, bool>(IpcHasQuestPath);
+        _hasQuestPath.RegisterFunc(HasQuestPath);
+
+        _skipStep = pluginInterface.GetIpcProvider<bool>(IpcSkipStep);
+        _skipStep.RegisterFunc(questController.SkipStep);
+
+        _setStopAfterCurrentQuest = pluginInterface.GetIpcProvider<bool, bool>(IpcSetStopAfterCurrentQuest);
+        _setStopAfterCurrentQuest.RegisterFunc(value => questController.StopAfterCurrentQuest = value);
+
+        _getCurrentTask = pluginInterface.GetIpcProvider<string>(IpcGetCurrentTask);
+        _getCurrentTask.RegisterFunc(() => questController.CurrentTaskName);
+
+        _getRemainingTasks = pluginInterface.GetIpcProvider<List<string>>(IpcGetRemainingTasks);
+        _getRemainingTasks.RegisterFunc(() => [.. questController.GetRemainingTaskNames()]);
+
+        _startDailies = pluginInterface.GetIpcProvider<List<string>, bool>(IpcStartDailies);
+        _startDailies.RegisterFunc(StartDailies);
+
+        _stopped = pluginInterface.GetIpcProvider<string, string, object>(IpcStopped);
+        _questCompleted = pluginInterface.GetIpcProvider<string, object>(IpcQuestCompleted);
+        _stepChanged = pluginInterface.GetIpcProvider<string, byte, int, object>(IpcStepChanged);
+        questController.Stopped += OnStopped;
+        questController.QuestCompleted += OnQuestCompleted;
+        framework.Update += OnUpdate;
+    }
+
+    private void OnStopped(object? sender, StopEventArgs e) => _stopped.SendMessage(e.Kind, e.Reason);
+
+    private void OnQuestCompleted(object? sender, QuestCompletedEventArgs e) =>
+        _questCompleted.SendMessage(e.QuestId.ToString());
+
+    private void OnUpdate(IFramework framework)
+    {
+        QuestController.QuestProgress? progress = _questController.CurrentQuest;
+        (ElementId Quest, byte Sequence, int Step)? step =
+            progress == null ? null : (progress.Quest.Id, progress.Sequence, progress.Step);
+        if (!StepChanged(_lastStep, step))
+            return;
+
+        _lastStep = step;
+        if (step is { } now)
+            _stepChanged.SendMessage(now.Quest.ToString(), now.Sequence, now.Step);
+    }
+
+    internal static bool StepChanged((ElementId Quest, byte Sequence, int Step)? last,
+        (ElementId Quest, byte Sequence, int Step)? now) => !Equals(last, now);
+
+    private bool HasQuestPath(string questId)
+    {
+        _logger.LogDebug("HasQuestPath({QuestId})", questId);
+        return ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
+               _questRegistry.IsKnownQuest(elementId);
+    }
+
+    private bool StartDailies(List<string> societies)
+    {
+        _logger.LogDebug("StartDailies({Societies})", string.Join(',', societies));
+        if (ParseSocieties(societies) is not { Count: > 0 } parsed)
+            return false;
+
+        MarkPassRun();
+        return _dailies.Start(parsed);
+    }
+
+    // Unknown names fail the whole call, so a typo doesn't quietly drop a society.
+    internal static List<EAlliedSociety>? ParseSocieties(IEnumerable<string> names)
+    {
+        List<EAlliedSociety> result = [];
+        foreach (string name in names)
+        {
+            if (!Enum.TryParse(name, ignoreCase: true, out EAlliedSociety society) ||
+                society == EAlliedSociety.None || !Enum.IsDefined(society))
+                return null;
+            result.Add(society);
+        }
+
+        return result;
     }
 
     public void Dispose()
@@ -175,6 +288,17 @@ internal sealed class QuestionableIpc : IDisposable
         _redoLookupIndex.UnregisterFunc();
         _getStopReason.UnregisterFunc();
         _startEventQuests.UnregisterFunc();
+        _getStopKind.UnregisterFunc();
+        _isWaitingOnPlayer.UnregisterFunc();
+        _hasQuestPath.UnregisterFunc();
+        _skipStep.UnregisterFunc();
+        _setStopAfterCurrentQuest.UnregisterFunc();
+        _getCurrentTask.UnregisterFunc();
+        _getRemainingTasks.UnregisterFunc();
+        _startDailies.UnregisterFunc();
+        _questController.Stopped -= OnStopped;
+        _questController.QuestCompleted -= OnQuestCompleted;
+        _framework.Update -= OnUpdate;
     }
 
     private bool StartEventQuests()
@@ -255,7 +379,11 @@ internal sealed class QuestionableIpc : IDisposable
             Step = progress.Step,
             InteractionType = step.InteractionType.ToString(),
             Position = step.Position,
-            TerritoryId = step.TerritoryId
+            TerritoryId = step.TerritoryId,
+            Comment = step.Comment,
+            ItemId = step.ItemId,
+            ItemCount = step.ItemCount,
+            ItemQuality = step.ItemQuality.ToString(),
         };
     }
 
@@ -390,5 +518,9 @@ internal sealed class QuestionableIpc : IDisposable
         public required string InteractionType { get; init; }
         public required Vector3? Position { get; init; }
         public required uint TerritoryId { get; init; }
+        public string? Comment { get; init; }
+        public uint? ItemId { get; init; }
+        public int? ItemCount { get; init; }
+        public string ItemQuality { get; init; } = "";
     }
 }

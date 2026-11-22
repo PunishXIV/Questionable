@@ -18,6 +18,8 @@ internal sealed class RetainerPass : IDisposable
     }
 
     private static readonly TimeSpan Gap = TimeSpan.FromMinutes(30);
+    // Alts' ventures finish minutes apart, so without a wait every accept started another pass (Sub Alt 17:20-17:30).
+    private static readonly TimeSpan MinGap = TimeSpan.FromMinutes(10);
     private static readonly TimeSpan PassTimeout = TimeSpan.FromHours(2);
     // AutoRetainer may refuse to turn multi-mode on (e.g. in a duty); then the pass counts as done.
     private static readonly TimeSpan TurnOnTime = TimeSpan.FromMinutes(1);
@@ -239,13 +241,15 @@ internal sealed class RetainerPass : IDisposable
     {
         // Something AutoRetainer left alone (e.g. subs while it only does retainers) would start a pass at every accept.
         bool leftOver = AnyReady(_autoRetainer.GetCharacters(), _autoRetainer.RetainersReady, _autoRetainer.VesselsReady);
-        _nextPass = leftOver ? now + Gap : DateTime.MinValue;
+        _nextPass = NextPass(now, leftOver);
         _logger.LogInformation("AutoRetainer's pass is done (left over: {LeftOver}); going back to {Name}", leftOver,
             _home?.Name);
         State = EState.Returning;
         _nextTry = now + SettleTime;
         _deadline = now + Timeout;
     }
+
+    internal static DateTime NextPass(DateTime now, bool leftOver) => now + (leftOver ? Gap : MinGap);
 
     private bool IsPlayerReady() =>
         _clientState.IsLoggedIn && _objectTable[0] != null &&

@@ -4,6 +4,7 @@
 - Feature: More ways to stop: once the priority list is done, when you move your character, or at the next aetheryte; copy and paste for the stop lists -Kage
 - Feature: Community quest results: if you opt in, the quest window and journal show how often a path worked for others ("19/20 worked"), journal names are coloured by reports, and the ! button sends a report -Kage
 - Feature: Do dailies: tick allied societies in the journal and Questionable does their dailies, unlocking a society first when needed (/qst dailies) -Kage
+- Feature: Other plugins can do more with Questionable: start Do dailies for the societies they pick, check whether a quest has a path, skip a step, stop after the current quest, and get told when Questionable stops, finishes a quest or moves to the next step -Kage
 - Feature: Custom Deliveries page: every NPC's progress and this week's items; Satisfy does the ticked ones (/qst deliveries, needs Satisfy) -Kage
 - Feature: Between quests: collects the free job gear at 80, 89 and 99, repairs worn gear (Dark Matter or your Grand Company's mender), claims Mog Station mail (needs Mogmail) and runs the new Hall of the Novice for the Neophyte's Ring (needs AutoDuty) -Kage
 - Feature: Between quests, AutoRetainer can send out the retainers and submarines of all your multi-mode characters; Questionable then logs back in to your questing character and carries on (off by default, needs AutoRetainer and Lifestream) -Kage

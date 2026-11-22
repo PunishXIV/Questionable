@@ -37,16 +37,21 @@ internal sealed class DailiesController(
             return;
         }
 
-        List<EAlliedSociety> societies = configuration.Dailies.Societies;
-        if (societies.Count == 0)
+        if (configuration.Dailies.Societies.Count == 0)
         {
             chatGui.PrintError(_L("Tick the societies for Do dailies on the Allied Societies page in Journal Progress first."),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
 
-        if (!questStarter.CanStartQuest(_L("Do dailies")))
-            return;
+        Start(configuration.Dailies.Societies);
+    }
+
+    // Other plugins pass their own list; the journal's ticked societies stay as they are.
+    public bool Start(IReadOnlyList<EAlliedSociety> societies)
+    {
+        if (!CanStart || societies.Count == 0 || !questStarter.CanStartQuest(_L("Do dailies")))
+            return false;
 
         _societies = [.. societies.Distinct()];
         _societyReasons.Clear();
@@ -54,13 +59,18 @@ internal sealed class DailiesController(
         if (!questController.BeginDailies(this))
         {
             _plan = null;
-            return;
+            return false;
         }
         chatGui.Print(_L("Do dailies: checking unlocks and rank-ups, then running selected societies in travel order."),
             CommandHandler.MessageTag, CommandHandler.TagColor);
         questStarter.Start(_L("Do dailies"));
         if (questController.IsDailiesRun && questController.AutomationType != QuestController.EAutomationType.Automatic)
+        {
             questController.Stop("Dailies start blocked");
+            return false;
+        }
+
+        return true;
     }
 
     public Quest? Choose(QuestController.QuestProgress? current)

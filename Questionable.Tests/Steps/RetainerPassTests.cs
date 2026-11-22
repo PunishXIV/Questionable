@@ -27,4 +27,13 @@ public sealed class RetainerPassTests
 
     [Fact]
     public void AnyReady_SkipsNonMultiMode() => Assert.False(AnyReady([3], [3]));
+
+    [Theory]
+    [InlineData(false, 10)]
+    [InlineData(true, 30)]
+    public void NextPass_WaitsAfterEveryPass(bool leftOver, int minutes)
+    {
+        DateTime now = new(2026, 11, 22, 17, 21, 29);
+        Assert.Equal(now.AddMinutes(minutes), RetainerPass.NextPass(now, leftOver));
+    }
 }
