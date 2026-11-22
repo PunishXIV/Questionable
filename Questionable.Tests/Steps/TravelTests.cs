@@ -15,4 +15,11 @@ public sealed class TravelTests
     [InlineData(false, 2, true, false)]
     public void KeepWalking_StaysNearNpc(bool walking, float gap, bool resting, bool expected) =>
         Assert.Equal(expected, Travel.Executor.KeepWalking(walking, gap, resting));
+
+    [Theory]
+    [InlineData(true, true, true)]
+    [InlineData(true, false, false)]
+    [InlineData(false, true, false)]
+    public void KeepsRoute_OnlyWhileMtrRuns(bool routeOpen, bool pathing, bool expected) =>
+        Assert.Equal(expected, Travel.Executor.KeepsRoute(routeOpen, pathing));
 }

@@ -236,6 +236,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     // Combat can end before quest actions are safe again.
     private DateTime _safeAnimationEnd = DateTime.MinValue;
     private DateTime? _journalSince;
+    private DateTime? _emptySince;
     private (ITask? Task, DateTime Since) _acceptWait;
 
     public QuestController(
@@ -838,6 +839,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         questToRun = choice.Progress;
         if (questToRun != null)
         {
+            _emptySince = null;
             if (choice.Source != EQuestSource.Simulated &&
                 questToRun.Step == 0 &&
                 _taskQueue.AllTasksComplete &&
@@ -862,6 +864,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                     return false;
                 }
 
+                // A quest done on accept (guild join 183) empties the journal for a frame before the next appears (Sub Alt 20:13).
+                _emptySince ??= DateTime.Now;
+                if (QuestSelectionController.IsSettling(_emptySince.Value, DateTime.Now))
+                    return false;
+
+                _emptySince = null;
                 _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
                 StartedQuest = null;
                 Stop("Resetting current quest");
@@ -870,6 +878,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return true;
         }
 
+        _emptySince = null;
         if (StartedQuest == null || StartedQuest.Quest.Id != currentQuestId)
         {
             if (ShouldSettle(choice))

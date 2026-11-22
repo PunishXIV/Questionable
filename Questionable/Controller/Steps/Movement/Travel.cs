@@ -215,12 +215,18 @@ internal static class Travel
             return moving || DateTime.Now - since < TimeSpan.FromSeconds(1) ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
         }
 
+        internal static bool KeepsRoute(bool routeOpen, bool pathing) => routeOpen && pathing;
+
         public override ETaskResult Update()
         {
             // MappingTheRealm fails a route once a zone gate moves the player (129 -> 128 gate 2210434, 135 -> 134 gate 2453662).
             if (clientState.TerritoryType != _zone)
             {
                 _zone = clientState.TerritoryType;
+                // A restart after MappingTheRealm's own teleport cancelled its next aethernet step (Sub Alt 19:06).
+                if (KeepsRoute(_route is { IsCompleted: false }, mappingTheRealm.GetPathing() == true))
+                    return ETaskResult.StillRunning;
+
                 mappingTheRealm.Stop();
                 if (_zone == Task.TerritoryId && Task.Position == null && Task.DataId == null)
                     return ETaskResult.TaskComplete;
