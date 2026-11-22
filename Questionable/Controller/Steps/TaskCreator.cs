@@ -119,7 +119,7 @@ internal sealed class TaskCreator
                     newTasks.InsertRange(0, switchTasks);
                 }
             }
-            else if (sequence.Sequence > 0 && SwitchClassJob.AcceptedJob(quest.Id, quest.Info.ClassJobs) is { } acceptedJob)
+            else if (sequence.Sequence > 0 && SwitchClassJob.AcceptedJob(quest.Id, quest.Info.ClassJobs, quest.Info.Level) is { } acceptedJob)
             {
                 _logger.LogInformation("{QuestId} was accepted as {Job}, switching back", quest.Id, acceptedJob);
                 newTasks.Insert(0, new SwitchClassJob.Task(acceptedJob));

@@ -48,6 +48,8 @@ internal sealed class QuestSelectionController(Configuration configuration)
     public static bool IsLevelStopDue(int level, int target, bool running, bool busy) =>
         running && !busy && level >= target;
 
+    internal static bool IsSettling(DateTime since, DateTime now) => now - since < TimeSpan.FromSeconds(1);
+
     // Quest state read during a teleport can briefly offer another quest (e.g. a priority quest).
     internal static bool ShouldHoldStartedQuest(QuestProgress? started, bool betweenAreas) => started != null && betweenAreas;
 

@@ -235,6 +235,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     // Combat can end before quest actions are safe again.
     private DateTime _safeAnimationEnd = DateTime.MinValue;
+    private DateTime? _journalSince;
 
     public QuestController(
         IClientState clientState,
@@ -841,12 +842,36 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         if (StartedQuest == null || StartedQuest.Quest.Id != currentQuestId)
         {
+            if (ShouldSettle(choice))
+                return false;
+
             SwitchToQuest(currentQuestId, choice.Sequence);
             return false;
         }
 
+        _journalSince = null;
         questToRun = StartedQuest;
         return true;
+    }
+
+    // The next priority quest unlocks a frame after a turn-in, so the journal's quest would win that frame (2012 level stop, Sub Alt 17:01).
+    private bool ShouldSettle(QuestChoice choice)
+    {
+        if (choice.Source != EQuestSource.Journal || !_priorityManager.Quests.Any(x => !_questFunctions.IsQuestComplete(x.Id)))
+        {
+            _journalSince = null;
+            return false;
+        }
+
+        _journalSince ??= DateTime.Now;
+        if (QuestSelectionController.IsSettling(_journalSince.Value, DateTime.Now))
+        {
+            DebugState = "Waiting for the next priority quest";
+            return true;
+        }
+
+        _journalSince = null;
+        return false;
     }
 
     private void SwitchToQuest(ElementId questId, byte sequence)
@@ -866,7 +891,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             unsafe
             {
-                int playerLevel = SwitchClassJob.AcceptedJob(quest.Id, quest.Info.ClassJobs) is { } acceptedJob
+                int playerLevel = SwitchClassJob.AcceptedJob(quest.Id, quest.Info.ClassJobs, quest.Info.Level) is { } acceptedJob
                     ? _questFunctions.GetClassJobLevel(acceptedJob)
                     : _questFunctions.IsQuestAccepted(quest.Id)
                         ? PlayerState.Instance()->CurrentLevel

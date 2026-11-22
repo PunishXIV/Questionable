@@ -26,13 +26,21 @@ public sealed class SwitchClassJobTests
     [InlineData(Job.DRK, Job.DRK, false)]
     [InlineData(Job.ADV, Job.BLU, false)]
     public void NeedsSwitch_JobQuest(Job accepted, Job current, bool expected) =>
-        Assert.Equal(expected, SwitchClassJob.NeedsSwitch(accepted, current, [Job.DRK]));
+        Assert.Equal(expected, SwitchClassJob.NeedsSwitch(accepted, current, [Job.DRK], 30, 30, 30));
 
     [Fact]
     public void NeedsSwitch_ClassQuestOnJob_Stays() =>
-        Assert.False(SwitchClassJob.NeedsSwitch(Job.GLA, Job.PLD, [Job.GLA, Job.PLD]));
+        Assert.False(SwitchClassJob.NeedsSwitch(Job.GLA, Job.PLD, [Job.GLA, Job.PLD], 30, 30, 30));
 
     [Fact]
     public void NeedsSwitch_AnyJobQuest_Stays() =>
-        Assert.False(SwitchClassJob.NeedsSwitch(Job.WAR, Job.BLU, [Job.WAR, Job.BLU, Job.DRK]));
+        Assert.False(SwitchClassJob.NeedsSwitch(Job.WAR, Job.BLU, [Job.WAR, Job.BLU, Job.DRK], 50, 50, 50));
+
+    [Fact]
+    public void AnyJobQuest_TooLow_SwitchesBack() =>
+        Assert.True(SwitchClassJob.NeedsSwitch(Job.SGE, Job.ARC, [Job.SGE, Job.ARC, Job.DRK], 4, 90, 50));
+
+    [Fact]
+    public void AnyJobQuest_BothTooLow_Stays() =>
+        Assert.False(SwitchClassJob.NeedsSwitch(Job.SGE, Job.ARC, [Job.SGE, Job.ARC, Job.DRK], 4, 20, 50));
 }

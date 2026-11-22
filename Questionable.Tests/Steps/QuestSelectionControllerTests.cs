@@ -368,6 +368,15 @@ public sealed class QuestSelectionControllerTests
         Assert.Equal(expected, QuestSelectionController.IsLevelTooHigh(playerLevel, NewQuest(10, questLevel)));
     }
 
+    [Theory]
+    [InlineData(0.2, true)]
+    [InlineData(1.5, false)]
+    public void IsSettling_OneSecond(double seconds, bool expected)
+    {
+        DateTime since = new(2026, 11, 22, 17, 1, 25);
+        Assert.Equal(expected, QuestSelectionController.IsSettling(since, since.AddSeconds(seconds)));
+    }
+
     [Fact]
     public void BestLevel_UsesHighestAllowedGearSet()
     {
