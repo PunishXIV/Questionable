@@ -9,6 +9,16 @@ internal static class RedeemRewardItems
 
     internal static void ResetAttemptedItems() => AttemptedItems.Clear();
 
+    internal static bool UsesWholeStack(ItemReward reward) => reward.Type is EItemRewardType.Coffer or EItemRewardType.Mgp;
+
+    internal static unsafe int ItemCount(IEnumerable<ITask> tasks)
+    {
+        InventoryManager* inventoryManager = InventoryManager.Instance();
+        return tasks.OfType<Task>().Sum(x => UsesWholeStack(x.ItemReward) && inventoryManager != null
+            ? Math.Max(1, inventoryManager->GetInventoryItemCount(x.ItemReward.ItemId))
+            : 1);
+    }
+
     internal sealed class Factory(QuestData questData, IDataManager dataManager) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -90,7 +100,10 @@ internal static class RedeemRewardItems
             }
         }
 
-        return tasks.Count != 0 ? [new MountStep.UnmountTask(), .. tasks] : tasks;
+        // Coffers last, so the MGP cards and unlock items they give are picked up afterwards.
+        return tasks.Count != 0
+            ? [new MountStep.UnmountTask(), .. tasks.OrderBy(x => x is Task { ItemReward.Type: EItemRewardType.Coffer })]
+            : tasks;
     }
 
     internal sealed record Task(ItemReward ItemReward) : ITask
@@ -103,7 +116,9 @@ internal static class RedeemRewardItems
         GameFunctions gameFunctions,
         ICondition condition,
         DalamudInitializer dalamudInitializer,
-        ILogger<RedeemRewardItems.Executor> logger) : TaskExecutor<Task>
+        QuestData questData,
+        IDataManager dataManager,
+        ILogger<RedeemRewardItems.Executor> logger) : TaskExecutor<Task>, ITaskExecutor.IExtraTaskCreator
     {
         private static readonly TimeSpan MinimumCastTime = TimeSpan.FromSeconds(4);
 
@@ -189,26 +204,50 @@ internal static class RedeemRewardItems
                 return ETaskResult.StillRunning;
             }
 
-            if (DateTime.Now <= _continueAt)
+            bool used = inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId) < _itemCountBeforeUse;
+            if (!used && DateTime.Now <= _continueAt)
             {
                 logger.LogTrace("DateTime.Now <= _continueAt");
                 return ETaskResult.StillRunning;
             }
 
             // UseItem can report success without consuming the item; retry until the count drops so no reward is skipped.
-            if (inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId) >= _itemCountBeforeUse && !timedOut)
+            if (!used && !timedOut)
             {
                 _usedItem = false;
                 logger.LogTrace("itemcount >= _itemCountBeforeUse && !timedOut");
                 return ETaskResult.StillRunning;
             }
 
-            return ETaskResult.TaskComplete;
+            if (used && HasMoreToUse(inventoryManager))
+            {
+                _usedItem = false;
+                _giveUpAt = DateTime.Now.Add(GiveUpAfter);
+                return ETaskResult.StillRunning;
+            }
+
+            return used && Task.ItemReward.Type is EItemRewardType.Coffer ? ETaskResult.CreateNewTasks : ETaskResult.TaskComplete;
         }
 
-        private bool IsReadyToUseItem()
+        // Other coffers are still queued, so only what the coffer gave is added.
+        public IEnumerable<ITask> CreateExtraTasks() =>
+            CreateTasks(questData, dataManager, overrideConfig: true)
+                .Where(x => x is Task { ItemReward.Type: not EItemRewardType.Coffer });
+
+        // Unlock items stop after one use so a duplicate isn't used up.
+        private unsafe bool HasMoreToUse(InventoryManager* inventoryManager) =>
+            UsesWholeStack(Task.ItemReward) &&
+            inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId) > 0 &&
+            !Task.ItemReward.IsUnlocked() &&
+            (Task.ItemReward.Type is not EItemRewardType.Coffer || GameFunctions.GetFreeInventorySlots() > 0);
+
+        private unsafe bool IsReadyToUseItem()
         {
             if (condition[ConditionFlag.Mounted])
+                return false;
+
+            // A use during the last item's animation lock is refused ("Cannot execute at this time") and costs the 4 s wait.
+            if (ActionManager.Instance() is var actionManager && actionManager != null && actionManager->AnimationLock > 0)
                 return false;
 
             if (condition[ConditionFlag.InCombat])

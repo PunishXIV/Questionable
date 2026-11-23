@@ -16,6 +16,12 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     [EzIPC("EnableExternalControl")] private readonly Func<string, ExternalTerritoryConfig, bool> _enableExternalControl = null!;
     private readonly IFramework _framework;
     [EzIPC("IsInExternalControl")] private readonly Func<bool> _isInExternalControl = null!;
+    [EzIPC("IsPaused")] private readonly Func<bool> _isPaused = null!;
+    private static readonly TimeSpan PauseGrace = TimeSpan.FromSeconds(20);
+    private readonly IChatGui _chatGui;
+    private readonly MappingTheRealmIpc _mappingTheRealm;
+    private bool _warnedPaused;
+    private DateTime? _pausedSince;
     private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly string _pluginName;
     private readonly QuestController _questController;
@@ -25,9 +31,12 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     private bool _sentCompleteQuests;
 
     public TextAdvanceIpc(IDalamudPluginInterface pluginInterface, IFramework framework,
-        QuestController questController, Configuration configuration, ILogger<TextAdvanceIpc> logger)
+        QuestController questController, Configuration configuration, IChatGui chatGui,
+        MappingTheRealmIpc mappingTheRealm, ILogger<TextAdvanceIpc> logger)
     {
         _logger = logger;
+        _chatGui = chatGui;
+        _mappingTheRealm = mappingTheRealm;
         _framework = framework;
         _questController = questController;
         _configuration = configuration;
@@ -77,9 +86,13 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
                 _logger.LogInformation("Took control of TextAdvance (skip cutscenes: {Skip}, turn in quests: {TurnIn})",
                     !dontSkipCutscenes, completeQuests);
             }
+
+            WarnIfPaused();
         }
         else
         {
+            _warnedPaused = false;
+            _pausedSince = null;
             if (_hasControl)
             {
                 if (IpcInvoke.SafeFunc(() => _disableExternalControl(_pluginName), fallback: false) ||
@@ -90,6 +103,28 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
                 }
             }
         }
+    }
+
+    // Another plugin can pause TextAdvance even while we control it; Accept then waits forever (Henchman, 11-22).
+    private void WarnIfPaused()
+    {
+        // MappingTheRealm pauses TextAdvance while it walks, and teleports pause it briefly.
+        bool paused = IpcInvoke.SafeFunc(() => _isPaused(), fallback: false) && _mappingTheRealm.GetPathing() != true;
+        if (!paused)
+        {
+            _pausedSince = null;
+            _warnedPaused = false;
+            return;
+        }
+
+        _pausedSince ??= DateTime.Now;
+        if (_warnedPaused || DateTime.Now - _pausedSince < PauseGrace)
+            return;
+
+        _warnedPaused = true;
+        _logger.LogWarning("TextAdvance is paused by another plugin");
+        _chatGui.Print(_L("TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it."),
+            CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
     // Talking to a giver for a middle step would otherwise turn in another finished quest of theirs.

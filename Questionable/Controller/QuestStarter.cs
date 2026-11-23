@@ -136,7 +136,7 @@ internal sealed class QuestStarter(
         if (!dry)
             foreach (ITask task in tasks)
                 questController.UnsafeEnqueueManualTask(task);
-        chatGui.Print(_LF("Redeeming {0} item(s).", tasks.Count - 1), CommandHandler.MessageTag, CommandHandler.TagColor);
+        chatGui.Print(_LF("Redeeming {0} item(s).", RedeemRewardItems.ItemCount(tasks)), CommandHandler.MessageTag, CommandHandler.TagColor);
         if (dry)
             foreach (ITask task in tasks)
                 if (task is RedeemRewardItems.Task redeemTask)

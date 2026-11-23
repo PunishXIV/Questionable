@@ -12,4 +12,5 @@ public enum EItemRewardType
     Duty,
     RecipeBook,
     FolkloreBook,
+    Mgp,
 }

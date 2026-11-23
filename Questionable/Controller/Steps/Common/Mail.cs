@@ -13,6 +13,8 @@ internal static class Mail
     private const uint MoogleTalk = 720898;
     private static readonly BetweenQuests.Backoff Retry = new();
     private static HashSet<uint>? _moogleIds;
+    // The game's purchase-letter count can stay up with an empty mailbox (main log 11-23 10:07).
+    private static uint? _countWhenEmpty;
 
     // Quest dialogue and yes/no handling stay out of the mailbox while this is set.
     internal static bool Active { get; private set; }
@@ -54,7 +56,11 @@ internal static class Mail
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
+            if (MogmailIpc.RewardLetters is { } letters && letters < _countWhenEmpty)
+                _countWhenEmpty = letters;
+
             if (!configuration.General.ClaimMail || Retry.Waiting || MogmailIpc.RewardLetters is not > 0 ||
+                MogmailIpc.RewardLetters <= _countWhenEmpty ||
                 !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager) || !mogmail.IsInstalled)
                 return [];
 
@@ -101,6 +107,7 @@ internal static class Mail
         private DateTime _nextTry;
         private DateTime? _openedAt;
         private bool _claiming;
+        private bool _foundNothing;
         private int _idleChecks;
 
         protected override bool Start()
@@ -138,6 +145,7 @@ internal static class Mail
                 {
                     logger.LogInformation("Mogmail found nothing to claim");
                     _claiming = true;
+                    _foundNothing = true;
                 }
 
                 return ETaskResult.StillRunning;
@@ -176,7 +184,12 @@ internal static class Mail
 
             Finish();
             logger.LogInformation("{Count} reward letters left after claiming", MogmailIpc.RewardLetters);
-            if (MogmailIpc.RewardLetters is > 0)
+            if (_foundNothing && MogmailIpc.RewardLetters is > 0)
+            {
+                _countWhenEmpty = MogmailIpc.RewardLetters;
+                logger.LogInformation("Mailbox had nothing to claim; ignoring the count until it goes up");
+            }
+            else if (MogmailIpc.RewardLetters is > 0)
             {
                 Retry.Failed();
                 chatGui.Print(_L("Some reward mail is still waiting, maybe because your inventory is full. Trying again later."),

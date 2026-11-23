@@ -12,7 +12,7 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
     [EzIPC] public Func<string, string> GetConfig { get; private set; } = null!;
     [EzIPC] public Action<string, object> SetConfig { get; private set; } = null!;
     [EzIPC] public Action<string, bool> PluginConfig { get; private set; } = null!;
-    [EzIPC] public Action<uint, int, bool> Run { get; private set; } = null!;
+    [EzIPC] public Action<string, uint, int, bool> RunForPlugin { get; private set; } = null!;
 
     private readonly EzIPCDisposalToken[] _disposalTokens;
 
@@ -181,8 +181,8 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
                 throw new TaskException("AutoDuty became busy during configuration.");
             }
             Operation.MarkRunRequested();
-            _ipc.Run(data.TerritoryId, 1, true);
-            // Run returns nothing; watch for activity instead of retrying it.
+            _ipc.RunForPlugin(ProfileName, data.TerritoryId, 1, true);
+            // RunForPlugin returns nothing; watch for activity instead of retrying it.
             PollOperation();
         }
         catch (Exception e)
@@ -270,7 +270,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
     private static bool Matches(string? actual, string expected) =>
         string.Equals(actual, expected, StringComparison.OrdinalIgnoreCase);
 
-    // Run never switches AutoDuty's profile back; only this does.
+    // AutoDuty switches back itself when a run stops, but a run it refuses or setup that fails leaves our profile on.
     private bool SwitchProfileBack()
     {
         try
@@ -293,7 +293,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
     public void Dispose()
     {
         _dutyState.DutyCompleted -= _dutyCompleted;
-        // AutoDuty stops when Questionable unloads but would stay on our profile.
+        // A refused run or failed setup would leave AutoDuty on our profile.
         if (HasOperation)
             SwitchProfileBack();
     }

@@ -9364,4 +9364,9 @@ Right click: Copy without .json</Value>
     <Value lang="zh-cn">任务名称或ID...</Value>
     <Value lang="zh-tw">任務名稱或ID...</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/External/TextAdvanceIpc.cs -->
+    <Key>TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it.</Key>
+    <Value lang="en">TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it.</Value>
+  </Entry>
 </I18N>
