@@ -48,25 +48,6 @@ internal sealed class NotificationConfigComponent
                     v => Configuration.Notifications.ChatType = v);
                 ImGuiComponents.HelpMarker(_L("Only for steps that need you. Stop and problem messages always show in Questionable's own chat line."));
 
-                string[] sounds = ["", .. GetSounds()];
-                string[] soundNames = [_L("None"), .. sounds.Skip(1).Select(Path.GetFileNameWithoutExtension).Cast<string>()];
-                DrawComboOption(_L("Sound"), sounds, soundNames,
-                    () => Configuration.Notifications.Sound,
-                    v => Configuration.Notifications.Sound = v);
-                ImGui.SameLine();
-                using (ImRaii.Disabled(string.IsNullOrEmpty(Configuration.Notifications.Sound)))
-                {
-                    if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.Play, _L("Test")))
-                        NotificationMasterIpc.PlaySound(Configuration.Notifications.Sound);
-                }
-
-                bool onlyWhenUnfocused = Configuration.Notifications.OnlyWhenUnfocused;
-                if (ImGui.Checkbox(_L("Only when the game is not focused"), ref onlyWhenUnfocused))
-                {
-                    Configuration.Notifications.OnlyWhenUnfocused = onlyWhenUnfocused;
-                    Save();
-                }
-
                 ImGui.Separator();
                 ImGui.Text("NotificationMaster");
                 ImGuiComponents.HelpMarker(_L("Requires the plugin 'NotificationMaster' to be installed."));
@@ -76,6 +57,25 @@ internal sealed class NotificationConfigComponent
                     if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.Bell, _L("Test")))
                         notificationMasterIpc.Notify(_L("Test message"));
                     using var nmIndent = ImRaii.PushIndent();
+                    string[] sounds = ["", .. GetSounds()];
+                    string[] soundNames = [_L("None"), .. sounds.Skip(1).Select(Path.GetFileNameWithoutExtension).Cast<string>()];
+                    DrawComboOption(_L("Sound"), sounds, soundNames,
+                        () => Configuration.Notifications.Sound,
+                        v => Configuration.Notifications.Sound = v);
+                    ImGui.SameLine();
+                    using (ImRaii.Disabled(string.IsNullOrEmpty(Configuration.Notifications.Sound)))
+                    {
+                        if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.Play, _L("Test")))
+                            notificationMasterIpc.PlaySound(Configuration.Notifications.Sound);
+                    }
+
+                    bool onlyWhenUnfocused = Configuration.Notifications.OnlyWhenUnfocused;
+                    if (ImGui.Checkbox(_L("Only when the game is not focused"), ref onlyWhenUnfocused))
+                    {
+                        Configuration.Notifications.OnlyWhenUnfocused = onlyWhenUnfocused;
+                        Save();
+                    }
+
                     bool showTrayMessage = Configuration.Notifications.ShowTrayMessage;
                     if (ImGui.Checkbox(_L("Show tray notification"), ref showTrayMessage))
                     {

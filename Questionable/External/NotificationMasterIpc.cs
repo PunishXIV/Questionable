@@ -1,15 +1,11 @@
-﻿using System.Runtime.InteropServices;
-using NotificationMasterAPI;
+﻿using NotificationMasterAPI;
 using static Questionable.External.IPCUtils;
-using GameFramework = FFXIVClientStructs.FFXIV.Client.System.Framework.Framework;
 
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed partial class NotificationMasterIpc(IDalamudPluginInterface pluginInterface, Configuration configuration) : Ipc
+internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterface, Configuration configuration) : Ipc
 {
-    private const uint SoundAsync = 0x0001, SoundNoDefault = 0x0002, SoundFileName = 0x00020000;
-
     public override string InternalName => "NotificationMaster";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && Enabled, fallback: false);
@@ -22,12 +18,10 @@ internal sealed partial class NotificationMasterIpc(IDalamudPluginInterface plug
     public void Notify(string message)
     {
         var config = configuration.Notifications;
-        if (!config.Enabled || config.OnlyWhenUnfocused && IsGameFocused())
+        if (!config.Enabled || !Enabled || config.OnlyWhenUnfocused && _api.IsGameWindowActivated())
             return;
 
         PlaySound(config.Sound);
-        if (!Enabled)
-            return;
 
         if (config.ShowTrayMessage)
             _api.DisplayTrayNotification("Questionable", message);
@@ -42,16 +36,9 @@ internal sealed partial class NotificationMasterIpc(IDalamudPluginInterface plug
             Notify(message);
     }
 
-    public static void PlaySound(string sound)
+    public void PlaySound(string sound)
     {
         if (!string.IsNullOrEmpty(sound))
-            PlaySoundW(Path.Combine(SoundFolder, sound), 0, SoundFileName | SoundAsync | SoundNoDefault);
+            _api.PlaySound(Path.Combine(SoundFolder, sound));
     }
-
-    private static unsafe bool IsGameFocused() => GameFramework.Instance() is var framework && framework != null && !framework->WindowInactive;
-
-    [LibraryImport("winmm.dll", StringMarshalling = StringMarshalling.Utf16)]
-    [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    private static partial bool PlaySoundW(string sound, nint module, uint flags);
 }
