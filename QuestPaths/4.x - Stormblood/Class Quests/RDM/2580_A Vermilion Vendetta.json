@@ -60,7 +60,7 @@
           "DataId": 1021469,
           "Position": [-289.14325, -40.63008, 420.46228],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": false}
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

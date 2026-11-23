@@ -93,10 +93,7 @@
           "Position": [376.82153, -17.563171, -343.67902],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "Notes": [
-              "VBM does not switch target fireball, ally dies consistently"
-            ]
+            "Enabled": true
           }
         }
       ]
