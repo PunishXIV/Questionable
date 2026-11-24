@@ -540,6 +540,8 @@ internal sealed class BossModModule
 {
     public string Name => "Boss Mod";
 
+    public bool MovesPlayer => true;
+
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (configuration.General.CombatModule != ECombatModule.BossMod)

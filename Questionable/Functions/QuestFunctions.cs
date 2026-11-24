@@ -935,7 +935,11 @@ internal sealed class QuestFunctions
 
     public bool IsQuestUnobtainable(QuestId questId, ElementId? extraCompletedQuest = null)
     {
-        QuestInfo questInfo = (QuestInfo)catalog.GetQuestInfo(questId);
+        // The game can remove a quest that presets still list (1006).
+        if (!catalog.TryGetQuestInfo(questId, out IQuestInfo? info))
+            return true;
+
+        QuestInfo questInfo = (QuestInfo)info;
         if (questInfo.Expansion > (EExpansionVersion)state.MaxExpansion)
             return true;
 

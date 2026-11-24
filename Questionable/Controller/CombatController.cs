@@ -340,6 +340,10 @@ internal sealed class CombatController : IDisposable
                 _currentFight.Data.SpawnType != EEnemySpawnType.FateEnemies)
                 return (null, "FATE mob");
 
+            // The same kind of enemy can roam outside the FATE, and those kills don't count.
+            if (_currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies && gameObjectStruct->FateId == 0)
+                return (0, "Not in FATE");
+
             Vector3 ownPosition = _objectTable[0]?.Position ?? Vector3.Zero;
             bool expectQuestMarker;
             if (_currentFight.Data.SpawnType == EEnemySpawnType.FinishCombatIfAny)
@@ -483,8 +487,9 @@ internal sealed class CombatController : IDisposable
 
     private void MoveToTarget(IGameObject gameObject)
     {
+        // A route of ours fights Boss Mod's own movement and fails, which stops the quest (1204 FATE, Sub Alt 11-24).
         IGameObject? player = _objectTable[0];
-        if (player == null)
+        if (player == null || _currentFight?.Module.MovesPlayer == true)
             return;
 
         float hitboxOffset = player.HitboxRadius + gameObject.HitboxRadius;

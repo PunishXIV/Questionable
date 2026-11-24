@@ -229,6 +229,9 @@ public sealed class DailiesSafetyTests
     }
 
     [Fact]
+    public void RemovedQuest_IsUnobtainable() => Assert.True(_functions.IsQuestUnobtainable(new QuestId(1006)));
+
+    [Fact]
     public void MissingPath_OfferedDailyStaysVisible()
     {
         QuestId id = new(1495);

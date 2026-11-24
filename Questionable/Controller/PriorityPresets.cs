@@ -149,7 +149,7 @@ internal sealed class PriorityPresets(
             1431, // challenge log
             1432, 1433, 1434, // retainers
             1563, 1564, 1565, // hunts
-            1004, 1005, 1006, // pvp
+            1004, 1005, // pvp
             4644, // island sanc visit
             3759, // new game+
             5187, // free fantasia

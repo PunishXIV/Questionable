@@ -16,6 +16,8 @@ internal interface ICombatModule
 
     void VerifyActive() { }
 
+    bool MovesPlayer => false;
+
     void Update(IGameObject nextTarget);
 
     bool CanAttack(IBattleNpc target);
