@@ -55,10 +55,6 @@
       "TerritoryId": 614,
       "Steps": [
         {
-          "Position": [406.34747, -0.6000004, -281.95883],
-          "InteractionType": "Dive"
-        },
-        {
           "DataId": 1020007,
           "Position": [277.9735, 3.2627518, -378.95782],
           "InteractionType": "CompleteQuest"

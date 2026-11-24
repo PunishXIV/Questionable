@@ -112,15 +112,6 @@ internal static class Travel
                 return;
 
             _waiting = false;
-            // MappingTheRealm can't route underwater; its fallback teleports the player out of the water.
-            if (condition[ConditionFlag.Diving] && clientState.TerritoryType == Task.TerritoryId && Task.Position is { } position)
-            {
-                if (!navmesh.FlyTo(position))
-                    throw new TaskException("vnavmesh couldn't find an underwater path");
-                _vnavSince = DateTime.Now;
-                return;
-            }
-
             // MappingTheRealm mounts and flies whenever it can; follow and stealth steps fail when you outrun the NPC.
             if (Task.Walk && clientState.TerritoryType == Task.TerritoryId && Task.Position is { } walkTo)
             {

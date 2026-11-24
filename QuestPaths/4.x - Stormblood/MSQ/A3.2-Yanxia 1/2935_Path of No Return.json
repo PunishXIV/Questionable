@@ -8,11 +8,6 @@
       "TerritoryId": 614,
       "Steps": [
         {
-          "Position": [406.34747, -0.6000004, -281.95883],
-          "InteractionType": "Dive",
-          "SkipConditions": {"StepIf": {"InTerritory": [681]}}
-        },
-        {
           "DataId": 1020052,
           "Position": [-52.47583, -0.2509899, -25.742065],
           "TerritoryId": 681,

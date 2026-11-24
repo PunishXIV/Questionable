@@ -57,11 +57,6 @@
       "TerritoryId": 622,
       "Steps": [
         {
-          "Position": [65.04901, 1.9869974, 23.111439],
-          "InteractionType": "Dive",
-          "DelaySecondsAtStart": 2
-        },
-        {
           "DataId": 2008252,
           "Position": [61.020752, -72.09894, 11.123779],
           "InteractionType": "Interact",
