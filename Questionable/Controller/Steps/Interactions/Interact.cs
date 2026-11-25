@@ -245,8 +245,15 @@ internal static class Interact
             bool mounted = condition[ConditionFlag.Mounted];
             bool isGatheringPoint = gameObject.ObjectKind == ObjectKind.GatheringPoint;
             // While flying, dismount only makes the mount land.
-            if (mounted && !isGatheringPoint && condition[ConditionFlag.InFlight] && _landingTries++ < 20)
+            if (mounted && !isGatheringPoint && condition[ConditionFlag.InFlight])
             {
+                // The game refuses an interaction in the air, and QST would only notice through the stuck handling (Asha, 11-25).
+                if (_landingTries++ >= 20)
+                {
+                    logger.LogWarning("Still flying near {DataId} after trying to land, travelling to it again", Task.DataId);
+                    return ETaskResult.RetryStep;
+                }
+
                 gameFunctions.Unmount();
                 _continueAt = DateTime.Now.AddSeconds(0.5);
                 return ETaskResult.StillRunning;

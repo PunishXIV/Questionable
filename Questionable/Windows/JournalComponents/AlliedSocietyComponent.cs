@@ -216,9 +216,6 @@ internal sealed class AlliedSocietyComponent
             QstWidgets.Tooltip(details);
         }
 
-        questJournalUtils.ShowGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}", quests,
-            () => GetHighestRankQuests(quests, rank));
-
         if (!isOpen)
             return;
 
@@ -237,7 +234,6 @@ internal sealed class AlliedSocietyComponent
 
                 JournalTable.BeginRow();
                 ImGui.Text($"{(EAlliedSocietyRank)i}");
-                questJournalUtils.ShowGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}/{(EAlliedSocietyRank)i}", questsByRank);
                 foreach (IQuestInfo quest in questsByRank)
                     DrawQuest(quest, addPending);
             }
@@ -294,13 +290,6 @@ internal sealed class AlliedSocietyComponent
         if (mixed > 0 || (crafting > 0 && gathering > 0))
             return EType.CraftingAndGathering;
         return crafting > 0 ? EType.Crafting : EType.Gathering;
-    }
-
-    private static List<IQuestInfo> GetHighestRankQuests(List<IQuestInfo> quests, EAlliedSocietyRank currentRank)
-    {
-        EAlliedSocietyRank? highest = AlliedSocietyQuestFunctions.GetHighestRank(
-            quests.Select(x => ((QuestInfo)x).AlliedSocietyRank), currentRank);
-        return [.. quests.Where(x => ((QuestInfo)x).AlliedSocietyRank == highest && !x.QuestId.Value.Equals(1569))];
     }
 
     private void DrawQuest(IQuestInfo questInfo, bool addPending)

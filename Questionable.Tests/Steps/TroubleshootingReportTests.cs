@@ -28,6 +28,19 @@ public sealed class TroubleshootingReportTests
     }
 
     [Fact]
+    public void LongLog_KeepsOldError()
+    {
+        List<RecentLog.Entry> log = [Line(60, "MappingTheRealm couldn't reach Western Thanalan", LogLevel.Error),
+            .. Enumerable.Range(0, 40).Select(i => Line(40 - i, string.Create(CultureInfo.InvariantCulture, $"line {i:D2} ") + new string('x', 150)))];
+
+        string report = TroubleshootingReport.Build(new() { Facts = ["Quest: none"], Log = log, NowUtc = Now });
+
+        Assert.True(report.Length <= TroubleshootingReport.MaxLength, $"Length was {report.Length}");
+        Assert.Contains("ERR MappingTheRealm couldn't reach", report, StringComparison.Ordinal);
+        Assert.True(report.IndexOf("ERR", StringComparison.Ordinal) < report.IndexOf("line 39", StringComparison.Ordinal));
+    }
+
+    [Fact]
     public void HugeFacts_StillFitMessage()
     {
         string[] facts = Enumerable.Range(0, 30).Select(_ => new string('f', 500)).ToArray();
@@ -104,5 +117,21 @@ public sealed class TroubleshootingReportTests
         Assert.Equal("line 11", entries[0].Message);
         Assert.Equal("failed | InvalidOperationException: bad", entries[^1].Message);
         Assert.Equal(LogLevel.Error, entries[^1].Level);
+    }
+
+    [Fact]
+    public void RecentLog_KeepsErrorOverSpam()
+    {
+        using RecentLog log = new();
+        ILogger logger = log.CreateLogger("test");
+
+        logger.LogError("route failed");
+        for (int i = 0; i < 50; ++i)
+            logger.LogWarning("no next step {Index}", i);
+
+        IReadOnlyList<RecentLog.Entry> entries = log.GetEntries();
+        Assert.Equal(40, entries.Count);
+        Assert.Equal("route failed", entries[0].Message);
+        Assert.Equal("no next step 49", entries[^1].Message);
     }
 }

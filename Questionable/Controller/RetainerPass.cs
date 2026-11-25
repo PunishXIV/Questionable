@@ -80,10 +80,11 @@ internal sealed class RetainerPass : IDisposable
         ? _LF("AutoRetainer multi-mode pass, then back to {0}", _home.Name)
         : null;
 
+    // Only what the pass sends counts; a sub back during a retainers-only pass would start a pass every time.
     internal static bool AnyReady(IEnumerable<Character> characters, Func<ulong, bool> retainersReady,
-        Func<ulong, bool> vesselsReady) =>
-        characters.Any(x => x.Enabled && retainersReady(x.ContentId) ||
-                            x.WorkshopEnabled && vesselsReady(x.ContentId));
+        Func<ulong, bool> vesselsReady, AutoRetainerIpc.EPassType? type) =>
+        characters.Any(x => type != AutoRetainerIpc.EPassType.Submersibles && x.Enabled && retainersReady(x.ContentId) ||
+                            type != AutoRetainerIpc.EPassType.Retainers && x.WorkshopEnabled && vesselsReady(x.ContentId));
 
     public bool IsDue()
     {
@@ -92,7 +93,8 @@ internal sealed class RetainerPass : IDisposable
             _lifestream.GetVersion() == null || FreeBagSlots() < 2)
             return false;
 
-        if (AnyReady(_autoRetainer.GetCharacters(), _autoRetainer.RetainersReady, _autoRetainer.VesselsReady))
+        if (AnyReady(_autoRetainer.GetCharacters(), _autoRetainer.RetainersReady, _autoRetainer.VesselsReady,
+                _configuration.General.RetainerPassType))
             return true;
 
         // Checking every character is a handful of calls; not on every step.
@@ -141,7 +143,7 @@ internal sealed class RetainerPass : IDisposable
             _startedAt = now;
             _deadline = now + PassTimeout;
             State = EState.Waiting;
-            if (_autoRetainer.StartPass())
+            if (_autoRetainer.StartPass(_configuration.General.RetainerPassType))
             {
                 // A pass with nothing to do turns multi-mode off again before the next frame.
                 _seenOn = _autoRetainer.IsMultiModeOn;
@@ -240,7 +242,8 @@ internal sealed class RetainerPass : IDisposable
     private void Return(DateTime now)
     {
         // Something AutoRetainer left alone (e.g. subs while it only does retainers) would start a pass at every accept.
-        bool leftOver = AnyReady(_autoRetainer.GetCharacters(), _autoRetainer.RetainersReady, _autoRetainer.VesselsReady);
+        bool leftOver = AnyReady(_autoRetainer.GetCharacters(), _autoRetainer.RetainersReady, _autoRetainer.VesselsReady,
+            _configuration.General.RetainerPassType);
         _nextPass = NextPass(now, leftOver);
         _logger.LogInformation("AutoRetainer's pass is done (left over: {LeftOver}); going back to {Name}", leftOver,
             _home?.Name);

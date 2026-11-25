@@ -23,6 +23,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly ReportWarningComponent _reportWarningComponent;
     private readonly TerritoryData _territoryData;
     private readonly BossModIpc _bossModIpc;
+    private readonly PluginConfigComponent _pluginConfigComponent;
 
     private readonly QueueComponent _queueComponent;
     private bool _wasRunning;
@@ -45,7 +46,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         InteractionUiController interactionUiController,
         ConfigWindow configWindow,
         BossModIpc bossModIpc,
-        QueueComponent queueComponent)
+        QueueComponent queueComponent,
+        PluginConfigComponent pluginConfigComponent)
         : base((configuration.Advanced.Debug ? "(!) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
             ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing)
     {
@@ -65,6 +67,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         _framework = framework;
         _interactionUiController = interactionUiController;
         _bossModIpc = bossModIpc;
+        _pluginConfigComponent = pluginConfigComponent;
 
         SizeConstraints = new WindowSizeConstraints
         {
@@ -153,13 +156,17 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 ImGui.Separator();
             }
 
-            string notice = "";
+            List<string> notices = [];
+            string missing = _pluginConfigComponent.MissingRequiredPlugins();
+            if (missing.Length != 0)
+                notices.Add(_LF("Required plugins are missing: {0}. Install them on the Plugins page in settings.", missing));
             if (_bossModIpc.IsRebornInstalled())
-                notice = _L("Questionable is not compatible with Boss Mod Reborn!");
-            if (notice.Length != 0)
+                notices.Add(_L("Questionable is not compatible with Boss Mod Reborn!"));
+            if (notices.Count != 0)
             {
                 ImGui.TextColored(QstTheme.Danger, _L("Notice"));
-                ImGui.TextWrapped(notice);
+                foreach (string notice in notices)
+                    ImGui.TextWrapped(notice);
                 ImGui.Separator();
             }
 

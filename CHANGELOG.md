@@ -4,6 +4,7 @@
 - Feature: More ways to stop: when the priority list is done, when you move, or at the next aetheryte -Kage
 - Feature: Do dailies: tick allied societies in the journal and Questionable does their dailies, unlocking them first (/qst dailies) -Kage
 - Feature: Custom Deliveries page with every NPC's progress; Satisfy does the ticked ones (/qst deliveries) -Kage
+- Feature: Custom Deliveries shows the scrips your ticked deliveries give and warns before you overcap -Kage
 - Feature: Between quests: free job gear at 80, 89 and 99, repairs, Mog Station mail and the Hall of the Novice ring -Kage
 - Feature: Between quests, AutoRetainer can send out your retainers and submarines, at most once every 10 minutes (off by default) -Kage
 - Feature: Picks quest rewards by rules you can reorder: collectibles first, then gear upgrades, coffers and sale price -Kage

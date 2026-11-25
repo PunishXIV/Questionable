@@ -51,12 +51,12 @@ internal sealed class AutoRetainerIpc : Ipc, IDisposable
     public bool IsMultiModeOn => IpcInvoke.SafeFunc(() => _multiModeOn(), fallback: false);
 
     // No type: AutoRetainer uses its own multi-mode setting.
-    public bool StartPass()
+    public bool StartPass(EPassType? type)
     {
-        _logger.LogInformation("Asking AutoRetainer for one multi-mode pass");
+        _logger.LogInformation("Asking AutoRetainer for one multi-mode pass ({Type})", type?.ToString() ?? "its own setting");
         return IpcInvoke.SafeFunc(() =>
         {
-            _startPass(null);
+            _startPass(type);
             return true;
         }, false, _logger, "Unable to start AutoRetainer's multi-mode");
     }

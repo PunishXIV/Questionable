@@ -30,7 +30,7 @@ internal sealed class QuickAccessComponent
     {
         "Artisan", "AutoDuty", "AutoRetainer", "Automaton", "BossMod", "BossModReborn", "GatherChill", "Knightshopper", "Lifestream",
         "MappingTheRealm", "Mogmail", "PandorasBox", "RotationSolver", "SelectString", "Stylist", "TextAdvance", "vnavmesh", "vsatisfy", "WahTools",
-        "WrathCombo", "YesAlready",
+        "WigglyQuest", "WrathCombo", "YesAlready",
     };
 
     public event EventHandler? Reload;

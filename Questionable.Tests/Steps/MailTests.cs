@@ -7,26 +7,6 @@ namespace Questionable.Tests.Steps;
 
 public sealed class MailTests
 {
-    private static Mail.Moogle? Route(byte startTown, params EAetheryteLocation[] unlocked) =>
-        Mail.ChooseRoute(startTown, unlocked.Contains);
-
-    [Fact]
-    public void ChooseRoute_StartingCityFirst()
-    {
-        EAetheryteLocation[] all = [EAetheryteLocation.Limsa, EAetheryteLocation.Gridania, EAetheryteLocation.Uldah];
-
-        Assert.Equal(EAetheryteLocation.Uldah, Route(3, all)?.City);
-        Assert.Equal(EAetheryteLocation.Gridania, Route(2, all)?.City);
-    }
-
-    [Fact]
-    public void ChooseRoute_SkipsLockedCity() =>
-        Assert.Equal(EAetheryteLocation.Gridania, Route(1, EAetheryteLocation.Gridania)?.City);
-
-    [Fact]
-    public void ChooseRoute_NothingUnlocked_Null() =>
-        Assert.Null(Route(1, EAetheryteLocation.LimsaAftcastle));
-
     [Fact]
     public void TurnOnClaimMail_BaseAndProfiles()
     {

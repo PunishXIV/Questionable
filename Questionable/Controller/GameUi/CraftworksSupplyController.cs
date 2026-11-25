@@ -28,12 +28,16 @@ internal sealed class CraftworksSupplyController : IDisposable
         _addonLifecycle.RegisterListener(AddonEvent.PostRefresh, "ContextIconMenu", ContextIconMenuPostOpen);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "BankaCraftworksSupply",
             SupplyPostSetup);
+        _addonLifecycle.RegisterListener(AddonEvent.PreFinalize, HelpAddons, HelpClosed);
     }
+
+    private static readonly string[] HelpAddons = ["HowTo", "HowToNotice"];
 
     private bool ShouldHandleUi => _questController.IsRunning;
 
     public void Dispose()
     {
+        _addonLifecycle.UnregisterListener(AddonEvent.PreFinalize, HelpAddons, HelpClosed);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "BankaCraftworksSupply",
             SupplyPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostRefresh, "ContextIconMenu", ContextIconMenuPostOpen);
@@ -47,6 +51,13 @@ internal sealed class CraftworksSupplyController : IDisposable
 
         AtkUnitBase* addon = (AtkUnitBase*)args.Addon.Address;
         HandleSupply(addon);
+    }
+
+    // The first Studium delivery opens the game's help on top, and the hand-over made under it is lost (4158, Censored 11-25).
+    private void HelpClosed(AddonEvent type, AddonArgs args)
+    {
+        if (ShouldHandleUi)
+            _framework.RunOnTick(HandleSupply, TimeSpan.FromMilliseconds(100));
     }
 
     private unsafe void HandleSupply()

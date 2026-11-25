@@ -39,18 +39,20 @@ internal static class TroubleshootingReport
         string head = Shorten(body.ToString().TrimEnd(), budget);
 
         const string logTitle = "\n\nRecent log:";
-        List<string> lines = [];
+        SortedList<int, string> lines = [];
         int used = head.Length + logTitle.Length;
-        foreach (RecentLog.Entry entry in input.Log.Reverse())
+        // Errors first, then warnings, then the newest of the rest; printed in time order.
+        foreach ((RecentLog.Entry entry, int index) in input.Log.Select((x, i) => (x, i))
+                     .OrderByDescending(x => x.x.Level).ThenByDescending(x => x.i))
         {
             string line = $"-{Age(input.NowUtc - entry.Time)} {LevelTag(entry.Level)} {Clean(entry.Message, MaxLogLineLength)}";
             if (used + line.Length + 1 > budget)
-                break;
-            lines.Insert(0, line);
+                continue;
+            lines.Add(index, line);
             used += line.Length + 1;
         }
 
-        string log = lines.Count == 0 ? "" : logTitle + "\n" + string.Join('\n', lines);
+        string log = lines.Count == 0 ? "" : logTitle + "\n" + string.Join('\n', lines.Values);
         return Prompt + head + log + End;
     }
 

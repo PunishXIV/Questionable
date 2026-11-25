@@ -359,7 +359,7 @@ internal sealed class CommandHandler : IDisposable
                     UIState* uiState = UIState.Instance();
                     for (byte i = 0; i < uiState->UnlockedChocoboTaxiStands.Length * 8; ++i)
                     {
-                        if (!(uiState->IsChocoboTaxiStandUnlocked(i)) && taxiStandNames.HasRow(i + 0x120000u))
+                        if (!uiState->IsChocoboTaxiStandUnlocked(i + 0x120000u) && taxiStandNames.HasRow(i + 0x120000u))
                         {
                             ChocoboTaxiStand row = taxiStandNames.GetRow(i + 0x120000u);
                             // 0 and 1 are unused

@@ -13,8 +13,8 @@ public sealed class RetainerPassTests
         new() { ContentId = 3 },
     ];
 
-    private static bool AnyReady(ulong[] retainersBack, ulong[] vesselsBack) =>
-        RetainerPass.AnyReady(Characters, retainersBack.Contains, vesselsBack.Contains);
+    private static bool AnyReady(ulong[] retainersBack, ulong[] vesselsBack, AutoRetainerIpc.EPassType? type = null) =>
+        RetainerPass.AnyReady(Characters, retainersBack.Contains, vesselsBack.Contains, type);
 
     [Fact]
     public void AnyReady_RetainersBack() => Assert.True(AnyReady([1], []));
@@ -27,6 +27,15 @@ public sealed class RetainerPassTests
 
     [Fact]
     public void AnyReady_SkipsNonMultiMode() => Assert.False(AnyReady([3], [3]));
+
+    [Fact]
+    public void AnyReady_OnlyCountsChosenKind()
+    {
+        Assert.False(AnyReady([1], [], AutoRetainerIpc.EPassType.Submersibles));
+        Assert.True(AnyReady([], [2], AutoRetainerIpc.EPassType.Submersibles));
+        Assert.False(AnyReady([], [2], AutoRetainerIpc.EPassType.Retainers));
+        Assert.True(AnyReady([1], [], AutoRetainerIpc.EPassType.Retainers));
+    }
 
     [Theory]
     [InlineData(false, 10)]

@@ -12,6 +12,7 @@ internal sealed class QuestStarter(
     QuestStopPolicy stopPolicy,
     JobGear.Factory jobGear,
     SatisfyIpc satisfy,
+    CustomDeliveries customDeliveries,
     BossModIpc bossMod,
     Configuration configuration,
     IDataManager dataManager,
@@ -192,6 +193,11 @@ internal sealed class QuestStarter(
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
+
+        foreach (ScripGain scrip in customDeliveries.ScripGains(customDeliveries.GetNpcs(), configuration.General))
+            if (scrip.Lost > 0)
+                chatGui.PrintError(_LF("These deliveries give up to {0} {1}; {2} would be lost to the cap.", scrip.Gain,
+                    scrip.Name, scrip.Lost), CommandHandler.MessageTag, CommandHandler.TagColor);
 
         stopPolicy.CancelEnding();
         foreach (uint npc in npcs.Order())

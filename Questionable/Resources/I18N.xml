@@ -9450,4 +9450,49 @@ Right click: Copy without .json</Value>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard</Key>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
+    <Key>Required plugins are missing: {0}. Install them on the Plugins page in settings.</Key>
+    <Value lang="en">Required plugins are missing: {0}. Install them on the Plugins page in settings.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>What to send</Key>
+    <Value lang="en">What to send</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>AutoRetainer's own setting</Key>
+    <Value lang="en">AutoRetainer's own setting</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Retainers only</Key>
+    <Value lang="en">Retainers only</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Submersibles only</Key>
+    <Value lang="en">Submersibles only</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Between quests, when a delivery moogle is nearby or you're in Limsa Lominsa, Gridania or Ul'dah, walks to it and has Mogmail claim waiting Mog Station and reward mail. Never teleports just for mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail.</Key>
+    <Value lang="en">Between quests, when a delivery moogle is nearby or you're in Limsa Lominsa, Gridania or Ul'dah, walks to it and has Mogmail claim waiting Mog Station and reward mail. Never teleports just for mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
+    <Key>Up to +{0} {1} (you have {2} of {3})</Key>
+    <Value lang="en">Up to +{0} {1} (you have {2} of {3})</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
+    <Key>- {0} would be lost to the cap</Key>
+    <Value lang="en">- {0} would be lost to the cap</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStarter.cs -->
+    <Key>These deliveries give up to {0} {1}; {2} would be lost to the cap.</Key>
+    <Value lang="en">These deliveries give up to {0} {1}; {2} would be lost to the cap.</Value>
+  </Entry>
 </I18N>

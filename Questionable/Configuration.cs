@@ -21,7 +21,7 @@ internal sealed class Configuration : IPluginConfiguration
     internal static void ClearRuntime(Configuration configuration) =>
         Interlocked.CompareExchange(ref _runtimeInstance, null, configuration);
     #region Serialised data
-    public const int PluginSetupVersion = 5;
+    public const int PluginSetupVersion = 6;
     public const int PluginConfigVersion = 2;
     public int PluginSetupCompleteVersion { get; set; }
 #pragma warning disable IDE1006 // Configuration members are never renamed (AGENTS.md naming rules).
@@ -296,6 +296,7 @@ internal sealed class Configuration : IPluginConfiguration
         public EDeliveryItem DeliveryItemFor(uint npc) => DeliveryItems.GetValueOrDefault(npc, EDeliveryItem.Gather);
         public bool RunNoviceHall { get; set; } = true;
         public bool SendRetainers { get; set; }
+        public External.AutoRetainerIpc.EPassType? RetainerPassType { get; set; }
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
         public int AutoStepRefreshMaxTries { get; set; } = 3;

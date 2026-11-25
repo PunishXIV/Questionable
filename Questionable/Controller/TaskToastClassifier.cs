@@ -15,7 +15,7 @@ internal sealed class TaskToastClassifier
         : this(dataManager.GetString<LogMessage>(1318, x => x.Text),
             dataManager.GetRegex<LogMessage>(1314, x => x.Text)!,
             dataManager.GetString<LogMessage>(7728, x => x.Text),
-            [.. new uint[] { 648, 1249, 1310 }.Select(x => dataManager.GetString<LogMessage>(x, y => y.Text))])
+            [.. new uint[] { 565, 566, 648, 1249, 1310, 9979 }.Select(x => dataManager.GetString<LogMessage>(x, y => y.Text))])
     {
     }
 

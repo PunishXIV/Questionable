@@ -363,7 +363,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
 
             ImGuiComponents.HelpMarker(
-                _L("Between quests, goes to a delivery moogle and has Mogmail claim waiting Mog Station and reward mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail."));
+                _L("Between quests, when a delivery moogle is nearby or you're in Limsa Lominsa, Gridania or Ul'dah, walks to it and has Mogmail claim waiting Mog Station and reward mail. Never teleports just for mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail."));
 
             bool runNoviceHall = Configuration.General.RunNoviceHall;
             if (ImGui.Checkbox(_L("Run the Hall of the Novice for the Neophyte's Ring"), ref runNoviceHall))
@@ -386,6 +386,16 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
                 ImGuiComponents.HelpMarker(
                     _L("Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream."));
+
+                using (ImRaii.Disabled(!Configuration.General.SendRetainers))
+                {
+                    ImGui.SetNextItemWidth(ImGui.GetWindowContentRegionMax().X / 2);
+                    DrawComboOption(_L("What to send"),
+                        [null, AutoRetainerIpc.EPassType.Retainers, AutoRetainerIpc.EPassType.Submersibles],
+                        [_L("AutoRetainer's own setting"), _L("Retainers only"), _L("Submersibles only")],
+                        () => Configuration.General.RetainerPassType,
+                        v => Configuration.General.RetainerPassType = v);
+                }
             }
         }
     }

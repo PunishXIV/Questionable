@@ -334,8 +334,16 @@ internal sealed class CreationUtilsComponent
                 {
                     if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Bullseye, _L("To target")))
                     {
-                        movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseId(target),
-                            target.Position, new());
+                        try
+                        {
+                            movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseId(target),
+                                target.Position, new());
+                        }
+                        catch (MovementController.PathfindingException e)
+                        {
+                            Svc.Chat.PrintError(DalamudInitializer.GetPathfindingError(e.Reason), CommandHandler.MessageTag,
+                                CommandHandler.TagColor);
+                        }
                     }
                 }
                 else
