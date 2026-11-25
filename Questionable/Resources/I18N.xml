@@ -3342,6 +3342,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Retainers</Key>
     <Value lang="en">Retainers</Value>
     <Value lang="ja-jp">リテイナー</Value>
@@ -5115,6 +5117,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Apartment</Key>
     <Value lang="en">Apartment</Value>
     <Value lang="ja-jp">アパルトメント</Value>
@@ -5196,6 +5199,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Inn room</Key>
     <Value lang="en">Inn room</Value>
     <Value lang="ja-jp">宿屋</Value>
@@ -6382,7 +6386,7 @@
     <Value lang="zh-tw">任務之間，商店開放且裝備優於目前裝備時，領取80、89、99級免費職業裝備（黑風海、舊薩雷安、圖萊尤拉），再裝備最佳裝備。每角色每職業一次。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Between quests, goes to a delivery moogle and has Mogmail claim waiting Mog Station and reward mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail.</Key>
     <Value lang="en">Between quests, goes to a delivery moogle and has Mogmail claim waiting Mog Station and reward mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail.</Value>
     <Value lang="ja-jp">クエストの合間にレターモーグリへ移動し、Mogmailでモグステーションや報酬メールを受け取ります。アイテムの使用はMogmailのAuto Pop設定に従います。Mogmailが必要です。</Value>
@@ -6710,12 +6714,12 @@
     <Value lang="zh-tw">執行任務時</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Send retainers and submersibles out between quests</Key>
     <Value lang="en">Send retainers and submersibles out between quests</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Key>
     <Value lang="en">Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Value>
   </Entry>
@@ -6977,6 +6981,7 @@
     <Value lang="zh-tw">角色</Value>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
     <Key>Characters</Key>
     <Value lang="en">Characters</Value>
@@ -7873,7 +7878,7 @@
     <Value lang="zh-tw">右鍵點擊任務或群組可將其新增至優先任務。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- DEPRECATED -->
     <Key>Add highest rank to Priority Quests</Key>
     <Value lang="en">Add highest rank to Priority Quests</Value>
     <Value lang="ja-jp">最高ランクを優先クエストに追加</Value>
@@ -9173,7 +9178,7 @@ Right click: Copy without .json</Value>
     <Value lang="zh-tw">資料版本 {0}</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Dive</Key>
     <Value lang="en">Dive</Value>
     <Value lang="ja-jp">潜水</Value>
@@ -9430,22 +9435,22 @@ Right click: Copy without .json</Value>
     <Value lang="en">Required plugins are missing: {0}. Install them on the Plugins page in settings.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>What to send</Key>
     <Value lang="en">What to send</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>AutoRetainer's own setting</Key>
     <Value lang="en">AutoRetainer's own setting</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Retainers only</Key>
     <Value lang="en">Retainers only</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Submersibles only</Key>
     <Value lang="en">Submersibles only</Value>
   </Entry>
@@ -9505,17 +9510,17 @@ Right click: Copy without .json</Value>
     <Value lang="en">AutoRetainer</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Send them out when you start questing</Key>
     <Value lang="en">Send them out when you start questing</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>This character's retainers, at a summoning bell</Key>
     <Value lang="en">This character's retainers, at a summoning bell</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>The summoning bell choice sends only the character you're playing: Questionable walks to a bell in this zone, or travels to the one in your grand company's city, and AutoRetainer sends the retainers there. No character switching and no submersibles.</Key>
     <Value lang="en">The summoning bell choice sends only the character you're playing: Questionable walks to a bell in this zone, or travels to the one in your grand company's city, and AutoRetainer sends the retainers there. No character switching and no submersibles.</Value>
   </Entry>
