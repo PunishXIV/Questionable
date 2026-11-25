@@ -32,7 +32,8 @@ public sealed class DialogueChoiceHandlerTests
         Assert.True(resolver.TryFindWarp(144, "Seek Passage to the Gold Saucer", out _, out _));
         Assert.True(resolver.TryFindWarp(144, "Travel to the Gold Saucer?", out _, out _));
         var airship = new QuestStep(EInteractionType.Interact, 1004433,
-            new System.Numerics.Vector3(-23.605713f, 83.19999f, -2.3041382f), 130) { TargetTerritoryId = 144 };
+            new System.Numerics.Vector3(-23.605713f, 83.19999f, -2.3041382f), 130)
+        { TargetTerritoryId = 144 };
         AssertMenu(airship, false, true, manager);
         AssertMenu(airship, true, true, manager);
     }

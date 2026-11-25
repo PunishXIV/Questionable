@@ -89,7 +89,10 @@ public sealed class ReportStatusTests
     {
         ReportStatus status = Status(Reports with
         {
-            LastReportAt = At(31), LastWorkedAt = At(31), FifthWorkedAt = At(31), RecentWorked = 0
+            LastReportAt = At(31),
+            LastWorkedAt = At(31),
+            FifthWorkedAt = At(31),
+            RecentWorked = 0
         });
         Assert.Equal(EReportReason.OldReports, status.Reason);
         Assert.True(status.NeedsAttention);

@@ -74,7 +74,7 @@ internal sealed class CraftworksSupplyController : IDisposable
     {
         if (!ShouldHandleUi)
             return;
-        
+
         _framework.RunOnTick(() =>
         {
             if (ShouldHandleUi && _gameGui.TryGetAddonByName("ContextIconMenu", out AtkUnitBase* addon))

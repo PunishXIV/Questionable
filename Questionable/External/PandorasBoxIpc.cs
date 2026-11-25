@@ -12,7 +12,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         {
             return GetVersion() != null && _getFeatureEnabled(ConflictingFeatures.First()) != null;
         }, fallback: false);
-    
+
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>
     {
         "Auto-Meditation",
@@ -135,7 +135,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     {
         private static readonly TimeSpan RetryInterval = TimeSpan.FromSeconds(5);
 
-        private readonly ImmutableArray<string> _features = [..features];
+        private readonly ImmutableArray<string> _features = [.. features];
         private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
         private readonly HashSet<string> _turnedOff = [];
         private readonly HashSet<string> _unchecked = [];

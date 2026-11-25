@@ -740,7 +740,7 @@
     <!--<Value lang="ko">창을 닫고 Questionable을 활성화하지 않음</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
     <Key>Job Quests</Key>
     <Value lang="en">Job Quests</Value>
     <Value lang="ja-jp">ジョブクエスト</Value>
@@ -749,7 +749,7 @@
     <!--<Value lang="ko">직업 퀘스트</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Priority Quests</Key>
@@ -760,7 +760,7 @@
     <!--<Value lang="ko">우선 퀘스트</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Quests to do first:</Key>
     <Value lang="en">Quests to do first:</Value>
     <Value lang="ja-jp">最初に実行するクエスト：</Value>
@@ -769,7 +769,7 @@
     <!--<Value lang="ko">먼저 수행할 퀘스트:</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Remove finished quests</Key>
     <Value lang="en">Remove finished quests</Value>
     <Value lang="ja-jp">完了済みクエストを削除</Value>
@@ -778,14 +778,14 @@
     <!--<Value lang="ko">완료된 퀘스트 제거</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/Common/DragOrder.cs -->
     <Key>Drag to change the order</Key>
     <Value lang="en">Drag to change the order</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Clear all</Key>
     <Value lang="en">Clear all</Value>
     <Value lang="ja-jp">すべてクリア</Value>
@@ -794,10 +794,10 @@
     <!--<Value lang="ko">모두 지우기</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/ConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Hold CTRL to enable this button.</Key>
     <Value lang="en">Hold CTRL to enable this button.</Value>
     <Value lang="ja-jp">このボタンを有効にするにはCTRLを押したままにしてください。</Value>
@@ -806,7 +806,7 @@
     <!--<Value lang="ko">이 버튼을 활성화하려면 CTRL 키를 누른 상태로 유지하십시오.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Copied quests to clipboard.</Key>
     <Value lang="en">Copied quests to clipboard.</Value>
     <Value lang="ja-jp">クエストをクリップボードにコピーしました。</Value>
@@ -815,7 +815,8 @@
     <!--<Value lang="ko">퀘스트를 클립보드에 복사했습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Built-in</Key>
     <Value lang="en">Built-in</Value>
     <Value lang="ja-jp">組み込み</Value>
@@ -824,7 +825,7 @@
     <!--<Value lang="ko">내장</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
     <Key>Custom</Key>
     <Value lang="en">Custom</Value>
     <Value lang="ja-jp">カスタム</Value>
@@ -842,7 +843,7 @@
     <!--<Value lang="ko">크리스탈 타워 레이드</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
     <Key>Post-ARR unlocks</Key>
     <Value lang="en">Post-ARR unlocks</Value>
     <Value lang="ja-jp">新生コンテンツ解放</Value>
@@ -897,10 +898,10 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/GatheringJournalComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/ContentProgressComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
     <Key>Name</Key>
     <Value lang="en">Name</Value>
     <Value lang="ja-jp">名前</Value>
@@ -918,7 +919,6 @@
     <!--<Value lang="ko">동작</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
     <Key>Copy as file name</Key>
     <Value lang="en">Copy as file name</Value>
@@ -969,8 +969,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Quest</Key>
     <Value lang="en">Quest</Value>
     <Value lang="ja-jp">クエスト</Value>
@@ -988,6 +988,7 @@
     <!--<Value lang="ko">시퀀스</Value>-->
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestReportsWindow.cs -->
     <!-- Found in: ../Questionable/Windows/PathEditorWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
@@ -1009,6 +1010,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
     <Key>Open settings</Key>
     <Value lang="en">Open settings</Value>
     <Value lang="ja-jp">設定を開く</Value>
@@ -1108,9 +1110,9 @@
     <!--<Value lang="ko">활성화</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/ConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Disabled</Key>
     <Value lang="en">Disabled</Value>
     <Value lang="ja-jp">無効</Value>
@@ -1302,9 +1304,8 @@
     <Value lang="ko">크리스탈 타워 레이드는 패치 2.55 퀘스트 '모든 목적에 대한 시간' 및 Heavensward 시작에 필요합니다.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Prevent quest completion</Key>
     <Value lang="en">Prevent quest completion</Value>
     <Value lang="ja-jp">クエスト完了を防ぐ</Value>
@@ -1322,7 +1323,6 @@
     <!--<Value lang="ko">활성화되면 Questionable은 퀘스트를 제출하고 완료하려고 시도하지 않습니다. 마지막 제출 단계 외에는 모든 작업이 자동으로 수행됩니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Abandon quest before completion</Key>
     <Value lang="en">Abandon quest before completion</Value>
@@ -1421,9 +1421,9 @@
     <!--<Value lang="ko">다운로드된 경로 데이터 버전: {0}</Value>-->
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>?</Key>
     <Value lang="en">?</Value>
     <Value lang="ja-jp">?</Value>
@@ -1433,7 +1433,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Duties</Key>
     <Value lang="en">Duties</Value>
     <Value lang="ja-jp">コンテンツ</Value>
@@ -1451,8 +1450,9 @@
     <!--<Value lang="ko">안전한 경우 동기화 해제 상태로 콘텐츠 실행</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Options</Key>
     <Value lang="en">Options</Value>
     <Value lang="ja-jp">オプション</Value>
@@ -1461,8 +1461,8 @@
     <!--<Value lang="ko">옵션</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>TerritoryId: {0}</Key>
     <Value lang="en">TerritoryId: {0}</Value>
     <Value lang="ja-jp">TerritoryId: {0}</Value>
@@ -1471,8 +1471,8 @@
     <!--<Value lang="ko">TerritoryId: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>ContentFinderConditionId: {0}</Key>
     <Value lang="en">ContentFinderConditionId: {0}</Value>
     <Value lang="ja-jp">ContentFinderConditionId: {0}</Value>
@@ -1482,7 +1482,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Enable all</Key>
     <Value lang="en">Enable all</Value>
     <Value lang="ja-jp">すべて有効にする</Value>
@@ -1536,7 +1535,7 @@
     <Value lang="ko">불멸대</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>General</Key>
     <Value lang="en">General</Value>
     <Value lang="ja-jp">一般</Value>
@@ -1652,7 +1651,7 @@
     <Value lang="ko">ESC 키를 사용해 퀘스트 진행 및 이동 취소</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
     <Key>Questing</Key>
     <Value lang="en">Questing</Value>
     <Value lang="ja-jp">クエスト実行</Value>
@@ -1678,7 +1677,7 @@
     <Value lang="zh-tw">已確認超出貨幣上限，超出部分已被捨棄。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Notifications</Key>
     <Value lang="en">Notifications</Value>
     <Value lang="ja-jp">通知</Value>
@@ -1759,7 +1758,7 @@
     <Value lang="ko">요구되는 플러그인이 설치되어 있지 않습니다, Questionable이 제대로 작동하지 않을 수 있습니다.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Open settings</Key>
     <Value lang="en">Open settings</Value>
     <Value lang="ja-jp">設定を開く</Value>
@@ -1876,7 +1875,7 @@
     <Value lang="zh-tw">啟用 {0} 的建議選項。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
     <Key>Profiles</Key>
     <Value lang="en">Profiles</Value>
     <Value lang="ja-jp">プロファイル</Value>
@@ -2047,8 +2046,8 @@
     <!--<Value lang="ko">모든 퀘스트 전투를 활성화합니다. 사용은 본인 책임입니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Stop</Key>
     <Value lang="en">Stop</Value>
     <Value lang="ja-jp">停止</Value>
@@ -2066,8 +2065,8 @@
     <!--<Value lang="ko">레벨에서 중단</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>(Current: {0})</Key>
     <Value lang="en">(Current: {0})</Value>
     <Value lang="ja-jp">（現在: {0}）</Value>
@@ -2094,7 +2093,7 @@
     <!--<Value lang="ko">아래에서 선택한 퀘스트 중 하나라도 수락하면 중단:</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalProgressWindow.cs -->
     <Key>Allied Societies</Key>
     <Value lang="en">Allied Societies</Value>
     <Value lang="ja-jp">友好部族</Value>
@@ -2121,8 +2120,7 @@
     <!--<Value lang="ko">노란색으로 표시된 퀘스트는 이 캐릭터에서 아직 한 번도 완료되지 않았습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>This quest is in Priority Quests.</Key>
     <Value lang="en">This quest is in Priority Quests.</Value>
     <Value lang="ja-jp">このクエストは優先クエストに含まれています。</Value>
@@ -2131,10 +2129,7 @@
     <!--<Value lang="ko">이 퀘스트는 우선 순위 퀘스트에 포함되어 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/GatheringJournalComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Supported</Key>
     <Value lang="en">Supported</Value>
     <Value lang="ja-jp">サポート済み</Value>
@@ -2143,7 +2138,7 @@
     <!--<Value lang="ko">지원됨</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalProgressWindow.cs -->
     <Key>Quests</Key>
     <Value lang="en">Quests</Value>
     <Value lang="ja-jp">クエスト</Value>
@@ -2161,8 +2156,8 @@
     <!--<Value lang="ko">퀘스트 및 카테고리 검색</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/ContentProgressComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Completed</Key>
     <Value lang="en">Completed</Value>
     <Value lang="ja-jp">完了済み</Value>
@@ -2180,7 +2175,7 @@
     <!--<Value lang="ko">검색과 일치하는 퀘스트나 카테고리가 없습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>&lt;no reason specified&gt;</Key>
     <Value lang="en">&lt;no reason specified&gt;</Value>
     <Value lang="ja-jp">&lt;理由未指定&gt;</Value>
@@ -2189,7 +2184,7 @@
     <!--<Value lang="ko">&lt;지정된 이유 없음&gt;</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>This quest is not available.</Key>
     <Value lang="en">This quest is not available.</Value>
     <Value lang="ja-jp">このクエストは受注できません。</Value>
@@ -2198,7 +2193,7 @@
     <!--<Value lang="ko">이 퀘스트는 사용할 수 없습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>This quest requires completing a FATE.</Key>
     <Value lang="en">This quest requires completing a FATE.</Value>
     <Value lang="ja-jp">このクエストにはFATEの完了が必要です。</Value>
@@ -2207,7 +2202,7 @@
     <!--<Value lang="ko">이 퀘스트는 FATE 완료가 필요합니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>This quest could not be loaded.</Key>
     <Value lang="en">This quest could not be loaded.</Value>
     <Value lang="ja-jp">このクエストを読み込めませんでした。</Value>
@@ -2216,7 +2211,7 @@
     <!--<Value lang="ko">이 퀘스트를 로드할 수 없습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>This quest had validation issues.</Key>
     <Value lang="en">This quest had validation issues.</Value>
     <Value lang="ja-jp">このクエストには検証上の問題があります。</Value>
@@ -2225,7 +2220,7 @@
     <!--<Value lang="ko">이 퀘스트에는 검증 문제가 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>This quest is supported.</Key>
     <Value lang="en">This quest is supported.</Value>
     <Value lang="ja-jp">このクエストはサポートされています。</Value>
@@ -2243,7 +2238,7 @@
     <!--<Value lang="ko">댓글: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Reason: {0}</Key>
     <Value lang="en">Reason: {0}</Value>
     <Value lang="ja-jp">理由: {0}</Value>
@@ -2252,6 +2247,9 @@
     <!--<Value lang="ko">이유: {0}</Value>-->
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/EventInfoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Add to Priority Quests</Key>
     <Value lang="en">Add to Priority Quests</Value>
@@ -2261,6 +2259,7 @@
     <!--<Value lang="ko">우선 순위 퀘스트에 추가</Value>-->
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Add all to Priority Quests</Key>
     <Value lang="en">Add all to Priority Quests</Value>
@@ -2306,8 +2305,8 @@
     <!--<Value lang="ko">모두 우선 순위 퀘스트에서 제거</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Sim first quest</Key>
     <Value lang="en">Sim first quest</Value>
     <Value lang="ja-jp">最初のクエストをシミュレート</Value>
@@ -2370,7 +2369,7 @@
     <!--<Value lang="ko">패션 액세서리</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Obtained from: {0}</Key>
     <Value lang="en">Obtained from: {0}</Value>
     <Value lang="ja-jp">入手元: {0}</Value>
@@ -2379,7 +2378,7 @@
     <!--<Value lang="ko">획득처: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalProgressWindow.cs -->
     <Key>New Game+</Key>
     <Value lang="en">New Game+</Value>
     <Value lang="ja-jp">つよくてニューゲーム</Value>
@@ -3000,7 +2999,8 @@
     <!--<Value lang="ko">하나 필요：</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestLinesComponent.cs -->
     <Key>None</Key>
     <Value lang="en">None</Value>
     <Value lang="ja-jp">なし</Value>
@@ -3157,7 +3157,7 @@
     <Value lang="ko">한국어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>About</Key>
     <Value lang="en">About</Value>
     <Value lang="ja-jp">概要</Value>
@@ -3166,7 +3166,7 @@
     <Value lang="ko">정보</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Advanced</Key>
     <Value lang="en">Advanced</Value>
     <Value lang="ja-jp">詳細設定</Value>
@@ -3193,8 +3193,8 @@
     <!--<Value lang="ko">퀘스트 시작 시 Questionable이 기본 텍스트 편집기에서 해당 경로를 엽니다.</Value>-->
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>Edit quest path</Key>
     <Value lang="en">Edit quest path</Value>
     <Value lang="ja-jp">クエストパスを編集</Value>
@@ -3212,8 +3212,8 @@
     <!--<Value lang="ko">퀘스트 시뮬레이션</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Start NG+ here</Key>
     <Value lang="en">Start NG+ here</Value>
     <Value lang="ja-jp">ここからNG+を開始</Value>
@@ -3222,8 +3222,8 @@
     <!--<Value lang="ko">여기서 NG+ 시작</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Stop NG+</Key>
     <Value lang="en">Stop NG+</Value>
     <Value lang="ja-jp">NG+を停止</Value>
@@ -3323,7 +3323,7 @@
     <!--<Value lang="ko">이 설정은 플러그인을 다시 로드한 후에 적용됩니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Level</Key>
     <Value lang="en">Level</Value>
     <Value lang="ja-jp">レベル</Value>
@@ -3359,7 +3359,7 @@
     <!--<Value lang="ko">리테이너</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
     <Key>Unlock all jobs</Key>
     <Value lang="en">Unlock all jobs</Value>
     <Value lang="ja-jp">すべてのジョブを解放</Value>
@@ -3566,7 +3566,7 @@
     <!--<Value lang="ko">초안 경로를 생성할 수 없습니다. 자세한 내용은 /xllog를 확인하세요.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
     <Key>Rank</Key>
     <Value lang="en">Rank</Value>
     <Value lang="ja-jp">ランク</Value>
@@ -3603,6 +3603,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PathEditorWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
     <Key>Save</Key>
     <Value lang="en">Save</Value>
     <Value lang="ja-jp">保存</Value>
@@ -3992,6 +3993,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Combat</Key>
     <Value lang="en">Combat</Value>
     <Value lang="ja-jp">戦闘</Value>
@@ -4000,6 +4002,7 @@
     <!--<Value lang="ko">전투</Value>-->
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Stopping</Key>
     <Value lang="en">Stopping</Value>
@@ -4117,7 +4120,8 @@
     <!--<Value lang="ko">이 퀘스트는 수락되었지만 저널에 숨겨져 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Accept only — picked up before any queued quest is completed.</Key>
     <Value lang="en">Accept only — picked up before any queued quest is completed.</Value>
     <Value lang="ja-jp">受注のみ — キュー内のクエストが完了する前に受注されます。</Value>
@@ -4126,7 +4130,8 @@
     <!--<Value lang="ko">수락만 — 대기 중인 퀘스트가 완료되기 전에 수락됩니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Accepted; completion follows the normal quest order.</Key>
     <Value lang="en">Accepted; completion follows the normal quest order.</Value>
     <Value lang="ja-jp">受注済み; 通常のクエスト順序で完了します。</Value>
@@ -4171,7 +4176,7 @@
     <!--<Value lang="ko">모든 퀘스트 수락</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
     <Key>Reached or exceeded target level {0}.</Key>
     <Value lang="en">Reached or exceeded target level {0}.</Value>
     <Value lang="ja-jp">目標レベル {0} に到達または超過しました。</Value>
@@ -4180,7 +4185,7 @@
     <!--<Value lang="ko">목표 레벨 {0}에 도달하거나 초과했습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
     <Key>Completed quest '{0}', which is configured as a stopping point.</Key>
     <Value lang="en">Completed quest '{0}', which is configured as a stopping point.</Value>
     <Value lang="ja-jp">停止条件に設定されたクエスト '{0}' を完了しました。</Value>
@@ -4189,7 +4194,7 @@
     <!--<Value lang="ko">중지 지점으로 설정된 퀘스트 '{0}'를 완료했습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
     <Key>Completed quest '{0}', stopping as requested.</Key>
     <Value lang="en">Completed quest '{0}', stopping as requested.</Value>
     <Value lang="ja-jp">クエスト '{0}' を完了しました。指示に従い停止します。</Value>
@@ -4225,7 +4230,7 @@
     <!--<Value lang="ko">테스트 메시지</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
     <Key>Automatic questing has stopped.</Key>
     <Value lang="en">Automatic questing has stopped.</Value>
     <Value lang="ja-jp">自動クエストが停止しました。</Value>
@@ -4302,9 +4307,7 @@
     <Value lang="zh-tw">無結果</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/Common/OpenQuestCleanUp.cs -->
     <Key>No open quests to clean up.</Key>
     <Value lang="en">No open quests to clean up.</Value>
     <Value lang="ja-jp">クリーンアップ対象の受注中クエストがありません。</Value>
@@ -4312,8 +4315,8 @@
     <Value lang="zh-tw">沒有已接取的任務可供清理。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/Common/OpenQuestCleanUp.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Clean up</Key>
     <Value lang="en">Clean up</Value>
     <Value lang="ja-jp">クリーンアップ</Value>
@@ -4362,7 +4365,7 @@
     <Value lang="zh-tw">儲存/清除目前位置為參考點</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/Common/OpenQuestCleanUp.cs -->
     <Key>Unavailable while not logged in.</Key>
     <Value lang="en">Unavailable while not logged in.</Value>
     <Value lang="ja-jp">ログインしていない間は利用できません。</Value>
@@ -4370,7 +4373,7 @@
     <Value lang="zh-tw">未登入時不可用</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/Common/OpenQuestCleanUp.cs -->
     <Key>No open quests in your journal that Questionable knows how to continue.</Key>
     <Value lang="en">No open quests in your journal that Questionable knows how to continue.</Value>
     <Value lang="ja-jp">Questionableが対応している受注中のクエストがジャーナルにありません。</Value>
@@ -4378,7 +4381,7 @@
     <Value lang="zh-tw">日誌中沒有 Questionable 可繼續的已接取任務。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/Common/OpenQuestCleanUp.cs -->
     <Key>Queue the {0} quest(s) you already have open, finished ones first.</Key>
     <Value lang="en">Queue the {0} quest(s) you already have open, finished ones first.</Value>
     <Value lang="ja-jp">受注中のクエスト {0} 件をキューに追加します。完了済みのものが優先されます。</Value>
@@ -4400,15 +4403,16 @@
     <Value lang="zh-tw">如果名稱無效或留空，則隨機生成一個名稱。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalProgressWindow.cs -->
     <Key>Unlocks</Key>
     <Value lang="en">Unlocks</Value>
     <Value lang="zh-cn">解锁</Value>
     <Value lang="zh-tw">解鎖</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestReportsWindow.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Loading...</Key>
     <Value lang="en">Loading...</Value>
     <Value lang="zh-cn">加载中...</Value>
@@ -4449,13 +4453,13 @@
     <Value lang="zh-cn">职业：{0}</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
     <Key>DoH/DoL unlocks</Key>
     <Value lang="en">DoH/DoL unlocks</Value>
     <Value lang="zh-cn">能工巧匠/大地使者解锁</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
     <Key>Post-HW unlocks</Key>
     <Value lang="en">Post-HW unlocks</Value>
     <Value lang="zh-cn">3.X 后续主线解锁</Value>
@@ -4799,7 +4803,8 @@
     <Value lang="zh-tw">請等待外部操作停止，再清除模擬任務。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/DailiesController.cs, ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <!-- Found in: ../Questionable/Controller/DailiesController.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Do dailies</Key>
     <Value lang="en">Do dailies</Value>
     <Value lang="ja-jp">デイリーを実行</Value>
@@ -5036,7 +5041,8 @@
     <Value lang="zh-tw">無法觀察外部操作。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestController.cs, ../Questionable/Controller/Steps/Interactions/Duty.cs -->
+    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <!-- Found in: ../Questionable/Controller/Steps/Interactions/Duty.cs -->
     <Key>'{0}' needs level {1} (you're level {2})</Key>
     <Value lang="en">'{0}' needs level {1} (you're level {2})</Value>
     <Value lang="ja-jp">「{0}」にはレベル{1}が必要（現在{2}）</Value>
@@ -5060,7 +5066,8 @@
     <Value lang="zh-tw">協助修復此任務的路徑： </Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestReporter.cs, ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <!-- Found in: ../Questionable/Controller/QuestReporter.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Thanks, your report was sent.</Key>
     <Value lang="en">Thanks, your report was sent.</Value>
     <Value lang="ja-jp">ご報告ありがとうございます。送信しました。</Value>
@@ -5180,7 +5187,8 @@
     <Value lang="zh-tw">部隊房屋</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs, ../Questionable/Functions/QuestFunctions.cs -->
+    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
+    <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
     <Key>Grand Company</Key>
     <Value lang="en">Grand Company</Value>
     <Value lang="ja-jp">グランドカンパニー</Value>
@@ -5292,7 +5300,8 @@
     <Value lang="zh-tw">留在這裡</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs, ../Questionable/Controller/Steps/Interactions/Duty.cs -->
+    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
+    <!-- Found in: ../Questionable/Controller/Steps/Interactions/Duty.cs -->
     <Key>Stopped: '{0}' needs level {1} (you're level {2}).</Key>
     <Value lang="en">Stopped: '{0}' needs level {1} (you're level {2}).</Value>
     <Value lang="ja-jp">停止：「{0}」にはレベル{1}が必要（現在{2}）。</Value>
@@ -5652,7 +5661,8 @@
     <Value lang="zh-tw">需要任務：{0}（+{1}）</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Data/QuestPrerequisite.cs, ../Questionable/Windows/UiUtils.cs -->
+    <!-- Found in: ../Questionable/Data/QuestPrerequisite.cs -->
+    <!-- Found in: ../Questionable/Windows/UiUtils.cs -->
     <Key>Previous quest</Key>
     <Value lang="en">Previous quest</Value>
     <Value lang="ja-jp">前提クエスト</Value>
@@ -5852,7 +5862,8 @@
     <Value lang="zh-tw">Gather &amp; Chill 必須保持閒置至少 2 秒。確認僅解除阻擋；請另行開始任務。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/External/GatherChillIpc.cs, ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <!-- Found in: ../Questionable/External/GatherChillIpc.cs -->
     <Key>Gathering</Key>
     <Value lang="en">Gathering</Value>
     <Value lang="ja-jp">採集</Value>
@@ -5988,7 +5999,7 @@
     <Value lang="zh-tw">部族聲望</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
+    <!-- DEPRECATED -->
     <Key>This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.
 </Key>
     <Value lang="en">This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.
@@ -6001,7 +6012,7 @@
 </Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
+    <!-- DEPRECATED -->
     <Key>This should have happened as part of the quest "Close to Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.
 </Key>
     <Value lang="en">This should have happened as part of the quest "Close to Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.
@@ -6126,7 +6137,8 @@
     <Value lang="zh-tw">無法取得回報</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/Common/Ui/ReportUi.cs, ../Questionable/Windows/QuestReportsWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestReportsWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/Common/Ui/ReportUi.cs -->
     <Key>Verified working</Key>
     <Value lang="en">Verified working</Value>
     <Value lang="ja-jp">動作確認済み</Value>
@@ -6182,7 +6194,7 @@
     <Value lang="zh-tw">可從任務右鍵選單（社群回報）讀取問題回報。每位管理員使用獨立權杖。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs, ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Remove from Priority Quests when abandoned</Key>
     <Value lang="en">Remove from Priority Quests when abandoned</Value>
     <Value lang="ja-jp">破棄時に優先クエストから削除</Value>
@@ -6725,7 +6737,8 @@
     <Value lang="en">Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs, ../Questionable/Windows/ConfigWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
     <Key>Alerts</Key>
     <Value lang="en">Alerts</Value>
     <Value lang="ja-jp">通知</Value>
@@ -7181,7 +7194,9 @@
     <Value lang="zh-tw">使用 Boss Mod 執行任務戰鬥</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs, ../Questionable/Windows/JournalComponents/JournalTable.cs, ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>This quest isn't supported yet.</Key>
     <Value lang="en">This quest isn't supported yet.</Value>
     <Value lang="ja-jp">このクエストは未対応です。</Value>
@@ -7365,7 +7380,8 @@
     <Value lang="zh-tw">基本</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs, ../Questionable/Windows/JournalProgressWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalProgressWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigWindow.cs -->
     <Key>Content</Key>
     <Value lang="en">Content</Value>
     <Value lang="ja-jp">コンテンツ</Value>
@@ -7621,7 +7637,8 @@
     <Value lang="zh-tw">絕境戰</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/ContentProgressComponent.cs, ../Questionable/Windows/JournalComponents/JournalTable.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/ContentProgressComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Unlocked</Key>
     <Value lang="en">Unlocked</Value>
     <Value lang="ja-jp">開放済み</Value>
@@ -7653,6 +7670,7 @@
     <Value lang="zh-tw">本週獎勵加成</Value>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
     <Key>Craft</Key>
     <Value lang="en">Craft</Value>
@@ -7701,6 +7719,7 @@
     <Value lang="zh-tw">執行繳納</Value>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
     <Key>Fish</Key>
     <Value lang="en">Fish</Value>
@@ -7709,6 +7728,7 @@
     <Value lang="zh-tw">釣魚</Value>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
     <Key>Gather</Key>
     <Value lang="en">Gather</Value>
@@ -7797,6 +7817,7 @@
     <Value lang="zh-tw">本週已使用{0}/{1}次</Value>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/JournalTable.cs -->
     <Key>Gil</Key>
     <Value lang="en">Gil</Value>
@@ -8045,7 +8066,8 @@
     <Value lang="zh-tw">完成進度</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalProgressWindow.cs, ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalProgressWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Custom Deliveries</Key>
     <Value lang="en">Custom Deliveries</Value>
     <Value lang="ja-jp">お得意様取引</Value>
@@ -8085,7 +8107,7 @@
     <Value lang="zh-tw">區域地圖</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/PathEditorWindow.cs -->
+    <!-- DEPRECATED -->
     <Key>Writes the path to your user quest directory and reloads all quest data.
 Saving reformats the file (property order, omitted defaults).</Key>
     <Value lang="en">Writes the path to your user quest directory and reloads all quest data.
@@ -8170,7 +8192,7 @@ Saving reformats the file (property order, omitted defaults).</Value>
     <Value lang="zh-tw">運作正常</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Left click: Show information about '{0}' in Quest Map plugin.
 Right click: Show its quest graph.</Key>
     <Value lang="en">Left click: Show information about '{0}' in Quest Map plugin.
@@ -8183,7 +8205,7 @@ Right click: Show its quest graph.</Value>
 右鍵：顯示其任務關聯圖。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Loaded from your own Quests folder (pluginConfigs\Questionable\Quests), even if Questionable has a newer version.</Key>
     <Value lang="en">Loaded from your own Quests folder (pluginConfigs\Questionable\Quests), even if Questionable has a newer version.</Value>
     <Value lang="ja-jp">自分のQuestsフォルダ（pluginConfigs\Questionable\Quests）から読み込まれています。Questionableに新しいバージョンがあっても、こちらが優先されます。</Value>
@@ -8279,7 +8301,7 @@ Right click: Show its quest graph.</Value>
     <Value lang="zh-tw">無法回報此任務：其路線並非來自 Questionable 已發布的路線資料。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>This quest was added to the game in Patch {0}.
 Click here to view the changelog from this patch.</Key>
     <Value lang="en">This quest was added to the game in Patch {0}.
@@ -8332,7 +8354,7 @@ Click here to view the changelog from this patch.</Value>
     <Value lang="zh-tw">已暫置{0}項</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>The ARR Alliance Raids must be completed to progress to Heavensward.
 They can be completed quickly and easily in unrestricted party mode ("unsync"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.
 Syrcus Tower and World of Darkness only require three players (one player per party) to enter.</Key>
@@ -8350,7 +8372,7 @@ Syrcus Tower and World of Darkness only require three players (one player per pa
 希爾科斯塔和暗之世界僅需3人（每隊1人）即可進入。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Left click: Copy your position as JSON.
 Right click: Copy your position as C# code.</Key>
     <Value lang="en">Left click: Copy your position as JSON.
@@ -8363,7 +8385,7 @@ Right click: Copy your position as C# code.</Value>
 右鍵：將目前位置複製為 C# 程式碼。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs, ../Questionable/Windows/QuestValidationWindow.cs -->
+    <!-- DEPRECATED -->
     <Key>Left click: Open in Path Editor
 Right click: Open in your default .json text editor</Key>
     <Value lang="en">Left click: Open in Path Editor
@@ -8561,7 +8583,7 @@ Right click: Open in your default .json text editor</Value>
     <Value lang="zh-tw">合計：{0}經驗值，{1}金幣</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>When off, quests added here wait until the current quest is done.
 Turns back on when the plugin restarts.</Key>
     <Value lang="en">When off, quests added here wait until the current quest is done.
@@ -8614,7 +8636,7 @@ Turns back on when the plugin restarts.</Value>
     <Value lang="zh-tw">讓 Satisfy 為日誌進度中「老主顧交易」頁面已勾選的 NPC 執行本週交易。等同於 /qst deliveries。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Left click: Copy troubleshooting information to clipboard
 Right click: Copy list of completed quests to clipboard</Key>
     <Value lang="en">Left click: Copy troubleshooting information to clipboard
@@ -8899,7 +8921,7 @@ Right click: Copy list of completed quests to clipboard</Value>
     <Value lang="zh-tw">新增此清單中所有有路線且尚未完成的任務。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
+    <!-- DEPRECATED -->
     <Key>Left click: Copy as file name
 Right click: Copy without .json</Key>
     <Value lang="en">Left click: Copy as file name
@@ -9152,7 +9174,7 @@ Right click: Copy without .json</Value>
     <Value lang="zh-tw">陸行鳥搬運</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Clean up</Key>
     <Value lang="en">Clean up</Value>
     <Value lang="ja-jp">整理</Value>
@@ -9240,7 +9262,7 @@ Right click: Copy without .json</Value>
     <Value lang="zh-tw">跳躍</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Macro</Key>
     <Value lang="en">Macro</Value>
     <Value lang="ja-jp">マクロ</Value>
@@ -9378,5 +9400,54 @@ Right click: Copy without .json</Value>
     <!-- Found in: ../Questionable/Controller/QuestController.cs -->
     <Key>WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable.</Key>
     <Value lang="en">WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
+    <Key>This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
+    <Key>This should have happened as part of the quest "Close to Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.\n</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSelectionWindow.cs -->
+    <Key>Left click: Copy as file name\nRight click: Copy without .json</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/PathEditorWindow.cs -->
+    <Key>Writes the path to your user quest directory and reloads all quest data.\nSaving reformats the file (property order, omitted defaults).</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
+    <Key>Left click: Open in Path Editor\nRight click: Open in your default .json text editor</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <Key>When off, quests added here wait until the current quest is done.\nTurns back on when the plugin restarts.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
+    <Key>Left click: Copy your position as JSON.\nRight click: Copy your position as C# code.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Loaded from your own Quests folder (pluginConfigs\\Questionable\\Quests), even if Questionable has a newer version.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Left click: Show information about '{0}' in Quest Map plugin.\nRight click: Show its quest graph.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
+    <Key>The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode ("unsync"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <Key>Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard</Key>
   </Entry>
 </I18N>

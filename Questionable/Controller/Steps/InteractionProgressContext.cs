@@ -17,7 +17,7 @@ internal sealed class InteractionProgressContext
     {
         if (!checkSequence)
         {
-        // Assume the previous cast succeeded to avoid an immediate interruption.
+            // Assume the previous cast succeeded to avoid an immediate interruption.
             ActionManager.Instance()->CastTimeElapsed = ActionManager.Instance()->CastTimeTotal;
         }
 
