@@ -13,15 +13,16 @@
             "Z": -67.1382
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "DialogueChoices": [
             {
-              "Type": "YesNo",
               "Prompt": "TEXT_FESSXT101_04796_Q3_100_001",
-              "Yes": true
+              "Type": "YesNo",
+              "Yes": true,
+              "PromptIsRegularExpression": true
             }
-          ]
+          ],
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah"
         }
       ]
     },
@@ -85,8 +86,9 @@
             "Z": 66.1701
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest"
-        }
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4797
+        } 
       ]
     }
   ]

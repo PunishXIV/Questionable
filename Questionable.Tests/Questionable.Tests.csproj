@@ -33,7 +33,7 @@
         redistributed), so the test host brings its own matching one.
     -->
     <ItemGroup>
-        <PackageReference Include="Lumina" Version="7.6.1" />
+        <PackageReference Include="Lumina" Version="7.7.2" />
         <PackageReference Include="Lumina.Excel" Version="7.5.0" />
     </ItemGroup>
 

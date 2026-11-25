@@ -1,1 +1,1 @@
-- Add the FF 16 event. - Alydev
+- Fix seasonal ipc trying to do completed seasonal quests - Kage
