@@ -260,11 +260,6 @@ internal sealed class CommandHandler : IDisposable
                 _questRegistry.OpenEditor();
                 break;
 
-            case "clearlog":
-                LogQuestCompletion.ClearLog();
-                _chatGui.Print(_L("Completions log has been cleared"), MessageTag, TagColor);
-                break;
-
             case "debug":
             case "debugmode":
                 _configuration.Advanced.Debug = !_configuration.Advanced.Debug;
@@ -434,7 +429,6 @@ internal sealed class CommandHandler : IDisposable
         _L("/qst validation - toggles the Quest Validation window"),
         _L("/qst cleanup - adds every quest you already have open to Priority Quests, finished ones first"),
         _L("/qst handle-interrupt - makes Questionable fight now, e.g. after you pulled enemies yourself"),
-        _L("/qst clearlog - clears the completed-quest log Stuck? copies"),
         _L("/qst redeem - redeems all reward items in your inventory"),
         _L("/qst deliveries - has Satisfy do this week's custom deliveries"),
     ];

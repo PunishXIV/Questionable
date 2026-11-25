@@ -33,6 +33,16 @@ public sealed class DailiesControllerTests
     }
 
     [Fact]
+    public void Plan_CapsArrSocieties()
+    {
+        Assert.Equal([new(1521), new(1503)],
+            DailiesController.Plan([EAlliedSociety.Ixal], x => Dailies.GetValueOrDefault(x, []), _ => true, 12,
+                x => DailiesController.Room(x, accepted: 1)));
+        Assert.Equal(int.MaxValue, DailiesController.Room(EAlliedSociety.Pelupelu, 5));
+        Assert.Equal(5, DailiesController.Room(EAlliedSociety.Ixal, 1, new Dictionary<EAlliedSociety, int> { [EAlliedSociety.Ixal] = 6 }));
+    }
+
+    [Fact]
     public void Plan_SkipsUnacceptable()
     {
         Assert.Equal([new(1503), new(1495)],

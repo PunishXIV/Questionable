@@ -21,6 +21,8 @@ internal sealed class QuestStarter(
 {
     private ElementId? _single;
 
+    public event EventHandler? Started;
+
     public bool CanStartQuest(string label)
     {
         if (WigglyQuestBlocks(label))
@@ -63,6 +65,8 @@ internal sealed class QuestStarter(
         _single = null;
         questController.NextInChain = null;
         questController.AutomationType = EAutomationType.Automatic;
+        // Before the first step's tasks are made, so a start-of-questing detour can join them.
+        Started?.Invoke(this, EventArgs.Empty);
         questController.ExecuteNextStep();
     }
 

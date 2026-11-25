@@ -56,6 +56,9 @@ internal static class TroubleshootingReport
         return Prompt + head + log + End;
     }
 
+    internal static string LogText(IEnumerable<string> logEntries, IReadOnlyList<string> privateTexts) =>
+        string.Join('\n', logEntries.Select(x => Scrub(x, privateTexts)));
+
     internal static string? DescribeFailure(NavigationFailureSnapshot? failure, DateTimeOffset now)
     {
         if (failure == null)

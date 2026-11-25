@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 using Microsoft.Extensions.Logging;
 using Questionable.Utils;
 using Xunit;
@@ -134,4 +134,23 @@ public sealed class TroubleshootingReportTests
         Assert.Equal("route failed", entries[0].Message);
         Assert.Equal("no next step 49", entries[^1].Message);
     }
+
+    [Fact]
+    public void DalamudLog_KeepsOnlyListedPlugins()
+    {
+        const string log = "2026-11-25 22:00:00.000 +01:00 [INF] [vnavmesh] path a\n" +
+                           "2026-11-25 22:00:01.000 +01:00 [INF] [Wrath] other\n" +
+                           "2026-11-25 22:00:02.000 +01:00 [ERR] [MappingTheRealm] failed\n" +
+                           "   at Stack.Line()\n" +
+                           "2026-11-25 22:00:03.000 +01:00 [INF] [Questionable] step\n";
+
+        Assert.Equal(["2026-11-25 22:00:02.000 +01:00 [ERR] [MappingTheRealm] failed\n   at Stack.Line()",
+                "2026-11-25 22:00:03.000 +01:00 [INF] [Questionable] step"],
+            DalamudLog.Filter(log.Split('\n'), ["MappingTheRealm", "Questionable"]));
+    }
+
+    [Fact]
+    public void ReportFile_HidesNames() =>
+        Assert.DoesNotContain("Alt Name", TroubleshootingReport.LogText(
+            ["[Questionable] Coming back to Alt Name@World"], ["Alt Name"]), StringComparison.Ordinal);
 }

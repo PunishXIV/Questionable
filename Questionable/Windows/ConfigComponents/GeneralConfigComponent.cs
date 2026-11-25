@@ -24,6 +24,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private readonly Lazy<(Job[] Ids, string[] Names)> _combatJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _craftJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _gatherJobs;
+    private readonly Lazy<(uint[] Ids, string[] Names)> _bells;
     private string _languageSearch = string.Empty;
 
     public GeneralConfigComponent(
@@ -53,6 +54,14 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _craftJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x != Job.ADV && x.IsCrafter()),
             prependDefault: true));
+        _bells = new(() =>
+        (
+            [SummoningBell.Nearest, SummoningBell.Inn, SummoningBell.Apartment, SummoningBell.PrivateHouse,
+                SummoningBell.FcHouse, .. SummoningBell.Bells.Select(x => x.TerritoryId)],
+            [_L("Nearest: this zone's, else your grand company's city"), _L("Inn room"), _L("Apartment"), _L("Private house"),
+                _L("Free company house"),
+                .. SummoningBell.Bells.Select(x => dataManager.GetExcelSheet<TerritoryType>().GetRow(x.TerritoryId).PlaceName.Value.Name.ExtractText())]
+        ));
         _gatherJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x == Job.MIN || x == Job.BTN),
             prependDefault: true));
@@ -150,6 +159,14 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         DrawComboOption(_L("Preferred gathering job"), gatherJobIds, gatherJobNames,
             () => Configuration.General.GatheringJob,
             v => Configuration.General.GatheringJob = v);
+
+        ImGui.SetNextItemWidth(size.X / 2);
+        DrawComboOption(_L("Allied society combat job"),
+            [(Job.ADV, false), (Job.ADV, true), .. combatJobIds[1..].Select(x => (x, false))],
+            [_L("Same as preferred combat job"), _L("Lowest level that can take the quest"), .. combatJobNames[1..]],
+            () => (Configuration.General.SocietyCombatJob, Configuration.General.SocietyLowestJob),
+            v => (Configuration.General.SocietyCombatJob, Configuration.General.SocietyLowestJob) = v);
+        ImGuiComponents.HelpMarker(_L("Battle society quests switch to this job. 'Lowest level' picks your lowest combat job that can take the quest, to level alt jobs. The next other quest switches back to your preferred combat job."));
 
         DrawCheckbox(_L("Namazu: do them as a crafter, not a gatherer"),
             () => Configuration.Advanced.NamazuPreferCraft,
@@ -374,30 +391,59 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             ImGuiComponents.HelpMarker(
                 _L("Between quests, at class level 49-59 without the Neophyte's Ring, AutoDuty runs the three new Hall of the Novice exercises. The ring gives 30% more EXP up to level 60. Needs AutoDuty with duties on."));
+        }
+    }
 
-            using (ImRaii.Disabled(!_autoRetainer.IsReady()))
+    public void DrawRetainersPage()
+    {
+        using var _ = ImRaii.TextWrapPos(ImGui.GetWindowContentRegionMax().X);
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("AutoRetainer"));
+        using var disabled = ImRaii.Disabled(!_autoRetainer.IsReady());
+        Configuration.GeneralConfiguration general = Configuration.General;
+        float width = ImGui.GetWindowContentRegionMax().X / 2;
+        string charactersLabel = _L("Characters"), bellLabel = _L("Summoning bell");
+        float labelWidth = Math.Max(ImGui.CalcTextSize(charactersLabel).X, ImGui.CalcTextSize(bellLabel).X) +
+                           ImGui.GetStyle().ItemSpacing.X * 2;
+
+        DrawCheckbox(_L("Send out between quests"), () => general.SendRetainers, value => general.SendRetainers = value);
+        // Each works alone: one pass at the start, then questing without AutoRetainer (Discord, Me 11-25).
+        DrawCheckbox(_L("Send out when you start questing"), () => general.RetainersOnStart,
+            value => general.RetainersOnStart = value);
+
+        using (ImRaii.Disabled(!general.SendRetainers && !general.RetainersOnStart))
+        {
+            DrawLabel(charactersLabel, labelWidth);
+            ImGui.SetNextItemWidth(width);
+            DrawComboOption("##Characters", [false, true],
+                [_L("All AutoRetainer characters (multi-mode)"), _L("Only this character, at a summoning bell")],
+                () => general.RetainersAtBell, value => general.RetainersAtBell = value);
+            ImGuiComponents.HelpMarker(general.RetainersAtBell
+                ? _L("Questionable goes to the summoning bell you pick and AutoRetainer sends this character's retainers there, then switches AutoRetainer off again. No character switching. Inn and housing bells need Lifestream.")
+                : _L("AutoRetainer does one multi-mode pass over all its multi-mode characters, then Questionable logs back in to this character and keeps questing. Needs Lifestream."));
+
+            DrawCheckbox(_L("Retainers"), () => general.SendVentures, value => general.SendVentures = value);
+            ImGui.SameLine();
+            using (ImRaii.Disabled(general.RetainersAtBell))
+                DrawCheckbox(_L("Submersibles"), () => general.SendSubmersibles, value => general.SendSubmersibles = value);
+            if (general.RetainersAtBell && ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                QstWidgets.Tooltip(_L("Submersibles go through AutoRetainer's multi-mode only."));
+
+            if (general.RetainersAtBell)
             {
-                bool sendRetainers = Configuration.General.SendRetainers;
-                if (ImGui.Checkbox(_L("Send retainers and submersibles out"), ref sendRetainers))
-                {
-                    Configuration.General.SendRetainers = sendRetainers;
-                    Save();
-                }
-
-                ImGuiComponents.HelpMarker(
-                    _L("Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream."));
-
-                using (ImRaii.Disabled(!Configuration.General.SendRetainers))
-                {
-                    ImGui.SetNextItemWidth(ImGui.GetWindowContentRegionMax().X / 2);
-                    DrawComboOption(_L("What to send"),
-                        [null, AutoRetainerIpc.EPassType.Retainers, AutoRetainerIpc.EPassType.Submersibles],
-                        [_L("AutoRetainer's own setting"), _L("Retainers only"), _L("Submersibles only")],
-                        () => Configuration.General.RetainerPassType,
-                        v => Configuration.General.RetainerPassType = v);
-                }
+                (uint[] ids, string[] names) = _bells.Value;
+                DrawLabel(bellLabel, labelWidth);
+                ImGui.SetNextItemWidth(width);
+                DrawComboOption("##SummoningBell", ids, names, () => general.RetainerBell,
+                    value => general.RetainerBell = value);
             }
         }
+    }
+
+    private static void DrawLabel(string label, float width)
+    {
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextUnformatted(label);
+        ImGui.SameLine(width);
     }
 
     private void DrawRecovery()

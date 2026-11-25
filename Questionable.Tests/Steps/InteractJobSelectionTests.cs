@@ -71,6 +71,26 @@ public sealed class InteractJobSelectionTests
             EAlliedSociety.Namazu));
     }
 
+    [Theory]
+    [InlineData(EAlliedSociety.Kobolds, Job.WAR, Job.DRG, false, Job.DRG)]
+    [InlineData(EAlliedSociety.Kobolds, Job.DRG, Job.DRG, false, null)]
+    [InlineData(EAlliedSociety.Kobolds, Job.WAR, Job.ADV, false, null)]
+    [InlineData(EAlliedSociety.Kobolds, Job.WAR, Job.SAM, false, null)]
+    [InlineData(EAlliedSociety.Kobolds, Job.CRP, Job.DRG, false, Job.DRG)]
+    [InlineData(EAlliedSociety.None, Job.DRG, Job.DRG, false, Job.WAR)]
+    [InlineData(EAlliedSociety.None, Job.PLD, Job.DRG, false, null)]
+    [InlineData(EAlliedSociety.None, Job.PLD, Job.ADV, true, Job.WAR)]
+    [InlineData(EAlliedSociety.None, Job.WAR, Job.ADV, true, null)]
+    public void SocietyJob_SwitchesInAndBack(EAlliedSociety society, Job current, Job societyJob, bool lowest,
+        Job? expected) =>
+        Assert.Equal(expected, Interact.SocietyJobSwitch([Job.WAR, Job.DRG, Job.PLD], current, society, societyJob,
+            lowest, () => Job.WAR));
+
+    [Fact]
+    public void LowestCombatJob_SkipsCrafters() =>
+        Assert.Equal(Job.PLD, Interact.LowestCombatJob([Job.WAR, Job.CRP, Job.PLD, Job.DRG],
+            x => x switch { Job.WAR => 100, Job.CRP => 10, Job.PLD => 72, _ => 90 }));
+
     private static Job SelectJob(Job[] eligibleJobs, Configuration configuration,
         EAlliedSociety alliedSociety) => Interact.SelectQuestJob(eligibleJobs, configuration, alliedSociety,
         eligibleJobs[0] is Job.CRP or Job.BSM or Job.ARM,

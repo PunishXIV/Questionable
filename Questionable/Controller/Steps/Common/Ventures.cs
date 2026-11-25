@@ -6,6 +6,9 @@ internal static class Ventures
 {
     internal sealed class Factory(
         RetainerPass pass,
+        Configuration configuration,
+        IClientState clientState,
+        IQuestGameState gameState,
         QuestFunctions questFunctions,
         GameFunctions gameFunctions,
         ICondition condition,
@@ -13,6 +16,18 @@ internal static class Ventures
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
+            if (configuration.General.RetainersAtBell)
+            {
+                bool start = pass.StartPending;
+                pass.StartPending = false;
+                if (SummoningBell.Waiting || !start &&
+                    (!BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager) ||
+                     !pass.IsDue()))
+                    return [];
+
+                return SummoningBell.Tasks(configuration.General.RetainerBell, clientState.TerritoryType, gameState.GrandCompany);
+            }
+
             if (!BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager) ||
                 !pass.IsDue())
                 return [];

@@ -9,7 +9,6 @@ internal sealed class AlliedSocietyComponent
     AlliedSocietyQuestFunctions alliedSocietyFunctions,
     QuestData questData,
     QuestRegistry questRegistry,
-    QuestJournalUtils questJournalUtils,
     JournalTable journalTable,
     Configuration configuration,
     DailiesController dailiesController,
@@ -74,7 +73,8 @@ internal sealed class AlliedSocietyComponent
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
             QstWidgets.Tooltip(societies.Count == 0
                 ? _L("Tick the societies to include with the box in front of their name.")
-                : _L("Does today's dailies for the ticked societies. Higher on the list gets your allowances first; unlocks and rank-ups go first."));
+                : _L("Does today's dailies for the ticked societies. Higher on the list gets your allowances first; unlocks and rank-ups go first.") +
+                  "\n" + _L("A Realm Reborn societies take only as many as the number next to them."));
 
         using var disabled = ImRaii.Disabled(questController.IsRunning);
         for (int i = 0; i < societies.Count; i++)
@@ -109,6 +109,22 @@ internal sealed class AlliedSocietyComponent
 
         if (ImGui.IsItemHovered())
             QstWidgets.Tooltip(_L("Include in Do dailies"));
+        ImGui.SameLine();
+
+        if (!DailiesController.IsArr(alliedSociety))
+            return;
+
+        Dictionary<EAlliedSociety, int> limits = configuration.Dailies.ArrLimits;
+        int limit = limits.GetValueOrDefault(alliedSociety, DailiesController.ArrDailies);
+        ImGui.SetNextItemWidth(ImGui.GetFrameHeight() * 3);
+        if (ImGui.SliderInt($"##DailyLimit{(int)alliedSociety}", ref limit, 1, 12))
+        {
+            limits[alliedSociety] = limit;
+            pluginInterface.SavePluginConfig(configuration);
+        }
+
+        if (ImGui.IsItemHovered())
+            QstWidgets.Tooltip(_L("How many of this society's dailies Do dailies takes per run, highest rank first. A Realm Reborn societies offer three per rank."));
         ImGui.SameLine();
     }
 

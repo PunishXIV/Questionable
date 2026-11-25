@@ -12,6 +12,7 @@ internal sealed class AutoRetainerIpc : Ipc, IDisposable
     [EzIPC("GetOfflineCharacterData")] private readonly Func<ulong, Character?> _getCharacter = null!;
     [EzIPC("PluginState.EnableSingleMultiMode")] private readonly Action<EPassType?> _startPass = null!;
     [EzIPC("PluginState.GetMultiModeStatus")] private readonly Func<bool> _multiModeOn = null!;
+    [EzIPC("PluginState.IsBusy")] private readonly Func<bool> _isBusy = null!;
     [EzIPC("PluginState.AbortAllTasks")] private readonly Action _abort = null!;
     [EzIPC("SetMultiModeEnabled")] private readonly Action<bool> _setMultiMode = null!;
     [EzIPC("PluginState.GetClosestRetainerVentureSecondsRemaining")] private readonly Func<ulong, long?> _ventureSeconds = null!;
@@ -49,6 +50,8 @@ internal sealed class AutoRetainerIpc : Ipc, IDisposable
         [], _logger, "Unable to read AutoRetainer's character list");
 
     public bool IsMultiModeOn => IpcInvoke.SafeFunc(() => _multiModeOn(), fallback: false);
+
+    public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy(), fallback: false);
 
     // No type: AutoRetainer uses its own multi-mode setting.
     public bool StartPass(EPassType? type)

@@ -1,6 +1,7 @@
 namespace Questionable.Controller;
 
-internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
+internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies,
+    IReadOnlyDictionary<EAlliedSociety, int>? arrLimits = null)
 {
     internal sealed record Entry(QuestId Id, EAlliedSociety Society, bool Daily, bool Accepted, bool Ready,
         EAlliedSocietyRank Rank, byte Sequence, uint Territory, Vector3? Position, bool CraftReady = false,
@@ -10,6 +11,7 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
     private readonly Dictionary<QuestId, int> _attempts = [];
     private readonly HashSet<QuestId> _seen = [];
     private readonly HashSet<QuestId> _accepted = [];
+    private readonly Dictionary<QuestId, EAlliedSociety> _societyOf = [];
     private readonly HashSet<QuestId> _stories = [];
     private EAlliedSociety? _society;
     public HashSet<QuestId> Completed { get; } = [];
@@ -20,6 +22,8 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
     public Entry? Choose(IReadOnlyList<Entry> entries, int allowances, uint territory, Vector3? position,
         ElementId? current = null)
     {
+        foreach (Entry entry in entries)
+            _societyOf[entry.Id] = entry.Society;
         List<Entry> available = [.. entries.Where(x => societies.Contains(x.Society) &&
             !Completed.Contains(x.Id) && !Skipped.ContainsKey(x.Id) &&
             _attempts.GetValueOrDefault(x.Id) < 2 && (x.Accepted || x.Ready || x.BlockReason != null))];
@@ -58,7 +62,8 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
 
         List<QuestId> planned = DailiesController.Plan(societies,
             society => available.Where(x => x.Society == society && x.Daily && !x.Accepted && x.Ready && x.BlockReason == null)
-                .Select(x => (x.Id, x.Rank)), _ => true, allowances);
+                .Select(x => (x.Id, x.Rank)), _ => true, allowances,
+            society => DailiesController.Room(society, _accepted.Count(x => _societyOf.GetValueOrDefault(x) == society), arrLimits));
         List<Entry> work = [.. available.Where(x => x.Daily && (x.Accepted || planned.Contains(x.Id)))];
         foreach (Entry blocked in work.Where(x => x.BlockReason != null).ToList())
         {

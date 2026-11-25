@@ -50,6 +50,7 @@ internal sealed class ConfigWindow
             new(content, "QuestBattles", _L("Quest battles"), FontAwesomeIcon.UserShield),
             new(automation, "Stop", _L("Stopping"), FontAwesomeIcon.HandPaper),
             new(automation, "Notifications", _L("Alerts"), FontAwesomeIcon.Bullhorn),
+            new(automation, "Retainers", _L("Retainers"), FontAwesomeIcon.Users),
             new(automation, "Profiles", _L("Profiles"), FontAwesomeIcon.IdCard),
             new(plugin, "Plugins", _L("Plugins"), FontAwesomeIcon.PuzzlePiece),
             new(plugin, "Advanced", _L("Expert"), FontAwesomeIcon.Wrench),
@@ -102,6 +103,7 @@ internal sealed class ConfigWindow
             case "QuestBattles": _dutyConfigComponent.DrawQuestBattles(); break;
             case "Stop": _stopConditionComponent.Draw(); break;
             case "Notifications": _notificationConfigComponent.Draw(); break;
+            case "Retainers": _generalConfigComponent.DrawRetainersPage(); break;
             case "Profiles": _profilesConfigComponent.Draw(); break;
             case "Plugins": _pluginConfigComponent.DrawPage(); break;
             case "Advanced": _debugConfigComponent.Draw(); break;

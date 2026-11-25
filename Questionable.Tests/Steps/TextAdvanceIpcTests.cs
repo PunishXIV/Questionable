@@ -25,5 +25,10 @@ public sealed class TextAdvanceIpcTests
     }
 
     [Fact]
+    public void Pausers_SkipPluginsQstUses() =>
+        Assert.Equal(["Henchman"], TextAdvanceIpc.OutsidePausers(["Knightshopper", "Gather & Chill", "Henchman"],
+            [("GatherChill", "Gather & Chill"), ("Henchman", "Henchman")]));
+
+    [Fact]
     public void AutoComplete_WithoutQuest() => Assert.True(TextAdvanceIpc.CompletesQuestHere(null, false));
 }

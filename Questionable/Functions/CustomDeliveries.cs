@@ -154,7 +154,7 @@ internal sealed unsafe class CustomDeliveries : IDisposable
             if (items.GetRowOrDefault(itemId) is not { } item)
                 continue;
 
-            gains.Add(new(item.Name.ToString(), gain, InventoryManager.Instance()->GetInventoryItemCount(itemId),
+            gains.Add(new(item.Name.ExtractText(), gain, InventoryManager.Instance()->GetInventoryItemCount(itemId),
                 (int)item.StackSize));
         }
 

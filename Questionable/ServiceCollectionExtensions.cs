@@ -48,7 +48,6 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskFactory<QuestCleanUp.CheckAlliedSocietyMount>();
         serviceCollection.AddTaskFactoryAndExecutor<QuestCleanUp.CloseAddonTask, QuestCleanUp.CloseAddonFactory, QuestCleanUp.CloseAddonExecutor>();
         serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.Executor>();
-        serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.Executor>();
         serviceCollection.AddTaskFactory<CleanUpOtherQuests.Factory>();
         serviceCollection
             .AddTaskFactoryAndExecutor<SkipCondition.Task, SkipCondition.Factory, SkipCondition.Executor>();
@@ -65,6 +64,9 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskFactory<NoviceHall.Factory>();
         serviceCollection.AddTaskExecutor<NoviceHall.Done, NoviceHall.DoneExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<Ventures.Task, Ventures.Factory, Ventures.Executor>();
+        serviceCollection.AddTaskExecutor<SummoningBell.Reach, SummoningBell.ReachExecutor>();
+        serviceCollection.AddTaskExecutor<SummoningBell.Send, SummoningBell.SendExecutor>();
+        serviceCollection.AddTaskExecutor<SummoningBell.Done, SummoningBell.DoneExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<RedeemRewardItems.Task, RedeemRewardItems.Factory, RedeemRewardItems.Executor>();
         // Before class changes and travel, while the character is still on foot from the last step.

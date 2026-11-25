@@ -55,7 +55,7 @@ internal sealed class DailiesController(
 
         _societies = [.. societies.Distinct()];
         _societyReasons.Clear();
-        _plan = new(_societies);
+        _plan = new(_societies, configuration.Dailies.ArrLimits);
         if (!questController.BeginDailies(this))
         {
             _plan = null;
@@ -219,19 +219,33 @@ internal sealed class DailiesController(
             status, plan.FinishedDailies, plan.FinishedStories, plan.Skipped.Count, plan.Blocked.Count);
     }
 
+    // A Realm Reborn societies offer three dailies per rank; without a cap one of them takes all 12 allowances (Me, Kage 11-25).
+    internal const int ArrDailies = 3;
+
+    internal static bool IsArr(EAlliedSociety society) => society is >= EAlliedSociety.Amaljaa and <= EAlliedSociety.Ixal;
+
+    internal static int Room(EAlliedSociety society, int accepted, IReadOnlyDictionary<EAlliedSociety, int>? limits = null) =>
+        IsArr(society) ? Math.Max(0, (limits?.GetValueOrDefault(society, ArrDailies) ?? ArrDailies) - accepted) : int.MaxValue;
+
     internal static List<QuestId> Plan(IReadOnlyList<EAlliedSociety> societies,
         Func<EAlliedSociety, IEnumerable<(QuestId Id, EAlliedSocietyRank Rank)>> dailies,
-        Func<QuestId, bool> canAccept, int allowances)
+        Func<QuestId, bool> canAccept, int allowances, Func<EAlliedSociety, int>? room = null)
     {
         List<QuestId> picked = [];
         foreach (EAlliedSociety society in societies.Distinct())
         {
+            int left = room?.Invoke(society) ?? int.MaxValue;
             foreach ((QuestId id, _) in dailies(society).OrderByDescending(x => x.Rank))
             {
                 if (picked.Count >= allowances)
                     return picked;
+                if (left <= 0)
+                    break;
                 if (!picked.Contains(id) && canAccept(id))
+                {
                     picked.Add(id);
+                    left--;
+                }
             }
         }
 

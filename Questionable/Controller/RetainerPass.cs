@@ -68,7 +68,34 @@ internal sealed class RetainerPass : IDisposable
 
         _autoRetainer.KeepEnabled = () => IsActive;
         _framework.Update += Update;
+        _questStarter.Started += OnStarted;
     }
+
+    // The between-quests pass waits for the next accept; retainers back at the start go first.
+    private void OnStarted(object? sender, EventArgs e)
+    {
+        if (_questController.IsDailiesRun || _condition[ConditionFlag.InCombat] ||
+            _condition[ConditionFlag.BoundByDuty] || !IsDue(onStart: true))
+            return;
+
+        // The bell run is a between-quests detour; the next step's tasks pick it up.
+        if (_configuration.General.RetainersAtBell)
+            StartPending = true;
+        else
+            Begin();
+    }
+
+    public bool StartPending { get; set; }
+
+    private AutoRetainerIpc.EPassType PassType => (_configuration.General.SendVentures, _configuration.General.SendSubmersibles) switch
+    {
+        (true, false) => AutoRetainerIpc.EPassType.Retainers,
+        (false, true) => AutoRetainerIpc.EPassType.Submersibles,
+        _ => AutoRetainerIpc.EPassType.Everything,
+    };
+
+    public void BellDone() =>
+        _nextPass = NextPass(DateTime.Now, CharacterRun.CurrentId is { } id && _autoRetainer.RetainersReady(id));
 
     public EState State { get; private set; }
 
@@ -86,15 +113,22 @@ internal sealed class RetainerPass : IDisposable
         characters.Any(x => type != AutoRetainerIpc.EPassType.Submersibles && x.Enabled && retainersReady(x.ContentId) ||
                             type != AutoRetainerIpc.EPassType.Retainers && x.WorkshopEnabled && vesselsReady(x.ContentId));
 
-    public bool IsDue()
+    public bool IsDue(bool onStart = false)
     {
-        if (IsActive || DateTime.Now < _nextPass || !_configuration.General.SendRetainers ||
-            _questController.AutomationType != EAutomationType.Automatic || !_autoRetainer.IsReady() ||
-            _lifestream.GetVersion() == null || FreeBagSlots() < 2)
+        bool bell = _configuration.General.RetainersAtBell;
+        if (!_configuration.General.SendVentures && (bell || !_configuration.General.SendSubmersibles))
             return false;
 
-        if (AnyReady(_autoRetainer.GetCharacters(), _autoRetainer.RetainersReady, _autoRetainer.VesselsReady,
-                _configuration.General.RetainerPassType))
+        if (IsActive || DateTime.Now < _nextPass ||
+            !(onStart ? _configuration.General.RetainersOnStart : _configuration.General.SendRetainers) ||
+            _questController.AutomationType != EAutomationType.Automatic || !_autoRetainer.IsReady() ||
+            !bell && _lifestream.GetVersion() == null || FreeBagSlots() < 2)
+            return false;
+
+        if (bell
+                ? CharacterRun.CurrentId is { } id && _autoRetainer.RetainersReady(id)
+                : AnyReady(_autoRetainer.GetCharacters(), _autoRetainer.RetainersReady, _autoRetainer.VesselsReady,
+                    PassType))
             return true;
 
         // Checking every character is a handful of calls; not on every step.
@@ -143,7 +177,7 @@ internal sealed class RetainerPass : IDisposable
             _startedAt = now;
             _deadline = now + PassTimeout;
             State = EState.Waiting;
-            if (_autoRetainer.StartPass(_configuration.General.RetainerPassType))
+            if (_autoRetainer.StartPass(PassType))
             {
                 // A pass with nothing to do turns multi-mode off again before the next frame.
                 _seenOn = _autoRetainer.IsMultiModeOn;
@@ -243,7 +277,7 @@ internal sealed class RetainerPass : IDisposable
     {
         // Something AutoRetainer left alone (e.g. subs while it only does retainers) would start a pass at every accept.
         bool leftOver = AnyReady(_autoRetainer.GetCharacters(), _autoRetainer.RetainersReady, _autoRetainer.VesselsReady,
-            _configuration.General.RetainerPassType);
+            PassType);
         _nextPass = NextPass(now, leftOver);
         _logger.LogInformation("AutoRetainer's pass is done (left over: {LeftOver}); going back to {Name}", leftOver,
             _home?.Name);
@@ -285,6 +319,7 @@ internal sealed class RetainerPass : IDisposable
     public void Dispose()
     {
         _framework.Update -= Update;
+        _questStarter.Started -= OnStarted;
         _autoRetainer.KeepEnabled = null;
     }
 }
