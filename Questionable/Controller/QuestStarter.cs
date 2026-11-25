@@ -12,6 +12,7 @@ internal sealed class QuestStarter(
     QuestStopPolicy stopPolicy,
     JobGear.Factory jobGear,
     SatisfyIpc satisfy,
+    CustomDeliveries customDeliveries,
     BossModIpc bossMod,
     Configuration configuration,
     IDataManager dataManager,
@@ -19,6 +20,8 @@ internal sealed class QuestStarter(
     ILogger<QuestStarter> logger)
 {
     private ElementId? _single;
+
+    public event EventHandler? Started;
 
     public bool CanStartQuest(string label)
     {
@@ -62,6 +65,8 @@ internal sealed class QuestStarter(
         _single = null;
         questController.NextInChain = null;
         questController.AutomationType = EAutomationType.Automatic;
+        // Before the first step's tasks are made, so a start-of-questing detour can join them.
+        Started?.Invoke(this, EventArgs.Empty);
         questController.ExecuteNextStep();
     }
 
@@ -192,6 +197,11 @@ internal sealed class QuestStarter(
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
+
+        foreach (ScripGain scrip in customDeliveries.ScripGains(customDeliveries.GetNpcs(), configuration.General))
+            if (scrip.Lost > 0)
+                chatGui.PrintError(_LF("These deliveries give up to {0} {1}; {2} would be lost to the cap.", scrip.Gain,
+                    scrip.Name, scrip.Lost), CommandHandler.MessageTag, CommandHandler.TagColor);
 
         stopPolicy.CancelEnding();
         foreach (uint npc in npcs.Order())

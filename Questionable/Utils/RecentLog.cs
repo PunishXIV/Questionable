@@ -4,7 +4,7 @@ internal sealed class RecentLog : ILoggerProvider
 {
     private const int Capacity = 40;
 
-    private readonly Queue<Entry> _entries = new();
+    private readonly List<Entry> _entries = [];
 
     public ILogger CreateLogger(string categoryName) => new Logger(this);
 
@@ -22,9 +22,14 @@ internal sealed class RecentLog : ILoggerProvider
     {
         lock (_entries)
         {
+            // Errors are what reports need most, so routine lines go first when the log is full.
             if (_entries.Count == Capacity)
-                _entries.Dequeue();
-            _entries.Enqueue(new(time, level, message));
+            {
+                LogLevel lowest = _entries.Min(x => x.Level);
+                _entries.RemoveAt(_entries.FindIndex(x => x.Level == lowest));
+            }
+
+            _entries.Add(new(time, level, message));
         }
     }
 

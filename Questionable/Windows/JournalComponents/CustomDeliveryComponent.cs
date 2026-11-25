@@ -48,6 +48,15 @@ internal sealed class CustomDeliveryComponent(
         }
         List<DeliveryNpc> rows = _rows;
 
+        foreach (ScripGain scrip in deliveries.ScripGains(rows, configuration.General))
+        {
+            string text = _LF("Up to +{0} {1} (you have {2} of {3})", scrip.Gain, scrip.Name, scrip.Have, scrip.Cap);
+            if (scrip.Lost > 0)
+                ImGui.TextColored(QstTheme.Amber, text + " " + _LF("- {0} would be lost to the cap", scrip.Lost));
+            else
+                ImGui.TextUnformatted(text);
+        }
+
         ImGui.TextDisabled(_L("Deliver: what Satisfy does for that NPC (craft, gather or fish). Amber items are this week's bonus."));
 
         using ImRaii.TableDisposable table = ImRaii.Table("CustomDeliveries", 9,

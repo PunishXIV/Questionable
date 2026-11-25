@@ -16,7 +16,10 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     [EzIPC("EnableExternalControl")] private readonly Func<string, ExternalTerritoryConfig, bool> _enableExternalControl = null!;
     private readonly IFramework _framework;
     [EzIPC("IsInExternalControl")] private readonly Func<bool> _isInExternalControl = null!;
-    [EzIPC("IsPaused")] private readonly Func<bool> _isPaused = null!;
+    // TextAdvance's own list of the plugins that paused it.
+    private const string StopRequestsTag = "TextAdvance.StopRequests";
+    private readonly HashSet<string> _stopRequests;
+    private readonly IDalamudPluginInterface _pluginInterface;
     private static readonly TimeSpan PauseGrace = TimeSpan.FromSeconds(20);
     private readonly IChatGui _chatGui;
     private readonly MappingTheRealmIpc _mappingTheRealm;
@@ -42,6 +45,8 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         _configuration = configuration;
         _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
         _pluginName = pluginInterface.InternalName;
+        _pluginInterface = pluginInterface;
+        _stopRequests = pluginInterface.GetOrCreateData<HashSet<string>>(StopRequestsTag, () => []);
         _framework.Update += OnUpdate;
     }
 
@@ -51,6 +56,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         if (_hasControl)
             IpcInvoke.TryOnFrameworkThread(_framework, () => _disableExternalControl(_pluginName));
         IPCSubscriber.DisposeAll(_disposalTokens);
+        _pluginInterface.RelinquishData(StopRequestsTag);
     }
 
     private void OnUpdate(IFramework framework)
@@ -109,7 +115,11 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     private void WarnIfPaused()
     {
         // MappingTheRealm pauses TextAdvance while it walks, and teleports pause it briefly.
-        bool paused = IpcInvoke.SafeFunc(() => _isPaused(), fallback: false) && _mappingTheRealm.GetPathing() != true;
+        string[] pausers = _stopRequests.Count == 0
+            ? []
+            : OutsidePausers([.. _stopRequests],
+                [.. _pluginInterface.InstalledPlugins.Select(x => (x.InternalName, x.Name))]);
+        bool paused = pausers.Length > 0 && _mappingTheRealm.GetPathing() != true;
         if (!paused)
         {
             _pausedSince = null;
@@ -122,10 +132,18 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
             return;
 
         _warnedPaused = true;
-        _logger.LogWarning("TextAdvance is paused by another plugin");
-        _chatGui.Print(_L("TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it."),
+        _logger.LogWarning("TextAdvance is paused by {Plugins}", string.Join(", ", pausers));
+        _chatGui.Print(_LF("TextAdvance is paused by {0}, so quests won't be accepted or turned in.", string.Join(", ", pausers)),
             CommandHandler.MessageTag, CommandHandler.TagColor);
     }
+
+    // Plugins Questionable runs pause TextAdvance while they work (Knightshopper buying, Lifestream travelling).
+    internal static string[] OutsidePausers(IEnumerable<string> names, IReadOnlyList<(string InternalName, string Name)> installed) =>
+    [
+        .. names.Where(name => !QuestReporter.TrackedPlugins.Contains(
+            installed.FirstOrDefault(x => x.Name == name || x.InternalName == name).InternalName ?? name,
+            StringComparer.OrdinalIgnoreCase))
+    ];
 
     // Talking to a giver for a middle step would otherwise turn in another finished quest of theirs.
     internal static bool CompletesQuestHere(QuestStep? step, bool completesInstantly) =>

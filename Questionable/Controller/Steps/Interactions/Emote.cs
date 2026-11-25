@@ -14,7 +14,6 @@ internal static class Emote
                     yield break;
                 if (step.InteractionType is EInteractionType.CompleteQuest)
                 {
-                    yield return new LogQuestCompletion.Task(quest);
                     if (configuration.Advanced.PreventQuestCompletion)
                     {
                         if (configuration.Advanced.AbandonQuestBeforeCompletion)

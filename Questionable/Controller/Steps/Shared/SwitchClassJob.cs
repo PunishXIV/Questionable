@@ -77,6 +77,12 @@ internal static class SwitchClassJob
         {
             if (PlayerState.Instance()->CurrentClassJobId == (uint)Task.ClassJob)
                 return ETaskResult.TaskComplete;
+            // A shop or event still closing isn't a failed switch (Do dailies stopped on 'Could not switch to CRP', 11-25).
+            if (!ClassJobUtils.CanSwitchJob)
+            {
+                _giveUpAt = null;
+                return ETaskResult.StillRunning;
+            }
             _giveUpAt ??= DateTime.Now.AddSeconds(15);
             if (DateTime.Now > _giveUpAt)
                 throw new TaskException($"Could not switch to {Task.ClassJob}");

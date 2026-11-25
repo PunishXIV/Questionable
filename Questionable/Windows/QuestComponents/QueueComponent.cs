@@ -23,7 +23,7 @@ internal sealed class QueueComponent
     private readonly UiUtils _uiUtils;
     private readonly QuestJournalUtils _questJournalUtils;
     private readonly OpenQuestCleanUp _openQuestCleanUp;
-    private const int MaxVisibleRows = 10;
+    private const int MaxVisibleRows = 20;
     private readonly DragOrder<ElementId> _drag = new();
     private Job? _lastKnownJob;
     private string _presetName = string.Empty;

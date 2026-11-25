@@ -223,7 +223,7 @@ internal sealed class QuestJournalUtils
         }
     }
 
-    public void ShowGroupContextMenu(string id, List<IQuestInfo> quests, Func<List<IQuestInfo>>? highestRank = null)
+    public void ShowGroupContextMenu(string id, List<IQuestInfo> quests)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
             ImGui.OpenPopup($"##QuestGroupPopup{id}");
@@ -233,15 +233,6 @@ internal sealed class QuestJournalUtils
             return;
 
         DrawPriorityItems(quests);
-
-        if (highestRank?.Invoke() is { } highestRankQuests)
-        {
-            using (ImRaii.Disabled(highestRankQuests.Count == 0))
-            {
-                if (ImGui.MenuItem(_L("Add highest rank to Priority Quests")))
-                    AddToPriority(highestRankQuests);
-            }
-        }
 
         if (ImGui.MenuItem(_L("Accept all quests")))
         {
@@ -295,11 +286,19 @@ internal sealed class QuestJournalUtils
         var _ = gameGui.OpenMapWithMapLink(mapLink);
         if (!teleport)
             return;
-        movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
+        // Thrown from window drawing it breaks the whole window (another plugin moving, MappingTheRealm missing).
+        try
         {
-            StopDistance = 20f,
-            VerticalStopDistance = 5f,
-        }, location.Territory.RowId);
+            movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
+            {
+                StopDistance = 20f,
+                VerticalStopDistance = 5f,
+            }, location.Territory.RowId);
+        }
+        catch (MovementController.PathfindingException e)
+        {
+            Svc.Chat.PrintError(DalamudInitializer.GetPathfindingError(e.Reason), CommandHandler.MessageTag, CommandHandler.TagColor);
+        }
     }
 
     public static uint? GetIconOverride(QuestInfo questInfo, FontAwesomeIcon? icon = null, Vector4? color = null)

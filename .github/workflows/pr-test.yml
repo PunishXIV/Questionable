@@ -95,6 +95,8 @@ jobs:
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
           HEAD_SHA="${{ github.event.pull_request.head.sha }}"
           CHANGED=$(git diff --name-only --diff-filter=AMR "$BASE_SHA" "$HEAD_SHA" -- 'QuestPaths/**/*.json' | tr '\n' ';')
+          # Linux caps one environment variable at 128 KB; past that every later process fails to start.
+          if [ ${#CHANGED} -gt 100000 ]; then CHANGED=""; fi
           echo "Changed quest files:"
           echo "$CHANGED" | tr ';' '\n'
           echo "QUESTIONABLE_CHANGED_QUESTS=$CHANGED" >> "$GITHUB_ENV"

@@ -29,11 +29,6 @@ internal static class Mail
         new(EAetheryteLocation.Uldah, 1005989, 130, new(-24.632f, 10.056f, -60.799f)),
     ];
 
-    // Starting city first (1 Limsa, 2 Gridania, 3 Ul'dah).
-    internal static Moogle? ChooseRoute(byte startTown, Func<EAetheryteLocation, bool> unlocked) =>
-        CityMoogles.OrderBy(x => Array.IndexOf(CityMoogles, x) + 1 == startTown ? 0 : 1)
-            .FirstOrDefault(x => unlocked(x.City));
-
     private static HashSet<uint> MoogleIds(IDataManager dataManager) =>
         _moogleIds ??= dataManager.GetExcelSheet<ENpcBase>()
             .Where(x => x.ENpcData.Any(d => d.RowId == MoogleTalk))
@@ -44,9 +39,7 @@ internal static class Mail
         Configuration configuration,
         MogmailIpc mogmail,
         QuestFunctions questFunctions,
-        AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
-        IQuestGameState gameState,
         IClientState clientState,
         ICondition condition,
         IObjectTable objectTable,
@@ -72,12 +65,9 @@ internal static class Mail
                 return Claim(new Moogle(EAetheryteLocation.None, nearby.BaseId, clientState.TerritoryType, nearby.Position));
             }
 
-            if (ChooseRoute(gameState.StartTown, aetheryteFunctions.IsAetheryteUnlocked) is not { } moogle)
-            {
-                logger.LogInformation("Reward mail is waiting, but no delivery moogle can be reached yet");
-                Retry.Failed();
+            // Mail comes in batches; travelling to a city for each one costs a teleport every time (erdelf, 11-25).
+            if (CityMoogles.FirstOrDefault(x => x.TerritoryId == clientState.TerritoryType) is not { } moogle)
                 return [];
-            }
 
             logger.LogInformation("Claiming {Count} reward letters at the delivery moogle in {City}",
                 MogmailIpc.RewardLetters, moogle.City);

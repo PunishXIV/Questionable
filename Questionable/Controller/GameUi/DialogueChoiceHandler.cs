@@ -82,7 +82,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
     }
 
     private bool ShouldHandleUi =>
-        !_questController.HasExternalOperation && !Steps.Shared.JobGear.Active && !Steps.Common.Mail.Active && !Steps.Shared.Repair.Active &&
+        !_questController.HasExternalOperation && !Steps.Shared.JobGear.Active && !Steps.Common.Mail.Active && !Steps.Common.SummoningBell.Active && !Steps.Shared.Repair.Active &&
         (_questController.IsRunning || _territoryData.IsQuestBattleInstance(_clientState.TerritoryType));
 
     private unsafe void SelectStringPostSetup(AddonEvent type, AddonArgs args)

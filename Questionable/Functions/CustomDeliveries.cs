@@ -88,8 +88,9 @@ internal sealed unsafe class CustomDeliveries : IDisposable
                     // A guaranteed bonus swaps in the bonus item of the same slot.
                     if (forced[slot] && !supply.IsBonus)
                         supply = subrows.FirstOrDefault(x => x.Slot == supply.Slot && x.IsBonus, supply);
-                    requests[slot] = new(supply.Item.RowId, forced[slot] || supply.IsBonus,
-                        rewards.GetRowOrDefault(supply.Reward.RowId)?.SatisfactionHigh ?? 0);
+                    bool isBonus = forced[slot] || supply.IsBonus;
+                    SatisfactionSupplyReward? reward = rewards.GetRowOrDefault(supply.Reward.RowId);
+                    requests[slot] = new(supply.Item.RowId, isBonus, reward?.SatisfactionHigh ?? 0, Scrips(reward, isBonus));
                 }
             }
 
@@ -110,6 +111,54 @@ internal sealed unsafe class CustomDeliveries : IDisposable
 
         Loading = loading;
         return result;
+    }
+
+    // Top collectability; a bonus request multiplies it (x1.5 in the sheet).
+    private static ScripReward[] Scrips(SatisfactionSupplyReward? reward, bool bonus) => reward is not { } row
+        ? []
+        : [.. row.SatisfactionSupplyRewardData.Where(x => x.RewardCurrency != 0)
+            .Select(x => new ScripReward((byte)x.RewardCurrency, x.QuantityHigh * (bonus ? row.BonusMultiplier : 100) / 100))];
+
+    // Satisfy runs the ticked NPCs in id order, and they share the 12 weekly deliveries.
+    internal static Dictionary<byte, int> EstimateScrips(IEnumerable<(int TurnIns, ScripReward[] Scrips)> deliveries,
+        int weeklyLeft)
+    {
+        Dictionary<byte, int> total = [];
+        foreach ((int turnIns, ScripReward[] scrips) in deliveries)
+        {
+            int count = Math.Clamp(turnIns, 0, weeklyLeft);
+            weeklyLeft -= count;
+            foreach (ScripReward scrip in scrips)
+                total[scrip.Currency] = total.GetValueOrDefault(scrip.Currency) + count * scrip.Amount;
+        }
+
+        return total;
+    }
+
+    public List<ScripGain> ScripGains(IEnumerable<DeliveryNpc> npcs, Configuration.GeneralConfiguration general)
+    {
+        IEnumerable<(int, ScripReward[])> deliveries = npcs
+            .Where(x => x.Unlocked && general.DeliveryNpcs.Contains(x.RowId))
+            .OrderBy(x => x.RowId)
+            .Select(x =>
+            {
+                Configuration.EDeliveryItem item = general.DeliveryItemFor(x.RowId);
+                return (x.TurnInsLeft(item), x.Requests.Length > (int)item ? x.Requests[(int)item].Scrips ?? [] : []);
+            });
+
+        List<ScripGain> gains = [];
+        ExcelSheet<Item> items = _dataManager.GetExcelSheet<Item>();
+        foreach ((byte currency, int gain) in EstimateScrips(deliveries, WeeklyLeft))
+        {
+            uint itemId = CurrencyManager.Instance()->GetItemIdBySpecialId(currency);
+            if (items.GetRowOrDefault(itemId) is not { } item)
+                continue;
+
+            gains.Add(new(item.Name.ExtractText(), gain, InventoryManager.Instance()->GetInventoryItemCount(itemId),
+                (int)item.StackSize));
+        }
+
+        return gains;
     }
 
     public bool Loading { get; private set; }
@@ -235,7 +284,14 @@ internal sealed unsafe class CustomDeliveries : IDisposable
     }
 }
 
-internal readonly record struct DeliveryRequest(uint ItemId, bool Bonus, int Satisfaction);
+internal readonly record struct DeliveryRequest(uint ItemId, bool Bonus, int Satisfaction, ScripReward[] Scrips);
+
+internal readonly record struct ScripReward(byte Currency, int Amount);
+
+internal sealed record ScripGain(string Name, int Gain, int Have, int Cap)
+{
+    public int Lost => Math.Max(0, Have + Gain - Cap);
+}
 
 internal sealed record DeliveryNpc(uint RowId, string Name, bool Unlocked, int Rank, int SatisfactionCur,
     int SatisfactionMax, int Used, int Max, uint AchievementCur, uint AchievementMax, DeliveryRequest[] Requests)

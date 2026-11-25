@@ -137,15 +137,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <Key>Completions log has been cleared</Key>
-    <Value lang="en">Completions log has been cleared</Value>
-    <Value lang="ja-jp">完了ログがクリアされました</Value>
-    <Value lang="zh-cn">完成日志已清除</Value>
-    <Value lang="zh-tw">完成日誌已清除</Value>
-    <!--<Value lang="ko">완료 로그가 지워졌습니다</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <Key>Unknown subcommand {0}</Key>
     <Value lang="en">Unknown subcommand {0}</Value>
     <Value lang="ja-jp">不明なサブコマンド: {0}</Value>
@@ -4660,14 +4651,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <Key>/qst clearlog - clears the completed-quest log Stuck? copies</Key>
-    <Value lang="en">/qst clearlog - clears the completed-quest log Stuck? copies</Value>
-    <Value lang="ja-jp">/qst clearlog - 「スタックしていますか？」でコピーする完了クエストログを消去</Value>
-    <Value lang="zh-cn">/qst clearlog - 清除“卡住了？”复制的已完成任务日志</Value>
-    <Value lang="zh-tw">/qst clearlog - 清除「卡住了？」複製的已完成任務日誌</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <Key>/qst dailies - accepts and does the allied society dailies ticked in the journal</Key>
     <Value lang="en">/qst dailies - accepts and does the allied society dailies ticked in the journal</Value>
     <Value lang="ja-jp">/qst dailies - ジャーナルで選択した友好部族のデイリークエストを受注・実行</Value>
@@ -6728,8 +6711,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Send retainers and submersibles out</Key>
-    <Value lang="en">Send retainers and submersibles out</Value>
+    <Key>Send retainers and submersibles out between quests</Key>
+    <Value lang="en">Send retainers and submersibles out between quests</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -9387,11 +9370,6 @@ Right click: Copy without .json</Value>
     <Value lang="zh-tw">任務名稱或ID...</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/External/TextAdvanceIpc.cs -->
-    <Key>TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it.</Key>
-    <Value lang="en">TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it.</Value>
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Controller/QuestStarter.cs -->
     <Key>Boss Mod Reborn is loaded. Questionable doesn't work with it, so combat and quest battles can fail. Disable Boss Mod Reborn and use Boss Mod instead.</Key>
     <Value lang="en">Boss Mod Reborn is loaded. Questionable doesn't work with it, so combat and quest battles can fail. Disable Boss Mod Reborn and use Boss Mod instead.</Value>
@@ -9447,7 +9425,178 @@ Right click: Copy without .json</Value>
     <Key>The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode ("unsync"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter.</Key>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
+    <Key>Required plugins are missing: {0}. Install them on the Plugins page in settings.</Key>
+    <Value lang="en">Required plugins are missing: {0}. Install them on the Plugins page in settings.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>What to send</Key>
+    <Value lang="en">What to send</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>AutoRetainer's own setting</Key>
+    <Value lang="en">AutoRetainer's own setting</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Retainers only</Key>
+    <Value lang="en">Retainers only</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Submersibles only</Key>
+    <Value lang="en">Submersibles only</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Between quests, when a delivery moogle is nearby or you're in Limsa Lominsa, Gridania or Ul'dah, walks to it and has Mogmail claim waiting Mog Station and reward mail. Never teleports just for mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail.</Key>
+    <Value lang="en">Between quests, when a delivery moogle is nearby or you're in Limsa Lominsa, Gridania or Ul'dah, walks to it and has Mogmail claim waiting Mog Station and reward mail. Never teleports just for mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
+    <Key>Up to +{0} {1} (you have {2} of {3})</Key>
+    <Value lang="en">Up to +{0} {1} (you have {2} of {3})</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/CustomDeliveryComponent.cs -->
+    <Key>- {0} would be lost to the cap</Key>
+    <Value lang="en">- {0} would be lost to the cap</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStarter.cs -->
+    <Key>These deliveries give up to {0} {1}; {2} would be lost to the cap.</Key>
+    <Value lang="en">These deliveries give up to {0} {1}; {2} would be lost to the cap.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Allied society combat job</Key>
+    <Value lang="en">Allied society combat job</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Same as preferred combat job</Key>
+    <Value lang="en">Same as preferred combat job</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Battle society quests switch to this job. 'Lowest level' picks your lowest combat job that can take the quest, to level alt jobs. The next other quest switches back to your preferred combat job.</Key>
+    <Value lang="en">Battle society quests switch to this job. 'Lowest level' picks your lowest combat job that can take the quest, to level alt jobs. The next other quest switches back to your preferred combat job.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/External/TextAdvanceIpc.cs -->
+    <Key>TextAdvance is paused by {0}, so quests won't be accepted or turned in.</Key>
+    <Value lang="en">TextAdvance is paused by {0}, so quests won't be accepted or turned in.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Lowest level that can take the quest</Key>
+    <Value lang="en">Lowest level that can take the quest</Value>
+  </Entry>
+  <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard</Key>
+    <Key>Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm, vnavmesh and the other plugins it uses: {0}</Key>
+    <Value lang="en">Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm, vnavmesh and the other plugins it uses: {0}</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>AutoRetainer</Key>
+    <Value lang="en">AutoRetainer</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Send them out when you start questing</Key>
+    <Value lang="en">Send them out when you start questing</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>This character's retainers, at a summoning bell</Key>
+    <Value lang="en">This character's retainers, at a summoning bell</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>The summoning bell choice sends only the character you're playing: Questionable walks to a bell in this zone, or travels to the one in your grand company's city, and AutoRetainer sends the retainers there. No character switching and no submersibles.</Key>
+    <Value lang="en">The summoning bell choice sends only the character you're playing: Questionable walks to a bell in this zone, or travels to the one in your grand company's city, and AutoRetainer sends the retainers there. No character switching and no submersibles.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/Steps/Common/SummoningBell.cs -->
+    <Key>Couldn't send your retainers: {0}. Carrying on; trying again later.</Key>
+    <Value lang="en">Couldn't send your retainers: {0}. Carrying on; trying again later.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <Key>Copies troubleshooting information to the clipboard and saves a zip with the recent log, for a report in #questionable-issues</Key>
+    <Value lang="en">Copies troubleshooting information to the clipboard and saves a zip with the recent log, for a report in #questionable-issues</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Send out between quests</Key>
+    <Value lang="en">Send out between quests</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Send out when you start questing</Key>
+    <Value lang="en">Send out when you start questing</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>All AutoRetainer characters (multi-mode)</Key>
+    <Value lang="en">All AutoRetainer characters (multi-mode)</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Only this character, at a summoning bell</Key>
+    <Value lang="en">Only this character, at a summoning bell</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Questionable goes to the summoning bell you pick and AutoRetainer sends this character's retainers there, then switches AutoRetainer off again. No character switching. Inn and housing bells need Lifestream.</Key>
+    <Value lang="en">Questionable goes to the summoning bell you pick and AutoRetainer sends this character's retainers there, then switches AutoRetainer off again. No character switching. Inn and housing bells need Lifestream.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>AutoRetainer does one multi-mode pass over all its multi-mode characters, then Questionable logs back in to this character and keeps questing. Needs Lifestream.</Key>
+    <Value lang="en">AutoRetainer does one multi-mode pass over all its multi-mode characters, then Questionable logs back in to this character and keeps questing. Needs Lifestream.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Submersibles</Key>
+    <Value lang="en">Submersibles</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Submersibles go through AutoRetainer's multi-mode only.</Key>
+    <Value lang="en">Submersibles go through AutoRetainer's multi-mode only.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Summoning bell</Key>
+    <Value lang="en">Summoning bell</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Nearest: this zone's, else your grand company's city</Key>
+    <Value lang="en">Nearest: this zone's, else your grand company's city</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Private house</Key>
+    <Value lang="en">Private house</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Free company house</Key>
+    <Value lang="en">Free company house</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>How many of this society's dailies Do dailies takes per run, highest rank first. A Realm Reborn societies offer three per rank.</Key>
+    <Value lang="en">How many of this society's dailies Do dailies takes per run, highest rank first. A Realm Reborn societies offer three per rank.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
+    <Key>A Realm Reborn societies take only as many as the number next to them.</Key>
+    <Value lang="en">A Realm Reborn societies take only as many as the number next to them.</Value>
   </Entry>
 </I18N>

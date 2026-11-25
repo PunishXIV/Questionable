@@ -243,6 +243,20 @@ internal sealed class ClassJobUtils
         return (null, null);
     }
 
+    // The game refuses a job change in these and prints an error for every try (callers retry each frame).
+    private static readonly ConditionFlag[] SwitchBlockers =
+    [
+        ConditionFlag.InCombat, ConditionFlag.Casting, ConditionFlag.Occupied, ConditionFlag.Occupied30,
+        ConditionFlag.Occupied33, ConditionFlag.Occupied38, ConditionFlag.Occupied39, ConditionFlag.OccupiedInEvent,
+        ConditionFlag.OccupiedInQuestEvent, ConditionFlag.OccupiedInCutSceneEvent, ConditionFlag.OccupiedSummoningBell,
+        ConditionFlag.BetweenAreas, ConditionFlag.BetweenAreas51, ConditionFlag.Gathering,
+        ConditionFlag.ExecutingGatheringAction, ConditionFlag.Fishing, ConditionFlag.Jumping,
+        ConditionFlag.MountOrOrnamentTransition, ConditionFlag.WatchingCutscene,
+    ];
+
+    public static bool CanSwitchJob => !SwitchBlockers.Any(x => Svc.Condition[x]);
+
+    // True when a gear set exists; the change itself waits until the game allows it.
     public unsafe bool SwitchJob(Job classJob)
     {
         if (PlayerState.Instance()->CurrentClassJobId == (uint)classJob)
@@ -256,7 +270,8 @@ internal sealed class ClassJobUtils
                 RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
                 if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) && gearset->ClassJob == (byte)classJob)
                 {
-                    gearsetModule->EquipGearset(gearset->Id);
+                    if (CanSwitchJob && EzThrottler.Throttle("EquipGearset", 2000))
+                        gearsetModule->EquipGearset(gearset->Id);
                     return true;
                 }
             }

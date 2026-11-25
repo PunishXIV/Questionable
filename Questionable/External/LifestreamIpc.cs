@@ -13,6 +13,28 @@ internal sealed class LifestreamIpc : Ipc, IDisposable
     [EzIPC("AethernetTeleportToFirmament")] private readonly Func<bool> _aethernetToFirmament = null!;
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
     [EzIPC("ChangeCharacter")] private readonly Func<string, string, ErrorCode> _changeCharacter = null!;
+    [EzIPC("EnqueueInnShortcut")] private readonly Action<int?> _innShortcut = null!;
+    [EzIPC("EnqueuePropertyShortcut")] private readonly Action<EPropertyType, EHouseEnterMode?> _propertyShortcut = null!;
+    [EzIPC("HasApartment")] private readonly Func<bool?> _hasApartment = null!;
+    [EzIPC("HasPrivateHouse")] private readonly Func<bool?> _hasPrivateHouse = null!;
+    [EzIPC("HasFreeCompanyHouse")] private readonly Func<bool?> _hasFreeCompanyHouse = null!;
+
+    // Lifestream's PropertyType and HouseEnterMode, only for the calls' signatures.
+    internal enum EPropertyType
+    {
+        Auto,
+        Home,
+        FC,
+        Apartment,
+        Inn,
+    }
+
+    internal enum EHouseEnterMode
+    {
+        None,
+        WalkToDoor,
+        EnterHouse,
+    }
 
     public LifestreamIpc(ILogger<LifestreamIpc> logger)
     {
@@ -25,6 +47,27 @@ internal sealed class LifestreamIpc : Ipc, IDisposable
     public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy(), fallback: false);
 
     public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy(), fallback: false);
+
+    public bool GoInside(EPropertyType type)
+    {
+        _logger.LogInformation("Asking Lifestream to go to {Type}", type);
+        return IpcInvoke.SafeFunc(() =>
+        {
+            if (type == EPropertyType.Inn)
+                _innShortcut(null);
+            else
+                _propertyShortcut(type, EHouseEnterMode.EnterHouse);
+            return true;
+        }, false, _logger, "Unable to ask Lifestream for the trip");
+    }
+
+    public bool? HasProperty(EPropertyType type) => IpcInvoke.SafeFunc<bool?>(() => type switch
+    {
+        EPropertyType.Apartment => _hasApartment(),
+        EPropertyType.Home => _hasPrivateHouse(),
+        EPropertyType.FC => _hasFreeCompanyHouse(),
+        _ => true,
+    }, fallback: null);
 
     // Logs out first when in game; AutoRetainer's own relog call only works at the title screen.
     public bool ChangeCharacter(string name, string world)

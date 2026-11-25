@@ -39,6 +39,24 @@ internal static class Interact
         return fallback;
     }
 
+    // The current combat job can usually take a battle society quest too, so the society job has to be forced.
+    internal static Job? SocietyJobSwitch(IReadOnlyList<Job> acceptableJobs, Job current, EAlliedSociety society,
+        Job societyJob, bool lowest, Func<Job> combatJob)
+    {
+        if (society != EAlliedSociety.None)
+            return societyJob != Job.ADV && current != societyJob && acceptableJobs.Contains(societyJob) ? societyJob : null;
+
+        // With 'Lowest level' the society job keeps changing, so every other quest goes back to the preferred job.
+        if (!acceptableJobs.Contains(current) || !lowest && (societyJob == Job.ADV || current != societyJob))
+            return null;
+
+        Job back = combatJob();
+        return back != Job.ADV && back != current && acceptableJobs.Contains(back) ? back : null;
+    }
+
+    internal static Job LowestCombatJob(IEnumerable<Job> acceptableJobs, Func<Job, short> level) =>
+        acceptableJobs.Where(x => x is not (>= Job.CRP and <= Job.FSH)).OrderBy(level).FirstOrDefault();
+
     internal const int MaxUnmountTries = 3;
 
     // A mount the game won't let you leave still gets the interaction once the tries run out.
@@ -67,7 +85,6 @@ internal static class Interact
                 if (step.InteractionType is EInteractionType.CompleteQuest ||
                     (step.InteractionType is EInteractionType.AcceptQuest && quest.GetQuestInfo().CompletesInstantly)) // instant quest
                 {
-                    yield return new LogQuestCompletion.Task(quest);
                     if (configuration.Advanced.PreventQuestCompletion)
                     {
                         if (configuration.Advanced.AbandonQuestBeforeCompletion)
@@ -245,8 +262,15 @@ internal static class Interact
             bool mounted = condition[ConditionFlag.Mounted];
             bool isGatheringPoint = gameObject.ObjectKind == ObjectKind.GatheringPoint;
             // While flying, dismount only makes the mount land.
-            if (mounted && !isGatheringPoint && condition[ConditionFlag.InFlight] && _landingTries++ < 20)
+            if (mounted && !isGatheringPoint && condition[ConditionFlag.InFlight])
             {
+                // The game refuses an interaction in the air, and QST would only notice through the stuck handling (Asha, 11-25).
+                if (_landingTries++ >= 20)
+                {
+                    logger.LogWarning("Still flying near {DataId} after trying to land, travelling to it again", Task.DataId);
+                    return ETaskResult.RetryStep;
+                }
+
                 gameFunctions.Unmount();
                 _continueAt = DateTime.Now.AddSeconds(0.5);
                 return ETaskResult.StillRunning;
@@ -409,11 +433,15 @@ internal static class Interact
                     acceptableJobs = levelledJobs;
 
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
-                if (!acceptableJobs.Contains(playerJob))
+                bool lowest = configuration.General.SocietyLowestJob;
+                Job? societySwitch = SocietyJobSwitch(acceptableJobs, playerJob, Task.Quest.Info.AlliedSociety,
+                    lowest ? LowestCombatJob(acceptableJobs, gameState.GetClassJobLevel) : configuration.General.SocietyCombatJob,
+                    lowest, () => classJobUtils.LookupConfiguredJob(EExtendedClassJob.ConfiguredCombatJob));
+                if (!acceptableJobs.Contains(playerJob) || societySwitch != null)
                 {
                     Job firstJob = acceptableJobs[0];
-                    Job candidate = SelectQuestJob(acceptableJobs, configuration, Task.Quest.Info.AlliedSociety,
-                        firstJob.IsCrafter(), firstJob.IsGatherer());
+                    Job candidate = societySwitch ?? SelectQuestJob(acceptableJobs, configuration,
+                        Task.Quest.Info.AlliedSociety, firstJob.IsCrafter(), firstJob.IsGatherer());
                     if (ClassJobUtils.ClassToJobStone(candidate) is (Job job, ushort item))
                     {
                         _unequipItem = item;

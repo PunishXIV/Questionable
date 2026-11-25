@@ -20,7 +20,7 @@ internal sealed class QuestReporter
     private static readonly TimeSpan FreshWindow = TimeSpan.FromMinutes(15);
 
     // The Worker accepts up to 16 entries, including Questionable and Paths.
-    private static readonly string[] TrackedPlugins =
+    internal static readonly string[] TrackedPlugins =
         ["BossMod", "vnavmesh", "TextAdvance", "Lifestream", "AutoDuty", "WrathCombo", "RotationSolver", "GatherChill",
             "Knightshopper", "WahTools", "MappingTheRealm"];
 

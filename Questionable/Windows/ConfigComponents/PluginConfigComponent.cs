@@ -445,6 +445,24 @@ internal sealed class PluginConfigComponent
         await StartInstallAsync(plugin).ConfigureAwait(false);
     }
 
+    private string _missingRequired = "";
+
+    // The quest window asks every frame; reading the plugin list once a second is enough.
+    internal string MissingRequiredPlugins()
+    {
+        if (!EzThrottler.Throttle("MissingRequiredPlugins", 1000))
+            return _missingRequired;
+
+        ECombatModule combatModule = _configuration.General.CombatModule;
+        IEnumerable<PluginInfo> required = combatModule == ECombatModule.None
+            ? RequiredPlugins
+            : RequiredPlugins.Append(CombatPlugins[combatModule]);
+        _missingRequired = string.Join(", ", required
+            .Where(plugin => FindInstalledPlugin(plugin, requireLoaded: true) == null)
+            .Select(plugin => plugin.DisplayName));
+        return _missingRequired;
+    }
+
     private bool HasMissingRequiredPlugins()
         => RequiredPlugins.Any(plugin => FindInstalledPlugin(plugin, requireLoaded: true) == null);
 

@@ -1,4 +1,4 @@
-using System.Text.Json;
+using System.IO.Compression;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Questionable.Controller.Steps.Shared;
 namespace Questionable.Windows.QuestComponents;
@@ -23,6 +23,7 @@ internal sealed class QuickAccessComponent
     ICondition condition,
     ITargetManager targetManager,
     RecentLog recentLog,
+    AutoRetainerIpc autoRetainer,
     IChatGui chatGui,
     IDalamudPluginInterface pluginInterface)
 {
@@ -30,7 +31,7 @@ internal sealed class QuickAccessComponent
     {
         "Artisan", "AutoDuty", "AutoRetainer", "Automaton", "BossMod", "BossModReborn", "GatherChill", "Knightshopper", "Lifestream",
         "MappingTheRealm", "Mogmail", "PandorasBox", "RotationSolver", "SelectString", "Stylist", "TextAdvance", "vnavmesh", "vsatisfy", "WahTools",
-        "WrathCombo", "YesAlready",
+        "WigglyQuest", "WrathCombo", "YesAlready",
     };
 
     public event EventHandler? Reload;
@@ -134,28 +135,71 @@ internal sealed class QuickAccessComponent
     {
         bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.LifeRing,
             _L("Stuck?"),
-            _L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"),
+            _L("Copies troubleshooting information to the clipboard and saves a zip with the recent log, for a report in #questionable-issues"),
             tint: QstTheme.SpecialButton,
             enabled: objectTable[0] != null,
             showLabel: showLabel);
-        bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
-        if (rightClicked)
+        if (leftClicked)
         {
-            ImGui.SetClipboardText(JsonSerializer.Serialize(LogQuestCompletion.ReadLog(), JsonOptions.Default));
-            chatGui.Print(_L("List of completed quests copied to the clipboard. Paste it in the Discord thread linked below, then run " +
-                        "'/qst clearlog' to reset the log.") + "\nhttps://discord.com/channels/1001823907193552978/1447612869431656508/1447612869431656508",
-                CommandHandler.MessageTag, CommandHandler.TagColor);
-        }
-        else if (leftClicked)
-        {
-            ImGui.SetClipboardText(BuildReport());
+            TroubleshootingReport.Input input = BuildReport();
+            string report = TroubleshootingReport.Build(input);
+            ImGui.SetClipboardText(report);
             chatGui.Print(_L("Troubleshooting information has been copied to clipboard. " +
                 "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information."),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
+            // Reading a whole dalamud.log takes a moment; WahTools exports off the game thread too.
+            if (Interlocked.Exchange(ref _exporting, 1) == 0)
+                Task.Run(() => WriteReportFile(report, input.PrivateTexts));
         }
     }
 
-    private string BuildReport()
+    private int _exporting;
+    private static readonly string[] LogFiles = ["dalamud.old.log", "dalamud.log"];
+
+    private static readonly string[] LoggedPlugins = ["Questionable", .. QuestReporter.TrackedPlugins];
+
+    // Like WahTools' Export log: a zip in the plugin's config folder, selected in Explorer.
+    private void WriteReportFile(string report, IReadOnlyList<string> privateTexts)
+    {
+        try
+        {
+            string? root = pluginInterface.ConfigDirectory.Parent?.Parent?.FullName;
+            // The old log is the previous session, e.g. one that crashed; WahTools exports both too.
+            List<string> entries = root == null
+                ? []
+                : [.. LogFiles.Select(x => Path.Combine(root, x)).Where(File.Exists)
+                    .SelectMany(x => DalamudLog.Read(x, LoggedPlugins))];
+            DirectoryInfo folder = pluginInterface.ConfigDirectory.CreateSubdirectory("reports");
+            string file = Path.Combine(folder.FullName,
+                string.Create(CultureInfo.InvariantCulture, $"Questionable-{DateTime.Now:yyyy-MM-dd-HHmmss}.zip"));
+            using (ZipArchive zip = ZipFile.Open(file, ZipArchiveMode.Create))
+            {
+                AddText(zip, "report.txt", report);
+                AddText(zip, "dalamud-questionable.log", TroubleshootingReport.LogText(entries, privateTexts));
+            }
+
+            Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
+            Svc.Framework.RunOnFrameworkThread(() => chatGui.Print(
+                _LF("Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm, vnavmesh and the other plugins it uses: {0}", file),
+                CommandHandler.MessageTag, CommandHandler.TagColor));
+        }
+        catch (Exception e)
+        {
+            Svc.Log.Warning(e, "Couldn't write the troubleshooting zip");
+        }
+        finally
+        {
+            Interlocked.Exchange(ref _exporting, 0);
+        }
+    }
+
+    private static void AddText(ZipArchive zip, string name, string text)
+    {
+        using StreamWriter writer = new(zip.CreateEntry(name).Open());
+        writer.Write(text);
+    }
+
+    private TroubleshootingReport.Input BuildReport()
     {
         Configuration config = Configuration.Instance();
         IPlayerCharacter player = (IPlayerCharacter)objectTable[0]!;
@@ -178,14 +222,16 @@ internal sealed class QuickAccessComponent
             TroubleshootingReport.DescribeFailure(movementController.LastFailure, DateTimeOffset.UtcNow),
         ];
 
-        return TroubleshootingReport.Build(new()
+        return new()
         {
             Facts = facts.OfType<string>().ToList(),
             Settings = TroubleshootingReport.ChangedSettings(config),
             Log = recentLog.GetEntries(),
-            PrivateTexts = [player.Name.TextValue, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Environment.UserName],
+            // The file's log lines can name alts (character list, AutoRetainer pass).
+            PrivateTexts = [player.Name.TextValue, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Environment.UserName,
+                .. autoRetainer.GetCharacters().Select(x => x.Name)],
             NowUtc = DateTime.UtcNow,
-        });
+        };
     }
 
     private string DescribeConditions()
