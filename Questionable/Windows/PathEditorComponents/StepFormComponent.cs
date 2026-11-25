@@ -97,7 +97,7 @@ internal sealed class StepFormComponent
             Hint(QstTheme.Amber, _L("This interaction type usually needs a Data ID."));
 
         if (step.Position == null
-            && step.InteractionType is EInteractionType.WalkTo or EInteractionType.Jump or EInteractionType.Dive)
+            && step.InteractionType is EInteractionType.WalkTo or EInteractionType.Jump)
             Hint(QstTheme.Amber, _L("This interaction type usually needs a Position."));
 
         if (step.TerritoryId == 0)

@@ -124,7 +124,6 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskFactory<Jump.Factory>();
         serviceCollection.AddTaskExecutor<Jump.SingleTask, Jump.SingleExecutor>();
         serviceCollection.AddTaskExecutor<Jump.RepeatedTask, Jump.RepeatedExecutor>();
-        serviceCollection.AddTaskFactoryAndExecutor<Dive.Task, Dive.Factory, Dive.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<Say.Task, Say.Factory, Say.Executor>();
         serviceCollection.AddTaskFactory<UseItem.Factory>();
         serviceCollection.AddTaskExecutor<UseItem.UseOnGround, UseItem.UseOnGroundExecutor>();

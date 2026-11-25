@@ -25,7 +25,8 @@ internal sealed class PathDataManifest
     [JsonPropertyName("generatedAt")]
     public DateTimeOffset? GeneratedAt { get; set; }
 
+    // An older bundle (1.x paths) would replace this build's own paths, so only the same format loads.
     public bool IsCompatibleWith(int pluginDataFormat) =>
-        MinPluginDataFormat <= pluginDataFormat &&
+        MinPluginDataFormat == pluginDataFormat &&
         (MaxPluginDataFormat == null || pluginDataFormat <= MaxPluginDataFormat.Value);
 }

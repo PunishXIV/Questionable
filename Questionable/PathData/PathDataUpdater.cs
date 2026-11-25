@@ -233,7 +233,13 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
 
         await OnGameThread(() => _configuration.PathData.LastCheck = DateTimeOffset.UtcNow).ConfigureAwait(false);
 
-        // A bundle that needs a newer plugin can't be used.
+        if (manifest.MinPluginDataFormat < PathDataFormat.CurrentVersion)
+        {
+            _logger.LogInformation("Published path data is for an older plugin; using the built-in paths");
+            Status = _L("Path data is up to date");
+            return;
+        }
+        
         if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
         {
             _logger.LogInformation("Newer path data is available but requires a newer plugin version");

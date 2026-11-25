@@ -670,7 +670,6 @@ internal sealed partial class ActiveQuestComponent
         EInteractionType.Duty => _L("Duty"),
         EInteractionType.SinglePlayerDuty => _L("Quest battle"),
         EInteractionType.Jump => _L("Jump"),
-        EInteractionType.Dive => _L("Dive"),
         EInteractionType.Craft => _L("Craft"),
         EInteractionType.Gather => _L("Gather"),
         EInteractionType.Snipe => _L("Snipe"),

@@ -255,7 +255,7 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class GeneralConfiguration
     {
         public string Language { get; set; } = "en";
-        public ECombatModule CombatModule { get; set; } = ECombatModule.None;
+        public ECombatModule CombatModule { get; set; } = ECombatModule.BossMod;
         public uint MountId { get; set; } = 1;
         public int MountDistance { get; set; } = 50;
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
