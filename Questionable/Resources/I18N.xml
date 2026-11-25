@@ -9369,4 +9369,14 @@ Right click: Copy without .json</Value>
     <Key>TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it.</Key>
     <Value lang="en">TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it.</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStarter.cs -->
+    <Key>Boss Mod Reborn is loaded. Questionable doesn't work with it, so combat and quest battles can fail. Disable Boss Mod Reborn and use Boss Mod instead.</Key>
+    <Value lang="en">Boss Mod Reborn is loaded. Questionable doesn't work with it, so combat and quest battles can fail. Disable Boss Mod Reborn and use Boss Mod instead.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <Key>WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable.</Key>
+    <Value lang="en">WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable.</Value>
+  </Entry>
 </I18N>

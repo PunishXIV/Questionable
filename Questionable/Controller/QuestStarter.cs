@@ -12,6 +12,7 @@ internal sealed class QuestStarter(
     QuestStopPolicy stopPolicy,
     JobGear.Factory jobGear,
     SatisfyIpc satisfy,
+    BossModIpc bossMod,
     Configuration configuration,
     IDataManager dataManager,
     IChatGui chatGui,
@@ -21,14 +22,32 @@ internal sealed class QuestStarter(
 
     public bool CanStartQuest(string label)
     {
+        if (WigglyQuestBlocks(label))
+            return false;
+
         if (questController.CanPrepareQuestTasks())
+        {
+            if (bossMod.IsRebornInstalled())
+                chatGui.PrintError(_L("Boss Mod Reborn is loaded. Questionable doesn't work with it, so combat and quest battles can fail. Disable Boss Mod Reborn and use Boss Mod instead."),
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
             return true;
+        }
 
         string reason = questController.ExternalBlockReason ?? questController.DebugState ??
             _L("Check the external operation before restarting.");
         logger.LogWarning("Quest start {Label} blocked: {Reason}", label, reason);
         chatGui.Print(reason, CommandHandler.MessageTag, CommandHandler.TagColor);
         return false;
+    }
+
+    private bool WigglyQuestBlocks(string label)
+    {
+        if (!questController.BlockedByWigglyQuest())
+            return false;
+
+        logger.LogWarning("{Label} blocked: WigglyQuest is loaded", label);
+        QuestController.PrintWigglyQuestBlock();
+        return true;
     }
 
     public void Start(string label)
@@ -118,6 +137,9 @@ internal sealed class QuestStarter(
 
     public void RedeemRewards(bool dry = false)
     {
+        if (WigglyQuestBlocks("Redeem"))
+            return;
+
         if (questController.IsRunning)
         {
             chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
@@ -147,6 +169,9 @@ internal sealed class QuestStarter(
     // Satisfy refuses NPCs that are locked or done, and any once the 12 weekly deliveries are used up.
     public void RunCustomDeliveries()
     {
+        if (WigglyQuestBlocks("Custom deliveries"))
+            return;
+
         if (questController.IsRunning)
         {
             chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
@@ -177,6 +202,9 @@ internal sealed class QuestStarter(
 
     public void CollectJobGear(int? level)
     {
+        if (WigglyQuestBlocks("Job gear"))
+            return;
+
         if (questController.IsRunning)
         {
             chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
