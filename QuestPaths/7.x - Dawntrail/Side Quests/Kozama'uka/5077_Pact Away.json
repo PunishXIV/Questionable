@@ -1,82 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048858,
-          "Position": {
-            "X": -426.87115,
-            "Y": 121.63345,
-            "Z": 320.88184
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2014185,
-          "Position": {
-            "X": -427.38995,
-            "Y": 122.91138,
-            "Z": 319.38647
-          },
-          "TerritoryId": 1188,
+          "Position": [-427.38995, 122.91138, 319.38647],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2014187,
-          "Position": {
-            "X": -548.2719,
-            "Y": 133.83679,
-            "Z": 698.1765
-          },
-          "TerritoryId": 1188,
+          "Position": [-548.2719, 133.83679, 698.1765],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1048880,
-          "Position": {
-            "X": -552.3613,
-            "Y": 133.86514,
-            "Z": 696.16235
-          },
-          "TerritoryId": 1188,
+          "Position": [-552.3613, 133.86514, 696.16235],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048858,
-          "Position": {
-            "X": -426.87115,
-            "Y": 121.63345,
-            "Z": 320.88184
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

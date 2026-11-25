@@ -1,75 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006747,
-          "Position": {
-            "X": -20.828613,
-            "Y": 29.999964,
-            "Z": -2.4262085
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1014046,
-          "Position": {
-            "X": 38.223755,
-            "Y": 5.000002,
-            "Z": 404.28784
-          },
-          "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "Position": [38.223755, 5.000002, 404.28784],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1014121,
-          "Position": {
-            "X": 47.104614,
-            "Y": 14.24741,
-            "Z": 197.92468
-          },
-          "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [47.104614, 14.24741, 197.92468],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 2005978,
-          "Position": {
-            "X": 1.5715942,
-            "Y": 21.316772,
-            "Z": 181.8722
-          },
-          "TerritoryId": 147,
+          "Position": [1.5715942, 21.316772, 181.8722],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [4686]
@@ -78,60 +44,34 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1014121,
-          "Position": {
-            "X": 47.104614,
-            "Y": 14.24741,
-            "Z": 197.92468
-          },
-          "TerritoryId": 147,
+          "Position": [47.104614, 14.24741, 197.92468],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1006747,
-          "Position": {
-            "X": -20.828613,
-            "Y": 29.999964,
-            "Z": -2.4262085
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          }
+          "Position": [-20.828613, 29.999964, -2.4262085],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1003995,
-          "Position": {
-            "X": 75.33374,
-            "Y": 2.135708,
-            "Z": 316.33472
-          },
-          "TerritoryId": 141,
+          "Position": [75.33374, 2.135708, 316.33472],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Gate of Thal (Central Thanalan)"
-          ],
           "$": "nald and thal are approx. the same distance but coming from nald requires an extra walkto because it tries and fails to land on the ledge",
 		  "NextQuestId": 2033
         }

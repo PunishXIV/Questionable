@@ -1,49 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "UcanPatates",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006711,
-          "Position": {
-            "X": -140.39832,
-            "Y": 7.8986163,
-            "Z": -142.99237
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000617,
-          "Position": {
-            "X": 5.722107,
-            "Y": -7.2786255,
-            "Z": 270.95447
-          },
-          "TerritoryId": 152,
+          "Position": [5.722107, -7.2786255, 270.95447],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
           "NextQuestId": 970
         }
       ]

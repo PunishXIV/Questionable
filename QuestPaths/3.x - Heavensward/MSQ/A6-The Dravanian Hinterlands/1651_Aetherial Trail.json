@@ -1,72 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013162,
-          "Position": {
-            "X": 92.36279,
-            "Y": 15.094684,
-            "Z": 33.188354
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1012389,
-          "Position": {
-            "X": -133.31812,
-            "Y": 4.1,
-            "Z": -111.77234
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah"
+          "Position": [-133.31812, 4.1, -111.77234],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1012391,
-          "Position": {
-            "X": -202.62463,
-            "Y": -31.015825,
-            "Z": 105.088745
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "Position": [-202.62463, -31.015825, 105.088745],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1012394,
-          "Position": {
-            "X": -158.1903,
-            "Y": 4,
-            "Z": -21.194885
-          },
-          "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "Position": [-158.1903, 4, -21.194885],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

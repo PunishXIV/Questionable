@@ -1,21 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1028738,
-          "Position": {
-            "X": -104.32593,
-            "Y": 5.999999,
-            "Z": 195.97156
-          },
-          "TerritoryId": 129,
+          "Position": [-104.32593, 5.999999, 195.97156],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -28,47 +23,33 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1028795,
-          "Position": {
-            "X": -187.73181,
-            "Y": 46.387943,
-            "Z": -75.33386
-          },
-          "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "Fly": true
+          "Position": [-187.73181, 46.387943, -75.33386],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1028797,
-          "Position": {
-            "X": -187.73181,
-            "Y": 46.394768,
-            "Z": -75.39484
-          },
-          "TerritoryId": 134,
+          "Position": [-187.73181, 46.394768, -75.39484],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1028797,
-          "Position": {
-            "X": -187.73181,
-            "Y": 46.394768,
-            "Z": -75.39484
-          },
-          "TerritoryId": 134,
+          "Position": [-187.73181, 46.394768, -75.39484],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -82,17 +63,12 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1028798,
-          "Position": {
-            "X": -70.38995,
-            "Y": 20.000332,
-            "Z": 45.334473
-          },
-          "TerritoryId": 129,
+          "Position": [-70.38995, 20.000332, 45.334473],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -105,15 +81,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1031099,
-          "Position": {
-            "X": -104.631165,
-            "Y": 5.999999,
-            "Z": 197.4364
-          },
-          "TerritoryId": 129,
+          "Position": [-104.631165, 5.999999, 197.4364],
           "InteractionType": "CompleteQuest"
         }
       ]

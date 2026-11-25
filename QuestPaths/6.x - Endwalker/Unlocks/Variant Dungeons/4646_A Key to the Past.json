@@ -1,24 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1043624,
-          "Position": {
-            "X": 41.031494,
-            "Y": -15.646993,
-            "Z": 107.80493
-          },
-          "TerritoryId": 962,
+          "Position": [41.031494, -15.646993, 107.80493],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKVA101_04646_Q1_000_000",
@@ -31,113 +22,66 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1043777,
-          "Position": {
-            "X": 66.20886,
-            "Y": 4.0999947,
-            "Z": -143.14496
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "Position": [66.20886, 4.0999947, -143.14496],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "Comment": "Annoying pop up you have to click thru",
           "DataId": 1043626,
-          "Position": {
-            "X": -230.94531,
-            "Y": -32,
-            "Z": 110.185425
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "Position": [-230.94531, -32, 110.185425],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "TerritoryId": 141,
           "InteractionType": "WaitForManualProgress",
           "Comment": "Variant dungeon unsupported:\nLacking boss modules for path 1 bosses",
           "DutyOptions": {
             "ContentFinderConditionId": 868,
-            "Enabled": false,
-            "Notes": [
-              "Lacking boss modules for path 1 bosses"
-            ]
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1043626,
-          "Position": {
-            "X": -230.94531,
-            "Y": -32,
-            "Z": 110.185425
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "Position": [-230.94531, -32, 110.185425],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1044158,
-          "Position": {
-            "X": 66.20886,
-            "Y": 4.0999947,
-            "Z": -143.14496
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "Position": [66.20886, 4.0999947, -143.14496],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1043624,
-          "Position": {
-            "X": 41.031494,
-            "Y": -15.646993,
-            "Z": 107.80493
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

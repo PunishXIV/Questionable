@@ -1,77 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013279,
-          "Position": {
-            "X": 441.70276,
-            "Y": 8.670496,
-            "Z": 18.814331
-          },
-          "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 465.77087,
-            "Y": 367.76678,
-            "Z": -658.1668
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        },
-        {
           "DataId": 1014199,
-          "Position": {
-            "X": 531.33435,
-            "Y": 348.49677,
-            "Z": -737.4227
-          },
-          "TerritoryId": 155,
+          "Position": [531.33435, 348.49677, -737.4227],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
-          },
-          "Fly": true
+            "Enabled": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
-        },
-        {
           "DataId": 1013279,
-          "Position": {
-            "X": 441.70276,
-            "Y": 8.670496,
-            "Z": 18.814331
-          },
-          "TerritoryId": 139,
+          "Position": [441.70276, 8.670496, 18.814331],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 588
         }

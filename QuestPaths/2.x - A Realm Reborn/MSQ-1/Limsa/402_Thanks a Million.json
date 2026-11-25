@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003239,
-          "Position": {
-            "X": -283.68048,
-            "Y": 10.593393,
-            "Z": -249.34778
-          },
-          "TerritoryId": 134,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 2001255,
-          "Position": {
-            "X": -320.57678,
-            "Y": 25.833496,
-            "Z": -527.5502
-          },
-          "TerritoryId": 134,
+          "Position": [-320.57678, 25.833496, -527.5502],
           "InteractionType": "Interact",
           "Comment": "Technically triggers combat, but can be ignored",
           "PickUpItemId": 2000342
@@ -37,51 +22,21 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": -380.10605,
-            "Y": 32.598312,
-            "Z": -608.40186
-          },
-          "TerritoryId": 134,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 138
-        },
-        {
           "DataId": 1002722,
-          "Position": {
-            "X": 667.68884,
-            "Y": 9.882242,
-            "Z": 487.32727
-          },
-          "TerritoryId": 138,
+          "Position": [667.68884, 9.882242, 487.32727],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179671
         },
         {
-          "TerritoryId": 138,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Western La Noscea - Swiftperch"
         },
         {
-          "Position": {
-            "X": 652.74164,
-            "Y": 8.129893,
-            "Z": 522.6646
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1003244,
-          "Position": {
-            "X": 650.72095,
-            "Y": 7.856781,
-            "Z": 527.21436
-          },
-          "StopDistance": 6,
-          "TerritoryId": 138,
+          "Position": [650.72095, 7.856781, 527.21436],
           "InteractionType": "CompleteQuest"
         }
       ]

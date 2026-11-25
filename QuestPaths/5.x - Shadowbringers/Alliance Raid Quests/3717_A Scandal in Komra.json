@@ -1,123 +1,73 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031577,
-          "Position": {
-            "X": -425.58942,
-            "Y": 417.21378,
-            "Z": -636.7438
-          },
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031586,
-          "Position": {
-            "X": 663.569,
-            "Y": 297.47797,
-            "Z": -162.24927
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Stilltide",
-          "Fly": true
+          "Position": [663.569, 297.47797, -162.24927],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": 547.1434,
-            "Y": 295.63748,
-            "Z": -219.3426
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2010833,
-          "Position": {
-            "X": 545.4946,
-            "Y": 296.1317,
-            "Z": -218.79913
-          },
-          "TerritoryId": 814,
+          "Position": [545.4946, 296.1317, -218.79913],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031586,
-          "Position": {
-            "X": 663.569,
-            "Y": 297.47797,
-            "Z": -162.24927
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [663.569, 297.47797, -162.24927],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031826,
-          "Position": {
-            "X": 623.1022,
-            "Y": 297.49335,
-            "Z": -199.51172
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [623.1022, 297.49335, -199.51172],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031578,
-          "Position": {
-            "X": 737.48376,
-            "Y": 285.0224,
-            "Z": -84.97754
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [737.48376, 285.0224, -84.97754],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031578,
-          "Position": {
-            "X": 737.48376,
-            "Y": 285.0224,
-            "Z": -84.97754
-          },
-          "TerritoryId": 814,
+          "Position": [737.48376, 285.0224, -84.97754],
           "InteractionType": "Emote",
           "Emote": "doubt"
         }
@@ -125,31 +75,21 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031829,
-          "Position": {
-            "X": 215.28955,
-            "Y": 315.85886,
-            "Z": -17.349548
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [215.28955, 315.85886, -17.349548],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": 215.44379,
-            "Y": 315.57245,
-            "Z": -22.744217
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 814,
+          "Position": [215.44379, 315.57245, -22.744217],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -161,57 +101,34 @@
     },
     {
       "Sequence": 9,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": 237.7035,
-            "Y": 308.6692,
-            "Z": -119.51825
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1031828,
-          "Position": {
-            "X": 236.40796,
-            "Y": 309.01877,
-            "Z": -118.24219
-          },
-          "TerritoryId": 814,
+          "Position": [236.40796, 309.01877, -118.24219],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 10,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 2010844,
-          "Position": {
-            "X": 238.17798,
-            "Y": 308.5221,
-            "Z": -120.19531
-          },
-          "TerritoryId": 814,
+          "Position": [238.17798, 308.5221, -120.19531],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031586,
-          "Position": {
-            "X": 663.569,
-            "Y": 297.47797,
-            "Z": -162.24927
-          },
-          "TerritoryId": 814,
+          "Position": [663.569, 297.47797, -162.24927],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3718
         }
       ]

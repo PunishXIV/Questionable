@@ -1,55 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1045631,
-          "Position": {
-            "X": 29.709229,
-            "Y": 82.05,
-            "Z": -5.661133
-          },
-          "StopDistance": 7,
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029197,
-          "Position": {
-            "X": -87.87671,
-            "Y": -19.022131,
-            "Z": 298.20703
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "Position": [-87.87671, -19.022131, 298.20703],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029197,
-          "Position": {
-            "X": -87.87671,
-            "Y": -19.022131,
-            "Z": 298.20703
-          },
-          "TerritoryId": 817,
+          "Position": [-87.87671, -19.022131, 298.20703],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_AKTKML103_04746_SAYTODO_000_140"
@@ -59,61 +34,44 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1027754,
-          "Position": {
-            "X": -108.20172,
-            "Y": -19.684433,
-            "Z": 380.2395
-          },
-          "TerritoryId": 817,
+          "Position": [-108.20172, -19.684433, 380.2395],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1045642,
-          "Position": {
-            "X": -90.28766,
-            "Y": -19.118582,
-            "Z": 298.02393
-          },
-          "TerritoryId": 817,
+          "Position": [-90.28766, -19.118582, 298.02393],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1045647,
-          "Position": {
-            "X": -488.88385,
-            "Y": 45.58085,
-            "Z": -224.5976
-          },
-          "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "Position": [-488.88385, 45.58085, -224.5976],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1045648,
-          "Position": {
-            "X": -205.95105,
-            "Y": -3.1999996,
-            "Z": -9.597961
-          },
-          "TerritoryId": 819,
+          "Position": [-205.95105, -3.1999996, -9.597961],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,50 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012097,
-          "Position": {
-            "X": 73.3501,
-            "Y": 205.88956,
-            "Z": 23.483582
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "DataId": 2005336,
-          "Position": {
-            "X": -488.79227,
-            "Y": 138.93335,
-            "Z": 741.0543
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1012138,
-          "Position": {
-            "X": 19.272095,
-            "Y": 38.43,
-            "Z": 15.854065
-          },
+          "Position": [19.272095, 38.43, 15.854065],
           "TerritoryId": 463,
           "InteractionType": "Interact"
         }
@@ -52,114 +21,56 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 2007063,
-          "Position": {
-            "X": -867.3381,
-            "Y": -184.31378,
-            "Z": -661.0056
-          },
-          "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "Fly": true
+          "Position": [-867.3381, -184.31378, -661.0056],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 2007068,
-          "Position": {
-            "X": -916.7773,
-            "Y": -184.31378,
-            "Z": -678.645
-          },
-          "TerritoryId": 402,
+          "Position": [-916.7773, -184.31378, -678.645],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 402,
       "Steps": [
         {
-          "Position": {
-            "X": -729.6362,
-            "Y": -136.38138,
-            "Z": -545.9192
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
-          "$": "Move to Tiamat's location before interaction; without this step, would often see qst stop before pathfinding",
-          "Position": {
-            "X": -698.36835,
-            "Y": -45.76334,
-            "Z": 415.04565
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 2007064,
-          "Position": {
-            "X": -696.0708,
-            "Y": -37.094727,
-            "Z": 432.33386
-          },
-          "TerritoryId": 402,
+          "Position": [-696.0708, -37.094727, 432.33386],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 2007065,
-          "Position": {
-            "X": -64.2558,
-            "Y": 271.229,
-            "Z": -4.2268066
-          },
-          "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-64.2558, 271.229, -4.2268066],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 174.36705,
-            "Y": 393.17496,
-            "Z": -569.3414
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
-        {
           "DataId": 2007066,
-          "Position": {
-            "X": 50.339478,
-            "Y": 374.47156,
-            "Z": -676.5088
-          },
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [50.339478, 374.47156, -676.5088],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,95 +1,61 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030336,
-          "Position": {
-            "X": 278.7976,
-            "Y": 414.807,
-            "Z": -851.2856
-          },
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 2010074,
-          "Position": {
-            "X": 358.20544,
-            "Y": 396.536,
-            "Z": -715.90753
-          },
-          "TerritoryId": 818,
+          "Position": [358.20544, 396.536, -715.90753],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818298
         },
         {
           "DataId": 1030514,
-          "Position": {
-            "X": 479.5758,
-            "Y": 368.87827,
-            "Z": -340.99335
-          },
-          "TerritoryId": 818,
+          "Position": [479.5758, 368.87827, -340.99335],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "TerritoryId": 818,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Tempest - Ondo Cups"
         },
         {
           "DataId": 1030515,
-          "Position": {
-            "X": 605.3711,
-            "Y": 350.3518,
-            "Z": -196.91772
-          },
-          "TerritoryId": 818,
+          "Position": [605.3711, 350.3518, -196.91772],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1030516,
-          "Position": {
-            "X": 569.4209,
-            "Y": 350.03647,
-            "Z": -227.95453
-          },
-          "TerritoryId": 818,
+          "Position": [569.4209, 350.03647, -227.95453],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "Position": {
-            "X": 796.1852,
-            "Y": 449.08664,
-            "Z": -710.04565
-          },
-          "TerritoryId": 818,
+          "Position": [796.1852, 449.08664, -710.04565],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -103,17 +69,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1027758,
-          "Position": {
-            "X": 568.1085,
-            "Y": 350.2004,
-            "Z": -230.36548
-          },
-          "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "Position": [568.1085, 350.2004, -230.36548],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

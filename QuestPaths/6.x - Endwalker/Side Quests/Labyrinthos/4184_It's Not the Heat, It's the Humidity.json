@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,146 +8,60 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039329,
-          "Position": {
-            "X": 15.4074,
-            "Y": 170.403,
-            "Z": -752.161
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1039347,
-          "Position": {
-            "X": 115.101,
-            "Y": 172.563,
-            "Z": -670.167
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [115.101, 172.563, -670.167],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": 179.05104,
-            "Y": 188.94865,
-            "Z": -730.1896
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 2011788,
-          "Position": {
-            "X": 179.05104,
-            "Y": 188.94865,
-            "Z": -730.1896
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
+          "Position": [179.05104, 188.94865, -730.1896],
           "Mount": false,
-          "Sprint": false
-        },
-        {
-          "Position": {
-            "X": 252.90591,
-            "Y": 187.0367,
-            "Z": -721.9887
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1
         },
         {
           "DataId": 2011789,
-          "Position": {
-            "X": 252.90591,
-            "Y": 187.0367,
-            "Z": -721.9887
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
+          "Position": [252.90591, 187.0367, -721.9887],
           "Mount": false,
-          "Sprint": false
-        },
-        {
-          "Position": {
-            "X": 249.21896,
-            "Y": 209.46693,
-            "Z": -781.99304
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1
         },
         {
           "DataId": 2011792,
-          "Position": {
-            "X": 249.21896,
-            "Y": 209.46693,
-            "Z": -781.99304
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
+          "Position": [249.21896, 209.46693, -781.99304],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1039348,
-          "Position": {
-            "X": 399.151,
-            "Y": 184.683,
-            "Z": -701.722
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [399.151, 184.683, -701.722],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1039329,
-          "Position": {
-            "X": 15.4074,
-            "Y": 170.403,
-            "Z": -752.161
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

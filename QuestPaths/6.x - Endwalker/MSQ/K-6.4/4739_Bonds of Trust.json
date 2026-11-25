@@ -1,86 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1045445,
-          "Position": {
-            "X": 508.5984,
-            "Y": -36.65,
-            "Z": -206.74457
-          },
-          "StopDistance": 7,
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": 252.4148,
-            "Y": 10.8,
-            "Z": -659.2858
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -80.826256,
-            "Y": 10.8,
-            "Z": -663.8825
-          },
-          "StopDistance": 1,
-          "TerritoryId": 958,
+          "Position": [-80.826256, 10.8, -663.8825],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             16332
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1045450,
-          "Position": {
-            "X": -80.73547,
-            "Y": 10.8,
-            "Z": -659.75433
-          },
-          "StopDistance": 7,
-          "TerritoryId": 958,
+          "Position": [-80.73547, 10.8, -659.75433],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1045452,
-          "Position": {
-            "X": 283.8025,
-            "Y": 10.8,
-            "Z": -231.61676
-          },
-          "StopDistance": 5,
-          "TerritoryId": 958,
+          "Position": [283.8025, 10.8, -231.61676],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,32 +8,15 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039515,
-          "Position": {
-            "X": 464.553,
-            "Y": 166.204,
-            "Z": -426.016
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 2011790,
-          "Position": {
-            "X": 501.205,
-            "Y": 174.271,
-            "Z": -521.06
-          },
-          "TerritoryId": 956,
+          "Position": [501.205, 174.271, -521.06],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
@@ -47,28 +30,13 @@
               "RewardItemId": 2003109,
               "RewardItemCount": 1
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1039515,
-          "Position": {
-            "X": 464.553,
-            "Y": 166.204,
-            "Z": -426.016
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

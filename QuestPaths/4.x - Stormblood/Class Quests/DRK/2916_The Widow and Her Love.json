@@ -1,108 +1,68 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1022866,
-          "Position": {
-            "X": 482.07825,
-            "Y": 203.4332,
-            "Z": 680.7506
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1022870,
-          "Position": {
-            "X": 464.53027,
-            "Y": -51.1414,
-            "Z": 44.47998
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "Position": [464.53027, -51.1414, 44.47998],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2008662,
-          "Position": {
-            "X": 436.94202,
-            "Y": -51.163513,
-            "Z": 98.68005
-          },
-          "StopDistance": 1,
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [436.94202, -51.163513, 98.68005],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1022879,
-          "Position": {
-            "X": 503.4713,
-            "Y": -45.078712,
-            "Z": -116.92993
-          },
-          "StopDistance": 1,
-          "TerritoryId": 398,
+          "Position": [503.4713, -45.078712, -116.92993],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7489,
             7490
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1022880,
-          "Position": {
-            "X": 612.8175,
-            "Y": -26.250998,
-            "Z": -436.45386
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [612.8175, -26.250998, -436.45386],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2008663,
-          "Position": {
-            "X": 622.8275,
-            "Y": -25.467346,
-            "Z": -446.43323
-          },
-          "TerritoryId": 398,
+          "Position": [622.8275, -25.467346, -446.43323],
           "InteractionType": "Action",
           "Action": "Souleater"
         }
@@ -110,33 +70,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1023414,
-          "Position": {
-            "X": 617.8529,
-            "Y": -25.577927,
-            "Z": -446.61633
-          },
-          "TerritoryId": 398,
+          "Position": [617.8529, -25.577927, -446.61633],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1022885,
-          "Position": {
-            "X": 461.41748,
-            "Y": -51.141403,
-            "Z": 43.4729
-          },
-          "TerritoryId": 398,
+          "Position": [461.41748, -51.141403, 43.4729],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true,
           "NextQuestId": 2917
         }
       ]

@@ -1,70 +1,45 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020460,
-          "Position": {
-            "X": 17.92926,
-            "Y": -1.5668043E-05,
-            "Z": -41.21466
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1020461,
-          "Position": {
-            "X": 24.582275,
-            "Y": 4,
-            "Z": 68.28406
-          },
-          "TerritoryId": 628,
+          "Position": [24.582275, 4, 68.28406],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "TerritoryId": 628,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Kugane] Kogane Dori Markets"
         },
         {
           "DataId": 1022359,
-          "Position": {
-            "X": 88.12085,
-            "Y": 4,
-            "Z": 69.7489
-          },
-          "TerritoryId": 628,
+          "Position": [88.12085, 4, 69.7489],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1020462,
-          "Position": {
-            "X": 95.140015,
-            "Y": 8.02,
-            "Z": 151.9646
-          },
-          "TerritoryId": 628,
+          "Position": [95.140015, 8.02, 151.9646],
           "InteractionType": "CompleteQuest"
         }
       ]

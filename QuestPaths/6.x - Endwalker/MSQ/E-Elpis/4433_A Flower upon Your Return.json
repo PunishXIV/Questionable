@@ -1,46 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1040129,
-          "Position": {
-            "X": -629.0532,
-            "Y": 138.676,
-            "Z": 62.302612
-          },
-          "StopDistance": 5,
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 2012026,
-          "Position": {
-            "X": -555.6268,
-            "Y": 158.09863,
-            "Z": 172.41162
-          },
-          "TerritoryId": 961,
+          "Position": [-555.6268, 158.09863, 172.41162],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818380
         },
         {
           "DataId": 1040132,
-          "Position": {
-            "X": -513.6339,
-            "Y": 156.7207,
-            "Z": 198.68762
-          },
-          "TerritoryId": 961,
+          "Position": [-513.6339, 156.7207, 198.68762],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -54,78 +33,35 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040134,
-          "Position": {
-            "X": -515.2819,
-            "Y": 156.84904,
-            "Z": 199.32861
-          },
-          "TerritoryId": 961,
+          "Position": [-515.2819, 156.84904, 199.32861],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041369,
-          "Position": {
-            "X": -639.85657,
-            "Y": 162.30406,
-            "Z": -189.47137
-          },
-          "TerritoryId": 961,
+          "Position": [-639.85657, 162.30406, -189.47137],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "PickUpQuestId": 4511,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                4511
-              ]
-            }
-          }
+          "PickUpQuestId": 4511
         },
         {
           "DataId": 1041847,
-          "Position": {
-            "X": -484.2146,
-            "Y": 141.86789,
-            "Z": -97.21527
-          },
-          "TerritoryId": 961,
+          "Position": [-484.2146, 141.86789, -97.21527],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 4313,
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                4313
-              ]
-            }
-          },
           "$": "Teleporting at the start of the quest, as navmesh gets stuck on a rock otherwise"
         },
         {
-          "Position": {
-            "X": -531.21313,
-            "Y": 159.97144,
-            "Z": -244.95073
-          },
-          "TerritoryId": 961,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2012151,
-          "Position": {
-            "X": -481.8647,
-            "Y": 157.36621,
-            "Z": -367.48303
-          },
-          "TerritoryId": 961,
+          "Position": [-481.8647, 157.36621, -367.48303],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -139,42 +75,28 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1042043,
-          "Position": {
-            "X": -342.5498,
-            "Y": 294.93375,
-            "Z": -559.62463
-          },
-          "StopDistance": 6,
-          "TerritoryId": 961,
+          "Position": [-342.5498, 294.93375, -559.62463],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 2012025,
-          "Position": {
-            "X": -402.945,
-            "Y": 327.7484,
-            "Z": -691.3405
-          },
-          "TerritoryId": 961,
+          "Position": [-402.945, 327.7484, -691.3405],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818379
         },
         {
           "DataId": 1040135,
-          "Position": {
-            "X": -407.46167,
-            "Y": 329.89032,
-            "Z": -759.24316
-          },
-          "TerritoryId": 961,
+          "Position": [-407.46167, 329.89032, -759.24316],
           "InteractionType": "CompleteQuest"
         }
       ]

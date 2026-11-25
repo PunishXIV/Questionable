@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -7,48 +7,17 @@
   },
   "QuestSequence": [
     {
-  "Sequence": 0,
-  "Steps": [
-    {
-      "Position": {
-        "X": 392.00415,
-        "Y": 33.637783,
-        "Z": -127.34448
-      },
-      "TerritoryId": 817,
-      "InteractionType": "WalkTo",
-      "Fly": true,
-      "Land": true
-    },
-    {
-      "DataId": 1031380,
-          "Position": {
-            "X": 390.5,
-            "Y": 33.6378,
-            "Z": -128.446
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
-        }
-      ]
+      "Sequence": 0,
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031380,
-          "Position": {
-            "X": 390.5,
-            "Y": 33.6378,
-            "Z": -128.446
-          },
-          "TerritoryId": 817,
+          "Position": [390.5, 33.6378, -128.446],
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -71,19 +40,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031529,
-          "Position": {
-            "X": 291.128,
-            "Y": 34.5424,
-            "Z": -169.485
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
+          "Position": [291.128, 34.5424, -169.485],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

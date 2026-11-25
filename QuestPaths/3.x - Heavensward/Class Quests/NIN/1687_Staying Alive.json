@@ -1,21 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "xan",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010601,
-          "Position": {
-            "X": -14.755493,
-            "Y": 41.39178,
-            "Z": 258.13684
-          },
-          "TerritoryId": 137,
+          "Position": [-14.755493, 41.39178, 258.13684],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -25,144 +20,88 @@
         },
         {
           "DataId": 1010139,
-          "Position": {
-            "X": -33.218933,
-            "Y": -24.674446,
-            "Z": 257.98413
-          },
-          "TerritoryId": 137,
+          "Position": [-33.218933, -24.674446, 257.98413],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1001208,
-          "Position": {
-            "X": -228.16821,
-            "Y": 16,
-            "Z": 50.644653
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
+          "Position": [-228.16821, 16, 50.644653],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 2005934,
-          "Position": {
-            "X": -188.79993,
-            "Y": 1.7241821,
-            "Z": 207.7821
-          },
-          "TerritoryId": 129,
+          "Position": [-188.79993, 1.7241821, 207.7821],
           "InteractionType": "UseItem",
-          "ItemId": 2001725,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "ItemId": 2001725
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 2005935,
-          "Position": {
-            "X": -175.55511,
-            "Y": 3.982544,
-            "Z": 179.24768
-          },
-          "TerritoryId": 129,
+          "Position": [-175.55511, 3.982544, 179.24768],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 234.53989,
-            "Y": -56.43721,
-            "Z": -254.02878
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
-        },
-        {
           "DataId": 1013912,
-          "Position": {
-            "X": 230.73157,
-            "Y": -56.71082,
-            "Z": -247.21143
-          },
-          "TerritoryId": 398,
+          "Position": [230.73157, -56.71082, -247.21143],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2005938,
-          "Position": {
-            "X": 163.28674,
-            "Y": -64.2558,
-            "Z": -102.89166
-          },
-          "TerritoryId": 398,
+          "Position": [163.28674, -64.2558, -102.89166],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [5042, 4619],
-          "Fly": true
+          "KillEnemyDataIds": [5042, 4619]
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1015302,
-          "Position": {
-            "X": 237.59814,
-            "Y": -54.04252,
-            "Z": -217.02905
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [237.59814, -54.04252, -217.02905],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010601,
-          "Position": {
-            "X": -14.755493,
-            "Y": 41.39178,
-            "Z": 258.13684
-          },
-          "TerritoryId": 137,
+          "Position": [-14.755493, 41.39178, 258.13684],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -172,12 +111,7 @@
         },
         {
           "DataId": 1010139,
-          "Position": {
-            "X": -33.218933,
-            "Y": -24.674446,
-            "Z": 257.98413
-          },
-          "TerritoryId": 137,
+          "Position": [-33.218933, -24.674446, 257.98413],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1688
         }

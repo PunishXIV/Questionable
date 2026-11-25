@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,69 +8,39 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041319,
-          "Position": {
-            "X": 7.04093,
-            "Y": -31.5304,
-            "Z": -94.1386
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041318,
-          "Position": {
-            "X": 32.6321,
-            "Y": -28.6056,
-            "Z": 642.285
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [32.6321, -28.6056, 642.285],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041318,
-          "Position": {
-            "X": 32.6321,
-            "Y": -28.6056,
-            "Z": 642.285
-          },
-          "TerritoryId": 956,
+          "Position": [32.6321, -28.6056, 642.285],
           "InteractionType": "UseItem",
-          "ItemId": 2003315,
-          "Fly": true,
-          "Land": true
+          "ItemId": 2003315
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041319,
-          "Position": {
-            "X": 7.04093,
-            "Y": -31.5304,
-            "Z": -94.1386
-          },
-          "TerritoryId": 956,
+          "Position": [7.04093, -31.5304, -94.1386],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

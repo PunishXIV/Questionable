@@ -1,21 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1024355,
-          "Position": {
-            "X": 25.375732,
-            "Y": 6.0313134,
-            "Z": -119.432434
-          },
-          "TerritoryId": 628,
+          "Position": [25.375732, 6.0313134, -119.432434],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -28,45 +23,23 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1024711,
-          "Position": {
-            "X": 136.21729,
-            "Y": 12.000006,
-            "Z": -69.87109
-          },
-          "TerritoryId": 628,
+          "Position": [136.21729, 12.000006, -69.87109],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Rakuza District",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1019063,
-          "Position": {
-            "X": 3.3416748,
-            "Y": -6.6541724E-11,
-            "Z": -67.73486
-          },
-          "TerritoryId": 628,
+          "Position": [3.3416748, -6.6541724E-11, -67.73486],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1019039,
-          "Position": {
-            "X": -35.111023,
-            "Y": 13.999897,
-            "Z": -64.042114
-          },
-          "TerritoryId": 628,
+          "Position": [-35.111023, 13.999897, -64.042114],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -74,66 +47,45 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1024705,
-          "Position": {
-            "X": 8.590759,
-            "Y": 4,
-            "Z": 35.171997
-          },
-          "TerritoryId": 628,
+          "Position": [8.590759, 4, 35.171997],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1024708,
-          "Position": {
-            "X": 98.83264,
-            "Y": 4.0000014,
-            "Z": 103.471436
-          },
-          "TerritoryId": 628,
+          "Position": [98.83264, 4.0000014, 103.471436],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1024709,
-          "Position": {
-            "X": -108.01868,
-            "Y": -5.999997,
-            "Z": 70.23718
-          },
-          "TerritoryId": 628,
+          "Position": [-108.01868, -5.999997, 70.23718],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024710,
-          "Position": {
-            "X": 835.5382,
-            "Y": 5.9230075,
-            "Z": 834.6837
-          },
-          "TerritoryId": 613,
+          "Position": [835.5382, 5.9230075, 834.6837],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
           "NextQuestId": 3021
         }
       ]

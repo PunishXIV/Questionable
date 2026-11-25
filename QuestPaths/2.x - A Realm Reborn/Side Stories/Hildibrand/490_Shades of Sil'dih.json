@@ -1,46 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "FalconTaterz",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1010708,
-          "Position": {
-            "X": -70.237305,
-            "Y": 6.9839683,
-            "Z": 1.9073486
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "Position": {
-            "X": -72.76394,
-            "Y": 6.9845715,
-            "Z": 6.476269
-          },
-          "TerritoryId": 131,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Aetheryte Plaza"
-          ],
           "DataId": 1001285,
-          "Position": {
-            "X": -68.77246,
-            "Y": 4.0411124,
-            "Z": -126.51257
-          },
+          "Position": [-68.77246, 4.0411124, -126.51257],
           "TerritoryId": 130,
           "InteractionType": "Interact"
         }
@@ -48,54 +21,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DataId": 1011620,
-          "Position": {
-            "X": -118.69995,
-            "Y": 40,
-            "Z": 95.23157
-          },
-          "TerritoryId": 131,
+          "Position": [-118.69995, 40, 95.23157],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1011672,
-          "Position": {
-            "X": -118.21167,
-            "Y": 40,
-            "Z": 92.11865
-          },
-          "StopDistance": 5,
-          "TerritoryId": 131,
+          "Position": [-118.21167, 40, 92.11865],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
           "DataId": 1011677,
-          "Position": {
-            "X": 363.54602,
-            "Y": 74.743355,
-            "Z": 171.12988
-          },
-          "TerritoryId": 140,
+          "Position": [363.54602, 74.743355, 171.12988],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 491
         }

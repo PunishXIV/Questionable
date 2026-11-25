@@ -1,60 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001209,
-          "Position": {
-            "X": -103.74609,
-            "Y": 18.500334,
-            "Z": 16.03717
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000898,
-          "Position": {
-            "X": -342.21405,
-            "Y": 12.893799,
-            "Z": 3.4942627
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "Position": [-342.21405, 12.893799, 3.4942627],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1001209,
-          "Position": {
-            "X": -103.74609,
-            "Y": 18.500334,
-            "Z": 16.03717
-          },
-          "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

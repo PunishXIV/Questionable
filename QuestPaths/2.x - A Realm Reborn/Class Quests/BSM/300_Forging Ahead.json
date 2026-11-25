@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Wrapped Crowsbeak Hammer HQ\nAutocraft requires:\n 1x Steel Crowsbeak Hammer,\n 2x Steel Ingot,\n 1x Oak Lumber,\n 1x Iron Ingot",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000997,
-          "Position": {
-            "X": -31.265808,
-            "Y": 44.5,
-            "Z": 185.53442
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 155,
           "ItemId": 2350,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,17 +26,9 @@
         },
         {
           "DataId": 1000997,
-          "Position": {
-            "X": -31.265808,
-            "Y": 44.5,
-            "Z": 185.53442
-          },
+          "Position": [-31.265808, 44.5, 185.53442],
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

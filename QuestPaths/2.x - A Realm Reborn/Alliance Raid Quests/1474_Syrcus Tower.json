@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "JerryWester",
     "Kiarra"
@@ -8,98 +8,51 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006725,
-          "Position": {
-            "X": 446.82983,
-            "Y": -5.306207,
-            "Z": -465.72064
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 572.9147,
-            "Y": -1.2399623,
-            "Z": -260.11197
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "DataId": 2002927,
-          "Position": {
-            "X": 572.3506,
-            "Y": -0.045776367,
-            "Z": -260.51727
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 156
-        },
-        {
           "DataId": 1009372,
-          "Position": {
-            "X": 640.1312,
-            "Y": -1.08248,
-            "Z": -137.59064
-          },
-          "TerritoryId": 156,
+          "Position": [640.1312, -1.08248, -137.59064],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009374,
-          "Position": {
-            "X": 734.15735,
-            "Y": 15.330521,
-            "Z": -55.832825
-          },
-          "StopDistance": 7,
-          "TerritoryId": 156,
+          "Position": [734.15735, 15.330521, -55.832825],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009376,
-          "Position": {
-            "X": 730.73914,
-            "Y": 15.428448,
-            "Z": -56.168518
-          },
-          "StopDistance": 7,
-          "TerritoryId": 156,
+          "Position": [730.73914, 15.428448, -56.168518],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "Comment": "The ARR Alliance Raids must be completed to progress to Heavensward.\nSyrcus Tower can be completed by one max level player or a light party, but they must form an Alliance Raid with three parties of at least one person each to enter.",
           "DutyOptions": {
             "ContentFinderConditionId": 102,
-            "Enabled": false,
+            "Enabled": true,
             "LowPriority": true
           }
         }
@@ -110,42 +63,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 445.96164,
-            "Y": -5.3604937,
-            "Z": -466.67636
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "Never": true
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 40.024292,
-                  "Y": 24.002441,
-                  "Z": -668.0247
-                },
-                "TerritoryId": 156,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1006725,
-          "Position": {
-            "X": 446.82983,
-            "Y": -5.306207,
-            "Z": -465.72064
-          },
-          "TerritoryId": 156,
+          "Position": [446.82983, -5.306207, -465.72064],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 494
         }

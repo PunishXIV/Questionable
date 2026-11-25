@@ -1,39 +1,15 @@
 
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1237,
-          "Fly": true,
-          "Comment": "Select the destination Sinus Ardorum (#1)",
-          "DialogueChoices": [
-            {
-              "Prompt": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_000",
-              "Answer": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_005",
-              "Type": "List",
-              "ExcelSheet": "custom/009/CtsWksEntrance_00921"
-            }
-          ]
-        },
-        {
           "DataId": 1052631,
-          "Position": {
-            "X": 10.116699,
-            "Y": 1.6122663,
-            "Z": -17.135986
-          },
+          "Position": [10.116699, 1.6122663, -17.135986],
           "TerritoryId": 1237,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -48,63 +24,40 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1237,
       "Steps": [
         {
           "DataId": 1052634,
-          "Position": {
-            "X": -32.39496,
-            "Y": 1.5,
-            "Z": 31.631958
-          },
-          "TerritoryId": 1237,
+          "Position": [-32.39496, 1.5, 31.631958],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1237,
       "Steps": [
         {
           "DataId": 1052635,
-          "Position": {
-            "X": 46.61621,
-            "Y": 0.8794936,
-            "Z": 51.377075
-          },
-          "TerritoryId": 1237,
+          "Position": [46.61621, 0.8794936, 51.377075],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1237,
       "Steps": [
         {
           "DataId": 1052636,
-          "Position": {
-            "X": 29.95337,
-            "Y": 1,
-            "Z": -70.45099
-          },
-          "TerritoryId": 1237,
+          "Position": [29.95337, 1, -70.45099],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1052631,
-          "Position": {
-            "X": 10.116699,
-            "Y": 1.6122663,
-            "Z": -17.135986
-          },
-          "TerritoryId": 1237,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

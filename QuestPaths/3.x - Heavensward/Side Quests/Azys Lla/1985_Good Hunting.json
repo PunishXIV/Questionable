@@ -1,33 +1,18 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "goatzone",
 	"LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
 		{
-			"Sequence": 0,
-			"Steps": [
-				{
-					"DataId": 1012291,
-					"Position": {
-						"X": 804.074,
-						"Y": -26.326342,
-						"Z": -527.48914
-					},
-					"TerritoryId": 402,
-					"InteractionType": "AcceptQuest"
-				}
-			]
+		  "Sequence": 0,
+		  "Steps": []
 		},
 		{
 			"Sequence": 1,
+			"TerritoryId": 402,
 			"Steps": [
 				{
-					"Position": {
-						"X": 355.31863,
-						"Y": -46.22946,
-						"Z": -507.70428
-					},
-					"TerritoryId": 402,
+					"Position": [355.31863, -46.22946, -507.70428],
 					"InteractionType": "Combat",
 					"EnemySpawnType": "OverworldEnemies",
 					"ComplexCombatData": [
@@ -36,26 +21,13 @@
 							"MinimumKillCount": 4
 						}
 					],
-					"Fly": true,
 					"$": "we go to the west of the marked area to avoid idling in the FATE that spawns on the east of it; we'll still path through it when we expend all the westward mobs, but that's just how they spawn, shrugging emoji."
 				}
 			]
 		},
 		{
-			"Sequence": 255,
-			"Steps": [
-				{
-					"DataId": 1012291,
-					"Position": {
-						"X": 804.074,
-						"Y": -26.326342,
-						"Z": -527.48914
-					},
-					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-                    "Fly": true
-				}
-			]
+		  "Sequence": 255,
+		  "Steps": []
 		}
 	]
 }

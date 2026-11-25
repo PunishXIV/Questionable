@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027763,
-          "Position": {
-            "X": 517.1741,
-            "Y": 348.7536,
-            "Z": -175.92126
-          },
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1030442,
-          "Position": {
-            "X": 528.4352,
-            "Y": 374.76505,
-            "Z": -121.08038
-          },
-          "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [528.4352, 374.76505, -121.08038],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1030442,
-          "Position": {
-            "X": 528.4352,
-            "Y": 374.76505,
-            "Z": -121.08038
-          },
-          "TerritoryId": 818,
+          "Position": [528.4352, 374.76505, -121.08038],
           "InteractionType": "Emote",
           "Emote": "beckon"
         }
@@ -52,31 +32,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1030444,
-          "Position": {
-            "X": 638.239,
-            "Y": 357.3194,
-            "Z": -210.16254
-          },
-          "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [638.239, 357.3194, -210.16254],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1030444,
-          "Position": {
-            "X": 638.239,
-            "Y": 357.3194,
-            "Z": -210.16254
-          },
-          "TerritoryId": 818,
+          "Position": [638.239, 357.3194, -210.16254],
           "InteractionType": "Emote",
           "Emote": "chuckle",
           "DialogueChoices": [
@@ -91,18 +62,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027763,
-          "Position": {
-            "X": 517.1741,
-            "Y": 348.7536,
-            "Z": -175.92126
-          },
-          "TerritoryId": 818,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

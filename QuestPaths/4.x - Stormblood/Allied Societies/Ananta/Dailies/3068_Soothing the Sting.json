@@ -1,69 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -26.902342,
-            "Y": 56.092464,
-            "Z": 234.37491
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -26.902342,
-                  "Y": 56.092464,
-                  "Z": 234.37491
-                },
-                "TerritoryId": 612,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1024773,
-          "Position": {
-            "X": -28.33606,
-            "Y": 56.113926,
-            "Z": 236.25537
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "Position": [-28.33606, 56.113926, 236.25537],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2009370,
-          "Position": {
-            "X": 424.30762,
-            "Y": 59.952637,
-            "Z": -472.3736
-          },
-          "TerritoryId": 612,
+          "Position": [424.30762, 59.952637, -472.3736],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Fringes Gate"
-          ],
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 3}, {"Low": 4}
             ],null,null,null,null
@@ -72,14 +30,8 @@
         },
         {
           "DataId": 2009371,
-          "Position": {
-            "X": 364.73633,
-            "Y": 50.858276,
-            "Z": -356.00824
-          },
-          "TerritoryId": 612,
+          "Position": [364.73633, 50.858276, -356.00824],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 4}, {"Low": 5}
             ],null,null,null,null
@@ -88,14 +40,8 @@
         },
         {
           "DataId": 2009372,
-          "Position": {
-            "X": 345.6931,
-            "Y": 42.83203,
-            "Z": -306.20282
-          },
-          "TerritoryId": 612,
+          "Position": [345.6931, 42.83203, -306.20282],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 5}
             ],null,null,null,null
@@ -104,14 +50,8 @@
         },
         {
           "DataId": 2009373,
-          "Position": {
-            "X": 169.90918,
-            "Y": 39.53601,
-            "Z": -133.10449
-          },
-          "TerritoryId": 612,
+          "Position": [169.90918, 39.53601, -133.10449],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 4}
             ],null,null,null,null
@@ -120,14 +60,8 @@
         },
         {
           "DataId": 2009374,
-          "Position": {
-            "X": 130.23572,
-            "Y": 39.444458,
-            "Z": -131.88379
-          },
-          "TerritoryId": 612,
+          "Position": [130.23572, 39.444458, -131.88379],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 5}
             ],null,null,null,null
@@ -138,44 +72,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -26.902342,
-            "Y": 56.092464,
-            "Z": 234.37491
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -26.902342,
-                  "Y": 56.092464,
-                  "Z": 234.37491
-                },
-                "TerritoryId": 612,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1024773,
-          "Position": {
-            "X": -28.33606,
-            "Y": 56.113926,
-            "Z": 236.25537
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "Position": [-28.33606, 56.113926, 236.25537],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

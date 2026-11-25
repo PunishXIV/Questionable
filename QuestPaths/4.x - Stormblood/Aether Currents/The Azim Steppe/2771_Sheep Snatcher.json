@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019405,
-          "Position": {
-            "X": 343.58728,
-            "Y": 26.261887,
-            "Z": -326.55835
-          },
-          "TerritoryId": 622,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 2008318,
-          "Position": {
-            "X": -83.48212,
-            "Y": 33.21875,
-            "Z": -210.22363
-          },
-          "TerritoryId": 622,
+          "Position": [-83.48212, 33.21875, -210.22363],
           "InteractionType": "Snipe",
           "Comment": "Snipe sheep"
         }
@@ -36,33 +21,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1021900,
-          "Position": {
-            "X": -83.36011,
-            "Y": 27.540436,
-            "Z": -146.44086
-          },
-          "TerritoryId": 622,
+          "Position": [-83.36011, 27.540436, -146.44086],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1019405,
-          "Position": {
-            "X": 343.58728,
-            "Y": 26.261887,
-            "Z": -326.55835
-          },
-          "TerritoryId": 622,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

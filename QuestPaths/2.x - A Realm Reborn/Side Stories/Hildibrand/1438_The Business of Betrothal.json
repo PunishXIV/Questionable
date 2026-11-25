@@ -1,52 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "FalconTaterz",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "AetheryteShortcut": "Western Thanalan - Horizon",
-          "DataId": 1008757,
-          "Position": {
-            "X": -422.5376,
-            "Y": 23.113976,
-            "Z": -367.7882
-          },
-          "TerritoryId": 140,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
           "DataId": 1009305,
-          "Position": {
-            "X": 562.4321,
-            "Y": 17.654663,
-            "Z": 421.7135
-          },
-          "TerritoryId": 137,
+          "Position": [562.4321, 17.654663, 421.7135],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1009307,
-          "Position": {
-            "X": 498.89368,
-            "Y": 10.079935,
-            "Z": 418.265
-          },
-          "TerritoryId": 137,
+          "Position": [498.89368, 10.079935, 418.265],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -59,97 +37,62 @@
               "Prompt": "TEXT_CHRHDB301_01438_Q2_000_000",
               "Answer": "TEXT_CHRHDB301_01438_A2_000_030"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1009310,
-          "Position": {
-            "X": 471.18323,
-            "Y": 9.96334,
-            "Z": 794.6135
-          },
-          "TerritoryId": 137,
+          "Position": [471.18323, 9.96334, 794.6135],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "DataId": 1009308,
-          "Position": {
-            "X": 560.32654,
-            "Y": 17.707417,
-            "Z": 421.01147
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [560.32654, 17.707417, 421.01147],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1009311,
-          "Position": {
-            "X": 531.2123,
-            "Y": 17.448051,
-            "Z": 454.1847
-          },
-          "TerritoryId": 137,
+          "Position": [531.2123, 17.448051, 454.1847],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 582.44116,
-            "Y": 14.587065,
-            "Z": 394.23407
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1009317,
-          "Position": {
-            "X": 583.88635,
-            "Y": 14.587067,
-            "Z": 394.70508
-          },
-          "TerritoryId": 137,
+          "Position": [583.88635, 14.587067, 394.70508],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2004317,
-          "Position": {
-            "X": 515.98376,
-            "Y": 9.384277,
-            "Z": 525.81055
-          },
-          "TerritoryId": 137,
+          "Position": [515.98376, 9.384277, 525.81055],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1439
         }
       ]

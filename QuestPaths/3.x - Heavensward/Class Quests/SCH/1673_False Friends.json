@@ -1,49 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013135,
-          "Position": {
-            "X": 207.58165,
-            "Y": -3.148354,
-            "Z": 42.04371
-          },
-          "TerritoryId": 139,
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": -289.83594,
-            "Y": 70.47664,
-            "Z": -272.06448
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        },
-        {
           "DataId": 2005521,
-          "Position": {
-            "X": -292.83594,
-            "Y": 72.15991,
-            "Z": -275.4101
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 180,
+          "Position": [-292.83594, 72.15991, -275.4101],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -51,23 +22,17 @@
               "DataId": 30,
               "NameId": 4108
             }
-          ],
-          "Mount": false
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2005522,
-          "Position": {
-            "X": -302.05237,
-            "Y": 70.81714,
-            "Z": -292.28656
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 180,
+          "Position": [-302.05237, 70.81714, -292.28656],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -75,42 +40,29 @@
               "DataId": 30,
               "NameId": 4108
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2005523,
-          "Position": {
-            "X": -370.04657,
-            "Y": 65.69006,
-            "Z": -307.75922
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-370.04657, 65.69006, -307.75922],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2005530,
-          "Position": {
-            "X": -381.55188,
-            "Y": 52.475708,
-            "Z": -298.93958
-          },
-          "StopDistance": 2,
-          "TerritoryId": 180,
+          "Position": [-381.55188, 52.475708, -298.93958],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             4371
@@ -120,33 +72,22 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2005531,
-          "Position": {
-            "X": -381.55188,
-            "Y": 52.8114,
-            "Z": -298.909
-          },
-          "TerritoryId": 180,
+          "Position": [-381.55188, 52.8114, -298.909],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013135,
-          "Position": {
-            "X": 207.58165,
-            "Y": -3.148354,
-            "Z": 42.04371
-          },
-          "TerritoryId": 139,
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
+          "Position": [207.58165, -3.148354, 42.04371],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1674
         }

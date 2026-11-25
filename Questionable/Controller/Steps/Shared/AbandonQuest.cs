@@ -1,5 +1,4 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -11,7 +10,7 @@ internal static class AbandonQuest
         public override string ToString() => $"AbandonQuest({Quest?.Id.Value.ToString(CultureInfo.InvariantCulture) ?? "???"})";
     }
 
-    internal sealed class AbandonQuestExecutor
+    internal sealed class Executor
     (
         IClientState clientState,
         IObjectTable objectTable,
@@ -21,15 +20,14 @@ internal static class AbandonQuest
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         QuestController questController,
-        ILogger<AbandonQuestExecutor> logger) : TaskExecutor<Task>
+        ILogger<Executor> logger) : TaskExecutor<Task>
     {
-        private uint attempts;
+        private uint _attempts;
         protected override bool Start()
         {
-            // Safety check: ensure player is logged in
             if (objectTable[0] == null || !clientState.IsLoggedIn || Task.Quest == null)
             {
-                throw new TaskException("Player is not logged in or quest is null");
+                throw new TaskException("Not logged in, or there's no quest to abandon.");
             }
 
             if (condition[ConditionFlag.InCombat] ||
@@ -50,7 +48,7 @@ internal static class AbandonQuest
                 throw new TaskException("Quest cannot be cancelled");
             }
 
-            AbandonQuestAction();
+            SendAbandon();
             return true;
         }
 
@@ -59,24 +57,24 @@ internal static class AbandonQuest
             if (Task.Quest == null || !questFunctions.IsQuestAccepted(Task.Quest.Id))
             {
                 logger.LogInformation("Quest abandoned");
-                chatGui.Print($"Quest abandoned{(Task.Quest != null ? $": {Task.Quest?.Info.Name}" : "")}");
+                chatGui.Print($"Quest abandoned{(Task.Quest != null ? $": {Task.Quest.Info.Name}" : "")}");
                 return ETaskResult.TaskComplete;
             }
-            if (EzThrottler.Throttle("AbandonQuest")) AbandonQuestAction();
+            if (EzThrottler.Throttle("AbandonQuest")) SendAbandon();
             return ETaskResult.StillRunning;
         }
 
-        public void AbandonQuestAction()
+        public void SendAbandon()
         {
-            if (attempts >= 5)
+            if (_attempts >= 5)
             {
                 configuration.Advanced.AbandonQuestBeforeCompletion = false;
                 configuration.Save();
                 throw new TaskException("AbandonQuest failed, disabling config option and stopping automatic questing.");
             }
-            logger.LogInformation($"Firing AbandonQuest for {Task.Quest?.Id.Value}");
+            logger.LogInformation("Firing AbandonQuest for {QuestId}", Task.Quest?.Id.Value);
             GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)Task.Quest!.Id.Value);
-            attempts += 1;
+            _attempts += 1;
             if (configuration.Advanced.RemoveFromPriorityWhenAbandoned)
                 questController.PriorityManager.Remove(Task.Quest.Id);
         }

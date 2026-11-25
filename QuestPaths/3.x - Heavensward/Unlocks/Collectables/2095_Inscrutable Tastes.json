@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012161,
-          "Position": {
-            "X": -54.429016,
-            "Y": 15.140585,
-            "Z": -38.101807
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013395,
-          "Position": {
-            "X": 45.609253,
-            "Y": 31.195326,
-            "Z": -732.9061
-          },
-          "TerritoryId": 156,
+          "Position": [45.609253, 31.195326, -732.9061],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "NextQuestId": 2097
         }
       ]

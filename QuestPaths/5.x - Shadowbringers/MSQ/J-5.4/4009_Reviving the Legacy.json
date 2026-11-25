@@ -1,124 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1035350,
-          "Position": {
-            "X": 641.3214,
-            "Y": -2.8402345,
-            "Z": -350.3319
-          },
-          "TerritoryId": 402,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1035355,
-          "Position": {
-            "X": -0.35101318,
-            "Y": 0,
-            "Z": -6.9123535
-          },
-          "TerritoryId": 351,
+          "Position": [-0.35101318, 0, -6.9123535],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 351,
       "Steps": [
         {
-          "DataId": 2011104,
-          "Position": {
-            "X": -11.001831,
-            "Y": 1.4800415,
-            "Z": -6.9733887
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
-        {
           "DataId": 2011332,
-          "Position": {
-            "X": -56.717834,
-            "Y": 1.9989014,
-            "Z": 14.633362
-          },
-          "TerritoryId": 351,
+          "Position": [-56.717834, 1.9989014, 14.633362],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1035360,
-          "Position": {
-            "X": -58.15222,
-            "Y": 2.0050092,
-            "Z": 14.541748
-          },
-          "StopDistance": 5,
-          "TerritoryId": 351,
+          "Position": [-58.15222, 2.0050092, 14.541748],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 418,
       "Steps": [
         {
-          "Position": {
-            "X": -150.08533,
-            "Y": 16.999998,
-            "Z": -48.293888
-          },
-          "TerritoryId": 418,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
-        },
-        {
           "DataId": 1014578,
-          "Position": {
-            "X": -148.02783,
-            "Y": 16.999998,
-            "Z": -48.844177
-          },
-          "TerritoryId": 418,
+          "Position": [-148.02783, 16.999998, -48.844177],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1035363,
-          "Position": {
-            "X": 164.47693,
-            "Y": -12.634913,
-            "Z": -13.290649
-          },
-          "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "Position": [164.47693, -12.634913, -13.290649],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

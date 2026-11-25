@@ -1,68 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003817,
-          "Position": {
-            "X": -74.57086,
-            "Y": 1.9999951,
-            "Z": -42.404846
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1003827,
-          "Position": {
-            "X": -65.65961,
-            "Y": 0.9481947,
-            "Z": -51.98755
-          },
-          "TerritoryId": 130,
+          "Position": [-65.65961, 0.9481947, -51.98755],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1003829,
-          "Position": {
-            "X": -147.32587,
-            "Y": 25.913446,
-            "Z": -359.76202
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "Position": [-147.32587, 25.913446, -359.76202],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2001525,
-          "Position": {
-            "X": -203.81476,
-            "Y": 27.267822,
-            "Z": -351.76624
-          },
-          "TerritoryId": 146,
+          "Position": [-203.81476, 27.267822, -351.76624],
           "InteractionType": "UseItem",
           "ItemId": 2000409,
           "CompletionQuestVariablesFlags": [
@@ -75,33 +49,8 @@
           ]
         },
         {
-          "Position": {
-            "X": -258.89648,
-            "Y": 26.681297,
-            "Z": -322.03738
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -102.12759,
-            "Y": 14.866777,
-            "Z": -187.7578
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2001523,
-          "Position": {
-            "X": -105.57721,
-            "Y": 14.999573,
-            "Z": -185.32086
-          },
-          "TerritoryId": 146,
+          "Position": [-105.57721, 14.999573, -185.32086],
           "InteractionType": "UseItem",
           "ItemId": 2000409,
           "CompletionQuestVariablesFlags": [
@@ -115,12 +64,7 @@
         },
         {
           "DataId": 2001524,
-          "Position": {
-            "X": 197.4364,
-            "Y": 15.548889,
-            "Z": -450.58368
-          },
-          "TerritoryId": 146,
+          "Position": [197.4364, 15.548889, -450.58368],
           "InteractionType": "UseItem",
           "ItemId": 2000409,
           "CompletionQuestVariablesFlags": [
@@ -130,20 +74,13 @@
             null,
             null,
             32
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2001522,
-          "Position": {
-            "X": 22.171326,
-            "Y": 17.868286,
-            "Z": -600.24414
-          },
-          "TerritoryId": 146,
+          "Position": [22.171326, 17.868286, -600.24414],
           "InteractionType": "UseItem",
           "ItemId": 2000409,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -157,18 +94,12 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1003829,
-          "Position": {
-            "X": -147.32587,
-            "Y": 25.913446,
-            "Z": -359.76202
-          },
-          "TerritoryId": 146,
+          "Position": [-147.32587, 25.913446, -359.76202],
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -177,17 +108,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1003817,
-          "Position": {
-            "X": -74.57086,
-            "Y": 1.9999951,
-            "Z": -42.404846
-          },
-          "TerritoryId": 130,
+          "Position": [-74.57086, 1.9999951, -42.404846],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "NextQuestId": 567
         }
       ]

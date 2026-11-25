@@ -1,130 +1,83 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046509,
-          "Position": {
-            "X": 43.137207,
-            "Y": 46.999996,
-            "Z": -413.016
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046509,
-          "Position": {
-            "X": 43.137207,
-            "Y": 46.999996,
-            "Z": -413.016
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1185,
+          "Position": [43.137207, 46.999996, -413.016],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046508,
-          "Position": {
-            "X": 114.4164,
-            "Y": 46.999996,
-            "Z": -125.71052
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1185,
+          "Position": [114.4164, 46.999996, -125.71052],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046508,
-          "Position": {
-            "X": -182.43765,
-            "Y": 39.935753,
-            "Z": 16.35889
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1185,
+          "Position": [-182.43765, 39.935753, 16.35889],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Tuliyollal] The Resplendent Quarter"
         },
         {
           "DataId": 1046509,
-          "Position": {
-            "X": -317.23196,
-            "Y": 2.9999998,
-            "Z": -13.00843
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1185,
+          "Position": [-317.23196, 2.9999998, -13.00843],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "AttuneAethernetShard",
           "Comment": "Dirigible Landing",
           "AethernetShard": "[Tuliyollal] Dirigible Landing"
         },
         {
           "DataId": 1046509,
-          "Position": {
-            "X": -273.17014,
-            "Y": 0.0722692,
-            "Z": 129.50276
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Dirigible Landing",
-            "[Tuliyollal] The Resplendent Quarter"
-          ]
+          "Position": [-273.17014, 0.0722692, 129.50276],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046510,
-          "Position": {
-            "X": -195.6665,
-            "Y": -4.927734,
-            "Z": 132.18884
-          },
-          "TerritoryId": 1185,
+          "Position": [-195.6665, -4.927734, 132.18884],
           "InteractionType": "CompleteQuest"
         }
       ]

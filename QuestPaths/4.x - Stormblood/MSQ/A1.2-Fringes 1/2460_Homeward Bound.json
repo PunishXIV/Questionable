@@ -1,96 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020387,
-          "Position": {
-            "X": -140.94757,
-            "Y": 104.16588,
-            "Z": -401.81586
-          },
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020841,
-          "Position": {
-            "X": 146.01355,
-            "Y": 118.1921,
-            "Z": -730.4951
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "Position": [146.01355, 118.1921, -730.4951],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020511,
-          "Position": {
-            "X": 143.81628,
-            "Y": 118.1921,
-            "Z": -732.93665
-          },
-          "StopDistance": 5,
-          "TerritoryId": 620,
+          "Position": [143.81628, 118.1921, -732.93665],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020512,
-          "Position": {
-            "X": 35.080444,
-            "Y": 117.831955,
-            "Z": -728.0537
-          },
-          "TerritoryId": 620,
+          "Position": [35.080444, 117.831955, -728.0537],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
-          "Position": {
-            "X": 165.07161,
-            "Y": 13.02367,
-            "Z": -91.94302
-          },
-          "TerritoryId": 635,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
-        },
-        {
           "DataId": 1020338,
-          "Position": {
-            "X": 170.30591,
-            "Y": 13.02367,
-            "Z": -93.06476
-          },
-          "StopDistance": 7,
-          "TerritoryId": 635,
+          "Position": [170.30591, 13.02367, -93.06476],
           "InteractionType": "CompleteQuest"
         }
       ]

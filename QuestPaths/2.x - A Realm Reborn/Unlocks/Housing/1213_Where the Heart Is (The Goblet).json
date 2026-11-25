@@ -1,61 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002001,
-          "Position": {
-            "X": 228.47327,
-            "Y": 52.038116,
-            "Z": 133.1654
-          },
-          "TerritoryId": 140,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                140
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1005531,
-          "Position": {
-            "X": 320.88184,
-            "Y": 67.27533,
-            "Z": 232.47119
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [320.88184, 67.27533, 232.47119],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": 316.94064,
-            "Y": 67.1549,
-            "Z": 237
-          },
-          "TerritoryId": 140,
+          "Position": [316.94064, 67.1549, 237],
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 341,
           "DialogueChoices": [
@@ -71,29 +39,21 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 341,
       "Steps": [
         {
           "DataId": 1005880,
-          "Position": {
-            "X": 5.416931,
-            "Y": -11.076667,
-            "Z": -187.94543
-          },
-          "TerritoryId": 341,
+          "Position": [5.416931, -11.076667, -187.94543],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 341,
       "Steps": [
         {
-          "Position": {
-            "X": -12.7114315,
-            "Y": -11.076661,
-            "Z": -199.92712
-          },
-          "TerritoryId": 341,
+          "Position": [-12.7114315, -11.076661, -199.92712],
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 140,
           "DialogueChoices": [
@@ -114,26 +74,10 @@
         },
         {
           "DataId": 1002001,
-          "Position": {
-            "X": 228.47327,
-            "Y": 52.038116,
-            "Z": 133.1654
-          },
+          "Position": [228.47327, 52.038116, 133.1654],
           "TerritoryId": 140,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "DelaySecondsAtStart": 3,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                140
-              ]
-            }
-          }
+          "DelaySecondsAtStart": 3
         }
       ]
     }

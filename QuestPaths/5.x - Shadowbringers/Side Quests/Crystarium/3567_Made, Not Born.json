@@ -1,38 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031059,
-          "Position": {
-            "X": 108.781494,
-            "Y": -3.1728092E-11,
-            "Z": -105.760315
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1031060,
-          "Position": {
-            "X": -148.36353,
-            "Y": 1.4901161E-08,
-            "Z": 200.42712
-          },
-          "TerritoryId": 819,
+          "Position": [-148.36353, 1.4901161E-08, 200.42712],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Pendants"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -45,23 +26,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031059,
-          "Position": {
-            "X": 108.781494,
-            "Y": -3.1728092E-11,
-            "Z": -105.760315
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,24 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013969,
-          "Position": {
-            "X": 104.234375,
-            "Y": 14.999986,
-            "Z": 40.787354
-          },
-          "TerritoryId": 418,
+          "Position": [104.234375, 14.999986, 40.787354],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKBC012_03221_Q1_000_002",
@@ -31,152 +23,92 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 2009976,
-          "Position": {
-            "X": 102.92212,
-            "Y": 15.915161,
-            "Z": 39.414062
-          },
-          "TerritoryId": 418,
+          "Position": [102.92212, 15.915161, 39.414062],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1030087,
-          "Position": {
-            "X": -182.51324,
-            "Y": 2.0332975,
-            "Z": -5.56958
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "Position": [-182.51324, 2.0332975, -5.56958],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1030088,
-          "Position": {
-            "X": 104.93628,
-            "Y": 34.72381,
-            "Z": 10.208252
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "Position": [104.93628, 34.72381, 10.208252],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1019486,
-          "Position": {
-            "X": -116.746826,
-            "Y": 0.6342248,
-            "Z": -55.832825
-          },
-          "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Western Rhalgr's Reach"
-          ]
+          "Position": [-116.746826, 0.6342248, -55.832825],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006215,
-          "Position": {
-            "X": -227.34424,
-            "Y": 26.16842,
-            "Z": -352.98694
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "Position": [-227.34424, 26.16842, -352.98694],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1030089,
-          "Position": {
-            "X": 433.31042,
-            "Y": 68.09681,
-            "Z": -184.2832
-          },
-          "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
+          "Position": [433.31042, 68.09681, -184.2832],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2009979,
-          "Position": {
-            "X": -95.10956,
-            "Y": 298.63428,
-            "Z": -212.54297
-          },
-          "TerritoryId": 155,
+          "Position": [-95.10956, 298.63428, -212.54297],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKBC012_03221_SYSTEM_000_0160"
-          },
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-          ]
+          }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013969,
-          "Position": {
-            "X": 104.234375,
-            "Y": 14.999986,
-            "Z": 40.787354
-          },
-          "TerritoryId": 418,
+          "Position": [104.234375, 14.999986, 40.787354],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKBC012_03221_Q3_000_192",

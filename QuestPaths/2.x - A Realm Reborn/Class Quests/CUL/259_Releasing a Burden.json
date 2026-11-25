@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item:\n 1x Dried Plums\nAutocraft requires:\n 1x Pixie Plums",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44.000008,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 4730,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,18 +26,9 @@
         },
         {
           "DataId": 1000956,
-          "Position": {
-            "X": -52.658936,
-            "Y": 42.699993,
-            "Z": -160.23505
-          },
-          "TerritoryId": 128,
+          "Position": [-52.658936, 42.699993, -160.23505],
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

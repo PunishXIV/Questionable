@@ -1,59 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039220,
-          "Position": {
-            "X": -287.15,
-            "Y": 21.846,
-            "Z": -150.752
-          },
-          "TerritoryId": 962,
+          "Position": [-287.15, 21.846, -150.752],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1039220 (Debroye)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039235,
-          "Position": {
-            "X": -9.31428,
-            "Y": 41.5301,
-            "Z": -162.843
-          },
-          "TerritoryId": 962,
+          "Position": [-9.31428, 41.5301, -162.843],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] The Rostra"
-          ],
           "$": "auto: todo location -> 1039235 (Debroye)"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039235,
-          "Position": {
-            "X": -9.31428,
-            "Y": 41.5301,
-            "Z": -162.843
-          },
-          "TerritoryId": 962,
+          "Position": [-9.31428, 41.5301, -162.843],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -68,41 +48,28 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039236,
-          "Position": {
-            "X": -39.6885,
-            "Y": -14.1757,
-            "Z": 107.896
-          },
-          "TerritoryId": 962,
+          "Position": [-39.6885, -14.1757, 107.896],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Rostra",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
           "$": "auto: todo location -> 1039236 (Debroye)"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "TerritoryId": 962,
           "InteractionType": "Craft",
           "ItemId": 35846,
           "ItemCount": 1
         },
         {
           "DataId": 1039236,
-          "Position": {
-            "X": -39.6885,
-            "Y": -14.1757,
-            "Z": 107.896
-          },
-          "TerritoryId": 962,
+          "Position": [-39.6885, -14.1757, 107.896],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039236 (Debroye); npc trade"
         }
@@ -110,20 +77,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039220,
-          "Position": {
-            "X": -287.15,
-            "Y": 21.846,
-            "Z": -150.752
-          },
-          "TerritoryId": 962,
+          "Position": [-287.15, 21.846, -150.752],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo turn-in -> 1039220 (Debroye)"
         }
       ]

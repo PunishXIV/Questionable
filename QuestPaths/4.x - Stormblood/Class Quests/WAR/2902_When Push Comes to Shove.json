@@ -1,151 +1,101 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023885,
-          "Position": {
-            "X": 217.30359,
-            "Y": 7.999984,
-            "Z": 686.427
-          },
-          "StopDistance": 5,
-          "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1022816,
-          "Position": {
-            "X": -4.3183594,
-            "Y": 39.78392,
-            "Z": 197.52808
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true
+          "Position": [-4.3183594, 39.78392, 197.52808],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2008651,
-          "Position": {
-            "X": -4.8066406,
-            "Y": 39.475098,
-            "Z": 348.2871
-          },
-          "TerritoryId": 137,
+          "Position": [-4.8066406, 39.475098, 348.2871],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7500,
             7501
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2008652,
-          "Position": {
-            "X": -82.59711,
-            "Y": 38.437378,
-            "Z": 501.42664
-          },
-          "TerritoryId": 137,
+          "Position": [-82.59711, 38.437378, 501.42664],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7502,
             7503
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2008653,
-          "Position": {
-            "X": -115.70923,
-            "Y": 49.66809,
-            "Z": 603.02124
-          },
-          "TerritoryId": 137,
+          "Position": [-115.70923, 49.66809, 603.02124],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7502,
             7503
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1022821,
-          "Position": {
-            "X": -149.85895,
-            "Y": 55.805172,
-            "Z": 642.7251
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-149.85895, 55.805172, 642.7251],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1022825,
-          "Position": {
-            "X": -208.08728,
-            "Y": 46.619385,
-            "Z": 467.73462
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-208.08728, 46.619385, 467.73462],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1023885,
-          "Position": {
-            "X": 217.30359,
-            "Y": 7.999984,
-            "Z": 686.427
-          },
-          "StopDistance": 5,
-          "TerritoryId": 135,
+          "Position": [217.30359, 7.999984, 686.427],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "NextQuestId": 2903
         }
       ]

@@ -1,72 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000580,
-          "Position": {
-            "X": 25.65039,
-            "Y": -3.7080078,
-            "Z": 209.97937
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000585,
-          "Position": {
-            "X": 25.558838,
-            "Y": -5.7208977,
-            "Z": 241.62659
-          },
-          "TerritoryId": 152,
+          "Position": [25.558838, -5.7208977, 241.62659],
           "InteractionType": "Interact",
           "$": "0 0  0 0  0 0 -> 1 0  0 0  0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1000277,
-          "Position": {
-            "X": 102.76941,
-            "Y": 8.161999,
-            "Z": 187.94531
-          },
-          "TerritoryId": 152,
+          "Position": [102.76941, 8.161999, 187.94531],
           "InteractionType": "Interact",
           "$": "1 0  0 0  0 128 -> 2 0  0 0  0 192",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1000553,
-          "Position": {
-            "X": -187.48767,
-            "Y": 4.4436555,
-            "Z": 292.50012
-          },
-          "TerritoryId": 152,
+          "Position": [-187.48767, 4.4436555, 292.50012],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "$": "2 0  0 0  0 192 -> 3 0  0 0  0 224",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1000545,
-          "Position": {
-            "X": -242.72534,
-            "Y": 3.5598407,
-            "Z": 286.9154
-          },
-          "TerritoryId": 152,
+          "Position": [-242.72534, 3.5598407, 286.9154],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         }
@@ -74,30 +42,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000580,
-          "Position": {
-            "X": 25.65039,
-            "Y": -3.7080078,
-            "Z": 209.97937
-          },
-          "TerritoryId": 152,
+          "Position": [25.65039, -3.7080078, 209.97937],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2001918,
-          "Position": {
-            "X": -100.93848,
-            "Y": -8.285706,
-            "Z": 261.40222
-          },
-          "TerritoryId": 152,
+          "Position": [-100.93848, -8.285706, 261.40222],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -110,30 +70,14 @@
         },
         {
           "DataId": 2001918,
-          "Position": {
-            "X": -100.93848,
-            "Y": -8.285706,
-            "Z": 261.40222
-          },
-          "TerritoryId": 152,
+          "Position": [-100.93848, -8.285706, 261.40222],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000580,
-          "Position": {
-            "X": 25.65039,
-            "Y": -3.7080078,
-            "Z": 209.97937
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

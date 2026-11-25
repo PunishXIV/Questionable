@@ -1,74 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039931,
-          "Position": {
-            "X": -351.15588,
-            "Y": 23.742596,
-            "Z": 418.4176
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040898,
-          "Position": {
-            "X": -433.12738,
-            "Y": 22.221891,
-            "Z": 460.80713
-          },
-          "TerritoryId": 958,
+          "Position": [-433.12738, 22.221891, 460.80713],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 4216
         },
         {
           "DataId": 1041765,
-          "Position": {
-            "X": -323.4455,
-            "Y": 22,
-            "Z": 487.81555
-          },
-          "TerritoryId": 958,
+          "Position": [-323.4455, 22, 487.81555],
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 4502,
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                4502
-              ]
-            }
-          }
+          "PickUpQuestId": 4502
         },
         {
           "DataId": 1039932,
-          "Position": {
-            "X": -357.99194,
-            "Y": 22,
-            "Z": 488.3954
-          },
-          "TerritoryId": 958,
+          "Position": [-357.99194, 22, 488.3954],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "Notes": [
-              "Instance probably only works on very easy difficulty",
-              "AI doesn't move to first enemy",
-              "AI doesn't unmount from the Magitek Reaper",
-              "Navmesh takes 5+ minutes to build"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -88,36 +47,17 @@
               "Prompt": 254,
               "Answer": 248
             }
-          ],
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -357.99194,
-                  "Y": 22,
-                  "Z": 488.3954
-                },
-                "TerritoryId": 958,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039933,
-          "Position": {
-            "X": -369.2531,
-            "Y": 22.20836,
-            "Z": 403.76892
-          },
-          "StopDistance": 5,
-          "TerritoryId": 958,
+          "Position": [-369.2531, 22.20836, 403.76892],
           "InteractionType": "CompleteQuest"
         }
       ]

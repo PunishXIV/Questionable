@@ -1,63 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132, 133]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1000776,
-          "Position": {
-            "X": 116.16462,
-            "Y": 286.4557,
-            "Z": 140.45575
-          },
-          "TerritoryId": 155,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "Position": [116.16462, 286.4557, 140.45575],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013240,
-          "Position": {
-            "X": -84.45868,
-            "Y": 8.05915,
-            "Z": 37.125122
-          },
-          "TerritoryId": 418,
+          "Position": [-84.45868, 8.05915, 37.125122],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "NextQuestId": 2049
         }
       ]

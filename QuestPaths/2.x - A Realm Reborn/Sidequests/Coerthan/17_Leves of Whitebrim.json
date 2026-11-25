@@ -1,42 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 155,
       "Steps": [
         {
           "$": "Switch to combat job",
           "InteractionType": "SwitchClass",
-          "TargetClass": "ConfiguredCombatJob",
-          "TerritoryId": 155
+          "TargetClass": "ConfiguredCombatJob"
         },
         {
           "Comment": "Accept Trial Leve",
           "DataId": 1002401,
-          "Position": {
-            "X": -441.104,
-            "Y": 211.014,
-            "Z": -235.496
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "Position": [-441.104, 211.014, -235.496],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -503.498,
-            "Y": 204.44438,
-            "Z": -179.63866
-          },
-          "TerritoryId": 155,
+          "Position": [-503.498, 204.44438, -179.63866],
           "InteractionType": "Instruction",
           "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
         }
@@ -44,18 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1002401,
-          "Position": {
-            "X": -441.104,
-            "Y": 211.014,
-            "Z": -235.496
-          },
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,60 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020337,
-          "Position": {
-            "X": 171.31299,
-            "Y": 13.02367,
-            "Z": -89.951965
-          },
-          "StopDistance": 7,
-          "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1020395,
-          "Position": {
-            "X": -37.67456,
-            "Y": 18.448887,
-            "Z": 133.28748
-          },
-          "TerritoryId": 635,
+          "Position": [-37.67456, 18.448887, 133.28748],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 635,
       "Steps": [
         {
-          "Position": {
-            "X": -30.398779,
-            "Y": 12.536386,
-            "Z": 167.62189
-          },
-          "TerritoryId": 635,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 612
-        },
-        {
           "DataId": 1020498,
-          "Position": {
-            "X": 158.12915,
-            "Y": 49.714592,
-            "Z": -475.27277
-          },
+          "Position": [158.12915, 49.714592, -475.27277],
           "TerritoryId": 612,
           "InteractionType": "Interact"
         }
@@ -62,15 +32,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2008157,
-          "Position": {
-            "X": 58.426758,
-            "Y": 51.895874,
-            "Z": -482.32245
-          },
-          "TerritoryId": 612,
+          "Position": [58.426758, 51.895874, -482.32245],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -82,15 +48,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1020351,
-          "Position": {
-            "X": -95.84198,
-            "Y": 59.801033,
-            "Z": -551.9341
-          },
-          "TerritoryId": 612,
+          "Position": [-95.84198, 59.801033, -551.9341],
           "InteractionType": "CompleteQuest"
         }
       ]

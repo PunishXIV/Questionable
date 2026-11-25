@@ -1,56 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046952,
-          "Position": {
-            "X": 344.59448,
-            "Y": -1.5287868,
-            "Z": 446.52466
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
-          "StopDistance": 8,
-          "TerritoryId": 1190,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Shaaloani - Hhusatahwi"
         },
         {
           "DataId": 1046953,
-          "Position": {
-            "X": 263.7522,
-            "Y": -5.018697,
-            "Z": 496.14697
-          },
-          "TerritoryId": 1190,
+          "Position": [263.7522, -5.018697, 496.14697],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1046953,
-          "Position": {
-            "X": 263.7522,
-            "Y": -5.018697,
-            "Z": 496.14697
-          },
-          "TerritoryId": 1190,
+          "Position": [263.7522, -5.018697, 496.14697],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -64,51 +42,36 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1190,
       "Steps": [
         {
-          "StopDistance": 8,
-          "TerritoryId": 1190,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Shaaloani - Sheshenewezi Springs"
         },
         {
           "DataId": 1046957,
-          "Position": {
-            "X": -315.5719,
-            "Y": 18.834728,
-            "Z": -178.88159
-          },
-          "TerritoryId": 1190,
+          "Position": [-315.5719, 18.834728, -178.88159],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1046958,
-          "Position": {
-            "X": -348.0431,
-            "Y": 18.031187,
-            "Z": -194.01855
-          },
-          "TerritoryId": 1190,
+          "Position": [-348.0431, 18.031187, -194.01855],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1190,
       "Steps": [
         {
-          "Position": {
-            "X": -352.34854,
-            "Y": 18.081078,
-            "Z": -196.42653
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1190,
+          "Position": [-352.34854, 18.081078, -196.42653],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -120,32 +83,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1046963,
-          "Position": {
-            "X": -550.5303,
-            "Y": 29.792864,
-            "Z": -190.05121
-          },
-          "TerritoryId": 1190,
+          "Position": [-550.5303, 29.792864, -190.05121],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1046991,
-          "Position": {
-            "X": -315.5719,
-            "Y": 18.834728,
-            "Z": -178.88159
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "Position": [-315.5719, 18.834728, -178.88159],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

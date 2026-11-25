@@ -1,35 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1040639,
-          "Position": {
-            "X": 137.65161,
-            "Y": 7.3858566,
-            "Z": 281.84937
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040638,
-          "Position": {
-            "X": 214.67908,
-            "Y": 20.261322,
-            "Z": 601.15967
-          },
-          "TerritoryId": 961,
+          "Position": [214.67908, 20.261322, 601.15967],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -37,40 +20,29 @@
               "Prompt": "TEXT_AKTKZG002_04277_Q1_000_000",
               "Answer": "TEXT_AKTKZG002_04277_A1_000_001"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041878,
-          "Position": {
-            "X": 302.87634,
-            "Y": -9.890027,
-            "Z": 417.99023
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [302.87634, -9.890027, 417.99023],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041877,
-          "Position": {
-            "X": 135.97314,
-            "Y": 7.3858566,
-            "Z": 281.42212
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [135.97314, 7.3858566, 281.42212],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

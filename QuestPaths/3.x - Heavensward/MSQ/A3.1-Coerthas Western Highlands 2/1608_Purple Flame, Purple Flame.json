@@ -1,77 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012764,
-          "Position": {
-            "X": -307.54565,
-            "Y": 126.63436,
-            "Z": -3.2807007
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1012302,
-          "Position": {
-            "X": -266.2547,
-            "Y": 127.133354,
-            "Z": 16.159302
-          },
-          "TerritoryId": 397,
+          "Position": [-266.2547, 127.133354, 16.159302],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179686
         },
         {
           "DataId": 1011910,
-          "Position": {
-            "X": -298.26813,
-            "Y": 126.67049,
-            "Z": -1.4191895
-          },
-          "TerritoryId": 397,
+          "Position": [-298.26813, 126.67049, -1.4191895],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1759
         },
         {
           "DataId": 1011907,
-          "Position": {
-            "X": -288.8686,
-            "Y": 127.06639,
-            "Z": 13.199036
-          },
-          "TerritoryId": 397,
+          "Position": [-288.8686, 127.06639, 13.199036],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1760
         },
         {
           "DataId": 1011911,
-          "Position": {
-            "X": -279.56055,
-            "Y": 127.08131,
-            "Z": 13.595764
-          },
-          "TerritoryId": 397,
+          "Position": [-279.56055, 127.08131, 13.595764],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 2111
         },
         {
-          "Position": {
-            "X": -365.48965,
-            "Y": 85.44247,
-            "Z": -360.56012
-          },
-          "TerritoryId": 397,
+          "Position": [-365.48965, 85.44247, -360.56012],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -85,26 +50,17 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2006190,
-          "Position": {
-            "X": -660.15106,
-            "Y": 135.51526,
-            "Z": -376.63843
-          },
-          "TerritoryId": 397,
+          "Position": [-660.15106, 135.51526, -376.63843],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818058
         },
         {
           "DataId": 1012670,
-          "Position": {
-            "X": -631.9219,
-            "Y": 142.1073,
-            "Z": -322.71307
-          },
-          "TerritoryId": 397,
+          "Position": [-631.9219, 142.1073, -322.71307],
           "InteractionType": "CompleteQuest"
         }
       ]

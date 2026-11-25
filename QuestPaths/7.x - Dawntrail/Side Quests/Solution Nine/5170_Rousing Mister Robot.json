@@ -1,86 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051404,
-          "Position": {
-            "X": -157.33582,
-            "Y": 2.1999714,
-            "Z": 229.69409
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Information Center"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "Position": {
-            "X": 322.70325,
-            "Y": 52.41666,
-            "Z": 211.24818
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Solution Nine] Information Center",
-            "[Solution Nine] True Vue"
-          ]
-        },
-        {
           "DataId": 1049154,
-          "Position": {
-            "X": 320.27148,
-            "Y": 52.41666,
-            "Z": 211.32214
-          },
-          "TerritoryId": 1186,
+          "Position": [320.27148, 52.41666, 211.32214],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1051405,
-          "Position": {
-            "X": -156.2677,
-            "Y": 2.199971,
-            "Z": 231.79968
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] True Vue",
-            "[Solution Nine] Information Center"
-          ]
+          "Position": [-156.2677, 2.199971, 231.79968],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1051409,
-          "Position": {
-            "X": -157.24426,
-            "Y": 2.1999712,
-            "Z": 231.21985
-          },
-          "StopDistance": 4,
-          "TerritoryId": 1186,
+          "Position": [-157.24426, 2.1999712, 231.21985],
           "InteractionType": "Emote",
           "Emote": "psych"
         }
@@ -88,15 +43,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1051405,
-          "Position": {
-            "X": -156.2677,
-            "Y": 2.199971,
-            "Z": 231.79968
-          },
-          "TerritoryId": 1186,
+          "Position": [-156.2677, 2.199971, 231.79968],
           "InteractionType": "CompleteQuest"
         }
       ]

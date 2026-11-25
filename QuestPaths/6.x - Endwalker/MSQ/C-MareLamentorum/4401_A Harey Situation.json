@@ -1,133 +1,56 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038894,
-          "Position": {
-            "X": 2.670288,
-            "Y": -49.8925,
-            "Z": -366.0487
-          },
-          "TerritoryId": 959,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "Position": {
-            "X": 11.922524,
-            "Y": -105.8306,
-            "Z": -397.17743
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1038897,
-          "Position": {
-            "X": 30.838379,
-            "Y": -132.94641,
-            "Z": -435.47723
-          },
-          "TerritoryId": 959,
+          "Position": [30.838379, -132.94641, -435.47723],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Mare Lamentorum - Bestways Burrow"
         },
         {
-          "Position": {
-            "X": 36.500526,
-            "Y": -129.20917,
-            "Z": -521.85284
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1038901,
-          "Position": {
-            "X": 120.531006,
-            "Y": -132.86647,
-            "Z": -555.0164
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "Position": [120.531006, -132.86647, -555.0164],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038902,
-          "Position": {
-            "X": -124.864624,
-            "Y": -132.87448,
-            "Z": -471.91577
-          },
-          "TerritoryId": 959,
+          "Position": [-124.864624, -132.87448, -471.91577],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "Position": {
-            "X": -9.783533,
-            "Y": -49.589592,
-            "Z": -339.60205
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -72.39724,
-            "Y": -49.589592,
-            "Z": -336.63968
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -105.34293,
-            "Y": -49.589592,
-            "Z": -367.6591
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1038903,
-          "Position": {
-            "X": -17.95996,
-            "Y": -47.192066,
-            "Z": -494.31604
-          },
-          "TerritoryId": 959,
+          "Position": [-17.95996, -47.192066, -494.31604],
           "InteractionType": "CompleteQuest"
         }
       ]

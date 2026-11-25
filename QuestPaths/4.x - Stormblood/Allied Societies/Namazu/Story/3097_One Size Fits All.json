@@ -1,43 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1025700,
-          "Position": {
-            "X": -767.2999,
-            "Y": 127.43303,
-            "Z": 92.48486
-          },
-          "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025609,
-          "Position": {
-            "X": -770.4738,
-            "Y": 127.42798,
-            "Z": 85.28259
-          },
-          "TerritoryId": 622,
+          "Position": [-770.4738, 127.42798, 85.28259],
           "InteractionType": "Interact",
           "RequiredQuestAcceptedJob": [
             "DoH"
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Craft",
           "ItemId": 22720,
           "ItemCount": 3,
@@ -46,7 +28,6 @@
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -59,7 +40,6 @@
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -72,8 +52,7 @@
           ]
         },
         {
-          "TerritoryId": 622,
-          "InteractionType": "Gather",
+          "InteractionType": "Fish",
           "ItemsToGather": [
             {
               "ItemId": 22668,
@@ -86,13 +65,7 @@
         },
         {
           "DataId": 1025699,
-          "Position": {
-            "X": -765.3163,
-            "Y": 127.441086,
-            "Z": 90.92847
-          },
-          "TerritoryId": 622,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "Position": [-765.3163, 127.441086, 90.92847],
           "InteractionType": "CompleteQuest"
         }
       ]

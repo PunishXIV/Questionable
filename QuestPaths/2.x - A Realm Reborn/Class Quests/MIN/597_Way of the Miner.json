@@ -1,45 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002282,
-          "Position": {
-            "X": 3.5552979,
-            "Y": 7.5999613,
-            "Z": 153.2157
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002298,
-          "Position": {
-            "X": -18.997498,
-            "Y": 6.2,
-            "Z": 157.42725
-          },
-          "TerritoryId": 131,
+          "Position": [-18.997498, 6.2, 157.42725],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

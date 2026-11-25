@@ -1,122 +1,63 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1054946,
-          "Position": {
-            "X": -44.3885,
-            "Y": 2.82288,
-            "Z": -23.8804
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 3,
-          "AetheryteShortcut": "Crystarium"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1054948,
-          "Position": {
-            "X": -106.126526,
-            "Y": -47.55987,
-            "Z": -136.0647
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "Position": [-106.126526, -47.55987, -136.0647],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1054949,
-          "Position": {
-            "X": 404.65393,
-            "Y": 85.387535,
-            "Z": -699.54987
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+          "Position": [404.65393, 85.387535, -699.54987],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1054950,
-          "Position": {
-            "X": 543.2975,
-            "Y": 109.2974,
-            "Z": -869.4133
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+          "Position": [543.2975, 109.2974, -869.4133],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1054999,
-          "Position": {
-            "X": 418.44812,
-            "Y": 89.44323,
-            "Z": -777.0962
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+          "Position": [418.44812, 89.44323, -777.0962],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1054942,
-          "Position": {
-            "X": 424.119,
-            "Y": 89.4291,
-            "Z": -772.245
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 3,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 424.119,
-                  "Y": 89.4291,
-                  "Z": -772.245
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "Position": [424.119, 89.4291, -772.245],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

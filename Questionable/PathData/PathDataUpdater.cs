@@ -3,13 +3,8 @@ using System.Text.Json;
 
 namespace Questionable.PathData;
 
-/// <summary>
-///     Downloads newer quest/gathering path bundles at runtime so path-only updates don't require a
-///     full plugin release. The bundle is stored in <c>{ConfigDirectory}/PathData/</c> and picked up
-///     by <see cref="QuestRegistry" />'s downloaded-bundle load tier.
-/// </summary>
 [RegisterSingleton]
-internal sealed class PathDataUpdater : IDisposable
+internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
 {
     private static readonly string[] Domains =
     [
@@ -17,17 +12,25 @@ internal sealed class PathDataUpdater : IDisposable
         "github.com",
     ];
     private static readonly HashSet<string> AllowedHosts = new(Domains, StringComparer.OrdinalIgnoreCase);
-    private const string RepositoryUrl = "/PunishXIV/Questionable";
+    private const string RepositoryPath = "/PunishXIV/Questionable";
 
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly Configuration _configuration;
-    private readonly QuestRegistry _questRegistry;
-    private readonly IFramework _framework;
+    private readonly Func<int> _questCount;
+    private readonly Func<Action, Task> _runOnFrameworkThread;
+    private readonly Action _reload;
+    private readonly Func<HttpClient> _createHttpClient;
+    private readonly Func<TimeSpan, CancellationToken, Task> _delay;
     private readonly ILogger<PathDataUpdater> _logger;
+    private readonly Lock _lifetimeLock = new();
+    private readonly CancellationTokenSource _shutdown = new();
+    private readonly CancellationToken _shutdownToken;
+    private Task _updateTask = Task.CompletedTask;
+    private Task? _disposeTask;
+    private bool _disposed;
 
     private readonly string _channel;
     private readonly string _pluginVersion;
-    private int _running;
     internal bool WaitingForPluginUpdate;
 
     public PathDataUpdater(
@@ -36,12 +39,30 @@ internal sealed class PathDataUpdater : IDisposable
         QuestRegistry questRegistry,
         IFramework framework,
         ILogger<PathDataUpdater> logger)
+        : this(pluginInterface, configuration, () => questRegistry.Count,
+            action => framework.RunOnFrameworkThread(action), questRegistry.Reload, logger)
+    {
+    }
+
+    internal PathDataUpdater(
+        IDalamudPluginInterface pluginInterface,
+        Configuration configuration,
+        Func<int> questCount,
+        Func<Action, Task> runOnFrameworkThread,
+        Action reload,
+        ILogger<PathDataUpdater> logger,
+        Func<HttpClient>? createHttpClient = null,
+        Func<TimeSpan, CancellationToken, Task>? delay = null)
     {
         _pluginInterface = pluginInterface;
         _configuration = configuration;
-        _questRegistry = questRegistry;
-        _framework = framework;
+        _questCount = questCount;
+        _runOnFrameworkThread = runOnFrameworkThread;
+        _reload = reload;
+        _createHttpClient = createHttpClient ?? (() => new HttpClient { Timeout = TimeSpan.FromSeconds(30) });
+        _delay = delay ?? ((duration, token) => Task.Delay(duration, token));
         _logger = logger;
+        _shutdownToken = _shutdown.Token;
 
         _channel = pluginInterface.IsTesting ? "testing" : "latest";
         _pluginVersion = typeof(PathDataUpdater).Assembly.GetName().Version?.ToString() ?? "0";
@@ -51,7 +72,6 @@ internal sealed class PathDataUpdater : IDisposable
 
     public DateTime StatusLastChanged { get; private set; } = DateTime.Now;
     private string _status = _L("Idle");
-    /// <summary>Human-readable status for the config UI.</summary>
     public string Status
     {
         get
@@ -60,54 +80,94 @@ internal sealed class PathDataUpdater : IDisposable
         }
         private set
         {
-            _status = value;
-            StatusLastChanged = DateTime.Now;
+            lock (_lifetimeLock)
+            {
+                if (_disposed)
+                    return;
+                _status = value;
+                StatusLastChanged = DateTime.Now;
+            }
         }
     }
 
     public void Dispose()
     {
+        lock (_lifetimeLock)
+        {
+            if (_disposed)
+                return;
+            _disposed = true;
+            _shutdown.Cancel();
+        }
     }
 
-    /// <summary>Starts a background update check if auto-update is enabled.</summary>
+    public ValueTask DisposeAsync()
+    {
+        lock (_lifetimeLock)
+        {
+            Dispose();
+            return new(_disposeTask ??= DrainAsync());
+        }
+    }
+
+    private async Task DrainAsync()
+    {
+        try
+        {
+            await _updateTask.ConfigureAwait(false);
+        }
+        finally
+        {
+            _shutdown.Dispose();
+        }
+    }
+
+    internal Task UpdateTask
+    {
+        get { lock (_lifetimeLock) return _updateTask; }
+    }
+
     public void CheckForUpdates()
     {
         if (_configuration.PathData.AutoUpdate)
             StartUpdateCheck();
     }
 
-    /// <summary>Starts a background update check regardless of the auto-update setting.</summary>
     public void CheckForUpdatesManually() => StartUpdateCheck();
 
     private void StartUpdateCheck()
     {
-        if (Interlocked.CompareExchange(ref _running, 1, 0) != 0)
-            return;
-
-        _ = Task.Run(async () =>
+        lock (_lifetimeLock)
         {
-            try
+            if (_disposed || !_updateTask.IsCompleted)
+                return;
+
+            _updateTask = Task.Run(async () =>
             {
-                await CheckForUpdatesAsync().ConfigureAwait(false);
-            }
-            finally
-            {
-                Interlocked.Exchange(ref _running, 0);
-            }
-        });
+                try
+                {
+                    _shutdownToken.ThrowIfCancellationRequested();
+                    await CheckForUpdatesAsync().ConfigureAwait(false);
+                }
+                catch (Exception) when (_shutdownToken.IsCancellationRequested)
+                {
+                    // Unload cancels downloads, retries and queued framework work.
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(e, "Path data update failed");
+                    Status = _L("Update check failed; will retry next launch");
+                }
+            });
+        }
     }
 
-    /// <summary>
-    ///     Discards the cached bundle if it was downloaded by a different plugin version — the
-    ///     freshly installed plugin's compiled paths become the new baseline. Runs synchronously in
-    ///     the constructor, before the registry first loads.
-    /// </summary>
     private void DiscardStaleBundle()
     {
         if (_configuration.PathData.BundlePluginVersion == _pluginVersion)
             return;
 
-        string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
+        string bundlePath = PathDataBundle.GetFilePath(_pluginInterface);
         if (File.Exists(bundlePath))
         {
             try
@@ -125,76 +185,86 @@ internal sealed class PathDataUpdater : IDisposable
         _configuration.PathData.BundlePluginVersion = null;
     }
 
-    private async Task RetryAfterDelay(int retryCount = 1)
+    private async Task RetryAfterDelayAsync(int retryCount = 1)
     {
+        _shutdownToken.ThrowIfCancellationRequested();
         if (retryCount >= 10)
         {
             Status = _L("Update check failed; will retry next launch");
             return;
         }
-        int delayMs = Math.Min(1000 * (1 << retryCount), 60_000);
-        await Task.Delay(delayMs).ConfigureAwait(false);
-        _configuration.PathData.InstalledDataVersion = 0;
-        _configuration.PathData.BundlePluginVersion = null;
-        Save();
+        int delayMilliseconds = Math.Min(1000 * (1 << retryCount), 60_000);
+        await _delay(TimeSpan.FromMilliseconds(delayMilliseconds), _shutdownToken).ConfigureAwait(false);
         retryCount++;
         await CheckForUpdatesAsync(retryCount).ConfigureAwait(false);
     }
 
     private async Task CheckForUpdatesAsync(int retryCount = 1)
     {
-        Status = _L("Checking for path updates…");
-        using HttpClient http = new() { Timeout = TimeSpan.FromSeconds(30) };
+        _shutdownToken.ThrowIfCancellationRequested();
+        Status = _L("Checking for path updates...");
+        using HttpClient http = _createHttpClient();
 
         string host = Domains[retryCount % Domains.Length];
-        string manifestUrl = $"https://{host}{RepositoryUrl}/releases/download/paths-{_channel}/manifest-{_channel}.json";
-        _logger.LogDebug($"Requesting path updates from {manifestUrl}");
+        string manifestUrl = $"https://{host}{RepositoryPath}/releases/download/paths-{_channel}/manifest-{_channel}.json";
+        _logger.LogDebug("Requesting path updates from {ManifestUrl}", manifestUrl);
         string manifestJson;
         PathDataManifest? manifest;
         try
         {
-            manifestJson = await http.GetStringAsync(new Uri(manifestUrl)).ConfigureAwait(false);
+            manifestJson = await http.GetStringAsync(new Uri(manifestUrl), _shutdownToken).ConfigureAwait(false);
             manifest = JsonSerializer.Deserialize<PathDataManifest>(manifestJson);
         }
-        catch (Exception e)
+        catch (Exception e) when (!_shutdownToken.IsCancellationRequested)
         {
             _logger.LogWarning(e, "Failed to fetch the path data manifest; retrying");
-            Status = _L("Update check failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            Status = _L("Update check failed") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
         if (manifest == null)
         {
             _logger.LogWarning("manifest was null; retrying");
-            Status = _L("Update check failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            Status = _L("Update check failed") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
-        _configuration.PathData.LastCheck = DateTimeOffset.UtcNow;
+        await OnGameThread(() => _configuration.PathData.LastCheck = DateTimeOffset.UtcNow).ConfigureAwait(false);
 
-        // Gate A: a bundle that needs a newer plugin can't be used.
+        if (manifest.MinPluginDataFormat < PathDataFormat.CurrentVersion)
+        {
+            _logger.LogInformation("Published path data is for an older plugin; using the built-in paths");
+            Status = _L("Path data is up to date");
+            return;
+        }
+        
         if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
         {
             _logger.LogInformation("Newer path data is available but requires a newer plugin version");
             Status = _L("Update the plugin for newer path data");
-            WaitingForPluginUpdate = true;
-            Save();
+            await OnGameThread(() =>
+            {
+                WaitingForPluginUpdate = true;
+                Save();
+            }).ConfigureAwait(false);
             return;
         }
 
         if (manifest.DataVersion <= _configuration.PathData.InstalledDataVersion)
         {
-            if (_questRegistry.Count >= 500)
+            int questCount = 0;
+            await OnGameThread(() => questCount = _questCount()).ConfigureAwait(false);
+            if (questCount >= 500)
             {
                 Status = _L("Path data is up to date");
-                Save();
+                await OnGameThread(Save).ConfigureAwait(false);
                 return;
             }
 
             Status = _L("Path data from previous run missing, downloading path data...");
-            Save();
+            await OnGameThread(Save).ConfigureAwait(false);
         }
 
         if (!Uri.TryCreate(manifest.BundleUrl, UriKind.Absolute, out var bundleUri) ||
@@ -203,29 +273,21 @@ internal sealed class PathDataUpdater : IDisposable
         {
             Status = _L("Update check failed: bundle download URL is invalid");
             _logger.LogWarning("Bundle URL had invalid domain: {Url}", manifest.BundleUrl);
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
-        if (string.IsNullOrEmpty(manifest.BundleUrl))
-        {
-            _logger.LogWarning("Path data manifest has no bundle URL; retrying");
-            Status = _L("Update check failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
-            return;
-        }
-
-        Status = _L("Downloading path data…");
+        Status = _L("Downloading path data...");
         byte[] zipBytes;
         try
         {
-            zipBytes = await http.GetByteArrayAsync(new Uri(manifest.BundleUrl)).ConfigureAwait(false);
+            zipBytes = await http.GetByteArrayAsync(new Uri(manifest.BundleUrl), _shutdownToken).ConfigureAwait(false);
         }
-        catch (Exception e)
+        catch (Exception e) when (!_shutdownToken.IsCancellationRequested)
         {
             _logger.LogWarning(e, "Failed to download the path data bundle; retrying");
-            Status = _L("Download failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            Status = _L("Download failed") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -235,37 +297,64 @@ internal sealed class PathDataUpdater : IDisposable
             if (!string.Equals(actualSha, manifest.BundleSha256, StringComparison.OrdinalIgnoreCase))
             {
                 _logger.LogWarning("Path data bundle checksum mismatch; retrying");
-                Status = _L("Download failed (checksum mismatch)") + $" ({retryCount})";
-                await RetryAfterDelay(retryCount).ConfigureAwait(false);
+                Status = _L("Download failed (checksum mismatch)") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
+                await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
                 return;
             }
         }
 
-        // Atomic install: write to a temp file, then move into place.
-        string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
-        string tempPath = bundlePath + ".tmp";
+        string bundlePath = PathDataBundle.GetFilePath(_pluginInterface);
+        string tempPath = bundlePath + $".{Guid.NewGuid():N}.tmp";
         try
         {
-            Directory.CreateDirectory(PathDataBundle.GetDirectory(_pluginInterface));
-            await File.WriteAllBytesAsync(tempPath, zipBytes).ConfigureAwait(false);
-            File.Move(tempPath, bundlePath, overwrite: true);
+            WhileActive(() => Directory.CreateDirectory(PathDataBundle.GetDirectory(_pluginInterface)));
+            await File.WriteAllBytesAsync(tempPath, zipBytes, _shutdownToken).ConfigureAwait(false);
+            await OnGameThread(() =>
+            {
+                File.Move(tempPath, bundlePath, overwrite: true);
+                _configuration.PathData.InstalledDataVersion = manifest.DataVersion;
+                _configuration.PathData.BundlePluginVersion = _pluginVersion;
+                Save();
+            }).ConfigureAwait(false);
         }
-        catch (Exception e)
+        catch (Exception e) when (!_shutdownToken.IsCancellationRequested)
         {
             _logger.LogWarning(e, "Failed to install the downloaded path data bundle; retrying");
-            Status = _L("Install failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            Status = _L("Install failed") + string.Create(CultureInfo.CurrentCulture, $" ({retryCount})");
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
-
-        _configuration.PathData.InstalledDataVersion = manifest.DataVersion;
-        _configuration.PathData.BundlePluginVersion = _pluginVersion;
-        Save();
+        finally
+        {
+            try { File.Delete(tempPath); }
+            catch (Exception e) { _logger.LogWarning(e, "Could not remove temporary path data bundle"); }
+        }
 
         _logger.LogInformation("Installed path data bundle (data version {DataVersion})", manifest.DataVersion);
-        Status = _LF("Updated to data version {0}", manifest.DataVersion);
+        Status = _L("Quest paths updated");
 
-        await _framework.RunOnFrameworkThread(_questRegistry.Reload).ConfigureAwait(false);
+        _shutdownToken.ThrowIfCancellationRequested();
+        await _runOnFrameworkThread(() =>
+        {
+            lock (_lifetimeLock)
+            {
+                if (!_disposed)
+                    _reload();
+            }
+        }).WaitAsync(_shutdownToken).ConfigureAwait(false);
+    }
+
+    // Saving serializes the settings, which the game thread edits.
+    private Task OnGameThread(Action action) =>
+        _runOnFrameworkThread(() => WhileActive(action)).WaitAsync(_shutdownToken);
+
+    private void WhileActive(Action action)
+    {
+        lock (_lifetimeLock)
+        {
+            _shutdownToken.ThrowIfCancellationRequested();
+            action();
+        }
     }
 
     private void Save() => _pluginInterface.SavePluginConfig(_configuration);

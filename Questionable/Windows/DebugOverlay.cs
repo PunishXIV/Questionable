@@ -1,9 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Types;
-using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using Questionable.Model.Questing;
+﻿using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 namespace Questionable.Windows;
 
 [RegisterSingleton]
@@ -19,14 +14,12 @@ internal sealed class DebugOverlay : Window
     private readonly IObjectTable _objectTable;
     private readonly QuestController _questController;
     private readonly QuestRegistry _questRegistry;
-    private readonly NavmeshIpc _navmeshIpc;
     internal Vector3? SavedPos;
     internal readonly Dictionary<int, Vector2> ScreenPosCache = [];
 
     public DebugOverlay(QuestController questController, QuestRegistry questRegistry, IGameGui gameGui,
         IClientState clientState, ICondition condition, AetheryteData aetheryteData, IObjectTable objectTable,
-        CombatController combatController, Configuration configuration, HighlightObject highlightObject,
-        NavmeshIpc navmeshIpc)
+        CombatController combatController, Configuration configuration, HighlightObject highlightObject)
         : base(_L("Questionable Debug Overlay") + "###QuestionableDebugOverlay",
             ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoBackground |
             ImGuiWindowFlags.NoInputs | ImGuiWindowFlags.NoSavedSettings, forceMainWindow: true)
@@ -41,7 +34,6 @@ internal sealed class DebugOverlay : Window
         _combatController = combatController;
         _configuration = configuration;
         _highlightObject = highlightObject;
-        _navmeshIpc = navmeshIpc;
 
         Position = Vector2.Zero;
         PositionCondition = ImGuiCond.Always;
@@ -87,7 +79,7 @@ internal sealed class DebugOverlay : Window
         if (currentQuest == null)
             return;
 
-        QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+        QuestSequence? sequence = currentQuest.FindSequence();
         if (sequence == null)
             return;
 
@@ -116,12 +108,12 @@ internal sealed class DebugOverlay : Window
             {
                 QuestStep? step = sequence.FindStep(i);
                 if (step != null && TryGetPosition(step, out Vector3? position))
-                    DrawStep($"{quest.Id} / {sequence.Sequence} / {i}", step, position.Value, 0xFFFFFFFF);
+                    DrawStep(string.Create(CultureInfo.CurrentCulture, $"{quest.Id} / {sequence.Sequence} / {i}"), step, position.Value, 0xFFFFFFFF);
             }
         }
     }
 
-    private void DrawStep(string counter, QuestStep step, Vector3 position, uint color)
+    private void DrawStep(string label, QuestStep step, Vector3 position, uint color)
     {
         if (step.Disabled || step.TerritoryId != _clientState.TerritoryType)
             return;
@@ -139,7 +131,7 @@ internal sealed class DebugOverlay : Window
         Vector2 smoothedPos = GetSmoothedScreenPos(position.GetHashCode(), screenPos);
         ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, color);
         ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), color,
-            $"{counter}: {step.InteractionType} {step.DataId ?? '-'}\n{position.ToString("G5", CultureInfo.InvariantCulture)} [{(position - _objectTable[0]!.Position).Length():N2}]\n{step.Comment}");
+            $"{label}: {step.InteractionType} {step.DataId ?? '-'}\n{position.ToString("G5", CultureInfo.InvariantCulture)} [{(position - _objectTable[0]!.Position).Length():N2}]\n{step.Comment}");
     }
 
     private void DrawCombatTargets()
@@ -147,19 +139,18 @@ internal sealed class DebugOverlay : Window
         if (!_combatController.IsRunning)
             return;
 
-        foreach (IGameObject x in _objectTable.Skip(1))
+        foreach (IGameObject npc in _objectTable.Skip(1))
         {
-            if (x is not IBattleNpc)
+            if (npc is not IBattleNpc)
                 continue;
 
-            bool visible = _gameGui.WorldToScreen(x.Position, out Vector2 screenPos);
+            bool visible = _gameGui.WorldToScreen(npc.Position, out Vector2 screenPos);
             if (!visible)
                 continue;
 
-            (int priority, string reason) = _combatController.GetKillPriority(x);
-            // no smoothing for combat target overlay, caching the position of moving objects is pointless (is that a pun?)
+            (int priority, string reason) = _combatController.GetKillPriority(npc);
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
-                $"{x.Name}/{x.GameObjectId:X}, {GameFunctions.GetBaseID(x)}, {priority} - {reason}, {Vector3.Distance(x.Position, _objectTable[0]!.Position):N2}, {x.IsTargetable}");
+                $"{npc.Name}/{npc.GameObjectId:X}, {GameFunctions.GetBaseId(npc)}, {priority} - {reason}, {Vector3.Distance(npc.Position, _objectTable[0]!.Position):N2}, {npc.IsTargetable}");
         }
     }
 
@@ -204,7 +195,6 @@ internal sealed class DebugOverlay : Window
             $"SavedPos\n{SavedPos.Value.ToString("G5", CultureInfo.InvariantCulture)} [{(SavedPos.Value - _objectTable[0]!.Position).Length():N2}]");
     }
 
-    readonly Dictionary<Vector2, float> _flagFloorPos = [];
     private unsafe void DrawFlagPos()
     {
         if (!_configuration.Advanced.DebugOverlay || !_configuration.Advanced.ShowFlagPos)
@@ -215,11 +205,7 @@ internal sealed class DebugOverlay : Window
         var marker = agentMap->FlagMapMarkers[0];
         if (marker.TerritoryId != _clientState.TerritoryType)
             return;
-        if (!_flagFloorPos.TryGetValue(new(marker.XFloat, marker.YFloat), out float height))
-        {
-            height = _navmeshIpc.GetPointOnFloor(new Vector3(marker.XFloat, 1024, marker.YFloat), unlandable: true)?.Y ?? 0;
-        }
-        Vector3 flagPos = new(marker.XFloat, height, marker.YFloat);
+        Vector3 flagPos = new(marker.XFloat, _objectTable[0]!.Position.Y, marker.YFloat);
         bool visible = _gameGui.WorldToScreen(flagPos, out Vector2 screenPos);
         if (!visible)
             return;

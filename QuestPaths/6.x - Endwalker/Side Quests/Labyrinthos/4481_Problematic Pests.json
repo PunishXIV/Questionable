@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,73 +8,38 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041721,
-          "Position": {
-            "X": 285.156,
-            "Y": 185.653,
-            "Z": -729.59
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
-          "Land": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041673,
-          "Position": {
-            "X": 475.469,
-            "Y": 65.162,
-            "Z": -105.612
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
-          "Land": true
+          "Position": [475.469, 65.162, -105.612],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041676,
-          "Position": {
-            "X": 326.494,
-            "Y": 90.9016,
-            "Z": -381.322
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
-          "Land": true
+          "Position": [326.494, 90.9016, -381.322],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041673,
-          "Position": {
-            "X": 475.469,
-            "Y": 65.162,
-            "Z": -105.612
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
-          "Land": true
+          "Position": [475.469, 65.162, -105.612],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

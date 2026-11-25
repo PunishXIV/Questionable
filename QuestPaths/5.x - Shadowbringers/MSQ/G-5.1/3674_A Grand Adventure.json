@@ -1,33 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "DataId": 1027230,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 844,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ]
-        },
-        {
           "DataId": 1032121,
-          "Position": {
-            "X": 0.045776367,
-            "Y": -5.996435E-14,
-            "Z": -5.5390625
-          },
+          "Position": [0.045776367, -5.996435E-14, -5.5390625],
           "TerritoryId": 844,
           "InteractionType": "AcceptQuest"
         }
@@ -35,88 +17,20 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "TerritoryId": 819,
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Tessellation (Lakeland)"
-          ],
-          "InteractionType": "None"
-        },
-        {
-          "Position": {
-            "X": 55.589294,
-            "Y": 2.0276523,
-            "Z": 669.1557
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "Comment": "these bridges have navmesh problems"
-        },
-        {
-          "Position": {
-            "X": 15.410904,
-            "Y": 2.2598603,
-            "Z": 677.3755
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -54.93826,
-            "Y": 3.1323283,
-            "Z": 690.1962
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -115.65658,
-            "Y": -0.67464465,
-            "Z": 653.1527
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1031726,
-          "Position": {
-            "X": -116.80786,
-            "Y": -0.6811354,
-            "Z": 651.026
-          },
-          "TerritoryId": 813,
+          "Position": [-116.80786, -0.6811354, 651.026],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "TerritoryId": 813,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 692,
@@ -130,16 +44,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1032451,
-          "Position": {
-            "X": -113.359314,
-            "Y": -0.6671539,
-            "Z": 656.79407
-          },
-          "StopDistance": 5,
-          "TerritoryId": 813,
+          "Position": [-113.359314, -0.6671539, 656.79407],
           "InteractionType": "CompleteQuest"
         }
       ]

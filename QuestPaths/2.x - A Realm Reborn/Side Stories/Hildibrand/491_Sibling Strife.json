@@ -1,81 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "FalconTaterz",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011677,
-          "Position": {
-            "X": 363.54602,
-            "Y": 74.743355,
-            "Z": 171.12988
-          },
-          "TerritoryId": 140,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
-          "Position": {
-            "X": -171.53638,
-            "Y": 17.999998,
-            "Z": 66.511505
-          },
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1011681,
-          "Position": {
-            "X": -182.29956,
-            "Y": 18,
-            "Z": 56.90088
-          },
-          "TerritoryId": 130,
+          "Position": [-182.29956, 18, 56.90088],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
           "DataId": 1003897,
-          "Position": {
-            "X": -195.45282,
-            "Y": 18,
-            "Z": 60.53247
-          },
-          "TerritoryId": 130,
+          "Position": [-195.45282, 18, 60.53247],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1001294,
-          "Position": {
-            "X": -214.22144,
-            "Y": 18.5,
-            "Z": 72.129395
-          },
-          "TerritoryId": 130,
+          "Position": [-214.22144, 18.5, 72.129395],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1001708,
-          "Position": {
-            "X": -250.3548,
-            "Y": 18,
-            "Z": 80.88806
-          },
-          "TerritoryId": 130,
+          "Position": [-250.3548, 18, 80.88806],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -83,66 +39,43 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1011682,
-          "Position": {
-            "X": -200.763,
-            "Y": 17.999998,
-            "Z": 59.189697
-          },
-          "TerritoryId": 130,
+          "Position": [-200.763, 17.999998, 59.189697],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "AetheryteShortcut": "Western Thanalan - Horizon",
           "DataId": 1011683,
-          "Position": {
-            "X": 76.8291,
-            "Y": 45,
-            "Z": -218.28033
-          },
-          "TerritoryId": 140,
+          "Position": [76.8291, 45, -218.28033],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -345.65482,
-            "Y": 23,
-            "Z": -352.02484
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "Position": [-345.65482, 23, -352.02484],
+          "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DataId": 1011675,
-          "Position": {
-            "X": -118.150635,
-            "Y": 40,
-            "Z": 96.29968
-          },
-          "TerritoryId": 131,
+          "Position": [-118.150635, 40, 96.29968],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 492
         }

@@ -1,31 +1,22 @@
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using ECommons.Automation;
+using Callback = ECommons.Automation.Callback;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Questionable.Model.Questing;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Fills in the chocobo's name during the "My Little Chocobo" quests (700/701/702) using the
-///     name configured in <see cref="Configuration.GeneralConfiguration.ChocoboName" />.
-/// </summary>
-/// <remarks>
-///     Two steps: the <c>InputString</c> dialog is confirmed with a single callback
-///     (<c>[0 = OK, name, ""]</c>), then the follow-up "Name your chocobo?" <c>SelectYesno</c> is
-///     accepted by <see cref="YesNoChoiceHandler" /> via <see cref="IsAwaitingYesNo" />.
-/// </remarks>
+// Chocobo naming requires InputString followed by SelectYesno.
 [RegisterSingleton]
 internal sealed unsafe class ChocoboNamingController : IDisposable
 {
     private const string AddonName = "InputString";
-    //private const string DefaultName = "Chicken";
     private static readonly TimeSpan YesNoTimeout = TimeSpan.FromSeconds(10);
 
     private readonly QuestController _questController;
     private readonly Configuration _configuration;
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGuiAdapter;
+    private readonly GameGuiAdapter _gameGui;
     private readonly IFramework _framework;
 
     private bool _namePending;
@@ -36,13 +27,13 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
         QuestController questController,
         Configuration configuration,
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGuiAdapter,
+        GameGuiAdapter gameGui,
         IFramework framework)
     {
         _questController = questController;
         _configuration = configuration;
         _addonLifecycle = addonLifecycle;
-        _gameGuiAdapter = gameGuiAdapter;
+        _gameGui = gameGui;
         _framework = framework;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, AddonName, OnPostSetup);
@@ -50,10 +41,6 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
         _framework.Update += OnFrameworkUpdate;
     }
 
-    /// <summary>
-    ///     Set after the name is submitted; <see cref="YesNoChoiceHandler" /> accepts the follow-up
-    ///     "Name your chocobo?" confirmation prompt and clears this.
-    /// </summary>
     public bool IsAwaitingYesNo { get; set; }
 
     public void Dispose()
@@ -80,9 +67,8 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
         {
             _namePending = false;
 
-            // Confirm the InputString dialog: [0 = OK, name, ""]. A "Name your chocobo?"
-            // SelectYesno follows, which YesNoChoiceHandler accepts via IsAwaitingYesNo.
-            if (_gameGuiAdapter.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
+            // InputString values: [0 = OK, name, ""]; the SelectYesno after it goes through YesNoChoiceHandler.
+            if (_gameGui.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
             {
                 Callback.Fire(addon, updateState: true, 0, GetConfiguredName(), "");
                 IsAwaitingYesNo = true;
@@ -98,14 +84,13 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
     private bool IsChocoboQuestActive() =>
         _questController.CurrentQuest?.Quest.Id is QuestId { Value: 700 or 701 or 702 };
 
-    /// <summary>The configured name, or <see cref="DefaultName" /> if it is unset or not a valid 2-20 letter name.</summary>
     private string GetConfiguredName()
     {
         string name = (_configuration.General.ChocoboName ?? string.Empty).Trim();
-        return IsValidChocoboName(name) ? name : NameGenerator.GenerateFirstName();
+        return IsValidName(name) ? name : NameGenerator.GenerateFirstName();
     }
 
-    private static bool IsValidChocoboName(string name)
+    private static bool IsValidName(string name)
     {
         if (name.Length is < 2 or > 20)
             return false;

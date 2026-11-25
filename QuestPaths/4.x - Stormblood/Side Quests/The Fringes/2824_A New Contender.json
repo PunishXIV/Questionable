@@ -1,53 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021565,
-          "Position": {
-            "X": 440.11584,
-            "Y": 114.254425,
-            "Z": 212.84802
-          },
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023160,
-          "Position": {
-            "X": 303.12048,
-            "Y": 46.087757,
-            "Z": 493.0647
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [303.12048, 46.087757, 493.0647],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2008763,
-          "Position": {
-            "X": 465.7511,
-            "Y": 77.56152,
-            "Z": 118.08948
-          },
-          "TerritoryId": 612,
+          "Position": [465.7511, 77.56152, 118.08948],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [7545]
         }
@@ -55,39 +33,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": 465.7511,
-            "Y": 77.56152,
-            "Z": 118.08948
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 465.7511,
-                  "Y": 77.56152,
-                  "Z": 118.08948
-                },
-                "TerritoryId": 612,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1023161,
-          "Position": {
-            "X": 465.62903,
-            "Y": 77.67306,
-            "Z": 114.854614
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
+          "Position": [465.62903, 77.67306, 114.854614],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2825
         }

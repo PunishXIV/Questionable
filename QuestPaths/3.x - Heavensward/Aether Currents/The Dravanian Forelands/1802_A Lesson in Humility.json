@@ -1,68 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011937,
-          "Position": {
-            "X": -305.56195,
-            "Y": 39.04307,
-            "Z": 22.9953
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": -334.08136,
-            "Y": 40.34739,
-            "Z": 18.237068
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -324.42703,
-            "Y": -22.971008,
-            "Z": 51.45664
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1013406,
-          "Position": {
-            "X": -411.52057,
-            "Y": -35.095,
-            "Z": 231.46399
-          },
-          "TerritoryId": 398,
+          "Position": [-411.52057, -35.095, 231.46399],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": -431.6009,
-            "Y": -34.79498,
-            "Z": 250.46066
-          },
-          "TerritoryId": 398,
+          "Position": [-431.6009, -34.79498, 250.46066],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -73,29 +34,21 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1013407,
-          "Position": {
-            "X": -408.40778,
-            "Y": -34.191658,
-            "Z": 238.48315
-          },
-          "TerritoryId": 398,
+          "Position": [-408.40778, -34.191658, 238.48315],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": -431.6009,
-            "Y": -34.79498,
-            "Z": 250.46066
-          },
-          "TerritoryId": 398,
+          "Position": [-431.6009, -34.79498, 250.46066],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -106,29 +59,21 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1013408,
-          "Position": {
-            "X": -409.87262,
-            "Y": -34.650936,
-            "Z": 234.88208
-          },
-          "TerritoryId": 398,
+          "Position": [-409.87262, -34.650936, 234.88208],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": -431.6009,
-            "Y": -34.79498,
-            "Z": 250.46066
-          },
-          "TerritoryId": 398,
+          "Position": [-431.6009, -34.79498, 250.46066],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -139,19 +84,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1011937,
-          "Position": {
-            "X": -305.56195,
-            "Y": 39.04307,
-            "Z": 22.9953
-          },
-          "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

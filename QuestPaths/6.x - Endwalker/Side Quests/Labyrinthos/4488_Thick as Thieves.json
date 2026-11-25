@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,19 +8,12 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041696,
-          "Position": {
-            "X": -32.539,
-            "Y": -31.5304,
-            "Z": -33.3491
-          },
-          "TerritoryId": 956,
+          "Position": [-32.539, -31.5304, -33.3491],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -33,19 +26,12 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041724,
-          "Position": {
-            "X": 201.261,
-            "Y": -23.5462,
-            "Z": 266.44
-          },
-          "TerritoryId": 956,
+          "Position": [201.261, -23.5462, 266.44],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -58,96 +44,53 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041612,
-          "Position": {
-            "X": -610.299,
-            "Y": -19.1261,
-            "Z": -35.0956
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true
+          "Position": [-610.299, -19.1261, -35.0956],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041613,
-          "Position": {
-            "X": -610.952,
-            "Y": -19.1261,
-            "Z": -34.7777
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
+          "Position": [-610.952, -19.1261, -34.7777],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": -718.372,
-            "Y": -1.62884,
-            "Z": -37.6963
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1041613,
-          "Position": {
-            "X": -718.372,
-            "Y": -1.62884,
-            "Z": -37.6963
-          },
-          "TerritoryId": 956,
+          "Position": [-718.372, -1.62884, -37.6963],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 8,
-          "StopDistance": 100,
-          "Mount": false,
-          "Sprint": false
+          "NpcWaitDistance": 8
         },
         {
           "DataId": 1041613,
-          "Position": {
-            "X": -718.372,
-            "Y": -1.62884,
-            "Z": -37.6963
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Mount": false,
-          "Sprint": false
+          "Position": [-718.372, -1.62884, -37.6963],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041727,
-          "Position": {
-            "X": -29.0207,
-            "Y": -31.5304,
-            "Z": -22.9506
-          },
-          "TerritoryId": 956,
+          "Position": [-29.0207, -31.5304, -22.9506],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",

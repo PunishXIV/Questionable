@@ -1,45 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032555,
-          "Position": {
-            "X": 235.40088,
-            "Y": 5.733457,
-            "Z": 552.3612
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1032539,
-          "Position": {
-            "X": -534.1726,
-            "Y": 63.559536,
-            "Z": 735.1339
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Wright",
-          "Fly": true
+          "Position": [-534.1726, 63.559536, 735.1339],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "TerritoryId": 814,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 714,
@@ -53,15 +36,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 918,
       "Steps": [
         {
           "DataId": 1032549,
-          "Position": {
-            "X": -1.9074707,
-            "Y": -200.00002,
-            "Z": -425.10114
-          },
-          "TerritoryId": 918,
+          "Position": [-1.9074707, -200.00002, -425.10114],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1025549,
-          "Position": {
-            "X": 1.4800415,
-            "Y": -1.1041565E-05,
-            "Z": -11.734253
-          },
-          "TerritoryId": 351,
+          "Position": [1.4800415, -1.1041565E-05, -11.734253],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -21,19 +17,14 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 2009467,
-          "Position": {
-            "X": -5.189492,
-            "Y": 0.4746897,
-            "Z": 0.3689831
-          },
-          "TerritoryId": 351,
+          "Position": [-5.189492, 0.4746897, 0.3689831],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1"
+            "Enabled": true
           },
           "DialogueChoices": [
             {
@@ -50,19 +41,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1025549,
-          "Position": {
-            "X": 1.4800415,
-            "Y": -1.1041565E-05,
-            "Z": -11.734253
-          },
-          "StopDistance": 5,
-          "TerritoryId": 351,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

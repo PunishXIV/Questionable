@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Raptorskin Targe HQ,\n 1x Fingerless Raptorskin Gloves HQ,\n 1x Raptorskin Choker HQ\nAutocraft requires:\n 4x Raptor Leather,\n 1x Oak Lumber,\n 1x Mythril Rivets,\n 1x Aldgoat Horn,\n 1x Boar Leather,\n 1x Cobalt Rivets,\n 1x Raptor Sinew",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 133,
           "ItemId": 3651,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,7 +26,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 133,
           "ItemId": 2270,
           "ItemCount": 1,
           "SkipConditions": {
@@ -62,7 +38,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 133,
           "ItemId": 4360,
           "ItemCount": 1,
           "SkipConditions": {
@@ -75,81 +50,36 @@
         },
         {
           "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "Position": [71.97681, 8, -166.52173],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1003675,
-          "Position": {
-            "X": 152.57495,
-            "Y": 15.494976,
-            "Z": -100.083984
-          },
-          "TerritoryId": 133,
+          "Position": [152.57495, 15.494976, -100.083984],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1000179,
-          "Position": {
-            "X": -153.12433,
-            "Y": 4,
-            "Z": -31.509949
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Leatherworkers' Guild & Shaded Bower",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "Position": [-153.12433, 4, -31.509949],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1000371,
-          "Position": {
-            "X": 38.101685,
-            "Y": -8.011047,
-            "Z": 112.59631
-          },
+          "Position": [38.101685, -8.011047, 112.59631],
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1025602,
-          "Position": {
-            "X": -778.2559,
-            "Y": 127.80886,
-            "Z": 98.54055
-          },
-          "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 2009491,
-          "Position": {
-            "X": -70.81714,
-            "Y": 66.9718,
-            "Z": -421.89673
-          },
-          "TerritoryId": 622,
+          "Position": [-70.81714, 66.9718, -421.89673],
           "InteractionType": "Say",
-          "Fly": true,
           "ChatMessage": {
             "Key": "TEXT_BANNAM302_03104_SAYTODO_000_050"
           },
@@ -41,14 +23,8 @@
         },
         {
           "DataId": 2009492,
-          "Position": {
-            "X": 725.307,
-            "Y": -1.5717163,
-            "Z": -423.81934
-          },
-          "TerritoryId": 622,
+          "Position": [725.307, -1.5717163, -423.81934],
           "InteractionType": "Say",
-          "Fly": true,
           "ChatMessage": {
             "Key": "TEXT_BANNAM302_03104_SAYTODO_000_050"
           },
@@ -59,20 +35,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1025602,
-          "Position": {
-            "X": -778.2559,
-            "Y": 127.80886,
-            "Z": 98.54055
-          },
-          "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

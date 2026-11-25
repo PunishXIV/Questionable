@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,46 +8,15 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Fly": true,
-          "DataId": 1028316,
-          "Position": {
-            "X": 99.68713,
-            "Y": 0.14360762,
-            "Z": 617.4562
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 99.68713,
-                  "Y": 0.14360762,
-                  "Z": 617.4562
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 950
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
           "DataId": 1031097,
-          "Position": {
-            "X": -640.7416,
-            "Y": 67.92462,
-            "Z": 76.06616
-          },
-          "TerritoryId": 813,
+          "Position": [-640.7416, 67.92462, 76.06616],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -55,84 +24,49 @@
               "Prompt": "TEXT_LUCKZJ007_03570_Q1_000_000",
               "Answer": "TEXT_LUCKZJ007_03570_A1_000_001"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 2010529,
-          "Position": {
-            "X": -772.97626,
-            "Y": 70.81714,
-            "Z": 113.66443
-          },
-          "TerritoryId": 813,
+          "Position": [-772.97626, 70.81714, 113.66443],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "QW: 0 0 0 0 0 0 -> QW: 16 1(1) 16 0 0 128",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 2010531,
-          "Position": {
-            "X": -777.2793,
-            "Y": 70.81714,
-            "Z": 160.05188
-          },
-          "TerritoryId": 813,
+          "Position": [-777.2793, 70.81714, 160.05188],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "QW: 16 1(1) 16 0 0 128 -> QW: 32 17(1) 16 16 0 160",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 2010530,
-          "Position": {
-            "X": -757.3816,
-            "Y": 73.77734,
-            "Z": 154.19238
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-757.3816, 73.77734, 154.19238],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031097,
-          "Position": {
-            "X": -640.7416,
-            "Y": 67.92462,
-            "Z": 76.06616
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-640.7416, 67.92462, 76.06616],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1028316,
-          "Position": {
-            "X": 99.68713,
-            "Y": 0.14360762,
-            "Z": 617.4562
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

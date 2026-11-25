@@ -1,9 +1,8 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps.Common;
+﻿namespace Questionable.Controller.Steps.Common;
 
 internal static class NextQuest
 {
-    internal sealed class Factory(QuestFunctions questFunctions, QuestController questController, Configuration configuration) : SimpleTaskFactory
+    internal sealed class Factory(QuestFunctions questFunctions, QuestController questController) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -16,11 +15,10 @@ internal static class NextQuest
             if (step.NextQuestId == quest.Id)
                 return null;
 
-            // probably irrelevant, since pick up is handled elsewhere (and, in particular, checks for aetherytes and stuff)
             if (questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true).Contains(step.NextQuestId))
                 return null;
 
-            if (configuration.General.IgnoreNextQuestIfPrioSet && questController.PriorityManager.Quests.Any(q => questFunctions.IsReadyToAcceptQuest(q.Id)))
+            if (questController.PriorityManager.Quests.Any(q => questFunctions.IsReadyToAcceptQuest(q.Id)))
                 return null;
 
             return new SetQuestTask(step.NextQuestId, quest.Id);
@@ -33,12 +31,12 @@ internal static class NextQuest
         public override string ToString() => $"SetNextQuest({NextQuestId})";
     }
 
-    internal sealed class NextQuestExecutor
+    internal sealed class SetQuestExecutor
     (
         QuestRegistry questRegistry,
         QuestController questController,
         QuestFunctions questFunctions,
-        ILogger<NextQuestExecutor> logger) : TaskExecutor<SetQuestTask>
+        ILogger<SetQuestExecutor> logger) : TaskExecutor<SetQuestTask>
     {
         protected override bool Start()
         {

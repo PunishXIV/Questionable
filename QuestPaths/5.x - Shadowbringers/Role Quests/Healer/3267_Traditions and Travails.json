@@ -1,55 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1029998,
-          "Position": {
-            "X": -26.657532,
-            "Y": 3.999815,
-            "Z": 209.88782
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1029999,
-          "Position": {
-            "X": 346.66968,
-            "Y": 3.2878497,
-            "Z": 177.17249
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "Position": [346.66968, 3.2878497, 177.17249],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 340.6667,
-            "Y": 3.0521033,
-            "Z": 208.3552
-          },
-          "TerritoryId": 813,
+          "Position": [340.6667, 3.0521033, 208.3552],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -60,36 +34,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1030000,
-          "Position": {
-            "X": 341.02393,
-            "Y": 3.5819468,
-            "Z": 198.32141
-          },
-          "TerritoryId": 813,
+          "Position": [341.02393, 3.5819468, 198.32141],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1031158,
-          "Position": {
-            "X": -26.657532,
-            "Y": 3.999815,
-            "Z": 209.88782
-          },
-          "TerritoryId": 819,
+          "Position": [-26.657532, 3.999815, 209.88782],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ],
           "NextQuestId": 3268
         }
       ]

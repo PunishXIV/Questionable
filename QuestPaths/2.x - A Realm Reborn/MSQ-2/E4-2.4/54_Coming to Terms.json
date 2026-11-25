@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010078,
-          "Position": {
-            "X": 31.540405,
-            "Y": -1,
-            "Z": -0.80877686
-          },
-          "TerritoryId": 351,
+          "Position": [31.540405, -1, -0.80877686],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -21,58 +17,34 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1008969,
-          "Position": {
-            "X": 0.99176025,
-            "Y": -1.9957249,
-            "Z": -45.700806
-          },
-          "TerritoryId": 351,
+          "Position": [0.99176025, -1.9957249, -45.700806],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 241.44713,
-            "Y": 303.12494,
-            "Z": -199.88608
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        },
-        {
           "DataId": 1006384,
-          "Position": {
-            "X": 263.5996,
-            "Y": 303.1,
-            "Z": -199.96954
-          },
-          "TerritoryId": 155,
+          "Position": [263.5996, 303.1, -199.96954],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1007603,
-          "Position": {
-            "X": 264.91187,
-            "Y": 302.26236,
-            "Z": -223.71259
-          },
-          "TerritoryId": 155,
+          "Position": [264.91187, 302.26236, -223.71259],
           "InteractionType": "CompleteQuest",
-          "Mount": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

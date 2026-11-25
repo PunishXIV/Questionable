@@ -1,20 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1036400,
-          "Position": {
-            "X": -2.5177612,
-            "Y": 0,
-            "Z": -9.170715
-          },
-          "TerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona",
+          "Position": [-2.5177612, 0, -9.170715],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -22,64 +17,45 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024065,
-          "Position": {
-            "X": 749.9961,
-            "Y": 70.139626,
-            "Z": 522.88086
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "Position": [749.9961, 70.139626, 522.88086],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1036325,
-          "Position": {
-            "X": 740.0167,
-            "Y": 70,
-            "Z": 534.02
-          },
-          "TerritoryId": 621,
+          "Position": [740.0167, 70, 534.02],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1037011,
-          "Position": {
-            "X": 741.7257,
-            "Y": 70,
-            "Z": 534.63025
-          },
-          "TerritoryId": 621,
+          "Position": [741.7257, 70, 534.63025],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1036424,
-          "Position": {
-            "X": -641.93176,
-            "Y": 130,
-            "Z": -503.19678
-          },
-          "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "Position": [-641.93176, 130, -503.19678],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

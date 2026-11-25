@@ -1,100 +1,66 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013260,
-          "Position": {
-            "X": 104.38696,
-            "Y": 15.000005,
-            "Z": 25.558838
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 2005551,
-          "Position": {
-            "X": 38.254395,
-            "Y": -6.820801,
-            "Z": 76.34082
-          },
-          "TerritoryId": 418,
+          "Position": [38.254395, -6.820801, 76.34082],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 2005550,
-          "Position": {
-            "X": 84.58069,
-            "Y": -6.9733887,
-            "Z": 81.55945
-          },
-          "TerritoryId": 418,
+          "Position": [84.58069, -6.9733887, 81.55945],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012768,
-          "Position": {
-            "X": 21.10321,
-            "Y": -12.020914,
-            "Z": 48.41687
-          },
-          "StopDistance": 7,
-          "TerritoryId": 418,
+          "Position": [21.10321, -12.020914, 48.41687],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012773,
-          "Position": {
-            "X": 92.5459,
-            "Y": 15.00001,
-            "Z": 37.247192
-          },
-          "TerritoryId": 418,
+          "Position": [92.5459, 15.00001, 37.247192],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012780,
-          "Position": {
-            "X": 86.38135,
-            "Y": 23.979128,
-            "Z": 12.802246
-          },
-          "StopDistance": 5,
-          "TerritoryId": 418,
+          "Position": [86.38135, 23.979128, 12.802246],
           "InteractionType": "CompleteQuest"
         }
       ]

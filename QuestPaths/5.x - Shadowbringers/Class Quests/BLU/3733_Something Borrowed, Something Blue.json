@@ -1,64 +1,29 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026852,
-          "Position": {
-            "X": 63.126587,
-            "Y": 14.005002,
-            "Z": 89.86035
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1031958,
-          "Position": {
-            "X": 178.0575,
-            "Y": 51.459526,
-            "Z": 104.69214
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "Fly": true
+          "Position": [178.0575, 51.459526, 104.69214],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1031958,
-          "Position": {
-            "X": 178.0575,
-            "Y": 51.459526,
-            "Z": 104.69214
-          },
-          "TerritoryId": 140,
+          "Position": [178.0575, 51.459526, 104.69214],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -69,35 +34,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1031958,
-          "Position": {
-            "X": 178.0575,
-            "Y": 51.459526,
-            "Z": 104.69214
-          },
-          "TerritoryId": 140,
+          "Position": [178.0575, 51.459526, 104.69214],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1026852,
-          "Position": {
-            "X": 63.126587,
-            "Y": 14.005002,
-            "Z": 89.86035
-          },
-          "TerritoryId": 131,
+          "Position": [63.126587, 14.005002, 89.86035],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "NextQuestId": 3734
         }
       ]

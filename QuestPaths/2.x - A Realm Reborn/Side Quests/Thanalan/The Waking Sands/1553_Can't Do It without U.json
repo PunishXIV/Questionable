@@ -1,63 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "TerritoryId": 132,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
-          "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212,
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
           "DataId": 1011618,
-          "Position": {
-            "X": 10.330261,
-            "Y": -3.0000017,
-            "Z": -54.8562
-          },
+          "Position": [10.330261, -3.0000017, -54.8562],
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
@@ -66,17 +18,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1004917,
-          "Position": {
-            "X": -358.6328,
-            "Y": 8.469424,
-            "Z": 422.4154
-          },
-          "TerritoryId": 146,
+          "Position": [-358.6328, 8.469424, 422.4154],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "NextQuestId": 1021
         }
       ]

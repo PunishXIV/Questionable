@@ -1,106 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1036426,
-          "Position": {
-            "X": -642.3591,
-            "Y": 130,
-            "Z": -504.63113
-          },
-          "StopDistance": 5,
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1036428,
-          "Position": {
-            "X": 125.993774,
-            "Y": 12.9667015,
-            "Z": -249.37823
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ]
+          "Position": [125.993774, 12.9667015, -249.37823],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005577,
-          "Position": {
-            "X": 28.488525,
-            "Y": -3.6319542,
-            "Z": 210.62024
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Position": [28.488525, -3.6319542, 210.62024],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000460,
-          "Position": {
-            "X": -159.41101,
-            "Y": 4.054107,
-            "Z": -4.1047363
-          },
-          "TerritoryId": 133,
+          "Position": [-159.41101, 4.054107, -4.1047363],
           "InteractionType": "Interact",
-          "TargetTerritoryId": 205,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "TargetTerritoryId": 205
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 205,
       "Steps": [
         {
           "DataId": 1003027,
-          "Position": {
-            "X": 4.8981323,
-            "Y": -1.92944,
-            "Z": -0.19836426
-          },
-          "TerritoryId": 205,
+          "Position": [4.8981323, -1.92944, -0.19836426],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 205,
       "Steps": [
         {
           "DataId": 1036436,
-          "Position": {
-            "X": 4.2266846,
-            "Y": -1.858,
-            "Z": 2.7922974
-          },
-          "TerritoryId": 205,
+          "Position": [4.2266846, -1.858, 2.7922974],
           "InteractionType": "CompleteQuest"
         }
       ]

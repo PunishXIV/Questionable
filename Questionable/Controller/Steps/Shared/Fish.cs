@@ -1,199 +1,215 @@
-using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Steps.Fishing;
-using Questionable.Model.Questing;
+using Lumina.Excel.Sheets;
 using static Questionable.Controller.Steps.ITaskExecutor;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class Fish
 {
-    internal sealed class Factory(IAutoHookIpc autoHookIpc) : ITaskFactory
+    internal sealed class Factory : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Fish)
                 yield break;
 
-            if (!autoHookIpc.IsAvailable())
-                yield break;
-
-            yield return new MountStep.UnmountTask();
-            yield return new SwitchClassJob.Task(Job.FSH);
-
-            // Ensure we have at least one fish task. Quests that need key items (e.g. And Thanks for All the Fish) do not have itemIds and so will have no requested items.
-            yield return new FishTask(quest, step.ItemsToGather.FirstOrDefault(), step.CompletionQuestVariablesFlags);
-
-            // Create additional fish tasks for any additional items.
+            // An unavailable provider must not turn an unmet fishing objective into an empty queue.
+            yield return new Task(quest, step.ItemsToGather.FirstOrDefault(), step.CompletionQuestVariablesFlags);
             foreach (GatheredItem item in step.ItemsToGather.Skip(1))
-                yield return new FishTask(quest, item, step.CompletionQuestVariablesFlags);
+                yield return new Task(quest, item, step.CompletionQuestVariablesFlags);
         }
     }
 
-    internal sealed record FishTask
-    (
-        Quest Quest,
-        GatheredItem? GatheredItem,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags) : ITask
+    // Feesh switches job and travels itself. It can't be asked about one fish; it refuses unknown ones when the catch starts.
+    public static bool IsHandledByFeesh(QuestStep step, FeeshIpc feeshIpc) =>
+        step is { InteractionType: EInteractionType.Fish, ItemsToGather.Count: > 0 } &&
+        step.ItemsToGather.All(item => item.Collectability == 0) &&
+        feeshIpc.IsAvailable();
+
+    internal sealed record Task(Quest Quest, GatheredItem? GatheredItem,
+        IList<QuestWorkValue?> CompletionFlags) : ITask
     {
-        public bool HasCompletionQuestVariablesFlags { get; } =
-            QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags);
+        public bool HasCompletionFlags { get; } =
+            QuestWorkUtils.HasCompletionFlags(CompletionFlags);
 
         public override string ToString() =>
-            $"Fish{(HasCompletionQuestVariablesFlags ? "*" : "")}{(GatheredItem != null ? $"({GatheredItem.ItemCount}x {GatheredItem.ItemId})" : "")}";
+            $"Fish{(HasCompletionFlags ? "*" : "")}{(GatheredItem != null ? $"({GatheredItem.ItemCount}x {GatheredItem.ItemId})" : "")}";
     }
 
-    internal sealed class DoFish(
-        IAutoHookIpc autoHookIpc,
-        ICommandManager commandManager,
-        ICondition condition,
-        GameFunctions gameFunctions,
-        IChatGui chatGui,
-        SendNotification.Executor sendNotificationExecutor,
-        IFishingPresetGenerator fishingPresetGenerator,
-        ILogger<DoFish> logger) : TaskExecutor<FishTask>, IStoppableTaskExecutor
+    internal sealed class Executor : TaskExecutor<Task>, IStoppable
     {
-        private readonly bool _wasAutoHookEnabled = autoHookIpc.IsPluginEnabled();
-        private bool _started;
-        private bool _cleanupDone;
+        private static readonly TimeSpan StopAfter = TimeSpan.FromSeconds(10);
+        private readonly FeeshIpc _feeshIpc;
+        private readonly FishingState _state;
+        private readonly IDataManager _dataManager;
+        private readonly ILogger<Executor> _logger;
+        private readonly IQuestGameState _gameState;
+        private Guid? _operationId;
+        private long? _completedAt;
+        private long? _objectivesMetAt;
+
+        public Executor(FeeshIpc feeshIpc, FishingState state, IDataManager dataManager,
+            ILogger<Executor> logger, IQuestGameState gameState)
+        {
+            _feeshIpc = feeshIpc;
+            _state = state;
+            _dataManager = dataManager;
+            _logger = logger;
+            _gameState = gameState;
+        }
+
+        private string ItemName(uint itemId) =>
+            _dataManager.GetExcelSheet<Item>().GetRowOrDefault(itemId)?.Name.ToString(null, CultureInfo.InvariantCulture) is { Length: > 0 } name
+                ? name
+                : itemId.ToString(CultureInfo.InvariantCulture);
 
         protected override bool Start()
         {
-            if (HasRequestedItem(Task.GatheredItem))
-            {
-                logger.LogInformation($"Already have {Task.GatheredItem!.ItemCount}x {Task.GatheredItem.ItemId} in inventory", Task.GatheredItem.ItemCount, Task.GatheredItem.ItemId);
+            _operationId = null;
+            _completedAt = null;
+            _objectivesMetAt = null;
+            if (_state.HasOperation)
+                throw new TaskException(_state.BlockReason!);
+            if (HasCompletedObjectives(Task, _gameState))
                 return false;
-            }
+            if (Task.GatheredItem is not { } item)
+                throw new NeedsPlayerException("This fishing step has no fish for Feesh to catch. Fish manually, then restart Questionable.");
+            if (UnsupportedReason(item) is { } reason)
+                throw new TaskException(reason);
 
-            if (HasMatchingCompletionQuestWork())
-            {
-                logger.LogInformation("Quest variables already match, skipping fish task.");
-                return false;
-            }
-
-            if (!_wasAutoHookEnabled)
-            {
-                // AutoHook is required for this task to work. Enable it if it's not already enabled.
-                var canEnableAutoHook = autoHookIpc.SetPluginEnabled(enabled: true);
-                if (!canEnableAutoHook)
+            int missing = item.ItemCount - CountEligibleInInventory(item);
+            FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), out string message);
+            if (result is FeeshStartResult.Started or FeeshStartResult.Uncertain)
+                _operationId = _state.Id;
+            if (result != FeeshStartResult.Started || !_operationId.HasValue)
+                throw new TaskException(result switch
                 {
-                    const string errorText =
-                        "AutoHook is required for fishing but could not be enabled. Please install or enable AutoHook.";
-                    logger.LogWarning("{ErrorText}", errorText);
-                    if (!sendNotificationExecutor.Start(new SendNotification.Task(EInteractionType.Fish, errorText)))
-                        chatGui.PrintError(errorText, CommandHandler.MessageTag, CommandHandler.TagColor);
-                    throw new TaskException(errorText);
-                }
-            }
-
-            // Only create and select the anonymous preset if we haven't started yet. This prevents us from creating multiple presets.
-            if (!_started)
-            {
-                logger.LogDebug("Starting fish task for quest {QuestId}.", Task.Quest.Id);
-
-                if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? presetExport))
-                {
-                    if (Task.GatheredItem?.FishingOptions?.Preset != null)
-                        presetExport = Task.GatheredItem?.FishingOptions?.Preset!;
-                    else
-                    {
-                        logger.LogDebug("No fishing preset found for quest {QuestId}. Autocreating from quest data.", Task.Quest.Id);
-
-                        presetExport = fishingPresetGenerator.CreatePresetFromTask(Task);
-                        logger.LogDebug(presetExport);
-                    }
-                }
-
-                // Using an anonymouse preset allows us to easily remove it later.
-                logger.LogInformation("Creating and selecting anonymous AutoHook preset for quest {QuestId}", Task.Quest.Id);
-                autoHookIpc.CreateAndSelectAnonymousPreset(presetExport);
-            }
-
-            // Start fishing via command
-            // Native command: gameFunctions.UseAction(EAction.FSHCast);
-            logger.LogDebug("Starting fishing");
-            commandManager.ProcessCommand("/ahstart");
-
-            _started = true;
+                    FeeshStartResult.Busy => "Feesh is busy. Finish or stop its current work in WahTools, then restart Questionable.",
+                    FeeshStartResult.Refused => $"Feesh refused to catch {ItemName(item.ItemId)}; the Dalamud log says why. Fix that in Feesh or fish manually, then restart Questionable.",
+                    FeeshStartResult.NotReady => "Feesh is not available. Check that WahTools is loaded.",
+                    _ => $"Feesh did not confirm the catch job ({result}): {message}",
+                });
+            _logger.LogInformation("Started Feesh catch job {Id} for quest {QuestId}", _operationId, Task.Quest.Id);
             return true;
+        }
+
+        private string? UnsupportedReason(GatheredItem item)
+        {
+            if (item.Collectability > 0)
+                return $"Feesh can't catch collectable fish yet. Fish {ItemName(item.ItemId)} (collectability {item.Collectability}) manually, then restart Questionable.";
+            if (!_feeshIpc.IsAvailable())
+                return "Fishing needs Feesh from WahTools. Install it or fish manually, then restart Questionable.";
+            return null;
         }
 
         public override ETaskResult Update()
         {
-            if (HasRequestedItem(Task.GatheredItem))
+            if (!_operationId.HasValue || _state.Id != _operationId)
+                throw new TaskException("Feesh is no longer fishing for Questionable");
+
+            if (_state.IsFinished)
             {
-                logger.LogDebug("Requested item collected. Completing task.");
-                Cleanup();
-                return ETaskResult.TaskComplete;
+                // Quest flags decide: our stop makes Feesh report failed, and its count can lag one fish.
+                if (HasCompletedObjectives(Task, _gameState))
+                {
+                    Release();
+                    return ETaskResult.TaskComplete;
+                }
+
+                // The quest flags can trail the last catch.
+                _completedAt ??= TimeProvider.System.GetTimestamp();
+                if (TimeProvider.System.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
+                    return ETaskResult.StillRunning;
+                string message = _state.Message;
+                Release();
+                throw new TaskException($"Feesh stopped before the fishing objective was met: {message}");
             }
 
-            if (HasMatchingCompletionQuestWork())
+            if (_state.NeedsConfirmation)
+                throw new TaskException(_state.BlockReason!);
+            // Stop late: Feesh ends by itself after the last catch, unless it counts differently and fishes on.
+            if (HasCompletedObjectives(Task, _gameState) && !_state.StopRequested)
             {
-                logger.LogDebug("Quest variables match. Completing task.");
-                Cleanup();
-                return ETaskResult.TaskComplete;
+                _objectivesMetAt ??= TimeProvider.System.GetTimestamp();
+                if (TimeProvider.System.GetElapsedTime(_objectivesMetAt.Value) >= StopAfter)
+                    _feeshIpc.RequestStop();
             }
 
-            if (EzThrottler.Throttle("FishStart", 1000) && !condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.Gathering])
-            {
-                logger.LogDebug("We don't seem to be fishing. Trying again.");
-                Start();
-                return ETaskResult.StillRunning;
-            }
             return ETaskResult.StillRunning;
+        }
+
+        private void Release()
+        {
+            if (_state.TryClearFinished(_operationId))
+                _feeshIpc.ReleaseHeldFish();
         }
 
         public void StopNow()
         {
-            if (_started)
-                Cleanup();
+            if (_operationId.HasValue && _state.Id == _operationId)
+                _feeshIpc.CancelWork();
         }
 
-        // we're on a gathering class, so combat doesn't make much sense (we also can't change classes in combat...)
         public override bool ShouldInterruptOnDamage() => false;
-
-        private bool HasMatchingCompletionQuestWork()
-        {
-            if (!Task.HasCompletionQuestVariablesFlags)
-                return false;
-
-            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
-            return questWork != null &&
-                   QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork);
-        }
-
-        private void Cleanup()
-        {
-            if (_cleanupDone)
-                return;
-
-            logger.LogDebug("Cleaning up fish task.");
-
-            // Make sure we're not fishing anymore.
-            gameFunctions.UseAction(EAction.FSHQuit);
-
-            // Clean up anonymous preset
-            autoHookIpc.DeleteAllAnonymousPresets();
-
-            // Respect player's current settings. Set plugin to the state it was in at the start.
-            autoHookIpc.SetPluginEnabled(_wasAutoHookEnabled);
-
-            _cleanupDone = true;
-            _started = false;
-        }
     }
 
-    private static unsafe bool HasRequestedItem(GatheredItem? item)
+    internal static IReadOnlyList<GatheredItem> FishAhead(QuestSequence sequence, QuestStep step)
     {
-        if (item == null)
-            return false;
+        int index = sequence.Steps.IndexOf(step);
+        if (index < 0 || !IsFishLeadIn(step))
+            return [];
 
-        InventoryManager* inventoryManager = InventoryManager.Instance();
-        if (inventoryManager == null)
-            return false;
+        List<GatheredItem> fish = [];
+        bool sawFish = false;
+        foreach (QuestStep next in sequence.Steps.Skip(index + 1))
+        {
+            if (next.InteractionType == EInteractionType.Fish)
+            {
+                if (next.ItemsToGather.Count == 0)
+                    return [];
+                fish.AddRange(next.ItemsToGather);
+                sawFish = true;
+            }
+            else if (sawFish || !IsFishLeadIn(next))
+                break;
+        }
 
-        return inventoryManager->GetInventoryItemCount(item.ItemId,
-            minCollectability: (short)item.Collectability) >= item.ItemCount;
+        return fish;
     }
+
+    private static bool IsFishLeadIn(QuestStep step) =>
+        step.InteractionType is EInteractionType.PurchaseItem or EInteractionType.WalkTo &&
+        !QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags);
+
+    internal static bool ObjectivesSatisfied(Task task, bool matchesQuestWork, int eligibleItemCount) =>
+        task.HasCompletionFlags && matchesQuestWork ||
+        task.GatheredItem is { } item && eligibleItemCount >= item.ItemCount;
+
+    private static bool HasCompletedObjectives(Task task, IQuestGameState gameState)
+    {
+        // Matching quest flags count as done even for quests whose fish are consumed or are key items.
+        if (task.HasCompletionFlags && gameState.GetQuestProgressInfo(task.Quest.Id) is { } work &&
+            QuestWorkUtils.Matches(task.CompletionFlags, work))
+            return true;
+        if (task.GatheredItem is not { } item)
+            return false;
+        return ObjectivesSatisfied(task, false, CountEligibleInInventory(item));
+    }
+
+    internal static unsafe int CountEligibleInInventory(GatheredItem item)
+    {
+        if (item.ItemId == 0 || item.ItemCount <= 0 || item.Collectability > short.MaxValue)
+            throw new TaskException("Invalid fishing item requirement");
+        InventoryManager* inventory = InventoryManager.Instance();
+        if (inventory == null)
+            throw new TaskException("Inventory is unavailable; cannot verify the fishing objective");
+        return CountEligibleItems(item, (id, highQuality, collectability) =>
+            inventory->GetInventoryItemCount(id, isHq: highQuality, checkEquipped: false, minCollectability: collectability));
+    }
+
+    internal static int CountEligibleItems(GatheredItem item, Func<uint, bool, short, int> count) =>
+        item.Collectability > 0
+            ? count(checked(item.ItemId + 500000), false, checked((short)item.Collectability))
+            : count(item.ItemId, false, 0) + count(item.ItemId, true, 0) + count(checked(item.ItemId + 500000), false, 0);
 }

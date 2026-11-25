@@ -1,145 +1,63 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "AnimaMachinae",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016089,
-          "Position": {
-            "X": -799.46594,
-            "Y": -133.2695,
-            "Z": -404.1352
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "Position": {
-            "X": -776.0281,
-            "Y": -133.35559,
-            "Z": -414.32825
-          },
-          "StopDistance": 3,
-          "TerritoryId": 401,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -776.0281,
-                  "Y": -133.35559,
-                  "Z": -414.32825
-                },
-                "MaximumDistance": 50,
-                "TerritoryId": 401
-              }
-            }
-          }
-        },
-        {
           "DataId": 1016093,
-          "Position": {
-            "X": -776.0281,
-            "Y": -133.35559,
-            "Z": -414.32825
-          },
-          "TerritoryId": 401,
+          "Position": [-776.0281, -133.35559, -414.32825],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 2006649,
-          "Position": {
-            "X": -539.0555,
-            "Y": 64.22522,
-            "Z": -377.0047
-          },
-          "TerritoryId": 401,
+          "Position": [-539.0555, 64.22522, -377.0047],
           "InteractionType": "Action",
           "Action": "Buffet (Sanuwa)",
-          "Fly": true,
-          "StopDistance": 3,
           "$": "0 0  0 0  0 0 --> 1 0  0 0  0 16",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
           "DataId": 2006647,
-          "Position": {
-            "X": -504.78372,
-            "Y": -26.68805,
-            "Z": -530.93774
-          },
-          "TerritoryId": 401,
+          "Position": [-504.78372, -26.68805, -530.93774],
           "InteractionType": "Action",
           "Action": "Buffet (Sanuwa)",
-          "Fly": true,
-          "StopDistance": 3,
           "$": "1 0  0 0  0 16 --> 2 0  0 0  0 80",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2006648,
-          "Position": {
-            "X": -477.40906,
-            "Y": -28.885437,
-            "Z": -668.32996
-          },
-          "TerritoryId": 401,
+          "Position": [-477.40906, -28.885437, -668.32996],
           "InteractionType": "Action",
           "Action": "Buffet (Sanuwa)",
-          "Fly": true,
-          "StopDistance": 3,
           "$": "2 0  0 0  0 80 --> 3 0  0 0  0 112",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2006646,
-          "Position": {
-            "X": -96.20813,
-            "Y": 0.32037354,
-            "Z": -620.26404
-          },
-          "TerritoryId": 401,
+          "Position": [-96.20813, 0.32037354, -620.26404],
           "InteractionType": "Action",
           "Action": "Buffet (Sanuwa)",
-          "Fly": true,
-          "StopDistance": 3,
           "$": "3 0  0 0  0 112 --> 0 0  0 0  0 0"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1016089,
-          "Position": {
-            "X": -799.46594,
-            "Y": -133.2695,
-            "Z": -404.1352
-          },
-          "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

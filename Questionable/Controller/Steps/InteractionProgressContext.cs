@@ -17,8 +17,7 @@ internal sealed class InteractionProgressContext
     {
         if (!checkSequence)
         {
-            // this is a silly hack; we assume that the previous cast was successful
-            // if not for this, we'd instantly be seen as interrupted
+            // Assume the previous cast succeeded to avoid an immediate interruption.
             ActionManager.Instance()->CastTimeElapsed = ActionManager.Instance()->CastTimeTotal;
         }
 
@@ -35,8 +34,6 @@ internal sealed class InteractionProgressContext
             return (true, null);
         return (true, Create(checkSequence: true));
     }
-
-    public static InteractionProgressContext? FromActionUse(Func<bool> func) => FromActionUseInternal(func).Item2;
 
     public static InteractionProgressContext? FromActionUseOrDefault(Func<bool> func)
     {

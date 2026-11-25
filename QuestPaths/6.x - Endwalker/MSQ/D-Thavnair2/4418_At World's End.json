@@ -1,90 +1,60 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1040372,
-          "Position": {
-            "X": -214.40454,
-            "Y": 36,
-            "Z": 64.86609
-          },
-          "TerritoryId": 963,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040373,
-          "Position": {
-            "X": -0.3204956,
-            "Y": -2.514571E-07,
-            "Z": -2.1210327
-          },
-          "TerritoryId": 963,
+          "Position": [-0.3204956, -2.514571E-07, -2.1210327],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 963,
       "Steps": [
         {
-          "TerritoryId": 963,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Radz-at-Han",
-          "DisableNavmesh": true
+          "Aetheryte": "Radz-at-Han"
         },
         {
-          "TerritoryId": 963,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Radz-at-Han] Hall of the Radiant Host"
         },
         {
           "DataId": 1040374,
-          "Position": {
-            "X": -145.80005,
-            "Y": 3.9999294,
-            "Z": -83.9704
-          },
-          "TerritoryId": 963,
+          "Position": [-145.80005, 3.9999294, -83.9704],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040375,
-          "Position": {
-            "X": -172.1676,
-            "Y": 4.061,
-            "Z": -87.90729
-          },
-          "TerritoryId": 963,
+          "Position": [-172.1676, 4.061, -87.90729],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040375,
-          "Position": {
-            "X": -172.1676,
-            "Y": 4.061,
-            "Z": -87.90729
-          },
-          "TerritoryId": 963,
+          "Position": [-172.1676, 4.061, -87.90729],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -98,20 +68,12 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1037318,
-          "Position": {
-            "X": -4.1047363,
-            "Y": 2.9999943,
-            "Z": -203.8758
-          },
-          "TerritoryId": 963,
+          "Position": [-4.1047363, 2.9999943, -203.8758],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Hall of the Radiant Host",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -124,31 +86,22 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040379,
-          "Position": {
-            "X": 8.010925,
-            "Y": 3.02,
-            "Z": -198.19946
-          },
-          "TerritoryId": 963,
+          "Position": [8.010925, 3.02, -198.19946],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040382,
-          "Position": {
-            "X": 2.9450073,
-            "Y": -1.9999962,
-            "Z": 87.44946
-          },
-          "StopDistance": 5,
-          "TerritoryId": 963,
+          "Position": [2.9450073, -1.9999962, 87.44946],
           "InteractionType": "CompleteQuest"
         }
       ]

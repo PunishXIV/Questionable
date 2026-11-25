@@ -1,34 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020807,
-          "Position": {
-            "X": 433.9818,
-            "Y": 114.48304,
-            "Z": 233.29517
-          },
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": 385.1642,
-            "Y": 74.01643,
-            "Z": 135.44316
-          },
-          "TerritoryId": 612,
+          "Position": [385.1642, 74.01643, 135.44316],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -44,19 +28,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1020807,
-          "Position": {
-            "X": 433.9818,
-            "Y": 114.48304,
-            "Z": 233.29517
-          },
-          "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

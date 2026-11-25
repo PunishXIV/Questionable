@@ -1,71 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042390,
-          "Position": {
-            "X": 376.089,
-            "Y": 3.1168795,
-            "Z": -241.77924
-          },
-          "TerritoryId": 957,
-          "Fly": true,
+          "Position": [376.089, 3.1168795, -241.77924],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1042389,
-          "Position": {
-            "X": -416.31195,
-            "Y": 10.9610405,
-            "Z": 11.48999
-          },
-          "TerritoryId": 957,
+          "Position": [-416.31195, 10.9610405, 11.48999],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Thavnair - Great Work",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

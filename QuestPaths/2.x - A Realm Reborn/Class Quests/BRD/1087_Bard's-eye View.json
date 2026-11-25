@@ -1,61 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006750,
-          "Position": {
-            "X": 16.464417,
-            "Y": 6.750492,
-            "Z": -7.3396606
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 2002365,
-          "Position": {
-            "X": 272.05298,
-            "Y": 18.875366,
-            "Z": -164.53809
-          },
-          "TerritoryId": 145,
+          "Position": [272.05298, 18.875366, -164.53809],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             58
-          ],
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1006750,
-          "Position": {
-            "X": 16.464417,
-            "Y": 6.750492,
-            "Z": -7.3396606
-          },
-          "TerritoryId": 153,
+          "Position": [16.464417, 6.750492, -7.3396606],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "NextQuestId": 1088
         }
       ]

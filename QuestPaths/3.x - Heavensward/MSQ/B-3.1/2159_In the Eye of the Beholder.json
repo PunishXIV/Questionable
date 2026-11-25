@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1015992,
-          "Position": {
-            "X": -478.14148,
-            "Y": 137.42972,
-            "Z": 700.8926
-          },
-          "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Prologue Gate (Western Hinterlands)"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 2005336,
-          "Position": {
-            "X": -488.79227,
-            "Y": 138.93335,
-            "Z": 741.0543
-          },
-          "TerritoryId": 399,
+          "Position": [-488.79227, 138.93335, 741.0543],
           "InteractionType": "Interact",
           "TargetTerritoryId": 463
         }
@@ -37,85 +21,57 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1012405,
-          "Position": {
-            "X": 587.7927,
-            "Y": -50.623985,
-            "Z": 70.725464
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [587.7927, -50.623985, 70.725464],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011917,
-          "Position": {
-            "X": 535.30164,
-            "Y": -51.340645,
-            "Z": 65.293335
-          },
-          "TerritoryId": 398,
+          "Position": [535.30164, -51.340645, 65.293335],
           "InteractionType": "Interact",
           "$": "0 0 16 0 0 0 -> 17 0 16 0 0 64"
         },
         {
           "DataId": 1011916,
-          "Position": {
-            "X": 470.02356,
-            "Y": -49.89133,
-            "Z": 20.370789
-          },
-          "TerritoryId": 398,
+          "Position": [470.02356, -49.89133, 20.370789],
           "InteractionType": "Interact",
           "$": "17 0 16 0 0 64 -> 33 1 16 0 0 192"
         },
         {
           "DataId": 1011922,
-          "Position": {
-            "X": 448.56934,
-            "Y": -51.141407,
-            "Z": 108.93408
-          },
-          "TerritoryId": 398,
+          "Position": [448.56934, -51.141407, 108.93408],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1015994,
-          "Position": {
-            "X": 470.38977,
-            "Y": -51.141403,
-            "Z": 38.651123
-          },
-          "TerritoryId": 398,
+          "Position": [470.38977, -51.141403, 38.651123],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2006610,
-          "Position": {
-            "X": 191.79065,
-            "Y": -54.154297,
-            "Z": -235.95032
-          },
-          "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [191.79065, -54.154297, -235.95032],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

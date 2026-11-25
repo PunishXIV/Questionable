@@ -1,35 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005550,
-          "Position": {
-            "X": 105.27197,
-            "Y": 15.359643,
-            "Z": -357.3816
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -84.12953,
-            "Y": -14.744684,
-            "Z": -148.0814
-          },
-          "TerritoryId": 146,
+          "Position": [-84.12953, -14.744684, -148.0814],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -37,16 +20,10 @@
               "DataId": 134,
               "MinimumKillCount": 2
             }
-          ],
-          "Fly": true
+          ]
         },
         {
-          "Position": {
-            "X": -253.56975,
-            "Y": 6.8785334,
-            "Z": 162.0949
-          },
-          "TerritoryId": 146,
+          "Position": [-253.56975, 6.8785334, 162.0949],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -54,27 +31,13 @@
               "DataId": 358,
               "MinimumKillCount": 1
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005550,
-          "Position": {
-            "X": 105.27197,
-            "Y": 15.359643,
-            "Z": -357.3816
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

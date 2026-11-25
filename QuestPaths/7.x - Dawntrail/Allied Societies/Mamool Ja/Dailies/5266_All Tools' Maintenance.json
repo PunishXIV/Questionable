@@ -1,31 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "TerritoryId": 1189,
-          "Fly": true,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -38,7 +24,6 @@
           ]
         },
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -51,46 +36,15 @@
           ]
         },
         {
-          "Position": {
-            "X": 472.2853,
-            "Y": -150,
-            "Z": 758.076
-          },
-          "StopDistance": 2,
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
-        },
-        {
           "DataId": 1052570,
-          "Position": {
-            "X": 470.6339,
-            "Y": -150,
-            "Z": 757.47314
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1189,
+          "Position": [470.6339, -150, 757.47314],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

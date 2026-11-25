@@ -1,89 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
-          "DataId": 1051711,
-          "Position": {
-            "X": 770.7179,
-            "Y": 12.84657,
-            "Z": -263.99634
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2014482,
-          "Position": {
-            "X": 718.6847,
-            "Y": 6.1188354,
-            "Z": -105.60773
-          },
-          "TerritoryId": 1188,
+          "Position": [718.6847, 6.1188354, -105.60773],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             18172
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               16
-            ],null,null,null],
-          "AetheryteShortcut": "Kozama'uka - Dock Poga"
+            ],null,null,null]
         },
         {
           "DataId": 2014481,
-          "Position": {
-            "X": 581.78064,
-            "Y": 9.018005,
-            "Z": -180.49902
-          },
-          "TerritoryId": 1188,
+          "Position": [581.78064, 9.018005, -180.49902],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             18172
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               32
             ],null,null,null]
         },
         {
           "DataId": 2014480,
-          "Position": {
-            "X": 531.15125,
-            "Y": 12.527649,
-            "Z": -99.321045
-          },
-          "TerritoryId": 1188,
+          "Position": [531.15125, 12.527649, -99.321045],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             18172
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               48
             ],null,null,null]
@@ -92,29 +51,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "DataId": 1051711,
-          "Position": {
-            "X": 770.7179,
-            "Y": 12.84657,
-            "Z": -263.99634
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

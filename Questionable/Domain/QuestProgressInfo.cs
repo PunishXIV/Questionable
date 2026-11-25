@@ -1,6 +1,5 @@
 ﻿using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
-using Questionable.Model.Questing;
 namespace Questionable.Domain;
 
 internal sealed class QuestProgressInfo
@@ -17,39 +16,32 @@ internal sealed class QuestProgressInfo
         ClassJob = (Job)questWork.AcceptClassJob;
         Tooltip = "";
 
-        Span<byte> qw = questWork.Variables; // 6 bytes
-        string repr = "";
-        for (int i = 0; i < qw.Length; ++i)
+        Span<byte> bytes = questWork.Variables; // 6 bytes
+        string text = "";
+        for (int i = 0; i < bytes.Length; ++i)
         {
-            byte thisbyte = qw[i];
-            Tooltip += $"{Convert.ToString(thisbyte, 2).PadLeft(8).Replace(" ", "0", StringComparison.InvariantCulture)}\n";
-            int upper = thisbyte >> 4;
-            int lower = thisbyte & 0xF;
-            //repr += $"{thisbyte} ";
+            byte value = bytes[i];
+            Tooltip += $"{Convert.ToString(value, 2).PadLeft(8).Replace(" ", "0", StringComparison.InvariantCulture)}\n";
+            int upper = value >> 4;
+            int lower = value & 0xF;
             if (upper != 0 || lower != 0)
             {
-                repr += "(";
+                text += "(";
                 if (upper != 0)
-                    repr += $"{upper}H";
+                    text += string.Create(CultureInfo.CurrentCulture, $"{upper}H");
                 if (lower != 0)
-                    repr += $"{lower}L";
-                repr += ") ";
+                    text += string.Create(CultureInfo.CurrentCulture, $"{lower}L");
+                text += ") ";
             }
             else
-                repr += "(-) ";
+                text += "(-) ";
 
             if (i % 2 == 1)
-                repr += "   ";
+                text += "   ";
         }
 
-        // For combat quests, a sequence to kill 3 enemies works a bit like this:
-        // Trigger enemies → 0
-        // Kill first enemy → 1
-        // Kill second enemy → 2
-        // Last enemy → increase sequence, reset variable to 0
-        // The order in which enemies are killed doesn't seem to matter.
-        // If multiple waves spawn, this continues to count up (e.g. 1 enemy from wave 1, 2 enemies from wave 2, 1 from wave 3) would count to 3 then 0
-        _asString = $"QW: {repr.Trim()}";
+        // Combat progress increments per kill and resets when the sequence advances; kills across waves count together.
+        _asString = $"QW: {text.Trim()}";
     }
 
     public ElementId Id { get; }

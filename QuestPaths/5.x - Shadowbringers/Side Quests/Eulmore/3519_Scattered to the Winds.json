@@ -1,59 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027550,
-          "Position": {
-            "X": 52.536743,
-            "Y": 82.8351,
-            "Z": 13.595764
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 2010114,
-          "Position": {
-            "X": 81.19324,
-            "Y": -10.421997,
-            "Z": 48.8136
-          },
-          "TerritoryId": 820,
+          "Position": [81.19324, -10.421997, 48.8136],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2010116,
-          "Position": {
-            "X": 94.40759,
-            "Y": -8.377258,
-            "Z": -57.358704
-          },
-          "TerritoryId": 820,
+          "Position": [94.40759, -8.377258, -57.358704],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2010115,
-          "Position": {
-            "X": -30.167114,
-            "Y": -11.917358,
-            "Z": 106.43164
-          },
-          "TerritoryId": 820,
+          "Position": [-30.167114, -11.917358, 106.43164],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -61,22 +32,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027550,
-          "Position": {
-            "X": 52.536743,
-            "Y": 82.8351,
-            "Z": 13.595764
-          },
-          "TerritoryId": 820,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Eulmore] Nightsoil Pots",
-            "[Eulmore] Aetheryte Plaza"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

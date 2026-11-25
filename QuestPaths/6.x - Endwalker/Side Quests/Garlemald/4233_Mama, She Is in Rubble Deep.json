@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037722,
-          "Position": {
-            "X": -308.0949,
-            "Y": 22,
-            "Z": 415.3047
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039353,
-          "Position": {
-            "X": -308.00336,
-            "Y": 22,
-            "Z": 413.80933
-          },
-          "TerritoryId": 958,
+          "Position": [-308.00336, 22, 413.80933],
           "InteractionType": "Emote",
           "Emote": "soothe"
         }
@@ -36,99 +21,53 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039353,
-          "Position": {
-            "X": -308.00336,
-            "Y": 22,
-            "Z": 413.80933
-          },
-          "TerritoryId": 958,
+          "Position": [-308.00336, 22, 413.80933],
           "InteractionType": "Interact",
           "$": "nosprint + nomount isn't really necessary here, but it looks a little unnatural to zip forward so far and wait, methinks."
         },
         {
           "DataId": 1039353,
-          "Position": {
-            "X": -310.48834,
-            "Y": 24.947939,
-            "Z": 377.09357
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
+          "Position": [-310.48834, 24.947939, 377.09357],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1039353,
-          "Position": {
-            "X": -351.1446,
-            "Y": 7.736393,
-            "Z": 303.24872
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
+          "Position": [-351.1446, 7.736393, 303.24872],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1039353,
-          "Position": {
-            "X": -334.03958,
-            "Y": 19.434929,
-            "Z": 175.00089
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "DelaySecondsAtStart": 4,
+          "Position": [-334.03958, 19.434929, 175.00089],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "WalkTo",
+          "DelaySecondsAtStart": 4
         },
         {
           "DataId": 1039353,
-          "Position": {
-            "X": -321.72916,
-            "Y": 18.139357,
-            "Z": 98.16852
-          },
-          "TerritoryId": 958,
+          "Position": [-321.72916, 18.139357, 98.16852],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "NpcWaitDistance": 15,
-          "DelaySecondsAtStart": 4,
-          "Mount": false,
-          "Sprint": false
+          "DelaySecondsAtStart": 4
         },
         {
           "DataId": 1039355,
-          "Position": {
-            "X": -319.4171,
-            "Y": 8.981749,
-            "Z": -9.475891
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "DelaySecondsAtStart": 2,
+          "Position": [-319.4171, 8.981749, -9.475891],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 2
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037722,
-          "Position": {
-            "X": -308.0949,
-            "Y": 22,
-            "Z": 415.3047
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

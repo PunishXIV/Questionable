@@ -1,50 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006675,
-          "Position": {
-            "X": 23.11737,
-            "Y": -3.7126513,
-            "Z": 209.76575
-          },
-          "StopDistance": 5,
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000584,
-          "Position": {
-            "X": 44.785156,
-            "Y": -2.1720045,
-            "Z": 231.86072
-          },
-          "TerritoryId": 152,
+          "Position": [44.785156, -2.1720045, 231.86072],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -34.76502,
-            "Y": -8.079653,
-            "Z": 264.55304
-          },
-          "TerritoryId": 152,
+          "Position": [-34.76502, -8.079653, 264.55304],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -59,47 +38,27 @@
         },
         {
           "DataId": 2001915,
-          "Position": {
-            "X": -42.435425,
-            "Y": -8.560364,
-            "Z": 281.26953
-          },
-          "TerritoryId": 152,
+          "Position": [-42.435425, -8.560364, 281.26953],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
           "$": "16 1  0 0  0 0 -> 17 1  16 0  0 32"
         },
         {
           "DataId": 2001914,
-          "Position": {
-            "X": -32.6391,
-            "Y": -3.7995605,
-            "Z": 321.3092
-          },
-          "TerritoryId": 152,
+          "Position": [-32.6391, -3.7995605, 321.3092],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "$": "17 1  16 0  0 32 -> 18 1  32 0  0 96"
         },
         {
           "DataId": 2001913,
-          "Position": {
-            "X": 29.3125,
-            "Y": 0.869751,
-            "Z": 359.24304
-          },
-          "TerritoryId": 152,
+          "Position": [29.3125, 0.869751, 359.24304],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
           "$": "18 1  32 0  0 96 -> 35 1  48 0  0 224"
         },
         {
-          "Position": {
-            "X": 47.758923,
-            "Y": 7.4985247,
-            "Z": 428.1574
-          },
-          "TerritoryId": 152,
+          "Position": [47.758923, 7.4985247, 428.1574],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -116,15 +75,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000580,
-          "Position": {
-            "X": 25.65039,
-            "Y": -3.7080078,
-            "Z": 209.97937
-          },
-          "TerritoryId": 152,
+          "Position": [25.65039, -3.7080078, 209.97937],
           "InteractionType": "CompleteQuest"
         }
       ]

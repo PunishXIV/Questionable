@@ -1,53 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "DataId": 1032220,
-          "Position": {
-            "X": 113.29822,
-            "Y": -20.000002,
-            "Z": 1.449585
-          },
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1033784,
-          "Position": {
-            "X": 154.00928,
-            "Y": -50,
-            "Z": 67.73474
-          },
-          "TerritoryId": 886,
+          "Position": [154.00928, -50, 67.73474],
           "InteractionType": "CompleteQuest"
         }
       ]

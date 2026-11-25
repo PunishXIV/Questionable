@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "liza",
     "JerryWester"
@@ -8,25 +8,13 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000168,
-          "Position": {
-            "X": -75.48645,
-            "Y": -0.5013741,
-            "Z": -5.081299
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
-          "TerritoryId": 132,
           "InteractionType": "UseItem",
           "ItemId": 6001,
           "SkipConditions": {
@@ -38,44 +26,19 @@
         },
         {
           "DataId": 1000257,
-          "Position": {
-            "X": 150.16394,
-            "Y": 10.852949,
-            "Z": -230.45703
-          },
+          "Position": [150.16394, 10.852949, -230.45703],
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "DataId": 1001263,
-          "Position": {
-            "X": 181.41443,
-            "Y": -2.3519497,
-            "Z": -240.40594
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 152,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
-            }
-          }
-        },
-        {
-          "TerritoryId": 152,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "East Shroud - Hawthorne Hut",
-          "StopDistance": 5,
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
@@ -84,25 +47,14 @@
         },
         {
           "DataId": 1002981,
-          "Position": {
-            "X": -194.32367,
-            "Y": 1.001574,
-            "Z": 278.0652
-          },
-          "TerritoryId": 152,
+          "Position": [-194.32367, 1.001574, 278.0652],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179651
         },
         {
           "DataId": 1006188,
-          "Position": {
-            "X": -236.92688,
-            "Y": 3.5435789,
-            "Z": 283.4973
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "Position": [-236.92688, 3.5435789, 283.4973],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

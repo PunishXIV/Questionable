@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1037975,
-          "Position": {
-            "X": -616.84595,
-            "Y": -22.394817,
-            "Z": 562.89
-          },
-          "TerritoryId": 961,
+          "Position": [-616.84595, -22.394817, 562.89],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -20,40 +16,28 @@
               "Prompt": "TEXT_AKTKZG017_04292_Q1_000_000",
               "Answer": "TEXT_AKTKZG017_04292_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": -552.0973,
-            "Y": -33.758274,
-            "Z": 387.48834
-          },
-          "TerritoryId": 961,
-          "StopDistance": 0.25,
+          "Position": [-552.0973, -33.758274, 387.48834],
           "InteractionType": "UseItem",
-          "ItemId": 2003347,
-          "Fly": true
+          "ItemId": 2003347
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 2012255,
-          "Position": {
-            "X": -551.812,
-            "Y": -33.798767,
-            "Z": 385.4276
-          },
-          "TerritoryId": 961,
+          "Position": [-551.812, -33.798767, 385.4276],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -64,20 +48,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037975,
-          "Position": {
-            "X": -616.84595,
-            "Y": -22.394817,
-            "Z": 562.89
-          },
-          "TerritoryId": 961,
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

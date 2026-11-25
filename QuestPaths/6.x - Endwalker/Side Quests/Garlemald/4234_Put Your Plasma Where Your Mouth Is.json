@@ -1,51 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039358,
-          "Position": {
-            "X": -321.43134,
-            "Y": 22.377153,
-            "Z": 473.167
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039359,
-          "Position": {
-            "X": 486.71704,
-            "Y": 11.195138,
-            "Z": -299.36682
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Tertium",
-          "Fly": true
+          "Position": [486.71704, 11.195138, -299.36682],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 2011849,
-          "Position": {
-            "X": 486.04553,
-            "Y": 11.154297,
-            "Z": -296.37604
-          },
-          "TerritoryId": 958,
+          "Position": [486.04553, 11.154297, -296.37604],
           "InteractionType": "Snipe",
           "Comment": "Snipe Magitek Colossi"
         }
@@ -53,32 +32,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039359,
-          "Position": {
-            "X": 486.71704,
-            "Y": 11.195138,
-            "Z": -299.36682
-          },
-          "TerritoryId": 958,
+          "Position": [486.71704, 11.195138, -299.36682],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1037729,
-          "Position": {
-            "X": -342.67188,
-            "Y": 22.377153,
-            "Z": 466.8496
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "Position": [-342.67188, 22.377153, 466.8496],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

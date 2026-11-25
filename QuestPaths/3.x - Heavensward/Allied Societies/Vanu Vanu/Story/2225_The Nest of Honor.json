@@ -1,39 +1,20 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked":{"Username": "alydev", "Date": "2026-01-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016087,
-          "Position": {
-            "X": -796.7498,
-            "Y": -133.2695,
-            "Z": -410.6966
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1016088,
-          "Position": {
-            "X": -818.143,
-            "Y": -129.93259,
-            "Z": -414.02307
-          },
-          "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "Position": [-818.143, -129.93259, -414.02307],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

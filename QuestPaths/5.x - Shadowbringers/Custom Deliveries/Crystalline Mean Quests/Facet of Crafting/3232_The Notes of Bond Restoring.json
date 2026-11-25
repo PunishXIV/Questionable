@@ -1,39 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027234,
-          "Position": {
-            "X": 10.2387085,
-            "Y": 20.185999,
-            "Z": -138.2315
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028326,
-          "Position": {
-            "X": 10.940674,
-            "Y": 20.186,
-            "Z": -142.53455
-          },
-          "TerritoryId": 819,
+          "Position": [10.940674, 20.186, -142.53455],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -47,77 +27,45 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "TerritoryId": 819,
           "InteractionType": "Craft",
           "ItemId": 27247,
           "ItemCount": 1
         },
         {
           "DataId": 1027234,
-          "Position": {
-            "X": 10.2387085,
-            "Y": 20.185999,
-            "Z": -138.2315
-          },
-          "TerritoryId": 819,
+          "Position": [10.2387085, 20.185999, -138.2315],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028438,
-          "Position": {
-            "X": -55.832825,
-            "Y": 3.9998174,
-            "Z": 198.6571
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "Position": [-55.832825, 3.9998174, 198.6571],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028438,
-          "Position": {
-            "X": -55.832825,
-            "Y": 3.9998174,
-            "Z": 198.6571
-          },
-          "TerritoryId": 819,
+          "Position": [-55.832825, 3.9998174, 198.6571],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027234,
-          "Position": {
-            "X": 10.2387085,
-            "Y": 20.185999,
-            "Z": -138.2315
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Musica Universalis Markets",
-            "[Crystarium] The Crystalline Mean"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

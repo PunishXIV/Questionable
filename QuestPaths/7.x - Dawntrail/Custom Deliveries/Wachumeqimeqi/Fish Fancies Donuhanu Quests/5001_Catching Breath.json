@@ -1,57 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047097,
-          "Position": {
-            "X": 190.598,
-            "Y": -14,
-            "Z": 12.218
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
-          "StopDistance": 5,
           "InteractionType": "Instruction",
           "Comment": "Purchase Dragonfly bait from:\n* Scrip Exchange (Purple Gatherer's)\n* Mesouaidonque (Cosmocredit)\nThen click Skip"
         },
         {
-          "Position": {
-            "X": 480.87372,
-            "Y": 15.46027,
-            "Z": 669.95386
-          },
+          "Position": [482.38736, 14.930612, 672.66675],
+          "Mount": false,
           "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1
-        },
-        {
-          "Position": {
-            "X": 482.38736,
-            "Y": 14.930612,
-            "Z": 672.66675
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "Mount": false
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 1190,
@@ -60,27 +28,14 @@
             {
               "ItemId": 43906,
               "ItemCount": 6,
-              "Collectability": 433,
-              "FishingOptions": {
-                "BaitId": 43857,
-                "HookType": { "Normal": { "Strong": true } }
-              }
+              "Collectability": 433
             }
           ]
         },
         {
           "DataId": 1047097,
-          "Position": {
-            "X": 190.598,
-            "Y": -14,
-            "Z": 12.218
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "Position": [190.598, -14, 12.218],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

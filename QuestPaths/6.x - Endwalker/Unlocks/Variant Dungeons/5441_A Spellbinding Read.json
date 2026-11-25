@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {
     "Username": "ShermTank",
@@ -8,48 +8,24 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1043624,
-          "Position": {
-            "X": 41.031494,
-            "Y": -15.646993,
-            "Z": 107.80493
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1056461,
-          "Position": {
-            "X": 176.77563,
-            "Y": 4.58709,
-            "Z": -5.7526855
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] Journey's End"
-          ]
+          "Position": [176.77563, 4.58709, -5.7526855],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "TerritoryId": 962,
           "Comment": "This is sequence is..skipped",
           "InteractionType": "None"
         }
@@ -57,15 +33,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1337,
       "Steps": [
         {
           "DataId": 1056464,
-          "Position": {
-            "X": -5.8442383,
-            "Y": -0.00009462237,
-            "Z": -3.0060425
-          },
-          "TerritoryId": 1337,
+          "Position": [-5.8442383, -0.00009462237, -3.0060425],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -79,9 +51,9 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1337,
       "Steps": [
         {
-          "TerritoryId": 1337,
           "Comment": "Must clear The Merchant's Tale, click Passage to Next Chapter to queue",
           "InteractionType": "WaitForManualProgress"
         }
@@ -89,56 +61,18 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1056467,
-          "Position": {
-            "X": 176.77563,
-            "Y": 4.58709,
-            "Z": -5.7526855
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] Journey's End"
-          ]
+          "Position": [176.77563, 4.58709, -5.7526855],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1043624,
-          "Position": {
-            "X": 41.031494,
-            "Y": -15.646993,
-            "Z": 107.80493
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Journey's End",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 176.77563,
-                  "Y": 4.58709,
-                  "Z": -5.7526855
-                },
-                "TerritoryId": 962,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

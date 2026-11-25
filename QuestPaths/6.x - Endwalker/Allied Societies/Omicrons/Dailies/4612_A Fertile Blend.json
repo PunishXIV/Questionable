@@ -1,64 +1,24 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "TerritoryId": 960,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -71,7 +31,6 @@
           ]
         },
         {
-          "TerritoryId": 960,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -84,49 +43,8 @@
           ]
         },
         {
-          "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "CompleteQuest"
         }
       ]

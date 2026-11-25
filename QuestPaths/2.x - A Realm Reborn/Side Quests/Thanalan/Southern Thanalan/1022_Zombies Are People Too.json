@@ -1,142 +1,83 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Thaksin",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1004914,
-          "Position": {
-            "X": 167.89502,
-            "Y": 3.1102452,
-            "Z": 972.5642
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1006603,
-          "Position": {
-            "X": -196.79565,
-            "Y": 78.11096,
-            "Z": 49.851196
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
+          "Position": [-196.79565, 78.11096, 49.851196],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1004914,
-          "Position": {
-            "X": 167.89502,
-            "Y": 3.1102452,
-            "Z": 972.5642
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "Position": [167.89502, 3.1102452, 972.5642],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1006604,
-          "Position": {
-            "X": -278.73657,
-            "Y": 4.1657104,
-            "Z": -580.04126
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-278.73657, 4.1657104, -580.04126],
+          "InteractionType": "Interact"
         }
 
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1004914,
-          "Position": {
-            "X": 167.89502,
-            "Y": 3.1102452,
-            "Z": 972.5642
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "Position": [167.89502, 3.1102452, 972.5642],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 146,
       "Steps": [
         {
           "InteractionType": "UseItem",
           "ItemId": 2000779,
           "GroundTarget": true,
-          "Position": {
-            "X": -192.67111,
-            "Y": 35.175262,
-            "Z": 129.13567
-          },
-          "TerritoryId": 146,
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "Position": [-192.67111, 35.175262, 129.13567]
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006605,
-          "Position": {
-            "X": -192.49261,
-            "Y": 35.210636,
-            "Z": 129.13708
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-192.49261, 35.210636, 129.13708],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1004914,
-          "Position": {
-            "X": 167.89502,
-            "Y": 3.1102452,
-            "Z": 972.5642
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

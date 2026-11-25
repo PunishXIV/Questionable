@@ -1,39 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005928,
-          "Position": {
-            "X": 7.095398,
-            "Y": 16.167778,
-            "Z": -188.67786
-          },
-          "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": -1.668298,
-            "Y": 48.422268,
-            "Z": -312.28842
-          },
-          "TerritoryId": 180,
-          "Fly": true,
+          "Position": [-1.668298, 48.422268, -312.28842],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "ComplexCombatData": [
             {
               "DataId": 327,
@@ -47,36 +28,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-1.236023, 33.38838, -244.19019],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005928,
-          "Position": {
-            "X": 7.095398,
-            "Y": 16.167778,
-            "Z": -188.67786
-          },
-          "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

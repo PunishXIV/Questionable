@@ -1,5 +1,4 @@
 ﻿using Dalamud.Game.ClientState.Objects.Enums;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class AetherCurrent
@@ -14,11 +13,11 @@ internal static class AetherCurrent
             if (step.InteractionType != EInteractionType.AttuneAetherCurrent)
                 return null;
             if (!step.DataId.HasValue)
-                throw new ArgumentNullException(nameof(step.DataId));
+                throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
             if (!step.AetherCurrentId.HasValue)
-                throw new ArgumentNullException(nameof(step.AetherCurrentId));
+                throw new ArgumentException($"{nameof(step.AetherCurrentId)} is missing", nameof(step));
 
-            if (!aetherCurrentData.IsValidAetherCurrent(step.TerritoryId, step.AetherCurrentId.Value))
+            if (!aetherCurrentData.IsValid(step.TerritoryId, step.AetherCurrentId.Value))
             {
                 chatGui.PrintError(
                     $"Aether current with id {step.AetherCurrentId} is referencing an invalid aether current, will skip attunement",
@@ -36,11 +35,13 @@ internal static class AetherCurrent
         public override string ToString() => $"AttuneAetherCurrent({AetherCurrentId})";
     }
 
-    internal sealed class DoAttune
+    internal sealed class AttuneExecutor
     (
         GameFunctions gameFunctions,
-        ILogger<DoAttune> logger) : TaskExecutor<Attune>
+        ILogger<AttuneExecutor> logger) : TaskExecutor<Attune>
     {
+        private readonly InteractRetry _retry = new(DateTime.Now);
+
         protected override bool Start()
         {
             if (!gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId))
@@ -61,9 +62,12 @@ internal static class AetherCurrent
 
         public override ETaskResult Update()
         {
-            return gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId)
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId))
+                return ETaskResult.TaskComplete;
+
+            if (_retry.Due(DateTime.Now, gameFunctions.IsOccupied()))
+                gameFunctions.InteractWith(Task.DataId, ObjectKind.EventObj);
+            return ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => true;

@@ -1,66 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037751,
-          "Position": {
-            "X": -424.15503,
-            "Y": 22.196602,
-            "Z": 423.48352
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040663,
-          "Position": {
-            "X": -318.10486,
-            "Y": 23.722221,
-            "Z": 353.93298
-          },
-          "TerritoryId": 958,
+          "Position": [-318.10486, 23.722221, 353.93298],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040664,
-          "Position": {
-            "X": 382.22327,
-            "Y": 10.762111,
-            "Z": -713.3135
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Tertium",
-          "Fly": true
+          "Position": [382.22327, 10.762111, -713.3135],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 2012052,
-          "Position": {
-            "X": 383.84058,
-            "Y": 11.48999,
-            "Z": -711.1162
-          },
-          "TerritoryId": 958,
+          "Position": [383.84058, 11.48999, -711.1162],
           "InteractionType": "UseItem",
           "ItemId": 2003210,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
@@ -68,12 +43,7 @@
         },
         {
           "DataId": 2012051,
-          "Position": {
-            "X": 383.5354,
-            "Y": 11.306824,
-            "Z": -708.03394
-          },
-          "TerritoryId": 958,
+          "Position": [383.5354, 11.306824, -708.03394],
           "InteractionType": "UseItem",
           "ItemId": 2003210,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -82,15 +52,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040664,
-          "Position": {
-            "X": 382.22327,
-            "Y": 10.762111,
-            "Z": -713.3135
-          },
-          "TerritoryId": 958,
+          "Position": [382.22327, 10.762111, -713.3135],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -104,19 +70,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037751,
-          "Position": {
-            "X": -424.15503,
-            "Y": 22.196602,
-            "Z": 423.48352
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

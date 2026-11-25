@@ -1,130 +1,50 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012600,
-          "Position": {
-            "X": 451.65173,
-            "Y": 157.40831,
-            "Z": -544.6708
-          },
-          "StopDistance": 5,
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": 474.62885,
-            "Y": 200.2377,
-            "Z": 657.9519
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        },
-        {
-          "Position": {
-            "X": 486.38373,
-            "Y": 163.58846,
-            "Z": 239.54294
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 517.53094,
-            "Y": 131.76724,
-            "Z": 200.50333
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": 595.8404,
-            "Y": 116.82471,
-            "Z": 203.86801
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 616.8997,
-            "Y": 78.429,
-            "Z": 207.48883
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1011905,
-          "Position": {
-            "X": 617.4868,
-            "Y": 78.429,
-            "Z": 217.30359
-          },
-          "TerritoryId": 397,
+          "Position": [617.4868, 78.429, 217.30359],
           "InteractionType": "SinglePlayerDuty",
-          "DisableNavmesh": true,
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1012604,
-          "Position": {
-            "X": 620.9657,
-            "Y": 78.42899,
-            "Z": 213.88562
-          },
-          "StopDistance": 5,
-          "TerritoryId": 397,
+          "Position": [620.9657, 78.42899, 213.88562],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2006189,
-          "Position": {
-            "X": -332.90613,
-            "Y": 126.81775,
-            "Z": -29.953552
-          },
-          "TerritoryId": 397,
+          "Position": [-332.90613, 126.81775, -29.953552],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818057
         },
         {
           "DataId": 1011907,
-          "Position": {
-            "X": -288.8686,
-            "Y": 127.06639,
-            "Z": 13.199036
-          },
-          "TerritoryId": 397,
+          "Position": [-288.8686, 127.06639, 13.199036],
           "InteractionType": "CompleteQuest"
         }
       ]

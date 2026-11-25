@@ -7,18 +7,12 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.AutoGen.Generation;
 
-/// <summary>Serializes a generated path the same way the plugin's own editor does.</summary>
 internal static class QuestPathWriter
 {
-    private const string SchemaUrl = "https://qstxiv.github.io/schema/quest-v1.json";
-
-    /// <summary>Mirrors <c>Questionable.Utils.JsonOptions.Default</c>, which the checked-in paths are written with.</summary>
     private static readonly JsonSerializerOptions Options = new()
     {
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
@@ -29,9 +23,9 @@ internal static class QuestPathWriter
             Modifiers =
             {
                 NoEmptyCollectionModifier,
-                AlwaysSerializeAttributeModifier,
+                AlwaysSerializeModifier,
                 DefaultTrueModifier,
-                IgnoreWhenDefaultInstanceModifier
+                SkipDefaultObjectModifier
             }
         }
     };
@@ -39,7 +33,6 @@ internal static class QuestPathWriter
     internal static string FileName(Quest quest) =>
         $"{quest.RowId & 0xFFFF}_{SimplifyName(QuestGameData.QuestName(quest))}.json";
 
-    /// <summary>Same character stripping <c>QuestInfo.SimplifiedName</c> applies before using a name as a filename.</summary>
     private static string SimplifyName(string name)
     {
         foreach (char invalid in new[] { '.', '*', '"', '/', '\\', '<', '>', '|', ':', '?' })
@@ -50,18 +43,11 @@ internal static class QuestPathWriter
 
     internal static string Serialize(QuestPathResult result)
     {
-        JsonObject serialized = (JsonObject)JsonSerializer.SerializeToNode(result.Root, Options)!;
-
-        JsonObject output = new() { ["$schema"] = SchemaUrl };
-        foreach ((string key, JsonNode? value) in serialized)
-            output[key] = value?.DeepClone();
-
+        JsonObject output = (JsonObject)JsonSerializer.SerializeToNode(result.Root, Options)!;
         InjectDevComments(output, result);
-
-        return output.ToJsonString(Options);
+        return QuestPathJson.Write(output, Options);
     }
 
-    /// <summary>Whether a path for this quest is already on disk, and so should be left alone.</summary>
     internal static bool Exists(Quest quest, string directory) =>
         File.Exists(Path.Combine(directory, FileName(quest)));
 
@@ -73,10 +59,6 @@ internal static class QuestPathWriter
         return file;
     }
 
-    /// <summary>
-    ///     Adds the <c>$</c> dev comment to each step. It is not part of the C# model — only of the JSON schema —
-    ///     so it has to go in after serialization, matched up positionally with the sequences it came from.
-    /// </summary>
     private static void InjectDevComments(JsonObject output, QuestPathResult result)
     {
         if (output["QuestSequence"] is not JsonArray sequences)
@@ -103,8 +85,7 @@ internal static class QuestPathWriter
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
-            // Generic list properties (IList&lt;T&gt;) are not assignable to the non-generic ICollection, but
-            // their values are - so test the declared type loosely and the value strictly.
+            // IList<T> properties aren't assignable to ICollection, but their values are.
             if (typeof(ICollection).IsAssignableFrom(property.PropertyType) || IsGenericCollection(property.PropertyType))
                 property.ShouldSerialize = (_, value) => value is ICollection { Count: > 0 };
         }
@@ -114,7 +95,7 @@ internal static class QuestPathWriter
         Array.Exists(type.GetInterfaces(),
             x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>));
 
-    private static void AlwaysSerializeAttributeModifier(JsonTypeInfo typeInfo)
+    private static void AlwaysSerializeModifier(JsonTypeInfo typeInfo)
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
@@ -140,7 +121,7 @@ internal static class QuestPathWriter
         }
     }
 
-    private static void IgnoreWhenDefaultInstanceModifier(JsonTypeInfo typeInfo)
+    private static void SkipDefaultObjectModifier(JsonTypeInfo typeInfo)
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {

@@ -1,93 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000632,
-          "Position": {
-            "X": 328.267,
-            "Y": -4.9947,
-            "Z": 321.797
-          },
-          "TerritoryId": 154,
+          "Position": [328.267, -4.9947, 321.797],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1000632 (Vionne)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000784,
-          "Position": {
-            "X": 313.30676,
-            "Y": -5.484335,
-            "Z": 378.46558
-          },
-          "StopDistance": 1,
-          "TerritoryId": 154,
+          "Position": [313.30676, -5.484335, 378.46558],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo location -> 1000784 (Gillian)"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2000146,
-          "Position": {
-            "X": 324.598,
-            "Y": -4.70613,
-            "Z": 376.192
-          },
-          "TerritoryId": 154,
+          "Position": [324.598, -4.70613, 376.192],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo location -> 2000146 (burlap sacks)"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000764,
-          "Position": {
-            "X": 218.918,
-            "Y": -28.2527,
-            "Z": 338.405
-          },
-          "TerritoryId": 154,
+          "Position": [218.918, -28.2527, 338.405],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo location -> 1000764 (Nolanel)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000632,
-          "Position": {
-            "X": 328.267,
-            "Y": -4.9947,
-            "Z": 321.797
-          },
-          "TerritoryId": 154,
+          "Position": [328.267, -4.9947, 321.797],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1000632 (Vionne)"
         }
       ]

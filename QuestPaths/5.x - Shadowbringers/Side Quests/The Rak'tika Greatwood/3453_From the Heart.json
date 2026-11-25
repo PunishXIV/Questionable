@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,81 +8,49 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031341,
-          "Position": {
-            "X": -131.456,
-            "Y": -17.5416,
-            "Z": 253.834
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031343,
-          "Position": {
-            "X": -50.5532,
-            "Y": 19.9921,
-            "Z": -60.4105
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-50.5532, 19.9921, -60.4105],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031344,
-          "Position": {
-            "X": -696.254,
-            "Y": -0.320496,
-            "Z": 114.183
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-696.254, -0.320496, 114.183],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031345,
-          "Position": {
-            "X": -705.296,
-            "Y": 2.8089,
-            "Z": 292.443
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-705.296, 2.8089, 292.443],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031341,
-          "Position": {
-            "X": -131.456,
-            "Y": -17.5416,
-            "Z": 253.834
-          },
-          "TerritoryId": 817,
+          "Position": [-131.456, -17.5416, 253.834],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -99,8 +67,7 @@
               "Prompt": "TEXT_LUCKZE019_03453_Q1_000_000",
               "Answer": "TEXT_LUCKZE019_03453_A1_000_003"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     }

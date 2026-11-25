@@ -1,45 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "chika", "Date": "2026-06-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032659,
-          "Position": {
-            "X": 802.79236,
-            "Y": -45.91779,
-            "Z": -218.58557
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032731,
-          "Position": {
-            "X": -28.732727,
-            "Y": -24.68478,
-            "Z": 318.28796
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
+          "Position": [-28.732727, -24.68478, 318.28796],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -52,7 +35,6 @@
           ]
         },
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -66,32 +48,14 @@
         },
         {
           "DataId": 1032734,
-          "Position": {
-            "X": 802.6703,
-            "Y": -45.915627,
-            "Z": -214.70972
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "Position": [802.6703, -45.915627, -214.70972],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1032659,
-          "Position": {
-            "X": 802.79236,
-            "Y": -45.91779,
-            "Z": -218.58557
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

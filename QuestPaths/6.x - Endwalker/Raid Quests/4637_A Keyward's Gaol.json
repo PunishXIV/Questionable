@@ -1,28 +1,14 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "DataId": 2012293,
-          "Position": {
-            "X": 809.9336,
-            "Y": 151.81189,
-            "Z": -243.42719
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1025
-        },
-        {
           "DataId": 1043491,
-          "Position": {
-            "X": 101.79285,
-            "Y": -1E-11,
-            "Z": -26.901672
-          },
+          "Position": [101.79285, -1E-11, -26.901672],
           "TerritoryId": 1025,
           "InteractionType": "AcceptQuest"
         }
@@ -30,39 +16,31 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1025,
       "Steps": [
         {
           "DataId": 1043494,
-          "Position": {
-            "X": 99.99231,
-            "Y": -9.999997E-12,
-            "Z": 99.83972
-          },
-          "TerritoryId": 1025,
+          "Position": [99.99231, -9.999997E-12, 99.83972],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1025,
       "Steps": [
         {
           "DataId": 1043493,
-          "Position": {
-            "X": 98.31384,
-            "Y": -9.999999E-12,
-            "Z": -26.901672
-          },
-          "TerritoryId": 1025,
+          "Position": [98.31384, -9.999999E-12, -26.901672],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1025,
       "Steps": [
         {
-          "TerritoryId": 1025,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 880,
@@ -73,16 +51,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1025,
       "Steps": [
         {
           "DataId": 1043506,
-          "Position": {
-            "X": 102.12854,
-            "Y": -9.999999E-12,
-            "Z": -26.56604
-          },
-          "StopDistance": 4,
-          "TerritoryId": 1025,
+          "Position": [102.12854, -9.999999E-12, -26.56604],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4638
         }

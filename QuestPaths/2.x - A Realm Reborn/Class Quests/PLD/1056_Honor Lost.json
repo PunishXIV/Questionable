@@ -1,80 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "TerritoryId": 137,
           "InteractionType": "EquipItem",
-          "ItemId": 4542,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "ItemId": 4542
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006747,
-          "Position": {
-            "X": -20.828613,
-            "Y": 29.999964,
-            "Z": -2.4262085
-          },
-          "TerritoryId": 131,
+          "Position": [-20.828613, 29.999964, -2.4262085],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 287.2875,
-            "Y": 41.545933,
-            "Z": -200.75758
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
-        },
-        {
-          "Position": {
-            "X": 285.82883,
-            "Y": 42.26685,
-            "Z": -203.32939
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 180
-        },
-        {
-          "Position": {
-            "X": -114.35803,
-            "Y": 64.464615,
-            "Z": -217.34372
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "TerritoryId": 180,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {
@@ -84,43 +37,8 @@
           }
         },
         {
-          "Position": {
-            "X": -259.72705,
-            "Y": 67.23717,
-            "Z": -293.5509
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -355.4327,
-            "Y": 63.813503,
-            "Z": -382.56308
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 2002346,
-          "Position": {
-            "X": -312.27594,
-            "Y": 32.547485,
-            "Z": -444.9989
-          },
-          "TerritoryId": 180,
+          "Position": [-312.27594, 32.547485, -444.9989],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -128,27 +46,18 @@
               "DataId": 6,
               "NameId": 2020
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1006747,
-          "Position": {
-            "X": -20.828613,
-            "Y": 29.999964,
-            "Z": -2.4262085
-          },
-          "TerritoryId": 131,
+          "Position": [-20.828613, 29.999964, -2.4262085],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
           "NextQuestId": 1057
         }
       ]

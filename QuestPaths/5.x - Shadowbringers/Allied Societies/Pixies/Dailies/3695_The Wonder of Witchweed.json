@@ -1,62 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2010868,
-          "Position": {
-            "X": -504.32596,
-            "Y": 77.22583,
-            "Z": -410.11676
-          },
-          "TerritoryId": 816,
+          "Position": [-504.32596, 77.22583, -410.11676],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
           "KillEnemyDataIds": [
             11445
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

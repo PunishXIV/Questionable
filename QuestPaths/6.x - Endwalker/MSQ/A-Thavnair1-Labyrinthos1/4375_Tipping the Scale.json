@@ -1,71 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037649,
-          "Position": {
-            "X": -92.97333,
-            "Y": 89.5583,
-            "Z": -642.3591
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": -78.47051,
-            "Y": 99.96379,
-            "Z": -711.17303
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2011991,
-          "Position": {
-            "X": -49.271423,
-            "Y": 94.0719,
-            "Z": -710.7805
-          },
-          "TerritoryId": 957,
+          "Position": [-49.271423, 94.0719, -710.7805],
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818330,
-          "DisableNavmesh": true
+          "AetherCurrentId": 2818330
         },
         {
           "DataId": 1038631,
-          "Position": {
-            "X": -510.7958,
-            "Y": 11.975282,
-            "Z": 117.69275
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "Position": [-510.7958, 11.975282, 117.69275],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038651,
-          "Position": {
-            "X": -699.67194,
-            "Y": -0.06901036,
-            "Z": -565.0569
-          },
-          "TerritoryId": 957,
+          "Position": [-699.67194, -0.06901036, -565.0569],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -79,33 +44,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038652,
-          "Position": {
-            "X": -704.09705,
-            "Y": -0.090369135,
-            "Z": -562.4323
-          },
-          "StopDistance": 6,
-          "TerritoryId": 957,
+          "Position": [-704.09705, -0.090369135, -562.4323],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038653,
-          "Position": {
-            "X": -492.0577,
-            "Y": 4.5676737,
-            "Z": 17.532532
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "Position": [-492.0577, 4.5676737, 17.532532],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,22 +1,54 @@
 ﻿using System.Collections.ObjectModel;
-using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
-using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Game.Text.SeStringHandling;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.Character;
+using FFXIVClientStructs.FFXIV.Client.Game.Control;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
 
-// TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent ~12 levels).
 internal static class Interact
 {
-    internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
+    internal static Job SelectQuestJob(IReadOnlyList<Job> acceptableJobs, Configuration configuration,
+        EAlliedSociety alliedSociety, bool isCrafter, bool isGatherer)
+    {
+        Job fallback = acceptableJobs[0];
+        if (acceptableJobs.Count == 1)
+            return fallback;
+
+        bool namazu = alliedSociety == EAlliedSociety.Namazu;
+        bool craft = namazu ? configuration.Advanced.NamazuPreferCraft : isCrafter;
+        bool gather = namazu ? !craft : isGatherer;
+        Job preferred = craft ? configuration.General.CraftingJob
+            : gather ? configuration.General.GatheringJob
+            : configuration.General.CombatJob;
+
+        if (acceptableJobs.Contains(preferred))
+            return preferred;
+
+        // Auto: the caller lists jobs highest level first.
+        if (preferred == Job.ADV && acceptableJobs.FirstOrDefault(x => craft ? x is >= Job.CRP and <= Job.CUL : !gather || x is Job.MIN or Job.BTN or Job.FSH) is var best &&
+            best != Job.ADV)
+            return best;
+
+        return fallback;
+    }
+
+    internal const int MaxUnmountTries = 3;
+
+    // A mount the game won't let you leave still gets the interaction once the tries run out.
+    internal static bool ShouldUnmount(bool mounted, bool isGatheringPoint, int tries) =>
+        mounted && !isGatheringPoint && tries < MaxUnmountTries;
+
+    internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil,
+        GilShopData gilShopData,
+        TomestoneShopData tomestoneShopData,
+        SealShopData sealShopData) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -24,10 +56,10 @@ internal static class Interact
                 or EInteractionType.SinglePlayerDuty)
             {
                 if (step.InteractionType == EInteractionType.SinglePlayerDuty &&
-                    bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions))
-                    yield return new SinglePlayerDuty.LeaveParty();
+                    bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions))
+                    yield return new QuestBattle.LeaveParty();
 
-                if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsRedoActive())
+                if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsActive())
                 {
                     // Can't accept other quests during NG+
                     yield break;
@@ -58,7 +90,7 @@ internal static class Interact
             }
             else if (step.InteractionType == EInteractionType.PurchaseItem)
             {
-                if (step.DataId == null)
+                if (step.DataId == null || Purchase.IsHandledByKnightshopper(step, gilShopData, tomestoneShopData, sealShopData))
                     yield break;
             }
             else if (step.InteractionType == EInteractionType.Snipe)
@@ -81,7 +113,7 @@ internal static class Interact
             else if (step.InteractionType != EInteractionType.Interact)
                 yield break;
             if (!step.DataId.HasValue)
-                throw new ArgumentNullException(nameof(step.DataId));
+                throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
 
             // if we're fast enough, it is possible to get the smalltalk prompt
             if (sequence.Sequence == 0 && sequence.Steps.IndexOf(step) == 0)
@@ -91,7 +123,7 @@ internal static class Interact
                 step.DataId.Value,
                 quest,
                 step.InteractionType,
-                step.TargetTerritoryId != null || quest.Id is SatisfactionSupplyNpcId ||
+                step.TargetTerritoryId != null ||
                 step.SkipConditions is { StepIf.Never: true } || step.InteractionType == EInteractionType.PurchaseItem || step.DataId == 1052475,
                 step.PickUpItemId,
                 step.TaxiStandId,
@@ -109,21 +141,21 @@ internal static class Interact
         uint? PickUpItemId = null,
         uint? TaxiStandId = null,
         SkipStepConditions? SkipConditions = null,
-        List<QuestWorkValue?>? CompletionQuestVariablesFlags = null) : ITask
+        List<QuestWorkValue?>? CompletionFlags = null) : ITask
     {
-        public List<QuestWorkValue?> CompletionQuestVariablesFlags { get; } = CompletionQuestVariablesFlags ?? [];
+        public List<QuestWorkValue?> CompletionFlags { get; } = CompletionFlags ?? [];
 
-        public bool HasCompletionQuestVariablesFlags { get; } =
+        public bool HasCompletionFlags { get; } =
             Quest != null &&
-            CompletionQuestVariablesFlags != null &&
-            QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags);
+            CompletionFlags != null &&
+            QuestWorkUtils.HasCompletionFlags(CompletionFlags);
 
         public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString() => $"Interact{(HasCompletionQuestVariablesFlags ? "*" : "")}({DataId})";
+        public override string ToString() => $"Interact{(HasCompletionFlags ? "*" : "")}({DataId})";
     }
 
-    internal sealed class DoInteract
+    internal sealed class Executor
     (
         GameFunctions gameFunctions,
         CameraFunctions cameraFunctions,
@@ -132,57 +164,159 @@ internal static class Interact
         ICondition condition,
         IObjectTable objectTable,
         ClassJobUtils classJobUtils,
-        //DalamudInitializer dalamudInitializer,
-        ILogger<DoInteract> logger)
-        : TaskExecutor<Task>, IConditionChangeAware
+        ILogger<Executor> logger,
+        IQuestGameState gameState,
+        TaskToastClassifier toastClassifier)
+        : TaskExecutor<Task>, IConditionChangeAware, IToastAware
     {
+        private static readonly TimeSpan RefusalWindow = TimeSpan.FromSeconds(2);
+
         private DateTime _continueAt = DateTime.MinValue;
+        private DateTime? _triggeredAt;
+        private bool _tooFar;
         private EInteractionState _interactionState = EInteractionState.None;
         private bool _needsFacing;
         private bool _needsUnmount;
-        private bool _reportedGameObjNull;
+        private int _unmountTries;
+        private int _landingTries;
+        private bool _reportedStillMounted;
+        private bool _reportedNoObject;
+        private string? _loggedAcceptableJobs;
         private bool _reportedWrongJob;
         private ushort _unequipItem;
 
-        /// <summary>
-        ///     A slight delay when we think an interaction has ended, to make sure that we're processing "Action cancelled"
-        ///     prior to the next step (in case we're attacked).
-        /// </summary>
-        private bool delayedFinalCheck;
+        // Process a possible cancellation from combat before the next step.
+        private bool _delayedFinalCheck;
 
         public Quest? Quest => Task.Quest;
         public EInteractionType InteractionType { get; set; }
 
         public override ETaskResult Update()
         {
+            if (_tooFar)
+                return ETaskResult.RetryStep;
+
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
 
+            UnequipJobStone();
+            if (GetEarlyResult() is { } earlyResult)
+                return earlyResult;
+
+            IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
+            if (gameObject == null)
+            {
+                if (!_reportedNoObject)
+                {
+                    logger.LogDebug("gameObject is null");
+                    _reportedNoObject = true;
+                }
+
+                return ETaskResult.StillRunning;
+            }
+
+            _reportedNoObject = false;
+
+            if (_needsFacing)
+            {
+                logger.LogDebug("Facing target");
+                cameraFunctions.Face(gameObject.Position);
+                _continueAt = DateTime.Now.AddSeconds(0.2);
+                _needsFacing = false;
+                return ETaskResult.StillRunning;
+            }
+
+            if (SwitchToAcceptJob() is { } acceptResult)
+                return acceptResult;
+
+            if (SwitchToQuestJob() is { } questJobResult)
+                return questJobResult;
+
+            bool isTargetable = gameObject.IsTargetable;
+            bool hasAnyMarker = HasAnyMarker(gameObject);
+            if (!isTargetable || !hasAnyMarker)
+            {
+                if (EzThrottler.Throttle("skipTarget", miliseconds: 1000))
+                    logger.LogDebug("IsTargetable: {IsTargetable} / HasAnyMarker: {HasAnyMarker}", isTargetable, hasAnyMarker);
+                return ETaskResult.StillRunning;
+            }
+
+            // The game's own dismount on interact can pass for the finished interaction, so get off the mount first.
+            bool mounted = condition[ConditionFlag.Mounted];
+            bool isGatheringPoint = gameObject.ObjectKind == ObjectKind.GatheringPoint;
+            // While flying, dismount only makes the mount land.
+            if (mounted && !isGatheringPoint && condition[ConditionFlag.InFlight] && _landingTries++ < 20)
+            {
+                gameFunctions.Unmount();
+                _continueAt = DateTime.Now.AddSeconds(0.5);
+                return ETaskResult.StillRunning;
+            }
+
+            if (ShouldUnmount(mounted, isGatheringPoint, _unmountTries))
+            {
+                if (_unmountTries == 0)
+                    logger.LogInformation("Unmounting before interacting with {DataId}", Task.DataId);
+
+                _unmountTries++;
+                gameFunctions.Unmount();
+                _continueAt = DateTime.Now.AddSeconds(1);
+                return ETaskResult.StillRunning;
+            }
+
+            if (mounted && !isGatheringPoint && !_reportedStillMounted)
+            {
+                logger.LogWarning("Still mounted after {Tries} tries, interacting with {DataId} anyway",
+                    _unmountTries, Task.DataId);
+                _reportedStillMounted = true;
+            }
+
+            // In the air the game rejects the interaction but still reports success.
+            if (condition[ConditionFlag.Jumping] || condition[ConditionFlag.Jumping61] || IsFalling())
+            {
+                _continueAt = DateTime.Now.AddSeconds(0.25);
+                return ETaskResult.StillRunning;
+            }
+
+            TriggerInteraction(gameObject);
+            return ETaskResult.StillRunning;
+        }
+
+        // The fall after a mid-air dismount sets neither jumping condition.
+        private static unsafe bool IsFalling()
+        {
+            BattleChara* player = Control.GetLocalPlayer();
+            return player != null && player->IsJumping();
+        }
+
+        private void UnequipJobStone()
+        {
             if (_unequipItem != 0)
             {
-                logger.LogDebug($"unequipping item {_unequipItem}");
+                logger.LogDebug("unequipping item {ItemId}", _unequipItem);
                 unsafe
                 {
                     InventoryManager* inventoryManager = InventoryManager.Instance();
                     var armoryType = InventoryType.ArmorySoulCrystal;
                     ushort srcSlot = 13;
                     InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
-                    if (UnequipItem.DoUnequip.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
+                    if (EquipmentSlots.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
                     {
-                        logger.LogDebug($"Moving {_unequipItem} to {targetSlot} in soul crystal inv");
+                        logger.LogDebug("Moving {ItemId} to {TargetSlot} in soul crystal inv", _unequipItem, targetSlot);
                         _ = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, srcSlot, armoryType, targetSlot, a6: true);
-                        //if (result != 0)
-                        //    throw new Exception($"UnequipItem failed to move {_unequipItem} to {targetSlot} in soul crystal inv");
                     }
                     else
                     {
                         logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
                             armoryType, _unequipItem);
-                        throw new Exception("Unable to unequip gear - armory chest is full.");
+                        throw new InvalidOperationException("Unable to unequip gear - armory chest is full.");
                     }
                 }
                 _unequipItem = 0;
             }
+        }
+
+        private ETaskResult? GetEarlyResult()
+        {
             if (_needsUnmount)
             {
                 if (condition[ConditionFlag.Mounted])
@@ -216,11 +350,11 @@ internal static class Interact
             }
             else if (InteractionType == EInteractionType.Gather && condition[ConditionFlag.Gathering])
                 return ETaskResult.TaskComplete;
-            else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
+            else if (Quest != null && Task.HasCompletionFlags)
             {
-                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Quest.Id);
+                QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Quest.Id);
 
-                if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
+                if (questWork != null && QuestWorkUtils.Matches(Task.CompletionFlags, questWork))
                     return ETaskResult.TaskComplete;
             }
             else if (ProgressContext != null)
@@ -228,104 +362,58 @@ internal static class Interact
                 if (ProgressContext.WasInterrupted())
                     return ETaskResult.StillRunning;
 
-                // started this, realised i don't have a good way to test it. in theory there's a way here to catch
-                // 'unable to execute command while x' and recover to retry the interact
-                //if (dalamudInitializer.FlagUnableExecuteCommand)
-                //{
-                //    logger.LogDebug("FlagUnableExecuteCommand");
-                //    dalamudInitializer.FlagUnableExecuteCommand = false;
-                //    // might just be landing, retry interaction
-                //    _interactionState = EInteractionState.None;
-                //    _continueAt = DateTime.Now.AddSeconds(1);
-                //    return ETaskResult.StillRunning;
-                //}
-
-                if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.InteractionConfirmed)
+                if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.Confirmed)
                 {
-                    if (delayedFinalCheck)
+                    if (_delayedFinalCheck)
+                    {
+                        logger.LogInformation("Interacted with {DataId}: {How}", Task.DataId,
+                            _interactionState == EInteractionState.Confirmed ? "the game started the event" : "no event seen, assuming it worked");
                         return ETaskResult.TaskComplete;
+                    }
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
-                    delayedFinalCheck = true;
+                    _delayedFinalCheck = true;
                     return ETaskResult.StillRunning;
                 }
             }
 
-            IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
-            //if (gameObject == null || !gameObject.IsTargetable || !HasAnyMarker(gameObject))
-            if (gameObject == null)
-            {
-                if (!_reportedGameObjNull)
-                {
-                    logger.LogDebug("gameObject is null");
-                    _reportedGameObjNull = true;
-                }
+            return null;
+        }
 
-                return ETaskResult.StillRunning;
-            }
-
-            _reportedGameObjNull = false;
-
-            if (_needsFacing)
-            {
-                logger.LogInformation("Facing target");
-                cameraFunctions.Face(gameObject.Position);
-                _continueAt = DateTime.Now.AddSeconds(0.2);
-                _needsFacing = false;
-                return ETaskResult.StillRunning;
-            }
-
+        private ETaskResult? SwitchToAcceptJob()
+        {
             if (!_reportedWrongJob &&
                 objectTable[0] is IPlayerCharacter player &&
                 Task.Quest != null &&
                 InteractionType == EInteractionType.AcceptQuest)
             {
                 var jobGearSets = classJobUtils.GetJobGearSets(combatOnly: false);
-                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))];
-                logger.LogInformation($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs)}");
+                Job currentJob = (Job)player.ClassJob.Value.RowId;
+                // The current job needs no gear set to switch to (152 and 639 on FSH without one).
+                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs
+                    .Where(x => jobGearSets.Count == 0 || x == currentJob || jobGearSets.Any(v => v.ClassJob.Equals(x)))
+                    .OrderByDescending(x => jobGearSets.Where(v => v.ClassJob.Equals(x)).Select(v => (int)v.Level).DefaultIfEmpty().Max())
+                    .ThenByDescending(x => jobGearSets.Where(v => v.ClassJob.Equals(x)).Select(v => (int)v.ItemLevel).DefaultIfEmpty().Max())];
+                string acceptableJobsText = string.Join(',', acceptableJobs);
+                if (acceptableJobsText != _loggedAcceptableJobs)
+                {
+                    _loggedAcceptableJobs = acceptableJobsText;
+                    logger.LogInformation("{QuestId} acceptableJobs: {AcceptableJobs}", Task.Quest.Id, acceptableJobsText);
+                }
                 if (acceptableJobs.Count == 0)
-                    throw new Exception(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
+                    throw new InvalidOperationException(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
+
+                // The game won't offer the quest on a class below its level.
+                List<Job> levelledJobs = [.. acceptableJobs.Where(x => gameState.GetClassJobLevel(x) >= Task.Quest.Info.Level)];
+                if (levelledJobs.Count > 0)
+                    acceptableJobs = levelledJobs;
 
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
-                // Reference first candidate to determine type of quest
-                Job firstItem = acceptableJobs[0];
-                Job candidate = firstItem;
                 if (!acceptableJobs.Contains(playerJob))
                 {
-                    if (acceptableJobs.Count > 1)
-                    {
-                        if (!firstItem.IsCrafter() && !firstItem.IsGatherer())
-                        {
-                            candidate = configuration.General.CombatJob;
-                            if (acceptableJobs.Contains(candidate))
-                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                            else
-                                logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}",
-                                    candidate, Task.Quest.Id);
-                        }
-                        if (firstItem.IsCrafter() ||
-                            (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && configuration.Advanced.NamazuPreferCraft && !firstItem.IsCrafter()))
-                        {
-                            candidate = configuration.General.CraftingJob;
-                            if (acceptableJobs.Contains(candidate))
-                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                            else
-                                logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}",
-                                    candidate, Task.Quest.Id);
-                        }
-                        else if (firstItem.IsGatherer() ||
-                            (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && !configuration.Advanced.NamazuPreferCraft && !firstItem.IsGatherer()))
-                        {
-                            candidate = configuration.General.GatheringJob;
-                            if (acceptableJobs.Contains(candidate))
-                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                            else
-                                logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}",
-                                    candidate, Task.Quest.Id);
-                        }
-                    }
-                    if (acceptableJobs.Count == 0)
-                        throw new Exception(_LF("_JobGearsetError", firstItem.ToFriendlyString(), Task.Quest.Info.Name));
+                    Job firstJob = acceptableJobs[0];
+                    Job candidate = SelectQuestJob(acceptableJobs, configuration, Task.Quest.Info.AlliedSociety,
+                        firstJob.IsCrafter(), firstJob.IsGatherer());
                     if (ClassJobUtils.ClassToJobStone(candidate) is (Job job, ushort item))
                     {
                         _unequipItem = item;
@@ -334,21 +422,21 @@ internal static class Interact
                         candidate = job;
                     }
 
-                    if (!classJobUtils.SwitchClassJob(candidate) && !_reportedWrongJob)
-                        throw new Exception(_LF("_JobGearsetError", candidate.ToFriendlyString(), Task.Quest.Info.Name));
-                    logger.LogInformation($"Switched from {playerJob} to {candidate}");
+                    if (!classJobUtils.SwitchJob(candidate) && !_reportedWrongJob)
+                        throw new InvalidOperationException(_LF("_JobGearsetError", candidate.ToFriendlyString(), Task.Quest.Info.Name));
+                    logger.LogInformation("Switched from {OldJob} to {NewJob}", playerJob, candidate);
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
                     return ETaskResult.StillRunning;
                 }
             }
 
-            // A class/job quest can only be progressed on the class it was accepted with — otherwise the game
-            // blocks with "You cannot continue this quest until the following conditions are met: Required
-            // Class/Job: X". Accepting a batch of quests (e.g. the accept-only flow) can leave a different
-            // class active, so before interacting to progress/complete an accepted quest, switch back to its
-            // accept class if needed. LookupQuestStartJob returns Job.ADV for quests with no such lock.
-            // So, even if a user manually interferes this allows us to resume questing with the correct class type :)
+            return null;
+        }
+
+        private ETaskResult? SwitchToQuestJob()
+        {
+            // Accepted class/job quests must be progressed on their original class; switch back before interacting.
             if (!_reportedWrongJob && Task.Quest != null &&
                 InteractionType is EInteractionType.CompleteQuest or EInteractionType.Interact &&
                 objectTable[0] is IPlayerCharacter completionPlayer &&
@@ -359,11 +447,11 @@ internal static class Interact
                 {
                     logger.LogInformation("Quest {QuestId} should be continued as {RequiredJob}, switching from {CurrentJob}",
                         Task.Quest.Id, requiredJob, (Job)completionPlayer.ClassJob.Value.RowId);
-                    if (!classJobUtils.SwitchClassJob(requiredJob))
+                    if (!classJobUtils.SwitchJob(requiredJob))
                     {
-                        chatGui.PrintError(_LF(
-                            "Quest {0} should be continued as {1}, but you do not have a gearset for that job.",
-                            Task.Quest.Info.Name, requiredJob));
+                        chatGui.Print(_LF(
+                            "Quest {0} should be continued as {1}, but you don't have a gear set for that job.",
+                            Task.Quest.Info.Name, requiredJob), CommandHandler.MessageTag, CommandHandler.TagColor);
                         _reportedWrongJob = true;
                     }
 
@@ -372,17 +460,7 @@ internal static class Interact
                 }
             }
 
-            bool isTargetable = gameObject.IsTargetable;
-            bool hasAnyMarker = HasAnyMarker(gameObject);
-            if (!isTargetable || !hasAnyMarker)
-            {
-                if (EzThrottler.Throttle("skipTarget", miliseconds: 1000))
-                    logger.LogDebug($"IsTargetable: {isTargetable} / HasAnyMarker: {hasAnyMarker}");
-                return ETaskResult.StillRunning;
-            }
-
-            TriggerInteraction(gameObject);
-            return ETaskResult.StillRunning;
+            return null;
         }
 
         public void OnConditionChange(ConditionFlag flag, bool value)
@@ -391,20 +469,41 @@ internal static class Interact
                 return;
 
             logger.LogDebug("Condition change: {Flag} = {Value}", flag, value);
-            if (_interactionState == EInteractionState.InteractionTriggered &&
+            if (_interactionState == EInteractionState.Triggered &&
                 flag is ConditionFlag.OccupiedInQuestEvent or ConditionFlag.OccupiedInEvent &&
                 value)
             {
                 logger.LogInformation("Interaction was most likely triggered");
-                _interactionState = EInteractionState.InteractionConfirmed;
+                _interactionState = EInteractionState.Confirmed;
             }
         }
+
+        // The game answers an out-of-range interact with "Too far away." while the call still reports success.
+        public bool OnErrorToast(SeString message)
+        {
+            if (!IsRefusal(_interactionState == EInteractionState.Triggered, _triggeredAt, DateTime.Now) ||
+                !toastClassifier.IsTooFarAway(message.TextValue))
+                return false;
+
+            logger.LogInformation("Too far away to interact with {DataId}, travelling to it again", Task.DataId);
+            ProgressContext = null;
+            _interactionState = EInteractionState.None;
+            _tooFar = true;
+            return false;
+        }
+
+        internal static bool IsRefusal(bool triggered, DateTime? triggeredAt, DateTime now) =>
+            triggered && triggeredAt is { } at && now - at <= RefusalWindow;
 
         public override bool ShouldInterruptOnDamage() => true;
 
         protected override bool Start()
         {
             InteractionType = Task.InteractionType;
+            _loggedAcceptableJobs = null;
+            _unmountTries = 0;
+            _landingTries = 0;
+            _reportedStillMounted = false;
 
             _needsFacing = true;
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
@@ -421,7 +520,6 @@ internal static class Interact
                 return false;
             }
 
-            // this is only relevant for followers on quests
             if (!gameObject.IsTargetable && condition[ConditionFlag.Mounted] &&
                 gameObject.ObjectKind != ObjectKind.GatheringPoint)
             {
@@ -441,7 +539,10 @@ internal static class Interact
                 InteractionProgressContext.FromActionUseOrDefault(() =>
                 {
                     if (gameFunctions.InteractWith(gameObject))
-                        _interactionState = EInteractionState.InteractionTriggered;
+                    {
+                        _interactionState = EInteractionState.Triggered;
+                        _triggeredAt = DateTime.Now;
+                    }
                     else
                         _interactionState = EInteractionState.None;
                     return _interactionState != EInteractionState.None;
@@ -461,8 +562,8 @@ internal static class Interact
         private enum EInteractionState
         {
             None,
-            InteractionTriggered,
-            InteractionConfirmed
+            Triggered,
+            Confirmed
         }
     }
 }

@@ -1,49 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Holy Rainbow Gloves HQ // Autocraft requires: 2x Holy Rainbow Cloth, 1x Rainbow Thread",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012548,
-          "Position": {
-            "X": 86.1676,
-            "Y": -4.734931,
-            "Z": -30.47229
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012549,
-          "Position": {
-            "X": -147.78369,
-            "Y": 14.998494,
-            "Z": -159.80774
-          },
-          "TerritoryId": 419,
+          "Position": [-147.78369, 14.998494, -159.80774],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSWVR530_02003_Q1_000_021",
@@ -56,29 +28,21 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012548,
-          "Position": {
-            "X": 86.1676,
-            "Y": -4.734931,
-            "Z": -30.47229
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "Position": [86.1676, -4.734931, -30.47229],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 419,
           "ItemId": 11966,
           "ItemCount": 1,
           "SkipConditions": {
@@ -91,12 +55,7 @@
         },
         {
           "DataId": 1012548,
-          "Position": {
-            "X": 86.1676,
-            "Y": -4.734931,
-            "Z": -30.47229
-          },
-          "TerritoryId": 419,
+          "Position": [86.1676, -4.734931, -30.47229],
           "InteractionType": "CompleteQuest"
         }
       ]

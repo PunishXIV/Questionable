@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039375,
-          "Position": {
-            "X": 148.3634,
-            "Y": 5.192836,
-            "Z": 611.2611
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039376,
-          "Position": {
-            "X": -15.640564,
-            "Y": 35.742054,
-            "Z": 392.20264
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-15.640564, 35.742054, 392.20264],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2011900,
-          "Position": {
-            "X": -17.135986,
-            "Y": 35.62976,
-            "Z": 394.39978
-          },
-          "TerritoryId": 957,
+          "Position": [-17.135986, 35.62976, 394.39978],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -55,32 +35,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039376,
-          "Position": {
-            "X": -15.640564,
-            "Y": 35.742054,
-            "Z": 392.20264
-          },
-          "TerritoryId": 957,
+          "Position": [-15.640564, 35.742054, 392.20264],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039377,
-          "Position": {
-            "X": 147.60046,
-            "Y": 5.186336,
-            "Z": 610.62024
-          },
-          "TerritoryId": 957,
+          "Position": [147.60046, 5.186336, 610.62024],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "DialogueChoices": [
             {
               "Type": "List",

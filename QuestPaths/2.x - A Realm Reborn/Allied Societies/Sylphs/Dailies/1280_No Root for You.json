@@ -1,40 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005563,
-          "Position": {
-            "X": 48.874634,
-            "Y": 6.0734596,
-            "Z": 251.17871
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "Comment": "Shifty Carpenter",
-          "Position": {
-            "X": 76.06616,
-            "Y": -27.906652,
-            "Z": -261.5244
-          },
-          "TerritoryId": 152,
+          "Position": [76.06616, -27.906652, -261.5244],
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}, {"Low": 3}
@@ -46,15 +27,9 @@
         },
         {
           "Comment": "Vorsaile",
-          "Position": {
-            "X": 101.91492,
-            "Y": -27.463612,
-            "Z": -308.27808
-          },
-          "TerritoryId": 152,
+          "Position": [101.91492, -27.463612, -308.27808],
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}, {"Low": 2}, {"Low": 5}
@@ -66,15 +41,9 @@
         },
         {
           "Comment": "Shifty Botanist",
-          "Position": {
-            "X": 94.19385,
-            "Y": -26.596497,
-            "Z": -338.91815
-          },
-          "TerritoryId": 152,
+          "Position": [94.19385, -26.596497, -338.91815],
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3}, {"Low": 4}
@@ -87,15 +56,9 @@
         {
           "Comment": "Shifty Conjurer",
           "DataId": 1008311,
-          "Position": {
-            "X": 92.48486,
-            "Y": -26.517061,
-            "Z": -363.9124
-          },
-          "TerritoryId": 152,
+          "Position": [92.48486, -26.517061, -363.9124],
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}, {"Low": 4}
@@ -107,15 +70,9 @@
         },
         {
           "Comment": "Shifty Youngling",
-          "Position": {
-            "X": 113.69495,
-            "Y": -27.054321,
-            "Z": -377.40143
-          },
-          "TerritoryId": 152,
+          "Position": [113.69495, -27.054321, -377.40143],
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3}, {"Low": 5}
@@ -127,15 +84,9 @@
         },
         {
           "Comment": "Shifty Leatherworker",
-          "Position": {
-            "X": 150.62183,
-            "Y": -24.002502,
-            "Z": -319.17297
-          },
-          "TerritoryId": 152,
+          "Position": [150.62183, -24.002502, -319.17297],
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2}, {"Low": 5}
@@ -148,15 +99,9 @@
         {
           "Comment": "Shifty Merchant",
           "DataId": 1008423,
-          "Position": {
-            "X": 118.73035,
-            "Y": -21.530518,
-            "Z": -297.71887
-          },
-          "TerritoryId": 152,
+          "Position": [118.73035, -21.530518, -297.71887],
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2}, {"Low": 4}
@@ -170,21 +115,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005563,
-          "Position": {
-            "X": 48.874634,
-            "Y": 6.0734596,
-            "Z": 251.17871
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

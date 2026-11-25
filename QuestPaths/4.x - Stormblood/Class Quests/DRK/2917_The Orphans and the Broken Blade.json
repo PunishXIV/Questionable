@@ -1,54 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1022885,
-          "Position": {
-            "X": 461.41748,
-            "Y": -51.141403,
-            "Z": 43.4729
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1022888,
-          "Position": {
-            "X": 252.58252,
-            "Y": -43.12347,
-            "Z": 627.06946
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Moghome"
+          "Position": [252.58252, -43.12347, 627.06946],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1022891,
-          "Position": {
-            "X": 154.25342,
-            "Y": -64.449585,
-            "Z": 678.06506
-          },
-          "TerritoryId": 400,
+          "Position": [154.25342, -64.449585, 678.06506],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -61,49 +38,34 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1022888,
-          "Position": {
-            "X": 252.58252,
-            "Y": -43.12347,
-            "Z": 627.06946
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [252.58252, -43.12347, 627.06946],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1022893,
-          "Position": {
-            "X": 418.53967,
-            "Y": -28.947046,
-            "Z": 89.25
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [418.53967, -28.947046, 89.25],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1022897,
-          "Position": {
-            "X": -166.24707,
-            "Y": -22.88001,
-            "Z": 289.38733
-          },
-          "TerritoryId": 400,
+          "Position": [-166.24707, -22.88001, 289.38733],
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -115,15 +77,11 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 2008665,
-          "Position": {
-            "X": -160.02142,
-            "Y": -22.995422,
-            "Z": 283.6194
-          },
-          "TerritoryId": 400,
+          "Position": [-160.02142, -22.995422, 283.6194],
           "InteractionType": "Action",
           "Action": "Souleater"
         }
@@ -131,33 +89,23 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1022900,
-          "Position": {
-            "X": -164.5686,
-            "Y": -22.88756,
-            "Z": 285.7556
-          },
-          "StopDistance": 5,
-          "TerritoryId": 400,
+          "Position": [-164.5686, -22.88756, 285.7556],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1022953,
-          "Position": {
-            "X": 253.0708,
-            "Y": -43.136364,
-            "Z": 626.88635
-          },
-          "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Moghome"
+          "Position": [253.0708, -43.136364, 626.88635],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

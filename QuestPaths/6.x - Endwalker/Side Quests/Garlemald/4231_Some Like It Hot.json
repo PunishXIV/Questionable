@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040646,
-          "Position": {
-            "X": 503.9292,
-            "Y": -36.65,
-            "Z": -253.07086
-          },
-          "TerritoryId": 958,
+          "Position": [503.9292, -36.65, -253.07086],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,42 +23,18 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": 545.40717,
-            "Y": -36.616177,
-            "Z": -267.17505
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          },
-          "$": "Without this step, it'll interact with the NPC in the wagon through the wall"
-        },
-        {
           "DataId": 1037766,
-          "Position": {
-            "X": 545.3115,
-            "Y": -36.616177,
-            "Z": -265.00348
-          },
-          "TerritoryId": 958,
+          "Position": [545.3115, -36.616177, -265.00348],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "$": "0 0 0 0 0 0 -> 1 32 0 0 0 64"
         },
         {
           "DataId": 1037774,
-          "Position": {
-            "X": 518.181,
-            "Y": -36.65,
-            "Z": -212.14618
-          },
-          "TerritoryId": 958,
+          "Position": [518.181, -36.65, -212.14618],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -76,12 +48,7 @@
         },
         {
           "DataId": 1040632,
-          "Position": {
-            "X": 537.4684,
-            "Y": -36.65,
-            "Z": -175.21942
-          },
-          "TerritoryId": 958,
+          "Position": [537.4684, -36.65, -175.21942],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -89,18 +56,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1040646,
-          "Position": {
-            "X": 503.9292,
-            "Y": -36.65,
-            "Z": -253.07086
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

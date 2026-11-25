@@ -1,85 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026242,
-          "Position": {
-            "X": 773.3424,
-            "Y": 80,
-            "Z": 437.70496
-          },
-          "StopDistance": 5,
-          "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1026247,
-          "Position": {
-            "X": -9.201294,
-            "Y": 0,
-            "Z": -5.44751
-          },
-          "TerritoryId": 351,
+          "Position": [-9.201294, 0, -5.44751],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1026249,
-          "Position": {
-            "X": 66.20886,
-            "Y": 40,
-            "Z": 69.93213
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [66.20886, 40, 69.93213],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1026249,
-          "Position": {
-            "X": 66.20886,
-            "Y": 40,
-            "Z": 69.93213
-          },
-          "TerritoryId": 128,
+          "Position": [66.20886, 40, 69.93213],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1025549,
-          "Position": {
-            "X": 1.4800415,
-            "Y": -1.1041565E-05,
-            "Z": -11.734253
-          },
-          "TerritoryId": 351,
+          "Position": [1.4800415, -1.1041565E-05, -11.734253],
           "InteractionType": "CompleteQuest"
         }
       ]

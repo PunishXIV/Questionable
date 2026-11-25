@@ -1,104 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": -745.7825,
-            "Y": 73,
-            "Z": 317.39563
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "DataId": 1014308,
-          "Position": {
-            "X": -746.12036,
-            "Y": 73,
-            "Z": 318.7456
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": -723.45496,
-            "Y": 81,
-            "Z": 378.70322
-          },
-          "TerritoryId": 400,
+          "Position": [-723.45496, 81, 378.70322],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4045
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": {
-            "X": -722.5188,
-            "Y": 80.999985,
-            "Z": 427.1239
-          },
-          "TerritoryId": 400,
+          "Position": [-722.5188, 80.999985, 427.1239],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4045
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": -765.2328,
-            "Y": 81,
-            "Z": 406.13608
-          },
-          "TerritoryId": 400,
+          "Position": [-765.2328, 81, 406.13608],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4045
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": -745.7825,
-            "Y": 73,
-            "Z": 317.39563
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1014308,
-          "Position": {
-            "X": -746.12036,
-            "Y": 73,
-            "Z": 318.7456
-          },
-          "TerritoryId": 400,
+          "Position": [-746.12036, 73, 318.7456],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1868
         }

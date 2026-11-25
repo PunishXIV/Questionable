@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040050,
-          "Position": {
-            "X": 560.32654,
-            "Y": 9.796983,
-            "Z": 63.70642
-          },
-          "TerritoryId": 961,
+          "Position": [560.32654, 9.796983, 63.70642],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,89 +23,50 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040043,
-          "Position": {
-            "X": 558.64795,
-            "Y": 9.127456,
-            "Z": 48.264282
-          },
-          "TerritoryId": 961,
+          "Position": [558.64795, 9.127456, 48.264282],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 2012020,
-          "Position": {
-            "X": 628.2388,
-            "Y": 8.316829,
-            "Z": 107.9021
-          },
-          "TerritoryId": 961,
+          "Position": [628.2388, 8.316829, 107.9021],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818374
         },
         {
-          "Position": {
-            "X": 475.2184,
-            "Y": -17.473314,
-            "Z": 47.986946
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": 477.34882,
-              "Y": -16.407324,
-              "Z": 43.802086
-            },
-            "DelaySeconds": 0.25
-          }
-        },
-        {
           "DataId": 1040052,
-          "Position": {
-            "X": 349.14172,
-            "Y": -14.766006,
-            "Z": -111.61981
-          },
-          "TerritoryId": 961,
+          "Position": [349.14172, -14.766006, -111.61981],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040055,
-          "Position": {
-            "X": 349.5078,
-            "Y": -14.757837,
-            "Z": -115.15985
-          },
-          "StopDistance": 7,
-          "TerritoryId": 961,
+          "Position": [349.5078, -14.757837, -115.15985],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040061,
-          "Position": {
-            "X": -2.1210327,
-            "Y": -15.847441,
-            "Z": -104.631165
-          },
-          "TerritoryId": 961,
+          "Position": [-2.1210327, -15.847441, -104.631165],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_AKTKME107_04425_SAYTODO_000_190"
@@ -119,15 +76,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040061,
-          "Position": {
-            "X": -2.1210327,
-            "Y": -15.847441,
-            "Z": -104.631165
-          },
-          "TerritoryId": 961,
+          "Position": [-2.1210327, -15.847441, -104.631165],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_AKTKME107_04425_SAYTODO_000_210"
@@ -137,33 +90,10 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": -55.662647,
-            "Y": -16.696985,
-            "Z": -81.29199
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 961,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": -58.75509,
-              "Y": -15.402463,
-              "Z": -83.133934
-            }
-          },
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": -64.19198,
-            "Y": -15.332472,
-            "Z": -84.65695
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 961,
+          "Position": [-64.19198, -15.332472, -84.65695],
           "InteractionType": "Emote",
           "Emote": "wave"
         }
@@ -171,17 +101,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040069,
-          "Position": {
-            "X": 134.90503,
-            "Y": 10.385856,
-            "Z": 88.91431
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis"
+          "Position": [134.90503, 10.385856, 88.91431],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

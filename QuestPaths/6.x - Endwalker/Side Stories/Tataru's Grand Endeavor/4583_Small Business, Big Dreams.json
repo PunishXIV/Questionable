@@ -1,166 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042599,
-          "Position": {
-            "X": 31.998047,
-            "Y": 5.1499996,
-            "Z": -67.73486
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "Position": {
-            "X": -265.16965,
-            "Y": 8.184065,
-            "Z": 183.24426
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
-        },
-        {
-          "Position": {
-            "X": -280.7175,
-            "Y": 10.35225,
-            "Z": 197.09795
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -279.7466,
-            "Y": 11.3272505,
-            "Z": 188.46881
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -271.0631,
-            "Y": 11.852187,
-            "Z": 188.60892
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": -266.19342,
-            "Y": 11.852209,
-            "Z": 190.92015
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -278.93945,
-            "Y": 14.847251,
-            "Z": 194.7018
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1000837,
-          "Position": {
-            "X": -289.7536,
-            "Y": 16.347252,
-            "Z": 194.53723
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "Position": [-289.7536, 16.347252, 194.53723],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000100,
-          "Position": {
-            "X": 25.872286,
-            "Y": -8.000001,
-            "Z": 115.7687
-          },
-          "StopDistance": 1,
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "Position": [25.872286, -8.000001, 115.7687],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 2012878,
-          "Position": {
-            "X": 129.65588,
-            "Y": -13.565308,
-            "Z": 156.35913
-          },
-          "TerritoryId": 132,
+          "Position": [129.65588, -13.565308, 156.35913],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1042600,
-          "Position": {
-            "X": -20.431885,
-            "Y": 14.000006,
-            "Z": 5.2948
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "Position": [-20.431885, 14.000006, 5.2948],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1042599,
-          "Position": {
-            "X": 31.998047,
-            "Y": 5.1499996,
-            "Z": -67.73486
-          },
-          "TerritoryId": 962,
+          "Position": [31.998047, 5.1499996, -67.73486],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
           "NextQuestId": 4650
         }
       ]

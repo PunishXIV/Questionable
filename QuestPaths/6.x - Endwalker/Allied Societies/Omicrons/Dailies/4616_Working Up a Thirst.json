@@ -1,233 +1,88 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1044051,
-          "Position": {
-            "X": -543.20593,
-            "Y": 72.39467,
-            "Z": 298.146
-          },
-          "TerritoryId": 960,
+          "Position": [-543.20593, 72.39467, 298.146],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 1}
             ],null,null
           ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "RequiredQuestVariablesNotMet": true
-            }
-          },
-          "Land": true,
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1044052,
-          "Position": {
-            "X": -110.27698,
-            "Y": 53.589848,
-            "Z": 538.41455
-          },
-          "TerritoryId": 960,
+          "Position": [-110.27698, 53.589848, 538.41455],
           "InteractionType": "Interact",
-          "StopDistance": 1,
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 1}
             ],null,null
           ],
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "RequiredQuestVariablesNotMet": true
-            }
-          },
-          "Fly": true,
           "$": "It's the only pair that increases the significant element by 16"
         },
         {
           "DataId": 1044054,
-          "Position": {
-            "X": 83.69568,
-            "Y": 269.0921,
-            "Z": -483.0854
-          },
-          "TerritoryId": 960,
+          "Position": [83.69568, 269.0921, -483.0854],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 2}
             ],null,null
-          ],
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "RequiredQuestVariablesNotMet": true
-            }
-          },
-          "Land": true,
-          "Fly": true
+          ]
         },
         {
           "DataId": 1044053,
-          "Position": {
-            "X": -225.66571,
-            "Y": 271.7499,
-            "Z": -308.6748
-          },
-          "TerritoryId": 960,
+          "Position": [-225.66571, 271.7499, -308.6748],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 2}
             ],null,null
-          ],
-          "Land": true,
-          "Fly": true
+          ]
         },
         {
           "DataId": 1044056,
-          "Position": {
-            "X": 582.7573,
-            "Y": 441.71567,
-            "Z": 427.9392
-          },
-          "TerritoryId": 960,
+          "Position": [582.7573, 441.71567, 427.9392],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 3}
             ],null,null
-          ],
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "RequiredQuestVariablesNotMet": true
-            }
-          },
-          "Land": true,
-          "Fly": true
+          ]
         },
         {
           "DataId": 1044055,
-          "Position": {
-            "X": 636.59106,
-            "Y": 438.6276,
-            "Z": 271.5343
-          },
-          "TerritoryId": 960,
+          "Position": [636.59106, 438.6276, 271.5343],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 3}
             ],null,null
-          ],
-          "Land": true,
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "CompleteQuest"
         }
       ]

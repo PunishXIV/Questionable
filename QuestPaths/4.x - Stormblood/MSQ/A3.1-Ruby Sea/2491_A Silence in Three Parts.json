@@ -1,66 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020186,
-          "Position": {
-            "X": -761.7761,
-            "Y": 4.763445,
-            "Z": -460.01373
-          },
-          "StopDistance": 5,
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": -831.06116,
-            "Y": 20.168653,
-            "Z": -266.25217
-          },
-          "TerritoryId": 613,
+          "Position": [-831.06116, 20.168653, -266.25217],
           "InteractionType": "WalkTo",
-          "TargetTerritoryId": 614,
-          "Fly": true
+          "TargetTerritoryId": 614
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019994,
-          "Position": {
-            "X": 790.4325,
-            "Y": 99.489136,
-            "Z": -290.8523
-          },
-          "TerritoryId": 614,
+          "Position": [790.4325, 99.489136, -290.8523],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019997,
-          "Position": {
-            "X": 527.9164,
-            "Y": 43.697002,
-            "Z": -156.05408
-          },
-          "TerritoryId": 614,
+          "Position": [527.9164, 43.697002, -156.05408],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,92 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037969,
-          "Position": {
-            "X": -611.90204,
-            "Y": -22.39482,
-            "Z": 510.42944
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041141,
-          "Position": {
-            "X": -614.313,
-            "Y": -22.39482,
-            "Z": 509.72766
-          },
-          "TerritoryId": 961,
+          "Position": [-614.313, -22.39482, 509.72766],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1041141,
-          "Position": {
-            "X": -655.5854,
-            "Y": -22.394821,
-            "Z": 498.91443
-          },
-          "StopDistance": 1,
-          "TerritoryId": 961,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Mount": true
-        },
-        {
-          "DataId": 1041141,
-          "Position": {
-            "X": -686.881,
-            "Y": -25.994936,
-            "Z": 443.804
-          },
-          "StopDistance": 1,
-          "TerritoryId": 961,
+          "Position": [-655.5854, -22.394821, 498.91443],
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1041141,
-          "Position": {
-            "X": -738.11304,
-            "Y": -25.933691,
-            "Z": 487.78436
-          },
-          "StopDistance": 1,
-          "TerritoryId": 961,
+          "Position": [-686.881, -25.994936, 443.804],
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
-          "Position": {
-            "X": -819.6994,
-            "Y": -38.65795,
-            "Z": 506.43152
-          },
-          "StopDistance": 1,
-          "TerritoryId": 961,
+          "DataId": 1041141,
+          "Position": [-738.11304, -25.933691, 487.78436],
+          "InteractionType": "WaitForNpcAtPosition"
+        },
+        {
+          "Position": [-819.6994, -38.65795, 506.43152],
           "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": -838.7837,
-            "Y": -39.605896,
-            "Z": 518.9479
-          },
-          "TerritoryId": 961,
+          "Position": [-838.7837, -39.605896, 518.9479],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -98,33 +54,18 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041137,
-          "Position": {
-            "X": -819.6994,
-            "Y": -38.65795,
-            "Z": 506.43152
-          },
-          "TerritoryId": 961,
+          "Position": [-819.6994, -38.65795, 506.43152],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037969,
-          "Position": {
-            "X": -611.90204,
-            "Y": -22.39482,
-            "Z": 510.42944
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

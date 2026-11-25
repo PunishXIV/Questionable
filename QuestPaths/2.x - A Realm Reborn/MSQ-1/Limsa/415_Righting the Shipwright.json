@@ -1,72 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002274,
-          "Position": {
-            "X": -34.65332,
-            "Y": 8.921356,
-            "Z": 861.4479
-          },
-          "TerritoryId": 135,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002456,
-          "Position": {
-            "X": -94.86542,
-            "Y": 2.3717625,
-            "Z": 734.2793
-          },
-          "TerritoryId": 135,
+          "Position": [-94.86542, 2.3717625, 734.2793],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 2000769,
-          "Position": {
-            "X": -145.09808,
-            "Y": 1.0527954,
-            "Z": 709.10205
-          },
-          "StopDistance": 4,
-          "TerritoryId": 135,
+          "Position": [-145.09808, 1.0527954, 709.10205],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2000770,
-          "Position": {
-            "X": -185.68707,
-            "Y": -0.13739014,
-            "Z": 694.6669
-          },
-          "TerritoryId": 135,
+          "Position": [-185.68707, -0.13739014, 694.6669],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2000771,
-          "Position": {
-            "X": -168.84113,
-            "Y": 1.9683228,
-            "Z": 659.327
-          },
-          "TerritoryId": 135,
+          "Position": [-168.84113, 1.9683228, 659.327],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -74,32 +44,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002456,
-          "Position": {
-            "X": -94.86542,
-            "Y": 2.3717625,
-            "Z": 734.2793
-          },
-          "TerritoryId": 135,
+          "Position": [-94.86542, 2.3717625, 734.2793],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002238,
-          "Position": {
-            "X": 247.36401,
-            "Y": 14.02301,
-            "Z": 611.9325
-          },
-          "TerritoryId": 135,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "Position": [247.36401, 14.02301, 611.9325],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

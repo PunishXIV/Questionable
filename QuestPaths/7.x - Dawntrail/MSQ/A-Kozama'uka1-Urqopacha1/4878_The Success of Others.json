@@ -1,108 +1,56 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046537,
-          "Position": {
-            "X": -32.822205,
-            "Y": -10.00001,
-            "Z": 142.93127
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046761,
-          "Position": {
-            "X": -32.669617,
-            "Y": -10.0000105,
-            "Z": 143.72461
-          },
-          "TerritoryId": 1185,
+          "Position": [-32.669617, -10.0000105, 143.72461],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047095,
-          "Position": {
-            "X": 139.5437,
-            "Y": -13.99,
-            "Z": 10.60498
-          },
-          "TerritoryId": 1185,
+          "Position": [139.5437, -13.99, 10.60498],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Tuliyollal] Wachumeqimeqi"
         },
         {
-          "Position": {
-            "X": -130.34163,
-            "Y": -14.999287,
-            "Z": 198.40685
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
-        },
-        {
-          "Position": {
-            "X": -122.40268,
-            "Y": -19.754322,
-            "Z": 202.20439
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1046763,
-          "Position": {
-            "X": -114.64105,
-            "Y": -19.642736,
-            "Z": 201.12915
-          },
-          "TerritoryId": 1185,
+          "Position": [-114.64105, -19.642736, 201.12915],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046762,
-          "Position": {
-            "X": -112.56586,
-            "Y": -19.725424,
-            "Z": 203.72314
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1185,
+          "Position": [-112.56586, -19.725424, 203.72314],
           "InteractionType": "CompleteQuest"
         }
       ]

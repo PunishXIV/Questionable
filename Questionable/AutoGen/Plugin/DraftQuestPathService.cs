@@ -2,16 +2,8 @@
 // Initial version reviewed and owned by @Deckerz
 
 using Questionable.AutoGen.Generation;
-using Questionable.Model.Questing;
-
-
 namespace Questionable.AutoGen.Plugin;
 
-/// <summary>
-///     In-game entry point for the questpath auto-generator: turns a journal quest without a path into a draft
-///     file in the user's <c>Quests</c> directory and reloads the registry so it is picked up immediately.
-///     The heavy lifting lives in <see cref="QuestPathAutoGenerator"/>.
-/// </summary>
 [RegisterSingleton]
 internal sealed class DraftQuestPathService(
     QuestPathGeneratorFactory generatorFactory,
@@ -20,15 +12,8 @@ internal sealed class DraftQuestPathService(
     IChatGui chatGui,
     ILogger<DraftQuestPathService> logger)
 {
-    /// <summary>
-    ///     Generation is opt-in via <c>Advanced.AllowPathGeneration</c>, and additionally requires that drafts
-    ///     can actually load: they land in the user quest directory, which the registry only reads under the
-    ///     same conditions as <see cref="QuestRegistry.Reload"/> — generating a file that would never load
-    ///     helps nobody.
-    /// </summary>
     internal bool CanGenerateDrafts => configuration.Advanced.AllowPathGeneration && UserDirectoryIsLoaded;
 
-    /// <summary>Whether the registry reads the user <c>Quests</c> directory at all.</summary>
     internal bool UserDirectoryIsLoaded => configuration.Advanced.Debug || pluginInterface.IsDev
 #if DEBUG
         || true
@@ -72,7 +57,7 @@ internal sealed class DraftQuestPathService(
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
         }
-#pragma warning disable CA1031 // a failed draft should never take the UI down with it
+#pragma warning disable CA1031
         catch (Exception e)
         {
             logger.LogError(e, "Unable to generate draft quest path for {QuestId}", questInfo.QuestId);

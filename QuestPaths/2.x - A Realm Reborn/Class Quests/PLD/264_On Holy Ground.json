@@ -1,125 +1,72 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1004225,
-          "Position": {
-            "X": 62.974,
-            "Y": 54.60642,
-            "Z": 284.90112
-          },
-          "TerritoryId": 140,
+          "Position": [62.974, 54.60642, 284.90112],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             1243
-          ],
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1004225,
-          "Position": {
-            "X": 62.974,
-            "Y": 54.60642,
-            "Z": 284.90112
-          },
-          "TerritoryId": 140,
+          "Position": [62.974, 54.60642, 284.90112],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "Position": [-94.529724, 6.4999976, 39.81079],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002277,
-          "Position": {
-            "X": -97.550964,
-            "Y": 7.05,
-            "Z": 23.605652
-          },
-          "TerritoryId": 131,
+          "Position": [-97.550964, 7.05, 23.605652],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1004141,
-          "Position": {
-            "X": -520.5005,
-            "Y": -21.460285,
-            "Z": 123.46069
-          },
-          "TerritoryId": 145,
+          "Position": [-520.5005, -21.460285, 123.46069],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.4.21.1"
+            "Enabled": true
           },
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -132,20 +79,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "NextQuestId": 265
         }
       ]

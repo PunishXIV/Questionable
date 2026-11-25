@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,114 +8,38 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037527,
-          "Position": {
-            "X": 442.889,
-            "Y": 65.162,
-            "Z": -93.4299
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": 735.042,
-            "Y": 170.636,
-            "Z": -414.633
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 2011814,
-          "Position": {
-            "X": 735.042,
-            "Y": 170.636,
-            "Z": -414.633
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
+          "Position": [735.042, 170.636, -414.633],
           "Mount": false,
-          "Sprint": false
-        },
-        {
-          "Position": {
-            "X": 837.705,
-            "Y": 171.405,
-            "Z": -477.745
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1
         },
         {
           "DataId": 2011815,
-          "Position": {
-            "X": 837.705,
-            "Y": 171.405,
-            "Z": -477.745
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
+          "Position": [837.705, 171.405, -477.745],
           "Mount": false,
-          "Sprint": false
-        },
-        {
-          "Position": {
-            "X": 843.608,
-            "Y": 177.07,
-            "Z": -386.455
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1
         },
         {
           "DataId": 2011816,
-          "Position": {
-            "X": 843.608,
-            "Y": 177.07,
-            "Z": -386.455
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
+          "Position": [843.608, 177.07, -386.455],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037527,
-          "Position": {
-            "X": 442.889,
-            "Y": 65.162,
-            "Z": -93.4299
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

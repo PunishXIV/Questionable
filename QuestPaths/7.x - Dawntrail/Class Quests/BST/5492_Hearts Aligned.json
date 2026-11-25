@@ -1,0 +1,440 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
+  "Author": "alydev",
+  "Comment": "Quest requires level 16 by the end\nCurrently we are overriding the minimum level to indicate this requirement",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "InteractionType": "Action",
+          "Action": "First Battlehorn"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "FillGauge"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Trick"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Avalanche Axe"
+        },
+        {
+          "InteractionType": "Action",
+          "Action": "First Battlehorn"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "FillGauge"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Trick"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Avalanche Axe"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Beastmaster"
+        },
+        {
+          "DataId": 1059325,
+          "Position": [72.2791, -6.47596, -117.274],
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": [72.2791, -6.47596, -117.274],
+                "TerritoryId": 148,
+                "MaximumDistance": 10
+              }
+            }
+          },
+          "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
+        },
+        {
+          "DataId": 1059325,
+          "Position": [72.2791, -6.47596, -117.274],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059327,
+          "Position": [-38.8953, -32.2804, 326.131],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059327 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 19312,
+          "Position": [-137.27974, -25.445045, 373.85355],
+          "InteractionType": "Capture",
+          "PetId": 13,
+          "$": "Geshunpest, Lv14, crypt below"
+        },
+        {
+          "InteractionType": "AssignBattlehorn",
+          "PetId": 13,
+          "Battlehorn": 2
+        },
+        {
+          "InteractionType": "Action",
+          "Action": "Second Battlehorn"
+        },
+        {
+          "DataId": 1059327,
+          "Position": [-38.8953, -32.2804, 326.131],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "InteractionType": "Action",
+          "Action": "First Battlehorn"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "FillGauge"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Trick"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Mistral Axe"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "FillGauge"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Gale Axe"
+        },
+        {
+          "DataId": 19456,
+          "Position": [126.783066, -6.9812546, -83.18186],
+          "InteractionType": "Action",
+          "Action": "Trick"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 341,
+          "Position": [-145.08, 46.38, -153.61],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 14,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Puk hatchling, Lv8"
+        },
+        {
+          "DataId": 323,
+          "Position": [-181.49, 42.51, -207.21],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 26,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Wounded aurochs, Lv8"
+        },
+        {
+          "DataId": 326,
+          "Position": [-324.79, 18.46, -374.63],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 9,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Megalocrab, Lv10-13"
+        },
+        {
+          "DataId": 175,
+          "Position": [262.02, 52.86, 148.49],
+          "TerritoryId": 140,
+          "InteractionType": "Capture",
+          "PetId": 22,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Cactuar, Lv4"
+        },
+        {
+          "DataId": 12,
+          "Position": [-37.67, 51.44, 240.6],
+          "TerritoryId": 140,
+          "InteractionType": "Capture",
+          "PetId": 11,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Nesting buzzard, Lv6"
+        },
+        {
+          "DataId": 187,
+          "Position": [24.95, 52.48, 274.47],
+          "TerritoryId": 140,
+          "InteractionType": "Capture",
+          "PetId": 7,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Rusty coblyn, Lv6-8"
+        },
+        {
+          "DataId": 382,
+          "Position": [-271.6, 15.46, -238.53],
+          "TerritoryId": 140,
+          "InteractionType": "Capture",
+          "PetId": 15,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Thickshell, Lv13"
+        },
+        {
+          "DataId": 389,
+          "Position": [-234.92, 15.88, -302.41],
+          "TerritoryId": 140,
+          "InteractionType": "Capture",
+          "PetId": 27,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Scaphite, Lv14"
+        },
+        {
+          "DataId": 385,
+          "Position": [-74.91, 0.75, 219.74],
+          "TerritoryId": 141,
+          "InteractionType": "Capture",
+          "PetId": 10,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Huge hornet, Lv1"
+        },
+        {
+          "DataId": 101,
+          "Position": [-190.91, -28.36, 80.19],
+          "TerritoryId": 141,
+          "InteractionType": "Capture",
+          "PetId": 29,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Spriggan graverobber, Lv7"
+        },
+        {
+          "DataId": 397,
+          "Position": [14.69, -22.92, 83.94],
+          "TerritoryId": 138,
+          "InteractionType": "Capture",
+          "PetId": 16,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Killer mantis, Lv16"
+        },
+        {
+          "DataId": 181,
+          "Position": [110.53, -17.09, 59.45],
+          "TerritoryId": 138,
+          "InteractionType": "Capture",
+          "PetId": 21,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Rothlyt pelican, Lv16"
+        },
+        {
+          "DataId": 22,
+          "Position": [58.61, -17.29, 179.34],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 20,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Roselet, Lv10"
+        },
+        {
+          "DataId": 10,
+          "Position": [-96.53, 3.68, -159.78],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 8,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Diremite, Lv10"
+        },
+        {
+          "DataId": 1446,
+          "Position": [180.57, -0.92, -149.15],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 36,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Treant sapling, Lv12"
+        },
+        {
+          "DataId": 160,
+          "Position": [233.24, -5.64, -176.65],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 41,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Black eft, Lv6"
+        },
+        {
+          "DataId": 142,
+          "Position": [464.15, 20.49, -61.85],
+          "TerritoryId": 148,
+          "InteractionType": "Capture",
+          "PetId": 34,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 16
+            }
+          },
+          "$": "Anole, Lv9"
+        },
+        {
+          "Comment": "You might get stuck in HandleCombat with the target dummy; interact manually with the guy to finish the quest",
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    }
+  ]
+}

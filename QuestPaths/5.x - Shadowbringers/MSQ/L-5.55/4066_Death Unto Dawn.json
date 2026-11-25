@@ -1,34 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "DataId": 1000460,
-          "Position": {
-            "X": -159.41101,
-            "Y": 4.054107,
-            "Z": -4.1047363
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 205,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {"StepIf": {"InTerritory": [205]}}
-        },
-        {
           "DataId": 1003027,
-          "Position": {
-            "X": 4.8981323,
-            "Y": -1.92944,
-            "Z": -0.19836426
-          },
+          "Position": [4.8981323, -1.92944, -0.19836426],
           "TerritoryId": 205,
           "InteractionType": "AcceptQuest"
         }
@@ -36,51 +17,32 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1036439,
-          "Position": {
-            "X": 57.90796,
-            "Y": -8.556444,
-            "Z": 107.16406
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "Position": [57.90796, -8.556444, 107.16406],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1036441,
-          "Position": {
-            "X": 32.60852,
-            "Y": -19.000002,
-            "Z": 103.34924
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
+          "Position": [32.60852, -19.000002, 103.34924],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.293",
-            "Notes": [
-              "(Lunar Odin) AI doesn't pull Odin to start combat",
-              "(Lunar Ravana) AI doesn't pull Ravana to start combat",
-              "(Lunar Ravana) AI doesn't move out of directional parry directions"
-            ]
-          },
-          "Comment": "Death Unto Dawn"
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 351,
       "Steps": [
         {
-          "TerritoryId": 351,
           "InteractionType": "None",
           "Comment": "Credits"
         }
@@ -88,15 +50,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1036444,
-          "Position": {
-            "X": -1.6937866,
-            "Y": 0,
-            "Z": -4.135254
-          },
-          "TerritoryId": 351,
+          "Position": [-1.6937866, 0, -4.135254],
           "InteractionType": "CompleteQuest"
         }
       ]

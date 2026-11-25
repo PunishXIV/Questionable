@@ -1,39 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": { "Username": "alydev", "Date": "2026-06-02" },
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1310,
-          "Fly": true,
-          "Comment": "Select the destination Oizys (#3)",
-          "DialogueChoices": [
-            {
-              "Prompt": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_000",
-              "Answer": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_005",
-              "Type": "List",
-              "ExcelSheet": "custom/009/CtsWksEntrance_00921"
-            }
-          ]
-        },
-        {
           "DataId": 1053352,
-          "Position": {
-            "X": -161.05902,
-            "Y": 0.49999338,
-            "Z": 147.05115
-          },
+          "Position": [-161.05902, 0.49999338, 147.05115],
           "TerritoryId": 1310,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -48,48 +24,29 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1310,
       "Steps": [
         {
           "DataId": 1053353,
-          "Position": {
-            "X": -284.7486,
-            "Y": 0.5000241,
-            "Z": 192.37048
-          },
-          "TerritoryId": 1310,
+          "Position": [-284.7486, 0.5000241, 192.37048],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1310,
       "Steps": [
         {
           "DataId": 1053355,
-          "Position": {
-            "X": -136.8277,
-            "Y": 0.61658406,
-            "Z": 42.770996
-          },
-          "TerritoryId": 1310,
+          "Position": [-136.8277, 0.61658406, 42.770996],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1053352,
-          "Position": {
-            "X": -161.05902,
-            "Y": 0.49999338,
-            "Z": 147.05115
-          },
-          "TerritoryId": 1310,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

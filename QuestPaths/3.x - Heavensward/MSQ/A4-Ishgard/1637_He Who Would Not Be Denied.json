@@ -1,56 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012750,
-          "Position": {
-            "X": -163.89722,
-            "Y": 27.979128,
-            "Z": -116.41113
-          },
-          "StopDistance": 7,
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1011217,
-          "Position": {
-            "X": 17.990356,
-            "Y": 16.009666,
-            "Z": -9.567444
-          },
-          "TerritoryId": 419,
+          "Position": [17.990356, 16.009666, -9.567444],
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 433,
       "Steps": [
         {
           "DataId": 1012753,
-          "Position": {
-            "X": 2.5787354,
-            "Y": -9.313226E-10,
-            "Z": 7.6447144
-          },
-          "StopDistance": 5,
-          "TerritoryId": 433,
+          "Position": [2.5787354, -9.313226E-10, 7.6447144],
           "InteractionType": "CompleteQuest"
         }
       ]

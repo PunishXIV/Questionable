@@ -1,120 +1,55 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "Gezah",
 	"LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence":
 	[
 	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1002299,
-			"Position":
-			{
-				"X": -98.8938,
-				"Y": 40.200146,
-				"Z": 120.83618
-			},
-			"TerritoryId": 131,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Alchemists' Guild"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			}
-		}
-		]
+	  "Sequence": 0,
+	  "Steps": []
 	},
 	{
 		"Sequence": 1,
+		"TerritoryId": 130,
 		"Steps":
 		[			
 		{
 			"DataId": 1020094,
 			"Position":
-			{
-				"X": -151.47632,
-				"Y": 14.005,
-				"Z": 66.20886
-			},
-			"TerritoryId": 130,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Alchemists' Guild",
-			"[Ul'dah] Thaumaturges' Guild"
-			]
+			[-151.47632, 14.005, 66.20886],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 2,
+		"TerritoryId": 130,
 		"Steps":
 		[			
 		{
 			"DataId": 1020095,
 			"Position":
-			{
-				"X": -119.798584,
-				"Y": 10,
-				"Z": 73.59424
-			},
-			"TerritoryId": 130,
+			[-119.798584, 10, 73.59424],
 			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 3,
+		"TerritoryId": 130,
 		"Steps":
 		[			
 		{
 			"DataId": 2008090,
 			"Position":
-			{
-				"X": -120.19531,
-				"Y": 11.24585,
-				"Z": 70.29822
-			},
-			"TerritoryId": 130,
+			[-120.19531, 11.24585, 70.29822],
 			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
-		"Sequence": 255,
-		"Steps":
-		[			
-		{
-			"DataId": 1002299,
-			"Position":
-			{
-				"X": -98.8938,
-				"Y": 40.200146,
-				"Z": 120.83618
-			},
-			"TerritoryId": 131,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Thaumaturges' Guild",
-			"[Ul'dah] Alchemists' Guild"
-			]
-		}
-		]
+	  "Sequence": 255,
+	  "Steps": []
 	}
 	]
 }

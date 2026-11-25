@@ -1,77 +1,23 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "$": "There are several Feral Crocs in the area. UseItem targets the first one in the object table (?), which may not be at the same spot each time. It also does not execute movement to get closer to a target. In order to have this task complete automatically, we need to either path towards targets before UseItem, or ensure that UseItem's target is limited to a range around the character.",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["Censored", "alydev"],
   "Comment": "Requires manual interaction",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009213,
-          "Position": {
-            "X": 162.01082,
-            "Y": -4.7442336,
-            "Z": 64.199814
-          },
-          "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 244.82239,
-            "Y": 222.01717,
-            "Z": 352.99496
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 249.7828,
-                  "Y": 222,
-                  "Z": 364.6475
-                },
-                "TerritoryId": 155,
-                "MaximumDistance": 5
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 320.39117,
-            "Y": 255.37843,
-            "Z": 129.43526
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
-        {
           "DataId": 395,
-          "Position": {
-            "X": 326.40576,
-            "Y": 256.4665,
-            "Z": 129.65588
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WaitForManualProgress",
-          "Comment": "Manual: Use Shearing Knife on Feral Croc",
-          "ItemId": 2001403,
+          "Position": [326.40576, 256.4665, 129.65588],
           "Mount": false,
+          "InteractionType": "UseItem",
+          "ItemId": 2001403,
           "CompletionQuestVariablesFlags": [
             { "High": 1 },
             null,
@@ -83,54 +29,36 @@
         },
         {
           "DataId": 1006385,
-          "Position": {
-            "X": 241.50452,
-            "Y": 222.25885,
-            "Z": 325.45972
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [241.50452, 222.25885, 325.45972],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009219,
-          "Position": {
-            "X": 251.11768,
-            "Y": 222,
-            "Z": 366.2317
-          },
-          "TerritoryId": 155,
+          "Position": [251.11768, 222, 366.2317],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "Craft",
           "ItemId": 8102,
           "ItemCount": 1
         },
         {
           "DataId": 1009213,
-          "Position": {
-            "X": 162.01082,
-            "Y": -4.7442336,
-            "Z": 64.199814
-          },
+          "Position": [162.01082, -4.7442336, 64.199814],
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

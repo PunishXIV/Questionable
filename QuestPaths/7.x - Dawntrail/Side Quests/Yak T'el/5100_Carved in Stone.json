@@ -1,33 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048982,
-          "Position": {
-            "X": 595.45276,
-            "Y": -137.17401,
-            "Z": 564.8126
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2014250,
-          "Position": {
-            "X": 598.3214,
-            "Y": -137.19391,
-            "Z": 557.7018
-          },
-          "TerritoryId": 1189,
+          "Position": [598.3214, -137.19391, 557.7018],
           "InteractionType": "Snipe",
           "Comment": "Inspect Flag, Red Head, Blue Head"
         }
@@ -35,19 +20,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048982,
-          "Position": {
-            "X": 595.45276,
-            "Y": -137.17401,
-            "Z": 564.8126
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

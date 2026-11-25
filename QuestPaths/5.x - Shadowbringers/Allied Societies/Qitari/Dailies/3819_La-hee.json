@@ -1,62 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032413,
-          "Position": {
-            "X": 144.36548,
-            "Y": -19.982845,
-            "Z": -459.8001
-          },
-          "TerritoryId": 817,
+          "Position": [144.36548, -19.982845, -459.8001],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANQIQ114_03819_SAYTODO_000_000"
-          },
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

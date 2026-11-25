@@ -1,34 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "croizat",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006586,
-          "Position": {
-            "X": 199.26746,
-            "Y": 10.380431,
-            "Z": -85.404785
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": 391.67035,
-            "Y": -0.12984455,
-            "Z": 122.68336
-          },
-          "TerritoryId": 153,
+          "Position": [391.67035, -0.12984455, 122.68336],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -44,19 +28,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006586,
-          "Position": {
-            "X": 199.26746,
-            "Y": 10.380431,
-            "Z": -85.404785
-          },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

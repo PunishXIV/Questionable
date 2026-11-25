@@ -1,70 +1,31 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038013,
-          "Position": {
-            "X": -551.8425,
-            "Y": 72.58038,
-            "Z": 232.6543
-          },
-          "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -551.8425,
-                  "Y": 72.58038,
-                  "Z": 232.6543
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1040875,
-          "Position": {
-            "X": -717.6166,
-            "Y": 66.99921,
-            "Z": -121.66028
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 5
+          "Position": [-717.6166, 66.99921, -121.66028],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1040875,
-          "Position": {
-            "X": -717.6166,
-            "Y": 66.99921,
-            "Z": -121.66028
-          },
-          "TerritoryId": 960,
-          "Fly": true,
+          "Position": [-717.6166, 66.99921, -121.66028],
           "InteractionType": "Emote",
           "Emote": "pet",
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -77,34 +38,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1038013,
-          "Position": {
-            "X": -551.8425,
-            "Y": 72.58038,
-            "Z": 232.6543
-          },
-          "TerritoryId": 960,
-          "Fly": true,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -551.8425,
-                  "Y": 72.58038,
-                  "Z": 232.6543
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

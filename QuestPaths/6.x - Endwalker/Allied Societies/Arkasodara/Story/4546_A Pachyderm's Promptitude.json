@@ -1,191 +1,123 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042300,
-          "Position": {
-            "X": -76.82922,
-            "Y": 39.986862,
-            "Z": 309.98706
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012919,
-          "Position": {
-            "X": -464.22522,
-            "Y": 5.3864136,
-            "Z": 22.445984
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "Position": [-464.22522, 5.3864136, 22.445984],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": -363.06543,
-            "Y": 55.300343,
-            "Z": -108.32965
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 957,
+          "Position": [-363.06543, 55.300343, -108.32965],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14681
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042318,
-          "Position": {
-            "X": -360.49445,
-            "Y": 54.680054,
-            "Z": -102.9527
-          },
-          "StopDistance": 7,
-          "TerritoryId": 957,
+          "Position": [-360.49445, 54.680054, -102.9527],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042321,
-          "Position": {
-            "X": -522.9725,
-            "Y": 11.61713,
-            "Z": 88.97534
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "Position": [-522.9725, 11.61713, 88.97534],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042322,
-          "Position": {
-            "X": -523.36926,
-            "Y": 10.9199,
-            "Z": 85.34363
-          },
-          "TerritoryId": 957,
+          "Position": [-523.36926, 10.9199, 85.34363],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042324,
-          "Position": {
-            "X": -558.0072,
-            "Y": 11.802552,
-            "Z": 114.03064
-          },
-          "TerritoryId": 957,
+          "Position": [-558.0072, 11.802552, 114.03064],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1042325,
-          "Position": {
-            "X": -552.75806,
-            "Y": 1.120665,
-            "Z": 23.392029
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 957,
+          "Position": [-552.75806, 1.120665, 23.392029],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1042323,
-          "Position": {
-            "X": -480.33875,
-            "Y": 1.9096844,
-            "Z": -13.53479
-          },
-          "TerritoryId": 957,
+          "Position": [-480.33875, 1.9096844, -13.53479],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042321,
-          "Position": {
-            "X": -522.9725,
-            "Y": 11.61713,
-            "Z": 88.97534
-          },
-          "TerritoryId": 957,
+          "Position": [-522.9725, 11.61713, 88.97534],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1041397,
-          "Position": {
-            "X": 402.30408,
-            "Y": 3.0506973,
-            "Z": -212.35986
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "Position": [402.30408, 3.0506973, -212.35986],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042300,
-          "Position": {
-            "X": -76.82922,
-            "Y": 39.986862,
-            "Z": 309.98706
-          },
-          "TerritoryId": 957,
+          "Position": [-76.82922, 39.986862, 309.98706],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true,
           "NextQuestId": 4547
         }
       ]

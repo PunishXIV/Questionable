@@ -1,50 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009294,
-          "Position": {
-            "X": -63.767517,
-            "Y": -1.7171676,
-            "Z": 11.673096
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1011250,
-          "Position": {
-            "X": 616.51013,
-            "Y": 22.291952,
-            "Z": 85.22156
-          },
-          "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "Position": [616.51013, 22.291952, 85.22156],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "TerritoryId": 153,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 82,
-            "Enabled": false,
+            "Enabled": true,
             "LowPriority": true
           }
         }
@@ -52,15 +34,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1011250,
-          "Position": {
-            "X": 616.51013,
-            "Y": 22.291952,
-            "Z": 85.22156
-          },
-          "TerritoryId": 153,
+          "Position": [616.51013, 22.291952, 85.22156],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,7 +1,5 @@
 ﻿using Dalamud.Plugin.Ipc;
-using ECommons.ExcelServices;
 using JetBrains.Annotations;
-using Questionable.Model.Questing;
 namespace Questionable.External;
 
 [RegisterSingleton]
@@ -24,15 +22,43 @@ internal sealed class QuestionableIpc : IDisposable
     private const string IpcAddQuestPriority = "Questionable.AddQuestPriority";
     private const string IpcInsertQuestPriority = "Questionable.InsertQuestPriority";
     private const string IpcExportQuestPriority = "Questionable.ExportQuestPriority";
-    private const string IpcStartGathering = "Questionable.StartGathering";
-    private const string IpcStartGatheringComplex = "Questionable.StartGatheringComplex";
     private const string IpcStop = "Questionable.Stop";
     private const string IpcRedoLookup = "Questionable.RedoLookup";
     private const string IpcRedoLookupIndex = "Questionable.RedoLookupIndex";
+    private const string IpcGetStopReason = "Questionable.GetStopReason";
+    private const string IpcStartEventQuests = "Questionable.StartEventQuests";
+    private const string IpcGetStopKind = "Questionable.GetStopKind";
+    private const string IpcIsWaitingOnPlayer = "Questionable.IsWaitingOnPlayer";
+    private const string IpcHasQuestPath = "Questionable.HasQuestPath";
+    private const string IpcSkipStep = "Questionable.SkipStep";
+    private const string IpcSetStopAfterCurrentQuest = "Questionable.SetStopAfterCurrentQuest";
+    private const string IpcGetCurrentTask = "Questionable.GetCurrentTask";
+    private const string IpcGetRemainingTasks = "Questionable.GetRemainingTasks";
+    private const string IpcStartDailies = "Questionable.StartDailies";
+    private const string IpcStopped = "Questionable.Stopped";
+    private const string IpcQuestCompleted = "Questionable.QuestCompleted";
+    private const string IpcStepChanged = "Questionable.StepChanged";
+    private readonly ICallGateProvider<string> _getStopKind;
+    private readonly ICallGateProvider<bool> _isWaitingOnPlayer;
+    private readonly ICallGateProvider<string, bool> _hasQuestPath;
+    private readonly ICallGateProvider<bool> _skipStep;
+    private readonly ICallGateProvider<bool, bool> _setStopAfterCurrentQuest;
+    private readonly ICallGateProvider<string> _getCurrentTask;
+    private readonly ICallGateProvider<List<string>> _getRemainingTasks;
+    private readonly ICallGateProvider<List<string>, bool> _startDailies;
+    private readonly ICallGateProvider<string, string, object> _stopped;
+    private readonly ICallGateProvider<string, object> _questCompleted;
+    private readonly ICallGateProvider<string, byte, int, object> _stepChanged;
+    private readonly DailiesController _dailies;
+    private readonly IFramework _framework;
+    private (ElementId Quest, byte Sequence, int Step)? _lastStep;
+    private readonly ICallGateProvider<string> _getStopReason;
+    private readonly ICallGateProvider<bool> _startEventQuests;
+    private readonly EventInfoComponent _eventInfo;
     private readonly ICallGateProvider<string, bool> _addQuestPriority;
     private readonly ICallGateProvider<bool> _clearQuestPriority;
     private readonly ICallGateProvider<string> _exportQuestPriority;
-    private readonly ICallGateProvider<List<string>> _getCurrentlyActiveEventQuests;
+    private readonly ICallGateProvider<List<string>> _getActiveEventQuests;
     private readonly ICallGateProvider<string?> _getCurrentQuestId;
     private readonly ICallGateProvider<StepData?> _getCurrentStepData;
     private readonly ICallGateProvider<string, bool> _importQuestPriority;
@@ -48,30 +74,37 @@ internal sealed class QuestionableIpc : IDisposable
     private readonly ILogger<QuestionableIpc> _logger;
 
     private readonly QuestController _questController;
+    private readonly QuestStarter _questStarter;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly ICallGateProvider<uint, string> _redoLookup;
     private readonly ICallGateProvider<uint, Tuple<string, int>> _redoLookupIndex;
     private readonly RedoUtil _redoUtil;
-    private readonly ICallGateProvider<uint, uint, byte, int, bool> _startGathering;
-    private readonly ICallGateProvider<uint, uint, byte, int, ushort, bool> _startGatheringComplex;
+    private readonly RetainerPass _retainerPass;
     private readonly ICallGateProvider<string, bool> _startQuest;
     private readonly ICallGateProvider<string, bool> _startSingleQuest;
     private readonly ICallGateProvider<string, bool> _stop;
 
     public QuestionableIpc(
         QuestController questController,
+        QuestStarter questStarter,
         EventInfoComponent eventInfoComponent,
         QuestRegistry questRegistry,
         QuestFunctions questFunctions,
-        PriorityWindow priorityWindow,
         RedoUtil redoUtil,
+        RetainerPass retainerPass,
+        DailiesController dailies,
+        IFramework framework,
         ILogger<QuestionableIpc> logger,
         IDalamudPluginInterface pluginInterface)
     {
         _questController = questController;
+        _dailies = dailies;
+        _framework = framework;
+        _questStarter = questStarter;
         _questRegistry = questRegistry;
         _questFunctions = questFunctions;
+        _retainerPass = retainerPass;
         _logger = logger;
 
         _isRunning = pluginInterface.GetIpcProvider<bool>(IpcIsRunning);
@@ -84,10 +117,10 @@ internal sealed class QuestionableIpc : IDisposable
         _getCurrentStepData = pluginInterface.GetIpcProvider<StepData?>(IpcGetCurrentStepData);
         _getCurrentStepData.RegisterFunc(GetStepData);
 
-        _getCurrentlyActiveEventQuests =
+        _getActiveEventQuests =
             pluginInterface.GetIpcProvider<List<string>>(IpcGetCurrentlyActiveEventQuests);
-        _getCurrentlyActiveEventQuests.RegisterFunc(() =>
-            [.. eventInfoComponent.GetCurrentlyActiveEventQuests().Select(q => q.ToString())]);
+        _getActiveEventQuests.RegisterFunc(() =>
+            [.. eventInfoComponent.GetActiveQuests().Select(q => q.ToString())]);
 
         _startQuest = pluginInterface.GetIpcProvider<string, bool>(IpcStartQuest);
         _startQuest.RegisterFunc(questId => StartQuest(questId, single: false));
@@ -126,13 +159,7 @@ internal sealed class QuestionableIpc : IDisposable
         _insertQuestPriority.RegisterFunc(InsertQuestPriority);
 
         _exportQuestPriority = pluginInterface.GetIpcProvider<string>(IpcExportQuestPriority);
-        _exportQuestPriority.RegisterFunc(priorityWindow.EncodeQuestPriority);
-
-        _startGathering = pluginInterface.GetIpcProvider<uint, uint, byte, int, bool>(IpcStartGathering);
-        _startGathering.RegisterFunc(StartGathering);
-
-        _startGatheringComplex = pluginInterface.GetIpcProvider<uint, uint, byte, int, ushort, bool>(IpcStartGatheringComplex);
-        _startGatheringComplex.RegisterFunc(StartGatheringComplex);
+        _exportQuestPriority.RegisterFunc(() => QuestClipboard.Encode(questController.PriorityManager.Quests.Select(x => x.Id)));
 
         _stop = pluginInterface.GetIpcProvider<string, bool>(IpcStop);
         _stop.RegisterFunc(Stop);
@@ -144,6 +171,97 @@ internal sealed class QuestionableIpc : IDisposable
 
         _redoLookupIndex = pluginInterface.GetIpcProvider<uint, Tuple<string, int>>(IpcRedoLookupIndex);
         _redoLookupIndex.RegisterFunc(RedoLookupIndex);
+
+        _eventInfo = eventInfoComponent;
+        _getStopReason = pluginInterface.GetIpcProvider<string>(IpcGetStopReason);
+        _getStopReason.RegisterFunc(() => questController.StopReason);
+
+        _startEventQuests = pluginInterface.GetIpcProvider<bool>(IpcStartEventQuests);
+        _startEventQuests.RegisterFunc(StartEventQuests);
+
+        _getStopKind = pluginInterface.GetIpcProvider<string>(IpcGetStopKind);
+        _getStopKind.RegisterFunc(() => questController.StopKind);
+
+        _isWaitingOnPlayer = pluginInterface.GetIpcProvider<bool>(IpcIsWaitingOnPlayer);
+        _isWaitingOnPlayer.RegisterFunc(() => questController.IsWaitingOnPlayer);
+
+        _hasQuestPath = pluginInterface.GetIpcProvider<string, bool>(IpcHasQuestPath);
+        _hasQuestPath.RegisterFunc(HasQuestPath);
+
+        _skipStep = pluginInterface.GetIpcProvider<bool>(IpcSkipStep);
+        _skipStep.RegisterFunc(questController.SkipStep);
+
+        _setStopAfterCurrentQuest = pluginInterface.GetIpcProvider<bool, bool>(IpcSetStopAfterCurrentQuest);
+        _setStopAfterCurrentQuest.RegisterFunc(value => questController.StopAfterCurrentQuest = value);
+
+        _getCurrentTask = pluginInterface.GetIpcProvider<string>(IpcGetCurrentTask);
+        _getCurrentTask.RegisterFunc(() => questController.CurrentTaskName);
+
+        _getRemainingTasks = pluginInterface.GetIpcProvider<List<string>>(IpcGetRemainingTasks);
+        _getRemainingTasks.RegisterFunc(() => [.. questController.GetRemainingTaskNames()]);
+
+        _startDailies = pluginInterface.GetIpcProvider<List<string>, bool>(IpcStartDailies);
+        _startDailies.RegisterFunc(StartDailies);
+
+        _stopped = pluginInterface.GetIpcProvider<string, string, object>(IpcStopped);
+        _questCompleted = pluginInterface.GetIpcProvider<string, object>(IpcQuestCompleted);
+        _stepChanged = pluginInterface.GetIpcProvider<string, byte, int, object>(IpcStepChanged);
+        questController.Stopped += OnStopped;
+        questController.QuestCompleted += OnQuestCompleted;
+        framework.Update += OnUpdate;
+    }
+
+    private void OnStopped(object? sender, StopEventArgs e) => _stopped.SendMessage(e.Kind, e.Reason);
+
+    private void OnQuestCompleted(object? sender, QuestCompletedEventArgs e) =>
+        _questCompleted.SendMessage(e.QuestId.ToString());
+
+    private void OnUpdate(IFramework framework)
+    {
+        QuestController.QuestProgress? progress = _questController.CurrentQuest;
+        (ElementId Quest, byte Sequence, int Step)? step =
+            progress == null ? null : (progress.Quest.Id, progress.Sequence, progress.Step);
+        if (!StepChanged(_lastStep, step))
+            return;
+
+        _lastStep = step;
+        if (step is { } now)
+            _stepChanged.SendMessage(now.Quest.ToString(), now.Sequence, now.Step);
+    }
+
+    internal static bool StepChanged((ElementId Quest, byte Sequence, int Step)? last,
+        (ElementId Quest, byte Sequence, int Step)? now) => !Equals(last, now);
+
+    private bool HasQuestPath(string questId)
+    {
+        _logger.LogDebug("HasQuestPath({QuestId})", questId);
+        return ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
+               _questRegistry.IsKnownQuest(elementId);
+    }
+
+    private bool StartDailies(List<string> societies)
+    {
+        _logger.LogDebug("StartDailies({Societies})", string.Join(',', societies));
+        if (ParseSocieties(societies) is not { Count: > 0 } parsed)
+            return false;
+
+        MarkPassRun();
+        return _dailies.Start(parsed);
+    }
+
+    // Unknown names fail the whole call, so a typo doesn't quietly drop a society.
+    internal static List<EAlliedSociety>? ParseSocieties(IEnumerable<string> names)
+    {
+        List<EAlliedSociety> result = [];
+        foreach (string name in names)
+        {
+            if (!Enum.TryParse(name, ignoreCase: true, out EAlliedSociety society) ||
+                society == EAlliedSociety.None || !Enum.IsDefined(society))
+                return null;
+            result.Add(society);
+        }
+
+        return result;
     }
 
     public void Dispose()
@@ -151,10 +269,11 @@ internal sealed class QuestionableIpc : IDisposable
         _isRunning.UnregisterFunc();
         _getCurrentQuestId.UnregisterFunc();
         _getCurrentStepData.UnregisterFunc();
-        _getCurrentlyActiveEventQuests.UnregisterFunc();
+        _getActiveEventQuests.UnregisterFunc();
         _startQuest.UnregisterFunc();
         _startSingleQuest.UnregisterFunc();
         _isQuestLocked.UnregisterFunc();
+        _isQuestLockedReason.UnregisterFunc();
         _isQuestComplete.UnregisterFunc();
         _isReadyToAcceptQuest.UnregisterFunc();
         _isQuestAccepted.UnregisterFunc();
@@ -164,11 +283,41 @@ internal sealed class QuestionableIpc : IDisposable
         _clearQuestPriority.UnregisterFunc();
         _insertQuestPriority.UnregisterFunc();
         _exportQuestPriority.UnregisterFunc();
-        _startGathering.UnregisterFunc();
-        _startGatheringComplex.UnregisterFunc();
         _stop.UnregisterFunc();
         _redoLookup.UnregisterFunc();
+        _redoLookupIndex.UnregisterFunc();
+        _getStopReason.UnregisterFunc();
+        _startEventQuests.UnregisterFunc();
+        _getStopKind.UnregisterFunc();
+        _isWaitingOnPlayer.UnregisterFunc();
+        _hasQuestPath.UnregisterFunc();
+        _skipStep.UnregisterFunc();
+        _setStopAfterCurrentQuest.UnregisterFunc();
+        _getCurrentTask.UnregisterFunc();
+        _getRemainingTasks.UnregisterFunc();
+        _startDailies.UnregisterFunc();
+        _questController.Stopped -= OnStopped;
+        _questController.QuestCompleted -= OnQuestCompleted;
+        _framework.Update -= OnUpdate;
     }
+
+    private bool StartEventQuests()
+    {
+        _logger.LogDebug("StartEventQuests()");
+        Quest? Next() => NextEventQuest(_eventInfo.GetActiveQuests(),
+            id => _questRegistry.TryGetQuest(id, out Quest? quest) ? quest : null,
+            id => _questFunctions.IsQuestAccepted(id), id => _questFunctions.IsReadyToAcceptQuest(id));
+
+        if (Next() is not { } first)
+            return false;
+
+        MarkPassRun();
+        return _questStarter.StartEventQuests(first, Next, "IPCEventQuests");
+    }
+
+    internal static Quest? NextEventQuest(IEnumerable<ElementId> active, Func<ElementId, Quest?> path,
+        Func<ElementId, bool> accepted, Func<ElementId, bool> ready) =>
+        active.Where(id => accepted(id) || ready(id)).Select(path).FirstOrDefault(quest => quest != null);
 
     private bool StartQuest(string questId, bool single)
     {
@@ -176,15 +325,36 @@ internal sealed class QuestionableIpc : IDisposable
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? quest))
         {
+            if (single && !_questFunctions.IsQuestAccepted(elementId) &&
+                !_questFunctions.IsReadyToAcceptQuest(elementId))
+            {
+                _logger.LogWarning("Cannot start single quest {QuestId}: it is neither accepted nor ready to accept", questId);
+                return false;
+            }
+
+            if (!_questStarter.CanStartQuest("IPCQuestSelection"))
+                return false;
+
+            MarkPassRun();
             _questController.SetNextQuest(quest);
             if (single)
-                _questController.StartSingleQuest("IPCQuestSelection");
+                _questStarter.StartSingleQuest("IPCQuestSelection");
             else
-                _questController.Start("IPCQuestSelection");
+                _questStarter.Start("IPCQuestSelection");
             return true;
         }
 
         return false;
+    }
+
+    // Automaton's AutoRetainer x Questionable runs event quests on each character mid-pass; that must not cancel the pass.
+    private void MarkPassRun()
+    {
+        if (!_retainerPass.IsActive)
+            return;
+
+        _logger.LogInformation("Another plugin started questing during the AutoRetainer pass; the pass carries on");
+        _retainerPass.PluginRun = true;
     }
 
     private StepData? GetStepData()
@@ -198,7 +368,7 @@ internal sealed class QuestionableIpc : IDisposable
         if (string.IsNullOrEmpty(questId))
             return null;
 
-        QuestStep? step = progress.Quest.FindSequence(progress.Sequence)?.FindStep(progress.Step);
+        QuestStep? step = progress.FindStep();
         if (step == null)
             return null;
 
@@ -209,7 +379,11 @@ internal sealed class QuestionableIpc : IDisposable
             Step = progress.Step,
             InteractionType = step.InteractionType.ToString(),
             Position = step.Position,
-            TerritoryId = step.TerritoryId
+            TerritoryId = step.TerritoryId,
+            Comment = step.Comment,
+            ItemId = step.ItemId,
+            ItemCount = step.ItemCount,
+            ItemQuality = step.ItemQuality.ToString(),
         };
     }
 
@@ -274,7 +448,7 @@ internal sealed class QuestionableIpc : IDisposable
     private bool ImportQuestPriority(string encodedQuestPriority)
     {
         _logger.LogDebug("ImportQuestPriority({EncodedQuestPriority})", encodedQuestPriority);
-        List<ElementId> questElements = PriorityWindow.DecodeQuestPriority(encodedQuestPriority);
+        List<ElementId> questElements = QuestClipboard.Decode(encodedQuestPriority);
         _questController.PriorityManager.Import(questElements);
         return true;
     }
@@ -295,7 +469,7 @@ internal sealed class QuestionableIpc : IDisposable
             return _questController.PriorityManager.Add(elementId);
         }
 
-        return true;
+        return false;
     }
 
     private bool InsertQuestPriority(int index, string questId)
@@ -307,22 +481,13 @@ internal sealed class QuestionableIpc : IDisposable
             return _questController.PriorityManager.Insert(index, elementId);
         }
 
-        return true;
-    }
-
-    private bool StartGathering(uint npcId, uint itemId, byte classJob, int quantity) => StartGatheringComplex(npcId, itemId, classJob, quantity);
-
-    private bool StartGatheringComplex(uint npcId, uint itemId, byte classJob = ((byte)Job.MIN), int quantity = 1, ushort collectability = 0)
-    {
-        _logger.LogDebug("StartGatheringComplex({NpcId},{ItemId},{ClassJob},{Quantity},{Collectability})",
-            npcId, itemId, classJob, quantity, collectability);
-        return _questController.StartGathering(npcId, itemId, (Job)classJob, quantity, collectability);
+        return false;
     }
 
     private bool Stop(string label)
     {
         _logger.LogDebug("Stop({Label})", label);
-        _questController.StopAllDueToConditionFailed($"IPC: {label}");
+        _questController.StopAll($"IPC: {label}", requested: true);
         return true;
     }
 
@@ -330,15 +495,18 @@ internal sealed class QuestionableIpc : IDisposable
     {
         if (questId >= 131072)
             return "";
-        return _redoUtil.GetChapter((ushort)questId).Chapter.ToString() ?? "???";
+        return ChapterName(_redoUtil.GetChapter((ushort)questId));
     }
+
+    internal static string ChapterName(RedoIndex redo) =>
+        redo.Index == -1 ? "" : redo.Chapter.ChapterName.ToString(null, CultureInfo.InvariantCulture);
 
     private Tuple<string, int> RedoLookupIndex(uint questId)
     {
         if (questId >= 131072)
             return new("", -1);
-        RedoIndex outp = _redoUtil.GetChapter((ushort)questId);
-        return new(outp.Chapter.ToString() ?? "???", outp.Index);
+        RedoIndex redo = _redoUtil.GetChapter((ushort)questId);
+        return new(ChapterName(redo), redo.Index);
     }
 
     [UsedImplicitly(ImplicitUseKindFlags.Access, ImplicitUseTargetFlags.WithMembers)]
@@ -350,5 +518,9 @@ internal sealed class QuestionableIpc : IDisposable
         public required string InteractionType { get; init; }
         public required Vector3? Position { get; init; }
         public required uint TerritoryId { get; init; }
+        public string? Comment { get; init; }
+        public uint? ItemId { get; init; }
+        public int? ItemCount { get; init; }
+        public string ItemQuality { get; init; } = "";
     }
 }

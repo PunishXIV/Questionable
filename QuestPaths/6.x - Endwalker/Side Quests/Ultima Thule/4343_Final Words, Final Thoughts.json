@@ -1,80 +1,31 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038026,
-          "Position": {
-            "X": 161.39453,
-            "Y": 269.02884,
-            "Z": -664.7898
-          },
-          "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 161.39453,
-                  "Y": 269.02884,
-                  "Z": -664.7898
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "$": "4343 → 1 - QW: 0 0    0 0    0 0",
           "DataId": 1038026,
-          "Position": {
-            "X": 161.39453,
-            "Y": 269.02884,
-            "Z": -664.7898
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 161.39453,
-                  "Y": 269.02884,
-                  "Z": -664.7898
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          "Position": [161.39453, 269.02884, -664.7898],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "$": "4343 → 2 - QW: 0 0    0 0    0 0",
           "DataId": 2012318,
-          "Position": {
-            "X": 179.33923,
-            "Y": 271.0459,
-            "Z": -660.029
-          },
-          "TerritoryId": 960,
+          "Position": [179.33923, 271.0459, -660.029],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -84,12 +35,7 @@
         {
           "$": "4343 → 2 - QW: 1(1) 0    0 0    0 128",
           "DataId": 2012320,
-          "Position": {
-            "X": 200.12195,
-            "Y": 270.98486,
-            "Z": -677.4243
-          },
-          "TerritoryId": 960,
+          "Position": [200.12195, 270.98486, -677.4243],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -99,12 +45,7 @@
         {
           "$": "4343 → 2 - QW: 1(1) 0    0 0    0 128",
           "DataId": 2012319,
-          "Position": {
-            "X": 209.94885,
-            "Y": 270.74072,
-            "Z": -656.73303
-          },
-          "TerritoryId": 960,
+          "Position": [209.94885, 270.74072, -656.73303],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -115,52 +56,39 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 960,
       "Steps": [
         {
           "$": "4343 → 3 - QW: 0 0    0 0    0 0",
           "DataId": 1038026,
-          "Position": {
-            "X": 161.39453,
-            "Y": 269.02884,
-            "Z": -664.7898
-          },
-          "TerritoryId": 960,
+          "Position": [161.39453, 269.02884, -664.7898],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 960,
       "Steps": [
         {
           "$": "4343 → 4 - QW: 0 0    0 0    0 0",
           "DataId": 2012321,
-          "Position": {
-            "X": 409.99463,
-            "Y": 312.6726,
-            "Z": -534.5083
-          },
-          "TerritoryId": 960,
+          "Position": [409.99463, 312.6726, -534.5083],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "TerritoryId": 960,
           "InteractionType": "StatusOff",
           "Status": "Transfiguration"
         },
         {
           "DataId": 1038026,
-          "Position": {
-            "X": 161.39453,
-            "Y": 269.02884,
-            "Z": -664.7898
-          },
-          "TerritoryId": 960,
+          "Position": [161.39453, 269.02884, -664.7898],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {
@@ -168,22 +96,7 @@
               "Type": "List",
               "Answer": "TEXT_AKTKZJ007_04343_A1_000_001"
             }
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 161.39453,
-                  "Y": 269.02884,
-                  "Z": -664.7898
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          ]
         }
       ]
     }

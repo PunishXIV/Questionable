@@ -1,71 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006458,
-          "Position": {
-            "X": -459.02194,
-            "Y": 207.04439,
-            "Z": -290.78455
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006459,
-          "Position": {
-            "X": -458.51,
-            "Y": 211.444,
-            "Z": -287.085
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-458.51, 211.444, -287.085],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006458,
-          "Position": {
-            "X": -461.143,
-            "Y": 207.104,
-            "Z": -290.944
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-461.143, 207.104, -290.944],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006459,
-          "Position": {
-            "X": -458.51,
-            "Y": 211.444,
-            "Z": -287.085
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-458.51, 211.444, -287.085],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

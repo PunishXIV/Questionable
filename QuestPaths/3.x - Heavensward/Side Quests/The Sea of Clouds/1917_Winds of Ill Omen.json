@@ -1,56 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012067,
-          "Position": {
-            "X": -498.00873,
-            "Y": -37.442852,
-            "Z": -403.6164
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "Position": {
-            "X": -249.59941,
-            "Y": 93.991554,
-            "Z": -253.67575
-          },
-          "TerritoryId": 401,
+          "Position": [-249.59941, 93.991554, -253.67575],
           "InteractionType": "Combat",
           "KillEnemyDataIds": [4068],
-          "EnemySpawnType": "OverworldEnemies",
-          "Fly": true
+          "EnemySpawnType": "OverworldEnemies"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1012067,
-          "Position": {
-            "X": -498.00873,
-            "Y": -37.442852,
-            "Z": -403.6164
-          },
-          "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

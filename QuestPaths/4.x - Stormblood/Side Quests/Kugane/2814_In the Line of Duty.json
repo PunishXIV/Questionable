@@ -1,61 +1,35 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Fronti",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023326,
-          "Position": {
-            "X": 86.1981,
-            "Y": -4.96116,
-            "Z": 23.2394
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] The Ruby Bazaar"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023327,
-          "Position": {
-            "X": 63.6555,
-            "Y": 4,
-            "Z": 93.876
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane"
+          "Position": [63.6555, 4, 93.876],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023326,
-          "Position": {
-            "X": 86.1981,
-            "Y": -4.96116,
-            "Z": 23.2394
-          },
-          "TerritoryId": 628,
+          "Position": [86.1981, -4.96116, 23.2394],
           "InteractionType": "UseItem",
           "ItemId": 2002342
         },
         {
           "DataId": 1023326,
-          "Position": {
-            "X": 86.1981,
-            "Y": -4.96116,
-            "Z": 23.2394
-          },
-          "TerritoryId": 628,
+          "Position": [86.1981, -4.96116, 23.2394],
           "InteractionType": "CompleteQuest"
         }
       ]

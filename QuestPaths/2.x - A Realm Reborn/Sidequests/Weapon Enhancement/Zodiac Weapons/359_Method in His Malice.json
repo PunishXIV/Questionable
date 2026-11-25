@@ -1,27 +1,16 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1010810,
-          "Position": {
-            "X": 109.4834,
-            "Y": 31,
-            "Z": -388.8457
-          },
-          "TerritoryId": 141,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "TerritoryId": 141,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -32,26 +21,20 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1010810,
-          "Position": {
-            "X": 109.4834,
-            "Y": 31,
-            "Z": -388.8457
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "Position": [109.4834, 31, -388.8457],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "TerritoryId": 141,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -62,26 +45,20 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1010810,
-          "Position": {
-            "X": 109.4834,
-            "Y": 31,
-            "Z": -388.8457
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "Position": [109.4834, 31, -388.8457],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "TerritoryId": 141,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -92,26 +69,20 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1010810,
-          "Position": {
-            "X": 109.4834,
-            "Y": 31,
-            "Z": -388.8457
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "Position": [109.4834, 31, -388.8457],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "TerritoryId": 141,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -122,53 +93,29 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1010810,
-          "Position": {
-            "X": 109.4834,
-            "Y": 31,
-            "Z": -388.8457
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "Position": [109.4834, 31, -388.8457],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1010810,
-          "Position": {
-            "X": 109.4834,
-            "Y": 31,
-            "Z": -388.8457
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "Position": [109.4834, 31, -388.8457],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1010810,
-          "Position": {
-            "X": 109.4834,
-            "Y": 31,
-            "Z": -388.8457
-          },
-          "TerritoryId": 141,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

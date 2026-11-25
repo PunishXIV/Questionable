@@ -1,40 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Comment": "Becomes available after training a race chocobo to Rank 40",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011030,
-          "Position": {
-            "X": 7.522644,
-            "Y": -1.7667189E-06,
-            "Z": -68.589294
-          },
-          "TerritoryId": 388,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Chocobo Square"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1010472,
-          "Position": {
-            "X": -53.26935,
-            "Y": 0.3093315,
-            "Z": 69.41321
-          },
-          "TerritoryId": 148,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "Position": [-53.26935, 0.3093315, 69.41321],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

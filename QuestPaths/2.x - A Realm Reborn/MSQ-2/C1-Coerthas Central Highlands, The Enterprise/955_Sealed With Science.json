@@ -1,29 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006493,
-          "Position": {
-            "X": -437.67456,
-            "Y": -55.694504,
-            "Z": 100.87732
-          },
-          "TerritoryId": 145,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20642,
           "SkipConditions": {
@@ -35,7 +23,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20643,
           "SkipConditions": {
@@ -47,7 +34,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20644,
           "SkipConditions": {
@@ -59,7 +45,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20645,
           "SkipConditions": {
@@ -71,7 +56,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20646,
           "SkipConditions": {
@@ -83,7 +67,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20647,
           "SkipConditions": {
@@ -95,7 +78,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20648,
           "SkipConditions": {
@@ -107,7 +89,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20649,
           "SkipConditions": {
@@ -119,7 +100,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20650,
           "SkipConditions": {
@@ -131,7 +111,6 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "UseItem",
           "ItemId": 20651,
           "SkipConditions": {
@@ -143,17 +122,11 @@
           }
         },
         {
-          "TerritoryId": 145,
           "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 1006495,
-          "Position": {
-            "X": -2.2736206,
-            "Y": -17.544205,
-            "Z": 24.734863
-          },
-          "TerritoryId": 145,
+          "Position": [-2.2736206, -17.544205, 24.734863],
           "InteractionType": "CompleteQuest"
         }
       ]

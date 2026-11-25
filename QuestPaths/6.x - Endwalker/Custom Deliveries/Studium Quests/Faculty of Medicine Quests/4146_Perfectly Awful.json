@@ -1,39 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039227,
-          "Position": {
-            "X": -348.228,
-            "Y": 22.356,
-            "Z": -99.1561
-          },
-          "TerritoryId": 962,
+          "Position": [-348.228, 22.356, -99.1561],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1039227 (Debroye)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039220,
-          "Position": {
-            "X": -287.15,
-            "Y": 21.846,
-            "Z": -150.752
-          },
-          "TerritoryId": 962,
+          "Position": [-287.15, 21.846, -150.752],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039220 (Debroye)"
         }
@@ -41,40 +29,24 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039228,
-          "Position": {
-            "X": -85.8101,
-            "Y": -13.777,
-            "Z": 121.776
-          },
-          "TerritoryId": 962,
+          "Position": [-85.8101, -13.777, 121.776],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
           "$": "auto: todo location -> 1039228 (Debroye)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039220,
-          "Position": {
-            "X": -287.15,
-            "Y": 21.846,
-            "Z": -150.752
-          },
-          "TerritoryId": 962,
+          "Position": [-287.15, 21.846, -150.752],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Studium"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKLA301_04146_Q3_000_000",

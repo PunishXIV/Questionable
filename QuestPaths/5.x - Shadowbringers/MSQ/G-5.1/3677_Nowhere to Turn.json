@@ -1,51 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031736,
-          "Position": {
-            "X": 368.1848,
-            "Y": -27.966003,
-            "Z": 302.3269
-          },
-          "StopDistance": 5,
-          "TerritoryId": 815,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1031737,
-          "Position": {
-            "X": 20.950623,
-            "Y": 82.05,
-            "Z": 17.837708
-          },
-          "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eulmore"
+          "Position": [20.950623, 82.05, 17.837708],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1031739,
-          "Position": {
-            "X": -19.36377,
-            "Y": 82.83509,
-            "Z": -50.55316
-          },
-          "TerritoryId": 820,
+          "Position": [-19.36377, 82.83509, -50.55316],
           "InteractionType": "CompleteQuest"
         }
       ]

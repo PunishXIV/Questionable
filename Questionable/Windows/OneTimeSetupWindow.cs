@@ -1,8 +1,3 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
-using Questionable.Windows.Common;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
 [RegisterSingleton]
@@ -36,7 +31,7 @@ internal sealed class OneTimeSetupWindow : LWindow
 
     public override void DrawContent()
     {
-        _pluginConfigComponent.Draw(out bool allRequiredInstalled);
+        _pluginConfigComponent.Draw(out bool allRequiredInstalled, combatPicker: true);
 
         ImGui.Spacing();
         ImGui.Separator();
@@ -46,7 +41,7 @@ internal sealed class OneTimeSetupWindow : LWindow
         {
             using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Success))
             {
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Finish Setup")))
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Finish setup")))
                 {
                     _logger.LogInformation("Marking setup as complete");
                     _configuration.MarkPluginSetupComplete();
@@ -57,7 +52,7 @@ internal sealed class OneTimeSetupWindow : LWindow
         }
         else if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
         {
-            _pluginConfigComponent.InstallMissingRequiredPlugins();
+            _pluginConfigComponent.InstallMissingPlugins();
         }
 
         ImGui.SameLine();

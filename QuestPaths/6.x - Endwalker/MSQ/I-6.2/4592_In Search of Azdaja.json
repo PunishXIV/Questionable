@@ -1,51 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039645,
-          "Position": {
-            "X": -338.33832,
-            "Y": 55,
-            "Z": -68.40625
-          },
-          "TerritoryId": 963,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039655,
-          "Position": {
-            "X": -478.29407,
-            "Y": 4.851227,
-            "Z": 22.507019
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "Position": [-478.29407, 4.851227, 22.507019],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039627,
-          "Position": {
-            "X": -270.25262,
-            "Y": 0.07863108,
-            "Z": 605.9204
-          },
-          "StopDistance": 5,
-          "TerritoryId": 957,
+          "Position": [-270.25262, 0.07863108, 605.9204],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1056
         }
@@ -53,24 +32,20 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1056,
       "Steps": [
         {
           "DataId": 1039663,
-          "Position": {
-            "X": 110.82617,
-            "Y": -350,
-            "Z": -81.9563
-          },
-          "TerritoryId": 1056,
+          "Position": [110.82617, -350, -81.9563],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1056,
       "Steps": [
         {
-          "TerritoryId": 1056,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 869,
@@ -84,16 +59,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1089,
       "Steps": [
         {
           "DataId": 1042063,
-          "Position": {
-            "X": -88.51758,
-            "Y": 376.4496,
-            "Z": -158.31238
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1089,
+          "Position": [-88.51758, 376.4496, -158.31238],
           "InteractionType": "CompleteQuest"
         }
       ]

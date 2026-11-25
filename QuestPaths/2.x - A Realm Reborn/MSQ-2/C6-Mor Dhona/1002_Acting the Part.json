@@ -1,33 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006531,
-          "Position": {
-            "X": 53.81848,
-            "Y": 25.009521,
-            "Z": -697.0779
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": -505.211,
-            "Y": -1.9684448,
-            "Z": -467.46014
-          },
-          "TerritoryId": 156,
+          "Position": [-505.211, -1.9684448, -467.46014],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -37,31 +22,14 @@
         },
         {
           "DataId": 2002238,
-          "Position": {
-            "X": -505.211,
-            "Y": -1.9684448,
-            "Z": -467.46014
-          },
-          "TerritoryId": 156,
+          "Position": [-505.211, -1.9684448, -467.46014],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006531,
-          "Position": {
-            "X": 53.81848,
-            "Y": 25.009521,
-            "Z": -697.0779
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

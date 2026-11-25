@@ -1,71 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -615.86487,
-            "Y": 65.602264,
-            "Z": -423.87152
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1033715,
-          "Position": {
-            "X": -614.4961,
-            "Y": 65.60227,
-            "Z": -405.56958
-          },
-          "TerritoryId": 813,
-          "Fly": true,
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
+          "Position": [-614.4961, 65.60227, -405.56958],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1034065,
-          "Position": {
-            "X": -294.75854,
-            "Y": 99.225815,
-            "Z": -724.0253
-          },
-          "TerritoryId": 813,
+          "Position": [-294.75854, 99.225815, -724.0253],
           "InteractionType": "Action",
-          "Action": "Cannonfire",
-          "Fly": true,
-          "Land": true
+          "Action": "Cannonfire"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1034065,
-          "Position": {
-            "X": -294.75854,
-            "Y": 99.225815,
-            "Z": -724.0253
-          },
-          "TerritoryId": 813,
+          "Position": [-294.75854, 99.225815, -724.0253],
           "InteractionType": "Action",
           "Action": "Cannonfire"
         }
@@ -73,20 +44,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -617.1206,
-            "Y": 65.602264,
-            "Z": -425.25372
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

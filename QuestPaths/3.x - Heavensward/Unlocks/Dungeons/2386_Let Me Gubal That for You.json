@@ -1,97 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "UcanPatates",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012133,
-          "Position": {
-            "X": -26.840637,
-            "Y": 206.49944,
-            "Z": 28.67163
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                478
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "Position": {
-            "X": 148.23425,
-            "Y": 207,
-            "Z": 119.497574
-          },
-          "TerritoryId": 478,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                399
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                399
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1018367,
-          "Position": {
-            "X": 302.11328,
-            "Y": 232.54102,
-            "Z": 767.14734
-          },
+          "Position": [302.11328, 232.54102, 767.14734],
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "TerritoryId": 399,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 196,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1012133,
-          "Position": {
-            "X": -26.840637,
-            "Y": 206.49944,
-            "Z": 28.67163
-          },
-          "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

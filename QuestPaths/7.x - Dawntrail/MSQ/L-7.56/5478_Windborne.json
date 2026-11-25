@@ -1,59 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
-          "DataId": 2011104,
-          "Position": {
-            "X": -11.001831,
-            "Y": 1.4800415,
-            "Z": -6.9733887
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [1364],
-              "NearPosition": {
-                "Position": {
-                  "X": -52.64546,
-                  "Y": 3.855009,
-                  "Z": 6.439231
-                },
-                "TerritoryId": 351,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "DataId": 2015311,
-          "Position": {
-            "X": -52.64546,
-            "Y": 3.855009,
-            "Z": 6.439231
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1364,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [1364]
-            }
-          }
-        },
-        {
           "DataId": 1058879,
-          "Position": {
-            "X": 0.808972,
-            "Y": 0,
-            "Z": -9.00527
-          },
+          "Position": [0.808972, 0, -9.00527],
           "TerritoryId": 1364,
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1058879 (Alphinaud)"
@@ -62,50 +18,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
-          "DataId": 2015312,
-          "Position": {
-            "X": 6.296,
-            "Y": -10.75,
-            "Z": 41.80999
-          },
-          "TerritoryId": 1364,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
-        {
-          "DataId": 2011104,
-          "Position": {
-            "X": -11.001831,
-            "Y": 1.4800415,
-            "Z": -6.9733887
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -52.64546,
-                  "Y": 3.855009,
-                  "Z": 6.439231
-                },
-                "TerritoryId": 351,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1058883,
-          "Position": {
-            "X": -51.9067,
-            "Y": 2.00501,
-            "Z": 11.2262
-          },
-          "TerritoryId": 351,
+          "Position": [-51.9067, 2.00501, 11.2262],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -120,15 +37,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1058884,
-          "Position": {
-            "X": 0,
-            "Y": 0,
-            "Z": -7.1871
-          },
-          "TerritoryId": 351,
+          "Position": [0, 0, -7.1871],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1058884 (Tataru)"
         }

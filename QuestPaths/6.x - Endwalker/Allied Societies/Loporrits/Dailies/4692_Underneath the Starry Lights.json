@@ -1,85 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kaiser",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 2013249,
-          "Position": {
-            "X": -26.34522,
-            "Y": -132.0332,
-            "Z": -445.35086
-          },
-          "TerritoryId": 959,
-          "TargetTerritoryId": 959,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1044403,
-          "Position": {
-            "X": -203.5401,
-            "Y": -48.949707,
-            "Z": -273.60956
-          },
-          "TerritoryId": 959,
+          "Position": [-203.5401, -48.949707, -273.60956],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
 {
-  "Position": {
-            "X": -384.9466,
-            "Y": -151.67169,
-            "Z": -259.70673
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-                    "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "Land": true
-},
-        {
           "DataId": 1044569,
-          "Position": {
-            "X": -385.6718,
-            "Y": -151.67168,
-            "Z": -261.28027
-          },
-          "TerritoryId": 959,
+          "Position": [-385.6718, -151.67168, -261.28027],
           "InteractionType": "Interact"
 
         }
@@ -87,60 +28,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "Craft",
           "ItemId": 38861,
           "ItemCount": 2
         },
         {
-          "DataId": 2013249,
-          "Position": {
-            "X": -26.34522,
-            "Y": -132.0332,
-            "Z": -445.35086
-          },
-          "TerritoryId": 959,
-          "TargetTerritoryId": 959,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1044403,
-          "Position": {
-            "X": -203.5401,
-            "Y": -48.949707,
-            "Z": -273.60956
-          },
-          "TerritoryId": 959,
+          "Position": [-203.5401, -48.949707, -273.60956],
           "InteractionType": "CompleteQuest"
         }
       ]

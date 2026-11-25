@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2014732,
-          "Position": {
-            "X": 542.71765,
-            "Y": -149.06543,
-            "Z": 768.6426
-          },
-          "TerritoryId": 1189,
+          "Position": [542.71765, -149.06543, 768.6426],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "RequiredQuestVariables": [null,[
               1
             ],null,null,null,null
@@ -40,12 +22,7 @@
         },
         {
           "DataId": 2014731,
-          "Position": {
-            "X": 540.5508,
-            "Y": -148.51611,
-            "Z": 763.6072
-          },
-          "TerritoryId": 1189,
+          "Position": [540.5508, -148.51611, 763.6072],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
               2
@@ -56,36 +33,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1054142,
-          "Position": {
-            "X": -415.06067,
-            "Y": 23.50628,
-            "Z": -464.4084
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "Position": [-415.06067, 23.50628, -464.4084],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

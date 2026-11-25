@@ -1,65 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1028963,
-          "Position": {
-            "X": 327.0465,
-            "Y": 1.4685787,
-            "Z": -296.4676
-          },
-          "TerritoryId": 815,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "TerritoryId": 815,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Amh Araeng - Mord Souq"
         },
         {
           "DataId": 1027900,
-          "Position": {
-            "X": 281.87976,
-            "Y": 1.4685826,
-            "Z": -265.3697
-          },
-          "TerritoryId": 815,
+          "Position": [281.87976, 1.4685826, -265.3697],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179720
         },
         {
           "DataId": 1027872,
-          "Position": {
-            "X": 268.4519,
-            "Y": 4.0296993,
-            "Z": -144.1825
-          },
-          "TerritoryId": 815,
+          "Position": [268.4519, 4.0296993, -144.1825],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1027873,
-          "Position": {
-            "X": 312.24524,
-            "Y": 1.4685826,
-            "Z": -186.14484
-          },
-          "TerritoryId": 815,
+          "Position": [312.24524, 1.4685826, -186.14484],
           "InteractionType": "Snipe",
           "Comment": "Click all four foods"
         }
@@ -67,15 +42,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1027872,
-          "Position": {
-            "X": 268.4519,
-            "Y": 4.0296993,
-            "Z": -144.1825
-          },
-          "TerritoryId": 815,
+          "Position": [268.4519, 4.0296993, -144.1825],
           "InteractionType": "CompleteQuest"
         }
       ]

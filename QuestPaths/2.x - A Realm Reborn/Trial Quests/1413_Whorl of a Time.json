@@ -1,71 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [212]
-            }
-          }
-        },
-        {
-          "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [212]
-            }
-          }
-        },
-        {
           "DataId": 1007478,
-          "Position": {
-            "X": -2.822998,
-            "Y": -3.0000014,
-            "Z": -56.229553
-          },
+          "Position": [-2.822998, -3.0000014, -56.229553],
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
@@ -74,37 +18,23 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003281,
-          "Position": {
-            "X": 97.520386,
-            "Y": 40.248554,
-            "Z": 81.1322
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [97.520386, 40.248554, 81.1322],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1005409,
-          "Position": {
-            "X": 159.62463,
-            "Y": 8.974117,
-            "Z": 582.7573
-          },
-          "TerritoryId": 135,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true
+          "Position": [159.62463, 8.974117, 582.7573],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

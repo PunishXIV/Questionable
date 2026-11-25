@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "TerritoryId": 1187,
+      "Steps": [
+        {
+          "DataId": 2013933,
+          "Position": [398.79456, 85.9845, 261.3717],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818413
+        },
+        {
+          "DataId": 2013932,
+          "Position": [368.33752, 61.05127, -9.2317505],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818412
+        },
+        {
+          "DataId": 2013924,
+          "Position": [353.56665, -107.71344, -238.81903],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818404
+        },
+        {
+          "DataId": 2013927,
+          "Position": [414.7555, -141.03918, -681.0254],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818409
+        },
+        {
+          "DataId": 2013928,
+          "Position": [-134.59985, -93.06476, -582.9404],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818410
+        },
+        {
+          "DataId": 2013925,
+          "Position": [-458.30475, -29.678833, -493.9193],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818405
+        },
+        {
+          "DataId": 2013926,
+          "Position": [-202.80768, -72.129456, -199.02344],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818408
+        },
+        {
+          "DataId": 2013929,
+          "Position": [-198.47418, 23.11737, -56.565247],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818406
+        },
+        {
+          "DataId": 2013930,
+          "Position": [-812.8939, 57.480713, 105.485596],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818407
+        },
+        {
+          "DataId": 2013931,
+          "Position": [70.17627, 0.6560669, 746.4254],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818411
+        }
+      ]
+    }
+  ]
+}

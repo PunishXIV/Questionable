@@ -1,90 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 2013249,
-          "Position": {
-            "X": -26.34522,
-            "Y": -132.0332,
-            "Z": -445.35086
-          },
-          "TerritoryId": 959,
-          "TargetTerritoryId": 959,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1044403,
-          "Position": {
-            "X": -203.5401,
-            "Y": -48.949707,
-            "Z": -273.60956
-          },
-          "TerritoryId": 959,
+          "Position": [-203.5401, -48.949707, -273.60956],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044571,
-          "Position": {
-            "X": 20.09607,
-            "Y": 64.97662,
-            "Z": 43.411865
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true
+          "Position": [20.09607, 64.97662, 43.411865],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044571,
-          "Position": {
-            "X": 20.09607,
-            "Y": 64.97662,
-            "Z": 43.411865
-          },
-          "TerritoryId": 959,
+          "Position": [20.09607, 64.97662, 43.411865],
           "InteractionType": "UseItem",
           "ItemId": 2003449,
           "GroundTarget": true
@@ -93,15 +40,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044571,
-          "Position": {
-            "X": 20.09607,
-            "Y": 64.97662,
-            "Z": 43.411865
-          },
-          "TerritoryId": 959,
+          "Position": [20.09607, 64.97662, 43.411865],
           "InteractionType": "UseItem",
           "ItemId": 2003449,
           "GroundTarget": true
@@ -110,54 +53,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 2013249,
-          "Position": {
-            "X": -26.34522,
-            "Y": -132.0332,
-            "Z": -445.35086
-          },
-          "TerritoryId": 959,
-          "TargetTerritoryId": 959,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1044403,
-          "Position": {
-            "X": -203.5401,
-            "Y": -48.949707,
-            "Z": -273.60956
-          },
-          "TerritoryId": 959,
+          "Position": [-203.5401, -48.949707, -273.60956],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,37 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1006248,
-          "Position": {
-            "X": -293.717,
-            "Y": -14.4056,
-            "Z": 204.261
-          },
-          "TerritoryId": 154,
+          "Position": [-293.717, -14.4056, 204.261],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1006248 (Oriane)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2001991,
-          "Position": {
-            "X": -349.143,
-            "Y": -10.0001,
-            "Z": 221.521
-          },
-          "TerritoryId": 154,
+          "Position": [-349.143, -10.0001, 221.521],
           "InteractionType": "Combat",
           "ItemId": 2000620,
           "EnemySpawnType": "AfterItemUse",
@@ -48,12 +38,7 @@
         },
         {
           "DataId": 2001992,
-          "Position": {
-            "X": -250.551,
-            "Y": -24.8536,
-            "Z": 223.166
-          },
-          "TerritoryId": 154,
+          "Position": [-250.551, -24.8536, 223.166],
           "InteractionType": "Combat",
           "ItemId": 2000620,
           "EnemySpawnType": "AfterItemUse",
@@ -69,36 +54,9 @@
           "$": "auto: lua EOBJECT2 -> 2001992 (scarred tree); spawns enemies 40; use item ITEM0=2000620 on it"
         },
         {
-          "Position": {
-            "X": -280.49484,
-            "Y": -8.696266,
-            "Z": 279.5596
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                { "High": 8 }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2001990,
-          "Position": {
-            "X": -282.277,
-            "Y": -5.83806,
-            "Z": 273.823
-          },
-          "TerritoryId": 154,
+          "Position": [-282.277, -5.83806, 273.823],
           "InteractionType": "Combat",
-          "DisableNavmesh": true,
           "ItemId": 2000620,
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [40],
@@ -116,41 +74,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": -280.49484,
-            "Y": -8.696266,
-            "Z": 279.5596
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -282.277,
-                  "Y": -5.83806,
-                  "Z": 273.823
-                },
-                "TerritoryId": 154,
-                "MaximumDistance": 5
-              }
-            }
-          }
-        },
-        {
           "DataId": 1006248,
-          "Position": {
-            "X": -292.96768,
-            "Y": -14.530079,
-            "Z": 203.2394
-          },
-          "TerritoryId": 154,
-          "StopDistance": 1,
+          "Position": [-292.96768, -14.530079, 203.2394],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1006248 (Oriane)"
         }
       ]

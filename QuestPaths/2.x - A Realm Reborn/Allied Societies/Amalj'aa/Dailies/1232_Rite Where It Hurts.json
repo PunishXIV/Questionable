@@ -1,40 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005551,
-          "Position": {
-            "X": 98.924194,
-            "Y": 15.29447,
-            "Z": -349.4469
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Comment": "QST really struggles with enemies spread out so far\nPlease use reload data/skip if you get stuck",
       "Steps": [
         {
-          "Position": {
-            "X": -88.30924,
-            "Y": 45.811226,
-            "Z": 175.01448
-          },
-          "TerritoryId": 146,
+          "Position": [-88.30924, 45.811226, 175.01448],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "ComplexCombatData": [
             {
               "DataId": 742,
@@ -52,20 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005551,
-          "Position": {
-            "X": 98.924194,
-            "Y": 15.29447,
-            "Z": -349.4469
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

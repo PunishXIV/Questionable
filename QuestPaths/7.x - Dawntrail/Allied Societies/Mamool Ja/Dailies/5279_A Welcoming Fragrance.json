@@ -1,36 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "chika", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": 30.207,
-            "Y": 15.048,
-            "Z": -852.278
-          },
-          "TerritoryId": 1189,
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+          "Position": [30.207, 15.048, -852.278],
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -50,7 +32,6 @@
           }
         },
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -71,15 +52,8 @@
         },
         {
           "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "Position": [589.3186, -142.89168, 729.4575],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

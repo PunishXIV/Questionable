@@ -1,567 +1,103 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "chika", "Date": "2026-08-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "StopDistance": 4,
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 506.70618,
-                  "Y": 142.24991,
-                  "Z": 800.2289
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 506.70618,
-                  "Y": 142.24991,
-                  "Z": 800.2289
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1054636,
-          "Position": {
-            "X": 506.70618,
-            "Y": 142.24991,
-            "Z": 800.2289
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 4,
-          "Fly": true,
-          "DisableNavmesh": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "Position": [506.70618, 142.24991, 800.2289],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1297,
       "Steps": [
-        {
-          "$": "Recovery",
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1187,
-                1297
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                1297
-              ],
-              "NearPosition": {
-                "Position": {
-                  "X": 496.11658,
-                  "Y": 142.24991,
-                  "Z": 801.6022
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1054640,
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1187
-              ]
-            }
-          }
-        },
-        {
-          "$": "5334 → 1 - QW: 0 0    0 0    0 0",
-          "Position": {
-            "X": -15.241116,
-            "Y": 0.29999995,
-            "Z": 42.755745
-          },
-          "TerritoryId": 1297,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -105.18726,
-                  "Y": 4.0711784,
-                  "Z": 154.88084
-                },
-                "TerritoryId": 1297,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "$": "5334 → 1 - QW: 0 0    0 0    0 0",
-          "Position": {
-            "X": -56.735413,
-            "Y": 1.8621371,
-            "Z": 157.42355
-          },
-          "TerritoryId": 1297,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -105.18726,
-                  "Y": 4.0711784,
-                  "Z": 154.88084
-                },
-                "TerritoryId": 1297,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
         {
           "$": "5334 → 1 - QW: 0 0    0 0    0 0",
           "DataId": 1055121,
-          "Position": {
-            "X": -105.18726,
-            "Y": 4.0711784,
-            "Z": 154.88084
-          },
-          "TerritoryId": 1297,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "DisableNavmesh": true
+          "Position": [-105.18726, 4.0711784, 154.88084],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
-        {
-          "$": "Recovery",
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1187,
-                1297
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                1297
-              ],
-              "NearPosition": {
-                "Position": {
-                  "X": 496.11658,
-                  "Y": 142.24991,
-                  "Z": 801.6022
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1054640,
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1187
-              ]
-            }
-          }
-        },
-        {
-          "$": "5334 → 2 - QW: 0 16    0 0    0 0",
-          "Position": {
-            "X": -0.8490938,
-            "Y": 0.39999998,
-            "Z": 173.45694
-          },
-          "TerritoryId": 1297,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 0.03678493,
-                  "Y": 42.45785,
-                  "Z": 314.6959
-                },
-                "TerritoryId": 1297,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
         {
           "$": "5334 → 2 - QW: 0 16    0 0    0 0",
           "DataId": 2014980,
-          "Position": {
-            "X": 0.03678493,
-            "Y": 42.45785,
-            "Z": 314.6959
-          },
+          "Position": [0.03678493, 42.45785, 314.6959],
           "TerritoryId": 1297,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "Mount": true,
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1187,
       "Steps": [
-        {
-          "$": "Recovery",
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1187,
-                1297
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                1297
-              ],
-              "NearPosition": {
-                "Position": {
-                  "X": 496.11658,
-                  "Y": 142.24991,
-                  "Z": 801.6022
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1054640,
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1187
-              ]
-            }
-          }
-        },
         {
           "$": "5334 → 3 - QW: 0 0    0 0    0 0",
           "DataId": 1054659,
-          "Position": {
-            "X": -1.9684448,
-            "Y": 38.852776,
-            "Z": 302.6626
-          },
+          "Position": [-1.9684448, 38.852776, 302.6626],
           "TerritoryId": 1297,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1297,
       "Steps": [
-        {
-          "$": "Recovery",
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1187,
-                1297
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                1297
-              ],
-              "NearPosition": {
-                "Position": {
-                  "X": 496.11658,
-                  "Y": 142.24991,
-                  "Z": 801.6022
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1054640,
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1187
-              ]
-            }
-          }
-        },
-        {
-          "$": "5334 → 4 - QW: 0 0    0 0    0 0",
-          "Position": {
-            "X": -2.6544309,
-            "Y": 0.35214996,
-            "Z": 187.74344
-          },
-          "TerritoryId": 1297,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -1.9684448,
-                  "Y": 38.852776,
-                  "Z": 302.6626
-                },
-                "TerritoryId": 1297,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "$": "5334 → 4 - QW: 0 0    0 0    0 0",
-          "Position": {
-            "X": -13.255109,
-            "Y": 4.758297,
-            "Z": -2.0605013
-          },
-          "TerritoryId": 1297,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -0.63470024,
-                  "Y": 21.915375,
-                  "Z": -85.56207
-                },
-                "TerritoryId": 1297,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
         {
           "$": "5334 → 4 - QW: 0 0    0 0    0 0",
           "DataId": 1054661,
-          "Position": {
-            "X": -73.19757,
-            "Y": 5.964904,
-            "Z": 66.84973
-          },
-          "TerritoryId": 1297,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "DisableNavmesh": true
+          "Position": [-73.19757, 5.964904, 66.84973],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "$": "5334 → 5 - QW: 0 0    0 0    0 0",
           "DataId": 1054662,
-          "Position": {
-            "X": -355.51996,
-            "Y": 101.70931,
-            "Z": 497.0016
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1187
-              ]
-            }
-          }
+          "Position": [-355.51996, 101.70931, 497.0016],
+          "InteractionType": "Interact"
         },
         {
           "$": "5334 → 5 - QW: 1(1) 0    128 0    0 128",
           "DataId": 1054675,
-          "Position": {
-            "X": -360.61652,
-            "Y": 113.62453,
-            "Z": 560.1738
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-360.61652, 113.62453, 560.1738],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "StopDistance": 4,
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 506.70618,
-                  "Y": 142.24991,
-                  "Z": 800.2289
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 506.70618,
-                  "Y": 142.24991,
-                  "Z": 800.2289
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1054636,
-          "Position": {
-            "X": 506.70618,
-            "Y": 142.24991,
-            "Z": 800.2289
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "Fly": true,
-          "DisableNavmesh": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "Position": [506.70618, 142.24991, 800.2289],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "TerritoryId": 1187,
           "InteractionType": "Craft",
           "ItemId": 46206,
           "ItemCount": 1,
@@ -574,52 +110,9 @@
           }
         },
         {
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "StopDistance": 4,
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 506.70618,
-                  "Y": 142.24991,
-                  "Z": 800.2289
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 20
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 506.70618,
-                  "Y": 142.24991,
-                  "Z": 800.2289
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1054636,
-          "Position": {
-            "X": 506.70618,
-            "Y": 142.24991,
-            "Z": 800.2289
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 4,
-          "DisableNavmesh": true
+          "Position": [506.70618, 142.24991, 800.2289],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

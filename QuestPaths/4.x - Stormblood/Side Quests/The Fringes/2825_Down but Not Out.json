@@ -1,55 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023161,
-          "Position": {
-            "X": 465.62903,
-            "Y": 77.67306,
-            "Z": 114.854614
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023162,
-          "Position": {
-            "X": 404.37042,
-            "Y": 114.18094,
-            "Z": 213.97086
-          },
-          "TerritoryId": 612,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "Position": [404.37042, 114.18094, 213.97086],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023163,
-          "Position": {
-            "X": 305.16516,
-            "Y": 45.654415,
-            "Z": 491.59985
-          },
-          "TerritoryId": 612,
+          "Position": [305.16516, 45.654415, 491.59985],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2826
         }
       ]

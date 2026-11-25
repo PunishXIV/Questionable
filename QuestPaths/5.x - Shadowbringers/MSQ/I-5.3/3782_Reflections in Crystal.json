@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033887,
-          "Position": {
-            "X": 24.2771,
-            "Y": -5.234193E-13,
-            "Z": -0.7477417
-          },
-          "StopDistance": 5,
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1030533,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
+          "Position": [117.997925, 14.649025, 7.156433],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -41,11 +25,7 @@
         },
         {
           "DataId": 1033888,
-          "Position": {
-            "X": 1.3580322,
-            "Y": 0,
-            "Z": -5.081299
-          },
+          "Position": [1.3580322, 0, -5.081299],
           "TerritoryId": 844,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -60,24 +40,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
-          "Position": {
-            "X": 0.1512314,
-            "Y": 1.9999986,
-            "Z": 19.4396
-          },
-          "TerritoryId": 351,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1033896,
-          "Position": {
-            "X": 1.5106201,
-            "Y": 0,
-            "Z": -3.1586914
-          },
-          "TerritoryId": 351,
+          "Position": [1.5106201, 0, -3.1586914],
           "InteractionType": "CompleteQuest"
         }
       ]

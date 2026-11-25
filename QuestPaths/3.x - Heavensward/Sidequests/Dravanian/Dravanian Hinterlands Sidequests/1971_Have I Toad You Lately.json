@@ -1,36 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "DataId": 2005336,
-          "Position": {
-            "X": -488.38312,
-            "Y": 137.788,
-            "Z": 740.4025
-          },
-          "TerritoryId": 399,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "SkipConditions": {"StepIf": {"InTerritory": [463]}}
-        },
-        {
           "DataId": 1012141,
-          "Position": {
-            "X": 35.7081,
-            "Y": 38.4297,
-            "Z": 13.0011
-          },
+          "Position": [35.7081, 38.4297, 13.0011],
           "TerritoryId": 463,
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1012141 (Saro Roggo)"
@@ -39,33 +18,12 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "DataId": 2005337,
-          "Position": {
-            "X": 7.736328,
-            "Y": 38.92566,
-            "Z": -51.010986
-          },
-          "TerritoryId": 463,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 399,
-          "SkipConditions": {"StepIf": {"InTerritory": [399, 478]}}
-        },
-        {
           "DataId": 2006082,
-          "Position": {
-            "X": -437.388,
-            "Y": 137.102,
-            "Z": 604.897
-          },
-          "TerritoryId": 399,
+          "Position": [-437.388, 137.102, 604.897],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -74,14 +32,8 @@
         },
         {
           "DataId": 2006081,
-          "Position": {
-            "X": -327.22,
-            "Y": 137.13,
-            "Z": 664.799
-          },
-          "TerritoryId": 399,
+          "Position": [-327.22, 137.13, 664.799],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             4016
@@ -91,14 +43,8 @@
         },
         {
           "DataId": 2006083,
-          "Position": {
-            "X": -363.29,
-            "Y": 137.13,
-            "Z": 555.723
-          },
-          "TerritoryId": 399,
+          "Position": [-363.29, 137.13, 555.723],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             4016
@@ -110,32 +56,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "DataId": 2005336,
-          "Position": {
-            "X": -488.38312,
-            "Y": 137.788,
-            "Z": 740.4025
-          },
-          "TerritoryId": 399,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "SkipConditions": {"StepIf": {"InTerritory": [463]}}
-        },
-        {
           "DataId": 1012141,
-          "Position": {
-            "X": 35.7081,
-            "Y": 38.4297,
-            "Z": 13.0011
-          },
+          "Position": [35.7081, 38.4297, 13.0011],
           "TerritoryId": 463,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1012141 (Saro Roggo)"
@@ -144,15 +69,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 463,
       "Steps": [
         {
           "DataId": 1012141,
-          "Position": {
-            "X": 35.7081,
-            "Y": 38.4297,
-            "Z": 13.0011
-          },
-          "TerritoryId": 463,
+          "Position": [35.7081, 38.4297, 13.0011],
           "InteractionType": "Emote",
           "Emote": "cheer",
           "$": "auto: todo location -> 1012141 (Saro Roggo)"
@@ -161,15 +82,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 463,
       "Steps": [
         {
           "DataId": 1012138,
-          "Position": {
-            "X": 19.2809,
-            "Y": 38.4297,
-            "Z": 15.8606
-          },
-          "TerritoryId": 463,
+          "Position": [19.2809, 38.4297, 15.8606],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1012138 (Matoya)"
         }

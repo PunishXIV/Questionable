@@ -1,102 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 2009739,
-          "Position": {
-            "X": -116.44165,
-            "Y": 15.121643,
-            "Z": -53.574463
-          },
-          "TerritoryId": 418,
+          "Position": [-116.44165, 15.121643, -53.574463],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
+          "Position": [-154.31458, 16.999992, -53.3609],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014803,
-          "Position": {
-            "X": 484.39758,
-            "Y": 212.5841,
-            "Z": 724.2999
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "Position": [484.39758, 212.5841, 724.2999],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2009740,
-          "Position": {
-            "X": 348.01245,
-            "Y": 158.34277,
-            "Z": 153.03271
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [348.01245, 158.34277, 153.03271],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2009741,
-          "Position": {
-            "X": 504.72266,
-            "Y": 121.62964,
-            "Z": 162.005
-          },
-          "TerritoryId": 397,
+          "Position": [504.72266, 121.62964, 162.005],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [10833]
         }
@@ -104,38 +66,18 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1028096,
-          "Position": {
-            "X": 343.00745,
-            "Y": 158.52606,
-            "Z": 152.75806
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [343.00745, 158.52606, 152.75806],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

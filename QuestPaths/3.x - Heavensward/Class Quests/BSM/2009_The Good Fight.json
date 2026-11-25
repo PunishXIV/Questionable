@@ -1,55 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Titanium Bastard Sword HQ // Autocraft requires: 3x Titanium Nugget, 1x Hardsilver Nugget, 1x Electrum Ingot, 1x Dhalmel Leather, 1x Void Glue",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012509,
-          "Position": {
-            "X": -190.56995,
-            "Y": -12.548244,
-            "Z": -25.833557
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1012515,
-          "Position": {
-            "X": 517.235,
-            "Y": -51.151085,
-            "Z": 35.568726
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [517.235, -51.151085, 35.568726],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 398,
           "ItemId": 10588,
           "ItemCount": 1,
           "SkipConditions": {
@@ -62,41 +37,20 @@
         },
         {
           "DataId": 1012509,
-          "Position": {
-            "X": -190.56995,
-            "Y": -12.548244,
-            "Z": -25.833557
-          },
+          "Position": [-190.56995, -12.548244, -25.833557],
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 2005898,
-          "Position": {
-            "X": 83.63464,
-            "Y": 23.971863,
-            "Z": -32.76117
-          },
-          "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "Position": [83.63464, 23.971863, -32.76117],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

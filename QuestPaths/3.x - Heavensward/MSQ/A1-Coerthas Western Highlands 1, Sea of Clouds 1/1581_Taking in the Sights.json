@@ -1,33 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011217,
-          "Position": {
-            "X": 17.990356,
-            "Y": 16.009666,
-            "Z": -9.567444
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
-        },
-        {
           "DataId": 1013036,
-          "Position": {
-            "X": -0.22894287,
-            "Y": -9.313226E-10,
-            "Z": 7.3395386
-          },
+          "Position": [-0.22894287, -9.313226E-10, 7.3395386],
           "TerritoryId": 433,
           "InteractionType": "AcceptQuest"
         }
@@ -35,70 +17,45 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012316,
-          "Position": {
-            "X": 12.130859,
-            "Y": 16.009666,
-            "Z": -7.0039062
-          },
-          "StopDistance": 5,
-          "TerritoryId": 419,
+          "Position": [12.130859, 16.009666, -7.0039062],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012317,
-          "Position": {
-            "X": -4.3793945,
-            "Y": 27.753849,
-            "Z": -148.27197
-          },
-          "TerritoryId": 419,
+          "Position": [-4.3793945, 27.753849, -148.27197],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012180,
-          "Position": {
-            "X": -174.18176,
-            "Y": -12.555469,
-            "Z": -21.561035
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "Position": [-174.18176, -12.555469, -21.561035],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012323,
-          "Position": {
-            "X": -50.21753,
-            "Y": 8.05915,
-            "Z": 15.457336
-          },
-          "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] Aetheryte Plaza"
-          ]
+          "Position": [-50.21753, 8.05915, 15.457336],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,83 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012368,
-          "Position": {
-            "X": -676.7529,
-            "Y": -111.71492,
-            "Z": 487.26624
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1011952,
-          "Position": {
-            "X": -277.63788,
-            "Y": -184.59735,
-            "Z": 741.60376
-          },
-          "TerritoryId": 401,
+          "Position": [-277.63788, -184.59735, 741.60376],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012375,
-          "Position": {
-            "X": 164.50745,
-            "Y": -12.634913,
-            "Z": -23.178528
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "Position": [164.50745, -12.634913, -23.178528],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011217,
-          "Position": {
-            "X": 17.990356,
-            "Y": 16.009666,
-            "Z": -9.567444
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Last Vigil"
-          ]
-        },
-        {
           "DataId": 1012329,
-          "Position": {
-            "X": -7.309082,
-            "Y": 0.0035869647,
-            "Z": -0.5036011
-          },
+          "Position": [-7.309082, 0.0035869647, -0.5036011],
           "TerritoryId": 433,
           "InteractionType": "CompleteQuest"
         }

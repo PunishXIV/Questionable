@@ -1,45 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
-  "Comment": "Auto buys 99x Gold Salmon Roe from Synnove\nFishes for 6x Giant Aetherlouse",
+  "Comment": "Buys 99x Gold Salmon Roe\nFishes for 6x Giant Aetherlouse",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038551,
-          "Position": {
-            "X": -348.539,
-            "Y": 21.846,
-            "Z": -79.9565
-          },
-          "TerritoryId": 962,
+          "Position": [-348.539, 21.846, -79.9565],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1038551 (T'laqa Tia)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1037054,
-          "Position": {
-            "X": 79.11792,
-            "Y": 5.1499996,
-            "Z": -46.52478
-          },
-          "TerritoryId": 962,
+          "Position": [79.11792, 5.1499996, -46.52478],
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Aetheryte Plaza"
-          ],
           "ItemId": 36588,
           "ItemCount": 99,
           "SkipConditions": {
@@ -50,44 +34,22 @@
           }
         },
         {
-          "Position": {
-            "X": -151.87701,
-            "Y": 156.92998,
-            "Z": -822.32367
-          },
+          "Position": [-151.87701, 156.92998, -822.32367],
           "TerritoryId": 956,
           "InteractionType": "Fish",
-          "Fly": true,
           "ItemsToGather": [
             {
               "ItemId": 35604,
               "ItemCount": 6,
-              "Collectability": 70,
-              "FishingOptions": {
-                "BaitId": 36588,
-                "HookType": { "Normal": { "Weak": true } }
-              }
+              "Collectability": 70
             }
-          ],
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Hall of Artifice (Labyrinthos)"
           ],
           "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "DataId": 1038551,
-          "Position": {
-            "X": -348.539,
-            "Y": 21.846,
-            "Z": -79.9565
-          },
-          "TerritoryId": 962,
+          "Position": [-348.539, 21.846, -79.9565],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
         }
       ]

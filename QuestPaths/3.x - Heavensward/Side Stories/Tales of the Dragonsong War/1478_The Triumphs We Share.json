@@ -1,142 +1,86 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1017123,
-          "Position": {
-            "X": 12.924377,
-            "Y": 33.999996,
-            "Z": -39.32251
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1017118,
-          "Position": {
-            "X": 34.37854,
-            "Y": 20.495003,
-            "Z": -652.1554
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [34.37854, 20.495003, -652.1554],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 2007061,
-          "Position": {
-            "X": -158.22083,
-            "Y": 17.04425,
-            "Z": -55.13086
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "Position": [-158.22083, 17.04425, -55.13086],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 2007062,
-          "Position": {
-            "X": 570.1532,
-            "Y": -1.2055054,
-            "Z": -369.95502
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "Fly": true
+          "Position": [570.1532, -1.2055054, -369.95502],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012251,
-          "Position": {
-            "X": 12.313965,
-            "Y": -12.020877,
-            "Z": 40.268433
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "Position": [12.313965, -12.020877, 40.268433],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1012065,
-          "Position": {
-            "X": -594.62885,
-            "Y": -51.05185,
-            "Z": -389.79175
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+          "Position": [-594.62885, -51.05185, -389.79175],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1006756,
-          "Position": {
-            "X": -16.891846,
-            "Y": 10.17425,
-            "Z": -246.87573
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "Position": [-16.891846, 10.17425, -246.87573],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012097,
-          "Position": {
-            "X": 73.3501,
-            "Y": 205.88956,
-            "Z": 23.483582
-          },
-          "TerritoryId": 478,
+          "Position": [73.3501, 205.88956, 23.483582],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "NextQuestId": 1479
         }
       ]

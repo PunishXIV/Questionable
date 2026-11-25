@@ -1,58 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031104,
-          "Position": {
-            "X": 41.397705,
-            "Y": 1.7633697,
-            "Z": 268.635
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 2010499,
-          "Position": {
-            "X": 655.1765,
-            "Y": 57.724854,
-            "Z": -436.51483
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "Position": [655.1765, 57.724854, -436.51483],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031104,
-          "Position": {
-            "X": 41.397705,
-            "Y": 1.7633697,
-            "Z": 268.635
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,66 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1056011,
-          "Position": {
-            "X": -22.568176,
-            "Y": 38.056595,
-            "Z": -389.05933
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Resolution"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "DataId": 1048083,
-          "Position": {
-            "X": 302.05237,
-            "Y": 51.199978,
-            "Z": 205.0354
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1207,
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1207
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                1207
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1048161,
-          "Position": {
-            "X": -5.874817,
-            "Y": -3.6188258E-08,
-            "Z": 6.8512573
-          },
+          "Position": [-5.874817, -3.6188258E-08, 6.8512573],
           "TerritoryId": 1207,
           "InteractionType": "Interact"
         }
@@ -68,50 +21,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1056119,
-          "Position": {
-            "X": 130.41882,
-            "Y": -16.560858,
-            "Z": 165.85034
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "Position": [130.41882, -16.560858, 165.85034],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2014993,
-          "Position": {
-            "X": 129.9068,
-            "Y": -16.56085,
-            "Z": 163.5934
-          },
-          "TerritoryId": 1185,
+          "Position": [129.9068, -16.56085, 163.5934],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1056126,
-          "Position": {
-            "X": 132.6466,
-            "Y": -15.89986,
-            "Z": 176.01282
-          },
-          "TerritoryId": 1185,
+          "Position": [132.6466, -15.89986, 176.01282],
           "InteractionType": "CompleteQuest"
         }
       ]

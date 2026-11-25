@@ -1,74 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020239,
-          "Position": {
-            "X": -291.43213,
-            "Y": 53.21751,
-            "Z": -614.313
-          },
-          "TerritoryId": 614,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020519,
-          "Position": {
-            "X": 173.78503,
-            "Y": 5.16971,
-            "Z": -417.41058
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "Position": [173.78503, 5.16971, -417.41058],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020523,
-          "Position": {
-            "X": 177.203,
-            "Y": 5.169708,
-            "Z": -416.15936
-          },
-          "TerritoryId": 614,
+          "Position": [177.203, 5.169708, -416.15936],
           "InteractionType": "Interact",
           "$": "QW: ? ?    ? ?    ? ? -> QW: 16 1    0 0    0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1020521,
-          "Position": {
-            "X": 188.34204,
-            "Y": 5.069492,
-            "Z": -414.99963
-          },
-          "TerritoryId": 614,
+          "Position": [188.34204, 5.069492, -414.99963],
           "InteractionType": "Interact",
           "$": "QW: 16 1    0 0    0 128 -> QW: 33 1    0 0    0 192",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1020240,
-          "Position": {
-            "X": 234.11914,
-            "Y": 5.6966333,
-            "Z": -427.1153
-          },
-          "TerritoryId": 614,
+          "Position": [234.11914, 5.6966333, -427.1153],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -76,25 +46,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "Position": {
-            "X": 175.34885,
-            "Y": 5.16971,
-            "Z": -419.04416
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1020519,
-          "Position": {
-            "X": 173.78503,
-            "Y": 5.16971,
-            "Z": -417.41058
-          },
-          "TerritoryId": 614,
+          "Position": [173.78503, 5.16971, -417.41058],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

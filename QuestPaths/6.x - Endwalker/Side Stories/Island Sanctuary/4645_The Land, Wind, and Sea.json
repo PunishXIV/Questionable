@@ -1,62 +1,27 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": { "Username": "ShermTank", "Date": "2026-05-26" },
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "DataId": 1043621,
-          "Position": {
-            "X": 174.12073,
-            "Y": 14.095924,
-            "Z": 667.5669
-          },
-          "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1055,
-          "Fly": true,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "custom/007/CtsMjiEntrance_00798",
-              "Prompt": "TEXT_CTSMJIENTRANCE_00798_SYSTEM_000_000",
-              "Answer": "TEXT_CTSMJIENTRANCE_00798_Q1_000_000"
-            },
-            {
-              "Type": "YesNo",
-              "ExcelSheet": "custom/007/CtsMjiEntrance_00798",
-              "Prompt": "TEXT_CTSMJIENTRANCE_00798_SYSTEM_000_005",
-              "Yes": true
-            }
-          ]
-        },
-        {
           "DataId": 1044156,
-          "Position": {
-            "X": -276.3562,
-            "Y": 39.993896,
-            "Z": 224.26172
-          },
+          "Position": [-276.3562, 39.993896, 224.26172],
           "TerritoryId": 1055,
-          "Mount": true,
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1055,
       "Steps": [
         {
           "DataId": 2013035,
-          "Position": {
-            "X": -389.85278,
-            "Y": 3.250122,
-            "Z": 238.36108
-          },
-          "TerritoryId": 1055,
-          "Mount": true,
+          "Position": [-389.85278, 3.250122, 238.36108],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "Comment": "Autocraft requires:\n24x Coconut Milk\n6x Berkanan Sap\n6x Elder Nutmeg Seeds",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039220,
-          "Position": {
-            "X": -287.15,
-            "Y": 21.846,
-            "Z": -150.752
-          },
-          "TerritoryId": 962,
+          "Position": [-287.15, 21.846, -150.752],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1039220 (Debroye)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "TerritoryId": 962,
           "InteractionType": "Craft",
           "ItemId": 35599,
           "ItemCount": 6,
@@ -36,17 +28,8 @@
         },
         {
           "DataId": 1039220,
-          "Position": {
-            "X": -287.15,
-            "Y": 21.846,
-            "Z": -150.752
-          },
-          "TerritoryId": 962,
+          "Position": [-287.15, 21.846, -150.752],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo turn-in -> 1039220 (Debroye)"
         }
       ]

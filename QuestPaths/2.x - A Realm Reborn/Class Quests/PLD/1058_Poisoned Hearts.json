@@ -1,54 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["liza", "Oblituarius"],
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006747,
-          "Position": {
-            "X": -20.828613,
-            "Y": 29.999964,
-            "Z": -2.4262085
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -97.65164,
-            "Y": 14.866778,
-            "Z": -189.99821
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
+          "Position": [-97.65164, 14.866778, -189.99821],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             1923,
             1924
           ],
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -57,90 +28,18 @@
         },
         {
           "DataId": 2002349,
-          "Position": {
-            "X": -97.39838,
-            "Y": 14.846985,
-            "Z": -188.2201
-          },
-          "TerritoryId": 146,
+          "Position": [-97.39838, 14.846985, -188.2201],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-          "X": -195.88503,
-          "Y": 4.1472216,
-          "Z": -216.97708
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-          "X": -89.94699,
-          "Y": -4.7999415,
-          "Z": -104.621376
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-          "X": -58.741863,
-          "Y": -16.84673,
-          "Z": -170.08568
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-          "X": -80.41123,
-          "Y": -14.578715,
-          "Z": -170.62582
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -98.86582,
-            "Y": -14.397484,
-            "Z": -172.42706
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
+          "Position": [-98.86582, -14.397484, -172.42706],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             1923,
             1924
           ],
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -149,53 +48,12 @@
         },
         {
           "DataId": 2002348,
-          "Position": {
-            "X": -99.4126,
-            "Y": -14.4198,
-            "Z": -179.46143
-          },
-          "TerritoryId": 146,
+          "Position": [-99.4126, -14.4198, -179.46143],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-          "X": -58.741863,
-          "Y": -16.84673,
-          "Z": -170.08568
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-          "X": -75.59294,
-          "Y": -1.9464281,
-          "Z": -102.63653
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 137.78966,
-            "Y": 10.371678,
-            "Z": -427.8172
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
+          "Position": [137.78966, 10.371678, -427.8172],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -209,50 +67,13 @@
           }
         },
         {
-          "Position": {
-            "X": 137.78966,
-            "Y": 10.371678,
-            "Z": -427.8172
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
-        },
-        {
           "DataId": 2002351,
-          "Position": {
-            "X": 137.74304,
-            "Y": 10.60498,
-            "Z": -420.5539
-          },
-          "TerritoryId": 146,
+          "Position": [137.74304, 10.60498, -420.5539],
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
-          "Position": {
-            "X": 137.70113,
-            "Y": 10.371678,
-            "Z": -427.45047
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": 116.208305,
-            "Y": 11.091853,
-            "Z": -475.35126
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 146,
+          "Position": [116.208305, 11.091853, -475.35126],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -262,40 +83,26 @@
         },
         {
           "DataId": 2002350,
-          "Position": {
-            "X": 115.983765,
-            "Y": 11.184814,
-            "Z": -482.7802
-          },
-          "TerritoryId": 146,
+          "Position": [115.983765, 11.184814, -482.7802],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "TerritoryId":146,
           "InteractionType":"EquipRecommended"
         },
         {
-          "TerritoryId":146,
           "InteractionType":"UpdateGearset"
         },
         {
           "DataId": 1006747,
-          "Position": {
-            "X": -20.828613,
-            "Y": 29.999964,
-            "Z": -2.4262085
-          },
+          "Position": [-20.828613, 29.999964, -2.4262085],
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
           "NextQuestId": 1059
         }
       ]

@@ -1,44 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "catsume", "Date": "2026-06-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031806,
-          "Position": {
-            "X": -464.59143,
-            "Y": 71.76874,
-            "Z": 573.8766
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "DataId": 1031891,
-          "Position": {
-            "X": -461.53967,
-            "Y": 72.51729,
-            "Z": 586.48047
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 890
-        },
-        {
           "DataId": 1031853,
-          "Position": {
-            "X": 60.471436,
-            "Y": -1.6051313,
-            "Z": 53.543823
-          },
+          "Position": [60.471436, -1.6051313, 53.543823],
           "TerritoryId": 890,
           "InteractionType": "Interact"
         }
@@ -46,50 +21,34 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 890,
       "Steps": [
         {
           "DataId": 1031852,
-          "Position": {
-            "X": 59.03711,
-            "Y": -1.7997739,
-            "Z": 56.565186
-          },
-          "TerritoryId": 890,
+          "Position": [59.03711, -1.7997739, 56.565186],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031855,
-          "Position": {
-            "X": 74.784424,
-            "Y": 98.85967,
-            "Z": -820.88965
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "Fly": true
+          "Position": [74.784424, 98.85967, -820.88965],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031858,
-          "Position": {
-            "X": -211.35272,
-            "Y": 16.63259,
-            "Z": 427.32886
-          },
-          "TerritoryId": 814,
+          "Position": [-211.35272, 16.63259, 427.32886],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Wright",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -102,30 +61,21 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031860,
-          "Position": {
-            "X": -217.45636,
-            "Y": 21.481304,
-            "Z": 356.9237
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-217.45636, 21.481304, 356.9237],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": -137.7369,
-            "Y": 11.939666,
-            "Z": 336.4078
-          },
-          "TerritoryId": 814,
+          "Position": [-137.7369, 11.939666, 336.4078],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -136,58 +86,33 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031861,
-          "Position": {
-            "X": -149.85895,
-            "Y": 13.084818,
-            "Z": 341.1764
-          },
-          "TerritoryId": 814,
+          "Position": [-149.85895, 13.084818, 341.1764],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031860,
-          "Position": {
-            "X": -217.45636,
-            "Y": 21.481304,
-            "Z": 356.9237
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-217.45636, 21.481304, 356.9237],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "DataId": 1031891,
-          "Position": {
-            "X": -461.53967,
-            "Y": 72.51729,
-            "Z": 586.48047
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
-          "TargetTerritoryId": 890
-        },
-        {
           "DataId": 1031863,
-          "Position": {
-            "X": 60.379883,
-            "Y": 31.0353,
-            "Z": -110.76526
-          },
+          "Position": [60.379883, 31.0353, -110.76526],
           "TerritoryId": 890,
           "InteractionType": "Interact"
         }
@@ -198,35 +123,18 @@
     },
     {
       "Sequence": 11,
+      "TerritoryId": 891,
       "Steps": [
         {
           "DataId": 1032350,
-          "Position": {
-            "X": 63.797974,
-            "Y": 30.266184,
-            "Z": -103.4715
-          },
-          "TerritoryId": 891,
+          "Position": [63.797974, 30.266184, -103.4715],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031806,
-          "Position": {
-            "X": -464.59143,
-            "Y": 71.76874,
-            "Z": 573.8766
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

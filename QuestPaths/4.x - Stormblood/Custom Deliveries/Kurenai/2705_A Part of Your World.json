@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023280,
-          "Position": {
-            "X": -62.790894,
-            "Y": -198.96509,
-            "Z": -64.34735
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1023282,
-          "Position": {
-            "X": -32.791687,
-            "Y": 0.5718597,
-            "Z": -554.7723
-          },
-          "TerritoryId": 613,
+          "Position": [-32.791687, 0.5718597, -554.7723],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -44,17 +27,12 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1023285,
-          "Position": {
-            "X": 119.493286,
-            "Y": 5.006782,
-            "Z": -862.6078
-          },
-          "TerritoryId": 613,
+          "Position": [119.493286, 5.006782, -862.6078],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -67,39 +45,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": 322.1539,
-            "Y": -121.22571,
-            "Z": -314.2446
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "RestartNavigationIfCancelled": false
-        },
-        {
-          "Position": {
-            "X": 22.288645,
-            "Y": -196.2301,
-            "Z": -155.5739
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE outside",
-          "RestartNavigationIfCancelled": false
-        },
-        {
           "DataId": 1023280,
-          "Position": {
-            "X": -62.790894,
-            "Y": -198.96509,
-            "Z": -64.34735
-          },
-          "TerritoryId": 613,
+          "Position": [-62.790894, -198.96509, -64.34735],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2706
         }
       ]

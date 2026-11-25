@@ -1,39 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011565,
-          "Position": {
-            "X": -78.8739,
-            "Y": 4,
-            "Z": -110.429565
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1004433,
-          "Position": {
-            "X": -23.605713,
-            "Y": 83.19999,
-            "Z": -2.3041382
-          },
-          "TerritoryId": 130,
+          "Position": [-23.605713, 83.19999, -2.3041382],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

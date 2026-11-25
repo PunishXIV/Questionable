@@ -1,86 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050623,
-          "Position": {
-            "X": 253.83374,
-            "Y": -0.034116313,
-            "Z": 439.3529
-          },
-          "TerritoryId": 1192,
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
-          "Fly": true,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1050623,
-          "Position": {
-            "X": 253.83374,
-            "Y": -0.034116313,
-            "Z": 439.3529
-          },
-          "TerritoryId": 1192,
+          "Position": [253.83374, -0.034116313, 439.3529],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1050623,
-          "Position": {
-            "X": 406.71564,
-            "Y": 1.3939283,
-            "Z": 550.029
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [406.71564, 1.3939283, 550.029],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1050623,
-          "Position": {
-            "X": 577.7826,
-            "Y": 7.5857296,
-            "Z": 662.96063
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [577.7826, 7.5857296, 662.96063],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1050624,
-          "Position": {
-            "X": 581.1398,
-            "Y": 7.6887574,
-            "Z": 664.05725
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1192,
+          "Position": [581.1398, 7.6887574, 664.05725],
           "InteractionType": "CompleteQuest"
         }
       ]

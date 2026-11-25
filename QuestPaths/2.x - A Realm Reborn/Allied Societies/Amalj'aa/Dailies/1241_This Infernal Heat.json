@@ -1,73 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005551,
-          "Position": {
-            "X": 98.924194,
-            "Y": 15.29447,
-            "Z": -349.4469
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2452,
-          "Position": {
-            "X": -24.15509,
-            "Y": 7.5814295,
-            "Z": 120.1953
-          },
-          "TerritoryId": 146,
+          "Position": [-24.15509, 7.5814295, 120.1953],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "Fly": true,
           "KillEnemyDataIds": [2452],
           "CompletionQuestVariablesFlags": [{"Low": 1},null,null,null,null,null]
         },
         {
           "DataId": 2452,
-          "Position": {
-            "X": -114.458,
-            "Y": 7.8163004,
-            "Z": 222.3391
-          },
-          "TerritoryId": 146,
+          "Position": [-114.458, 7.8163004, 222.3391],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "Fly": true,
           "KillEnemyDataIds": [2452]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005551,
-          "Position": {
-            "X": 98.924194,
-            "Y": 15.29447,
-            "Z": -349.4469
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

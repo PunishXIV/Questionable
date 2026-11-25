@@ -1,59 +1,28 @@
 ﻿using System.Collections.ObjectModel;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
 namespace Questionable.Data;
 
 [RegisterSingleton]
-internal sealed class AetheryteData : IAetheryteTerritoryProvider
+internal sealed class AetheryteData
 {
-    IReadOnlyCollection<uint> IAetheryteTerritoryProvider.AetheryteTerritoryIds => TerritoryIds.Values;
-
     public AetheryteData(IDataManager dataManager)
     {
         Dictionary<EAetheryteLocation, uint> territoryIds = [];
-        Dictionary<EAetheryteLocation, ushort> aethernetGroups = [];
-
-        void ConfigureAetheryte(EAetheryteLocation aetheryteLocation, uint territoryId,
-            ushort aethernetGroup)
-        {
-            territoryIds[aetheryteLocation] = territoryId;
-            aethernetGroups[aetheryteLocation] = aethernetGroup;
-        }
-
-        void ConfigureAetheryteWithAutoGroup(EAetheryteLocation aetheryteLocation, uint territoryId) => ConfigureAetheryte(aetheryteLocation, territoryId, (ushort)((int)aetheryteLocation / 100));
-
         foreach (Aetheryte aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
         {
-            if (!Enum.IsDefined((EAetheryteLocation)aetheryte.RowId))
-                continue;
-
-            if (aetheryte.Territory.RowId > 0)
+            if (Enum.IsDefined((EAetheryteLocation)aetheryte.RowId) && aetheryte.Territory.RowId > 0)
                 territoryIds[(EAetheryteLocation)aetheryte.RowId] = (ushort)aetheryte.Territory.RowId;
-
-            if (aetheryte.AethernetGroup > 0)
-                aethernetGroups[(EAetheryteLocation)aetheryte.RowId] = aetheryte.AethernetGroup;
         }
 
-        ConfigureAetheryte(EAetheryteLocation.IshgardFirmament, 886, aethernetGroups[EAetheryteLocation.Ishgard]);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentMendicantsCourt, 886);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentMattock, 886);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentNewNest, 886);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmanentSaintRoellesDais, 886);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentFeatherfall, 886);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentHoarfrostHall, 886);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentWesternRisensongQuarter, 886);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentEasternRisensongQuarter, 886);
+        foreach (EAetheryteLocation firmament in (EAetheryteLocation[])[
+                     EAetheryteLocation.IshgardFirmament, EAetheryteLocation.FirmamentMendicantsCourt,
+                     EAetheryteLocation.FirmamentMattock, EAetheryteLocation.FirmamentNewNest,
+                     EAetheryteLocation.FirmanentSaintRoellesDais, EAetheryteLocation.FirmamentFeatherfall,
+                     EAetheryteLocation.FirmamentHoarfrostHall, EAetheryteLocation.FirmamentWesternRisensongQuarter,
+                     EAetheryteLocation.FirmamentEasternRisensongQuarter])
+            territoryIds[firmament] = 886;
 
         TerritoryIds = territoryIds.AsReadOnly();
-        AethernetGroups = aethernetGroups.AsReadOnly();
-        TerritoryRoutes = new Dictionary<uint, AethernetShortcut>() {
-            { 419, new() { From = EAetheryteLocation.Ishgard, To = EAetheryteLocation.IshgardLastVigil } }
-        }.AsReadOnly();
-
-        TownTerritoryIds = dataManager.GetExcelSheet<TerritoryType>()
-            .Where(x => x.RowId > 0 && !string.IsNullOrEmpty(x.Name.ToString()) && x.TerritoryIntendedUse.RowId == 0)
-            .Select(x => x.RowId)
-            .ToList();
     }
 
     public ReadOnlyDictionary<EAetheryteLocation, Vector3> Locations { get; } = OrderedLocations.AsReadOnly<EAetheryteLocation, Vector3>();
@@ -322,77 +291,13 @@ internal sealed class AetheryteData : IAetheryteTerritoryProvider
     {
         get
         {
-            var a = OrderedLocations.Keys.ToList();
-            foreach (var b in Enum.GetValues<EAetheryteLocation>())
-                if (!a.Contains(b))
-                    a.Add(b);
-            return a;
+            var all = OrderedLocations.Keys.ToList();
+            foreach (var location in Enum.GetValues<EAetheryteLocation>())
+                if (!all.Contains(location))
+                    all.Add(location);
+            return all;
         }
     }
 
-    /// <summary>
-    ///     Airship landings are special as they're one-way only (except for Radz-at-Han, which is a normal aetheryte).
-    /// </summary>
-    private ReadOnlyDictionary<EAetheryteLocation, Vector3> AirshipLandingLocations { get; } =
-        new Dictionary<EAetheryteLocation, Vector3>
-        {
-            { EAetheryteLocation.LimsaAirship, new(-19.44352f, 91.99999f, -9.892939f) },
-            { EAetheryteLocation.GridaniaAirship, new(24.86354f, -19.000002f, 96f) },
-            { EAetheryteLocation.UldahAirship, new(-16.954851f, 82.999985f, -9.421141f) },
-            { EAetheryteLocation.KuganeAirship, new(-55.72525f, 79.10602f, 46.23109f) },
-            { EAetheryteLocation.IshgardFirmament, new(9.92315f, -15.2f, 173.5059f) }
-        }.AsReadOnly();
-
     public ReadOnlyDictionary<EAetheryteLocation, uint> TerritoryIds { get; }
-    public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
-    private IReadOnlyList<uint> TownTerritoryIds { get; }
-
-    public ReadOnlyDictionary<uint, AethernetShortcut> TerritoryRoutes { get; }
-
-    public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3? position)
-    {
-        var outp = TerritoryIds
-                .Where(item => item.Value == territoryId &&
-                               !item.Key.IsAethernetShard() &&
-                               AetheryteFunctions.IsAetheryteUnlocked((uint)item.Key, out var _))
-                .Select(item => item.Key)
-                .OrderBy(key => CalculateDistance(position ?? new(), territoryId, key));
-        Svc.Log.Debug($"NearestAetheryteTo: {(outp.Any() ? string.Join(',', outp) : "no results")}");
-        return outp.FirstOrNull();
-    }
-
-    public float CalculateDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
-    {
-        if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
-            return float.MaxValue;
-
-        if (!Locations.TryGetValue(to, out Vector3 toPosition))
-            return float.MaxValue;
-
-        return (fromPosition - toPosition).Length();
-    }
-
-    public float CalculateAirshipLandingDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
-    {
-        if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
-            return float.MaxValue;
-
-        if (!AirshipLandingLocations.TryGetValue(to, out Vector3 toPosition))
-            return float.MaxValue;
-
-        return (fromPosition - toPosition).Length();
-    }
-
-    public bool IsCityAetheryte(EAetheryteLocation aetheryte)
-    {
-        if (aetheryte == EAetheryteLocation.IshgardFirmament)
-            return true;
-
-        uint territoryId = TerritoryIds[aetheryte];
-        return TownTerritoryIds.Contains(territoryId);
-    }
-
-    public bool IsAirshipLanding(EAetheryteLocation aetheryte) => AirshipLandingLocations.ContainsKey(aetheryte);
-
-    public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte) => TerritoryIds[aetheryte] is 144 or 388;
 }

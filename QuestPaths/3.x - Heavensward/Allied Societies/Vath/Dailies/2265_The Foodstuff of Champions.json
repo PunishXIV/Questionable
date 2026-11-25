@@ -1,119 +1,69 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016803,
-          "Position": {
-            "X": 58.42009,
-            "Y": -48.000004,
-            "Z": -171.76868
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 2,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [58.42009, -48.000004, -171.76868],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2006897,
-          "Position": {
-            "X": 88.48706,
-            "Y": -123.43024,
-            "Z": 561.7914
-          },
-          "TerritoryId": 398,
+          "Position": [88.48706, -123.43024, 561.7914],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
         },
         {
           "DataId": 2006899,
-          "Position": {
-            "X": 137.1023,
-            "Y": -120.01227,
-            "Z": 586.08374
-          },
-          "TerritoryId": 398,
+          "Position": [137.1023, -120.01227, 586.08374],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 1}]
         },
         {
           "DataId": 2006898,
-          "Position": {
-            "X": 111.86377,
-            "Y": -119.035645,
-            "Z": 617.4868
-          },
-          "TerritoryId": 398,
+          "Position": [111.86377, -119.035645, 617.4868],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 2}]
         },
         {
           "DataId": 2006894,
-          "Position": {
-            "X": 223.22424,
-            "Y": -123.6134,
-            "Z": 697.6272
-          },
-          "TerritoryId": 398,
+          "Position": [223.22424, -123.6134, 697.6272],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 2006892,
-          "Position": {
-            "X": 209.1554,
-            "Y": -123.12512,
-            "Z": 767.91016
-          },
-          "TerritoryId": 398,
+          "Position": [209.1554, -123.12512, 767.91016],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2006893,
-          "Position": {
-            "X": 291.03528,
-            "Y": -119.40192,
-            "Z": 664.6676
-          },
-          "TerritoryId": 398,
+          "Position": [291.03528, -119.40192, 664.6676],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016803,
-          "Position": {
-            "X": 58.42009,
-            "Y": -48.000004,
-            "Z": -171.76868
-          },
-          "StopDistance": 2,
-          "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [58.42009, -48.000004, -171.76868],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,52 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013614,
-          "Position": {
-            "X": 463.5232,
-            "Y": 200.23772,
-            "Z": 651.911
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1013619,
-          "Position": {
-            "X": -274.49457,
-            "Y": 125.33218,
-            "Z": -13.870483
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-274.49457, 125.33218, -13.870483],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1013620,
-          "Position": {
-            "X": -275.2575,
-            "Y": 125.596924,
-            "Z": -11.215393
-          },
-          "StopDistance": 5,
-          "TerritoryId": 397,
+          "Position": [-275.2575, 125.596924, -11.215393],
           "InteractionType": "Action",
           "Action": "Cure II"
         }
@@ -54,48 +32,33 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2005857,
-          "Position": {
-            "X": -336.4157,
-            "Y": 89.00586,
-            "Z": -586.5721
-          },
-          "TerritoryId": 397,
+          "Position": [-336.4157, 89.00586, -586.5721],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4690
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [4,null,null,null,null,null]
         },
         {
           "DataId": 2005857,
-          "Position": {
-            "X": -336.4157,
-            "Y": 89.00586,
-            "Z": -586.5721
-          },
-          "TerritoryId": 397,
+          "Position": [-336.4157, 89.00586, -586.5721],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1013623,
-          "Position": {
-            "X": 486.93054,
-            "Y": -51.1414,
-            "Z": 25.986084
-          },
-          "TerritoryId": 398,
+          "Position": [486.93054, -51.1414, 25.986084],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "NextQuestId": 1723
         }
       ]

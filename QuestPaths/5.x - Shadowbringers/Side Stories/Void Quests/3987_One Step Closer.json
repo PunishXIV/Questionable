@@ -1,50 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1035281,
-          "Position": {
-            "X": -1.1444702,
-            "Y": 3.9998174,
-            "Z": 199.6947
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1035282,
-          "Position": {
-            "X": 660.82227,
-            "Y": 14.620537,
-            "Z": 216.32703
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "Position": [660.82227, 14.620537, 216.32703],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 652.8607,
-            "Y": 14.622499,
-            "Z": 222.77487
-          },
-          "TerritoryId": 813,
+          "Position": [652.8607, 14.622499, 222.77487],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [12662]
@@ -53,29 +32,21 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1035632,
-          "Position": {
-            "X": 659.8153,
-            "Y": 14.620948,
-            "Z": 215.77783
-          },
-          "TerritoryId": 813,
+          "Position": [659.8153, 14.620948, 215.77783],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 652.62976,
-            "Y": 14.622499,
-            "Z": 223.06616
-          },
-          "TerritoryId": 813,
+          "Position": [652.62976, 14.622499, 223.06616],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [12663]
@@ -84,29 +55,21 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1035283,
-          "Position": {
-            "X": 659.8153,
-            "Y": 14.620948,
-            "Z": 215.77783
-          },
-          "TerritoryId": 813,
+          "Position": [659.8153, 14.620948, 215.77783],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 652.4463,
-            "Y": 14.6225,
-            "Z": 222.89134
-          },
-          "TerritoryId": 813,
+          "Position": [652.4463, 14.6225, 222.89134],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [12664]
@@ -115,15 +78,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1035283,
-          "Position": {
-            "X": 659.8153,
-            "Y": 14.620948,
-            "Z": 215.77783
-          },
-          "TerritoryId": 813,
+          "Position": [659.8153, 14.620948, 215.77783],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3988
         }

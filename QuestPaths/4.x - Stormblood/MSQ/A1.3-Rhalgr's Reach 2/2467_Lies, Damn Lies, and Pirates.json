@@ -1,65 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020526,
-          "Position": {
-            "X": -609.6132,
-            "Y": 130,
-            "Z": -501.12158
-          },
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019519,
-          "Position": {
-            "X": -613.1228,
-            "Y": 130,
-            "Z": -529.839
-          },
-          "TerritoryId": 612,
+          "Position": [-613.1228, 130, -529.839],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 2661
         },
         {
           "DataId": 1020434,
-          "Position": {
-            "X": 13.534729,
-            "Y": 43.999996,
-            "Z": -36.850586
-          },
+          "Position": [13.534729, 43.999996, -36.850586],
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1020434,
-          "Position": {
-            "X": 13.534729,
-            "Y": 43.999996,
-            "Z": -36.850586
-          },
-          "TerritoryId": 128,
+          "Position": [13.534729, 43.999996, -36.850586],
           "InteractionType": "CompleteQuest"
         }
       ]

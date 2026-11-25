@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,15 +8,11 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039517,
-          "Position": {
-            "X": 376.6078,
-            "Y": 5.709401,
-            "Z": -220.50812
-          },
-          "TerritoryId": 957,
+          "Position": [376.6078, 5.709401, -220.50812],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -24,21 +20,16 @@
               "Prompt": "TEXT_AKTKZF001_04256_Q1_000_004",
               "Answer": "TEXT_AKTKZF001_04256_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          ]
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": -19.096,
-            "Y": 19.9251,
-            "Z": -276.803
-          },
-          "TerritoryId": 957,
+          "Position": [-19.096, 19.9251, -276.803],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -49,28 +40,13 @@
               "RewardItemId": 2003214,
               "RewardItemCount": 1
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1039517,
-          "Position": {
-            "X": 376.6078,
-            "Y": 5.709401,
-            "Z": -220.50812
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

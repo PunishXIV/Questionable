@@ -1,101 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014092,
-          "Position": {
-            "X": 509.17822,
-            "Y": 212.5399,
-            "Z": 695.796
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014094,
-          "Position": {
-            "X": 457.51123,
-            "Y": 200.23764,
-            "Z": 660.8834
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [457.51123, 200.23764, 660.8834],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2005990,
-          "Position": {
-            "X": 51.865356,
-            "Y": 125.26123,
-            "Z": 179.85803
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [51.865356, 125.26123, 179.85803],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014096,
-          "Position": {
-            "X": 458.64026,
-            "Y": 200.23764,
-            "Z": 659.7848
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "Position": [458.64026, 200.23764, 659.7848],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014097,
-          "Position": {
-            "X": 452.90295,
-            "Y": 130.79962,
-            "Z": -850.1869
-          },
-          "TerritoryId": 397,
+          "Position": [452.90295, 130.79962, -850.1869],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "it might be faster to shortcut to ok' zundu and fly to the adjoiner? this is simpler; smacks into the North Star but doesn't get stuck."
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014099,
-          "Position": {
-            "X": 457.20605,
-            "Y": 130.79962,
-            "Z": -848.6
-          },
-          "TerritoryId": 397,
+          "Position": [457.20605, 130.79962, -848.6],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -105,33 +68,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014102,
-          "Position": {
-            "X": 454.5204,
-            "Y": 130.79962,
-            "Z": -850.2479
-          },
-          "StopDistance": 5,
-          "TerritoryId": 397,
+          "Position": [454.5204, 130.79962, -850.2479],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014103,
-          "Position": {
-            "X": 509.17822,
-            "Y": 212.5399,
-            "Z": 695.796
-          },
-          "TerritoryId": 397,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "Position": [509.17822, 212.5399, 695.796],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

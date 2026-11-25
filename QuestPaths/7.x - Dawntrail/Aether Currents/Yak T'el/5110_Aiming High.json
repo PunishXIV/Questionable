@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050872,
-          "Position": {
-            "X": -408.71295,
-            "Y": 20.420113,
-            "Z": -398.8861
-          },
-          "TerritoryId": 1189,
+          "Position": [-408.71295, 20.420113, -398.8861],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,30 +23,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050873,
-          "Position": {
-            "X": -455.10034,
-            "Y": 17.027555,
-            "Z": -478.8739
-          },
-          "TerritoryId": 1189,
+          "Position": [-455.10034, 17.027555, -478.8739],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2014142,
-          "Position": {
-            "X": -372.45752,
-            "Y": 19.33313,
-            "Z": -694.45337
-          },
-          "TerritoryId": 1189,
+          "Position": [-372.45752, 19.33313, -694.45337],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -61,28 +49,18 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2013947,
-          "Position": {
-            "X": -184.74103,
-            "Y": 22.934265,
-            "Z": -751.6747
-          },
-          "TerritoryId": 1189,
+          "Position": [-184.74103, 22.934265, -751.6747],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818439
         },
         {
           "DataId": 1050873,
-          "Position": {
-            "X": -455.10034,
-            "Y": 17.027555,
-            "Z": -478.8739
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "Position": [-455.10034, 17.027555, -478.8739],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

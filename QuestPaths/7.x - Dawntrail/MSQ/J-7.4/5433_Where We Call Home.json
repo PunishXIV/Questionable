@@ -1,30 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1192,
       "Steps": [
         {
-          "DataId": 1056206,
-          "Position": {
-            "X": 7.7057495,
-            "Y": 50.700012,
-            "Z": 723.781
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1332,
-          "Fly": true
-        },
-        {
           "DataId": 1056172,
-          "Position": {
-            "X": 292.1034,
-            "Y": -98,
-            "Z": -283.25323
-          },
+          "Position": [292.1034, -98, -283.25323],
           "TerritoryId": 1332,
           "InteractionType": "AcceptQuest"
         }
@@ -32,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1332,
       "Steps": [
         {
           "DataId": 1056173,
-          "Position": {
-            "X": 293.96497,
-            "Y": -98,
-            "Z": -281.6358
-          },
-          "TerritoryId": 1332,
+          "Position": [293.96497, -98, -281.6358],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1338,
 		  "DialogueChoices":
@@ -59,9 +40,9 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1338,
       "Steps": [
         {
-          "TerritoryId": 1338,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1076,
@@ -75,31 +56,23 @@
     },
 	{
       "Sequence": 5,
+      "TerritoryId": 1332,
       "Steps": [
         {
           "DataId": 1056268,
-          "Position": {
-            "X": 264.7898,
-            "Y": -115,
-            "Z": -630.7317
-          },
-          "TerritoryId": 1332,
+          "Position": [264.7898, -115, -630.7317],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": false}
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1332,
       "Steps": [
         {
           "DataId": 1056175,
-          "Position": {
-            "X": 280.59814,
-            "Y": -115.97899,
-            "Z": -422.78174
-          },
-          "TerritoryId": 1332,
+          "Position": [280.59814, -115.97899, -422.78174],
           "InteractionType": "CompleteQuest"
         }
       ]

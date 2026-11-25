@@ -1,6 +1,4 @@
-﻿using Questionable.Controller.Steps.Common;
-using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps.Interactions;
+﻿namespace Questionable.Controller.Steps.Interactions;
 
 internal static class StatusOff
 {
@@ -11,7 +9,7 @@ internal static class StatusOff
             if (step.InteractionType != EInteractionType.StatusOff)
                 return null;
             if (!step.Status.HasValue)
-                throw new ArgumentNullException(nameof(step.Status));
+                throw new ArgumentException($"{nameof(step.Status)} is missing", nameof(step));
 
             return new Task(step.Status.Value);
         }
@@ -24,10 +22,10 @@ internal static class StatusOff
         public override string ToString() => $"StatusOff({Status})";
     }
 
-    internal sealed class DoStatusOff
+    internal sealed class Executor
     (
         GameFunctions gameFunctions)
-        : AbstractDelayedTaskExecutor<Task>
+        : DelayedTaskExecutor<Task>
     {
         protected override bool StartInternal()
         {

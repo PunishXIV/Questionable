@@ -1,69 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006215,
-          "Position": {
-            "X": -227.34424,
-            "Y": 26.16842,
-            "Z": -352.98694
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006221,
-          "Position": {
-            "X": -219.65369,
-            "Y": 26.204851,
-            "Z": -337.789
-          },
-          "TerritoryId": 146,
+          "Position": [-219.65369, 26.204851, -337.789],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1006222,
-          "Position": {
-            "X": -207.17181,
-            "Y": 27.31405,
-            "Z": -331.34973
-          },
-          "TerritoryId": 146,
+          "Position": [-207.17181, 27.31405, -331.34973],
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1006223,
-          "Position": {
-            "X": -85.06909,
-            "Y": 26.222988,
-            "Z": -348.50085
-          },
-          "TerritoryId": 146,
+          "Position": [-85.06909, 26.222988, -348.50085],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1006224,
-          "Position": {
-            "X": -77.74481,
-            "Y": 27.626602,
-            "Z": -325.42914
-          },
-          "TerritoryId": 146,
+          "Position": [-77.74481, 27.626602, -325.42914],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         }
@@ -71,18 +39,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006215,
-          "Position": {
-            "X": -227.34424,
-            "Y": 26.16842,
-            "Z": -352.98694
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,117 +1,71 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "Gezah",
 	"LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence":
 	[
 	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1021131,
-			"Position":
-			{
-				"X": -77.958374,
-				"Y": 0.010000985,
-				"Z": 45.548096
-			},
-			"TerritoryId": 635,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Rhalgr's Reach",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					635
-					]
-				}
-			}
-		}
-		]
+	  "Sequence": 0,
+	  "Steps": []
 	},
 	{
 		"Sequence": 1,
+		"TerritoryId": 635,
 		"Steps":
 		[
 		{
 			"DataId": 1021149,
 			"Position":
-			{
-				"X": 54.36792,
-				"Y": -3.3598025E-12,
-				"Z": -16.769714
-			},
-			"TerritoryId": 635,
+			[54.36792, -3.3598025E-12, -16.769714],
 			"InteractionType": "Interact"
 		},
 		{
 			"DataId": 1021150,
 			"Position":
-			{
-				"X": 53.81848,
-				"Y": -2.9746377E-12,
-				"Z": -14.847046
-			},
-			"TerritoryId": 635,
+			[53.81848, -2.9746377E-12, -14.847046],
 			"InteractionType": "Interact"
 		},
 		{
 			"DataId": 1021148,
 			"Position":
-			{
-				"X": 68.25354,
-				"Y": -7.481859E-13,
-				"Z": -10.360962
-			},
-			"TerritoryId": 635,
+			[68.25354, -7.481859E-13, -10.360962],
 			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 2,
+		"TerritoryId": 635,
 		"Steps":
 		[
 		{
 			"DataId": 1021131,
 			"Position":
-			{
-				"X": -77.958374,
-				"Y": 0.010000985,
-				"Z": 45.548096
-			},
-			"TerritoryId": 635,
+			[-77.958374, 0.010000985, 45.548096],
 			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 3,
+		"TerritoryId": 635,
 		"Steps":
 		[
 		{
 			"DataId": 1021132,
 			"Position":
-			{
-				"X": -87.35791,
-				"Y": 0,
-				"Z": 48.874634
-			},
-			"TerritoryId": 635,
+			[-87.35791, 0, 48.874634],
 			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 255,
+		"TerritoryId": 635,
 		"Steps":
 		[
 		{
 			"InteractionType": "Craft",
-			"TerritoryId": 635,
 			"ItemId": 17904,
 			"ItemCount": 1,
 			"SkipConditions":
@@ -128,12 +82,7 @@
 		{
 			"DataId": 1021131,
 			"Position":
-			{
-				"X": -77.958374,
-				"Y": 0.010000985,
-				"Z": 45.548096
-			},
-			"TerritoryId": 635,
+			[-77.958374, 0.010000985, 45.548096],
 			"InteractionType": "CompleteQuest"
 		}
 		]

@@ -1,57 +1,30 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked":{"Username": "alydev", "Date": "2026-05-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1043777,
-          "Position": {
-            "X": 66.20886,
-            "Y": 4.0999947,
-            "Z": -143.14496
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1043778,
-          "Position": {
-            "X": -19.546814,
-            "Y": 30,
-            "Z": 18.509094
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "Position": [-19.546814, 30, 18.509094],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1043778,
-          "Position": {
-            "X": -19.546814,
-            "Y": 30,
-            "Z": 18.509094
-          },
-          "TerritoryId": 131,
+          "Position": [-19.546814, 30, 18.509094],
           "InteractionType": "CompleteQuest"
         }
       ]

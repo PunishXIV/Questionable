@@ -1,101 +1,55 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "UcanPatates",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000617,
-          "Position": {
-            "X": 5.722107,
-            "Y": -7.2786255,
-            "Z": 270.95447
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000587,
-          "Position": {
-            "X": -7.248047,
-            "Y": -8.407776,
-            "Z": 268.23828
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "Position": [-7.248047, -8.407776, 268.23828],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2002191,
-          "Position": {
-            "X": 189.6543,
-            "Y": 7.94989,
-            "Z": 133.65369
-          },
-          "TerritoryId": 152,
+          "Position": [189.6543, 7.94989, 133.65369],
           "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2002192,
-          "Position": {
-            "X": 181.04822,
-            "Y": 0.07623291,
-            "Z": 43.289795
-          },
-          "TerritoryId": 152,
+          "Position": [181.04822, 0.07623291, 43.289795],
           "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 2002190,
-          "Position": {
-            "X": 233.66138,
-            "Y": 6.42395,
-            "Z": 199.11487
-          },
-          "TerritoryId": 152,
+          "Position": [233.66138, 6.42395, 199.11487],
           "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1006715,
-          "Position": {
-            "X": -170.67218,
-            "Y": 56.713512,
-            "Z": -255.9701
-          },
-          "TerritoryId": 152,
+          "Position": [-170.67218, 56.713512, -255.9701],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 972
         }
       ]

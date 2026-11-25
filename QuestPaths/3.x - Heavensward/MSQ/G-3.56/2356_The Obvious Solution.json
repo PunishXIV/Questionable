@@ -1,20 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1017749,
-          "Position": {
-            "X": -3.7995605,
-            "Y": 0.01804012,
-            "Z": -7.7669067
-          },
-          "StopDistance": 5,
-          "TerritoryId": 351,
+          "Position": [-3.7995605, 0.01804012, -7.7669067],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -22,34 +17,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000460,
-          "Position": {
-            "X": -159.41101,
-            "Y": 4.054107,
-            "Z": -4.1047363
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "Position": [-159.41101, 4.054107, -4.1047363],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1012395,
-          "Position": {
-            "X": -154.10089,
-            "Y": 4,
-            "Z": -15.4574585
-          },
-          "TerritoryId": 133,
+          "Position": [-154.10089, 4, -15.4574585],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,35 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041544,
-          "Position": {
-            "X": -599.6033,
-            "Y": -22.395752,
-            "Z": 588.1588
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041544,
-          "Position": {
-            "X": -599.6033,
-            "Y": -22.395752,
-            "Z": 588.1588
-          },
-          "TerritoryId": 961,
+          "Position": [-599.6033, -22.395752, 588.1588],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -43,20 +26,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041544,
-          "Position": {
-            "X": -599.6033,
-            "Y": -22.395752,
-            "Z": 588.1588
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,10 +1,4 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
 using Dalamud.Interface.Utility;
-using Dalamud.Interface.Utility.Raii;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common;
-using Questionable.Windows.Common.Ui;
 using Questionable.Windows.PathEditorComponents;
 
 namespace Questionable.Windows;
@@ -42,7 +36,7 @@ internal sealed class PathEditorWindow : LWindow
             MinimumSize = new Vector2(640, 360)
         };
 
-        _questSelector.QuestSelected = quest =>
+        _questSelector.OnSelect = quest =>
         {
             if (_session.Dirty && _session.QuestId != null && _session.QuestId != quest.Id)
                 _pendingQuestId = quest.Id;
@@ -104,12 +98,12 @@ internal sealed class PathEditorWindow : LWindow
 
         using (ImRaii.Disabled(!_session.Dirty || _session.Info == null || _session.WorkingRoot == null))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, _L("Save"), QstTheme.Success))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, _L("Save"), QstTheme.SuccessButton))
                 Save();
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Writes the path to your user quest directory and reloads all quest data.\nSaving reformats the file (property order, omitted defaults)."));
+            QstWidgets.Tooltip(_L("Writes the path to your user quest directory and reloads all quest data.\nSaving reformats the file (property order, omitted defaults)."));
 
         ImGui.SameLine();
         using (ImRaii.Disabled(!_session.Dirty))
@@ -122,7 +116,7 @@ internal sealed class PathEditorWindow : LWindow
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.FolderOpen))
             QuestRegistry.OpenFolder();
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Open Quests folder"));
+            QstWidgets.Tooltip(_L("Open Quests folder"));
 
         if (_session.Info is { } editableInfo)
         {
@@ -130,7 +124,7 @@ internal sealed class PathEditorWindow : LWindow
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExternalLinkAlt))
                 QuestRegistry.OpenEditor(editableInfo);
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Open this quest in your default .json text editor"));
+                QstWidgets.Tooltip(_L("Open this quest in your default .json text editor"));
         }
     }
 
@@ -203,7 +197,7 @@ internal sealed class PathEditorWindow : LWindow
             }
 
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Add a step to this sequence"));
+                QstWidgets.Tooltip(_L("Add a step to this sequence"));
 
             if (sequence.Steps.Count == 0)
             {
@@ -218,7 +212,7 @@ internal sealed class PathEditorWindow : LWindow
                 }
 
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Remove this empty sequence"));
+                    QstWidgets.Tooltip(_L("Remove this empty sequence"));
             }
         }
 

@@ -1,78 +1,37 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037939,
-          "Position": {
-            "X": 153.39893,
-            "Y": 7.985903,
-            "Z": 290.79114
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": 137.74304,
-            "Y": -9.384338,
-            "Z": -123.15564
-          },
-          "TerritoryId": 961,
+          "Position": [137.74304, -9.384338, -123.15564],
           "InteractionType": "UseItem",
           "ItemId": 2003338,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,{"High": 12},
           null]
         },
         {
           "DataId": 2012578,
-          "Position": {
-            "X": 137.74304,
-            "Y": -9.384338,
-            "Z": -123.15564
-          },
-          "TerritoryId": 961,
+          "Position": [137.74304, -9.384338, -123.15564],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2012579,
-          "Position": {
-            "X": 136.55298,
-            "Y": -11.459534,
-            "Z": -134.47784
-          },
-          "TerritoryId": 961,
+          "Position": [136.55298, -11.459534, -134.47784],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037939,
-          "Position": {
-            "X": 153.39893,
-            "Y": 7.985903,
-            "Z": 290.79114
-          },
-          "TerritoryId": 961,
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,56 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "croizat",
   "LastChecked": {"Username": "Iskierka", "Date": "2026-06-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002762,
-          "Position": {
-            "X": -203.69275,
-            "Y": 20.975048,
-            "Z": 367.33044
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2002040,
-          "Position": {
-            "X": -207.38544,
-            "Y": 8.8349,
-            "Z": 372.21326
-          },
-          "TerritoryId": 153,
+          "Position": [-207.38544, 8.8349, 372.21326],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2002041,
-          "Position": {
-            "X": -188.83038,
-            "Y": 1.1443481,
-            "Z": 429.6482
-          },
-          "TerritoryId": 153,
+          "Position": [-188.83038, 1.1443481, 429.6482],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [302]
         },
         {
           "DataId": 2002042,
-          "Position": {
-            "X": -204.21149,
-            "Y": 0.41192627,
-            "Z": 471.00012
-          },
-          "TerritoryId": 153,
+          "Position": [-204.21149, 0.41192627, 471.00012],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [302]
@@ -59,18 +34,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1002762,
-          "Position": {
-            "X": -203.69275,
-            "Y": 20.975048,
-            "Z": 367.33044
-          },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

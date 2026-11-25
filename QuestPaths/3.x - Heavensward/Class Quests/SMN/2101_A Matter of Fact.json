@@ -1,83 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006756,
-          "Position": {
-            "X": -16.891846,
-            "Y": 10.17425,
-            "Z": -246.87573
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1014020,
-          "Position": {
-            "X": -416.70862,
-            "Y": -55.58494,
-            "Z": 112.38269
-          },
-          "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "Position": [-416.70862, -55.58494, 112.38269],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1004506,
-          "Position": {
-            "X": -416.64764,
-            "Y": -54.15,
-            "Z": 96.42175
-          },
-          "TerritoryId": 145,
+          "Position": [-416.64764, -54.15, 96.42175],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1003931,
-          "Position": {
-            "X": -379.6292,
-            "Y": -55.85506,
-            "Z": 95.04846
-          },
-          "TerritoryId": 145,
+          "Position": [-379.6292, -55.85506, 95.04846],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1004556,
-          "Position": {
-            "X": -394.85773,
-            "Y": -57.30005,
-            "Z": 173.32715
-          },
-          "TerritoryId": 145,
+          "Position": [-394.85773, -57.30005, 173.32715],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -85,66 +44,46 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1014020,
-          "Position": {
-            "X": -416.70862,
-            "Y": -55.58494,
-            "Z": 112.38269
-          },
-          "TerritoryId": 145,
+          "Position": [-416.70862, -55.58494, 112.38269],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": -194.28932,
-            "Y": -36.84067,
-            "Z": 26.942286
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 145,
+          "Position": [-194.28932, -36.84067, 26.942286],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4777,
             4778
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
         },
         {
           "DataId": 1014025,
-          "Position": {
-            "X": -193.59125,
-            "Y": -36.83681,
-            "Z": 25.894531
-          },
-          "TerritoryId": 145,
+          "Position": [-193.59125, -36.83681, 25.894531],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1014028,
-          "Position": {
-            "X": -126.57361,
-            "Y": 4.0999947,
-            "Z": -96.23871
-          },
-          "TerritoryId": 130,
+          "Position": [-126.57361, 4.0999947, -96.23871],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "NextQuestId": 2102
         }
       ]

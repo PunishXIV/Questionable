@@ -1,38 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006273,
-          "Position": {
-            "X": 619.7284,
-            "Y": 23.936245,
-            "Z": 456.43982
-          },
-          "TerritoryId": 137,
-          "StopDistance": 1,
+          "Position": [619.7284, 23.936245, 456.43982],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "auto: issuer 1006273 (Gegeruju)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 510.406,
-            "Y": 53.3862,
-            "Z": 549.375
-          },
-          "TerritoryId": 137,
+          "Position": [510.406, 53.3862, 549.375],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -48,17 +37,12 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2002063,
-          "Position": {
-            "X": 558.114,
-            "Y": 43.7939,
-            "Z": 553.655
-          },
-          "TerritoryId": 137,
+          "Position": [558.114, 43.7939, 553.655],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             1891
@@ -69,18 +53,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006273,
-          "Position": {
-            "X": 619.7284,
-            "Y": 23.936245,
-            "Z": 456.43982
-          },
-          "TerritoryId": 137,
-          "StopDistance": 1,
+          "Position": [619.7284, 23.936245, 456.43982],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "$": "auto: todo turn-in -> 1006273 (Gegeruju)"
         }
       ]

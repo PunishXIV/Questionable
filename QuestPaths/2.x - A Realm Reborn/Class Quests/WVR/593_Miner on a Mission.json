@@ -1,61 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Velveteen Gaiters HQ\nAutocraft requires:\n 1x Undyed Velveteen,\n 1x Undyed Cotton Cloth,\n 1x Silver Ingot,\n 1x Rubber",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003826,
-          "Position": {
-            "X": 17.746216,
-            "Y": 12.279276,
-            "Z": 108.20166
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Miners' Guild"
-          ]
+          "Position": [17.746216, 12.279276, 108.20166],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 3823,
           "ItemCount": 1,
           "SkipConditions": {
@@ -67,27 +36,9 @@
           }
         },
         {
-          "TerritoryId": 130,
-          "InteractionType": "None",
-          "SkipConditions": {"StepIf": {"InTerritory": [131]}},
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
-        },
-        {
           "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Miners' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "Position": [157.36621, 7.7920074, 98.924194],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

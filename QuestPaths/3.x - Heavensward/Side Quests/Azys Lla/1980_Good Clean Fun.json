@@ -1,33 +1,18 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "goatzone",
 	"LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
 		{
-			"Sequence": 0,
-			"Steps": [
-				{
-					"DataId": 1012146,
-					"Position": {
-						"X": -643.76294,
-						"Y": -176.4502,
-						"Z": -527.3976
-					},
-					"TerritoryId": 402,
-					"InteractionType": "AcceptQuest"
-				}
-			]
+		  "Sequence": 0,
+		  "Steps": []
 		},
 		{
 			"Sequence": 1,
+			"TerritoryId": 402,
 			"Steps": [
 				{
-					"Position": {
-						"X": -439.6144,
-						"Y": -186.3405,
-						"Z": -617.2911
-					},
-					"TerritoryId": 402,
+					"Position": [-439.6144, -186.3405, -617.2911],
 					"InteractionType": "Combat",
 					"EnemySpawnType": "OverworldEnemies",
 					"ComplexCombatData": [
@@ -36,26 +21,13 @@
 							"MinimumKillCount": 5
 						}
 					],
-					"Fly": true,
 					"$": "by starting here we can guarantee a more sane straightline progression instead of starting in the middle, going all the way to one side, then running all the way to the other side."
 				}
 			]
 		},
 		{
-			"Sequence": 255,
-			"Steps": [
-				{
-					"DataId": 1012146,
-					"Position": {
-						"X": -643.76294,
-						"Y": -176.4502,
-						"Z": -527.3976
-					},
-					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-					"AetheryteShortcut": "Azys Lla - Helix"
-				}
-			]
+		  "Sequence": 255,
+		  "Steps": []
 		}
 	]
 }

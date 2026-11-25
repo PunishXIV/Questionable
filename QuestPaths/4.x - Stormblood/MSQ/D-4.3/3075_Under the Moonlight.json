@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 759,
       "Steps": [
         {
           "DataId": 1025354,
-          "Position": {
-            "X": -10.330383,
-            "Y": 0.19997318,
-            "Z": 12.893799
-          },
-          "TerritoryId": 759,
+          "Position": [-10.330383, 0.19997318, 12.893799],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -26,11 +22,7 @@
         },
         {
           "DataId": 1025009,
-          "Position": {
-            "X": 1.3274536,
-            "Y": 0.021091362,
-            "Z": 0.59503174
-          },
+          "Position": [1.3274536, 0.021091362, 0.59503174],
           "TerritoryId": 744,
           "InteractionType": "AcceptQuest"
         }
@@ -38,62 +30,33 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1019468,
-          "Position": {
-            "X": 165.61469,
-            "Y": 13.02367,
-            "Z": -90.53424
-          },
-          "StopDistance": 1,
-          "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "Position": [165.61469, 13.02367, -90.53424],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 621,
       "Steps": [
         {
-          "Position": {
-            "X": 70.965355,
-            "Y": 26.085297,
-            "Z": -607.26685
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
-        },
-        {
           "DataId": 1025546,
-          "Position": {
-            "X": 70.87805,
-            "Y": 26.199663,
-            "Z": -609.43005
-          },
-          "TerritoryId": 621,
+          "Position": [70.87805, 26.199663, -609.43005],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1025549,
-          "Position": {
-            "X": 1.4800415,
-            "Y": -1.1041565E-05,
-            "Z": -11.734253
-          },
-          "TerritoryId": 351,
+          "Position": [1.4800415, -1.1041565E-05, -11.734253],
           "InteractionType": "CompleteQuest"
         }
       ]

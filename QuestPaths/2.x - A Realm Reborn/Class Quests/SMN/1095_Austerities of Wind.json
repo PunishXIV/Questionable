@@ -1,66 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006756,
-          "Position": {
-            "X": -16.891846,
-            "Y": 10.17425,
-            "Z": -246.87573
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "$": "Walk to Outer La Noscea if you haven't unlocked the aetheryte",
-          "Position": {
-            "X": 285.82883,
-            "Y": 42.26685,
-            "Z": -203.32939
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 180,
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [180],
-              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [139,180]
-            }
-          }
-        },
-        {
           "$": "Attune to Camp Overlook if you haven't unlocked the aetheryte",
-          "TerritoryId": 180,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NotInTerritory": [180],
@@ -70,50 +25,31 @@
         },
         {
           "DataId": 1006792,
-          "Position": {
-            "X": -376.51804,
-            "Y": 51.535522,
-            "Z": -290.80536
-          },
-          "TerritoryId": 180,
-          "StopDistance": 1,
+          "Position": [-376.51804, 51.535522, -290.80536],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1006792,
-          "Position": {
-            "X": -378.10333,
-            "Y": 51.61585,
-            "Z": -290.11975
-          },
-          "TerritoryId": 180,
+          "Position": [-378.10333, 51.61585, -290.11975],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1006756,
-          "Position": {
-            "X": -16.891846,
-            "Y": 10.17425,
-            "Z": -246.87573
-          },
-          "TerritoryId": 133,
+          "Position": [-16.891846, 10.17425, -246.87573],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 1096
         }
       ]

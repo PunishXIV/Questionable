@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037867,
-          "Position": {
-            "X": -301.62512,
-            "Y": -144.00002,
-            "Z": -491.14215
-          },
-          "TerritoryId": 959,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1041132,
-          "Position": {
-            "X": -558.1293,
-            "Y": -168,
-            "Z": -475.3338
-          },
-          "TerritoryId": 959,
+          "Position": [-558.1293, -168, -475.3338],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -39,18 +24,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037867,
-          "Position": {
-            "X": -301.62512,
-            "Y": -144.00002,
-            "Z": -491.14215
-          },
-          "TerritoryId": 959,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006460,
-          "Position": {
-            "X": -431.479,
-            "Y": 211,
-            "Z": -194.847
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002166,
-          "Position": {
-            "X": -440.32965,
-            "Y": 210.77283,
-            "Z": -218.6466
-          },
-          "TerritoryId": 155,
+          "Position": [-440.32965, 210.77283, -218.6466],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [2090],
@@ -45,12 +28,7 @@
         },
         {
           "DataId": 2002167,
-          "Position": {
-            "X": -463.73694,
-            "Y": 210.98645,
-            "Z": -269.9779
-          },
-          "TerritoryId": 155,
+          "Position": [-463.73694, 210.98645, -269.9779],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [2090],
@@ -65,12 +43,7 @@
         },
         {
           "DataId": 2002168,
-          "Position": {
-            "X": -454.36792,
-            "Y": 217.9751,
-            "Z": -283.77203
-          },
-          "TerritoryId": 155,
+          "Position": [-454.36792, 217.9751, -283.77203],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [2090],
@@ -87,32 +60,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006460,
-          "Position": {
-            "X": -431.479,
-            "Y": 211,
-            "Z": -194.847
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-431.479, 211, -194.847],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002169,
-          "Position": {
-            "X": -416.31195,
-            "Y": 207.50745,
-            "Z": -200.91559
-          },
-          "TerritoryId": 155,
+          "Position": [-416.31195, 207.50745, -200.91559],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [2091]
@@ -121,20 +84,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006460,
-          "Position": {
-            "X": -431.479,
-            "Y": 211,
-            "Z": -194.847
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

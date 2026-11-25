@@ -1,137 +1,60 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031144,
-          "Position": {
-            "X": 84.33655,
-            "Y": -10.490669,
-            "Z": 59.494873
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eulmore",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "Position": {
-            "X": -0.41547322,
-            "Y": -276.906,
-            "Z": 269.2778
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Tempest - Macarenses Angle",
-          "Fly": true
-        },
-        {
           "DataId": 1027772,
-          "Position": {
-            "X": 5.3864136,
-            "Y": -276.906,
-            "Z": 271.59534
-          },
-          "StopDistance": 7,
-          "TerritoryId": 818,
+          "Position": [5.3864136, -276.906, 271.59534],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "Position": {
-            "X": -71.42122,
-            "Y": -274.33163,
-            "Z": 584.8395
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1028056,
-          "Position": {
-            "X": -68.37573,
-            "Y": -274.33163,
-            "Z": 579.33923
-          },
-          "StopDistance": 7,
-          "TerritoryId": 818,
+          "Position": [-68.37573, -274.33163, 579.33923],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "TerritoryId": 818,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 661,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "Position": {
-            "X": -71.42122,
-            "Y": -274.33163,
-            "Z": 584.8395
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1028056,
-          "Position": {
-            "X": -68.37573,
-            "Y": -274.33163,
-            "Z": 579.33923
-          },
-          "StopDistance": 7,
-          "TerritoryId": 818,
+          "Position": [-68.37573, -274.33163, 579.33923],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031144,
-          "Position": {
-            "X": 84.33655,
-            "Y": -10.490669,
-            "Z": 59.494873
-          },
-          "TerritoryId": 820,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eulmore",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

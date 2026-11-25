@@ -1,88 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039760,
-          "Position": {
-            "X": 82.65808,
-            "Y": 269.0903,
-            "Z": -490.44025
-          },
-          "StopDistance": 7,
-          "TerritoryId": 960,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1040338,
-          "Position": {
-            "X": -344.44196,
-            "Y": 263.13083,
-            "Z": -463.70648
-          },
-          "TerritoryId": 960,
+          "Position": [-344.44196, 263.13083, -463.70648],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1040339,
-          "Position": {
-            "X": -341.78687,
-            "Y": 263.37482,
-            "Z": -461.44812
-          },
-          "TerritoryId": 960,
+          "Position": [-341.78687, 263.37482, -461.44812],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "Position": {
-            "X": 48.215565,
-            "Y": 269.00882,
-            "Z": -703.63995
-          },
-          "TerritoryId": 960,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "Mount": true
-        },
-        {
           "DataId": 2012031,
-          "Position": {
-            "X": 13.107483,
-            "Y": 275.56262,
-            "Z": -756.40497
-          },
-          "TerritoryId": 960,
+          "Position": [13.107483, 275.56262, -756.40497],
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818390,
-          "DisableNavmesh": true
+          "AetherCurrentId": 2818390
         },
         {
           "DataId": 1039778,
-          "Position": {
-            "X": 184.03906,
-            "Y": 269.03912,
-            "Z": -637.6288
-          },
-          "TerritoryId": 960,
+          "Position": [184.03906, 269.03912, -637.6288],
           "InteractionType": "CompleteQuest"
         }
       ]

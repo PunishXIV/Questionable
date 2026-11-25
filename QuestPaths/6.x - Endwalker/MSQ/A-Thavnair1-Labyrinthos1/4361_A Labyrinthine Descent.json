@@ -1,111 +1,59 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038684,
-          "Position": {
-            "X": 29.007324,
-            "Y": -14.446999,
-            "Z": 76.46289
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038679,
-          "Position": {
-            "X": -275.5932,
-            "Y": 19.003881,
-            "Z": 13.321045
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Studium"
-          ]
+          "Position": [-275.5932, 19.003881, 13.321045],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038753,
-          "Position": {
-            "X": -234.21082,
-            "Y": 12.969517,
-            "Z": -27.054321
-          },
-          "TerritoryId": 962,
+          "Position": [-234.21082, 12.969517, -27.054321],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1038753,
-          "Position": {
-            "X": -202.6663,
-            "Y": 13.470648,
-            "Z": -49.497906
-          },
-          "TerritoryId": 962,
+          "Position": [-202.6663, 13.470648, -49.497906],
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 1,
-          "Sprint": false
+          "NpcWaitDistance": 1
         },
         {
           "DataId": 1038753,
-          "Position": {
-            "X": -138.0897,
-            "Y": 21.879826,
-            "Z": -144.57791
-          },
-          "TerritoryId": 962,
+          "Position": [-138.0897, 21.879826, -144.57791],
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 1,
-          "Sprint": false
+          "NpcWaitDistance": 1
         },
         {
           "DataId": 1038753,
-          "Position": {
-            "X": -89.6808,
-            "Y": 24.953402,
-            "Z": -138.54071
-          },
-          "TerritoryId": 962,
+          "Position": [-89.6808, 24.953402, -138.54071],
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 1,
-          "Sprint": false
+          "NpcWaitDistance": 1
         },
         {
           "DataId": 1038753,
-          "Position": {
-            "X": -16.652283,
-            "Y": 41.37599,
-            "Z": -145.70506
-          },
-          "TerritoryId": 962,
+          "Position": [-16.652283, 41.37599, -145.70506],
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 1,
-          "Sprint": false
+          "NpcWaitDistance": 1
         },
         {
           "DataId": 1038753,
-          "Position": {
-            "X": -77.90129,
-            "Y": 41.37599,
-            "Z": -209.40958
-          },
-          "TerritoryId": 962,
+          "Position": [-77.90129, 41.37599, -209.40958],
           "InteractionType": "WaitForManualProgress",
           "Comment": "Should auto-trigger the next step once Alisaie is here"
         }
@@ -113,15 +61,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038688,
-          "Position": {
-            "X": -69.5354,
-            "Y": 18.043928,
-            "Z": -321.40082
-          },
-          "TerritoryId": 962,
+          "Position": [-69.5354, 18.043928, -321.40082],
           "InteractionType": "Interact"
         }
       ]
@@ -131,50 +75,32 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1038692,
-          "Position": {
-            "X": -1.5411987,
-            "Y": 170.403,
-            "Z": -748.0125
-          },
-          "TerritoryId": 956,
+          "Position": [-1.5411987, 170.403, -748.0125],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1037473,
-          "Position": {
-            "X": -27.17633,
-            "Y": 170.40298,
-            "Z": -722.46893
-          },
-          "TerritoryId": 956,
+          "Position": [-27.17633, 170.40298, -722.46893],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1037472,
-          "Position": {
-            "X": -74.69299,
-            "Y": 170.403,
-            "Z": -755.67255
-          },
-          "TerritoryId": 956,
+          "Position": [-74.69299, 170.403, -755.67255],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1038695,
-          "Position": {
-            "X": -52.384216,
-            "Y": 170.403,
-            "Z": -734.7677
-          },
-          "TerritoryId": 956,
+          "Position": [-52.384216, 170.403, -734.7677],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,58 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048298,
-          "Position": {
-            "X": 111.40613,
-            "Y": 11.997235,
-            "Z": -52.018066
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1019350,
-          "Position": {
-            "X": 563.2562,
-            "Y": -19.505632,
-            "Z": 319.11182
-          },
-          "TerritoryId": 622,
+          "Position": [563.2562, -19.505632, 319.11182],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1019351,
-          "Position": {
-            "X": 548.8822,
-            "Y": -19.505648,
-            "Z": 295.1858
-          },
-          "TerritoryId": 622,
+          "Position": [548.8822, -19.505648, 295.1858],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1019353,
-          "Position": {
-            "X": 544.0298,
-            "Y": -19.505642,
-            "Z": 391.68372
-          },
-          "TerritoryId": 622,
+          "Position": [544.0298, -19.505642, 391.68372],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -60,31 +33,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1048305,
-          "Position": {
-            "X": 591.08875,
-            "Y": -19.505634,
-            "Z": 296.9253
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [591.08875, -19.505634, 296.9253],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1048305,
-          "Position": {
-            "X": 591.08875,
-            "Y": -19.505634,
-            "Z": 296.9253
-          },
-          "TerritoryId": 622,
+          "Position": [591.08875, -19.505634, 296.9253],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true}
         }
@@ -95,36 +59,23 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1048307,
-          "Position": {
-            "X": -494.56018,
-            "Y": 71.630486,
-            "Z": -518.9441
-          },
-          "TerritoryId": 622,
+          "Position": [-494.56018, 71.630486, -518.9441],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1048295,
-          "Position": {
-            "X": -74.143616,
-            "Y": -19.32829,
-            "Z": 198.68762
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "Position": [-74.143616, -19.32829, 198.68762],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,64 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005930,
-          "Position": {
-            "X": 12.558105,
-            "Y": 16.159302,
-            "Z": -176.5622
-          },
-          "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "Position": [-1.236023, 33.38838, -244.19019],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 110.641846,
-            "Y": 28.264153,
-            "Z": -598.6636
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1008890,
-          "Position": {
-            "X": 19.516235,
-            "Y": 24.284801,
-            "Z": -559.7772
-          },
-          "TerritoryId": 180,
+          "Position": [19.516235, 24.284801, -559.7772],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -72,29 +38,21 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2003971,
-          "Position": {
-            "X": 99.168335,
-            "Y": 21.591492,
-            "Z": -639.7345
-          },
-          "TerritoryId": 180,
+          "Position": [99.168335, 21.591492, -639.7345],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 97.544685,
-            "Y": 21.545254,
-            "Z": -637.22314
-          },
-          "TerritoryId": 180,
+          "Position": [97.544685, 21.545254, -637.22314],
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -104,12 +62,7 @@
         },
         {
           "DataId": 2003974,
-          "Position": {
-            "X": 97.00159,
-            "Y": 21.591492,
-            "Z": -637.4762
-          },
-          "TerritoryId": 180,
+          "Position": [97.00159, 21.591492, -637.4762],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -120,15 +73,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1008890,
-          "Position": {
-            "X": 19.516235,
-            "Y": 24.284801,
-            "Z": -559.7772
-          },
-          "TerritoryId": 180,
+          "Position": [19.516235, 24.284801, -559.7772],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -142,29 +91,21 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2003979,
-          "Position": {
-            "X": 152.78857,
-            "Y": 22.171326,
-            "Z": -698.32916
-          },
-          "TerritoryId": 180,
+          "Position": [152.78857, 22.171326, -698.32916],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 147.60046,
-            "Y": 23.544617,
-            "Z": -705.2567
-          },
-          "TerritoryId": 180,
+          "Position": [147.60046, 23.544617, -705.2567],
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -174,12 +115,7 @@
         },
         {
           "DataId": 2003983,
-          "Position": {
-            "X": 147.60046,
-            "Y": 23.544617,
-            "Z": -705.2567
-          },
-          "TerritoryId": 180,
+          "Position": [147.60046, 23.544617, -705.2567],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -190,38 +126,18 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "Position": [-1.236023, 33.38838, -244.19019],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005930,
-          "Position": {
-            "X": 12.558105,
-            "Y": 16.159302,
-            "Z": -176.5622
-          },
-          "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

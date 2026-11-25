@@ -1,0 +1,79 @@
+using Newtonsoft.Json;
+using Xunit;
+
+namespace Questionable.Tests.Serialization;
+
+public sealed class RuntimeConfigurationTests : IDisposable
+{
+    private readonly Configuration _configuration = new();
+
+    public RuntimeConfigurationTests() => Configuration.InitializeRuntime(_configuration);
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Consumers_FollowCharacterAfterSave(bool baseEnabled)
+    {
+        _configuration.Advanced.AutoRedeemRewardItems = baseEnabled;
+        _configuration.Advanced.NeverFly = baseEnabled;
+        _configuration.Advanced.AutoRedeemItemBlacklist = [100];
+        _configuration.CreateProfile("Alt");
+        _configuration.AssignProfile("42", "Alt");
+        _configuration.ActivateForCharacter("42");
+        _configuration.Advanced.AutoRedeemRewardItems = !baseEnabled;
+        _configuration.Advanced.NeverFly = !baseEnabled;
+        _configuration.Advanced.AutoRedeemItemBlacklist = [200];
+
+        Configuration saved = JsonConvert.DeserializeObject<Configuration>(JsonConvert.SerializeObject(_configuration))!;
+        Assert.Equal(baseEnabled, saved.Advanced.AutoRedeemRewardItems);
+        Assert.Equal(baseEnabled, saved.Advanced.NeverFly);
+        Assert.Contains(100u, saved.Advanced.AutoRedeemItemBlacklist);
+
+        AssertRuntimeSettings(!baseEnabled, 200);
+        _configuration.ActivateForCharacter("99");
+        AssertRuntimeSettings(baseEnabled, 100);
+        _configuration.ActivateForCharacter("42");
+        AssertRuntimeSettings(!baseEnabled, 200);
+        _configuration.ClearActiveProfile();
+        AssertRuntimeSettings(baseEnabled, 100);
+    }
+
+    [Fact]
+    public void Lookup_SeesUnsavedEditsInPlace()
+    {
+        _configuration.CreateProfile("Alt");
+        _configuration.ActivateProfile("Alt");
+        _configuration.Advanced.AutoRedeemItemBlacklist.Add(200);
+
+        Assert.Same(_configuration, Configuration.Instance());
+        Assert.Contains(200u, Configuration.Instance().Advanced.AutoRedeemItemBlacklist);
+        Assert.DoesNotContain(200u, _configuration.BaseAdvanced.AutoRedeemItemBlacklist);
+    }
+
+    [Fact]
+    public void OldInstanceCleanup_KeepsReplacement()
+    {
+        Configuration replacement = new();
+        Configuration.InitializeRuntime(replacement);
+        try
+        {
+            Configuration.ClearRuntime(_configuration);
+            Assert.Same(replacement, Configuration.Instance());
+        }
+        finally
+        {
+            Configuration.ClearRuntime(replacement);
+        }
+    }
+
+    private void AssertRuntimeSettings(bool enabled, uint blockedItem)
+    {
+        Configuration actual = Configuration.Instance();
+        Assert.Same(_configuration, actual);
+        Assert.Equal(enabled, actual.Advanced.AutoRedeemRewardItems);
+        Assert.Equal(enabled, actual.Advanced.NeverFly);
+        Assert.Equal(new[] { blockedItem }, actual.Advanced.AutoRedeemItemBlacklist);
+    }
+
+    public void Dispose() => Configuration.ClearRuntime(_configuration);
+}

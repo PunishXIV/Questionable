@@ -1,54 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "skiaz",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000576,
-          "Position": {
-            "X": 21.469421,
-            "Y": -4.5750833,
-            "Z": 221.75928
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -286.51263,
-            "Y": 12.089579,
-            "Z": -33.4333
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -286.51263,
-            "Y": 12.089579,
-            "Z": -33.4333
-          },
-          "TerritoryId": 152,
-          "InteractionType": "None",
-          "Land": true
-        },
-        {
           "DataId": 2264,
-          "Position": {
-            "X": -303.8529,
-            "Y": 12.348698,
-            "Z": -40.177063
-          },
-          "TerritoryId": 152,
+          "Position": [-303.8529, 12.348698, -40.177063],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -69,19 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000576,
-          "Position": {
-            "X": 21.469421,
-            "Y": -4.5750833,
-            "Z": 221.75928
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

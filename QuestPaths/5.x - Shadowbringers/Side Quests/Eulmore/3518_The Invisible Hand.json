@@ -1,76 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1029983,
-          "Position": {
-            "X": -56.565247,
-            "Y": -4.821,
-            "Z": -88.059875
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1027606,
-          "Position": {
-            "X": -50.247986,
-            "Y": -4.820967,
-            "Z": -94.65173
-          },
-          "StopDistance": 7,
-          "TerritoryId": 820,
+          "Position": [-50.247986, -4.820967, -94.65173],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1029980,
-          "Position": {
-            "X": -81.59003,
-            "Y": -0.80081946,
-            "Z": 40.878906
-          },
-          "TerritoryId": 820,
+          "Position": [-81.59003, -0.80081946, 40.878906],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1027604,
-          "Position": {
-            "X": 76.3103,
-            "Y": -8.115,
-            "Z": -46.219604
-          },
-          "TerritoryId": 820,
+          "Position": [76.3103, -8.115, -46.219604],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Nightsoil Pots",
-            "[Eulmore] The Glory Gate"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1029983,
-          "Position": {
-            "X": -56.565247,
-            "Y": -4.821,
-            "Z": -88.059875
-          },
-          "TerritoryId": 820,
+          "Position": [-56.565247, -4.821, -88.059875],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

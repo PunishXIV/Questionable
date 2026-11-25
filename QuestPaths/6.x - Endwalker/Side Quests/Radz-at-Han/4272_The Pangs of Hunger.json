@@ -1,143 +1,78 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041144,
-          "Position": {
-            "X": -63.34027,
-            "Y": 14,
-            "Z": 125.62744
-          },
-          "TerritoryId": 963,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 963,
       "Steps": [
         {
-          "Position": {
-            "X": -48.856667,
-            "Y": 13.068996,
-            "Z": 118.292465
-          },
-          "TerritoryId": 963,
+          "DataId": 194,
+          "Position": [6.6071167, -2.02948, 110.55151],
           "InteractionType": "WalkTo"
         },
         {
-          "DataId": 194,
-          "Position": {
-            "X": 6.6071167,
-            "Y": -2.02948,
-            "Z": 110.55151
-          },
-          "StopDistance": 3,
-          "TerritoryId": 963,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": -21.53136,
-            "Y": 1.7999926,
-            "Z": -182.28082
-          },
-          "TerritoryId": 963,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Alzadaal's Peace",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ]
-        },
-        {
           "DataId": 1037381,
-          "Position": {
-            "X": -23.697266,
-            "Y": 1.7999947,
-            "Z": -180.07172
-          },
-          "StopDistance": 4,
-          "TerritoryId": 963,
+          "Position": [-23.697266, 1.7999947, -180.07172],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 2012387,
-          "Position": {
-            "X": -58.27423,
-            "Y": 0.9613037,
-            "Z": -199.42017
-          },
-          "TerritoryId": 963,
+          "Position": [-58.27423, 0.9613037, -199.42017],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 2012388,
-          "Position": {
-            "X": -65.62909,
-            "Y": 13.992493,
-            "Z": 129.1676
-          },
-          "TerritoryId": 963,
+          "Position": [-65.62909, 13.992493, 129.1676],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1041144,
-          "Position": {
-            "X": -63.34027,
-            "Y": 14,
-            "Z": 125.62744
-          },
-          "TerritoryId": 963,
+          "Position": [-63.34027, 14, 125.62744],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1037466,
-          "Position": {
-            "X": -205.31018,
-            "Y": 36,
-            "Z": 135.39331
-          },
-          "TerritoryId": 963,
+          "Position": [-205.31018, 36, 135.39331],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1041145,
-          "Position": {
-            "X": -63.34027,
-            "Y": 14,
-            "Z": 126.207275
-          },
-          "TerritoryId": 963,
+          "Position": [-63.34027, 14, 126.207275],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,56 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048960,
-          "Position": {
-            "X": -405.84424,
-            "Y": 23.562847,
-            "Z": -476.61554
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": -455.06216,
-            "Y": 20.027777,
-            "Z": 46.272446
-          },
-          "TerritoryId": 1189,
+          "Position": [-455.06216, 20.027777, 46.272446],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             17268
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048960,
-          "Position": {
-            "X": -405.84424,
-            "Y": 23.562847,
-            "Z": -476.61554
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

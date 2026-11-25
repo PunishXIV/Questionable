@@ -1,77 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
-  "Comment": "Crafted Item:\n 1x Meat Miq'abob\nAutocraft requires:\n 1x Dodo Tenderloin,\n 1x Paprika,\n 1x Ruby Tomato,\n 1x Table Salt\nWill buy from Jossy",
+  "Comment": "Crafted Item:\n 1x Meat Miq'abob\nAutocraft requires:\n 1x Dodo Tenderloin,\n 1x Paprika,\n 1x Ruby Tomato,\n 1x Table Salt\nBuys the ingredients",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44.000008,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000950,
-          "Position": {
-            "X": -66.26996,
-            "Y": 42.299988,
-            "Z": -162.92065
-          },
-          "TerritoryId": 128,
+          "Position": [-66.26996, 42.299988, -162.92065],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000965,
-          "Position": {
-            "X": -76.98181,
-            "Y": 40.999992,
-            "Z": -136.21735
-          },
-          "TerritoryId": 128,
+          "Position": [-76.98181, 40.999992, -136.21735],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003249,
-          "Position": {
-            "X": -62.912964,
-            "Y": 42.29963,
-            "Z": -164.75171
-          },
-          "TerritoryId": 128,
+          "Position": [-62.912964, 42.29963, -164.75171],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -89,12 +54,7 @@
         },
         {
           "DataId": 1003249,
-          "Position": {
-            "X": -62.912964,
-            "Y": 42.29963,
-            "Z": -164.75171
-          },
-          "TerritoryId": 128,
+          "Position": [-62.912964, 42.29963, -164.75171],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -112,12 +72,7 @@
         },
         {
           "DataId": 1003249,
-          "Position": {
-            "X": -62.912964,
-            "Y": 42.29963,
-            "Z": -164.75171
-          },
-          "TerritoryId": 128,
+          "Position": [-62.912964, 42.29963, -164.75171],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -135,12 +90,7 @@
         },
         {
           "DataId": 1003249,
-          "Position": {
-            "X": -62.912964,
-            "Y": 42.29963,
-            "Z": -164.75171
-          },
-          "TerritoryId": 128,
+          "Position": [-62.912964, 42.29963, -164.75171],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -158,7 +108,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 4847,
           "ItemCount": 1,
           "SkipConditions": {
@@ -171,7 +120,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 4642,
           "ItemCount": 1,
           "SkipConditions": {
@@ -184,38 +132,21 @@
         },
         {
           "DataId": 1000965,
-          "Position": {
-            "X": -76.98181,
-            "Y": 40.999992,
-            "Z": -136.21735
-          },
-          "TerritoryId": 128,
+          "Position": [-76.98181, 40.999992, -136.21735],
           "InteractionType": "Interact",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44.000008,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
+          "Position": [-54.64258, 44.000008, -151.23218],
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

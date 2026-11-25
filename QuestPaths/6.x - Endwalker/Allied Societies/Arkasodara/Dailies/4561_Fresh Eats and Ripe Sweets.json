@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042384,
-          "Position": {
-            "X": 562.7068,
-            "Y": 12.048153,
-            "Z": 157.85449
-          },
-          "TerritoryId": 957,
+          "Position": [562.7068, 12.048153, 157.85449],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               16,
               48
@@ -40,14 +22,8 @@
         },
         {
           "DataId": 1042385,
-          "Position": {
-            "X": 614.43494,
-            "Y": 38.455334,
-            "Z": 193.77429
-          },
-          "TerritoryId": 957,
+          "Position": [614.43494, 38.455334, 193.77429],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               16,
               32
@@ -55,14 +31,8 @@
         },
         {
           "DataId": 1042386,
-          "Position": {
-            "X": 607.35486,
-            "Y": 18.607574,
-            "Z": 212.14612
-          },
-          "TerritoryId": 957,
+          "Position": [607.35486, 18.607574, 212.14612],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               32,
               48
@@ -72,19 +42,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,56 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051407,
-          "Position": {
-            "X": -182.29956,
-            "Y": 1.1335879e-5,
-            "Z": 45.059814
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Nexus Arcade"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 2014345,
-          "Position": {
-            "X": -206.92761,
-            "Y": 0.25933838,
-            "Z": -106.58429
-          },
-          "TerritoryId": 1186,
+          "Position": [-206.92761, 0.25933838, -106.58429],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1051407,
-          "Position": {
-            "X": -182.29956,
-            "Y": 1.1335879e-5,
-            "Z": 45.059814
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

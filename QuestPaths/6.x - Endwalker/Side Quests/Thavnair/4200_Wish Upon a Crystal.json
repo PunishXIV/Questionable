@@ -1,39 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037671,
-          "Position": {
-            "X": -554.37555,
-            "Y": 1.120665,
-            "Z": 22.690125
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039384,
-          "Position": {
-            "X": 223.22424,
-            "Y": 10.211119,
-            "Z": 562.4321
-          },
-          "TerritoryId": 957,
+          "Position": [223.22424, 10.211119, 562.4321],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -46,21 +27,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037671,
-          "Position": {
-            "X": -554.37555,
-            "Y": 1.120665,
-            "Z": 22.690125
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

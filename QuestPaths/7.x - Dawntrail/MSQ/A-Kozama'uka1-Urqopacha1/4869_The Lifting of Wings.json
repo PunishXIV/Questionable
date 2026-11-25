@@ -1,49 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046735,
-          "Position": {
-            "X": -96.60492,
-            "Y": 9.773315,
-            "Z": -533.40967
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1046738,
-          "Position": {
-            "X": -155.6878,
-            "Y": 2.7463636,
-            "Z": -383.1388
-          },
-          "TerritoryId": 1188,
+          "Position": [-155.6878, 2.7463636, -383.1388],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2013630,
-          "Position": {
-            "X": -63.21814,
-            "Y": 2.1820068,
-            "Z": -237.90344
-          },
-          "TerritoryId": 1188,
+          "Position": [-63.21814, 2.1820068, -237.90344],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -54,15 +35,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2013631,
-          "Position": {
-            "X": 217.05945,
-            "Y": 1.083313,
-            "Z": -218.61603
-          },
-          "TerritoryId": 1188,
+          "Position": [217.05945, 1.083313, -218.61603],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -73,37 +50,17 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": {
-            "X": 303.21774,
-            "Y": 7.475274,
-            "Z": -215.19496
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "Mount": true
-        },
-        {
           "DataId": 2013938,
-          "Position": {
-            "X": 516.80774,
-            "Y": 17.959839,
-            "Z": -348.0431
-          },
-          "TerritoryId": 1188,
+          "Position": [516.80774, 17.959839, -348.0431],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818425
         },
         {
           "DataId": 2013632,
-          "Position": {
-            "X": 656.7025,
-            "Y": 7.309021,
-            "Z": -289.44843
-          },
-          "TerritoryId": 1188,
+          "Position": [656.7025, 7.309021, -289.44843],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -114,47 +71,32 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1188,
       "Steps": [
         {
-          "TerritoryId": 1188,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kozama'uka - Dock Poga"
         },
         {
           "DataId": 2013937,
-          "Position": {
-            "X": 918.15063,
-            "Y": 10.116699,
-            "Z": -404.10468
-          },
-          "TerritoryId": 1188,
+          "Position": [918.15063, 10.116699, -404.10468],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818424
         },
         {
           "DataId": 2013633,
-          "Position": {
-            "X": 659.4186,
-            "Y": 26.321777,
-            "Z": -515.343
-          },
-          "TerritoryId": 1188,
+          "Position": [659.4186, 26.321777, -515.343],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1046744,
-          "Position": {
-            "X": -101.64038,
-            "Y": 9.773315,
-            "Z": -535.3323
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1188,
+          "Position": [-101.64038, 9.773315, -535.3323],
           "InteractionType": "CompleteQuest"
         }
       ]

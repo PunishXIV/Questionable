@@ -1,39 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000656,
-          "Position": {
-            "X": 401.09537,
-            "Y": -5.9241953,
-            "Z": -103.80447
-          },
-          "TerritoryId": 154,
-          "StopDistance": 1,
+          "Position": [401.09537, -5.9241953, -103.80447],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1000656 (Dametta)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": 277.168,
-            "Y": 3.0592003,
-            "Z": -32.6562
-          },
-          "TerritoryId": 154,
+          "Position": [277.168, 3.0592003, -32.6562],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -49,19 +37,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000656,
-          "Position": {
-            "X": 401.09537,
-            "Y": -5.9241953,
-            "Z": -103.80447
-          },
-          "TerritoryId": 154,
-          "StopDistance": 1,
+          "Position": [401.09537, -5.9241953, -103.80447],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1000656 (Dametta)"
         }
       ]

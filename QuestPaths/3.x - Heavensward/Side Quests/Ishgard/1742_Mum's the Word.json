@@ -1,57 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014715,
-          "Position": {
-            "X": 11.9782715,
-            "Y": 15.96505,
-            "Z": -12.64978
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014716,
-          "Position": {
-            "X": 113.572876,
-            "Y": 3.5999913,
-            "Z": 55.191895
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "Position": [113.572876, 3.5999913, 55.191895],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1011233,
-          "Position": {
-            "X": 517.557,
-            "Y": 217.95152,
-            "Z": 770.0725
-          },
-          "TerritoryId": 397,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "Position": [517.557, 217.95152, 770.0725],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

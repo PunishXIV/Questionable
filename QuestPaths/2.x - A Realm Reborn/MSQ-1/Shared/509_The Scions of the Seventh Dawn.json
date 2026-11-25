@@ -1,143 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001353,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.78235
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "DataId": 1004019,
-          "Position": {
-            "X": -335.9579,
-            "Y": 13.983717,
-            "Z": -99.65674
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 140,
-          "AetheryteShortcut": "Western Thanalan - Horizon"
-        },
-        {
           "DataId": 1002295,
-          "Position": {
-            "X": -246.08228,
-            "Y": 32.44368,
-            "Z": 383.84058
-          },
-          "TerritoryId": 140,
+          "Position": [-246.08228, 32.44368, 383.84058],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179661
         },
         {
-          "DataId": 1002039,
-          "Position": {
-            "X": -298.7564,
-            "Y": 13.983702,
-            "Z": 303.36462
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 140
-        },
-        {
-          "Position": {
-            "X": -316.29608,
-            "Y": 23.44405,
-            "Z": -345.24487
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -396.50018,
-            "Y": 23,
-            "Z": -351.0944
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -408.92343,
-            "Y": 23.167036,
-            "Z": -351.16223
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "$": "Vesper Bay Gate",
-          "DisableNavmesh": true
-        },
-        {
           "$": "Unlock Vesper Bay taxi",
           "DataId": 1004036,
-          "Position": {
-            "X": -415.7931,
-            "Y": 23.11398,
-            "Z": -335.71375
-          },
-          "TerritoryId": 140,
+          "Position": [-415.7931, 23.11398, -335.71375],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179660
         },
         {
           "DataId": 1004603,
-          "Position": {
-            "X": -489.8299,
-            "Y": 21.48999,
-            "Z": -381.97913
-          },
-          "TerritoryId": 140,
+          "Position": [-489.8299, 21.48999, -381.97913],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -493.3852,
-            "Y": 21,
-            "Z": -382.50455
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212
-        },
-        {
           "DataId": 1005012,
-          "Position": {
-            "X": 22.507019,
-            "Y": 0.9999986,
-            "Z": -2.02948
-          },
+          "Position": [22.507019, 0.9999986, -2.02948],
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest"
         }

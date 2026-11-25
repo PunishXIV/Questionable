@@ -1,71 +1,19 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked":{"Username": "alydev", "Date": "2025-12-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] Featherfall"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -80.88812,
-                  "Y": -7.356983E-05,
-                  "Z": 107.71338
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1034088,
-          "Position": {
-            "X": -100.60278,
-            "Y": 1.4999981,
-            "Z": 87.26636
-          },
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1034090,
-          "Position": {
-            "X": -66.02582,
-            "Y": -9.999998,
-            "Z": 86.289795
-          },
-          "TerritoryId": 886,
+          "Position": [-66.02582, -9.999998, 86.289795],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -74,17 +22,8 @@
         },
         {
           "DataId": 1034089,
-          "Position": {
-            "X": 41.33667,
-            "Y": -18.499184,
-            "Z": 22.598572
-          },
-          "TerritoryId": 886,
+          "Position": [41.33667, -18.499184, 22.598572],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] Featherfall",
-            "[Firmament] The Mattock"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 8}
@@ -92,17 +31,8 @@
         },
         {
           "DataId": 1034091,
-          "Position": {
-            "X": -73.47223,
-            "Y": -10,
-            "Z": 182.48254
-          },
-          "TerritoryId": 886,
+          "Position": [-73.47223, -10, 182.48254],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mattock",
-            "[Firmament] The Mendicant's Court"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 2}
@@ -112,55 +42,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] Featherfall"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -80.88812,
-                  "Y": -7.356983E-05,
-                  "Z": 107.71338
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1034088,
-          "Position": {
-            "X": -100.60278,
-            "Y": 1.4999981,
-            "Z": 87.26636
-          },
-          "TerritoryId": 886,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

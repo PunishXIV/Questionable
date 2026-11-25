@@ -1,40 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002657,
-          "Position": {
-            "X": 540.542,
-            "Y": 89,
-            "Z": -73.9988
-          },
-          "TerritoryId": 135,
+          "Position": [540.542, 89, -73.9988],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
           "$": "auto: issuer 1002657 (Moegramm)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002660,
-          "Position": {
-            "X": 541.772,
-            "Y": 83.6631,
-            "Z": -5.44751
-          },
-          "TerritoryId": 135,
+          "Position": [541.772, 83.6631, -5.44751],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1002660 (X'payan)"
         }
@@ -42,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002661,
-          "Position": {
-            "X": 574.7669,
-            "Y": 87.49876,
-            "Z": -34.42437
-          },
-          "TerritoryId": 135,
+          "Position": [574.7669, 87.49876, -34.42437],
           "InteractionType": "UseItem",
           "ItemId": 2000435,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
@@ -58,12 +41,7 @@
         },
         {
           "DataId": 1002687,
-          "Position": {
-            "X": 565.4558,
-            "Y": 84.45208,
-            "Z": -115.9672
-          },
-          "TerritoryId": 135,
+          "Position": [565.4558, 84.45208, -115.9672],
           "InteractionType": "UseItem",
           "ItemId": 2000435,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
@@ -71,12 +49,7 @@
         },
         {
           "DataId": 1002688,
-          "Position": {
-            "X": 478.6772,
-            "Y": 81.15864,
-            "Z": -38.09804
-          },
-          "TerritoryId": 135,
+          "Position": [478.6772, 81.15864, -38.09804],
           "InteractionType": "UseItem",
           "ItemId": 2000435,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
@@ -86,21 +59,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002657,
-          "Position": {
-            "X": 540.542,
-            "Y": 89,
-            "Z": -73.9988
-          },
-          "TerritoryId": 135,
+          "Position": [540.542, 89, -73.9988],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
           "$": "auto: todo turn-in -> 1002657 (Moegramm)"
         }
       ]

@@ -1,96 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009153,
-          "Position": {
-            "X": -39.108948,
-            "Y": 20,
-            "Z": 5.416931
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006273,
-          "Position": {
-            "X": 619.0126,
-            "Y": 23.936245,
-            "Z": 455.10022
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
+          "Position": [619.0126, 23.936245, 455.10022],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009267,
-          "Position": {
-            "X": 194.20154,
-            "Y": 59.531815,
-            "Z": -144.54877
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "Position": [194.20154, 59.531815, -144.54877],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": -348.54996,
-            "Y": 67.72218,
-            "Z": -344.0944
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        },
-        {
           "DataId": 1009268,
-          "Position": {
-            "X": -319.9054,
-            "Y": 4.416262,
-            "Z": -571.40466
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-319.9054, 4.416262, -571.40466],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009268,
-          "Position": {
-            "X": -319.9054,
-            "Y": 4.416262,
-            "Z": -571.40466
-          },
-          "TerritoryId": 180,
+          "Position": [-319.9054, 4.416262, -571.40466],
           "InteractionType": "UseItem",
           "ItemId": 2001334
         }
@@ -98,15 +54,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009268,
-          "Position": {
-            "X": -319.9054,
-            "Y": 4.416262,
-            "Z": -571.40466
-          },
-          "TerritoryId": 180,
+          "Position": [-319.9054, 4.416262, -571.40466],
           "InteractionType": "UseItem",
           "ItemId": 2001334,
           "$": "Delay is needed; without it the step seems to have trouble using items consecutively",
@@ -116,15 +68,11 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009268,
-          "Position": {
-            "X": -319.9054,
-            "Y": 4.416262,
-            "Z": -571.40466
-          },
-          "TerritoryId": 180,
+          "Position": [-319.9054, 4.416262, -571.40466],
           "InteractionType": "UseItem",
           "ItemId": 2001334,
           "$": "Delay is needed; without it the step seems to have trouble using items consecutively",
@@ -134,51 +82,34 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006273,
-          "Position": {
-            "X": 619.0126,
-            "Y": 23.936245,
-            "Z": 455.10022
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
+          "Position": [619.0126, 23.936245, 455.10022],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2004284,
-          "Position": {
-            "X": 517.32654,
-            "Y": 12.558105,
-            "Z": 78.93494
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [517.32654, 12.558105, 78.93494],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006273,
-          "Position": {
-            "X": 619.0126,
-            "Y": 23.936245,
-            "Z": 455.10022
-          },
-          "TerritoryId": 137,
+          "Position": [619.0126, 23.936245, 455.10022],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
           "NextQuestId": 1533
         }
       ]

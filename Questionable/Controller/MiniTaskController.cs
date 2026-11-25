@@ -1,10 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
-using Lumina.Excel.Sheets;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
 using static Questionable.Controller.Steps.ITaskExecutor;
 using MountStep = Questionable.Controller.Steps.Common.MountStep;
 
@@ -12,91 +8,101 @@ namespace Questionable.Controller;
 
 internal abstract class MiniTaskController<T> : IDisposable
 {
-    private readonly Regex _actionCanceledText;
-    private readonly string _cantExecuteDueToStatusText;
-
     private readonly IChatGui _chatGui;
     private readonly ICondition _condition;
-    private readonly string _eventCanceledText;
-    private readonly InterruptHandler _interruptHandler;
+    private readonly ITaskInterruptionSource _interrupts;
+    private readonly TaskToastClassifier _toastClassifier;
+    private readonly Action<string> _notifyOnFailure;
     private readonly ILogger<T> _logger;
     private readonly IServiceProvider _serviceProvider;
-    protected readonly TaskQueue _taskQueue = new();
+    private bool _disposed;
+    protected readonly TaskQueue _taskQueue;
 
     protected MiniTaskController(IChatGui chatGui, ICondition condition, IServiceProvider serviceProvider,
-        InterruptHandler interruptHandler, IDataManager dataManager, ILogger<T> logger)
+        ITaskInterruptionSource interrupts, TaskToastClassifier toastClassifier,
+        Action<string> notifyOnFailure, ILogger<T> logger)
     {
         _chatGui = chatGui;
         _logger = logger;
+        _taskQueue = new TaskQueue(logger);
         _serviceProvider = serviceProvider;
-        _interruptHandler = interruptHandler;
+        _interrupts = interrupts;
+        _toastClassifier = toastClassifier;
+        _notifyOnFailure = notifyOnFailure;
         _condition = condition;
 
-        _eventCanceledText = DataManagerAdapter.GetString<LogMessage>(dataManager, 1318, x => x.Text)!; // Event canceled.
-        _actionCanceledText = DataManagerAdapter.GetRegex<LogMessage>(dataManager, 1314, x => x.Text)!; // Action canceled. You are under attack.
-        _cantExecuteDueToStatusText = DataManagerAdapter.GetString<LogMessage>(dataManager, 7728, x => x.Text)!; // Unable to execute command while suffering status affliction.
-        _interruptHandler.Interrupted += HandleInterruption;
+        try
+        {
+            _interrupts.Interrupted += HandleInterruption;
+        }
+        catch
+        {
+            try
+            {
+                // An event accessor can attach the handler before reporting a failure.
+                Unsubscribe();
+            }
+            catch (Exception cleanupError)
+            {
+                _logger.LogError(cleanupError, "Unable to roll back task interruption subscription");
+            }
+            throw;
+        }
     }
 
-    public virtual void Dispose() => _interruptHandler.Interrupted -= HandleInterruption;
+    public virtual void Dispose() => Unsubscribe();
+
+    private void Unsubscribe()
+    {
+        if (_disposed)
+            return;
+        _disposed = true;
+        _interrupts.Interrupted -= HandleInterruption;
+    }
+
+    protected virtual bool CanStartNextTask() => true;
 
     protected virtual void UpdateCurrentTask()
     {
         if (_taskQueue.CurrentTaskExecutor == null)
         {
-            if (_taskQueue.TryDequeue(out ITask? upcomingTask))
-            {
-                try
-                {
-                    _logger.LogInformation("Starting task {TaskName}", upcomingTask.ToString());
-                    ITaskExecutor taskExecutor =
-                        _serviceProvider.GetRequiredKeyedService<ITaskExecutor>(upcomingTask.GetType());
-                    if (taskExecutor.Start(upcomingTask))
-                    {
-                        _taskQueue.CurrentTaskExecutor = taskExecutor;
-                        return;
-                    }
+            if (!CanStartNextTask() || !_taskQueue.TryDequeue(out ITask? upcomingTask))
+                return;
 
-                    _logger.LogTrace("Task {TaskName} was skipped", upcomingTask.ToString());
-                    return;
-                }
-                catch (Exception e)
-                {
-                    _logger.LogError(e, "Failed to start task {TaskName}", upcomingTask.ToString());
-                    var msg = _LF("Failed to start task '{0}'", upcomingTask);
-                    _chatGui.PrintError(
-                        _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
-                    _serviceProvider.GetRequiredService<NotificationMasterIpc>().NotifyOnFailure(msg);
-                    Stop("Task failed to start");
-                    return;
-                }
-            }
+            StartTask(upcomingTask);
 
             return;
         }
 
+        ITaskExecutor currentExecutor = _taskQueue.CurrentTaskExecutor;
         ETaskResult result;
         try
         {
-            if (_taskQueue.CurrentTaskExecutor.WasInterrupted())
+            if (currentExecutor.WasInterrupted())
             {
                 InterruptQueueWithCombat();
                 return;
             }
 
-            result = _taskQueue.CurrentTaskExecutor.Update();
+            result = currentExecutor.Update();
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to update task {TaskName}",
-                _taskQueue.CurrentTaskExecutor.CurrentTask.ToString());
-            var msg = _LF("Could not complete '{0}': {1}.", _taskQueue.CurrentTaskExecutor.CurrentTask, e.Message);
-            _chatGui.PrintError(
-                _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
-            _serviceProvider.GetRequiredService<NotificationMasterIpc>().NotifyOnFailure(msg);
+            if (TryFailOptionalGroup(e, currentExecutor.CurrentTask))
+                return;
+
+            OnTaskFailure(e, currentExecutor.CurrentTask);
+            string msg = ReportFailure(e, currentExecutor.CurrentTask, starting: false);
+            if (!_taskQueue.CancelFailed && TryHandleTaskFailure(e, currentExecutor.CurrentTask))
+                return;
             Stop("Task failed to update");
+            _notifyOnFailure(msg);
             return;
         }
+
+        // Updating a task can stop automation or replace the queue (e.g. stopping on quest acceptance).
+        if (!ReferenceEquals(_taskQueue.CurrentTaskExecutor, currentExecutor))
+            return;
 
         switch (result)
         {
@@ -106,16 +112,22 @@ internal abstract class MiniTaskController<T> : IDisposable
             case ETaskResult.SkipRemainingTasksForStep:
                 _logger.LogInformation("{Task} → {Result}, skipping remaining tasks for step",
                     _taskQueue.CurrentTaskExecutor.CurrentTask, result);
-                _taskQueue.CurrentTaskExecutor = null;
+                if (!CanStartNextTask())
+                {
+                    Stop("Replacement tasks blocked");
+                    return;
+                }
+                if (!CancelCurrentTask())
+                    return;
+
+                if (!CanStartNextTask())
+                    return;
 
                 while (_taskQueue.TryDequeue(out ITask? nextTask))
                 {
-                    if (nextTask is ILastTask or Gather.SkipMarker)
+                    if (nextTask is ILastTask)
                     {
-                        ITaskExecutor taskExecutor =
-                            _serviceProvider.GetRequiredKeyedService<ITaskExecutor>(nextTask.GetType());
-                        taskExecutor.Start(nextTask);
-                        _taskQueue.CurrentTaskExecutor = taskExecutor;
+                        StartTask(nextTask);
                         return;
                     }
                 }
@@ -124,7 +136,14 @@ internal abstract class MiniTaskController<T> : IDisposable
 
             case ETaskResult.TaskComplete:
             case ETaskResult.CreateNewTasks:
-                _logger.LogInformation("{Task} → {Result}, remaining tasks: {RemainingTaskCount}",
+                if (!CanStartNextTask())
+                {
+                    Stop("Task completed with unresolved operation");
+                    return;
+                }
+
+                _logger.Log(LogLevelFor(_taskQueue.CurrentTaskExecutor.CurrentTask),
+                    "{Task} → {Result}, remaining tasks: {RemainingTaskCount}",
                     _taskQueue.CurrentTaskExecutor.CurrentTask, result, _taskQueue.RemainingTasks.Count());
 
                 OnTaskComplete(_taskQueue.CurrentTaskExecutor.CurrentTask);
@@ -134,11 +153,17 @@ internal abstract class MiniTaskController<T> : IDisposable
 
                 _taskQueue.CurrentTaskExecutor = null;
 
-                // handled in next update
                 return;
 
             case ETaskResult.NextStep:
-                _logger.LogInformation("{Task} → {Result}", _taskQueue.CurrentTaskExecutor.CurrentTask, result);
+                if (!CanStartNextTask())
+                {
+                    Stop("Next step blocked");
+                    return;
+                }
+
+                _logger.Log(LogLevelFor(_taskQueue.CurrentTaskExecutor.CurrentTask), "{Task} → {Result}",
+                    _taskQueue.CurrentTaskExecutor.CurrentTask, result);
 
                 ILastTask lastTask = (ILastTask)_taskQueue.CurrentTaskExecutor.CurrentTask;
                 _taskQueue.CurrentTaskExecutor = null;
@@ -150,18 +175,119 @@ internal abstract class MiniTaskController<T> : IDisposable
                 _logger.LogInformation("{Task} → {Result}, clearing queue and retrying current step",
                     _taskQueue.CurrentTaskExecutor.CurrentTask, result);
 
-                _taskQueue.CurrentTaskExecutor = null;
-                _taskQueue.Reset();
-                OnRetryStep();
+                if (!CanStartNextTask())
+                {
+                    Stop("Retry blocked");
+                    return;
+                }
+
+                if (!_taskQueue.Reset())
+                {
+                    Stop("Task cancellation failed");
+                    return;
+                }
+                if (CanStartNextTask())
+                    OnRetryStep();
                 return;
 
             case ETaskResult.End:
                 _logger.LogInformation("{Task} → {Result}", _taskQueue.CurrentTaskExecutor.CurrentTask, result);
-                _taskQueue.CurrentTaskExecutor = null;
                 Stop("Task end");
                 return;
         }
     }
+
+    private static LogLevel LogLevelFor(ITask task) =>
+        task is WaitAtEnd.WaitDelay or WaitAtEnd.NextStep or SkipCondition.Task ? LogLevel.Debug : LogLevel.Information;
+
+    // Created on first use: tests build controllers without running constructors.
+    private Queue<string>? _recentTasks;
+
+    internal IReadOnlyList<string> RecentTasks => _recentTasks is { } tasks ? [.. tasks] : [];
+
+    internal bool StartedAnyTask { get; set; }
+
+    private void StartTask(ITask task)
+    {
+        try
+        {
+            StartedAnyTask = true;
+            _logger.Log(LogLevelFor(task), "Starting task {TaskName}", task.ToString());
+            (_recentTasks ??= new()).Enqueue(task.ToString() ?? string.Empty);
+            while (_recentTasks.Count > 10)
+                _recentTasks.Dequeue();
+            ITaskExecutor taskExecutor = _serviceProvider.GetRequiredKeyedService<ITaskExecutor>(task.GetType());
+            if (!_taskQueue.StartTask(taskExecutor, task))
+                _logger.LogTrace("Task {TaskName} was skipped", task.ToString());
+        }
+        catch (Exception e)
+        {
+            if (TryFailOptionalGroup(e, task))
+                return;
+
+            OnTaskFailure(e, task);
+            string msg = ReportFailure(e, task, starting: true);
+            if (!_taskQueue.CancelFailed && TryHandleTaskFailure(e, task))
+                return;
+            Stop("Task failed to start");
+            _notifyOnFailure(msg);
+        }
+    }
+
+    private bool TryFailOptionalGroup(Exception e, ITask task)
+    {
+        if (_taskQueue.RemainingTasks.OfType<IOptionalGroupEnd>().FirstOrDefault() is not { } groupEnd)
+            return false;
+
+        _logger.LogWarning(e, "Optional task {TaskName} failed, dropping the rest of its group", task);
+        OnTaskFailure(e, task);
+        groupEnd.OnFailed(e);
+        if (groupEnd.RetryStep && !CanStartNextTask())
+        {
+            Stop("Retry blocked");
+            return true;
+        }
+
+        if (!_taskQueue.Reset())
+        {
+            Stop("Task cancellation failed");
+            return true;
+        }
+
+        if (groupEnd.RetryStep)
+            OnRetryStep();
+        return true;
+    }
+
+    private string ReportFailure(Exception e, ITask task, bool starting)
+    {
+        if (e is NeedsPlayerException)
+        {
+            _logger.LogInformation("{TaskName} needs the player: {Reason}", task.ToString(), e.Message);
+            _chatGui.Print(e.Message, CommandHandler.MessageTag, CommandHandler.TagColor);
+            return e.Message;
+        }
+
+        if (starting)
+            _logger.LogError(e, "Failed to start task {TaskName}", task.ToString());
+        else
+            _logger.LogError(e, "Failed to update task {TaskName}", task.ToString());
+
+        // Game messages already end in a period.
+        string reason = e.Message.TrimEnd('.');
+        string msg = starting
+            ? _LF("Could not start '{0}': {1}.", task, reason)
+            : _LF("Could not complete '{0}': {1}.", task, reason);
+        _chatGui.PrintError(
+            _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
+        return msg;
+    }
+
+    protected virtual void OnTaskFailure(Exception exception, ITask task)
+    {
+    }
+
+    protected virtual bool TryHandleTaskFailure(Exception exception, ITask task) => false;
 
     protected virtual void OnTaskComplete(ITask task)
     {
@@ -178,36 +304,73 @@ internal abstract class MiniTaskController<T> : IDisposable
 
     public abstract void Stop(string label);
 
+    protected bool CancelCurrentTask()
+    {
+        if (_taskQueue.CancelCurrentTask())
+            return true;
+
+        Stop("Task cancellation failed");
+        return false;
+    }
+
     public virtual IList<string> GetRemainingTaskNames() => _taskQueue.RemainingTasks.Select(x => x.ToString() ?? "?").ToList();
 
     public void InterruptQueueWithCombat()
     {
-        _logger.LogWarning("Interrupted, attempting to resolve (if in combat)");
-        if (_condition[ConditionFlag.InCombat])
+        if (!CanStartNextTask())
         {
-            List<ITask> tasks = [];
+            Stop("Interruption blocked");
+            return;
+        }
+
+        _logger.LogWarning("Interrupted, attempting to resolve (if in combat)");
+        List<ITask> tasks = [];
+        bool inCombat = _condition[ConditionFlag.InCombat];
+        if (inCombat)
+        {
             if (_condition[ConditionFlag.Mounted])
                 tasks.Add(new MountStep.UnmountTask());
 
             tasks.Add(Combat.Factory.CreateTask(elementId: null, -1, isLastStep: false, EEnemySpawnType.QuestInterruption, [], [], [], combatItemUse: null));
-            tasks.Add(new WaitAtEnd.WaitDelay());
-            _taskQueue.InterruptWith(tasks);
         }
-        else
-            _taskQueue.InterruptWith([new WaitAtEnd.WaitDelay()]);
+        tasks.Add(new WaitAtEnd.WaitDelay());
+        // Damage can arrive before InCombat is set, so check again before replaying the interaction.
+        if (!inCombat)
+            tasks.Add(new Combat.CheckAfterInterruption());
+        if (!_taskQueue.InterruptWith(tasks))
+        {
+            Stop("Task cancellation failed");
+            return;
+        }
 
         LogTasksAfterInterruption();
     }
 
     private void InterruptWithoutCombat()
     {
-        if (_taskQueue.CurrentTaskExecutor is not SinglePlayerDuty.WaitSinglePlayerDutyExecutor)
-        {
-            _logger.LogWarning("Interrupted, attempting to redo previous tasks (not in combat)");
+        // Unrelated manual toasts must not wake an idle queue or replay completed interactions.
+        if (_taskQueue.AllTasksComplete)
+            return;
 
-            _taskQueue.InterruptWith([new WaitAtEnd.WaitDelay()]);
-            LogTasksAfterInterruption();
+        // Duty providers handle their own interruptions; don't cancel the run for them.
+        if (_taskQueue.CurrentTaskExecutor is QuestBattle.WaitForExitExecutor
+            or Duty.StartAutoDutyExecutor)
+            return;
+
+        if (!CanStartNextTask())
+        {
+            Stop("Interruption blocked");
+            return;
         }
+
+        _logger.LogWarning("Interrupted, attempting to redo previous tasks (not in combat)");
+
+        if (!_taskQueue.InterruptWith([new WaitAtEnd.WaitDelay()]))
+        {
+            Stop("Task cancellation failed");
+            return;
+        }
+        LogTasksAfterInterruption();
     }
 
     private void LogTasksAfterInterruption()
@@ -227,14 +390,13 @@ internal abstract class MiniTaskController<T> : IDisposable
 
         if (!isHandled)
         {
-            if (_actionCanceledText.IsMatch(message.TextValue) &&
+            if (_toastClassifier.IsActionCancellation(message.TextValue) &&
                 !_condition[ConditionFlag.InFlight] &&
                 _taskQueue.CurrentTaskExecutor?.ShouldInterruptOnDamage() == true)
             {
                 InterruptQueueWithCombat();
             }
-            else if (GameFunctions.GameStringEquals(_cantExecuteDueToStatusText, message.TextValue) ||
-                     GameFunctions.GameStringEquals(_eventCanceledText, message.TextValue))
+            else if (_toastClassifier.IsEventOrStatusCancellation(message.TextValue))
             {
                 InterruptWithoutCombat();
             }

@@ -1,109 +1,63 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "catsume", "Date": "2026-06-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016087,
-          "Position": {
-            "X": -796.7498,
-            "Y": -133.2695,
-            "Z": -410.6966
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "Position": {
-            "X": -298.6771,
-            "Y": 93.99152,
-            "Z": -222.3565
-          },
-          "TerritoryId": 401,
+          "Position": [-298.6771, 93.99152, -222.3565],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             5232,
             5233
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1016168,
-          "Position": {
-            "X": -306.1723,
-            "Y": 93.99152,
-            "Z": -226.42871
-          },
-          "TerritoryId": 401,
+          "Position": [-306.1723, 93.99152, -226.42871],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1016172,
-          "Position": {
-            "X": -314.71735,
-            "Y": -7.6638403,
-            "Z": -230.60962
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-314.71735, -7.6638403, -230.60962],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1012064,
-          "Position": {
-            "X": -542.7787,
-            "Y": -37.11544,
-            "Z": -386.7094
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+          "Position": [-542.7787, -37.11544, -386.7094],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1016087,
-          "Position": {
-            "X": -796.7498,
-            "Y": -133.2695,
-            "Z": -410.6966
-          },
-          "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

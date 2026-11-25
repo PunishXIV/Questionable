@@ -1,93 +1,54 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014028,
-          "Position": {
-            "X": -126.57361,
-            "Y": 4.0999947,
-            "Z": -96.23871
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1006756,
-          "Position": {
-            "X": -16.891846,
-            "Y": 10.17425,
-            "Z": -246.87573
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "Position": [-16.891846, 10.17425, -246.87573],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1014028,
-          "Position": {
-            "X": -126.57361,
-            "Y": 4.0999947,
-            "Z": -96.23871
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah"
+          "Position": [-126.57361, 4.0999947, -96.23871],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1014038,
-          "Position": {
-            "X": -20.24878,
-            "Y": 83.19998,
-            "Z": -1.4801636
-          },
-          "TerritoryId": 130,
+          "Position": [-20.24878, 83.19998, -1.4801636],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ]
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1014028,
-          "Position": {
-            "X": -126.57361,
-            "Y": 4.0999947,
-            "Z": -96.23871
-          },
-          "TerritoryId": 130,
+          "Position": [-126.57361, 4.0999947, -96.23871],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {"AetheryteShortcutIf": {"Never": true}},
           "NextQuestId": 2105
         }
       ]

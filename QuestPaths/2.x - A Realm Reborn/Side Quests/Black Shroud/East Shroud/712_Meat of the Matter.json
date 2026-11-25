@@ -1,55 +1,30 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "croizat",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000615,
-          "Position": {
-            "X": -246.44855,
-            "Y": 3.6067607,
-            "Z": 279.92664
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2000720,
-          "Position": {
-            "X": -209.09442,
-            "Y": -4.654114,
-            "Z": 195.78845
-          },
-          "TerritoryId": 152,
+          "Position": [-209.09442, -4.654114, 195.78845],
           "InteractionType": "UseItem",
           "ItemId": 2000572
         },
         {
           "DataId": 2000721,
-          "Position": {
-            "X": -146.04419,
-            "Y": -5.2644043,
-            "Z": 199.23706
-          },
-          "TerritoryId": 152,
+          "Position": [-146.04419, -5.2644043, 199.23706],
           "InteractionType": "UseItem",
           "ItemId": 2000572
         },
         {
           "DataId": 2000722,
-          "Position": {
-            "X": -173.32727,
-            "Y": 2.1820068,
-            "Z": 137.68213
-          },
-          "TerritoryId": 152,
+          "Position": [-173.32727, 2.1820068, 137.68213],
           "InteractionType": "UseItem",
           "ItemId": 2000572
         }
@@ -57,18 +32,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000615,
-          "Position": {
-            "X": -246.44855,
-            "Y": 3.6067607,
-            "Z": 279.92664
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

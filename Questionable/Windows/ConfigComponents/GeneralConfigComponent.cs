@@ -1,19 +1,12 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
 using ECommons.ExcelServices;
 using ECommons.ImGuiMethods;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common.Ui;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable.Windows.ConfigComponents;
 
 [RegisterSingleton]
 internal sealed class GeneralConfigComponent : ConfigComponent
 {
-    private static readonly (uint Id, string Name) DefaultMount = (0, _L("Mount Roulette"));
     private static readonly (Job ClassJob, string Name) DefaultClassJob = (Job.ADV, _L("Auto (highest level/item level)"));
 
     private readonly string[] _grandCompanyNames =
@@ -21,13 +14,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
     private readonly QuestRegistry _questRegistry;
     private readonly TerritoryData _territoryData;
+    private readonly PathDataUpdater _pathDataUpdater;
+    private readonly IDataManager _dataManager;
+    private readonly ItemBlacklistSelector _itemBlacklistSelector;
+    private readonly PluginConfigComponent _plugins;
+    private readonly AutoRetainerIpc _autoRetainer;
+    private uint? _itemToRemove;
     private readonly Lazy<List<Job>> _sortedClassJobs;
-    private readonly Lazy<(uint[] Ids, string[] Names)> _mounts;
-    private readonly Lazy<(Job[] Ids, string[] Names)> _classJobs;
+    private readonly Lazy<(Job[] Ids, string[] Names)> _combatJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _craftJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _gatherJobs;
-    private string _mountSearchString = string.Empty;
-    private string _langSearchString = string.Empty;
+    private string _languageSearch = string.Empty;
 
     public GeneralConfigComponent(
         IDalamudPluginInterface pluginInterface,
@@ -35,36 +32,30 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         IDataManager dataManager,
         ClassJobUtils classJobUtils,
         QuestRegistry questRegistry,
-        TerritoryData territoryData)
+        TerritoryData territoryData,
+        PathDataUpdater pathDataUpdater,
+        PluginConfigComponent plugins,
+        AutoRetainerIpc autoRetainer)
         : base(pluginInterface, configuration)
     {
+        _plugins = plugins;
+        _autoRetainer = autoRetainer;
         _questRegistry = questRegistry;
         _territoryData = territoryData;
+        _pathDataUpdater = pathDataUpdater;
+        _dataManager = dataManager;
+        _itemBlacklistSelector = new(dataManager);
 
-        _sortedClassJobs = new(() => [.. classJobUtils.SortedClassJobs.Select(x => x.ClassJob)]);
-        _mounts = new(() => BuildMounts(dataManager));
-        _classJobs = new(() => BuildJobList(
+        _sortedClassJobs = new(() => [.. classJobUtils.SortedJobs.Select(x => x.ClassJob)]);
+        _combatJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x != Job.ADV && !x.IsCrafter() && !x.IsGatherer() && !x.IsClass()),
             prependDefault: true));
         _craftJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x != Job.ADV && x.IsCrafter()),
-            prependDefault: false));
+            prependDefault: true));
         _gatherJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x == Job.MIN || x == Job.BTN),
-            prependDefault: false));
-    }
-
-    private static (uint[] Ids, string[] Names) BuildMounts(IDataManager dataManager)
-    {
-        List<(uint MountId, string Name)> mounts = dataManager.GetExcelSheet<Mount>()
-            .Where(x => x is { RowId: > 0, Icon: > 0 })
-            .Select(x => (MountId: x.RowId, Name: x.Singular.ToString()))
-            .Where(x => !string.IsNullOrEmpty(x.Name))
-            .OrderBy(x => x.Name, StringComparer.Ordinal)
-            .ToList();
-        uint[] ids = [DefaultMount.Id, .. mounts.Select(x => x.MountId)];
-        string[] names = [DefaultMount.Name, .. mounts.Select(x => x.Name)];
-        return (ids, names);
+            prependDefault: true));
     }
 
     private (Job[] Ids, string[] Names) BuildJobList(IEnumerable<Job> source, bool prependDefault)
@@ -81,13 +72,34 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         return ([.. jobs], [.. jobs.Select(x => x.ToString())]);
     }
 
-    public override void DrawTab()
+    public void DrawGeneral()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("General") + "###General");
-        if (!tab)
-            return;
         var size = ImGui.GetWindowContentRegionMax();
         using var _ = ImRaii.TextWrapPos(size.X);
+        DrawPreferences(size);
+        DrawUi();
+        DrawUpdates();
+    }
+
+    public void DrawQuestingPage()
+    {
+        using var _ = ImRaii.TextWrapPos(ImGui.GetWindowContentRegionMax().X);
+        DrawQuesting();
+        DrawRecovery();
+        DrawOptionalQuests();
+    }
+
+    public void DrawRewardsPage()
+    {
+        using var _ = ImRaii.TextWrapPos(ImGui.GetWindowContentRegionMax().X);
+        DrawBetweenQuests();
+        DrawRewardRules();
+        DrawRewardRedemption();
+    }
+
+    private void DrawPreferences(Vector2 size)
+    {
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Preferences"));
         Dictionary<string, string> languages = new(StringComparer.Ordinal){
             { "en",    _L("English") },
             { "ja-jp", _L("Japanese") },
@@ -97,411 +109,557 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         };
         string language = Configuration.General.Language;
         if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Language"), languages.Keys.ToArray(), languages.Values.ToArray(),
-            Configuration.General.Language, ref _langSearchString, ref language))
+            Configuration.General.Language, ref _languageSearch, ref language))
         {
-            var was = Configuration.General.Language;
-            Configuration.General.Language = language;
+            Configuration.SetLanguage(language);
             Save();
-            if (was != Configuration.General.Language)
-                DalamudInitializer.SetupI18N(Configuration.General.Language);
         }
 
-        if (QstWidgets.SectionHeader(_L("Preferences"), "Preferences", defaultOpen: false))
+        int grandCompany = (int)Configuration.General.GrandCompany;
+        ImGui.SetNextItemWidth(size.X / 2);
+        if (ImGui.Combo(_L("Preferred Grand Company"), ref grandCompany, _grandCompanyNames,
+            _grandCompanyNames.Length))
         {
-            ECombatModule combatModule = Configuration.General.CombatModule;
+            Configuration.General.GrandCompany = (GrandCompany)grandCompany;
+            Save();
+        }
+
+        ImGui.SetNextItemWidth(size.X / 2);
+        _plugins.DrawCombatPicker();
+
+        (Job[] combatJobIds, string[] combatJobNames) = _combatJobs.Value;
+        ImGui.SetNextItemWidth(size.X / 2);
+        DrawComboOption(_L("Preferred combat job"), combatJobIds, combatJobNames,
+            () => Configuration.General.CombatJob,
+            v => Configuration.General.CombatJob = v);
+
+        ImGui.SetNextItemWidth(size.X / 2);
+        DrawComboOption(_L("Arcanist job line"), [Job.SMN, Job.SCH], [_L("Summoner"), _L("Scholar")],
+            () => Configuration.General.ArcanistJob,
+            v => Configuration.General.ArcanistJob = v);
+        ImGuiComponents.HelpMarker(_L("Which job's quests and soul crystal an Arcanist works towards."));
+
+        (Job[] craftJobIds, string[] craftJobNames) = _craftJobs.Value;
+        ImGui.SetNextItemWidth(size.X / 2);
+        DrawComboOption(_L("Preferred crafting job"), craftJobIds, craftJobNames,
+            () => Configuration.General.CraftingJob,
+            v => Configuration.General.CraftingJob = v);
+
+        (Job[] gatherJobIds, string[] gatherJobNames) = _gatherJobs.Value;
+        ImGui.SetNextItemWidth(size.X / 2);
+        DrawComboOption(_L("Preferred gathering job"), gatherJobIds, gatherJobNames,
+            () => Configuration.General.GatheringJob,
+            v => Configuration.General.GatheringJob = v);
+
+        DrawCheckbox(_L("Namazu: do them as a crafter, not a gatherer"),
+            () => Configuration.Advanced.NamazuPreferCraft,
+            value => Configuration.Advanced.NamazuPreferCraft = value,
+            _L("Namazu quests can be done as a crafter or a gatherer; this picks which."));
+
+        ImGui.BeginGroup();
+        using (ImRaii.Disabled(!StylistIpc.IsInstalled))
+        {
+            EGearsetUpdateSource gearsetSource = Configuration.General.GearsetUpdateSource;
             ImGui.SetNextItemWidth(size.X / 2);
-            if (ImGuiEx.EnumCombo(_L("Preferred Combat Module"), ref combatModule))
+            if (ImGuiEx.EnumCombo(_L("Equip gear with") + "###Preferred Gear Upgrade Source", ref gearsetSource))
             {
-                Configuration.General.CombatModule = combatModule;
+                Configuration.General.GearsetUpdateSource = gearsetSource;
                 Save();
             }
+            // A missing Stylist keeps the saved choice; gear steps use Vanilla until it is installed again.
+        }
+        ImGui.EndGroup();
+        if (!StylistIpc.IsInstalled && ImGui.IsItemHovered())
+            QstWidgets.Tooltip(_L("Stylist is not installed."));
 
-            (uint[] mountIds, string[] mountNames) = _mounts.Value;
-            uint mountId = Configuration.General.MountId;
-            ImGui.SetNextItemWidth(size.X / 2);
-            if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Preferred Mount"), mountIds, mountNames,
-                Configuration.General.MountId, ref _mountSearchString, ref mountId))
+        string chocoboName = Configuration.General.ChocoboName;
+        ImGui.SetNextItemWidth(size.X / 2);
+        var randomName = NameGenerator.GenerateFirstName(fast: grandCompany == 0);
+        if (ImGui.InputTextEx(_L("Chocobo name"), randomName, ref chocoboName, 20))
+            Configuration.General.ChocoboName = chocoboName;
+
+        if (ImGui.IsItemDeactivatedAfterEdit())
+        {
+            if (string.IsNullOrWhiteSpace(Configuration.General.ChocoboName))
+                Configuration.General.ChocoboName = randomName;
+            Save();
+        }
+
+        if (ImGui.IsItemHovered())
+        {
+            using (ImRaii.Tooltip())
             {
-                Configuration.General.MountId = mountId;
-                Save();
+                ImGui.Text(_L("The name to give your chocobo during the \"My Little Chocobo\" quest."));
+                ImGui.Text(_L("Generates a random name if invalid or left blank."));
             }
+        }
+    }
 
-            int grandCompany = (int)Configuration.General.GrandCompany;
-            ImGui.SetNextItemWidth(size.X / 2);
-            if (ImGui.Combo(_L("Preferred Grand Company"), ref grandCompany, _grandCompanyNames,
-                _grandCompanyNames.Length))
+    private void DrawUi()
+    {
+        using (QstWidgets.TitledCard(_L("UI")))
+        {
+            bool useQuestionableTheme = Configuration.General.UseQuestionableTheme;
+            if (ImGui.Checkbox(_L("Use Questionable theme"), ref useQuestionableTheme))
             {
-                Configuration.General.GrandCompany = (GrandCompany)grandCompany;
-                Save();
-            }
-
-            (Job[] classJobIds, string[] classJobNames) = _classJobs.Value;
-            ImGui.SetNextItemWidth(size.X / 2);
-            DrawComboOption(_L("Preferred Combat Job"), classJobIds, classJobNames,
-                () => Configuration.General.CombatJob,
-                v => Configuration.General.CombatJob = v);
-
-            (Job[] craftJobIds, string[] craftJobNames) = _craftJobs.Value;
-            ImGui.SetNextItemWidth(size.X / 2);
-            DrawComboOption(_L("Preferred Crafting Job"), craftJobIds, craftJobNames,
-                () => Configuration.General.CraftingJob,
-                v => Configuration.General.CraftingJob = v);
-
-            (Job[] gatherJobIds, string[] gatherJobNames) = _gatherJobs.Value;
-            ImGui.SetNextItemWidth(size.X / 2);
-            DrawComboOption(_L("Preferred Gathering Job"), gatherJobIds, gatherJobNames,
-                () => Configuration.General.GatheringJob,
-                v => Configuration.General.GatheringJob = v);
-
-            ImGui.BeginGroup();
-            using (ImRaii.Disabled(!StylistIpc.IsInstalled))
-            {
-                EGearsetUpdateSource gearsetSource = Configuration.General.GearsetUpdateSource;
-                ImGui.SetNextItemWidth(size.X / 2);
-                if (ImGuiEx.EnumCombo(_L("Preferred Gear Upgrade Source"), ref gearsetSource))
-                {
-                    Configuration.General.GearsetUpdateSource = gearsetSource;
-                    Save();
-                }
-                if (!StylistIpc.IsInstalled && gearsetSource is EGearsetUpdateSource.Stylist)
-                {
-                    Svc.Chat.Print(_L("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla."), CommandHandler.MessageTag, CommandHandler.TagColor);
-                    Configuration.General.GearsetUpdateSource = EGearsetUpdateSource.Vanilla;
-                    Save();
-                }
-            }
-            ImGui.EndGroup();
-            if (!StylistIpc.IsInstalled && ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Stylist is not installed."));
-
-            string chocoboName = Configuration.General.ChocoboName;
-            ImGui.SetNextItemWidth(size.X / 2);
-            var genName = NameGenerator.GenerateFirstName(fast: grandCompany == 0);
-            if (ImGui.InputTextEx(_L("Chocobo name"), genName, ref chocoboName, 20))
-                Configuration.General.ChocoboName = chocoboName;
-
-            if (ImGui.IsItemDeactivatedAfterEdit())
-            {
-                if (string.IsNullOrWhiteSpace(Configuration.General.ChocoboName))
-                    Configuration.General.ChocoboName = genName;
+                Configuration.General.UseQuestionableTheme = useQuestionableTheme;
                 Save();
             }
 
             if (ImGui.IsItemHovered())
             {
-                using (ImRaii.Tooltip())
-                {
-                    ImGui.Text(_L("The name to give your chocobo during the \"My Little Chocobo\" quest."));
-                    ImGui.Text(_L("Generates a random name if invalid or left blank."));
-                }
+                QstWidgets.Tooltip(_L("When disabled, Questionable's windows use your Dalamud style/theme instead."));
             }
 
-            string displayName = Configuration.General.DisplayName;
-            ImGui.SetNextItemWidth(size.X / 2);
-            if (ImGui.InputText(_L("Display name"), ref displayName, 20))
-                Configuration.General.DisplayName = displayName;
-
-            if (ImGui.IsItemDeactivatedAfterEdit())
+            bool showIncompleteEvents = Configuration.General.ShowIncompleteSeasonalEvents;
+            if (ImGui.Checkbox(_L("Show seasonal events"), ref showIncompleteEvents))
             {
-                if (string.IsNullOrWhiteSpace(Configuration.General.DisplayName))
-                    Configuration.General.DisplayName = _L("Anonymous");
+                Configuration.General.ShowIncompleteSeasonalEvents = showIncompleteEvents;
                 Save();
             }
 
-            if (ImGui.IsItemHovered())
-            {
-                using (ImRaii.Tooltip())
-                {
-                    ImGui.Text(_L("The name associated with submissions to help with QST's development."));
-                    ImGui.Text(_L("Defaults to \"Anonymous\" if left blank."));
-                }
-            }
-        }
-
-        if (QstWidgets.SectionHeader(_L("UI"), "UI", defaultOpen: false))
-        {
+            using (ImRaii.Disabled(!showIncompleteEvents))
             using (ImRaii.PushIndent())
             {
-                bool useQuestionableTheme = Configuration.General.UseQuestionableTheme;
-                if (ImGui.Checkbox(_L("Use Questionable theme"), ref useQuestionableTheme))
+                bool showCompleteEvents = Configuration.General.ShowCompleteSeasonalEvents;
+                if (ImGui.Checkbox(_L("Also show finished event quests"), ref showCompleteEvents))
                 {
-                    Configuration.General.UseQuestionableTheme = useQuestionableTheme;
+                    Configuration.General.ShowCompleteSeasonalEvents = showCompleteEvents;
                     Save();
                 }
+            }
 
-                if (ImGui.IsItemHovered())
+            bool hideInAllInstances = Configuration.General.HideInAllInstances;
+            if (ImGui.Checkbox(_L("Hide quest window in all instanced duties"), ref hideInAllInstances))
+            {
+                Configuration.General.HideInAllInstances = hideInAllInstances;
+                Save();
+            }
+
+            DrawCheckbox(_L("Show window on start"),
+                () => Configuration.Advanced.ShowWindowOnStart,
+                value => Configuration.Advanced.ShowWindowOnStart = value,
+                _L("When enabled, the quest window opens when the plugin loads."));
+
+            DrawCheckbox(_L("Start minimized"),
+                () => Configuration.Advanced.StartMinimized,
+                value => Configuration.Advanced.StartMinimized = value,
+                _L("When enabled, the quest window starts minimized."));
+        }
+    }
+
+    private void DrawQuesting()
+    {
+        using (QstWidgets.TitledCard(_L("While questing")))
+        {
+            bool configureTextAdvance = Configuration.General.ConfigureTextAdvance;
+            if (ImGui.Checkbox(_L("Set up TextAdvance for questing"),
+                ref configureTextAdvance))
+            {
+                Configuration.General.ConfigureTextAdvance = configureTextAdvance;
+                Save();
+            }
+
+            if (configureTextAdvance)
+            {
+                bool dontSkipCutscenes = Configuration.General.DontSkipCutscenes;
+                using (ImRaii.PushIndent())
                 {
-                    using (ImRaii.Tooltip())
+                    if (ImGui.Checkbox(_L("Don't skip cutscenes or dialogue") + "###but don't skip cutscenes or dialogue", ref dontSkipCutscenes))
                     {
-                        ImGui.Text(_L("When disabled, Questionable's windows use your Dalamud style/theme instead."));
-                    }
-                }
-
-                bool useEscToCancelQuesting = Configuration.General.UseEscToCancelQuesting;
-                if (ImGui.Checkbox(_L("Use ESC to cancel questing/movement"), ref useEscToCancelQuesting))
-                {
-                    Configuration.General.UseEscToCancelQuesting = useEscToCancelQuesting;
-                    Save();
-                }
-
-                bool showIncompleteSeasonalEvents = Configuration.General.ShowIncompleteSeasonalEvents;
-                if (ImGui.Checkbox(_L("Show details for incomplete seasonal events"), ref showIncompleteSeasonalEvents))
-                {
-                    Configuration.General.ShowIncompleteSeasonalEvents = showIncompleteSeasonalEvents;
-                    Save();
-                }
-
-                using (ImRaii.Disabled(!showIncompleteSeasonalEvents))
-                {
-                    bool showCompleteSeasonalEvents = Configuration.General.ShowCompleteSeasonalEvents;
-                    if (ImGui.Checkbox(_L("Continue showing completed seasonal events"), ref showCompleteSeasonalEvents))
-                    {
-                        Configuration.General.ShowCompleteSeasonalEvents = showCompleteSeasonalEvents;
+                        Configuration.General.DontSkipCutscenes = dontSkipCutscenes;
                         Save();
                     }
                 }
-
-                bool questIcons = Configuration.General.QuestIcons;
-                if (ImGui.Checkbox(_L("Show quest icons"), ref questIcons))
-                {
-                    Configuration.General.QuestIcons = questIcons;
-                    Save();
-                }
-
-                bool hideInAllInstances = Configuration.General.HideInAllInstances;
-                if (ImGui.Checkbox(_L("Hide quest window in all instanced duties"), ref hideInAllInstances))
-                {
-                    Configuration.General.HideInAllInstances = hideInAllInstances;
-                    Save();
-                }
-
-                bool hideSponsorButton = Configuration.General.HideSponsorButton;
-                if (ImGui.Checkbox(_L("Hide Sponsor button"), ref hideSponsorButton))
-                {
-                    Configuration.General.HideSponsorButton = hideSponsorButton;
-                    Save();
-                }
-                if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Takes effect next time the plugin is loaded"));
-
-                bool hideRemainingTasks = Configuration.General.HideRemainingTasks;
-                if (ImGui.Checkbox(_L("Hide remaining tasks"), ref hideRemainingTasks))
-                {
-                    Configuration.General.HideRemainingTasks = hideRemainingTasks;
-                    Save();
-                }
-
-                bool hidePatch = Configuration.General.HidePatch;
-                if (ImGui.Checkbox(_L("Hide quest patch badge"), ref hidePatch))
-                {
-                    Configuration.General.HidePatch = hidePatch;
-                    Save();
-                }
-
-                bool hideLevel = Configuration.General.HideQuestRequiredLevel;
-                if (ImGui.Checkbox(_L("Hide quest level badge"), ref hideLevel))
-                {
-                    Configuration.General.HideQuestRequiredLevel = hideLevel;
-                    Save();
-                }
-
-                bool hideQuestStartedJob = Configuration.General.HideQuestStartedJob;
-                if (ImGui.Checkbox(_L("Hide which job a quest was started with"), ref hideQuestStartedJob))
-                {
-                    Configuration.General.HideQuestStartedJob = hideQuestStartedJob;
-                    Save();
-                }
-
-                bool hideThingsNotAvailable = Configuration.General.HideThingsNotAvailable;
-                if (ImGui.Checkbox(_L("Hide things unavailable in your account's unlocked expansions"), ref hideThingsNotAvailable))
-                {
-                    Configuration.General.HideThingsNotAvailable = hideThingsNotAvailable;
-                    Save();
-                }
-                if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("If you are on free trial, or do not own the current expansion, this will hide content in locked expansions"));
             }
-        }
-
-#if REPORTING
-        ImGui.Separator();
-        ImGui.Text(_L("Bug Report"));
-        using (ImRaii.PushIndent())
-        {
-            bool reportOptOut = Configuration.General.ReportsDisabled;
-            if (ImGui.Checkbox(_L("Opt out of bug reports"), ref reportOptOut))
+            bool useEscToCancelQuesting = Configuration.General.UseEscToCancelQuesting;
+            if (ImGui.Checkbox(_L("Use ESC to cancel questing/movement"), ref useEscToCancelQuesting))
             {
-                Configuration.General.ReportsDisabled = reportOptOut;
-                Configuration.General.DismissedReportWarning = true;
+                Configuration.General.UseEscToCancelQuesting = useEscToCancelQuesting;
                 Save();
             }
 
-            bool dismissedReportWarning = Configuration.General.DismissedReportWarning;
-            if (ImGui.Checkbox(_L("Hide Report warning"), ref dismissedReportWarning))
+            bool stopOnPlayerMove = Configuration.General.StopOnPlayerMove;
+            if (ImGui.Checkbox(_L("Stop when you move your character"), ref stopOnPlayerMove))
             {
-                Configuration.General.DismissedReportWarning = dismissedReportWarning;
+                Configuration.General.StopOnPlayerMove = stopOnPlayerMove;
                 Save();
             }
 
-            if (!reportOptOut)
-            {
-                string reportMessage = Configuration.General.ReportMessage;
-                if (ImGui.InputText(_L("Report message"), ref reportMessage, 256))
-                {
-                    Configuration.General.ReportMessage = reportMessage;
-                    Save();
-                }
-            }
-        }
-#endif
+            ImGuiComponents.HelpMarker(_L("Pressing a movement key while Questionable runs stops it. Typing in chat doesn't count."));
 
-        if (QstWidgets.SectionHeader(_L("Questing"), "Questing", defaultOpen: false))
+            bool confirmCurrencyOverCap = Configuration.General.ConfirmCurrencyOverCap;
+            if (ImGui.Checkbox(_L("Allow overcap"), ref confirmCurrencyOverCap))
+            {
+                Configuration.General.ConfirmCurrencyOverCap = confirmCurrencyOverCap;
+                Save();
+            }
+
+            if (ImGui.IsItemHovered())
+            {
+                QstWidgets.Tooltip(_L("When a quest reward would take your gil, company seals or tomestones over the cap. Off: Questionable stops so you can spend them. On: it keeps going and the extra is lost."));
+            }
+
+            bool sameJobThroughoutQuest = Configuration.General.SameJobThroughoutQuest;
+            if (ImGui.Checkbox(_L("Switch back to the job a quest was started with"), ref sameJobThroughoutQuest))
+            {
+                Configuration.General.SameJobThroughoutQuest = sameJobThroughoutQuest;
+                Save();
+            }
+
+            bool summonChocobo = Configuration.General.SummonChocobo;
+            if (ImGui.Checkbox(_L("Keep your chocobo companion summoned"), ref summonChocobo))
+            {
+                Configuration.General.SummonChocobo = summonChocobo;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(
+                _L("Summons your chocobo companion in the field with Gysahl Greens when it isn't summoned or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs."));
+        }
+    }
+
+    private void DrawBetweenQuests()
+    {
+        using (QstWidgets.TitledCard(_L("Between quests")))
         {
+            bool collectJobGear = Configuration.General.CollectJobGear;
+            if (ImGui.Checkbox(_L("Collect free job gear"), ref collectJobGear))
+            {
+                Configuration.General.CollectJobGear = collectJobGear;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(
+                _L("Between quests, fetches the free level 80, 89 and 99 job gear (The Tempest, Old Sharlayan, Tuliyollal) once its shop is unlocked and it beats what you wear, then equips your best gear. Once per character and job."));
+
+            bool repairGear = Configuration.General.RepairGear;
+            if (ImGui.Checkbox(_L("Repair gear"), ref repairGear))
+            {
+                Configuration.General.RepairGear = repairGear;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(
+                _L("Between quests, Questionable repairs gear below the set condition: with Dark Matter when one of your crafters can, otherwise at your Grand Company's mender (or your starting city's) for gil."));
+
+            using (ImRaii.Disabled(!repairGear))
             using (ImRaii.PushIndent())
             {
-                bool configureTextAdvance = Configuration.General.ConfigureTextAdvance;
-                if (ImGui.Checkbox(_L("Automatically configure TextAdvance with the recommended settings"),
-                    ref configureTextAdvance))
+                int repairBelow = Math.Clamp(Configuration.General.RepairBelowPercent, 1, 99);
+                ImGui.SetNextItemWidth(150f);
+                if (ImGui.SliderInt(_L("Repair below condition (%)"), ref repairBelow, 1, 99))
                 {
-                    Configuration.General.ConfigureTextAdvance = configureTextAdvance;
+                    Configuration.General.RepairBelowPercent = repairBelow;
+                    Save();
+                }
+            }
+
+            bool claimMail = Configuration.General.ClaimMail;
+            if (ImGui.Checkbox(_L("Claim Mog Station and reward mail"), ref claimMail))
+            {
+                Configuration.General.ClaimMail = claimMail;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(
+                _L("Between quests, goes to a delivery moogle and has Mogmail claim waiting Mog Station and reward mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail."));
+
+            bool runNoviceHall = Configuration.General.RunNoviceHall;
+            if (ImGui.Checkbox(_L("Run the Hall of the Novice for the Neophyte's Ring"), ref runNoviceHall))
+            {
+                Configuration.General.RunNoviceHall = runNoviceHall;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(
+                _L("Between quests, at class level 49-59 without the Neophyte's Ring, AutoDuty runs the three new Hall of the Novice exercises. The ring gives 30% more EXP up to level 60. Needs AutoDuty with duties on."));
+
+            using (ImRaii.Disabled(!_autoRetainer.IsReady()))
+            {
+                bool sendRetainers = Configuration.General.SendRetainers;
+                if (ImGui.Checkbox(_L("Send retainers and submersibles out"), ref sendRetainers))
+                {
+                    Configuration.General.SendRetainers = sendRetainers;
                     Save();
                 }
 
-                if (configureTextAdvance)
-                {
-                    bool dontSkipCutscenes = Configuration.General.DontSkipCutscenes;
-                    using (ImRaii.PushIndent())
-                    {
-                        if (ImGui.Checkbox(_L("but don't skip cutscenes or dialogue"), ref dontSkipCutscenes))
-                        {
-                            Configuration.General.DontSkipCutscenes = dontSkipCutscenes;
-                            Save();
-                        }
-                    }
-                }
-                bool dontShowAnswerSuggestions = Configuration.General.DontShowAnswerSuggestions;
-                if (ImGui.Checkbox(_L("Hide dialogue answer suggestions/notifications"), ref dontShowAnswerSuggestions))
-                {
-                    Configuration.General.DontShowAnswerSuggestions = dontShowAnswerSuggestions;
-                    Save();
-                }
+                ImGuiComponents.HelpMarker(
+                    _L("Between quests, when a retainer or submersible is back on any of AutoRetainer's multi-mode characters, AutoRetainer does one multi-mode pass over those characters, following its own multi-mode settings. Questionable then logs back in to this character and keeps questing. Needs AutoRetainer and Lifestream."));
+            }
+        }
+    }
 
-                bool skipLowPriorityInstances = Configuration.General.SkipLowPriorityDuties;
-                if (ImGui.Checkbox(_L("Unlock certain optional dungeons and raids (instead of waiting for completion)"), ref skipLowPriorityInstances))
-                {
-                    Configuration.General.SkipLowPriorityDuties = skipLowPriorityInstances;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                using (ImRaii.PushFont(UiBuilder.IconFont))
-                {
-                    ImGui.TextDisabled(FontAwesomeIcon.InfoCircle.ToIconString());
-                }
-
-                if (ImGui.IsItemHovered())
-                {
-                    using (ImRaii.Tooltip())
-                    {
-                        ImGui.Text(_L("Questionable automatically picks up some optional quests (e.g. for aether currents, or the ARR alliance raids)."));
-                        ImGui.Text(_L("If this setting is enabled, Questionable will continue with other quests, instead of waiting for manual completion of the duty."));
-
-                        ImGui.Separator();
-                        ImGui.Text(_L("This affects the following dungeons and raids:"));
-                        foreach ((uint ContentFinderConditionId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityContentFinderConditionQuests)
-                        {
-                            if (_territoryData.TryGetContentFinderCondition(lowPriorityCfc.ContentFinderConditionId, out TerritoryData.ContentFinderConditionData? cfcData))
-                                ImGui.BulletText($"{cfcData.Name}");
-                        }
-                    }
-                }
-
-                bool useTickets = Configuration.General.UseTickets;
-                if (ImGui.Checkbox(_L("Use aetheryte tickets where available"), ref useTickets))
-                {
-                    Configuration.General.UseTickets = useTickets;
-                    Save();
-                }
-
-                if (ImGui.IsItemHovered())
-                {
-                    using (ImRaii.Tooltip())
-                    {
-                        ImGui.Text(_L("Ideally this should be set in the in-game Teleport settings, but is provided here for convenience."));
-                    }
-                }
-
-                bool sameJobThroughoutQuest = Configuration.General.SameJobThroughoutQuest;
-                if (ImGui.Checkbox(_L("Before each Interact, switch to the job a quest was accepted with"), ref sameJobThroughoutQuest))
-                {
-                    Configuration.General.SameJobThroughoutQuest = sameJobThroughoutQuest;
-                    Save();
-                }
-
-                bool ignoreNextQuestIfPrioSet = Configuration.General.IgnoreNextQuestIfPrioSet;
-                if (ImGui.Checkbox(_L("Ignore 'next quest' if Priority Quests has valid alternative"), ref ignoreNextQuestIfPrioSet))
-                {
-                    Configuration.General.IgnoreNextQuestIfPrioSet = ignoreNextQuestIfPrioSet;
-                    Save();
-                }
-
-                //bool claimMail = Configuration.General.ClaimMail;
-                //if (ImGui.Checkbox(_L("Claim mail"), ref claimMail))
-                //{
-                //    Configuration.General.ClaimMail = claimMail;
-                //    Save();
-                //}
-
-                //if (ImGui.IsItemHovered())
-                //{
-                //    using (ImRaii.Tooltip())
-                //    {
-                //        ImGui.Text(_L("Use MogMail to claim all letters from Delivery Moogles when accepting a quest"));
-                //    }
-                //}
-
-#if false
-            ImGui.Spacing();
+    private void DrawRecovery()
+    {
+        using (QstWidgets.TitledCard(_L("Recovery and reports")))
+        {
             bool autoStepRefreshEnabled = Configuration.General.AutoStepRefreshEnabled;
-            if (ImGui.Checkbox(_L("Automatically refresh quest steps when stuck (WIP see tooltip)"), ref autoStepRefreshEnabled))
+            if (ImGui.Checkbox(_L("Retry the current step when stuck"), ref autoStepRefreshEnabled))
             {
                 Configuration.General.AutoStepRefreshEnabled = autoStepRefreshEnabled;
                 Save();
             }
 
-            ImGui.SameLine();
-            using (ImRaii.PushFont(UiBuilder.IconFont))
-            {
-                ImGui.TextDisabled(FontAwesomeIcon.InfoCircle.ToIconString());
-            }
-
-            if (ImGui.IsItemHovered())
-            {
-                using (ImRaii.Tooltip())
-                {
-                    ImGui.Text(_L("Questionable will automatically refresh a quest step if it appears to be stuck after the configured delay."));
-                    ImGui.Text(_L("This helps resume automated quest completion when interruptions occur."));
-                    ImGui.Text(_L("WIP feature, rather than remove it, this is a warning that it isn't fully complete."));
-                }
-            }
+            ImGuiComponents.HelpMarker(_L("Retries movement and simple interactions (talking, attuning, emotes) when nothing has changed for the set time. Combat, cutscenes, dialogue and duties pause the timer."));
 
             using (ImRaii.Disabled(!autoStepRefreshEnabled))
+            using (ImRaii.PushIndent())
             {
-                ImGui.Indent();
-                int autoStepRefreshDelay = Configuration.General.AutoStepRefreshDelaySeconds;
+                int autoStepRefreshDelay = Math.Clamp(Configuration.General.AutoStepRefreshDelaySeconds, 30, 180);
                 ImGui.SetNextItemWidth(150f);
-                if (ImGui.SliderInt(_L("Refresh delay (seconds)"), ref autoStepRefreshDelay, 30, 180))
+                if (ImGui.SliderInt(_L("Retry after (seconds)"), ref autoStepRefreshDelay, 30, 180))
                 {
                     Configuration.General.AutoStepRefreshDelaySeconds = autoStepRefreshDelay;
                     Save();
                 }
 
-                ImGui.TextColored(new System.Numerics.Vector4(0.7f, 0.7f, 0.7f, 1.0f),
-                    _LF("Quest steps will refresh automatically after {0} seconds if no progress is made.", autoStepRefreshDelay));
-                ImGui.Unindent();
+                int autoStepRefreshMaxTries = Configuration.General.AutoStepRefreshMaxTries;
+                ImGui.SetNextItemWidth(150f);
+                if (ImGui.SliderInt(_L("Retries before stopping"), ref autoStepRefreshMaxTries, 1, 10))
+                {
+                    Configuration.General.AutoStepRefreshMaxTries = autoStepRefreshMaxTries;
+                    Save();
+                }
             }
-#endif
+
+            int deathLimit = Math.Clamp(Configuration.General.DeathLimit, 1, 10);
+            ImGui.SetNextItemWidth(150f);
+            if (ImGui.SliderInt(_L("Deaths on one step before stopping"), ref deathLimit, 1, 10))
+            {
+                Configuration.General.DeathLimit = deathLimit;
+                Save();
             }
+
+            ImGuiComponents.HelpMarker(_L("After a death Questionable returns and retries the step; it stops once you die this many times on the same step."));
+
+            bool shareResults = Configuration.Reports.Share == true;
+            if (ImGui.Checkbox(_L("Share quest results to help fix paths"), ref shareResults))
+            {
+                Configuration.Reports.Share = shareResults;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(_L("After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. Never your character's name, account or IP address. Kept for 180 days."));
+        }
+    }
+
+    private void DrawOptionalQuests()
+    {
+        using (QstWidgets.TitledCard(_L("Optional quests")))
+        {
+            DrawPickUp(_L("Pick up aether currents and aether current quests"),
+                () => Configuration.Advanced.SkipAetherCurrents,
+                value => Configuration.Advanced.SkipAetherCurrents = value,
+                _L("When off, you pick up aether currents yourself, or later with an aether current preset in Priority Quests."));
+
+            DrawPickUp(_L("Pick up class/job/role quests"),
+                () => Configuration.Advanced.SkipClassJobQuests,
+                value => Configuration.Advanced.SkipClassJobQuests = value,
+                _L("ARR, Heavensward and Stormblood (level 70) skills come from these quests. Not recommended if you queue with the Duty Finder or Party Finder."));
+
+            DrawPickUp(_L("Pick up ARR hard mode primal quests"),
+                () => Configuration.Advanced.SkipARealmRebornHardModePrimals,
+                value => Configuration.Advanced.SkipARealmRebornHardModePrimals = value,
+                _L("Hard mode Ifrit/Garuda/Titan are required for the Patch 2.5 quest 'Good Intentions' and to start Heavensward."));
+
+            DrawPickUp(_L("Pick up Crystal Tower quests"),
+                () => Configuration.Advanced.SkipCrystalTowerRaids,
+                value => Configuration.Advanced.SkipCrystalTowerRaids = value,
+                _L("Crystal Tower raids are required for the Patch 2.55 quest 'A Time to Every Purpose' and to start Heavensward."));
+
+            DrawPickUp(_L("Pick up \"My Feisty Little Chocobo\""),
+                () => Configuration.Advanced.SkipFeistyLittleChocobo,
+                value => Configuration.Advanced.SkipFeistyLittleChocobo = value,
+                _L("'My Feisty Little Chocobo' lets your chocobo companion fight with you in the field. When ticked, it is done automatically after 'My Little Chocobo'."));
+
+            bool skipLowPriorityInstances = Configuration.General.SkipLowPriorityDuties;
+            if (ImGui.Checkbox(_L("Don't wait on optional dungeons and raids"), ref skipLowPriorityInstances))
+            {
+                Configuration.General.SkipLowPriorityDuties = skipLowPriorityInstances;
+                Save();
+            }
+
+            ImGuiComponentsLocal.HelpMarker(
+                _L("Some optional quests (aether currents, ARR alliance raids) end in a duty. When ticked, Questionable moves on to other quests instead of waiting for you to run it.") +
+                "\n\n" + _L("This affects the following dungeons and raids:"),
+                [.. _questRegistry.LowPriorityCfcQuests
+                    .Select(x => _territoryData.TryGetCfc(x.CfcId, out TerritoryData.CfcData? cfc) ? cfc.Name : null)
+                    .OfType<string>()]);
+        }
+    }
+
+    private void DrawRewardRules()
+    {
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Quest reward choice"));
+        using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted))
+            ImGui.TextWrapped(_L("The first ticked rule that matches picks the reward; otherwise the highest vendor value. Needs \"Set up TextAdvance for questing\" on the Questing page."));
+
+        List<Configuration.ERewardRule> order = Configuration.General.RewardOrder
+            .Concat(RewardPickHandler.DefaultOrder).Distinct().ToList();
+        for (int i = 0; i < order.Count; i++)
+        {
+            Configuration.ERewardRule rule = order[i];
+            using ImRaii.IdDisposable id = ImRaii.PushId((int)rule);
+            using (ImRaii.Disabled(i == 0))
+            {
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ArrowUp))
+                    MoveRewardRule(order, i, i - 1);
+            }
+
+            ImGui.SameLine();
+            using (ImRaii.Disabled(i == order.Count - 1))
+            {
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ArrowDown))
+                    MoveRewardRule(order, i, i + 1);
+            }
+
+            ImGui.SameLine();
+            bool enabled = !Configuration.General.RewardRulesOff.Contains(rule);
+            if (ImGui.Checkbox(RewardRuleLabel(rule), ref enabled))
+            {
+                if (enabled)
+                    Configuration.General.RewardRulesOff.Remove(rule);
+                else
+                    Configuration.General.RewardRulesOff.Add(rule);
+                Save();
+            }
+        }
+    }
+
+    private void MoveRewardRule(List<Configuration.ERewardRule> order, int from, int to)
+    {
+        (order[from], order[to]) = (order[to], order[from]);
+        Configuration.General.RewardOrder = order;
+        Save();
+    }
+
+    private static string RewardRuleLabel(Configuration.ERewardRule rule) => rule switch
+    {
+        Configuration.ERewardRule.UnownedCollectible => _L("Unowned collectible (mount, minion, orchestrion roll, card, fashion accessory)"),
+        Configuration.ERewardRule.GearUpgrade => _L("Gear upgrade for your current job"),
+        Configuration.ERewardRule.Coffer => _L("Gear coffer for your current job"),
+        Configuration.ERewardRule.AllaganPieces => _L("Allagan pieces (sold for gil)"),
+        _ => _L("Highest vendor value"),
+    };
+
+    // The settings store "skip", so a ticked box means the quest is picked up.
+    private void DrawPickUp(string label, Func<bool> getSkip, Action<bool> setSkip, string help) =>
+        DrawCheckbox(label, () => !getSkip(), value => setSkip(!value), help);
+
+    private void DrawRewardRedemption()
+    {
+        using (QstWidgets.TitledCard(_L("Reward item redemption")))
+        {
+            bool autoRedeemRewardItems = Configuration.Advanced.AutoRedeemRewardItems;
+            if (ImGui.Checkbox(_L("Automatically open redeemable items (coffers, minions, emotes, etc.)"),
+                    ref autoRedeemRewardItems))
+            {
+                Configuration.Advanced.AutoRedeemRewardItems = autoRedeemRewardItems;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(_L(
+                "After turning in a quest (or before accepting one), uses items that unlock mounts, minions, orchestrion rolls, emotes and similar. Turn off to open them yourself."));
+
+            using (ImRaii.Disabled(!autoRedeemRewardItems))
+            {
+                using (ImRaii.PushIndent())
+                {
+                    ImGui.TextWrapped(_L(
+                        "Items on this list are never opened automatically. Add venture coffers, Grand Company coffers, or anything else you want to keep closed."));
+
+                    HashSet<uint> blacklist = Configuration.Advanced.AutoRedeemItemBlacklist;
+                    _itemBlacklistSelector.OnSelect = itemId =>
+                    {
+                        if (blacklist.Add(itemId))
+                            Save();
+                    };
+                    _itemBlacklistSelector.DrawSelection(blacklist);
+
+                    if (blacklist.Count > 0)
+                    {
+                        using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+                        {
+                            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear all")))
+                            {
+                                blacklist.Clear();
+                                Save();
+                            }
+                        }
+
+                        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                            QstWidgets.Tooltip(_L("Hold CTRL to enable this button."));
+
+                        ImGui.Separator();
+                    }
+
+                    foreach (uint itemId in blacklist.OrderBy(x => x))
+                    {
+                        using (ImRaii.PushId($"BlacklistItem{itemId}"))
+                        {
+                            string name = _dataManager.GetExcelSheet<Item>()?.GetRowOrDefault(itemId)?.Name.ToString(null, CultureInfo.CurrentCulture)
+                                          ?? itemId.ToString(CultureInfo.InvariantCulture);
+                            ImGui.AlignTextToFramePadding();
+                            ImGui.Text($"{name} ({itemId})");
+
+                            using (ImRaii.PushFont(UiBuilder.IconFont))
+                            {
+                                ImGui.SameLine(ImGui.GetContentRegionAvail().X +
+                                               ImGui.GetStyle().WindowPadding.X -
+                                               ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
+                                               ImGui.GetStyle().FramePadding.X * 2);
+                            }
+
+                            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Times))
+                                _itemToRemove = itemId;
+                        }
+                    }
+
+                    if (_itemToRemove is uint removeId)
+                    {
+                        blacklist.Remove(removeId);
+                        _itemToRemove = null;
+                        Save();
+                    }
+                }
+            }
+        }
+    }
+
+    private void DrawUpdates()
+    {
+        using (QstWidgets.TitledCard(_L("Updates")))
+        {
+            bool autoUpdatePaths = Configuration.PathData.AutoUpdate;
+            if (ImGui.Checkbox(_L("Automatically download quest/gathering path updates"), ref autoUpdatePaths))
+            {
+                Configuration.PathData.AutoUpdate = autoUpdatePaths;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(_L("Downloads newer quest/gathering paths without needing a full plugin update."));
+
+            bool showCounts = Configuration.Reports.ShowCounts;
+            if (ImGui.Checkbox(_L("Show community quest results"), ref showCounts))
+            {
+                Configuration.Reports.ShowCounts = showCounts;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(_L("Shows how often each quest's path worked for others in the last 30 days: green works, orange needs more reports, red has problems, grey has no data. Sends nothing about you."));
+
+            if (ImGui.Button(_L("Check for path updates now")))
+                _pathDataUpdater.CheckForUpdatesManually();
+
+            ImGui.SameLine();
+            ImGui.TextColored(QstTheme.TextMuted, _pathDataUpdater.Status);
+
+            long installedVersion = Configuration.PathData.InstalledDataVersion;
+            ImGui.TextColored(QstTheme.TextMuted,
+                installedVersion == 0
+                    ? _L("Using the path data bundled with the plugin.")
+                    : _LF("Downloaded path data version: {0}", installedVersion));
         }
     }
 }

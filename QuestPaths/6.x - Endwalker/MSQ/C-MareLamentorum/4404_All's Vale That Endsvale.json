@@ -1,80 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038927,
-          "Position": {
-            "X": 2.090454,
-            "Y": -49.589596,
-            "Z": -699.733
-          },
-          "TerritoryId": 959,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1037867,
-          "Position": {
-            "X": -301.62512,
-            "Y": -144.00002,
-            "Z": -491.14215
-          },
-          "TerritoryId": 959,
+          "Position": [-301.62512, -144.00002, -491.14215],
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 4240,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                4240
-              ]
-            }
-          }
+          "PickUpQuestId": 4240
         },
         {
           "DataId": 1039520,
-          "Position": {
-            "X": -287.8615,
-            "Y": -143.50005,
-            "Z": -520.28687
-          },
-          "TerritoryId": 959,
+          "Position": [-287.8615, -143.50005, -520.28687],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 4241
         },
         {
           "DataId": 1038928,
-          "Position": {
-            "X": 146.37976,
-            "Y": -137.32071,
-            "Z": -504.26492
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "Position": [146.37976, -137.32071, -504.26492],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038929,
-          "Position": {
-            "X": 681.45264,
-            "Y": -152,
-            "Z": -494.13293
-          },
-          "TerritoryId": 959,
+          "Position": [681.45264, -152, -494.13293],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -88,15 +50,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038929,
-          "Position": {
-            "X": 681.45264,
-            "Y": -152,
-            "Z": -494.13293
-          },
-          "TerritoryId": 959,
+          "Position": [681.45264, -152, -494.13293],
           "InteractionType": "Emote",
           "Emote": "stretch"
         }
@@ -104,111 +62,77 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038929,
-          "Position": {
-            "X": 681.45264,
-            "Y": -152,
-            "Z": -494.13293
-          },
-          "TerritoryId": 959,
+          "Position": [681.45264, -152, -494.13293],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038929,
-          "Position": {
-            "X": 595.4731,
-            "Y": -167.50227,
-            "Z": -511.4072
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 959,
+          "Position": [595.4731, -167.50227, -511.4072],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038929,
-          "Position": {
-            "X": 547.8397,
-            "Y": -167.50174,
-            "Z": -526.3702
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 959,
+          "Position": [547.8397, -167.50174, -526.3702],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038929,
-          "Position": {
-            "X": 572.45984,
-            "Y": -167.50163,
-            "Z": -577.03906
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 959,
+          "Position": [572.45984, -167.50163, -577.03906],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038929,
-          "Position": {
-            "X": 617.89886,
-            "Y": -167.50163,
-            "Z": -594.92847
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 959,
+          "Position": [617.89886, -167.50163, -594.92847],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038929,
-          "Position": {
-            "X": 622.8754,
-            "Y": -167.50217,
-            "Z": -659.45184
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 959,
+          "Position": [622.8754, -167.50217, -659.45184],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038932,
-          "Position": {
-            "X": 617.05945,
-            "Y": -168.00002,
-            "Z": -656.58044
-          },
-          "StopDistance": 7,
-          "TerritoryId": 959,
+          "Position": [617.05945, -168.00002, -656.58044],
           "InteractionType": "CompleteQuest"
         }
       ]

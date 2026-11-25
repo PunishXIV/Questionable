@@ -1,20 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1035613,
-          "Position": {
-            "X": -2.456726,
-            "Y": 0,
-            "Z": -9.720032
-          },
-          "StopDistance": 5,
-          "TerritoryId": 351,
+          "Position": [-2.456726, 0, -9.720032],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -22,32 +17,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1036324,
-          "Position": {
-            "X": 739.681,
-            "Y": 70,
-            "Z": 535.4237
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "Position": [739.681, 70, 535.4237],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1036329,
-          "Position": {
-            "X": 741.1155,
-            "Y": 70,
-            "Z": 527.7333
-          },
-          "TerritoryId": 621,
+          "Position": [741.1155, 70, 527.7333],
           "InteractionType": "CompleteQuest"
         }
       ]

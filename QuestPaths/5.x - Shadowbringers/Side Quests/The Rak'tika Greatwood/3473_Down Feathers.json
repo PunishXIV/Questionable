@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,67 +8,26 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 345.6171,
-            "Y": 7.4945126,
-            "Z": -128.36385
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "DataId": 1031416,
-          "Position": {
-            "X": 343.70935,
-            "Y": 7.494513,
-            "Z": -126.05481
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 151.06435,
-            "Y": -9.612667,
-            "Z": 357.59778
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1031392,
-          "Position": {
-            "X": 147.9972,
-            "Y": -9.294524,
-            "Z": 357.90027
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [147.9972, -9.294524, 357.90027],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031393,
-          "Position": {
-            "X": 147.17322,
-            "Y": -9.212592,
-            "Z": 357.1068
-          },
-          "TerritoryId": 817,
+          "Position": [147.17322, -9.212592, 357.1068],
           "InteractionType": "UseItem",
           "ItemId": 2002883
         }
@@ -76,19 +35,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031416,
-          "Position": {
-            "X": 343.70935,
-            "Y": 7.494513,
-            "Z": -126.05481
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

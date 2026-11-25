@@ -1,7 +1,4 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Jump
@@ -13,32 +10,33 @@ internal static class Jump
             if (step.InteractionType != EInteractionType.Jump)
                 return null;
 
-            ArgumentNullException.ThrowIfNull(step.JumpDestination);
+            if (step.JumpDestination == null)
+                throw new ArgumentException($"{nameof(step.JumpDestination)} is missing", nameof(step));
 
             if (step.JumpDestination.Type == EJumpType.SingleJump)
-                return new SingleJumpTask(step.DataId, step.JumpDestination, step.Comment);
+                return new SingleTask(step.DataId, step.JumpDestination, step.Comment);
 
-            return new RepeatedJumpTask(step.DataId, step.JumpDestination, step.Comment);
+            return new RepeatedTask(step.DataId, step.JumpDestination, step.Comment);
         }
     }
 
     internal interface IJumpTask : ITask
     {
         uint? DataId { get; }
-        JumpDestination JumpDestination { get; }
+        JumpDestination Destination { get; }
         string? Comment { get; }
     }
 
-    internal sealed record SingleJumpTask
+    internal sealed record SingleTask
     (
         uint? DataId,
-        JumpDestination JumpDestination,
+        JumpDestination Destination,
         string? Comment) : IJumpTask
     {
         public override string ToString() => $"Jump({Comment})";
     }
 
-    internal abstract class JumpBase<T>
+    internal abstract class ExecutorBase<T>
     (
         MovementController movementController,
         IObjectTable objectTable,
@@ -47,13 +45,13 @@ internal static class Jump
     {
         protected override bool Start()
         {
-            float stopDistance = Task.JumpDestination.CalculateStopDistance();
-            if ((objectTable[0]!.Position - Task.JumpDestination.Position).Length() <= stopDistance)
+            float stopDistance = Task.Destination.CalculateStopDistance();
+            if ((objectTable[0]!.Position - Task.Destination.Position).Length() <= stopDistance)
                 return false;
 
-            movementController.NavigateTo(EMovementType.Quest, Task.DataId, [Task.JumpDestination.Position], new()
+            movementController.NavigateTo(EMovementType.Quest, Task.DataId, [Task.Destination.Position], new()
             {
-                StopDistance = Task.JumpDestination.StopDistance ?? stopDistance,
+                StopDistance = Task.Destination.StopDistance ?? stopDistance,
             });
             framework.RunOnTick(() =>
                 {
@@ -62,16 +60,16 @@ internal static class Jump
                         ActionManager.Instance()->UseAction(ActionType.GeneralAction, 2);
                     }
                 },
-                TimeSpan.FromSeconds(Task.JumpDestination.DelaySeconds ?? 0.5f));
+                TimeSpan.FromSeconds(Task.Destination.DelaySeconds ?? 0.5f));
             return true;
         }
 
         public override ETaskResult Update()
         {
-            if (movementController.IsPathfinding || movementController.IsPathRunning)
+            if (movementController.IsPathRunning)
                 return ETaskResult.StillRunning;
 
-            DateTime movementStartedAt = movementController.MovementStartedAt;
+            DateTime movementStartedAt = movementController.StartedAt;
             if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(1) >= DateTime.Now)
                 return ETaskResult.StillRunning;
 
@@ -81,29 +79,29 @@ internal static class Jump
         public override bool ShouldInterruptOnDamage() => true;
     }
 
-    internal sealed class DoSingleJump
+    internal sealed class SingleExecutor
     (
         MovementController movementController,
         IObjectTable objectTable,
-        IFramework framework) : JumpBase<SingleJumpTask>(movementController, objectTable, framework);
+        IFramework framework) : ExecutorBase<SingleTask>(movementController, objectTable, framework);
 
-    internal sealed record RepeatedJumpTask
+    internal sealed record RepeatedTask
     (
         uint? DataId,
-        JumpDestination JumpDestination,
+        JumpDestination Destination,
         string? Comment) : IJumpTask
     {
         public override string ToString() => $"RepeatedJump({Comment})";
     }
 
-    internal sealed class DoRepeatedJumps
+    internal sealed class RepeatedExecutor
     (
         MovementController movementController,
         IObjectTable objectTable,
         IFramework framework,
         ICondition condition,
-        ILogger<DoRepeatedJumps> logger)
-        : JumpBase<RepeatedJumpTask>(movementController, objectTable, framework)
+        ILogger<RepeatedExecutor> logger)
+        : ExecutorBase<RepeatedTask>(movementController, objectTable, framework)
     {
         private readonly IObjectTable _objectTable = objectTable;
         private int _attempts;
@@ -111,7 +109,7 @@ internal static class Jump
 
         protected override bool Start()
         {
-            _continueAt = DateTime.Now + TimeSpan.FromSeconds(2 * (Task.JumpDestination.DelaySeconds ?? 0.5f));
+            _continueAt = DateTime.Now + TimeSpan.FromSeconds(2 * (Task.Destination.DelaySeconds ?? 0.5f));
             return base.Start();
         }
 
@@ -120,17 +118,17 @@ internal static class Jump
             if (DateTime.Now < _continueAt || condition[ConditionFlag.Jumping])
                 return ETaskResult.StillRunning;
 
-            float stopDistance = Task.JumpDestination.CalculateStopDistance();
-            if (_objectTable[0] == null)
+            float stopDistance = Task.Destination.CalculateStopDistance();
+            if (_objectTable[0] is not { } player)
                 return ETaskResult.StillRunning;
-            if ((_objectTable[0]!.Position - Task.JumpDestination.Position).Length() <= stopDistance ||
-                _objectTable[0]?.Position.Y >= Task.JumpDestination.Position.Y - 0.5f)
+            if ((player.Position - Task.Destination.Position).Length() <= stopDistance ||
+                player.Position.Y >= Task.Destination.Position.Y - 0.5f)
             {
                 return ETaskResult.TaskComplete;
             }
 
-            logger.LogTrace("Y-Heights for jumps: player={A}, target={B}", _objectTable[0]?.Position.Y,
-                Task.JumpDestination.Position.Y - 0.5f);
+            logger.LogTrace("Y-Heights for jumps: player={A}, target={B}", player.Position.Y,
+                Task.Destination.Position.Y - 0.5f);
             unsafe
             {
                 if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 2))
@@ -140,7 +138,7 @@ internal static class Jump
             if (_attempts >= 50)
                 throw new TaskException("Tried to jump too many times, didn't reach the target");
 
-            _continueAt = DateTime.Now + TimeSpan.FromSeconds(Task.JumpDestination.DelaySeconds ?? 0.5f);
+            _continueAt = DateTime.Now + TimeSpan.FromSeconds(Task.Destination.DelaySeconds ?? 0.5f);
             return ETaskResult.StillRunning;
         }
     }

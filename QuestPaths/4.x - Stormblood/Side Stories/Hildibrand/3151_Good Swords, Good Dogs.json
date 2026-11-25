@@ -1,110 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026351,
-          "Position": {
-            "X": 45.090332,
-            "Y": -7.469796,
-            "Z": -262.7146
-          },
-          "StopDistance": 5,
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1026355,
-          "Position": {
-            "X": 841.27563,
-            "Y": 1.1792023,
-            "Z": 861.90576
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
-          "Mount": true
+          "Position": [841.27563, 1.1792023, 861.90576],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019166,
-          "Position": {
-            "X": 495.6587,
-            "Y": 29.394592,
-            "Z": 722.0111
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [495.6587, 29.394592, 722.0111],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1026366,
-          "Position": {
-            "X": 433.73767,
-            "Y": 30.29471,
-            "Z": 780.69727
-          },
-          "TerritoryId": 613,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [433.73767, 30.29471, 780.69727],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1026367,
-          "Position": {
-            "X": 297.32202,
-            "Y": 0.35283074,
-            "Z": 470.51184
-          },
-          "TerritoryId": 613,
+          "Position": [297.32202, 0.35283074, 470.51184],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1026369,
-          "Position": {
-            "X": -35.080566,
-            "Y": 5.983372,
-            "Z": -152.23932
-          },
-          "TerritoryId": 628,
+          "Position": [-35.080566, 5.983372, -152.23932],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Rakuza District"
-          ],
           "NextQuestId": 3167
         }
       ]

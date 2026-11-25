@@ -1,63 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013135,
-          "Position": {
-            "X": 207.58165,
-            "Y": -3.148354,
-            "Z": 42.04371
-          },
-          "TerritoryId": 139,
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "Position": {
-            "X": 620.5845,
-            "Y": -3.0527442,
-            "Z": 169.40678
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1013137,
-          "Position": {
-            "X": 620.9657,
-            "Y": -3.002753,
-            "Z": 171.06885
-          },
-          "TerritoryId": 139,
+          "Position": [620.9657, -3.002753, 171.06885],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 2005520,
-          "Position": {
-            "X": 622.91907,
-            "Y": -3.0671387,
-            "Z": 171.6792
-          },
-          "StopDistance": 4.5,
-          "TerritoryId": 139,
+          "Position": [622.91907, -3.0671387, 171.6792],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -67,18 +34,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013135,
-          "Position": {
-            "X": 207.58165,
-            "Y": -3.148354,
-            "Z": 42.04371
-          },
-          "TerritoryId": 139,
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
+          "Position": [207.58165, -3.148354, 42.04371],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1673
         }

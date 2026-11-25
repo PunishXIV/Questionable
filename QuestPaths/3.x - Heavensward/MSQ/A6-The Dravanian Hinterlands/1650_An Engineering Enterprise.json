@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013112,
-          "Position": {
-            "X": 162.005,
-            "Y": -15.134371,
-            "Z": 38.52893
-          },
-          "StopDistance": 7,
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1011223,
-          "Position": {
-            "X": 114.579956,
-            "Y": 24.412834,
-            "Z": -11.062805
-          },
-          "TerritoryId": 418,
+          "Position": [114.579956, 24.412834, -11.062805],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -37,19 +21,11 @@
               "Prompt": "TEXT_HEAVNA601_01650_SCENE00008_EVENTAREA_WARP_YESNO_TITLE",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Forgotten Knight"
           ]
         },
         {
           "DataId": 1013183,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 0.019999694,
-            "Z": -6.302063
-          },
+          "Position": [-0.015319824, 0.019999694, -6.302063],
           "TerritoryId": 428,
           "InteractionType": "Interact"
         }
@@ -57,15 +33,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013162,
-          "Position": {
-            "X": 92.36279,
-            "Y": 15.094684,
-            "Z": 33.188354
-          },
-          "TerritoryId": 418,
+          "Position": [92.36279, 15.094684, 33.188354],
           "InteractionType": "CompleteQuest"
         }
       ]

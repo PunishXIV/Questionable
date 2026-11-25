@@ -1,58 +1,29 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027958,
-          "Position": {
-            "X": 663.35547,
-            "Y": 365.62848,
-            "Z": -177.75238
-          },
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 2010107,
-          "Position": {
-            "X": 255.26807,
-            "Y": 338.9486,
-            "Z": -471.21387
-          },
-          "TerritoryId": 818,
+          "Position": [255.26807, 338.9486, -471.21387],
           "InteractionType": "Combat",
           "EnemySpawnType":"AfterInteraction",
           "KillEnemyDataIds":[
             11124
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027958,
-          "Position": {
-            "X": 663.35547,
-            "Y": 365.62848,
-            "Z": -177.75238
-          },
-          "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Tempest - Ondo Cups"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

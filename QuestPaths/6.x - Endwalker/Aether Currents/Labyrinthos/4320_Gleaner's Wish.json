@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041313,
-          "Position": {
-            "X": 89.28052,
-            "Y": -17.530382,
-            "Z": -74.906555
-          },
-          "TerritoryId": 956,
+          "Position": [89.28052, -17.530382, -74.906555],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,31 +23,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041314,
-          "Position": {
-            "X": 78.3855,
-            "Y": -29.79994,
-            "Z": 159.5636
-          },
-          "TerritoryId": 956,
+          "Position": [78.3855, -29.79994, 159.5636],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 2012494,
-          "Position": {
-            "X": 78.96533,
-            "Y": -29.098999,
-            "Z": 161.02844
-          },
-          "StopDistance": 5,
-          "TerritoryId": 956,
+          "Position": [78.96533, -29.098999, 161.02844],
           "InteractionType": "Emote",
           "Emote": "pray"
         }
@@ -59,18 +46,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041313,
-          "Position": {
-            "X": 89.28052,
-            "Y": -17.530382,
-            "Z": -74.906555
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

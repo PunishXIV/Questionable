@@ -1,81 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1027719,
-          "Position": {
-            "X": 303.5172,
-            "Y": 34.242825,
-            "Z": -146.65448
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "Position": [303.5172, 34.242825, -146.65448],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1027715,
-          "Position": {
-            "X": 411.21533,
-            "Y": 33.637783,
-            "Z": -128.5268
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [411.21533, 33.637783, -128.5268],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1027713,
-          "Position": {
-            "X": 446.70776,
-            "Y": 34.051743,
-            "Z": -117.17407
-          },
-          "TerritoryId": 817,
+          "Position": [446.70776, 34.051743, -117.17407],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

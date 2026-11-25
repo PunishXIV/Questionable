@@ -1,65 +1,40 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050641,
-          "Position": {
-            "X": -398.6725,
-            "Y": 21.668707,
-            "Z": -168.23071
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1050641,
-          "Position": {
-            "X": -398.6725,
-            "Y": 21.668707,
-            "Z": -168.23071
-          },
-          "TerritoryId": 1190,
+          "Position": [-398.6725, 21.668707, -168.23071],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1050642,
-          "Position": {
-            "X": -290.82172,
-            "Y": 16.40523,
-            "Z": -51.041504
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-290.82172, 16.40523, -51.041504],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1050642,
-          "Position": {
-            "X": -290.82172,
-            "Y": 16.40523,
-            "Z": -51.041504
-          },
-          "TerritoryId": 1190,
+          "Position": [-290.82172, 16.40523, -51.041504],
           "InteractionType": "Emote",
           "Emote": "dance"
         }
@@ -67,19 +42,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1050641,
-          "Position": {
-            "X": -398.6725,
-            "Y": 21.668707,
-            "Z": -168.23071
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

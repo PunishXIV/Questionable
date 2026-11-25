@@ -1,64 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Iskierka", "Date": "2026-07-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1049805,
-          "Position": {
-            "X": -152.14777,
-            "Y": 14.005,
-            "Z": 45.303955
-          },
-          "StopDistance": 5,
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 15.193803,
-            "Y": 2.4684885,
-            "Z": -133.5494
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
-        },
-        {
           "DataId": 1049807,
-          "Position": {
-            "X": 14.419739,
-            "Y": 2.2207584,
-            "Z": -132.25
-          },
-          "TerritoryId": 148,
+          "Position": [14.419739, 2.2207584, -132.25],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1049807,
-          "Position": {
-            "X": 14.419739,
-            "Y": 2.2207584,
-            "Z": -132.25
-          },
-          "TerritoryId": 148,
+          "Position": [14.419739, 2.2207584, -132.25],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true},
           "DialogueChoices": [
@@ -73,16 +39,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1049808,
-          "Position": {
-            "X": 17.013733,
-            "Y": 2.0418286,
-            "Z": -129.83911
-          },
-          "StopDistance": 7,
-          "TerritoryId": 148,
+          "Position": [17.013733, 2.0418286, -129.83911],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,57 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "chika", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1032170,
-          "Position": {
-            "X": 25.070557,
-            "Y": 13.914338,
-            "Z": 755.58093
-          },
-          "TerritoryId": 816,
+          "Position": [25.070557, 13.914338, 755.58093],
           "InteractionType": "Snipe",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "Comment": "Throw Porxies at Beavers"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
+          "Position": [-454.3069, 71.43217, 575.1278],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

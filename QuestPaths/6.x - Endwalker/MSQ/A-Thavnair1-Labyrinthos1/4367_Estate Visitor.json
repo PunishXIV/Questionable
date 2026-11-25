@@ -1,115 +1,63 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038746,
-          "Position": {
-            "X": 2.5481567,
-            "Y": 41.37599,
-            "Z": -142.1684
-          },
-          "StopDistance": 5,
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038745,
-          "Position": {
-            "X": 1.663208,
-            "Y": 41.37599,
-            "Z": -141.00867
-          },
-          "StopDistance": 5,
-          "TerritoryId": 962,
+          "Position": [1.663208, 41.37599, -141.00867],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038746,
-          "Position": {
-            "X": 2.5481567,
-            "Y": 41.37599,
-            "Z": -142.1684
-          },
-          "StopDistance": 5,
-          "TerritoryId": 962,
+          "Position": [2.5481567, 41.37599, -142.1684],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1040284,
-          "Position": {
-            "X": 219.22632,
-            "Y": 25.041138,
-            "Z": -160.60126
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Rostra",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ]
+          "Position": [219.22632, 25.041138, -160.60126],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1040285,
-          "Position": {
-            "X": 222.03394,
-            "Y": 21.878136,
-            "Z": -120.43945
-          },
-          "TerritoryId": 962,
+          "Position": [222.03394, 21.878136, -120.43945],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "DataId": 2011936,
-          "Position": {
-            "X": -108.56799,
-            "Y": 5.0201416,
-            "Z": 4.5318604
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Leveilleur Estate",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
-          "TargetTerritoryId": 987
-        },
-        {
           "DataId": 1040291,
-          "Position": {
-            "X": -1.9379272,
-            "Y": 1.9073486E-06,
-            "Z": 1.5715942
-          },
+          "Position": [-1.9379272, 1.9073486E-06, 1.5715942],
           "TerritoryId": 987,
           "InteractionType": "CompleteQuest"
         }

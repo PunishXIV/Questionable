@@ -1,73 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000204,
-          "Position": {
-            "X": 226.33704,
-            "Y": 1.9999089,
-            "Z": 29.06836
-          },
-          "TerritoryId": 132,
+          "Position": [226.33704, 1.9999089, 29.06836],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000199,
-          "Position": {
-            "X": 211.13904,
-            "Y": 1.5032133e-05,
-            "Z": 28.580078
-          },
-          "TerritoryId": 132,
+          "Position": [211.13904, 1.5032133e-05, 28.580078],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2000951,
-          "Position": {
-            "X": -1.8158569,
-            "Y": 6.9122925,
-            "Z": -93.0343
-          },
-          "TerritoryId": 153,
+          "Position": [-1.8158569, 6.9122925, -93.0343],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -80,32 +50,12 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 60.130726,
-            "Y": -5.9999475,
-            "Z": 63.516415
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1000534,
-          "Position": {
-            "X": 134.47766,
-            "Y": -7,
-            "Z": -69.993164
-          },
-          "TerritoryId": 148,
+          "Position": [134.47766, -7, -69.993164],
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -114,21 +64,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
+          "Position": [209.55212, 0.9999819, 35.01941],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
           "NextQuestId": 76
         }
       ]

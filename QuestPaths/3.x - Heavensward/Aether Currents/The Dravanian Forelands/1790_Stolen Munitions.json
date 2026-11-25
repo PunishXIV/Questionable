@@ -1,43 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011929,
-          "Position": {
-            "X": 70.81714,
-            "Y": -49.2083,
-            "Z": -141.55798
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 67.682434,
-            "Y": -49.685223,
-            "Z": -148.21802
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 4001,
-          "Position": {
-            "X": 179.33923,
-            "Y": -108.80406,
-            "Z": 597.07007
-          },
-          "TerritoryId": 398,
+          "Position": [179.33923, -108.80406, 597.07007],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -53,25 +29,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 70.535545,
-            "Y": -49.45454,
-            "Z": -149.54617
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "$": "Loth ast Vath navmesh workaround"
-        },
-        {
           "DataId": 1011929,
-          "Position": {
-            "X": 70.81714,
-            "Y": -49.2083,
-            "Z": -141.55798
-          },
-          "TerritoryId": 398,
+          "Position": [70.81714, -49.2083, -141.55798],
           "InteractionType": "CompleteQuest"
         }
       ]

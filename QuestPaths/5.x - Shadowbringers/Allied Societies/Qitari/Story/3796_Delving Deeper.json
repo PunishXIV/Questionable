@@ -1,60 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032735,
-          "Position": {
-            "X": 803.7993,
-            "Y": -45.924515,
-            "Z": -217.94464
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032659,
-          "Position": {
-            "X": 802.79236,
-            "Y": -45.91779,
-            "Z": -218.58557
-          },
-          "TerritoryId": 817,
+          "Position": [802.79236, -45.91779, -218.58557],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1027716,
-          "Position": {
-            "X": 494.9873,
-            "Y": -6.555339,
-            "Z": -224.93329
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "Position": [494.9873, -6.555339, -224.93329],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -67,7 +46,6 @@
           ]
         },
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -81,28 +59,18 @@
         },
         {
           "DataId": 1032660,
-          "Position": {
-            "X": 804.4098,
-            "Y": -45.9255,
-            "Z": -216.41876
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [804.4098, -45.9255, -216.41876],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032659,
-          "Position": {
-            "X": 802.79236,
-            "Y": -45.91779,
-            "Z": -218.58557
-          },
-          "TerritoryId": 817,
+          "Position": [802.79236, -45.91779, -218.58557],
           "InteractionType": "CompleteQuest"
         }
       ]

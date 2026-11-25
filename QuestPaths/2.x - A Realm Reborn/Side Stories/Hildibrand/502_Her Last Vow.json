@@ -1,51 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "FalconTaterz",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011707,
-          "Position": {
-            "X": 42.893066,
-            "Y": 33.99998,
-            "Z": 29.343018
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true,
           "DataId": 1011714,
-          "Position": {
-            "X": -223.19379,
-            "Y": -3.7199955,
-            "Z": 52.32312
-          },
-          "TerritoryId": 141,
+          "Position": [-223.19379, -3.7199955, 52.32312],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2005188,
-          "Position": {
-            "X": -314.07648,
-            "Y": -1.083435,
-            "Z": 43.9917
-          },
-          "TerritoryId": 141,
+          "Position": [-314.07648, -1.083435, 43.9917],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_CHRHDB505_00502_SAYTODO_000_000"
@@ -55,54 +34,35 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": 159.84998,
-            "Y": 37.381317,
-            "Z": 174.60776
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
-        },
-        {
           "DataId": 1011722,
-          "Position": {
-            "X": 159.68555,
-            "Y": 37.432796,
-            "Z": 177.69128
-          },
-          "TerritoryId": 153,
+          "Position": [159.68555, 37.432796, 177.69128],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "TerritoryId": 153,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 85,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1011723,
-          "Position": {
-            "X": 141.06958,
-            "Y": 29.64365,
-            "Z": 173.72388
-          },
-          "TerritoryId": 153,
+          "Position": [141.06958, 29.64365, 173.72388],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2226
         }

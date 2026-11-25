@@ -1,11 +1,9 @@
 ﻿using System.Text.Json.Nodes;
 using Json.Schema;
-using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 namespace Questionable.Validation.Validators;
 
-// Registered as both JsonSchemaValidator (self) and IQuestValidator via a factory forward in QuestionablePlugin
-// so the same instance is used for both service registrations.
+// Also the IQuestValidator singleton through a factory forward in QuestionablePlugin.
 [RegisterSingleton]
 internal sealed class JsonSchemaValidator : IQuestValidator
 {
@@ -15,19 +13,19 @@ internal sealed class JsonSchemaValidator : IQuestValidator
     public JsonSchemaValidator()
     {
         SchemaRegistry.Global.Register(
-            new("https://qstxiv.github.io/schema/common-aethernetshard.json"),
+            new("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aethernetshard.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAethernetShardStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new("https://qstxiv.github.io/schema/common-aetheryte.json"),
+            new("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aetheryte.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAetheryteStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new("https://qstxiv.github.io/schema/common-classjob.json"),
+            new("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonClassJobStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new("https://qstxiv.github.io/schema/common-completionflags.json"),
+            new("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-completionflags.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonCompletionFlagsStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new("https://qstxiv.github.io/schema/common-vector3.json"),
+            new("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonVector3Stream).AsTask().Result);
     }
 

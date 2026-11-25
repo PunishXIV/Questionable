@@ -1,49 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1025721,
-          "Position": {
-            "X": -75.94415,
-            "Y": 11.800039,
-            "Z": -115.617676
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
-          "Position": {
-            "X": 560.478,
-            "Y": -19.505653,
-            "Z": 351.4072
-          },
-          "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "AetheryteShortcut": "Azim Steppe - Reunion"
-        },
-        {
           "DataId": 1025723,
-          "Position": {
-            "X": 538.1094,
-            "Y": -19.505646,
-            "Z": 324.39148
-          },
-          "TerritoryId": 622,
+          "Position": [538.1094, -19.505646, 324.39148],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -52,12 +21,7 @@
         },
         {
           "DataId": 1025725,
-          "Position": {
-            "X": 537.4075,
-            "Y": -19.2849,
-            "Z": 268.9402
-          },
-          "TerritoryId": 622,
+          "Position": [537.4075, -19.2849, 268.9402],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -66,12 +30,7 @@
         },
         {
           "DataId": 1025724,
-          "Position": {
-            "X": 579.1256,
-            "Y": -19.503584,
-            "Z": 280.32336
-          },
-          "TerritoryId": 622,
+          "Position": [579.1256, -19.503584, 280.32336],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -82,83 +41,58 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025726,
-          "Position": {
-            "X": 513.6339,
-            "Y": -19.687696,
-            "Z": 290.3943
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "Position": [513.6339, -19.687696, 290.3943],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 2009489,
-          "Position": {
-            "X": 315.08337,
-            "Y": -25.650513,
-            "Z": 571.9844
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true
+          "Position": [315.08337, -25.650513, 571.9844],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025727,
-          "Position": {
-            "X": -481.77313,
-            "Y": 71.73354,
-            "Z": -516.8689
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "Fly": true
+          "Position": [-481.77313, 71.73354, -516.8689],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 622,
       "Steps": [
         {
-          "TerritoryId": 622,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 474,
-            "Enabled": true,
-            "TestedAutoDutyVersion": "0.0.0.255",
-            "TestedBossModVersion": "0.4.6.1"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025727,
-          "Position": {
-            "X": -481.77313,
-            "Y": 71.73354,
-            "Z": -516.8689
-          },
-          "TerritoryId": 622,
+          "Position": [-481.77313, 71.73354, -516.8689],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_STMBDY991_01554_Q3_000_000",
@@ -171,23 +105,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1025721,
-          "Position": {
-            "X": -75.94415,
-            "Y": 11.800039,
-            "Z": -115.617676
-          },
-          "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

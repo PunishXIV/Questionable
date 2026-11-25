@@ -1,65 +1,30 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041100,
-          "Position": {
-            "X": -524.6205,
-            "Y": 160.22237,
-            "Z": -249.98859
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041916,
-          "Position": {
-            "X": -548.4856,
-            "Y": 146.01274,
-            "Z": -141.61902
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-548.4856, 146.01274, -141.61902],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1041832,
-          "Position": {
-            "X": -480.70496,
-            "Y": 141.28363,
-            "Z": -110.49066
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-480.70496, 141.28363, -110.49066],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041100,
-          "Position": {
-            "X": -524.6205,
-            "Y": 160.22237,
-            "Z": -249.98859
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

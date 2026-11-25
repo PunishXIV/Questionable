@@ -1,96 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "DataId": 2011341,
-          "Position": {
-            "X": 14.1741,
-            "Y": -19,
-            "Z": -45.6443
-          },
-          "StopDistance": 2,
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Firmament] The Mendicant's Court","[Firmament] The Mattock"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1035583,
-          "Position": {
-            "X": -31.937195,
-            "Y": -8.500006,
-            "Z": -94.56018
-          },
-          "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Firmament] The Mattock","[Firmament] Western Risensong Quarter"]
+          "Position": [-31.937195, -8.500006, -94.56018],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1035584,
-          "Position": {
-            "X": -66.867,
-            "Y": 10,
-            "Z": -165.176
-          },
-          "StopDistance": 2,
-          "TerritoryId": 886,
+          "Position": [-66.867, 10, -165.176],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1035585,
-          "Position": {
-            "X": 6.6986694,
-            "Y": 1.5968697E-06,
-            "Z": -141.43585
-          },
-          "TerritoryId": 886,
+          "Position": [6.6986694, 1.5968697E-06, -141.43585],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1035583,
-          "Position": {
-            "X": -31.926,
-            "Y": -8.5,
-            "Z": -94.533
-          },
-          "StopDistance": 2,
-          "TerritoryId": 886,
+          "Position": [-31.926, -8.5, -94.533],
           "InteractionType": "CompleteQuest"
         }
       ]

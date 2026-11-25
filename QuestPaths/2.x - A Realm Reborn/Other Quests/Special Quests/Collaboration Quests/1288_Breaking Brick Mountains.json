@@ -1,43 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "Iskierka", "Date": "2026-06-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005532,
-          "Position": {
-            "X": 47.3898,
-            "Y": 4.1,
-            "Z": -148.441
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1005533,
-          "Position": {
-            "X": -146.106,
-            "Y": 14.005,
-            "Z": 56.1548
-          },
-          "TerritoryId": 130,
+          "Position": [-146.106, 14.005, 56.1548],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESDXQ001_01288_CHOICE1Q1_100_015",
@@ -50,57 +27,36 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -159.34824,
-            "Y": -30.519045,
-            "Z": 97.82834
-          },
-          "TerritoryId": 141,
+          "Position": [-159.34824, -30.519045, 97.82834],
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "KillEnemyDataIds": [2309, 2310, 2311],
-          "Fly": true,
-          "Land": true
+          "KillEnemyDataIds": [2309, 2310, 2311]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -159.34824,
-            "Y": -30.519045,
-            "Z": 97.82834
-          },
-          "TerritoryId": 141,
+          "Position": [-159.34824, -30.519045, 97.82834],
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
-          "KillEnemyDataIds": [2309, 2310, 2311],
-          "Fly": true,
-          "Land": true
+          "KillEnemyDataIds": [2309, 2310, 2311]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1005533,
-          "Position": {
-            "X": -146.106,
-            "Y": 14.005,
-            "Z": 56.1548
-          },
-          "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "Position": [-146.106, 14.005, 56.1548],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

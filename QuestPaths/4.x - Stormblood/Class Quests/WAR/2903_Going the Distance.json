@@ -1,133 +1,80 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023885,
-          "Position": {
-            "X": 217.30359,
-            "Y": 7.999984,
-            "Z": 686.427
-          },
-          "StopDistance": 5,
-          "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1019355,
-          "Position": {
-            "X": 556.8779,
-            "Y": -19.505642,
-            "Z": 397.14648
-          },
-          "TerritoryId": 622,
+          "Position": [556.8779, -19.505642, 397.14648],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1019347,
-          "Position": {
-            "X": 575.2803,
-            "Y": -19.505632,
-            "Z": 343.74
-          },
-          "TerritoryId": 622,
+          "Position": [575.2803, -19.505632, 343.74],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1019354,
-          "Position": {
-            "X": 573.6323,
-            "Y": -19.505655,
-            "Z": 311.6654
-          },
-          "TerritoryId": 622,
+          "Position": [573.6323, -19.505655, 311.6654],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
-          "Position": {
-            "X": -186.52919,
-            "Y": 2.935472,
-            "Z": 369.28806
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 622,
+          "Position": [-186.52919, 2.935472, 369.28806],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             6641
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1022832,
-          "Position": {
-            "X": -183.76447,
-            "Y": 2.8128173,
-            "Z": 370.3822
-          },
-          "StopDistance": 5,
-          "TerritoryId": 622,
+          "Position": [-183.76447, 2.8128173, 370.3822],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1022834,
-          "Position": {
-            "X": -339.25385,
-            "Y": 21.774029,
-            "Z": 268.6045
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-339.25385, 21.774029, 268.6045],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1022836,
-          "Position": {
-            "X": 525.10876,
-            "Y": -19.50681,
-            "Z": 403.3722
-          },
-          "TerritoryId": 622,
+          "Position": [525.10876, -19.50681, 403.3722],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

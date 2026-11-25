@@ -1,54 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031174,
-          "Position": {
-            "X": 519.24915,
-            "Y": 357.35886,
-            "Z": -272.90765
-          },
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1027516,
-          "Position": {
-            "X": -266.0716,
-            "Y": 21.746891,
-            "Z": 376.7909
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Wright"
+          "Position": [-266.0716, 21.746891, 376.7909],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031174,
-          "Position": {
-            "X": 519.24915,
-            "Y": 357.35886,
-            "Z": -272.90765
-          },
-          "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

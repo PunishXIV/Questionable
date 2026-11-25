@@ -1,300 +1,99 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Enums;
+﻿using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.SubKinds;
-using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin.Ipc.Exceptions;
-using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
-using Questionable.Controller.Steps.Movement;
-using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
-using Questionable.Model.Questing;
 namespace Questionable.Controller;
 
-// TODO: refactor — heavy nesting (33 lines indented ≥6 levels, max indent 8 levels).
 [RegisterSingleton]
 internal sealed class MovementController
 (
-    NavmeshIpc navmeshIpc,
+    MappingTheRealmIpc mappingTheRealm,
     IClientState clientState,
     GameFunctions gameFunctions,
     ChatFunctions chatFunctions,
-    ICondition condition,
-    MovementOverrideController movementOverrideController,
     IObjectTable objectTable,
-    AetheryteData aetheryteData,
-    ICommandManager commandManager,
-    IChatGui chatGui,
     IFramework framework,
-    Lazy<QuestController> questController,
+    Lazy<OperationCoordinator> externalOperations,
     ILogger<MovementController> logger) : IDisposable
 {
-    public const float DefaultVerticalInteractionDistance = 1.95f;
+    public const float DefaultVerticalDistance = 1.95f;
 
-    private CancellationTokenSource? _cancellationTokenSource;
-    private Task<List<Vector3>>? _pathfindTask;
-    public ICommandManager CommandManager { get; } = commandManager;
+    private Task? _route;
 
-    public bool IsNavmeshReady
-    {
-        get
-        {
-            try
-            {
-                return navmeshIpc.IsReady();
-            }
-            catch (IpcNotReadyError)
-            {
-                return false;
-            }
-        }
-    }
-
-    public bool IsPathRunning
-    {
-        get
-        {
-            try
-            {
-                return navmeshIpc.IsPathRunning;
-            }
-            catch (IpcNotReadyError)
-            {
-                return false;
-            }
-        }
-    }
-
-    public bool IsPathfinding => _pathfindTask is { IsCompleted: false };
-    public DestinationData? Destination { get; set; }
-    public DateTime MovementStartedAt { get; private set; } = DateTime.Now;
-    public int BuiltNavmeshPercent => navmeshIpc.GetBuildProgress();
-    private DateTime? _landAndRetryTimeout;
-    private DestinationData? _previousDestinationData;
+    // Stays true until Update has seen how the route ended, so a failed route can't pass as arrival.
+    public bool IsPathRunning => _route != null;
+    public DestinationData? Destination { get; private set; }
+    public NavigationFailureSnapshot? LastFailure { get; private set; }
+    public DateTime StartedAt { get; private set; } = DateTime.Now;
 
     public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, Stop, logger);
 
     public void Update()
     {
-        if (_landAndRetryTimeout != null && _previousDestinationData != null)
-        {
-            if (condition[ConditionFlag.InFlight])
-            {
-                if (DateTime.Now > _landAndRetryTimeout)
-                {
-                    Stop();
-                    throw new PathfindingFailedException("Land-and-retry timed out, still InFlight");
-                }
-                return;
-            }
-
-            var retry = _previousDestinationData;
-            _previousDestinationData = null;
-            _landAndRetryTimeout = null;
-            NavigateTo(retry);
+        if (Destination == null || _route == null)
             return;
-        }
-        if (_pathfindTask != null && Destination != null)
+
+        if (externalOperations.Value.HasMovingOperation)
         {
-            if (_pathfindTask.IsCompletedSuccessfully)
-            {
-                List<Vector3> pathfindResult = _pathfindTask.Result;
-                logger.LogInformation("Pathfinding complete, got {Count} points", pathfindResult.Count);
-                if (pathfindResult.Count == 0)
-                {
-                    if (!Destination.IsFlying && condition[ConditionFlag.InFlight])
-                    {
-                        chatGui.Print(_L("vnavmesh was not able to find a path. Attempting to land, then trying again."),
-                            CommandHandler.MessageTag, CommandHandler.TagColor);
-                        _previousDestinationData = Destination;
-                        _landAndRetryTimeout = DateTime.Now.AddSeconds(10);
-                        ResetPathfinding();
-                        LandExecutor.TryLanding();
-                        return;
-                    }
-                    Stop();
-                    throw new PathfindingFailedException("Pathfinding complete, got 0 points");
-                }
-
-                List<Vector3> navPoints = pathfindResult.Skip(1).ToList();
-                Vector3 start = objectTable[0]?.Position ?? navPoints[0];
-                if (Destination.IsFlying && !condition[ConditionFlag.InFlight] && condition[ConditionFlag.Mounted])
-                {
-                    if (IsOnFlightPath(start) || navPoints.Any(IsOnFlightPath))
-                    {
-                        unsafe
-                        {
-                            ActionManager.Instance()->UseAction(ActionType.GeneralAction, 2);
-                        }
-                    }
-                }
-                //if (Destination.IsFlying && navPoints.Count > 0 && navmeshIpc.GetPointOnFloor(navPoints[^1], unlandable: false) == null)
-                //{
-                //    var floorPoint = navmeshIpc.GetPointOnFloor(navPoints[^1], unlandable: false, range: 3f);
-                //    if (floorPoint != null)
-                //    {
-                //        navPoints[^1] = floorPoint.Value;
-                //        Destination = Destination with { Position = floorPoint.Value, StopDistance = 0.25f };
-                //    }
-                //    else
-                //        logger.LogDebug("Could not find floorPoint");
-                //}
-
-                if (!Destination.IsFlying)
-                {
-                    (navPoints, bool recalculateNavmesh) = movementOverrideController.AdjustPath(navPoints);
-                    if (recalculateNavmesh && Destination.ShouldRecalculateNavmesh())
-                    {
-                        Destination.NavmeshCalculations++;
-                        Destination.PartialRoute.AddRange(navPoints);
-                        logger.LogInformation("Running navmesh recalculation with fudged point ({From} to {To})",
-                            navPoints[^1], Destination.Position);
-
-                        _cancellationTokenSource = new();
-                        _cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(30));
-                        _pathfindTask =
-                            navmeshIpc.Pathfind(navPoints[^1], Destination.Position, Destination.IsFlying,
-                                _cancellationTokenSource.Token);
-                        return;
-                    }
-                }
-
-                navPoints = Destination.PartialRoute.Concat(navPoints).ToList();
-                logger.LogInformation("Navigating via route (XZ:{Distance}) [{Route}]",
-                    navPoints[0].DistanceTo_XZ(navPoints[^1]),
-                    string.Join(" → ", pathfindResult.Select(x => x.ToString("G5", CultureInfo.InvariantCulture))));
-
-                navmeshIpc.MoveTo(navPoints, Destination.IsFlying);
-                MovementStartedAt = DateTime.Now;
-
-                ResetPathfinding();
-            }
-            else if (_pathfindTask.IsCompleted)
-            {
-                string error = "Unable to complete pathfinding task";
-                logger.LogWarning(error);
-                //_commandManager.ProcessCommand("/vnav rebuild");
-                ResetPathfinding();
-                throw new PathfindingFailedException(error);
-            }
-        }
-
-        if (questController.Value.IsQuestingStopped)
-        {
-            // if (EzThrottler.Throttle("qstwouldhavejumpedin", 5000))
-            //     logger.LogDebug("Questionable would have jumped in here to do something, but decided against it.");
+            ClearLocalState();
             return;
         }
 
-        if (IsPathRunning && Destination != null)
+        if (_route.IsFaulted || _route.IsCanceled)
         {
-            if (gameFunctions.IsLoadingScreenVisible())
-            {
-                logger.LogInformation("Stopping movement, loading screen visible");
-                Stop();
-                return;
-            }
-
-            if (Destination is { IsFlying: true } && condition[ConditionFlag.Swimming])
-            {
-                logger.LogInformation("Flying but swimming, restarting as non-flying path...");
-                Restart(Destination);
-                return;
-            }
-
-            if (Destination is { IsFlying: true } && !condition[ConditionFlag.Mounted])
-            {
-                logger.LogInformation("Flying but not mounted, restarting as non-flying path...");
-                Restart(Destination);
-                return;
-            }
-
-            Vector3 localPlayerPosition = objectTable[0]?.Position ?? Vector3.Zero;
-            if (Destination.MovementType == EMovementType.Landing)
-            {
-                if (!condition[ConditionFlag.InFlight])
-                    Stop();
-            }
-            else if ((localPlayerPosition - Destination.Position).Length() < Destination.StopDistance)
-            {
-                if (localPlayerPosition.Y - Destination.Position.Y <= Destination.VerticalStopDistance)
-                    Stop();
-                else if (Destination.DataId != null)
-                {
-                    IGameObject? gameObject = gameFunctions.FindObjectByDataId(Destination.DataId.Value);
-                    if (gameObject is ICharacter or IEventObj)
-                    {
-                        if (Math.Abs(localPlayerPosition.Y - gameObject.Position.Y) <
-                            DefaultVerticalInteractionDistance)
-                        {
-                            Stop();
-                        }
-                    }
-                    else if (gameObject is { ObjectKind: ObjectKind.Aetheryte })
-                    {
-                        if (AetheryteConverter.IsLargeAetheryte((EAetheryteLocation)Destination.DataId))
-                        {
-                            Stop();
-                        }
-                        else
-                        {
-                            // aethernet shard
-                            if (Math.Abs(localPlayerPosition.Y - gameObject.Position.Y) <
-                                DefaultVerticalInteractionDistance)
-                            {
-                                Stop();
-                            }
-                        }
-                    }
-                    else
-                        Stop();
-                }
-                else
-                    Stop();
-            }
-            else
-            {
-                List<Vector3> navPoints = navmeshIpc.GetWaypoints();
-                Vector3? start = objectTable[0]?.Position;
-                if (start != null)
-                {
-                    if (Destination.ShouldRecalculateNavmesh() && RecalculateNavmesh(navPoints, start.Value))
-                        return;
-
-                    if (!Destination.IsFlying && !condition[ConditionFlag.Mounted] &&
-                        !gameFunctions.HasStatusPreventingSprint() && Destination.CanSprint)
-                        TriggerSprintIfNeeded(navPoints, start.Value);
-                }
-            }
+            var failure = CreateFailure(_route.IsCanceled ? PathfindingFailureReason.Cancelled : PathfindingFailureReason.ProviderFault,
+                "MappingTheRealm could not finish the route", _route.Exception?.GetBaseException());
+            ClearLocalState();
+            throw failure;
         }
+
+        if (_route.IsCompleted && mappingTheRealm.GetPathing() != true)
+            ClearLocalState();
+        else if (HasArrived(Destination))
+            Stop();
     }
 
-    private void Restart(DestinationData destination)
+    // MappingTheRealm goes to the exact point; a step's stop distance ends the route early.
+    private bool HasArrived(DestinationData destination)
     {
-        Stop();
+        if (clientState.TerritoryType != destination.TerritoryId || objectTable[0]?.Position is not { } position ||
+            (position - destination.Position).Length() >= destination.StopDistance)
+            return false;
 
-        NavigationOptions options = new()
+        if (position.Y - destination.Position.Y <= destination.VerticalStopDistance || destination.DataId == null)
+            return true;
+
+        IGameObject? gameObject = gameFunctions.FindObjectByDataId(destination.DataId.Value);
+        if (gameObject is ICharacter or IEventObj)
+            return Math.Abs(position.Y - gameObject.Position.Y) < DefaultVerticalDistance;
+        if (gameObject is { ObjectKind: ObjectKind.Aetheryte })
+            return AetheryteConverter.IsLargeAetheryte((EAetheryteLocation)destination.DataId) ||
+                   Math.Abs(position.Y - gameObject.Position.Y) < DefaultVerticalDistance;
+        return true;
+    }
+
+    public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, NavigationOptions options) =>
+        NavigateTo(type, dataId, to[^1], options);
+
+    public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options, uint? territoryId = null)
+    {
+        if (!CanNavigate())
+            return;
+
+        if (_route != null)
+            mappingTheRealm.Stop();
+
+        uint territory = territoryId ?? clientState.TerritoryType;
+        Destination = new(type, dataId, territory, to,
+            options.StopDistance ?? (QuestStep.DefaultStopDistance - 0.2f),
+            options.VerticalStopDistance ?? DefaultVerticalDistance);
+
+        if (!mappingTheRealm.IsReady())
         {
-            StopDistance = destination.StopDistance,
-            VerticalStopDistance = destination.VerticalStopDistance,
-        };
-        if (destination.UseNavmesh)
-            NavigateTo(EMovementType.None, destination.DataId, destination.Position, options);
-        else
-            NavigateTo(EMovementType.None, destination.DataId, [destination.Position], options);
-    }
-
-    private bool IsOnFlightPath(Vector3 p)
-    {
-        Vector3? pointOnFloor = navmeshIpc.GetPointOnFloor(p, unlandable: true);
-        return pointOnFloor != null && Math.Abs(pointOnFloor.Value.Y - p.Y) > 0.5f;
-    }
-
-    [MemberNotNull(nameof(Destination))]
-    private void PrepareNavigation(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options, bool useNavmesh)
-    {
-        ResetPathfinding();
+            var failure = CreateFailure(PathfindingFailureReason.Unavailable, "MappingTheRealm is not available");
+            ClearLocalState();
+            throw failure;
+        }
 
         if (InputManager.IsAutoRunning())
         {
@@ -302,193 +101,82 @@ internal sealed class MovementController
             chatFunctions.ExecuteCommand("/automove off");
         }
 
-        Destination = new(type, dataId, to,
-            options.StopDistance ?? (QuestStep.DefaultStopDistance - 0.2f),
-            options.Fly, options.Sprint,
-            options.VerticalStopDistance ?? DefaultVerticalInteractionDistance,
-            options.Land, useNavmesh);
-        MovementStartedAt = DateTime.MaxValue;
-    }
-
-    /// <summary>
-    /// Unpacks DestinationData params to simplify building new nav options
-    /// </summary>
-    /// <param name="destination">a previous DestinationData instance</param>
-    public void NavigateTo(DestinationData destination) =>
-        NavigateTo(destination.MovementType, destination.DataId, destination.Position, NavigationOptions.FromDestinationData(destination));
-
-    public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options)
-    {
-        bool fly = options.Fly || condition[ConditionFlag.Diving];
-        if (fly && options.Land)
-            to = to with { Y = to.Y + 2.6f };
-
-        NavigationOptions effective = options with { Fly = fly };
-        PrepareNavigation(type, dataId, to, effective, useNavmesh: true);
-        logger.LogInformation("Pathfinding to {Destination}", Destination);
-
-        Destination.NavmeshCalculations++;
-        _cancellationTokenSource = new();
-        _cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(30));
-
-        Vector3? playerPosition = objectTable[0]?.Position;
-        if (playerPosition == null)
-        {
-            logger.LogWarning("Cannot pathfind: local player object not available");
-            ResetPathfinding();
-            return;
-        }
-
-        Vector3 startPosition = playerPosition.Value;
-        if (fly && aetheryteData.CalculateDistance(startPosition, clientState.TerritoryType,
-            EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
-        {
-            startPosition = startPosition with { Y = startPosition.Y + 1f };
-            logger.LogInformation("Using modified start position for flying pathfinding: {StartPosition}",
-                startPosition.ToString("G5", CultureInfo.InvariantCulture));
-        }
-        else if (fly)
-            // other positions have a (lesser) chance of starting from underground too, in which case pathfinding takes
-            // >10 seconds and gets stuck trying to go through the ground.
-            // only for flying; as walking uses a different algorithm
-            startPosition = startPosition with { Y = startPosition.Y + 0.2f };
-
-        _pathfindTask =
-            navmeshIpc.Pathfind(startPosition, to, fly, _cancellationTokenSource.Token);
-    }
-
-    public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, NavigationOptions options)
-    {
-        bool fly = options.Fly || condition[ConditionFlag.Diving];
-        if (fly && options.Land && to.Count > 0)
-            to[^1] = to[^1] with { Y = to[^1].Y + 2.6f };
-
-        NavigationOptions effective = options with { Fly = fly };
-        PrepareNavigation(type, dataId, to[^1], effective, useNavmesh: false);
-
         logger.LogInformation("Moving to {Destination}", Destination);
-        navmeshIpc.MoveTo(to, fly);
-        MovementStartedAt = DateTime.Now;
+        _route = mappingTheRealm.Travel(territory, to, null);
+        StartedAt = DateTime.Now;
     }
 
-    public void ResetPathfinding()
+    private bool CanNavigate()
     {
-        if (_cancellationTokenSource != null)
+        if (externalOperations.Value.HasMovingOperation)
         {
-            try
-            {
-                _cancellationTokenSource.Cancel();
-            }
-            catch (ObjectDisposedException)
-            {
-            }
-
-            _cancellationTokenSource.Dispose();
+            ClearLocalState();
+            return false;
         }
 
-        _pathfindTask = null;
+        if (!externalOperations.Value.MayBeMovingCharacter())
+            return true;
+
+        var failure = CreateFailure(PathfindingFailureReason.MovementBlocked,
+            "Navigation blocked by an external movement provider");
+        ClearLocalState();
+        throw failure;
     }
 
-    private bool RecalculateNavmesh(List<Vector3> navPoints, Vector3 start)
+    public void RecordFailure(PathfindingException exception, string? quest = null, string? task = null)
     {
-        if (Destination == null)
-            throw new InvalidOperationException("Destination is null");
-
-        if (DateTime.Now - MovementStartedAt <= TimeSpan.FromSeconds(5))
-            return false;
-
-        Vector3 nextWaypoint = navPoints.FirstOrDefault();
-        if (nextWaypoint == default)
-            return false;
-
-        float distance = Vector2.Distance(new(start.X, start.Z),
-            new(nextWaypoint.X, nextWaypoint.Z));
-        if (Destination.LastWaypoint == null ||
-            (Destination.LastWaypoint.Position - nextWaypoint).Length() > 0.1f ||
-            gameFunctions.IsOccupied())
-        {
-            Destination.LastWaypoint = new(nextWaypoint)
-            {
-                Distance2DAtLastUpdate = distance,
-                UpdatedAt = Environment.TickCount64
-            };
-            return false;
-        }
-
-        if (Environment.TickCount64 - Destination.LastWaypoint.UpdatedAt > 500)
-        {
-            // check whether we've made any progress of any kind
-            if (Math.Abs(distance - Destination.LastWaypoint.Distance2DAtLastUpdate) < 0.5f && !condition[ConditionFlag.WatchingCutscene])
-            {
-                int calculations = Destination.NavmeshCalculations;
-                if (calculations % 6 == 1)
-                {
-                    logger.LogWarning("Jumping to try and resolve navmesh problem (n = {Calculations})",
-                        calculations);
-                    unsafe
-                    {
-                        ActionManager.Instance()->UseAction(ActionType.GeneralAction, 2);
-                        Destination.NavmeshCalculations++;
-                        Destination.LastWaypoint.UpdatedAt = Environment.TickCount64;
-                    }
-                }
-                else
-                {
-                    logger.LogWarning("Recalculating navmesh (n = {Calculations})", calculations);
-                    Restart(Destination);
-                }
-
-                Destination.NavmeshCalculations = calculations + 1;
-                return true;
-            }
-
-            Destination.LastWaypoint.Distance2DAtLastUpdate = distance;
-            Destination.LastWaypoint.UpdatedAt = Environment.TickCount64;
-            return false;
-        }
-
-        return false;
+        NavigationFailureSnapshot snapshot = exception.Snapshot ?? CaptureFailure(exception, Destination);
+        snapshot = snapshot with { Quest = quest ?? snapshot.Quest, Task = task ?? snapshot.Task };
+        exception.Snapshot = snapshot;
+        LastFailure = snapshot;
     }
 
-    private void TriggerSprintIfNeeded(IEnumerable<Vector3> navPoints, Vector3 start)
+    private PathfindingException CreateFailure(PathfindingFailureReason reason, string message,
+        Exception? innerException = null)
     {
-        float actualDistance = 0;
-        foreach (Vector3 end in navPoints)
+        var exception = new PathfindingException(reason, message, innerException);
+        exception.Snapshot = CaptureFailure(exception, Destination);
+        RecordFailure(exception);
+        return exception;
+    }
+
+    private NavigationFailureSnapshot CaptureFailure(PathfindingException exception, DestinationData? destination) => new()
+    {
+        TimestampUtc = DateTimeOffset.UtcNow,
+        Reason = exception.Reason.ToString(),
+        Message = exception.Message,
+        ExceptionType = exception.GetType().FullName,
+        InnerExceptionType = exception.InnerException?.GetType().FullName,
+        InnerExceptionMessage = ReadFailureContext(() => exception.InnerException?.Message, null),
+        TerritoryId = ReadFailureContext(() => (uint)clientState.TerritoryType, 0u),
+        PlayerPosition = ReadFailureContext(() => objectTable[0]?.Position.ToString("G9", CultureInfo.InvariantCulture), null),
+        Destination = destination?.Position.ToString("G9", CultureInfo.InvariantCulture),
+        DataId = destination?.DataId,
+        StopDistance = destination is { StopDistance: var distance } && float.IsFinite(distance) ? distance : null,
+        ElapsedMilliseconds = destination == null ? null : (DateTime.Now - StartedAt).TotalMilliseconds,
+    };
+
+    private static T ReadFailureContext<T>(Func<T> read, T unknown)
+    {
+        try
         {
-            actualDistance += (start - end).Length();
-            start = end;
+            return read();
         }
-
-        unsafe
+        catch (Exception)
         {
-            // 70 is ~10 seconds of sprint
-            float sprintDistance = 100f;
-
-            // if we're in towns/event areas, jog is a neat fallback (if we're not already jogging,
-            // if we're too close then sprinting will barely benefit us)
-            if (!gameFunctions.HasStatus(EStatus.Jog) &&
-                ((int)GameMain.Instance()->CurrentTerritoryIntendedUseId) is 0 or 7 or 13 or 14 or 15 or 19 or 23 or 29)
-            {
-                sprintDistance = 30f;
-            }
-
-            if (actualDistance > sprintDistance &&
-                ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 4) == 0)
-            {
-                logger.LogInformation("Triggering Sprint");
-                ActionManager.Instance()->UseAction(ActionType.GeneralAction, 4);
-            }
+            return unknown;
         }
     }
 
+    // MappingTheRealm only cancels a route Questionable started, so other plugins' travel is never cut.
     public void Stop()
     {
-        navmeshIpc.Stop();
-        ResetPathfinding();
-        Destination = null;
-        _previousDestinationData = null;
-        _landAndRetryTimeout = null;
+        bool ours = _route != null;
+        ClearLocalState();
+        if (!ours)
+            return;
 
+        mappingTheRealm.Stop();
         if (InputManager.IsAutoRunning())
         {
             logger.LogInformation("Turning off auto-move [stop]");
@@ -496,65 +184,56 @@ internal sealed class MovementController
         }
     }
 
-    public sealed record DestinationData
-    (
+    private void ClearLocalState()
+    {
+        Destination = null;
+        _route = null;
+    }
+
+    public sealed record DestinationData(
         EMovementType MovementType,
         uint? DataId,
+        uint TerritoryId,
         Vector3 Position,
         float StopDistance,
-        bool IsFlying,
-        bool CanSprint,
-        float VerticalStopDistance,
-        bool Land,
-        bool UseNavmesh)
-    {
-        public int NavmeshCalculations { get; set; }
-        public List<Vector3> PartialRoute { get; } = [];
-        public LastWaypointData? LastWaypoint { get; set; }
+        float VerticalStopDistance);
 
-        public bool ShouldRecalculateNavmesh() => NavmeshCalculations < 10;
-    }
-
-    public sealed record LastWaypointData(Vector3 Position)
-    {
-        public long UpdatedAt { get; set; }
-        public double Distance2DAtLastUpdate { get; set; }
-    }
-
-    /// <summary>
-    ///     Bundles the optional knobs to <see cref="NavigateTo(EMovementType, uint?, Vector3, NavigationOptions)"/>
-    ///     and its list-overload, replacing what used to be five trailing positional booleans/floats.
-    /// </summary>
     public sealed record NavigationOptions
     {
-        public bool Fly { get; init; }
-        public bool Sprint { get; init; }
         public float? StopDistance { get; init; }
         public float? VerticalStopDistance { get; init; }
-        public bool Land { get; init; }
-        public static NavigationOptions FromDestinationData(DestinationData destData) =>
-            new()
-            {
-                Fly = destData.IsFlying,
-                Sprint = destData.CanSprint,
-                StopDistance = destData.StopDistance,
-                VerticalStopDistance = destData.VerticalStopDistance,
-                Land = destData.Land
-            };
     }
 
-    public sealed class PathfindingFailedException : Exception
+    public enum PathfindingFailureReason
     {
-        public PathfindingFailedException()
+        Unknown,
+        Unavailable,
+        Cancelled,
+        ProviderFault,
+        MovementBlocked,
+    }
+
+    public sealed class PathfindingException : Exception
+    {
+        public PathfindingFailureReason Reason { get; }
+        internal NavigationFailureSnapshot? Snapshot { get; set; }
+
+        public PathfindingException(PathfindingFailureReason reason, string message, Exception? innerException = null)
+            : base(message, innerException)
+        {
+            Reason = reason;
+        }
+
+        public PathfindingException()
         {
         }
 
-        public PathfindingFailedException(string message)
+        public PathfindingException(string message)
             : base(message)
         {
         }
 
-        public PathfindingFailedException(string message, Exception innerException)
+        public PathfindingException(string message, Exception innerException)
             : base(message, innerException)
         {
         }

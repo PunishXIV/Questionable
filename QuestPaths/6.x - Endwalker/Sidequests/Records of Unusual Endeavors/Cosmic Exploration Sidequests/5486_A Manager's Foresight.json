@@ -1,39 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1319,
-          "Fly": true,
-          "Comment": "Select the destination Auxesia (#4)",
-          "DialogueChoices": [
-            {
-              "Prompt": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_000",
-              "Answer": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_005",
-              "Type": "List",
-              "ExcelSheet": "custom/009/CtsWksEntrance_00921"
-            }
-          ]
-        },
-        {
           "DataId": 1056851,
-          "Position": {
-            "X": 282.918,
-            "Y": 205.642,
-            "Z": 353.536
-          },
+          "Position": [282.918, 205.642, 353.536],
           "TerritoryId": 1319,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -49,15 +25,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056852,
-          "Position": {
-            "X": 286.183,
-            "Y": 204.139,
-            "Z": 272.755
-          },
-          "TerritoryId": 1319,
+          "Position": [286.183, 204.139, 272.755],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1056852 (earnest exozoologist)"
         }
@@ -65,37 +37,23 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1057657,
-          "Position": {
-            "X": -105.882,
-            "Y": 163.985,
-            "Z": 14.6036
-          },
-          "TerritoryId": 1319,
+          "Position": [-105.882, 163.985, 14.6036],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1057657 (docile dhalmel)"
         },
         {
           "DataId": 1057658,
-          "Position": {
-            "X": -101.061,
-            "Y": 163.985,
-            "Z": 28.5801
-          },
-          "TerritoryId": 1319,
+          "Position": [-101.061, 163.985, 28.5801],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1057658 (fidgety dhalmel)"
         },
         {
           "DataId": 1057659,
-          "Position": {
-            "X": -90.7759,
-            "Y": 163.985,
-            "Z": 22.1416
-          },
-          "TerritoryId": 1319,
+          "Position": [-90.7759, 163.985, 22.1416],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1057659 (listless dhalmel)"
         }
@@ -103,15 +61,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056852,
-          "Position": {
-            "X": 286.183,
-            "Y": 204.139,
-            "Z": 272.755
-          },
-          "TerritoryId": 1319,
+          "Position": [286.183, 204.139, 272.755],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1056852 (earnest exozoologist)"
         }
@@ -119,15 +73,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056851,
-          "Position": {
-            "X": 282.918,
-            "Y": 205.642,
-            "Z": 353.536
-          },
-          "TerritoryId": 1319,
+          "Position": [282.918, 205.642, 353.536],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5487,
           "$": "auto: todo turn-in -> 1056851 (Mumukko)"

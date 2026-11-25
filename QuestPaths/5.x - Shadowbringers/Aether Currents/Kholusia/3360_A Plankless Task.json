@@ -1,77 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027452,
-          "Position": {
-            "X": -310.62793,
-            "Y": 19.405178,
-            "Z": 405.2948
-          },
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": -451.1456,
-            "Y": 8.987026,
-            "Z": 532.7527
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1030741,
-          "Position": {
-            "X": -446.28064,
-            "Y": 7.6579986,
-            "Z": 536.15625
-          },
-          "StopDistance": 7,
-          "TerritoryId": 814,
+          "Position": [-446.28064, 7.6579986, 536.15625],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": -447.98965,
-            "Y": 7.657998,
-            "Z": 532.0151
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 814,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": -443.48367,
-              "Y": 8.676657,
-              "Z": 532.7491
-            },
-            "DelaySeconds": 0.25
-          }
-        },
-        {
           "DataId": 2010260,
-          "Position": {
-            "X": -444.38855,
-            "Y": 8.987488,
-            "Z": 532.6771
-          },
-          "TerritoryId": 814,
+          "Position": [-444.38855, 8.987488, 532.6771],
           "InteractionType": "UseItem",
           "ItemId": 2002688,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
@@ -79,12 +32,7 @@
         },
         {
           "DataId": 2010286,
-          "Position": {
-            "X": -443.0152,
-            "Y": 8.773865,
-            "Z": 535.97314
-          },
-          "TerritoryId": 814,
+          "Position": [-443.0152, 8.773865, 535.97314],
           "InteractionType": "UseItem",
           "ItemId": 2002688,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
@@ -92,12 +40,7 @@
         },
         {
           "DataId": 2010287,
-          "Position": {
-            "X": -442.92365,
-            "Y": 8.895996,
-            "Z": 538.6892
-          },
-          "TerritoryId": 814,
+          "Position": [-442.92365, 8.895996, 538.6892],
           "InteractionType": "UseItem",
           "ItemId": 2002688,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16],
@@ -105,12 +48,7 @@
         },
         {
           "DataId": 2010288,
-          "Position": {
-            "X": -441.88605,
-            "Y": 8.590759,
-            "Z": 542.3513
-          },
-          "TerritoryId": 814,
+          "Position": [-441.88605, 8.590759, 542.3513],
           "InteractionType": "UseItem",
           "ItemId": 2002688,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8],
@@ -118,12 +56,7 @@
         },
         {
           "DataId": 2010261,
-          "Position": {
-            "X": -444.6327,
-            "Y": 8.804443,
-            "Z": 544.51807
-          },
-          "TerritoryId": 814,
+          "Position": [-444.6327, 8.804443, 544.51807],
           "InteractionType": "UseItem",
           "ItemId": 2002688,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
@@ -131,12 +64,7 @@
         },
         {
           "DataId": 2010289,
-          "Position": {
-            "X": -443.47296,
-            "Y": 8.499207,
-            "Z": 548.30237
-          },
-          "TerritoryId": 814,
+          "Position": [-443.47296, 8.499207, 548.30237],
           "InteractionType": "UseItem",
           "ItemId": 2002688,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4],
@@ -146,34 +74,18 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030741,
-          "Position": {
-            "X": -446.28064,
-            "Y": 7.6579986,
-            "Z": 536.15625
-          },
-          "TerritoryId": 814,
+          "Position": [-446.28064, 7.6579986, 536.15625],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027452,
-          "Position": {
-            "X": -310.62793,
-            "Y": 19.405178,
-            "Z": 405.2948
-          },
-          "TerritoryId": 814,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kholusia - Wright"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

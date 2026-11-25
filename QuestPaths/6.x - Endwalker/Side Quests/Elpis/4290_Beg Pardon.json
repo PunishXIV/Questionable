@@ -1,115 +1,69 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037972,
-          "Position": {
-            "X": -649.19507,
-            "Y": -22.394823,
-            "Z": 494.59058
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041541,
-          "Position": {
-            "X": -707.11835,
-            "Y": -22.455416,
-            "Z": 550.9879
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-707.11835, -22.455416, 550.9879],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041542,
-          "Position": {
-            "X": -707.7898,
-            "Y": -22.533516,
-            "Z": 553.27686
-          },
-          "TerritoryId": 961,
+          "Position": [-707.7898, -22.533516, 553.27686],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041541,
-          "Position": {
-            "X": -707.11835,
-            "Y": -22.455416,
-            "Z": 550.9879
-          },
-          "TerritoryId": 961,
+          "Position": [-707.11835, -22.455416, 550.9879],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041542,
-          "Position": {
-            "X": -707.7898,
-            "Y": -22.533516,
-            "Z": 553.27686
-          },
-          "TerritoryId": 961,
+          "Position": [-707.7898, -22.533516, 553.27686],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041541,
-          "Position": {
-            "X": -707.11835,
-            "Y": -22.455416,
-            "Z": 550.9879
-          },
-          "TerritoryId": 961,
+          "Position": [-707.11835, -22.455416, 550.9879],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037972,
-          "Position": {
-            "X": -649.19507,
-            "Y": -22.394823,
-            "Z": 494.59058
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

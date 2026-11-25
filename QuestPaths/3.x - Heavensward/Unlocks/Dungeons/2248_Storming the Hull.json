@@ -1,99 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009231,
-          "Position": {
-            "X": -9.140198,
-            "Y": 31.999979,
-            "Z": -40.08551
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 274.4692,
-            "Y": 4.372302,
-            "Z": 727.8615
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
-        },
-        {
           "DataId": 1009382,
-          "Position": {
-            "X": 275.1659,
-            "Y": 4.3723025,
-            "Z": 729.15234
-          },
-          "TerritoryId": 135,
+          "Position": [275.1659, 4.3723025, 729.15234],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "TerritoryId": 135,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 172,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1009231,
-          "Position": {
-            "X": -9.140198,
-            "Y": 31.999979,
-            "Z": -40.08551
-          },
-          "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

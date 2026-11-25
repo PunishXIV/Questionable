@@ -1,149 +1,88 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1017171,
-          "Position": {
-            "X": -335.56116,
-            "Y": 59.003433,
-            "Z": 313.98486
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017351,
-          "Position": {
-            "X": -74.87604,
-            "Y": -8.172172,
-            "Z": 158.70898
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "Position": [-74.87604, -8.172172, 158.70898],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017467,
-          "Position": {
-            "X": -40.20758,
-            "Y": -8.6555605,
-            "Z": 202.83813
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-40.20758, -8.6555605, 202.83813],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017624,
-          "Position": {
-            "X": -76.0968,
-            "Y": -8.655561,
-            "Z": 216.17456
-          },
-          "TerritoryId": 400,
+          "Position": [-76.0968, -8.655561, 216.17456],
           "InteractionType": "Emote",
-          "Emote": "psych",
-          "Fly": true
+          "Emote": "psych"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017625,
-          "Position": {
-            "X": -46.76892,
-            "Y": 10.765197,
-            "Z": 243.12195
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 400,
+          "Position": [-46.76892, 10.765197, 243.12195],
           "InteractionType": "Emote",
-          "Emote": "slap",
-          "Fly": true
+          "Emote": "slap"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017351,
-          "Position": {
-            "X": -74.87604,
-            "Y": -8.172172,
-            "Z": 158.70898
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-74.87604, -8.172172, 158.70898],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "TerritoryId": 400,
           "InteractionType": "Craft",
           "ItemId": 15745,
           "ItemCount": 1
         },
         {
           "DataId": 1017625,
-          "Position": {
-            "X": -46.76892,
-            "Y": 10.765197,
-            "Z": 243.12195
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-46.76892, 10.765197, 243.12195],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1017171,
-          "Position": {
-            "X": -335.56116,
-            "Y": 59.003433,
-            "Z": 313.98486
-          },
-          "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

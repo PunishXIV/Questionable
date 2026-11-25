@@ -1,51 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019978,
-          "Position": {
-            "X": -227.86298,
-            "Y": -178.2102,
-            "Z": 185.74805
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "Mount": false
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019178,
-          "Position": {
-            "X": 319.69165,
-            "Y": -120.03494,
-            "Z": -250.90417
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "Position": [319.69165, -120.03494, -250.90417],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019961,
-          "Position": {
-            "X": 323.0487,
-            "Y": -120.03495,
-            "Z": -249.01202
-          },
-          "TerritoryId": 613,
+          "Position": [323.0487, -120.03495, -249.01202],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,32 +1,14 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "DataId": 2012870,
-          "Position": {
-            "X": 154.46704,
-            "Y": -26.29132,
-            "Z": -437.46094
-          },
-          "StopDistance": 1,
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "TargetTerritoryId": 1061
-        },
-        {
           "DataId": 1042275,
-          "Position": {
-            "X": 5.7526245,
-            "Y": 0.0999997,
-            "Z": 11.703674
-          },
-          "StopDistance": 5,
+          "Position": [5.7526245, 0.0999997, 11.703674],
           "TerritoryId": 1061,
           "InteractionType": "AcceptQuest"
         }
@@ -34,44 +16,35 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1061,
       "Steps": [
         {
           "DataId": 1042276,
-          "Position": {
-            "X": 45.76172,
-            "Y": 0.05,
-            "Z": 6.9733276
-          },
-          "TerritoryId": 1061,
+          "Position": [45.76172, 0.05, 6.9733276],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1061,
       "Steps": [
         {
-          "TerritoryId": 1061,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 866,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1061,
       "Steps": [
         {
           "DataId": 1042278,
-          "Position": {
-            "X": 12.130859,
-            "Y": 0.0999997,
-            "Z": -0.83929443
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1061,
+          "Position": [12.130859, 0.0999997, -0.83929443],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4538
         }

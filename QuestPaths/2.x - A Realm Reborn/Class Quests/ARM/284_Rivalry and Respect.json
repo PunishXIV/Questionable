@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!! Crafted Item:\n 1x Cobalt Haubergeon HQ with 1x Heavens' Eye Materia III\nAutocraft requires:\n 3x Cobalt Rings,\n 1x Undyed Felt,\n 1x Mythril Plate,\n 1x Boar Leather",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001000,
-          "Position": {
-            "X": -32.028687,
-            "Y": 41.499985,
-            "Z": 208.39233
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 3203,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,50 +26,30 @@
         },
         {
           "DataId": 1001540,
-          "Position": {
-            "X": -202.68567,
-            "Y": 16,
-            "Z": 56.99243
-          },
+          "Position": [-202.68567, 16, 56.99243],
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001001,
-          "Position": {
-            "X": -56.443176,
-            "Y": 39.974316,
-            "Z": 178.72888
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [-56.443176, 39.974316, 178.72888],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001000,
-          "Position": {
-            "X": -32.028687,
-            "Y": 41.499985,
-            "Z": 208.39233
-          },
-          "TerritoryId": 128,
+          "Position": [-32.028687, 41.499985, 208.39233],
           "InteractionType": "CompleteQuest",
           "AllowHighQuality": true
         }

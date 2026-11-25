@@ -1,39 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-27"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1003242,
-          "Position": {
-            "X": -293.979,
-            "Y": 7.53998,
-            "Z": -225.542
-          },
-          "TerritoryId": 134,
+          "Position": [-293.979, 7.53998, -225.542],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
           "$": "auto: issuer 1003242 (W'dhovaka)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 134,
       "Steps": [
         {
-          "Position": {
-            "X": -305.994,
-            "Y": 28.23908,
-            "Z": -363.692
-          },
-          "TerritoryId": 134,
+          "Position": [-305.994, 28.23908, -363.692],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             326
@@ -44,19 +32,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1003242,
-          "Position": {
-            "X": -294.33594,
-            "Y": 7.54,
-            "Z": -227.07976
-          },
-          "TerritoryId": 134,
+          "Position": [-294.33594, 7.54, -227.07976],
           "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
           "$": "auto: todo turn-in -> 1003242 (W'dhovaka)"
         }
       ]

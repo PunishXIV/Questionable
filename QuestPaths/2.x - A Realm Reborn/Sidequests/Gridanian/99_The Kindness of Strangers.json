@@ -1,39 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000324,
-          "Position": {
-            "X": 333.364,
-            "Y": -6.45991,
-            "Z": -69.749
-          },
-          "TerritoryId": 154,
+          "Position": [333.364, -6.45991, -69.749],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1000324 (Emeria)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2000009,
-          "Position": {
-            "X": 358.762,
-            "Y": -2.82832,
-            "Z": 4.70155
-          },
-          "TerritoryId": 154,
+          "Position": [358.762, -2.82832, 4.70155],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             155
@@ -44,35 +33,24 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000324,
-          "Position": {
-            "X": 333.364,
-            "Y": -6.45991,
-            "Z": -69.749
-          },
-          "TerritoryId": 154,
+          "Position": [333.364, -6.45991, -69.749],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo location -> 1000324 (Emeria); hands over ITEM0=2000076"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000100,
-          "Position": {
-            "X": 23.8498,
-            "Y": -8,
-            "Z": 115.923
-          },
-          "TerritoryId": 132,
+          "Position": [23.8498, -8, 115.923],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "$": "auto: todo turn-in -> 1000100 (Mother Miounne)"
         }
       ]

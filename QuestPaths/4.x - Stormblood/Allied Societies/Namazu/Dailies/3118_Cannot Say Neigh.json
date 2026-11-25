@@ -1,85 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1025602,
-          "Position": {
-            "X": -778.2559,
-            "Y": 127.80886,
-            "Z": 98.54055
-          },
-          "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
-          "DataId": 1025925,
-          "Position": {
-            "X": -702.17444,
-            "Y": 127.5686,
-            "Z": 112.291016
-          },
-          "TerritoryId": 622,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 622,
-          "Mount": true
-        },
-        {
           "DataId": 1025801,
-          "Position": {
-            "X": -609.49115,
-            "Y": 41.834953,
-            "Z": 139.75732
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Mount": true
+          "Position": [-609.49115, 41.834953, 139.75732],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025802,
-          "Position": {
-            "X": -232.89844,
-            "Y": 55.466682,
-            "Z": -329.15234
-          },
-          "TerritoryId": 622,
+          "Position": [-232.89844, 55.466682, -329.15234],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1025602,
-          "Position": {
-            "X": -778.2559,
-            "Y": 127.80886,
-            "Z": 98.54055
-          },
-          "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

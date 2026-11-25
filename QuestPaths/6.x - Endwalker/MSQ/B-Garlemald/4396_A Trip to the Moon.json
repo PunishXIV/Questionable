@@ -1,30 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "DataId": 1042017,
-          "Position": {
-            "X": -483.299,
-            "Y": 10.889291,
-            "Z": -677.3938
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1024,
-          "Fly": true
-        },
-        {
           "DataId": 1039974,
-          "Position": {
-            "X": 2.5177002,
-            "Y": 0,
-            "Z": 26.840576
-          },
+          "Position": [2.5177002, 0, 26.840576],
           "TerritoryId": 1024,
           "InteractionType": "AcceptQuest"
         }
@@ -32,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1024,
       "Steps": [
         {
           "DataId": 2012116,
-          "Position": {
-            "X": 5.585561E-05,
-            "Y": 6.62077,
-            "Z": -0.00103838
-          },
-          "TerritoryId": 1024,
+          "Position": [5.585561E-05, 6.62077, -0.00103838],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -57,22 +38,15 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Mare Lamentorum - Sinus Lacrimarum",
-          "Mount": true,
-          "DisableNavmesh": true
+          "Aetheryte": "Mare Lamentorum - Sinus Lacrimarum"
         },
         {
           "DataId": 1039977,
-          "Position": {
-            "X": -627.49677,
-            "Y": 128.67758,
-            "Z": 632.41016
-          },
-          "TerritoryId": 959,
+          "Position": [-627.49677, 128.67758, 632.41016],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -83,45 +57,33 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1039977,
-          "Position": {
-            "X": -627.49677,
-            "Y": 128.67758,
-            "Z": 632.41016
-          },
-          "TerritoryId": 959,
+          "Position": [-627.49677, 128.67758, 632.41016],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 2012118,
-          "Position": {
-            "X": -423.9109,
-            "Y": 136.9497,
-            "Z": 573.47986
-          },
-          "TerritoryId": 959,
+          "Position": [-423.9109, 136.9497, 573.47986],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1042050,
-          "Position": {
-            "X": -383.04724,
-            "Y": 169.00394,
-            "Z": 547.5393
-          },
-          "TerritoryId": 959,
+          "Position": [-383.04724, 169.00394, 547.5393],
           "InteractionType": "CompleteQuest"
         }
       ]

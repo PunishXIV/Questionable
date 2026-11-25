@@ -1,40 +1,19 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "Gezah",
 	"LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence":
 	[
 	{
 		"Sequence": 0,
+		"TerritoryId": 133,
 		"Steps":
 		[
 		{
 			"DataId": 1020929,
 			"Position":
-			{
-				"X": 141.71057,
-				"Y": 13.571404,
-				"Z": -90.44025
-			},
-			"TerritoryId": 133,
+			[141.71057, 13.571404, -90.44025],
 			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Gridania",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Leatherworkers' Guild & Shaded Bower"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					132,
-					133
-					]
-				}
-			},
 			"DialogueChoices":
 			[
 			{
@@ -48,116 +27,76 @@
 	},
 	{
 		"Sequence": 1,
+		"TerritoryId": 401,
 		"Steps":
 		[
 		{
 			"DataId": 1020932,
 			"Position":
-			{
-				"X": -626.39813,
-				"Y": -57.42865,
-				"Z": -331.01398
-			},
-			"TerritoryId": 401,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+			[-626.39813, -57.42865, -331.01398],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 2,
+		"TerritoryId": 401,
 		"Steps":
 		[
 		{
 			"DataId": 1012064,
 			"Position":
-			{
-				"X": -542.7787,
-				"Y": -37.11544,
-				"Z": -386.7094
-			},
-			"TerritoryId": 401,
+			[-542.7787, -37.11544, -386.7094],
 			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 3,
+		"TerritoryId": 401,
 		"Steps":
 		[
 		{
-			"Position":
-			{
-				"X": -199.94836,
-				"Y": -166.77574,
-				"Z": 554.787
-			},
-			"TerritoryId": 401,
-			"InteractionType": "WalkTo",
-			"Fly": true,
-			"AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
-		},
-		{
 			"DataId": 2008261,
 			"Position":
-			{
-				"X": -198.68774,
-				"Y": -166.888,
-				"Z": 552.819
-			},
-			"TerritoryId": 401,
+			[-198.68774, -166.888, 552.819],
 			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 4,
+		"TerritoryId": 401,
 		"Steps":
 		[
 		{
 			"DataId": 1020937,
 			"Position":
-			{
-				"X": -616.7544,
-				"Y": -52.489086,
-				"Z": -452.62842
-			},
-			"TerritoryId": 401,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+			[-616.7544, -52.489086, -452.62842],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 5,
+		"TerritoryId": 133,
 		"Steps":
 		[
 		{
 			"DataId": 1020940,
 			"Position":
-			{
-				"X": 76.157715,
-				"Y": 0,
-				"Z": -124.4068
-			},
-			"TerritoryId": 133,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Gridania",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Leatherworkers' Guild & Shaded Bower"
-			]
+			[76.157715, 0, -124.4068],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 255,
+		"TerritoryId": 133,
 		"Steps":
 		[
 		{
 			"InteractionType": "Craft",
-			"TerritoryId": 133,
 			"ItemId": 17910,
 			"ItemCount": 1,
 			"SkipConditions":
@@ -174,12 +113,7 @@
 		{
 			"DataId": 1020941,
 			"Position":
-			{
-				"X": 75.791504,
-				"Y": 0,
-				"Z": -125.81067
-			},
-			"TerritoryId": 133,
+			[75.791504, 0, -125.81067],
 			"InteractionType": "CompleteQuest"
 		}
 		]

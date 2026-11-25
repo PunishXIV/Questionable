@@ -10,7 +10,7 @@ public sealed class TestQuestLoader : IEnumerable<object[]>
     {
         var assembly = typeof(TestQuestLoader).Assembly;
         _data = assembly.GetManifestResourceNames()
-            .Where(x => x.StartsWith("QuestPaths/") && x.EndsWith(".json"))
+            .Where(x => x.StartsWith("QuestPaths/", StringComparison.Ordinal) && x.EndsWith(".json", StringComparison.Ordinal))
             .Select(x => new object[] { new QuestWrapper(x) })
             .ToList();
     }

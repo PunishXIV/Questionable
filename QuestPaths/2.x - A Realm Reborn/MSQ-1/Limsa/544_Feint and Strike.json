@@ -1,72 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000972,
-          "Position": {
-            "X": 20.279175,
-            "Y": 40.19993,
-            "Z": -6.1189575
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "Position": {
-            "X": -1.9166679,
-            "Y": 44.999886,
-            "Z": -256.1519
-          },
-          "TerritoryId": 128,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
-        },
-        {
           "DataId": 1003282,
-          "Position": {
-            "X": -3.03656,
-            "Y": 48.168007,
-            "Z": -261.70752
-          },
-          "StopDistance": 7,
-          "TerritoryId": 128,
+          "Position": [-3.03656, 48.168007, -261.70752],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1003283,
-          "Position": {
-            "X": 668.0552,
-            "Y": 7.297715,
-            "Z": 533.1654
-          },
-          "TerritoryId": 138,
+          "Position": [668.0552, 7.297715, 533.1654],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "(Phase 1) Kills PGL NPCs and then the boss - allied NPCs will kill most other NPCs eventually; all NPCs need to be killed for the duty to complete"
-            ]
-          },
-          "AetheryteShortcut": "Western La Noscea - Swiftperch"
+            "Enabled": true
+          }
         }
       ]
     },
@@ -75,29 +37,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "Position": {
-            "X": -1.9166679,
-            "Y": 44.999886,
-            "Z": -256.1519
-          },
-          "TerritoryId": 128,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
-        },
-        {
           "DataId": 1003282,
-          "Position": {
-            "X": -3.03656,
-            "Y": 48.168007,
-            "Z": -261.70752
-          },
-          "StopDistance": 7,
-          "TerritoryId": 128,
+          "Position": [-3.03656, 48.168007, -261.70752],
           "InteractionType": "CompleteQuest"
         }
       ]

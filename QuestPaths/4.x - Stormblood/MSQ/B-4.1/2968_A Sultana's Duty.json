@@ -1,82 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1024102,
-          "Position": {
-            "X": -105.7298,
-            "Y": 6.9839897,
-            "Z": -4.135254
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1024040,
-          "Position": {
-            "X": -201.06812,
-            "Y": 18,
-            "Z": 78.62964
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "Position": [-201.06812, 18, 78.62964],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1024041,
-          "Position": {
-            "X": -22.781738,
-            "Y": 83.19999,
-            "Z": -7.5532227
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Airship Landing"
-          ]
+          "Position": [-22.781738, 83.19999, -7.5532227],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
-          "DataId": 1004433,
-          "Position": {
-            "X": -23.605713,
-            "Y": 83.19999,
-            "Z": -2.3041382
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 144
-        },
-        {
           "DataId": 1024042,
-          "Position": {
-            "X": -51.682373,
-            "Y": 0.04428002,
-            "Z": 53.94055
-          },
+          "Position": [-51.682373, 0.04428002, 53.94055],
           "TerritoryId": 144,
           "InteractionType": "Interact"
         }
@@ -84,23 +43,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 144,
       "Steps": [
         {
-          "TerritoryId": 144,
-          "AethernetShortcut": [
-            "[Gold Saucer] Entrance & Card Squares",
-            "[Gold Saucer] Wonder Square West"
-          ],
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1024043,
-          "Position": {
-            "X": -12.77179,
-            "Y": 20.999727,
-            "Z": 47.837036
-          },
-          "TerritoryId": 144,
+          "Position": [-12.77179, 20.999727, 47.837036],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,100 +1,66 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012133,
-          "Position": {
-            "X": -26.8102,
-            "Y": 206.47,
-            "Z": 28.6716
-          },
-          "TerritoryId": 478,
+          "Position": [-26.8102, 206.47, 28.6716],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012133 (Midnight Dew)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1013640,
-          "Position": {
-            "X": 13.2057,
-            "Y": 206.858,
-            "Z": 53.481
-          },
-          "TerritoryId": 478,
+          "Position": [13.2057, 206.858, 53.481],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo location -> 1013640 (adventure-dreaming porter)"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 2005864,
-          "Position": {
-            "X": 16.1916,
-            "Y": 206.743,
-            "Z": 55.92
-          },
-          "TerritoryId": 478,
+          "Position": [16.1916, 206.743, 55.92],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 13y from lua EOBJECT1 -> 2005864 (crabapple)"
         },
         {
           "DataId": 2005865,
-          "Position": {
-            "X": 25.0135,
-            "Y": 206.355,
-            "Z": 55.0679
-          },
-          "TerritoryId": 478,
+          "Position": [25.0135, 206.355, 55.0679],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 18y from lua EOBJECT2 -> 2005865 (crabapple)"
         },
         {
           "DataId": 1013641,
-          "Position": {
-            "X": 25.0379,
-            "Y": 205.302,
-            "Z": 40.4507
-          },
-          "TerritoryId": 478,
+          "Position": [25.0379, 205.302, 40.4507],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "$": "auto: todo area 20y from lua ACTOR2 -> 1013641 (spirited goblin)"
         },
         {
           "DataId": 2005866,
-          "Position": {
-            "X": 33.49353,
-            "Y": 205.27954,
-            "Z": 39.352905
-          },
-          "TerritoryId": 478,
+          "Position": [33.49353, 205.27954, 39.352905],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 1013642,
-          "Position": {
-            "X": 38.28479,
-            "Y": 205.87589,
-            "Z": 53.147095
-          },
-          "TerritoryId": 478,
+          "Position": [38.28479, 205.87589, 53.147095],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         }
@@ -102,34 +68,24 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1013640,
-          "Position": {
-            "X": 13.2057,
-            "Y": 206.858,
-            "Z": 53.481
-          },
-          "TerritoryId": 478,
+          "Position": [13.2057, 206.858, 53.481],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo location -> 1013640 (adventure-dreaming porter); hands over ITEM0=2001690"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012133,
-          "Position": {
-            "X": -26.8102,
-            "Y": 206.47,
-            "Z": 28.6716
-          },
-          "TerritoryId": 478,
+          "Position": [-26.8102, 206.47, 28.6716],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012133 (Midnight Dew)"
         }
       ]

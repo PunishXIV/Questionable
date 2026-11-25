@@ -1,131 +1,86 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030021,
-          "Position": {
-            "X": -456.6568,
-            "Y": 417.12558,
-            "Z": -597.1008
-          },
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Tomra"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 2010006,
-          "Position": {
-            "X": -115.31244,
-            "Y": 428.18335,
-            "Z": -621.4542
-          },
-          "TerritoryId": 814,
+          "Position": [-115.31244, 428.18335, -621.4542],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10870
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 2010007,
-          "Position": {
-            "X": 21.194763,
-            "Y": 348.89746,
-            "Z": -251.88074
-          },
-          "TerritoryId": 814,
+          "Position": [21.194763, 348.89746, -251.88074],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10871
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030035,
-          "Position": {
-            "X": -650.35474,
-            "Y": 352.45102,
-            "Z": -129.01508
-          },
-          "TerritoryId": 814,
+          "Position": [-650.35474, 352.45102, -129.01508],
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "7.5.7.4"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030038,
-          "Position": {
-            "X": -650.35474,
-            "Y": 352.45102,
-            "Z": -129.01508
-          },
-          "TerritoryId": 814,
+          "Position": [-650.35474, 352.45102, -129.01508],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030038,
-          "Position": {
-            "X": -650.35474,
-            "Y": 352.45102,
-            "Z": -129.01508
-          },
-          "TerritoryId": 814,
+          "Position": [-650.35474, 352.45102, -129.01508],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1030039,
-          "Position": {
-            "X": -26.657532,
-            "Y": 3.999815,
-            "Z": 209.88782
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "Position": [-26.657532, 3.999815, 209.88782],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

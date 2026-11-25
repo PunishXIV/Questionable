@@ -1,49 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009097,
-          "Position": {
-            "X": 22.87323,
-            "Y": -3.7749445,
-            "Z": 211.16956
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "DataId": 1000460,
-          "Position": {
-            "X": -159.41101,
-            "Y": 4.054107,
-            "Z": -4.1047363
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 205,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
-        },
-        {
           "DataId": 1003027,
-          "Position": {
-            "X": 4.8981323,
-            "Y": -1.92944,
-            "Z": -0.19836426
-          },
+          "Position": [4.8981323, -1.92944, -0.19836426],
           "TerritoryId": 205,
           "InteractionType": "Interact"
         }
@@ -51,30 +21,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1009096,
-          "Position": {
-            "X": -158.12933,
-            "Y": 4.1921,
-            "Z": -17.013855
-          },
-          "TerritoryId": 133,
+          "Position": [-158.12933, 4.1921, -17.013855],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1008969,
-          "Position": {
-            "X": 0.99176025,
-            "Y": -1.9957249,
-            "Z": -45.700806
-          },
-          "TerritoryId": 351,
+          "Position": [0.99176025, -1.9957249, -45.700806],
           "InteractionType": "CompleteQuest"
         }
       ]

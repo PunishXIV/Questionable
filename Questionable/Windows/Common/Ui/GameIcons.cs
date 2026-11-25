@@ -1,37 +1,19 @@
-using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Textures.TextureWraps;
 using Lumina.Data.Files;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
 
 namespace Questionable.Windows.Common.Ui;
 
 [RegisterSingleton]
 internal sealed class GameIcons(
-    Configuration configuration,
     IDataManager dataManager,
     ITextureProvider textureProvider,
     ILogger<GameIcons> logger) : IDisposable
 {
     private readonly Dictionary<(uint IconId, int Size), IDalamudTextureWrap?> _cache = [];
-    private bool _enabled;
-    private DateTime _enabledChecked = DateTime.MinValue;
-    public bool Enabled
-    {
-        get
-        {
-            if (_enabledChecked < (DateTime.Now - TimeSpan.FromSeconds(2)))
-                _enabled = configuration.General.QuestIcons;
-            return _enabled;
-        }
-    }
 
     public bool DrawInline(uint iconId)
     {
-        if (!Enabled)
-            return false;
         int size = (int)MathF.Round(ImGui.GetTextLineHeightWithSpacing());
         if (size <= 0 || Get(iconId, size) is not { } texture)
             return false;
@@ -67,15 +49,55 @@ internal sealed class GameIcons(
     private IDalamudTextureWrap Resample(TexFile file, uint iconId, int size)
     {
         // these are bgra, not rgba
-        using Image<Bgra32> image =
-            Image.LoadPixelData<Bgra32>(file.ImageData, file.Header.Width, file.Header.Height);
-        image.Mutate(x => x.Resize(size, size, KnownResamplers.Lanczos3));
-
-        byte[] bitmap = new byte[size * size * 4];
-        image.CopyPixelDataTo(bitmap);
-
+        byte[] bitmap = Downscale(file.ImageData, file.Header.Width, file.Header.Height, size);
         return textureProvider.CreateFromRaw(RawImageSpecification.Bgra32(size, size), bitmap,
-            $"Questionable icon {iconId}@{size}");
+            string.Create(CultureInfo.InvariantCulture, $"Questionable icon {iconId}@{size}"));
+    }
+
+    // GPU scaling 80px icons to text height looks grainy, so each pixel averages its source area.
+    internal static byte[] Downscale(byte[] bgra, int width, int height, int size)
+    {
+        byte[] result = new byte[size * size * 4];
+        double scaleX = (double)width / size;
+        double scaleY = (double)height / size;
+        for (int ty = 0; ty < size; ty++)
+        {
+            double y0 = ty * scaleY;
+            double y1 = y0 + scaleY;
+            for (int tx = 0; tx < size; tx++)
+            {
+                double x0 = tx * scaleX;
+                double x1 = x0 + scaleX;
+                double blue = 0, green = 0, red = 0, alpha = 0, area = 0;
+                for (int sy = (int)y0; sy < Math.Min(height, (int)Math.Ceiling(y1)); sy++)
+                {
+                    double weightY = Math.Min(y1, sy + 1) - Math.Max(y0, sy);
+                    for (int sx = (int)x0; sx < Math.Min(width, (int)Math.Ceiling(x1)); sx++)
+                    {
+                        double weight = weightY * (Math.Min(x1, sx + 1) - Math.Max(x0, sx));
+                        int i = (sy * width + sx) * 4;
+                        double covered = bgra[i + 3] * weight;
+                        blue += bgra[i] * covered;
+                        green += bgra[i + 1] * covered;
+                        red += bgra[i + 2] * covered;
+                        alpha += covered;
+                        area += weight;
+                    }
+                }
+
+                int o = (ty * size + tx) * 4;
+                if (alpha > 0)
+                {
+                    result[o] = (byte)Math.Round(blue / alpha);
+                    result[o + 1] = (byte)Math.Round(green / alpha);
+                    result[o + 2] = (byte)Math.Round(red / alpha);
+                }
+
+                result[o + 3] = area > 0 ? (byte)Math.Round(alpha / area) : (byte)0;
+            }
+        }
+
+        return result;
     }
 
     public void Dispose()

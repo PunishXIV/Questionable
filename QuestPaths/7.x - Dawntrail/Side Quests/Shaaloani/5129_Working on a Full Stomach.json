@@ -1,56 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1049375,
-          "Position": {
-            "X": -318.98987,
-            "Y": 18.789532,
-            "Z": -143.26697
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1049323,
-          "Position": {
-            "X": -227.49683,
-            "Y": -1.2980607,
-            "Z": 298.6648
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-227.49683, -1.2980607, 298.6648],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1049375,
-          "Position": {
-            "X": -318.98987,
-            "Y": 18.789532,
-            "Z": -143.26697
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

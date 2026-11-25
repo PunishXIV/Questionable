@@ -1,6 +1,3 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface.Utility.Raii;
-
 namespace Questionable.Windows.Common.Ui;
 
 internal static class QstTheme
@@ -18,6 +15,8 @@ internal static class QstTheme
     public static readonly Vector4 Success = Rgb(126, 212, 145);
     public static readonly Vector4 Info = Rgb(111, 174, 230);
     public static readonly Vector4 Special = Rgb(181, 144, 232);
+    public static readonly Vector4 SpecialButton = Rgb(112, 72, 180);
+    public static readonly Vector4 SuccessButton = Rgb(44, 122, 70);
 
     private static readonly Vector4 ThemeText = Rgb(224, 224, 224);
     private static readonly Vector4 ThemeTextMuted = Rgb(156, 163, 175);

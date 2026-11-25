@@ -1,67 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Thaksin",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014718,
-          "Position": {
-            "X": -29.526245,
-            "Y": 11.965078,
-            "Z": 48.355713
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1011231,
-          "Position": {
-            "X": 503.1051,
-            "Y": 217.95148,
-            "Z": 790.2189
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "Position": [503.1051, 217.95148, 790.2189],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": -110.26132,
-            "Y": 153.61101,
-            "Z": 10.394781
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1014719,
-          "Position": {
-            "X": -293.6294,
-            "Y": 125.4389,
-            "Z": -19.058533
-          },
-          "TerritoryId": 397,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-293.6294, 125.4389, -19.058533],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,77 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042796,
-          "Position": {
-            "X": -12.100403,
-            "Y": -16.147,
-            "Z": 153.76514
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Old Sharlayan] Aetheryte Plaza","[Old Sharlayan] Scholar's Harbor"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "DataId": 1039550,
-          "Position": {
-            "X": -620.7218,
-            "Y": -27.670597,
-            "Z": 302.17432
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "TargetTerritoryId": 956
-        },
-        {
-          "Position": {
-            "X": -431.53903,
-            "Y": -220.1193,
-            "Z": 301.76364
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1042797,
-          "Position": {
-            "X": -393.20978,
-            "Y": -220.20282,
-            "Z": 283.16162
-          },
-          "TerritoryId": 956,
+          "Position": [-393.20978, -220.20282, 283.16162],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1042799,
-          "Position": {
-            "X": -395.37653,
-            "Y": -220.20282,
-            "Z": 285.66406
-          },
-          "TerritoryId": 956,
+          "Position": [-395.37653, -220.20282, 285.66406],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -85,56 +38,34 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1042803,
-          "Position": {
-            "X": 43.289795,
-            "Y": -1.4816303E-06,
-            "Z": -55.680176
-          },
-          "TerritoryId": 963,
+          "Position": [43.289795, -1.4816303E-06, -55.680176],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1042887,
-          "Position": {
-            "X": 108.72046,
-            "Y": 26.999989,
-            "Z": 14.90802
-          },
-          "TerritoryId": 963,
+          "Position": [108.72046, 26.999989, 14.90802],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Kama"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1039539,
-          "Position": {
-            "X": 87.662964,
-            "Y": 27.06,
-            "Z": 28.030762
-          },
-          "TerritoryId": 963,
+          "Position": [87.662964, 27.06, 28.030762],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1042804,
-          "Position": {
-            "X": 87.35791,
-            "Y": 26.99999,
-            "Z": 56.687256
-          },
-          "TerritoryId": 963,
+          "Position": [87.35791, 26.99999, 56.687256],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -142,16 +73,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1042803,
-          "Position": {
-            "X": 116.01684,
-            "Y": 26.99999,
-            "Z": 45.689087
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 963,
+          "Position": [116.01684, 26.99999, 45.689087],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -165,35 +91,22 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1039541,
-          "Position": {
-            "X": -159.3805,
-            "Y": 23.999973,
-            "Z": 110.61267
-          },
-          "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Kama",
-            "[Radz-at-Han] Ruveydah Fibers"
-          ]
+          "Position": [-159.3805, 23.999973, 110.61267],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1042805,
-          "Position": {
-            "X": -57.480774,
-            "Y": 14,
-            "Z": 106.82837
-          },
-          "StopDistance": 4,
-          "TerritoryId": 963,
+          "Position": [-57.480774, 14, 106.82837],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4587
         }

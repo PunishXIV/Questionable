@@ -1,165 +1,89 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1040307,
-          "Position": {
-            "X": -469.29126,
-            "Y": 232.2548,
-            "Z": -252.8573
-          },
-          "StopDistance": 5,
-          "TerritoryId": 960,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1040315,
-          "Position": {
-            "X": -345.87628,
-            "Y": 254.66968,
-            "Z": -277.27173
-          },
-          "TerritoryId": 960,
+          "Position": [-345.87628, 254.66968, -277.27173],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1040313,
-          "Position": {
-            "X": -339.10126,
-            "Y": 255.53401,
-            "Z": -281.75793
-          },
-          "TerritoryId": 960,
+          "Position": [-339.10126, 255.53401, -281.75793],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "Position": {
-            "X": -308.91977,
-            "Y": 262.7334,
-            "Z": -332.3608
-          },
-          "TerritoryId": 960,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2012030,
-          "Position": {
-            "X": -333.547,
-            "Y": 270.83228,
-            "Z": -361.50153
-          },
-          "TerritoryId": 960,
+          "Position": [-333.547, 270.83228, -361.50153],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818389
         },
         {
           "DataId": 1040317,
-          "Position": {
-            "X": -200.57983,
-            "Y": 268.01642,
-            "Z": -312.58112
-          },
-          "TerritoryId": 960,
+          "Position": [-200.57983, 268.01642, -312.58112],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1040318,
-          "Position": {
-            "X": 29.984009,
-            "Y": 270.45825,
-            "Z": -535.0271
-          },
-          "TerritoryId": 960,
+          "Position": [29.984009, 270.45825, -535.0271],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "Position": {
-            "X": 37.10138,
-            "Y": 269.016,
-            "Z": -591.87366
-          },
-          "TerritoryId": 960,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 2012354,
-          "Position": {
-            "X": 30.777344,
-            "Y": 272.51086,
-            "Z": -600.7019
-          },
-          "StopDistance": 4,
-          "TerritoryId": 960,
+          "Position": [30.777344, 272.51086, -600.7019],
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
           "$.0": "[1]",
           "$.1": "QuestVariables if done first: 1 0 0 0 0 128"
         },
         {
           "DataId": 2012355,
-          "Position": {
-            "X": 64.10315,
-            "Y": 272.4497,
-            "Z": -616.4492
-          },
-          "StopDistance": 4,
-          "TerritoryId": 960,
+          "Position": [64.10315, 272.4497, -616.4492],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "$.0": "[2]",
           "$.1": "QuestVariables if done after [1]: 2 0 0 0 0 192"
         },
         {
-          "StopDistance": 8,
-          "TerritoryId": 960,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Ultima Thule - Abode of the Ea"
         },
         {
           "DataId": 2012356,
-          "Position": {
-            "X": 115.526,
-            "Y": 272.99915,
-            "Z": -617.853
-          },
-          "StopDistance": 4,
-          "TerritoryId": 960,
+          "Position": [115.526, 272.99915, -617.853],
           "InteractionType": "Interact",
           "$.0": "[3]",
           "$.1": "QuestVariables if done after [2]: 3 0 0 0 0 224",
@@ -167,13 +91,7 @@
         },
         {
           "DataId": 2012357,
-          "Position": {
-            "X": 151.59839,
-            "Y": 272.9381,
-            "Z": -592.5841
-          },
-          "StopDistance": 4,
-          "TerritoryId": 960,
+          "Position": [151.59839, 272.9381, -592.5841],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16],
           "$.0": "[4]",
@@ -183,15 +101,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1040318,
-          "Position": {
-            "X": 29.984009,
-            "Y": 270.45825,
-            "Z": -535.0271
-          },
-          "TerritoryId": 960,
+          "Position": [29.984009, 270.45825, -535.0271],
           "InteractionType": "CompleteQuest"
         }
       ]

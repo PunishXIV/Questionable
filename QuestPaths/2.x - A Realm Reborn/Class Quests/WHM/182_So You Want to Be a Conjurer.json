@@ -1,32 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000323,
-          "Position": {
-            "X": -234.02765,
-            "Y": -4.0000043,
-            "Z": -11.093384
-          },
-          "TerritoryId": 133,
+          "Position": [-234.02765, -4.0000043, -11.093384],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

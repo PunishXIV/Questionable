@@ -1,156 +1,86 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019519,
-          "Position": {
-            "X": -613.1228,
-            "Y": 130,
-            "Z": -529.839
-          },
-          "TerritoryId": 612,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -613.1228,
-                  "Y": 130,
-                  "Z": -529.839
-                },
-                "TerritoryId": 612,
-                "MaximumDistance": 50
-              }
-            }
-          },
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023144,
-          "Position": {
-            "X": -631.7998,
-            "Y": 130.39117,
-            "Z": -467.67383
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-631.7998, 130.39117, -467.67383],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2008786,
-          "Position": {
-            "X": -630.45703,
-            "Y": 130.3883,
-            "Z": -466.75824
-          },
-          "TerritoryId": 612,
+          "Position": [-630.45703, 130.3883, -466.75824],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023144,
-          "Position": {
-            "X": -631.7998,
-            "Y": 130.39117,
-            "Z": -467.67383
-          },
-          "TerritoryId": 612,
+          "Position": [-631.7998, 130.39117, -467.67383],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023157,
-          "Position": {
-            "X": -427.26788,
-            "Y": 74.15582,
-            "Z": -103.56299
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-427.26788, 74.15582, -103.56299],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -397.46393,
-            "Y": 73.9107,
-            "Z": -104.34829
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
           "DataId": 2008761,
-          "Position": {
-            "X": -398.30627,
-            "Y": 74.23511,
-            "Z": -106.70636
-          },
-          "TerritoryId": 612,
+          "Position": [-398.30627, 74.23511, -106.70636],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023158,
-          "Position": {
-            "X": -424.24503,
-            "Y": 62.890038,
-            "Z": -28.174877
-          },
-          "TerritoryId": 612,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-424.24503, 62.890038, -28.174877],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019519,
-          "Position": {
-            "X": -613.1228,
-            "Y": 130,
-            "Z": -529.839
-          },
-          "TerritoryId": 612,
+          "Position": [-613.1228, 130, -529.839],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "Fly": true,
           "NextQuestId": 2824
         }
       ]

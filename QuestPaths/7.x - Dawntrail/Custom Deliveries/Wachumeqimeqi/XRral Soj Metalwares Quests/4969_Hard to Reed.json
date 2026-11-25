@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "Comment": "Autocraft requires:\n12x Chondrite Ingot\n6x Annite Whetstone\n6x Integral Lumber",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047135,
-          "Position": {
-            "X": 180.407,
-            "Y": -13.9926,
-            "Z": 1.98725
-          },
-          "TerritoryId": 1185,
+          "Position": [180.407, -13.9926, 1.98725],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047135 (Rral Soj)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "Craft",
           "ItemId": 43887,
           "ItemCount": 6,
@@ -41,17 +33,8 @@
         },
         {
           "DataId": 1047135,
-          "Position": {
-            "X": 180.407,
-            "Y": -13.9926,
-            "Z": 1.98725
-          },
-          "TerritoryId": 1185,
+          "Position": [180.407, -13.9926, 1.98725],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
         }
       ]

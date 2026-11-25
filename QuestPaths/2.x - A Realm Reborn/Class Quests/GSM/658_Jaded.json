@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!! Crafted Item:\n 1x Black Pearl Ring HQ with 1x Piety Materia III\nAutocraft requires:\n 1x Black Pearl,\n 1x Electrum Ingot",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 4514,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,72 +26,36 @@
         },
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "Position": [-25.162231, 12.199998, 110.795654],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
+          "Position": [-25.162231, 12.199998, 110.795654],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1006035,
-          "Position": {
-            "X": 74.17407,
-            "Y": 7.9999995,
-            "Z": -80.1557
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "Position": [74.17407, 7.9999995, -80.1557],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Sapphire Avenue Exchange",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

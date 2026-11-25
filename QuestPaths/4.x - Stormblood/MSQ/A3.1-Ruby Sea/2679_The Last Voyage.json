@@ -1,69 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021509,
-          "Position": {
-            "X": 107.80493,
-            "Y": 0.80715245,
-            "Z": -574.548
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 2008475,
-          "Position": {
-            "X": -103.01367,
-            "Y": 2.2124634,
-            "Z": -856.199
-          },
-          "TerritoryId": 613,
+          "Position": [-103.01367, 2.2124634, -856.199],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1022401,
-          "Position": {
-            "X": -158.89221,
-            "Y": -0.5,
-            "Z": -898.0087
-          },
-          "TerritoryId": 613,
+          "Position": [-158.89221, -0.5, -898.0087],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1021509,
-          "Position": {
-            "X": 107.80493,
-            "Y": 0.80715245,
-            "Z": -574.548
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

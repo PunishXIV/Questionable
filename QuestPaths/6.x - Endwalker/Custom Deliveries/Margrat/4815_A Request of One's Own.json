@@ -1,58 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046399,
-          "Position": {
-            "X": 130.05261,
-            "Y": -16.077408,
-            "Z": 190.72253
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1046401,
-          "Position": {
-            "X": 92.27124,
-            "Y": -29.53,
-            "Z": -6.607239
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
+          "Position": [92.27124, -29.53, -6.607239],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1046403,
-          "Position": {
-            "X": -31.99823,
-            "Y": -31.53043,
-            "Z": -53.26935
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-31.99823, -31.53043, -53.26935],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

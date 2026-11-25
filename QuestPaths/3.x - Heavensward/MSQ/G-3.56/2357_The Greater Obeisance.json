@@ -1,54 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012395,
-          "Position": {
-            "X": -154.10089,
-            "Y": 4,
-            "Z": -15.4574585
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1018046,
-          "Position": {
-            "X": 40.604248,
-            "Y": -19.000013,
-            "Z": 92.36279
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Airship Landing"
-          ]
+          "Position": [40.604248, -19.000013, 92.36279],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000107,
-          "Position": {
-            "X": 27.145752,
-            "Y": -19.000002,
-            "Z": 106.67578
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
+          "Position": [27.145752, -19.000002, 106.67578],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -62,31 +38,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013180,
-          "Position": {
-            "X": 125.90222,
-            "Y": -15.185763,
-            "Z": -431.7846
-          },
-          "StopDistance": 7,
-          "TerritoryId": 156,
+          "Position": [125.90222, -15.185763, -431.7846],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1018041,
-          "Position": {
-            "X": 13.199036,
-            "Y": 0,
-            "Z": -8.590881
-          },
-          "TerritoryId": 351,
+          "Position": [13.199036, 0, -8.590881],
           "InteractionType": "CompleteQuest"
         }
       ]

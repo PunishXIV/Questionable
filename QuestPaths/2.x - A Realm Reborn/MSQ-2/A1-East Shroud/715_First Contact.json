@@ -1,65 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000540,
-          "Position": {
-            "X": -238.17816,
-            "Y": 3.543561,
-            "Z": 283.71094
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1006188,
-          "Position": {
-            "X": -236.92688,
-            "Y": 3.5435789,
-            "Z": 283.4973
-          },
-          "TerritoryId": 152,
+          "Position": [-236.92688, 3.5435789, 283.4973],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000580,
-          "Position": {
-            "X": 25.65039,
-            "Y": -3.7080078,
-            "Z": 209.97937
-          },
-          "TerritoryId": 152,
+          "Position": [25.65039, -3.7080078, 209.97937],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000580,
-          "Position": {
-            "X": 25.65039,
-            "Y": -3.7080078,
-            "Z": 209.97937
-          },
-          "TerritoryId": 152,
+          "Position": [25.65039, -3.7080078, 209.97937],
           "InteractionType": "Emote",
           "Emote": "dance",
           "DelaySecondsAtStart": 1
@@ -68,15 +44,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000580,
-          "Position": {
-            "X": 25.65039,
-            "Y": -3.7080078,
-            "Z": 209.97937
-          },
-          "TerritoryId": 152,
+          "Position": [25.65039, -3.7080078, 209.97937],
           "InteractionType": "CompleteQuest"
         }
       ]

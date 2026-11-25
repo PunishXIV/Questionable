@@ -1,0 +1,229 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "TerritoryId": 135,
+      "Steps": [
+        {
+          "InteractionType": "EquipItem",
+          "ItemId": 47470,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "InteractionType": "CreateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "InteractionType": "UseItem",
+          "ItemId": 52649,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "InteractionType": "EquipItem",
+          "ItemId": 47472,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "InteractionType": "UseItem",
+          "ItemId": 49805,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "InteractionType": "EquipRecommended",
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "InteractionType": "UpdateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "DataId": 1059767,
+          "Position": [-302.822, 63.4842, -257.193],
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1059767 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059322,
+          "Position": [121.773, -6.99881, -86.3509],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059322 (wary Wailer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "InteractionType": "AssignBattlehorn",
+          "PetId": 1,
+          "Battlehorn": 1
+        },
+        {
+          "InteractionType": "Action",
+          "Action": "First Battlehorn"
+        },
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 37,
+          "Position": [117.47766, 17.661993, -247.24017],
+          "InteractionType": "Capture",
+          "PetId": 2,
+          "$": "Ground squirrel"
+        },
+        {
+          "DataId": 338,
+          "Position": [130.05261, 51.719154, 185.6565],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 3,
+          "$": "Lost lamb, Lv3-4"
+        },
+        {
+          "DataId": 383,
+          "Position": [68.19, 42.42, 32.76],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 4,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Pugil, Lv4"
+        },
+        {
+          "DataId": 118,
+          "Position": [47.83, 63.77, -193.16],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 12,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Tiny mandragora, Lv5-7"
+        },
+        {
+          "DataId": 342,
+          "Position": [-57.03, 34.96, -80.25],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 40,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Bogy, Lv7, inside the cave"
+        },
+        {
+          "DataId": 313,
+          "Position": [146.34, 36.52, 108.74],
+          "TerritoryId": 135,
+          "InteractionType": "Capture",
+          "PetId": 31,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Rivertoad, Lv4"
+        },
+        {
+          "DataId": 339,
+          "Position": [329.09, 48.38, -18.37],
+          "TerritoryId": 135,
+          "InteractionType": "Capture",
+          "PetId": 6,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Wild dodo, Lv4-7"
+        },
+        {
+          "DataId": 38,
+          "Position": [275.95, 71.15, -209.62],
+          "TerritoryId": 135,
+          "InteractionType": "Capture",
+          "PetId": 19,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Cave bat, Lv7"
+        },
+        {
+          "DataId": 341,
+          "Position": [-145.08, 46.38, -153.61],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 14,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Puk hatchling, Lv8"
+        },
+        {
+          "DataId": 323,
+          "Position": [-181.49, 42.51, -207.21],
+          "TerritoryId": 134,
+          "InteractionType": "Capture",
+          "PetId": 26,
+          "SkipConditions": {
+            "StepIf": {
+              "LevelReached": 8
+            }
+          },
+          "$": "Wounded aurochs, Lv8"
+        },
+        {
+          "Comment": "The captures above level Beastmaster to 8 for the next quest; on a non-preferred world you may still be short and need to fight a little more.",
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5492,
+          "$": "auto: todo turn-in -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    }
+  ]
+}

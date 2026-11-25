@@ -1,39 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1237,
-          "Fly": true,
-          "Comment": "Select the destination Sinus Ardorum (#1)",
-          "DialogueChoices": [
-            {
-              "Prompt": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_000",
-              "Answer": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_005",
-              "Type": "List",
-              "ExcelSheet": "custom/009/CtsWksEntrance_00921"
-            }
-          ]
-        },
-        {
           "DataId": 1052595,
-          "Position": {
-            "X": -53.177734,
-            "Y": -3.33786E-06,
-            "Z": -72.129456
-          },
+          "Position": [-53.177734, -3.33786E-06, -72.129456],
           "TerritoryId": 1237,
           "InteractionType": "AcceptQuest"
         }
@@ -41,79 +17,85 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1237,
       "Steps": [
         {
+          "DataId": 2015100,
+          "Position": [-3.8, 1.64, -32.15],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Moongate Hub"
+        },
+        {
+          "DataId": 2015053,
+          "Position": [-540, 59.55, -526.75],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Calabash Cove"
+        },
+        {
+          "DataId": 2015054,
+          "Position": [427.23, 45.55, 497.46],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Weddingway's Bower"
+        },
+        {
+          "DataId": 2015055,
+          "Position": [-619.56, 50.55, 399.77],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Gleamslope"
+        },
+        {
+          "DataId": 2015056,
+          "Position": [629.8, -73.95, -572.78],
+          "InteractionType": "Interact",
+          "Comment": "Aethernet: Lunar Nadir"
+        },
+        {
           "DataId": 1052618,
-          "Position": {
-            "X": -51.255127,
-            "Y": -3.3378603E-06,
-            "Z": -72.64819
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1237,
+          "Position": [-51.255127, -3.3378603E-06, -72.64819],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1237,
       "Steps": [
         {
           "DataId": 1052618,
-          "Position": {
-            "X": -40.065205,
-            "Y": 11.930657,
-            "Z": -95.35249
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 1237,
+          "Position": [-40.065205, 11.930657, -95.35249],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1237,
       "Steps": [
         {
           "DataId": 1052618,
-          "Position": {
-            "X": -425.39127,
-            "Y": 47.861256,
-            "Z": 212.72206
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 1237,
+          "Position": [-425.39127, 47.861256, 212.72206],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1237,
       "Steps": [
         {
           "DataId": 1052618,
-          "Position": {
-            "X": 533.5678,
-            "Y": 39.006783,
-            "Z": 167.32143
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 1237,
+          "Position": [533.5678, 39.006783, 167.32143],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1237,
       "Steps": [
         {
           "DataId": 2014657,
-          "Position": {
-            "X": 533.53174,
-            "Y": 38.986816,
-            "Z": 167.25415
-          },
-          "TerritoryId": 1237,
+          "Position": [533.53174, 38.986816, 167.25415],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -139,20 +121,15 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1237,
       "Steps": [
         {
-          "TerritoryId": 1237,
           "InteractionType": "Action",
           "Action": "Duty Action I"
         },
         {
           "DataId": 1052617,
-          "Position": {
-            "X": -53.177734,
-            "Y": -3.33786E-06,
-            "Z": -72.129456
-          },
-          "TerritoryId": 1237,
+          "Position": [-53.177734, -3.33786E-06, -72.129456],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5409
         }

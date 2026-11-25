@@ -1,51 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020341,
-          "Position": {
-            "X": 61.17334,
-            "Y": -9.369123E-13,
-            "Z": -4.6845703
-          },
-          "StopDistance": 5,
-          "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1019466,
-          "Position": {
-            "X": 170.91626,
-            "Y": 13.02367,
-            "Z": -91.38635
-          },
-          "TerritoryId": 635,
+          "Position": [170.91626, 13.02367, -91.38635],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1020333,
-          "Position": {
-            "X": 164.14124,
-            "Y": 13.023669,
-            "Z": -92.30188
-          },
-          "TerritoryId": 635,
+          "Position": [164.14124, 13.023669, -92.30188],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002277,
-          "Position": {
-            "X": -97.550964,
-            "Y": 7.05,
-            "Z": 23.605652
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": ["[Ul'dah] Aetheryte Plaza","[Ul'dah] Gladiators' Guild"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [130,131]}}
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

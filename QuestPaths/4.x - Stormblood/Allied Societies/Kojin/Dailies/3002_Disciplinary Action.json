@@ -1,46 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "Position": [391.94043, -119.58932, -235.04329],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "TerritoryId": 613,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ]
-        },
-        {
           "DataId": 8250,
-          "Position": {
-            "X": 429.41656,
-            "Y": -0.5,
-            "Z": 506.90598
-          },
-          "TerritoryId": 613,
+          "Position": [429.41656, -0.5, 506.90598],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -49,7 +29,6 @@
               "NameId": 6885
             }
           ],
-          "Fly": true,
           "CombatItemUse": {
             "Condition": "Incapacitated",
             "ItemId": 2002424
@@ -73,12 +52,7 @@
         },
         {
           "DataId": 8250,
-          "Position": {
-            "X": 253.2539,
-            "Y": -0.5,
-            "Z": 479.6062
-          },
-          "TerritoryId": 613,
+          "Position": [253.2539, -0.5, 479.6062],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -87,7 +61,6 @@
               "NameId": 6885
             }
           ],
-          "Fly": true,
           "CombatItemUse": {
             "Condition": "Incapacitated",
             "ItemId": 2002424
@@ -111,12 +84,7 @@
         },
         {
           "DataId": 8250,
-          "Position": {
-            "X": 94.01074,
-            "Y": -0.5,
-            "Z": 491.844
-          },
-          "TerritoryId": 613,
+          "Position": [94.01074, -0.5, 491.844],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -125,7 +93,6 @@
               "NameId": 6885
             }
           ],
-          "Fly": true,
           "CombatItemUse": {
             "Condition": "Incapacitated",
             "ItemId": 2002424
@@ -148,12 +115,7 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
-          "Position": {
-            "X": -192.0653,
-            "Y": -0.5,
-            "Z": 628.25964
-          },
-          "TerritoryId": 613,
+          "Position": [-192.0653, -0.5, 628.25964],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -162,7 +124,6 @@
               "NameId": 6885
             }
           ],
-          "Fly": true,
           "CombatItemUse": {
             "Condition": "Incapacitated",
             "ItemId": 2002424
@@ -185,12 +146,7 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
-          "Position": {
-            "X": -370.41278,
-            "Y": -0.5,
-            "Z": 863.64526
-          },
-          "TerritoryId": 613,
+          "Position": [-370.41278, -0.5, 863.64526],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -199,7 +155,6 @@
               "NameId": 6885
             }
           ],
-          "Fly": true,
           "CombatItemUse": {
             "Condition": "Incapacitated",
             "ItemId": 2002424
@@ -225,20 +180,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "Position": [391.94043, -119.58932, -235.04329],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

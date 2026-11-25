@@ -1,206 +1,76 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000909,
-          "Position": {
-            "X": -326.37524,
-            "Y": 12.899658,
-            "Z": 9.994568
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 540.5525,
-            "Y": 10.00537,
-            "Z": 215.53333
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 545.74445,
-            "Y": 11.959542,
-            "Z": 214.24825
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 548.48584,
-            "Y": 12.640512,
-            "Z": 220.15768
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1005251,
-          "Position": {
-            "X": 550.46924,
-            "Y": 12.147732,
-            "Z": 220.9353
-          },
-          "StopDistance": 5,
-          "TerritoryId": 137,
+          "Position": [550.46924, 12.147732, 220.9353],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 542.48083,
-            "Y": 8.70027,
-            "Z": 398.26666
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
-        },
-        {
-          "Position": {
-            "X": 585.3419,
-            "Y": 14.562424,
-            "Z": 379.80997
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1005252,
-          "Position": {
-            "X": 586.0226,
-            "Y": 14.562427,
-            "Z": 376.21106
-          },
-          "StopDistance": 5,
-          "TerritoryId": 137,
+          "Position": [586.0226, 14.562427, 376.21106],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006273,
-          "Position": {
-            "X": 619.0126,
-            "Y": 23.936245,
-            "Z": 455.10022
-          },
-          "TerritoryId": 137,
+          "Position": [619.0126, 23.936245, 455.10022],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1005253,
-          "Position": {
-            "X": 564.35486,
-            "Y": 20.617891,
-            "Z": 504.32593
-          },
-          "TerritoryId": 137,
+          "Position": [564.35486, 20.617891, 504.32593],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 515.26044,
-            "Y": 27.708418,
-            "Z": 469.322
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 449.59036,
-            "Y": 15.174555,
-            "Z": 377.2856
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1005254,
-          "Position": {
-            "X": 442.00806,
-            "Y": 15.793267,
-            "Z": 370.32104
-          },
-          "TerritoryId": 137,
+          "Position": [442.00806, 15.793267, 370.32104],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1005229,
-          "Position": {
-            "X": 522.9114,
-            "Y": 17.448051,
-            "Z": 456.35156
-          },
-          "TerritoryId": 137,
+          "Position": [522.9114, 17.448051, 456.35156],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -213,52 +83,34 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1005235,
-          "Position": {
-            "X": 684.3823,
-            "Y": 11.594438,
-            "Z": 411.94775
-          },
-          "StopDistance": 1,
-          "TerritoryId": 137,
+          "Position": [684.3823, 11.594438, 411.94775],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000909,
-          "Position": {
-            "X": -326.37524,
-            "Y": 12.899658,
-            "Z": 9.994568
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "Position": [-326.37524, 12.899658, 9.994568],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000909,
-          "Position": {
-            "X": -326.37524,
-            "Y": 12.899658,
-            "Z": 9.994568
-          },
-          "TerritoryId": 129,
+          "Position": [-326.37524, 12.899658, 9.994568],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1091
         }

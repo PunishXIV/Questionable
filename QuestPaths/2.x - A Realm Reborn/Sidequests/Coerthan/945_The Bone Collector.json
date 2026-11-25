@@ -1,57 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006478,
-          "Position": {
-            "X": -443.59503,
-            "Y": 217.9995,
-            "Z": -284.04675
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002179,
-          "Position": {
-            "X": -490.1656,
-            "Y": 152.20874,
-            "Z": -314.6258
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-490.1656, 152.20874, -314.6258],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006478,
-          "Position": {
-            "X": -443.59503,
-            "Y": 217.9995,
-            "Z": -284.04675
-          },
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

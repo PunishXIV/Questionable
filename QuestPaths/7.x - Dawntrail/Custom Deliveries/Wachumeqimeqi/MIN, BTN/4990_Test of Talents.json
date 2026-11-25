@@ -1,28 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047132,
-          "Position": {
-            "X": 217.36475,
-            "Y": -14.000001,
-            "Z": -5.6916504
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -34,19 +23,9 @@
         },
         {
           "DataId": 1047132,
-          "Position": {
-            "X": 217.36475,
-            "Y": -14.000001,
-            "Z": -5.6916504
-          },
-          "TerritoryId": 1185,
+          "Position": [217.36475, -14.000001, -5.6916504],
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 4991,
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "NextQuestId": 4991
         }
       ]
     }

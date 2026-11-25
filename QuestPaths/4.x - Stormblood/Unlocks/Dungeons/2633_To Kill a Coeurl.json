@@ -1,77 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019479,
-          "Position": {
-            "X": 86.22864,
-            "Y": 0,
-            "Z": 78.538086
-          },
-          "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1023611,
-          "Position": {
-            "X": 49.607056,
-            "Y": 23.640757,
-            "Z": -286.54926
-          },
-          "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "Position": [49.607056, 23.640757, -286.54926],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 635,
       "Steps": [
         {
-          "TerritoryId": 635,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 236,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1023611,
-          "Position": {
-            "X": 49.607056,
-            "Y": 23.640757,
-            "Z": -286.54926
-          },
-          "TerritoryId": 635,
-          "InteractionType": "CompleteQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "Position": [49.607056, 23.640757, -286.54926],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

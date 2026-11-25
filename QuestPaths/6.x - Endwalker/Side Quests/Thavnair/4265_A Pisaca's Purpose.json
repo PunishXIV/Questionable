@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,30 +8,14 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037703,
-          "Position": {
-            "X": 423.792,
-            "Y": 3.11688,
-            "Z": -269.716
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": 191.2356,
-            "Y": 8.472459,
-            "Z": 304.55252
-          },
-          "TerritoryId": 957,
+          "Position": [191.2356, 8.472459, 304.55252],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -40,41 +24,28 @@
               "RewardItemId": 2003216,
               "RewardItemCount": 1
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012063,
-          "Position": {
-            "X": 76.4554,
-            "Y": 14.4927,
-            "Z": -231.661
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true
+          "Position": [76.4554, 14.4927, -231.661],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012064,
-          "Position": {
-            "X": 59.4675,
-            "Y": 16.0202,
-            "Z": -253.664
-          },
-          "TerritoryId": 957,
+          "Position": [59.4675, 16.0202, -253.664],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -83,27 +54,13 @@
               "RewardItemId": 2003217,
               "RewardItemCount": 1
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037703,
-          "Position": {
-            "X": 423.792,
-            "Y": 3.11688,
-            "Z": -269.716
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

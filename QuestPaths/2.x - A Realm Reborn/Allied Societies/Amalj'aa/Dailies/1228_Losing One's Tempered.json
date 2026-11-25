@@ -1,39 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005550,
-          "Position": {
-            "X": 105.27197,
-            "Y": 15.359643,
-            "Z": -357.3816
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2003167,
-          "Position": {
-            "X": -88.06805,
-            "Y": -2.7869687,
-            "Z": -96.64889
-          },
-          "TerritoryId": 146,
+          "Position": [-88.06805, -2.7869687, -96.64889],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "KillEnemyDataIds": [79],
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -42,20 +24,13 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2},{"Low": 5}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2003169,
-          "Position": {
-            "X": -191.18036,
-            "Y": 3.6774292,
-            "Z": -162.00513
-          },
-          "TerritoryId": 146,
+          "Position": [-191.18036, 3.6774292, -162.00513],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "KillEnemyDataIds": [80],
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3},{"Low": 4},{"Low": 5}
@@ -64,17 +39,11 @@
             "Condition": "Incapacitated",
             "ItemId": 2001191
           },
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
           "DataId": 2003168,
-          "Position": {
-            "X": -155.44366,
-            "Y": 3.8604736,
-            "Z": -132.21948
-          },
-          "TerritoryId": 146,
+          "Position": [-155.44366, 3.8604736, -132.21948],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [80],
@@ -85,17 +54,11 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 4},{"Low": 5}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 2003170,
-          "Position": {
-            "X": -156.54236,
-            "Y": 6.3934937,
-            "Z": -54.76471
-          },
-          "TerritoryId": 146,
+          "Position": [-156.54236, 6.3934937, -54.76471],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [80],
@@ -106,17 +69,11 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         },
         {
           "DataId": 2003171,
-          "Position": {
-            "X": -18.387146,
-            "Y": 1.3274536,
-            "Z": -26.993225
-          },
-          "TerritoryId": 146,
+          "Position": [-18.387146, 1.3274536, -26.993225],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [81],
@@ -127,17 +84,11 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2},{"Low": 3}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
         },
         {
           "DataId": 2003172,
-          "Position": {
-            "X": -19.36377,
-            "Y": 0.47296143,
-            "Z": 15.182739
-          },
-          "TerritoryId": 146,
+          "Position": [-19.36377, 0.47296143, 15.182739],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [81],
@@ -148,17 +99,11 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2},{"Low": 4}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 2}]
         },
         {
           "DataId": 2003166,
-          "Position": {
-            "X": -69.44385,
-            "Y": -1.3275757,
-            "Z": -106.49274
-          },
-          "TerritoryId": 146,
+          "Position": [-69.44385, -1.3275757, -106.49274],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [79],
@@ -169,27 +114,13 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005550,
-          "Position": {
-            "X": 105.27197,
-            "Y": 15.359643,
-            "Z": -357.3816
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

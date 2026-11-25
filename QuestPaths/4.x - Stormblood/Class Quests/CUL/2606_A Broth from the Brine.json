@@ -1,147 +1,69 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 25.685099,
-            "Y": 50.999966,
-            "Z": -805.48645
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 30.655273,
-                  "Y": 50.999966,
-                  "Z": -822.07983
-                },
-                "TerritoryId": 156,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1020144,
-          "Position": {
-            "X": 30.655273,
-            "Y": 50.999966,
-            "Z": -822.07983
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [30.655273, 50.999966, -822.07983],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44.000008,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "Position": [-54.64258, 44.000008, -151.23218],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000915,
-          "Position": {
-            "X": 18.387085,
-            "Y": 47.600006,
-            "Z": -162.12714
-          },
-          "TerritoryId": 128,
+          "Position": [18.387085, 47.600006, -162.12714],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000918,
-          "Position": {
-            "X": 84.09241,
-            "Y": 44.399914,
-            "Z": 132.34143
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [84.09241, 44.399914, 132.34143],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 25.685099,
-            "Y": 50.999966,
-            "Z": -805.48645
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 30.655273,
-                  "Y": 50.999966,
-                  "Z": -822.07983
-                },
-                "TerritoryId": 156,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1020144,
-          "Position": {
-            "X": 30.655273,
-            "Y": 50.999966,
-            "Z": -822.07983
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [30.655273, 50.999966, -822.07983],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 156,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 156,
           "ItemId": 17936,
           "ItemCount": 1,
           "SkipConditions": {
@@ -154,30 +76,14 @@
         },
         {
           "DataId": 1020144,
-          "Position": {
-            "X": 30.655273,
-            "Y": 50.999966,
-            "Z": -822.07983
-          },
-          "TerritoryId": 156,
+          "Position": [30.655273, 50.999966, -822.07983],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1020144,
-          "Position": {
-            "X": 30.655273,
-            "Y": 50.999966,
-            "Z": -822.07983
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

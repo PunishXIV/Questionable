@@ -1,65 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1029832,
-          "Position": {
-            "X": 28.793701,
-            "Y": 82.78206,
-            "Z": 24.917969
-          },
-          "StopDistance": 5,
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1029833,
-          "Position": {
-            "X": -24.887512,
-            "Y": 82.2726,
-            "Z": -19.058533
-          },
-          "TerritoryId": 820,
+          "Position": [-24.887512, 82.2726, -19.058533],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1029834,
-          "Position": {
-            "X": -18.35669,
-            "Y": 82.597046,
-            "Z": -52.99463
-          },
-          "TerritoryId": 820,
+          "Position": [-18.35669, 82.597046, -52.99463],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1029833,
-          "Position": {
-            "X": -24.887512,
-            "Y": 82.2726,
-            "Z": -19.058533
-          },
-          "TerritoryId": 820,
+          "Position": [-24.887512, 82.2726, -19.058533],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

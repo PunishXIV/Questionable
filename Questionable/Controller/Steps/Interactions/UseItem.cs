@@ -1,67 +1,24 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.Text.SeStringHandling;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using AethernetShortcut = Questionable.Controller.Steps.Shared.AethernetShortcut;
 
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class UseItem
 {
-    internal sealed class Factory
-    (
-        IClientState clientState,
-        ILogger<Factory> logger)
-        : ITaskFactory
+    internal sealed class Factory(Configuration configuration) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.SinglePlayerDuty or EInteractionType.CompleteQuest)
             {
-                if (step.ItemId == null)
+                if (step.ItemId == null || Say.IsPreventedTurnIn(step, configuration))
                     return [];
             }
             else if (step.InteractionType != EInteractionType.UseItem)
                 return [];
             if (!step.ItemId.HasValue)
-                throw new ArgumentNullException(nameof(step.ItemId));
-
-            if (step.ItemId == QuestStep.VesperBayAetheryteTicket)
-            {
-                unsafe
-                {
-                    InventoryManager* inventoryManager = InventoryManager.Instance();
-                    if (inventoryManager->GetInventoryItemCount(step.ItemId.Value) == 0)
-                        return CreateVesperBayFallbackTask();
-                }
-
-                UseOnSelf task = new(quest.Id, step.ItemId.Value, step.CompletionQuestVariablesFlags);
-
-                int currentStepIndex = sequence.Steps.IndexOf(step);
-                QuestStep? nextStep = sequence.Steps.Skip(currentStepIndex + 1).FirstOrDefault();
-                Vector3? nextPosition = (nextStep ?? step).Position;
-                return
-                [
-                    task,
-                    new WaitCondition.Task(() => clientState.TerritoryType == 140,
-                        $"Wait(territory: {TerritoryData.GetNameAndId(140)})"),
-                    new MountStep.MountTask(140,
-                        nextPosition != null ? MountStep.EMountIf.AwayFromPosition : MountStep.EMountIf.Always,
-                        nextPosition),
-                    new MoveTask(
-                        TerritoryId: 140,
-                        new(-408.92343f, 23.167036f, -351.16223f),
-                        Mount: null,
-                        StopDistance: 0.25f,
-                        DataId: null,
-                        DisableNavmesh: true,
-                        Sprint: false,
-                        InteractionType: EInteractionType.WalkTo)
-                ];
-            }
+                throw new ArgumentException($"{nameof(step.ItemId)} is missing", nameof(step));
 
             MountStep.UnmountTask unmount = new();
             if (step.GroundTarget == true)
@@ -75,7 +32,7 @@ internal static class UseItem
                 else
                 {
                     if (!step.Position.HasValue)
-                        throw new ArgumentNullException(nameof(step.Position));
+                        throw new ArgumentException($"{nameof(step.Position)} is missing", nameof(step));
 
                     task = new UseOnPosition(quest.Id, step.Position.Value, step.ItemId.Value,
                         step.CompletionQuestVariablesFlags);
@@ -96,46 +53,48 @@ internal static class UseItem
             }
         }
 
-        private IEnumerable<ITask> CreateVesperBayFallbackTask()
-        {
-            logger.LogWarning("No vesper bay aetheryte tickets in inventory, navigating via ferry in Limsa instead");
-
-            uint npcId = 1003540;
-            ushort territoryId = 129;
-            Vector3 destination = new(-360.9217f, 8f, 38.92566f);
-            yield return new AetheryteShortcut.Task(Step: null, ElementId: null, EAetheryteLocation.Limsa, territoryId);
-            yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaArcanist);
-            yield return new WaitAtEnd.WaitDelay();
-            yield return new MoveTask(territoryId, destination, DataId: npcId, Sprint: false,
-                InteractionType: EInteractionType.WalkTo);
-            yield return new Interact.Task(npcId, Quest: null, EInteractionType.None, SkipMarkerCheck: true);
-        }
     }
 
-    internal interface IUseItemBase : ITask
+    internal interface IUseTask : ITask
     {
         ElementId? QuestId { get; }
         uint ItemId { get; }
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags { get; }
+        IList<QuestWorkValue?> CompletionFlags { get; }
         bool StartingCombat { get; }
     }
 
-    internal abstract class UseItemExecutorBase<T>
+    internal abstract class ExecutorBase<T>
     (
         ICondition condition,
-        ILogger logger) : TaskExecutor<T>
-    where T : class, IUseItemBase
+        ILogger logger,
+        IQuestGameState gameState,
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier) : TaskExecutor<T>, IToastAware
+    where T : class, IUseTask
     {
+        private const int MaxRefusals = 3;
+        private static readonly TimeSpan RefusalWindow = TimeSpan.FromSeconds(2);
+
         private DateTime _continueAt;
-        private int _itemCount;
         private bool _usedItem;
+        private DateTime? _usedAt;
+        private int _refusals;
+        private string? _lastRefusal;
 
         private ElementId? QuestId => Task.QuestId;
         protected uint ItemId => Task.ItemId;
-        private IList<QuestWorkValue?> CompletionQuestVariablesFlags => Task.CompletionQuestVariablesFlags;
+        private IList<QuestWorkValue?> CompletionFlags => Task.CompletionFlags;
         private bool StartingCombat => Task.StartingCombat;
 
-        protected abstract bool UseItem();
+        protected abstract bool Use();
+
+        private static string GetItemName(IDataManager dataManager, uint itemId)
+        {
+            string? name = itemId >= 2_000_000
+                ? dataManager.GetExcelSheet<Lumina.Excel.Sheets.EventItem>().GetRowOrDefault(itemId)?.Singular.ExtractText()
+                : dataManager.GetExcelSheet<Lumina.Excel.Sheets.Item>().GetRowOrDefault(itemId)?.Name.ExtractText();
+            return string.IsNullOrEmpty(name) ? itemId.ToString(CultureInfo.InvariantCulture) : name;
+        }
 
         protected override unsafe bool Start()
         {
@@ -143,68 +102,78 @@ internal static class UseItem
             if (inventoryManager == null)
                 throw new TaskException("No InventoryManager");
 
-            _itemCount = inventoryManager->GetInventoryItemCount(ItemId);
-            if (_itemCount == 0)
-                throw new TaskException($"Don't have any {ItemId} in inventory (checks NQ only)");
+            if (inventoryManager->GetInventoryItemCount(ItemId) == 0)
+                throw new NeedsPlayerException($"You don't have any {GetItemName(dataManager, ItemId)} (normal quality) in your inventory.");
 
-            ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = UseItem());
-            _continueAt = DateTime.Now.Add(GetRetryDelay());
+            UseNow();
             return true;
+        }
+
+        private void UseNow()
+        {
+            ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = Use());
+            _usedAt = DateTime.Now;
+            _continueAt = DateTime.Now.Add(GetRetryDelay());
+        }
+
+        // The game refuses some uses (in combat, wrong area, busy) with an error toast while UseItem still reports success.
+        internal static bool IsRefusalOfLastUse(bool usedItem, DateTime? usedAt, DateTime now) =>
+            usedItem && usedAt is { } at && now - at <= RefusalWindow;
+
+        public bool OnErrorToast(SeString message)
+        {
+            if (!IsRefusalOfLastUse(_usedItem, _usedAt, DateTime.Now))
+                return false;
+
+            if (toastClassifier.IsTooFarAway(message.TextValue) && Approach())
+            {
+                _usedItem = false;
+                _usedAt = null;
+                _continueAt = DateTime.Now.AddSeconds(3);
+                return false;
+            }
+
+            _usedItem = false;
+            _usedAt = null;
+            _refusals++;
+            _lastRefusal = message.TextValue;
+            _continueAt = DateTime.Now.AddSeconds(2);
+            logger.LogInformation("The game refused item {ItemId} ({Message}), attempt {Attempt}/{MaxAttempts}",
+                ItemId, _lastRefusal, _refusals, MaxRefusals);
+            return false;
         }
 
         public override unsafe ETaskResult Update()
         {
-            if (QuestId is QuestId realQuestId && QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags))
+            if (QuestId is QuestId realQuestId && QuestWorkUtils.HasCompletionFlags(CompletionFlags))
             {
-                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(realQuestId);
+                QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(realQuestId);
                 if (questWork != null &&
-                    QuestWorkUtils.MatchesQuestWork(CompletionQuestVariablesFlags, questWork))
+                    QuestWorkUtils.Matches(CompletionFlags, questWork))
                     return ETaskResult.TaskComplete;
             }
 
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
 
+            if (_refusals >= MaxRefusals)
+                throw new TaskException($"The game refused to use {GetItemName(dataManager, ItemId)}: {_lastRefusal}");
+
             if (StartingCombat && condition[ConditionFlag.InCombat])
                 return ETaskResult.TaskComplete;
 
-            if (ItemId == QuestStep.VesperBayAetheryteTicket && _usedItem)
-            {
-                InventoryManager* inventoryManager = InventoryManager.Instance();
-                if (inventoryManager == null)
-                {
-                    logger.LogWarning("InventoryManager is not available");
-                    return ETaskResult.StillRunning;
-                }
-
-                int itemCount = inventoryManager->GetInventoryItemCount(ItemId);
-                if (itemCount == _itemCount)
-                {
-                    // TODO Better handling for game-provided errors, i.e. reacting to the 'Could not use' messages. UseItem() is successful in this case (and returns 0)
-                    logger.LogInformation(
-                        "Attempted to use vesper bay aetheryte ticket, but it didn't consume an item - reattempting next frame");
-                    _usedItem = false;
-                    return ETaskResult.StillRunning;
-                }
-            }
-
             if (!_usedItem)
             {
-                ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = UseItem());
-                _continueAt = DateTime.Now.Add(GetRetryDelay());
+                UseNow();
                 return ETaskResult.StillRunning;
             }
 
             return ETaskResult.TaskComplete;
         }
 
-        private TimeSpan GetRetryDelay()
-        {
-            if (ItemId == QuestStep.VesperBayAetheryteTicket)
-                return TimeSpan.FromSeconds(11);
+        private static TimeSpan GetRetryDelay() => TimeSpan.FromSeconds(5);
 
-            return TimeSpan.FromSeconds(5);
-        }
+        protected virtual bool Approach() => false;
 
         public override bool ShouldInterruptOnDamage() => true;
     }
@@ -214,8 +183,8 @@ internal static class UseItem
         ElementId? QuestId,
         uint DataId,
         uint ItemId,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags,
-        bool StartingCombat = false) : IUseItemBase
+        IList<QuestWorkValue?> CompletionFlags,
+        bool StartingCombat = false) : IUseTask
     {
         public override string ToString() => $"UseItem({ItemId} on ground at {DataId})";
     }
@@ -224,10 +193,13 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnGroundExecutor> logger)
-        : UseItemExecutorBase<UseOnGround>(condition, logger)
+        ILogger<UseOnGroundExecutor> logger,
+        IQuestGameState gameState,
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier)
+        : ExecutorBase<UseOnGround>(condition, logger, gameState, dataManager, toastClassifier)
     {
-        protected override bool UseItem() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
+        protected override bool Use() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
     }
 
     internal sealed record UseOnPosition
@@ -235,8 +207,8 @@ internal static class UseItem
         ElementId? QuestId,
         Vector3 Position,
         uint ItemId,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags,
-        bool StartingCombat = false) : IUseItemBase
+        IList<QuestWorkValue?> CompletionFlags,
+        bool StartingCombat = false) : IUseTask
     {
         public override string ToString() => $"UseItem({ItemId} on ground at {Position.ToString("G5", CultureInfo.InvariantCulture)})";
     }
@@ -245,10 +217,13 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnPosition> logger)
-        : UseItemExecutorBase<UseOnPosition>(condition, logger)
+        ILogger<UseOnPositionExecutor> logger,
+        IQuestGameState gameState,
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier)
+        : ExecutorBase<UseOnPosition>(condition, logger, gameState, dataManager, toastClassifier)
     {
-        protected override bool UseItem() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
+        protected override bool Use() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
     }
 
     internal sealed record UseOnObject
@@ -256,8 +231,8 @@ internal static class UseItem
         ElementId? QuestId,
         uint DataId,
         uint ItemId,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags,
-        bool StartingCombat = false) : IUseItemBase
+        IList<QuestWorkValue?> CompletionFlags,
+        bool StartingCombat = false) : IUseTask
     {
         public override string ToString() => $"UseItem({ItemId} on {DataId})";
     }
@@ -265,19 +240,38 @@ internal static class UseItem
     internal sealed class UseOnObjectExecutor
     (
         GameFunctions gameFunctions,
+        MovementController movementController,
         ICondition condition,
-        ILogger<UseOnObject> logger)
-        : UseItemExecutorBase<UseOnObject>(condition, logger)
+        ILogger<UseOnObjectExecutor> logger,
+        IQuestGameState gameState,
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier)
+        : ExecutorBase<UseOnObject>(condition, logger, gameState, dataManager, toastClassifier)
     {
-        protected override bool UseItem() => gameFunctions.UseItem(Task.DataId, ItemId);
+        private const int MaxApproaches = 5;
+        private int _approaches;
+
+        protected override bool Use() => gameFunctions.UseItem(Task.DataId, ItemId);
+
+        protected override bool Approach()
+        {
+            if (_approaches >= MaxApproaches || gameFunctions.FindObjectByDataId(Task.DataId) is not { } target)
+                return false;
+
+            _approaches++;
+            logger.LogInformation("Too far away to use item {ItemId} on {DataId}, moving closer ({Attempt}/{Max})",
+                ItemId, Task.DataId, _approaches, MaxApproaches);
+            movementController.NavigateTo(EMovementType.Quest, target.BaseId, target.Position, new() { StopDistance = 2f });
+            return true;
+        }
     }
 
     internal sealed record UseOnSelf
     (
         ElementId? QuestId,
         uint ItemId,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags,
-        bool StartingCombat = false) : IUseItemBase
+        IList<QuestWorkValue?> CompletionFlags,
+        bool StartingCombat = false) : IUseTask
     {
         public override string ToString() => $"UseItem({ItemId})";
     }
@@ -286,9 +280,12 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnSelf> logger)
-        : UseItemExecutorBase<UseOnSelf>(condition, logger)
+        ILogger<UseOnSelfExecutor> logger,
+        IQuestGameState gameState,
+        IDataManager dataManager,
+        TaskToastClassifier toastClassifier)
+        : ExecutorBase<UseOnSelf>(condition, logger, gameState, dataManager, toastClassifier)
     {
-        protected override bool UseItem() => gameFunctions.UseItem(ItemId);
+        protected override bool Use() => gameFunctions.UseItem(ItemId);
     }
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,113 +8,43 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027387,
-          "Position": {
-            "X": -762.295,
-            "Y": 115.18499,
-            "Z": -325.21558
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -762.295,
-                  "Y": 115.18499,
-                  "Z": -325.21558
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1027381,
-          "Position": {
-            "X": -775.2346,
-            "Y": 202.04468,
-            "Z": -321.67548
-          },
-          "TerritoryId": 813,
+          "Position": [-775.2346, 202.04468, -321.67548],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "QW: 0 64 0 0 0 0 -> QW: 1(1) 48 0 0 0 128",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 1027391,
-          "Position": {
-            "X": -654.47473,
-            "Y": 55.75751,
-            "Z": -142.83972
-          },
-          "TerritoryId": 813,
+          "Position": [-654.47473, 55.75751, -142.83972],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "QW: 1(1) 48 0 0 0 128 -> QW: 2(2) 32 0 0 0 160",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 1027392,
-          "Position": {
-            "X": -668.7877,
-            "Y": 57.62082,
-            "Z": -129.44226
-          },
-          "TerritoryId": 813,
+          "Position": [-668.7877, 57.62082, -129.44226],
           "InteractionType": "Interact",
           "$": "QW: 2(2) 32 0 0 0 160 -> QW: 3(3) 16 0 0 0 176",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
-          "$": "Exit house to not confuse vnavmesh",
-          "Position": {
-            "X": -660.9481,
-            "Y": 55.757515,
-            "Z": -144.9755
-          },
-          "TerritoryId": 813,
-          "InteractionType": "None"
-        },
-        {
           "DataId": 1027395,
-          "Position": {
-            "X": -618.06665,
-            "Y": 56.75789,
-            "Z": -148.24146
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-618.06665, 56.75789, -148.24146],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027387,
-          "Position": {
-            "X": -762.295,
-            "Y": 115.18499,
-            "Z": -325.21558
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

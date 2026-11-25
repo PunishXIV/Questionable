@@ -1,49 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023304,
-          "Position": {
-            "X": 2.7008667,
-            "Y": 2.0507723E-06,
-            "Z": -52.84204
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023306,
-          "Position": {
-            "X": -80.338745,
-            "Y": -6.9700804,
-            "Z": -49.118835
-          },
-          "TerritoryId": 628,
+          "Position": [-80.338745, -6.9700804, -49.118835],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023305,
-          "Position": {
-            "X": 4.409851,
-            "Y": 2.100081E-06,
-            "Z": -52.903076
-          },
-          "TerritoryId": 628,
+          "Position": [4.409851, 2.100081E-06, -52.903076],
           "InteractionType": "UseItem",
           "ItemId": 2002339
         }
@@ -51,18 +32,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1023304,
-          "Position": {
-            "X": 2.7008667,
-            "Y": 2.0507723E-06,
-            "Z": -52.84204
-          },
-          "TerritoryId": 628,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

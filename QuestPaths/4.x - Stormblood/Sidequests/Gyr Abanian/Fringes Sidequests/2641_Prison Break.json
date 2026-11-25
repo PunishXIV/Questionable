@@ -1,39 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1022954,
-          "Position": {
-            "X": -658.289,
-            "Y": 130,
-            "Z": -536.492
-          },
-          "TerritoryId": 612,
+          "Position": [-658.289, 130, -536.492],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: issuer 1022954 (Maelstrom officer)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -274.23923,
-            "Y": 69.26243,
-            "Z": -663.6735
-          },
-          "TerritoryId": 612,
-          "StopDistance": 1,
+          "Position": [-274.23923, 69.26243, -663.6735],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7565,
@@ -46,35 +34,24 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1022955,
-          "Position": {
-            "X": -274.574,
-            "Y": 69.2851,
-            "Z": -663.741
-          },
-          "TerritoryId": 612,
+          "Position": [-274.574, 69.2851, -663.741],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo location -> 1022955 (Maelstrom officer)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1022954,
-          "Position": {
-            "X": -658.289,
-            "Y": 130,
-            "Z": -536.492
-          },
-          "TerritoryId": 612,
+          "Position": [-658.289, 130, -536.492],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo turn-in -> 1022954 (Maelstrom officer)"
         }
       ]

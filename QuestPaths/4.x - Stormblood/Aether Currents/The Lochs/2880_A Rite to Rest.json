@@ -1,52 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1022990,
-          "Position": {
-            "X": -524.58997,
-            "Y": 8.688546,
-            "Z": -19.424805
-          },
-          "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
-          "Position": {
-            "X": -64.335396,
-            "Y": -0.3,
-            "Z": -341.21475
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 2.4417508,
-            "Y": 0.14104319,
-            "Z": -387.06744
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -89.3111,
-            "Y": 42.999996,
-            "Z": -677.6074
-          },
-          "TerritoryId": 621,
+          "Position": [-89.3111, 42.999996, -677.6074],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -60,19 +26,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1022990,
-          "Position": {
-            "X": -524.58997,
-            "Y": 8.688546,
-            "Z": -19.424805
-          },
-          "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

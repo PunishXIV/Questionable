@@ -1,22 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1016089,
-          "Position": {
-            "X": -799.46594,
-            "Y": -133.2695,
-            "Z": -404.1352
-          },
-          "StopDistance": 3,
-          "TerritoryId": 401,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "Position": [-799.46594, -133.2695, -404.1352],
+          "InteractionType": "WalkTo"
         }
       ]
     }

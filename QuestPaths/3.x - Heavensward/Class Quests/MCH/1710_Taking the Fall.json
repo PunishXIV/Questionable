@@ -1,59 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
+          "Position": [-154.31458, 16.999992, -53.3609],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "Position": {
-            "X": 306.3128,
-            "Y": 70.876,
-            "Z": -411.73788
-          },
-          "TerritoryId": 401,
+          "Position": [306.3128, 70.876, -411.73788],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4484
           ],
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -62,28 +37,17 @@
         },
         {
           "DataId": 2006274,
-          "Position": {
-            "X": 305.0736,
-            "Y": 71.06128,
-            "Z": -413.44324
-          },
-          "TerritoryId": 401,
+          "Position": [305.0736, 71.06128, -413.44324],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": 382.58212,
-            "Y": 71.00385,
-            "Z": -313.4424
-          },
-          "TerritoryId": 401,
+          "Position": [382.58212, 71.00385, -313.4424],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4617
           ],
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -92,12 +56,7 @@
         },
         {
           "DataId": 2006275,
-          "Position": {
-            "X": 384.02368,
-            "Y": 71.39697,
-            "Z": -311.90973
-          },
-          "TerritoryId": 401,
+          "Position": [384.02368, 71.39697, -311.90973],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -105,20 +64,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
+          "Position": [-154.31458, 16.999992, -53.3609],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1711
         }
       ]

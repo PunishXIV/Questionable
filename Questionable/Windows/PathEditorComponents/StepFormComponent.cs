@@ -1,10 +1,4 @@
 using System.Text.Json;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common.Ui;
 
 namespace Questionable.Windows.PathEditorComponents;
 
@@ -15,15 +9,7 @@ internal sealed class StepFormComponent
     private static readonly string[] InteractionTypeLabels =
         InteractionTypes.Select(x => x.ToString()).ToArray();
 
-    private static readonly EAetheryteLocation?[] AetheryteValues =
-        new EAetheryteLocation?[] { null }
-            .Concat(Enum.GetValues<EAetheryteLocation>().Cast<EAetheryteLocation?>())
-            .ToArray();
-    private static readonly string[] AetheryteLabels =
-        new[] { "-" }.Concat(Enum.GetValues<EAetheryteLocation>().Select(x => x.ToString())).ToArray();
-
     private string _interactionTypeSearch = string.Empty;
-    private string _aetheryteSearch = string.Empty;
 
     public void Draw(PathEditorSession session)
     {
@@ -90,15 +76,6 @@ internal sealed class StepFormComponent
             session.Dirty = true;
         }
 
-        EAetheryteLocation? selectedAetheryte = step.AetheryteShortcut;
-        ImGuiComponentsLocal.DrawSearchableCombo(_L("Aetheryte Shortcut"), AetheryteValues, AetheryteLabels,
-            step.AetheryteShortcut, ref _aetheryteSearch, ref selectedAetheryte);
-        if (selectedAetheryte != step.AetheryteShortcut)
-        {
-            step.AetheryteShortcut = selectedAetheryte;
-            session.Dirty = true;
-        }
-
         string comment = step.Comment ?? string.Empty;
         ImGui.SetNextItemWidth(inputWidth);
         if (ImGui.InputTextWithHint(_L("Comment"), _L("Shown in the debug overlay"), ref comment, 256))
@@ -107,15 +84,8 @@ internal sealed class StepFormComponent
             session.Dirty = true;
         }
 
-        bool fly = step.Fly == true;
-        if (ImGui.Checkbox(_L("Fly"), ref fly))
-        {
-            step.Fly = fly ? true : null;
-            session.Dirty = true;
-        }
-
         DrawValidationHints(step);
-        DrawStepActions(session);
+        DrawActions(session);
         DrawJsonPreview(step);
     }
 
@@ -127,7 +97,7 @@ internal sealed class StepFormComponent
             Hint(QstTheme.Amber, _L("This interaction type usually needs a Data ID."));
 
         if (step.Position == null
-            && step.InteractionType is EInteractionType.WalkTo or EInteractionType.Jump or EInteractionType.Dive)
+            && step.InteractionType is EInteractionType.WalkTo or EInteractionType.Jump)
             Hint(QstTheme.Amber, _L("This interaction type usually needs a Position."));
 
         if (step.TerritoryId == 0)
@@ -139,7 +109,7 @@ internal sealed class StepFormComponent
         ImGui.TextColored(color, text);
     }
 
-    private static void DrawStepActions(PathEditorSession session)
+    private static void DrawActions(PathEditorSession session)
     {
         QuestSequence? sequence = session.SelectedSequence;
         QuestStep? step = session.SelectedStep;
@@ -149,7 +119,7 @@ internal sealed class StepFormComponent
         ImGui.Spacing();
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Duplicate")))
         {
-            sequence.Steps.Insert(session.SelectedStepIndex + 1, CloneStep(step));
+            sequence.Steps.Insert(session.SelectedStepIndex + 1, Clone(step));
             session.SelectedStepIndex++;
             session.Dirty = true;
         }
@@ -172,7 +142,7 @@ internal sealed class StepFormComponent
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy))
             ImGui.SetClipboardText(json);
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Copy this step as JSON"));
+            QstWidgets.Tooltip(_L("Copy this step as JSON"));
 
         using ImRaii.ColorDisposable textColor = ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted);
         using (ImRaii.PushFont(UiBuilder.MonoFont))
@@ -181,7 +151,7 @@ internal sealed class StepFormComponent
         }
     }
 
-    private static QuestStep CloneStep(QuestStep step)
+    private static QuestStep Clone(QuestStep step)
     {
         return JsonSerializer.SerializeToNode(step, JsonOptions.Default)!.Deserialize<QuestStep>()!;
     }

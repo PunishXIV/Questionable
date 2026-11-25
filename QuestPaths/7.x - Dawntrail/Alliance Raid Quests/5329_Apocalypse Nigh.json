@@ -1,72 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1054336,
-          "Position": {
-            "X": -325.73438,
-            "Y": 18.38136,
-            "Z": -100.41962
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054339,
-          "Position": {
-            "X": -167.19312,
-            "Y": 16.031612,
-            "Z": -333.3944
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-167.19312, 16.031612, -333.3944],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1054342,
-          "Position": {
-            "X": -262.92822,
-            "Y": 32,
-            "Z": -658.2894
-          },
-          "TerritoryId": 1191,
+          "Position": [-262.92822, 32, -658.2894],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1054357,
-          "Position": {
-            "X": 141.2832,
-            "Y": 42,
-            "Z": -351.9494
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "Position": [141.2832, 42, -351.9494],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,67 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032590,
-          "Position": {
-            "X": 265.3086,
-            "Y": 7.1558266,
-            "Z": -237.78137
-          },
-          "StopDistance": 4,
-          "TerritoryId": 815,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 2010961,
-          "Position": {
-            "X": -6.9733887,
-            "Y": 3.982544,
-            "Z": 221.36255
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "Position": [-6.9733887, 3.982544, 221.36255],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": 268.15204,
-            "Y": 7.1558266,
-            "Z": -237.94643
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
-          "Fly": true
-        },
-        {
           "DataId": 1032590,
-          "Position": {
-            "X": 265.3086,
-            "Y": 7.1558266,
-            "Z": -237.78137
-          },
-          "StopDistance": 4,
-          "TerritoryId": 815,
+          "Position": [265.3086, 7.1558266, -237.78137],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3975
         }

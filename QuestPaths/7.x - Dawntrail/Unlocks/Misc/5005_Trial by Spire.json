@@ -1,41 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051454,
-          "Position": {
-            "X": 376.2417,
-            "Y": 50.749996,
-            "Z": 148.51599
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] True Vue"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1049466,
-          "Position": {
-            "X": -247.88281,
-            "Y": 30,
-            "Z": -631.15894
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "Position": [-247.88281, 30, -631.15894],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

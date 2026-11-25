@@ -1,77 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047810,
-          "Position": {
-            "X": -47.470886,
-            "Y": -10.00001,
-            "Z": 98.649536
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "DataId": 1048029,
-          "Position": {
-            "X": -711.1162,
-            "Y": -199.5873,
-            "Z": 624.1703
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "TargetTerritoryId": 1189,
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "ExcelSheet": "EventPathMove",
-              "Prompt": 3997700,
-              "Yes": true
-            }
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -573.30396,
-            "Y": -153.01865,
-            "Z": 529.2467
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1047813,
-          "Position": {
-            "X": -826.32184,
-            "Y": -297.8752,
-            "Z": 875.15063
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-826.32184, -297.8752, 875.15063],
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,16 +23,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1222,
       "Steps": [
         {
           "DataId": 1047818,
-          "Position": {
-            "X": -0.9918823,
-            "Y": 0.20000042,
-            "Z": -51.499268
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1222,
+          "Position": [-0.9918823, 0.20000042, -51.499268],
           "InteractionType": "Interact"
         }
       ]
@@ -99,79 +37,48 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047829,
-          "Position": {
-            "X": -0.13739014,
-            "Y": 105.00008,
-            "Z": 848.7831
-          },
-          "StopDistance": 7,
-          "DisableNavmesh": true,
-          "TerritoryId": 1192,
+          "Position": [-0.13739014, 105.00008, 848.7831],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047833,
-          "Position": {
-            "X": -26.657532,
-            "Y": 53.200012,
-            "Z": 794.67444
-          },
-          "TerritoryId": 1192,
+          "Position": [-26.657532, 53.200012, 794.67444],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 1192,
       "Steps": [
         {
-          "TerritoryId": 1192,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Living Memory - Leynode Mnemo",
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": 3.7348669,
-            "Y": 50.12495,
-            "Z": 660.56006
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "WalkTo",
-          "$": "Leynode Mnemo to Meso Terminal waypoint"
+          "Aetheryte": "Living Memory - Leynode Mnemo"
         },
         {
           "DataId": 1047837,
-          "Position": {
-            "X": -0.045776367,
-            "Y": 50.124947,
-            "Z": 365.16357
-          },
-          "TerritoryId": 1192,
+          "Position": [-0.045776367, 50.124947, 365.16357],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047842,
-          "Position": {
-            "X": 0.015197754,
-            "Y": 50.124947,
-            "Z": 361.95923
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1192,
+          "Position": [0.015197754, 50.124947, 361.95923],
           "InteractionType": "CompleteQuest"
         }
       ]

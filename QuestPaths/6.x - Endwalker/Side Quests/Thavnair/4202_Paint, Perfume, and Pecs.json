@@ -1,21 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039379,
-          "Position": {
-            "X": -478.3246,
-            "Y": 39.636753,
-            "Z": 95.47571
-          },
-          "TerritoryId": 957,
+          "Position": [-478.3246, 39.636753, 95.47571],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -28,46 +23,33 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039380,
-          "Position": {
-            "X": -386.862,
-            "Y": 21.832859,
-            "Z": 206.77502
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-386.862, 21.832859, 206.77502],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039380,
-          "Position": {
-            "X": -386.862,
-            "Y": 21.832859,
-            "Z": 206.77502
-          },
-          "TerritoryId": 957,
+          "Position": [-386.862, 21.832859, 206.77502],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2011911,
-          "Position": {
-            "X": -387.28925,
-            "Y": 21.744019,
-            "Z": 208.88062
-          },
-          "TerritoryId": 957,
+          "Position": [-387.28925, 21.744019, 208.88062],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -78,34 +60,18 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039380,
-          "Position": {
-            "X": -386.862,
-            "Y": 21.832859,
-            "Z": 206.77502
-          },
-          "TerritoryId": 957,
+          "Position": [-386.862, 21.832859, 206.77502],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1039379,
-          "Position": {
-            "X": -478.3246,
-            "Y": 39.636753,
-            "Z": 95.47571
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

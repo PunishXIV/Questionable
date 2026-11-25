@@ -1,3 +1,4 @@
+using System.Text.Json;
 using NSubstitute;
 using Questionable.Domain;
 using Questionable.Model.Questing;
@@ -6,6 +7,13 @@ namespace Questionable.Tests.TestData;
 
 internal static class QuestTestData
 {
+    public static Quest LoadQuest(ElementId id, EmbeddedQuest embedded)
+    {
+        using var stream = embedded.OpenStream();
+        var root = JsonSerializer.Deserialize<QuestRoot>(stream)!;
+        return CreateQuest(id, [.. root.QuestSequence]);
+    }
+
     public static Quest CreateQuest(ElementId id, params QuestSequence[] sequences) =>
         new()
         {
@@ -25,9 +33,6 @@ internal static class QuestTestData
     public static QuestSequence Seq(byte sequence, params QuestStep[] steps) =>
         new() { Sequence = sequence, Steps = [.. steps] };
 
-    /// <summary>
-    /// Builds a quest graph the same way runtime does: sequence lives on the quest, step comes from that sequence.
-    /// </summary>
     public static (Quest Quest, QuestSequence Sequence, QuestStep Step) FactoryContext(
         ElementId id,
         byte sequenceNumber,

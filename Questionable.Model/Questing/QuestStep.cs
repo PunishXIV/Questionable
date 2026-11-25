@@ -9,7 +9,6 @@ namespace Questionable.Model.Questing;
 public sealed class QuestStep
 {
     public const float DefaultStopDistance = 3f;
-    public const int VesperBayAetheryteTicket = 30362;
 
     [JsonConstructor]
     public QuestStep()
@@ -36,36 +35,21 @@ public sealed class QuestStep
     public EInteractionType InteractionType { get; set; }
 
     public float? NpcWaitDistance { get; set; }
+    public bool? Mount { get; set; }
     public ushort? TargetTerritoryId { get; set; }
     public float? DelaySecondsAtStart { get; set; }
     public uint? PickUpItemId { get; set; }
 
     public bool Disabled { get; set; }
-    public bool DisableNavmesh { get; set; }
-    public bool? Mount { get; set; }
-    public bool? Fly { get; set; }
-    public bool? Land { get; set; }
-    public bool? Sprint { get; set; }
-    public bool? IgnoreDistanceToObject { get; set; }
-    public bool? RestartNavigationIfCancelled { get; set; }
     public bool? AllowHighQuality { get; set; }
     public EItemQuality ItemQuality { get; set; } = EItemQuality.Any;
     public string? Comment { get; set; }
 
-    /// <summary>
-    ///     Only used when attuning to an aetheryte.
-    /// </summary>
     public EAetheryteLocation? Aetheryte { get; set; }
 
-    /// <summary>
-    ///     Only used when attuning to an aethernet shard.
-    /// </summary>
     [JsonConverter(typeof(AethernetShardConverter))]
     public EAetheryteLocation? AethernetShard { get; set; }
 
-    public EAetheryteLocation? AetheryteShortcut { get; set; }
-
-    public AethernetShortcut? AethernetShortcut { get; set; }
     public uint? AetherCurrentId { get; set; }
 
     public uint? ItemId { get; set; }
@@ -78,6 +62,8 @@ public sealed class QuestStep
     public EStatus? Status { get; set; }
     public EExtendedClassJob TargetClass { get; set; } = EExtendedClassJob.None;
     public uint? TaxiStandId { get; set; }
+    public uint? PetId { get; set; }
+    public byte? Battlehorn { get; set; }
 
     public EEnemySpawnType? EnemySpawnType { get; set; }
     public List<uint> KillEnemyDataIds { get; set; } = [];
@@ -121,20 +107,5 @@ public sealed class QuestStep
             EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte => 10f,
             var _ => DefaultStopDistance
         };
-    }
-
-    /// <summary>
-    ///     Only relevant for the step 0 in sequence 0: Whether this step is valid for teleporting to it.
-    /// </summary>
-    /// <returns></returns>
-    public bool IsTeleportableForPriorityQuests()
-    {
-        if (AetheryteShortcut != null || AethernetShortcut?.From != null)
-            return true;
-
-        if (InteractionType == EInteractionType.UseItem && ItemId == VesperBayAetheryteTicket)
-            return true;
-
-        return false;
     }
 }

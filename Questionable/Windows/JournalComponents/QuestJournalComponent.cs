@@ -1,8 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
 [RegisterSingleton]
@@ -11,47 +6,29 @@ internal sealed class QuestJournalComponent
     JournalData journalData,
     QuestRegistry questRegistry,
     QuestFunctions questFunctions,
-    UiUtils uiUtils,
-    QuestTooltipComponent questTooltipComponent,
-    IDalamudPluginInterface pluginInterface,
     QuestJournalUtils questJournalUtils,
-    QuestValidator questValidator,
-    QuestController questController,
+    JournalTable journalTable,
     RedoUtil redoUtil,
-    Configuration configuration)
+    Configuration configuration,
+    IDalamudPluginInterface pluginInterface)
 {
-    private readonly Dictionary<JournalData.Category, JournalCounts> _categoryCounts = [];
-    private readonly Dictionary<JournalData.Genre, JournalCounts> _genreCounts = [];
-    private readonly Dictionary<JournalData.Section, JournalCounts> _sectionCounts = [];
+    private readonly Dictionary<JournalData.Category, Counts> _categoryCounts = [];
+    private readonly Dictionary<JournalData.Genre, Counts> _genreCounts = [];
+    private readonly Dictionary<JournalData.Section, Counts> _sectionCounts = [];
 
+    private readonly JournalRefresh _refresh = new(TimeSpan.FromSeconds(2));
     private List<FilteredSection> _filteredSections = [];
 
-    internal FilterConfiguration Filter { get; } = new();
+    internal FilterOptions Filter { get; } = FilterOptions.From(configuration.Journal);
 
     private bool _allOpen;
     private bool _applyOpenState = true;
-    private int _results;
+    private int _resultCount;
 
-    public void DrawQuests()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Quests"));
-        if (!tab)
-            return;
-
-        if (QstWidgets.SectionHeader(_L("Explanation"), "JournalExplanation", defaultOpen: false))
-        {
-            ImGui.Text(_L("The list below contains all quests that appear in your journal."));
-            ImGui.BulletText(_L("'Supported' lists quests that Questionable can do for you"));
-            ImGui.BulletText(_L("'Completed' lists quests your current character has completed."));
-            ImGui.BulletText(
-                _L("Not all quests can be completed even if they're listed as available, e.g. starting city quest chains."));
-            ImGui.BulletText(_L("The text in the Supported column indicates the last time a quest path was reported to work perfectly."));
-            ImGui.TextColoredWrapped(QstTheme.Amber, _L("Quests can be added to Priority Quests, either individually or by group, with the right click menu."));
-
-            ImGui.Spacing();
-            ImGui.Separator();
-            ImGui.Spacing();
-        }
+        if (_refresh.Tick(DateTime.Now, RecountChanged))
+            ApplyFilter();
 
         QuestJournalUtils.ShowFilterContextMenu(this);
 
@@ -68,14 +45,16 @@ internal sealed class QuestJournalComponent
             }
         }
 
+        ImGuiComponents.HelpMarker(_L("Right-click a quest or a group to add it to Priority Quests."));
+
         ImGui.SameLine();
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize("9999").X - ImGui.GetStyle().ItemSpacing.X);
-        if (ImGui.InputTextWithHint(string.Empty, _L("Search quests and categories"), ref Filter.SearchText, 256))
+        if (ImGui.InputTextWithHint("##QuestSearch", _L("Search quests and categories"), ref Filter.SearchText, 256))
         {
-            var state = Filter.SearchText.Length > 1;
-            if (state != _allOpen)
+            var openAll = Filter.SearchText.Length > 1;
+            if (openAll != _allOpen)
             {
-                _allOpen = state;
+                _allOpen = openAll;
                 _applyOpenState = true;
             }
             UpdateFilter();
@@ -83,19 +62,14 @@ internal sealed class QuestJournalComponent
 
         ImGui.SameLine();
         ImGui.SetNextItemWidth(ImGui.CalcTextSize("9999").X);
-        ImGui.TextUnformatted($"{(_results != 0 ? _results : "-")}");
-        _results = 0;
+        ImGui.TextUnformatted($"{(_resultCount != 0 ? _resultCount : "-")}");
+        _resultCount = 0;
 
         if (_filteredSections.Count > 0)
         {
-            using ImRaii.TableDisposable table = ImRaii.Table("Quests", 3, ImGuiTableFlags.NoSavedSettings);
+            using ImRaii.TableDisposable table = journalTable.Begin("Quests", pinHeader: true);
             if (!table)
                 return;
-
-            ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.NoHide);
-            ImGui.TableSetupColumn(_L("Supported"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
-            ImGui.TableSetupColumn(_L("Completed"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
-            ImGui.TableHeadersRow();
 
             foreach (FilteredSection section in _filteredSections)
                 DrawSection(section);
@@ -106,257 +80,127 @@ internal sealed class QuestJournalComponent
         _applyOpenState = false;
     }
 
-    private void DrawSection(FilteredSection filter)
+    private void DrawSection(FilteredSection section)
     {
         (int available, int total, int obtainable, int completed) =
-            _sectionCounts.GetValueOrDefault(filter.Section, new());
+            _sectionCounts.GetValueOrDefault(section.Section, new());
         if (total == 0)
             return;
 
-        ImGui.TableNextRow();
-        ImGui.TableNextColumn();
+        JournalTable.BeginRow();
 
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
-        bool open = ImGui.TreeNodeEx(filter.Section.Name, ImGuiTreeNodeFlags.SpanFullWidth);
+        bool open;
+        using (journalTable.WideName())
+            open = ImGui.TreeNodeEx(section.Section.Name, ImGuiTreeNodeFlags.SpanFullWidth);
 
-        ImGui.TableNextColumn();
-        DrawCount(available, total);
-        ImGui.TableNextColumn();
-        DrawCount(completed, obtainable);
+        journalTable.Counts(available, total, completed, obtainable);
 
         if (open)
         {
-            foreach (FilteredCategory category in filter.Categories)
+            foreach (FilteredCategory category in section.Categories)
                 DrawCategory(category);
 
             ImGui.TreePop();
         }
     }
 
-    private void DrawCategory(FilteredCategory filter)
+    private void DrawCategory(FilteredCategory category)
     {
         (int available, int total, int obtainable, int completed) =
-            _categoryCounts.GetValueOrDefault(filter.Category, new());
+            _categoryCounts.GetValueOrDefault(category.Category, new());
         if (total == 0)
             return;
 
-        ImGui.TableNextRow();
-        ImGui.TableNextColumn();
+        JournalTable.BeginRow();
 
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
-        bool open = ImGui.TreeNodeEx(filter.Category.Name, ImGuiTreeNodeFlags.SpanFullWidth);
+        bool open;
+        using (journalTable.WideName())
+            open = ImGui.TreeNodeEx(category.Category.Name, ImGuiTreeNodeFlags.SpanFullWidth);
 
-        ImGui.TableNextColumn();
-        DrawCount(available, total);
-        ImGui.TableNextColumn();
-        DrawCount(completed, obtainable);
+        journalTable.Counts(available, total, completed, obtainable);
 
         if (open)
         {
-            foreach (FilteredGenre genre in filter.Genres)
+            foreach (FilteredGenre genre in category.Genres)
                 DrawGenre(genre);
 
             ImGui.TreePop();
         }
     }
 
-    private void DrawGenre(FilteredGenre filter)
+    private void DrawGenre(FilteredGenre genre)
     {
-        (int supported, int total, int obtainable, int completed) = _genreCounts.GetValueOrDefault(filter.Genre, new());
+        (int supported, int total, int obtainable, int completed) = _genreCounts.GetValueOrDefault(genre.Genre, new());
         if (total == 0)
             return;
 
-        ImGui.TableNextRow();
-        ImGui.TableNextColumn();
+        JournalTable.BeginRow();
 
-        string genreName = filter.Genre.Name;
-        if (filter.Genre.Id != JournalData.GenreInstantQuests && questRegistry.TryGetQuest(filter.Quests[0].QuestId, out Quest? q))
+        string genreName = genre.Genre.Name;
+        if (genre.Genre.Id != JournalData.GenreInstantQuests && genre.Quests[0].QuestId is QuestId &&
+            questRegistry.TryGetQuest(genre.Quests[0].QuestId, out Quest? firstQuest))
         {
-            RedoIndex redoIndex = redoUtil.GetChapter(q.Id.Value);
+            RedoIndex redoIndex = redoUtil.GetChapter(firstQuest.Id.Value);
             if (redoIndex.Index != -1)
-                genreName = $"{filter.Genre.Name} ({redoIndex.Chapter.ChapterName})";
+                genreName = string.Create(CultureInfo.CurrentCulture, $"{genre.Genre.Name} ({redoIndex.Chapter.ChapterName})");
         }
 
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
-        bool open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
+        bool open;
+        using (journalTable.WideName())
+            open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
 
-        questJournalUtils.ShowQuestGroupContextMenu($"DrawGenre{filter.Genre.Id}", filter.Quests);
+        questJournalUtils.ShowGroupContextMenu($"DrawGenre{genre.Genre.Id}", genre.Quests);
 
-        ImGui.TableNextColumn();
-        DrawCount(supported, total);
-        ImGui.TableNextColumn();
-        DrawCount(completed, obtainable);
+        journalTable.Counts(supported, total, completed, obtainable);
 
         if (open)
         {
-            foreach (IQuestInfo quest in filter.Quests)
-                DrawQuest(quest);
+            foreach (IQuestInfo quest in genre.Quests)
+            {
+                journalTable.QuestRow(quest, nameof(QuestJournalComponent));
+                _resultCount++;
+            }
 
             ImGui.TreePop();
         }
     }
 
-    internal void DrawQuest(IQuestInfo questInfo) => DrawQuest((QuestInfo)questInfo);
-
-    internal void DrawQuest(QuestInfo questInfo)
+    internal void SaveFilter()
     {
-        bool fate = false;
-        //bool repeatable = false;
-        string lastChecked = "";
-        string lastCheckedLong = "";
-        string questDescription = $"{questInfo.Name} ({questInfo.QuestId})";
-        if (questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest))
-        {
-            if (quest.Root.LastChecked.Date != null)
-            {
-                lastCheckedLong = "\n" + _LF("Last checked: {0}", quest.Root.LastChecked);
-                int since = (int)quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays;
-                if (since >= 0 && since < 7)
-                    lastChecked = $"{since}d";
-                else if (since >= 7)
-                    lastChecked = $"{since / 7}w";
-            }
-            RedoIndex redoIndex = redoUtil.GetChapter(quest.Id.Value);
-            if (redoIndex.Index == 0)
-                questDescription = $"{questDescription}   ({redoIndex.Chapter.ChapterName})";
-
-            if ((quest.Root.Comment ?? "").Contains("FATE"))
-                fate = true;
-            /*if ((quest.Root.Comment ?? "").Contains("Repeatable"))
-            {
-                repeatable = true;
-            }*/
-        }
-
-        ImGui.TableNextRow();
-        ImGui.TableNextColumn();
-        ImGui.TreeNodeEx(questDescription,
-            ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
-
-        if (ImGui.IsItemHovered())
-        {
-            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-            questTooltipComponent.Draw(questInfo);
-        }
-
-        if (ImGui.IsItemClicked())
-            questJournalUtils.MoveToQuestLocation(questInfo);
-
-        questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestJournalComponent));
-
-        if (quest != null && questController.PriorityManager.Contains(quest))
-        {
-            ImGui.SameLine();
-            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                ImGui.TextColored(QstTheme.Amber, FontAwesomeIcon.ExclamationCircle.ToIconString());
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("This quest is in Priority Quests."));
-        }
-
-        ImGui.TableNextColumn();
-        float spacing;
-        using (IDisposable font = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-        {
-            spacing = ImGui.GetColumnWidth() / 2 - ImGui.CalcTextSize(FontAwesomeIcon.Check.ToIconString()).X;
-        }
-
-        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + spacing);
-        string defaultReason;
-        string reason = defaultReason = _L("<no reason specified>");
-        if (quest != null)
-            reason = (quest.Root.Comment ?? defaultReason).Split('\n', 2)[0];
-        string addendum = lastCheckedLong + (!reason.Equals(defaultReason, StringComparison.Ordinal) ? "\n" + _LF("Reason: {0}", reason) : "");
-
-        if (QuestFunctions.IsQuestRemoved(questInfo.QuestId))
-        {
-            if (uiUtils.ChecklistItem(lastChecked, QstTheme.TextMuted, FontAwesomeIcon.Minus))
-                ImGui.SetTooltip(_L("This quest is not available.") + addendum);
-        }
-        else if (fate)
-        {
-            if (uiUtils.ChecklistItem(lastChecked, QstTheme.Accent, FontAwesomeIcon.ExclamationTriangle))
-                ImGui.SetTooltip(_L("This quest requires completing a FATE.") + addendum);
-        }
-        else if (quest is { Root.Disabled: false })
-        {
-            List<ValidationIssue> issues = questValidator.GetIssues(quest.Id);
-            if (issues.Any(x => x.Severity == EIssueSeverity.Error))
-            {
-                if (uiUtils.ChecklistItem(lastChecked, QstTheme.Danger, FontAwesomeIcon.ExclamationTriangle))
-                    ImGui.SetTooltip(_L("This quest could not be loaded.") + addendum);
-            }
-            else if (issues.Count > 0)
-            {
-                if (uiUtils.ChecklistItem(lastChecked, QstTheme.Info, FontAwesomeIcon.InfoCircle))
-                    ImGui.SetTooltip(_L("This quest had validation issues.") + addendum);
-            }
-            else if (uiUtils.ChecklistItem(lastChecked, complete: true))
-                ImGui.SetTooltip(_L("This quest is supported.") + addendum);
-        }
-        else
-        {
-            if (quest == null)
-                reason = ("No quest path.");
-            if (uiUtils.ChecklistItem(lastChecked, complete: false))
-                ImGui.SetTooltip(_L("This quest is not yet supported.") + addendum);
-        }
-        if (configuration.Stop.QuestsToStopWhenAccepted.Contains(questInfo.QuestId) || configuration.Stop.QuestsToStopAfter.Contains(questInfo.QuestId))
-        {
-            ImGui.SameLine();
-            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                ImGui.TextColored(QstTheme.Amber, FontAwesomeIcon.StopCircle.ToIconString());
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("This quest is in Stop Conditions."));
-        }
-
-        ImGui.TableNextColumn();
-        (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(questInfo.QuestId);
-        uint? iconOverride = QuestJournalUtils.GetIconOverride(questInfo, icon);
-        if (uiUtils.ChecklistItem(text.Split(':')[0], color, icon, iconOverride: iconOverride))
-            ImGui.SetTooltip(text);
-
-        _results++;
-    }
-
-    internal static void DrawCount(int count, int total)
-    {
-        string len = 9999.ToString(CultureInfo.CurrentCulture);
-        using var monoFont = ImRaii.PushFont(UiBuilder.MonoFont);
-
-        if (total == 0)
-            ImGui.TextColored(QstTheme.TextMuted, $"{" ".PadLeft(len.Length)} - {" ".PadRight(len.Length)}");
-        else if (count == 0)
-        {
-            ImGui.TextUnformatted($"{"-".PadLeft(len.Length)} / {total.ToString(CultureInfo.CurrentCulture).PadRight(len.Length)}?");
-        }
-        else
-        {
-            string text =
-                $"{count.ToString(CultureInfo.CurrentCulture).PadLeft(len.Length)} / {total.ToString(CultureInfo.CurrentCulture).PadRight(len.Length)}";
-            if (count == total)
-                ImGui.TextColored(QstTheme.Success, text);
-            else
-                ImGui.TextUnformatted(text);
-        }
+        Filter.SaveTo(configuration.Journal);
+        pluginInterface.SavePluginConfig(configuration);
     }
 
     public void UpdateFilter()
     {
+        ApplyFilter();
+        RefreshCounts();
+    }
+
+    private void ApplyFilter() =>
         _filteredSections = journalData.Sections
             .Select(x => FilterSection(x, Filter))
             .Where(x => x.Categories.Count > 0)
             .ToList();
 
+    private bool RecountChanged()
+    {
+        Dictionary<JournalData.Genre, Counts> before = new(_genreCounts);
         RefreshCounts();
+        return before.Count != _genreCounts.Count ||
+               _genreCounts.Any(x => !before.TryGetValue(x.Key, out Counts? old) || old != x.Value);
     }
 
-    private FilteredSection FilterSection(JournalData.Section section, FilterConfiguration filter)
+    private FilteredSection FilterSection(JournalData.Section section, FilterOptions filter)
     {
         IEnumerable<FilteredCategory> filteredCategories;
-        if (IsCategorySectionGenreMatch(filter, section.Name))
+        if (IsNameMatch(filter, section.Name))
         {
             filteredCategories = section.Categories
                 .Select(x => FilterCategory(x, filter.WithoutName()));
@@ -370,10 +214,10 @@ internal sealed class QuestJournalComponent
         return new(section, filteredCategories.Where(x => x.Genres.Count > 0).ToList());
     }
 
-    private FilteredCategory FilterCategory(JournalData.Category category, FilterConfiguration filter)
+    private FilteredCategory FilterCategory(JournalData.Category category, FilterOptions filter)
     {
         IEnumerable<FilteredGenre> filteredGenres;
-        if (IsCategorySectionGenreMatch(filter, category.Name))
+        if (IsNameMatch(filter, category.Name))
         {
             filteredGenres = category.Genres
                 .Select(x => FilterGenre(x, filter.WithoutName()));
@@ -387,10 +231,18 @@ internal sealed class QuestJournalComponent
         return new(category, filteredGenres.Where(x => x.Quests.Count > 0).ToList());
     }
 
-    private FilteredGenre FilterGenre(JournalData.Genre genre, FilterConfiguration filter)
+    internal static bool NothingLeft(IEnumerable<ElementId> quests, Func<ElementId, bool> isComplete,
+        Func<ElementId, bool> isUnobtainable) =>
+        quests.All(x => isComplete(x) || isUnobtainable(x));
+
+    private FilteredGenre FilterGenre(JournalData.Genre genre, FilterOptions filter)
     {
+        if (filter.HideCompleted && NothingLeft(genre.Quests.Select(x => x.QuestId),
+                questFunctions.IsQuestComplete, x => questFunctions.IsQuestUnobtainable(x)))
+            return new(genre, []);
+
         IEnumerable<IQuestInfo> filteredQuests;
-        if (IsCategorySectionGenreMatch(filter, genre.Name))
+        if (IsNameMatch(filter, genre.Name))
         {
             filteredQuests = genre.Quests
                 .Where(x => IsQuestMatch(filter.WithoutName(), x));
@@ -424,7 +276,7 @@ internal sealed class QuestJournalComponent
 
         foreach (JournalData.Category category in journalData.Categories)
         {
-            List<JournalCounts> counts = _genreCounts
+            List<Counts> counts = _genreCounts
                 .Where(x => category.Genres.Contains(x.Key))
                 .Select(x => x.Value)
                 .ToList();
@@ -437,7 +289,7 @@ internal sealed class QuestJournalComponent
 
         foreach (JournalData.Section section in journalData.Sections)
         {
-            List<JournalCounts> counts = _categoryCounts
+            List<Counts> counts = _categoryCounts
                 .Where(x => section.Categories.Contains(x.Key))
                 .Select(x => x.Value)
                 .ToList();
@@ -452,23 +304,23 @@ internal sealed class QuestJournalComponent
     [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Required by LogoutDelegate signature")]
     internal void ClearCounts(int type, int code)
     {
-        foreach (KeyValuePair<JournalData.Genre, JournalCounts> genreCount in _genreCounts.ToList())
+        foreach (KeyValuePair<JournalData.Genre, Counts> genreCount in _genreCounts.ToList())
             _genreCounts[genreCount.Key] = genreCount.Value with { Completed = 0 };
 
-        foreach (KeyValuePair<JournalData.Category, JournalCounts> categoryCount in _categoryCounts.ToList())
+        foreach (KeyValuePair<JournalData.Category, Counts> categoryCount in _categoryCounts.ToList())
             _categoryCounts[categoryCount.Key] = categoryCount.Value with { Completed = 0 };
 
-        foreach (KeyValuePair<JournalData.Section, JournalCounts> sectionCount in _sectionCounts.ToList())
+        foreach (KeyValuePair<JournalData.Section, Counts> sectionCount in _sectionCounts.ToList())
             _sectionCounts[sectionCount.Key] = sectionCount.Value with { Completed = 0 };
     }
 
-    private static bool IsCategorySectionGenreMatch(FilterConfiguration filter, string name)
+    private static bool IsNameMatch(FilterOptions filter, string name)
     {
         return string.IsNullOrEmpty(filter.SearchText) ||
                name.Contains(filter.SearchText, StringComparison.CurrentCultureIgnoreCase);
     }
 
-    private bool IsQuestMatch(FilterConfiguration filter, IQuestInfo questInfo)
+    private bool IsQuestMatch(FilterOptions filter, IQuestInfo questInfo)
     {
         if (!string.IsNullOrEmpty(filter.SearchText) &&
             !(questInfo.Name.Contains(filter.SearchText, StringComparison.CurrentCultureIgnoreCase) || questInfo.QuestId.ToString() == filter.SearchText))
@@ -479,7 +331,8 @@ internal sealed class QuestJournalComponent
         if (filter.AvailableOnly && !questFunctions.IsReadyToAcceptQuest(questInfo.QuestId))
             return false;
 
-        if (filter.BlueOnly && ((QuestInfo)questInfo).AvailableIcon is uint icon && !Enumerable.Range(40, 10).Contains((int)icon % 100))
+        if (filter.BlueOnly && (questInfo is not QuestInfo info ||
+                                (info.AvailableIcon is uint icon && !Enumerable.Range(40, 10).Contains((int)icon % 100))))
             return false;
 
         if (filter.HideNoPaths &&
@@ -503,15 +356,15 @@ internal sealed class QuestJournalComponent
 
     private sealed record FilteredGenre(JournalData.Genre Genre, List<IQuestInfo> Quests);
 
-    private sealed record JournalCounts(int Available, int Total, int Obtainable, int Completed)
+    private sealed record Counts(int Available, int Total, int Obtainable, int Completed)
     {
-        public JournalCounts()
+        public Counts()
             : this(0, 0, 0, 0)
         {
         }
     }
 
-    internal sealed class FilterConfiguration
+    internal sealed class FilterOptions
     {
         public bool AvailableOnly;
         public bool BlueOnly;
@@ -521,15 +374,27 @@ internal sealed class QuestJournalComponent
         public bool HideRepeatable;
         public string SearchText = string.Empty;
 
-        public bool AdvancedFiltersActive =>
-            AvailableOnly ||
-            BlueOnly ||
-            HideNoPaths ||
-            HideCompleted ||
-            HideUnobtainable ||
-            HideRepeatable;
+        public static FilterOptions From(Configuration.JournalConfiguration saved) => new()
+        {
+            AvailableOnly = saved.AvailableOnly,
+            BlueOnly = saved.BlueOnly,
+            HideNoPaths = saved.HideNoPaths,
+            HideCompleted = saved.HideCompleted,
+            HideUnobtainable = saved.HideUnobtainable,
+            HideRepeatable = saved.HideRepeatable,
+        };
 
-        public FilterConfiguration WithoutName()
+        public void SaveTo(Configuration.JournalConfiguration saved)
+        {
+            saved.AvailableOnly = AvailableOnly;
+            saved.BlueOnly = BlueOnly;
+            saved.HideNoPaths = HideNoPaths;
+            saved.HideCompleted = HideCompleted;
+            saved.HideUnobtainable = HideUnobtainable;
+            saved.HideRepeatable = HideRepeatable;
+        }
+
+        public FilterOptions WithoutName()
         {
             return new()
             {

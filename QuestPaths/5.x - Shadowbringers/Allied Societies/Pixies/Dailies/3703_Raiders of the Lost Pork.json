@@ -1,39 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1032169,
-          "Position": {
-            "X": -423.33105,
-            "Y": 25.599815,
-            "Z": 265.94946
-          },
-          "TerritoryId": 816,
+          "Position": [-423.33105, 25.599815, 265.94946],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               48
             ],null,null,null,null
@@ -41,14 +22,8 @@
         },
         {
           "DataId": 1032168,
-          "Position": {
-            "X": -431.3573,
-            "Y": 24.720499,
-            "Z": 251.60596
-          },
-          "TerritoryId": 816,
+          "Position": [-431.3573, 24.720499, 251.60596],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               32
             ],null,null,null,null
@@ -56,14 +31,8 @@
         },
         {
           "DataId": 1032167,
-          "Position": {
-            "X": -416.52557,
-            "Y": 20.303928,
-            "Z": 221.75928
-          },
-          "TerritoryId": 816,
+          "Position": [-416.52557, 20.303928, 221.75928],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               16
             ],null,null,null,null
@@ -73,19 +42,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

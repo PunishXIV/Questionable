@@ -1,119 +1,57 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013089,
-          "Position": {
-            "X": -751.6747,
-            "Y": -35.95642,
-            "Z": 18.722778
-          },
-          "StopDistance": 7,
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1013093,
-          "Position": {
-            "X": -749.1112,
-            "Y": -35.956425,
-            "Z": 22.049255
-          },
-          "TerritoryId": 401,
+          "Position": [-749.1112, -35.956425, 22.049255],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "Position": {
-            "X": -756.4804,
-            "Y": -13.877342,
-            "Z": -121.33485
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Jump",
-          "StopDistance": 1,
-          "JumpDestination": {
-            "Position": {
-              "X": -759.4263,
-              "Y": -9.201294,
-              "Z": -110.85681
-            }
-          }
-        },
-        {
           "DataId": 2006229,
-          "Position": {
-            "X": -759.4263,
-            "Y": -9.201294,
-            "Z": -110.85681
-          },
-          "TerritoryId": 401,
+          "Position": [-759.4263, -9.201294, -110.85681],
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818117,
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": -755.9033,
-            "Y": -14.112402,
-            "Z": -177.06593
-          },
-          "TerritoryId": 401,
-          "InteractionType": "WalkTo"
+          "AetherCurrentId": 2818117
         },
         {
           "DataId": 1013090,
-          "Position": {
-            "X": -650.93463,
-            "Y": -58.6966,
-            "Z": -337.2397
-          },
-          "TerritoryId": 401,
+          "Position": [-650.93463, -58.6966, -337.2397],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "TerritoryId": 401,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "The Sea of Clouds - Ok' Zundu"
         },
         {
           "DataId": 2005695,
-          "Position": {
-            "X": -621.51526,
-            "Y": -58.51837,
-            "Z": -319.4171
-          },
-          "TerritoryId": 401,
+          "Position": [-621.51526, -58.51837, -319.4171],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179693
         },
         {
           "DataId": 1013095,
-          "Position": {
-            "X": -560.69275,
-            "Y": -52.30738,
-            "Z": -427.57312
-          },
-          "TerritoryId": 401,
+          "Position": [-560.69275, -52.30738, -427.57312],
           "InteractionType": "CompleteQuest"
         }
       ]

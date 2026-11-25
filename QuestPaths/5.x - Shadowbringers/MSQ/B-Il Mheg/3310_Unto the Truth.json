@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1028981,
-          "Position": {
-            "X": -405.17285,
-            "Y": 57.405117,
-            "Z": 440.45154
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2009827,
-          "Position": {
-            "X": -408.6214,
-            "Y": 57.99951,
-            "Z": 408.1941
-          },
-          "TerritoryId": 816,
+          "Position": [-408.6214, 57.99951, 408.1941],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKMB109_03310_SYSTEM_000_050"
@@ -38,15 +23,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2009827,
-          "Position": {
-            "X": -408.6214,
-            "Y": 57.99951,
-            "Z": 408.1941
-          },
-          "TerritoryId": 816,
+          "Position": [-408.6214, 57.99951, 408.1941],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKMB109_03310_SYSTEM_000_060"
@@ -57,15 +38,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2009827,
-          "Position": {
-            "X": -408.6214,
-            "Y": 57.99951,
-            "Z": 408.1941
-          },
-          "TerritoryId": 816,
+          "Position": [-408.6214, 57.99951, 408.1941],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKMB109_03310_SYSTEM_000_070"
@@ -76,31 +53,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1028995,
-          "Position": {
-            "X": -360.70807,
-            "Y": 45.90706,
-            "Z": 470.72546
-          },
-          "StopDistance": 7,
-          "TerritoryId": 816,
+          "Position": [-360.70807, 45.90706, 470.72546],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1028999,
-          "Position": {
-            "X": -603.1434,
-            "Y": 36.117786,
-            "Z": -230.0603
-          },
-          "TerritoryId": 816,
+          "Position": [-603.1434, 36.117786, -230.0603],
           "InteractionType": "CompleteQuest"
         }
       ]

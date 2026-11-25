@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,81 +8,39 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030711,
-          "Position": {
-            "X": 778.2252,
-            "Y": 23.037851,
-            "Z": -67.0329
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 778.2252,
-                  "Y": 23.037851,
-                  "Z": -67.0329
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1030713,
-          "Position": {
-            "X": 324.5747,
-            "Y": 15.679742,
-            "Z": -47.348755
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [324.5747, 15.679742, -47.348755],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 316.6554,
-            "Y": 9.71209,
-            "Z": -7.782411
-          },
-          "TerritoryId": 813,
+          "Position": [316.6554, 9.71209, -7.782411],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [10367],
-          "Fly": true
+          "KillEnemyDataIds": [10367]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1030713,
-          "Position": {
-            "X": 324.5747,
-            "Y": 15.679742,
-            "Z": -47.348755
-          },
-          "TerritoryId": 813,
-          "StopDistance": 0.25,
+          "Position": [324.5747, 15.679742, -47.348755],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3459
         }
       ]

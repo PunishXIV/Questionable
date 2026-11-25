@@ -1,58 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048296,
-          "Position": {
-            "X": 111.40613,
-            "Y": 11.997235,
-            "Z": -52.018066
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019260,
-          "Position": {
-            "X": 417.5935,
-            "Y": 68.02854,
-            "Z": -110.24652
-          },
-          "TerritoryId": 614,
+          "Position": [417.5935, 68.02854, -110.24652],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1019257,
-          "Position": {
-            "X": 468.55872,
-            "Y": 68.02771,
-            "Z": -93.21747
-          },
-          "TerritoryId": 614,
+          "Position": [468.55872, 68.02771, -93.21747],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1019262,
-          "Position": {
-            "X": 445.76172,
-            "Y": 58.67623,
-            "Z": -155.62683
-          },
-          "TerritoryId": 614,
+          "Position": [445.76172, 58.67623, -155.62683],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -60,54 +33,34 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1048302,
-          "Position": {
-            "X": 399.95422,
-            "Y": 76.04927,
-            "Z": -114.885254
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [399.95422, 76.04927, -114.885254],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1048304,
-          "Position": {
-            "X": 421.3473,
-            "Y": 1.7278045,
-            "Z": -278.70605
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [421.3473, 1.7278045, -278.70605],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1048296,
-          "Position": {
-            "X": 111.40613,
-            "Y": 11.997235,
-            "Z": -52.018066
-          },
-          "TerritoryId": 628,
+          "Position": [111.40613, 11.997235, -52.018066],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "NextQuestId": 4833
         }
       ]

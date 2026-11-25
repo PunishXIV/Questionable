@@ -1,74 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048780,
-          "Position": {
-            "X": -103.868225,
-            "Y": 25.199324,
-            "Z": -525.41394
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": {
-            "X": -95.05529,
-            "Y": 25.199324,
-            "Z": -523.8404
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 2014195,
-          "Position": {
-            "X": -314.2901,
-            "Y": 0.38146973,
-            "Z": -211.26117
-          },
-          "TerritoryId": 1188,
+          "Position": [-314.2901, 0.38146973, -211.26117],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17656
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048780,
-          "Position": {
-            "X": -103.868225,
-            "Y": 25.199324,
-            "Z": -525.41394
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

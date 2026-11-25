@@ -1,13 +1,13 @@
 ﻿using PunishLib;
 using Questionable.AutoGen;
 using WrathCombo.API;
-using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 
 namespace Questionable;
 
 public sealed class QuestionablePlugin(
     IDalamudPluginInterface pluginInterface,
     IClientState clientState,
+    IDutyState dutyState,
     ITargetManager targetManager,
     IFramework framework,
     IGameGui gameGui,
@@ -25,7 +25,13 @@ public sealed class QuestionablePlugin(
     IGameInteropProvider gameInteropProvider,
     ITextureProvider textureProvider) : IAsyncDalamudPlugin
 {
-    private ServiceProvider? _serviceProvider;
+    private readonly PluginLifetime _lifetime = new();
+#pragma warning disable CA2213 // These captured references are owned and disposed by PluginLifetime's DI container.
+    private DalamudInitializer? _initializer;
+    private QuestController? _questController;
+    private PathDataUpdater? _pathDataUpdater;
+#pragma warning restore CA2213
+    private Configuration? _runtimeConfiguration;
     private bool _ecommonsInitialized;
 
     public async Task LoadAsync(CancellationToken cancellationToken)
@@ -36,7 +42,9 @@ public sealed class QuestionablePlugin(
         try
         {
             // Off the thread-pool thread LoadAsync runs on; Dalamud warns against blocking there.
-            _serviceProvider = await Task.Run(BuildAndInitialize, cancellationToken).ConfigureAwait(false);
+            await _lifetime.InitializeAsync(
+                () => Task.Run(BuildAndInitialize, cancellationToken), StopEventSourcesAsync, ReleaseGlobals,
+                e => pluginLog.Error(e, "Unable to finish plugin cleanup"), cancellationToken).ConfigureAwait(false);
         }
         catch (OperationCanceledException)
         {
@@ -44,66 +52,104 @@ public sealed class QuestionablePlugin(
         }
         catch (Exception)
         {
-            chatGui.PrintError(_L("Unable to load plugin, check /xllog for details"), _L("Questionable"));
+            try
+            {
+                chatGui.PrintError(_L("Unable to load plugin, check /xllog for details"), _L("Questionable"));
+            }
+            catch
+            {
+                // Reporting a load failure must not replace its original exception.
+            }
             throw;
         }
     }
 
-    public async ValueTask DisposeAsync()
-    {
-        var serviceProvider = Interlocked.Exchange(ref _serviceProvider, value: null);
+    public ValueTask DisposeAsync() => _lifetime.DisposeAsync();
 
-        // Unhook Dalamud event sources (Framework.Update, UiBuilder callbacks, toast hooks, ...)
-        // before disposing the container. MS.DI marks the root scope as disposed at the *start* of
-        // Dispose/DisposeAsync, so any GetService call after that point throws ObjectDisposedException.
-        // Under IAsyncDalamudPlugin.DisposeAsync the framework thread can tick between "scope flagged
-        // disposed" and DalamudInitializer being reached in the disposal walk, and other singletons'
-        // per-frame container access would blow up. Disposing DalamudInitializer up-front removes the
-        // event subscriptions before that window opens; its Dispose is idempotent so MS.DI's later
-        // disposal pass is a no-op.
+    private async ValueTask StopEventSourcesAsync()
+    {
+        var initializer = Interlocked.Exchange(ref _initializer, null);
+        var questController = Interlocked.Exchange(ref _questController, null);
         try
         {
-            serviceProvider?.GetService<DalamudInitializer>()?.Dispose();
+            // Stop background mutations before the container starts disposing their dependencies.
+#pragma warning disable CA1849 // Cancel now; the DI container awaits updater disposal after event sources are stopped.
+            Interlocked.Exchange(ref _pathDataUpdater, null)?.Dispose();
+#pragma warning restore CA1849
         }
-        catch (ObjectDisposedException)
+        finally
         {
-            // Container already torn down elsewhere — nothing to unhook.
-        }
-
-        if (serviceProvider is IAsyncDisposable asyncDisposable)
-            await asyncDisposable.DisposeAsync().ConfigureAwait(false);
-        else
-#pragma warning disable MA0042 // Do not use blocking calls when the calling method is async
-            serviceProvider?.Dispose();
-#pragma warning restore MA0042 // Do not use blocking calls when the calling method is async
-
-        if (_ecommonsInitialized)
-        {
-            _ecommonsInitialized = false;
-            ECommonsMain.Dispose();
+            if (!framework.IsFrameworkUnloading && (initializer != null || questController != null))
+            {
+                try
+                {
+                    await framework.RunOnFrameworkThread(() =>
+                    {
+                        try
+                        {
+                            initializer?.Dispose();
+                        }
+                        finally
+                        {
+                            questController?.Shutdown();
+                        }
+                    }).ConfigureAwait(false);
+                }
+                catch
+                {
+                    // Dispatch can fail during framework shutdown; still detach the event sources.
+                    initializer?.Dispose();
+#pragma warning disable CA2219 // PluginLifetime logs this failure and still runs container/global cleanup.
+                    throw;
+#pragma warning restore CA2219
+                }
+            }
+            else
+                initializer?.Dispose();
         }
     }
 
-    private ServiceProvider BuildAndInitialize()
+    private void ReleaseGlobals()
+    {
+        try
+        {
+            if (Interlocked.Exchange(ref _runtimeConfiguration, null) is { } configuration)
+                Configuration.ClearRuntime(configuration);
+        }
+        finally
+        {
+            if (_ecommonsInitialized)
+            {
+                _ecommonsInitialized = false;
+                ECommonsMain.Dispose();
+            }
+        }
+    }
+
+    private void BuildAndInitialize()
     {
         ECommonsMain.Init(pluginInterface, this, Module.DalamudReflector);
         _ecommonsInitialized = true;
-        WrathIPCWrapper.Init(pluginInterface, WrathError.IPCNotReady | WrathError.Unexpected);
+        WrathIPCWrapper.Init(pluginInterface);
         PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin()
         {
-            Developer = "alydev",
-            Sponsor = "https://ko-fi.com/alydev"
+            Developer = "alydev and Kagekazu",
         });
 
+        HashSet<string> namespaces = typeof(QuestionablePlugin).Assembly.GetTypes()
+            .Select(x => x.Namespace).OfType<string>().ToHashSet();
         ServiceCollection serviceCollection = [];
         serviceCollection.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Trace)
             .ClearProviders()
-            .AddDalamudLogger(pluginLog, t => t[(t.LastIndexOf('.') + 1)..]));
+            .AddDalamudLogger(pluginLog, t => LogCategory(t, namespaces)));
+        serviceCollection.AddSingleton<RecentLog>();
+        serviceCollection.AddSingleton<ILoggerProvider>(x => x.GetRequiredService<RecentLog>());
 
         // Dalamud services supplied to the plugin constructor - Injectio can't discover these.
         serviceCollection.AddSingleton<IAsyncDalamudPlugin>(this);
         serviceCollection.AddSingleton(pluginInterface);
         serviceCollection.AddSingleton(clientState);
+        serviceCollection.AddSingleton(dutyState);
         serviceCollection.AddSingleton(targetManager);
         serviceCollection.AddSingleton(framework);
         serviceCollection.AddSingleton(gameGui);
@@ -125,7 +171,6 @@ public sealed class QuestionablePlugin(
         var savedConfig = (Configuration?)pluginInterface.GetPluginConfig();
         if (savedConfig != null && savedConfig.Version != Configuration.PluginConfigVersion)
         {
-            // Backup config when version changes
             pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), overwrite: true);
             savedConfig.Version = Configuration.PluginConfigVersion;
         }
@@ -133,50 +178,71 @@ public sealed class QuestionablePlugin(
         var configuration = savedConfig ?? new Configuration();
         if (!configuration.AutoRedeemOffResetApplied)
         {
-            configuration.ApplyAutoRedeemRewardItemsInitialReset();
+            configuration.ResetAutoRedeem();
             configuration.AutoRedeemOffResetApplied = true;
             pluginInterface.SavePluginConfig(configuration);
         }
 
-        serviceCollection.AddSingleton(configuration);
-        Questionable.Utils.LocalizeShortcut.Initialize(configuration, dataManager, clientState);
-        Windows.Common.Ui.QstTheme.Initialize(configuration);
+        if (!configuration.StepRefreshResetApplied)
+        {
+            configuration.ResetAutoStepRefresh();
+            configuration.StepRefreshResetApplied = true;
+            pluginInterface.SavePluginConfig(configuration);
+        }
 
-        // Injectio-discovered registrations: every class carrying [RegisterSingleton]/[RegisterTransient],
-        // and the [RegisterServices] task-registration module in ServiceCollectionExtensions.
+        if (!configuration.ProblemStopApplied)
+        {
+            configuration.KeepProblemStop();
+            configuration.ProblemStopApplied = true;
+            pluginInterface.SavePluginConfig(configuration);
+        }
+
+        if (!configuration.ClaimMailOnApplied)
+        {
+            configuration.TurnOnClaimMail();
+            configuration.ClaimMailOnApplied = true;
+            pluginInterface.SavePluginConfig(configuration);
+        }
+
+        serviceCollection.AddSingleton(configuration);
+        _runtimeConfiguration = configuration;
+        Configuration.InitializeRuntime(configuration);
+        LocalizeShortcut.Initialize(configuration, dataManager, clientState);
+        QstTheme.Initialize(configuration);
+
         serviceCollection.AddQuestionable();
 
-        // Questpath auto-generation (Questionable/AutoGen): reads game data through Dalamud's Lumina
-        // instance, which QuestGameData borrows without disposing.
         serviceCollection.AddSingleton(sp =>
             new QuestGameData(sp.GetRequiredService<IDataManager>().GameData));
 
-        // Same-instance forwards: AetheryteData and JsonSchemaValidator each satisfy an additional
-        // service registration that must resolve to the singleton already registered above, not to
-        // a second independently-constructed instance.
-        serviceCollection.AddSingleton<IAetheryteTerritoryProvider>(sp => sp.GetRequiredService<AetheryteData>());
+        // Same instance: JsonSchemaValidator is also the IQuestValidator singleton.
         serviceCollection.AddSingleton<IQuestValidator>(sp => sp.GetRequiredService<JsonSchemaValidator>());
 
-        // Breaks the QuestController <-> MovementController ctor cycle without handing MovementController
-        // the whole IServiceProvider. Once .Value is evaluated the container isn't touched again, so a
-        // framework tick during shutdown can't hit a disposed scope through this path.
+        // Breaks the QuestController <-> MovementController constructor cycle.
         serviceCollection.AddSingleton(sp => new Lazy<QuestController>(sp.GetRequiredService<QuestController>));
+        // Same for MovementController <-> operation providers (combat cleanup needs CombatController, which moves).
+        serviceCollection.AddSingleton(sp =>
+            new Lazy<OperationCoordinator>(sp.GetRequiredService<OperationCoordinator>));
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
+        _lifetime.SetServices(serviceProvider);
         Initialize(serviceProvider);
-        return serviceProvider;
     }
 
-    // Task factories and executors are now registered in ServiceCollectionExtensions:AddTaskRegistrations
 
-    private static void Initialize(IServiceProvider serviceProvider)
+    private void Initialize(IServiceProvider serviceProvider)
     {
-        // Resolve before the registry loads — its constructor discards a bundle left by an older
-        // plugin version, so the registry doesn't pick up a stale one.
-        PathDataUpdater pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
-        serviceProvider.GetRequiredService<QuestRegistry>().Reload();
-        serviceProvider.GetRequiredService<GatheringPointRegistry>().Reload();
-        serviceProvider.GetRequiredService<SinglePlayerDutyConfigComponent>().Reload();
+        // Resolve before the registry loads: it discards a bundle left by an older plugin version.
+        _pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
+        serviceProvider.GetRequiredService<QuestRegistry>().Reload(projectInBackground: true);
+        serviceProvider.GetRequiredService<QuestBattleConfigComponent>().Reload();
+        serviceProvider.GetRequiredService<ProfileController>();
+        _questController = serviceProvider.GetRequiredService<QuestController>();
+        serviceProvider.GetRequiredService<CharacterRun>();
+        serviceProvider.GetRequiredService<RetainerPass>();
+        serviceProvider.GetRequiredService<BossModPresetCleanup>();
+        // MovementController.Dispose reads this; resolve it now so unloading never reaches into a disposed container.
+        _ = serviceProvider.GetRequiredService<Lazy<OperationCoordinator>>().Value;
         serviceProvider.GetRequiredService<CommandHandler>();
         serviceProvider.GetRequiredService<ContextMenuController>();
         serviceProvider.GetRequiredService<CraftworksSupplyController>();
@@ -184,16 +250,27 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<HelpUiController>();
         serviceProvider.GetRequiredService<PointMenuHandler>();
         serviceProvider.GetRequiredService<HousingSelectBlockHandler>();
+        serviceProvider.GetRequiredService<RewardPickHandler>();
         serviceProvider.GetRequiredService<YesNoChoiceHandler>();
         serviceProvider.GetRequiredService<DialogueChoiceHandler>();
-        serviceProvider.GetRequiredService<ShopController>();
-        serviceProvider.GetRequiredService<GrandCompanyExchangeController>();
         serviceProvider.GetRequiredService<ChocoboNamingController>();
         serviceProvider.GetRequiredService<QuestionableIpc>();
-        serviceProvider.GetRequiredService<DalamudInitializer>();
+        _initializer = serviceProvider.GetRequiredService<DalamudInitializer>();
         serviceProvider.GetRequiredService<TextAdvanceIpc>();
         serviceProvider.GetRequiredService<YesAlreadyIpc>();
 
-        pathDataUpdater.CheckForUpdates();
+        _pathDataUpdater.CheckForUpdates();
+    }
+
+    // Categories use dots for nested types too, so cut only the namespace: Craft.Executor, not Executor.
+    private static string LogCategory(string category, HashSet<string> namespaces)
+    {
+        for (int i = category.LastIndexOf('.'); i > 0; i = category.LastIndexOf('.', i - 1))
+        {
+            if (namespaces.Contains(category[..i]))
+                return category[(i + 1)..];
+        }
+
+        return category[(category.LastIndexOf('.') + 1)..];
     }
 }

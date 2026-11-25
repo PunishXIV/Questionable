@@ -1,0 +1,98 @@
+namespace Questionable.Controller.Operations;
+
+[RegisterSingleton<IOperationProvider, CombatCleanupProvider>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class CombatCleanupProvider(
+    CombatController combatController,
+    BossModIpc bossModIpc,
+    ILogger<CombatCleanupProvider> logger) : IOperationProvider
+{
+    private readonly Stopwatch _statusPoll = new();
+
+    public int Order => 600;
+    public string Name => "Combat cleanup";
+    public bool HasOperation => combatController.HasPendingCleanup || bossModIpc.HasPendingCleanup;
+
+    public string? BlockReason =>
+        combatController.BlockReason ?? (bossModIpc.HasPendingCleanup ? bossModIpc.CleanupReason : null);
+
+    public bool MovesCharacter => false;
+    public bool CanUpdateWhileOccupied => false;
+    public bool HandlesLeadInTravel => false;
+
+    public bool HandlesExecutor(ITaskExecutor? executor) => false;
+
+    // BossMod owns death and retry behaviour during a solo duty it runs for us.
+    public bool HandlesPlayerDeath(ITaskExecutor? executor) => bossModIpc.HasQuestBattle;
+
+    public bool MayBeMovingCharacter() => false;
+    public bool HandlesTravel(QuestStep step) => false;
+
+    public bool CanUpdateTask(ITaskExecutor? executor) => !HasOperation;
+
+    public bool Update(IExternalOperationHost host, IOperationContext context)
+    {
+        // Clear scheduling before a cleanup retry can release the retained owner.
+        if (HasOperation && host.IsActive)
+            host.Stop("Combat cleanup is unresolved");
+
+        if (!_statusPoll.IsRunning || _statusPoll.Elapsed >= TimeSpan.FromMilliseconds(250))
+        {
+            _statusPoll.Restart();
+            combatController.RetryCleanup();
+            try
+            {
+                bossModIpc.PollQuestBattle();
+            }
+            catch (Exception e)
+            {
+                if (host.IsActive)
+                {
+                    logger.LogWarning(e, "Solo-duty control was lost");
+                    host.Stop("Solo-duty control was lost");
+                }
+            }
+        }
+
+        if (!HasOperation)
+            return false;
+        host.Status = context.BlockReason;
+        return true;
+    }
+
+    public void Abandon()
+    {
+    }
+
+    public bool Cancel(IOperationContext context)
+    {
+        bool success = context.TryCleanup(() => combatController.Stop("ClearTasksInternal"), "combat");
+        success &= context.TryCleanup(bossModIpc.StopQuestBattle, "solo duty");
+        return success;
+    }
+
+    public bool TryConfirmIdle(IExternalOperationHost host, IOperationContext context)
+    {
+        if (host.IsActive || !bossModIpc.TryConfirmStopped())
+            return false;
+        combatController.RetryCleanup();
+        host.Status = context.BlockReason;
+        return true;
+    }
+
+    public string? GetStartBlockReason() => null;
+
+    public OperationStatusView? GetStatusView()
+    {
+        if (!HasOperation)
+            return null;
+
+        return new(bossModIpc.CleanupReason ?? combatController.BlockReason ??
+                   _L("Waiting for combat control to be released."),
+            bossModIpc.HasPendingCleanup
+                ? new OperationRecoveryView(_L("I stopped Boss Mod"), bossModIpc.CanConfirmStopped,
+                    [_L("Stop Boss Mod's active presets and check its settings before confirming. Confirmation does not restart questing.")])
+                : null);
+    }
+
+    public OperationPill? GetTitleBarPill() => null;
+}

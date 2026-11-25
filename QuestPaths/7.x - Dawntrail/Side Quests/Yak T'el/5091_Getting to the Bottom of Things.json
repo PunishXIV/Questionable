@@ -1,93 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051071,
-          "Position": {
-            "X": -554.03986,
-            "Y": 1.3156406,
-            "Z": -489.3416
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": -596.55597,
-            "Y": 2.3708515,
-            "Z": -493.64908
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -615.2386,
-            "Y": -44.093876,
-            "Z": -495.7548
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 2014307,
-          "Position": {
-            "X": -729.7932,
-            "Y": -107.83557,
-            "Z": -674.8608
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-729.7932, -107.83557, -674.8608],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": -615.2386,
-            "Y": -44.093876,
-            "Z": -495.7548
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -596.55597,
-            "Y": 2.3708515,
-            "Z": -493.64908
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1051071,
-          "Position": {
-            "X": -554.03986,
-            "Y": 1.3156406,
-            "Z": -489.3416
-          },
-          "TerritoryId": 1189,
+          "Position": [-554.03986, 1.3156406, -489.3416],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1049374,
-          "Position": {
-            "X": -345.2049,
-            "Y": 18.198153,
-            "Z": -163.50049
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 2014046,
-          "Position": {
-            "X": -344.65558,
-            "Y": 18.051392,
-            "Z": -141.92426
-          },
-          "TerritoryId": 1190,
+          "Position": [-344.65558, 18.051392, -141.92426],
           "InteractionType": "Snipe",
           "Comment": "Click (from left to right) pump, middle of the connecting pipes, barrels"
         }
@@ -37,15 +21,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1049374,
-          "Position": {
-            "X": -345.2049,
-            "Y": 18.198153,
-            "Z": -163.50049
-          },
-          "TerritoryId": 1190,
+          "Position": [-345.2049, 18.198153, -163.50049],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

@@ -1,54 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1004004,
-          "Position": {
-            "X": -139.29962,
-            "Y": 4.1,
-            "Z": -113.481445
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001353,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.78235
-          },
-          "TerritoryId": 130,
+          "Position": [21.072632, 7.45, -78.78235],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1004433,
-          "Position": {
-            "X": -23.605713,
-            "Y": 83.19999,
-            "Z": -2.3041382
-          },
-          "TerritoryId": 130,
+          "Position": [-23.605713, 83.19999, -2.3041382],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Airship Landing"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -61,15 +38,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 2001667,
-          "Position": {
-            "X": -45.365112,
-            "Y": 84.09241,
-            "Z": -0.80877686
-          },
-          "TerritoryId": 130,
+          "Position": [-45.365112, 84.09241, -0.80877686],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -83,15 +56,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1002703,
-          "Position": {
-            "X": -12.375122,
-            "Y": 91.499985,
-            "Z": -0.5340576
-          },
-          "TerritoryId": 128,
+          "Position": [-12.375122, 91.499985, -0.5340576],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -103,45 +72,18 @@
         },
         {
           "DataId": 1002693,
-          "Position": {
-            "X": -6.515625,
-            "Y": 91.49996,
-            "Z": -13.656921
-          },
-          "TerritoryId": 128,
+          "Position": [-6.515625, 91.49996, -13.656921],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "DataId": 1003583,
-          "Position": {
-            "X": -7.248047,
-            "Y": 91.49999,
-            "Z": -16.128845
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "ExcelSheet": "Warp",
-              "Prompt": null,
-              "Answer": 131094
-            }
-          ]
-        },
-        {
           "DataId": 1001029,
-          "Position": {
-            "X": 9.170593,
-            "Y": 20.999403,
-            "Z": -15.213318
-          },
+          "Position": [9.170593, 20.999403, -15.213318],
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -149,50 +91,27 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Limsa Lominsa"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "RegisterFreeOrFavoredAetheryte",
           "Aetheryte": "Limsa Lominsa"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Limsa Lominsa] Hawkers' Alley"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Limsa Lominsa] Arcanists' Guild"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Limsa Lominsa] Fishermen's Guild",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
-        },
-        {
-          "Position": {
-            "X": -83.8817,
-            "Y": 18.475962,
-            "Z": -29.903847
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 128,
-          "Comment": "Walk to Culinarians' Guild",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
+          "AethernetShard": "[Limsa Lominsa] Fishermen's Guild"
         },
         {
           "TerritoryId": 128,
@@ -211,17 +130,9 @@
         },
         {
           "DataId": 1002695,
-          "Position": {
-            "X": -25.92511,
-            "Y": 91.999954,
-            "Z": -3.6774292
-          },
+          "Position": [-25.92511, 91.999954, -3.6774292],
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Airship Landing"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -234,15 +145,11 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 2001670,
-          "Position": {
-            "X": -11.12384,
-            "Y": 92.0271,
-            "Z": 17.166382
-          },
-          "TerritoryId": 128,
+          "Position": [-11.12384, 92.0271, 17.166382],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -256,15 +163,11 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000109,
-          "Position": {
-            "X": 29.770264,
-            "Y": -19.000002,
-            "Z": 114.12219
-          },
-          "TerritoryId": 132,
+          "Position": [29.770264, -19.000002, 114.12219],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -277,18 +180,14 @@
         },
         {
           "DataId": 1002830,
-          "Position": {
-            "X": 36.63684,
-            "Y": -18.800003,
-            "Z": 89.64673
-          },
-          "TerritoryId": 132,
+          "Position": [36.63684, -18.800003, 89.64673],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "TerritoryId": 132,
@@ -306,78 +205,28 @@
           "AethernetShard": "[Gridania] Archers' Guild"
         },
         {
-          "Position": {
-            "X": 12.761639,
-            "Y": 1.2659149,
-            "Z": -18.021421
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ]
-        },
-        {
-          "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gridania] Leatherworkers' Guild & Shaded Bower"
         },
         {
-          "Position": {
-            "X": 121.70568,
-            "Y": 12.25941,
-            "Z": -100.795494
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gridania] Lancers' Guild"
         },
         {
-          "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre"
         },
         {
-          "Position": {
-            "X": -174.09056,
-            "Y": 10.91981,
-            "Z": -162.12527
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gridania] Botanists' Guild"
         },
         {
-          "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gridania] Conjurers' Guild",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "AethernetShard": "[Gridania] Conjurers' Guild"
         },
         {
           "DataId": 1000460,
-          "Position": {
-            "X": -159.41101,
-            "Y": 4.054107,
-            "Z": -4.1047363
-          },
-          "TerritoryId": 133,
+          "Position": [-159.41101, 4.054107, -4.1047363],
           "InteractionType": "CompleteQuest"
         }
       ]

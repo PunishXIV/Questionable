@@ -1,111 +1,67 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032451,
-          "Position": {
-            "X": -113.359314,
-            "Y": -0.6671539,
-            "Z": 656.79407
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027230,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
+          "Position": [117.997925, 14.649025, 7.156433],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 844,
       "Steps": [
         {
           "DataId": 1032122,
-          "Position": {
-            "X": 2.1820068,
-            "Y": 0,
-            "Z": -5.142395
-          },
-          "StopDistance": 7,
-          "TerritoryId": 844,
+          "Position": [2.1820068, 0, -5.142395],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1031732,
-          "Position": {
-            "X": 366.68945,
-            "Y": -27.966003,
-            "Z": 305.19568
-          },
-          "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head"
+          "Position": [366.68945, -27.966003, 305.19568],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1027910,
-          "Position": {
-            "X": 356.71008,
-            "Y": -27.8172,
-            "Z": 310.04797
-          },
-          "TerritoryId": 815,
+          "Position": [356.71008, -27.8172, 310.04797],
           "InteractionType": "UseItem",
           "ItemId": 2002904,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1027909,
-          "Position": {
-            "X": 357.47314,
-            "Y": -27.145874,
-            "Z": 317.28076
-          },
-          "TerritoryId": 815,
+          "Position": [357.47314, -27.145874, 317.28076],
           "InteractionType": "UseItem",
           "ItemId": 2002904,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1027939,
-          "Position": {
-            "X": 415.854,
-            "Y": -28.357805,
-            "Z": 335.4391
-          },
-          "TerritoryId": 815,
+          "Position": [415.854, -28.357805, 335.4391],
           "InteractionType": "UseItem",
           "ItemId": 2002904,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -114,15 +70,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1031732,
-          "Position": {
-            "X": 366.68945,
-            "Y": -27.966003,
-            "Z": 305.19568
-          },
-          "TerritoryId": 815,
+          "Position": [366.68945, -27.966003, 305.19568],
           "InteractionType": "CompleteQuest"
         }
       ]

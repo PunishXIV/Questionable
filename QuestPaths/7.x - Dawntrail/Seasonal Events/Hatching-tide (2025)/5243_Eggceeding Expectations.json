@@ -1,85 +1,41 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052063,
-          "Position": {
-            "X": -49.973328,
-            "Y": 6.4999995,
-            "Z": -89.829956
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1052069,
-          "Position": {
-            "X": -49.973328,
-            "Y": 6.4999995,
-            "Z": -89.89093
-          },
-          "TerritoryId": 133,
+          "Position": [-49.973328, 6.4999995, -89.89093],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1052070,
-          "Position": {
-            "X": 169.02417,
-            "Y": 15.5,
-            "Z": -93.492065
-          },
-          "TerritoryId": 133,
+          "Position": [169.02417, 15.5, -93.492065],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1052071,
-          "Position": {
-            "X": 157.15259,
-            "Y": 15.699948,
-            "Z": -124.16266
-          },
-          "TerritoryId": 133,
+          "Position": [157.15259, 15.699948, -124.16266],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1052072,
-          "Position": {
-            "X": 145.37268,
-            "Y": 13.599698,
-            "Z": -156.4508
-          },
-          "TerritoryId": 133,
+          "Position": [145.37268, 13.599698, -156.4508],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -87,25 +43,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "Position": {
-            "X": 154.11754,
-            "Y": 15.494947,
-            "Z": -95.69504
-          },
-          "StopDistance": 2,
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1052069,
-          "Position": {
-            "X": 154.11754,
-            "Y": 15.494947,
-            "Z": -95.69504
-          },
-          "TerritoryId": 133,
+          "Position": [154.11754, 15.494947, -95.69504],
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 2
         }
@@ -113,22 +55,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1052063,
-          "Position": {
-            "X": -49.973328,
-            "Y": 6.4999995,
-            "Z": -89.829956
-          },
-          "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Leatherworkers' Guild & Shaded Bower",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

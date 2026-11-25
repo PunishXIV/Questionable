@@ -1,58 +1,35 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050692,
-          "Position": {
-            "X": -410.84918,
-            "Y": 68.61058,
-            "Z": 184.9851
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 2014128,
-          "Position": {
-            "X": -71.64111,
-            "Y": 18.295532,
-            "Z": 255.75635
-          },
-          "TerritoryId": 1187,
+          "Position": [-71.64111, 18.295532, 255.75635],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17649
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1050720,
-          "Position": {
-            "X": -410.84918,
-            "Y": 68.61058,
-            "Z": 184.9851
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-410.84918, 68.61058, 184.9851],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

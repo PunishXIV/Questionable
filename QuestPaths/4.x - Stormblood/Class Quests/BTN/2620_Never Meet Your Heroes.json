@@ -1,77 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000815,
-          "Position": {
-            "X": -233.936,
-            "Y": 6.6888,
-            "Z": -171.038
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1021349,
-          "Position": {
-            "X": -43.9205,
-            "Y": 209.236,
-            "Z": -90.7667
-          },
-          "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
+          "Position": [-43.9205, 209.236, -90.7667],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1021349,
-          "Position": {
-            "X": -43.9205,
-            "Y": 209.236,
-            "Z": -90.7667
-          },
-          "TerritoryId": 478,
+          "Position": [-43.9205, 209.236, -90.7667],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1021349,
-          "Position": {
-            "X": -43.9205,
-            "Y": 209.236,
-            "Z": -90.7667
-          },
-          "TerritoryId": 478,
+          "Position": [-43.9205, 209.236, -90.7667],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ],
           "NextQuestId": 2621
         }
       ]

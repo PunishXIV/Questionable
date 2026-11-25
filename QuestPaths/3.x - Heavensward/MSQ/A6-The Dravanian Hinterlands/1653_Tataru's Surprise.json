@@ -1,87 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012398,
-          "Position": {
-            "X": 35.538208,
-            "Y": -8,
-            "Z": 98.13074
-          },
-          "StopDistance": 5,
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "Position": {
-            "X": 43.620056,
-            "Y": -7.9655867,
-            "Z": 103.63884
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
+          "Position": [71.97681, 8, -166.52173],
           "InteractionType": "Interact",
           "$": "0 0 0 0 0 0 -> 16 17 0 0 0 128",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
+          "Position": [-258.8083, -5.7735243, -27.267883],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Leatherworkers' Guild & Shaded Bower",
-            "[Gridania] Conjurers' Guild"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1012398,
-          "Position": {
-            "X": 35.538208,
-            "Y": -8,
-            "Z": 98.13074
-          },
-          "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Airship Landing"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

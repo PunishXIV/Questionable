@@ -1,39 +1,33 @@
-using System.Text;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Components;
-using Dalamud.Interface.Utility.Raii;
-using Dalamud.Utility;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common.Ui;
+using Questionable.Controller.Steps.Interactions;
 namespace Questionable.Windows.ConfigComponents;
 
 [RegisterSingleton]
 internal sealed class DutyConfigComponent : ConfigComponent
 {
-    private const string DutyClipboardPrefix = "qst:duty:";
-    private readonly AutoDutyIpc _autoDutyIpc;
-    private readonly Dictionary<EExpansionVersion, List<DutyInfo>> _contentFinderConditionNames;
-    private bool runInstancedContentWithAutoDuty;
+    private readonly AutoDutyProvider _autoDuty;
+    private readonly Dictionary<EExpansionVersion, List<DutyInfo>> _dutiesByExpansion;
+    private bool _useAutoDuty;
 
     private readonly QuestRegistry _questRegistry;
-    private Vector2 Size;
+    private readonly QuestBattleConfigComponent _questBattles;
+    private Vector2 _contentSize;
 
     public DutyConfigComponent(
         IDalamudPluginInterface pluginInterface,
         Configuration configuration,
         IDataManager dataManager,
         QuestRegistry questRegistry,
-        AutoDutyIpc autoDutyIpc,
-        TerritoryData territoryData)
+        AutoDutyProvider autoDuty,
+        TerritoryData territoryData,
+        QuestBattleConfigComponent questBattles)
         : base(pluginInterface, configuration)
     {
         _questRegistry = questRegistry;
-        _autoDutyIpc = autoDutyIpc;
+        _autoDuty = autoDuty;
+        _questBattles = questBattles;
 
-        _contentFinderConditionNames = dataManager.GetExcelSheet<DawnContent>()
+        _dutiesByExpansion = dataManager.GetExcelSheet<DawnContent>()
             .Where(x => x is { RowId: > 0, Unknown16: false })
             .OrderBy(x => x.Unknown15) // SortKey for the support UI
             .Select(x => x.Content.ValueNullable)
@@ -43,7 +37,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
             {
                 Expansion = (EExpansionVersion)x.TerritoryType.Value.ExVersion.RowId,
                 CfcId = x.RowId,
-                Name = territoryData.GetContentFinderCondition(x.RowId)?.Name ?? _L("?"),
+                Name = territoryData.GetCfc(x.RowId)?.Name ?? _L("?"),
                 TerritoryId = x.TerritoryType.RowId,
                 ContentType = (EContentType)x.ContentType.RowId,
                 Level = x.ClassJobLevelRequired,
@@ -56,68 +50,80 @@ internal sealed class DutyConfigComponent : ConfigComponent
                     .ToList());
     }
 
-    public override void DrawTab()
-    {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Duties") + "###Duties");
-        if (!tab)
-            return;
-        Size = ImGui.GetWindowContentRegionMax();
-        var wrap = ImRaii.TextWrapPos(Size.X + 10);
+    public void DrawQuestBattles() => _questBattles.DrawSection();
 
-        runInstancedContentWithAutoDuty = Configuration.Duties.RunInstancedContentWithAutoDuty;
-        if (ImGui.Checkbox(_L("Run instanced content with AutoDuty and BossMod"), ref runInstancedContentWithAutoDuty))
+    public void DrawDuties()
+    {
+        _contentSize = ImGui.GetWindowContentRegionMax();
+        using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
+
+        _useAutoDuty = Configuration.Duties.RunInstancedContentWithAutoDuty;
+        // The old label stays as the ImGui ID.
+        if (ImGui.Checkbox(_L("Run duties with AutoDuty") + "###Run instanced content with AutoDuty and BossMod", ref _useAutoDuty))
         {
-            Configuration.Duties.RunInstancedContentWithAutoDuty = runInstancedContentWithAutoDuty;
+            Configuration.Duties.RunInstancedContentWithAutoDuty = _useAutoDuty;
             Save();
         }
 
-        ImGui.SameLine();
         ImGuiComponents.HelpMarker(
-            _L("The combat module used for this is configured by AutoDuty, ignoring whichever selection you've made in Questionable's \"General\" configuration."));
+            _L("AutoDuty runs the duty with its own settings, including which rotation plugin to use. The combat plugin picked on the Basics page isn't used."));
 
-        using (ImRaii.Disabled(!runInstancedContentWithAutoDuty))
+        using (ImRaii.Disabled(!_useAutoDuty))
+        using (ImRaii.PushIndent())
         {
+            bool catchUp = Configuration.Duties.CatchUpForStory;
+            if (ImGui.Checkbox(_L("Catch up when the story is too high"), ref catchUp))
+            {
+                Configuration.Duties.CatchUpForStory = catchUp;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(
+                _L("When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable buys tomestone accessories (Knightshopper), also with tomestones earned in those runs. Only gives up after 5 runs in a row that neither raise your item level nor earn tomestones toward an accessory."));
+
             bool runUnsynced = Configuration.Duties.RunUnsynced;
             if (ImGui.Checkbox(_L("Run content unsynced where safe"), ref runUnsynced))
             {
                 Configuration.Duties.RunUnsynced = runUnsynced;
                 Save();
             }
-            ImGui.SameLine();
+            int levelGap = Math.Clamp(Configuration.Duties.UnsyncLevelGap, Duty.MinLevelGap, Duty.MaxLevelGap);
             ImGuiComponents.HelpMarker(
-                _L("If the level of your current job is greater than 15 levels above a duty's sync level, or if your average item level is greater than 100 over " +
-                "a duty's required item level, Questionable will ask AutoDuty to run it solo as an Unrestricted Party.") +
-                _L("This now does not include Trials, which are likely to have extra complexity or mechanics making them infeasible to complete as an Unrestricted Party."));
-            ImGui.SameLine();
-            ImGui.TextColored(QstTheme.Danger, _L("Experimental feature"));
+                _LF("Experimental. If your current job is at least {0} levels above a duty's sync level, or your average item level is at least 200 above " +
+                    "its required item level, Questionable asks AutoDuty to run it solo as an Unrestricted Party. This includes trials.", levelGap));
+
+            using (ImRaii.Disabled(!runUnsynced))
+            using (ImRaii.PushIndent())
+            {
+                ImGui.SetNextItemWidth(150f);
+                if (ImGui.SliderInt(_L("Levels above a duty before it runs unsynced"), ref levelGap, Duty.MinLevelGap, Duty.MaxLevelGap))
+                {
+                    Configuration.Duties.UnsyncLevelGap = levelGap;
+                    Save();
+                }
+            }
         }
+
+        bool setAside = Configuration.Duties.SetAsideManualDuties;
+        if (ImGui.Checkbox(_L("Set aside quests waiting on a duty you run yourself"), ref setAside))
+        {
+            Configuration.Duties.SetAsideManualDuties = setAside;
+            Save();
+        }
+
+        ImGuiComponents.HelpMarker(
+            _L("When Questionable can't run a quest's duty, it opens the Duty Finder, sets the quest aside and carries on with other quests. Once you've run the duty, the quest comes back on its own."));
 
         ImGui.Separator();
 
-        using (ImRaii.Disabled(!runInstancedContentWithAutoDuty))
+        using (ImRaii.Disabled(!_useAutoDuty))
         {
-            ImGui.Text(
-                _L("Questionable includes a default list of duties that work if AutoDuty and BossMod are installed."));
-
-            ImGui.Text(
-                _L("The included list of duties can change with each update, and is based on the following spreadsheet:"));
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.GlobeEurope, _L("Open AutoDuty spreadsheet")))
-            {
-                Util.OpenLink(
-                    "https://docs.google.com/spreadsheets/d/151RlpqRcCpiD_VbQn6Duf-u-S71EP7d0mx3j1PDNoNA/edit?pli=1#gid=0");
-            }
-
-            ImGui.Separator();
-            ImGui.Text(_L("You can override the settings for each individual dungeon/trial:"));
+            ImGui.TextUnformatted(
+                _L("Every duty with Duty Support runs by default. Set one to Disabled to do it yourself."));
 
             DrawConfigTable();
 
-            DrawEnableAllButton();
-            ImGui.SameLine();
-            DrawResetButton();
-            if (Size.X > 500)
-                ImGui.SameLine();
-            DrawClipboardButtons();
+            DrawResetButton(Configuration.Duties.WhitelistedDutyCfcIds, Configuration.Duties.BlacklistedDutyCfcIds);
         }
     }
 
@@ -133,11 +139,11 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
     private void DrawExpansionSection(EExpansionVersion expansion)
     {
-        (int enabledCount, int totalCount) = GetDutyCountsForExpansion(expansion);
+        (int enabledCount, int totalCount) = GetDutyCounts(expansion);
+        if (totalCount == 0)
+            return;
 
-        string headerText = totalCount > 0
-            ? $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCount})"
-            : expansion.ToFriendlyString();
+        string headerText = string.Create(CultureInfo.CurrentCulture, $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCount})");
 
         string expansionKey = expansion.ToString();
         bool wasOpen = Configuration.Duties.ExpansionHeaderStates.GetValueOrDefault(expansionKey, defaultValue: false);
@@ -145,18 +151,18 @@ internal sealed class DutyConfigComponent : ConfigComponent
         ImGui.SetNextItemOpen(wasOpen, ImGuiCond.Always);
         bool isOpen = ImGui.CollapsingHeader(headerText);
 
-        UpdateExpansionHeaderState(expansionKey, isOpen, wasOpen);
+        UpdateHeaderState(expansionKey, isOpen, wasOpen);
 
         if (!isOpen)
             return;
 
-        if (!_contentFinderConditionNames.TryGetValue(expansion, out List<DutyInfo>? cfcNames))
+        if (!_dutiesByExpansion.TryGetValue(expansion, out List<DutyInfo>? duties))
             return;
 
-        DrawDutyTable(expansion, cfcNames);
+        DrawDutyTable(expansion, duties);
     }
 
-    private void UpdateExpansionHeaderState(string expansionKey, bool isOpen, bool wasOpen)
+    private void UpdateHeaderState(string expansionKey, bool isOpen, bool wasOpen)
     {
         if (isOpen == wasOpen)
             return;
@@ -165,7 +171,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         Save();
     }
 
-    private void DrawDutyTable(EExpansionVersion expansion, List<DutyInfo> cfcNames)
+    private void DrawDutyTable(EExpansionVersion expansion, List<DutyInfo> duties)
     {
         using ImRaii.TableDisposable table = ImRaii.Table($"Duties{expansion}", 2, ImGuiTableFlags.SizingFixedFit);
         if (!table)
@@ -174,9 +180,9 @@ internal sealed class DutyConfigComponent : ConfigComponent
         ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.WidthStretch);
         ImGui.TableSetupColumn(_L("Options"), ImGuiTableColumnFlags.WidthFixed, 200f);
 
-        foreach (DutyInfo dutyInfo in cfcNames)
+        foreach (DutyInfo dutyInfo in duties)
         {
-            if (!_questRegistry.TryGetDutyByContentFinderConditionId(dutyInfo.CfcId, out DutyOptions? dutyOptions))
+            if (!_questRegistry.TryGetDutyByCfcId(dutyInfo.CfcId, out DutyOptions? dutyOptions))
                 continue;
 
             DrawDutyRow(dutyInfo, dutyOptions);
@@ -202,9 +208,9 @@ internal sealed class DutyConfigComponent : ConfigComponent
         if (ImGui.IsItemHovered() && Configuration.Advanced.AdditionalStatusInformation)
             DrawDutyDebugTooltip(dutyInfo);
 
-        if (runInstancedContentWithAutoDuty && !_autoDutyIpc.HasPath(dutyInfo.CfcId))
+        if (_useAutoDuty && !_autoDuty.HasPath(dutyInfo.CfcId))
         {
-            ImGuiComponents.HelpMarker(_L("This duty is not supported by AutoDuty"),
+            ImGuiComponents.HelpMarker(_L("This duty is not supported by AutoDuty."),
                 FontAwesomeIcon.Times, QstTheme.Danger);
         }
         else if (dutyOptions.Notes.Count > 0)
@@ -255,23 +261,20 @@ internal sealed class DutyConfigComponent : ConfigComponent
         else if (value == 2)
             Configuration.Duties.BlacklistedDutyCfcIds.Add(cfcId);
     }
-    private (int enabledCount, int totalCount) GetDutyCountsForExpansion(EExpansionVersion expansion)
+    private (int enabledCount, int totalCount) GetDutyCounts(EExpansionVersion expansion)
     {
-        if (!_contentFinderConditionNames.TryGetValue(expansion, out List<DutyInfo>? cfcNames))
+        if (!_dutiesByExpansion.TryGetValue(expansion, out List<DutyInfo>? duties))
             return (0, 0);
 
         int enabledCount = 0;
         int totalCount = 0;
 
-        foreach ((uint cfcId, uint _, string _, EContentType _) in cfcNames)
+        foreach ((uint cfcId, uint _, string _, EContentType _) in duties)
         {
-            if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? dutyOptions))
+            if (_questRegistry.TryGetDutyByCfcId(cfcId, out DutyOptions? dutyOptions))
             {
                 totalCount++;
 
-                // a duty is considered "enabled" if:
-                // it's whitelisted, OR
-                // it's not blacklisted AND it's enabled by default
                 bool isEnabled = Configuration.Duties.WhitelistedDutyCfcIds.Contains(cfcId) ||
                                  (!Configuration.Duties.BlacklistedDutyCfcIds.Contains(cfcId) && dutyOptions.Enabled);
 
@@ -281,95 +284,6 @@ internal sealed class DutyConfigComponent : ConfigComponent
         }
 
         return (enabledCount, totalCount);
-    }
-
-    private void DrawEnableAllButton()
-    {
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.CheckCircle, _L("Enable All")))
-        {
-            Configuration.Duties.BlacklistedDutyCfcIds.Clear();
-            Configuration.Duties.WhitelistedDutyCfcIds.Clear();
-
-            foreach (List<DutyInfo> cfcNames in _contentFinderConditionNames.Values)
-            {
-                foreach ((uint cfcId, uint _, string _, EContentType _) in cfcNames)
-                {
-                    if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? _))
-                        Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
-                }
-            }
-
-            Save();
-        }
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Enable all of the duties, use at your own risk."));
-    }
-
-    private void DrawClipboardButtons()
-    {
-        using (ImRaii.Disabled(Configuration.Duties.WhitelistedDutyCfcIds.Count +
-            Configuration.Duties.BlacklistedDutyCfcIds.Count == 0))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to clipboard")))
-            {
-                IEnumerable<string> whitelisted =
-                    Configuration.Duties.WhitelistedDutyCfcIds.Select(x => $"{DutyWhitelistPrefix}{x}");
-                IEnumerable<string> blacklisted =
-                    Configuration.Duties.BlacklistedDutyCfcIds.Select(x => $"{DutyBlacklistPrefix}{x}");
-                string text = DutyClipboardPrefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
-                    string.Join(DutyClipboardSeparator, whitelisted.Concat(blacklisted))));
-                ImGui.SetClipboardText(text);
-            }
-        }
-
-        ImGui.SameLine();
-
-        string clipboardText = ImGui.GetClipboardText().Trim();
-        using (ImRaii.Disabled(string.IsNullOrEmpty(clipboardText) ||
-                               !clipboardText.StartsWith(DutyClipboardPrefix, StringComparison.InvariantCulture)))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
-            {
-                clipboardText = clipboardText.Substring(DutyClipboardPrefix.Length);
-                string text = Encoding.UTF8.GetString(Convert.FromBase64String(clipboardText));
-
-                Configuration.Duties.WhitelistedDutyCfcIds.Clear();
-                Configuration.Duties.BlacklistedDutyCfcIds.Clear();
-                foreach (string part in text.Split(DutyClipboardSeparator))
-                {
-                    if (part.StartsWith(DutyWhitelistPrefix) &&
-                        uint.TryParse(part.AsSpan(1), CultureInfo.InvariantCulture,
-                            out uint whitelistedCfcId))
-                    {
-                        Configuration.Duties.WhitelistedDutyCfcIds.Add(whitelistedCfcId);
-                    }
-
-                    if (part.StartsWith(DutyBlacklistPrefix) &&
-                        uint.TryParse(part.AsSpan(1), CultureInfo.InvariantCulture,
-                            out uint blacklistedCfcId))
-                    {
-                        Configuration.Duties.BlacklistedDutyCfcIds.Add(blacklistedCfcId);
-                    }
-                }
-            }
-        }
-    }
-
-    private void DrawResetButton()
-    {
-        using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Undo, _L("Reset to default")))
-            {
-                Configuration.Duties.WhitelistedDutyCfcIds.Clear();
-                Configuration.Duties.BlacklistedDutyCfcIds.Clear();
-                Save();
-            }
-        }
-
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
     }
 
     private sealed record DutyInfo(uint CfcId, uint TerritoryId, string Name, EContentType ContentType);

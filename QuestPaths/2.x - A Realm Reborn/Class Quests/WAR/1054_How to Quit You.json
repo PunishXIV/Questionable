@@ -1,77 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006746,
-          "Position": {
-            "X": 460.65454,
-            "Y": 8.309061,
-            "Z": 74.47925
-          },
-          "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006771,
-          "Position": {
-            "X": 89.829834,
-            "Y": 66.04188,
-            "Z": 18.753235
-          },
-          "TerritoryId": 137,
+          "Position": [89.829834, 66.04188, 18.753235],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
-          },
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true
+            "Enabled": true
+          }
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006774,
-          "Position": {
-            "X": -11.367981,
-            "Y": 69.20081,
-            "Z": 30.258545
-          },
-          "TerritoryId": 137,
+          "Position": [-11.367981, 69.20081, 30.258545],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006746,
-          "Position": {
-            "X": 460.65454,
-            "Y": 8.309061,
-            "Z": 74.47925
-          },
-          "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

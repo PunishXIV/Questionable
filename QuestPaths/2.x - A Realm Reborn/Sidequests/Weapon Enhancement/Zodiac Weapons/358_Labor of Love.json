@@ -1,66 +1,27 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 24.830208,
-            "Y": 28.999964,
-            "Z": -730.27045
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
-          "DataId": 1006971,
-          "Position": {
-            "X": 24.307495,
-            "Y": 29.021706,
-            "Z": -726.8635
-          },
-          "StopDistance": 5,
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 24.830208,
-            "Y": 28.999964,
-            "Z": -730.27045
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
           "DataId": 1006971,
-          "Position": {
-            "X": 24.307495,
-            "Y": 29.021706,
-            "Z": -726.8635
-          },
-          "StopDistance": 5,
-          "TerritoryId": 156,
+          "Position": [24.307495, 29.021706, -726.8635],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -69,7 +30,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -81,36 +41,20 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 24.830208,
-            "Y": 28.999964,
-            "Z": -730.27045
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
           "DataId": 1006971,
-          "Position": {
-            "X": 24.307495,
-            "Y": 29.021706,
-            "Z": -726.8635
-          },
-          "StopDistance": 5,
-          "TerritoryId": 156,
+          "Position": [24.307495, 29.021706, -726.8635],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -119,7 +63,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -131,84 +74,29 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 24.830208,
-            "Y": 28.999964,
-            "Z": -730.27045
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
           "DataId": 1006971,
-          "Position": {
-            "X": 24.307495,
-            "Y": 29.021706,
-            "Z": -726.8635
-          },
-          "StopDistance": 5,
-          "TerritoryId": 156,
+          "Position": [24.307495, 29.021706, -726.8635],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 24.830208,
-            "Y": 28.999964,
-            "Z": -730.27045
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
           "DataId": 1006971,
-          "Position": {
-            "X": 24.307495,
-            "Y": 29.021706,
-            "Z": -726.8635
-          },
-          "StopDistance": 5,
-          "TerritoryId": 156,
+          "Position": [24.307495, 29.021706, -726.8635],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 24.830208,
-            "Y": 28.999964,
-            "Z": -730.27045
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
-          "DataId": 1006971,
-          "Position": {
-            "X": 24.307495,
-            "Y": 29.021706,
-            "Z": -726.8635
-          },
-          "StopDistance": 5,
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

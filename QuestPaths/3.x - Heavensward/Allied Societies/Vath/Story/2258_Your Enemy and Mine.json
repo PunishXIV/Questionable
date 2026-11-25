@@ -1,71 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "LastChecked": {"Username": "catsume", "Date": "2026-07-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016802,
-          "Position": {
-            "X": 53.360718,
-            "Y": -48.000004,
-            "Z": -169.97028
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016849,
-          "Position": {
-            "X": -209.46063,
-            "Y": -46.08357,
-            "Z": 222.52222
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "Position": [-209.46063, -46.08357, 222.52222],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011935,
-          "Position": {
-            "X": -285.63367,
-            "Y": 39.04305,
-            "Z": 53.72693
-          },
-          "TerritoryId": 398,
-          "Fly": true,
+          "Position": [-285.63367, 39.04305, 53.72693],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016850,
-          "Position": {
-            "X": -187.36554,
-            "Y": -34.771328,
-            "Z": -70.42041
-          },
-          "TerritoryId": 398,
+          "Position": [-187.36554, -34.771328, -70.42041],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -78,100 +49,69 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": -68.02277,
-            "Y": -33.766434,
-            "Z": -164.5872
-          },
-          "TerritoryId": 398,
+          "Position": [-68.02277, -33.766434, -164.5872],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             5543
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": -67.26527,
-            "Y": -34.505165,
-            "Z": 89.80089
-          },
-          "TerritoryId": 398,
+          "Position": [-67.26527, -34.505165, 89.80089],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             5543
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016850,
-          "Position": {
-            "X": -187.36554,
-            "Y": -34.771328,
-            "Z": -70.42041
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-187.36554, -34.771328, -70.42041],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016850,
-          "Position": {
-            "X": -187.36554,
-            "Y": -34.771328,
-            "Z": -70.42041
-          },
-          "TerritoryId": 398,
+          "Position": [-187.36554, -34.771328, -70.42041],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011935,
-          "Position": {
-            "X": -285.63367,
-            "Y": 39.04305,
-            "Z": 53.72693
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-285.63367, 39.04305, 53.72693],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011928,
-          "Position": {
-            "X": 73.19751,
-            "Y": -49.19563,
-            "Z": -139.05548
-          },
-          "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [73.19751, -49.19563, -139.05548],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

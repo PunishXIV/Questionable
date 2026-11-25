@@ -1,79 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021878,
-          "Position": {
-            "X": 112.41321,
-            "Y": 3.6299734,
-            "Z": 62.302612
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
-          "Position": {
-            "X": 89.911125,
-            "Y": 0.8319905,
-            "Z": 69.05516
-          },
-          "TerritoryId": 418,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 79.70269,
-            "Y": -15.835008,
-            "Z": 69.00836
-          },
-          "TerritoryId": 418,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1021882,
-          "Position": {
-            "X": 104.29541,
-            "Y": -20.020874,
-            "Z": 60.624023
-          },
-          "TerritoryId": 418,
+          "Position": [104.29541, -20.020874, 60.624023],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1021883,
-          "Position": {
-            "X": 35.202515,
-            "Y": -14.000005,
-            "Z": 34.74475
-          },
-          "TerritoryId": 418,
+          "Position": [35.202515, -14.000005, 34.74475],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1021884,
-          "Position": {
-            "X": 20.645447,
-            "Y": -12.020878,
-            "Z": 37.79651
-          },
-          "TerritoryId": 418,
+          "Position": [20.645447, -12.020878, 37.79651],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -81,116 +33,71 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
-          "Position": {
-            "X": 52.22194,
-            "Y": -12.020878,
-            "Z": 75.08158
-          },
-          "TerritoryId": 418,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1021885,
-          "Position": {
-            "X": 36.63684,
-            "Y": -6.947115,
-            "Z": 79.39258
-          },
-          "TerritoryId": 418,
+          "Position": [36.63684, -6.947115, 79.39258],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1022094,
-          "Position": {
-            "X": 110.27698,
-            "Y": -20.000004,
-            "Z": 69.93213
-          },
-          "TerritoryId": 418,
+          "Position": [110.27698, -20.000004, 69.93213],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1021886,
-          "Position": {
-            "X": 0.015197754,
-            "Y": 13.46524,
-            "Z": 59.15918
-          },
-          "StopDistance": 7,
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Last Vigil"
-          ]
+          "Position": [0.015197754, 13.46524, 59.15918],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": 360.62927,
-            "Y": 161.10802,
-            "Z": 27.17857
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 397,
+          "Position": [360.62927, 161.10802, 27.17857],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7237,
             7494
-          ],
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1021888,
-          "Position": {
-            "X": 358.87683,
-            "Y": 161.108,
-            "Z": 26.5354
-          },
-          "TerritoryId": 397,
+          "Position": [358.87683, 161.108, 26.5354],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1021879,
-          "Position": {
-            "X": 112.50476,
-            "Y": 3.6299736,
-            "Z": 60.837646
-          },
-          "TerritoryId": 418,
+          "Position": [112.50476, 3.6299736, 60.837646],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
           "NextQuestId": 2565
         }
       ]

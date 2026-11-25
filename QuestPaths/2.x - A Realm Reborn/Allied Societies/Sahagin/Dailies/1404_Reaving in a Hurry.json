@@ -1,39 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005940,
-          "Position": {
-            "X": -226.12347,
-            "Y": -40.48583,
-            "Z": 57.083984
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Comment": "Doesn't work if the FATE Watch Your Tongue is active,\nas all the normal mob spawns are FATE mobs instead",
       "Steps": [
         {
-          "Position": {
-            "X": -423.56384,
-            "Y": -40.76118,
-            "Z": -220.52809
-          },
-          "TerritoryId": 138,
+          "Position": [-423.56384, -40.76118, -220.52809],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "Fly": true,
           "ComplexCombatData": [
             {
               "DataId": 773,
@@ -65,20 +47,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005940,
-          "Position": {
-            "X": -226.12347,
-            "Y": -40.48583,
-            "Z": 57.083984
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

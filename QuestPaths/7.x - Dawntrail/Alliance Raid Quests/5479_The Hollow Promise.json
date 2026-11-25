@@ -1,103 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1054357,
-          "Position": {
-            "X": 141.2832,
-            "Y": 42,
-            "Z": -351.9494
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Brightploom Post"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1058885,
-          "Position": {
-            "X": -262.92822,
-            "Y": 32,
-            "Z": -658.2894
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "Position": [-262.92822, 32, -658.2894],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1058889,
-          "Position": {
-            "X": 464.8661,
-            "Y": -150.9661,
-            "Z": 473.10596
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "Position": [464.8661, -150.9661, 473.10596],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "DataId": 1054349,
-          "Position": {
-            "X": 730.03735,
-            "Y": -133.17451,
-            "Z": 542.2903
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "TargetTerritoryId": 1189
-        },
-        {
-          "DataId": 2014450,
-          "Position": {
-            "X": -528.37415,
-            "Y": -152.20874,
-            "Z": 671.13745
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1265,
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                1265
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1058894,
-          "Position": {
-            "X": -11.062805,
-            "Y": 41.999992,
-            "Z": -5.0202637
-          },
+          "Position": [-11.062805, 41.999992, -5.0202637],
           "TerritoryId": 1265,
           "InteractionType": "Interact"
         }
@@ -105,9 +43,9 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1265,
       "Steps": [
         {
-          "TerritoryId": 1265,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1117,
@@ -121,15 +59,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1265,
       "Steps": [
         {
           "DataId": 1058898,
-          "Position": {
-            "X": -2.8534546,
-            "Y": 41.999977,
-            "Z": 1.7852783
-          },
-          "TerritoryId": 1265,
+          "Position": [-2.8534546, 41.999977, 1.7852783],
           "InteractionType": "CompleteQuest"
         }
       ]

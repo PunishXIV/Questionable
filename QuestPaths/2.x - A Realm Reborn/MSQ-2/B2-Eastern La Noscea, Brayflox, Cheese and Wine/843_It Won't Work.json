@@ -1,63 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006305,
-          "Position": {
-            "X": 10.60498,
-            "Y": 71.47817,
-            "Z": -16.617126
-          },
-          "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006309,
-          "Position": {
-            "X": -116.56372,
-            "Y": 86.051636,
-            "Z": -5.874817
-          },
-          "TerritoryId": 137,
+          "Position": [-116.56372, 86.051636, -5.874817],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1006308,
-          "Position": {
-            "X": -42.98468,
-            "Y": 75.575645,
-            "Z": -55.069885
-          },
-          "TerritoryId": 137,
+          "Position": [-42.98468, 75.575645, -55.069885],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006305,
-          "Position": {
-            "X": 10.60498,
-            "Y": 71.47817,
-            "Z": -16.617126
-          },
-          "TerritoryId": 137,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

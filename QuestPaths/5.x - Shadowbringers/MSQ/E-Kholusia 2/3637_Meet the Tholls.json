@@ -1,65 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027462,
-          "Position": {
-            "X": -121.87384,
-            "Y": 352.35822,
-            "Z": -191.08875
-          },
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030229,
-          "Position": {
-            "X": -425.80304,
-            "Y": 416.76733,
-            "Z": -586.2974
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Tomra"
+          "Position": [-425.80304, 416.76733, -586.2974],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1027296,
-          "Position": {
-            "X": -469.77954,
-            "Y": 417.22958,
-            "Z": -649.2561
-          },
-          "TerritoryId": 814,
+          "Position": [-469.77954, 417.22958, -649.2561],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030231,
-          "Position": {
-            "X": -443.7171,
-            "Y": 417.16812,
-            "Z": -616.47974
-          },
-          "TerritoryId": 814,
+          "Position": [-443.7171, 417.16812, -616.47974],
           "InteractionType": "Snipe",
           "Comment": "Click red hat dwarf (always shows up in the same location)"
         }
@@ -67,15 +43,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030231,
-          "Position": {
-            "X": -443.7171,
-            "Y": 417.16812,
-            "Z": -616.47974
-          },
-          "TerritoryId": 814,
+          "Position": [-443.7171, 417.16812, -616.47974],
           "InteractionType": "Snipe",
           "Comment": "Click red hat dwarf"
         }
@@ -83,15 +55,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1027296,
-          "Position": {
-            "X": -469.77954,
-            "Y": 417.22958,
-            "Z": -649.2561
-          },
-          "TerritoryId": 814,
+          "Position": [-469.77954, 417.22958, -649.2561],
           "InteractionType": "CompleteQuest"
         }
       ]

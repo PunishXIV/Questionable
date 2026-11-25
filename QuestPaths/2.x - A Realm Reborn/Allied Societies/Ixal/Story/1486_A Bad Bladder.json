@@ -1,115 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009294,
-          "Position": {
-            "X": -63.767517,
-            "Y": -1.7171676,
-            "Z": 11.673096
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000612,
-          "Position": {
-            "X": 357.96143,
-            "Y": 8.934158,
-            "Z": 214.46558
-          },
-          "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
-          "Fly": true
+          "Position": [357.96143, 8.934158, 214.46558],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": 264.54797,
-            "Y": -14.2467,
-            "Z": 56.094566
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2004442,
-          "Position": {
-            "X": 265.00342,
-            "Y": -13.931519,
-            "Z": 58.457275
-          },
-          "TerritoryId": 154,
+          "Position": [265.00342, -13.931519, 58.457275],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000612,
-          "Position": {
-            "X": 357.96143,
-            "Y": 8.934158,
-            "Z": 214.46558
-          },
-          "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [357.96143, 8.934158, 214.46558],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2004443,
-          "Position": {
-            "X": 211.9325,
-            "Y": -4.928711,
-            "Z": 27.572998
-          },
-          "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [211.9325, -4.928711, 27.572998],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009199,
-          "Position": {
-            "X": 149.43152,
-            "Y": -18.140299,
-            "Z": 99.22937
-          },
-          "TerritoryId": 154,
+          "Position": [149.43152, -18.140299, 99.22937],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
           "NextQuestId": 1487
         }
       ]

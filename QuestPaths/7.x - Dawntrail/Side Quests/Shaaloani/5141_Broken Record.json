@@ -1,54 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051288,
-          "Position": {
-            "X": 274.52502,
-            "Y": -4.49502,
-            "Z": 463.5537
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1051289,
-          "Position": {
-            "X": 246.57043,
-            "Y": 15.999963,
-            "Z": 761.2573
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Xak Tural Skygate (Shaaloani)"
-          ]
+          "Position": [246.57043, 15.999963, 761.2573],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1051293,
-          "Position": {
-            "X": 245.89917,
-            "Y": 15.999965,
-            "Z": 758.1139
-          },
-          "TerritoryId": 1190,
+          "Position": [245.89917, 15.999965, 758.1139],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

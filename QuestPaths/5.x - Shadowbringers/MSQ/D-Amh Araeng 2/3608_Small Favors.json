@@ -1,70 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030587,
-          "Position": {
-            "X": -728.0537,
-            "Y": 52.604565,
-            "Z": -146.3493
-          },
-          "StopDistance": 5,
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1029607,
-          "Position": {
-            "X": -32.791687,
-            "Y": -0.6250627,
-            "Z": -44.663208
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium"
+          "Position": [-32.791687, -0.6250627, -44.663208],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1029608,
-          "Position": {
-            "X": -120.83624,
-            "Y": -47.55994,
-            "Z": -166.15558
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "Position": [-120.83624, -47.55994, -166.15558],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1029608,
-          "Position": {
-            "X": -120.83624,
-            "Y": -47.55994,
-            "Z": -166.15558
-          },
-          "TerritoryId": 819,
+          "Position": [-120.83624, -47.55994, -166.15558],
           "InteractionType": "Emote",
           "Emote": "poke",
           "DialogueChoices": [
@@ -79,26 +50,17 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 2009900,
-          "Position": {
-            "X": -136.64453,
-            "Y": -46.00598,
-            "Z": -183.67291
-          },
-          "TerritoryId": 819,
+          "Position": [-136.64453, -46.00598, -183.67291],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2009899,
-          "Position": {
-            "X": -140.97815,
-            "Y": -44.75476,
-            "Z": -156.66437
-          },
-          "TerritoryId": 819,
+          "Position": [-140.97815, -44.75476, -156.66437],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -106,17 +68,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027248,
-          "Position": {
-            "X": -30.807983,
-            "Y": -0.64999914,
-            "Z": -51.438232
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium"
+          "Position": [-30.807983, -0.64999914, -51.438232],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

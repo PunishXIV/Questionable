@@ -1,137 +1,75 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027235,
-          "Position": {
-            "X": -19.516357,
-            "Y": 20.186,
-            "Z": -130.1748
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1030659,
-          "Position": {
-            "X": -131.15137,
-            "Y": 0,
-            "Z": -65.53754
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Temenos Rookery"
-          ]
+          "Position": [-131.15137, 0, -65.53754],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "TerritoryId": 819,
           "InteractionType": "Craft",
           "ItemId": 27255,
           "ItemCount": 1
         },
         {
           "DataId": 1030659,
-          "Position": {
-            "X": -131.15137,
-            "Y": 0,
-            "Z": -65.53754
-          },
-          "TerritoryId": 819,
+          "Position": [-131.15137, 0, -65.53754],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1028489,
-          "Position": {
-            "X": 355.42847,
-            "Y": 3.8289368,
-            "Z": 224.17017
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "Position": [355.42847, 3.8289368, 224.17017],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028491,
-          "Position": {
-            "X": 29.251465,
-            "Y": 36.20521,
-            "Z": -207.38544
-          },
-          "TerritoryId": 819,
+          "Position": [29.251465, 36.20521, -207.38544],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1030659,
-          "Position": {
-            "X": -131.15137,
-            "Y": 0,
-            "Z": -65.53754
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] Temenos Rookery"
-          ]
+          "Position": [-131.15137, 0, -65.53754],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027235,
-          "Position": {
-            "X": -19.516357,
-            "Y": 20.186,
-            "Z": -130.1748
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Temenos Rookery",
-            "[Crystarium] The Crystalline Mean"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

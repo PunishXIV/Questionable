@@ -1,22 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021947,
-          "Position": {
-            "X": 476.73767,
-            "Y": 69.83099,
-            "Z": 526.604
-          },
-          "TerritoryId": 612,
+          "Position": [476.73767, 69.83099, 526.604],
           "InteractionType": "Interact",
           "TargetTerritoryId": 724,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_STMBDR105_02932_SYSTEM_000_008",
@@ -27,12 +22,7 @@
         },
         {
           "DataId": 1021942,
-          "Position": {
-            "X": -208.57562,
-            "Y": -223.5,
-            "Z": -124.16266
-          },
-          "StopDistance": 7,
+          "Position": [-208.57562, -223.5, -124.16266],
           "TerritoryId": 724,
           "InteractionType": "AcceptQuest"
         }
@@ -40,25 +30,20 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 724,
       "Steps": [
         {
           "DataId": 1021946,
-          "Position": {
-            "X": -211.01703,
-            "Y": -223.25,
-            "Z": -117.021484
-          },
-          "StopDistance": 6,
-          "TerritoryId": 724,
+          "Position": [-211.01703, -223.25, -117.021484],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 724,
       "Steps": [
         {
-          "TerritoryId": 724,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 255,
@@ -69,16 +54,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021949,
-          "Position": {
-            "X": 462.6687,
-            "Y": 69.02547,
-            "Z": 515.06824
-          },
-          "StopDistance": 5,
-          "TerritoryId": 612,
+          "Position": [462.6687, 69.02547, 515.06824],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2933
         }

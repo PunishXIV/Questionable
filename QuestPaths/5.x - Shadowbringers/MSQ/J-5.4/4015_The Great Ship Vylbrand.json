@@ -1,31 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "DataId": 1001029,
-          "Position": {
-            "X": 9.170593,
-            "Y": 20.999403,
-            "Z": -15.213318
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "TargetTerritoryId": 198,
-          "SkipConditions": {"StepIf": {"InTerritory": [198]}}
-        },
-        {
           "DataId": 1002694,
-          "Position": {
-            "X": -0.045776367,
-            "Y": 1.6001425,
-            "Z": -7.0039062
-          },
+          "Position": [-0.045776367, 1.6001425, -7.0039062],
           "TerritoryId": 198,
           "InteractionType": "AcceptQuest"
         }
@@ -33,104 +17,36 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1035399,
-          "Position": {
-            "X": -105.21106,
-            "Y": 64.43899,
-            "Z": -243.15253
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+          "Position": [-105.21106, 64.43899, -243.15253],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 112.33268,
-            "Y": 23.437105,
-            "Z": -609.04865
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 110.578125,
-            "Y": 23.611277,
-            "Z": -617.7367
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1
-        },
-        {
-          "Position": {
-            "X": 125.817085,
-            "Y": 23.503817,
-            "Z": -718.88574
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 133.8054,
-            "Y": 23.573988,
-            "Z": -718.9776
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1
-        },
-        {
-          "Position": {
-            "X": 143.67847,
-            "Y": 24.069574,
-            "Z": -642.77527
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
           "DataId": 1035401,
-          "Position": {
-            "X": 142.71753,
-            "Y": 24.40421,
-            "Z": -634.54645
-          },
-          "TerritoryId": 180,
+          "Position": [142.71753, 24.40421, -634.54645],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1035407,
-          "Position": {
-            "X": -103.71564,
-            "Y": 64.39152,
-            "Z": -241.32147
-          },
-          "StopDistance": 5,
-          "TerritoryId": 180,
+          "Position": [-103.71564, 64.39152, -241.32147],
           "InteractionType": "CompleteQuest"
         }
       ]

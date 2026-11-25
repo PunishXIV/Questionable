@@ -1,37 +1,17 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003896,
-          "Position": {
-            "X": -96.1471,
-            "Y": 6.54607,
-            "Z": 21.2863
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 4,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": 358.55273,
-            "Y": 74.743355,
-            "Z": 161.29245
-          },
-          "TerritoryId": 140,
+          "Position": [358.55273, 74.743355, 161.29245],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -39,37 +19,13 @@
               "DataId": 49,
               "MinimumKillCount": 4
             }
-          ],
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [131] },
-            "AethernetShortcutIf": { "InTerritory": [140] }
-          }
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1003896,
-          "Position": {
-            "X": -96.17767,
-            "Y": 6.5999684,
-            "Z": 21.286316
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 4,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

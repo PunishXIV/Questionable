@@ -1,36 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005563,
-          "Position": {
-            "X": 48.874634,
-            "Y": 6.0734596,
-            "Z": 251.17871
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": 137.0787,
-            "Y": -29.800467,
-            "Z": -246.0627
-          },
-          "TerritoryId": 152,
+          "Position": [137.0787, -29.800467, -246.0627],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -43,17 +25,11 @@
               "MinimumKillCount": 1,
               "$": "Part of aggro group"
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2465,
-          "Position": {
-            "X": 119.1272,
-            "Y": -25.143417,
-            "Z": -324.0864
-          },
-          "TerritoryId": 152,
+          "Position": [119.1272, -25.143417, -324.0864],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -66,28 +42,13 @@
               "MinimumKillCount": 1,
               "$": "Part of aggro group"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005563,
-          "Position": {
-            "X": 48.874634,
-            "Y": 6.0734596,
-            "Z": 251.17871
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

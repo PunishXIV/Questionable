@@ -1,146 +1,87 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1045619,
-          "Position": {
-            "X": 24.612793,
-            "Y": 40,
-            "Z": 80.338745
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1045620,
-          "Position": {
-            "X": 157.57996,
-            "Y": 14.09586,
-            "Z": 685.81665
-          },
-          "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "Position": [157.57996, 14.09586, 685.81665],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1045624,
-          "Position": {
-            "X": 199.51172,
-            "Y": 14.119263,
-            "Z": 670.6492
-          },
-          "TerritoryId": 135,
+          "Position": [199.51172, 14.119263, 670.6492],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 1045623,
-          "Position": {
-            "X": 162.67639,
-            "Y": 8.973654,
-            "Z": 613.9772
-          },
-          "TerritoryId": 135,
+          "Position": [162.67639, 8.973654, 613.9772],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1045625,
-          "Position": {
-            "X": 217.18164,
-            "Y": 8.973654,
-            "Z": 615.77783
-          },
-          "TerritoryId": 135,
+          "Position": [217.18164, 8.973654, 615.77783],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1045621,
-          "Position": {
-            "X": 162.89001,
-            "Y": 12.126945,
-            "Z": 637.0182
-          },
-          "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [162.89001, 12.126945, 637.0182],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 2013397,
-          "Position": {
-            "X": 247.8523,
-            "Y": 6.6986694,
-            "Z": 783.505
-          },
-          "TerritoryId": 135,
+          "Position": [247.8523, 6.6986694, 783.505],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1045626,
-          "Position": {
-            "X": 248.27954,
-            "Y": 6.7779655,
-            "Z": 784.6647
-          },
-          "TerritoryId": 135,
+          "Position": [248.27954, 6.7779655, 784.6647],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1045615,
-          "Position": {
-            "X": -115.80072,
-            "Y": 4,
-            "Z": -100.99945
-          },
-          "TerritoryId": 130,
+          "Position": [-115.80072, 4, -100.99945],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "DialogueChoices": [
             {
               "Type": "List",

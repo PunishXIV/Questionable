@@ -1,85 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032539,
-          "Position": {
-            "X": -534.1726,
-            "Y": 63.559536,
-            "Z": 735.1339
-          },
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1032529,
-          "Position": {
-            "X": 5.5389404,
-            "Y": 0.019417249,
-            "Z": -0.5036011
-          },
-          "TerritoryId": 819,
+          "Position": [5.5389404, 0.019417249, -0.5036011],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1032558,
-          "Position": {
-            "X": 56.90088,
-            "Y": 36.19769,
-            "Z": -169.23785
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "Position": [56.90088, 36.19769, -169.23785],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "DataId": 1027230,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Dossal Gate"
-          ],
-          "TargetTerritoryId": 844
-        },
-        {
           "DataId": 1032121,
-          "Position": {
-            "X": 0.045776367,
-            "Y": -5.996435E-14,
-            "Z": -5.5390625
-          },
+          "Position": [0.045776367, -5.996435E-14, -5.5390625],
           "TerritoryId": 844,
           "InteractionType": "Interact"
         }
@@ -87,32 +46,13 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 844,
       "Steps": [
         {
-          "DataId": 2009758,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 1.0223389,
-            "Z": 14.206055
-          },
-          "TerritoryId": 844,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 819
-        },
-        {
           "DataId": 1030610,
-          "Position": {
-            "X": 65.11023,
-            "Y": 1.7160122,
-            "Z": 249.7749
-          },
-          "StopDistance": 5,
+          "Position": [65.11023, 1.7160122, 249.7749],
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Pendants"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

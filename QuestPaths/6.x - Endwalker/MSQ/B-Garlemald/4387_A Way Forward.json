@@ -1,83 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038868,
-          "Position": {
-            "X": 605.9204,
-            "Y": 34.7239,
-            "Z": 201.09851
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039864,
-          "Position": {
-            "X": -334.12683,
-            "Y": 23.803606,
-            "Z": 405.2644
-          },
-          "StopDistance": 7,
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "Position": [-334.12683, 23.803606, 405.2644],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039870,
-          "Position": {
-            "X": -358.14453,
-            "Y": 22.554066,
-            "Z": 430.01453
-          },
-          "StopDistance": 5,
-          "TerritoryId": 958,
+          "Position": [-358.14453, 22.554066, 430.01453],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039878,
-          "Position": {
-            "X": -362.1729,
-            "Y": 22.071072,
-            "Z": 434.01233
-          },
-          "StopDistance": 7,
-          "TerritoryId": 958,
+          "Position": [-362.1729, 22.071072, 434.01233],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039880,
-          "Position": {
-            "X": -308.36963,
-            "Y": 22.468344,
-            "Z": 365.7129
-          },
-          "TerritoryId": 958,
+          "Position": [-308.36963, 22.468344, 365.7129],
           "InteractionType": "Interact",
           "Comment": "Follow Alphinaud and Alisaie",
           "DialogueChoices": [
@@ -92,70 +61,42 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039882,
-          "Position": {
-            "X": -286.71664,
-            "Y": 5.6315875,
-            "Z": 264.1926
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 5,
+          "Position": [-286.71664, 5.6315875, 264.1926],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5
         },
         {
           "DataId": 1039882,
-          "Position": {
-            "X": -126.2175,
-            "Y": 0.18809877,
-            "Z": 233.39058
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 5,
+          "Position": [-126.2175, 0.18809877, 233.39058],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5
         },
         {
           "DataId": 1039882,
-          "Position": {
-            "X": 67.2465,
-            "Y": 0.33215836,
-            "Z": 149.8282
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
+          "Position": [67.2465, 0.33215836, 149.8282],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1039880,
-          "Position": {
-            "X": 66.50907,
-            "Y": 0.26087344,
-            "Z": 149.46323
-          },
-          "StopDistance": 1,
-          "TerritoryId": 958,
+          "Position": [66.50907, 0.26087344, 149.46323],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039883,
-          "Position": {
-            "X": 64.65234,
-            "Y": 0.21427588,
-            "Z": 147.8446
-          },
-          "StopDistance": 5,
-          "TerritoryId": 958,
+          "Position": [64.65234, 0.21427588, 147.8446],
           "InteractionType": "CompleteQuest"
         }
       ]

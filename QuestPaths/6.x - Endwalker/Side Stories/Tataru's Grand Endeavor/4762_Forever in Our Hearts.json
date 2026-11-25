@@ -1,32 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 621,
       "Steps": [
         {
-          "DataId": 1033637,
-          "Position": {
-            "X": -533.4402,
-            "Y": 8.187748,
-            "Z": -46.341675
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "TargetTerritoryId": 919,
-          "SkipConditions": {"StepIf": {"InTerritory": [919]}}
-        },
-        {
           "DataId": 1033629,
-          "Position": {
-            "X": -0.3204956,
-            "Y": 41,
-            "Z": 17.56311
-          },
-          "StopDistance": 7,
+          "Position": [-0.3204956, 41, 17.56311],
           "TerritoryId": 919,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -41,50 +24,28 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 919,
       "Steps": [
         {
           "DataId": 1045301,
-          "Position": {
-            "X": -36.636963,
-            "Y": 41,
-            "Z": 57.66382
-          },
-          "TerritoryId": 919,
+          "Position": [-36.636963, 41, 57.66382],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 919,
       "Steps": [
         {
           "DataId": 1045308,
-          "Position": {
-            "X": -18.35669,
-            "Y": 40.999996,
-            "Z": -17.898865
-          },
-          "TerritoryId": 919,
+          "Position": [-18.35669, 40.999996, -17.898865],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": -15.634434,
-            "Y": 41,
-            "Z": 13.581184
-          },
-          "TerritoryId": 919,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1033629,
-          "Position": {
-            "X": -0.3204956,
-            "Y": 41,
-            "Z": 17.56311
-          },
-          "TerritoryId": 919,
+          "Position": [-0.3204956, 41, 17.56311],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -92,48 +53,34 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 919,
       "Steps": [
         {
           "DataId": 1045311,
-          "Position": {
-            "X": 57.78589,
-            "Y": 35,
-            "Z": 81.55945
-          },
-          "TerritoryId": 919,
+          "Position": [57.78589, 35, 81.55945],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 919,
       "Steps": [
         {
           "DataId": 1045614,
-          "Position": {
-            "X": 53.116577,
-            "Y": 34.999966,
-            "Z": 78.01941
-          },
-          "StopDistance": 7,
-          "TerritoryId": 919,
+          "Position": [53.116577, 34.999966, 78.01941],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1042599,
-          "Position": {
-            "X": 31.998047,
-            "Y": 5.1499996,
-            "Z": -67.73486
-          },
-          "TerritoryId": 962,
+          "Position": [31.998047, 5.1499996, -67.73486],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
           "NextQuestId": 4812
         }
       ]

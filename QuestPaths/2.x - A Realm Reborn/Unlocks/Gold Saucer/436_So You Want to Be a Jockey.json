@@ -1,68 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Starr",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 388,
       "Steps": [
         {
-          "TerritoryId": 144,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Cactpot Board",
-            "[Gold Saucer] Chocobo Square"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 119.92558,
-                  "Y": 13.001013,
-                  "Z": -12.923852
-                },
-                "TerritoryId": 144,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1010464,
-          "Position": {
-            "X": -0.13309006,
-            "Y": -2.026558E-06,
-            "Z": -64.397385
-          },
-          "TerritoryId": 388,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Chocobo Square"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [144]
-            }
-          }
+          "Position": [-0.13309006, -2.026558E-06, -64.397385],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1010472,
-          "Position": {
-            "X": -53.26935,
-            "Y": 0.3093315,
-            "Z": 69.41321
-          },
-          "TerritoryId": 148,
+          "Position": [-53.26935, 0.3093315, 69.41321],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true,
           "NextQuestId": 565
         }
       ]

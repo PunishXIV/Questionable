@@ -1,16 +1,12 @@
-﻿using Dalamud.Game.Text;
-using Dalamud.Game.Text.SeStringHandling;
-using Questionable.Model.Questing;
+﻿using Dalamud.Game.Text.SeStringHandling;
 namespace Questionable.Controller.Steps.Common;
 
-// TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent 8 levels).
 internal static class SendNotification
 {
     internal sealed class Factory
     (
         AutomatonIpc automatonIpc,
-        AutoDutyIpc autoDutyIpc,
-        IAutoHookIpc autoHookIpc,
+        AutoDutyProvider autoDuty,
         BossModIpc bossModIpc,
         TerritoryData territoryData) : SimpleTaskFactory
     {
@@ -20,14 +16,12 @@ internal static class SendNotification
             {
                 EInteractionType.Snipe when !automatonIpc.IsAutoSnipeEnabled =>
                     new(step.InteractionType, step.Comment),
-                EInteractionType.Duty when !autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions) =>
-                    new(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } contentFinderConditionId
-                        ? territoryData.GetContentFinderCondition(contentFinderConditionId)?.Name
+                EInteractionType.Duty when !autoDuty.CanRunDuty(step.DutyOptions) =>
+                    new(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } cfcId
+                        ? territoryData.GetCfc(cfcId)?.Name
                         : step.Comment),
-                EInteractionType.SinglePlayerDuty when !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions) =>
+                EInteractionType.SinglePlayerDuty when !bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions) =>
                     new Task(step.InteractionType, quest.Info.Name),
-                EInteractionType.Fish when !autoHookIpc.IsAvailable() =>
-                    new(step.InteractionType, step.Comment ?? "AutoHook plugin is required for automatic fishing"),
                 var _ => null
             };
         }
@@ -52,7 +46,7 @@ internal static class SendNotification
             string text = Task.InteractionType switch
             {
                 EInteractionType.Duty => "Duty",
-                EInteractionType.SinglePlayerDuty => "Single player duty",
+                EInteractionType.SinglePlayerDuty => "Quest battle",
                 EInteractionType.Instruction or EInteractionType.WaitForManualProgress or EInteractionType.Snipe
                     or EInteractionType.Fish =>
                     "Manual interaction required",
@@ -63,47 +57,54 @@ internal static class SendNotification
                 text += $" - {Task.Comment}";
 
             if (configuration.Notifications.ChatType != XivChatType.None)
-            {
-                XivChatEntry message = configuration.Notifications.ChatType switch
-                {
-                    XivChatType.Say
-                        or XivChatType.Shout
-                        or XivChatType.TellOutgoing
-                        or XivChatType.TellIncoming
-                        or XivChatType.Party
-                        or XivChatType.Alliance
-                        or >= XivChatType.Ls1 and <= XivChatType.Ls8
-                        or XivChatType.FreeCompany
-                        or XivChatType.NoviceNetwork
-                        or XivChatType.Yell
-                        or XivChatType.CrossParty
-                        or XivChatType.PvPTeam
-                        or XivChatType.CrossLinkShell1
-                        or XivChatType.NPCDialogue
-                        or XivChatType.NPCDialogueAnnouncements
-                        or >= XivChatType.CrossLinkShell2 and <= XivChatType.CrossLinkShell8
-                        => new()
-                        {
-                            Message = text,
-                            Type = configuration.Notifications.ChatType,
-                            Name = new SeStringBuilder()
-                                .AddUiForeground(CommandHandler.MessageTag, CommandHandler.TagColor)
-                                .Build()
-                        },
-                    var _ => new()
-                    {
-                        Message = new SeStringBuilder()
-                            .AddUiForeground($"[{CommandHandler.MessageTag}] ", CommandHandler.TagColor)
-                            .Append(text)
-                            .Build(),
-                        Type = configuration.Notifications.ChatType
-                    }
-                };
-                chatGui.Print(message);
-            }
+                chatGui.Print(CreateChatMessage(text, configuration.Notifications.ChatType));
+
             notificationMasterIpc.Notify(text);
             return true;
         }
+
+        private static XivChatEntry CreateChatMessage(string text, XivChatType chatType)
+        {
+            // Sender-aware channels display the tag differently.
+            if (HasSender(chatType))
+            {
+                return new()
+                {
+                    Message = text,
+                    Type = chatType,
+                    Name = new SeStringBuilder()
+                        .AddUiForeground(CommandHandler.MessageTag, CommandHandler.TagColor)
+                        .Build()
+                };
+            }
+
+            return new()
+            {
+                Message = new SeStringBuilder()
+                    .AddUiForeground($"[{CommandHandler.MessageTag}] ", CommandHandler.TagColor)
+                    .Append(text)
+                    .Build(),
+                Type = chatType
+            };
+        }
+
+        private static bool HasSender(XivChatType chatType) =>
+            chatType is XivChatType.Say
+                or XivChatType.Shout
+                or XivChatType.TellOutgoing
+                or XivChatType.TellIncoming
+                or XivChatType.Party
+                or XivChatType.Alliance
+                or >= XivChatType.Ls1 and <= XivChatType.Ls8
+                or XivChatType.FreeCompany
+                or XivChatType.NoviceNetwork
+                or XivChatType.Yell
+                or XivChatType.CrossParty
+                or XivChatType.PvPTeam
+                or XivChatType.CrossLinkShell1
+                or XivChatType.NPCDialogue
+                or XivChatType.NPCDialogueAnnouncements
+                or >= XivChatType.CrossLinkShell2 and <= XivChatType.CrossLinkShell8;
 
         public override ETaskResult Update() => ETaskResult.TaskComplete;
 

@@ -1,93 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001000,
-          "Position": {
-            "X": -32.028687,
-            "Y": 41.499985,
-            "Z": 208.39233
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001001,
-          "Position": {
-            "X": -56.443176,
-            "Y": 39.974316,
-            "Z": 178.72888
-          },
-          "TerritoryId": 128,
+          "Position": [-56.443176, 39.974316, 178.72888],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001000,
-          "Position": {
-            "X": -32.028687,
-            "Y": 41.499985,
-            "Z": 208.39233
-          },
-          "TerritoryId": 128,
+          "Position": [-32.028687, 41.499985, 208.39233],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "Position": {
-            "X": 25.748932,
-            "Y": 44.499928,
-            "Z": 183.40387
-          },
-          "TerritoryId": 128,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 135,
-          "SkipConditions": {"StepIf": {"InTerritory": [135]}}
-        },
-        {
-          "Position": {
-            "X": 310.65405,
-            "Y": 46.211643,
-            "Z": 20.592497
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1012522,
-          "Position": {
-            "X": 314.7173,
-            "Y": 46.25565,
-            "Z": 18.753235
-          },
+          "Position": [314.7173, 46.25565, 18.753235],
           "TerritoryId": 135,
           "InteractionType": "Interact"
         }
@@ -95,34 +43,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001000,
-          "Position": {
-            "X": -32.028687,
-            "Y": 41.499985,
-            "Z": 208.39233
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [-32.028687, 41.499985, 208.39233],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001001,
-          "Position": {
-            "X": -56.443176,
-            "Y": 39.974316,
-            "Z": 178.72888
-          },
-          "TerritoryId": 128,
+          "Position": [-56.443176, 39.974316, 178.72888],
           "InteractionType": "CompleteQuest"
         }
       ]

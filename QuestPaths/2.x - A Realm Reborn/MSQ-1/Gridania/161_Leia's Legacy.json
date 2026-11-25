@@ -1,56 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000471,
-          "Position": {
-            "X": -60.471558,
-            "Y": 0.19999865,
-            "Z": 6.301941
-          },
-          "TerritoryId": 148,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000484,
-          "Position": {
-            "X": 2.0598755,
-            "Y": -7.9139543,
-            "Z": -22.171448
-          },
-          "TerritoryId": 148,
+          "Position": [2.0598755, -7.9139543, -22.171448],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1000476,
-          "Position": {
-            "X": 27.0542,
-            "Y": -6.881897,
-            "Z": 14.145081
-          },
-          "TerritoryId": 148,
+          "Position": [27.0542, -6.881897, 14.145081],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1000483,
-          "Position": {
-            "X": 85.496216,
-            "Y": -6.0870457,
-            "Z": 67.00232
-          },
-          "TerritoryId": 148,
+          "Position": [85.496216, -6.0870457, 67.00232],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -58,95 +33,54 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000471,
-          "Position": {
-            "X": -60.471558,
-            "Y": 0.19999865,
-            "Z": 6.301941
-          },
-          "TerritoryId": 148,
+          "Position": [-60.471558, 0.19999865, 6.301941],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 9.630515,
-            "Y": -22.580793,
-            "Z": 242.32327
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1003002,
-          "Position": {
-            "X": -189.13562,
-            "Y": -26.70127,
-            "Z": 295.52136
-          },
-          "TerritoryId": 148,
+          "Position": [-189.13562, -26.70127, 295.52136],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "Healer NPC is only killed after the boss dies; all NPCs need to be killed for the duty to complete"
-            ]
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1003002,
-          "Position": {
-            "X": -189.13562,
-            "Y": -26.70127,
-            "Z": 295.52136
-          },
-          "TerritoryId": 148,
+          "Position": [-189.13562, -26.70127, 295.52136],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000471,
-          "Position": {
-            "X": -60.471558,
-            "Y": 0.19999865,
-            "Z": 6.301941
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "Position": [-60.471558, 0.19999865, 6.301941],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000471,
-          "Position": {
-            "X": -60.471558,
-            "Y": 0.19999865,
-            "Z": 6.301941
-          },
-          "TerritoryId": 148,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

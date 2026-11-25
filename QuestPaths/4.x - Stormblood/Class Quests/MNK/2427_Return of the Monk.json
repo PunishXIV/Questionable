@@ -1,100 +1,57 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013971,
-          "Position": {
-            "X": 15.854065,
-            "Y": 28.620823,
-            "Z": -682.76495
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1022384,
-          "Position": {
-            "X": 76.920654,
-            "Y": 62.19928,
-            "Z": -669.4591
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Fringes Gate"
-          ]
+          "Position": [76.920654, 62.19928, -669.4591],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1022387,
-          "Position": {
-            "X": 49.94275,
-            "Y": 118.155785,
-            "Z": -746.0899
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "Position": [49.94275, 118.155785, -746.0899],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1022390,
-          "Position": {
-            "X": 51.132935,
-            "Y": 118.44431,
-            "Z": -789.27295
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [51.132935, 118.44431, -789.27295],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "Position": {
-            "X": 46.555176,
-            "Y": 117.997925,
-            "Z": -784.2374
-          },
-          "TerritoryId": 620,
+          "Position": [46.555176, 117.997925, -784.2374],
           "InteractionType": "Action",
           "Action": "Form Shift"
         },
         {
           "DataId": 2008451,
-          "Position": {
-            "X": 46.555176,
-            "Y": 117.997925,
-            "Z": -784.2374
-          },
-          "TerritoryId": 620,
+          "Position": [46.555176, 117.997925, -784.2374],
           "InteractionType": "Action",
           "Action": "Twin Snakes"
         }
@@ -102,15 +59,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 2008451,
-          "Position": {
-            "X": 46.555176,
-            "Y": 117.997925,
-            "Z": -784.2374
-          },
-          "TerritoryId": 620,
+          "Position": [46.555176, 117.997925, -784.2374],
           "InteractionType": "Action",
           "Action": "Dragon Kick"
         }
@@ -118,15 +71,11 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 2008451,
-          "Position": {
-            "X": 46.555176,
-            "Y": 117.997925,
-            "Z": -784.2374
-          },
-          "TerritoryId": 620,
+          "Position": [46.555176, 117.997925, -784.2374],
           "InteractionType": "Action",
           "Action": "Demolish"
         }
@@ -134,16 +83,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1022390,
-          "Position": {
-            "X": 51.132935,
-            "Y": 118.44431,
-            "Z": -789.27295
-          },
-          "StopDistance": 5,
-          "TerritoryId": 620,
+          "Position": [51.132935, 118.44431, -789.27295],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2428
         }

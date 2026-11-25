@@ -1,34 +1,18 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "goatzone",
 	"LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
 		{
-			"Sequence": 0,
-			"Steps": [
-				{
-					"DataId": 1012289,
-					"Position": {
-						"X": 231.18933,
-						"Y": -72.92926,
-						"Z": -603.1434
-					},
-					"TerritoryId": 402,
-					"InteractionType": "AcceptQuest",
-					"Fly": true
-				}
-			]
+		  "Sequence": 0,
+		  "Steps": []
 		},
 		{
 			"Sequence": 1,
+			"TerritoryId": 402,
 			"Steps": [
 				{
-					"Position": {
-						"X": 517.51276,
-						"Y": -40.378292,
-						"Z": -785.99677
-					},
-					"TerritoryId": 402,
+					"Position": [517.51276, -40.378292, -785.99677],
 					"InteractionType": "Combat",
 					"EnemySpawnType": "OverworldEnemies",
 					"ComplexCombatData": [
@@ -37,26 +21,13 @@
 							"MinimumKillCount": 2
 						}
 					],
-					"Fly": true,
 					"$": "FATE spawns on top of the suggested area, so we move a bit east."
 				}
 			]
 		},
 		{
-			"Sequence": 255,
-			"Steps": [
-				{
-					"DataId": 1012289,
-					"Position": {
-						"X": 231.18933,
-						"Y": -72.92926,
-						"Z": -603.1434
-					},
-					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-					"Fly": true
-				}
-			]
+		  "Sequence": 255,
+		  "Steps": []
 		}
 	]
 }

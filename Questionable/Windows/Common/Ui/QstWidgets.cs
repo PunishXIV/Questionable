@@ -1,14 +1,17 @@
 using System.Runtime.CompilerServices;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
 using Dalamud.Interface.Utility;
-using Dalamud.Interface.Utility.Raii;
 
 namespace Questionable.Windows.Common.Ui;
 
 internal static class QstWidgets
 {
-    // Collapsible section header with an optional count.
+    public static void Tooltip(string text)
+    {
+        using var tooltip = ImRaii.Tooltip();
+        using var wrap = ImRaii.TextWrapPos(ImGui.GetFontSize() * 35);
+        ImGui.TextUnformatted(text);
+    }
+
     public static bool SectionHeader(string label, string id, int? count = null, bool defaultOpen = true)
     {
         ImGuiTreeNodeFlags flags = defaultOpen ? ImGuiTreeNodeFlags.DefaultOpen : ImGuiTreeNodeFlags.None;
@@ -41,13 +44,6 @@ internal static class QstWidgets
         return open;
     }
 
-    public static void BulletTextWrapped(string text)
-    {
-        ImGui.Bullet();
-        ImGui.TextWrapped(text);
-    }
-
-    // Status pill in the window title bar.
     public static void TitleBarPill(string text, Vector4 color, string windowTitle, bool alignCenter = true)
     {
         float frameHeight = ImGui.GetFrameHeight();
@@ -63,7 +59,6 @@ internal static class QstWidgets
 
         string visibleTitle = windowTitle.Split("###")[0];
         float titleStart = ImGui.GetFontSize() + ImGui.GetStyle().FramePadding.X;
-        //+ ImGui.GetStyle().ItemInnerSpacing.X;
         Vector2 topLeft = new(
             windowPos.X + titleStart + (alignCenter ? ImGui.CalcTextSize(visibleTitle).X - 3f * scale : 0f),
             windowPos.Y + (frameHeight - height) / 2f);
@@ -79,28 +74,6 @@ internal static class QstWidgets
         drawList.PopClipRect();
     }
 
-    // Inline status pill.
-    public static void StatusPill(string text, Vector4 color)
-    {
-        float scale = ImGuiHelpers.GlobalScale;
-        Vector2 textSize = ImGui.CalcTextSize(text);
-        float dotRadius = 3f * scale;
-        Vector2 padding = new(8f * scale, 2f * scale);
-        float height = textSize.Y + padding.Y * 2;
-        float width = padding.X * 2 + dotRadius * 2 + 4f * scale + textSize.X;
-
-        Vector2 pos = ImGui.GetCursorScreenPos();
-        ImDrawListPtr drawList = ImGui.GetWindowDrawList();
-        drawList.AddRectFilled(pos, pos + new Vector2(width, height),
-            QstTheme.ToU32(QstTheme.WithAlpha(color, 0.15f)), height / 2f);
-        drawList.AddCircleFilled(new Vector2(pos.X + padding.X + dotRadius, pos.Y + height / 2f),
-            dotRadius, QstTheme.ToU32(color));
-        drawList.AddText(new Vector2(pos.X + padding.X + dotRadius * 2 + 4f * scale, pos.Y + padding.Y),
-            QstTheme.ToU32(color), text);
-        ImGui.Dummy(new Vector2(width, height));
-    }
-
-    // Slim progress bar.
     public static void ThinProgressBar(float fraction, Vector4 color, float height = 4f)
     {
         float barHeight = height * ImGuiHelpers.GlobalScale;
@@ -120,7 +93,6 @@ internal static class QstWidgets
         ImGui.Dummy(new Vector2(0, barHeight));
     }
 
-    // Small rounded label.
     public static bool Chip(string text, Vector4 color)
     {
         float scale = ImGuiHelpers.GlobalScale;
@@ -136,7 +108,6 @@ internal static class QstWidgets
         return ImGui.IsItemHovered();
     }
 
-    // Icon button with a tooltip and an optional count badge.
     public static bool RailButton(FontAwesomeIcon icon, string label, string? tooltip = null, Vector4? tint = null,
         bool enabled = true, string? countBadge = null, Vector4? badgeColor = null, bool showLabel = false,
         [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
@@ -164,23 +135,106 @@ internal static class QstWidgets
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
         {
             if (showLabel && tooltip?.Length != 0)
-                ImGui.SetTooltip(tooltip);
+                Tooltip(tooltip ?? string.Empty);
             else
             {
                 if (tooltip?.Length != 0)
                     tooltip = $"\n{tooltip}";
-                ImGui.SetTooltip($"{label}{tooltip}");
+                Tooltip($"{label}{tooltip}");
             }
         }
 
         return clicked && enabled;
     }
 
-    // Boxed group of SegmentToggles.
     public static SegmentGroupScope SegmentGroup(bool armed) => new(armed);
 
-    // Inset content box.
     public static CardScope Card(Vector4? borderColor = null) => new(borderColor);
+
+    public static CardScope TitledCard(string title)
+    {
+        ImGui.Spacing();
+        ImGui.TextColored(QstTheme.TextMuted, title.ToUpper(CultureInfo.CurrentUICulture));
+        return new(null);
+    }
+
+    internal sealed record MenuPage(string Group, string Id, string Label, FontAwesomeIcon Icon);
+
+    // Draws the menu on the left and opens the page area on the right; dispose after drawing the page.
+    public static ImRaii.ChildDisposable SideMenu(string id, IReadOnlyList<MenuPage> pages, ref string selected)
+    {
+        float scale = ImGuiHelpers.GlobalScale;
+        string current = selected;
+        if (!pages.Any(x => x.Id == current))
+            selected = pages[0].Id;
+
+        bool iconsOnly = ImGui.GetContentRegionAvail().X < 560f * scale;
+        float rowHeight = ImGui.GetFrameHeight();
+        float width = iconsOnly ? rowHeight + 12f * scale : 170f * scale;
+
+        using (ImRaii.ChildDisposable menu = ImRaii.Child($"{id}Menu", new Vector2(width, 0), border: false))
+        {
+            if (menu)
+            {
+                string? group = null;
+                foreach (MenuPage page in pages)
+                {
+                    if (page.Group != group)
+                    {
+                        group = page.Group;
+                        ImGui.Spacing();
+                        if (iconsOnly)
+                            ImGui.Separator();
+                        else
+                            ImGui.TextColored(QstTheme.TextMuted, group.ToUpper(CultureInfo.CurrentUICulture));
+                    }
+
+                    if (MenuRow(page, page.Id == selected, iconsOnly, rowHeight))
+                        selected = page.Id;
+                }
+            }
+        }
+
+        ImGui.SameLine();
+        return ImRaii.Child($"{id}Page", Vector2.Zero, border: false);
+    }
+
+    private static bool MenuRow(MenuPage page, bool active, bool iconsOnly, float height)
+    {
+        float scale = ImGuiHelpers.GlobalScale;
+        Vector2 pos = ImGui.GetCursorScreenPos();
+        Vector2 size = new(ImGui.GetContentRegionAvail().X, height);
+        bool clicked = ImGui.InvisibleButton(page.Id, size);
+        bool hovered = ImGui.IsItemHovered();
+
+        ImDrawListPtr drawList = ImGui.GetWindowDrawList();
+        if (active || hovered)
+            drawList.AddRectFilled(pos, pos + size,
+                QstTheme.ToU32(active ? QstTheme.WithAlpha(QstTheme.Accent, 0.15f) : QstTheme.WithAlpha(QstTheme.Text, 0.06f)),
+                4f * scale);
+
+        uint color = QstTheme.ToU32(active ? QstTheme.Accent : QstTheme.Text);
+        string icon = page.Icon.ToIconString();
+        float x = pos.X + 6f * scale;
+        using (ImRaii.PushFont(UiBuilder.IconFont))
+        {
+            Vector2 iconSize = ImGui.CalcTextSize(icon);
+            drawList.AddText(new Vector2(x, pos.Y + (height - iconSize.Y) / 2f), color, icon);
+        }
+
+        if (iconsOnly)
+        {
+            if (hovered)
+                Tooltip(page.Label);
+        }
+        else
+        {
+            Vector2 textSize = ImGui.CalcTextSize(page.Label);
+            drawList.AddText(new Vector2(x + 22f * scale, pos.Y + (height - textSize.Y) / 2f), color, page.Label);
+        }
+
+        return clicked;
+    }
 
     internal sealed class CardScope : IDisposable
     {
@@ -221,7 +275,6 @@ internal static class QstWidgets
         }
     }
 
-    // Toggle button for a SegmentGroup.
     public static bool SegmentToggle(FontAwesomeIcon icon, bool active, string tooltipOn, string tooltipOff,
         [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
     {
@@ -231,10 +284,7 @@ internal static class QstWidgets
             new Vector2(size, size), file, line);
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-        {
-            using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
-            ImGui.TextUnformatted(active ? tooltipOn : tooltipOff);
-        }
+            Tooltip(active ? tooltipOn : tooltipOff);
 
         return clicked;
     }

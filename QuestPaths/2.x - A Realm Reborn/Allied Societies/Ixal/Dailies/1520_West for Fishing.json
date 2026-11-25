@@ -1,40 +1,22 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
-  "Comment": "Buy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
+  "Comment": "Buys 99 Moth Pupa",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009216,
-          "Position": {
-            "X": 164.35486,
-            "Y": -22.797548,
-            "Z": 114.64099
-          },
-          "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Comment": "Buy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
+          "Comment": "Buy 99 Moth Pupa",
           "DataId": 1000718,
-          "Position": {
-            "X": 332.23462,
-            "Y": -5.5506706,
-            "Z": 332.47876
-          },
+          "Position": [332.23462, -5.5506706, 332.47876],
           "TerritoryId": 154,
-          "Fly": true,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -51,32 +33,16 @@
           }
         },
         {
-          "Position": {
-            "X": 305.01318,
-            "Y": 301,
-            "Z": -244.59177
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [305.01318, 301, -244.59177],
+          "InteractionType": "WalkTo"
         },
         {
           "Comment": "Catch 3x Snow Smelt (!!) using Moth Pupa",
-          "TerritoryId": 155,
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
               "ItemId": 2001422,
-              "ItemCount": 3,
-              "FishingOptions": {
-                "BaitId": 2586,
-                "HookType": {
-                  "Normal": {
-                    "Strong": true
-                  }
-                }
-              }
+              "ItemCount": 3
             }
           ]
         }
@@ -84,69 +50,49 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "InteractionType": "SwitchClass",
           "TargetClass": "QuestStartJob",
-          "TerritoryId": 155,
           "DelaySecondsAtStart": 1
         },
         {
           "DataId": 1009645,
-          "Position": {
-            "X": 238.33057,
-            "Y": 302,
-            "Z": -254.1391
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [238.33057, 302, -254.1391],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009221,
-          "Position": {
-            "X": 202.13623,
-            "Y": 301.99976,
-            "Z": -253.55927
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [202.13623, 301.99976, -253.55927],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "SwitchClass",
           "TargetClass": "QuestStartJob"
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 155,
           "ItemId": 8120,
           "ItemCount": 1
         },
         {
           "DataId": 1009216,
-          "Position": {
-            "X": 164.35486,
-            "Y": -22.797548,
-            "Z": 114.64099
-          },
+          "Position": [164.35486, -22.797548, 114.64099],
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

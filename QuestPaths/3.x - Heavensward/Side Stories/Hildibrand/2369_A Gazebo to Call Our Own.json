@@ -1,75 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016619,
-          "Position": {
-            "X": -66.84979,
-            "Y": 8.05915,
-            "Z": 9.506287
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1017959,
-          "Position": {
-            "X": 39.505493,
-            "Y": 16.49931,
-            "Z": -29.922974
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "Position": [39.505493, 16.49931, -29.922974],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1017962,
-          "Position": {
-            "X": 4.837097,
-            "Y": 11.964993,
-            "Z": 31.296265
-          },
-          "TerritoryId": 419,
+          "Position": [4.837097, 11.964993, 31.296265],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1017963,
-          "Position": {
-            "X": 21.683044,
-            "Y": 11.965154,
-            "Z": 47.68445
-          },
-          "TerritoryId": 419,
+          "Position": [21.683044, 11.965154, 47.68445],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1017964,
-          "Position": {
-            "X": -40.634766,
-            "Y": 11.965008,
-            "Z": 32.028687
-          },
-          "TerritoryId": 419,
+          "Position": [-40.634766, 11.965008, 32.028687],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -77,84 +44,45 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1017968,
-          "Position": {
-            "X": -43.778137,
-            "Y": 11.965093,
-            "Z": 47.348755
-          },
-          "TerritoryId": 419,
+          "Position": [-43.778137, 11.965093, 47.348755],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1017970,
-          "Position": {
-            "X": 132.43298,
-            "Y": 205.99544,
-            "Z": 80.9491
-          },
-          "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "Position": [132.43298, 205.99544, 80.9491],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012099,
-          "Position": {
-            "X": 50.278442,
-            "Y": 206.04715,
-            "Z": 57.75537
-          },
-          "TerritoryId": 478,
+          "Position": [50.278442, 206.04715, 57.75537],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1012299,
-          "Position": {
-            "X": -16.586609,
-            "Y": 206.49942,
-            "Z": 42.98462
-          },
-          "StopDistance": 5,
-          "TerritoryId": 478,
+          "Position": [-16.586609, 206.49942, 42.98462],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": -2.76668,
-            "Y": 205.81511,
-            "Z": 24.614613
-          },
-          "TerritoryId": 478,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "DataId": 1017977,
-          "Position": {
-            "X": -0.7172241,
-            "Y": 206.49947,
-            "Z": 20.09607
-          },
-          "StopDistance": 7,
-          "TerritoryId": 478,
+          "Position": [-0.7172241, 206.49947, 20.09607],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -162,15 +90,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1017981,
-          "Position": {
-            "X": 10.208252,
-            "Y": 206.77286,
-            "Z": 62.394165
-          },
-          "TerritoryId": 478,
+          "Position": [10.208252, 206.77286, 62.394165],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2370
         }

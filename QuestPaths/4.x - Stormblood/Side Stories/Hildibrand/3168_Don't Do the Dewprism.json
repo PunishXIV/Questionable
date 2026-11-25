@@ -1,54 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1025885,
-          "Position": {
-            "X": 26.443848,
-            "Y": 6.024561,
-            "Z": -118.57788
-          },
-          "StopDistance": 5,
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "Position": {
-            "X": 65.39469,
-            "Y": 5.8110533,
-            "Z": -121.784775
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 72.780495,
-            "Y": -8.000002,
-            "Z": -127.28816
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1019068,
-          "Position": {
-            "X": 42.191162,
-            "Y": -7.463482,
-            "Z": -264.75934
-          },
-          "TerritoryId": 628,
+          "Position": [42.191162, -7.463482, -264.75934],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -62,101 +27,56 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1019033,
-          "Position": {
-            "X": 52.048462,
-            "Y": 8.02,
-            "Z": 140.55078
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Thavnairian Consulate"
-          ]
+          "Position": [52.048462, 8.02, 140.55078],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "Position": {
-            "X": 16.635633,
-            "Y": 11.441568,
-            "Z": 174.71848
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1026764,
-          "Position": {
-            "X": 24.917969,
-            "Y": 6.0124164,
-            "Z": -123.979614
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Thavnairian Consulate",
-            "[Kugane] Rakuza District"
-          ]
+          "Position": [24.917969, 6.0124164, -123.979614],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1026350,
-          "Position": {
-            "X": 512.90137,
-            "Y": 0.8484344,
-            "Z": 148.91272
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Rakuza District",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true
+          "Position": [512.90137, 0.8484344, 148.91272],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1026765,
-          "Position": {
-            "X": 495.10938,
-            "Y": 1.611506,
-            "Z": 149.49255
-          },
-          "StopDistance": 5,
-          "TerritoryId": 613,
+          "Position": [495.10938, 1.611506, 149.49255],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1026766,
-          "Position": {
-            "X": 52.384155,
-            "Y": 10.503965,
-            "Z": -154.03986
-          },
-          "TerritoryId": 628,
+          "Position": [52.384155, 10.503965, -154.03986],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
           "NextQuestId": 4542
         }
       ]

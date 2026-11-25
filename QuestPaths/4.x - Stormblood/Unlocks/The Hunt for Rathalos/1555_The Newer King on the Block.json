@@ -1,24 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025721,
-          "Position": {
-            "X": -75.94415,
-            "Y": 11.800039,
-            "Z": -115.617676
-          },
-          "TerritoryId": 628,
+          "Position": [-75.94415, 11.800039, -115.617676],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -31,18 +22,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1025721,
-          "Position": {
-            "X": -75.94415,
-            "Y": 11.800039,
-            "Z": -115.617676
-          },
-          "TerritoryId": 628,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

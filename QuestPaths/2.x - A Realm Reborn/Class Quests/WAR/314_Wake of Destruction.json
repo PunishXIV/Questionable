@@ -1,45 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 391.3196,
-            "Y": 73.47712,
-            "Z": -313.9601
-          },
-          "TerritoryId": 135,
+          "Position": [391.3196, 73.47712, -313.9601],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -50,80 +24,44 @@
             {"Low": 3},
           null,null,null,null,null]
             }
-          ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "Fly": true
-        }
-      ]
-    },
-    {
-      "Sequence": 2,
-      "Steps": [
-        {
-          "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
           ]
         }
       ]
     },
     {
+      "Sequence": 2,
+      "TerritoryId": 128,
+      "Steps": [
+        {
+          "DataId": 1000927,
+          "Position": [-1.2055054, 44.999886, -255.8786],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
       "Sequence": 3,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 2000286,
-          "Position": {
-            "X": -88.60913,
-            "Y": 43.564453,
-            "Z": -303.05945
-          },
-          "TerritoryId": 134,
+          "Position": [-88.60913, 43.564453, -303.05945],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2
-          ],
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Middle La Noscea - Summerford Farms"
-            }
-          },
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
+          "Position": [-1.2055054, 44.999886, -255.8786],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 316
         }
       ]

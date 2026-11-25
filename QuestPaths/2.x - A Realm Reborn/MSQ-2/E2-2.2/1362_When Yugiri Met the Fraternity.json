@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001029,
-          "Position": {
-            "X": 9.170593,
-            "Y": 20.999403,
-            "Z": -15.213318
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1008694,
-          "Position": {
-            "X": -117.265625,
-            "Y": 9.999865,
-            "Z": 154.7417
-          },
-          "TerritoryId": 129,
+          "Position": [-117.265625, 9.999865, 154.7417],
           "InteractionType": "CompleteQuest"
         }
       ]

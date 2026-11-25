@@ -1,93 +1,40 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052063,
-          "Position": {
-            "X": -49.973328,
-            "Y": 6.4999995,
-            "Z": -89.829956
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1052065,
-          "Position": {
-            "X": 172.86938,
-            "Y": 15.699935,
-            "Z": -113.11517
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "Position": [172.86938, 15.699935, -113.11517],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
+          "Position": [71.97681, 8, -166.52173],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "Position": {
-            "X": 13.474687,
-            "Y": 8.372438,
-            "Z": -86.945724
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
+          "Position": [-44.87683, -1.2500024, 56.839844],
           "TerritoryId": 132,
           "InteractionType": "Interact"
         }
@@ -95,45 +42,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1052068,
-          "Position": {
-            "X": 11.36792,
-            "Y": 0.106995195,
-            "Z": 2.7618408
-          },
-          "TerritoryId": 132,
+          "Position": [11.36792, 0.106995195, 2.7618408],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
-          "Position": {
-            "X": 12.567871,
-            "Y": 1.2197373,
-            "Z": -15.778544
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1052063,
-          "Position": {
-            "X": -49.973328,
-            "Y": 6.4999995,
-            "Z": -89.829956
-          },
+          "Position": [-49.973328, 6.4999995, -89.829956],
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5243

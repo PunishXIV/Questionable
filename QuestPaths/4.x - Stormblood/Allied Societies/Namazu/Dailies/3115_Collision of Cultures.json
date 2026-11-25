@@ -1,94 +1,50 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1025602,
-          "Position": {
-            "X": -778.2559,
-            "Y": 127.80886,
-            "Z": 98.54055
-          },
-          "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025610,
-          "Position": {
-            "X": -739.43695,
-            "Y": 127.45824,
-            "Z": 90.62329
-          },
-          "TerritoryId": 622,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "Mount": true
+          "Position": [-739.43695, 127.45824, 90.62329],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 2009498,
-          "Position": {
-            "X": -161.57782,
-            "Y": 5.142273,
-            "Z": 554.46704
-          },
-          "TerritoryId": 622,
+          "Position": [-161.57782, 5.142273, 554.46704],
           "InteractionType": "Action",
-          "Action": "Wasshoi",
-          "Fly": true,
-          "Land": true
+          "Action": "Wasshoi"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 2009499,
-          "Position": {
-            "X": 176.34851,
-            "Y": 4.135132,
-            "Z": 20.645447
-          },
-          "TerritoryId": 622,
+          "Position": [176.34851, 4.135132, 20.645447],
           "InteractionType": "Action",
-          "Action": "Wasshoi",
-          "Fly": true,
-          "Land": true
+          "Action": "Wasshoi"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1025602,
-          "Position": {
-            "X": -778.2559,
-            "Y": 127.80886,
-            "Z": 98.54055
-          },
-          "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

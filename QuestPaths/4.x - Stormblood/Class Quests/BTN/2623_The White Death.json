@@ -1,93 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021349,
-          "Position": {
-            "X": -43.930786,
-            "Y": 209.23637,
-            "Z": -90.77594
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ]
+          "Position": [-233.9361, 6.668152, -171.03839],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 2008181,
-          "Position": {
-            "X": -46.31122,
-            "Y": 209.49109,
-            "Z": -86.35089
-          },
-          "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
+          "Position": [-46.31122, 209.49109, -86.35089],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 2008181,
-          "Position": {
-            "X": -46.31122,
-            "Y": 209.49109,
-            "Z": -86.35089
-          },
-          "TerritoryId": 478,
+          "Position": [-46.31122, 209.49109, -86.35089],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1021349,
-          "Position": {
-            "X": -43.930786,
-            "Y": 209.23637,
-            "Z": -90.77594
-          },
-          "TerritoryId": 478,
+          "Position": [-43.930786, 209.23637, -90.77594],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -101,28 +60,23 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1017106,
-          "Position": {
-            "X": 73.99097,
-            "Y": 214.12,
-            "Z": -92.57648
-          },
-          "TerritoryId": 478,
+          "Position": [73.99097, 214.12, -92.57648],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "TerritoryId": 478,
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 478,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -133,31 +87,14 @@
         },
         {
           "DataId": 1017106,
-          "Position": {
-            "X": 73.99097,
-            "Y": 214.12,
-            "Z": -92.57648
-          },
-          "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "Position": [73.99097, 214.12, -92.57648],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1021349,
-          "Position": {
-            "X": -43.930786,
-            "Y": 209.23637,
-            "Z": -90.77594
-          },
-          "TerritoryId": 478,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

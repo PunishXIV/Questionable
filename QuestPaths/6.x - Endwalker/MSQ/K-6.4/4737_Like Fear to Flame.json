@@ -1,112 +1,65 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1045420,
-          "Position": {
-            "X": 142.07666,
-            "Y": -16.147,
-            "Z": 235.70605
-          },
-          "StopDistance": 7,
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040824,
-          "Position": {
-            "X": -334.4015,
-            "Y": 23.803606,
-            "Z": 404.9286
-          },
-          "StopDistance": 7,
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "Position": [-334.4015, 23.803606, 404.9286],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1045425,
-          "Position": {
-            "X": 532.4635,
-            "Y": -36.65,
-            "Z": -191.48547
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "Position": [532.4635, -36.65, -191.48547],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1045490,
-          "Position": {
-            "X": 523.24695,
-            "Y": -36.65,
-            "Z": -156.02356
-          },
-          "TerritoryId": 958,
+          "Position": [523.24695, -36.65, -156.02356],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1045491,
-          "Position": {
-            "X": 502.4032,
-            "Y": -36.65,
-            "Z": -178.27118
-          },
-          "TerritoryId": 958,
+          "Position": [502.4032, -36.65, -178.27118],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1037774,
-          "Position": {
-            "X": 518.181,
-            "Y": -36.65,
-            "Z": -212.14618
-          },
-          "TerritoryId": 958,
+          "Position": [518.181, -36.65, -212.14618],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
           "DataId": 1045489,
-          "Position": {
-            "X": 549.2484,
-            "Y": -36.615707,
-            "Z": -213.18384
-          },
-          "TerritoryId": 958,
+          "Position": [549.2484, -36.615707, -213.18384],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1037766,
-          "Position": {
-            "X": 545.3115,
-            "Y": -36.616177,
-            "Z": -265.00348
-          },
-          "TerritoryId": 958,
+          "Position": [545.3115, -36.616177, -265.00348],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         }
@@ -114,31 +67,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": 534.8861,
-            "Y": -36.65,
-            "Z": -245.12135
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1045430,
-          "Position": {
-            "X": 415.1521,
-            "Y": 15.558167,
-            "Z": -637.56775
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [415.1521, 15.558167, -637.56775],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

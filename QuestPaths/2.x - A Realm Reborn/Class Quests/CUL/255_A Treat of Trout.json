@@ -1,51 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
-  "Comment": "Crafted Item:\n 1x Grilled Trout\nWill buy from Jossy/Fishmonger",
+  "Comment": "Crafted Item:\n 1x Grilled Trout\nBuys the ingredients",
   "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44.000008,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001016,
-          "Position": {
-            "X": -42.679565,
-            "Y": 39.999947,
-            "Z": 119.920654
-          },
-          "TerritoryId": 128,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
+          "Position": [-42.679565, 39.999947, 119.920654],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -63,16 +32,7 @@
         },
         {
           "DataId": 1003249,
-          "Position": {
-            "X": -62.912964,
-            "Y": 42.29963,
-            "Z": -164.75171
-          },
-          "TerritoryId": 128,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
+          "Position": [-62.912964, 42.29963, -164.75171],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -90,7 +50,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 4847,
           "ItemCount": 1,
           "SkipConditions": {
@@ -103,7 +62,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 4660,
           "ItemCount": 1,
           "SkipConditions": {
@@ -116,18 +74,9 @@
         },
         {
           "DataId": 1000950,
-          "Position": {
-            "X": -66.26996,
-            "Y": 42.299988,
-            "Z": -162.92065
-          },
-          "TerritoryId": 128,
+          "Position": [-66.26996, 42.299988, -162.92065],
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

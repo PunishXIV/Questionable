@@ -1,118 +1,38 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["liza", "Friendly"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000168,
-          "Position": {
-            "X": -75.48645,
-            "Y": -0.5013741,
-            "Z": -5.081299
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "Comment": "Clearing normal unlock quest",
-          "TerritoryId": 1,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "Item": { "NotInInventory": true },
-              "QuestsCompleted": [1014]
-            }
-          }
-        },
-        {
-          "Comment": "Clearing normal unlock quest",
           "DataId": 1005021,
-          "Position": {
-            "X": -472.49567,
-            "Y": 23.008797,
-            "Z": -355.00116
-          },
+          "Position": [-472.49567, 23.008797, -355.00116],
           "TerritoryId": 140,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1014,
           "SkipConditions": { "StepIf": { "QuestsCompleted": [1014] } }
         },
         {
-          "Position": {
-            "X": 123.6,
-            "Y": 31.6,
-            "Z": -768.8
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [155]
-            },
-            "StepIf": {
-              "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [155]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 129.3,
-            "Y": 31.71,
-            "Z": -774.87
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 155,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [155]
-            }
-          }
-        },
-        {
           "DataId": 1007625,
-          "Position": {
-            "X": -354.1772,
-            "Y": 214.60808,
-            "Z": 692.65283
-          },
+          "Position": [-354.1772, 214.60808, 692.65283],
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 5,
@@ -123,19 +43,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000168,
-          "Position": {
-            "X": -75.48645,
-            "Y": -0.5013741,
-            "Z": -5.081299
-          },
-          "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

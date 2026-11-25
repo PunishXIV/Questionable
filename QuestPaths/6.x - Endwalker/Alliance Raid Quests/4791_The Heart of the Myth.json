@@ -1,46 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042264,
-          "Position": {
-            "X": 124.22363,
-            "Y": 19.32629,
-            "Z": -617.42584
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "DataId": 2012870,
-          "Position": {
-            "X": 154.46704,
-            "Y": -26.29132,
-            "Z": -437.46094
-          },
-          "StopDistance": 1,
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "TargetTerritoryId": 1061
-        },
-        {
           "DataId": 1045968,
-          "Position": {
-            "X": 5.661072,
-            "Y": 0.099999696,
-            "Z": 5.8441772
-          },
+          "Position": [5.661072, 0.099999696, 5.8441772],
           "TerritoryId": 1061,
           "InteractionType": "Interact"
         }
@@ -48,15 +20,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1061,
       "Steps": [
         {
           "DataId": 1045971,
-          "Position": {
-            "X": 1.3580322,
-            "Y": 0.099999696,
-            "Z": 27.237305
-          },
-          "TerritoryId": 1061,
+          "Position": [1.3580322, 0.099999696, 27.237305],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -70,61 +38,43 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 2013455,
-          "Position": {
-            "X": -510.1244,
-            "Y": 128.64868,
-            "Z": 607.9956
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
-          "Fly": true
+          "Position": [-510.1244, 128.64868, 607.9956],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2012870,
-          "Position": {
-            "X": 154.46704,
-            "Y": -26.29132,
-            "Z": -437.46094
-          },
-          "StopDistance": 1,
-          "TerritoryId": 156,
+          "Position": [154.46704, -26.29132, -437.46094],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "TargetTerritoryId": 1061
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1061,
       "Steps": [
         {
           "DataId": 1045974,
-          "Position": {
-            "X": 2.3651123,
-            "Y": 0.099999696,
-            "Z": -11.215393
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1061,
+          "Position": [2.3651123, 0.099999696, -11.215393],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1061,
       "Steps": [
         {
-          "TerritoryId": 1061,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 962,
@@ -135,15 +85,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1182,
       "Steps": [
         {
           "DataId": 1045982,
-          "Position": {
-            "X": 945.2506,
-            "Y": -950,
-            "Z": -940.55084
-          },
-          "TerritoryId": 1182,
+          "Position": [945.2506, -950, -940.55084],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4792
         }

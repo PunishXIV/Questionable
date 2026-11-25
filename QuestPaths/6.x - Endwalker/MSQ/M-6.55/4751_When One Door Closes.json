@@ -1,60 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039645,
-          "Position": {
-            "X": -338.33832,
-            "Y": 55,
-            "Z": -68.40625
-          },
-          "TerritoryId": 963,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038588,
-          "Position": {
-            "X": -101.76245,
-            "Y": 4.357494,
-            "Z": 0.7476196
-          },
-          "StopDistance": 7,
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "Position": [-101.76245, 4.357494, 0.7476196],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1045691,
-          "Position": {
-            "X": -257.0993,
-            "Y": 19.165915,
-            "Z": -44.327515
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Baldesion Annex",
-            "[Old Sharlayan] The Studium"
-          ]
+          "Position": [-257.0993, 19.165915, -44.327515],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

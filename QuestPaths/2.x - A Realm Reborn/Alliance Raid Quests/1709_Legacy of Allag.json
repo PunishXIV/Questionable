@@ -1,125 +1,45 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1007753,
-          "Position": {
-            "X": 17.990356,
-            "Y": 20.385572,
-            "Z": -665.79694
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006900,
-          "Position": {
-            "X": 427.57288,
-            "Y": -5.2769094,
-            "Z": -462.48572
-          },
-          "TerritoryId": 156,
+          "Position": [427.57288, -5.2769094, -462.48572],
           "InteractionType": "UnlockTaxiStand",
-          "Fly": true,
           "TaxiStandId": 1179683
         },
         {
           "DataId": 1006725,
-          "Position": {
-            "X": 446.82983,
-            "Y": -5.306207,
-            "Z": -465.72064
-          },
-          "TerritoryId": 156,
+          "Position": [446.82983, -5.306207, -465.72064],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006725,
-          "Position": {
-            "X": 446.82983,
-            "Y": -5.306207,
-            "Z": -465.72064
-          },
-          "TerritoryId": 156,
+          "Position": [446.82983, -5.306207, -465.72064],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 287.2875,
-            "Y": 41.545933,
-            "Z": -200.75758
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
-            },
-            "StepIf": {
-              "InTerritory": [180],
-              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 285.82883,
-            "Y": 42.26685,
-            "Z": -203.32939
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 180,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [180],
-              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -114.35803,
-            "Y": 64.464615,
-            "Z": -217.34372
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "TerritoryId": 180,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {
@@ -130,56 +50,8 @@
           }
         },
         {
-          "Position": {
-            "X": 72.39681,
-            "Y": 58.74831,
-            "Z": -517.9883
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 111.84353,
-            "Y": 28.346682,
-            "Z": -610.36945
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 102.67392,
-            "Y": 21.581085,
-            "Z": -633.5837
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 2000075,
-          "Position": {
-            "X": 102.15906,
-            "Y": 21.560913,
-            "Z": -632.8679
-          },
-          "TerritoryId": 180,
+          "Position": [102.15906, 21.560913, -632.8679],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -189,28 +61,8 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": -487.1432,
-            "Y": -32.409756,
-            "Z": -369.94928
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2000076,
-          "Position": {
-            "X": -486.86963,
-            "Y": -32.455933,
-            "Z": -368.8258
-          },
+          "Position": [-486.86963, -32.455933, -368.8258],
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
@@ -224,87 +76,39 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 446.57513,
-            "Y": -5.352314,
-            "Z": -466.78467
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1006725,
-          "Position": {
-            "X": 446.82983,
-            "Y": -5.306207,
-            "Z": -465.72064
-          },
-          "TerritoryId": 156,
+          "Position": [446.82983, -5.306207, -465.72064],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -155.21196,
-            "Y": 46.52775,
-            "Z": -319.86398
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
-        },
-        {
-          "Position": {
-            "X": 3.8795898,
-            "Y": 38.80212,
-            "Z": 0.40251642
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2000077,
-          "Position": {
-            "X": 233.3562,
-            "Y": 7.9804688,
-            "Z": -22.720703
-          },
-          "TerritoryId": 146,
+          "Position": [233.3562, 7.9804688, -22.720703],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             9489
           ],
           "$": "0 0  0 0  0 0 -> 16 17  0 0  0 128",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "Fly": true,
-          "DisableNavmesh": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2000078,
-          "Position": {
-            "X": 613.5499,
-            "Y": 301.8081,
-            "Z": -101.42676
-          },
+          "Position": [613.5499, 301.8081, -101.42676],
           "TerritoryId": 155,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             9490
           ],
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "$": "16 17  0 0  0 128 -> 0 17  0 0  0 0",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -312,26 +116,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 446.49927,
-            "Y": -5.364953,
-            "Z": -467.05328
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1006725,
-          "Position": {
-            "X": 446.82983,
-            "Y": -5.306207,
-            "Z": -465.72064
-          },
-          "TerritoryId": 156,
+          "Position": [446.82983, -5.306207, -465.72064],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1200
         }

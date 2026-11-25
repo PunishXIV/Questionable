@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041765,
-          "Position": {
-            "X": -323.4455,
-            "Y": 22,
-            "Z": 487.81555
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041766,
-          "Position": {
-            "X": 513.6339,
-            "Y": -19.82022,
-            "Z": -309.1936
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "Position": [513.6339, -19.82022, -309.1936],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041767,
-          "Position": {
-            "X": 541.03906,
-            "Y": -36.65,
-            "Z": -132.46362
-          },
-          "TerritoryId": 958,
+          "Position": [541.03906, -36.65, -132.46362],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,121 +1,62 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019002,
-          "Position": {
-            "X": -48.05072,
-            "Y": -2.9,
-            "Z": -50.247986
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [628]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020913,
-          "Position": {
-            "X": 480.94897,
-            "Y": 57.51844,
-            "Z": -168.47485
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [614]
-            }
-          }
+          "Position": [480.94897, 57.51844, -168.47485],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019279,
-          "Position": {
-            "X": 466.48352,
-            "Y": 68.22433,
-            "Z": -120.74469
-          },
-          "TerritoryId": 614,
+          "Position": [466.48352, 68.22433, -120.74469],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019257,
-          "Position": {
-            "X": 468.55872,
-            "Y": 68.02771,
-            "Z": -93.21747
-          },
-          "TerritoryId": 614,
+          "Position": [468.55872, 68.02771, -93.21747],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1019256,
-          "Position": {
-            "X": 394.7356,
-            "Y": 72.07918,
-            "Z": -81.77313
-          },
-          "TerritoryId": 614,
+          "Position": [394.7356, 72.07918, -81.77313],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1019258,
-          "Position": {
-            "X": 368.45947,
-            "Y": 85.00467,
-            "Z": -202.80768
-          },
-          "TerritoryId": 614,
+          "Position": [368.45947, 85.00467, -202.80768],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "Position": {
-            "X": 477.62292,
-            "Y": 58.267426,
-            "Z": -174.17065
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1020913,
-          "Position": {
-            "X": 480.94897,
-            "Y": 57.51844,
-            "Z": -168.47485
-          },
-          "TerritoryId": 614,
+          "Position": [480.94897, 57.51844, -168.47485],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -129,10 +70,10 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 614,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 614,
           "ItemId": 17882,
           "ItemCount": 1,
           "SkipConditions": {
@@ -145,47 +86,28 @@
         },
         {
           "DataId": 1019279,
-          "Position": {
-            "X": 466.48352,
-            "Y": 68.22433,
-            "Z": -120.74469
-          },
-          "TerritoryId": 614,
+          "Position": [466.48352, 68.22433, -120.74469],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 132,
       "Steps": [
         {
-          "Position": {
-            "X": -9.868694,
-            "Y": -3.25,
-            "Z": 34.92565
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132]
-            }
-          }
+          "Position": [-9.868694, -3.25, 34.92565],
+          "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1020901,
-          "Position": {
-            "X": -22.873291,
-            "Y": -3.25,
-            "Z": 35.202515
-          },
-          "TerritoryId": 132,
+          "Position": [-22.873291, -3.25, 35.202515],
           "InteractionType": "CompleteQuest"
         }
       ]

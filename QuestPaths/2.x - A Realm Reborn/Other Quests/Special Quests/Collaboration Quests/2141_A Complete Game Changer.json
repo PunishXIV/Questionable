@@ -1,39 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1017234,
-          "Position": {
-            "X": -101.458,
-            "Y": 3.98254,
-            "Z": -105.455
-          },
-          "TerritoryId": 130,
+          "Position": [-101.458, 3.98254, -105.455],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "$": "auto: issuer 1017234 (poor-heeled youth)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 144,
       "Steps": [
         {
           "DataId": 1017235,
-          "Position": {
-            "X": -42.376,
-            "Y": -0.0153197,
-            "Z": 40.5211
-          },
-          "TerritoryId": 144,
+          "Position": [-42.376, -0.0153197, 40.5211],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": ["[Gold Saucer] Aetheryte Plaza","[Gold Saucer] Entrance & Card Squares"],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESYKW001_02141_Q1_000_000",
@@ -47,43 +36,26 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000734,
-          "Position": {
-            "X": -2.52672,
-            "Y": -1.18251,
-            "Z": 39.9722
-          },
-          "TerritoryId": 148,
+          "Position": [-2.52672, -1.18251, 39.9722],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo location -> 1000734 (Giah Molkoh)"
         },
         {
           "DataId": 1000470,
-          "Position": {
-            "X": -58.9821,
-            "Y": -0.0108589,
-            "Z": 26.4149
-          },
-          "TerritoryId": 148,
+          "Position": [-58.9821, -0.0108589, 26.4149],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 1000470 (Keitha)"
         },
         {
           "DataId": 1000474,
-          "Position": {
-            "X": -39.2978,
-            "Y": -0.0130673,
-            "Z": 62.0525
-          },
-          "TerritoryId": 148,
+          "Position": [-39.2978, -0.0130673, 62.0525],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo location -> 1000474 (Aethelthryth)"
         }
@@ -91,17 +63,12 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2007169,
-          "Position": {
-            "X": -315.83633,
-            "Y": 21.731556,
-            "Z": 184.1499
-          },
-          "TerritoryId": 148,
+          "Position": [-315.83633, 21.731556, 184.1499],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESYKW001_02141_Q2_000_000",
@@ -109,25 +76,18 @@
               "Yes": true
             }
           ],
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 2007169 (ancient stone vessel)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 144,
       "Steps": [
         {
           "DataId": 1017235,
-          "Position": {
-            "X": -42.376,
-            "Y": -0.0153197,
-            "Z": 40.5211
-          },
-          "TerritoryId": 144,
+          "Position": [-42.376, -0.0153197, 40.5211],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": ["[Gold Saucer] Aetheryte Plaza","[Gold Saucer] Entrance & Card Squares"],
           "$": "auto: todo turn-in -> 1017235 (wandering executive)"
         }
       ]

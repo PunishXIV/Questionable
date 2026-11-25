@@ -1,62 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006750,
-          "Position": {
-            "X": 16.464417,
-            "Y": 6.750492,
-            "Z": -7.3396606
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2002367,
-          "Position": {
-            "X": 104.32593,
-            "Y": -21.774658,
-            "Z": 171.00781
-          },
-          "TerritoryId": 154,
+          "Position": [104.32593, -21.774658, 171.00781],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.1.8"
+            "Enabled": true
           },
-          "ItemId": 2000952,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "ItemId": 2000952
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1006750,
-          "Position": {
-            "X": 16.464417,
-            "Y": 6.750492,
-            "Z": -7.3396606
-          },
-          "TerritoryId": 153,
+          "Position": [16.464417, 6.750492, -7.3396606],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "NextQuestId": 1089
         }
       ]

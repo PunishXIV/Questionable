@@ -1,42 +1,14 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "DataId": 2009985,
-          "Position": {
-            "X": 385.0918,
-            "Y": -63.279236,
-            "Z": 511.49768
-          },
-          "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 878,
-          "Fly": true,
-          "SkipConditions": {"StepIf": {"InTerritory": [857]}}
-        },
-        {
-          "DataId": 2009981,
-          "Position": {
-            "X": -14.66394,
-            "Y": -2.609314,
-            "Z": 23.819275
-          },
-          "TerritoryId": 878,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 857
-        },
-        {
           "DataId": 1034519,
-          "Position": {
-            "X": 101.15198,
-            "Y": -3.8577113E-14,
-            "Z": 103.6239
-          },
-          "StopDistance": 7,
+          "Position": [101.15198, -3.8577113E-14, 103.6239],
           "TerritoryId": 857,
           "InteractionType": "AcceptQuest"
         }
@@ -44,9 +16,9 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 857,
       "Steps": [
         {
-          "TerritoryId": 857,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 751,
@@ -60,9 +32,9 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 857,
       "Steps": [
         {
-          "TerritoryId": 857,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 758,
@@ -73,32 +45,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 878,
       "Steps": [
         {
           "DataId": 1034521,
-          "Position": {
-            "X": -8.163635,
-            "Y": -2.4984214,
-            "Z": 11.734131
-          },
-          "StopDistance": 5,
-          "TerritoryId": 878,
+          "Position": [-8.163635, -2.4984214, 11.734131],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 878,
       "Steps": [
         {
           "DataId": 1034520,
-          "Position": {
-            "X": -7.7974243,
-            "Y": -2.4984214,
-            "Z": 11.337402
-          },
-          "StopDistance": 5,
-          "TerritoryId": 878,
+          "Position": [-7.7974243, -2.4984214, 11.337402],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKRA304_03978_SAYTODO_000_160"
@@ -108,16 +70,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 878,
       "Steps": [
         {
           "DataId": 1034521,
-          "Position": {
-            "X": -8.163635,
-            "Y": -2.4984214,
-            "Z": 11.734131
-          },
-          "StopDistance": 5,
-          "TerritoryId": 878,
+          "Position": [-8.163635, -2.4984214, 11.734131],
           "InteractionType": "CompleteQuest"
         }
       ]

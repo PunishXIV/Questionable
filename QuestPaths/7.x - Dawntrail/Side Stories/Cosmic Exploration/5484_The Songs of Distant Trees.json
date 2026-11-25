@@ -1,39 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1319,
-          "Fly": true,
-          "Comment": "Select the destination Auxesia (#4)",
-          "DialogueChoices": [
-            {
-              "Prompt": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_000",
-              "Answer": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_005",
-              "Type": "List",
-              "ExcelSheet": "custom/009/CtsWksEntrance_00921"
-            }
-          ]
-        },
-        {
           "DataId": 1056831,
-          "Position": {
-            "X": 363.332,
-            "Y": 204.139,
-            "Z": 397.851
-          },
+          "Position": [363.332, 204.139, 397.851],
           "TerritoryId": 1319,
           "InteractionType": "AcceptQuest"
         }
@@ -41,97 +17,71 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056833,
-          "Position": {
-            "X": 250.904,
-            "Y": 483.055,
-            "Z": -378.974
-          },
-          "TerritoryId": 1319,
+          "Position": [250.904, 483.055, -378.974],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056834,
-          "Position": {
-            "X": 250.957,
-            "Y": 483.081,
-            "Z": -381.185
-          },
-          "TerritoryId": 1319,
-          "InteractionType": "Interact",
-          "StopDistance": 4
+          "Position": [250.957, 483.081, -381.185],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056834,
-          "Position": {
-            "X": 336.5421,
-            "Y": 483.1289,
-            "Z": -277.0652
-          },
-          "TerritoryId": 1319,
+          "Position": [336.5421, 483.1289, -277.0652],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1319,
       "Steps": [
         {
-          "TerritoryId": 1319,
           "InteractionType": "Action",
           "Action": "Duty Action I",
           "$": "Stellar Return"
         },
         {
           "DataId": 1056834,
-          "Position": {
-            "X": 269.125,
-            "Y": 205.6674,
-            "Z": 359.51294
-          },
-          "TerritoryId": 1319,
+          "Position": [269.125, 205.6674, 359.51294],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056834,
-          "Position": {
-            "X": -276.47836,
-            "Y": 168.05,
-            "Z": 307.5031
-          },
-          "TerritoryId": 1319,
+          "Position": [-276.47836, 168.05, 307.5031],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 2015406,
-          "Position": {
-            "X": -324.0713,
-            "Y": 164.5286,
-            "Z": -160.31
-          },
-          "TerritoryId": 1319,
+          "Position": [-324.0713, 164.5286, -160.31],
           "InteractionType": "Interact",
           "PointMenuChoices": [0, 1, 2, 3, 4, 5, 7],
           "DialogueChoices": [
@@ -151,15 +101,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1055138,
-          "Position": {
-            "X": 250.554,
-            "Y": 483.081,
-            "Z": -379.293
-          },
-          "TerritoryId": 1319,
+          "Position": [250.554, 483.081, -379.293],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5485
         }

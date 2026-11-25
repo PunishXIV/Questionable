@@ -1,66 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020376,
-          "Position": {
-            "X": 95.44519,
-            "Y": 118.15579,
-            "Z": -758.053
-          },
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020375,
-          "Position": {
-            "X": 78.87378,
-            "Y": 118.26358,
-            "Z": -779.69025
-          },
-          "TerritoryId": 620,
+          "Position": [78.87378, 118.26358, -779.69025],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020374,
-          "Position": {
-            "X": 89.21948,
-            "Y": 119.4052,
-            "Z": -684.7792
-          },
-          "TerritoryId": 620,
+          "Position": [89.21948, 119.4052, -684.7792],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020379,
-          "Position": {
-            "X": 85.40466,
-            "Y": 118.15579,
-            "Z": -719.96643
-          },
-          "StopDistance": 5,
-          "TerritoryId": 620,
+          "Position": [85.40466, 118.15579, -719.96643],
           "InteractionType": "CompleteQuest"
         }
       ]

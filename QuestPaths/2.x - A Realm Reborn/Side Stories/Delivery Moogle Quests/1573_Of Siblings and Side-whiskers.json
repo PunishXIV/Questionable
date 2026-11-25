@@ -1,104 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009153,
-          "Position": {
-            "X": -39.108948,
-            "Y": 20,
-            "Z": 5.416931
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1009739,
-          "Position": {
-            "X": -103.83765,
-            "Y": 40,
-            "Z": 113.206665
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [-103.83765, 40, 113.206665],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "Position": [-44.87683, -1.2500024, 56.839844],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "Position": {
-            "X": -103.88594,
-            "Y": 41.50016,
-            "Z": 119.898315
-          },
-          "TerritoryId": 131,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ]
-        },
-        {
           "DataId": 1002299,
-          "Position": {
-            "X": -103.62651,
-            "Y": 41.50014,
-            "Z": 120.44341
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 131,
+          "Position": [-103.62651, 41.50014, 120.44341],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1009744,
-          "Position": {
-            "X": -47.470886,
-            "Y": 40,
-            "Z": 60.68506
-          },
-          "TerritoryId": 128,
+          "Position": [-47.470886, 40, 60.68506],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "NextQuestId": 1485
         }
       ]

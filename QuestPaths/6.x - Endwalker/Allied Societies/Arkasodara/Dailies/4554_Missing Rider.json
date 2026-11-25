@@ -1,69 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042367,
-          "Position": {
-            "X": 507.01135,
-            "Y": 12.589098,
-            "Z": -482.96332
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true
+          "Position": [507.01135, 12.589098, -482.96332],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012851,
-          "Position": {
-            "X": 427.4204,
-            "Y": 18.44812,
-            "Z": -451.37714
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [427.4204, 18.44812, -451.37714],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012851,
-          "Position": {
-            "X": 427.4204,
-            "Y": 18.44812,
-            "Z": -451.37714
-          },
-          "TerritoryId": 957,
+          "Position": [427.4204, 18.44812, -451.37714],
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
@@ -72,44 +44,15 @@
           }
         },
         {
-          "Position": {
-            "X": 436.76804,
-            "Y": 21.84539,
-            "Z": -466.46533
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1042367,
-          "Position": {
-            "X": 507.01135,
-            "Y": 12.589098,
-            "Z": -482.96332
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "Position": [507.01135, 12.589098, -482.96332],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,61 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038953,
-          "Position": {
-            "X": -611.1391,
-            "Y": 128.6778,
-            "Z": 566.8573
-          },
-          "StopDistance": 5,
-          "TerritoryId": 959,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "Position": {
-            "X": -614.86835,
-            "Y": 128.67761,
-            "Z": 677.33923
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Comment": "Avoids Combat",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "DataId": 2012531,
-          "Position": {
-            "X": -663.29443,
-            "Y": 132.6466,
-            "Z": 728.96924
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1024,
-          "Fly": true
-        },
-        {
           "DataId": 1038960,
-          "Position": {
-            "X": 0.99176025,
-            "Y": 0,
-            "Z": 22.171326
-          },
+          "Position": [0.99176025, 0, 22.171326],
           "TerritoryId": 1024,
           "InteractionType": "Interact"
         }
@@ -63,61 +21,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1038963,
-          "Position": {
-            "X": -338.2467,
-            "Y": 23.803604,
-            "Z": 407.79736
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "Position": [-338.2467, 23.803604, 407.79736],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038965,
-          "Position": {
-            "X": -104.9668,
-            "Y": 3.8989396,
-            "Z": 9.262146
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "Position": [-104.9668, 3.8989396, 9.262146],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "DataId": 2011936,
-          "Position": {
-            "X": -108.56799,
-            "Y": 5.0201416,
-            "Z": 4.5318604
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 987
-        },
-        {
           "DataId": 2012188,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -0.015319824,
-            "Z": -5.081299
-          },
+          "Position": [-0.015319824, -0.015319824, -5.081299],
           "TerritoryId": 987,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -132,20 +62,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038588,
-          "Position": {
-            "X": -101.76245,
-            "Y": 4.357494,
-            "Z": 0.7476196
-          },
-          "TerritoryId": 962,
+          "Position": [-101.76245, 4.357494, 0.7476196],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

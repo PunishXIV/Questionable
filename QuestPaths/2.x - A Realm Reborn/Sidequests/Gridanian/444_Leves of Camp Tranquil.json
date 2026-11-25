@@ -1,61 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 153,
       "Steps": [
         {
           "$": "Switch to combat job",
           "InteractionType": "SwitchClass",
-          "TargetClass": "ConfiguredCombatJob",
-          "TerritoryId": 153
+          "TargetClass": "ConfiguredCombatJob"
         },
         {
           "Comment": "Accept Trial Leve",
           "DataId": 1002397,
-          "Position": {
-            "X": -238.941,
-            "Y": 22.0017,
-            "Z": 344.381
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "Position": [-238.941, 22.0017, 344.381],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -272.51852,
-            "Y": 1.2115724,
-            "Z": 365.99466
-          },
-          "TerritoryId": 153,
+          "Position": [-272.51852, 1.2115724, 365.99466],
           "InteractionType": "Instruction",
-          "Fly": true,
           "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1002397,
-          "Position": {
-            "X": -238.941,
-            "Y": 22.0017,
-            "Z": 344.381
-          },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,64 +1,43 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": -481.02628,
-            "Y": 45.55725,
-            "Z": -226.64441
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "Position": [-481.02628, 45.55725, -226.64441],
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1027925,
-          "TerritoryId": 815,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": -286.0449,
-            "Y": 20.617725,
-            "Z": -223.41017
-          },
-          "TerritoryId": 815,
+          "Position": [-286.0449, 20.617725, -223.41017],
           "InteractionType": "Emote",
-          "Emote": "kneel",
-          "Fly": true
+          "Emote": "kneel"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": -481.02628,
-            "Y": 45.55725,
-            "Z": -226.64441
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "Position": [-481.02628, 45.55725, -226.64441],
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1027925,
-          "TerritoryId": 815,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

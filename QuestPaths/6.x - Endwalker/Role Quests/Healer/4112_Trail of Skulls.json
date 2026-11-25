@@ -1,114 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039402,
-          "Position": {
-            "X": 741.0239,
-            "Y": 70,
-            "Z": 510.61267
-          },
-          "StopDistance": 6,
-          "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1039423,
-          "Position": {
-            "X": 257.1908,
-            "Y": 133.8877,
-            "Z": -735.92737
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "Fly": true
+          "Position": [257.1908, 133.8877, -735.92737],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "Position": {
-            "X": 146.92796,
-            "Y": 118.19209,
-            "Z": -732.00134
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1020841,
-          "Position": {
-            "X": 146.01355,
-            "Y": 118.1921,
-            "Z": -730.4951
-          },
-          "TerritoryId": 620,
+          "Position": [146.01355, 118.1921, -730.4951],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1039428,
-          "Position": {
-            "X": 781.33813,
-            "Y": 256.45923,
-            "Z": -453.66602
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [781.33813, 256.45923, -453.66602],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1039427,
-          "Position": {
-            "X": 142.22925,
-            "Y": 118.1921,
-            "Z": -730.0679
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "Position": [142.22925, 118.1921, -730.0679],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1039410,
-          "Position": {
-            "X": 738.70447,
-            "Y": 70,
-            "Z": 511.0398
-          },
-          "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "Position": [738.70447, 70, 511.0398],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

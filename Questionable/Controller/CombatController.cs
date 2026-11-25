@@ -1,20 +1,14 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Enums;
+﻿using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.SubKinds;
-using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Common.Component.BGCollision;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 using BattleNpcSubKind = Dalamud.Game.ClientState.Objects.Enums.BattleNpcSubKind;
 
 namespace Questionable.Controller;
 
-// TODO: refactor — heavy nesting (21 lines indented ≥6 levels, max indent 16 levels).
-//       High max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
 [RegisterSingleton]
 internal sealed class CombatController : IDisposable
 {
@@ -31,7 +25,7 @@ internal sealed class CombatController : IDisposable
     private readonly ChatFunctions _chatFunctions;
     private readonly IClientState _clientState;
 
-    private readonly List<ICombatModule> _combatModules;
+    private readonly List<ICombatModule> _modules;
     private readonly ICondition _condition;
     private readonly ILogger<CombatController> _logger;
     private readonly MovementController _movementController;
@@ -41,6 +35,8 @@ internal sealed class CombatController : IDisposable
     private readonly ITargetManager _targetManager;
 
     private CurrentFight? _currentFight;
+    private ICombatModule? _pendingCleanup;
+    private bool _cleanupFailureLogged;
     private ulong? _lastTargetId;
     private List<byte>? _previousQuestVariables;
     private bool _wasInCombat;
@@ -57,9 +53,9 @@ internal sealed class CombatController : IDisposable
         IFramework framework,
         ILogger<CombatController> logger)
     {
-        _combatModules = [.. combatModules];
+        _modules = [.. combatModules];
         logger.LogInformation("Combat modules registered (in order): {Modules}",
-            string.Join(", ", _combatModules.Select(x => x.GetType().Name)));
+            string.Join(", ", _modules.Select(x => x.GetType().Name)));
         _movementController = movementController;
         _targetManager = targetManager;
         _objectTable = objectTable;
@@ -70,31 +66,42 @@ internal sealed class CombatController : IDisposable
         _framework = framework;
         _logger = logger;
 
-        _clientState.TerritoryChanged += TerritoryChanged;
+        _clientState.TerritoryChanged += OnTerritoryChanged;
     }
 
     public bool IsRunning => _currentFight != null;
+    public bool HasPendingCleanup => _pendingCleanup != null;
+    public string? BlockReason { get; private set; }
 
     public void Dispose()
     {
-        _clientState.TerritoryChanged -= TerritoryChanged;
-        IpcInvoke.TryOnFrameworkThread(_framework, () => Stop(_L("Dispose")), _logger);
+        _clientState.TerritoryChanged -= OnTerritoryChanged;
+        IpcInvoke.TryOnFrameworkThread(_framework, () => Stop("Dispose"), _logger);
     }
 
     public bool Start(CombatData combatData)
     {
-        Stop(_L("Starting combat"));
+        Stop("Starting combat");
+        if (HasPendingCleanup)
+            throw new TaskException(BlockReason!);
+        if (combatData.SpawnType == EEnemySpawnType.FinishCombatIfAny && !_condition[ConditionFlag.InCombat])
+            return false;
 
         ICombatModule? combatModule = null;
         if (combatData.CombatItemUse != null)
-            combatModule = _combatModules.OfType<ItemUseModule>().FirstOrDefault(x => x.CanHandleFight(combatData));
-        combatModule ??= _combatModules.FirstOrDefault(x => x.CanHandleFight(combatData));
+            combatModule = _modules.OfType<ItemUseModule>().FirstOrDefault(x => x.CanHandleFight(combatData));
+        combatModule ??= _modules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
-            return false;
-        _logger.LogInformation($"Combat module: {combatModule}");
+            throw new NeedsPlayerException("No combat plugin is set up for this fight. Pick one on the Basics page.");
+        _logger.LogInformation("Combat module: {CombatModule}", combatModule);
 
-        if (combatModule.Start(combatData))
+        // Record cleanup first: a throwing or rejected start can still hold resources.
+        _pendingCleanup = combatModule;
+        try
         {
+            if (!combatModule.Start(combatData))
+                throw new TaskException($"{combatModule.Name} refused to start the fight.");
+
             _currentFight = new()
             {
                 Module = combatModule,
@@ -103,29 +110,48 @@ internal sealed class CombatController : IDisposable
             };
             _wasInCombat =
                 combatData.SpawnType is EEnemySpawnType.QuestInterruption or EEnemySpawnType.FinishCombatIfAny;
-            UpdateLastTargetAndQuestVariables(target: null);
+            ResetTracking();
+            _pendingCleanup = null;
             return true;
         }
-
-        return false;
+        catch
+        {
+            Stop("Combat startup failed");
+            throw;
+        }
     }
 
     public EStatus Update()
     {
+        if (HasPendingCleanup)
+            throw new TaskException(BlockReason ?? "Waiting for combat cleanup.");
         if (_currentFight == null)
             return EStatus.Complete;
 
-        if (_movementController.IsPathfinding ||
-            _movementController.IsPathRunning ||
-            _movementController.MovementStartedAt > DateTime.Now.AddSeconds(-1))
+        try
+        {
+            _currentFight.Module.VerifyActive();
+            return UpdateCurrentFight();
+        }
+        catch (Exception e)
+        {
+            Stop("Combat interrupted");
+            if (e is TaskException)
+                throw;
+            throw new TaskException("Combat provider failed; quest execution stopped.", e);
+        }
+    }
+
+    private EStatus UpdateCurrentFight()
+    {
+        if (_currentFight == null)
+            return EStatus.Complete;
+        CountKillOfLastTarget();
+
+        if (_movementController.IsPathRunning ||
+            _movementController.StartedAt > DateTime.Now.AddSeconds(-1))
             return EStatus.Moving;
 
-        // Overworld enemies typically means that if we want to kill 3 enemies, we could have anywhere from 0 to 20
-        // enemies in the area (0 if someone else killed them before, like can happen with bots in Fools' Falls in
-        // La Noscea).
-        //
-        // For all 'normal' types, e.g. auto-spawning on entering an area, there's a fixed number of enemies that you're
-        // fighting with, and the enemies in the overworld aren't relevant.
         if (_currentFight.Data.SpawnType is EEnemySpawnType.OverworldEnemies)
         {
             if (_targetManager.Target != null)
@@ -137,18 +163,18 @@ internal sealed class CombatController : IDisposable
                     IGameObject? lastTarget = _objectTable.FirstOrDefault(x => x.GameObjectId == _lastTargetId);
                     if (lastTarget != null)
                     {
-                        // wait until the game cleans up the target
+                        // Wait until the game cleans up the target.
                         if (lastTarget.IsDead)
                         {
                             ElementId? elementId = _currentFight.Data.ElementId;
                             QuestProgressInfo? questProgressInfo = elementId != null
-                                ? QuestFunctions.GetQuestProgressInfo(elementId)
+                                ? _questFunctions.GetQuestProgressInfo(elementId)
                                 : null;
 
                             if (questProgressInfo != null &&
                                 questProgressInfo.Sequence == _currentFight.Data.Sequence &&
                                 QuestWorkUtils.HasCompletionFlags(_currentFight.Data.CompletionQuestVariablesFlags) &&
-                                QuestWorkUtils.MatchesQuestWork(_currentFight.Data.CompletionQuestVariablesFlags,
+                                QuestWorkUtils.Matches(_currentFight.Data.CompletionQuestVariablesFlags,
                                     questProgressInfo))
                                 return EStatus.InCombat;
 
@@ -156,7 +182,7 @@ internal sealed class CombatController : IDisposable
                                                                  questProgressInfo.Sequence == _currentFight.Data.Sequence &&
                                                                  _previousQuestVariables != null &&
                                                                  !questProgressInfo.Variables.SequenceEqual(_previousQuestVariables))
-                                UpdateLastTargetAndQuestVariables(target: null);
+                                ResetTracking();
                             else
                                 return EStatus.InCombat;
                         }
@@ -177,17 +203,7 @@ internal sealed class CombatController : IDisposable
             if (nextTarget != null && nextTarget.Equals(target))
             {
                 if (!IsMovingOrShouldMove(target))
-                {
-                    try
-                    {
-                        _currentFight.Module.Update(target);
-                    }
-                    catch (TaskException e)
-                    {
-                        _logger.LogWarning(e, "Combat was interrupted, stopping: {Exception}", e.Message);
-                        SetTarget(target: null);
-                    }
-                }
+                    _currentFight!.Module.Update(target);
             }
             else if (nextTarget != null)
             {
@@ -221,7 +237,6 @@ internal sealed class CombatController : IDisposable
         if (_currentFight == null)
             return null;
 
-        // check if any complex combat conditions are fulfilled
         List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
         if (complexCombatData.Count > 0)
         {
@@ -251,9 +266,9 @@ internal sealed class CombatController : IDisposable
                 if (QuestWorkUtils.HasCompletionFlags(condition.CompletionQuestVariablesFlags) &&
                     _currentFight.Data.ElementId is QuestId questId)
                 {
-                    QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(questId);
+                    QuestProgressInfo? questWork = _questFunctions.GetQuestProgressInfo(questId);
                     if (questWork != null &&
-                        QuestWorkUtils.MatchesQuestWork(condition.CompletionQuestVariablesFlags, questWork))
+                        QuestWorkUtils.Matches(condition.CompletionQuestVariablesFlags, questWork))
                     {
                         _logger.LogInformation("Complex combat condition fulfilled: QuestWork matches");
                         _currentFight.Data.CompletedComplexDatas.Add(i);
@@ -285,20 +300,17 @@ internal sealed class CombatController : IDisposable
         if (rawPriority == null)
             return (0, reason);
 
-        // priority is a value between 0 and 100 inclusive; we want to always kill enemies we have fight with on first
         if (gameObject is IBattleNpc battleNpc && battleNpc.StatusFlags.HasFlag(StatusFlags.InCombat))
         {
-            // stuff trying to kill us
             if (gameObject.TargetObjectId == _objectTable[0]?.GameObjectId)
-                return (rawPriority.Value + 150, reason + "/" + _L("Targeted"));
+                return (rawPriority.Value + 150, reason + "/" + "Targeted");
 
-            // stuff on our enmity list that's not necessarily targeting us
             Hater haters = UIState.Instance()->Hater;
             for (int i = 0; i < haters.HaterCount; ++i)
             {
                 HaterInfo hater = haters.Haters[i];
                 if (hater.EntityId == gameObject.GameObjectId)
-                    return (rawPriority.Value + 125, reason + "/" + _L("Enmity"));
+                    return (rawPriority.Value + 125, reason + "/" + "Enmity");
             }
         }
 
@@ -308,25 +320,29 @@ internal sealed class CombatController : IDisposable
     private unsafe (int? Priority, string Reason) GetRawKillPriority(IGameObject gameObject)
     {
         if (_currentFight == null)
-            return (null, _L("Not Fighting"));
+            return (null, "Not Fighting");
 
         if (gameObject is IBattleNpc battleNpc)
         {
             if (!_currentFight.Module.CanAttack(battleNpc))
-                return (null, _L("Can't attack"));
+                return (null, "Can't attack");
 
             if (battleNpc.IsDead)
-                return (null, _L("Dead"));
+                return (null, "Dead");
 
             if (!battleNpc.IsTargetable)
-                return (null, _L("Untargetable"));
+                return (null, "Untargetable");
 
             List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
             GameObject* gameObjectStruct = (GameObject*)gameObject.Address;
             if (gameObjectStruct->FateId != 0 &&
                 gameObject.TargetObjectId != _objectTable[0]?.GameObjectId &&
                 _currentFight.Data.SpawnType != EEnemySpawnType.FateEnemies)
-                return (null, _L("FATE mob"));
+                return (null, "FATE mob");
+
+            // The same kind of enemy can roam outside the FATE, and those kills don't count.
+            if (_currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies && gameObjectStruct->FateId == 0)
+                return (0, "Not in FATE");
 
             Vector3 ownPosition = _objectTable[0]?.Position ?? Vector3.Zero;
             bool expectQuestMarker;
@@ -350,7 +366,7 @@ internal sealed class CombatController : IDisposable
                         gameObjectStruct->NamePlateIconId == 0)
                         continue;
 
-                    if (complexCombatData[i].DataId == GameFunctions.GetBaseID(battleNpc) &&
+                    if (complexCombatData[i].DataId == GameFunctions.GetBaseId(battleNpc) &&
                         (complexCombatData[i].NameId == null || complexCombatData[i].NameId == battleNpc.NameId))
                     {
                         return (100, "CCD");
@@ -360,7 +376,7 @@ internal sealed class CombatController : IDisposable
             else
             {
                 if ((!expectQuestMarker || gameObjectStruct->NamePlateIconId != 0 || _currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies) &&
-                    _currentFight.Data.KillEnemyDataIds.Contains(GameFunctions.GetBaseID(battleNpc)))
+                    _currentFight.Data.KillEnemyDataIds.Contains(GameFunctions.GetBaseId(battleNpc)))
                 {
                     if (_currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies && !PlayerState.Instance()->IsLevelSynced && EzThrottler.Throttle("lsync", miliseconds: 1000))
                         _chatFunctions.ExecuteCommand("/lsync");
@@ -368,20 +384,56 @@ internal sealed class CombatController : IDisposable
                 }
             }
 
-            // enemies that we have aggro on
             if (battleNpc.BattleNpcKind is BattleNpcSubKind.BNpcPart or BattleNpcSubKind.Combatant)
             {
-                // npc that starts a fate or does turn-ins; not sure why they're marked as hostile
+                // FATE and turn-in NPCs the game marks as hostile.
                 if (gameObjectStruct->NamePlateIconId is 60093 or 60732)
-                    return (null, _L("FATE NPC"));
+                    return (null, "FATE NPC");
 
-                return (0, _L("Not part of quest"));
+                return (0, "Not part of quest");
             }
 
-            return (null, _L("Wrong BattleNpcKind"));
+            return (null, "Wrong BattleNpcKind");
         }
 
-        return (null, _L("Not BattleNpc"));
+        return (null, "Not BattleNpc");
+    }
+
+    // Entries without quest markers count only our kills; other players make that count unreliable.
+    private void CountKillOfLastTarget()
+    {
+        if (_currentFight?.LastTargetId is not { } lastTargetId)
+            return;
+
+        if (_objectTable.FirstOrDefault(x => x.GameObjectId == lastTargetId) is not IBattleNpc { IsDead: true } battleNpc ||
+            !_currentFight.CountedKills.Add(lastTargetId))
+            return;
+
+        List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
+        for (int i = 0; i < complexCombatData.Count; ++i)
+        {
+            ComplexCombatData condition = complexCombatData[i];
+            if (!condition.IgnoreQuestMarker || condition.MinimumKillCount is not { } minimumKillCount ||
+                _currentFight.Data.CompletedComplexDatas.Contains(i))
+                continue;
+
+            if (condition.DataId != GameFunctions.GetBaseId(battleNpc) ||
+                (condition.NameId != null && condition.NameId != battleNpc.NameId))
+                continue;
+
+            int kills = _currentFight.KillCounts.GetValueOrDefault(i) + 1;
+            _currentFight.KillCounts[i] = kills;
+            _logger.LogInformation("Killed {DataId} ({Kills}/{MinimumKillCount})", condition.DataId, kills,
+                minimumKillCount);
+            if (kills >= minimumKillCount)
+            {
+                _logger.LogInformation("Complex combat condition fulfilled: killed {Kills}x {DataId}", kills,
+                    condition.DataId);
+                _currentFight.Data.CompletedComplexDatas.Add(i);
+            }
+
+            return;
+        }
     }
 
     private void SetTarget(IGameObject? target)
@@ -412,13 +464,15 @@ internal sealed class CombatController : IDisposable
             _logger.LogInformation("Setting target to {TargetName} ({TargetId:X8})", target.Name.ToString(),
                 target.GameObjectId);
             _targetManager.Target = target;
+            if (_currentFight != null)
+                _currentFight.LastTargetId = target.GameObjectId;
             MoveToTarget(target);
         }
     }
 
     private bool IsMovingOrShouldMove(IGameObject gameObject)
     {
-        if (_movementController.IsPathfinding || _movementController.IsPathRunning)
+        if (_movementController.IsPathRunning)
             return true;
 
         if (DateTime.Now > _currentFight!.LastDistanceCheck.AddSeconds(10))
@@ -433,9 +487,10 @@ internal sealed class CombatController : IDisposable
 
     private void MoveToTarget(IGameObject gameObject)
     {
+        // A route of ours fights Boss Mod's own movement and fails, which stops the quest (1204 FATE, Sub Alt 11-24).
         IGameObject? player = _objectTable[0];
-        if (player == null)
-            return; // uh oh
+        if (player == null || _currentFight?.Module.MovesPlayer == true)
+            return;
 
         float hitboxOffset = player.HitboxRadius + gameObject.HitboxRadius;
         float actualDistance = Vector3.Distance(player.Position, gameObject.Position);
@@ -459,13 +514,13 @@ internal sealed class CombatController : IDisposable
             if (!useNavmesh)
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack", gameObject.Name,
-                    GameFunctions.GetBaseID(gameObject));
+                    GameFunctions.GetBaseId(gameObject));
                 _movementController.NavigateTo(EMovementType.Combat, dataId: null, [gameObject.Position], options);
             }
             else
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack (with navmesh)", gameObject.Name,
-                    GameFunctions.GetBaseID(gameObject));
+                    GameFunctions.GetBaseId(gameObject));
                 _movementController.NavigateTo(EMovementType.Combat, dataId: null, gameObject.Position, options);
             }
         }
@@ -484,51 +539,77 @@ internal sealed class CombatController : IDisposable
 
         direction = Vector3.Normalize(direction);
 
-        Vector3 originVect = new(sourcePos.X, sourcePos.Y, sourcePos.Z);
-        Vector3 directionVect = new(direction.X, direction.Y, direction.Z);
+        Vector3 origin = new(sourcePos.X, sourcePos.Y, sourcePos.Z);
+        Vector3 rayDirection = new(direction.X, direction.Y, direction.Z);
 
         RaycastHit hit;
         int* flags = stackalloc int[] { 0x4000, 0, 0x4000, 0 };
-        bool isLoSBlocked =
-            Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &originVect, &directionVect, distance,
+        bool isBlocked =
+            Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &origin, &rayDirection, distance,
                 1, flags);
 
-        return !isLoSBlocked;
+        return !isBlocked;
     }
 
-    private void UpdateLastTargetAndQuestVariables(IGameObject? target)
+    private void ResetTracking()
     {
-        _lastTargetId = target?.GameObjectId;
+        _lastTargetId = null;
         _previousQuestVariables = _currentFight!.Data.ElementId != null
-            ? QuestFunctions.GetQuestProgressInfo(_currentFight.Data.ElementId)?.Variables
+            ? _questFunctions.GetQuestProgressInfo(_currentFight.Data.ElementId)?.Variables
             : null;
-        /*
-        _logger.LogTrace("UpdateTargetData: {TargetId}; {QuestVariables}",
-            target?.GameObjectId.ToString("X8", CultureInfo.InvariantCulture) ?? "null",
-            _previousQuestVariables != null ? string.Join(", ", _previousQuestVariables) : "null");
-        */
     }
 
     public void Stop(string label)
     {
         using IDisposable? scope = _logger.BeginScope(label);
-        if (_currentFight != null)
-        {
-            _logger.LogInformation("Stopping current fight");
-            _currentFight.Module.Stop();
-        }
-
+        CurrentFight? fight = _currentFight;
         _currentFight = null;
         _wasInCombat = false;
+        if (fight != null)
+        {
+            _logger.LogInformation("Stopping current fight");
+            _pendingCleanup = fight.Module;
+        }
+        RetryCleanup();
     }
 
-    private void TerritoryChanged(uint territoryId) => Stop(_L("TerritoryChanged"));
+    public void RetryCleanup()
+    {
+        if (_pendingCleanup == null)
+            return;
+
+        try
+        {
+            if (_pendingCleanup.Stop())
+            {
+                _pendingCleanup = null;
+                _cleanupFailureLogged = false;
+                BlockReason = null;
+                return;
+            }
+            BlockReason = $"Waiting for {_pendingCleanup.Name} to give back combat control.";
+        }
+        catch (Exception e)
+        {
+            BlockReason = $"Combat cleanup failed: {e.Message}";
+            if (!_cleanupFailureLogged)
+            {
+                _logger.LogWarning(e, "Could not release combat control; keeping cleanup for retry");
+                _cleanupFailureLogged = true;
+            }
+        }
+    }
+
+    private void OnTerritoryChanged(uint territoryId) => Stop("TerritoryChanged");
 
     private sealed class CurrentFight
     {
         public required ICombatModule Module { get; init; }
         public required CombatData Data { get; init; }
         public required DateTime LastDistanceCheck { get; set; }
+        public ulong? LastTargetId { get; set; }
+        public HashSet<ulong> CountedKills { get; } = [];
+        public Dictionary<int, int> KillCounts { get; } = [];
     }
 
     public sealed class CombatData

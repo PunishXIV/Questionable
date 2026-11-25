@@ -1,76 +1,45 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -615.86487,
-            "Y": 65.602264,
-            "Z": -423.87152
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1033770,
-          "Position": {
-            "X": -410.11676,
-            "Y": 91.978714,
-            "Z": -426.71857
-          },
-          "TerritoryId": 813,
+          "Position": [-410.11676, 91.978714, -426.71857],
           "InteractionType": "Say",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
           "ChatMessage": {
             "Key": "TEXT_BANDWA108_03909_SAYTODO_000_030"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               16
             ],null,null,null]
         },
         {
           "DataId": 1033771,
-          "Position": {
-            "X": -396.07843,
-            "Y": 93.51564,
-            "Z": -419.11957
-          },
-          "TerritoryId": 813,
+          "Position": [-396.07843, 93.51564, -419.11957],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANDWA108_03909_SAYTODO_000_030"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               32
             ],null,null,null]
         },
         {
           "DataId": 1033772,
-          "Position": {
-            "X": -399.80164,
-            "Y": 91.33075,
-            "Z": -441.42828
-          },
-          "TerritoryId": 813,
+          "Position": [-399.80164, 91.33075, -441.42828],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANDWA108_03909_SAYTODO_000_030"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               48
             ],null,null,null]
@@ -79,20 +48,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -615.86487,
-            "Y": 65.602264,
-            "Z": -423.87152
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

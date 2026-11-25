@@ -1,20 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 132,
       "Steps": [
         {
-          "Position": {
-            "X": 54.306763,
-            "Y": -8.321841,
-            "Z": 94.13281
-          },
-          "TerritoryId": 132,
+          "Position": [54.306763, -8.321841, 94.13281],
           "InteractionType": "UseItem",
           "ItemId": 43538,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -24,7 +19,6 @@
           }
         },
         {
-          "TerritoryId": 132,
           "InteractionType": "EquipItem",
           "ItemId": 41809,
           "SkipConditions": {
@@ -36,129 +30,44 @@
           }
         },
         {
-          "TerritoryId": 132,
-          "InteractionType": "EquipItem",
-          "ItemId": 43183,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 132,
-          "InteractionType": "EquipItem",
-          "ItemId": 43184,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 132,
-          "InteractionType": "EquipItem",
-          "ItemId": 43185,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 132,
-          "InteractionType": "EquipItem",
-          "ItemId": 43186,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 132,
-          "InteractionType": "EquipItem",
-          "ItemId": 43187,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 132,
           "InteractionType": "CreateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 132,
           "InteractionType": "EquipRecommended",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 132,
           "InteractionType": "UpdateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1049795,
-          "Position": {
-            "X": 54.306763,
-            "Y": -8.321841,
-            "Z": 94.13281
-          },
-          "TerritoryId": 132,
+          "Position": [54.306763, -8.321841, 94.13281],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1049794,
-          "Position": {
-            "X": -158.98376,
-            "Y": 4.51273,
-            "Z": -45.63977
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "Position": [-158.98376, 4.51273, -45.63977],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1049796,
-          "Position": {
-            "X": 27.695068,
-            "Y": 16.16987,
-            "Z": -339.13184
-          },
-          "TerritoryId": 133,
+          "Position": [27.695068, 16.16987, -339.13184],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Lancers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -171,16 +80,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1049796,
-          "Position": {
-            "X": 27.695068,
-            "Y": 16.16987,
-            "Z": -339.13184
-          },
-          "StopDistance": 5,
-          "TerritoryId": 133,
+          "Position": [27.695068, 16.16987, -339.13184],
           "InteractionType": "CompleteQuest"
         }
       ]

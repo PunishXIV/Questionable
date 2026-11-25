@@ -1,76 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "vicyorus",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005930,
-          "Position": {
-            "X": 12.558105,
-            "Y": 16.159302,
-            "Z": -176.5622
-          },
-          "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "Position": [-1.236023, 33.38838, -244.19019],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 112.85902,
-            "Y": 23.394411,
-            "Z": -608.57007
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -1.236023,
-                  "Y": 33.38838,
-                  "Z": -244.19019
-                },
-                "TerritoryId": 180,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 274.8046,
-            "Y": 21.542015,
-            "Z": -805.19055
-          },
-          "TerritoryId": 180,
+          "Position": [274.8046, 21.542015, -805.19055],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [2834]
@@ -79,15 +32,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2003708,
-          "Position": {
-            "X": 275.74573,
-            "Y": 21.530457,
-            "Z": -817.7157
-          },
-          "TerritoryId": 180,
+          "Position": [275.74573, 21.530457, -817.7157],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [2707],
@@ -102,12 +51,7 @@
         },
         {
           "DataId": 2003707,
-          "Position": {
-            "X": 275.41003,
-            "Y": 21.591492,
-            "Z": -809.35376
-          },
-          "TerritoryId": 180,
+          "Position": [275.41003, 21.591492, -809.35376],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [2707]
@@ -116,15 +60,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2003704,
-          "Position": {
-            "X": 281.5747,
-            "Y": 22.11029,
-            "Z": -812.0699
-          },
-          "TerritoryId": 180,
+          "Position": [281.5747, 22.11029, -812.0699],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [2882]
@@ -133,21 +73,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005930,
-          "Position": {
-            "X": 12.558105,
-            "Y": 16.159302,
-            "Z": -176.5622
-          },
-          "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

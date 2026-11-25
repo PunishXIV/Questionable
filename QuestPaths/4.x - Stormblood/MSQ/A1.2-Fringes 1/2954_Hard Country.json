@@ -1,34 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020842,
-          "Position": {
-            "X": 81.55945,
-            "Y": 118.15579,
-            "Z": -717.89124
-          },
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "Position": {
-            "X": -53.208252,
-            "Y": 104.518814,
-            "Z": -739.1928
-          },
-          "TerritoryId": 620,
+          "Position": [-53.208252, 104.518814, -739.1928],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -49,12 +33,7 @@
           ]
         },
         {
-          "Position": {
-            "X": -476.92078,
-            "Y": 48.885674,
-            "Z": -732.2957
-          },
-          "TerritoryId": 620,
+          "Position": [-476.92078, 48.885674, -732.2957],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -70,19 +49,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1020842,
-          "Position": {
-            "X": 81.55945,
-            "Y": 118.15579,
-            "Z": -717.89124
-          },
-          "TerritoryId": 620,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

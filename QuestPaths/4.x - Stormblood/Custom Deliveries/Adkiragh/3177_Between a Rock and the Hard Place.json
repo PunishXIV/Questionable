@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012299,
-          "Position": {
-            "X": -16.586609,
-            "Y": 206.49942,
-            "Z": 42.98462
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1018393,
-          "Position": {
-            "X": -60.380005,
-            "Y": 206.50021,
-            "Z": 26.16919
-          },
-          "TerritoryId": 478,
+          "Position": [-60.380005, 206.50021, 26.16919],
           "InteractionType": "CompleteQuest"
         }
       ]

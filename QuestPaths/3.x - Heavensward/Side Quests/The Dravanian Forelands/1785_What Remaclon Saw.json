@@ -1,56 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011919,
-          "Position": {
-            "X": 497.82556,
-            "Y": -49.790283,
-            "Z": 11.825684
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2005609,
-          "Position": {
-            "X": 44.47998,
-            "Y": -37.003174,
-            "Z": -309.65137
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [44.47998, -37.003174, -309.65137],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011919,
-          "Position": {
-            "X": 497.82556,
-            "Y": -49.790283,
-            "Z": 11.825684
-          },
-          "TerritoryId": 398,
+          "Position": [497.82556, -49.790283, 11.825684],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "NextQuestId": 1922
         }
       ]

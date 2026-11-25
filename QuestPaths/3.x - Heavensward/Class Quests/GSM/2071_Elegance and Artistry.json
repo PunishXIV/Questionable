@@ -1,77 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Hardsilver Bangle of Casting // Autocraft requires: 2x Hardsilver Nugget, 2x Star Sapphire, 2x Star Ruby, 1x Grade 1 Intelligence Dissolvent",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012528,
-          "Position": {
-            "X": -57.41974,
-            "Y": 18.504038,
-            "Z": 66.544556
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [130, 131]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1012529,
-          "Position": {
-            "X": 132.86023,
-            "Y": 4,
-            "Z": -68.34515
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "Position": [132.86023, 4, -68.34515],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1012528,
-          "Position": {
-            "X": -57.41974,
-            "Y": 18.504038,
-            "Z": 66.544556
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Sapphire Avenue Exchange",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "Position": [-57.41974, 18.504038, 66.544556],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 11068,
           "ItemCount": 1,
           "SkipConditions": {
@@ -84,12 +48,7 @@
         },
         {
           "DataId": 1012528,
-          "Position": {
-            "X": -57.41974,
-            "Y": 18.504038,
-            "Z": 66.544556
-          },
-          "TerritoryId": 131,
+          "Position": [-57.41974, 18.504038, 66.544556],
           "InteractionType": "CompleteQuest",
           "AllowHighQuality": true
         }

@@ -15,19 +15,19 @@ public sealed partial class ValidJsonFilesTest
     static ValidJsonFilesTest()
     {
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-aethernetshard.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aethernetshard.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAethernetShardStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-aetheryte.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-aetheryte.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAetheryteStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-classjob.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonClassJobStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-completionflags.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-completionflags.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonCompletionFlagsStream).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-vector3.json"),
+            new Uri("https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-vector3.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonVector3Stream).AsTask().Result);
     }
 
@@ -47,7 +47,7 @@ public sealed partial class ValidJsonFilesTest
         {
             IEnumerable<string> failures = evaluationResult.Details
                 .Where(detail => detail is { IsValid: false, HasErrors: true } &&
-                    !detail.EvaluationPath.ToString().Contains("/if/"))
+                    !detail.EvaluationPath.ToString().Contains("/if/", StringComparison.Ordinal))
                 .SelectMany(detail => detail.Errors!.Select(error =>
                     $"  instance '{detail.InstanceLocation}' (schema '{detail.EvaluationPath}'): {error.Key} - {Unescape(error.Value)}")
                 );
@@ -57,12 +57,9 @@ public sealed partial class ValidJsonFilesTest
         }
     }
 
-    /// <summary>
-    /// Decodes <c>\uXXXX</c> escapes that System.Text.Json's default HTML-safe encoder produces
-    /// (e.g. <c>"</c> as <c>\u0022</c>, <c>'</c> as <c>\u0027</c>) so error messages render readably.
-    /// </summary>
+    // System.Text.Json's HTML-safe escapes make validation errors unreadable.
     private static string Unescape(string value) =>
-        UnicodeEscapeRegex().Replace(value, match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
+        UnicodeEscapeRegex.Replace(value, match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
     [GeneratedRegex(@"\\u([0-9a-fA-F]{4})", RegexOptions.CultureInvariant, matchTimeoutMilliseconds: 1000)]
-    private static partial Regex UnicodeEscapeRegex();
+    private static partial Regex UnicodeEscapeRegex { get; }
 }

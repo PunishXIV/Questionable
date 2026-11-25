@@ -1,36 +1,11 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 38.07359,
-            "Y": -15.646993,
-            "Z": 108.2244
-          },
-          "TerritoryId": 962,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
-        },
-        {
-          "DataId": 1043775,
-          "Position": {
-            "X": 37.735474,
-            "Y": -15.646994,
-            "Z": 105.30249
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

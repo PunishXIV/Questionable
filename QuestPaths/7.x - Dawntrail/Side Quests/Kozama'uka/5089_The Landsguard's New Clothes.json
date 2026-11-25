@@ -1,69 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051271,
-          "Position": {
-            "X": -447.04358,
-            "Y": 122.95054,
-            "Z": 343.4348
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051273,
-          "Position": {
-            "X": 565.54517,
-            "Y": 115.5,
-            "Z": 193.22498
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Many Fires"
+          "Position": [565.54517, 115.5, 193.22498],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051275,
-          "Position": {
-            "X": -645.7771,
-            "Y": 127.95559,
-            "Z": 661.76843
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire",
-          "Fly": true
+          "Position": [-645.7771, 127.95559, 661.76843],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051270,
-          "Position": {
-            "X": -565.2705,
-            "Y": 133.77481,
-            "Z": 720.7294
-          },
-          "TerritoryId": 1188,
+          "Position": [-565.2705, 133.77481, 720.7294],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -76,33 +48,23 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051277,
-          "Position": {
-            "X": -647.0283,
-            "Y": 127.88751,
-            "Z": 660.57825
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-647.0283, 127.88751, 660.57825],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051278,
-          "Position": {
-            "X": -130.69354,
-            "Y": 9.84216,
-            "Z": -415.21326
-          },
-          "TerritoryId": 1188,
+          "Position": [-130.69354, 9.84216, -415.21326],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -115,15 +77,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051280,
-          "Position": {
-            "X": -125.20032,
-            "Y": 9.842161,
-            "Z": -418.08197
-          },
-          "TerritoryId": 1188,
+          "Position": [-125.20032, 9.842161, -418.08197],
           "InteractionType": "CompleteQuest"
         }
       ]

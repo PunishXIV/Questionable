@@ -1,72 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -615.86487,
-            "Y": 65.602264,
-            "Z": -423.87152
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": -134.17696,
-            "Y": 14.623874,
-            "Z": -124.68204
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        },
-        {
           "DataId": 1034075,
-          "Position": {
-            "X": -137.71265,
-            "Y": 14.623856,
-            "Z": -124.89508
-          },
-          "StopDistance": 5,
-          "TerritoryId": 813,
+          "Position": [-137.71265, 14.623856, -124.89508],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "TerritoryId": 813,
           "InteractionType": "Craft",
           "ItemId": 31183,
           "ItemCount": 3
         },
         {
           "DataId": 1033712,
-          "Position": {
-            "X": -615.86487,
-            "Y": 65.602264,
-            "Z": -423.87152
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "Position": [-615.86487, 65.602264, -423.87152],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

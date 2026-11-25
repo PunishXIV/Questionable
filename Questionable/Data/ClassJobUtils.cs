@@ -5,7 +5,6 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 namespace Questionable.Data;
 
 [RegisterSingleton]
@@ -14,7 +13,7 @@ internal sealed class ClassJobUtils
     private readonly ReadOnlyDictionary<Job, sbyte> _classJobToExpArrayIndex;
     private readonly Configuration _configuration;
 
-    public readonly ReadOnlyCollection<(Job ClassJob, int Category)> SortedClassJobs;
+    public readonly ReadOnlyCollection<(Job ClassJob, int Category)> SortedJobs;
 
     public ClassJobUtils(
         Configuration configuration,
@@ -27,7 +26,7 @@ internal sealed class ClassJobUtils
             .ToDictionary(x => (Job)x.RowId, x => x.ExpArrayIndex)
             .AsReadOnly();
 
-        SortedClassJobs = dataManager.GetExcelSheet<ClassJob>()
+        SortedJobs = dataManager.GetExcelSheet<ClassJob>()
             .Select(x => (ClassJob: (Job)x.RowId, Priority: x.UIPriority))
             .OrderBy(x => x.Priority)
             .Select(x => (x.ClassJob, x.Priority / 10))
@@ -82,13 +81,11 @@ internal sealed class ClassJobUtils
             EExtendedClassJob.Viper => [Job.VPR],
             EExtendedClassJob.Pictomancer => [Job.PCT],
             EExtendedClassJob.Beastmaster => [Job.BST],
-            //EExtendedClassJob.Bastion => [Job.BAS],
-            //EExtendedClassJob.Zephyr => [Job.ZPH],
 
-            EExtendedClassJob.DoW => Enum.GetValues<Job>().Where(GameDataAdapter.DealsPhysicalDamage),
-            EExtendedClassJob.DoM => Enum.GetValues<Job>().Where(GameDataAdapter.DealsMagicDamage),
-            EExtendedClassJob.DoH => Enum.GetValues<Job>().Where(GameDataAdapter.IsCrafter),
-            EExtendedClassJob.DoL => Enum.GetValues<Job>().Where(GameDataAdapter.IsGatherer),
+            EExtendedClassJob.DoW => Enum.GetValues<Job>().Where(JobExtensions.DealsPhysicalDamage),
+            EExtendedClassJob.DoM => Enum.GetValues<Job>().Where(JobExtensions.DealsMagicDamage),
+            EExtendedClassJob.DoH => Enum.GetValues<Job>().Where(JobExtensions.IsCrafter),
+            EExtendedClassJob.DoL => Enum.GetValues<Job>().Where(JobExtensions.IsGatherer),
             EExtendedClassJob.ConfiguredCombatJob => LookupConfiguredJob(EExtendedClassJob.ConfiguredCombatJob) is var combatJob &&
                                                      combatJob != Job.ADV
                 ? [combatJob]
@@ -121,7 +118,13 @@ internal sealed class ClassJobUtils
             configuredJob = _configuration.General.GatheringJob;
         else
             return (ushort)jobType < Enum.GetNames(typeof(Job)).Length ? (Job)jobType : Job.ADV;
-        ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob);
+        List<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = [.. GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob)
+            .Where(x => jobType switch
+            {
+                EExtendedClassJob.DoH => x.ClassJob.IsCrafter(),
+                EExtendedClassJob.DoL => x.ClassJob is Job.MIN or Job.BTN,
+                _ => true,
+            })];
         HashSet<Job> jobsWithGearSet = jobGearSets
             .Select(x => x.ClassJob)
             .Distinct()
@@ -133,7 +136,7 @@ internal sealed class ClassJobUtils
                 return configuredJob;
 
             Job baseClass = Enum.GetValues<Job>()
-                .SingleOrDefault(x => GameDataAdapter.IsClass(x) && GameDataAdapter.AsJob(x) == configuredJob);
+                .SingleOrDefault(x => x.IsClass() && x.AsJob() == configuredJob);
             if (baseClass != Job.ADV && jobsWithGearSet.Contains(baseClass))
                 return baseClass;
         }
@@ -143,12 +146,12 @@ internal sealed class ClassJobUtils
             .ThenByDescending(x => x.ItemLevel)
             .ThenByDescending(x => x.ClassJob switch
             {
-                var _ when GameDataAdapter.IsClass(x.ClassJob) => 0,
-                var _ when GameDataAdapter.IsCaster(x.ClassJob) => 50,
-                var _ when GameDataAdapter.IsPhysicalRanged(x.ClassJob) => 40,
-                var _ when GameDataAdapter.IsMelee(x.ClassJob) => 30,
-                var _ when GameDataAdapter.IsTank(x.ClassJob) => 20,
-                var _ when GameDataAdapter.IsHealer(x.ClassJob) => 10,
+                var _ when x.ClassJob.IsClass() => 0,
+                var _ when x.ClassJob.IsCaster() => 50,
+                var _ when x.ClassJob.IsPhysicalRanged() => 40,
+                var _ when x.ClassJob.IsMelee() => 30,
+                var _ when x.ClassJob.IsTank() => 20,
+                var _ when x.ClassJob.IsHealer() => 10,
                 var _ => 0
             })
             .Select(x => x.ClassJob)
@@ -171,7 +174,7 @@ internal sealed class ClassJobUtils
             if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists))
             {
                 Job classJob = (Job)gearset->ClassJob;
-                if (combatOnly && (GameDataAdapter.IsCrafter(classJob) || GameDataAdapter.IsGatherer(classJob)))
+                if (combatOnly && (classJob.IsCrafter() || classJob.IsGatherer()))
                     continue;
 
                 short level = playerState->ClassJobLevels[_classJobToExpArrayIndex[classJob]];
@@ -190,7 +193,7 @@ internal sealed class ClassJobUtils
     {
         ArgumentNullException.ThrowIfNull(elementId);
 
-        if (elementId is QuestId questId && QuestFunctions.IsQuestAccepted(questId))
+        if (elementId is QuestId questId && QuestManager.Instance()->IsQuestAccepted(questId.Value))
         {
             QuestWork* questWork = QuestManager.Instance()->GetQuestById(questId.Value);
             if (questWork->AcceptClassJob != 0)
@@ -200,7 +203,7 @@ internal sealed class ClassJobUtils
         return Job.ADV;
     }
 
-    private static readonly Dictionary<Job, (Job, ushort)> ClassToJobStoneData = new() {
+    private static readonly Dictionary<Job, (Job, ushort)> JobStones = new() {
                 { Job.GLA, (Job.PLD, 4542) },
                 { Job.PGL, (Job.MNK, 4543) },
                 { Job.MRD, (Job.WAR, 4544) },
@@ -211,19 +214,28 @@ internal sealed class ClassJobUtils
                 { Job.ACN, (Job.SMN, 4549) },
                 { Job.ROG, (Job.NIN, 7886) }
             };
+    internal static Job FollowUpJob(Job classJob, Job arcanistJob) =>
+        classJob == Job.ACN ? (arcanistJob == Job.SCH ? Job.SCH : Job.SMN) : classJob.AsJob();
+
+    // Soul of the Scholar; quest 1098 equips it, 1097 swaps out Summoner's 4549.
+    private const ushort ScholarStone = 4550;
+
+    internal static (Job Job, ushort Item)? JobStoneFor(Job classJob, Job arcanistJob) =>
+        classJob == Job.ACN && arcanistJob == Job.SCH ? (Job.SCH, ScholarStone)
+        : JobStones.TryGetValue(classJob, out var value) ? value : null;
+
     public static (Job?, ushort?) ClassToJobStone(Job classJob)
     {
-        if (ClassToJobStoneData.TryGetValue(classJob, out var value))
+        if (JobStoneFor(classJob, Configuration.Instance().General.ArcanistJob) is var (job, item))
         {
-            (var job, var item) = value;
-            bool unlocked = false;
+            bool hasStone = false;
             unsafe
             {
                 InventoryManager* inventoryManager = InventoryManager.Instance();
                 if (inventoryManager->GetInventoryItemCount(item) > 0)
-                    unlocked = true;
+                    hasStone = true;
             }
-            if (unlocked)
+            if (hasStone)
             {
                 return (job, item);
             }
@@ -231,7 +243,7 @@ internal sealed class ClassJobUtils
         return (null, null);
     }
 
-    public unsafe bool SwitchClassJob(Job classJob)
+    public unsafe bool SwitchJob(Job classJob)
     {
         if (PlayerState.Instance()->CurrentClassJobId == (uint)classJob)
             return true;
@@ -242,7 +254,7 @@ internal sealed class ClassJobUtils
             for (int i = 0; i < 100; ++i)
             {
                 RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
-                if (gearset->ClassJob == (byte)classJob)
+                if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) && gearset->ClassJob == (byte)classJob)
                 {
                     gearsetModule->EquipGearset(gearset->Id);
                     return true;

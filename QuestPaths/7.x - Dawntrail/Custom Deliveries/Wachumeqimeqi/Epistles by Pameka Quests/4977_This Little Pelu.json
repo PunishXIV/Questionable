@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "Comment": "Autocraft requires:\n6x Hammerhead Crocodile Leather\n6x Snow Cotton Cloth\n6x Ceiba Lumber",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047120,
-          "Position": {
-            "X": 165.852,
-            "Y": -13.98,
-            "Z": 18.3505
-          },
-          "TerritoryId": 1185,
+          "Position": [165.852, -13.98, 18.3505],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047120 (Pameka)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "Craft",
           "ItemId": 43892,
           "ItemCount": 6,
@@ -41,18 +33,9 @@
         },
         {
           "DataId": 1047120,
-          "Position": {
-            "X": 165.852,
-            "Y": -13.98,
-            "Z": 18.3505
-          },
-          "TerritoryId": 1185,
+          "Position": [165.852, -13.98, 18.3505],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4978,
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047120 (Pameka)"
         }
       ]

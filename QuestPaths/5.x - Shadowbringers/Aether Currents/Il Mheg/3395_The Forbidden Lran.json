@@ -1,49 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030266,
-          "Position": {
-            "X": -367.66614,
-            "Y": 66.863594,
-            "Z": 557.1526
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030267,
-          "Position": {
-            "X": -161.30316,
-            "Y": 34.21811,
-            "Z": 607.38525
-          },
-          "TerritoryId": 816,
+          "Position": [-161.30316, 34.21811, 607.38525],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2009997,
-          "Position": {
-            "X": -40.116028,
-            "Y": 24.063354,
-            "Z": 739.25366
-          },
-          "TerritoryId": 816,
+          "Position": [-40.116028, 24.063354, 739.25366],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKZC012_03395_SYSTEM_000_013"
@@ -53,19 +34,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1030266,
-          "Position": {
-            "X": -367.66614,
-            "Y": 66.863594,
-            "Z": 557.1526
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

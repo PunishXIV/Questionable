@@ -1,113 +1,67 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000590,
-          "Position": {
-            "X": -165.9419,
-            "Y": 9.869227,
-            "Z": -81.34589
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "South Shroud - Quarrymill",
-          "TerritoryId": 153
+          "Aetheryte": "South Shroud - Quarrymill"
         },
         {
           "$": "Unlock Quarrymill taxi",
           "DataId": 1002982,
-          "Position": {
-            "X": 172.47266,
-            "Y": 8.362776,
-            "Z": -47.470886
-          },
-          "TerritoryId": 153,
+          "Position": [172.47266, 8.362776, -47.470886],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179653
         },
         {
           "DataId": 1003272,
-          "Position": {
-            "X": -262.92822,
-            "Y": 16.2,
-            "Z": 51.407593
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
-        }
-      ]
-    },
-    {
-      "Sequence": 2,
-      "Steps": [
-        {
-          "DataId": 1001208,
-          "Position": {
-            "X": -228.16821,
-            "Y": 16,
-            "Z": 50.644653
-          },
+          "Position": [-262.92822, 16.2, 51.407593],
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
       ]
     },
     {
+      "Sequence": 2,
+      "TerritoryId": 129,
+      "Steps": [
+        {
+          "DataId": 1001208,
+          "Position": [-228.16821, 16, 50.644653],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
       "Sequence": 3,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1007721,
-          "Position": {
-            "X": -191.36346,
-            "Y": 0.9999907,
-            "Z": 212.9701
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "Position": [-191.36346, 0.9999907, 212.9701],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Comment": "Unlocking some aetherytes",
       "Steps": [
         {
           "TerritoryId": 134,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Middle La Noscea - Summerford Farms",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Middle La Noscea - Summerford Farms"
-            },
-            "AethernetShortcutIf": {
-              "AetheryteUnlocked": "Middle La Noscea - Summerford Farms"
-            },
             "StepIf": {
               "AetheryteUnlocked": "Middle La Noscea - Summerford Farms"
             }
@@ -115,50 +69,16 @@
         },
         {
           "DataId": 1002721,
-          "Position": {
-            "X": 187.9148,
-            "Y": 98.5214,
-            "Z": -193.19452
-          },
+          "Position": [187.9148, 98.5214, -193.19452],
           "TerritoryId": 134,
           "InteractionType": "UnlockTaxiStand",
-          "TaxiStandId": 1179670,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
-        },
-        {
-          "DataId": 1003584,
-          "Position": {
-            "X": 317.43335,
-            "Y": -36.325005,
-            "Z": 352.86487
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "TargetTerritoryId": 135,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            },
-            "AethernetShortcutIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            },
-            "StepIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            }
-          }
+          "TaxiStandId": 1179670
         },
         {
           "TerritoryId": 135,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Lower La Noscea - Moraby Drydocks",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            },
-            "AethernetShortcutIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            },
             "StepIf": {
               "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
             }
@@ -166,36 +86,22 @@
         },
         {
           "DataId": 1002720,
-          "Position": {
-            "X": 49.271362,
-            "Y": 29.315498,
-            "Z": 605.27954
-          },
+          "Position": [49.271362, 29.315498, 605.27954],
           "TerritoryId": 135,
           "InteractionType": "UnlockTaxiStand",
-          "TaxiStandId": 1179675,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "TaxiStandId": 1179675
         },
         {
           "DataId": 1002719,
-          "Position": {
-            "X": 503.13562,
-            "Y": 79.24584,
-            "Z": -74.815
-          },
+          "Position": [503.13562, 79.24584, -74.815],
           "TerritoryId": 135,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179676
         },
         {
-          "TerritoryId": 138,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Western La Noscea - Swiftperch",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Western La Noscea - Swiftperch"
-            },
             "StepIf": {
               "AetheryteUnlocked": "Western La Noscea - Swiftperch"
             }
@@ -203,49 +109,24 @@
         },
         {
           "DataId": 1002722,
-          "Position": {
-            "X": 667.68884,
-            "Y": 9.882242,
-            "Z": 487.32727
-          },
-          "TerritoryId": 138,
+          "Position": [667.68884, 9.882242, 487.32727],
           "InteractionType": "UnlockTaxiStand",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
           "TaxiStandId": 1179671
         },
         {
           "DataId": 1003393,
-          "Position": {
-            "X": 305.47034,
-            "Y": -36.325005,
-            "Z": 351.76624
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "Position": [305.47034, -36.325005, 351.76624],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 410.07083,
-            "Y": 31.504957,
-            "Z": -12.586371
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 139
-        },
-        {
           "DataId": 1006193,
-          "Position": {
-            "X": -334.0658,
-            "Y": -0.81366825,
-            "Z": 148.91272
-          },
+          "Position": [-334.0658, -0.81366825, 148.91272],
           "TerritoryId": 139,
           "InteractionType": "CompleteQuest"
         }

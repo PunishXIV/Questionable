@@ -1,34 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "DataId": 1048083,
-          "Position": {
-            "X": 302.05237,
-            "Y": 51.199978,
-            "Z": 205.0354
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
-          "TargetTerritoryId": 1207
-        },
-        {
           "DataId": 1048132,
-          "Position": {
-            "X": -8.1026,
-            "Y": 0,
-            "Z": 2.6397705
-          },
-          "StopDistance": 5,
+          "Position": [-8.1026, 0, 2.6397705],
           "TerritoryId": 1207,
           "InteractionType": "AcceptQuest"
         }
@@ -36,33 +17,23 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1207,
       "Steps": [
         {
           "DataId": 1048134,
-          "Position": {
-            "X": -2.9450073,
-            "Y": -0.44999987,
-            "Z": 2.1820068
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1207,
+          "Position": [-2.9450073, -0.44999987, 2.1820068],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1048135,
-          "Position": {
-            "X": -293.84296,
-            "Y": 45.884224,
-            "Z": -816.8002
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "Position": [-293.84296, 45.884224, -816.8002],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

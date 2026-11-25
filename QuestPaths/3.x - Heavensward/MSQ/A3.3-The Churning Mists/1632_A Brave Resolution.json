@@ -1,53 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012731,
-          "Position": {
-            "X": -23.91095,
-            "Y": 37.760002,
-            "Z": 78.812744
-          },
-          "StopDistance": 5,
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "TerritoryId": 156,
           "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
+          "Position": [21.133728, 22.323914, -631.281],
           "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona"
+          "TargetTerritoryId": 351
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1012733,
-          "Position": {
-            "X": -1.8768921,
-            "Y": 0,
-            "Z": -9.079163
-          },
-          "StopDistance": 5,
-          "TerritoryId": 351,
+          "Position": [-1.8768921, 0, -9.079163],
           "InteractionType": "CompleteQuest"
         }
       ]

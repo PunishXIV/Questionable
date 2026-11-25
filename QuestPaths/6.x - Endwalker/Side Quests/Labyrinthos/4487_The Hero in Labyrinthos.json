@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,19 +8,12 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041691,
-          "Position": {
-            "X": 455.931,
-            "Y": 81.1368,
-            "Z": 64.4963
-          },
-          "TerritoryId": 956,
+          "Position": [455.931, 81.1368, 64.4963],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -33,14 +26,10 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": -234.355,
-            "Y": -31.4335,
-            "Z": 757.53
-          },
-          "TerritoryId": 956,
+          "Position": [-234.355, -31.4335, 757.53],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -51,46 +40,29 @@
               "RewardItemId": 2003335,
               "RewardItemCount": 2
             }
-          ],
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041693,
-          "Position": {
-            "X": 286.457,
-            "Y": 86.5318,
-            "Z": -145.098
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true
+          "Position": [286.457, 86.5318, -145.098],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041696,
-          "Position": {
-            "X": -32.539,
-            "Y": -31.5304,
-            "Z": -33.3491
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true
+          "Position": [-32.539, -31.5304, -33.3491],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

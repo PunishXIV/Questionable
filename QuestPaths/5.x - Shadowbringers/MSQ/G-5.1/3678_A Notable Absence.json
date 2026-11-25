@@ -1,94 +1,51 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031742,
-          "Position": {
-            "X": -18.60083,
-            "Y": 82.84981,
-            "Z": -48.29486
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1027544,
-          "Position": {
-            "X": 12.985352,
-            "Y": 82.05,
-            "Z": -25.223206
-          },
-          "TerritoryId": 820,
+          "Position": [12.985352, 82.05, -25.223206],
           "InteractionType": "Interact",
           "$.1": "QuestValues if done first: 16 1 16 0 0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1027602,
-          "Position": {
-            "X": 74.35718,
-            "Y": -10.320814,
-            "Z": 4.8981323
-          },
-          "TerritoryId": 820,
+          "Position": [74.35718, -10.320814, 4.8981323],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ],
           "$.1": "QuestValues if done after [1]: 32 17 16 16 0 160",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1029990,
-          "Position": {
-            "X": 11.36792,
-            "Y": 5.999995,
-            "Z": -38.651123
-          },
-          "TerritoryId": 820,
+          "Position": [11.36792, 5.999995, -38.651123],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Southeast Derelicts",
-            "[Eulmore] The Glory Gate"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1029991,
-          "Position": {
-            "X": -105.61956,
-            "Y": -9.999162,
-            "Z": -54.08564
-          },
-          "TerritoryId": 820,
-          "StopDistance": 1,
+          "Position": [-105.61956, -9.999162, -54.08564],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179713
         },
         {
           "DataId": 1031746,
-          "Position": {
-            "X": -4.043701,
-            "Y": -5.091193,
-            "Z": -98.19183
-          },
-          "TerritoryId": 820,
+          "Position": [-4.043701, -5.091193, -98.19183],
           "InteractionType": "CompleteQuest"
         }
       ]

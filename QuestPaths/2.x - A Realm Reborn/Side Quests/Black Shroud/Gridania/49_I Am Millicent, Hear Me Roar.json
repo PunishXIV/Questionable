@@ -1,38 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000788,
-          "Position": {
-            "X": -43.90027,
-            "Y": 7.0877223,
-            "Z": -136.70563
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000429,
-          "Position": {
-            "X": 56.50415,
-            "Y": 7.9990244,
-            "Z": -132.12793
-          },
-          "TerritoryId": 133,
+          "Position": [56.50415, 7.9990244, -132.12793],
           "InteractionType": "CompleteQuest"
         }
       ]

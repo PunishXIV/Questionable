@@ -1,116 +1,67 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item: 1x Sohm Al Tart NQ, 1x Ishgardian tea HQ\nAutocrafting requires:\n3x Coerthan Tea Leaves\n3x Dark Chestnut\n5x Highland Wheat\n2x Yak Milk(crystarium)\n1x Maple Sap(Jossy)\n1x Buffalo Milk(Jossy)",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012568,
-          "Position": {
-            "X": 69.71838,
-            "Y": 44.399895,
-            "Z": 135.9425
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1012570,
-          "Position": {
-            "X": -74.47931,
-            "Y": 41.99998,
-            "Z": -153.73468
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "Position": [-74.47931, 41.99998, -153.73468],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1012568,
-          "Position": {
-            "X": 69.71838,
-            "Y": 44.399895,
-            "Z": 135.9425
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [69.71838, 44.399895, 135.9425],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1012571,
-          "Position": {
-            "X": 80.24719,
-            "Y": 44.399857,
-            "Z": 136.5835
-          },
-          "TerritoryId": 128,
+          "Position": [80.24719, 44.399857, 136.5835],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1012568,
-          "Position": {
-            "X": 69.71838,
-            "Y": 44.399895,
-            "Z": 135.9425
-          },
-          "TerritoryId": 128,
+          "Position": [69.71838, 44.399895, 135.9425],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "InteractionType": "Craft",
-          "TerritoryId": 128
+          "InteractionType": "Craft"
         },
         {
           "DataId": 1012568,
-          "Position": {
-            "X": 69.71838,
-            "Y": 44.399895,
-            "Z": 135.9425
-          },
-          "TerritoryId": 128,
+          "Position": [69.71838, 44.399895, 135.9425],
           "InteractionType": "CompleteQuest",
           "AllowHighQuality": true
         }

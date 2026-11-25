@@ -1,39 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001353,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.78235
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1004005,
-          "Position": {
-            "X": -123.88806,
-            "Y": 40,
-            "Z": 95.384155
-          },
-          "TerritoryId": 131,
+          "Position": [-123.88806, 40, 95.384155],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -44,11 +25,7 @@
         },
         {
           "DataId": 1004002,
-          "Position": {
-            "X": 1.0527954,
-            "Y": 0.014807776,
-            "Z": -1.6633301
-          },
+          "Position": [1.0527954, 0.014807776, -1.6633301],
           "TerritoryId": 210,
           "InteractionType": "Interact"
         }
@@ -56,24 +33,15 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2001427,
-          "Position": {
-            "X": 246.93665,
-            "Y": -17.105408,
-            "Z": -131.48706
-          },
-          "TerritoryId": 141,
+          "Position": [246.93665, -17.105408, -131.48706],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "(Phase 1) Healer NPCs are only killed after the boss dies - allied NPCs will kill them eventually; all NPCs need to be killed for the duty to complete"
-            ]
-          },
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+            "Enabled": true
+          }
         }
       ]
     },
@@ -82,20 +50,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1004005,
-          "Position": {
-            "X": -123.88806,
-            "Y": 40,
-            "Z": 95.384155
-          },
-          "TerritoryId": 131,
+          "Position": [-123.88806, 40, 95.384155],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -106,11 +66,7 @@
         },
         {
           "DataId": 1004003,
-          "Position": {
-            "X": 0.015197754,
-            "Y": 0.014807776,
-            "Z": -1.6937866
-          },
+          "Position": [0.015197754, 0.014807776, -1.6937866],
           "TerritoryId": 210,
           "InteractionType": "CompleteQuest"
         }

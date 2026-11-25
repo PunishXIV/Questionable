@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Malachite Earrings HQ\nAutocraft requires:\n 2x Malachite,\n 1x Silver Ingot",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 4218,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,57 +26,25 @@
         },
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "Position": [-25.162231, 12.199998, 110.795654],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1004098,
-          "Position": {
-            "X": -19.272217,
-            "Y": 9,
-            "Z": -89.15851
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "Position": [-19.272217, 9, -89.15851],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

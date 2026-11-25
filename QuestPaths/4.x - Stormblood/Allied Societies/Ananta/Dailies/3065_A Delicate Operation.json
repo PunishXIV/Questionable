@@ -1,65 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -26.902342,
-            "Y": 56.092464,
-            "Z": 234.37491
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -26.902342,
-                  "Y": 56.092464,
-                  "Z": 234.37491
-                },
-                "TerritoryId": 612,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1024773,
-          "Position": {
-            "X": -28.33606,
-            "Y": 56.113926,
-            "Z": 236.25537
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "Position": [-28.33606, 56.113926, 236.25537],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2009369,
-          "Position": {
-            "X": 186.38892,
-            "Y": 103.25781,
-            "Z": 15.854065
-          },
-          "TerritoryId": 612,
+          "Position": [186.38892, 103.25781, 15.854065],
           "InteractionType": "UseItem",
           "ItemId": 2002450,
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 1}, {"High": 3}, {"High": 4}
             ],null,null,null],
@@ -67,15 +30,9 @@
         },
         {
           "DataId": 2009368,
-          "Position": {
-            "X": 170.06177,
-            "Y": 103.53235,
-            "Z": 17.776672
-          },
-          "TerritoryId": 612,
+          "Position": [170.06177, 103.53235, 17.776672],
           "InteractionType": "UseItem",
           "ItemId": 2002450,
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 3}, {"High": 5}
             ],null,null,null],
@@ -83,15 +40,9 @@
         },
         {
           "DataId": 2009367,
-          "Position": {
-            "X": 171.61816,
-            "Y": 113.725464,
-            "Z": -0.13739014
-          },
-          "TerritoryId": 612,
+          "Position": [171.61816, 113.725464, -0.13739014],
           "InteractionType": "UseItem",
           "ItemId": 2002450,
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 1}, {"High": 2}, {"High": 4}, {"High": 5}
             ],null,null,null],
@@ -99,15 +50,9 @@
         },
         {
           "DataId": 2009366,
-          "Position": {
-            "X": 170.27539,
-            "Y": 111.46704,
-            "Z": -31.693054
-          },
-          "TerritoryId": 612,
+          "Position": [170.27539, 111.46704, -31.693054],
           "InteractionType": "UseItem",
           "ItemId": 2002450,
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 2}, {"High": 4}, {"High": 5}
             ],null,null,null],
@@ -115,15 +60,9 @@
         },
         {
           "DataId": 2009365,
-          "Position": {
-            "X": 150.2251,
-            "Y": 108.140625,
-            "Z": -42.191284
-          },
-          "TerritoryId": 612,
+          "Position": [150.2251, 108.140625, -42.191284],
           "InteractionType": "UseItem",
           "ItemId": 2002450,
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 1}, {"High": 2}, {"High": 3}
             ],null,null,null],
@@ -133,44 +72,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -26.902342,
-            "Y": 56.092464,
-            "Z": 234.37491
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -26.902342,
-                  "Y": 56.092464,
-                  "Z": 234.37491
-                },
-                "TerritoryId": 612,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1024773,
-          "Position": {
-            "X": -28.33606,
-            "Y": 56.113926,
-            "Z": 236.25537
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "Position": [-28.33606, 56.113926, 236.25537],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

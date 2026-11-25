@@ -1,21 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1038411,
-          "Position": {
-            "X": -69.41333,
-            "Y": -0.5033642,
-            "Z": 5.0201416
-          },
-          "TerritoryId": 132,
+          "Position": [-69.41333, -0.5033642, 5.0201416],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -28,117 +23,81 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2011735,
-          "Position": {
-            "X": -314.4427,
-            "Y": 61.05127,
-            "Z": -141.10028
-          },
-          "TerritoryId": 148,
+          "Position": [-314.4427, 61.05127, -141.10028],
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14013
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2011730,
-          "Position": {
-            "X": -314.4427,
-            "Y": 61.05127,
-            "Z": -141.10028
-          },
-          "TerritoryId": 148,
+          "Position": [-314.4427, 61.05127, -141.10028],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2011733,
-          "Position": {
-            "X": -408.9876,
-            "Y": 61.631104,
-            "Z": -125.90222
-          },
-          "TerritoryId": 148,
+          "Position": [-408.9876, 61.631104, -125.90222],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14014
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128
           ]
         },
         {
           "DataId": 2011732,
-          "Position": {
-            "X": -343.2517,
-            "Y": 60.105225,
-            "Z": -72.46515
-          },
-          "TerritoryId": 148,
+          "Position": [-343.2517, 60.105225, -72.46515],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14014
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64
           ]
         },
         {
           "DataId": 2011731,
-          "Position": {
-            "X": -231.46417,
-            "Y": 56.71765,
-            "Z": -93.614136
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-231.46417, 56.71765, -93.614136],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2011747,
-          "Position": {
-            "X": -310.71948,
-            "Y": 21.194763,
-            "Z": 173.66284
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-310.71948, 21.194763, 173.66284],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1038411,
-          "Position": {
-            "X": -69.41333,
-            "Y": -0.5033642,
-            "Z": 5.0201416
-          },
-          "TerritoryId": 132,
+          "Position": [-69.41333, -0.5033642, 5.0201416],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4105
         }

@@ -1,36 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041847,
-          "Position": {
-            "X": -484.2146,
-            "Y": 141.86789,
-            "Z": -97.21527
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041848,
-          "Position": {
-            "X": 258.35046,
-            "Y": -10.140662,
-            "Z": -95.71985
-          },
-          "TerritoryId": 961,
+          "Position": [258.35046, -10.140662, -95.71985],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -43,34 +27,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041848,
-          "Position": {
-            "X": -175.03741,
-            "Y": 12.098856,
-            "Z": 6.8771067
-          },
-          "TerritoryId": 961,
+          "Position": [-175.03741, 12.098856, 6.8771067],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041847,
-          "Position": {
-            "X": -484.2146,
-            "Y": 141.86789,
-            "Z": -97.21527
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,57 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -617.1206,
-            "Y": 65.602264,
-            "Z": -425.25372
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 2011166,
-          "Position": {
-            "X": -721.70593,
-            "Y": 68.86389,
-            "Z": -1.5107422
-          },
-          "TerritoryId": 813,
+          "Position": [-721.70593, 68.86389, -1.5107422],
           "InteractionType": "UseItem",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
           "ItemId": 2003030,
           "GroundTarget": true,
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 2}
           ],null,null,null]
         },
         {
           "DataId": 2011167,
-          "Position": {
-            "X": -724.7578,
-            "Y": 68.833374,
-            "Z": 1.0527954
-          },
-          "TerritoryId": 813,
+          "Position": [-724.7578, 68.833374, 1.0527954],
           "InteractionType": "UseItem",
           "ItemId": 2003030,
           "GroundTarget": true,
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 1}
           ],null,null,null]
@@ -60,35 +35,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1034059,
-          "Position": {
-            "X": -725.70386,
-            "Y": 68.86053,
-            "Z": 2.2124634
-          },
-          "TerritoryId": 813,
+          "Position": [-725.70386, 68.86053, 2.2124634],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -615.86487,
-            "Y": 65.602264,
-            "Z": -423.87152
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

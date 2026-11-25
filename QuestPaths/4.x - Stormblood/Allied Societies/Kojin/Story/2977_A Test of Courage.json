@@ -1,100 +1,48 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1024215,
-          "Position": {
-            "X": 400.07617,
-            "Y": -119.589325,
-            "Z": -247.54712
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024269,
-          "Position": {
-            "X": 330.64758,
-            "Y": -116.86714,
-            "Z": -202.47198
-          },
-          "TerritoryId": 613,
+          "Position": [330.64758, -116.86714, -202.47198],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 2009174,
-          "Position": {
-            "X": 321.9806,
-            "Y": -120.042725,
-            "Z": -250.4159
-          },
-          "TerritoryId": 613,
+          "Position": [321.9806, -120.042725, -250.4159],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": 318.06195,
-            "Y": -83.027016,
-            "Z": -226.5931
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "RestartNavigationIfCancelled": false,
-          "SkipConditions": {
-            "StepIf": {
-              "Diving": true
-            }
-          }
-        },
-        {
           "DataId": 1024270,
-          "Position": {
-            "X": -666.89557,
-            "Y": -33.707214,
-            "Z": 268.17725
-          },
-          "TerritoryId": 613,
+          "Position": [-666.89557, -33.707214, 268.17725],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
-          "SinglePlayerDutyOptions": {"Enabled": false},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": false}
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1024215,
-          "Position": {
-            "X": 400.07617,
-            "Y": -119.589325,
-            "Z": -247.54712
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

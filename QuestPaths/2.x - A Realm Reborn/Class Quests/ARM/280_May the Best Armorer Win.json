@@ -1,80 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Steel Chainmail HQ\nAutocraft requires:\n 3x Steel Rings,\n 1x Undyed Velveteen",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001000,
-          "Position": {
-            "X": -32.028687,
-            "Y": 41.499985,
-            "Z": 208.39233
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1002107,
-          "Position": {
-            "X": -157.21375,
-            "Y": 6.250008,
-            "Z": 164.96521
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "Position": [-157.21375, 6.250008, 164.96521],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001001,
-          "Position": {
-            "X": -56.443176,
-            "Y": 39.974316,
-            "Z": 178.72888
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [-56.443176, 39.974316, 178.72888],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 3096,
           "ItemCount": 1,
           "SkipConditions": {
@@ -87,17 +48,8 @@
         },
         {
           "DataId": 1001001,
-          "Position": {
-            "X": -56.443176,
-            "Y": 39.974316,
-            "Z": 178.72888
-          },
-          "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [-56.443176, 39.974316, 178.72888],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

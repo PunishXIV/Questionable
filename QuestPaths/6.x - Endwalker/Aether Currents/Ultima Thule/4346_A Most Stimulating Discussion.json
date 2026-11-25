@@ -1,60 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038016,
-          "Position": {
-            "X": 105.42456,
-            "Y": 269.29584,
-            "Z": -454.3069
-          },
-          "TerritoryId": 960,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "Position": {
-            "X": 33.55028,
-            "Y": 269.00006,
-            "Z": -683.68896
-          },
-          "TerritoryId": 960,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 1040880,
-          "Position": {
-            "X": -110.185425,
-            "Y": 269.2062,
-            "Z": -713.5271
-          },
-          "TerritoryId": 960,
+          "Position": [-110.185425, 269.2062, -713.5271],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1040881,
-          "Position": {
-            "X": -201.86163,
-            "Y": 288.6714,
-            "Z": -466.331
-          },
-          "TerritoryId": 960,
+          "Position": [-201.86163, 288.6714, -466.331],
           "InteractionType": "Interact",
           "$.0": "[2]",
           "$.1": "QuestVariables if done after [3]: 32 17 0 0 0 160",
@@ -69,12 +34,7 @@
         },
         {
           "DataId": 1040879,
-          "Position": {
-            "X": -184.52734,
-            "Y": 267.47086,
-            "Z": -292.65283
-          },
-          "TerritoryId": 960,
+          "Position": [-184.52734, 267.47086, -292.65283],
           "InteractionType": "Interact",
           "$.0": "[3]",
           "$.1": "QuestVariables if done first: 16 1 0 0 0 128",
@@ -84,18 +44,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1038016,
-          "Position": {
-            "X": 105.42456,
-            "Y": 269.29584,
-            "Z": -454.3069
-          },
-          "TerritoryId": 960,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,30 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1191,
       "Steps": [
         {
-          "DataId": 2014030,
-          "Position": {
-            "X": 221.82031,
-            "Y": 54.58142,
-            "Z": -693.38525
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1171
-        },
-        {
           "DataId": 1047776,
-          "Position": {
-            "X": -0.869812,
-            "Y": -2.9624603E-06,
-            "Z": -0.6256714
-          },
-          "StopDistance": 5,
+          "Position": [-0.869812, -2.9624603E-06, -0.6256714],
           "TerritoryId": 1171,
           "InteractionType": "AcceptQuest"
         }
@@ -32,38 +17,23 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1049443,
-          "Position": {
-            "X": -177.56934,
-            "Y": 29.999998,
-            "Z": -601.15967
-          },
-          "TerritoryId": 1191,
+          "Position": [-177.56934, 29.999998, -601.15967],
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 5153,
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "PickUpQuestId": 5153
         },
         {
           "DataId": 1050805,
-          "Position": {
-            "X": -153.09375,
-            "Y": 34.946026,
-            "Z": -581.0178
-          },
-          "TerritoryId": 1191,
+          "Position": [-153.09375, 34.946026, -581.0178],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 5160
         },
         {
           "DataId": 1048053,
-          "Position": {
-            "X": -296.52863,
-            "Y": 45.88422,
-            "Z": -828.58014
-          },
-          "TerritoryId": 1191,
+          "Position": [-296.52863, 45.88422, -828.58014],
           "InteractionType": "Interact"
         }
       ]
@@ -73,66 +43,41 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1048059,
-          "Position": {
-            "X": 0.6560669,
-            "Y": -6.050003,
-            "Z": 218.24976
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1186,
+          "Position": [0.6560669, -6.050003, 218.24976],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "TerritoryId": 1186,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Solution Nine] Information Center"
         },
         {
           "DataId": 1048060,
-          "Position": {
-            "X": 5.935669,
-            "Y": 7.786434,
-            "Z": 27.450928
-          },
-          "TerritoryId": 1186,
+          "Position": [5.935669, 7.786434, 27.450928],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "Position": {
-            "X": -7.134756,
-            "Y": 8.467899,
-            "Z": 7.050073
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "StopDistance": 11,
-          "TerritoryId": 1186,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Solution Nine"
         },
         {
           "DataId": 1048061,
-          "Position": {
-            "X": -97.94769,
-            "Y": 0.00054359436,
-            "Z": -0.10687256
-          },
-          "TerritoryId": 1186,
+          "Position": [-97.94769, 0.00054359436, -0.10687256],
           "InteractionType": "CompleteQuest"
         }
       ]

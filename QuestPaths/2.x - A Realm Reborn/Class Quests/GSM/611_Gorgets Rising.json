@@ -1,41 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Copper Gorget\nAutocraft requires:\n 6x Copper Ingot,\n 3x Leather",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 4305,
           "ItemCount": 3,
           "SkipConditions": {
@@ -48,18 +25,9 @@
         },
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
+          "Position": [-25.162231, 12.199998, 110.795654],
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

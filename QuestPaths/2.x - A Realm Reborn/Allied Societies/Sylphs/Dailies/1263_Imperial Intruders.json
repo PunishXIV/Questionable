@@ -1,40 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005818,
-          "Position": {
-            "X": 294.11755,
-            "Y": -1.0690334,
-            "Z": 150.71338
-          },
-          "TerritoryId": 152,
+          "Position": [294.11755, -1.0690334, 150.71338],
           "InteractionType": "UseItem",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
           "ItemId": 2001179,
           "GroundTarget": true,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -44,14 +24,8 @@
         },
         {
           "DataId": 1005821,
-          "Position": {
-            "X": 242.14539,
-            "Y": 0.2755583,
-            "Z": 117.997925
-          },
-          "TerritoryId": 152,
+          "Position": [242.14539, 0.2755583, 117.997925],
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001179,
           "GroundTarget": true,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -61,14 +35,8 @@
         },
         {
           "DataId": 1005805,
-          "Position": {
-            "X": 189.6543,
-            "Y": -0.91523975,
-            "Z": 97.0625
-          },
-          "TerritoryId": 152,
+          "Position": [189.6543, -0.91523975, 97.0625],
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001179,
           "GroundTarget": true,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -78,14 +46,8 @@
         },
         {
           "DataId": 1005819,
-          "Position": {
-            "X": 290.97424,
-            "Y": -5.0578775,
-            "Z": 48.935547
-          },
-          "TerritoryId": 152,
+          "Position": [290.97424, -5.0578775, 48.935547],
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001179,
           "GroundTarget": true,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -95,14 +57,8 @@
         },
         {
           "DataId": 1005820,
-          "Position": {
-            "X": 209.0028,
-            "Y": -2.711787,
-            "Z": -18.173523
-          },
-          "TerritoryId": 152,
+          "Position": [209.0028, -2.711787, -18.173523],
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001179,
           "GroundTarget": true,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -112,14 +68,8 @@
         },
         {
           "DataId": 1005822,
-          "Position": {
-            "X": 106.004395,
-            "Y": 6.354765,
-            "Z": -8.712891
-          },
-          "TerritoryId": 152,
+          "Position": [106.004395, 6.354765, -8.712891],
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001179,
           "GroundTarget": true,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -129,14 +79,8 @@
         },
         {
           "DataId": 1005823,
-          "Position": {
-            "X": 0.6560669,
-            "Y": 20.066597,
-            "Z": 12.313965
-          },
-          "TerritoryId": 152,
+          "Position": [0.6560669, 20.066597, 12.313965],
           "InteractionType": "Combat",
-          "Fly": true,
           "ItemId": 2001179,
           "GroundTarget": true,
           "EnemySpawnType": "AfterItemUse",
@@ -150,14 +94,8 @@
         },
         {
           "DataId": 1005820,
-          "Position": {
-            "X": 209.0028,
-            "Y": -2.711787,
-            "Z": -18.173523
-          },
-          "TerritoryId": 152,
+          "Position": [209.0028, -2.711787, -18.173523],
           "InteractionType": "Combat",
-          "Fly": true,
           "ItemId": 2001179,
           "GroundTarget": true,
           "EnemySpawnType": "AfterItemUse",
@@ -172,21 +110,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

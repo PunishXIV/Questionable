@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "croizat",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006190,
-          "Position": {
-            "X": 26.871094,
-            "Y": -3.6219776,
-            "Z": 209.64368
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1006190,
-          "Position": {
-            "X": 26.871094,
-            "Y": -3.6219776,
-            "Z": 209.64368
-          },
-          "TerritoryId": 152,
+          "Position": [26.871094, -3.6219776, 209.64368],
           "InteractionType": "Emote",
           "Emote": "poke"
         }
@@ -36,15 +21,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1006190,
-          "Position": {
-            "X": 26.871094,
-            "Y": -3.6219776,
-            "Z": 209.64368
-          },
-          "TerritoryId": 152,
+          "Position": [26.871094, -3.6219776, 209.64368],
           "InteractionType": "Emote",
           "Emote": "examineself"
         }
@@ -52,15 +33,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1006190,
-          "Position": {
-            "X": 26.871094,
-            "Y": -3.6219776,
-            "Z": 209.64368
-          },
-          "TerritoryId": 152,
+          "Position": [26.871094, -3.6219776, 209.64368],
           "InteractionType": "CompleteQuest",
           "Emote": "congratulate"
         }

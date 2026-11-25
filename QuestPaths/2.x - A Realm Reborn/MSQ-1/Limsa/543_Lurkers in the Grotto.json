@@ -1,47 +1,22 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002626,
-          "Position": {
-            "X": 207.2633,
-            "Y": 112.860374,
-            "Z": -222.43079
-          },
-          "TerritoryId": 134,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 134,
       "Steps": [
         {
-          "Position": {
-            "X": -21.400705,
-            "Y": 46.621056,
-            "Z": -70.3491
-          },
-          "TerritoryId": 134,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2001582,
-          "Position": {
-            "X": -58.640503,
-            "Y": 27.145752,
-            "Z": -141.7716
-          },
-          "TerritoryId": 134,
+          "Position": [-58.640503, 27.145752, -141.7716],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.3.2.5"
+            "Enabled": true
           }
         }
       ]
@@ -51,18 +26,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1002626,
-          "Position": {
-            "X": 207.2633,
-            "Y": 112.860374,
-            "Z": -222.43079
-          },
-          "TerritoryId": 134,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,43 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Starr",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 144,
       "Steps": [
         {
-          "TerritoryId": 144,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Wonder Square East",
-            "[Gold Saucer] Entrance & Card Squares"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 57.345837,
-                  "Y": 20.99973,
-                  "Z": 82.112114
-                },
-                "TerritoryId": 144,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1011060,
-          "Position": {
-            "X": -95.36419,
-            "Y": -1.1017216,
-            "Z": 66.016075
-          },
-          "TerritoryId": 144,
-          "StopDistance": 1,
+          "Position": [-95.36419, -1.1017216, 66.016075],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gold Saucer",
           "DialogueChoices": [
             {
               "Type": "YesNo",

@@ -1,70 +1,22 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
-          "DataId": 1000171,
-          "Position": {
-            "X": -114.366455,
-            "Y": -7.351947,
-            "Z": 94.52954
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 148,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                132
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2000924,
-          "Position": {
-            "X": -389.24243,
-            "Y": 65.537476,
-            "Z": -186.57214
-          },
+          "Position": [-389.24243, 65.537476, -186.57214],
           "TerritoryId": 148,
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] White Wolf Gate (Central Shroud)"
-          ],
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -73,40 +25,26 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000448,
-          "Position": {
-            "X": -287.00696,
-            "Y": -54.431038,
-            "Z": 289.99768
-          },
-          "TerritoryId": 154,
+          "Position": [-287.00696, -54.431038, 289.99768],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Index": 1,
             "Enabled": true
-          },
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1067
         }

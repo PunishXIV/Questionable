@@ -1,71 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [212]
-            }
-          }
-        },
-        {
-          "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [212]
-            }
-          }
-        },
-        {
           "DataId": 1007478,
-          "Position": {
-            "X": -2.822998,
-            "Y": -3.0000014,
-            "Z": -56.229553
-          },
+          "Position": [-2.822998, -3.0000014, -56.229553],
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
@@ -74,62 +18,23 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 26.405773,
-            "Y": 29.49983,
-            "Z": -767.3998
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
-          "Position": {
-            "X": 25.629164,
-            "Y": 28.999998,
-            "Z": -823.2204
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1001304,
-          "Position": {
-            "X": 25.589355,
-            "Y": 29,
-            "Z": -825.37573
-          },
-          "TerritoryId": 156,
+          "Position": [25.589355, 29, -825.37573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 26.405773,
-            "Y": 29.49983,
-            "Z": -767.3998
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006951,
-          "Position": {
-            "X": 73.77734,
-            "Y": 33.066578,
-            "Z": -709.77344
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [73.77734, 33.066578, -709.77344],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

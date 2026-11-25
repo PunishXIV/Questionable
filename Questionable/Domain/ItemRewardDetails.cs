@@ -1,6 +1,5 @@
 ﻿using Dalamud.Utility;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 
 namespace Questionable.Domain;
 

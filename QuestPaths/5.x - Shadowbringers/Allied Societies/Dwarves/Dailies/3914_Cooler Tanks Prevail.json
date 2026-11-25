@@ -1,62 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -617.1206,
-            "Y": 65.602264,
-            "Z": -425.25372
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1034062,
-          "Position": {
-            "X": 214.92322,
-            "Y": 140.93163,
-            "Z": -570.09235
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "Position": [214.92322, 140.93163, -570.09235],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 813,
           "ItemId": 31165,
           "ItemCount": 2
         },
         {
           "DataId": 1033712,
-          "Position": {
-            "X": -615.86487,
-            "Y": 65.602264,
-            "Z": -423.87152
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "Position": [-615.86487, 65.602264, -423.87152],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

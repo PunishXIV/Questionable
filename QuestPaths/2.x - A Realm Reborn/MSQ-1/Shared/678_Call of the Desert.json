@@ -1,40 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000100,
-          "Position": {
-            "X": 25.872286,
-            "Y": -8.000001,
-            "Z": 115.7687
-          },
-          "StopDistance": 1,
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001353,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.78235
-          },
-          "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "Position": [21.072632, 7.45, -78.78235],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,106 +1,62 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1017171,
-          "Position": {
-            "X": -335.56116,
-            "Y": 59.003433,
-            "Z": 313.98486
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017364,
-          "Position": {
-            "X": 517.87585,
-            "Y": -11.374985,
-            "Z": 82.96326
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Churning Mists - Moghome"
+          "Position": [517.87585, -11.374985, 82.96326],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 2007227,
-          "Position": {
-            "X": 437.3692,
-            "Y": -32.100933,
-            "Z": 206.19516
-          },
-          "TerritoryId": 400,
+          "Position": [437.3692, -32.100933, 206.19516],
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2007226,
-          "Position": {
-            "X": 429.0788,
-            "Y": -27.631393,
-            "Z": 141.86903
-          },
-          "TerritoryId": 400,
+          "Position": [429.0788, -27.631393, 141.86903],
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2007225,
-          "Position": {
-            "X": 412.1078,
-            "Y": -22.80829,
-            "Z": 16.094213
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true
+          "Position": [412.1078, -22.80829, 16.094213],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017364,
-          "Position": {
-            "X": 517.87585,
-            "Y": -11.374985,
-            "Z": 82.96326
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [517.87585, -11.374985, 82.96326],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "TerritoryId": 400,
           "InteractionType": "Craft",
           "ItemId": 15729,
           "ItemCount": 3,
@@ -114,15 +70,8 @@
         },
         {
           "DataId": 1017171,
-          "Position": {
-            "X": -335.56116,
-            "Y": 59.003433,
-            "Z": 313.98486
-          },
-          "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "Position": [-335.56116, 59.003433, 313.98486],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

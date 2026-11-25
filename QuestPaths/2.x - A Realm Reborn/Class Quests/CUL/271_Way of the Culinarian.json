@@ -1,37 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000946,
-          "Position": {
-            "X": -61.142883,
-            "Y": 42.299698,
-            "Z": -164.0498
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Culinarians' Guild"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [128,129]}}
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
+          "Position": [-54.64258, 44, -151.23218],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

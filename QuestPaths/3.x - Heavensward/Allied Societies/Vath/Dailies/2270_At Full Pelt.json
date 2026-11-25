@@ -1,155 +1,87 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["AnimaMachinae", "alydev"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016803,
-          "Position": {
-            "X": 58.42009,
-            "Y": -48.000004,
-            "Z": -171.76868
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 2,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [58.42009, -48.000004, -171.76868],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 449.65012,
-            "Y": -51.141403,
-            "Z": 106.932205
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
-        },
-        {
           "DataId": 1011922,
-          "Position": {
-            "X": 448.56934,
-            "Y": -51.141407,
-            "Z": 108.93408
-          },
-          "TerritoryId": 398,
+          "Position": [448.56934, -51.141407, 108.93408],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2006918,
-          "Position": {
-            "X": 475.69995,
-            "Y": -44.174927,
-            "Z": -231.46417
-          },
-          "TerritoryId": 398,
+          "Position": [475.69995, -44.174927, -231.46417],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001961,
           "KillEnemyDataIds": [
-            71224
+            5547
           ],
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2006920,
-          "Position": {
-            "X": 329.4879,
-            "Y": -45.487183,
-            "Z": -262.13477
-          },
-          "TerritoryId": 398,
+          "Position": [329.4879, -45.487183, -262.13477],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001961,
-          "Comment": "Manually attack",
-          "$": "TODO fix",
           "KillEnemyDataIds": [
             5548
           ],
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2006919,
-          "Position": {
-            "X": 535.45435,
-            "Y": -32.39496,
-            "Z": -410.60504
-          },
-          "TerritoryId": 398,
+          "Position": [535.45435, -32.39496, -410.60504],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001961,
           "KillEnemyDataIds": [
-            71224
-          ],
-          "Fly": true,
-          "Land": true
+            5547
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 449.65012,
-            "Y": -51.141403,
-            "Z": 106.932205
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
-        },
-        {
           "DataId": 1011922,
-          "Position": {
-            "X": 448.56934,
-            "Y": -51.141407,
-            "Z": 108.93408
-          },
-          "TerritoryId": 398,
+          "Position": [448.56934, -51.141407, 108.93408],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016803,
-          "Position": {
-            "X": 58.42009,
-            "Y": -48.000004,
-            "Z": -171.76868
-          },
-          "StopDistance": 2,
-          "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [58.42009, -48.000004, -171.76868],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

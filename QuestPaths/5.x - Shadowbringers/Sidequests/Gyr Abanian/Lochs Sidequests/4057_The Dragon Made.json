@@ -1,69 +1,49 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Anonymous",
   "Comment": "Becomes available after acquiring all ShB EX mounts",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 621,
       "Steps": [
         {
-          "Comment": "This quest was automatically generated and is untested. Please report in Discord if it works.",
           "DataId": 1032764,
-          "Position": {
-            "X": -496.508,
-            "Y": 7.68117,
-            "Z": 53.1475
-          },
-          "TerritoryId": 621,
+          "Position": [-496.508, 7.68117, 53.1475],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 2011469,
-          "Position": {
-            "X": -645.169,
-            "Y": -174.559,
-            "Z": -477.928
-          },
-          "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-645.169, -174.559, -477.928],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 2011470,
-          "Position": {
-            "X": -364.987,
-            "Y": 257.944,
-            "Z": -0.0220977
-          },
-          "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-364.987, 257.944, -0.0220977],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 2011470,
-          "Position": {
-            "X": -364.987,
-            "Y": 257.944,
-            "Z": -0.0220977
-          },
-          "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-364.987, 257.944, -0.0220977],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

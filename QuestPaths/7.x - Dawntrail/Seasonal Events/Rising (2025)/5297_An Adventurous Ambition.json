@@ -1,84 +1,41 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "WigglyMuffin",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1053660,
-          "Position": {
-            "X": 3.5552979,
-            "Y": 44.499996,
-            "Z": 125.62744
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001024,
-          "Position": {
-            "X": 28.519043,
-            "Y": 44.499977,
-            "Z": 176.3789
-          },
-          "TerritoryId": 128,
+          "Position": [28.519043, 44.499977, 176.3789],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "Position": {
-              "X": 25.724976,
-              "Y": 44.5,
-              "Z": 186.5
-          },
-          "TerritoryId": 128,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1053662,
-          "Position": {
-            "X": -32.425476,
-            "Y": 71.50164,
-            "Z": 135.91211
-          },
+          "Position": [-32.425476, 71.50164, 135.91211],
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1053663,
-          "Position": {
-              "X": -34.01245,
-              "Y": 71.548134,
-              "Z": 135.63745
-          },
-          "TerritoryId": 135,
+          "Position": [-34.01245, 71.548134, 135.63745],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5298
         }

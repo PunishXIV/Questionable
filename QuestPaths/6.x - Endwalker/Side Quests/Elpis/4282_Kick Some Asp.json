@@ -1,34 +1,17 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037945,
-          "Position": {
-            "X": 144.79285,
-            "Y": 8.025643,
-            "Z": 202.47192
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": 178.64835,
-            "Y": 18.02447,
-            "Z": 625.55774
-          },
-          "TerritoryId": 961,
+          "Position": [178.64835, 18.02447, 625.55774],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "CombatItemUse":
@@ -43,27 +26,13 @@
               "RewardItemId": 2003343,
               "RewardItemCount": 3
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037945,
-          "Position": {
-            "X": 144.79285,
-            "Y": 8.025643,
-            "Z": 202.47192
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,98 +1,50 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019958,
-          "Position": {
-            "X": 420.34033,
-            "Y": -99.19678,
-            "Z": -221.36267
-          },
-          "StopDistance": 7,
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019178,
-          "Position": {
-            "X": 319.69165,
-            "Y": -120.03494,
-            "Z": -250.90417
-          },
-          "TerritoryId": 613,
+          "Position": [319.69165, -120.03494, -250.90417],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019960,
-          "Position": {
-            "X": 321.3092,
-            "Y": -120.01774,
-            "Z": -248.2185
-          },
-          "TerritoryId": 613,
+          "Position": [321.3092, -120.01774, -248.2185],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "TerritoryId": 613,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Ruby Sea - Tamamizu"
         },
         {
           "DataId": 1019174,
-          "Position": {
-            "X": 318.44043,
-            "Y": -119.15506,
-            "Z": -207.90424
-          },
-          "TerritoryId": 613,
+          "Position": [318.44043, -119.15506, -207.90424],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179704
         },
         {
-          "Position": {
-            "X": 543.42303,
-            "Y": -61.394184,
-            "Z": -153.51427
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 647.60547,
-            "Y": 3.3050807,
-            "Z": -55.93293
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 664.2144,
-            "Y": 1.8086157,
-            "Z": -5.028036
-          },
-          "TerritoryId": 613,
+          "Position": [664.2144, 1.8086157, -5.028036],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -108,19 +60,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1019958,
-          "Position": {
-            "X": 420.34033,
-            "Y": -99.19678,
-            "Z": -221.36267
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

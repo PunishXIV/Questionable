@@ -1,123 +1,61 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050660,
-          "Position": {
-            "X": 421.8661,
-            "Y": 90,
-            "Z": -476.67664
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
-          "Land": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 421.8661,
-                  "Y": 90,
-                  "Z": -476.67664
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050661,
-          "Position": {
-            "X": -136.09528,
-            "Y": 26.068634,
-            "Z": -509.39197
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true
+          "Position": [-136.09528, 26.068634, -509.39197],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050661,
-          "Position": {
-            "X": -136.09528,
-            "Y": 26.068634,
-            "Z": -509.39197
-          },
-          "TerritoryId": 1191,
+          "Position": [-136.09528, 26.068634, -509.39197],
           "InteractionType": "Emote",
-          "Emote": "cheer",
-          "Fly": true
+          "Emote": "cheer"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050662,
-          "Position": {
-            "X": 149.7367,
-            "Y": 48.34552,
-            "Z": -463.5844
-          },
-          "TerritoryId": 1191,
+          "Position": [149.7367, 48.34552, -463.5844],
           "InteractionType": "Emote",
-          "Emote": "cheer",
-          "Fly": true
+          "Emote": "cheer"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050727,
-          "Position": {
-            "X": 309.65125,
-            "Y": 71.38871,
-            "Z": -473.68585
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1191,
+          "Position": [309.65125, 71.38871, -473.68585],
           "InteractionType": "Emote",
-          "Emote": "psych",
-          "Fly": true
+          "Emote": "psych"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1050660,
-          "Position": {
-            "X": 421.8661,
-            "Y": 90,
-            "Z": -476.67664
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

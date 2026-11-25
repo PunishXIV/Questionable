@@ -1,62 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012850,
-          "Position": {
-            "X": -399.74066,
-            "Y": 58.91504,
-            "Z": -354.97064
-          },
-          "TerritoryId": 957,
+          "Position": [-399.74066, 58.91504, -354.97064],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14674,
             14675
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

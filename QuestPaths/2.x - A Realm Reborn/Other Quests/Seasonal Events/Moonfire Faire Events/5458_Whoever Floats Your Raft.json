@@ -1,104 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "Comment": "Manually choose company for the boat ride",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 678.8558,
-            "Y": 8.175947,
-            "Z": 421.00647
-          },
-          "TerritoryId": 137,
-          "RestartNavigationIfCancelled": false,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 775.021,
-                  "Y": 39,
-                  "Z": 398.218
-                },
-                "TerritoryId": 137,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1058136,
-          "Position": {
-            "X": 775.021,
-            "Y": 39,
-            "Z": 398.218
-          },
-          "TerritoryId": 137,
+          "Position": [775.021, 39, 398.218],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "$": "auto: issuer 1058136 (Haermaga)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 744.2034,
-            "Y": 8.4,
-            "Z": 389.4422
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Mount": false,
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": 744.2034,
-            "Y": 12,
-            "Z": 389.4422
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Comment": "Flying up a bit to help with pathing",
-          "Mount": true,
-          "DisableNavmesh": true,
-          "SkipConditions": { "StepIf": { "Flying": "Locked" } }
-        },
-        {
           "DataId": 1058132,
-          "Position": {
-            "X": 508.537,
-            "Y": 9.03786,
-            "Z": 283.192
-          },
-          "TerritoryId": 137,
+          "Position": [508.537, 9.03786, 283.192],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1058132 (pleasure cruise chaperone)"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1058132,
-          "Position": {
-            "X": 508.537,
-            "Y": 9.03786,
-            "Z": 283.192
-          },
-          "TerritoryId": 137,
+          "Position": [508.537, 9.03786, 283.192],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -113,43 +49,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 678.8558,
-            "Y": 8.175947,
-            "Z": 421.00647
-          },
-          "TerritoryId": 137,
-          "RestartNavigationIfCancelled": false,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 775.021,
-                  "Y": 39,
-                  "Z": 398.218
-                },
-                "TerritoryId": 137,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1058136,
-          "Position": {
-            "X": 775.021,
-            "Y": 39,
-            "Z": 398.218
-          },
-          "TerritoryId": 137,
+          "Position": [775.021, 39, 398.218],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "$": "auto: todo turn-in -> 1058136 (Haermaga)"
         }
       ]

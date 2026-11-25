@@ -1,47 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Raitono",
-  "Comment": "Autofishing requires the AutoHook plugin.",
+  "Comment": "Autofishing requires Feesh, part of WahTools.",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000857,
-          "Position": {
-            "X": -165.27051,
-            "Y": 5.2500057,
-            "Z": 164.29382
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "Comment": "Buy 99 Pill Bug from vendor at\nLimsa Lominsa Lower Decks 6.3, 12.0",
+          "Comment": "Buy 99 Pill Bug",
           "DataId": 1003254,
-          "Position": {
-            "X": -246.52553,
-            "Y": 16.2,
-            "Z": 39.870853
-          },
-          "TerritoryId": 129,
+          "Position": [-246.52553, 16.2, 39.870853],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -49,84 +23,33 @@
           },
           "ItemId": 2587,
           "ItemCount": 99,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [
-                129
-              ]
-            }
-          }
-        },
-        {
-          "$": "This first move is necessary to ensure the player is facing toward the water when we begin fishing.",
-          "Comment": "Move to fishing spot",
-          "Position": {
-            "X": -183.85957,
-            "Y": 4,
-            "Z": 181.72098
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
             }
           }
         },
         {
           "Comment": "Move to fishing spot",
-          "Position": {
-            "X": -187.38275,
-            "Y": 3.9999497,
-            "Z": 184.70198
-          },
-          "TerritoryId": 129,
+          "Position": [-187.38275, 3.9999497, 184.70198],
           "InteractionType": "WalkTo"
         },
         {
           "Comment": "Fish for 3x Harbor Herring",
-          "TerritoryId": 129,
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
               "ItemId": 4874,
-              "ItemCount": 3,
-              "FishingOptions": {
-                "BaitId": 2587,
-                "Preset": "AH6_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"
-              }
+              "ItemCount": 3
             }
           ]
         },
         {
           "Comment": "Complete quest",
           "DataId": 1000857,
-          "Position": {
-            "X": -165.27051,
-            "Y": 5.2500057,
-            "Z": 164.29382
-          },
-          "TerritoryId": 129,
+          "Position": [-165.27051, 5.2500057, 164.29382],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1110
         }

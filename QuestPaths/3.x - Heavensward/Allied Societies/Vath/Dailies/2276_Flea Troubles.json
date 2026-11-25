@@ -1,125 +1,65 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016803,
-          "Position": {
-            "X": 58.42009,
-            "Y": -48.000004,
-            "Z": -171.76868
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 2,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [58.42009, -48.000004, -171.76868],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 74.20459,
-            "Y": -48.533592,
-            "Z": -171.12994
-          },
-          "StopDistance": 3,
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 74.20459,
-                  "Y": -48.533592,
-                  "Z": -171.12994
-                },
-                "MaximumDistance": 50,
-                "TerritoryId": 398
-              }
-            }
-          }
-        },
-        {
           "DataId": 1017031,
-          "Position": {
-            "X": 74.20459,
-            "Y": -48.533592,
-            "Z": -171.12994
-          },
-          "TerritoryId": 398,
+          "Position": [74.20459, -48.533592, -171.12994],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2006938,
-          "Position": {
-            "X": -178.88159,
-            "Y": 179.88855,
-            "Z": 4.257263
-          },
-          "TerritoryId": 398,
+          "Position": [-178.88159, 179.88855, 4.257263],
           "InteractionType": "Action",
           "Action": "Fumigate",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2006940,
-          "Position": {
-            "X": -311.8181,
-            "Y": -29.495728,
-            "Z": 143.63306
-          },
-          "TerritoryId": 398,
+          "Position": [-311.8181, -29.495728, 143.63306],
           "InteractionType": "Action",
           "Action": "Fumigate",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2006939,
-          "Position": {
-            "X": -313.80182,
-            "Y": -29.495728,
-            "Z": 102.098145
-          },
-          "TerritoryId": 398,
+          "Position": [-313.80182, -29.495728, 102.098145],
           "InteractionType": "Action",
           "Action": "Fumigate",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1016803,
-          "Position": {
-            "X": 58.42009,
-            "Y": -48.000004,
-            "Z": -171.76868
-          },
-          "StopDistance": 2,
-          "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [58.42009, -48.000004, -171.76868],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

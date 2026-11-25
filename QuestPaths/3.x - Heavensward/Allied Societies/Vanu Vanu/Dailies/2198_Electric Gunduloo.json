@@ -1,64 +1,35 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016089,
-          "Position": {
-            "X": -799.46594,
-            "Y": -133.2695,
-            "Z": -404.1352
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1016088,
-          "Position": {
-            "X": -818.143,
-            "Y": -129.93259,
-            "Z": -414.02307
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "Position": [-818.143, -129.93259, -414.02307],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1016241,
-          "Position": {
-            "X": -182.94049,
-            "Y": 213.612,
-            "Z": 204.57764
-          },
-          "TerritoryId": 401,
+          "Position": [-182.94049, 213.612, 204.57764],
           "InteractionType": "Emote",
-          "Emote": "sundropdance",
-          "Fly": true
+          "Emote": "sundropdance"
         },
         {
-          "Position": {
-            "X": -182.94049,
-            "Y": 213.612,
-            "Z": 204.57764
-          },
-          "TerritoryId": 401,
+          "Position": [-182.94049, 213.612, 204.57764],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [5235],
@@ -66,44 +37,26 @@
         },
         {
           "DataId": 1016239,
-          "Position": {
-            "X": -64.683044,
-            "Y": 212.9267,
-            "Z": 101.33508
-          },
-          "TerritoryId": 401,
+          "Position": [-64.683044, 212.9267, 101.33508],
           "InteractionType": "Emote",
-          "Emote": "sundropdance",
-          "Fly": true
+          "Emote": "sundropdance"
         },
         {
           "DataId": 1016240,
-          "Position": {
-            "X": 233.23413,
-            "Y": 240.42369,
-            "Z": 118.30322
-          },
-          "TerritoryId": 401,
+          "Position": [233.23413, 240.42369, 118.30322],
           "InteractionType": "Emote",
-          "Emote": "sundropdance",
-          "Fly": true
+          "Emote": "sundropdance"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1016088,
-          "Position": {
-            "X": -818.143,
-            "Y": -129.93259,
-            "Z": -414.02307
-          },
-          "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "Position": [-818.143, -129.93259, -414.02307],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

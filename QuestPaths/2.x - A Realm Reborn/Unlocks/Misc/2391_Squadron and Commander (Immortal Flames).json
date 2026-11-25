@@ -1,20 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1002391,
-          "Position": {
-            "X": -144.39618,
-            "Y": 4.1,
-            "Z": -107.22516
-          },
-          "TerritoryId": 130,
+          "Position": [-144.39618, 4.1, -107.22516],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "DialogueChoices": [
             {
               "Type": "YesNo",

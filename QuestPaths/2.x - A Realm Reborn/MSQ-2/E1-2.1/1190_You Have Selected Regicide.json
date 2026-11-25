@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "JerryWester",
     "liza"
@@ -8,59 +8,25 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1008275,
-          "Position": {
-            "X": 180.01062,
-            "Y": -2.265522,
-            "Z": -245.50244
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Lancers' Guild"
-          ]
+          "Position": [180.01062, -2.265522, -245.50244],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "DataId": 1001263,
-          "Position": {
-            "X": 181.41443,
-            "Y": -2.3519497,
-            "Z": -240.40594
-          },
-          "StopDistance": 7,
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 152
-        },
-        {
-          "Position": {
-            "X": -548.81665,
-            "Y": 10.813553,
-            "Z": 63.75964
-          },
+          "Position": [-548.81665, 10.813553, 63.75964],
           "TerritoryId": 152,
           "InteractionType": "WalkTo"
         }
@@ -68,39 +34,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -561.9863,
-            "Y": 9.919454,
-            "Z": 66.29564
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1008276,
-          "Position": {
-            "X": -542.9313,
-            "Y": 11.20175,
-            "Z": 62.241577
-          },
-          "TerritoryId": 152,
+          "Position": [-542.9313, 11.20175, 62.241577],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -496.3975,
-            "Y": 7.8566074,
-            "Z": 71.93724
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 152,
+          "Position": [-496.3975, 7.8566074, 71.93724],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -109,18 +58,11 @@
               "IgnoreQuestMarker": true,
               "MinimumKillCount": 1
             }
-          ],
-          "Mount": false,
-          "Sprint": false
+          ]
         },
         {
-          "Position": {
-            "X": -393.63492,
-            "Y": -0.28167063,
-            "Z": 72.2678
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 152,
+          "Position": [-393.63492, -0.28167063, 72.2678],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -129,18 +71,11 @@
               "IgnoreQuestMarker": true,
               "MinimumKillCount": 3
             }
-          ],
-          "Mount": false,
-          "Sprint": false
+          ]
         },
         {
-          "Position": {
-            "X": -359.14633,
-            "Y": 4.4168873,
-            "Z": 63.1877
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 152,
+          "Position": [-359.14633, 4.4168873, 63.1877],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -149,18 +84,11 @@
               "IgnoreQuestMarker": true,
               "MinimumKillCount": 1
             }
-          ],
-          "Mount": false,
-          "Sprint": false
+          ]
         },
         {
-          "Position": {
-            "X": -324.51694,
-            "Y": 8.511529,
-            "Z": 69.76721
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 152,
+          "Position": [-324.51694, 8.511529, 69.76721],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -169,32 +97,18 @@
               "IgnoreQuestMarker": true,
               "MinimumKillCount": 2
             }
-          ],
-          "Mount": false,
-          "Sprint": false
+          ]
         },
         {
           "DataId": 2482,
-          "Position": {
-            "X": -238.72742,
-            "Y": 7.8999486,
-            "Z": 64.43884
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 152,
-          "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 5,
+          "Position": [-238.72742, 7.8999486, 64.43884],
           "Mount": false,
-          "Sprint": false
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5
         },
         {
-          "Position": {
-            "X": -242.57193,
-            "Y": 11.837363,
-            "Z": 19.533478
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 152,
+          "Position": [-242.57193, 11.837363, 19.533478],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -209,63 +123,36 @@
               "MinimumKillCount": 1
             }
           ],
-          "Mount": false,
-          "Sprint": false,
           "CombatDelaySecondsAtStart": 3
         },
         {
           "DataId": 2482,
-          "Position": {
-            "X": -285.59854,
-            "Y": 11.75,
-            "Z": -22.394428
-          },
-          "TerritoryId": 152,
-          "StopDistance": 1,
-          "InteractionType": "WaitForNpcAtPosition",
+          "Position": [-285.59854, 11.75, -22.394428],
           "Mount": false,
-          "Sprint": false,
+          "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "DataId": 2482,
-          "Position": {
-            "X": -315.8217,
-            "Y": 11.905772,
-            "Z": -34.105675
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 152,
-          "InteractionType": "WaitForNpcAtPosition",
+          "Position": [-315.8217, 11.905772, -34.105675],
           "Mount": false,
-          "Sprint": false,
+          "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "DataId": 2003347,
-          "Position": {
-            "X": -318.62366,
-            "Y": 12.25293,
-            "Z": -35.05005
-          },
-          "StopDistance": 4,
-          "TerritoryId": 152,
+          "Position": [-318.62366, 12.25293, -35.05005],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1008277,
-          "Position": {
-            "X": -317.6776,
-            "Y": 12.293127,
-            "Z": -37.30841
-          },
-          "StopDistance": 4,
-          "TerritoryId": 152,
+          "Position": [-317.6776, 12.293127, -37.30841],
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 2
         }
@@ -273,16 +160,11 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2003046,
-          "Position": {
-            "X": -318.62366,
-            "Y": 12.25293,
-            "Z": -35.080566
-          },
-          "StopDistance": 4,
-          "TerritoryId": 152,
+          "Position": [-318.62366, 12.25293, -35.080566],
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 3
         }
@@ -290,40 +172,25 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "TerritoryId": 152,
           "InteractionType": "Duty",
           "Comment": "This is the first duty in MSQ that cannot be completed with an NPC party (as of 7.56.) A max level player or a light party can unsync it easily to continue MSQ.",
           "DutyOptions": {
             "ContentFinderConditionId": 66,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -139.69998,
-            "Y": 8.511277,
-            "Z": 279.65753
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
-        },
-        {
           "DataId": 1007862,
-          "Position": {
-            "X": -140.03204,
-            "Y": 8.647825,
-            "Z": 280.8728
-          },
-          "TerritoryId": 153,
+          "Position": [-140.03204, 8.647825, 280.8728],
           "InteractionType": "CompleteQuest"
         }
       ]

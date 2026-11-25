@@ -1,47 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027570,
-          "Position": {
-            "X": 47.989624,
-            "Y": 83.00107,
-            "Z": -75.30328
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eulmore",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 47.989624,
-                  "Y": 83.00107,
-                  "Z": -75.30328
-                },
-                "TerritoryId": 820,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1031118,
-          "Position": {
-            "X": -2.3041382,
-            "Y": 85.537865,
-            "Z": -82.65814
-          },
-          "TerritoryId": 820,
+          "Position": [-2.3041382, 85.537865, -82.65814],
           "InteractionType": "CompleteQuest"
         }
       ]

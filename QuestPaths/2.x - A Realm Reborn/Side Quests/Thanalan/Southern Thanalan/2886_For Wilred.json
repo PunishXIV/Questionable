@@ -1,65 +1,41 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006215,
-          "Position": {
-            "X": -227.34424,
-            "Y": 26.16842,
-            "Z": -352.98694
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1023365,
-          "Position": {
-            "X": -101.579346,
-            "Y": 36.97222,
-            "Z": -374.6853
-          },
-          "TerritoryId": 146,
+          "Position": [-101.579346, 36.97222, -374.6853],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006215,
-          "Position": {
-            "X": -227.34424,
-            "Y": 26.16842,
-            "Z": -352.98694
-          },
-          "TerritoryId": 146,
+          "Position": [-227.34424, 26.16842, -352.98694],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1023368,
-          "Position": {
-            "X": -151.04907,
-            "Y": 26.307241,
-            "Z": -405.66113
-          },
-          "TerritoryId": 146,
+          "Position": [-151.04907, 26.307241, -405.66113],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -79,12 +55,7 @@
         },
         {
           "DataId": 1023370,
-          "Position": {
-            "X": -171.52673,
-            "Y": 27.253004,
-            "Z": -434.7448
-          },
-          "TerritoryId": 146,
+          "Position": [-171.52673, 27.253004, -434.7448],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -104,12 +75,7 @@
         },
         {
           "DataId": 1023369,
-          "Position": {
-            "X": -99.01581,
-            "Y": 26.22153,
-            "Z": -351.67468
-          },
-          "TerritoryId": 146,
+          "Position": [-99.01581, 26.22153, -351.67468],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -129,12 +95,7 @@
         },
         {
           "DataId": 1023367,
-          "Position": {
-            "X": -104.84479,
-            "Y": 37.903877,
-            "Z": -343.34332
-          },
-          "TerritoryId": 146,
+          "Position": [-104.84479, 37.903877, -343.34332],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -154,12 +115,7 @@
         },
         {
           "DataId": 1023366,
-          "Position": {
-            "X": -82.749695,
-            "Y": 37.76457,
-            "Z": -351.0338
-          },
-          "TerritoryId": 146,
+          "Position": [-82.749695, 37.76457, -351.0338],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -173,19 +129,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006215,
-          "Position": {
-            "X": -227.34424,
-            "Y": 26.16842,
-            "Z": -352.98694
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

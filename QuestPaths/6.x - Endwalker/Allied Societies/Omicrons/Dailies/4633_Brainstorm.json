@@ -1,73 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1044078,
-          "Position": {
-            "X": 97.154175,
-            "Y": 269.09738,
-            "Z": -498.3139
-          },
-          "TerritoryId": 960,
+          "Position": [97.154175, 269.09738, -498.3139],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -80,67 +34,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1044079,
-          "Position": {
-            "X": 99.412476,
-            "Y": 269.09763,
-            "Z": -497.1237
-          },
-          "StopDistance": 5,
-          "TerritoryId": 960,
+          "Position": [99.412476, 269.09763, -497.1237],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "CompleteQuest"
         }
       ]

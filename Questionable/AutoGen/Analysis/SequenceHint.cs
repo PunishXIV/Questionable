@@ -3,7 +3,6 @@
 
 namespace Questionable.AutoGen.Analysis;
 
-/// <summary>What the quest's Lua script says happens at a given sequence.</summary>
 internal sealed class SequenceHint(byte sequence)
 {
     private readonly List<string> _targetSymbols = [];
@@ -12,28 +11,14 @@ internal sealed class SequenceHint(byte sequence)
 
     internal byte Sequence { get; } = sequence;
 
-    /// <summary>Symbol names (<c>ACTOR2</c>, <c>EOBJECT0</c>) the script associates with this sequence.</summary>
     internal IReadOnlyList<string> TargetSymbols => _targetSymbols;
 
-    /// <summary>
-    ///     Every actor the script lists for this sequence, in the order it lists them — not just the primary
-    ///     one. A "speak with all three" sequence needs the rest of them.
-    /// </summary>
     internal IReadOnlyList<string> CandidateSymbols => _candidateSymbols;
 
-    /// <summary><c>ITEM*</c>/<c>EVENTITEM*</c> symbols handed over at this sequence.</summary>
     internal IReadOnlyList<string> TradeItemSymbols => _tradeItemSymbols;
 
-    /// <summary>
-    ///     Event items the player is holding during this sequence, from <c>GetEventItems</c>. Combined with a
-    ///     script that has <c>IsEventItemUsable</c>, these are items to be used on the sequence's target.
-    /// </summary>
     internal IReadOnlyList<string> HeldItemSymbols => _heldItemSymbols;
 
-    /// <summary>
-    ///     Event items <c>IsEventItemUsable</c> permits at this sequence — that is, the sequence the item is
-    ///     actually used in, as opposed to the ones it is merely carried through.
-    /// </summary>
     internal IReadOnlyList<string> UsableItemSymbols => _usableItemSymbols;
 
     private readonly List<string> _heldItemSymbols = [];
@@ -51,13 +36,8 @@ internal sealed class SequenceHint(byte sequence)
             _usableItemSymbols.Add(symbol);
     }
 
-    /// <summary>Set when the script trades an item to the NPC rather than just talking to them.</summary>
     internal bool IsNpcTrade { get; set; }
 
-    /// <summary>
-    ///     Enemies the sequence fights, paired with the actor whose interaction spawns them. <c>Actor</c> is
-    ///     <c>null</c> when the script names an enemy with no preceding actor, i.e. the fight starts on its own.
-    /// </summary>
     internal IReadOnlyList<(string? Actor, string Enemy)> EnemyPairs => _enemyPairs;
 
     private readonly List<(string? Actor, string Enemy)> _enemyPairs = [];

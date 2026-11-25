@@ -1,0 +1,196 @@
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Plugin.Services;
+using Microsoft.Extensions.Logging.Abstractions;
+using NSubstitute;
+using Questionable.Controller;
+using Questionable.Controller.Steps;
+using Questionable.Controller.Steps.Interactions;
+using Questionable.Model.Questing;
+using Questionable.Tests.TestData;
+using Xunit;
+
+namespace Questionable.Tests.Steps;
+
+public sealed class ActionStepTests
+{
+    private const byte SpellActionType = 1;
+    private const byte ItemActionType = 2;
+    private readonly InterruptHandler.ActionConfirmations _confirmations = new();
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void UnrelatedConfirmation_CompletesNothing(bool accepted)
+    {
+        var executor = CreateExecutor();
+        executor.RecordAttempt(accepted, accepted ? Request(41) : null, _confirmations.Version);
+        _confirmations.Observe(42);
+
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+    }
+
+    [Fact]
+    public void RejectedAction_CannotBorrowSequence()
+    {
+        var executor = CreateExecutor();
+        executor.RecordAttempt(false, Request(41), _confirmations.Version);
+        _confirmations.Observe(41);
+
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void UnrelatedConfirmation_StillFailsAtLimit(bool withFlags)
+    {
+        var executor = CreateExecutor(withFlags);
+        for (int i = 0; i < 10; ++i)
+            executor.RecordAttempt(false, null, _confirmations.Version);
+        _confirmations.Observe(42);
+
+        Assert.Throws<TaskException>(() => executor.Update(() => ETaskResult.StillRunning));
+    }
+
+    [Fact]
+    public void MatchingConfirmation_SurvivesLaterEffect()
+    {
+        var executor = CreateExecutor();
+        executor.RecordAttempt(true, Request(41), _confirmations.Version);
+        _confirmations.Observe(41);
+        _confirmations.Observe(42);
+
+        Assert.Equal(ETaskResult.TaskComplete, executor.Update());
+    }
+
+    [Fact]
+    public void StaleConfirmation_IsIgnored()
+    {
+        _confirmations.Observe(41);
+        var executor = CreateExecutor();
+        executor.RecordAttempt(true, Request(41), _confirmations.Version);
+
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+        _confirmations.Observe(41);
+        Assert.Equal(ETaskResult.TaskComplete, executor.Update());
+    }
+
+    [Fact]
+    public void LateConfirmation_SurvivesRejectedRetry()
+    {
+        var executor = CreateExecutor();
+        executor.RecordAttempt(true, Request(41), _confirmations.Version);
+        executor.RecordAttempt(false, null, _confirmations.Version);
+        _confirmations.Observe(41);
+
+        Assert.Equal(ETaskResult.TaskComplete, executor.Update());
+    }
+
+    [Fact]
+    public void AcceptedNoSequence_WaitsForConfirmation()
+    {
+        var executor = CreateExecutor();
+        executor.RecordAttempt(true, Request(), _confirmations.Version);
+        _confirmations.Observe(42);
+
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+    }
+
+    [Fact]
+    public void ConfirmedWithFlags_WaitsForFlags()
+    {
+        var executor = CreateExecutor(withFlags: true);
+        executor.RecordAttempt(true, Request(41), _confirmations.Version);
+        _confirmations.Observe(41);
+
+        Assert.Equal(ETaskResult.StillRunning, executor.Update(() => ETaskResult.StillRunning));
+        for (ushort i = 100; i < 140; ++i)
+            _confirmations.Observe(i);
+        Assert.Equal(ETaskResult.StillRunning, executor.Update(() => ETaskResult.StillRunning));
+        Assert.Equal(ETaskResult.TaskComplete, executor.Update(() => ETaskResult.TaskComplete));
+    }
+
+    [Fact]
+    public void ZeroSequence_IsNotConfirmation()
+    {
+        _confirmations.Observe(0);
+        Assert.Equal(0, _confirmations.Version);
+        Assert.False(_confirmations.Contains(Request(0), -1));
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void QueuedRequest_CompletesOnSpellAndTarget(bool accepted)
+    {
+        var executor = CreateExecutor();
+        executor.RecordAttempt(accepted, Request(), _confirmations.Version);
+        _confirmations.Observe(41, SpellActionType, 120, 999); // Same spell on another target.
+        _confirmations.Observe(42, SpellActionType, 135, 123); // Different spell on the requested target.
+        _confirmations.Observe(43, ItemActionType, 120, 123); // Different action type.
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+
+        _confirmations.Observe(44, SpellActionType, 120, 123);
+        Assert.Equal(ETaskResult.TaskComplete, executor.Update());
+    }
+
+    [Fact]
+    public void QueuedRequest_IgnoresEarlierEffect()
+    {
+        _confirmations.Observe(41, SpellActionType, 120, 123);
+        var executor = CreateExecutor();
+        executor.RecordAttempt(true, Request(), _confirmations.Version);
+
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+    }
+
+    [Fact]
+    public void ActionRequestWithDifferentSequence_Waits()
+    {
+        var executor = CreateExecutor();
+        executor.RecordAttempt(true, Request(41), _confirmations.Version);
+        _confirmations.Observe(42, SpellActionType, 120, 123);
+
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+    }
+
+    private static InterruptHandler.ActionRequest Request(ushort? sequence = null) =>
+        new(SpellActionType, 120, 123, sequence);
+
+    private ActionStep.UseOnObjectExecutor CreateExecutor(bool withFlags = false)
+    {
+        var interrupt = (InterruptHandler)RuntimeHelpers.GetUninitializedObject(typeof(InterruptHandler));
+        typeof(InterruptHandler).GetField("<Confirmations>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic)!
+            .SetValue(interrupt, _confirmations);
+        var condition = Substitute.For<ICondition>();
+        condition[ConditionFlag.Casting].Returns(true);
+        var executor = new ActionStep.UseOnObjectExecutor(null!, interrupt, condition,
+            NullLogger<ActionStep.UseOnObjectExecutor>.Instance, new FakeQuestGameState(), null!);
+        var task = new ActionStep.UseOnObject(123, QuestTestData.CreateQuest(new QuestId(92)), EAction.Cure,
+            withFlags ? [new QuestWorkValue(16), null, null, null, null, null] : []);
+        typeof(TaskExecutor<ActionStep.UseOnObject>).GetProperty("Task", BindingFlags.Instance | BindingFlags.NonPublic)!
+            .SetValue(executor, task);
+        return executor;
+    }
+
+    [Fact]
+    public void BlueMageSlot_PicksFirstFreeOrSkips()
+    {
+        uint[] slots = [11385, 0, 11386, 0];
+        Assert.Null(ActionStep.UseOnObjectExecutor.BlueMageSlot(slots, 11385));
+        Assert.Equal(1, ActionStep.UseOnObjectExecutor.BlueMageSlot(slots, 11387));
+        Assert.Equal(-1, ActionStep.UseOnObjectExecutor.BlueMageSlot([1, 2], 11387));
+    }
+
+    [Fact]
+    public void ItemUse_RefusedOnlyByToastAfterUse()
+    {
+        DateTime usedAt = new(2026, 11, 6, 12, 0, 0);
+        Assert.True(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, usedAt, usedAt.AddSeconds(2)));
+        Assert.False(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, usedAt, usedAt.AddSeconds(2.1)));
+        Assert.False(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(false, usedAt, usedAt.AddSeconds(1)));
+        Assert.False(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, null, usedAt));
+    }
+}

@@ -1,60 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011192,
-          "Position": {
-            "X": 88.36499,
-            "Y": 15.094684,
-            "Z": 31.296265
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1011222,
-          "Position": {
-            "X": 231.92188,
-            "Y": -13.73494,
-            "Z": -106.85901
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "Position": [231.92188, -13.73494, -106.85901],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1011192,
-          "Position": {
-            "X": 88.36499,
-            "Y": 15.094684,
-            "Z": 31.296265
-          },
-          "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Forgotten Knight"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

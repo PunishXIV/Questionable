@@ -1,62 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
           "$": "Switch to combat job",
           "InteractionType": "SwitchClass",
-          "TargetClass": "ConfiguredCombatJob",
-          "TerritoryId": 156
+          "TargetClass": "ConfiguredCombatJob"
         },
         {
           "Comment": "Accept Trial Leve",
           "DataId": 1004348,
-          "Position": {
-            "X": 417.19382,
-            "Y": -6.000782,
-            "Z": -445.3679
-          },
-          "TerritoryId": 156,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "Position": [417.19382, -6.000782, -445.3679],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 121.22039,
-            "Y": -12.978282,
-            "Z": -464.1625
-          },
-          "TerritoryId": 156,
+          "Position": [121.22039, -12.978282, -464.1625],
           "InteractionType": "Instruction",
-          "Fly": true,
           "Comment": "Remove gear, or use an underleveled class.\nComplete Trial Leve to continue"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1004348,
-          "Position": {
-            "X": 415.97607,
-            "Y": -6.0610375,
-            "Z": -444.419
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

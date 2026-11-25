@@ -1,33 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047109,
-          "Position": {
-            "X": 155.056,
-            "Y": -13.98,
-            "Z": 2.99969
-          },
-          "TerritoryId": 1185,
+          "Position": [155.056, -13.98, 2.99969],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047109 (Xeerol Ja)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "Craft",
           "ItemId": 43912,
           "ItemCount": 1,
@@ -39,24 +31,13 @@
         },
         {
           "DataId": 1047109,
-          "Position": {
-            "X": 155.056,
-            "Y": -13.98,
-            "Z": 2.99969
-          },
-          "TerritoryId": 1185,
+          "Position": [155.056, -13.98, 2.99969],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
           "$": "auto: todo location -> 1047109 (Xeerol Ja); npc trade"
         },
         {
           "DataId": 1047129,
-          "Position": {
-            "X": 156.523,
-            "Y": -13.1,
-            "Z": 4.52775
-          },
-          "TerritoryId": 1185,
+          "Position": [156.523, -13.1, 4.52775],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047129 (supply crate); npc trade"
         }
@@ -64,20 +45,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047109,
-          "Position": {
-            "X": 155.056,
-            "Y": -13.98,
-            "Z": 2.99969
-          },
-          "TerritoryId": 1185,
+          "Position": [155.056, -13.98, 2.99969],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047109 (Xeerol Ja)"
         }
       ]

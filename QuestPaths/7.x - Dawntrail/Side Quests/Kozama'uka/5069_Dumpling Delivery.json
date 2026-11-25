@@ -1,59 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048784,
-          "Position": {
-            "X": -115.617676,
-            "Y": 25.086319,
-            "Z": -551.5984
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1048898,
-          "Position": {
-            "X": 524.1931,
-            "Y": 15.639493,
-            "Z": 5.4473877
-          },
-          "TerritoryId": 1188,
+          "Position": [524.1931, 15.639493, 5.4473877],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Many Fires",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1048897,
-          "Position": {
-            "X": 551.6593,
-            "Y": 12.326415,
-            "Z": -32.852783
-          },
-          "TerritoryId": 1188,
+          "Position": [551.6593, 12.326415, -32.852783],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1048896,
-          "Position": {
-            "X": 513.0541,
-            "Y": 15.9776535,
-            "Z": -54.36792
-          },
-          "TerritoryId": 1188,
+          "Position": [513.0541, 15.9776535, -54.36792],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -61,19 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048784,
-          "Position": {
-            "X": -115.617676,
-            "Y": 25.086319,
-            "Z": -551.5984
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -24,9 +24,7 @@ where T : Enum
             var missing = Enum.GetValues(typeof(T)).Cast<T>().Where(v => !values.ContainsKey(v) && v.ToString() != "None").ToList();
             if (shard != null && typeof(T) == typeof(EAetheryteLocation))
             {
-                // Aetheryte locations are split across two converters: one for large aetherytes
-                // and one for aethernet shards. Each converter should only demand coverage for
-                // members that belong to its subset.
+                // Aetheryte locations are split across two converters; each only covers its own subset.
                 bool wantShard = shard.Value;
                 missing = missing
                     .Where(v => ((EAetheryteLocation)(object)v).IsAethernetShard() == wantShard)

@@ -1,89 +1,55 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Comment": "Requires MIN or BTN",
       "Steps": [
         {
-          "TerritoryId": 819,
           "InteractionType": "SwitchClass",
           "TargetClass": "ConfiguredGatheringJob"
         },
         {
           "DataId": 1027236,
-          "Position": {
-            "X": -3.1586914,
-            "Y": 20.186,
-            "Z": -148.91284
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "Position": [-3.1586914, 20.186, -148.91284],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028494,
-          "Position": {
-            "X": 49.362915,
-            "Y": 36.19769,
-            "Z": -162.24927
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "Position": [49.362915, 36.19769, -162.24927],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027834,
-          "Position": {
-            "X": -139.29962,
-            "Y": -47.649208,
-            "Z": -201.49542
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "Position": [-139.29962, -47.649208, -201.49542],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Comment": "Gathering turn-ins will need to be done manually",
       "Steps": [
         {
           "DataId": 1027236,
-          "Position": {
-            "X": -3.1586914,
-            "Y": 20.186,
-            "Z": -148.91284
-          },
-          "TerritoryId": 819,
+          "Position": [-3.1586914, 20.186, -148.91284],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] The Crystalline Mean"
-          ],
           "$": "No next quest, since that requires turn-ins before being available"
         }
       ]

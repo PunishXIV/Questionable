@@ -1,53 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012400,
-          "Position": {
-            "X": 35.843384,
-            "Y": -8,
-            "Z": 99.35144
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012401,
-          "Position": {
-            "X": -8.560364,
-            "Y": 5.4681287,
-            "Z": 40.6958
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard"
+          "Position": [-8.560364, 5.4681287, 40.6958],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1012406,
-          "Position": {
-            "X": 587.45703,
-            "Y": -50.811344,
-            "Z": 69.16907
-          },
-          "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "Position": [587.45703, -50.811344, 69.16907],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

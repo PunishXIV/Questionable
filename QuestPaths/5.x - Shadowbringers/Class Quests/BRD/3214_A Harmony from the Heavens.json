@@ -1,131 +1,80 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006750,
-          "Position": {
-            "X": 16.464417,
-            "Y": 6.750492,
-            "Z": -7.3396606
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1030074,
-          "Position": {
-            "X": 192.58398,
-            "Y": -2.539064,
-            "Z": 73.59424
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "Position": [192.58398, -2.539064, 73.59424],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1030078,
-          "Position": {
-            "X": -180.34644,
-            "Y": -1.2285838,
-            "Z": 341.6953
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "Position": [-180.34644, -1.2285838, 341.6953],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2010182,
-          "Position": {
-            "X": -85.160645,
-            "Y": 6.0578003,
-            "Z": 398.64185
-          },
-          "TerritoryId": 152,
+          "Position": [-85.160645, 6.0578003, 398.64185],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKBC005_03214_SYSTEM_000_999"
-          },
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2010183,
-          "Position": {
-            "X": 38.376343,
-            "Y": 7.2785034,
-            "Z": 430.28906
-          },
-          "TerritoryId": 152,
+          "Position": [38.376343, 7.2785034, 430.28906],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKBC005_03214_SYSTEM_000_999"
-          },
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1030081,
-          "Position": {
-            "X": 29.648315,
-            "Y": -18.800003,
-            "Z": 95.26196
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "Position": [29.648315, -18.800003, 95.26196],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1030081,
-          "Position": {
-            "X": 29.648315,
-            "Y": -18.800003,
-            "Z": 95.26196
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
+          "Position": [29.648315, -18.800003, 95.26196],
           "InteractionType": "CompleteQuest"
         }
       ]

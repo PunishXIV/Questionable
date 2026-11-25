@@ -1,34 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019313,
-          "Position": {
-            "X": 465.26282,
-            "Y": 58.52148,
-            "Z": -171.09949
-          },
-          "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - Namai"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "Position": {
-            "X": 151.29321,
-            "Y": -0.2997286,
-            "Z": 229.44983
-          },
-          "TerritoryId": 614,
+          "Position": [151.29321, -0.2997286, 229.44983],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -44,17 +28,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019295,
-          "Position": {
-            "X": 756.3439,
-            "Y": 98.04659,
-            "Z": -229.93823
-          },
-          "TerritoryId": 614,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yanxia - Namai"
+          "Position": [756.3439, 98.04659, -229.93823],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,64 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 51.48164,
-            "Y": 55.599014,
-            "Z": -491.209
-          },
-          "TerritoryId": 180,
+          "Position": [51.48164, 55.599014, -491.209],
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
               "DataId": 2833,
               "MinimumKillCount": 2
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

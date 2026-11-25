@@ -1,70 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000705,
-          "Position": {
-            "X": -243.152,
-            "Y": -4.00016,
-            "Z": -7.91948
-          },
-          "StopDistance": 2,
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 111.66177,
-            "Y": 16.16937,
-            "Z": -267.19836
-          },
-          "TerritoryId": 148,
+          "Position": [111.66177, 16.16937, -267.19836],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [49],
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ],
-          "Fly": true
+          "KillEnemyDataIds": [49]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000705,
-          "Position": {
-            "X": -243.152,
-            "Y": -4.00016,
-            "Z": -7.91948
-          },
-          "StopDistance": 2,
-          "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

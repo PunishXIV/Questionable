@@ -1,50 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "TerritoryId": 131,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Alchemists' Guild"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 157.36621,
-                  "Y": 7.7920074,
-                  "Z": 98.924194
-                },
-                "TerritoryId": 131,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1002281,
-          "Position": {
-            "X": -115.739685,
-            "Y": 41.600117,
-            "Z": 118.88306
-          },
-          "TerritoryId": 131,
+          "Position": [-115.739685, 41.600117, 118.88306],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

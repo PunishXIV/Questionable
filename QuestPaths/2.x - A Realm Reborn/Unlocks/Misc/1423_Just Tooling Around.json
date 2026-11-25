@@ -1,48 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Comment": "Unlocks Mastercraft I/II books",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 24.076426,
-            "Y": 28.999966,
-            "Z": -729.6976
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
-          "DataId": 1006971,
-          "Position": {
-            "X": 24.307495,
-            "Y": 29.021706,
-            "Z": -726.8635
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006971,
-          "Position": {
-            "X": 24.307495,
-            "Y": 29.021706,
-            "Z": -726.8635
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

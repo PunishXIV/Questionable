@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "croizat",
   "LastChecked": {"Username": "catsume", "Date": "2026-06-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000334,
-          "Position": {
-            "X": 176.44006,
-            "Y": 8.926453,
-            "Z": -43.01526
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2001968,
-          "Position": {
-            "X": 106.370605,
-            "Y": 13.01593,
-            "Z": -9.99469
-          },
-          "TerritoryId": 153,
+          "Position": [106.370605, 13.01593, -9.99469],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -40,12 +25,7 @@
         },
         {
           "DataId": 2001966,
-          "Position": {
-            "X": 115.587036,
-            "Y": 6.9733276,
-            "Z": 29.648315
-          },
-          "TerritoryId": 153,
+          "Position": [115.587036, 6.9733276, 29.648315],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -57,12 +37,7 @@
         },
         {
           "DataId": 2001967,
-          "Position": {
-            "X": 63.1875,
-            "Y": 7.583679,
-            "Z": 21.896606
-          },
-          "TerritoryId": 153,
+          "Position": [63.1875, 7.583679, 21.896606],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -76,18 +51,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000334,
-          "Position": {
-            "X": 176.44006,
-            "Y": 8.926453,
-            "Z": -43.01526
-          },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

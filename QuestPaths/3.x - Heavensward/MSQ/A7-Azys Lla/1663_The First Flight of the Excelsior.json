@@ -1,49 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012430,
-          "Position": {
-            "X": 165.94177,
-            "Y": -14.34896,
-            "Z": 51.651733
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012431,
-          "Position": {
-            "X": 180.16321,
-            "Y": -16.028961,
-            "Z": 34.6532
-          },
-          "TerritoryId": 419,
+          "Position": [180.16321, -16.028961, 34.6532],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012430,
-          "Position": {
-            "X": 165.94177,
-            "Y": -14.34896,
-            "Z": 51.651733
-          },
-          "TerritoryId": 419,
+          "Position": [165.94177, -14.34896, 51.651733],
           "InteractionType": "Interact"
         }
       ]
@@ -53,36 +34,26 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 1012854,
-          "Position": {
-            "X": -861.84485,
-            "Y": -184.293,
-            "Z": -659.2356
-          },
-          "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "Position": [-861.84485, -184.293, -659.2356],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 402,
       "Steps": [
         {
-          "TerritoryId": 402,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Azys Lla - Helix"
         },
         {
           "DataId": 1012792,
-          "Position": {
-            "X": -650.1717,
-            "Y": -176.45021,
-            "Z": -565.14844
-          },
-          "TerritoryId": 402,
+          "Position": [-650.1717, -176.45021, -565.14844],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1023280,
-          "Position": {
-            "X": -62.790894,
-            "Y": -198.96509,
-            "Z": -64.34735
-          },
-          "TerritoryId": 613,
+          "Position": [-62.790894, -198.96509, -64.34735],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,61 +23,31 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019197,
-          "Position": {
-            "X": -8.926575,
-            "Y": -187.08374,
-            "Z": -95.018005
-          },
-          "TerritoryId": 613,
+          "Position": [-8.926575, -187.08374, -95.018005],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": 21.067955,
-            "Y": -197.78902,
-            "Z": -155.23956
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE inside",
-          "RestartNavigationIfCancelled": false
-        },
-        {
-          "Position": {
-            "X": -238.47687,
-            "Y": -192.81738,
-            "Z": 329.51413
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "To shorten pathfinding time, not strictly necessary"
-        },
-        {
           "DataId": 1023293,
-          "Position": {
-            "X": -957.15265,
-            "Y": -895.9945,
-            "Z": 756.83215
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-957.15265, -895.9945, 756.83215],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "TerritoryId": 613,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 235,
@@ -92,56 +58,18 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1023293,
-          "Position": {
-            "X": -957.15265,
-            "Y": -895.9945,
-            "Z": 756.83215
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "StopDistance": 8
+          "Position": [-957.15265, -895.9945, 756.83215],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 322.1539,
-            "Y": -121.22571,
-            "Z": -314.2446
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "RestartNavigationIfCancelled": false
-        },
-        {
-          "Position": {
-            "X": 22.288645,
-            "Y": -196.2301,
-            "Z": -155.5739
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE outside",
-          "RestartNavigationIfCancelled": false
-        },
-        {
-          "DataId": 1023280,
-          "Position": {
-            "X": -62.790894,
-            "Y": -198.96509,
-            "Z": -64.34735
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

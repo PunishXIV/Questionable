@@ -1,59 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Feathered Harpoon,\n 1x Ash Shortbow\nAutocraft requires:\n 2x Ash Lumber,\n 1x Crow Feather,\n 1x Soiled Femur,\n 1x Animal Glue,\n 1x Ash Branch,\n 1x Hempen Yarn",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000149,
-          "Position": {
-            "X": -9.720032,
-            "Y": -3.25,
-            "Z": 52.475708
-          },
-          "TerritoryId": 132,
+          "Position": [-9.720032, -3.25, 52.475708],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "$": "Animal Glue",
           "DataId": 1000392,
-          "Position": {
-            "X": -17.746277,
-            "Y": -3.25,
-            "Z": 43.35083
-          },
-          "TerritoryId": 132,
+          "Position": [-17.746277, -3.25, 43.35083],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -61,7 +34,6 @@
           },
           "ItemId": 5503,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -73,12 +45,7 @@
         {
           "$": "Ash Branch",
           "DataId": 1000392,
-          "Position": {
-            "X": -17.746277,
-            "Y": -3.25,
-            "Z": 43.35083
-          },
-          "TerritoryId": 132,
+          "Position": [-17.746277, -3.25, 43.35083],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -86,7 +53,6 @@
           },
           "ItemId": 5402,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -98,12 +64,7 @@
         {
           "$": "Ash Log",
           "DataId": 1000392,
-          "Position": {
-            "X": -17.746277,
-            "Y": -3.25,
-            "Z": 43.35083
-          },
-          "TerritoryId": 132,
+          "Position": [-17.746277, -3.25, 43.35083],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -111,7 +72,6 @@
           },
           "ItemId": 5383,
           "ItemCount": 6,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -123,12 +83,7 @@
         {
           "$": "Crow Feather",
           "DataId": 1000392,
-          "Position": {
-            "X": -17.746277,
-            "Y": -3.25,
-            "Z": 43.35083
-          },
-          "TerritoryId": 132,
+          "Position": [-17.746277, -3.25, 43.35083],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -136,7 +91,6 @@
           },
           "ItemId": 5352,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -148,12 +102,7 @@
         {
           "$": "Soiled Femur",
           "DataId": 1000392,
-          "Position": {
-            "X": -17.746277,
-            "Y": -3.25,
-            "Z": 43.35083
-          },
-          "TerritoryId": 132,
+          "Position": [-17.746277, -3.25, 43.35083],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -161,7 +110,6 @@
           },
           "ItemId": 5433,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -173,12 +121,7 @@
         {
           "$": "Soiled Femur",
           "DataId": 1000392,
-          "Position": {
-            "X": -17.746277,
-            "Y": -3.25,
-            "Z": 43.35083
-          },
-          "TerritoryId": 132,
+          "Position": [-17.746277, -3.25, 43.35083],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -186,7 +129,6 @@
           },
           "ItemId": 5333,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -196,58 +138,32 @@
           }
         },
         {
-          "InteractionType": "Craft",
-          "TerritoryId": 132
+          "InteractionType": "Craft"
         },
         {
           "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "TerritoryId": 132,
+          "Position": [209.55212, 0.9999819, 35.01941],
           "InteractionType": "Interact",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "AllowHighQuality": true
         },
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
+          "Position": [157.7019, 15.900381, -270.34418],
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Lancers' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
+          "Position": [-44.87683, -1.2500024, 56.839844],
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

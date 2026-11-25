@@ -1,79 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006196,
-          "Position": {
-            "X": -63.98114,
-            "Y": -20.296238,
-            "Z": -5.142395
-          },
-          "TerritoryId": 145,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": 319.00192,
-            "Y": 20.684546,
-            "Z": -263.7031
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1
-        },
-        {
-          "Position": {
-            "X": 314.66977,
-            "Y": 23.31862,
-            "Z": -257.8061
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 2001965,
-          "Position": {
-            "X": 313.46606,
-            "Y": 23.178406,
-            "Z": -253.58972
-          },
-          "TerritoryId": 145,
+          "Position": [313.46606, 23.178406, -253.58972],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000604,
           "KillEnemyDataIds": [
             363
-          ],
-          "DisableNavmesh": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006196,
-          "Position": {
-            "X": -63.98114,
-            "Y": -20.296238,
-            "Z": -5.142395
-          },
-          "TerritoryId": 145,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

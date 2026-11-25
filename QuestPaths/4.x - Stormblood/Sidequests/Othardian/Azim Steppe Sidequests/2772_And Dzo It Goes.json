@@ -1,54 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019387,
-          "Position": {
-            "X": 525.71,
-            "Y": 40.4257,
-            "Z": -494.481
-          },
-          "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1023402,
-          "Position": {
-            "X": 441.062,
-            "Y": -16.046766,
-            "Z": 405.20325
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "Position": [441.062, -16.046766, 405.20325],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "Comment": "should eventually avoid doing enough damage to actually capture the target",
-          "Position": {
-            "X": 421.68283,
-            "Y": -15.7144985,
-            "Z": 436.9947
-          },
-          "TerritoryId": 622,
+          "Position": [421.68283, -15.7144985, 436.9947],
           "InteractionType": "Combat",
-          "StopDistance": 60,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -66,35 +43,18 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1023402,
-          "Position": {
-            "X": 441.062,
-            "Y": -16.046766,
-            "Z": 405.20325
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [441.062, -16.046766, 405.20325],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1019387,
-          "Position": {
-            "X": 525.71,
-            "Y": 40.4257,
-            "Z": -494.481
-          },
-          "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

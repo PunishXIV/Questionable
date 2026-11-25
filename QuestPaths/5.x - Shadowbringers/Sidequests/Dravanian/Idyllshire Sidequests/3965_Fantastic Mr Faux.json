@@ -1,21 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1032785,
-          "Position": {
-            "X": 44.9683,
-            "Y": 206.97,
-            "Z": -8.34674
-          },
-          "TerritoryId": 478,
+          "Position": [44.9683, 206.97, -8.34674],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKYB815_03965_Q1_000_000",
@@ -29,17 +24,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1033921,
-          "Position": {
-            "X": -17.6324,
-            "Y": 211.78,
-            "Z": 0.23943
-          },
-          "TerritoryId": 478,
+          "Position": [-17.6324, 211.78, 0.23943],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1033921 (faux commander)"
         }
       ]

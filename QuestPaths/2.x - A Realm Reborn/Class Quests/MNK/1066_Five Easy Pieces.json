@@ -1,60 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006749,
-          "Position": {
-            "X": -30.47229,
-            "Y": 13.599918,
-            "Z": 95.26196
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 107.50675,
-            "Y": -4.574165,
-            "Z": -543.2282
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "Land": true
-        },
-        {
-          "Position": {
-            "X": 104.612144,
-            "Y": -4.931232,
-            "Z": -533.5191
-          },
-          "TerritoryId": 156,
-          "InteractionType": "SinglePlayerDuty",
+          "Position": [104.612144, -4.931232, -533.5191],
           "Mount": false,
+          "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -63,17 +24,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1007899,
-          "Position": {
-            "X": 104.72266,
-            "Y": -4.9380107,
-            "Z": -533.53174
-          },
-          "TerritoryId": 156,
+          "Position": [104.72266, -4.9380107, -533.53174],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2026
         }
       ]

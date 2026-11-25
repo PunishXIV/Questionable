@@ -1,64 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020841,
-          "Position": {
-            "X": 146.01355,
-            "Y": 118.1921,
-            "Z": -730.4951
-          },
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1021752,
-          "Position": {
-            "X": 14.724915,
-            "Y": 118.08588,
-            "Z": -776.82153
-          },
-          "TerritoryId": 620,
+          "Position": [14.724915, 118.08588, -776.82153],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1021752,
-          "Position": {
-            "X": 14.724915,
-            "Y": 118.08588,
-            "Z": -776.82153
-          },
-          "TerritoryId": 620,
+          "Position": [14.724915, 118.08588, -776.82153],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "Position": {
-            "X": 656.90076,
-            "Y": 231.05865,
-            "Z": -611.2172
-          },
-          "TerritoryId": 620,
+          "Position": [656.90076, 231.05865, -611.2172],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -74,17 +50,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1021752,
-          "Position": {
-            "X": 14.724915,
-            "Y": 118.08588,
-            "Z": -776.82153
-          },
-          "TerritoryId": 620,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "Position": [14.724915, 118.08588, -776.82153],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

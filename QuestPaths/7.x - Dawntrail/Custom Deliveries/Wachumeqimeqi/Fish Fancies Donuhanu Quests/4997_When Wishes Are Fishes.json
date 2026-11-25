@@ -1,44 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047097,
-          "Position": {
-            "X": 190.598,
-            "Y": -14,
-            "Z": 12.218
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1048382,
-          "Position": {
-            "X": -9.597961,
-            "Y": -9.628479,
-            "Z": 90.34863
-          },
-          "TerritoryId": 1185,
-          "StopDistance": 5,
+          "Position": [-9.597961, -9.628479, 90.34863],
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 263203
@@ -55,43 +31,23 @@
           }
         },
         {
-          "Position": {
-            "X": 186.90675,
-            "Y": -17.964302,
-            "Z": 50.6654
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "Position": [186.90675, -17.964302, 50.6654],
+          "InteractionType": "WalkTo"
         },
         {
-          "TerritoryId": 1185,
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
               "ItemId": 43903,
               "ItemCount": 6,
-              "Collectability": 47,
-              "FishingOptions": {
-                "BaitId": 43850,
-                "HookType": { "Normal": { "Strong": true } }
-              }
+              "Collectability": 47
             }
           ],
           "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "DataId": 1047097,
-          "Position": {
-            "X": 190.598,
-            "Y": -14,
-            "Z": 12.218
-          },
-          "TerritoryId": 1185,
+          "Position": [190.598, -14, 12.218],
           "InteractionType": "CompleteQuest"
         }
       ]

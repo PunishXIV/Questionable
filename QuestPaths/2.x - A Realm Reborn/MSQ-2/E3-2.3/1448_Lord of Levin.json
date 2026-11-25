@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1008579,
-          "Position": {
-            "X": 1.0223389,
-            "Y": -1.9957249,
-            "Z": -45.731323
-          },
-          "TerritoryId": 351,
+          "Position": [1.0223389, -1.9957249, -45.731323],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -21,51 +17,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000168,
-          "Position": {
-            "X": -75.48645,
-            "Y": -0.5013741,
-            "Z": -5.081299
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "Position": [-75.48645, -0.5013741, -5.081299],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
-          "Position": {
-            "X": -105.118355,
-            "Y": 1.308924,
-            "Z": 8.009593
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 133
-        },
-        {
-          "DataId": 1000460,
-          "Position": {
-            "X": -159.41101,
-            "Y": 4.054107,
-            "Z": -4.1047363
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 205
-        },
-        {
           "DataId": 1003027,
-          "Position": {
-            "X": 4.8981323,
-            "Y": -1.92944,
-            "Z": -0.19836426
-          },
+          "Position": [4.8981323, -1.92944, -0.19836426],
           "TerritoryId": 205,
           "InteractionType": "Interact"
         }
@@ -73,18 +40,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1009097,
-          "Position": {
-            "X": 22.87323,
-            "Y": -3.7749445,
-            "Z": 211.16956
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "Position": [22.87323, -3.7749445, 211.16956],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

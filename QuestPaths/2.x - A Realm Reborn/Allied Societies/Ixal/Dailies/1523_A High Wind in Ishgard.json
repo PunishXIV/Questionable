@@ -1,97 +1,59 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009216,
-          "Position": {
-            "X": 164.35486,
-            "Y": -22.797548,
-            "Z": 114.64099
-          },
-          "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009204,
-          "Position": {
-            "X": 151.93408,
-            "Y": -18.41936,
-            "Z": 100.72473
-          },
-          "TerritoryId": 154,
+          "Position": [151.93408, -18.41936, 100.72473],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009648,
-          "Position": {
-            "X": -174.60901,
-            "Y": 304.1538,
-            "Z": -322.4079
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-          ]
+          "Position": [-174.60901, 304.1538, -322.4079],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009221,
-          "Position": {
-            "X": 202.13623,
-            "Y": 301.99976,
-            "Z": -253.55927
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [202.13623, 301.99976, -253.55927],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "Craft",
           "ItemId": 8123,
           "ItemCount": 3
         },
         {
           "DataId": 1009216,
-          "Position": {
-            "X": 164.35486,
-            "Y": -22.797548,
-            "Z": 114.64099
-          },
+          "Position": [164.35486, -22.797548, 114.64099],
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

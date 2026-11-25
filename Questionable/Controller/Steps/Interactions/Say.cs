@@ -1,28 +1,29 @@
-﻿using Questionable.Controller.Steps.Common;
-using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps.Interactions;
+﻿namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Say
 {
-    internal sealed class Factory(ExcelFunctions excelFunctions) : ITaskFactory
+    internal static bool IsPreventedTurnIn(QuestStep step, Configuration configuration) =>
+        step.InteractionType == EInteractionType.CompleteQuest && configuration.Advanced.PreventQuestCompletion;
+
+    internal sealed class Factory(ExcelFunctions excelFunctions, Configuration configuration) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest)
             {
-                if (step.ChatMessage == null)
+                if (step.ChatMessage == null || IsPreventedTurnIn(step, configuration))
                     return [];
             }
             else if (step.InteractionType != EInteractionType.Say)
                 return [];
 
 
-            ArgumentNullException.ThrowIfNull(step.ChatMessage);
+            if (step.ChatMessage == null)
+                throw new ArgumentException($"{nameof(step.ChatMessage)} is missing", nameof(step));
 
-            string? excelString =
+            string excelString =
                 excelFunctions.GetDialogueText(quest, step.ChatMessage.ExcelSheet, step.ChatMessage.Key, isRegex: false)
-                    .GetString();
-            ArgumentNullException.ThrowIfNull(excelString);
+                    .GetString() ?? throw new InvalidOperationException($"No text for {step.ChatMessage.Key}");
 
             MountStep.UnmountTask unmount = new();
             Task task = new(excelString);
@@ -35,7 +36,7 @@ internal static class Say
         public override string ToString() => $"Say({ChatMessage})";
     }
 
-    internal sealed class UseChat(ChatFunctions chatFunctions) : AbstractDelayedTaskExecutor<Task>
+    internal sealed class Executor(ChatFunctions chatFunctions) : DelayedTaskExecutor<Task>
     {
         protected override bool StartInternal()
         {

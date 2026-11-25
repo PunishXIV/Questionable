@@ -1,96 +1,57 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1024771,
-          "Position": {
-            "X": 12.008789,
-            "Y": 55.97821,
-            "Z": 237.96448
-          },
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023142,
-          "Position": {
-            "X": -642.9083,
-            "Y": 130.25946,
-            "Z": -538.29254
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "Position": [-642.9083, 130.25946, -538.29254],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1024937,
-          "Position": {
-            "X": 450.88867,
-            "Y": 114.36421,
-            "Z": 235.91968
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "Position": [450.88867, 114.36421, 235.91968],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1024952,
-          "Position": {
-            "X": 12.008789,
-            "Y": 55.97821,
-            "Z": 237.96448
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [12.008789, 55.97821, 237.96448],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1025235,
-          "Position": {
-            "X": -155.2301,
-            "Y": 39.096687,
-            "Z": 159.0448
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-155.2301, 39.096687, 159.0448],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1024952,
-          "Position": {
-            "X": 12.008789,
-            "Y": 55.97821,
-            "Z": 237.96448
-          },
-          "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [12.008789, 55.97821, 237.96448],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

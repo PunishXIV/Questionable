@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010891,
-          "Position": {
-            "X": -3.6774292,
-            "Y": 0.01804012,
-            "Z": -7.034485
-          },
-          "TerritoryId": 351,
+          "Position": [-3.6774292, 0.01804012, -7.034485],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -21,40 +17,31 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1008969,
-          "Position": {
-            "X": 0.99176025,
-            "Y": -1.9957249,
-            "Z": -45.700806
-          },
-          "TerritoryId": 351,
+          "Position": [0.99176025, -1.9957249, -45.700806],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1010881,
-          "Position": {
-            "X": 336.3545,
-            "Y": -27.808832,
-            "Z": -369.7414
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [336.3545, -27.808832, -369.7414],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 32,
@@ -68,52 +55,33 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1010881,
-          "Position": {
-            "X": 336.3545,
-            "Y": -27.808832,
-            "Z": -369.7414
-          },
-          "StopDistance": 7,
-          "TerritoryId": 156,
+          "Position": [336.3545, -27.808832, -369.7414],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 351,
       "Steps": [
         {
-          "TerritoryId": 156,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1010857,
-          "Position": {
-            "X": 2.5481567,
-            "Y": -1.9957249,
-            "Z": -42.008118
-          },
-          "TerritoryId": 351,
+          "Position": [2.5481567, -1.9957249, -42.008118],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010858,
-          "Position": {
-            "X": -1.9074707,
-            "Y": 0,
-            "Z": -3.1281738
-          },
-          "StopDistance": 7,
-          "TerritoryId": 351,
+          "Position": [-1.9074707, 0, -3.1281738],
           "InteractionType": "CompleteQuest"
         }
       ]

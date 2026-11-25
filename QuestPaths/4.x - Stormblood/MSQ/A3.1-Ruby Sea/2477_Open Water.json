@@ -1,74 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019891,
-          "Position": {
-            "X": 852.4147,
-            "Y": 5.923008,
-            "Z": 847.7759
-          },
-          "StopDistance": 7,
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019893,
-          "Position": {
-            "X": 736.1714,
-            "Y": -0.600044,
-            "Z": 822.96484
-          },
-          "TerritoryId": 613,
+          "Position": [736.1714, -0.600044, 822.96484],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": 594.744,
-            "Y": -0.41014904,
-            "Z": 835.82776
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1019896,
-          "Position": {
-            "X": 560.54016,
-            "Y": 0.44452444,
-            "Z": 828.21387
-          },
-          "TerritoryId": 613,
+          "Position": [560.54016, 0.44452444, 828.21387],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019898,
-          "Position": {
-            "X": 464.5609,
-            "Y": 30.21226,
-            "Z": 791.53125
-          },
-          "TerritoryId": 613,
+          "Position": [464.5609, 30.21226, 791.53125],
           "InteractionType": "CompleteQuest"
         }
       ]

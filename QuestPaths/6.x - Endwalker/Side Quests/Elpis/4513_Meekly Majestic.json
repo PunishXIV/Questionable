@@ -1,67 +1,40 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041426,
-          "Position": {
-            "X": -416.5561,
-            "Y": 142.10878,
-            "Z": -205.67645
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041431,
-          "Position": {
-            "X": -388.8457,
-            "Y": 153.32294,
-            "Z": -28.152893
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-388.8457, 153.32294, -28.152893],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041432,
-          "Position": {
-            "X": -414.63342,
-            "Y": 148.43988,
-            "Z": 156.32861
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-414.63342, 148.43988, 156.32861],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041432,
-          "Position": {
-            "X": -414.63342,
-            "Y": 148.43988,
-            "Z": 156.32861
-          },
-          "TerritoryId": 961,
+          "Position": [-414.63342, 148.43988, 156.32861],
           "InteractionType": "UseItem",
           "ItemId": 2003304
         }
@@ -69,15 +42,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041434,
-          "Position": {
-            "X": -417.56317,
-            "Y": 148.1228,
-            "Z": 148.33289
-          },
-          "TerritoryId": 961,
+          "Position": [-417.56317, 148.1228, 148.33289],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4514
         }

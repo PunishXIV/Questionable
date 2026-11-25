@@ -1,10 +1,4 @@
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using ECommons.ExcelServices;
-using NSubstitute;
-using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
-using Questionable.External;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
 using Xunit;
@@ -13,178 +7,50 @@ namespace Questionable.Tests.Steps;
 
 public sealed class FishTests
 {
-    private readonly IAutoHookIpc _autoHookIpc = Substitute.For<IAutoHookIpc>();
-    private readonly Fish.Factory _factory;
+    private static QuestStep Buy() => new() { InteractionType = EInteractionType.PurchaseItem, ItemId = 2591 };
+    private static QuestStep Walk() => new() { InteractionType = EInteractionType.WalkTo };
+    private static QuestStep Talk() => new() { InteractionType = EInteractionType.Interact };
 
-    public FishTests()
+    private static QuestStep Fishing(uint fishId) => new()
     {
-        _autoHookIpc.IsAvailable().Returns(returnThis: true);
-        _factory = new Fish.Factory(_autoHookIpc);
-    }
-
-    // --- helpers ---
-
-    private static QuestStep FishStep(
-        List<GatheredItem>? itemsToGather = null,
-        List<QuestWorkValue?>? completionQuestVariablesFlags = null) =>
-        new()
-        {
-            InteractionType = EInteractionType.Fish,
-            ItemsToGather = itemsToGather ?? [],
-            CompletionQuestVariablesFlags = completionQuestVariablesFlags ?? [],
-        };
-
-    private static List<QuestWorkValue?> CompletionFlags1514() =>
-        [null, new QuestWorkValue(1, 1, EQuestWorkMode.Bitwise), null, null, null, null];
-
-    private static GatheredItem Item(uint itemId, int itemCount, ushort collectability = 0) =>
-        new() { ItemId = itemId, ItemCount = itemCount, Collectability = collectability };
+        InteractionType = EInteractionType.Fish,
+        ItemsToGather = [new GatheredItem { ItemId = fishId, ItemCount = 5 }],
+    };
 
     [Fact]
-    public void HookTypeFilter_DeserializesTrueShorthand()
+    public void BaitAndWalk_LeadToFish()
     {
-        const string json = @"{""Normal"": true, ""Double"": { ""Strong"": true }}";
+        QuestStep buy = Buy(), walk = Walk();
+        var sequence = QuestTestData.Seq(4, [buy, walk, Fishing(4882), Talk()]);
 
-        var hookType = JsonNode.Parse(json)!.Deserialize<HookType>();
-
-        Assert.NotNull(hookType!.Normal);
-        Assert.True(hookType.Normal.Value.IsAllHooksets);
-        Assert.NotNull(hookType.Double);
-        Assert.True(hookType.Double.Value.Hookset!.Strong);
-        Assert.Null(hookType.Triple);
+        Assert.Equal(4882u, Assert.Single(Fish.FishAhead(sequence, buy)).ItemId);
+        Assert.Equal(4882u, Assert.Single(Fish.FishAhead(sequence, walk)).ItemId);
     }
 
     [Fact]
-    public void GatheredItem_DeserializesFishingOptionsFromQuestJson()
+    public void BackToBackFishing_AllCount()
     {
-        const string json = @"{""ItemId"": 12713, ""ItemCount"": 3, ""FishingOptions"": {""BaitId"": 28634, ""HookType"": {""Normal"": {""Weak"": true } } } }";
+        QuestStep buy = Buy();
+        var sequence = QuestTestData.Seq(4, [buy, Fishing(1), Fishing(2), Walk(), Fishing(3)]);
 
-        var item = JsonNode.Parse(json)!.Deserialize<GatheredItem>();
-
-        Assert.Equal(12713u, item!.ItemId);
-        Assert.Equal(3, item.ItemCount);
-        Assert.NotNull(item.FishingOptions);
-        Assert.Equal(28634u, item.FishingOptions.BaitId);
-        Assert.NotNull(item.FishingOptions.HookType);
-        Assert.NotNull(item.FishingOptions.HookType.Normal);
-        Assert.False(item.FishingOptions.HookType.Normal.Value.IsAllHooksets);
-        Assert.True(item.FishingOptions.HookType.Normal.Value.Hookset!.Weak);
-        Assert.Null(item.FishingOptions.HookType.Normal.Value.Hookset!.Strong);
-        Assert.Null(item.FishingOptions.HookType.Double);
-        Assert.Null(item.FishingOptions.HookType.Triple);
+        Assert.Equal([1u, 2u], Fish.FishAhead(sequence, buy).Select(x => x.ItemId));
     }
 
     [Fact]
-    public void FishStep_DeserializesItemsToGatherIntoFactoryTasks()
+    public void TalkBetween_NoFishAhead()
     {
-        const string json = @"{""InteractionType"": ""Fish"", ""TerritoryId"": 397, ""ItemsToGather"": [" +
-            @"{ ""ItemId"": 12713, ""ItemCount"": 3, ""FishingOptions"": {""BaitId"": 28634, ""HookType"": {""Double"": {""Strong"": true } } } } ] } ";
+        QuestStep buy = Buy();
+        var sequence = QuestTestData.Seq(4, [buy, Talk(), Fishing(1)]);
 
-        var step = JsonNode.Parse(json)!.Deserialize<QuestStep>();
-        var (quest, sequence, _) = QuestTestData.FactoryContext(new QuestId(2086), 255, step!);
-
-        var fishTask = _factory.CreateAllTasks(quest, sequence, step!).OfType<Fish.FishTask>().Single();
-
-        Assert.Equal(12713u, fishTask.GatheredItem!.ItemId);
-        Assert.Equal(3, fishTask.GatheredItem.ItemCount);
-        Assert.Equal(28634u, fishTask.GatheredItem.FishingOptions!.BaitId);
-        Assert.NotNull(fishTask.GatheredItem.FishingOptions.HookType);
-        Assert.Null(fishTask.GatheredItem.FishingOptions.HookType.Normal);
-        Assert.NotNull(fishTask.GatheredItem.FishingOptions.HookType.Double);
-        Assert.False(fishTask.GatheredItem.FishingOptions.HookType.Double.Value.IsAllHooksets);
-        Assert.Null(fishTask.GatheredItem.FishingOptions.HookType.Double.Value.Hookset!.Weak);
-        Assert.True(fishTask.GatheredItem.FishingOptions.HookType.Double.Value.Hookset!.Strong);
-        Assert.Null(fishTask.GatheredItem.FishingOptions.HookType.Triple);
-    }
-
-    // --- CreateAllTasks ---
-
-    [Fact]
-    public void FishStep_WhenAutoHookUnavailable_CreatesNoTasks()
-    {
-        _autoHookIpc.IsAvailable().Returns(returnThis: false);
-        var item = Item(4874, 3);
-        var (quest, sequence, step) = QuestTestData.FactoryContext(new QuestId(1109), 1, FishStep(itemsToGather: [item]));
-
-        var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
-
-        Assert.Empty(tasks);
+        Assert.Empty(Fish.FishAhead(sequence, buy));
     }
 
     [Fact]
-    public void NonFishStep_CreatesNoTasks()
+    public void TurnIn_NoFishAhead()
     {
-        var step = new QuestStep { InteractionType = EInteractionType.Gather };
-        var (quest, sequence, fishStep) = QuestTestData.FactoryContext(new QuestId(1), 1, step);
+        QuestStep talk = Talk();
+        var sequence = QuestTestData.Seq(4, [talk, Fishing(1)]);
 
-        var tasks = _factory.CreateAllTasks(quest, sequence, fishStep).ToList();
-
-        Assert.Empty(tasks);
-    }
-
-    [Fact]
-    public void FishStep_WithSingleItem_CreatesUnmountSwitchAndFishTask()
-    {
-        var item = Item(4874, 3);
-        var (quest, sequence, step) = QuestTestData.FactoryContext(new QuestId(1109), 1, FishStep(itemsToGather: [item]));
-
-        var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
-
-        Assert.Equal(3, tasks.Count);
-        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
-        Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
-
-        var fishTask = Assert.IsType<Fish.FishTask>(tasks[2]);
-        Assert.Same(quest, fishTask.Quest);
-        Assert.Same(item, fishTask.GatheredItem);
-        Assert.False(fishTask.HasCompletionQuestVariablesFlags);
-    }
-
-    [Fact]
-    public void FishStep_WithMultipleItems_CreatesFishTaskPerItem()
-    {
-        var firstItem = Item(4874, 3);
-        var secondItem = Item(2586, 1);
-        var thirdItem = Item(5467, 5, collectability: 350);
-        var (quest, sequence, step) = QuestTestData.FactoryContext(
-            new QuestId(1),
-            1,
-            FishStep(itemsToGather: [firstItem, secondItem, thirdItem]));
-
-        var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
-
-        Assert.Equal(5, tasks.Count);
-        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
-        Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
-
-        var fishTasks = tasks.Skip(2).Cast<Fish.FishTask>().ToList();
-        Assert.Equal(3, fishTasks.Count);
-        Assert.Same(firstItem, fishTasks[0].GatheredItem);
-        Assert.Same(secondItem, fishTasks[1].GatheredItem);
-        Assert.Same(thirdItem, fishTasks[2].GatheredItem);
-        Assert.All(fishTasks, task => Assert.Same(quest, task.Quest));
-    }
-
-    [Fact]
-    public void FishStep_WithoutItemsToGather_CreatesFishTaskWithCompletionFlags()
-    {
-        var completionFlags = CompletionFlags1514();
-        var (quest, sequence, step) = QuestTestData.FactoryContext(
-            new QuestId(1514),
-            1,
-            FishStep(completionQuestVariablesFlags: completionFlags));
-
-        var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
-
-        Assert.Equal(3, tasks.Count);
-        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
-        Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
-
-        var fishTask = Assert.IsType<Fish.FishTask>(tasks[2]);
-        Assert.Same(quest, fishTask.Quest);
-        Assert.Null(fishTask.GatheredItem);
-        Assert.True(fishTask.HasCompletionQuestVariablesFlags);
-        Assert.Equal(completionFlags, fishTask.CompletionQuestVariablesFlags);
-        Assert.Equal("Fish*", fishTask.ToString());
+        Assert.Empty(Fish.FishAhead(sequence, talk));
     }
 }

@@ -1,44 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Raitono",
   "Comment": "Will buy 1x Princess Trout",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000857,
-          "Position": {
-            "X": -165.27,
-            "Y": 5.23383,
-            "Z": 164.294
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "Comment": "Buy 1x Princess Trout",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -47,12 +22,7 @@
             }
           },
           "DataId": 1001016,
-          "Position": {
-            "X": -45.52136,
-            "Y": 40.011013,
-            "Z": 119.79596
-          },
-          "TerritoryId": 128,
+          "Position": [-45.52136, 40.011013, 119.79596],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -63,16 +33,8 @@
         },
         {
           "DataId": 1000857,
-          "Position": {
-            "X": -165.27,
-            "Y": 5.23383,
-            "Z": 164.294
-          },
+          "Position": [-165.27, 5.23383, 164.294],
           "TerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1111
         }

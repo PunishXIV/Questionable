@@ -1,73 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "kaiser",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021262,
-          "Position": {
-            "X": 98.10022,
-            "Y": 4.0000014,
-            "Z": 87.44946
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 98.10022,
-                  "Y": 4.0000014,
-                  "Z": 87.44946
-                },
-                "TerritoryId": 628,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1021273,
-          "Position": {
-            "X": 469.84045,
-            "Y": 69.6416,
-            "Z": -68.37573
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "Position": [469.84045, 69.6416, -68.37573],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1021274,
-          "Position": {
-            "X": -413.77893,
-            "Y": 55.093624,
-            "Z": 305.83655
-          },
-          "TerritoryId": 614,
+          "Position": [-413.77893, 55.093624, 305.83655],
           "InteractionType": "Combat",
-          "StopDistance": 4,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -75,7 +33,6 @@
               "Yes": true
             }
           ],
-          "AetheryteShortcut": "Yanxia - Namai",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7236
@@ -85,69 +42,34 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1021274,
-          "Position": {
-            "X": -413.77893,
-            "Y": 55.093624,
-            "Z": 305.83655
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "Fly": false
+          "Position": [-413.77893, 55.093624, 305.83655],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1021054,
-          "Position": {
-            "X": -36.66742,
-            "Y": 14.000003,
-            "Z": -58.457336
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "StopDistance": 4
+          "Position": [-36.66742, 14.000003, -58.457336],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1021262,
-          "Position": {
-            "X": 98.10022,
-            "Y": 4.0000014,
-            "Z": 87.44946
-          },
-          "TerritoryId": 628,
+          "Position": [98.10022, 4.0000014, 87.44946],
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 98.10022,
-                  "Y": 4.0000014,
-                  "Z": 87.44946
-                },
-                "TerritoryId": 628,
-                "MaximumDistance": 20
-              }
-            }
-          },
           "NextQuestId": 2413
         }
       ]

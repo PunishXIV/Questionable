@@ -1,140 +1,58 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["Kiarra", "alydev"],
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 635,
       "Steps": [
         {
-          "Position": {
-            "X": 171.31299,
-            "Y": 13.02367,
-            "Z": -89.951965
-          },
-          "TerritoryId": 635,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 171.31299,
-                  "Y": 13.02367,
-                  "Z": -89.951965
-                },
-                "TerritoryId": 635,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1020337,
-          "Position": {
-            "X": 165.61469,
-            "Y": 13.02367,
-            "Z": -90.53424
-          },
-          "StopDistance": 1,
-          "TerritoryId": 635,
+          "Position": [165.61469, 13.02367, -90.53424],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1024443,
-          "Position": {
-            "X": -314.8089,
-            "Y": 258.90652,
-            "Z": 785.2749
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "Position": [-314.8089, 258.90652, 785.2749],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024444,
-          "Position": {
-            "X": 660.0876,
-            "Y": 70,
-            "Z": 546.1499
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "Position": [660.0876, 70, 546.1499],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021565,
-          "Position": {
-            "X": 440.11584,
-            "Y": 114.254425,
-            "Z": 212.84802
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "Position": [440.11584, 114.254425, 212.84802],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
-          "Position": {
-            "X": 171.31299,
-            "Y": 13.02367,
-            "Z": -89.951965
-          },
-          "TerritoryId": 635,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 171.31299,
-                  "Y": 13.02367,
-                  "Z": -89.951965
-                },
-                "TerritoryId": 635,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1020337,
-          "Position": {
-            "X": 165.61469,
-            "Y": 13.02367,
-            "Z": -90.53424
-          },
-          "StopDistance": 1,
-          "TerritoryId": 635,
+          "Position": [165.61469, 13.02367, -90.53424],
           "InteractionType": "CompleteQuest"
         }
       ]

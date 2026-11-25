@@ -1,89 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1049284,
-          "Position": {
-            "X": 378.43884,
-            "Y": -0.2627956,
-            "Z": 425.55872
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1050706,
-          "Position": {
-            "X": 248.27954,
-            "Y": 15.999974,
-            "Z": 746.4866
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Xak Tural Skygate (Shaaloani)"
-          ]
+          "Position": [248.27954, 15.999974, 746.4866],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 2014065,
-          "Position": {
-            "X": 250.04956,
-            "Y": 16.281311,
-            "Z": 744.3502
-          },
-          "StopDistance": 4,
-          "TerritoryId": 1190,
+          "Position": [250.04956, 16.281311, 744.3502],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 2014073,
-          "Position": {
-            "X": 379.65967,
-            "Y": 0.19836426,
-            "Z": 419.6383
-          },
-          "TerritoryId": 1190,
+          "Position": [379.65967, 0.19836426, 419.6383],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1049284,
-          "Position": {
-            "X": 378.43884,
-            "Y": -0.2627956,
-            "Z": 425.55872
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

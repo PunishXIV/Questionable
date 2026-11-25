@@ -1,18 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "kaiser",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "TerritoryId": 153,
           "InteractionType": "EquipItem",
           "ItemId": 10524,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "SkipConditions": {
-            "AetheryteShortcutIf": {"InTerritory": [153]},
             "StepIf": {
               "Item": {
                 "NotInInventory": true
@@ -21,49 +19,32 @@
           }
         },
         {
-          "TerritoryId": 153,
           "InteractionType": "CreateGearset",
           "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
-          "TerritoryId": 153,
           "InteractionType": "EquipRecommended",
           "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
-          "TerritoryId": 153,
           "InteractionType": "UpdateGearset",
           "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "DataId": 1014981,
-          "Position": {
-            "X": 185.62585,
-            "Y": 14.044273,
-            "Z": 50.492065
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "Fly": true
+          "Position": [185.62585, 14.044273, 50.492065],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1014981,
-          "Position": {
-            "X": 185.62585,
-            "Y": 14.044273,
-            "Z": 50.492065
-          },
-          "TerritoryId": 153,
+          "Position": [185.62585, 14.044273, 50.492065],
           "InteractionType": "SinglePlayerDuty",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -72,21 +53,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012222,
-          "Position": {
-            "X": 202.38037,
-            "Y": -5.3999662,
-            "Z": -58.9151
-          },
-          "TerritoryId": 419,
+          "Position": [202.38037, -5.3999662, -58.9151],
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
           "NextQuestId": 2014
         }
       ]

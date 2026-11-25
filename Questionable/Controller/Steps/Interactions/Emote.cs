@@ -1,6 +1,4 @@
-﻿using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
+﻿using Questionable.Controller.Steps.Shared;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Emote
@@ -28,7 +26,7 @@ internal static class Emote
             else if (step.InteractionType != EInteractionType.Emote)
                 yield break;
             if (!step.Emote.HasValue)
-                throw new ArgumentNullException(nameof(step.Emote));
+                throw new ArgumentException($"{nameof(step.Emote)} is missing", nameof(step));
 
             yield return new MountStep.UnmountTask();
             if (step.DataId != null)
@@ -44,7 +42,7 @@ internal static class Emote
     }
 
     internal sealed class UseOnObjectExecutor(ChatFunctions chatFunctions)
-        : AbstractDelayedTaskExecutor<UseOnObject>
+        : DelayedTaskExecutor<UseOnObject>
     {
         private bool _emoteFired;
 
@@ -70,7 +68,7 @@ internal static class Emote
         public override string ToString() => $"Emote({Emote})";
     }
 
-    internal sealed class UseOnSelfExecutor(ChatFunctions chatFunctions) : AbstractDelayedTaskExecutor<UseOnSelf>
+    internal sealed class UseOnSelfExecutor(ChatFunctions chatFunctions) : DelayedTaskExecutor<UseOnSelf>
     {
         protected override bool StartInternal()
         {

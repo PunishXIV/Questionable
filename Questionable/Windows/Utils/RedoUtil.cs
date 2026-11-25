@@ -1,26 +1,23 @@
-﻿using System.Diagnostics;
-using Dalamud.Memory;
+﻿using Dalamud.Memory;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
-using Questionable.Model.Questing;
 using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Windows.Utils;
 
 [RegisterSingleton]
 internal unsafe sealed class RedoUtil
 {
-    internal readonly Dictionary<Sheets.QuestRedoChapterUI, RedoCache> RedoData = [];
+    internal readonly Dictionary<Sheets.QuestRedoChapterUI, RedoCache> Chapters = [];
     internal readonly AgentInterface* QuestRedoHud;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly ILogger<RedoUtil> _logger;
     private Domain.Quest? _unlockQuest;
     private bool _warned;
-    // lazy-init + one-shot recovery log; not pure
     internal Domain.Quest? UnlockQuest
     {
         get
@@ -42,23 +39,23 @@ internal unsafe sealed class RedoUtil
             return _unlockQuest;
         }
     }
-    internal bool Disabled
+    internal bool IsLocked
     {
         get
         {
-            var q = UnlockQuest;
-            return q == null || !_questFunctions.IsQuestComplete(q.Id);
+            var quest = UnlockQuest;
+            return quest == null || !_questFunctions.IsQuestComplete(quest.Id);
         }
     }
 
-    public RedoUtil(IGameGuiAdapter gameGui, QuestRegistry questRegistry, QuestFunctions questFunctions, ILogger<RedoUtil> logger)
+    public RedoUtil(GameGuiAdapter gameGui, QuestRegistry questRegistry, QuestFunctions questFunctions, ILogger<RedoUtil> logger)
     {
         _gameGui = gameGui;
         _questFunctions = questFunctions;
         _questRegistry = questRegistry;
         _logger = logger;
         QuestRedoHud = AgentModule.Instance()->GetAgentByInternalId(AgentId.QuestRedoHud);
-        RedoData = [];
+        Chapters = [];
         Generate();
     }
 
@@ -71,14 +68,14 @@ internal unsafe sealed class RedoUtil
             if (redo.Chapter.RowId == 0)
                 continue;
             var chapter = chapterUi.GetRow(redo.Chapter.RowId);
-            if (!RedoData.TryGetValue(chapter, out RedoCache? cache))
+            if (!Chapters.TryGetValue(chapter, out RedoCache? cache))
                 cache = new(chapter, new());
             foreach (Sheets.QuestRedo.QuestRedoParamStruct quest in redo.QuestRedoParam)
             {
                 if (quest.Quest.RowId != 0)
                     cache.Quests.Add(quest.Quest.Value);
             }
-            RedoData[chapter] = cache;
+            Chapters[chapter] = cache;
         }
 
         watch.Stop();
@@ -89,27 +86,19 @@ internal unsafe sealed class RedoUtil
     {
         ReadOnlySeString name = (ReadOnlySeString)"";
         int index = -1;
-        (QuestRedoChapterUI key, RedoCache value) = RedoData.FirstOrDefault(entry => entry.Value.Quests.Any(q => (ushort)q.RowId == questId));
-        if (value != null)
+        (QuestRedoChapterUI chapter, RedoCache cache) = Chapters.FirstOrDefault(entry => entry.Value.Quests.Any(q => (ushort)q.RowId == questId));
+        if (cache != null)
         {
-            name = value.ChapterUi.ChapterName;
-            index = value.Quests.FindIndex(q => (ushort)q.RowId == questId);
+            name = cache.Chapter.ChapterName;
+            index = cache.Quests.FindIndex(q => (ushort)q.RowId == questId);
             if (name.ByteLength == 0 || index == -1)
-                return new(value.ChapterUi, -1);
+                return new(cache.Chapter, -1);
         }
-        return new(key, index);
+        return new(chapter, index);
     }
 
-
-    /// <summary>
-    /// if NG+ is already active, this silently overwrites the chapter index to 0 so NG+ is turned off.
-    /// users of this function then need to run it again to send the right value.
-    /// this is intended behaviour. do not change this. -alydev
-    /// </summary>
-    /// <param name="chapterIndex"></param>
-    /// <param name="redoChapter"></param>
-    /// <param name="questRedoChapter"></param>
-    internal void SendRedoCommand(int? chapterIndex = null, RedoChapter? redoChapter = null, QuestRedoChapterUI? questRedoChapter = null)
+    // Overwrites the chapter index to 0 when NG+ is active, turning it off; callers run it again. Intended. -alydev
+    internal void SendCommand(int? chapterIndex = null, RedoChapter? redoChapter = null, QuestRedoChapterUI? questRedoChapter = null)
     {
         if (chapterIndex == null)
         {
@@ -118,34 +107,29 @@ internal unsafe sealed class RedoUtil
             else if (questRedoChapter != null)
                 chapterIndex = (int)questRedoChapter.Value.RowId;
         }
-        if (IsRedoActive())
+        if (IsActive())
             chapterIndex = 0;
-        if (!Disabled)
+        if (!IsLocked)
             GameMain.ExecuteCommand((int)GameCommand.QuestRedo, chapterIndex ?? 0);
         else
             _logger.LogWarning("Cowardly refusing to execute QuestRedo, UnlockQuest may not be complete");
     }
 
-    internal bool IsRedoActive() => QuestRedoHud != null && QuestRedoHud->IsAgentActive() && TryGetActiveRedoChapter(out var _);
+    internal bool IsActive() => QuestRedoHud != null && QuestRedoHud->IsAgentActive() && TryGetActiveChapter(out var _);
 
-    internal bool TryGetActiveRedoChapter(out QuestRedoChapterUI? questRedoChapter)
+    internal bool TryGetActiveChapter(out QuestRedoChapterUI? chapter)
     {
         if (_gameGui.TryGetAddonByName<AtkUnitBase>("QuestRedoHud", out AtkUnitBase* addon) &&
                     addon->AtkValuesCount == 4 &&
-                    // 0 seems to be active,
-                    // 1 seems to be paused,
-                    // 2 is unknown, but it happens e.g. before the quest 'Alzadaal's Legacy'
-                    // 3 seems to be having /ng+ open while active,
-                    // 4 seems to be when (a) suspending the chapter, or (b) having turned in a quest
+                    // 0 active, 1 paused, 2 before e.g. 'Alzadaal's Legacy', 3 /ng+ open while active, 4 suspended or just turned in.
                     addon->AtkValues[0].UInt is 0 or 2 or 3 or 4)
         {
-            // redoHud+44 is chapter
-            // redoHud+46 is quest
-            ushort chapter = MemoryHelper.Read<ushort>((nint)QuestRedoHud + 44);
-            questRedoChapter = RedoData.Where(kvp => kvp.Key.RowId == chapter).Select(kvp => kvp.Value.ChapterUi).FirstOrDefault();
+            // redoHud+44 is the chapter, +46 the quest.
+            ushort chapterId = MemoryHelper.Read<ushort>((nint)QuestRedoHud + 44);
+            chapter = Chapters.Where(kvp => kvp.Key.RowId == chapterId).Select(kvp => kvp.Value.Chapter).FirstOrDefault();
             return true;
         }
-        questRedoChapter = null;
+        chapter = null;
         return false;
     }
 }

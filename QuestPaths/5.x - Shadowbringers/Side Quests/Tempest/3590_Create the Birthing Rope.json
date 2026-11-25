@@ -1,98 +1,47 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031019,
-          "Position": {
-            "X": 505.88232,
-            "Y": 371.189,
-            "Z": -342.79395
-          },
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "Position": {
-            "X": 827.81805,
-            "Y": 464.87595,
-            "Z": -705.6409
-          },
-          "TerritoryId": 818,
-          "InteractionType": "None",
-          "Fly": true
-        },
-        {
           "DataId": 2010467,
-          "Position": {
-            "X": 836.942,
-            "Y": 450.614,
-            "Z": -708.2781
-          },
-          "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [836.942, 450.614, -708.2781],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1031019,
-          "Position": {
-            "X": 505.88232,
-            "Y": 371.189,
-            "Z": -342.79395
-          },
-          "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "Position": [505.88232, 371.189, -342.79395],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1031020,
-          "Position": {
-            "X": 679.3773,
-            "Y": 19.273218,
-            "Z": 358.05298
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Kholusia - Stilltide"
+          "Position": [679.3773, 19.273218, 358.05298],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031019,
-          "Position": {
-            "X": 505.88232,
-            "Y": 371.189,
-            "Z": -342.79395
-          },
-          "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Tempest - Ondo Cups"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

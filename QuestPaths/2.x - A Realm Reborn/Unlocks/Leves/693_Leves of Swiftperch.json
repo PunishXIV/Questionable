@@ -1,65 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "Comment": "!!! Requires manual acceptance and running of Trial Leve !!!",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "$": "Switch to combat job",
           "InteractionType": "SwitchClass",
-          "TargetClass": "ConfiguredCombatJob",
-          "TerritoryId": 128
+          "TargetClass": "ConfiguredCombatJob"
         },
         {
           "DataId": 1000970,
-          "Position": {
-            "X": -12.3446,
-            "Y": 39.9939,
-            "Z": -12.131
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [129] }
-          }
+          "Position": [-12.3446, 39.9939, -12.131],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "Comment": "Accept Trial Leve",
           "$": "Leve: Grabbing Crabs",
           "DataId": 1001788,
-          "Position": {
-            "X": 669.201,
-            "Y": 9.15361,
-            "Z": 513.02
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch"
+          "Position": [669.201, 9.15361, 513.02],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 614.62415,
-            "Y": 8.027198,
-            "Z": 480.9083
-          },
-          "TerritoryId": 138,
+          "Position": [614.62415, 8.027198, 480.9083],
           "InteractionType": "Instruction",
           "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
         }
@@ -67,15 +46,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1001788,
-          "Position": {
-            "X": 669.201,
-            "Y": 9.15361,
-            "Z": 513.02
-          },
-          "TerritoryId": 138,
+          "Position": [669.201, 9.15361, 513.02],
           "InteractionType": "CompleteQuest"
         }
       ]

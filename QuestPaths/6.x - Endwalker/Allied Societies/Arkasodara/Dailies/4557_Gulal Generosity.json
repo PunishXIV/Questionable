@@ -1,135 +1,70 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042302,
-          "Position": {
-            "X": -102.43384,
-            "Y": 40.00001,
-            "Z": 331.89893
-          },
-          "TerritoryId": 957,
-          "Fly": true,
+          "Position": [-102.43384, 40.00001, 331.89893],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042302,
-          "Position": {
-            "X": -102.43384,
-            "Y": 40.00001,
-            "Z": 331.89893
-          },
-          "TerritoryId": 957,
-          "Fly": true,
+          "Position": [-102.43384, 40.00001, 331.89893],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1042372,
-          "Position": {
-            "X": 439.6162,
-            "Y": 3,
-            "Z": -239.91368
-          },
-          "TerritoryId": 957,
-          "StopDistance": 1,
+          "Position": [439.6162, 3, -239.91368],
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null, null, null, null, null, 32]}}
         },
         {
           "DataId": 1042372,
-          "Position": {
-            "X": 439.6162,
-            "Y": 3,
-            "Z": -239.91368
-          },
-          "TerritoryId": 957,
-          "StopDistance": 1,
+          "Position": [439.6162, 3, -239.91368],
           "InteractionType": "Action",
-          "Fly": true,
           "Action": "Yellow Gulal",
           "GroundTarget": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 1042371,
-          "Position": {
-            "X": 376.98718,
-            "Y": 3,
-            "Z": -226.0746
-          },
-          "TerritoryId": 957,
-          "StopDistance": 1,
+          "Position": [376.98718, 3, -226.0746],
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null, null, null, null, null, 64]}}
         },
         {
           "DataId": 1042371,
-          "Position": {
-            "X": 376.98718,
-            "Y": 3,
-            "Z": -226.0746
-          },
-          "TerritoryId": 957,
-          "StopDistance": 1,
+          "Position": [376.98718, 3, -226.0746],
           "InteractionType": "Action",
-          "Fly": true,
           "Action": "Blue Gulal",
           "GroundTarget": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 1042373,
-          "Position": {
-            "X": 405.96445,
-            "Y": 13,
-            "Z": -308.502
-          },
-          "TerritoryId": 957,
-          "StopDistance": 1,
+          "Position": [405.96445, 13, -308.502],
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null, null, null, null, null, 128]}}
         },
         {
           "DataId": 1042373,
-          "Position": {
-            "X": 405.96445,
-            "Y": 13,
-            "Z": -308.502
-          },
-          "TerritoryId": 957,
-          "StopDistance": 1,
+          "Position": [405.96445, 13, -308.502],
           "InteractionType": "Action",
-          "Fly": true,
           "Action": "Red Gulal",
           "GroundTarget": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
@@ -138,20 +73,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

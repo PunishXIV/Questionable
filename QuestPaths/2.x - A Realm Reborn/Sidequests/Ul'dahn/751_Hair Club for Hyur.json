@@ -1,38 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1006209,
-          "Position": {
-            "X": -67.08886,
-            "Y": -20.296291,
-            "Z": -3.9321687
-          },
-          "TerritoryId": 145,
-          "StopDistance": 1,
+          "Position": [-67.08886, -20.296291, -3.9321687],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "auto: issuer 1006209 (Helmhart)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": 98.545,
-            "Y": 7.6303005,
-            "Z": 31.9263
-          },
-          "TerritoryId": 145,
+          "Position": [98.545, 7.6303005, 31.9263],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             203
@@ -43,37 +32,25 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1006209,
-          "Position": {
-            "X": -67.08886,
-            "Y": -20.296291,
-            "Z": -3.9321687
-          },
-          "TerritoryId": 145,
-          "StopDistance": 1,
+          "Position": [-67.08886, -20.296291, -3.9321687],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1006209 (Helmhart); hands over ITEM0=2000600"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1006209,
-          "Position": {
-            "X": -67.08886,
-            "Y": -20.296291,
-            "Z": -3.9321687
-          },
-          "TerritoryId": 145,
-          "StopDistance": 1,
+          "Position": [-67.08886, -20.296291, -3.9321687],
           "InteractionType": "CompleteQuest",
           "ItemId": 2000975,
-          "Fly": true,
           "$": "auto: todo turn-in -> 1006209 (Helmhart)"
         }
       ]

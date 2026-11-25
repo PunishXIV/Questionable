@@ -1,53 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016089,
-          "Position": {
-            "X": -799.46594,
-            "Y": -133.2695,
-            "Z": -404.1352
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 2006667,
-          "Position": {
-            "X": -792.59937,
-            "Y": -58.365784,
-            "Z": 188.06738
-          },
-          "TerritoryId": 401,
+          "Position": [-792.59937, -58.365784, 188.06738],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
           "RequiredQuestVariables": [null,null,[
               16
             ],null,null,null]
         },
         {
           "DataId": 2006761,
-          "Position": {
-            "X": -759.4568,
-            "Y": -61.905884,
-            "Z": 140.21509
-          },
-          "TerritoryId": 401,
+          "Position": [-759.4568, -61.905884, 140.21509],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               32
             ],null,null,null]
@@ -56,22 +31,17 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 2006666,
-          "Position": {
-            "X": -627.863,
-            "Y": -59.372925,
-            "Z": -162.12714
-          },
-          "TerritoryId": 401,
+          "Position": [-627.863, -59.372925, -162.12714],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001941,
           "KillEnemyDataIds": [
             5238
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               1
             ],null,null,null,null
@@ -81,35 +51,18 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1012068,
-          "Position": {
-            "X": -597.0398,
-            "Y": -51.05185,
-            "Z": -387.0451
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-597.0398, -51.05185, -387.0451],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1016089,
-          "Position": {
-            "X": -799.46594,
-            "Y": -133.2695,
-            "Z": -404.1352
-          },
-          "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

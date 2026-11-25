@@ -1,25 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000895,
-          "Position": {
-            "X": -335.74432,
-            "Y": 12.899764,
-            "Z": 1.3884888
-          },
-          "TerritoryId": 129,
+          "Position": [-335.74432, 12.899764, 1.3884888],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

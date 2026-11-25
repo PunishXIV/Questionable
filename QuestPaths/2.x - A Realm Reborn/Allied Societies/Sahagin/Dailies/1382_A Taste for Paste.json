@@ -1,35 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": -109.63611,
-            "Y": -31.296265,
-            "Z": -93.85828
-          },
-          "TerritoryId": 138,
+          "Position": [-109.63611, -31.296265, -93.85828],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -37,18 +20,11 @@
               "DataId": 2839,
               "NameId": 2721
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         },
         {
           "DataId": 2003898,
-          "Position": {
-            "X": -109.63611,
-            "Y": -31.296265,
-            "Z": -93.85828
-          },
-          "TerritoryId": 138,
+          "Position": [-109.63611, -31.296265, -93.85828],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -56,12 +32,7 @@
           ]
         },
         {
-          "Position": {
-            "X": -119.34088,
-            "Y": -32.578064,
-            "Z": -115.09888
-          },
-          "TerritoryId": 138,
+          "Position": [-119.34088, -32.578064, -115.09888],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -69,18 +40,11 @@
               "DataId": 2839,
               "NameId": 2721
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         },
         {
           "DataId": 2003897,
-          "Position": {
-            "X": -119.34088,
-            "Y": -32.578064,
-            "Z": -115.09888
-          },
-          "TerritoryId": 138,
+          "Position": [-119.34088, -32.578064, -115.09888],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -88,12 +52,7 @@
           ]
         },
         {
-          "Position": {
-              "X": -91.50836,
-              "Y": -29.526245,
-              "Z": -146.44086
-          },
-          "TerritoryId": 138,
+          "Position": [-91.50836, -29.526245, -146.44086],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -101,17 +60,11 @@
               "DataId": 2839,
               "NameId": 2721
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2003900,
-          "Position": {
-              "X": -91.50836,
-              "Y": -29.526245,
-              "Z": -146.44086
-          },
-          "TerritoryId": 138,
+          "Position": [-91.50836, -29.526245, -146.44086],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -122,20 +75,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1037959,
-          "Position": {
-            "X": 135.14917,
-            "Y": 8.025631,
-            "Z": 189.53223
-          },
-          "TerritoryId": 961,
+          "Position": [135.14917, 8.025631, 189.53223],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -20,72 +16,46 @@
               "Prompt": "TEXT_AKTKZG004_04279_Q1_000_000",
               "Answer": "TEXT_AKTKZG004_04279_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041521,
-          "Position": {
-            "X": 345.11328,
-            "Y": -9.357962,
-            "Z": -41.21466
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [345.11328, -9.357962, -41.21466],
+          "InteractionType": "Interact"
         },
         {
           "$": "QuestCleanUp.cs is looking for interaction with the Allied Society quest issuer or else it will teleport to hawthorne hut for Mount ID 24. This step should do nothing.",
           "DataId": 1052562,
-          "Position": {
-            "X": 351.23395,
-            "Y": -9.025981,
-            "Z": -34.50507
-          },
-          "TerritoryId": 961,
+          "Position": [351.23395, -9.025981, -34.50507],
           "InteractionType": "None"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 2011718,
-          "Position": {
-            "X": 380.9414,
-            "Y": -9.414856,
-            "Z": -39.44464
-          },
-          "TerritoryId": 961,
+          "Position": [380.9414, -9.414856, -39.44464],
           "InteractionType": "Action",
           "Action": "Big Sneeze"
         },
         {
           "DataId": 2012635,
-          "Position": {
-            "X": 382.10107,
-            "Y": -8.255188,
-            "Z": -26.81018
-          },
-          "TerritoryId": 961,
+          "Position": [382.10107, -8.255188, -26.81018],
           "InteractionType": "Action",
           "Action": "Big Sneeze"
         },
         {
           "DataId": 2012634,
-          "Position": {
-            "X": 406.42407,
-            "Y": -10.269409,
-            "Z": -14.908142
-          },
-          "TerritoryId": 961,
+          "Position": [406.42407, -10.269409, -14.908142],
           "InteractionType": "Action",
           "Action": "Big Sneeze"
         }
@@ -93,46 +63,24 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": 347.78192,
-            "Y": -9.68798,
-            "Z": -40.082848
-          },
-          "TerritoryId": 961,
-          "InteractionType": "None",
-          "Mount": false
+          "Position": [347.78192, -9.68798, -40.082848],
+          "Mount": false,
+          "InteractionType": "None"
         },
         {
           "DataId": 1041521,
-          "Position": {
-            "X": 345.11328,
-            "Y": -9.357962,
-            "Z": -41.21466
-          },
+          "Position": [345.11328, -9.357962, -41.21466],
           "DelaySecondsAtStart": 1,
-          "TerritoryId": 961,
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037959,
-          "Position": {
-            "X": 135.14917,
-            "Y": 8.025631,
-            "Z": 189.53223
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

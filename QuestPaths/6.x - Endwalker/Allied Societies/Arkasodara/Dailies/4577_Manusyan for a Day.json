@@ -1,58 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042459,
-          "Position": {
-            "X": 353.99402,
-            "Y": 12.724952,
-            "Z": -220.5387
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true
+          "Position": [353.99402, 12.724952, -220.5387],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042472,
-          "Position": {
-            "X": 352.5597,
-            "Y": 20.552443,
-            "Z": 6.362976
-          },
-          "TerritoryId": 957,
+          "Position": [352.5597, 20.552443, 6.362976],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               {"High": 4}
             ],null,null,null,null
@@ -67,17 +43,11 @@
         },
         {
           "DataId": 1042473,
-          "Position": {
-            "X": 374.41064,
-            "Y": 21.282011,
-            "Z": 46.67737
-          },
-          "TerritoryId": 957,
+          "Position": [374.41064, 21.282011, 46.67737],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               {"High": 3}
             ],null,null,null,null
@@ -92,17 +62,11 @@
         },
         {
           "DataId": 1042387,
-          "Position": {
-            "X": 398.94702,
-            "Y": 6.591665,
-            "Z": 50.492065
-          },
-          "TerritoryId": 957,
+          "Position": [398.94702, 6.591665, 50.492065],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               {"High": 1}
             ],null,null,null,null
@@ -117,17 +81,11 @@
         },
         {
           "DataId": 1042388,
-          "Position": {
-            "X": 408.95703,
-            "Y": 7.8583245,
-            "Z": 5.0201416
-          },
-          "TerritoryId": 957,
+          "Position": [408.95703, 7.8583245, 5.0201416],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               {"High": 2}
             ],null,null,null,null
@@ -144,36 +102,18 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042459,
-          "Position": {
-            "X": 353.99402,
-            "Y": 12.724952,
-            "Z": -220.5387
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [353.99402, 12.724952, -220.5387],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

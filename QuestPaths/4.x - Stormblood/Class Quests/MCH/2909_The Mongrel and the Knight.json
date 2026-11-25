@@ -1,63 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "UcanPatates",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012251,
-          "Position": {
-            "X": 12.313965,
-            "Y": -12.020877,
-            "Z": 40.268433
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "Position": [-154.31458, 16.999992, -53.3609],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012251,
-          "Position": {
-            "X": 12.313965,
-            "Y": -12.020877,
-            "Z": 40.268433
-          },
-          "TerritoryId": 418,
+          "Position": [12.313965, -12.020877, 40.268433],
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Aetheryte Plaza"
-          ],
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -66,19 +34,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1012251,
-          "Position": {
-            "X": 12.313965,
-            "Y": -12.020877,
-            "Z": 40.268433
-          },
-          "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,33 +1,17 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050651,
-          "Position": {
-            "X": -56.10742,
-            "Y": 15.709401,
-            "Z": -259.05243
-          },
-          "TerritoryId": 1190,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
-          "Position": {
-            "X": -335.70532,
-            "Y": 18.652002,
-            "Z": -543.8954
-          },
-          "TerritoryId": 1190,
+          "Position": [-335.70532, 18.652002, -543.8954],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -47,26 +31,13 @@
               "DataId": 17738,
               "MinimumKillCount": 1
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1050651,
-          "Position": {
-            "X": -56.10742,
-            "Y": 15.709401,
-            "Z": -259.05243
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

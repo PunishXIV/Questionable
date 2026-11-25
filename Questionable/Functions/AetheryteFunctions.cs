@@ -1,7 +1,6 @@
 ﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
+using FFXIVClientStructs.FFXIV.Client.Game.WKS;
 using Action = Lumina.Excel.Sheets.Action;
 
 namespace Questionable.Functions;
@@ -21,6 +20,31 @@ internal sealed unsafe class AetheryteFunctions
     private readonly IServiceProvider _serviceProvider = serviceProvider;
 
     public DateTime ReturnRequestedAt { get; set; } = DateTime.MinValue;
+
+    private Dictionary<uint, uint>? _cosmicAethernets;
+
+    public bool IsCosmicAethernet(uint? dataId) => dataId is { } id && CosmicAethernets().ContainsKey(id);
+
+    private Dictionary<uint, uint> CosmicAethernets() => _cosmicAethernets ??= _dataManager.GetExcelSheet<Lumina.Excel.Sheets.WKSAetheryte>()
+        .Where(aetheryte => aetheryte.RowId != 0 && aetheryte.ObjectGroup.IsValid)
+        .SelectMany(aetheryte => aetheryte.ObjectGroup.Value.Select(crystal => (Crystal: crystal.Unknown0, aetheryte.RowId)))
+        .Where(x => x.Crystal != 0)
+        .GroupBy(x => x.Crystal)
+        .ToDictionary(g => g.Key, g => g.First().RowId);
+
+    // From ICE (Ices-Cosmic-Exploration, AgentWKSMissionEx.IsWKSAetheryteUnlocked): bit (row - 1) is set once unlocked; ClientStructs doesn't name +0xECC.
+    public bool? IsCosmicAethernetUnlocked(uint dataId)
+    {
+        if (!CosmicAethernets().TryGetValue(dataId, out uint row))
+            return null;
+
+        WKSManager** manager = WKSManager.StaticAddressPointers.ppInstance;
+        if (manager == null || *manager == null)
+            return null;
+
+        uint bits = *(uint*)((byte*)*manager + 0xECC);
+        return (bits & (1u << (int)(row - 1))) != 0;
+    }
 
     public static bool IsAetheryteUnlocked(uint aetheryteId, out byte subIndex)
     {
@@ -90,22 +114,21 @@ internal sealed unsafe class AetheryteFunctions
     {
         PlayerState* playerState = PlayerState.Instance();
         return playerState != null &&
-               (playerState->FreeAetheryteId == (uint)aetheryteLocation ||
-                playerState->FreeAetherytePSPlus == (uint)aetheryteLocation);
+               (playerState->FreeAetheryteIds[0] == (uint)aetheryteLocation ||
+                playerState->FreeAetheryteIds[1] == (uint)aetheryteLocation);
     }
 
-    public AetheryteRegistrationResult CanRegisterFreeOrFavoriteAetheryte(EAetheryteLocation aetheryteLocation)
+    public AetheryteRegistrationResult CanRegisterFreeOrFavored(EAetheryteLocation aetheryteLocation)
     {
         PlayerState* playerState = PlayerState.Instance();
         if (playerState == null)
             return AetheryteRegistrationResult.NotPossible;
 
-        // if we have a free or favored aetheryte assigned to this location, we don't override it (and don't upgrade
-        // favored to free, either).
+        // Don't override (or upgrade) a free or favored aetheryte already set here.
         if (IsFreeAetheryte(aetheryteLocation))
             return AetheryteRegistrationResult.NotPossible;
 
-        bool freeFavoredSlotsAvailable = false;
+        bool hasFreeSlot = false;
         for (int i = 0; i < playerState->FavouriteAetheryteCount; i++)
         {
             if (playerState->FavouriteAetherytes[i] == (ushort)aetheryteLocation)
@@ -113,20 +136,20 @@ internal sealed unsafe class AetheryteFunctions
 
             if (playerState->FavouriteAetherytes[i] == 0)
             {
-                freeFavoredSlotsAvailable = true;
+                hasFreeSlot = true;
                 break;
             }
         }
 
         // probably can't register a ps plus aetheryte on pc, so we don't check for that
         if (playerState->IsPlayerStateFlagSet(PlayerStateFlag.IsLoginSecurityToken) &&
-            playerState->FreeAetheryteId == 0)
+            playerState->FreeAetheryteIds[0] == 0)
         {
-            return AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable;
+            return AetheryteRegistrationResult.FreeDestination;
         }
 
-        return freeFavoredSlotsAvailable
-            ? AetheryteRegistrationResult.FavoredDestinationAvailable
+        return hasFreeSlot
+            ? AetheryteRegistrationResult.FavoredDestination
             : AetheryteRegistrationResult.NotPossible;
     }
 }

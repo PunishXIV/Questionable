@@ -1,43 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012101,
-          "Position": {
-            "X": 72.3735,
-            "Y": 205.737,
-            "Z": 33.5546
-          },
-          "TerritoryId": 478,
+          "Position": [72.3735, 205.737, 33.5546],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012101 (Holepix)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1012101,
-          "Position": {
-            "X": 459.892,
-            "Y": 102.684,
-            "Z": 5.24306
-          },
-          "TerritoryId": 399,
+          "Position": [459.892, 102.684, 5.24306],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             4019,
@@ -50,17 +35,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012101,
-          "Position": {
-            "X": 72.3735,
-            "Y": 205.737,
-            "Z": 33.5546
-          },
-          "TerritoryId": 478,
+          "Position": [72.3735, 205.737, 33.5546],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012101 (Holepix)"
         }
       ]

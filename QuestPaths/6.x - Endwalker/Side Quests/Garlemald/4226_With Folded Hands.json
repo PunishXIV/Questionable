@@ -1,51 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039399,
-          "Position": {
-            "X": 556.4812,
-            "Y": -40.250004,
-            "Z": -133.04346
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": 548.5352,
-            "Y": -39.76098,
-            "Z": -149.24379
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": 540.68915,
-              "Y": -36.65,
-              "Z": -148.65724
-            },
-            "Type": "RepeatedJumps"
-          }
-        },
-        {
-          "Position": {
-            "X": -159.59418,
-            "Y": 10.8,
-            "Z": -468.8335
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 958,
+          "Position": [-159.59418, 10.8, -468.8335],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [13468],
@@ -53,26 +20,13 @@
             "ItemId": 2003202,
             "Condition": "Health%",
             "Value": 40
-          },
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1039399,
-          "Position": {
-            "X": 556.4812,
-            "Y": -40.250004,
-            "Z": -133.04346
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,76 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037779,
-          "Position": {
-            "X": 513.7865,
-            "Y": -36.65,
-            "Z": -135.91211
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039400,
-          "Position": {
-            "X": 364.76685,
-            "Y": 10.8,
-            "Z": -308.03394
-          },
-          "TerritoryId": 958,
+          "Position": [364.76685, 10.8, -308.03394],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14103
           ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "$": "0 0 0 0 0 0 -> 16 0 16 0 0 128",
-          "Fly": true
+          "$": "0 0 0 0 0 0 -> 16 0 16 0 0 128"
         },
         {
           "DataId": 1040627,
-          "Position": {
-            "X": 282.00195,
-            "Y": 11.327993,
-            "Z": -365.8656
-          },
-          "TerritoryId": 958,
+          "Position": [282.00195, 11.327993, -365.8656],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
           "$": "16 0 16 0 0 128 -> 32 16 16 0 0 160"
         },
         {
           "DataId": 1040626,
-          "Position": {
-            "X": 296.4065,
-            "Y": 10.799999,
-            "Z": -387.9912
-          },
-          "TerritoryId": 958,
+          "Position": [296.4065, 10.799999, -387.9912],
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "$": "32 16 16 0 0 160 -> 49 16 16 0 0 224"
         },
         {
           "DataId": 1040628,
-          "Position": {
-            "X": 260.8224,
-            "Y": 10.849999,
-            "Z": -456.32104
-          },
-          "TerritoryId": 958,
+          "Position": [260.8224, 10.849999, -456.32104],
           "InteractionType": "Interact",
           "$": "49 16 16 0 0 224 -> 0 16 0 0 0 0",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
@@ -79,19 +47,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037779,
-          "Position": {
-            "X": 513.7865,
-            "Y": -36.65,
-            "Z": -135.91211
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

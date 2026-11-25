@@ -1,63 +1,22 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1029963,
-          "Position": {
-            "X": 61.020752,
-            "Y": 100.95007,
-            "Z": -872.4651
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 61.020752,
-                  "Y": 100.95007,
-                  "Z": -872.4651
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 100
-              }
-            }
-          },
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -823.0134,
-            "Y": 22.900805,
-            "Z": -55.223766
-          },
-          "TerritoryId": 816,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2009948,
-          "Position": {
-            "X": -824.88745,
-            "Y": 23.11737,
-            "Z": -56.443176
-          },
-          "TerritoryId": 816,
+          "Position": [-824.88745, 23.11737, -56.443176],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
-            "TestedBossModVersion": "0.0.0.293",
             "$": "test: Redacted"
           },
           "ItemId": 2002569
@@ -69,38 +28,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1029963,
-          "Position": {
-            "X": 61.020752,
-            "Y": 100.95007,
-            "Z": -872.4651
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "Fly": true
+          "Position": [61.020752, 100.95007, -872.4651],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1029889,
-          "Position": {
-            "X": -35.385742,
-            "Y": 3.9998174,
-            "Z": 251.75854
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "Position": [-35.385742, 3.9998174, 251.75854],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

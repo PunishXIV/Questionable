@@ -1,21 +1,17 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using FFXIVClientStructs.FFXIV.Client.System.Input;
+using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
-using Questionable.Controller.Steps.Interactions;
-using Questionable.Model.Questing;
 using Action = Lumina.Excel.Sheets.Action;
 using BattleChara = FFXIVClientStructs.FFXIV.Client.Game.Character.BattleChara;
 using ContentFinderCondition = Lumina.Excel.Sheets.ContentFinderCondition;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
-using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 
@@ -27,38 +23,48 @@ internal sealed unsafe partial class GameFunctions
     ITargetManager targetManager,
     ICondition condition,
     IClientState clientState,
-    IGameGuiAdapter gameGui,
-    Configuration configuration,
-    QuestFunctions questFunctions,
+    GameGuiAdapter gameGui,
     ILogger<GameFunctions> logger,
     HighlightObject highlightObject)
 {
-    internal readonly ReadOnlyDictionary<uint, uint> ContentFinderConditionToContentId = Svc.Data.GetExcelSheet<ContentFinderCondition>()
+    internal readonly ReadOnlyDictionary<uint, uint> CfcToContentId = Svc.Data.GetExcelSheet<ContentFinderCondition>()
         .Where(x => x.RowId > 0 && x.Content.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.Content.RowId)
         .AsReadOnly();
 
-    private static readonly ReadOnlyDictionary<uint, uint> _territoryToAetherCurrentCompFlgSet = Svc.Data.GetExcelSheet<TerritoryType>()
+    private static readonly ReadOnlyDictionary<uint, uint> _aetherCurrentSetIds = Svc.Data.GetExcelSheet<TerritoryType>()
         .Where(x => x.RowId > 0 && x.AetherCurrentCompFlgSet.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.AetherCurrentCompFlgSet.RowId)
         .AsReadOnly();
+
+    // Input ids follow the player's keybinds; typing in chat doesn't count.
+    public static bool IsMovementInputHeld()
+    {
+        UIInputData* input = UIInputData.Instance();
+        RaptureAtkModule* atkModule = RaptureAtkModule.Instance();
+        if (input == null || atkModule == null || atkModule->IsTextInputActive())
+            return false;
+
+        return input->IsInputIdDown(InputId.MOVE_FORE) || input->IsInputIdDown(InputId.MOVE_BACK) ||
+               input->IsInputIdDown(InputId.MOVE_LEFT) || input->IsInputIdDown(InputId.MOVE_RIGHT) ||
+               input->IsInputIdDown(InputId.MOVE_STRIFE_L) || input->IsInputIdDown(InputId.MOVE_STRIFE_R);
+    }
 
     public static bool IsFlyingUnlocked(uint territoryId)
     {
         if (Configuration.Instance().Advanced.NeverFly)
             return false;
 
-        if (QuestFunctions.IsQuestAccepted(new(3304)) && Svc.Condition[ConditionFlag.Mounted])
+        if (QuestManager.Instance()->IsQuestAccepted(3304) && Svc.Condition[ConditionFlag.Mounted])
         {
-            // special quest amaro, not the normal one
-            // TODO Check if this also applies to beast tribe mounts
+            // Special quest Amaro (mount 198), not the normal one.
             if (GetMountId() == 198)
                 return true;
         }
 
         PlayerState* playerState = PlayerState.Instance();
         return playerState != null &&
-               _territoryToAetherCurrentCompFlgSet.TryGetValue(territoryId, out uint aetherCurrentCompFlgSet) &&
+               _aetherCurrentSetIds.TryGetValue(territoryId, out uint aetherCurrentCompFlgSet) &&
                playerState->IsAetherCurrentZoneComplete(aetherCurrentCompFlgSet);
     }
 
@@ -71,7 +77,7 @@ internal sealed unsafe partial class GameFunctions
         return null;
     }
 
-    public bool IsFlyingUnlockedInCurrentZone() => IsFlyingUnlocked(clientState.TerritoryType);
+    public bool IsFlyingUnlockedHere() => IsFlyingUnlocked(clientState.TerritoryType);
 
     public bool IsAetherCurrentUnlocked(uint aetherCurrentId)
     {
@@ -80,27 +86,40 @@ internal sealed unsafe partial class GameFunctions
                playerState->IsAetherCurrentUnlocked(aetherCurrentId);
     }
 
+    // Several objects can share a data id (mobs, quest props); the nearest one is the one the step means.
     public IGameObject? FindObjectByDataId(uint dataId, ObjectKind? kind = null)
     {
+        Vector3? here = objectTable[0]?.Position;
+        IGameObject? nearest = null;
+        float nearestDistance = float.MaxValue;
         foreach (IGameObject gameObject in objectTable)
         {
             if (gameObject.ObjectKind is ObjectKind.Pc or ObjectKind.Companion or ObjectKind.Mount
                 or ObjectKind.Retainer or ObjectKind.HousingEventObject)
                 continue;
 
-            // multiple objects in the object table can share the same data id for gathering points; only one of those
-            // (at most) is visible
+            // Several gathering-point objects share a data id; at most one is visible.
             if (gameObject is { ObjectKind: ObjectKind.GatheringPoint, IsTargetable: false })
                 continue;
 
-            if (GetBaseID(gameObject) == dataId && (kind == null || kind.Value == gameObject.ObjectKind))
+            if (GetBaseId(gameObject) != dataId || (kind != null && kind.Value != gameObject.ObjectKind))
+                continue;
+
+            float distance = here is { } position ? Vector3.DistanceSquared(position, gameObject.Position) : 0;
+            if (distance < nearestDistance)
             {
-                highlightObject.AddHighlight(GetBaseID(gameObject));
-                return gameObject;
+                nearest = gameObject;
+                nearestDistance = distance;
             }
         }
 
-        logger.LogWarning("Could not find GameObject with dataId {DataId}", dataId);
+        if (nearest != null)
+        {
+            highlightObject.AddHighlight(dataId);
+            return nearest;
+        }
+
+        logger.LogDebug("Could not find GameObject with dataId {DataId}", dataId);
         return null;
     }
 
@@ -116,7 +135,7 @@ internal sealed unsafe partial class GameFunctions
 
     public bool InteractWith(IGameObject gameObject)
     {
-        logger.LogInformation("Setting target with {DataId} to {ObjectId}", GetBaseID(gameObject), gameObject.EntityId);
+        logger.LogDebug("Setting target with {DataId} to {ObjectId}", GetBaseId(gameObject), gameObject.EntityId);
         targetManager.Target = null;
         targetManager.Target = gameObject;
 
@@ -129,7 +148,7 @@ internal sealed unsafe partial class GameFunctions
 
         long result = (long)TargetSystem.Instance()->InteractWithObject((GameObject*)gameObject.Address, checkLineOfSight: false);
 
-        logger.LogInformation("Interact result: {Result}", result);
+        logger.LogDebug("Interact result: {Result}", result);
         return result != 7 && result > 0;
     }
 
@@ -170,8 +189,11 @@ internal sealed unsafe partial class GameFunctions
 
     public bool UseItemOnPosition(Vector3 position, uint itemId) => ActionManager.Instance()->UseActionLocation(ActionType.EventItem, itemId, location: &position);
 
-    public bool UseAction(EAction action, bool? ignoreResult = null)
+    public bool UseAction(EAction action) => UseAction(action, out _);
+
+    public bool UseAction(EAction action, out InterruptHandler.ActionRequest? request)
     {
+        request = null;
         uint actionId = (uint)action & 0xFFFF;
         ActionType actionType = ((uint)action & 0x10000) == 0x10000 ? ActionType.GeneralAction : ActionType.Action;
         if (actionType == ActionType.Action)
@@ -179,19 +201,25 @@ internal sealed unsafe partial class GameFunctions
 
         if (ActionManager.Instance()->GetActionStatus(actionType, actionId) == 0)
         {
+            ushort previousSequence = ActionManager.Instance()->LastUsedActionSequence;
+            request = CreateActionRequest(actionType, actionId, null);
             bool result = ActionManager.Instance()->UseAction(actionType, actionId);
+            if (result && ActionManager.Instance()->LastUsedActionSequence != previousSequence)
+                request = request with { SourceSequence = ActionManager.Instance()->LastUsedActionSequence };
             logger.LogInformation("UseAction {Action} (adjusted: {AdjustedActionId}) result: {Result}", action,
                 actionId, result);
-
-            // TODO figure out what UseAction returns and why it returns false when an action is successful
-            return true; //ignoreResult != null ? ignoreResult.Value : result;
+            return result;
         }
 
         return false;
     }
 
-    public bool UseAction(IGameObject gameObject, EAction action, bool checkCanUse = true)
+    public bool UseAction(IGameObject gameObject, EAction action, bool checkCanUse = true) =>
+        UseAction(gameObject, action, out _, checkCanUse);
+
+    public bool UseAction(IGameObject gameObject, EAction action, out InterruptHandler.ActionRequest? request, bool checkCanUse = true)
     {
+        request = null;
         uint actionId = (uint)action & 0xFFFF;
         ActionType actionType = ((uint)action & 0x10000) == 0x10000 ? ActionType.GeneralAction : ActionType.Action;
         if (actionType == ActionType.GeneralAction)
@@ -212,6 +240,8 @@ internal sealed unsafe partial class GameFunctions
         targetManager.Target = gameObject;
         if (ActionManager.Instance()->GetActionStatus(actionType, actionId, gameObject.GameObjectId) == 0)
         {
+            ushort previousSequence = ActionManager.Instance()->LastUsedActionSequence;
+            request = CreateActionRequest(actionType, actionId, gameObject.EntityId);
             bool result;
             if (actionRow.TargetArea)
             {
@@ -230,10 +260,20 @@ internal sealed unsafe partial class GameFunctions
                     actionId, gameObject, result);
             }
 
+            if (result && ActionManager.Instance()->LastUsedActionSequence != previousSequence)
+                request = request with { SourceSequence = ActionManager.Instance()->LastUsedActionSequence };
             return result;
         }
 
         return false;
+    }
+
+    private static InterruptHandler.ActionRequest CreateActionRequest(ActionType type, uint actionId, uint? targetId)
+    {
+        // Duty-action buttons send the underlying spell's ID and type in their action effect.
+        if (type == ActionType.GeneralAction && ActionManager.GetSpellIdForAction(type, actionId) is > 0 and var spellId)
+            return new((byte)ActionType.Action, spellId, targetId);
+        return new((byte)type, actionId, targetId);
     }
 
     public bool IsObjectAtPosition(uint dataId, Vector3 position, float distance)
@@ -242,57 +282,7 @@ internal sealed unsafe partial class GameFunctions
         return gameObject != null && (gameObject.Position - position).Length() < distance;
     }
 
-    public bool IsMountingUnlocked()
-    {
-        List<ushort> quests = [700, 701, 702];
-        return quests.Any(q => questFunctions.IsQuestComplete(new QuestId(q)));
-    }
-
-    public bool HasStatusPreventingMount()
-    {
-        if (condition[ConditionFlag.Swimming] && !IsFlyingUnlockedInCurrentZone())
-        {
-            logger.LogDebug("Swimming && !IsFlyingUnlockedInCurrentZone");
-            return true;
-        }
-
-        // company chocobo is locked
-        // - company chocobo whistle may not have been used, this does not necessarily mean mounting is not possible -alydev
-        //PlayerState* playerState = PlayerState.Instance();
-        //if (playerState != null && !playerState->IsMountUnlocked(1))
-        //{
-        //    logger.LogDebug("!playerState->IsMountUnlocked(1)");
-        //    return true;
-        //}
-
-        if (!IsMountingUnlocked())
-        {
-            logger.LogDebug("!IsMountingUnlocked");
-            return true;
-        }
-
-        IGameObject? localPlayer = objectTable[0];
-        if (localPlayer == null)
-            return false;
-
-        if (HasStatus(1151) ||
-            HasStatus(1945)) // hoofing it
-        {
-            logger.LogDebug("hoofing it");
-            return true;
-        }
-
-        if (HasCharacterStatusPreventingMountOrSprint())
-        {
-            logger.LogDebug("HasCharacterStatusPreventingMountOrSprint");
-            return true;
-        }
-        return false;
-    }
-
-    public bool HasStatusPreventingSprint() => HasCharacterStatusPreventingMountOrSprint();
-
-    internal bool HasCharacterStatusPreventingMountOrSprint()
+    internal bool IsMountOrSprintBlocked()
     {
         return HasStatus(565) || // Transfiguration
                HasStatus(416) || // Transparent
@@ -320,41 +310,6 @@ internal sealed unsafe partial class GameFunctions
 
     public static bool RemoveStatus(EStatus statusId) => StatusManager.ExecuteStatusOff((uint)statusId);
 
-    public bool Mount()
-    {
-        if (condition[ConditionFlag.Mounted])
-            return true;
-
-        PlayerState* playerState = PlayerState.Instance();
-        if (playerState != null && configuration.General.MountId != 0 &&
-            playerState->IsMountUnlocked(configuration.General.MountId))
-        {
-            if (ActionManager.Instance()->GetActionStatus(ActionType.Mount, configuration.General.MountId) == 0)
-            {
-                logger.LogDebug("Attempting to use preferred mount...");
-                if (ActionManager.Instance()->UseAction(ActionType.Mount, configuration.General.MountId))
-                {
-                    logger.LogInformation("Using preferred mount");
-                    return true;
-                }
-            }
-        }
-        else
-        {
-            if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 9) == 0)
-            {
-                logger.LogDebug("Attempting to use mount roulette...");
-                if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 9))
-                {
-                    logger.LogInformation("Using mount roulette");
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
     public bool Unmount()
     {
         if (!condition[ConditionFlag.Mounted])
@@ -365,7 +320,7 @@ internal sealed unsafe partial class GameFunctions
             logger.LogDebug("Attempting to unmount...");
             if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23))
             {
-                logger.LogInformation("Unmounted");
+                logger.LogDebug("Unmounted");
                 return true;
             }
 
@@ -376,42 +331,37 @@ internal sealed unsafe partial class GameFunctions
         return false;
     }
 
-    public void OpenDutyFinder(uint contentFinderConditionId = 0, uint contentId = 0)
+    public void OpenDutyFinder(uint cfcId = 0, uint contentId = 0)
     {
-        if (contentId != 0 || ContentFinderConditionToContentId.TryGetValue(contentFinderConditionId, out contentId))
+        if (contentId != 0 || CfcToContentId.TryGetValue(cfcId, out contentId))
         {
             if (UIState.IsInstanceContentUnlocked(contentId))
-                AgentContentsFinder.Instance()->OpenRegularDuty(contentFinderConditionId);
+                AgentContentsFinder.Instance()->OpenRegularDuty(cfcId);
             else
             {
                 logger.LogError(
                     "Trying to access a locked duty (cf: {ContentFinderId}, content: {ContentId})",
-                    contentFinderConditionId, contentId);
+                    cfcId, contentId);
             }
         }
         else
         {
             logger.LogError("Could not find content for content finder condition (cf: {ContentFinderId})",
-                contentFinderConditionId);
+                cfcId);
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]
+    // Can't preselect a dungeon, so the player picks it.
     public void OpenVariantDF()
     {
+        AgentInterface* agent = AgentModule.Instance()->GetAgentByInternalId(AgentId.VVDFinder);
+        if (agent == null || agent->IsAgentActive())
+            return;
 
+        logger.LogInformation("Opening the variant dungeon finder");
+        agent->Show();
     }
 
-    // ECommons' AddonMaster returns plain entry text, but excel-resolved text keeps decoration
-    // macros (icons, italics, ...) as literal "<icon(69)>"-style tokens. Strip those so addon
-    // text and excel text compare equal regardless of which reader produced them.
-    [GeneratedRegex("<[^>]+>", RegexOptions.Compiled, matchTimeoutMilliseconds: 1000)]
-    private static partial Regex MacroLiteralRegex();
-
-    /// <summary>
-    ///     Ensures characters like '-' are handled equally in both strings, and that decoration
-    ///     macros (icons, italics, ...) and surrounding whitespace do not affect equality.
-    /// </summary>
     public static bool GameStringEquals(string? a, string? b)
     {
         if (a == null)
@@ -420,29 +370,10 @@ internal sealed unsafe partial class GameFunctions
         if (b == null)
             return false;
 
-        var _a = NormalizeGameString(a);
-        var _b = NormalizeGameString(b);
-        var eq = _a == _b || MacroMatches(a, b) || MacroMatches(b, a);
-        Svc.Log.Verbose("GameStringEquals: {A} {Op} {B}", _a, eq ? "==" : "!=", _b);
+        bool eq = GameStringComparison.Matches(a, b);
+        Svc.Log.Verbose("GameStringEquals: {A} {Op} {B}", a, eq ? "==" : "!=", b);
         return eq;
     }
-
-    // A macro like <string(gstr1)> is text the game fills in (the player's name), so it matches anything.
-    private static bool MacroMatches(string pattern, string text)
-    {
-        // A text that is only macros would match every option.
-        if (!MacroLiteralRegex().IsMatch(pattern) || NormalizeGameString(pattern).Length == 0)
-            return false;
-
-        string regex = string.Join(".*", MacroLiteralRegex().Split(pattern).Select(x => Regex.Escape(NormalizeGameString(x))));
-        return Regex.IsMatch(NormalizeGameString(text), $"^{regex}$", RegexOptions.Singleline, TimeSpan.FromSeconds(1));
-    }
-
-    private static string NormalizeGameString(string value) =>
-        MacroLiteralRegex().Replace(value, string.Empty)
-            .ReplaceLineEndings()
-            .Replace('\u2013', '-')
-            .Trim();
 
     public bool IsOccupied()
     {
@@ -461,39 +392,14 @@ internal sealed unsafe partial class GameFunctions
                 return true;
         }
 
-        if (condition[ConditionFlag.Unconscious] &&
-            condition[ConditionFlag.SufferingStatusAffliction63] &&
-            clientState.TerritoryType == SinglePlayerDuty.SpecialTerritories.Lahabrea)
-            return false; // needed to process the tasks
-
         return condition[ConditionFlag.Occupied] || condition[ConditionFlag.Occupied30] ||
                condition[ConditionFlag.Occupied33] || condition[ConditionFlag.Occupied38] ||
                condition[ConditionFlag.Occupied39] || condition[ConditionFlag.OccupiedInEvent] ||
                condition[ConditionFlag.OccupiedInQuestEvent] || condition[ConditionFlag.OccupiedInCutSceneEvent] ||
-               //condition[ConditionFlag.WatchingCutscene] || //condition[ConditionFlag.WatchingCutscene78] ||
                condition[ConditionFlag.Casting] || condition[ConditionFlag.MountOrOrnamentTransition] ||
                condition[ConditionFlag.BetweenAreas] || condition[ConditionFlag.BetweenAreas51] ||
                condition[ConditionFlag.Jumping61] || condition[ConditionFlag.ExecutingGatheringAction] ||
                condition[ConditionFlag.Jumping] || condition[ConditionFlag.Mounting71];
-    }
-
-    public bool IsOccupiedWithCustomDeliveryNpc(Quest? currentQuest)
-    {
-        // not a supply quest?
-        if (currentQuest is not { Info: SatisfactionSupplyInfo })
-            return false;
-
-        if (targetManager.Target == null || GetBaseID(targetManager.Target) != currentQuest.Info.IssuerDataId)
-            return false;
-
-        if (!AgentSatisfactionSupply.Instance()->IsAgentActive())
-            return false;
-
-        HashSet<ConditionFlag> flags = condition.AsReadOnlySet().ToHashSet();
-        flags.Remove(ConditionFlag.InDutyQueue); // irrelevant
-        return flags.Count == 2 &&
-               flags.Contains(ConditionFlag.NormalConditions) &&
-               flags.Contains(ConditionFlag.OccupiedInQuestEvent);
     }
 
     public bool IsLoadingScreenVisible()
@@ -539,7 +445,7 @@ internal sealed unsafe partial class GameFunctions
         return slots;
     }
 
-    public static uint GetBaseID(IGameObject? obj)
+    public static uint GetBaseId(IGameObject? obj)
     {
         if (obj == null)
             return 0;
@@ -556,14 +462,14 @@ internal sealed unsafe partial class GameFunctions
             return null;
         }
 
-        List<uint> unlockedUnlockLinks = [];
+        List<uint> unlockedLinks = [];
         foreach ((int index, bool isUnlocked) in uiState->UnlockLinksBitArray)
         {
             if (isUnlocked)
-                unlockedUnlockLinks.Add((uint)index);
+                unlockedLinks.Add((uint)index);
         }
 
-        logger.LogInformation("Unlocked unlock links: {UnlockedUnlockLinks}", string.Join(", ", unlockedUnlockLinks));
-        return unlockedUnlockLinks;
+        logger.LogInformation("Unlocked unlock links: {UnlockedUnlockLinks}", string.Join(", ", unlockedLinks));
+        return unlockedLinks;
     }
 }

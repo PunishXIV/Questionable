@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010897,
-          "Position": {
-            "X": 0.9613037,
-            "Y": -1.9957249,
-            "Z": -45.609253
-          },
-          "TerritoryId": 351,
+          "Position": [0.9613037, -1.9957249, -45.609253],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -21,62 +17,44 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1011615,
-          "Position": {
-            "X": -1.3275757,
-            "Y": 0,
-            "Z": -2.7008667
-          },
-          "TerritoryId": 351,
+          "Position": [-1.3275757, 0, -2.7008667],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1010984,
-          "Position": {
-            "X": -207.44641,
-            "Y": 20.86788,
-            "Z": 360.06702
-          },
-          "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "Position": [-207.44641, 20.86788, 360.06702],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1010985,
-          "Position": {
-            "X": -223.71259,
-            "Y": 12.277637,
-            "Z": 47.989624
-          },
-          "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-223.71259, 12.277637, 47.989624],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2005065,
-          "Position": {
-            "X": -225.26898,
-            "Y": 13.137939,
-            "Z": 56.90088
-          },
-          "TerritoryId": 153,
+          "Position": [-225.26898, 13.137939, 56.90088],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -87,46 +65,33 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1010985,
-          "Position": {
-            "X": -223.71259,
-            "Y": 12.277637,
-            "Z": 47.989624
-          },
-          "TerritoryId": 153,
+          "Position": [-223.71259, 12.277637, 47.989624],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1010986,
-          "Position": {
-            "X": 122.941895,
-            "Y": 24.534142,
-            "Z": 169.72607
-          },
-          "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [122.941895, 24.534142, 169.72607],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2005066,
-          "Position": {
-            "X": 109.666504,
-            "Y": 24.15503,
-            "Z": 174.7616
-          },
-          "TerritoryId": 153,
+          "Position": [109.666504, 24.15503, 174.7616],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -138,46 +103,33 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1010986,
-          "Position": {
-            "X": 122.941895,
-            "Y": 24.534142,
-            "Z": 169.72607
-          },
-          "TerritoryId": 153,
+          "Position": [122.941895, 24.534142, 169.72607],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1010987,
-          "Position": {
-            "X": -355.2453,
-            "Y": 0.6691612,
-            "Z": 459.3728
-          },
-          "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-355.2453, 0.6691612, 459.3728],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 10,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2005067,
-          "Position": {
-            "X": -338.42987,
-            "Y": -0.07635498,
-            "Z": 453.4828
-          },
-          "TerritoryId": 153,
+          "Position": [-338.42987, -0.07635498, 453.4828],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -188,32 +140,23 @@
     },
     {
       "Sequence": 11,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1010987,
-          "Position": {
-            "X": -355.2453,
-            "Y": 0.6691612,
-            "Z": 459.3728
-          },
-          "TerritoryId": 153,
+          "Position": [-355.2453, 0.6691612, 459.3728],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1010984,
-          "Position": {
-            "X": -207.44641,
-            "Y": 20.86788,
-            "Z": 360.06702
-          },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-207.44641, 20.86788, 360.06702],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

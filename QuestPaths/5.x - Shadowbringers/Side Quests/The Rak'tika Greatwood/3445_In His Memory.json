@@ -1,134 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -310.43918,
-            "Y": 7.1430855,
-            "Z": 705.8183
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -301.534,
-                  "Y": 8.68231,
-                  "Z": 711.299
-                },
-                "TerritoryId": 817,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1029024,
-          "Position": {
-            "X": -301.534,
-            "Y": 8.68231,
-            "Z": 711.299
-          },
-          "TerritoryId": 817,
+          "Position": [-301.534, 8.68231, 711.299],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -310.43918,
-            "Y": 7.1430855,
-            "Z": 705.8183
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -310.43918,
-                  "Y": 7.1430855,
-                  "Z": 705.8183
-                },
-                "TerritoryId": 817,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1029878,
-          "Position": {
-            "X": -295.12476,
-            "Y": 7.516978,
-            "Z": 591.82104
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-295.12476, 7.516978, 591.82104],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -444.81573,
-            "Y": 2.4261475,
-            "Z": 530.2357
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
+          "Position": [-444.81573, 2.4261475, 530.2357],
           "Mount": false,
-          "Sprint": false
-        },
-        {
-          "Position": {
-            "X": -444.81573,
-            "Y": 2.4261475,
-            "Z": 530.2357
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11114,
             11115
-          ],
-          "Mount": false,
-          "Sprint": false
+          ]
         },
         {
           "DataId": 2009794,
-          "Position": {
-            "X": -444.81573,
-            "Y": 2.4261475,
-            "Z": 530.2357
-          },
-          "TerritoryId": 817,
+          "Position": [-444.81573, 2.4261475, 530.2357],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 2
         },
         {
           "DataId": 2009794,
-          "Position": {
-            "X": -444.81573,
-            "Y": 2.4261475,
-            "Z": 530.2357
-          },
-          "TerritoryId": 817,
+          "Position": [-444.81573, 2.4261475, 530.2357],
           "InteractionType": "Interact",
           "Comment": "Find the abandoned blade"
         }
@@ -136,15 +55,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029879,
-          "Position": {
-            "X": -445.465,
-            "Y": 2.46754,
-            "Z": 531.341
-          },
-          "TerritoryId": 817,
+          "Position": [-445.465, 2.46754, 531.341],
           "InteractionType": "Interact",
           "Comment": "Speak with Varthon"
         }
@@ -152,38 +67,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -310.43918,
-            "Y": 7.1430855,
-            "Z": 705.8183
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -301.534,
-                  "Y": 8.68231,
-                  "Z": 711.299
-                },
-                "TerritoryId": 817,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1029024,
-          "Position": {
-            "X": -301.534,
-            "Y": 8.68231,
-            "Z": 711.299
-          },
-          "TerritoryId": 817,
+          "Position": [-301.534, 8.68231, 711.299],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,16 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "InteractionType": "EquipItem",
           "ItemId": 2055,
-          "TerritoryId": 130,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -21,45 +21,29 @@
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 130,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 130,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 130,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1001708,
-          "Position": {
-              "X": -250.3548,
-              "Y": 18,
-              "Z": 80.88806
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "Position": [-250.3548, 18, 80.88806],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -71.92632,
-            "Y": 9.839797,
-            "Z": 283.98495
-          },
-          "TerritoryId": 141,
+          "Position": [-71.92632, 9.839797, 283.98495],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -82,30 +66,13 @@
               ]
             }
           ],
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                141
-              ]
-            }
-          },
           "CompletionQuestVariablesFlags": [
             {"Low": 3}, {"High": 3},
           null,null,null,null
           ]
         },
         {
-          "Position": {
-              "X": 39.449,
-              "Y": 3.082914,
-              "Z": 272.46896
-          },
-          "TerritoryId": 141,
+          "Position": [39.449, 3.082914, 272.46896],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -125,20 +92,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001708,
-          "Position": {
-              "X": -250.3548,
-              "Y": 18,
-              "Z": 80.88806
-          },
-          "TerritoryId": 130,
+          "Position": [-250.3548, 18, 80.88806],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "NextQuestId": 351
         }
       ]

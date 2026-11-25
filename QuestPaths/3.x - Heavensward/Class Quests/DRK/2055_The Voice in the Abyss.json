@@ -1,24 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014890,
-          "Position": {
-            "X": 6.9122925,
-            "Y": -1.9210143,
-            "Z": 47.287598
-          },
-          "TerritoryId": 418,
+          "Position": [6.9122925, -1.9210143, 47.287598],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -31,82 +23,44 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1014891,
-          "Position": {
-            "X": -173.17468,
-            "Y": 27.899424,
-            "Z": -397.69592
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "Position": [-173.17468, 27.899424, -397.69592],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006215,
-          "Position": {
-            "X": -227.34424,
-            "Y": 26.16842,
-            "Z": -352.98694
-          },
-          "TerritoryId": 146,
+          "Position": [-227.34424, 26.16842, -352.98694],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -258.55716,
-            "Y": 26.612217,
-            "Z": -320.62222
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -257.8064,
-            "Y": 14.002786,
-            "Z": -105.36169
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1014892,
-          "Position": {
-            "X": -415.03015,
-            "Y": 3.695741,
-            "Z": -42.343872
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-415.03015, 3.695741, -42.343872],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2006291,
-          "Position": {
-            "X": -389.12036,
-            "Y": 3.4332886,
-            "Z": -57.572388
-          },
-          "TerritoryId": 146,
+          "Position": [-389.12036, 3.4332886, -57.572388],
           "InteractionType": "UseItem",
           "ItemId": 2001812
         }
@@ -114,15 +68,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2006293,
-          "Position": {
-            "X": -384.9088,
-            "Y": 6.088318,
-            "Z": -45.212524
-          },
-          "TerritoryId": 146,
+          "Position": [-384.9088, 6.088318, -45.212524],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [4693]
@@ -131,57 +81,33 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1014892,
-          "Position": {
-            "X": -415.03015,
-            "Y": 3.695741,
-            "Z": -42.343872
-          },
-          "TerritoryId": 146,
+          "Position": [-415.03015, 3.695741, -42.343872],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -257.8064,
-            "Y": 14.002786,
-            "Z": -105.36169
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1014893,
-          "Position": {
-            "X": -215.7168,
-            "Y": 16.844267,
-            "Z": -270.6493
-          },
-          "StopDistance": 1,
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-215.7168, 16.844267, -270.6493],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1014893,
-          "Position": {
-            "X": -215.7168,
-            "Y": 16.844267,
-            "Z": -270.6493
-          },
-          "TerritoryId": 146,
+          "Position": [-215.7168, 16.844267, -270.6493],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2056
         }

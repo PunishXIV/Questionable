@@ -1,35 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006552,
-          "Position": {
-            "X": 54.795166,
-            "Y": 25.548265,
-            "Z": -698.05444
-          },
-          "StopDistance": 5,
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "IgnoreDistanceToObject": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": -429.60284,
-            "Y": -15.201682,
-            "Z": -477.29346
-          },
-          "TerritoryId": 156,
+          "Position": [-429.60284, -15.201682, -477.29346],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -69,48 +52,29 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006552,
-          "Position": {
-            "X": 54.795166,
-            "Y": 25.548265,
-            "Z": -698.05444
-          },
-          "TerritoryId": 156,
+          "Position": [54.795166, 25.548265, -698.05444],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006988,
-          "Position": {
-            "X": 41.33667,
-            "Y": 28.999998,
-            "Z": -795.4681
-          },
-          "TerritoryId": 156,
+          "Position": [41.33667, 28.999998, -795.4681],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006552,
-          "Position": {
-            "X": 54.795166,
-            "Y": 25.548265,
-            "Z": -698.05444
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,20 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1044547,
-          "Position": {
-            "X": -241.68768,
-            "Y": 51.058994,
-            "Z": 620.8744
-          },
-          "TerritoryId": 816,
+          "Position": [-241.68768, 51.058994, 620.8744],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -27,50 +22,34 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1044560,
-          "Position": {
-            "X": -241.68768,
-            "Y": 51.058994,
-            "Z": 620.8744
-          },
-          "TerritoryId": 816,
+          "Position": [-241.68768, 51.058994, 620.8744],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 2013247,
-          "Position": {
-            "X": 428.15283,
-            "Y": 3.2196045,
-            "Z": 23.483582
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "Position": [428.15283, 3.2196045, 23.483582],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1044560,
-          "Position": {
-            "X": -241.68768,
-            "Y": 51.058994,
-            "Z": 620.8744
-          },
-          "TerritoryId": 816,
+          "Position": [-241.68768, 51.058994, 620.8744],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "NextQuestId": 4717
         }
       ]

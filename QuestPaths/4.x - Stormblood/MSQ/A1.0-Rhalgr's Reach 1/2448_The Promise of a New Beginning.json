@@ -1,49 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020329,
-          "Position": {
-            "X": -32.974792,
-            "Y": 18.045086,
-            "Z": 129.41174
-          },
-          "TerritoryId": 635,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
-          "TerritoryId": 635,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Rhalgr's Reach] Western Rhalgr's Reach"
         },
         {
-          "TerritoryId": 635,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Rhalgr's Reach"
         },
         {
-          "TerritoryId": 635,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
         },
         {
           "DataId": 1019466,
-          "Position": {
-            "X": 170.91626,
-            "Y": 13.02367,
-            "Z": -91.38635
-          },
-          "TerritoryId": 635,
+          "Position": [170.91626, 13.02367, -91.38635],
           "InteractionType": "CompleteQuest"
         }
       ]

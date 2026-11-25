@@ -1,154 +1,84 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009153,
-          "Position": {
-            "X": -39.108948,
-            "Y": 20,
-            "Z": 5.416931
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000100,
-          "Position": {
-            "X": 25.872286,
-            "Y": -8.000001,
-            "Z": 115.7687
-          },
-          "StopDistance": 1,
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "Position": [25.872286, -8.000001, 115.7687],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 2004266,
-          "Position": {
-            "X": 103.715576,
-            "Y": 1.2664795,
-            "Z": 46.92151
-          },
-          "TerritoryId": 132,
+          "Position": [103.715576, 1.2664795, 46.92151],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2004267,
-          "Position": {
-            "X": -67.216064,
-            "Y": -3.4332886,
-            "Z": 35.26355
-          },
-          "TerritoryId": 132,
+          "Position": [-67.216064, -3.4332886, 35.26355],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
           "DataId": 2004269,
-          "Position": {
-            "X": -141.2528,
-            "Y": 7.827881,
-            "Z": -190.53949
-          },
+          "Position": [-141.2528, 7.827881, -190.53949],
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2004268,
-          "Position": {
-            "X": 123.91846,
-            "Y": 14.145081,
-            "Z": -275.83734
-          },
+          "Position": [123.91846, 14.145081, -275.83734],
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Lancers' Guild"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000100,
-          "Position": {
-            "X": 25.872286,
-            "Y": -8.000001,
-            "Z": 115.7687
-          },
-          "StopDistance": 1,
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Airship Landing"
-          ]
+          "Position": [25.872286, -8.000001, 115.7687],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2004270,
-          "Position": {
-            "X": 7.1869507,
-            "Y": 4.7455444,
-            "Z": -262.98932
-          },
-          "StopDistance": 1,
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ],
-          "Fly": true
+          "Position": [7.1869507, 4.7455444, -262.98932],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000100,
-          "Position": {
-            "X": 25.872286,
-            "Y": -8.000001,
-            "Z": 115.7687
-          },
-          "StopDistance": 1,
-          "TerritoryId": 132,
+          "Position": [25.872286, -8.000001, 115.7687],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1484
         }

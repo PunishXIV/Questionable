@@ -1,21 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "xan",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010601,
-          "Position": {
-            "X": -14.755493,
-            "Y": 41.39178,
-            "Z": 258.13684
-          },
-          "TerritoryId": 137,
+          "Position": [-14.755493, 41.39178, 258.13684],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -25,52 +20,30 @@
         },
         {
           "DataId": 1010778,
-          "Position": {
-            "X": -28.854858,
-            "Y": -24.773243,
-            "Z": 265.3086
-          },
-          "TerritoryId": 137,
+          "Position": [-28.854858, -24.773243, 265.3086],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023555,
-          "Position": {
-            "X": 116.349976,
-            "Y": 11.993538,
-            "Z": -40.45172
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "Position": [116.349976, 11.993538, -40.45172],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "Position": {
-            "X": -22.793612,
-            "Y": 2.2649765e-6,
-            "Z": -60.22008
-          },
-          "TerritoryId": 628,
+          "Position": [-22.793612, 2.2649765e-6, -60.22008],
           "InteractionType": "Action",
           "Action": "Hide",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Aetheryte Plaza"
-          ],
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -78,215 +51,92 @@
           }
         },
         {
-          "Position": {
-            "X": -48.46083,
-            "Y": 3.0135038,
-            "Z": -71.72753
-          },
-          "TerritoryId": 628,
+          "Position": [-48.46083, 3.0135038, -71.72753],
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
-          "TerritoryId": 628,
           "InteractionType": "StatusOff",
           "Status": "Hidden"
         },
         {
-          "Position": {
-            "X": -53.864307,
-            "Y": -2.1307263,
-            "Z": -106.929726
-          },
-          "TerritoryId": 628,
+          "Position": [-53.864307, -2.1307263, -106.929726],
           "InteractionType": "Action",
           "Action": "Hide"
         },
         {
-          "Position": {
-            "X": -82.41595,
-            "Y": -7.300003,
-            "Z": -111.459076
-          },
-          "TerritoryId": 628,
+          "Position": [-82.41595, -7.300003, -111.459076],
           "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "TerritoryId": 628,
           "InteractionType": "StatusOff",
           "Status": "Hidden"
         },
         {
           "DataId": 1023555,
-          "Position": {
-            "X": 116.349976,
-            "Y": 11.993538,
-            "Z": -40.45172
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "Position": [116.349976, 11.993538, -40.45172],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "JumpDestination": {
-            "Position": {
-              "X": -70.46664,
-              "Y": 19.583387,
-              "Z": -163.98515
-            }
-          },
-          "Position": {
-            "X": -75.76606,
-            "Y": 18,
-            "Z": -164.78288
-          },
-          "InteractionType": "Jump",
-          "TerritoryId": 628,
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Bokairo Inn"
-          ]
-        },
-        {
-          "JumpDestination": {
-            "Position": {
-              "X": -67.09049,
-              "Y": 20.600859,
-              "Z": -163.70255
-            }
-          },
-          "Position": {
-            "X": -70.54904,
-            "Y": 19.550425,
-            "Z": -163.96664
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Jump"
-        },
-        {
-          "JumpDestination": {
-            "Position": {
-              "X": -67.90176,
-              "Y": 24.143099,
-              "Z": -159.9363
-            }
-          },
-          "Position": {
-            "X": -68.15528,
-            "Y": 20.696194,
-            "Z": -163.4804
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Jump"
-        },
-        {
-          "Position": {
-            "X": -39.38211,
-            "Y": 20.545578,
-            "Z": -156.03827
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 2008933,
-          "Position": {
-            "X": -40.05493,
-            "Y": 18.783813,
-            "Z": -143.3891
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "Position": [-40.05493, 18.783813, -143.3891],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "Position": {
-            "X": -55.23437,
-            "Y": 5.9548235,
-            "Z": -144.91388
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 2008934,
-          "Position": {
-            "X": -117.5708,
-            "Y": 13.412659,
-            "Z": -134.35571
-          },
-          "TerritoryId": 628,
+          "Position": [-117.5708, 13.412659, -134.35571],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 2008935,
-          "Position": {
-            "X": -118.18121,
-            "Y": 13.199036,
-            "Z": -143.14496
-          },
-          "TerritoryId": 628,
+          "Position": [-118.18121, 13.199036, -143.14496],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 2008936,
-          "Position": {
-            "X": -107.49988,
-            "Y": 19.241516,
-            "Z": -201.31226
-          },
-          "TerritoryId": 628,
+          "Position": [-107.49988, 19.241516, -201.31226],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 2008937,
-          "Position": {
-            "X": 116.80774,
-            "Y": 11.9782715,
-            "Z": -38.345947
-          },
-          "TerritoryId": 628,
+          "Position": [116.80774, 11.9782715, -38.345947],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] Bokairo Inn",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "NextQuestId": 2950
         }
       ]

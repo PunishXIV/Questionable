@@ -1,12 +1,10 @@
-﻿using System.Diagnostics;
-
-namespace Questionable.Utils;
+﻿namespace Questionable.Utils;
 
 internal class CacheUtils
 {
     public struct CachedValue<T>(double ttlSeconds)
     {
-        private T _value;
+        private T _value = default!;
         private long _timestamp;
         private readonly long _ttl = (long)(Stopwatch.Frequency * ttlSeconds);
 

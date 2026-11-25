@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003817,
-          "Position": {
-            "X": -74.57086,
-            "Y": 1.9999951,
-            "Z": -42.404846
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": 265.54178,
-            "Y": -19.718353,
-            "Z": -128.44438
-          },
-          "TerritoryId": 141,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Position": [265.54178, -19.718353, -128.44438],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "CombatDelaySecondsAtStart": 0,
@@ -40,139 +23,85 @@
               "RewardItemId": 2000408,
               "RewardItemCount": 5
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": 359.2259,
-            "Y": -1.9503738,
-            "Z": -187.50148
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1003822,
-          "Position": {
-            "X": -27.390015,
-            "Y": -2.056931,
-            "Z": -146.92914
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "Position": [-27.390015, -2.056931, -146.92914],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1001578,
-          "Position": {
-            "X": -35.446716,
-            "Y": -2.057618,
-            "Z": -154.95538
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Mount": true
+          "Position": [-35.446716, -2.057618, -154.95538],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1001445,
-          "Position": {
-            "X": -13.046509,
-            "Y": -2.0905762,
-            "Z": -184.40533
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-13.046509, -2.0905762, -184.40533],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1004148,
-          "Position": {
-            "X": 5.722107,
-            "Y": -1.985179,
-            "Z": -172.7779
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [5.722107, -1.985179, -172.7779],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1003822,
-          "Position": {
-            "X": -27.390015,
-            "Y": -2.056931,
-            "Z": -146.92914
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-27.390015, -2.056931, -146.92914],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2001349,
-          "Position": {
-            "X": -241.41296,
-            "Y": 8.0720215,
-            "Z": -32.24237
-          },
-          "TerritoryId": 141,
+          "Position": [-241.41296, 8.0720215, -32.24237],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
-          },
-          "Fly": true
+            "Enabled": true
+          }
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1004149,
-          "Position": {
-            "X": -242.84735,
-            "Y": 7.405224,
-            "Z": -29.312622
-          },
-          "StopDistance": 6,
-          "TerritoryId": 141,
+          "Position": [-242.84735, 7.405224, -29.312622],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1003827,
-          "Position": {
-            "X": -65.65961,
-            "Y": 0.9481947,
-            "Z": -51.98755
-          },
-          "TerritoryId": 130,
-          "AetheryteShortcut": "Ul'dah",
+          "Position": [-65.65961, 0.9481947, -51.98755],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 562
         }

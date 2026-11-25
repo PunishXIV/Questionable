@@ -1,51 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038411,
-          "Position": {
-            "X": -69.41333,
-            "Y": -0.5033642,
-            "Z": 5.0201416
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
-          "Position": {
-            "X": -104.6922,
-            "Y": 1.2393801,
-            "Z": 8.405229
-          },
-          "TerritoryId": 132,
-          "TargetTerritoryId": 133,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1038436,
-          "Position": {
-            "X": -236.68274,
-            "Y": -4,
-            "Z": 1.6326294
-          },
+          "Position": [-236.68274, -4, 1.6326294],
           "TerritoryId": 133,
           "InteractionType": "Interact"
         }
@@ -53,85 +21,60 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1038437,
-          "Position": {
-            "X": -305.5924,
-            "Y": 13.1841545,
-            "Z": -49.94281
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Position": [-305.5924, 13.1841545, -49.94281],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1038439,
-          "Position": {
-            "X": -220.78284,
-            "Y": 29.984009,
-            "Z": 64.286255
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-220.78284, 29.984009, 64.286255],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2011736,
-          "Position": {
-            "X": -116.92993,
-            "Y": -3.3417358,
-            "Z": 190.14258
-          },
-          "TerritoryId": 152,
+          "Position": [-116.92993, -3.3417358, 190.14258],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14012
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1038440,
-          "Position": {
-            "X": -122.08746,
-            "Y": -3.6656997,
-            "Z": 185.25977
-          },
-          "TerritoryId": 152,
+          "Position": [-122.08746, -3.6656997, 185.25977],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1038411,
-          "Position": {
-            "X": -69.41333,
-            "Y": -0.5033642,
-            "Z": 5.0201416
-          },
-          "TerritoryId": 132,
+          "Position": [-69.41333, -0.5033642, 5.0201416],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "NextQuestId": 4106
         }
       ]

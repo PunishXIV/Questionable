@@ -1,58 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012083,
-          "Position": {
-            "X": 355.8556,
-            "Y": -74.53787,
-            "Z": 639.6123
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1012081,
-          "Position": {
-            "X": 364.09546,
-            "Y": -73.26239,
-            "Z": 678.004
-          },
-          "TerritoryId": 400,
+          "Position": [364.09546, -73.26239, 678.004],
           "InteractionType": "Interact",
           "$": "0 0 0 0 0 0 -> 16 16 0 0 0 32",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1015174,
-          "Position": {
-            "X": 360.58594,
-            "Y": -72.66654,
-            "Z": 706.2333
-          },
-          "TerritoryId": 400,
+          "Position": [360.58594, -72.66654, 706.2333],
           "InteractionType": "Interact",
           "$": "16 16 0 0 0 32 -> 32 17 0 0 0 160",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1012079,
-          "Position": {
-            "X": 406.75964,
-            "Y": -73.595436,
-            "Z": 702.57104
-          },
-          "TerritoryId": 400,
+          "Position": [406.75964, -73.595436, 702.57104],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -60,83 +35,40 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1012083,
-          "Position": {
-            "X": 355.8556,
-            "Y": -74.53787,
-            "Z": 639.6123
-          },
-          "TerritoryId": 400,
+          "Position": [355.8556, -74.53787, 639.6123],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 2006216,
-          "Position": {
-            "X": 421.1642,
-            "Y": -43.05859,
-            "Z": 661.7684
-          },
-          "TerritoryId": 400,
+          "Position": [421.1642, -43.05859, 661.7684],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818099
         },
         {
-          "Position": {
-            "X": 327.68222,
-            "Y": 2.3181255,
-            "Z": 602.9682
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2005456,
-          "Position": {
-            "X": 261.24963,
-            "Y": 12.436096,
-            "Z": 622.06445
-          },
-          "TerritoryId": 400,
+          "Position": [261.24963, 12.436096, 622.06445],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 343.68805,
-            "Y": 16.317823,
-            "Z": 686.95074
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": 367.56647,
-              "Y": -73.91838,
-              "Z": 661.2286
-            }
-          }
-        },
-        {
           "DataId": 1012083,
-          "Position": {
-            "X": 355.8556,
-            "Y": -74.53787,
-            "Z": 639.6123
-          },
-          "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true
+          "Position": [355.8556, -74.53787, 639.6123],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

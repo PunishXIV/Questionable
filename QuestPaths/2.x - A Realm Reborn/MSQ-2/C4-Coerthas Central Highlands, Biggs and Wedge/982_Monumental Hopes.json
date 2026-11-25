@@ -1,122 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006520,
-          "Position": {
-            "X": -699.51935,
-            "Y": 242.184,
-            "Z": 373.495
-          },
-          "StopDistance": 7,
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006521,
-          "Position": {
-            "X": -697.04736,
-            "Y": 242.18399,
-            "Z": 380.63623
-          },
-          "TerritoryId": 155,
+          "Position": [-697.04736, 242.18399, 380.63623],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -692.2779,
-            "Y": 242.18399,
-            "Z": 366.4715
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)"
-        },
-        {
-          "Position": {
-            "X": -688.1699,
-            "Y": 241.99994,
-            "Z": 355.80283
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 2002265,
-          "Position": {
-            "X": -693.01904,
-            "Y": 253.86426,
-            "Z": 506.98096
-          },
-          "TerritoryId": 155,
+          "Position": [-693.01904, 253.86426, 506.98096],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": -690.43774,
-            "Y": 261.3325,
-            "Z": 433.44107
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Comment": "Enemies lose aggro around here",
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": -688.1699,
-            "Y": 241.99994,
-            "Z": 355.80283
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -692.2779,
-            "Y": 242.18399,
-            "Z": 366.4715
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)",
-          "DisableNavmesh": true
-        },
-        {
-          "DataId": 1006520,
-          "Position": {
-            "X": -699.51935,
-            "Y": 242.184,
-            "Z": 373.495
-          },
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

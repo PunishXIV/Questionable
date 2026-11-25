@@ -1,39 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000640,
-          "Position": {
-            "X": 320.543,
-            "Y": -5.8932,
-            "Z": -79.8655
-          },
-          "TerritoryId": 154,
+          "Position": [320.543, -5.8932, -79.8655],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1000640 (Eadbert)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2000008,
-          "Position": {
-            "X": 400,
-            "Y": -4.95893,
-            "Z": 79.5273
-          },
-          "TerritoryId": 154,
+          "Position": [400, -4.95893, 79.5273],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             113
@@ -44,19 +33,13 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000640,
-          "Position": {
-            "X": 320.543,
-            "Y": -5.8932,
-            "Z": -79.8655
-          },
-          "TerritoryId": 154,
+          "Position": [320.543, -5.8932, -79.8655],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 99,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1000640 (Eadbert)"
         }
       ]

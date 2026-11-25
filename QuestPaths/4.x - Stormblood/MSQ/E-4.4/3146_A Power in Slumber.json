@@ -1,36 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 759,
       "Steps": [
         {
-          "DataId": 1024974,
-          "Position": {
-            "X": -10.330383,
-            "Y": 0.19997318,
-            "Z": 12.893799
-          },
-          "TerritoryId": 759,
-          "InteractionType": "Interact",
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "Prompt": "TEXT_STMBDE104_03146_EVENTAREA_WARP_100_004",
-              "Yes": true
-            }
-          ],
-          "TargetTerritoryId": 744
-        },
-        {
           "DataId": 1025597,
-          "Position": {
-            "X": 0.19836426,
-            "Y": 0.021091362,
-            "Z": -3.0060425
-          },
+          "Position": [0.19836426, 0.021091362, -3.0060425],
           "TerritoryId": 744,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -45,50 +24,34 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1026280,
-          "Position": {
-            "X": 561.4862,
-            "Y": -19.50564,
-            "Z": 409.17065
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "Position": [561.4862, -19.50564, 409.17065],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1026281,
-          "Position": {
-            "X": 561.7302,
-            "Y": -19.30375,
-            "Z": 271.99194
-          },
-          "StopDistance": 6,
-          "TerritoryId": 622,
+          "Position": [561.7302, -19.30375, 271.99194],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1020539,
-          "Position": {
-            "X": 498.2832,
-            "Y": 40.836098,
-            "Z": -508.20172
-          },
-          "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [498.2832, 40.836098, -508.20172],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

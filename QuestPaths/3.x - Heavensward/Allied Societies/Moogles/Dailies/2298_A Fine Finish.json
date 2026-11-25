@@ -1,47 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1017171,
-          "Position": {
-            "X": -335.56116,
-            "Y": 59.003433,
-            "Z": 313.98486
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017377,
-          "Position": {
-            "X": 559.9907,
-            "Y": -1.071418,
-            "Z": -372.42694
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "Position": [559.9907, -1.071418, -372.42694],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "TerritoryId": 400,
           "InteractionType": "Craft",
           "ItemId": 15731,
           "ItemCount": 1,
@@ -55,32 +36,14 @@
         },
         {
           "DataId": 1017378,
-          "Position": {
-            "X": 555.84033,
-            "Y": -1.1545231,
-            "Z": -386.28217
-          },
-          "TerritoryId": 400,
+          "Position": [555.84033, -1.1545231, -386.28217],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1017171,
-          "Position": {
-            "X": -335.56116,
-            "Y": 59.003433,
-            "Z": 313.98486
-          },
-          "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

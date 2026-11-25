@@ -1,106 +1,58 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Comment": "Becomes available after acquiring the Blue Mage action Mind Blast from last boss in Tam Tara Deepcroft",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026852,
-          "Position": {
-            "X": 63.126587,
-            "Y": 14.005002,
-            "Z": 89.86035
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1026941,
-          "Position": {
-            "X": 105.02783,
-            "Y": 4.0333576,
-            "Z": 451.0719
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Gate of Thal (Central Thanalan)"
-          ],
-          "Fly": true
+          "Position": [105.02783, 4.0333576, 451.0719],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2009671,
-          "Position": {
-            "X": 145.52527,
-            "Y": 9.567322,
-            "Z": 391.10388
-          },
-          "TerritoryId": 141,
+          "Position": [145.52527, 9.567322, 391.10388],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             9837
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1026941,
-          "Position": {
-            "X": 105.02783,
-            "Y": 4.0333576,
-            "Z": 451.0719
-          },
-          "TerritoryId": 141,
+          "Position": [105.02783, 4.0333576, 451.0719],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1026852,
-          "Position": {
-            "X": 63.126587,
-            "Y": 14.005002,
-            "Z": 89.86035
-          },
-          "TerritoryId": 131,
+          "Position": [63.126587, 14.005002, 89.86035],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "NextQuestId": 3196
         }
       ]

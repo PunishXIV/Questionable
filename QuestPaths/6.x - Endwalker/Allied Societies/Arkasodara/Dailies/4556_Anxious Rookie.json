@@ -1,39 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042368,
-          "Position": {
-            "X": -485.771,
-            "Y": 39.62969,
-            "Z": 114.213745
-          },
-          "TerritoryId": 957,
+          "Position": [-485.771, 39.62969, 114.213745],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -47,14 +28,8 @@
         },
         {
           "DataId": 1042369,
-          "Position": {
-            "X": -561.2726,
-            "Y": 11.802609,
-            "Z": 128.95398
-          },
-          "TerritoryId": 957,
+          "Position": [-561.2726, 11.802609, 128.95398],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -68,12 +43,7 @@
         },
         {
           "DataId": 1042370,
-          "Position": {
-            "X": -506.37067,
-            "Y": 5.1961365,
-            "Z": 63.401123
-          },
-          "TerritoryId": 957,
+          "Position": [-506.37067, 5.1961365, 63.401123],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -90,19 +60,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

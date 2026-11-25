@@ -1,50 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["JerryWester", "Oblituarius"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019517,
-          "Position": {
-            "X": -653.0099,
-            "Y": 129.91537,
-            "Z": -510.67374
-          },
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019523,
-          "Position": {
-            "X": -623.74304,
-            "Y": 130,
-            "Z": -483.7873
-          },
-          "TerritoryId": 612,
+          "Position": [-623.74304, 130, -483.7873],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -449.52835,
-            "Y": 105.07213,
-            "Z": -401.3476
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 612,
+          "Position": [-449.52835, 105.07213, -401.3476],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -55,15 +34,10 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -232.26196,
-            "Y": 64.93323,
-            "Z": -676.26465
-          },
-          "StopDistance": 2,
-          "TerritoryId": 612,
+          "Position": [-232.26196, 64.93323, -676.26465],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -74,20 +48,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1019517,
-          "Position": {
-            "X": -653.0099,
-            "Y": 129.91537,
-            "Z": -510.67374
-          },
-          "TerritoryId": 612,
-          "Mount": false,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

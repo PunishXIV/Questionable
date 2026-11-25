@@ -1,72 +1,38 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001541,
-          "Position": {
-            "X": -99.4126,
-            "Y": -11.39856,
-            "Z": -41.73346
-          },
-          "TerritoryId": 141,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "TerritoryId": 141,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Central Thanalan - Black Brush Station"
         },
         {
-          "TerritoryId": 141,
           "InteractionType": "RegisterFreeOrFavoredAetheryte",
           "Aetheryte": "Central Thanalan - Black Brush Station"
         },
         {
           "DataId": 1001447,
-          "Position": {
-            "X": -32.6391,
-            "Y": -1.0332576,
-            "Z": -148.51611
-          },
-          "TerritoryId": 141,
+          "Position": [-32.6391, -1.0332576, -148.51611],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -12.223117,
-            "Y": -2.0482793,
-            "Z": -145.75566
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "TerritoryId": 141,
-          "InteractionType": "EquipRecommended"
-        },
-        {
           "DataId": 1001564,
-          "Position": {
-            "X": -9.689575,
-            "Y": -2.0480804,
-            "Z": -145.09808
-          },
-          "TerritoryId": 141,
+          "Position": [-9.689575, -2.0480804, -145.09808],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -87,12 +53,7 @@
         },
         {
           "DataId": 1001564,
-          "Position": {
-            "X": -9.689575,
-            "Y": -2.0480804,
-            "Z": -145.09808
-          },
-          "TerritoryId": 141,
+          "Position": [-9.689575, -2.0480804, -145.09808],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -105,37 +66,11 @@
           ]
         },
         {
-          "TerritoryId": 141,
-          "InteractionType": "EquipItem",
-          "ItemId": 2653,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 141,
-          "InteractionType": "EquipItem",
-          "ItemId": 2655,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
+          "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 1001447,
-          "Position": {
-            "X": -32.6391,
-            "Y": -1.0332576,
-            "Z": -148.51611
-          },
-          "TerritoryId": 141,
+          "Position": [-32.6391, -1.0332576, -148.51611],
           "InteractionType": "CompleteQuest"
         }
       ]

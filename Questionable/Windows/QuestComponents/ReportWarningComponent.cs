@@ -1,38 +1,26 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
 [RegisterSingleton]
-internal sealed class ReportWarningComponent(Configuration configuration)
+internal sealed class ReportWarningComponent(Configuration configuration, IDalamudPluginInterface pluginInterface)
 {
-    private readonly Configuration _configuration = configuration;
-
-    public void Draw() => DrawReportWarning();
-
-    private void DrawReportWarning()
+    public void Draw()
     {
-        ImGui.TextColored(QstTheme.Danger, "Future message");
-        ImGui.TextWrapped("As of version xxxx, QST includes a feature where you can click the " +
-                          "! button next to the quest progress buttons to report an issue with the current quest. " +
-                          "This message is to notify you that if you choose to make use of this new feature and submit a " +
-                          "bug report, QST will automatically capture and upload the following information:");
-        ImGui.BulletText("List of all enabled plugins and their version numbers");
-        ImGui.BulletText("The last ten actions taken by QST");
-        ImGui.BulletText("The quest/sequence/step you are on when clicking the button");
-        ImGui.BulletText("Your list of priority quests");
-        ImGui.BulletText("A short configurable message from Settings, if set");
-        ImGui.TextWrapped("This feature will never send any information to the bug report service unless you click " +
-                          "the ! button highlighted in red below. If you would like to opt out of seeing this button, click the " +
-                          "orange \"Opt Out\" button below. Otherwise, click the green \"Dismiss\" button to hide this warning.");
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Opt Out", QstTheme.Accent))
-        {
-            _configuration.General.DismissedReportWarning = true;
-            _configuration.General.ReportsDisabled = true;
-        }
+        ImGui.TextColored(QstTheme.Accent, _L("Help fix quest paths?"));
+        ImGui.TextWrapped(_L("Questionable can send a short report after each quest it runs: whether the path worked, or where and why it stopped. Everyone then sees how often each quest's path works."));
+        ImGui.TextWrapped(_L("A report has the quest, the step, what went wrong, the versions of Questionable, its path data and the plugins it uses, and its last ten actions. It never has your character's name, your account or your IP address. Reports are kept for 180 days."));
 
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Yes, share"), QstTheme.SuccessButton))
+            Answer(true);
         ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Dismiss", QstTheme.Success))
-            _configuration.General.DismissedReportWarning = true;
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Times, _L("No thanks")))
+            Answer(false);
+        ImGui.SameLine();
+        ImGui.TextColored(QstTheme.TextMuted, _L("You can change this in Settings > Questing."));
+    }
+
+    private void Answer(bool share)
+    {
+        configuration.Reports.Share = share;
+        pluginInterface.SavePluginConfig(configuration);
     }
 }

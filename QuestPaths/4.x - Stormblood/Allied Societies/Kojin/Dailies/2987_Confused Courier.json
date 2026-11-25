@@ -1,103 +1,62 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "Position": [391.94043, -119.58932, -235.04329],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024300,
-          "Position": {
-            "X": 139.60474,
-            "Y": -0.17411774,
-            "Z": -578.1796
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "Position": [139.60474, -0.17411774, -578.1796],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024305,
-          "Position": {
-            "X": 29.895784,
-            "Y": 1.117759,
-            "Z": -531.01373
-          },
-          "TerritoryId": 613,
+          "Position": [29.895784, 1.117759, -531.01373],
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "RequiredQuestVariables": [null, null, [33, 34], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [33, 34], null, null, null]
         },
         {
           "DataId": 1024303,
-          "Position": {
-            "X": 44.44892,
-            "Y": 3.6636732,
-            "Z": -619.0603
-          },
-          "TerritoryId": 613,
+          "Position": [44.44892, 3.6636732, -619.0603],
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "RequiredQuestVariables": [null, null, [17, 35], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [17, 35], null, null, null]
         },
         {
           "DataId": 1024301,
-          "Position": {
-            "X": -11.886841,
-            "Y": 3.194641,
-            "Z": -622.88855
-          },
-          "TerritoryId": 613,
+          "Position": [-11.886841, 3.194641, -622.88855],
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [18, 19], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [18, 19], null, null, null]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "Position": [391.94043, -119.58932, -235.04329],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

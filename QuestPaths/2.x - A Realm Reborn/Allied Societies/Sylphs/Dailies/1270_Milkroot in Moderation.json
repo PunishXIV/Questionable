@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "alydev",
     "Kiarra"
@@ -9,35 +9,17 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005562,
-          "Position": {
-            "X": 36.850464,
-            "Y": -4.8778634,
-            "Z": 249.19507
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "Comment": "3 4 5",
           "DataId": 2003382,
-          "Position": {
-            "X": 58.182617,
-            "Y": 0.93078613,
-            "Z": 245.68542
-          },
-          "TerritoryId": 152,
+          "Position": [58.182617, 0.93078613, 245.68542],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2466
@@ -78,14 +60,8 @@
         {
           "Comment": "3 4 5",
           "DataId": 2003383,
-          "Position": {
-            "X": -47.56244,
-            "Y": -1.8158569,
-            "Z": 334.9203
-          },
-          "TerritoryId": 152,
+          "Position": [-47.56244, -1.8158569, 334.9203],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2466
@@ -126,14 +102,8 @@
         {
           "Comment": "1 2 4",
           "DataId": 2003385,
-          "Position": {
-            "X": 64.37781,
-            "Y": 2.1514893,
-            "Z": 221.271
-          },
-          "TerritoryId": 152,
+          "Position": [64.37781, 2.1514893, 221.271],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2466
@@ -174,14 +144,8 @@
         {
           "Comment": "1",
           "DataId": 2003381,
-          "Position": {
-            "X": 7.4310913,
-            "Y": -2.0599976,
-            "Z": 184.77148
-          },
-          "TerritoryId": 152,
+          "Position": [7.4310913, -2.0599976, 184.77148],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2466
@@ -216,14 +180,8 @@
         {
           "Comment": "2 3",
           "DataId": 2003380,
-          "Position": {
-            "X": 62.69922,
-            "Y": 3.9215698,
-            "Z": 159.01416
-          },
-          "TerritoryId": 152,
+          "Position": [62.69922, 3.9215698, 159.01416],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2466
@@ -261,14 +219,8 @@
         {
           "Comment": "1 2 5",
           "DataId": 2003384,
-          "Position": {
-            "X": -40.32965,
-            "Y": -3.4943848,
-            "Z": 187.24341
-          },
-          "TerritoryId": 152,
+          "Position": [-40.32965, -3.4943848, 187.24341],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2466
@@ -310,20 +262,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005562,
-          "Position": {
-            "X": 36.850464,
-            "Y": -4.8778634,
-            "Z": 249.19507
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

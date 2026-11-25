@@ -1,18 +1,14 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039341,
-          "Position": {
-            "X": 164.72107,
-            "Y": 1.2891341,
-            "Z": 22.140747
-          },
-          "TerritoryId": 962,
+          "Position": [164.72107, 1.2891341, 22.140747],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -26,41 +22,18 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039342,
-          "Position": {
-            "X": 111.65027,
-            "Y": 18.835812,
-            "Z": -175.0058
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Journey's End",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ]
+          "Position": [111.65027, 18.835812, -175.0058],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1039341,
-          "Position": {
-            "X": 164.72107,
-            "Y": 1.2891341,
-            "Z": 22.140747
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Leveilleur Estate",
-            "[Old Sharlayan] Journey's End"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

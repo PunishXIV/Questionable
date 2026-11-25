@@ -1,38 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000421,
-          "Position": {
-            "X": 98.25281,
-            "Y": -8,
-            "Z": -78.446655
-          },
-          "TerritoryId": 148,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "TerritoryId": 148,
-          "InteractionType": "EquipRecommended"
-        },
-        {
           "DataId": 1000396,
-          "Position": {
-            "X": 82.597046,
-            "Y": -7.893894,
-            "Z": -103.349365
-          },
-          "TerritoryId": 148,
+          "Position": [82.597046, -7.893894, -103.349365],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -53,12 +34,7 @@
         },
         {
           "DataId": 1000396,
-          "Position": {
-            "X": 82.597046,
-            "Y": -7.893894,
-            "Z": -103.349365
-          },
-          "TerritoryId": 148,
+          "Position": [82.597046, -7.893894, -103.349365],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -71,37 +47,11 @@
           ]
         },
         {
-          "TerritoryId": 148,
-          "InteractionType": "EquipItem",
-          "ItemId": 2653,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 148,
-          "InteractionType": "EquipItem",
-          "ItemId": 2655,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
+          "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 1000421,
-          "Position": {
-            "X": 98.25281,
-            "Y": -8,
-            "Z": -78.446655
-          },
-          "TerritoryId": 148,
+          "Position": [98.25281, -8, -78.446655],
           "InteractionType": "CompleteQuest",
           "Comment": "All starting gear (except the hat) is ilvl 5 already"
         }

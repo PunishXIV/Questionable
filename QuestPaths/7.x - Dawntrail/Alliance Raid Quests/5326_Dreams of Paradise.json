@@ -1,25 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051949,
-          "Position": {
-            "X": 141.2832,
-            "Y": 42,
-            "Z": -351.9494
-          },
-          "TerritoryId": 1185,
+          "Position": [141.2832, 42, -351.9494],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Brightploom Post"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -32,17 +23,12 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1054347,
-          "Position": {
-            "X": 730.03735,
-            "Y": -133.17451,
-            "Z": 542.2903
-          },
-          "TerritoryId": 1189,
+          "Position": [730.03735, -133.17451, 542.2903],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -55,48 +41,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1054301,
-          "Position": {
-            "X": -502.76953,
-            "Y": -162.12943,
-            "Z": 419.8518
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "Position": [-502.76953, -162.12943, 419.8518],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "DataId": 2014450,
-          "Position": {
-            "X": -528.37415,
-            "Y": -152.20874,
-            "Z": 671.13745
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1265,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                1265
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2014786,
-          "Position": {
-            "X": -2.456726,
-            "Y": 41.97754,
-            "Z": -2.822998
-          },
+          "Position": [-2.456726, 41.97754, -2.822998],
           "TerritoryId": 1265,
           "InteractionType": "Interact"
         }
@@ -104,9 +64,9 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1265,
       "Steps": [
         {
-          "TerritoryId": 1265,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1058,
@@ -117,30 +77,22 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1265,
       "Steps": [
         {
           "DataId": 1054310,
-          "Position": {
-            "X": -5.2339478,
-            "Y": 41.999985,
-            "Z": -5.935791
-          },
-          "TerritoryId": 1265,
+          "Position": [-5.2339478, 41.999985, -5.935791],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1265,
       "Steps": [
         {
           "DataId": 1054313,
-          "Position": {
-            "X": -1.9074707,
-            "Y": 41.99998,
-            "Z": -4.4709473
-          },
-          "TerritoryId": 1265,
+          "Position": [-1.9074707, 41.99998, -4.4709473],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5327
         }

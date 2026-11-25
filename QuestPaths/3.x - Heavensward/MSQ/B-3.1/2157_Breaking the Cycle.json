@@ -1,71 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1015979,
-          "Position": {
-            "X": 112.53516,
-            "Y": 24.391697,
-            "Z": -2.8840332
-          },
-          "StopDistance": 5,
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1015980,
-          "Position": {
-            "X": 632.1659,
-            "Y": -54.909866,
-            "Z": 71.854614
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "Position": [632.1659, -54.909866, 71.854614],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011935,
-          "Position": {
-            "X": -285.63367,
-            "Y": 39.04305,
-            "Z": 53.72693
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "StopDistance": 9,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [-285.63367, 39.04305, 53.72693],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1015983,
-          "Position": {
-            "X": -297.74933,
-            "Y": 39.04307,
-            "Z": 37.064087
-          },
-          "TerritoryId": 398,
+          "Position": [-297.74933, 39.04307, 37.064087],
           "InteractionType": "CompleteQuest"
         }
       ]

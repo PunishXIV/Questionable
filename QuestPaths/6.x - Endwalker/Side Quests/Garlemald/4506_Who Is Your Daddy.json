@@ -1,20 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041776,
-          "Position": {
-            "X": 541.89355,
-            "Y": -36.65,
-            "Z": -132.64673
-          },
-          "StopDistance": 5,
-          "TerritoryId": 958,
+          "Position": [541.89355, -36.65, -132.64673],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -28,15 +23,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041754,
-          "Position": {
-            "X": -340.84082,
-            "Y": 22,
-            "Z": 500.57214
-          },
-          "TerritoryId": 958,
+          "Position": [-340.84082, 22, 500.57214],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -44,89 +35,65 @@
               "Prompt": "TEXT_AKTKZD201_04506_Q2_000_000",
               "Answer": "TEXT_AKTKZD201_04506_A2_000_002"
             }
-          ],
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041778,
-          "Position": {
-            "X": -322.10272,
-            "Y": 10.85,
-            "Z": -576.04333
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-322.10272, 10.85, -576.04333],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 2012746,
-          "Position": {
-            "X": -580.6211,
-            "Y": 10.482849,
-            "Z": -721.18713
-          },
-          "TerritoryId": 958,
+          "Position": [-580.6211, 10.482849, -721.18713],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "other destination is a decoy, can skip"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": -276.31705,
-            "Y": 10.799999,
-            "Z": -592.71124
-          },
-          "TerritoryId": 958,
+          "Position": [-276.31705, 10.799999, -592.71124],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14091
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041782,
-          "Position": {
-            "X": -274.0063,
-            "Y": 10.8,
-            "Z": -590.41736
-          },
-          "TerritoryId": 958,
+          "Position": [-274.0063, 10.8, -590.41736],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041784,
-          "Position": {
-            "X": -342.67188,
-            "Y": 22,
-            "Z": 499.07666
-          },
-          "TerritoryId": 958,
+          "Position": [-342.67188, 22, 499.07666],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {
@@ -134,8 +101,7 @@
               "Prompt": "TEXT_AKTKZD201_04506_Q3_000_000",
               "Answer": "TEXT_AKTKZD201_04506_A3_000_002"
             }
-          ],
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          ]
         }
       ]
     }

@@ -1,7 +1,5 @@
-﻿using Dalamud.Game.Text.SeStringHandling;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Interactions;
@@ -15,7 +13,7 @@ internal static class UnequipItem
             if (step.InteractionType != EInteractionType.UnequipItem)
                 return null;
             if (!step.ItemId.HasValue)
-                throw new ArgumentNullException(nameof(step.ItemId));
+                throw new ArgumentException($"{nameof(step.ItemId)} is missing", nameof(step));
 
             return new Task(step.ItemId.Value);
         }
@@ -26,119 +24,47 @@ internal static class UnequipItem
         public override string ToString() => $"Unequip({ItemId})";
     }
 
-    internal sealed class DoUnequip
+    internal sealed class Executor
     (
         IDataManager dataManager,
-        ILogger<DoUnequip> logger) : TaskExecutor<Task>, IToastAware
+        ILogger<Executor> logger) : EquipmentSlots.GearExecutor<Task>(dataManager)
     {
-        private const int MaxAttempts = 3;
+        protected override uint ItemId => Task.ItemId;
+        protected override string FailureText => "Unable to unequip gear.";
 
-        private static readonly InventoryType[] ArmoryInventoryTypes =
-        [
-            InventoryType.ArmoryMainHand,
-            InventoryType.ArmoryOffHand,
-            InventoryType.ArmoryHead,
-            InventoryType.ArmoryBody,
-            InventoryType.ArmoryHands,
-            InventoryType.ArmoryLegs,
-            InventoryType.ArmoryFeets,
-            InventoryType.ArmoryEar,
-            InventoryType.ArmoryNeck,
-            InventoryType.ArmoryWrist,
-            InventoryType.ArmoryRings,
-        ];
-
-        private int _attempts;
-        private DateTime _continueAt = DateTime.MaxValue;
-        private Item? _item;
-        private List<ushort> _targetSlots = null!;
-
-        public override unsafe ETaskResult Update()
+        protected override void CheckItem(Item item)
         {
-            if (DateTime.Now < _continueAt)
-                return ETaskResult.StillRunning;
-
-            InventoryManager* inventoryManager = InventoryManager.Instance();
-            if (inventoryManager == null)
-                return ETaskResult.StillRunning;
-
-            if (!IsItemEquipped(inventoryManager))
-                return ETaskResult.TaskComplete;
-
-            Unequip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return ETaskResult.StillRunning;
-        }
-
-        public bool OnErrorToast(SeString message)
-        {
-            string? insufficientArmoryChestSpace = DataManagerAdapter.GetString<LogMessage>(dataManager, 709, x => x.Text);
-            if (GameFunctions.GameStringEquals(message.TextValue, insufficientArmoryChestSpace))
-                _attempts = MaxAttempts;
-
-            return false;
-        }
-
-        public override bool ShouldInterruptOnDamage() => true;
-
-        protected override bool Start()
-        {
-            _item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(Task.ItemId) ??
-                    throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
-            _targetSlots = GetEquipSlot(_item) ?? throw new InvalidOperationException("Not a piece of equipment");
-
-            if (GetArmoryInventoryType(_item.Value) == null)
+            if (EquipmentSlots.ArmoryFor(item.EquipSlotCategory.RowId) == null)
                 throw new InvalidOperationException("Item has no armory destination");
-
-            Unequip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return true;
         }
 
-        private unsafe bool IsItemEquipped(InventoryManager* inventoryManager)
+        protected override unsafe bool IsDone(InventoryManager* inventoryManager) =>
+            !EquipmentSlots.IsEquipped(inventoryManager, TargetSlots, Task.ItemId);
+
+        protected override unsafe void Move(InventoryManager* inventoryManager)
         {
-            foreach (ushort slot in _targetSlots)
+            if (IsDone(inventoryManager))
             {
-                InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, slot);
-                if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
-                    return true;
-            }
-
-            return false;
-        }
-
-        private unsafe void Unequip()
-        {
-            ++_attempts;
-            if (_attempts > MaxAttempts)
-                throw new TaskException("Unable to unequip gear.");
-
-            InventoryManager* inventoryManager = InventoryManager.Instance();
-            if (inventoryManager == null)
-                return;
-
-            if (!IsItemEquipped(inventoryManager))
-            {
-                logger.LogInformation("Already unequipped {Item}, skipping step", _item?.Name.ToString());
+                logger.LogInformation("Already unequipped {Item}, skipping step", Item.Name.ToString(null, CultureInfo.InvariantCulture));
                 return;
             }
 
-            InventoryType armoryType = GetArmoryInventoryType(_item!.Value)!.Value;
+            InventoryType armoryType = EquipmentSlots.ArmoryFor(Item.EquipSlotCategory.RowId)!.Value;
             InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
             if (armoryContainer == null)
                 return;
 
-            foreach (ushort equippedSlot in _targetSlots)
+            foreach (ushort equippedSlot in TargetSlots)
             {
                 InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, equippedSlot);
                 if (itemSlot == null || itemSlot->ItemId != Task.ItemId)
                     continue;
 
-                if (!TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
+                if (!EquipmentSlots.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
                 {
                     logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
                         armoryType, Task.ItemId);
-                    throw new TaskException("Unable to unequip gear - armory chest is full.");
+                    throw new NeedsPlayerException("Unable to unequip gear - armory chest is full.");
                 }
 
                 logger.LogInformation(
@@ -146,50 +72,10 @@ internal static class UnequipItem
                     InventoryType.EquippedItems, equippedSlot, armoryType, targetSlot);
 
                 int result = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, equippedSlot,
-                    armoryType, targetSlot, a6: true); // TODO define a6
-                logger.LogInformation("MoveItemSlot result: {Result}", result);
+                    armoryType, targetSlot, a6: true);
+                logger.LogDebug("MoveItemSlot result: {Result}", result);
                 return;
             }
-        }
-
-        internal static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
-        {
-            for (ushort i = 0; i < container->Size; i++)
-            {
-                InventoryItem* itemSlot = container->GetInventorySlot(i);
-                if (itemSlot == null || itemSlot->ItemId == 0)
-                {
-                    slot = i;
-                    return true;
-                }
-            }
-
-            slot = 0;
-            return false;
-        }
-
-        private static InventoryType? GetArmoryInventoryType(Item item) =>
-            item.EquipSlotCategory.RowId switch
-            {
-                >= 1 and <= 11 => ArmoryInventoryTypes[item.EquipSlotCategory.RowId - 1],
-                12 => InventoryType.ArmoryRings,
-                13 => InventoryType.ArmoryMainHand,
-                17 => InventoryType.ArmorySoulCrystal,
-                _ => null
-            };
-
-        private static List<ushort>? GetEquipSlot(Item? item)
-        {
-            if (item == null)
-                return [];
-            return item.Value.EquipSlotCategory.RowId switch
-            {
-                >= 1 and <= 11 => [(ushort)(item.Value.EquipSlotCategory.RowId - 1)],
-                12 => [11, 12], // rings
-                13 => [0],
-                17 => [13], // soul crystal
-                var _ => null
-            };
         }
     }
 }

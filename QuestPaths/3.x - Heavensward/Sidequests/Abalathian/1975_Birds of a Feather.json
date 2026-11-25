@@ -1,105 +1,60 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014449,
-          "Position": {
-            "X": -337.434,
-            "Y": -34.6393,
-            "Z": -609.433
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1014452,
-          "Position": {
-            "X": 641.642,
-            "Y": -97.7647,
-            "Z": -714.083
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [641.642, -97.7647, -714.083],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 2006109,
-          "Position": {
-            "X": 685.14526,
-            "Y": -98.86322,
-            "Z": -675.34906
-          },
-          "TerritoryId": 401,
+          "Position": [685.14526, -98.86322, -675.34906],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2006110,
-          "Position": {
-            "X": 734.9507,
-            "Y": -98.16138,
-            "Z": -684.3214
-          },
-          "TerritoryId": 401,
+          "Position": [734.9507, -98.16138, -684.3214],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2006111,
-          "Position": {
-            "X": 778.8356,
-            "Y": -98.58862,
-            "Z": -669.55066
-          },
-          "TerritoryId": 401,
+          "Position": [778.8356, -98.58862, -669.55066],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 2006112,
-          "Position": {
-            "X": 835.81274,
-            "Y": -97.82562,
-            "Z": -685.8778
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [835.81274, -97.82562, -685.8778],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1014452,
-          "Position": {
-            "X": 641.642,
-            "Y": -97.7647,
-            "Z": -714.083
-          },
-          "TerritoryId": 401,
+          "Position": [641.642, -97.7647, -714.083],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1976
         }
       ]

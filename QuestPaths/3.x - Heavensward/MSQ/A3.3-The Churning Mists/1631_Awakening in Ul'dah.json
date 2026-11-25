@@ -1,54 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012729,
-          "Position": {
-            "X": -229.20581,
-            "Y": 33.907307,
-            "Z": 428.4275
-          },
-          "TerritoryId": 140,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001821,
-          "Position": {
-            "X": -24.124573,
-            "Y": 38.000004,
-            "Z": 85.31323
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "Position": [-24.124573, 38.000004, 85.31323],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1012731,
-          "Position": {
-            "X": -23.91095,
-            "Y": 37.760002,
-            "Z": 78.812744
-          },
-          "StopDistance": 5,
-          "TerritoryId": 131,
+          "Position": [-23.91095, 37.760002, 78.812744],
           "InteractionType": "CompleteQuest"
         }
       ]

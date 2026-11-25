@@ -1,0 +1,35 @@
+namespace Questionable.Validation.Validators;
+
+[RegisterSingleton<IQuestValidator, QuestBattleValidator>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class QuestBattleValidator(TerritoryData territoryData) : IQuestValidator
+{
+    private readonly Dictionary<ElementId, List<byte>> _battleIndexes = territoryData.GetAllQuestBattles()
+        .GroupBy(x => x.QuestId)
+        .ToDictionary(x => x.Key, x => x.Select(y => y.Index).ToList());
+
+    public IEnumerable<ValidationIssue> Validate(Quest quest)
+    {
+        if (_battleIndexes.TryGetValue(quest.Id, out List<byte>? indexes))
+        {
+            foreach (byte index in indexes)
+            {
+                if (quest.AllSteps().Any(x =>
+                    x.Step.InteractionType == EInteractionType.SinglePlayerDuty &&
+                    x.Step.SinglePlayerDutyIndex == index))
+                {
+                    continue;
+                }
+
+                yield return new()
+                {
+                    ElementId = quest.Id,
+                    Sequence = null,
+                    Step = null,
+                    Type = EIssueType.UnusedSinglePlayerInstance,
+                    Severity = EIssueSeverity.Error,
+                    Description = _LF("Single player instance {0} not used", index)
+                };
+            }
+        }
+    }
+}

@@ -1,47 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006657,
-          "Position": {
-            "X": -294.81964,
-            "Y": 88,
-            "Z": -225.17743
-          },
-          "StopDistance": 7,
-          "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1006668,
-          "Position": {
-            "X": -115.19043,
-            "Y": 47.372406,
-            "Z": 28.67163
-          },
-          "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "Position": [-115.19043, 47.372406, 28.67163],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 147,
       "Steps": [
         {
-          "TerritoryId": 147,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 16,
@@ -55,9 +37,9 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1053,
       "Steps": [
         {
-          "TerritoryId": 1053,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 830,
@@ -71,35 +53,25 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1053,
       "Steps": [
         {
           "DataId": 1039201,
-          "Position": {
-            "X": -704.0055,
-            "Y": -185.66042,
-            "Z": 479.9724
-          },
-          "TerritoryId": 1053,
+          "Position": [-704.0055, -185.66042, 479.9724],
           "InteractionType": "SinglePlayerDuty",
-          "DisableNavmesh": true,
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 2001715,
-          "Position": {
-            "X": 23.23944,
-            "Y": 2.090454,
-            "Z": -0.015319824
-          },
-          "TerritoryId": 212,
+          "Position": [23.23944, 2.090454, -0.015319824],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
           "SkipConditions": {
@@ -110,12 +82,7 @@
         },
         {
           "DataId": 1006692,
-          "Position": {
-            "X": 39.261353,
-            "Y": 1.2148079,
-            "Z": 0.8086548
-          },
-          "TerritoryId": 212,
+          "Position": [39.261353, 1.2148079, 0.8086548],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 1004885,
-          "Position": {
-            "X": 36.453735,
-            "Y": 1.2000011,
-            "Z": 4.6845093
-          },
-          "TerritoryId": 212,
+          "Position": [36.453735, 1.2000011, 4.6845093],
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -28,21 +24,12 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1002388,
-          "Position": {
-            "X": 95.68933,
-            "Y": 40.250286,
-            "Z": 74.54028
-          },
-          "StopDistance": 5,
-          "TerritoryId": 128,
+          "Position": [95.68933, 40.250286, 74.54028],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -55,44 +42,26 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1004888,
-          "Position": {
-            "X": 389.2423,
-            "Y": 78.360275,
-            "Z": -349.05017
-          },
-          "TerritoryId": 135,
+          "Position": [389.2423, 78.360275, -349.05017],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
-          },
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
+            "Enabled": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1002388,
-          "Position": {
-            "X": 95.68933,
-            "Y": 40.250286,
-            "Z": 74.54028
-          },
-          "StopDistance": 5,
-          "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [95.68933, 40.250286, 74.54028],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

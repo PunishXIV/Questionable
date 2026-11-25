@@ -1,90 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048854,
-          "Position": {
-            "X": -514.1833,
-            "Y": 121.63345,
-            "Z": 293.38513
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2014177,
-          "Position": {
-            "X": -351.40002,
-            "Y": 109.57495,
-            "Z": 62.210938
-          },
-          "TerritoryId": 1188,
+          "Position": [-351.40002, 109.57495, 62.210938],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2014178,
-          "Position": {
-            "X": -172.32019,
-            "Y": 109.54443,
-            "Z": 128.67932
-          },
-          "TerritoryId": 1188,
+          "Position": [-172.32019, 109.54443, 128.67932],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2014179,
-          "Position": {
-            "X": 142.96167,
-            "Y": 109.57495,
-            "Z": 169.604
-          },
-          "TerritoryId": 1188,
+          "Position": [142.96167, 109.57495, 169.604],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2014180,
-          "Position": {
-            "X": 214.86218,
-            "Y": 109.54443,
-            "Z": 138.68921
-          },
-          "TerritoryId": 1188,
+          "Position": [214.86218, 109.54443, 138.68921],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048854,
-          "Position": {
-            "X": -514.1833,
-            "Y": 121.63345,
-            "Z": 293.38513
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

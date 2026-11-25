@@ -1,43 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048331,
-          "Position": {
-            "X": 214.03821,
-            "Y": 5.2600574,
-            "Z": 628.3817
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1048374,
-          "Position": {
-            "X": -77.04285,
-            "Y": 99.946754,
-            "Z": -711.0552
-          },
-          "TerritoryId": 957,
+          "Position": [-77.04285, 99.946754, -711.0552],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true, "Target": 17034},
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] The Gate of First Sight (Thavnair)"
-          ],
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -46,36 +24,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1048374,
-          "Position": {
-            "X": -77.04285,
-            "Y": 99.946754,
-            "Z": -711.0552
-          },
-          "TerritoryId": 957,
+          "Position": [-77.04285, 99.946754, -711.0552],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1048330,
-          "Position": {
-            "X": -28.732727,
-            "Y": -17.972864,
-            "Z": 194.72034
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "Position": [-28.732727, -17.972864, 194.72034],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,44 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 52.668243,
-            "Y": 4.323245,
-            "Z": -600.21014
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
-        },
-        {
-          "DataId": 1021507,
-          "Position": {
-            "X": 57.236572,
-            "Y": 1.575162,
-            "Z": -578.24066
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": -371.42313,
-            "Y": 3.2183487,
-            "Z": -537.3274
-          },
-          "TerritoryId": 613,
+          "Position": [-371.42313, 3.2183487, -537.3274],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -49,51 +23,29 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1023682,
-          "Position": {
-            "X": -367.9713,
-            "Y": 3.3707767,
-            "Z": -534.4778
-          },
-          "StopDistance": 7,
-          "TerritoryId": 613,
+          "Position": [-367.9713, 3.3707767, -534.4778],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1023682,
-          "Position": {
-            "X": -367.9713,
-            "Y": 3.3707767,
-            "Z": -534.4778
-          },
-          "StopDistance": 7,
-          "TerritoryId": 613,
+          "Position": [-367.9713, 3.3707767, -534.4778],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1021507,
-          "Position": {
-            "X": 57.236572,
-            "Y": 1.575162,
-            "Z": -578.24066
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

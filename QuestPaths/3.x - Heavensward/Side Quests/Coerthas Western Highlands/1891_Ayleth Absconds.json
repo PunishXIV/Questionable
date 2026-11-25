@@ -1,45 +1,24 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Thaksin",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014146,
-          "Position": {
-            "X": -258.74725,
-            "Y": 126.98546,
-            "Z": 12.649658
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1014151,
-          "Position": {
-            "X": -156.08453,
-            "Y": 219.14235,
-            "Z": 669.7031
-          },
-          "TerritoryId": 397,
+          "Position": [-156.08453, 219.14235, 669.7031],
           "InteractionType": "Interact"
         },
         {
           "DataId": 732,
-          "Position": {
-            "X": -151.29321,
-            "Y": 218.95082,
-            "Z": 669.4895
-          },
-          "TerritoryId": 397,
+          "Position": [-151.29321, 218.95082, 669.4895],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -50,46 +29,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014151,
-          "Position": {
-            "X": -156.08453,
-            "Y": 219.14235,
-            "Z": 669.7031
-          },
-          "TerritoryId": 397,
+          "Position": [-156.08453, 219.14235, 669.7031],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014151,
-          "Position": {
-            "X": -156.08453,
-            "Y": 219.14235,
-            "Z": 669.7031
-          },
-          "TerritoryId": 397,
+          "Position": [-156.08453, 219.14235, 669.7031],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1014146,
-          "Position": {
-            "X": -258.74725,
-            "Y": 126.98546,
-            "Z": 12.649658
-          },
-          "TerritoryId": 397,
+          "Position": [-258.74725, 126.98546, 12.649658],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1892
         }

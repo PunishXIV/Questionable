@@ -1,81 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009153,
-          "Position": {
-            "X": -39.108948,
-            "Y": 20,
-            "Z": 5.416931
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": -243.19783,
-            "Y": 58.69102,
-            "Z": -140.41818
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
-        },
-        {
           "DataId": 1006261,
-          "Position": {
-            "X": -244.73944,
-            "Y": 58.69352,
-            "Z": -140.06262
-          },
-          "TerritoryId": 148,
+          "Position": [-244.73944, 58.69352, -140.06262],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1001455,
-          "Position": {
-            "X": 59.952637,
-            "Y": 0.99176025,
-            "Z": 255.8479
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "Fly": true
+          "Position": [59.952637, 0.99176025, 255.8479],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2004276,
-          "Position": {
-            "X": 70.2677,
-            "Y": 1.2054443,
-            "Z": 250.53784
-          },
-          "TerritoryId": 141,
+          "Position": [70.2677, 1.2054443, 250.53784],
           "InteractionType": "UseItem",
           "ItemId": 2001329
         }
@@ -83,15 +43,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2004277,
-          "Position": {
-            "X": 70.2677,
-            "Y": 1.2054443,
-            "Z": 250.53784
-          },
-          "TerritoryId": 141,
+          "Position": [70.2677, 1.2054443, 250.53784],
           "InteractionType": "UseItem",
           "ItemId": 2001328,
           "DelaySecondsAtStart": 3
@@ -100,53 +56,29 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2004277,
-          "Position": {
-            "X": 70.2677,
-            "Y": 1.2054443,
-            "Z": 250.53784
-          },
-          "TerritoryId": 141,
+          "Position": [70.2677, 1.2054443, 250.53784],
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": []
         },
         {
           "DataId": 1009187,
-          "Position": {
-            "X": 70.573,
-            "Y": 1.5015054,
-            "Z": 251.39233
-          },
-          "TerritoryId": 141,
+          "Position": [70.573, 1.5015054, 251.39233],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": -243.19783,
-            "Y": 58.69102,
-            "Z": -140.41818
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
-        },
-        {
           "DataId": 1006261,
-          "Position": {
-            "X": -244.73944,
-            "Y": 58.69352,
-            "Z": -140.06262
-          },
-          "TerritoryId": 148,
+          "Position": [-244.73944, 58.69352, -140.06262],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1570
         }

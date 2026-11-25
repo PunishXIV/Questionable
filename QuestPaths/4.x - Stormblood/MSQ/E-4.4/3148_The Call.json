@@ -1,67 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026284,
-          "Position": {
-            "X": 498.2832,
-            "Y": 40.86853,
-            "Z": -503.37988
-          },
-          "TerritoryId": 622,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025874,
-          "Position": {
-            "X": 351.12524,
-            "Y": 118.66239,
-            "Z": -692.53076
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [351.12524, 118.66239, -692.53076],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1026239,
-          "Position": {
-            "X": 348.53125,
-            "Y": 118.662384,
-            "Z": -691.92035
-          },
-          "TerritoryId": 622,
+          "Position": [348.53125, 118.662384, -691.92035],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 759,
       "Steps": [
         {
           "DataId": 1024974,
-          "Position": {
-            "X": -10.330383,
-            "Y": 0.19997318,
-            "Z": 12.893799
-          },
-          "TerritoryId": 759,
+          "Position": [-10.330383, 0.19997318, 12.893799],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -73,11 +48,7 @@
         },
         {
           "DataId": 1026469,
-          "Position": {
-            "X": -1.8463745,
-            "Y": 0.02109136,
-            "Z": -1.4191895
-          },
+          "Position": [-1.8463745, 0.02109136, -1.4191895],
           "TerritoryId": 744,
           "InteractionType": "Interact"
         }
@@ -85,32 +56,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1026241,
-          "Position": {
-            "X": 747.00525,
-            "Y": 69.99995,
-            "Z": 526.36
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "Position": [747.00525, 69.99995, 526.36],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024065,
-          "Position": {
-            "X": 749.9961,
-            "Y": 70.139626,
-            "Z": 522.88086
-          },
-          "TerritoryId": 621,
+          "Position": [749.9961, 70.139626, 522.88086],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -124,16 +85,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1026242,
-          "Position": {
-            "X": 773.3424,
-            "Y": 80,
-            "Z": 437.70496
-          },
-          "StopDistance": 5,
-          "TerritoryId": 621,
+          "Position": [773.3424, 80, 437.70496],
           "InteractionType": "CompleteQuest"
         }
       ]

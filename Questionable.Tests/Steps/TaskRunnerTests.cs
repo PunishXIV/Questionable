@@ -1,0 +1,337 @@
+using System.Globalization;
+using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Game.Text.SeStringHandling;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using NSubstitute;
+using Questionable.Controller;
+using Questionable.Controller.Steps;
+using Questionable.Controller.Steps.Interactions;
+using Questionable.Controller.Steps.Shared;
+using Questionable.External;
+using Questionable.Model.Questing;
+using Xunit;
+using static Questionable.Controller.Steps.ITaskExecutor;
+
+namespace Questionable.Tests.Steps;
+
+public sealed class TaskRunnerTests
+{
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void HandledFailure_DoesNotStop(bool starting)
+    {
+        var task = new WaitAtEnd.WaitDelay();
+        var executor = Substitute.For<ITaskExecutor>();
+        var error = new TaskException("retry this daily");
+        executor.CurrentTask.Returns(task);
+        executor.Start(task).Returns(_ => starting ? throw error : true);
+        executor.Update().Returns(_ => throw error);
+        ServiceCollection services = [];
+        services.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.WaitDelay), (_, _) => executor);
+        using var provider = services.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        int handled = 0;
+        fixture.Controller.HandleFailure = (failure, failedTask) =>
+        {
+            Assert.Same(error, failure);
+            Assert.Same(task, failedTask);
+            handled++;
+            return fixture.Queue.Reset();
+        };
+        fixture.Queue.Enqueue(task);
+
+        fixture.Controller.Tick();
+        if (!starting)
+            fixture.Controller.Tick();
+
+        Assert.Equal(1, handled);
+        Assert.Single(fixture.Controller.Failures);
+        Assert.Empty(fixture.Controller.Stops);
+        Assert.Empty(fixture.Notifications);
+        Assert.True(fixture.Queue.AllTasksComplete);
+    }
+
+    private sealed record Probe : ITask;
+
+    private sealed class GroupEnd : IOptionalGroupEnd
+    {
+        public bool RetryStep => true;
+        public List<Exception> Failures { get; } = [];
+        public void OnFailed(Exception exception) => Failures.Add(exception);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void OptionalGroupFailure_RetriesStep(bool failOnStart)
+    {
+        var expected = new InvalidOperationException("shop closed");
+        var executor = Substitute.For<ITaskExecutor>();
+        if (failOnStart)
+            executor.Start(Arg.Any<ITask>()).Returns(_ => throw expected);
+        else
+        {
+            executor.Start(Arg.Any<ITask>()).Returns(true);
+            executor.Update().Returns(_ => throw expected);
+        }
+
+        ServiceCollection registrations = [];
+        registrations.AddKeyedTransient<ITaskExecutor>(typeof(Probe), (_, _) => executor);
+        using var provider = registrations.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        GroupEnd end = new();
+        fixture.Queue.Enqueue(new Probe());
+        fixture.Queue.Enqueue(end);
+
+        fixture.Controller.Tick();
+        if (!failOnStart)
+            fixture.Controller.Tick();
+
+        Assert.Same(expected, Assert.Single(end.Failures));
+        Assert.Equal("RetryStep not supported", Assert.Single(fixture.Controller.Stops));
+        Assert.DoesNotContain(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
+        Assert.Empty(fixture.Notifications);
+    }
+
+    [Theory]
+    [InlineData(false, "missing")]
+    [InlineData(false, "factory")]
+    [InlineData(false, "start")]
+    public void CreationFailure_StopsAndReports(bool skipping, string failurePoint)
+    {
+        var expected = new InvalidOperationException("executor failed");
+        var failing = Substitute.For<ITaskExecutor, IStoppable>();
+        failing.Start(Arg.Any<ITask>()).Returns(_ => throw expected);
+        ServiceCollection registrations = [];
+        if (failurePoint != "missing")
+            registrations.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.NextStep), (_, _) =>
+                failurePoint == "factory" ? throw expected : failing);
+        int replacementStarts = 0;
+        registrations.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.WaitDelay), (_, _) =>
+        {
+            replacementStarts++;
+            return new WaitAtEnd.WaitDelayExecutor();
+        });
+        using var provider = registrations.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        var final = new WaitAtEnd.NextStep(new QuestId(123), 1);
+        var previous = Prepare(fixture, skipping, final);
+
+        fixture.Controller.Tick();
+
+        Assert.Equal("Task failed to start", Assert.Single(fixture.Controller.Stops));
+        var failure = Assert.Single(fixture.Controller.Failures);
+        Assert.Same(final, failure.Task);
+        if (failurePoint != "missing")
+            Assert.Same(expected, failure.Error);
+        Assert.Single(fixture.Log.Entries, x => x.Level == LogLevel.Error && ReferenceEquals(x.Exception, failure.Error));
+        var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
+        Assert.Contains("Could not start", Convert.ToString(chat.GetArguments()[0], CultureInfo.InvariantCulture), System.StringComparison.Ordinal);
+        Assert.Contains("Could not start", Assert.Single(fixture.Notifications), System.StringComparison.Ordinal);
+        Assert.True(fixture.Queue.AllTasksComplete);
+        Assert.Equal(0, fixture.Controller.CompletedTasks);
+        if (skipping)
+            ((IStoppable)previous!).Received(1).StopNow();
+        if (failurePoint == "start")
+            ((IStoppable)failing).Received(1).StopNow();
+
+        fixture.Controller.Tick();
+        Assert.Equal(0, replacementStarts);
+        Assert.Single(fixture.Controller.Stops);
+        Assert.Single(fixture.Notifications);
+    }
+
+    [Fact]
+    public void UpdateFailure_NotifiesAndStops()
+    {
+        using var fixture = new TaskRunnerFixture();
+        var task = new WaitAtEnd.WaitDelay();
+        var executor = Substitute.For<ITaskExecutor>();
+        var expected = new IOException("update failed");
+        executor.Start(task).Returns(true);
+        executor.CurrentTask.Returns(task);
+        executor.Update().Returns(_ => throw expected);
+        Assert.True(fixture.Queue.StartTask(executor, task));
+        fixture.Queue.Enqueue(new WaitAtEnd.WaitDelay());
+
+        fixture.Controller.Tick();
+
+        Assert.Equal("Task failed to update", Assert.Single(fixture.Controller.Stops));
+        Assert.Same(expected, Assert.Single(fixture.Controller.Failures).Error);
+        Assert.Contains("update failed", Assert.Single(fixture.Notifications), System.StringComparison.Ordinal);
+        Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
+        Assert.True(fixture.Queue.AllTasksComplete);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void NeedsPlayer_StopsWithoutError(bool starting)
+    {
+        var expected = new NeedsPlayerException("Attune to the aetheryte first.");
+        var task = new WaitAtEnd.WaitDelay();
+        var executor = Substitute.For<ITaskExecutor>();
+        executor.CurrentTask.Returns(task);
+        ServiceCollection registrations = [];
+        registrations.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.WaitDelay), (_, _) => executor);
+        using var provider = registrations.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        if (starting)
+        {
+            executor.Start(task).Returns(_ => throw expected);
+            fixture.Queue.Enqueue(task);
+        }
+        else
+        {
+            executor.Start(task).Returns(true);
+            executor.Update().Returns(_ => throw expected);
+            Assert.True(fixture.Queue.StartTask(executor, task));
+        }
+
+        fixture.Controller.Tick();
+
+        Assert.Equal(starting ? "Task failed to start" : "Task failed to update", Assert.Single(fixture.Controller.Stops));
+        Assert.Equal("Attune to the aetheryte first.", Assert.Single(fixture.Notifications));
+        Assert.DoesNotContain(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
+        var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "Print");
+        Assert.Equal("Attune to the aetheryte first.", Convert.ToString(chat.GetArguments()[0], CultureInfo.InvariantCulture));
+        Assert.DoesNotContain(fixture.Log.Entries, x => x.Level == LogLevel.Error);
+    }
+
+    [Theory]
+    [InlineData("Action canceled. You are under attack.", true, false, true)]
+    [InlineData("Action canceled. You are under attack.", true, true, false)]
+    [InlineData("Action canceled. You are under attack.", false, false, false)]
+    [InlineData("Event canceled.", false, false, true)]
+    [InlineData("Unable to execute command while suffering status affliction.", false, false, true)]
+    [InlineData("Unrelated error", true, false, false)]
+    public void Toasts_KeepDamageFlightNonCombatRules(string text, bool damage, bool flight, bool interrupted)
+    {
+        using var fixture = new TaskRunnerFixture();
+        fixture.Condition[ConditionFlag.InFlight].Returns(flight);
+        var executor = new WaitAtEnd.WaitDelayExecutor();
+        Assert.True(fixture.Queue.StartTask(executor, new WaitAtEnd.WaitDelay { InterruptOnDamage = damage }));
+        SeString message = text;
+        bool handled = false;
+
+        fixture.Controller.OnErrorToast(ref message, ref handled);
+
+        Assert.False(handled);
+        Assert.Same(interrupted ? null : executor, fixture.Queue.CurrentTaskExecutor);
+        Assert.Equal(interrupted && text.StartsWith("Action", StringComparison.Ordinal),
+            fixture.Queue.RemainingTasks.Any(x => x is Combat.CheckAfterInterruption));
+    }
+
+    [Theory]
+    [InlineData(false, "Event canceled.")]
+    [InlineData(true, "Event canceled.")]
+    [InlineData(false, "Unable to execute command while suffering status affliction.")]
+    [InlineData(true, "Unable to execute command while suffering status affliction.")]
+    public void IdleCancelToast_DoesNotReplayWork(bool completedStep, string text)
+    {
+        var interaction = new Interact.Task(100, null, EInteractionType.Interact);
+        var executor = Substitute.For<ITaskExecutor>();
+        executor.Start(interaction).Returns(true);
+        executor.CurrentTask.Returns(interaction);
+        executor.Update().Returns(ETaskResult.TaskComplete);
+        ServiceCollection services = [];
+        services.AddKeyedTransient<ITaskExecutor>(typeof(Interact.Task), (_, _) => executor);
+        services.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.NextStep), (_, _) => new WaitAtEnd.NextStepExecutor());
+        using var provider = services.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        if (completedStep)
+        {
+            fixture.Queue.Enqueue(interaction);
+            fixture.Queue.Enqueue(new WaitAtEnd.NextStep(new QuestId(123), 1));
+            fixture.Controller.Tick();
+            fixture.Controller.Tick();
+            fixture.Controller.Tick();
+            fixture.Controller.Tick();
+            Assert.Equal(1, fixture.Controller.CompletedTasks);
+        }
+        Assert.True(fixture.Queue.AllTasksComplete);
+        SeString message = text;
+        bool handled = false;
+
+        fixture.Controller.OnErrorToast(ref message, ref handled);
+
+        Assert.Empty(fixture.Queue.RemainingTasks);
+        Assert.True(fixture.Queue.AllTasksComplete);
+        Assert.Empty(fixture.Controller.Stops);
+        Assert.Empty(fixture.Notifications);
+    }
+
+    [Theory]
+    [InlineData("Event canceled.")]
+    [InlineData("Unable to execute command while suffering status affliction.")]
+    public void ToastBetweenTasks_ReplaysInteraction(string text)
+    {
+        var interaction = new Interact.Task(100, null, EInteractionType.Interact);
+        var executor = Substitute.For<ITaskExecutor>();
+        executor.Start(interaction).Returns(true);
+        executor.CurrentTask.Returns(interaction);
+        executor.Update().Returns(ETaskResult.TaskComplete);
+        ServiceCollection services = [];
+        services.AddKeyedTransient<ITaskExecutor>(typeof(Interact.Task), (_, _) => executor);
+        using var provider = services.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        var next = new WaitAtEnd.NextStep(new QuestId(123), 1);
+        fixture.Queue.Enqueue(interaction);
+        fixture.Queue.Enqueue(next);
+        fixture.Controller.Tick();
+        fixture.Controller.Tick();
+        Assert.Equal(1, fixture.Controller.CompletedTasks);
+        Assert.Null(fixture.Queue.CurrentTaskExecutor);
+        Assert.Same(next, Assert.Single(fixture.Queue.RemainingTasks));
+        SeString message = text;
+        bool handled = false;
+
+        fixture.Controller.OnErrorToast(ref message, ref handled);
+
+        Assert.Null(fixture.Queue.CurrentTaskExecutor);
+        Assert.Collection(fixture.Queue.RemainingTasks,
+            task => Assert.IsType<WaitAtEnd.WaitDelay>(task),
+            task => Assert.Same(interaction, task),
+            task => Assert.Same(next, task));
+        Assert.Empty(fixture.Controller.Stops);
+        Assert.Empty(fixture.Notifications);
+    }
+
+    [Fact]
+    public void CancelToast_KeepsQuestBattle()
+    {
+        using var operations = new ExternalOperationFixture();
+        using var fixture = new TaskRunnerFixture();
+        ITaskExecutor executor = new QuestBattle.WaitForExitExecutor(operations.BossMod);
+        ITask task = new QuestBattle.WaitForExit(42);
+        Assert.True(fixture.Queue.StartTask(executor, task));
+        SeString message = "Event canceled.";
+        bool handled = false;
+
+        fixture.Controller.OnErrorToast(ref message, ref handled);
+
+        Assert.Same(executor, fixture.Queue.CurrentTaskExecutor);
+        Assert.Empty(fixture.Queue.RemainingTasks);
+        fixture.Queue.Reset();
+    }
+
+    private static ITaskExecutor? Prepare(TaskRunnerFixture fixture, bool skipping, ITask final)
+    {
+        ITaskExecutor? previous = null;
+        if (skipping)
+        {
+            previous = Substitute.For<ITaskExecutor, IStoppable>();
+            var current = new WaitAtEnd.WaitDelay();
+            previous.Start(current).Returns(true);
+            previous.CurrentTask.Returns(current);
+            previous.Update().Returns(ETaskResult.SkipRemainingTasksForStep);
+            Assert.True(fixture.Queue.StartTask(previous, current));
+            fixture.Queue.Enqueue(new WaitAtEnd.WaitDelay());
+        }
+        fixture.Queue.Enqueue(final);
+        fixture.Queue.Enqueue(new WaitAtEnd.WaitDelay());
+        return previous;
+    }
+}

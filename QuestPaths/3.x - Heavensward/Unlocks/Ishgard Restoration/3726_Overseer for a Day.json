@@ -1,47 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031991,
-          "Position": {
-            "X": -7.7669067,
-            "Y": -16.000002,
-            "Z": 163.3783
-          },
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1032832,
-          "Position": {
-            "X": -8.255188,
-            "Y": -16,
-            "Z": 162.40173
-          },
-          "StopDistance": 5,
-          "TerritoryId": 886,
+          "Position": [-8.255188, -16, 162.40173],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -70,16 +42,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1032832,
-          "Position": {
-            "X": -8.255188,
-            "Y": -16,
-            "Z": 162.40173
-          },
-          "StopDistance": 5,
-          "TerritoryId": 886,
+          "Position": [-8.255188, -16, 162.40173],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3727
         }

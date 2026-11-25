@@ -1,53 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "Position": [-1.236023, 33.38838, -244.19019],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005960,
-          "Position": {
-            "X": 97.3678,
-            "Y": 56.809326,
-            "Z": -502.06763
-          },
-          "TerritoryId": 180,
+          "Position": [97.3678, 56.809326, -502.06763],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -56,16 +33,10 @@
               "Yes": true
             }
           ],
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 167.17906,
-                  "Y": 21.487904,
-                  "Z": -562.23
-                },
+                "Position": [167.17906, 21.487904, -562.23],
                 "TerritoryId": 180,
                 "MaximumDistance": 50
               }
@@ -74,12 +45,7 @@
         },
         {
           "DataId": 2003885,
-          "Position": {
-            "X": 167.68127,
-            "Y": 21.438904,
-            "Z": -564.66016
-          },
-          "TerritoryId": 180,
+          "Position": [167.68127, 21.438904, -564.66016],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001274,
@@ -88,12 +54,7 @@
         },
         {
           "DataId": 2003886,
-          "Position": {
-            "X": 170.8247,
-            "Y": 21.499878,
-            "Z": -565.17896
-          },
-          "TerritoryId": 180,
+          "Position": [170.8247, 21.499878, -565.17896],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001274,
@@ -102,12 +63,7 @@
         },
         {
           "DataId": 2003887,
-          "Position": {
-            "X": 174.05957,
-            "Y": 21.438904,
-            "Z": -565.301
-          },
-          "TerritoryId": 180,
+          "Position": [174.05957, 21.438904, -565.301],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001274,
@@ -118,26 +74,17 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 181.78268,
-            "Y": 21.49987,
-            "Z": -564.34344
-          },
-          "TerritoryId": 180,
+          "Position": [181.78268, 21.49987, -564.34344],
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "ComplexCombatData": [{"DataId": 755,"NameId": 2702}]
         },
         {
           "DataId": 2003888,
-          "Position": {
-            "X": 172.74731,
-            "Y": 21.377869,
-            "Z": -549.0654
-          },
-          "TerritoryId": 180,
+          "Position": [172.74731, 21.377869, -549.0654],
           "InteractionType": "UseItem",
           "ItemId": 2001275
         }
@@ -145,27 +92,18 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2871,
-          "Position": {
-            "X": 179.94975,
-            "Y": 21.49987,
-            "Z": -564.9776
-          },
-          "TerritoryId": 180,
+          "Position": [179.94975, 21.49987, -564.9776],
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "ComplexCombatData": [{"DataId": 2871,"NameId": 2702}]
         },
         {
           "DataId": 2003892,
-          "Position": {
-            "X": 163.07312,
-            "Y": 21.499878,
-            "Z": -571.2215
-          },
-          "TerritoryId": 180,
+          "Position": [163.07312, 21.499878, -571.2215],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [{"DataId": 2845,"NameId": 2702}]
@@ -174,37 +112,18 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "Position": [-1.236023, 33.38838, -244.19019],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,81 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048732,
-          "Position": {
-            "X": 541.4053,
-            "Y": 107.13434,
-            "Z": 602.50244
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1048774,
-          "Position": {
-            "X": 495.35352,
-            "Y": 114.935,
-            "Z": 632.95935
-          },
-          "TerritoryId": 1187,
+          "Position": [495.35352, 114.935, 632.95935],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1048745,
-          "Position": {
-            "X": 383.3523,
-            "Y": 129.04726,
-            "Z": 657.52637
-          },
-          "TerritoryId": 1187,
+          "Position": [383.3523, 129.04726, 657.52637],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1048747,
-          "Position": {
-            "X": 348.47034,
-            "Y": 130.34726,
-            "Z": 597.3755
-          },
-          "TerritoryId": 1187,
+          "Position": [348.47034, 130.34726, 597.3755],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048732,
-          "Position": {
-            "X": 541.4053,
-            "Y": 107.13434,
-            "Z": 602.50244
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

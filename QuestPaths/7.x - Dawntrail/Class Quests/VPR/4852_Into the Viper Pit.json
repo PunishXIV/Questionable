@@ -1,99 +1,55 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046371,
-          "Position": {
-            "X": 205.06592,
-            "Y": 8.660461,
-            "Z": -71.70221
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1046382,
-          "Position": {
-            "X": -183.18463,
-            "Y": 100.88573,
-            "Z": -541.4359
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "Position": [-183.18463, 100.88573, -541.4359],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 2013576,
-          "Position": {
-            "X": -173.87659,
-            "Y": 110.27698,
-            "Z": -343.64844
-          },
-          "TerritoryId": 399,
+          "Position": [-173.87659, 110.27698, -343.64844],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2013578,
-          "Position": {
-            "X": -139.97101,
-            "Y": 111.039795,
-            "Z": -270.58832
-          },
-          "TerritoryId": 399,
+          "Position": [-139.97101, 111.039795, -270.58832],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2013577,
-          "Position": {
-            "X": -69.29126,
-            "Y": 100.938354,
-            "Z": -336.47675
-          },
-          "TerritoryId": 399,
+          "Position": [-69.29126, 100.938354, -336.47675],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1046383,
-          "Position": {
-            "X": 1.8463135,
-            "Y": 103.4929,
-            "Z": -280.14038
-          },
-          "StopDistance": 1,
-          "TerritoryId": 399,
+          "Position": [1.8463135, 103.4929, -280.14038],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -106,31 +62,21 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1046384,
-          "Position": {
-            "X": 289.08203,
-            "Y": 163.68987,
-            "Z": 288.19702
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "Position": [289.08203, 163.68987, 288.19702],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": 258.81232,
-            "Y": 179.55281,
-            "Z": -45.167038
-          },
-          "TerritoryId": 397,
+          "Position": [258.81232, 179.55281, -45.167038],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -141,32 +87,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1046385,
-          "Position": {
-            "X": 246.20422,
-            "Y": 180.63304,
-            "Z": -41.61145
-          },
-          "TerritoryId": 397,
+          "Position": [246.20422, 180.63304, -41.61145],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1046371,
-          "Position": {
-            "X": 205.06592,
-            "Y": 8.660461,
-            "Z": -71.70221
-          },
-          "TerritoryId": 153,
+          "Position": [205.06592, 8.660461, -71.70221],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "NextQuestId": 4853
         }
       ]

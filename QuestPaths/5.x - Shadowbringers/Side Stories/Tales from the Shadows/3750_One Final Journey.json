@@ -1,23 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1018433,
-          "Position": {
-            "X": 50.502613,
-            "Y": 49.999996,
-            "Z": -774.13135
-          },
-          "TerritoryId": 156,
+          "Position": [50.502613, 49.999996, -774.13135],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "StopDistance": 1,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -30,73 +23,34 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 2009865,
-          "Position": {
-            "X": -52.781067,
-            "Y": 17.990356,
-            "Z": 48.90515
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "Sprint": true
+          "Position": [-52.781067, 17.990356, 48.90515],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": -509.02783,
-            "Y": -16.420786,
-            "Z": 11.723575
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
-        },
-        {
           "DataId": 1006355,
-          "Position": {
-            "X": -512.47424,
-            "Y": -16.42,
-            "Z": -7.522766
-          },
-          "TerritoryId": 145,
+          "Position": [-512.47424, -16.42, -7.522766],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": -509.17432,
-            "Y": -16.420816,
-            "Z": 10.977634
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1030875,
-          "Position": {
-            "X": -458.64044,
-            "Y": -28.193886,
-            "Z": 110.64307
-          },
-          "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-458.64044, -28.193886, 110.64307],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

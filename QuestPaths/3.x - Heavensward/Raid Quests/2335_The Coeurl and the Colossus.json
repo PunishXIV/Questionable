@@ -1,81 +1,54 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016638,
-          "Position": {
-            "X": -42.4964,
-            "Y": 100.873566,
-            "Z": -183.12354
-          },
-          "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Epilogue Gate (Eastern Hinterlands)"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1017930,
-          "Position": {
-            "X": -121.26343,
-            "Y": 100.66968,
-            "Z": -131.12079
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-121.26343, 100.66968, -131.12079],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1017932,
-          "Position": {
-            "X": 47.745483,
-            "Y": 71.508316,
-            "Z": 68.16199
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [47.745483, 71.508316, 68.16199],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "TerritoryId": 399,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 186,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1017932,
-          "Position": {
-            "X": 47.745483,
-            "Y": 71.508316,
-            "Z": 68.16199
-          },
-          "StopDistance": 5,
-          "TerritoryId": 399,
+          "Position": [47.745483, 71.508316, 68.16199],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2336
         }

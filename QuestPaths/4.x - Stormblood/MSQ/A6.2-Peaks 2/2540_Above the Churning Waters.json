@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020631,
-          "Position": {
-            "X": -300.49597,
-            "Y": 257.5265,
-            "Z": 765.0415
-          },
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Ghiri",
-          "StopDistance": 7
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 2009007,
-          "Position": {
-            "X": -75.24231,
-            "Y": 262.4093,
-            "Z": 661.86
-          },
-          "TerritoryId": 620,
+          "Position": [-75.24231, 262.4093, 661.86],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -41,32 +24,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 2008211,
-          "Position": {
-            "X": -75.48645,
-            "Y": 262.4093,
-            "Z": 661.86
-          },
-          "StopDistance": 4.25,
-          "TerritoryId": 620,
+          "Position": [-75.48645, 262.4093, 661.86],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020633,
-          "Position": {
-            "X": -113.42035,
-            "Y": 263.73114,
-            "Z": 655.75635
-          },
-          "StopDistance": 7,
-          "TerritoryId": 620,
+          "Position": [-113.42035, 263.73114, 655.75635],
           "InteractionType": "CompleteQuest"
         }
       ]

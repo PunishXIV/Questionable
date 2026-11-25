@@ -1,78 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051057,
-          "Position": {
-            "X": -343.67902,
-            "Y": 18.885578,
-            "Z": -404.22675
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": 158.97704,
-            "Y": 0.80940175,
-            "Z": -773.5188
-          },
-          "StopDistance": 1,
-          "TerritoryId": 1189,
+          "Position": [158.97704, 0.80940175, -773.5188],
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Tuliyollal",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17663
-          ],
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Dirigible Landing (Yak T'el)"
           ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051058,
-          "Position": {
-            "X": 159.47205,
-            "Y": 0.81595546,
-            "Z": -770.19916
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1189,
+          "Position": [159.47205, 0.81595546, -770.19916],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1051057,
-          "Position": {
-            "X": -343.67902,
-            "Y": 18.885578,
-            "Z": -404.22675
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

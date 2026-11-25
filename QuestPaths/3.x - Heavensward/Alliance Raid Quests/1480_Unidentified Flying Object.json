@@ -1,35 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Disabled": true,
   "Comment": "Repeatable EX daily quest",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "TerritoryId": 478,
           "InteractionType": "Instruction",
           "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
         },
         {
           "DataId": 1017654,
-          "Position": {
-            "X": 79.72839,
-            "Y": 214.09999,
-            "Z": -94.98743
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "Position": [79.72839, 214.09999, -94.98743],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "TerritoryId": 478,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 220,
@@ -40,19 +34,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1017654,
-          "Position": {
-            "X": 79.72839,
-            "Y": 214.09999,
-            "Z": -94.98743
-          },
-          "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

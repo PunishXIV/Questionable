@@ -1,74 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014909,
-          "Position": {
-            "X": -427.1153,
-            "Y": 211,
-            "Z": -267.26184
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1015030,
-          "Position": {
-            "X": -824.979,
-            "Y": 243.96797,
-            "Z": -215.86938
-          },
-          "TerritoryId": 155,
+          "Position": [-824.979, 243.96797, -215.86938],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [4377, 4378],
-          "Fly": true
+          "KillEnemyDataIds": [4377, 4378]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1015030,
-          "Position": {
-            "X": -824.979,
-            "Y": 243.96797,
-            "Z": -215.86938
-          },
-          "TerritoryId": 155,
+          "Position": [-824.979, 243.96797, -215.86938],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013969,
-          "Position": {
-            "X": 104.234375,
-            "Y": 14.999986,
-            "Z": 40.787354
-          },
-          "TerritoryId": 418,
+          "Position": [104.234375, 14.999986, 40.787354],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "NextQuestId": 2060
         }
       ]

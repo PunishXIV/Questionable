@@ -1,36 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 759,
       "Steps": [
         {
-          "DataId": 1024974,
-          "Position": {
-            "X": -10.330383,
-            "Y": 0.19997318,
-            "Z": 12.893799
-          },
-          "TerritoryId": 759,
-          "InteractionType": "Interact",
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "Prompt": "TEXT_STMBDE102_03144_EVENTAREA_WARP_100_004",
-              "Yes": true
-            }
-          ],
-          "TargetTerritoryId": 744
-        },
-        {
           "DataId": 1025597,
-          "Position": {
-            "X": 0.19836426,
-            "Y": 0.021091362,
-            "Z": -3.0060425
-          },
+          "Position": [0.19836426, 0.021091362, -3.0060425],
           "TerritoryId": 744,
           "InteractionType": "AcceptQuest"
         }
@@ -38,26 +17,20 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1026261,
-          "Position": {
-            "X": 337.78882,
-            "Y": 54.860683,
-            "Z": -531.2734
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "Position": [337.78882, 54.860683, -531.2734],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "TerritoryId": 614,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 585,
@@ -71,16 +44,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 759,
       "Steps": [
         {
           "DataId": 1026268,
-          "Position": {
-            "X": 117.7843,
-            "Y": -4.178714,
-            "Z": 87.296875
-          },
-          "StopDistance": 7,
-          "TerritoryId": 759,
+          "Position": [117.7843, -4.178714, 87.296875],
           "InteractionType": "CompleteQuest"
         }
       ]

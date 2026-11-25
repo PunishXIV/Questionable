@@ -1,34 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-27"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "DataId": 1048083,
-          "Position": {
-            "X": 302.05237,
-            "Y": 51.199978,
-            "Z": 205.0354
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
-          "TargetTerritoryId": 1207
-        },
-        {
           "DataId": 1048161,
-          "Position": {
-            "X": -5.874817,
-            "Y": -3.618828E-08,
-            "Z": 6.8512573
-          },
-          "StopDistance": 7,
+          "Position": [-5.874817, -3.618828E-08, 6.8512573],
           "TerritoryId": 1207,
           "InteractionType": "AcceptQuest"
         }
@@ -36,52 +17,25 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1207,
       "Steps": [
         {
-          "DataId": 2014102,
-          "Position": {
-            "X": -0.01455665,
-            "Y": 1,
-            "Z": 16.05096
-          },
-          "TerritoryId": 1207,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1186,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1207
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1053865,
-          "Position": {
-            "X": -70.72565,
-            "Y": 42.8066,
-            "Z": -546.95966
-          },
+          "Position": [-70.72565, 42.8066, -546.95966],
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] Resolution"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "TerritoryId": 1186,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
-            "ContentFinderConditionId": 1027,
-            "TestedBossModVersion": "0.3.2.4",
-            "TestedAutoDutyVersion": "0.0.0.230"
+            "ContentFinderConditionId": 1027
           }
         }
       ]
@@ -91,9 +45,9 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1275,
       "Steps": [
         {
-          "TerritoryId": 1275,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": false,
@@ -104,16 +58,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1274,
       "Steps": [
         {
           "DataId": 1053873,
-          "Position": {
-            "X": 0.015197754,
-            "Y": 0,
-            "Z": 20.645447
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1274,
+          "Position": [0.015197754, 0, 20.645447],
           "InteractionType": "CompleteQuest"
         }
       ]

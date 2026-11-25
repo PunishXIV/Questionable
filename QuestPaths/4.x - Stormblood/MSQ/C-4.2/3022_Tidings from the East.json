@@ -1,62 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1019468,
-          "Position": {
-            "X": 165.61469,
-            "Y": 13.02367,
-            "Z": -90.53424
-          },
-          "StopDistance": 1,
-          "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "Position": [165.61469, 13.02367, -90.53424],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1020463,
-          "Position": {
-            "X": 151.20166,
-            "Y": 14.7757225,
-            "Z": 95.750244
-          },
-          "TerritoryId": 628,
+          "Position": [151.20166, 14.7757225, 95.750244],
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1024726,
-          "Position": {
-            "X": -11.367981,
-            "Y": 10.503965,
-            "Z": -212.75659
-          },
-          "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Rakuza District"
-          ]
+          "Position": [-11.367981, 10.503965, -212.75659],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

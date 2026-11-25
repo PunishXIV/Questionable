@@ -1,60 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "kaiser",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039243,
-          "Position": {
-            "X": -90.28766,
-            "Y": 20,
-            "Z": 85.55737
-          },
-          "StopDistance": 5,
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1039265,
-          "Position": {
-            "X": -27.542603,
-            "Y": 42.597717,
-            "Z": 163.7445
-          },
-          "StopDistance": 5,
-          "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ]
+          "Position": [-27.542603, 42.597717, 163.7445],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1039265,
-          "Position": {
-            "X": -27.542603,
-            "Y": 42.597717,
-            "Z": 163.7445
-          },
-          "StopDistance": 5,
-          "TerritoryId": 134,
+          "Position": [-27.542603, 42.597717, 163.7445],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

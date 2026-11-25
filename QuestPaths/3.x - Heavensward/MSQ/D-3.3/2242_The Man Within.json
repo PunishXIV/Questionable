@@ -1,47 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "erdelf", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1015596,
-          "Position": {
-            "X": 15.915161,
-            "Y": 15.96505,
-            "Z": -0.22894287
-          },
-          "StopDistance": 7,
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011217,
-          "Position": {
-            "X": 17.990356,
-            "Y": 16.009666,
-            "Z": -9.567444
-          },
-          "StopDistance": 7,
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 433
-        },
-        {
           "DataId": 1012857,
-          "Position": {
-            "X": 0.7476196,
-            "Y": 0.022254243,
-            "Z": 4.623413
-          },
-          "StopDistance": 7,
+          "Position": [0.7476196, 0.022254243, 4.623413],
           "TerritoryId": 433,
           "InteractionType": "Interact"
         }
@@ -49,34 +21,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1016807,
-          "Position": {
-            "X": 92.851074,
-            "Y": 15.00001,
-            "Z": 38.254395
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "Position": [92.851074, 15.00001, 38.254395],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1016818,
-          "Position": {
-            "X": 109.72754,
-            "Y": 24.384384,
-            "Z": -4.715088
-          },
-          "TerritoryId": 418,
+          "Position": [109.72754, 24.384384, -4.715088],
           "InteractionType": "CompleteQuest"
         }
       ]

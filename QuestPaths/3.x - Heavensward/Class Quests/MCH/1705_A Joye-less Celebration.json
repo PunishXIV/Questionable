@@ -1,77 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014793,
-          "Position": {
-            "X": -139.48273,
-            "Y": 19.236662,
-            "Z": -11.978394
-          },
-          "TerritoryId": 418,
+          "Position": [-139.48273, 19.236662, -11.978394],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1014795,
-          "Position": {
-            "X": -18.265076,
-            "Y": 16.009666,
-            "Z": -7.5532227
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Last Vigil"
-          ]
+          "Position": [-18.265076, 16.009666, -7.5532227],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014796,
-          "Position": {
-            "X": -152.88019,
-            "Y": 16.999998,
-            "Z": -52.903076
-          },
-          "TerritoryId": 418,
+          "Position": [-152.88019, 16.999998, -52.903076],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1706
         }
       ]

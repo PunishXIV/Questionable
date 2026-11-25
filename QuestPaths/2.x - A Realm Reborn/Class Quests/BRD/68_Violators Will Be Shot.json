@@ -1,69 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000204,
-          "Position": {
-            "X": 226.33704,
-            "Y": 1.9999089,
-            "Z": 29.06836
-          },
-          "TerritoryId": 132,
+          "Position": [226.33704, 1.9999089, 29.06836],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "DataId": 1001263,
-          "Position": {
-            "X": 181.41443,
-            "Y": -2.3519497,
-            "Z": -240.40594
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 152,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
-            }
-          }
-        },
-        {
-          "TerritoryId": 152,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "East Shroud - Hawthorne Hut",
           "SkipConditions": {
@@ -73,39 +33,8 @@
           }
         },
         {
-          "Position": {
-            "X": -326.03064,
-            "Y": 9.169003,
-            "Z": 323.19617
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "High": 1
-                }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2000944,
-          "Position": {
-            "X": -330.12903,
-            "Y": 16.708557,
-            "Z": 329.67102
-          },
-          "TerritoryId": 152,
-          "StopDistance": 20,
+          "Position": [-330.12903, 16.708557, 329.67102],
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -120,37 +49,8 @@
           ]
         },
         {
-          "Position": {
-            "X": -321.1917,
-            "Y": 0.22361445,
-            "Z": 297.61597
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "High": 2
-                }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2000943,
-          "Position": {
-            "X": -330.73932,
-            "Y": 9.262146,
-            "Z": 290.1808
-          },
-          "TerritoryId": 152,
-          "StopDistance": 20,
+          "Position": [-330.73932, 9.262146, 290.1808],
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -165,37 +65,8 @@
           ]
         },
         {
-          "Position": {
-            "X": -358.00266,
-            "Y": 6.9801626,
-            "Z": 306.18744
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "Low": 8
-                }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2000945,
-          "Position": {
-            "X": -364.55334,
-            "Y": 14.480774,
-            "Z": 307.60657
-          },
-          "TerritoryId": 152,
-          "StopDistance": 20,
+          "Position": [-364.55334, 14.480774, 307.60657],
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -210,37 +81,8 @@
           ]
         },
         {
-          "Position": {
-            "X": -378.32364,
-            "Y": 6.10847,
-            "Z": 269.35767
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "High": 4
-                }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2000942,
-          "Position": {
-            "X": -378.53058,
-            "Y": 9.048584,
-            "Z": 262.68408
-          },
-          "TerritoryId": 152,
-          "StopDistance": 20,
+          "Position": [-378.53058, 9.048584, 262.68408],
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -255,37 +97,8 @@
           ]
         },
         {
-          "Position": {
-            "X": -301.42407,
-            "Y": 0.17268503,
-            "Z": 257.9185
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                {
-                  "Low": 2
-                }
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2001179,
-          "Position": {
-            "X": -297.29156,
-            "Y": 5.996765,
-            "Z": 250.96509
-          },
-          "TerritoryId": 152,
-          "StopDistance": 20,
+          "Position": [-297.29156, 5.996765, 250.96509],
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -300,23 +113,8 @@
           ]
         },
         {
-          "Position": {
-            "X": -264.77237,
-            "Y": -3.2272563,
-            "Z": 240.00267
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2000946,
-          "Position": {
-            "X": -269.00134,
-            "Y": 4.2266846,
-            "Z": 230.45691
-          },
-          "TerritoryId": 152,
-          "StopDistance": 20,
+          "Position": [-269.00134, 4.2266846, 230.45691],
           "InteractionType": "Action",
           "Action": "Heavy Shot"
         }
@@ -324,40 +122,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000204,
-          "Position": {
-            "X": 226.33704,
-            "Y": 1.9999089,
-            "Z": 29.06836
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "Position": [226.33704, 1.9999089, 29.06836],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2000962,
-          "Position": {
-            "X": 288.56335,
-            "Y": -11.306946,
-            "Z": 52.384155
-          },
-          "TerritoryId": 154,
+          "Position": [288.56335, -11.306946, 52.384155],
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -366,34 +147,22 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000204,
-          "Position": {
-            "X": 226.33704,
-            "Y": 1.9999089,
-            "Z": 29.06836
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "Position": [226.33704, 1.9999089, 29.06836],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "TerritoryId": 132,
+          "Position": [209.55212, 0.9999819, 35.01941],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 70
         }

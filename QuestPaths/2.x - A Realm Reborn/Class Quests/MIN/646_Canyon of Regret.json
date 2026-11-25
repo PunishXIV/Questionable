@@ -1,123 +1,65 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002298,
-          "Position": {
-            "X": -18.997498,
-            "Y": 6.2,
-            "Z": 157.42725
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003910,
-          "Position": {
-            "X": -5.44751,
-            "Y": 6.2,
-            "Z": 167.46765
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "Position": [-5.44751, 6.2, 167.46765],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003909,
-          "Position": {
-            "X": 20.279175,
-            "Y": 9.014355,
-            "Z": 169.05469
-          },
-          "TerritoryId": 131,
+          "Position": [20.279175, 9.014355, 169.05469],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002298,
-          "Position": {
-            "X": -18.997498,
-            "Y": 6.2,
-            "Z": 157.42725
-          },
-          "TerritoryId": 131,
+          "Position": [-18.997498, 6.2, 157.42725],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003910,
-          "Position": {
-            "X": -5.44751,
-            "Y": 6.2,
-            "Z": 167.46765
-          },
-          "TerritoryId": 131,
+          "Position": [-5.44751, 6.2, 167.46765],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 131,
       "Comment": "Buy 3x Darksteel Ore from marketboard, or wait for 1am ET",
       "Steps": [
         {
           "DataId": 2000442,
-          "Position": {
-            "X": 149.0653,
-            "Y": 3.982544,
-            "Z": -32.51703
-          },
-          "TerritoryId": 131,
+          "Position": [149.0653, 3.982544, -32.51703],
           "InteractionType": "WalkTo",
-          "StopDistance": 3,
-          "AethernetShortcut": [
-            "[Ul'dah] Miners' Guild",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ],
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
@@ -127,7 +69,6 @@
           }
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "None",
           "DelaySecondsAtStart": 10,
           "SkipConditions": {
@@ -139,7 +80,6 @@
           }
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -158,17 +98,8 @@
         },
         {
           "DataId": 1002298,
-          "Position": {
-            "X": -18.997498,
-            "Y": 6.2,
-            "Z": 157.42725
-          },
-          "TerritoryId": 131,
+          "Position": [-18.997498, 6.2, 157.42725],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Sapphire Avenue Exchange",
-            "[Ul'dah] Miners' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "NotInTerritory": [
@@ -179,54 +110,14 @@
         },
         {
           "DataId": 1002298,
-          "Position": {
-            "X": -18.997498,
-            "Y": 6.2,
-            "Z": 157.42725
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "Position": [-18.997498, 6.2, 157.42725],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1002298,
-          "Position": {
-            "X": -18.997498,
-            "Y": 6.2,
-            "Z": 157.42725
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

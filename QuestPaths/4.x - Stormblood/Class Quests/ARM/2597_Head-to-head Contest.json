@@ -1,153 +1,78 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "Gezah",
 	"LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence":
 	[
 	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1019052,
-			"Position":
-			{
-				"X": -128.16058,
-				"Y": -4.750021,
-				"Z": 202.04468
-			},
-			"TerritoryId": 628,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Kugane",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Pier #1"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					628					
-					]
-				}
-			}
-		}
-		]
+	  "Sequence": 0,
+	  "Steps": []
 	},
 	{
 		"Sequence": 1,
+		"TerritoryId": 628,
 		"Steps":
 		[
 		{
 			"DataId": 1021372,
 			"Position":
-			{
-				"X": -4.867676,
-				"Y": -4.687657E-11,
-				"Z": -50.980408
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Pier #1",
-			"[Kugane] Aetheryte Plaza"
-			]
+			[-4.867676, -4.687657E-11, -50.980408],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 2,
+		"TerritoryId": 628,
 		"Steps":
 		[
 		{
 			"DataId": 1019053,
 			"Position":
-			{
-				"X": -124.55945,
-				"Y": -4.705104,
-				"Z": 206.46973
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Pier #1"
-			]
+			[-124.55945, -4.705104, 206.46973],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 3,
+		"TerritoryId": 628,
 		"Steps":
 		[
 		{
 			"DataId": 1021371,
 			"Position":
-			{
-				"X": 105.1499,
-				"Y": 15.000001,
-				"Z": -128.25214
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Pier #1",
-			"[Kugane] Sekiseigumi Barracks"
-			]
+			[105.1499, 15.000001, -128.25214],
+			"InteractionType": "Interact"
 		},
 		{
 			"DataId": 1021370,
 			"Position":
-			{
-				"X": -40.024475,
-				"Y": 5.9814034,
-				"Z": -151.1712
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Sekiseigumi Barracks",
-			"[Kugane] Bokairo Inn"
-			]
+			[-40.024475, 5.9814034, -151.1712],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 4,
+		"TerritoryId": 628,
 		"Steps":
 		[
 		{
 			"DataId": 1019053,
 			"Position":
-			{
-				"X": -124.55945,
-				"Y": -4.705104,
-				"Z": 206.46973
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Bokairo Inn",
-			"[Kugane] Pier #1"
-			]
+			[-124.55945, -4.705104, 206.46973],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 255,
+		"TerritoryId": 628,
 		"Steps":
 		[
 		{
 			"InteractionType": "Craft",
-			"TerritoryId": 628,
 			"ItemId": 17898,
 			"ItemCount": 1,
 			"SkipConditions":
@@ -164,12 +89,7 @@
 		{
 			"DataId": 1019052,
 			"Position":
-			{
-				"X": -128.16058,
-				"Y": -4.750021,
-				"Z": 202.04468
-			},
-			"TerritoryId": 628,
+			[-128.16058, -4.750021, 202.04468],
 			"InteractionType": "CompleteQuest"
 		}
 		]

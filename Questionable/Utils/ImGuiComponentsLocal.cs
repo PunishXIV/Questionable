@@ -1,9 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility;
-using Dalamud.Interface.Utility.Raii;
 
 namespace Questionable.Utils;
 
@@ -13,7 +9,7 @@ internal static class ImGuiComponentsLocal
                    [CallerFilePath] string file = "",
                  [CallerLineNumber] int line = 0)
     {
-        return IconButton(icon, defaultColor: null, activeColor: null, hoveredColor: null, size: null, file, line, id);
+        return IconButton(icon, defaultColor, activeColor: null, hoveredColor: null, size: null, file, line, id);
     }
     internal static bool IconButton(FontAwesomeIcon icon,
                    [CallerFilePath] string file = "",
@@ -36,7 +32,7 @@ internal static class ImGuiComponentsLocal
                  [CallerLineNumber] int line = 0,
                                     string? id = null)
     {
-        id ??= $"{Path.GetFileName(file)}:{line}";
+        id ??= string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}");
         ImGui.PushID(id);
         bool result = ImGuiComponents.IconButton(icon, defaultColor, activeColor, hoveredColor, size / ImGuiHelpers.GlobalScale);
         ImGui.PopID();
@@ -62,17 +58,13 @@ internal static class ImGuiComponentsLocal
                          [CallerLineNumber] int line = 0,
                                     string? id = null)
     {
-        id ??= $"{Path.GetFileName(file)}:{line}";
+        id ??= string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}");
         ImGui.PushID(id);
         bool result = ImGuiComponents.IconButtonWithText(icon, text, defaultColor, activeColor, hoveredColor, size);
         ImGui.PopID();
         return result;
     }
 
-    /// <summary>
-    ///     Draws a searchable combo (BeginCombo + InputTextWithHint filter) for large option lists.
-    ///     The search box stays pinned at the top of the popup; only the option list scrolls.
-    /// </summary>
     internal static bool DrawSearchableCombo<T>(
         string label, T[] values, string[] labels, T active, ref string searchString, ref T selected,
         bool labelAsPreview = false,
@@ -106,8 +98,8 @@ internal static class ImGuiComponentsLocal
             ImGui.SetKeyboardFocusHere();
         ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
 
-        // The option list lives in its own fixed-height scrollable child so the search box above
-        // stays pinned and visible; SetItemDefaultFocus() then scrolls the child, not the popup.
+        bool picked = false;
+        // A fixed-height child keeps the search box visible; SetItemDefaultFocus then scrolls the child.
         int visibleRows = Math.Clamp(labels.Length, 1, 12);
         var listSize = ImGui.GetContentRegionAvail() with { Y = ImGui.GetTextLineHeightWithSpacing() * visibleRows };
         using (var child = ImRaii.Child("##searchableComboList", listSize))
@@ -119,12 +111,12 @@ internal static class ImGuiComponentsLocal
                     if (!string.IsNullOrEmpty(searchString) &&
                         !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
                         continue;
-                    if (labels[i].StartsWith("##D"))
+                    if (labels[i].StartsWith("##D", StringComparison.Ordinal))
                     {
                         ImGui.TextDisabled(labels[i].Substring(3));
                         continue;
                     }
-                    if (labels[i].StartsWith("##S"))
+                    if (labels[i].StartsWith("##S", StringComparison.Ordinal))
                     {
                         ImGui.Separator();
                         continue;
@@ -135,6 +127,7 @@ internal static class ImGuiComponentsLocal
                     {
                         selected = values[i];
                         searchString = string.Empty;
+                        picked = true;
                     }
 
                     if (isSelected)
@@ -143,7 +136,7 @@ internal static class ImGuiComponentsLocal
             }
         }
 
-        return true;
+        return picked;
     }
 
     public static void HelpMarker(string helpText, string[]? bullets) => HelpMarker(helpText, FontAwesomeIcon.InfoCircle, bullets: bullets);
@@ -174,12 +167,12 @@ internal static class ImGuiComponentsLocal
         }
     }
 
-    public static bool QuestNotice(QuestController questController, Quest quest, string? label = null)
+    public static bool QuestNotice(QuestController questController, QuestStarter questStarter, Quest quest, string? label = null)
     {
         if (IconButton(FontAwesomeIcon.Play))
         {
             questController.SetNextQuest(quest);
-            questController.Start(_L("QuestNotice"));
+            questStarter.Start("QuestNotice");
         }
 
         bool hovered = ImGui.IsItemHovered();

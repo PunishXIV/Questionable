@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Fire Brand HQ\nAutocraft requires:\n 1x Silver Ingot,\n 1x Aldgoat Horn,\n 1x Eye of Fire",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 2078,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,17 +26,8 @@
         },
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "Position": [-25.162231, 12.199998, 110.795654],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

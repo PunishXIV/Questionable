@@ -1,46 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033823,
-          "Position": {
-            "X": 40.329468,
-            "Y": -2.0168546E-08,
-            "Z": 1.9378662
-          },
-          "StopDistance": 5,
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": -496.10434,
-            "Y": 8.986935,
-            "Z": 603.11676
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kholusia - Wright",
-          "Fly": true
-        },
-        {
           "DataId": 1033827,
-          "Position": {
-            "X": -495.079,
-            "Y": 8.986954,
-            "Z": 604.27246
-          },
-          "TerritoryId": 814,
+          "Position": [-495.079, 8.986954, 604.27246],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -57,25 +30,13 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 918,
       "Steps": [
         {
           "DataId": 2011085,
-          "Position": {
-            "X": 1.822433,
-            "Y": -200.0001,
-            "Z": -448.3325
-          },
-          "TerritoryId": 918,
+          "Position": [1.822433, -200.0001, -448.3325],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "(phase 2) AI doesn't target Ardbert to start combat",
-              "(phase 2) VBM module: Elidibus' line cleave only covers half the length of the actual line (survivable)"
-            ]
-          },
-          "Comment": "Fight NPCs, then Elidibus",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "DialogueChoices": [
             {
               "Type": "List",
@@ -101,16 +62,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1033828,
-          "Position": {
-            "X": -396.2005,
-            "Y": -229.06482,
-            "Z": 782.9861
-          },
-          "StopDistance": 5,
-          "TerritoryId": 818,
+          "Position": [-396.2005, -229.06482, 782.9861],
           "InteractionType": "CompleteQuest"
         }
       ]

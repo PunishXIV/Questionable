@@ -1,43 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Mega-Potion of Intelligence HQ,\n 1x Mega-Potion of Mind HQ,\n 1x Mega-Potion of Vitality HQ\nAutocraft requires:\n 3x Rock Salt,\n 1x Black Scorpion,\n 1x Sandworm Fang,\n 1x Ahriman Wing,\n 1x Blue Yarzon Leg,\n 1x Grenade Ash,\n 1x Pudding Flesh",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002299,
-          "Position": {
-            "X": -103.62651,
-            "Y": 41.50014,
-            "Z": 120.44341
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "Position": [-103.62651, 41.50014, 120.44341],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 4607,
           "ItemCount": 1,
           "SkipConditions": {
@@ -50,7 +33,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 4608,
           "ItemCount": 1,
           "SkipConditions": {
@@ -63,7 +45,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 4606,
           "ItemCount": 1,
           "SkipConditions": {
@@ -76,18 +57,8 @@
         },
         {
           "DataId": 1002299,
-          "Position": {
-            "X": -103.62651,
-            "Y": 41.50014,
-            "Z": 120.44341
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ]
+          "Position": [-103.62651, 41.50014, 120.44341],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

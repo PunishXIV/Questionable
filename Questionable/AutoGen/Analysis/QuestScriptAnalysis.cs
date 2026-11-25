@@ -5,27 +5,9 @@ using Questionable.AutoGen.Lua;
 
 namespace Questionable.AutoGen.Analysis;
 
-/// <summary>
-///     Recovers sequence structure from a parsed quest script.
-///     <para>
-///         Quest scripts are template-generated, so the helper functions have a predictable shape:
-///         <c>IsAcceptEvent</c> gates which actors are targetable per sequence, <c>GetNpcTradeItems</c> and
-///         <c>getNpcTradeItemInfo</c> pair a sequence with the actor and item involved in a handover, and the
-///         <c>OnScene*</c> bodies mention <c>QuestOffer</c>/<c>QuestAccepted</c> or
-///         <c>QuestCompleted</c>/<c>QuestReward</c> for the accept and turn-in scenes.
-///     </para>
-///     <para>
-///         The pairing is positional: within one function the script tests <c>GetQuestSequence() == SEQ_n</c>
-///         and then references the actor for that branch, so references between one <c>SEQ_</c> symbol and the
-///         next are attributed to that sequence. Because that over-collects on branchy functions, every
-///         function votes and only the best-supported actors for a sequence are kept. This is a heuristic over
-///         the constant stream, not an evaluation of the bytecode.
-///     </para>
-/// </summary>
 internal sealed class QuestScriptAnalysis
 {
-    // Function names are compared case-insensitively: the same helper is spelled getNpcTradeItemInfo in some
-    // scripts and GetNpcTradeItemInfo in others.
+    // Script helper names vary in case (getNpcTradeItemInfo vs GetNpcTradeItemInfo).
     private static readonly string[] SequenceMappingFunctions =
     [
         "IsAcceptEvent",
@@ -48,22 +30,11 @@ internal sealed class QuestScriptAnalysis
 
     internal IReadOnlyDictionary<byte, SequenceHint> Hints => _hints;
 
-    /// <summary>Scene function names that offer or accept the quest.</summary>
-    internal IReadOnlyList<string> AcceptScenes => _acceptScenes;
-
-    /// <summary>Scene function names that complete the quest or hand out rewards.</summary>
-    internal IReadOnlyList<string> CompleteScenes => _completeScenes;
-
     internal bool HasScript { get; private init; }
 
-    /// <summary>
-    ///     Whether the script declares <c>IsEventItemUsable</c>. Quests that hand their item to an NPC do not;
-    ///     quests where you use the item on something do.
-    /// </summary>
+    // Only declared by quests where you use the item on something, not by ones that hand it to an NPC.
     internal bool UsesEventItems { get; private set; }
 
-    private readonly List<string> _acceptScenes = [];
-    private readonly List<string> _completeScenes = [];
 
     internal static QuestScriptAnalysis Empty() => new() { HasScript = false };
 
@@ -87,15 +58,6 @@ internal sealed class QuestScriptAnalysis
                     isHeldItems: string.Equals(name, "GetEventItems", StringComparison.OrdinalIgnoreCase),
                     isUsableItems: isUsableItems);
             }
-
-            if (!name.StartsWith("OnScene", StringComparison.Ordinal))
-                continue;
-
-            HashSet<string> called = [.. LuaSymbolWalk.Deep(function)];
-            if (called.Contains("QuestOffer") || called.Contains("QuestAccepted"))
-                analysis._acceptScenes.Add(name);
-            if (called.Contains("QuestCompleted") || called.Contains("QuestReward"))
-                analysis._completeScenes.Add(name);
         }
 
         analysis.KeepBestSupportedTargets();
@@ -131,9 +93,6 @@ internal sealed class QuestScriptAnalysis
                 continue;
             }
 
-            // Only the first actor of a branch is that sequence's primary target; the ones after it are usually
-            // actors carried over from earlier sequences that happen to still be targetable. They are kept as
-            // candidates anyway, because a "speak with all three" sequence really does need all of them.
             if (symbols.DataId(symbol) is > 0)
             {
                 lastActor = symbol;
@@ -176,7 +135,6 @@ internal sealed class QuestScriptAnalysis
         votes[symbol] = votes.GetValueOrDefault(symbol) + 1;
     }
 
-    /// <summary>Keeps only the actors the most functions agree on for each sequence.</summary>
     private void KeepBestSupportedTargets()
     {
         foreach ((byte sequence, Dictionary<string, int> votes) in _targetVotes)
@@ -206,7 +164,6 @@ internal sealed class QuestScriptAnalysis
         return hint;
     }
 
-    /// <summary>Every named function in the chunk, including the ones nested inside the script table.</summary>
     private static IEnumerable<LuaProto> EnumerateNamedFunctions(LuaProto root)
     {
         Queue<LuaProto> queue = new();

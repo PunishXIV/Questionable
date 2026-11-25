@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Hempen Breeches\nAutocraft requires:\n 6x Undyed Hempen Cloth,\n 3x Hempen Yarn,\n 3x Leather",
   "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 3274,
           "ItemCount": 3,
           "SkipConditions": {
@@ -49,18 +26,9 @@
         },
         {
           "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
+          "Position": [157.36621, 7.7920074, 98.924194],
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

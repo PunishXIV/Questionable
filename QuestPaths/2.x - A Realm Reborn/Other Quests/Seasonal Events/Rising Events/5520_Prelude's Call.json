@@ -1,44 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1059495,
-          "Position": {
-            "X": 3.5752,
-            "Y": 44.5,
-            "Z": 125.631
-          },
-          "TerritoryId": 128,
+          "Position": [3.5752, 44.5, 125.631],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "$": "auto: issuer 1059495 (wandering minstrel)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1059619,
-          "Position": {
-            "X": -46.7906,
-            "Y": 5.81389,
-            "Z": -101.023
-          },
-          "TerritoryId": 133,
+          "Position": [-46.7906, 5.81389, -101.023],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: todo turn-in -> 1059619 (wandering minstrel)"
         }
       ]

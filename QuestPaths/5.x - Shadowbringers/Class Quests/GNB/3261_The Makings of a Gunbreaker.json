@@ -1,52 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1029028,
-          "Position": {
-            "X": 15.6710205,
-            "Y": -1.5911946,
-            "Z": 37.704956
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2010237,
-          "Position": {
-            "X": -244.1596,
-            "Y": 5.935669,
-            "Z": 80.03345
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Position": [-244.1596, 5.935669, 80.03345],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -218.21523,
-            "Y": 11.806735,
-            "Z": 18.429258
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 152,
+          "Position": [-218.21523, 11.806735, 18.429258],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -57,32 +34,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1029029,
-          "Position": {
-            "X": -214.64868,
-            "Y": 11.980015,
-            "Z": 25.40625
-          },
-          "StopDistance": 7,
-          "TerritoryId": 152,
+          "Position": [-214.64868, 11.980015, 25.40625],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1029033,
-          "Position": {
-            "X": -214.67926,
-            "Y": 11.971041,
-            "Z": 25.192627
-          },
-          "StopDistance": 7,
-          "TerritoryId": 152,
+          "Position": [-214.67926, 11.971041, 25.192627],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

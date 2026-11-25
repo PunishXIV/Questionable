@@ -1,91 +1,57 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013971,
-          "Position": {
-            "X": 15.854065,
-            "Y": 28.620823,
-            "Z": -682.76495
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1013999,
-          "Position": {
-            "X": 33.89026,
-            "Y": -8.812927,
-            "Z": 126.17676
-          },
-          "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "Position": [33.89026, -8.812927, 126.17676],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2005966,
-          "Position": {
-            "X": 163.53088,
-            "Y": -27.328918,
-            "Z": 207.84314
-          },
-          "TerritoryId": 154,
+          "Position": [163.53088, -27.328918, 207.84314],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             5043
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1014001,
-          "Position": {
-            "X": 404.89807,
-            "Y": -5.4588227,
-            "Z": 72.342896
-          },
-          "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [404.89807, -5.4588227, 72.342896],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013971,
-          "Position": {
-            "X": 15.854065,
-            "Y": 28.620823,
-            "Z": -682.76495
-          },
-          "TerritoryId": 156,
+          "Position": [15.854065, 28.620823, -682.76495],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2030
         }
       ]

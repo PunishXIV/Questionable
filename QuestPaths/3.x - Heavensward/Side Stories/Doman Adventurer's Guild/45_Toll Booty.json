@@ -1,159 +1,86 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009812,
-          "Position": {
-            "X": 74.08252,
-            "Y": 30.549389,
-            "Z": -720.9735
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 26.405773,
-            "Y": 29.49983,
-            "Z": -767.3998
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 25.629164,
-            "Y": 28.999998,
-            "Z": -823.2204
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1001304,
-          "Position": {
-            "X": 25.589355,
-            "Y": 29,
-            "Z": -825.37573
-          },
-          "TerritoryId": 156,
+          "Position": [25.589355, 29, -825.37573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2004628,
-          "Position": {
-            "X": 50.614136,
-            "Y": 31.143677,
-            "Z": -748.40924
-          },
-          "TerritoryId": 156,
+          "Position": [50.614136, 31.143677, -748.40924],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2004631,
-          "Position": {
-            "X": -127.55017,
-            "Y": -1.9379272,
-            "Z": -638.4833
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-127.55017, -1.9379272, -638.4833],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": -165.20372,
-            "Y": 11.28438,
-            "Z": -619.29504
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2004629,
-          "Position": {
-            "X": -166.79645,
-            "Y": 12.283508,
-            "Z": -619.8978
-          },
-          "TerritoryId": 156,
+          "Position": [-166.79645, 12.283508, -619.8978],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009817,
-          "Position": {
-            "X": -130.1748,
-            "Y": -0.85852593,
-            "Z": -645.2583
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-130.1748, -0.85852593, -645.2583],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006530,
-          "Position": {
-            "X": 21.927185,
-            "Y": 20.746975,
-            "Z": -682.06305
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [21.927185, 20.746975, -682.06305],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009813,
-          "Position": {
-            "X": 55.436035,
-            "Y": 31.187548,
-            "Z": -763.42413
-          },
-          "TerritoryId": 156,
+          "Position": [55.436035, 31.187548, -763.42413],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 50
         }
       ]

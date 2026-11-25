@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using Dalamud.Plugin.Ipc;
+using System.Collections.Immutable;
 using Dalamud.Plugin.Ipc.Exceptions;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
@@ -11,43 +10,40 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
-            var _ = _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
-            return GetVersion() != null && _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
+            return GetVersion() != null && _getFeatureEnabled(ConflictingFeatures.First()) != null;
         }, fallback: false);
+
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>
     {
-        // Actions
         "Auto-Meditation",
         "Auto-Motif (Out of Combat)",
-        "Auto-Mount after Combat",
+        "Auto-Mount After Combat",
         "Auto-Mount after Gathering",
-        "Auto-Peleton",
+        "Auto-Mount on Zone Change",
+        "Auto-Peloton",
         "Auto-Sprint in Sanctuaries",
         "Auto-select Turn-ins",
         "Auto-Summon Chocobo",
         "Auto-Sync FATEs",
 
-        // Targets
         "Auto-interact with Gathering Nodes",
 
-        // Other
         "Pandora Quick Gather"
     }.ToImmutableHashSet();
     private readonly IClientState _clientState;
 
     private readonly IFramework _framework;
 
-    private readonly ICallGateSubscriber<string, bool?> _getFeatureEnabled;
+    [EzIPC("GetFeatureEnabled")] private readonly Func<string, bool?> _getFeatureEnabled = null!;
     private readonly ILogger<PandorasBoxIpc> _logger;
     private readonly QuestController _questController;
-    private readonly ICallGateSubscriber<string, bool, object?> _setFeatureEnabled;
+    [EzIPC("SetFeatureEnabled")] private readonly Action<string, bool> _setFeatureEnabled = null!;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly TerritoryData _territoryData;
-
+    private readonly FeatureSuppression _suppression;
     private bool _loggedIpcError;
-    private HashSet<string>? _pausedFeatures;
 
-    public PandorasBoxIpc(IDalamudPluginInterface pluginInterface,
-        IFramework framework,
+    public PandorasBoxIpc(IFramework framework,
         QuestController questController,
         TerritoryData territoryData,
         IClientState clientState,
@@ -58,8 +54,8 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         _territoryData = territoryData;
         _clientState = clientState;
         _logger = logger;
-        _getFeatureEnabled = pluginInterface.GetIpcSubscriber<string, bool?>("PandorasBox.GetFeatureEnabled");
-        _setFeatureEnabled = pluginInterface.GetIpcSubscriber<string, bool, object?>("PandorasBox.SetFeatureEnabled");
+        _suppression = new FeatureSuppression(ConflictingFeatures, logger);
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
         logger.LogInformation("Pandora's Box auto active time maneuver enabled: {IsAtmEnabled}",
             IsAutoActiveTimeManeuverEnabled);
 
@@ -72,13 +68,13 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         {
             try
             {
-                return _getFeatureEnabled.InvokeFunc("Auto Active Time Maneuver") == true;
+                return _getFeatureEnabled("Auto Active Time Maneuver") == true;
             }
             catch (IpcNotReadyError)
             {
                 return false;
             }
-            catch (IpcError e)
+            catch (Exception e) when (IpcInvoke.IsSafeFailure(e))
             {
                 if (!_loggedIpcError)
                 {
@@ -95,14 +91,14 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     {
         try
         {
-            _setFeatureEnabled.InvokeAction("Auto Active Time Maneuver", enabled);
+            _setFeatureEnabled("Auto Active Time Maneuver", enabled);
             return IsAutoActiveTimeManeuverEnabled == enabled;
         }
         catch (IpcNotReadyError)
         {
             return false;
         }
-        catch (IpcError e)
+        catch (Exception e) when (IpcInvoke.IsSafeFailure(e))
         {
             _logger.LogWarning(e, "Could not set Pandora's Box auto active time maneuver to {Enabled}", enabled);
             return false;
@@ -112,63 +108,96 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
-        IpcInvoke.TryOnFrameworkThread(_framework, RestoreConflictingFeatures, _logger);
+        IpcInvoke.TryOnFrameworkThread(_framework, () =>
+        {
+            _suppression.Update(false, IsInstalled, _getFeatureEnabled, _setFeatureEnabled, force: true);
+            if (_suppression.TurnedOff.Count > 0)
+                _logger.LogWarning("Could not restore Pandora's Box features on unload: {Features}",
+                    string.Join(", ", _suppression.TurnedOff));
+        }, _logger);
+        IPCSubscriber.DisposeAll(_disposalTokens);
     }
+
+    private bool IsInstalled => IPCSubscriber.IsInstalled(InternalName);
 
     private void OnUpdate(IFramework framework)
     {
-        bool hasActiveQuest = _questController.IsRunning ||
-                              _questController.AutomationType != QuestController.EAutomationType.Manual;
-        if (hasActiveQuest && !_territoryData.IsDutyInstance(_clientState.TerritoryType))
-            DisableConflictingFeatures();
-        else
-            RestoreConflictingFeatures();
-    }
-
-    private void DisableConflictingFeatures()
-    {
-        if (_pausedFeatures != null)
+        bool hasActiveQuest = (_questController.IsRunning ||
+                               _questController.AutomationType != QuestController.EAutomationType.Manual) &&
+                              !_territoryData.IsDutyInstance(_clientState.TerritoryType);
+        if (!_suppression.HasWork(hasActiveQuest))
             return;
 
-        _pausedFeatures = [];
+        _suppression.Update(hasActiveQuest, IsInstalled, _getFeatureEnabled, _setFeatureEnabled);
+    }
 
-        foreach (string feature in ConflictingFeatures)
+    internal sealed class FeatureSuppression(IEnumerable<string> features, ILogger logger, TimeProvider? timeProvider = null)
+    {
+        private static readonly TimeSpan RetryInterval = TimeSpan.FromSeconds(5);
+
+        private readonly ImmutableArray<string> _features = [.. features];
+        private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
+        private readonly HashSet<string> _turnedOff = [];
+        private readonly HashSet<string> _unchecked = [];
+        private bool _runActive;
+        private bool _warnedThisRun;
+        private long? _lastFailureAt;
+
+        public IReadOnlySet<string> TurnedOff => _turnedOff;
+
+        public bool HasWork(bool hasActiveQuest) =>
+            hasActiveQuest != _runActive || (hasActiveQuest ? _unchecked.Count > 0 : _turnedOff.Count > 0);
+
+        public void Update(bool hasActiveQuest, bool providerInstalled, Func<string, bool?> isEnabled,
+            Action<string, bool> setEnabled, bool force = false)
         {
-            try
+            if (hasActiveQuest != _runActive)
             {
-                bool? isEnabled = _getFeatureEnabled.InvokeFunc(feature);
-                if (isEnabled == true)
+                _runActive = hasActiveQuest;
+                _warnedThisRun = false;
+                _lastFailureAt = null;
+                _unchecked.Clear();
+                if (hasActiveQuest)
+                    _unchecked.UnionWith(_features.Where(x => !_turnedOff.Contains(x)));
+            }
+
+            HashSet<string> pending = hasActiveQuest ? _unchecked : _turnedOff;
+            bool waitingToRetry = !force && _lastFailureAt is { } failedAt &&
+                                  _clock.GetElapsedTime(failedAt) < RetryInterval;
+            if (pending.Count == 0 || !providerInstalled || waitingToRetry)
+                return;
+
+            foreach (string feature in pending.ToList())
+            {
+                try
                 {
-                    _setFeatureEnabled.InvokeAction(feature, false);
-                    _pausedFeatures.Add(feature);
-                    _logger.LogInformation("Paused Pandora's Box feature: {Feature}", feature);
+                    if (hasActiveQuest)
+                    {
+                        if (isEnabled(feature) == true)
+                        {
+                            setEnabled(feature, false);
+                            _turnedOff.Add(feature);
+                            logger.LogInformation("Paused Pandora's Box feature: {Feature}", feature);
+                        }
+                    }
+                    else
+                    {
+                        setEnabled(feature, true);
+                        logger.LogInformation("Restored Pandora's Box feature: {Feature}", feature);
+                    }
+
+                    pending.Remove(feature);
+                }
+                catch (Exception e) when (IpcInvoke.IsSafeFailure(e))
+                {
+                    if (!_warnedThisRun)
+                        logger.LogWarning(e, "Failed to {Action} Pandora's Box feature {Feature}; retrying",
+                            hasActiveQuest ? "pause" : "restore", feature);
+                    _warnedThisRun = true;
                 }
             }
-            catch (IpcError e)
-            {
-                _logger.LogWarning(e, "Failed to pause Pandora's Box feature: {Feature}", feature);
-            }
+
+            _lastFailureAt = pending.Count > 0 ? _clock.GetTimestamp() : null;
         }
-    }
-
-    private void RestoreConflictingFeatures()
-    {
-        if (_pausedFeatures == null)
-            return;
-
-        foreach (string feature in _pausedFeatures)
-        {
-            try
-            {
-                _setFeatureEnabled.InvokeAction(feature, true);
-                _logger.LogInformation("Restored Pandora's Box feature: {Feature}", feature);
-            }
-            catch (Exception e)
-            {
-                _logger.LogWarning(e, "Failed to restore Pandora's Box feature: {Feature}", feature);
-            }
-        }
-
-        _pausedFeatures = null;
     }
 }

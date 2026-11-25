@@ -1,6 +1,4 @@
 using Dalamud.Game.ClientState.Objects.Enums;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class AetheryteFreeOrFavored
@@ -12,7 +10,7 @@ internal static class AetheryteFreeOrFavored
             if (step.InteractionType != EInteractionType.RegisterFreeOrFavoredAetheryte)
                 return null;
             if (!step.Aetheryte.HasValue)
-                throw new ArgumentNullException(nameof(step.Aetheryte));
+                throw new ArgumentException($"{nameof(step.Aetheryte)} is missing", nameof(step));
 
             return new Register(step.Aetheryte.Value);
         }
@@ -24,18 +22,20 @@ internal static class AetheryteFreeOrFavored
         public override string ToString() => $"RegisterFreeOrFavoredAetheryte({AetheryteLocation})";
     }
 
-    internal sealed class DoRegister
+    internal sealed class RegisterExecutor
     (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
-        ILogger<DoRegister> logger) : TaskExecutor<Register>
+        ILogger<RegisterExecutor> logger) : TaskExecutor<Register>
     {
+        private readonly InteractRetry _retry = new(DateTime.Now);
+
         protected override bool Start()
         {
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
-                throw new TaskException($"Aetheryte {Task.AetheryteLocation} is not attuned");
+                throw new NeedsPlayerException($"Aetheryte {Task.AetheryteLocation} is not attuned");
 
-            if (aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(Task.AetheryteLocation) ==
+            if (aetheryteFunctions.CanRegisterFreeOrFavored(Task.AetheryteLocation) ==
                 AetheryteRegistrationResult.NotPossible)
             {
                 logger.LogInformation("Could not register aetheryte {AetheryteLocation} as free or favored",
@@ -50,10 +50,12 @@ internal static class AetheryteFreeOrFavored
 
         public override ETaskResult Update()
         {
-            return aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(Task.AetheryteLocation) ==
-                   AetheryteRegistrationResult.NotPossible
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (aetheryteFunctions.CanRegisterFreeOrFavored(Task.AetheryteLocation) == AetheryteRegistrationResult.NotPossible)
+                return ETaskResult.TaskComplete;
+
+            if (_retry.Due(DateTime.Now, gameFunctions.IsOccupied()))
+                gameFunctions.InteractWith((uint)Task.AetheryteLocation, ObjectKind.Aetheryte);
+            return ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => true;

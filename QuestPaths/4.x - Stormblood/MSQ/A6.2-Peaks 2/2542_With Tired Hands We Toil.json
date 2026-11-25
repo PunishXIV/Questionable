@@ -1,73 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020629,
-          "Position": {
-            "X": -298.51227,
-            "Y": 257.52652,
-            "Z": 764.98047
-          },
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Ghiri",
-          "StopDistance": 7
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020873,
-          "Position": {
-            "X": -327.96222,
-            "Y": 258.90652,
-            "Z": 757.3815
-          },
-          "TerritoryId": 620,
+          "Position": [-327.96222, 258.90652, 757.3815],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 2842
         },
         {
           "DataId": 2009008,
-          "Position": {
-            "X": -171.2215,
-            "Y": 294.5144,
-            "Z": 302.44897
-          },
-          "TerritoryId": 620,
+          "Position": [-171.2215, 294.5144, 302.44897],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "DataId": 1021557,
-          "Position": {
-            "X": -130.02216,
-            "Y": 305.38147,
-            "Z": 189.71533
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 620
-        },
-        {
           "DataId": 2009009,
-          "Position": {
-            "X": -115.40399,
-            "Y": 305.47034,
-            "Z": 161.3031
-          },
-          "TerritoryId": 620,
+          "Position": [-115.40399, 305.47034, 161.3031],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -79,30 +42,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1021616,
-          "Position": {
-            "X": 64.31665,
-            "Y": 305.92664,
-            "Z": 152.6665
-          },
-          "TerritoryId": 620,
+          "Position": [64.31665, 305.92664, 152.6665],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 2009010,
-          "Position": {
-            "X": 148.82117,
-            "Y": 308.73572,
-            "Z": 166.58276
-          },
-          "TerritoryId": 620,
+          "Position": [148.82117, 308.73572, 166.58276],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -113,15 +68,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1022344,
-          "Position": {
-            "X": 353.78027,
-            "Y": 323.77386,
-            "Z": 273.30432
-          },
-          "TerritoryId": 620,
+          "Position": [353.78027, 323.77386, 273.30432],
           "InteractionType": "CompleteQuest"
         }
       ]

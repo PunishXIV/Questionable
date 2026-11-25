@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,78 +8,33 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027716,
-          "Position": {
-            "X": 494.991,
-            "Y": -6.55534,
-            "Z": -224.915
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029888,
-          "Position": {
-            "X": 339.285,
-            "Y": 0.512984,
-            "Z": 163.63
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [339.285, 0.512984, 163.63],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 336.55447,
-            "Y": 0.37424934,
-            "Z": 164.44731
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 336.55447,
-            "Y": 0.37424934,
-            "Z": 164.44731
-          },
-          "TerritoryId": 817,
+          "Position": [336.55447, 0.37424934, 164.44731],
           "InteractionType": "Emote",
-          "Emote": "pray",
-          "Fly": true
+          "Emote": "pray"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027716,
-          "Position": {
-            "X": 494.991,
-            "Y": -6.55534,
-            "Z": -224.915
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,4 +1,3 @@
-using Dalamud.Game.ClientState.Objects.Types;
 namespace Questionable.Controller.Steps.Movement;
 
 internal sealed class WaitForNearDataIdExecutor
@@ -13,7 +12,7 @@ internal sealed class WaitForNearDataIdExecutor
         IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
         if (gameObject == null ||
             (gameObject.Position - objectTable[0]!.Position).Length() > Task.StopDistance)
-            throw new TaskException("Object not found or too far away, no position so we can't move");
+            throw new TaskException("Couldn't find the target nearby, and the step has no position to walk to.");
 
         return ETaskResult.TaskComplete;
     }

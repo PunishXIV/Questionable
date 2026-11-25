@@ -1,103 +1,54 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026284,
-          "Position": {
-            "X": 498.2832,
-            "Y": 40.86853,
-            "Z": -503.37988
-          },
-          "StopDistance": 5,
-          "TerritoryId": 622,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025874,
-          "Position": {
-            "X": 351.12524,
-            "Y": 118.66239,
-            "Z": -692.53076
-          },
-          "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [351.12524, 118.66239, -692.53076],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
-          "Position": {
-            "X": 493.77588,
-            "Y": 40.425697,
-            "Z": -475.4643
-          },
-          "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1020539,
-          "Position": {
-            "X": 498.2832,
-            "Y": 40.836098,
-            "Z": -508.20172
-          },
-          "TerritoryId": 622,
+          "Position": [498.2832, 40.836098, -508.20172],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1020280,
-          "Position": {
-            "X": -447.5113,
-            "Y": 2.2771435,
-            "Z": 630.74994
-          },
-          "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "Fly": true
+          "Position": [-447.5113, 2.2771435, 630.74994],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 2009591,
-          "Position": {
-            "X": -210.34564,
-            "Y": 2.6397705,
-            "Z": 519.27966
-          },
-          "TerritoryId": 622,
+          "Position": [-210.34564, 2.6397705, 519.27966],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "(Magnai) Keeps focussing the boss instead of the axes, thus getting killed by the AOEs"
-            ]
-          },
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -106,16 +57,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1020539,
-          "Position": {
-            "X": 498.2832,
-            "Y": 40.836098,
-            "Z": -508.20172
-          },
-          "StopDistance": 5,
-          "TerritoryId": 622,
+          "Position": [498.2832, 40.836098, -508.20172],
           "InteractionType": "CompleteQuest"
         }
       ]

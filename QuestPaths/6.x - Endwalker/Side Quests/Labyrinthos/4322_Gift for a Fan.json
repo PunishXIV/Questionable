@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,51 +8,27 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037564,
-          "Position": {
-            "X": -93.5836,
-            "Y": -31.5304,
-            "Z": -14.847
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1037581,
-          "Position": {
-            "X": -2.96649,
-            "Y": -28.6056,
-            "Z": 586.375
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-2.96649, -28.6056, 586.375],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": -3.44256,
-            "Y": -28.3524,
-            "Z": 587.134
-          },
-          "TerritoryId": 956,
+          "Position": [-3.44256, -28.3524, 587.134],
           "InteractionType": "UseItem",
           "ItemId": 2003312,
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -65,21 +41,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037564,
-          "Position": {
-            "X": -93.5836,
-            "Y": -31.5304,
-            "Z": -14.847
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

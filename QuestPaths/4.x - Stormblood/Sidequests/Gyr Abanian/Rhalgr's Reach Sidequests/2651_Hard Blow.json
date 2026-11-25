@@ -1,36 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1023407,
-          "Position": {
-            "X": 183.456,
-            "Y": 13,
-            "Z": -128.719
-          },
-          "TerritoryId": 635,
+          "Position": [183.456, 13, -128.719],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Rhalgr's Reach] Aetheryte Plaza","[Rhalgr's Reach] Northeastern Rhalgr's Reach"],
           "$": "auto: issuer 1023407 (straight-arrow sutler)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1022057,
-          "Position": {
-            "X": 212.716,
-            "Y": 12.9655,
-            "Z": -68.598
-          },
-          "TerritoryId": 635,
+          "Position": [212.716, 12.9655, -68.598],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1022057 (straight-arrow sutler)"
         }
@@ -38,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 2008880,
-          "Position": {
-            "X": 213.654,
-            "Y": 12.9655,
-            "Z": -64.3801
-          },
-          "TerritoryId": 635,
+          "Position": [213.654, 12.9655, -64.3801],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2008880 (destination)"
         }
@@ -54,15 +41,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1022057,
-          "Position": {
-            "X": 212.716,
-            "Y": 12.9655,
-            "Z": -68.598
-          },
-          "TerritoryId": 635,
+          "Position": [212.716, 12.9655, -68.598],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1022057 (straight-arrow sutler)"
         }

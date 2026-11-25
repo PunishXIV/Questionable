@@ -1,49 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000997,
-          "Position": {
-            "X": -31.265808,
-            "Y": 44.5,
-            "Z": 185.53442
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [128, 129]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1021044,
-          "Position": {
-            "X": -188.98297,
-            "Y": 3.9999914,
-            "Z": 177.5387
-          },
-          "TerritoryId": 129,
+          "Position": [-188.98297, 3.9999914, 177.5387],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSBSM650_02617_Q1_000_000",
@@ -56,30 +27,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "Position": {
-            "X": -90.87005,
-            "Y": 22.069584,
-            "Z": 116.24956
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "TargetTerritoryId": 128,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ],
-		  "SkipConditions": {"StepIf": {"NotInTerritory": [129]}}
-        },
-        {
           "DataId": 1021042,
-          "Position": {
-            "X": -184.92413,
-            "Y": 41,
-            "Z": 184.67993
-          },
+          "Position": [-184.92413, 41, 184.67993],
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -94,10 +46,10 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 129,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 129,
           "ItemId": 17888,
           "ItemCount": 1,
           "SkipConditions": {
@@ -109,51 +61,15 @@
           }
         },
         {
-          "Position": {
-            "X": -96.67907,
-            "Y": 35.499996,
-            "Z": 102.49866
-          },
-          "TerritoryId": 128,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "TargetTerritoryId": 129,
-		  "SkipConditions": {"StepIf": {"NotInTerritory": [128]}}
-        },
-        {
           "DataId": 1021044,
-          "Position": {
-            "X": -188.98297,
-            "Y": 3.9999914,
-            "Z": 177.5387
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "Position": [-188.98297, 3.9999914, 177.5387],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000997,
-          "Position": {
-            "X": -31.265808,
-            "Y": 44.5,
-            "Z": 185.53442
-          },
-          "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,67 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "EquipItem",
           "ItemId": 2391,
-          "TerritoryId": 131,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 131,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 131,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 131,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "Position": [-25.162231, 12.199998, 110.795654],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1004419,
-          "Position": {
-            "X": -33.585205,
-            "Y": 13.599848,
-            "Z": 96.42175
-          },
-          "TerritoryId": 131,
+          "Position": [-33.585205, 13.599848, 96.42175],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -79,7 +55,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 5062,
           "ItemCount": 1,
           "SkipConditions": {
@@ -92,18 +67,9 @@
         },
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
+          "Position": [-25.162231, 12.199998, 110.795654],
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

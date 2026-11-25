@@ -1,46 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 3x Grade 1 Intelligence Dissolvent HQ // Autocraft requires: 4x Deepeye Tears, 2x Mogpom, 1x Volcanic Rock Salt",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1012563,
-          "Position": {
-            "X": 24.002441,
-            "Y": 29,
-            "Z": -823.66675
-          },
-          "TerritoryId": 156,
+          "Position": [24.002441, 29, -823.66675],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 156,
           "ItemId": 12615,
           "ItemCount": 3,
           "SkipConditions": {
@@ -53,66 +37,36 @@
         },
         {
           "DataId": 1001304,
-          "Position": {
-            "X": 25.589355,
-            "Y": 29,
-            "Z": -825.37573
-          },
-          "TerritoryId": 156,
+          "Position": [25.589355, 29, -825.37573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
+          "Position": [76.89014, 22.236717, -640.4364],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002299,
-          "Position": {
-            "X": -103.62651,
-            "Y": 41.50014,
-            "Z": 120.44341
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ]
+          "Position": [-103.62651, 41.50014, 120.44341],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

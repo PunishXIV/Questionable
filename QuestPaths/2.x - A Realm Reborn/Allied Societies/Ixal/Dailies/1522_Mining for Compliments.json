@@ -1,36 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009216,
-          "Position": {
-            "X": 164.35486,
-            "Y": -22.797548,
-            "Z": 114.64099
-          },
-          "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "SwitchClass",
           "TargetClass": "Miner"
         },
         {
-          "TerritoryId": 155,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -47,61 +32,44 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009647,
-          "Position": {
-            "X": 204.97437,
-            "Y": 302.26498,
-            "Z": -250.84308
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [204.97437, 302.26498, -250.84308],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009221,
-          "Position": {
-            "X": 202.13623,
-            "Y": 301.99976,
-            "Z": -253.55927
-          },
-          "TerritoryId": 155,
+          "Position": [202.13623, 301.99976, -253.55927],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "SwitchClass",
           "TargetClass": "QuestStartJob"
         },
         {
-          "TerritoryId": 155,
           "InteractionType": "Craft",
           "ItemId": 8122,
           "ItemCount": 2
         },
         {
           "DataId": 1009216,
-          "Position": {
-            "X": 164.35486,
-            "Y": -22.797548,
-            "Z": 114.64099
-          },
+          "Position": [164.35486, -22.797548, 114.64099],
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

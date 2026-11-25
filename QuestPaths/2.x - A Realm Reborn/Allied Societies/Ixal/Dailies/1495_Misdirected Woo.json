@@ -1,97 +1,58 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009211,
-          "Position": {
-            "X": 153.8872,
-            "Y": -9.001622,
-            "Z": 77.50049
-          },
-          "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000656,
-          "Position": {
-            "X": 401.09537,
-            "Y": -5.9241953,
-            "Z": -103.80447
-          },
-          "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "Position": [401.09537, -5.9241953, -103.80447],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000172,
-          "Position": {
-            "X": 359.73227,
-            "Y": 8.934156,
-            "Z": 229.38129
-          },
-          "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [359.73227, 8.934156, 229.38129],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000656,
-          "Position": {
-            "X": 401.09537,
-            "Y": -5.9241953,
-            "Z": -103.80447
-          },
-          "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [401.09537, -5.9241953, -103.80447],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Craft",
           "ItemId": 8092,
           "ItemCount": 1
         },
         {
           "DataId": 1009211,
-          "Position": {
-            "X": 153.8872,
-            "Y": -9.001622,
-            "Z": 77.50049
-          },
-          "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "Position": [153.8872, -9.001622, 77.50049],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,111 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006528,
-          "Position": {
-            "X": -698.51227,
-            "Y": 242.18399,
-            "Z": 375.17358
-          },
-          "StopDistance": 5,
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -692.2779,
-            "Y": 242.18399,
-            "Z": 366.4715
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -217.57614,
-                  "Y": 217.23946,
-                  "Z": 706.57166
-                },
-                "TerritoryId": 155,
-                "MaximumDistance": 200
-              },
-              "AetheryteUnlocked": "Mor Dhona"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -688.1699,
-            "Y": 241.99994,
-            "Z": 355.80283
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)",
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -217.57614,
-                  "Y": 217.23946,
-                  "Z": 706.57166
-                },
-                "TerritoryId": 155,
-                "MaximumDistance": 200
-              },
-              "AetheryteUnlocked": "Mor Dhona"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -217.57614,
-            "Y": 217.23946,
-            "Z": 706.57166
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "SkipConditions": { "StepIf": { "AetheryteUnlocked": "Mor Dhona" } }
-        },
-        {
           "TerritoryId": 156,
-          "StopDistance": 5,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Mor Dhona"
         },
         {
           "$": "Unlock Mor Dhona taxi",
           "DataId": 1006901,
-          "Position": {
-            "X": 59.372803,
-            "Y": 20.693598,
-            "Z": -659.9985
-          },
+          "Position": [59.372803, 20.693598, -659.9985],
           "TerritoryId": 156,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179682
         },
         {
           "DataId": 1006530,
-          "Position": {
-            "X": 21.927185,
-            "Y": 20.746975,
-            "Z": -682.06305
-          },
+          "Position": [21.927185, 20.746975, -682.06305],
           "TerritoryId": 156,
           "InteractionType": "Interact"
         }
@@ -113,15 +34,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006531,
-          "Position": {
-            "X": 53.81848,
-            "Y": 25.009521,
-            "Z": -697.0779
-          },
-          "TerritoryId": 156,
+          "Position": [53.81848, 25.009521, -697.0779],
           "InteractionType": "CompleteQuest"
         }
       ]

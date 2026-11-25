@@ -1,24 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -214.67926,
-            "Y": 11.971041,
-            "Z": 25.192627
-          },
-          "StopDistance": 7,
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "Position": [-214.67926, 11.971041, 25.192627],
+          "InteractionType": "WalkTo"
         },
         {
-          "TerritoryId": 152,
           "InteractionType": "EquipItem",
           "ItemId": 27357,
           "SkipConditions": {
@@ -30,18 +23,11 @@
           }
         },
         {
-          "TerritoryId": 152,
           "InteractionType": "CreateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "Position": {
-            "X": -214.67926,
-            "Y": 11.971041,
-            "Z": 25.192627
-          },
-          "StopDistance": 7,
-          "TerritoryId": 152,
+          "Position": [-214.67926, 11.971041, 25.192627],
           "InteractionType": "UseItem",
           "ItemId": 27266,
           "SkipConditions": {
@@ -50,143 +36,53 @@
                 "NotInInventory": true
               }
             }
-          },
-          "Fly": true
-        },
-        {
-          "TerritoryId": 152,
-          "InteractionType": "EquipItem",
-          "ItemId": 27256,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
           }
         },
         {
-          "TerritoryId": 152,
-          "InteractionType": "EquipItem",
-          "ItemId": 27257,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 152,
-          "InteractionType": "EquipItem",
-          "ItemId": 27258,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 152,
-          "InteractionType": "EquipItem",
-          "ItemId": 27259,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 152,
-          "InteractionType": "EquipItem",
-          "ItemId": 27260,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 152,
           "InteractionType": "EquipRecommended",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 152,
           "InteractionType": "UpdateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1029033,
-          "Position": {
-            "X": -214.67926,
-            "Y": 11.971041,
-            "Z": 25.192627
-          },
-          "StopDistance": 7,
-          "TerritoryId": 152,
+          "Position": [-214.67926, 11.971041, 25.192627],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1029035,
-          "Position": {
-            "X": 35.50769,
-            "Y": -8,
-            "Z": 115.31238
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "Position": [35.50769, -8, 115.31238],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1029037,
-          "Position": {
-            "X": 73.65515,
-            "Y": 13.994091,
-            "Z": -270.83246
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ]
+          "Position": [73.65515, 13.994091, -270.83246],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000288,
-          "Position": {
-            "X": -62.028015,
-            "Y": 7.175424,
-            "Z": -117.60132
-          },
-          "TerritoryId": 133,
+          "Position": [-62.028015, 7.175424, -117.60132],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -198,12 +94,7 @@
         },
         {
           "DataId": 1000286,
-          "Position": {
-            "X": -53.574463,
-            "Y": 7.2025366,
-            "Z": -118.36426
-          },
-          "TerritoryId": 133,
+          "Position": [-53.574463, 7.2025366, -118.36426],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -216,12 +107,7 @@
         },
         {
           "DataId": 1003063,
-          "Position": {
-            "X": -37.979797,
-            "Y": 7.439375,
-            "Z": -139.60486
-          },
-          "TerritoryId": 133,
+          "Position": [-37.979797, 7.439375, -139.60486],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -236,35 +122,23 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1029041,
-          "Position": {
-            "X": -93.98035,
-            "Y": 7.1111856,
-            "Z": -131.33447
-          },
-          "TerritoryId": 133,
+          "Position": [-93.98035, 7.1111856, -131.33447],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1029089,
-          "Position": {
-            "X": 73.65515,
-            "Y": 13.994091,
-            "Z": -270.83246
-          },
-          "TerritoryId": 133,
+          "Position": [73.65515, 13.994091, -270.83246],
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Lancers' Guild"
-          ],
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -276,49 +150,23 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "Position": {
-            "X": -232.38095,
-            "Y": 2.3337264,
-            "Z": -205.92738
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Botanists' Guild"
-          ]
-        },
-        {
           "DataId": 1029043,
-          "Position": {
-            "X": -232.25757,
-            "Y": 2.4186904,
-            "Z": -210.98651
-          },
-          "StopDistance": 7,
-          "TerritoryId": 133,
+          "Position": [-232.25757, 2.4186904, -210.98651],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1029044,
-          "Position": {
-            "X": 18.44812,
-            "Y": 7.9999833,
-            "Z": -115.31244
-          },
-          "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "Position": [18.44812, 7.9999833, -115.31244],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

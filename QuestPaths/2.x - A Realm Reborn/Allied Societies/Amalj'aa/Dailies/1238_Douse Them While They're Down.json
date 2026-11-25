@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005551,
-          "Position": {
-            "X": 98.924194,
-            "Y": 15.29447,
-            "Z": -349.4469
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2003193,
-          "Position": {
-            "X": -92.5155,
-            "Y": 45.792236,
-            "Z": 178.60681
-          },
-          "TerritoryId": 146,
+          "Position": [-92.5155, 45.792236, 178.60681],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -51,14 +33,8 @@
         },
         {
           "DataId": 2003192,
-          "Position": {
-            "X": -145.58636,
-            "Y": 37.9187,
-            "Z": 163.5614
-          },
-          "TerritoryId": 146,
+          "Position": [-145.58636, 37.9187, 163.5614],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -77,14 +53,8 @@
         },
         {
           "DataId": 2003191,
-          "Position": {
-            "X": -127.06189,
-            "Y": 25.528198,
-            "Z": 130.66296
-          },
-          "TerritoryId": 146,
+          "Position": [-127.06189, 25.528198, 130.66296],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -103,15 +73,9 @@
         },
         {
           "DataId": 2003190,
-          "Position": {
-            "X": -123.64392,
-            "Y": 14.02301,
-            "Z": 90.318115
-          },
-          "TerritoryId": 146,
+          "Position": [-123.64392, 14.02301, 90.318115],
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -130,15 +94,9 @@
         },
         {
           "DataId": 2003189,
-          "Position": {
-            "X": -65.049255,
-            "Y": 9.414734,
-            "Z": 53.025024
-          },
-          "TerritoryId": 146,
+          "Position": [-65.049255, 9.414734, 53.025024],
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -157,15 +115,9 @@
         },
         {
           "DataId": 2003194,
-          "Position": {
-            "X": 24.338135,
-            "Y": 35.965454,
-            "Z": 188.281
-          },
-          "TerritoryId": 146,
+          "Position": [24.338135, 35.965454, 188.281],
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -184,15 +136,9 @@
         },
         {
           "DataId": 2003195,
-          "Position": {
-            "X": 83.604126,
-            "Y": 24.612793,
-            "Z": 202.13623
-          },
-          "TerritoryId": 146,
+          "Position": [83.604126, 24.612793, 202.13623],
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -213,20 +159,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005551,
-          "Position": {
-            "X": 98.924194,
-            "Y": 15.29447,
-            "Z": -349.4469
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,33 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Thaksin",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014146,
-          "Position": {
-            "X": -258.74725,
-            "Y": 126.98546,
-            "Z": 12.649658
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": -297.49585,
-            "Y": 219.87524,
-            "Z": 281.65045
-          },
-          "TerritoryId": 397,
+          "Position": [-297.49585, 219.87524, 281.65045],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -35,55 +20,28 @@
               "DataId": 3992,
               "MinimumKillCount": 5
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1014150,
-          "Position": {
-            "X": 507.13354,
-            "Y": 217.95148,
-            "Z": 791.37854
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "Position": [507.13354, 217.95148, 791.37854],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": -110.26132,
-            "Y": 153.61101,
-            "Z": 10.394781
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "Fly": true,
           "DataId": 1014146,
-          "Position": {
-            "X": -258.74725,
-            "Y": 126.98546,
-            "Z": 12.649658
-          },
-          "TerritoryId": 397,
+          "Position": [-258.74725, 126.98546, 12.649658],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1891
         }

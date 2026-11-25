@@ -1,57 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013240,
-          "Position": {
-            "X": -84.45868,
-            "Y": 8.05915,
-            "Z": 37.125122
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1013241,
-          "Position": {
-            "X": -670.8019,
-            "Y": -127.97377,
-            "Z": 639.9481
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true
+          "Position": [-670.8019, -127.97377, 639.9481],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1013245,
-          "Position": {
-            "X": -136.91925,
-            "Y": 14.55313,
-            "Z": -150.31665
-          },
-          "TerritoryId": 419,
+          "Position": [-136.91925, 14.55313, -150.31665],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSHRV580_02051_Q1_000_000",
@@ -64,14 +38,12 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "TerritoryId": 401,
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 401,
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -90,31 +62,19 @@
         },
         {
           "DataId": 1013241,
-          "Position": {
-            "X": -670.8019,
-            "Y": -127.97377,
-            "Z": 639.9481
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true
+          "Position": [-670.8019, -127.97377, 639.9481],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013240,
-          "Position": {
-            "X": -84.45868,
-            "Y": 8.05915,
-            "Z": 37.125122
-          },
-          "TerritoryId": 418,
+          "Position": [-84.45868, 8.05915, 37.125122],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "NextQuestId": 2052
         }
       ]

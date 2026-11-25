@@ -1,155 +1,94 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "Position": [391.94043, -119.58932, -235.04329],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "TerritoryId": 613,
-          "Fly": true,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
-          "SkipConditions": {"AetheryteShortcutIf": {"Never": true}}
-        },
-        {
           "DataId": 2009100,
-          "Position": {
-            "X": 394.7661,
-            "Y": 16.983276,
-            "Z": 845.9448
-          },
-          "TerritoryId": 613,
+          "Position": [394.7661, 16.983276, 845.9448],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002419,
           "KillEnemyDataIds": [8242],
           "RequiredQuestVariables": [null,null,null,null,[{"High": 3}, {"High": 5}, {"High": 7}, {"High": 8}],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
           "DataId": 2009101,
-          "Position": {
-            "X": 460.99023,
-            "Y": 0.56451416,
-            "Z": 889.494
-          },
-          "TerritoryId": 613,
+          "Position": [460.99023, 0.56451416, 889.494],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002419,
           "KillEnemyDataIds": [8242],
           "RequiredQuestVariables": [null,null,null,null,[{"High": 1}, {"High": 2}, {"High": 8}],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         },
         {
           "DataId": 2009142,
-          "Position": {
-            "X": 480.4607,
-            "Y": 3.829956,
-            "Z": 841.3672
-          },
-          "TerritoryId": 613,
+          "Position": [480.4607, 3.829956, 841.3672],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002419,
           "KillEnemyDataIds": [8242],
           "RequiredQuestVariables": [null,null,null,null,[{"High": 1}, {"High": 4}, {"High": 5}, {"High": 6}],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 2009140,
-          "Position": {
-            "X": 543.1753,
-            "Y": -0.015319824,
-            "Z": 685.7251
-          },
-          "TerritoryId": 613,
+          "Position": [543.1753, -0.015319824, 685.7251],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002419,
           "KillEnemyDataIds": [8243, 8243],
           "RequiredQuestVariables": [null, null, null, null, [{"High": 6}, {"High": 7}], null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2009141,
-          "Position": {
-            "X": 352.1018,
-            "Y": -0.015319824,
-            "Z": 860.31885
-          },
-          "TerritoryId": 613,
+          "Position": [352.1018, -0.015319824, 860.31885],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002419,
           "KillEnemyDataIds": [8243, 8243],
           "RequiredQuestVariables": [null,null,null,null,[{"High": 2}, {"High": 3}, {"High": 4}],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024317,
-          "Position": {
-            "X": 823.3004,
-            "Y": 5.9230013,
-            "Z": 866.6361
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [823.3004, 5.9230013, 866.6361],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "Position": [391.94043, -119.58932, -235.04329],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

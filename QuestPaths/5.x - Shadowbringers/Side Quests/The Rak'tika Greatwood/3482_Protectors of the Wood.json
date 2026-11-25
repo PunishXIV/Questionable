@@ -1,51 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031152,
-          "Position": {
-            "X": 465.7511,
-            "Y": 18.97871,
-            "Z": -61.08191
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031156,
-          "Position": {
-            "X": 160.14343,
-            "Y": -4.7555914,
-            "Z": 297.26086
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [160.14343, -4.7555914, 297.26086],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 180.39362,
-            "Y": -26.65495,
-            "Z": 784.1922
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 817,
+          "Position": [180.39362, -26.65495, 784.1922],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -56,86 +34,45 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031160,
-          "Position": {
-            "X": 179.76648,
-            "Y": -26.785097,
-            "Z": 785.3054
-          },
-          "StopDistance": 5,
-          "TerritoryId": 817,
+          "Position": [179.76648, -26.785097, 785.3054],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1027716,
-          "Position": {
-            "X": 494.9873,
-            "Y": -6.555339,
-            "Z": -224.93329
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "Position": [494.9873, -6.555339, -224.93329],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 2010458,
-          "Position": {
-            "X": 101.15198,
-            "Y": -18.783936,
-            "Z": -672.2057
-          },
-          "TerritoryId": 817,
+          "Position": [101.15198, -18.783936, -672.2057],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": {
-            "X": 216.41074,
-            "Y": 11.20001,
-            "Z": -712.12494
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2010457,
-          "Position": {
-            "X": 221.30151,
-            "Y": 11.184814,
-            "Z": -721.24817
-          },
-          "TerritoryId": 817,
+          "Position": [221.30151, 11.184814, -721.24817],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2010456,
-          "Position": {
-            "X": 229.11414,
-            "Y": 12.802246,
-            "Z": -706.8437
-          },
-          "TerritoryId": 817,
+          "Position": [229.11414, 12.802246, -706.8437],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -143,34 +80,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031164,
-          "Position": {
-            "X": 169.05469,
-            "Y": -19.903002,
-            "Z": -530.2052
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [169.05469, -19.903002, -530.2052],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1027716,
-          "Position": {
-            "X": 494.9873,
-            "Y": -6.555339,
-            "Z": -224.93329
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "Position": [494.9873, -6.555339, -224.93329],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,61 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Woolen Tights HQ\nAutocraft requires:\n 2x Undyed Woolen Cloth,\n 1x Woolen Yarn",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003918,
-          "Position": {
-            "X": 2.0598755,
-            "Y": 15.000007,
-            "Z": 6.8207397
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "Position": [2.0598755, 15.000007, 6.8207397],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 3413,
           "ItemCount": 1,
           "SkipConditions": {
@@ -63,27 +32,13 @@
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AethernetShortcutIf": {"InSameTerritory": false}
-          },
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ]
+            }
+          }
         },
         {
           "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "Position": [157.36621, 7.7920074, 98.924194],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

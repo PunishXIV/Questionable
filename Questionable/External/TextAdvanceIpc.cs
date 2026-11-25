@@ -1,4 +1,3 @@
-﻿using Dalamud.Plugin.Ipc;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
@@ -9,29 +8,39 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
-            var _ = _isInExternalControl.InvokeFunc();
+            var _ = _isInExternalControl();
             return GetVersion() != null;
         }, fallback: false);
     private readonly Configuration _configuration;
-    private readonly ICallGateSubscriber<string, bool> _disableExternalControl;
-    private readonly ICallGateSubscriber<string, ExternalTerritoryConfig, bool> _enableExternalControl;
+    [EzIPC("DisableExternalControl")] private readonly Func<string, bool> _disableExternalControl = null!;
+    [EzIPC("EnableExternalControl")] private readonly Func<string, ExternalTerritoryConfig, bool> _enableExternalControl = null!;
     private readonly IFramework _framework;
-    private readonly ICallGateSubscriber<bool> _isInExternalControl;
+    [EzIPC("IsInExternalControl")] private readonly Func<bool> _isInExternalControl = null!;
+    [EzIPC("IsPaused")] private readonly Func<bool> _isPaused = null!;
+    private static readonly TimeSpan PauseGrace = TimeSpan.FromSeconds(20);
+    private readonly IChatGui _chatGui;
+    private readonly MappingTheRealmIpc _mappingTheRealm;
+    private bool _warnedPaused;
+    private DateTime? _pausedSince;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly string _pluginName;
     private readonly QuestController _questController;
-    private bool _isExternalControlActivated;
+    private readonly ILogger<TextAdvanceIpc> _logger;
+    private bool _hasControl;
+    private bool _sentDontSkipCutscenes;
+    private bool _sentCompleteQuests;
 
     public TextAdvanceIpc(IDalamudPluginInterface pluginInterface, IFramework framework,
-        QuestController questController, Configuration configuration)
+        QuestController questController, Configuration configuration, IChatGui chatGui,
+        MappingTheRealmIpc mappingTheRealm, ILogger<TextAdvanceIpc> logger)
     {
+        _logger = logger;
+        _chatGui = chatGui;
+        _mappingTheRealm = mappingTheRealm;
         _framework = framework;
         _questController = questController;
         _configuration = configuration;
-        _isInExternalControl = pluginInterface.GetIpcSubscriber<bool>("TextAdvance.IsInExternalControl");
-        _enableExternalControl =
-            pluginInterface.GetIpcSubscriber<string, ExternalTerritoryConfig, bool>(
-                "TextAdvance.EnableExternalControl");
-        _disableExternalControl = pluginInterface.GetIpcSubscriber<string, bool>("TextAdvance.DisableExternalControl");
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
         _pluginName = pluginInterface.InternalName;
         _framework.Update += OnUpdate;
     }
@@ -39,38 +48,95 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
-        if (_isExternalControlActivated)
-            IpcInvoke.TryOnFrameworkThread(_framework, () => _disableExternalControl.InvokeFunc(_pluginName));
+        if (_hasControl)
+            IpcInvoke.TryOnFrameworkThread(_framework, () => _disableExternalControl(_pluginName));
+        IPCSubscriber.DisposeAll(_disposalTokens);
     }
 
     private void OnUpdate(IFramework framework)
     {
         bool hasActiveQuest = _questController.IsRunning ||
                               _questController.AutomationType != QuestController.EAutomationType.Manual;
+        bool dontSkipCutscenes = _configuration.General.DontSkipCutscenes;
+        QuestController.QuestProgress? progress = _questController.CurrentQuest;
+        bool completeQuests = CompletesQuestHere(progress?.FindStep(),
+            progress?.Quest.Info is QuestInfo { CompletesInstantly: true });
+        // A missing or unloading TextAdvance must not throw from every framework update.
         if (_configuration.General.ConfigureTextAdvance && hasActiveQuest)
         {
-            if (!_isInExternalControl.InvokeFunc())
+            if (_hasControl && (dontSkipCutscenes != _sentDontSkipCutscenes || completeQuests != _sentCompleteQuests))
             {
-                if (_enableExternalControl.InvokeFunc(
-                    _pluginName, CreateExternalTerritoryConfig(_configuration.General.DontSkipCutscenes)))
-                    _isExternalControlActivated = true;
+                // Keep control throughout, or TextAdvance's own auto-interact/cutscene settings take over.
+                if (IpcInvoke.SafeFunc(() => _enableExternalControl(
+                        _pluginName, CreateConfig(dontSkipCutscenes, completeQuests)), fallback: false))
+                {
+                    _sentDontSkipCutscenes = dontSkipCutscenes;
+                    _sentCompleteQuests = completeQuests;
+                    _logger.LogDebug("Updated TextAdvance settings (skip cutscenes: {Skip}, turn in quests: {TurnIn})",
+                        !dontSkipCutscenes, completeQuests);
+                }
             }
+            else if (IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false &&
+                     IpcInvoke.SafeFunc(() => _enableExternalControl(
+                         _pluginName, CreateConfig(dontSkipCutscenes, completeQuests)), fallback: false))
+            {
+                _hasControl = true;
+                _sentDontSkipCutscenes = dontSkipCutscenes;
+                _sentCompleteQuests = completeQuests;
+                _logger.LogInformation("Took control of TextAdvance (skip cutscenes: {Skip}, turn in quests: {TurnIn})",
+                    !dontSkipCutscenes, completeQuests);
+            }
+
+            WarnIfPaused();
         }
         else
         {
-            if (_isExternalControlActivated)
+            _warnedPaused = false;
+            _pausedSince = null;
+            if (_hasControl)
             {
-                if (_disableExternalControl.InvokeFunc(_pluginName) || !_isInExternalControl.InvokeFunc())
-                    _isExternalControlActivated = false;
+                if (IpcInvoke.SafeFunc(() => _disableExternalControl(_pluginName), fallback: false) ||
+                    IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false)
+                {
+                    _hasControl = false;
+                    _logger.LogInformation("Gave TextAdvance control back");
+                }
             }
         }
     }
 
-    private static ExternalTerritoryConfig CreateExternalTerritoryConfig(bool dontSkipCutscenes) => new()
+    // Another plugin can pause TextAdvance even while we control it; Accept then waits forever (Henchman, 11-22).
+    private void WarnIfPaused()
+    {
+        // MappingTheRealm pauses TextAdvance while it walks, and teleports pause it briefly.
+        bool paused = IpcInvoke.SafeFunc(() => _isPaused(), fallback: false) && _mappingTheRealm.GetPathing() != true;
+        if (!paused)
+        {
+            _pausedSince = null;
+            _warnedPaused = false;
+            return;
+        }
+
+        _pausedSince ??= DateTime.Now;
+        if (_warnedPaused || DateTime.Now - _pausedSince < PauseGrace)
+            return;
+
+        _warnedPaused = true;
+        _logger.LogWarning("TextAdvance is paused by another plugin");
+        _chatGui.Print(_L("TextAdvance is paused by another plugin, so quests won't be accepted or turned in. TextAdvance's settings show which plugin paused it."),
+            CommandHandler.MessageTag, CommandHandler.TagColor);
+    }
+
+    // Talking to a giver for a middle step would otherwise turn in another finished quest of theirs.
+    internal static bool CompletesQuestHere(QuestStep? step, bool completesInstantly) =>
+        step == null || step.InteractionType == EInteractionType.CompleteQuest || step.TurnInQuestId != null ||
+        (step.InteractionType == EInteractionType.AcceptQuest && completesInstantly);
+
+    private static ExternalTerritoryConfig CreateConfig(bool dontSkipCutscenes, bool completeQuests) => new()
     {
         EnableQuestAccept = true,
-        EnableQuestComplete = true,
-        EnableRewardPick = true,
+        EnableQuestComplete = completeQuests,
+        EnableRewardPick = false,
         EnableRequestHandin = true,
         EnableCutsceneEsc = !dontSkipCutscenes,
         EnableCutsceneSkipConfirm = !dontSkipCutscenes,
@@ -79,7 +145,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         EnableAutoInteract = false
     };
 
-    private sealed class ExternalTerritoryConfig
+    internal sealed class ExternalTerritoryConfig
     {
         public bool? EnableQuestAccept;
         public bool? EnableQuestComplete;

@@ -1,21 +1,16 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "ShermTank", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1002394,
-          "Position": {
-            "X": -69.5354,
-            "Y": -0.50095016,
-            "Z": -9.99469
-          },
-          "TerritoryId": 132,
+          "Position": [-69.5354, -0.50095016, -9.99469],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "DialogueChoices": [
             {
               "Type": "YesNo",

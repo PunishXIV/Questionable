@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041101,
-          "Position": {
-            "X": -506.88947,
-            "Y": 149.27591,
-            "Z": -169.97028
-          },
-          "TerritoryId": 961,
+          "Position": [-506.88947, 149.27591, -169.97028],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -20,39 +16,28 @@
               "Prompt": "TEXT_AKTKZH013_04308_Q1_000_000",
               "Answer": "TEXT_AKTKZH013_04308_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041836,
-          "Position": {
-            "X": -383.65765,
-            "Y": 173.7301,
-            "Z": -332.662
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-383.65765, 173.7301, -332.662],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041837,
-          "Position": {
-            "X": -383.26086,
-            "Y": 174.94563,
-            "Z": -333.8827
-          },
-          "TerritoryId": 961,
+          "Position": [-383.26086, 174.94563, -333.8827],
           "InteractionType": "Emote",
           "Emote": "pet"
         }
@@ -60,15 +45,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041837,
-          "Position": {
-            "X": -383.26086,
-            "Y": 174.94563,
-            "Z": -333.8827
-          },
-          "TerritoryId": 961,
+          "Position": [-383.26086, 174.94563, -333.8827],
           "InteractionType": "Emote",
           "Emote": "poke"
         }
@@ -76,15 +57,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041837,
-          "Position": {
-            "X": -383.26086,
-            "Y": 174.94563,
-            "Z": -333.8827
-          },
-          "TerritoryId": 961,
+          "Position": [-383.26086, 174.94563, -333.8827],
           "InteractionType": "Emote",
           "Emote": "hug",
           "DialogueChoices": [
@@ -99,19 +76,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041101,
-          "Position": {
-            "X": -506.88947,
-            "Y": 149.27591,
-            "Z": -169.97028
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

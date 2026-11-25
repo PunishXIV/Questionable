@@ -1,34 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "croizat",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002804,
-          "Position": {
-            "X": -26.586267,
-            "Y": -40.705082,
-            "Z": 174.59982
-          },
-          "StopDistance": 1,
-          "TerritoryId": 154,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": -106.12237,
-            "Y": -51.697598,
-            "Z": 386.2573
-          },
-          "TerritoryId": 154,
+          "Position": [-106.12237, -51.697598, 386.2573],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -42,31 +26,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1006249,
-          "Position": {
-            "X": -107.31671,
-            "Y": -52.25655,
-            "Z": 390.49353
-          },
-          "TerritoryId": 154,
+          "Position": [-107.31671, -52.25655, 390.49353],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1002804,
-          "Position": {
-            "X": -26.586267,
-            "Y": -40.705082,
-            "Z": 174.59982
-          },
-          "StopDistance": 1,
-          "TerritoryId": 154,
+          "Position": [-26.586267, -40.705082, 174.59982],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 796
         }

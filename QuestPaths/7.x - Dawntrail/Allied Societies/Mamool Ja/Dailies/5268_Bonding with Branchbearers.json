@@ -1,29 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -36,7 +24,6 @@
           ]
         },
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -50,14 +37,8 @@
         },
         {
           "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [589.3186, -142.89168, 729.4575],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

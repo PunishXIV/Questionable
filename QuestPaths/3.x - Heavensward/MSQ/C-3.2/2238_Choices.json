@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "erdelf", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016579,
-          "Position": {
-            "X": 507.16406,
-            "Y": 217.95152,
-            "Z": 769.9243
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1011223,
-          "Position": {
-            "X": 114.579956,
-            "Y": 24.412834,
-            "Z": -11.062805
-          },
-          "TerritoryId": 418,
+          "Position": [114.579956, 24.412834, -11.062805],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -37,19 +21,11 @@
               "Prompt": "TEXT_HEAVNC108_02238_Q1_000_031",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
           ]
         },
         {
           "DataId": 1013183,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 0.019999694,
-            "Z": -6.302063
-          },
+          "Position": [-0.015319824, 0.019999694, -6.302063],
           "TerritoryId": 428,
           "InteractionType": "Interact"
         }
@@ -57,16 +33,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1016583,
-          "Position": {
-            "X": 112.53516,
-            "Y": 24.391685,
-            "Z": -2.9145508
-          },
-          "StopDistance": 7,
-          "TerritoryId": 418,
+          "Position": [112.53516, 24.391685, -2.9145508],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -80,68 +51,44 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013167,
-          "Position": {
-            "X": 125.68848,
-            "Y": 24.458836,
-            "Z": 2.456604
-          },
-          "TerritoryId": 418,
+          "Position": [125.68848, 24.458836, 2.456604],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012251,
-          "Position": {
-            "X": 12.313965,
-            "Y": -12.020877,
-            "Z": 40.268433
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Brume"
-          ]
+          "Position": [12.313965, -12.020877, 40.268433],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1016585,
-          "Position": {
-            "X": -177.11151,
-            "Y": -12.534915,
-            "Z": -43.137268
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "Position": [-177.11151, -12.534915, -43.137268],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1011223,
-          "Position": {
-            "X": 114.579956,
-            "Y": 24.412834,
-            "Z": -11.062805
-          },
-          "TerritoryId": 418,
+          "Position": [114.579956, 24.412834, -11.062805],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -149,26 +96,17 @@
               "Prompt": "TEXT_HEAVNC108_02238_Q3_000_223",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Forgotten Knight"
           ]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1016583,
-          "Position": {
-            "X": 112.53516,
-            "Y": 24.391685,
-            "Z": -2.9145508
-          },
-          "StopDistance": 7,
-          "TerritoryId": 418,
+          "Position": [112.53516, 24.391685, -2.9145508],
           "InteractionType": "CompleteQuest"
         }
       ]

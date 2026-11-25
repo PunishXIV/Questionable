@@ -1,25 +1,17 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1002279,
-          "Position": {
-            "X": -196.8872,
-            "Y": 18.459997,
-            "Z": 59.952637
-          },
-          "TerritoryId": 130,
+          "Position": [-196.8872, 18.459997, 59.952637],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

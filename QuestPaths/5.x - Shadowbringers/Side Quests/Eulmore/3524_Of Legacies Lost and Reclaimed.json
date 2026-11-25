@@ -1,59 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030472,
-          "Position": {
-            "X": -3.55542,
-            "Y": 6.800003,
-            "Z": 47.501343
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 2010123,
-          "Position": {
-            "X": -56.199036,
-            "Y": -5.2339478,
-            "Z": -28.122437
-          },
-          "TerritoryId": 820,
+          "Position": [-56.199036, -5.2339478, -28.122437],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2010121,
-          "Position": {
-            "X": -5.56958,
-            "Y": 82.90222,
-            "Z": -35.446716
-          },
-          "TerritoryId": 820,
+          "Position": [-5.56958, 82.90222, -35.446716],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] The Glory Gate",
-            "[Eulmore] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2010122,
-          "Position": {
-            "X": -14.114624,
-            "Y": 50.980347,
-            "Z": 33.920776
-          },
-          "TerritoryId": 820,
+          "Position": [-14.114624, 50.980347, 33.920776],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -61,18 +32,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1030472,
-          "Position": {
-            "X": -3.55542,
-            "Y": 6.800003,
-            "Z": 47.501343
-          },
-          "TerritoryId": 820,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

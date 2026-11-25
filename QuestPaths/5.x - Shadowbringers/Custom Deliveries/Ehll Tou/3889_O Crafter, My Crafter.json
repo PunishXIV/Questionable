@@ -1,72 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "DataId": 1032786,
-          "Position": {
-            "X": 113.7865,
-            "Y": -20.000002,
-            "Z": -0.3204956
-          },
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1033786,
-          "Position": {
-            "X": 65.415405,
-            "Y": -18.499813,
-            "Z": 11.795227
-          },
-          "TerritoryId": 886,
+          "Position": [65.415405, -18.499813, 11.795227],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1033787,
-          "Position": {
-            "X": 40.05493,
-            "Y": -19.999998,
-            "Z": 89.066895
-          },
-          "TerritoryId": 886,
+          "Position": [40.05493, -19.999998, 89.066895],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1033788,
-          "Position": {
-            "X": -27.908752,
-            "Y": -16,
-            "Z": 138.56714
-          },
-          "TerritoryId": 886,
+          "Position": [-27.908752, -16, 138.56714],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -74,58 +33,34 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1032786,
-          "Position": {
-            "X": 113.7865,
-            "Y": -20.000002,
-            "Z": -0.3204956
-          },
-          "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ]
+          "Position": [113.7865, -20.000002, -0.3204956],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1033784,
-          "Position": {
-            "X": 154.00928,
-            "Y": -50,
-            "Z": 67.73474
-          },
-          "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mattock",
-            "[Firmament] The New Nest"
-          ]
+          "Position": [154.00928, -50, 67.73474],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1033543,
-          "Position": {
-            "X": 113.38977,
-            "Y": -20,
-            "Z": -0.96136475
-          },
-          "TerritoryId": 886,
+          "Position": [113.38977, -20, -0.96136475],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Firmament] The New Nest",
-            "[Firmament] The Mattock"
-          ],
           "NextQuestId": 3955
         }
       ]

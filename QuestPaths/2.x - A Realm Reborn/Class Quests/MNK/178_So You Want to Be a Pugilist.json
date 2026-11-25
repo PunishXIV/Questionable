@@ -1,22 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001286,
-          "Position": {
-            "X": -88.9754,
-            "Y": 2.55,
-            "Z": -51.163513
-          },
-          "TerritoryId": 130,
+          "Position": [-88.9754, 2.55, -51.163513],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "DialogueChoices": [
             {
               "Type": "YesNo",

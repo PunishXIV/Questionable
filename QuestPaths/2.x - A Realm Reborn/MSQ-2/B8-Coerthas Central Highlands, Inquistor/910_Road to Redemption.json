@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006384,
-          "Position": {
-            "X": 263.5996,
-            "Y": 303.1,
-            "Z": -199.96954
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006407,
-          "Position": {
-            "X": 224.01758,
-            "Y": 355.34894,
-            "Z": -554.8334
-          },
-          "TerritoryId": 155,
+          "Position": [224.01758, 355.34894, -554.8334],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -40,37 +24,23 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006410,
-          "Position": {
-            "X": 232.59314,
-            "Y": 359.00003,
-            "Z": -563.95825
-          },
-          "TerritoryId": 155,
+          "Position": [232.59314, 359.00003, -563.95825],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1006408,
-          "Position": {
-            "X": 212.57336,
-            "Y": 361.0884,
-            "Z": -586.9078
-          },
-          "TerritoryId": 155,
+          "Position": [212.57336, 361.0884, -586.9078],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1006409,
-          "Position": {
-            "X": 189.50183,
-            "Y": 359.89996,
-            "Z": -590.20374
-          },
-          "TerritoryId": 155,
+          "Position": [189.50183, 359.89996, -590.20374],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -78,34 +48,18 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006407,
-          "Position": {
-            "X": 224.01758,
-            "Y": 355.34894,
-            "Z": -554.8334
-          },
-          "TerritoryId": 155,
+          "Position": [224.01758, 355.34894, -554.8334],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006384,
-          "Position": {
-            "X": 263.5996,
-            "Y": 303.1,
-            "Z": -199.96954
-          },
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

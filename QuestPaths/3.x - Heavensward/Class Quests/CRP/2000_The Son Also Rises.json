@@ -1,110 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 3x Birch Lumber HQ // Autocraft requires: 15x Birch Log",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012498,
-          "Position": {
-            "X": 96.57422,
-            "Y": -20.020874,
-            "Z": 64.7135
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012505,
-          "Position": {
-            "X": -138.0484,
-            "Y": 5.467082,
-            "Z": 34.86682
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "Position": [-138.0484, 5.467082, 34.86682],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
-          "AetheryteShortcut": "Gridania",
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132]
-            }
-          }
+          "Position": [-44.87683, -1.2500024, 56.839844],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 116.76828,
-            "Y": 285.9804,
-            "Z": 139.23105
-          },
-          "TerritoryId": 155,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [155]
-            }
-          }
-        },
-        {
           "DataId": 1000776,
-          "Position": {
-            "X": 115.342896,
-            "Y": 287.02945,
-            "Z": 142.1377
-          },
-          "TerritoryId": 155,
+          "Position": [115.342896, 287.02945, 142.1377],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 155,
           "ItemId": 12583,
           "ItemCount": 3,
           "ItemQuality": "HQ",
@@ -118,23 +60,9 @@
         },
         {
           "DataId": 1012498,
-          "Position": {
-            "X": 96.57422,
-            "Y": -20.020874,
-            "Z": 64.7135
-          },
+          "Position": [96.57422, -20.020874, 64.7135],
           "TerritoryId": 418,
-          "AetheryteShortcut": "Ishgard",
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

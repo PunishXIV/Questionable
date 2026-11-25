@@ -1,98 +1,54 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021795,
-          "Position": {
-            "X": -19.638367,
-            "Y": 15.965051,
-            "Z": -37.247314
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1021796,
-          "Position": {
-            "X": -198.71832,
-            "Y": 18,
-            "Z": 61.08191
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "Position": [-198.71832, 18, 61.08191],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1021798,
-          "Position": {
-            "X": -198.71832,
-            "Y": 18,
-            "Z": 61.08191
-          },
-          "TerritoryId": 130,
+          "Position": [-198.71832, 18, 61.08191],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1021799,
-          "Position": {
-            "X": 54.520386,
-            "Y": 20.411621,
-            "Z": -676.6614
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [54.520386, 20.411621, -676.6614],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1021801,
-          "Position": {
-            "X": 367.87964,
-            "Y": -16.467955,
-            "Z": -335.86633
-          },
-          "TerritoryId": 156,
+          "Position": [367.87964, -16.467955, -335.86633],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": false},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -101,33 +57,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1021804,
-          "Position": {
-            "X": 368.1543,
-            "Y": -16.339586,
-            "Z": -331.44128
-          },
-          "StopDistance": 5,
-          "TerritoryId": 156,
+          "Position": [368.1543, -16.339586, -331.44128],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1021800,
-          "Position": {
-            "X": 55.557983,
-            "Y": 20.411068,
-            "Z": -675.5627
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [55.557983, 20.411068, -675.5627],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

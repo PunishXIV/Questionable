@@ -77,27 +77,6 @@ public enum EAction
     RoaringEggscapade = 42039,
     TheSpriganator = 42038,
 
-    Prospect = 227,
-    CollectMiner = 240,
-    LuckOfTheMountaineer = 4081,
-    ScourMiner = 22182,
-    MeticulousMiner = 22184,
-    ScrutinyMiner = 22185,
-
-    Triangulate = 210,
-    CollectBotanist = 815,
-    LuckOfThePioneer = 4095,
-    ScourBotanist = 22186,
-    MeticulousBotanist = 22188,
-    ScrutinyBotanist = 22189,
-
-    SharpVision1 = 235,
-    SharpVision2 = 237,
-    SharpVision3 = 295,
-    FieldMastery1 = 218,
-    FieldMastery2 = 220,
-    FieldMastery3 = 294,
-
     FSHCast = 289,
     FSHQuit = 299,
 
@@ -106,6 +85,16 @@ public enum EAction
     HuntersSting = 34608,
     FlankstingStrike = 34610,
     DeathRattle = 34634,
+
+    SmashAxe = 44879,
+    Capture = 44880,
+    FirstBattlehorn = 44881,
+    SecondBattlehorn = 44892,
+    ThirdBattlehorn = 44894,
+    Trick = 47093,
+    AvalancheAxe = 44884,
+    MistralAxe = 44887,
+    GaleAxe = 44889,
 }
 
 public static class EActionExtensions

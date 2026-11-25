@@ -1,192 +1,119 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Iskierka",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006614,
-          "Position": {
-            "X": 65.9025,
-            "Y": -3.12513,
-            "Z": 61.447
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 255.32901,
-            "Y": -5.240835,
-            "Z": 205.59256
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006618,
-          "Position": {
-            "X": 254.476,
-            "Y": -4.38092,
-            "Z": 204.497
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [254.476, -4.38092, 204.497],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006621,
-          "Position": {
-            "X": 322.957,
-            "Y": -40.4517,
-            "Z": 379.446
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [322.957, -40.4517, 379.446],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2002452,
-          "Position": {
-            "X": 298.1765,
-            "Y": -36.42328,
-            "Z": 342.03088
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [298.1765, -36.42328, 342.03088],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
 		  "DataId": 2002453,
-          "Position": {
-            "X": 322.6825,
-            "Y": -40.45172,
-            "Z": 368.73413
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [322.6825, -40.45172, 368.73413],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2002452,
-          "Position": {
-            "X": 298.1765,
-            "Y": -36.42328,
-            "Z": 342.03088
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [298.1765, -36.42328, 342.03088],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2002672,
-          "Position": {
-            "X": 322.65198,
-            "Y": -40.45172,
-            "Z": 370.16858
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [322.65198, -40.45172, 370.16858],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2002452,
-          "Position": {
-            "X": 298.1765,
-            "Y": -36.42328,
-            "Z": 342.03088
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [298.1765, -36.42328, 342.03088],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2002673,
-          "Position": {
-            "X": 322.59094,
-            "Y": -40.45172,
-            "Z": 371.57227
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [322.59094, -40.45172, 371.57227],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006621,
-          "Position": {
-            "X": 322.95715,
-            "Y": -40.425003,
-            "Z": 379.44604
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [322.95715, -40.425003, 379.44604],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006618,
-          "Position": {
-            "X": 254.476,
-            "Y": -4.38092,
-            "Z": 204.497
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [254.476, -4.38092, 204.497],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

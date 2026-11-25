@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006492,
-          "Position": {
-            "X": 7.3395386,
-            "Y": -21.970974,
-            "Z": 121.934814
-          },
-          "StopDistance": 5,
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1006493,
-          "Position": {
-            "X": -437.67456,
-            "Y": -55.694504,
-            "Z": 100.87732
-          },
-          "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "Position": [-437.67456, -55.694504, 100.87732],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

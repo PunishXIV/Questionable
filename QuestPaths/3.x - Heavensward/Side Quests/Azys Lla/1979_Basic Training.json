@@ -1,33 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012145,
-          "Position": {
-            "X": -607.7516,
-            "Y": -176.4502,
-            "Z": -527.5502
-          },
-          "TerritoryId": 402,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 402,
       "Steps": [
         {
-          "Position": {
-            "X": -441.42657,
-            "Y": -167.25401,
-            "Z": -432.4462
-          },
-          "TerritoryId": 402,
+          "Position": [-441.42657, -167.25401, -432.4462],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -36,7 +21,6 @@
               "MinimumKillCount": 5
             }
           ],
-          "Fly": true,
           "$": "5 in close range here, so if any dead it might be a little slower.",
           "$.1": "this is the area the quest suggests; there /are/ spinner-rooks sooner, and walking there at level w/o flying might cause interruption, but they're more spread out everywhere else - YMMV."
         }
@@ -44,19 +28,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1012145,
-          "Position": {
-            "X": -607.7516,
-            "Y": -176.4502,
-            "Z": -527.5502
-          },
-          "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,118 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "DataId": 1035529,
-          "Position": {
-            "X": -7.156494,
-            "Y": -16,
-            "Z": 163.43933
-          },
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1036487,
-          "Position": {
-            "X": -93.15637,
-            "Y": 0,
-            "Z": -129.56439
-          },
-          "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] Western Risensong Quarter"
-          ]
+          "Position": [-93.15637, 0, -129.56439],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 886,
       "Steps": [
         {
-          "Position": {
-            "X": -113.73003,
-            "Y": 0,
-            "Z": -136.48384
-          },
-          "TerritoryId": 886,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1036127,
-          "Position": {
-            "X": -116.92993,
-            "Y": 0,
-            "Z": -137.31598
-          },
-          "StopDistance": 5,
-          "TerritoryId": 886,
+          "Position": [-116.92993, 0, -137.31598],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1036488,
-          "Position": {
-            "X": 140.91699,
-            "Y": -40,
-            "Z": 158.55652
-          },
-          "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] Western Risensong Quarter",
-            "[Firmament] The New Nest"
-          ]
+          "Position": [140.91699, -40, 158.55652],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1036490,
-          "Position": {
-            "X": -114.39691,
-            "Y": 0,
-            "Z": -137.31598
-          },
-          "TerritoryId": 886,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Firmament] The New Nest",
-            "[Firmament] Western Risensong Quarter"
-          ]
+          "Position": [-114.39691, 0, -137.31598],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

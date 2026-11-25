@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Patrician's Bottoms HQ,\n 1x Patrician's Coatee HQ,\n 1x Patrician's Wedge Cap HQ\nAutocraft requires:\n 5x Undyed Felt,\n 1x Undyed Woolen Cloth,\n 4x Woolen Yarn,\n 3x Linen Yarn,\n 3x Electrum Ingot",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 3215,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,7 +26,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 3475,
           "ItemCount": 1,
           "SkipConditions": {
@@ -62,7 +38,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 2895,
           "ItemCount": 1,
           "SkipConditions": {
@@ -75,49 +50,25 @@
         },
         {
           "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "Position": [157.36621, 7.7920074, 98.924194],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003921,
-          "Position": {
-            "X": 23.23944,
-            "Y": 14,
-            "Z": 10.452393
-          },
-          "TerritoryId": 131,
+          "Position": [23.23944, 14, 10.452393],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

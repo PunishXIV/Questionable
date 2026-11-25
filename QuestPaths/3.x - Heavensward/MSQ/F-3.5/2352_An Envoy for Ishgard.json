@@ -1,73 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016008,
-          "Position": {
-            "X": 125.93262,
-            "Y": 24.458836,
-            "Z": -5.5390625
-          },
-          "StopDistance": 5,
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2007472,
-          "Position": {
-            "X": -140.97815,
-            "Y": 304.09705,
-            "Z": -311.14673
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-          ]
+          "Position": [-140.97815, 304.09705, -311.14673],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1018013,
-          "Position": {
-            "X": 233.84448,
-            "Y": 302,
-            "Z": -188.95251
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [233.84448, 302, -188.95251],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1018015,
-          "Position": {
-            "X": 8.407715,
-            "Y": -1.5097584,
-            "Z": 13.9314575
-          },
-          "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania"
+          "Position": [8.407715, -1.5097584, 13.9314575],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

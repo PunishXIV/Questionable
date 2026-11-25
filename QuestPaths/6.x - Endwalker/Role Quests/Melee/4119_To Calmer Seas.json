@@ -1,32 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1040166,
-          "Position": {
-            "X": 68.74182,
-            "Y": 40,
-            "Z": 66.300415
-          },
-          "StopDistance": 5,
-          "TerritoryId": 128,
+          "Position": [68.74182, 40, 66.300415],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",
@@ -39,19 +23,14 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1040189,
-          "Position": {
-            "X": -52.140076,
-            "Y": 39.999992,
-            "Z": 21.805054
-          },
-          "TerritoryId": 128,
+          "Position": [-52.140076, 39.999992, 21.805054],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": false,
-            "TestedBossModVersion": "0.1.1.8",
             "Notes": [
               "AI doesn't attempt to move to the correct direction when killing orbs",
               "AI only dodges some, but not all AOEs",
@@ -66,31 +45,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1040214,
-          "Position": {
-            "X": -59.40338,
-            "Y": 39.999916,
-            "Z": 24.093994
-          },
-          "TerritoryId": 128,
+          "Position": [-59.40338, 39.999916, 24.093994],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1040190,
-          "Position": {
-            "X": -58.884644,
-            "Y": 39.999916,
-            "Z": 21.22528
-          },
-          "StopDistance": 7,
-          "TerritoryId": 128,
+          "Position": [-58.884644, 39.999916, 21.22528],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -103,13 +73,7 @@
         },
         {
           "DataId": 1040191,
-          "Position": {
-            "X": -57.63336,
-            "Y": 39.999992,
-            "Z": 20.09607
-          },
-          "StopDistance": 7,
-          "TerritoryId": 128,
+          "Position": [-57.63336, 39.999992, 20.09607],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -122,13 +86,7 @@
         },
         {
           "DataId": 1040192,
-          "Position": {
-            "X": -56.168518,
-            "Y": 39.999992,
-            "Z": 19.638367
-          },
-          "StopDistance": 7,
-          "TerritoryId": 128,
+          "Position": [-56.168518, 39.999992, 19.638367],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -141,13 +99,7 @@
         },
         {
           "DataId": 1040193,
-          "Position": {
-            "X": -55.00885,
-            "Y": 39.999992,
-            "Z": 19.4552
-          },
-          "StopDistance": 7,
-          "TerritoryId": 128,
+          "Position": [-55.00885, 39.999992, 19.4552],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -160,13 +112,7 @@
         },
         {
           "DataId": 1040194,
-          "Position": {
-            "X": -53.818604,
-            "Y": 39.999992,
-            "Z": 19.516235
-          },
-          "StopDistance": 7,
-          "TerritoryId": 128,
+          "Position": [-53.818604, 39.999992, 19.516235],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -181,69 +127,45 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1040214,
-          "Position": {
-            "X": -59.40338,
-            "Y": 39.999916,
-            "Z": 24.093994
-          },
-          "StopDistance": 5,
-          "TerritoryId": 128,
+          "Position": [-59.40338, 39.999916, 24.093994],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1040213,
-          "Position": {
-            "X": -54.459473,
-            "Y": 39.999992,
-            "Z": 25.986084
-          },
-          "StopDistance": 5,
-          "TerritoryId": 128,
+          "Position": [-54.459473, 39.999992, 25.986084],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1040189,
-          "Position": {
-            "X": -52.140076,
-            "Y": 39.999992,
-            "Z": 21.805054
-          },
-          "StopDistance": 7,
-          "TerritoryId": 128,
+          "Position": [-52.140076, 39.999992, 21.805054],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040165,
-          "Position": {
-            "X": -175.0058,
-            "Y": 4.061,
-            "Z": -81.22388
-          },
-          "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "Position": [-175.0058, 4.061, -81.22388],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

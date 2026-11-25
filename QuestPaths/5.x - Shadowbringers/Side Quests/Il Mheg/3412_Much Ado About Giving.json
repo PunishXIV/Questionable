@@ -1,106 +1,35 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030273,
-          "Position": {
-            "X": -58.091125,
-            "Y": 104.18485,
-            "Z": -875.5169
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -58.091125,
-                  "Y": 104.18485,
-                  "Z": -875.5169
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027673,
-          "Position": {
-            "X": -106.06549,
-            "Y": 108.39998,
-            "Z": -841.7639
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "Fly": true
+          "Position": [-106.06549, 108.39998, -841.7639],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1027670,
-          "Position": {
-            "X": 32.028687,
-            "Y": 101.900696,
-            "Z": -857.87744
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [32.028687, 101.900696, -857.87744],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1028044,
-          "Position": {
-            "X": 69.7489,
-            "Y": 110.69292,
-            "Z": -883.69574
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "Fly": true
+          "Position": [69.7489, 110.69292, -883.69574],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1030273,
-          "Position": {
-            "X": -58.091125,
-            "Y": 104.18485,
-            "Z": -875.5169
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -58.091125,
-                  "Y": 104.18485,
-                  "Z": -875.5169
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

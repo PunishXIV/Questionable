@@ -1,62 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1004917,
-          "Position": {
-            "X": -358.6328,
-            "Y": 8.469424,
-            "Z": 422.4154
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -345.6742,
-            "Y": 8.266994,
-            "Z": 420.24863
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -358.6328,
-                  "Y": 8.469424,
-                  "Z": 422.4154
-                },
-                "TerritoryId": 146,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1006607,
-          "Position": {
-            "X": -98.28339,
-            "Y": 45.811234,
-            "Z": 210.34558
-          },
-          "TerritoryId": 146,
+          "Position": [-98.28339, 45.811234, 210.34558],
           "InteractionType": "UseItem",
           "ItemId": 2000780,
-          "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -68,15 +27,9 @@
         },
         {
           "DataId": 1006608,
-          "Position": {
-            "X": -179.52246,
-            "Y": 39.999996,
-            "Z": 177.66077
-          },
-          "TerritoryId": 146,
+          "Position": [-179.52246, 39.999996, 177.66077],
           "InteractionType": "UseItem",
           "ItemId": 2000780,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -88,15 +41,9 @@
         },
         {
           "DataId": 1006606,
-          "Position": {
-            "X": -171.92346,
-            "Y": 40,
-            "Z": 136.73608
-          },
-          "TerritoryId": 146,
+          "Position": [-171.92346, 40, 136.73608],
           "InteractionType": "UseItem",
           "ItemId": 2000780,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -110,19 +57,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1004917,
-          "Position": {
-            "X": -358.6328,
-            "Y": 8.469424,
-            "Z": 422.4154
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

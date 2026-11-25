@@ -6,12 +6,10 @@ public sealed class ComplexCombatData
     public uint DataId { get; set; }
     public uint? NameId { get; set; }
 
-    // TODO Use this
+    // Only used with IgnoreQuestMarker; otherwise the enemy's quest marker decides completion.
     public uint? MinimumKillCount { get; set; }
 
-    /// <summary>
-    ///     If a reward item has been set, this is (ping allowing) given to the player before the dead enemy despawns.
-    /// </summary>
+    // Given before the dead enemy despawns.
     public uint? RewardItemId { get; set; }
     public int? RewardItemCount { get; set; }
     public IList<QuestWorkValue?> CompletionQuestVariablesFlags { get; set; } = [];

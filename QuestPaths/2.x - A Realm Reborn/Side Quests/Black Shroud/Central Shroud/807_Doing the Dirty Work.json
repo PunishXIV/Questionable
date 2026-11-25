@@ -1,44 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": -243.19783,
-            "Y": 58.69102,
-            "Z": -140.41818
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
-        },
-        {
-          "DataId": 1006261,
-          "Position": {
-            "X": -244.73944,
-            "Y": 58.69352,
-            "Z": -140.06262
-          },
-          "TerritoryId": 148,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": -327.70383,
-            "Y": 57.159073,
-            "Z": -13.640016
-          },
-          "TerritoryId": 148,
+          "Position": [-327.70383, 57.159073, -13.640016],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -57,25 +31,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": -243.19783,
-            "Y": 58.69102,
-            "Z": -140.41818
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006261,
-          "Position": {
-            "X": -244.73944,
-            "Y": 58.69352,
-            "Z": -140.06262
-          },
-          "TerritoryId": 148,
+          "Position": [-244.73944, 58.69352, -140.06262],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1485
         }

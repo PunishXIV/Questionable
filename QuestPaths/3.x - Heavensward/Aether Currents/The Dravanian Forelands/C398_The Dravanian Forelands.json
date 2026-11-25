@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "TerritoryId": 398,
+      "Steps": [
+        {
+          "DataId": 2006201,
+          "Position": [-480.30823, -5.996826, -425.28424],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818074
+        },
+        {
+          "DataId": 2006197,
+          "Position": [433.52405, -47.776062, -286.24402],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818070
+        },
+        {
+          "DataId": 2006195,
+          "Position": [765.0111, -15.85179, 289.082],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818068
+        },
+        {
+          "DataId": 2006204,
+          "Position": [406.75964, -89.79938, 686.6101],
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818077
+        }
+      ]
+    }
+  ]
+}

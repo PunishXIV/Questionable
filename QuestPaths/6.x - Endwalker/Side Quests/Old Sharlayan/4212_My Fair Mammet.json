@@ -1,59 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037104,
-          "Position": {
-            "X": -326.07007,
-            "Y": 20.1375,
-            "Z": -142.56512
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039343,
-          "Position": {
-            "X": -16.983276,
-            "Y": -16.246998,
-            "Z": 123.03345
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "Position": [-16.983276, -16.246998, 123.03345],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037104,
-          "Position": {
-            "X": -326.07007,
-            "Y": 20.1375,
-            "Z": -142.56512
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Studium"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

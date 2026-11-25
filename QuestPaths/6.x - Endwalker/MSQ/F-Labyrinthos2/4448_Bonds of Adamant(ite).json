@@ -1,45 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1040455,
-          "Position": {
-            "X": 10.147156,
-            "Y": -30.155546,
-            "Z": 619.62305
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": 5.4520116,
-            "Y": -28.723352,
-            "Z": -42.992764
-          },
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 2012226,
-          "Position": {
-            "X": -11.6427,
-            "Y": -31.540405,
-            "Z": -81.28485
-          },
-          "TerritoryId": 956,
+          "Position": [-11.6427, -31.540405, -81.28485],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -53,46 +27,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1040457,
-          "Position": {
-            "X": 36.51477,
-            "Y": -16.246998,
-            "Z": 129.47266
-          },
-          "TerritoryId": 962,
+          "Position": [36.51477, -16.246998, 129.47266],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040466,
-          "Position": {
-            "X": -702.4186,
-            "Y": -31.53043,
-            "Z": 301.93018
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "Position": [-702.4186, -31.53043, 301.93018],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040467,
-          "Position": {
-            "X": -620.63025,
-            "Y": -27.670597,
-            "Z": 302.17432
-          },
-          "TerritoryId": 956,
+          "Position": [-620.63025, -27.670597, 302.17432],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -106,46 +67,32 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040468,
-          "Position": {
-            "X": -598.32153,
-            "Y": -191.11913,
-            "Z": 301.71655
-          },
-          "StopDistance": 7,
-          "TerritoryId": 956,
+          "Position": [-598.32153, -191.11913, 301.71655],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": -413.49243,
-            "Y": -220.16248,
-            "Z": 301.63266
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "Position": [-413.49243, -220.16248, 301.63266],
+          "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040478,
-          "Position": {
-            "X": -406.9734,
-            "Y": -220.18355,
-            "Z": 304.1886
-          },
-          "TerritoryId": 956,
+          "Position": [-406.9734, -220.18355, 304.1886],
           "InteractionType": "CompleteQuest"
         }
       ]

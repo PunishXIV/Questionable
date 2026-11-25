@@ -1,69 +1,46 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "TerritoryId": 137,
           "InteractionType": "EquipItem",
-          "ItemId": 4544,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {"AetheryteShortcutIf": {"ExtraCondition": "CostaDelSol"}}
+          "ItemId": 4544
         },
         {
-          "TerritoryId": 137,
           "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006746,
-          "Position": {
-            "X": 460.65454,
-            "Y": 8.309061,
-            "Z": 74.47925
-          },
-          "TerritoryId": 137,
+          "Position": [460.65454, 8.309061, 74.47925],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1004962,
-          "Position": {
-            "X": -300.1908,
-            "Y": 7.2785034,
-            "Z": 410.94055
-          },
-          "TerritoryId": 146,
+          "Position": [-300.1908, 7.2785034, 410.94055],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1006735,
-          "Position": {
-            "X": -316.1822,
-            "Y": 8.844355,
-            "Z": 433.82922
-          },
-          "TerritoryId": 146,
+          "Position": [-316.1822, 8.844355, 433.82922],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1006288,
-          "Position": {
-            "X": -361.40997,
-            "Y": 8.46532,
-            "Z": 426.13855
-          },
-          "TerritoryId": 146,
+          "Position": [-361.40997, 8.46532, 426.13855],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -71,14 +48,10 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": 156.89783,
-            "Y": 4.3410587,
-            "Z": 831.42926
-          },
-          "TerritoryId": 146,
+          "Position": [156.89783, 4.3410587, 831.42926],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -89,17 +62,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006746,
-          "Position": {
-            "X": 460.65454,
-            "Y": 8.309061,
-            "Z": 74.47925
-          },
-          "TerritoryId": 137,
+          "Position": [460.65454, 8.309061, 74.47925],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "NextQuestId": 1051
         }
       ]

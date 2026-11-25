@@ -1,40 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005960,
-          "Position": {
-            "X": 96.78662,
-            "Y": 55.235264,
-            "Z": -500.43005
-          },
-          "TerritoryId": 180,
-          "StopDistance": 1,
+          "Position": [96.78662, 55.235264, -500.43005],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -44,12 +24,7 @@
           ]
         },
         {
-          "Position": {
-            "X": 142.62598,
-            "Y": 23.910828,
-            "Z": -536.15625
-          },
-          "TerritoryId": 180,
+          "Position": [142.62598, 23.910828, -536.15625],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -59,12 +34,7 @@
         },
         {
           "DataId": 2003729,
-          "Position": {
-            "X": 142.62598,
-            "Y": 23.910828,
-            "Z": -536.15625
-          },
-          "TerritoryId": 180,
+          "Position": [142.62598, 23.910828, -536.15625],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -72,14 +42,8 @@
           ]
         },
         {
-          "Position": {
-            "X": 157.60425,
-            "Y": 25.79295,
-            "Z": -581.9302
-          },
-          "TerritoryId": 180,
+          "Position": [157.60425, 25.79295, -581.9302],
           "InteractionType": "Combat",
-          "StopDistance": 1,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             2856,
@@ -88,12 +52,7 @@
         },
         {
           "DataId": 2003730,
-          "Position": {
-            "X": 157.03052,
-            "Y": 27.084717,
-            "Z": -583.67285
-          },
-          "TerritoryId": 180,
+          "Position": [157.03052, 27.084717, -583.67285],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -101,12 +60,7 @@
           ]
         },
         {
-          "Position": {
-            "X": 217.48682,
-            "Y": 27.66455,
-            "Z": -534.6304
-          },
-          "TerritoryId": 180,
+          "Position": [217.48682, 27.66455, -534.6304],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -116,32 +70,14 @@
         },
         {
           "DataId": 2003733,
-          "Position": {
-            "X": 217.48682,
-            "Y": 27.66455,
-            "Z": -534.6304
-          },
-          "TerritoryId": 180,
+          "Position": [217.48682, 27.66455, -534.6304],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

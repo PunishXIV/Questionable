@@ -1,40 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002829,
-          "Position": {
-            "X": -157.03064,
-            "Y": 4.0492578,
-            "Z": -2.7314453
-          },
-          "StopDistance": 5,
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000972,
-          "Position": {
-            "X": 20.279175,
-            "Y": 40.19993,
-            "Z": -6.1189575
-          },
-          "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [20.279175, 40.19993, -6.1189575],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

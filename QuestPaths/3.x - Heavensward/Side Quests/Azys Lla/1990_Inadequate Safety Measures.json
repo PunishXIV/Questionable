@@ -1,34 +1,18 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "goatzone",
 	"LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
 		{
-			"Sequence": 0,
-			"Steps": [
-				{
-					"DataId": 1012296,
-					"Position": {
-						"X": -658.32,
-						"Y": -75.48534,
-						"Z": 699.1531
-					},
-					"TerritoryId": 402,
-					"InteractionType": "AcceptQuest",
-					"Fly": true
-				}
-			]
+		  "Sequence": 0,
+		  "Steps": []
 		},
 		{
 			"Sequence": 1,
+			"TerritoryId": 402,
 			"Steps": [
 				{
-					"Position": {
-						"X": -345.30673,
-						"Y": -89.61499,
-						"Z": 353.53
-					},
-					"TerritoryId": 402,
+					"Position": [-345.30673, -89.61499, 353.53],
 					"InteractionType": "Combat",
 					"EnemySpawnType": "OverworldEnemies",
 					"ComplexCombatData": [
@@ -44,16 +28,10 @@
 						null,
 						null,
 						null
-					],
-					"Fly": true
+					]
 				},
 				{
-					"Position": {
-						"X": -553.4664,
-						"Y": -104.895905,
-						"Z": 175.68343
-					},
-					"TerritoryId": 402,
+					"Position": [-553.4664, -104.895905, 175.68343],
 					"InteractionType": "Combat",
 					"EnemySpawnType": "OverworldEnemies",
 					"ComplexCombatData": [
@@ -61,26 +39,13 @@
 							"DataId": 4668,
 							"MinimumKillCount": 3
 						}
-					],
-					"Fly": true
+					]
 				}
 			]
 		},
 		{
-			"Sequence": 255,
-			"Steps": [
-				{
-					"DataId": 1012296,
-					"Position": {
-						"X": -658.32,
-						"Y": -75.48534,
-						"Z": 699.1531
-					},
-					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-					"Fly": true
-				}
-			]
+		  "Sequence": 255,
+		  "Steps": []
 		}
 	]
 }

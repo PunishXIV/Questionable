@@ -1,66 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 759,
       "Steps": [
         {
-          "DataId": 1024974,
-          "Position": {
-            "X": -10.330383,
-            "Y": 0.19997318,
-            "Z": 12.893799
-          },
-          "TerritoryId": 759,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "Prompt": "TEXT_STMBDC108_03029_EVENTAREA_WARP_000_011",
-              "Yes": true
-            }
-          ],
-          "TargetTerritoryId": 744
-        },
-        {
           "DataId": 1025008,
-          "Position": {
-            "X": -0.19836426,
-            "Y": 0.021091364,
-            "Z": -2.7619019
-          },
+          "Position": [-0.19836426, 0.021091364, -2.7619019],
           "TerritoryId": 744,
           "InteractionType": "AcceptQuest",
           "DelaySecondsAtStart": 3,
-          "StopDistance": 1,
           "$": "This may skip movement as the game thinks we're close enough at the start; unsure if delay helps"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 744,
       "Steps": [
         {
-          "DataId": 2009289,
-          "Position": {
-            "X": 0.02468622,
-            "Y": 0.9079783,
-            "Z": 18.30971
-          },
-          "TerritoryId": 744,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 759
-        },
-        {
           "DataId": 1025012,
-          "Position": {
-            "X": 1.5715942,
-            "Y": 0,
-            "Z": 18.631226
-          },
+          "Position": [1.5715942, 0, 18.631226],
           "TerritoryId": 759,
           "InteractionType": "Interact"
         }
@@ -71,46 +34,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1025019,
-          "Position": {
-            "X": 366.53687,
-            "Y": 1.286227,
-            "Z": 746.2118
-          },
-          "StopDistance": 5,
-          "TerritoryId": 614,
+          "Position": [366.53687, 1.286227, 746.2118],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "DataId": 1019070,
-          "Position": {
-            "X": 151.20166,
-            "Y": 14.7757225,
-            "Z": 95.78088
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
-        },
-        {
           "DataId": 1020622,
-          "Position": {
-            "X": 0.045776367,
-            "Y": 0,
-            "Z": -2.3041382
-          },
+          "Position": [0.045776367, 0, -2.3041382],
           "TerritoryId": 639,
           "InteractionType": "CompleteQuest"
         }

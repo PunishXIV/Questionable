@@ -1,66 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1028898,
-          "Position": {
-            "X": -132.58563,
-            "Y": 0,
-            "Z": -14.023071
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028899,
-          "Position": {
-            "X": 77.04285,
-            "Y": 0.0889954,
-            "Z": -31.784546
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "Position": [77.04285, 0.0889954, -31.784546],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "TerritoryId": 819,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 655,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028899,
-          "Position": {
-            "X": 77.04285,
-            "Y": 0.0889954,
-            "Z": -31.784546
-          },
-          "TerritoryId": 819,
+          "Position": [77.04285, 0.0889954, -31.784546],
           "InteractionType": "CompleteQuest"
         }
       ]

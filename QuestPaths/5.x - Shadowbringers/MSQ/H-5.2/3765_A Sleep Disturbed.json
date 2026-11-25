@@ -1,35 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "DataId": 1027230,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 844,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ],
-          "SkipConditions": {"StepIf": {"InTerritory": [844]}}
-        },
-        {
           "DataId": 1032121,
-          "Position": {
-            "X": 0.045776367,
-            "Y": -5.996435E-14,
-            "Z": -5.5390625
-          },
-          "StopDistance": 7,
+          "Position": [0.045776367, -5.996435E-14, -5.5390625],
           "TerritoryId": 844,
           "InteractionType": "AcceptQuest"
         }
@@ -37,41 +17,24 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032506,
-          "Position": {
-            "X": 453.05554,
-            "Y": 33.66181,
-            "Z": -156.9696
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "Position": [453.05554, 33.66181, -156.9696],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032509,
-          "Position": {
-            "X": 843.25916,
-            "Y": -65.313614,
-            "Z": -387.10614
-          },
-          "TerritoryId": 817,
+          "Position": [843.25916, -65.313614, -387.10614],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "Doesn't walk to the teleporter to finish the duty"
-            ]
-          },
-          "Fly": true,
-          "Comment": "A Sleep Disturbed (Opo-Opo, Wolf, Serpent)",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "$": "The dialogue choices and data ids here are recycled",
           "DialogueChoices": [
             {
@@ -107,16 +70,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032506,
-          "Position": {
-            "X": 453.05554,
-            "Y": 33.66181,
-            "Z": -156.9696
-          },
-          "StopDistance": 5,
-          "TerritoryId": 817,
+          "Position": [453.05554, 33.66181, -156.9696],
           "InteractionType": "CompleteQuest"
         }
       ]

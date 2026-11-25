@@ -1,10 +1,6 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Types;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.CombatModules;
 
 [RegisterSingleton<ICombatModule, ItemUseModule>(Duplicate = DuplicateStrategy.Append)]
@@ -14,7 +10,9 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
     private DateTime _continueAt;
 
     private ICombatModule? _delegate;
-    private bool _isDoingRotation;
+    private bool _rotationRunning;
+
+    public string Name => _delegate?.Name ?? "Item use";
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
@@ -29,28 +27,54 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
 
     public bool Start(CombatController.CombatData combatData)
     {
-        if (_delegate!.Start(combatData))
-        {
-            _combatData = combatData;
-            _isDoingRotation = true;
-            _continueAt = DateTime.Now;
-            return true;
-        }
-
-        return false;
+        _combatData = combatData;
+        if (_delegate == null || !_delegate.Start(combatData))
+            throw new TaskException("Unable to start rotation for combat item use.");
+        _rotationRunning = true;
+        _continueAt = DateTime.Now;
+        return true;
     }
 
     public bool Stop()
     {
-        if (_isDoingRotation)
-        {
-            _delegate!.Stop();
-            _isDoingRotation = false;
-            _combatData = null;
-            _delegate = null;
-            _continueAt = DateTime.Now;
-        }
+        if (_delegate != null && !_delegate.Stop())
+            return false;
+        _rotationRunning = false;
+        _combatData = null;
+        _delegate = null;
+        _continueAt = DateTime.Now;
+        return true;
+    }
 
+    public void VerifyActive()
+    {
+        if (_combatData != null)
+            _delegate!.VerifyActive();
+    }
+
+    internal void StartRotation()
+    {
+        if (_delegate == null || _combatData == null || !_delegate.Resume())
+            throw new TaskException("Unable to start rotation for combat item use.");
+        _rotationRunning = true;
+    }
+
+    internal void StopRotation()
+    {
+        if (_delegate == null || !_delegate.Pause())
+            throw new TaskException("Waiting for rotation to stop before using a combat item.");
+        _rotationRunning = false;
+    }
+
+    public bool Pause()
+    {
+        StopRotation();
+        return true;
+    }
+
+    public bool Resume()
+    {
+        StartRotation();
         return true;
     }
 
@@ -68,34 +92,32 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             return;
         }
 
-        if (_combatData.KillEnemyDataIds.Contains(GameFunctions.GetBaseID(nextTarget)) ||
-            _combatData.ComplexCombatDatas.Any(x => x.DataId == GameFunctions.GetBaseID(nextTarget) &&
+        if (_combatData.KillEnemyDataIds.Contains(GameFunctions.GetBaseId(nextTarget)) ||
+            _combatData.ComplexCombatDatas.Any(x => x.DataId == GameFunctions.GetBaseId(nextTarget) &&
                                                     (x.NameId == null || (nextTarget is ICharacter character && x.NameId == character.NameId))))
         {
-            if (nextTarget.Position.DistanceTo_XZ(Svc.Objects[0]!.Position) > 3f)
+            if (nextTarget.Position.DistanceToXZ(Svc.Objects[0]!.Position) > 3f)
             {
                 logger.LogInformation("Too far from target, moving closer");
                 movementController.NavigateTo(EMovementType.Combat, nextTarget.BaseId, nextTarget.Position, new() { StopDistance = 3f });
                 _continueAt = DateTime.Now.AddSeconds(1);
                 return;
             }
-            if (_isDoingRotation)
+            if (_rotationRunning)
             {
                 unsafe
                 {
                     InventoryManager* inventoryManager = InventoryManager.Instance();
                     if (inventoryManager->GetInventoryItemCount(_combatData.CombatItemUse.ItemId) == 0)
                     {
-                        _isDoingRotation = false;
-                        _delegate.Stop();
+                        StopRotation();
                         return;
                     }
                 }
 
                 if (ShouldUseItem(nextTarget))
                 {
-                    _isDoingRotation = false;
-                    _delegate.Stop();
+                    StopRotation();
                     unsafe
                     {
                         logger.LogInformation("Using item {ItemId}", _combatData.CombatItemUse.ItemId);
@@ -109,18 +131,16 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             }
             else if (condition[ConditionFlag.Casting])
             {
-                // do nothing
                 DateTime alternativeContinueAt = DateTime.Now.AddSeconds(0.5);
                 if (alternativeContinueAt > _continueAt)
                     _continueAt = alternativeContinueAt;
             }
             else
             {
-                _isDoingRotation = true;
-                _delegate.Start(_combatData);
+                StartRotation();
             }
         }
-        else if (_isDoingRotation)
+        else if (_rotationRunning)
             _delegate.Update(nextTarget);
     }
 

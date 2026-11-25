@@ -1,87 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023348,
-          "Position": {
-            "X": 79.24011,
-            "Y": 114.90497,
-            "Z": 95.994385
-          },
-          "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 79.24011,
-                  "Y": 114.90497,
-                  "Z": 95.994385
-                },
-                "TerritoryId": 622,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1019430,
-          "Position": {
-            "X": 33.98181,
-            "Y": 114.90497,
-            "Z": -40.69586
-          },
-          "TerritoryId": 622,
+          "Position": [33.98181, 114.90497, -40.69586],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 2008925,
-          "Position": {
-            "X": 26.962646,
-            "Y": 115.464966,
-            "Z": -44.419067
-          },
-          "TerritoryId": 622,
+          "Position": [26.962646, 115.464966, -44.419067],
           "InteractionType": "Interact",
           "$": "QW: 0 0    0 0    0 0 -> QW: 1 16    0 0    0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2008927,
-          "Position": {
-            "X": 28.915894,
-            "Y": 115.464966,
-            "Z": -49.5766
-          },
-          "TerritoryId": 622,
+          "Position": [28.915894, 115.464966, -49.5766],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2008926,
-          "Position": {
-            "X": 27.634033,
-            "Y": 115.464966,
-            "Z": -48.05072
-          },
-          "StopDistance": 4,
-          "TerritoryId": 622,
+          "Position": [27.634033, 115.464966, -48.05072],
           "InteractionType": "Interact",
           "$": "QW: 1 16    0 0    0 128 -> QW: 2 32    0 0    0 192",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -90,18 +46,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1023348,
-          "Position": {
-            "X": 79.24011,
-            "Y": 114.90497,
-            "Z": 95.994385
-          },
-          "TerritoryId": 622,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

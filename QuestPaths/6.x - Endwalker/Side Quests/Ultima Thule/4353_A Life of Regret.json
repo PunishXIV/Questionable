@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,79 +8,36 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042075,
-          "Position": {
-            "X": 3.77302,
-            "Y": 269.758,
-            "Z": -679.625
-          },
-          "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 3.77302,
-                  "Y": 269.758,
-                  "Z": -679.625
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 2012688,
-          "Position": {
-            "X": 6.75813,
-            "Y": 272.348,
-            "Z": -685.423
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1
+          "Position": [6.75813, 272.348, -685.423],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1042075,
-          "Position": {
-            "X": 3.77302,
-            "Y": 269.758,
-            "Z": -679.625
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 5
+          "Position": [3.77302, 269.758, -679.625],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "Position": {
-            "X": -355.569,
-            "Y": 263.133,
-            "Z": -422.697
-          },
-          "TerritoryId": 960,
+          "Position": [-355.569, 263.133, -422.697],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -89,42 +46,13 @@
               "RewardItemId": 2003385,
               "RewardItemCount": 1
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042075,
-          "Position": {
-            "X": 3.77302,
-            "Y": 269.758,
-            "Z": -679.625
-          },
-          "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 3.77302,
-                  "Y": 269.758,
-                  "Z": -679.625
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

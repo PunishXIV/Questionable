@@ -1,7 +1,6 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.UI;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Domain;
 
 public abstract record ItemReward(ItemRewardDetails Item)
@@ -14,7 +13,7 @@ public abstract record ItemReward(ItemRewardDetails Item)
     internal static bool IsValidCoffer(Item item) =>
         item.ItemAction.RowId is 1085 or 388 or 367 && item.ItemUICategory.RowId is 61;
 
-    internal static ItemReward? CreateFromItem(Item item, ElementId elementId)
+    internal static ItemReward? Create(Item item, ElementId elementId)
     {
         if (IsValidCoffer(item))
             return new CofferReward(new(item, elementId));
@@ -45,12 +44,15 @@ public abstract record ItemReward(ItemRewardDetails Item)
 
             if (action.RowId is 4107)
                 return new FolkloreBookReward(new(item, elementId), (ushort)item.ItemAction.Value.Data[0]);
+
+            if (action.RowId is 3800)
+                return new MgpReward(new(item, elementId), item.ItemAction.Value.Data[0]);
         }
 
         return null;
     }
     public abstract bool IsUnlocked();
-    public override string ToString() => $"{nameof(Type)}: {Name}";
+    public sealed override string ToString() => $"{Type}: {Name}";
 
     internal sealed record MountReward(ItemRewardDetails Item, uint MountId)
         : ItemReward(Item)
@@ -97,6 +99,16 @@ public abstract record ItemReward(ItemRewardDetails Item)
         public override EItemRewardType Type => EItemRewardType.Coffer;
 
         public override bool IsUnlocked() => false;
+    }
+
+    internal sealed record MgpReward(ItemRewardDetails Item, uint Amount) : ItemReward(Item)
+    {
+        private const uint MaxMgp = 9_999_999;
+
+        public override EItemRewardType Type => EItemRewardType.Mgp;
+
+        public override unsafe bool IsUnlocked() =>
+            InventoryManager.Instance() is var inventory && inventory != null && inventory->GetGoldSaucerCoin() + Amount > MaxMgp;
     }
 
     internal sealed record UnlockLinkReward(ItemRewardDetails Item, ushort UnlockLinkId) : ItemReward(Item)

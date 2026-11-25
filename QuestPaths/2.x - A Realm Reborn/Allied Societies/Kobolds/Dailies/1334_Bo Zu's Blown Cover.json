@@ -1,39 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005928,
-          "Position": {
-            "X": 7.095398,
-            "Y": 16.167778,
-            "Z": -188.67786
-          },
-          "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
-          "Fly": true,
+          "Position": [-1.236023, 33.38838, -244.19019],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -46,30 +27,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2003950,
-          "Position": {
-            "X": 49.973267,
-            "Y": 49.332397,
-            "Z": -342.67188
-          },
-          "TerritoryId": 180,
+          "Position": [49.973267, 49.332397, -342.67188],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2003954,
-          "Position": {
-            "X": 48.081177,
-            "Y": 48.599854,
-            "Z": -346.21198
-          },
-          "TerritoryId": 180,
+          "Position": [48.081177, 48.599854, -346.21198],
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -78,12 +51,7 @@
         },
         {
           "DataId": 2003954,
-          "Position": {
-            "X": 48.081177,
-            "Y": 48.599854,
-            "Z": -346.21198
-          },
-          "TerritoryId": 180,
+          "Position": [48.081177, 48.599854, -346.21198],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -94,36 +62,18 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-1.236023, 33.38838, -244.19019],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005928,
-          "Position": {
-            "X": 7.095398,
-            "Y": 16.167778,
-            "Z": -188.67786
-          },
-          "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

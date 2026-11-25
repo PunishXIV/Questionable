@@ -1,52 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030819,
-          "Position": {
-            "X": -27.390015,
-            "Y": -24.5606,
-            "Z": 320.11902
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 2010352,
-          "Position": {
-            "X": -322.65204,
-            "Y": 14.90802,
-            "Z": -181.53668
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-322.65204, 14.90802, -181.53668],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1030818,
-          "Position": {
-            "X": -28.641174,
-            "Y": -24.631424,
-            "Z": 318.98987
-          },
-          "TerritoryId": 817,
+          "Position": [-28.641174, -24.631424, 318.98987],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
           "NextQuestId": 3659
         }
       ]

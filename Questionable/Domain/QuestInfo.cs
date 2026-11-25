@@ -1,9 +1,6 @@
 using System.Collections.Immutable;
-using Dalamud.Game.Text;
 using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 using ExcelQuest = Lumina.Excel.Sheets.Quest;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using QQuestId = Questionable.Model.Questing.QuestId;
@@ -12,10 +9,16 @@ namespace Questionable.Domain;
 
 internal sealed class QuestInfo : IQuestInfo
 {
-    public QuestInfo(ExcelQuest ogquest, uint newGamePlusChapter, byte startingCity, JournalGenreOverrides journalGenreOverrides)
+    // XIVAPI's formula with ParamGrow at the quest level; synced quests (HW+ society dailies) scale instead.
+    internal static uint ScaleExperience(ushort expFactor, ushort scaledQuestXp, byte questExpModifier) =>
+        (uint)((ulong)expFactor * scaledQuestXp * questExpModifier / 100);
+
+    public QuestInfo(ExcelQuest quest, uint newGamePlusChapter, byte startingCity, JournalGenreOverrides journalGenreOverrides,
+        IEnumerable<Item> tripleTriadCardItems, uint experience)
     {
-        TempQuest quest = Svc.Data.GetExcelSheet<TempQuest>().GetRow(ogquest.RowId);
         QuestId = QQuestId.FromRowId(quest.RowId);
+        Experience = experience;
+        Gil = quest.GilReward;
 
         string suffix = QuestId.Value switch
         {
@@ -35,21 +38,22 @@ internal sealed class QuestInfo : IQuestInfo
             var _ => ""
         };
 
-        Name = $"{quest.Name}{suffix}";
+        Name = string.Create(CultureInfo.CurrentCulture, $"{quest.Name}{suffix}");
         BaseName = Name;
         Dictionary<ushort, ushort> levelOverrides = new() {
             { 5492, 16 } // BST Hearts Aligned
         };
         Level = levelOverrides.TryGetValue(QuestId.Value, out ushort requiredLevel) ? requiredLevel : quest.ClassJobLevel[0];
         IssuerDataId = quest.IssuerStart.RowId;
+        TargetEnd = quest.TargetEnd.RowId;
         IssuerLocation = new(quest.IssuerLocation.Value);
         IsRepeatable = quest.IsRepeatable;
         PreviousQuests =
             new List<PreviousQuestInfo>
                 {
-                    new(ReplaceOldQuestIds(QQuestId.FromRowId(quest.PreviousQuest[0].RowId)), quest.Unknown7),
-                    new(ReplaceOldQuestIds(QQuestId.FromRowId(quest.PreviousQuest[1].RowId))),
-                    new(ReplaceOldQuestIds(QQuestId.FromRowId(quest.PreviousQuest[2].RowId)))
+                    new(ReplaceOldQuestId(QQuestId.FromRowId(quest.PreviousQuest[0].RowId)), quest.Unknown7),
+                    new(ReplaceOldQuestId(QQuestId.FromRowId(quest.PreviousQuest[1].RowId))),
+                    new(ReplaceOldQuestId(QQuestId.FromRowId(quest.PreviousQuest[2].RowId)))
                 }
                 .Where(x => x.QuestId.Value != 0)
                 .ToImmutableList();
@@ -75,7 +79,7 @@ internal sealed class QuestInfo : IQuestInfo
         NumSequences = quest.TodoParams[0].ToDoCompleteSeq;
         ToDoLocations = quest.TodoParams.SelectMany(param => param.ToDoLocation).Where(rowRef => rowRef.RowId != 0).Select(rowRef => new SheetLevel(rowRef.Value)).ToList();
         CompletesInstantly = quest.TodoParams[0].ToDoCompleteSeq == 0;
-        ActionUnlock = quest.GeneralActionReward.Where(x => x.RowId != 0).Select(x => x.Value.Name.ToString()).ToList();
+        ActionUnlock = quest.GeneralActionReward.Where(x => x.RowId != 0).Select(x => x.Value.Name.ToString(null, CultureInfo.CurrentCulture)).ToList();
         InstanceContentUnlock = (ushort)quest.InstanceContentUnlock.RowId;
         PreviousInstanceContent = quest.InstanceContent.Select(x => (ushort)x.RowId).Where(x => x != 0).ToList();
         PreviousInstanceContentJoin = (EQuestJoin)quest.InstanceContentJoin;
@@ -89,6 +93,9 @@ internal sealed class QuestInfo : IQuestInfo
         ClassJobs = QuestInfoUtils.AsList(quest.ClassJobCategory0.ValueNullable!);
         ClassJobCategory = quest.ClassJobCategory0.Value;
         IsSeasonalEvent = quest.Festival.RowId != 0;
+        FestivalId = (ushort)quest.Festival.RowId;
+        FestivalBegin = quest.FestivalBegin;
+        FestivalEnd = quest.FestivalEnd;
         NewGamePlusChapter = newGamePlusChapter;
         StartingCity = startingCity;
         MoogleDeliveryLevel = (byte)quest.DeliveryQuest.RowId;
@@ -101,20 +108,13 @@ internal sealed class QuestInfo : IQuestInfo
             .Where(x => x != null)
             .Cast<Item>()
             .Where(x => x.IsUntradable)
-            .Select(x => ItemReward.CreateFromItem(x, QuestId))
+            .Select(x => ItemReward.Create(x, QuestId))
             .Where(x => x != null)
             .Cast<ItemReward>()
             .ToList();
-        TripleTriadCardRewards = Svc.Data.GetExcelSheet<TripleTriadCardResident>()
-            .Where(x => x.Quest.RowId == quest.RowId)
-            .Select(x =>
-            {
-                var item = Svc.Data.GetExcelSheet<Item>()
-                    .Where(item => item.ItemAction.Value is var itemAction &&
-                        itemAction.Action.RowId == 3357 && // triple triad card use action
-                        item.AdditionalData.RowId == x.RowId).FirstOrNull();
-                return item != null ? ItemReward.CreateFromItem(item.Value, QuestId) : null;
-            }).OfType<ItemReward>().ToList();
+        TripleTriadCardRewards = tripleTriadCardItems
+            .Select(item => ItemReward.Create(item, QuestId))
+            .OfType<ItemReward>().ToList();
         Expansion = (EExpansionVersion)quest.Expansion.RowId;
         AvailableIcon = quest.EventIconType.ValueNullable?.NpcIconAvailable + 1;
         ActiveIcon = AvailableIcon + 2;
@@ -140,7 +140,15 @@ internal sealed class QuestInfo : IQuestInfo
     public byte AlliedSocietyQuestGroup { get; }
     public EAlliedSocietyRank AlliedSocietyRank { get; }
     public ushort SocietyRepValue { get; }
+    public uint Experience { get; }
+    public uint Gil { get; }
     public bool IsSeasonalEvent { get; }
+    public ushort FestivalId { get; }
+    public ushort FestivalBegin { get; }
+    public ushort FestivalEnd { get; }
+
+    public bool IsRunning(IReadOnlyList<(ushort Id, ushort Phase)> festivals) =>
+        festivals.Any(x => x.Id == FestivalId && x.Phase >= FestivalBegin && (FestivalEnd == 0 || x.Phase < FestivalEnd));
     public uint NewGamePlusChapter { get; }
     public byte StartingCity { get; set; }
     public byte MoogleDeliveryLevel { get; }
@@ -154,6 +162,7 @@ internal sealed class QuestInfo : IQuestInfo
     public string BaseName { get; }
     public ushort Level { get; }
     public uint IssuerDataId { get; }
+    public uint TargetEnd { get; }
     public SheetLevel IssuerLocation { get; }
     public bool IsRepeatable { get; }
     public ImmutableList<PreviousQuestInfo> PreviousQuests { get; private set; }
@@ -179,7 +188,7 @@ internal sealed class QuestInfo : IQuestInfo
         .Replace("?", "", StringComparison.Ordinal)
         .TrimStart(SeIconChar.QuestSync.ToIconChar(), SeIconChar.QuestRepeatable.ToIconChar(), ' ');
 
-    private static QuestId ReplaceOldQuestIds(QuestId questId)
+    private static QuestId ReplaceOldQuestId(QuestId questId)
     {
         return questId.Value switch
         {
@@ -188,34 +197,35 @@ internal sealed class QuestInfo : IQuestInfo
         };
     }
 
-    public void AddPreviousQuest(PreviousQuestInfo questId) => PreviousQuests = [.. PreviousQuests, questId];
+    public void AddPreviousQuest(PreviousQuestInfo previous) => PreviousQuests = [.. PreviousQuests, previous];
 
-    public void AddQuestLocks(EQuestJoin questJoin, params QuestId[] questId)
+    public void AddQuestLocks(EQuestJoin join, params QuestId[] questIds)
     {
-        if (QuestLocks.Count > 0 && QuestLockJoin != questJoin)
+        if (QuestLocks.Count > 0 && QuestLockJoin != join)
             throw new InvalidOperationException();
 
-        QuestLockJoin = questJoin;
-        QuestLocks = [.. QuestLocks, .. questId];
+        QuestLockJoin = join;
+        QuestLocks = [.. QuestLocks, .. questIds];
     }
 
     public readonly struct SheetLevel(Level level)
     {
         public readonly Vector3 Position = level.AsVector3();
         public readonly RowRef Object => level.Object;
+        public readonly uint TerritoryId => level.Territory.RowId;
         public readonly float X => Position.X;
         public readonly float Y => Position.Y;
         public readonly float Z => Position.Z;
         public readonly TerritoryType Territory => Svc.Data.GetExcelSheet<TerritoryType>().GetRow(level.Territory.RowId);
         public readonly Map Map => Svc.Data.GetExcelSheet<Map>().GetRow(level.Map.RowId);
-        public readonly Vector3 Game => new(
+        public readonly Vector3 MapCoords => new(
                 WorldPositionToMapCoord(X, Map.SizeFactor, Map.OffsetX),
                 0f,
                 WorldPositionToMapCoord(Z, Map.SizeFactor, Map.OffsetY)
         );
-        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory.RowId}, {Map.RowId}, {Game})";
-        private static float WorldPositionToMapCoord(float v, ushort scale, short offset)
-            => 41f * ((MathF.Truncate(v) + offset) * (scale / 100f) + 1024f - 1) / 2048f / (scale / 100f) + 1;
+        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory.RowId}, {Map.RowId}, {MapCoords})";
+        private static float WorldPositionToMapCoord(float value, ushort scale, short offset)
+            => 41f * ((MathF.Truncate(value) + offset) * (scale / 100f) + 1024f - 1) / 2048f / (scale / 100f) + 1;
     }
 
     public enum EGrandCompanyRank

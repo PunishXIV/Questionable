@@ -1,46 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011215,
-          "Position": {
-            "X": -145.37274,
-            "Y": 14.80313,
-            "Z": -129.25922
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                427
-              ]
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419,
-                427
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1017897,
-          "Position": {
-            "X": -5.0202637,
-            "Y": 0.07901219,
-            "Z": -8.6519165
-          },
+          "Position": [-5.0202637, 0.07901219, -8.6519165],
           "TerritoryId": 427,
           "InteractionType": "AcceptQuest"
         }
@@ -48,25 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 427,
       "Steps": [
         {
-          "DataId": 2005332,
-          "Position": {
-            "X": -5.0202637,
-            "Y": 1.1443481,
-            "Z": 11.856201
-          },
-          "TerritoryId": 427,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
-        {
           "DataId": 1017909,
-          "Position": {
-            "X": -120.22589,
-            "Y": 14.55313,
-            "Z": -162.61542
-          },
+          "Position": [-120.22589, 14.55313, -162.61542],
           "TerritoryId": 419,
           "InteractionType": "Interact"
         }
@@ -74,30 +29,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1017912,
-          "Position": {
-            "X": -35.690857,
-            "Y": 15.965062,
-            "Z": -68.2536
-          },
-          "TerritoryId": 419,
+          "Position": [-35.690857, 15.965062, -68.2536],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1017912,
-          "Position": {
-            "X": -35.690857,
-            "Y": 15.965062,
-            "Z": -68.2536
-          },
-          "TerritoryId": 419,
+          "Position": [-35.690857, 15.965062, -68.2536],
           "InteractionType": "CompleteQuest",
           "Emote": "soothe",
           "NextQuestId": 2363

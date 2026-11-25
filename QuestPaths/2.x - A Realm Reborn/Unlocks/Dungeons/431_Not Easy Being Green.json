@@ -1,81 +1,50 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1006975,
-          "Position": {
-            "X": 32.822144,
-            "Y": 21.25273,
-            "Z": -635.46204
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "Position": [32.822144, 21.25273, -635.46204],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1011262,
-          "Position": {
-            "X": 426.2301,
-            "Y": 4.1096053,
-            "Z": 73.99097
-          },
-          "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": false,
-          "Mount": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "Position": [426.2301, 4.1096053, 73.99097],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1006356,
-          "Position": {
-            "X": 208.51453,
-            "Y": -2.0489888,
-            "Z": 78.50769
-          },
-          "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "Position": [208.51453, -2.0489888, 78.50769],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "TerritoryId": 139,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 30,
-            "Enabled": false,
+            "Enabled": true,
             "LowPriority": true
           }
         }
@@ -83,19 +52,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1011262,
-          "Position": {
-            "X": 426.2301,
-            "Y": 4.1096053,
-            "Z": 73.99097
-          },
-          "TerritoryId": 139,
-          "InteractionType": "CompleteQuest",
-          "Fly": false,
-          "Mount": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "Position": [426.2301, 4.1096053, 73.99097],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

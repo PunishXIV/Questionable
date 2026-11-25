@@ -1,33 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "DataId": 1019070,
-          "Position": {
-            "X": 151.20166,
-            "Y": 14.7757225,
-            "Z": 95.78088
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
-        },
-        {
           "DataId": 1025023,
-          "Position": {
-            "X": -1.7853394,
-            "Y": 0.024148807,
-            "Z": -0.015319824
-          },
+          "Position": [-1.7853394, 0.024148807, -0.015319824],
           "TerritoryId": 639,
           "InteractionType": "AcceptQuest"
         }
@@ -35,17 +17,12 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 759,
       "Steps": [
         {
           "DataId": 1024974,
-          "Position": {
-            "X": -10.330383,
-            "Y": 0.19997318,
-            "Z": 12.893799
-          },
-          "TerritoryId": 759,
+          "Position": [-10.330383, 0.19997318, 12.893799],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -57,11 +34,7 @@
         },
         {
           "DataId": 1025552,
-          "Position": {
-            "X": 0.045776367,
-            "Y": 0.021091362,
-            "Z": -2.9145508
-          },
+          "Position": [0.045776367, 0.021091362, -2.9145508],
           "TerritoryId": 744,
           "InteractionType": "Interact"
         }
@@ -69,31 +42,13 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 744,
       "Steps": [
         {
-          "DataId": 2009289,
-          "Position": {
-            "X": 0.02468622,
-            "Y": 0.9079783,
-            "Z": 18.30971
-          },
-          "TerritoryId": 744,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 759
-        },
-        {
           "DataId": 1025555,
-          "Position": {
-            "X": 148.05823,
-            "Y": -4.178815,
-            "Z": 60.135742
-          },
+          "Position": [148.05823, -4.178815, 60.135742],
           "TerritoryId": 759,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Doman Enclave] Aetheryte Plaza",
-            "[Doman Enclave] Ferry Docks"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

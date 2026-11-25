@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1008969,
-          "Position": {
-            "X": 0.99176025,
-            "Y": -1.9957249,
-            "Z": -45.700806
-          },
-          "TerritoryId": 351,
+          "Position": [0.99176025, -1.9957249, -45.700806],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -21,72 +17,45 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010045,
-          "Position": {
-            "X": -1.9990234,
-            "Y": 0,
-            "Z": -7.1260376
-          },
-          "TerritoryId": 351,
+          "Position": [-1.9990234, 0, -7.1260376],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1010533,
-          "Position": {
-            "X": 47.287598,
-            "Y": 4,
-            "Z": 453.97107
-          },
-          "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "Position": [47.287598, 4, 453.97107],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1010046,
-          "Position": {
-            "X": -140.1236,
-            "Y": 58.32732,
-            "Z": -82.07831
-          },
-          "TerritoryId": 147,
+          "Position": [-140.1236, 58.32732, -82.07831],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "Will target Eline first (other NPCs later), and move to some -other- group of NPCs; only re-targets once they're at 1 HP (for Eline) or die",
-              "If the target isn't in melee range but other NPCs are, whether any AOEs are used for nearby enemies seems random"
-            ]
-          },
-          "Fly": true,
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1010063,
-          "Position": {
-            "X": -207.56854,
-            "Y": 71.617355,
-            "Z": -132.52466
-          },
-          "StopDistance": 5,
-          "TerritoryId": 147,
+          "Position": [-207.56854, 71.617355, -132.52466],
           "InteractionType": "CompleteQuest"
         }
       ]

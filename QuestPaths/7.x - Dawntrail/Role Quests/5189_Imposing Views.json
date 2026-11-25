@@ -1,53 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051656,
-          "Position": {
-            "X": 56.443115,
-            "Y": 10,
-            "Z": 5.935669
-          },
-          "StopDistance": 7,
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2014419,
-          "Position": {
-            "X": -158.86176,
-            "Y": 7.4921875,
-            "Z": 493.88867
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "Position": [-158.86176, 7.4921875, 493.88867],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1051661,
-          "Position": {
-            "X": 1.7852783,
-            "Y": 19.026453,
-            "Z": 581.62805
-          },
-          "StopDistance": 5,
-          "TerritoryId": 146,
+          "Position": [1.7852783, 19.026453, 581.62805],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -61,66 +38,48 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1051663,
-          "Position": {
-            "X": 51.68225,
-            "Y": 0.7631253,
-            "Z": 711.57385
-          },
-          "TerritoryId": 146,
+          "Position": [51.68225, 0.7631253, 711.57385],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             18178
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1051663,
-          "Position": {
-            "X": 51.68225,
-            "Y": 0.7631253,
-            "Z": 711.57385
-          },
-          "TerritoryId": 146,
+          "Position": [51.68225, 0.7631253, 711.57385],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1051668,
-          "Position": {
-            "X": 170.42798,
-            "Y": 15.943722,
-            "Z": 897.94763
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [170.42798, 15.943722, 897.94763],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1051668,
-          "Position": {
-            "X": 170.42798,
-            "Y": 15.943722,
-            "Z": 897.94763
-          },
-          "TerritoryId": 146,
+          "Position": [170.42798, 15.943722, 897.94763],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5190
         }

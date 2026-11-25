@@ -1,32 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037575,
-          "Position": {
-            "X": 6.454529,
-            "Y": -31.530432,
-            "Z": -78.14148
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": 379.89767,
-            "Y": 68.15723,
-            "Z": -169.26231
-          },
-          "TerritoryId": 956,
+          "Position": [379.89767, 68.15723, -169.26231],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -36,27 +21,13 @@
             "ItemId": 2003316,
             "Condition": "Health%",
             "Value": 50
-          },
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037575,
-          "Position": {
-            "X": 6.454529,
-            "Y": -31.530432,
-            "Z": -78.14148
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

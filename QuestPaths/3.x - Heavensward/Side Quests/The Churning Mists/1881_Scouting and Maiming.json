@@ -1,50 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013560,
-          "Position": {
-            "X": 15.609924,
-            "Y": 81.84059,
-            "Z": -317.37244
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1013569,
-          "Position": {
-            "X": 330.73914,
-            "Y": 223.01535,
-            "Z": -480.36932
-          },
-          "StopDistance": 1,
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [330.73914, 223.01535, -480.36932],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 315.91586,
-            "Y": 234.0008,
-            "Z": -617.9445
-          },
-          "TerritoryId": 400,
+          "Position": [315.91586, 234.0008, -617.9445],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -55,25 +34,18 @@
             {"Low": 3},
           null,null,null,null,null]
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1013569,
-          "Position": {
-            "X": 330.73914,
-            "Y": 223.01535,
-            "Z": -480.36932
-          },
-          "StopDistance": 1,
-          "TerritoryId": 400,
+          "Position": [330.73914, 223.01535, -480.36932],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1882
         }
       ]

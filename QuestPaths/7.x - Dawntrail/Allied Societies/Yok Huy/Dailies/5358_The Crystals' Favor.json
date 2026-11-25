@@ -1,30 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
+                "Position": [493.2173, 142.24991, 783.0471],
                 "TerritoryId": 1187,
                 "MaximumDistance": 20
               }
@@ -33,97 +23,31 @@
         },
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "$": "Recovery",
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1187,
-                1297
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                1297
-              ],
-              "NearPosition": {
-                "Position": {
-                  "X": 496.11658,
-                  "Y": 142.24991,
-                  "Z": 801.6022
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1054640,
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1187
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1055791,
-          "Position": {
-            "X": 21.469421,
-            "Y": 13.538549,
-            "Z": 283.6194
-          },
+          "Position": [21.469421, 13.538549, 283.6194],
           "TerritoryId": 1297,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1297,
       "Steps": [
         {
           "DataId": 2014955,
-          "Position": {
-            "X": 21.35857,
-            "Y": 15.18271,
-            "Z": 288.9486
-          },
-          "TerritoryId": 1297,
+          "Position": [21.35857, 15.18271, 288.9486],
           "InteractionType": "UseItem",
-          "Mount": true,
           "ItemId": 2003778,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -132,14 +56,8 @@
         },
         {
           "DataId": 2014956,
-          "Position": {
-            "X": -20.50371,
-            "Y": 15.1827,
-            "Z": 288.8894
-          },
-          "TerritoryId": 1297,
+          "Position": [-20.50371, 15.1827, 288.8894],
           "InteractionType": "UseItem",
-          "Mount": true,
           "ItemId": 2003778,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -148,14 +66,8 @@
         },
         {
           "DataId": 2014958,
-          "Position": {
-            "X": 25.25208,
-            "Y": 15.1827,
-            "Z": 343.7696
-          },
-          "TerritoryId": 1297,
+          "Position": [25.25208, 15.1827, 343.7696],
           "InteractionType": "UseItem",
-          "Mount": true,
           "ItemId": 2003778,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -164,14 +76,8 @@
         },
         {
           "DataId": 2014957,
-          "Position": {
-            "X": -24.51654,
-            "Y": 15.1827,
-            "Z": 343.9439
-          },
-          "TerritoryId": 1297,
+          "Position": [-24.51654, 15.1827, 343.9439],
           "InteractionType": "UseItem",
-          "Mount": true,
           "ItemId": 2003778,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -182,26 +88,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
+                "Position": [493.2173, 142.24991, 783.0471],
                 "TerritoryId": 1187,
                 "MaximumDistance": 20
               }
@@ -210,12 +106,7 @@
         },
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "CompleteQuest"
         }
       ]

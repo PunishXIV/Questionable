@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {
     "Username": "alydev",
@@ -8,31 +8,14 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027761,
-          "Position": {
-            "X": 505.79077,
-            "Y": 348.35947,
-            "Z": -205.09656
-          },
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "Position": {
-            "X": 529.9056,
-            "Y": 375.61404,
-            "Z": -47.72653
-          },
-          "TerritoryId": 818,
+          "Position": [529.9056, 375.61404, -47.72653],
           "InteractionType": "Combat",
           "Comment": "Attack Morgawr, bring health below 50%, then use item",
           "EnemySpawnType": "OverworldEnemies",
@@ -44,8 +27,6 @@
             "Value": 50,
             "ItemId": 2002616
           },
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -58,12 +39,7 @@
           ]
         },
         {
-          "Position": {
-            "X": 463.74878,
-            "Y": 391.7334,
-            "Z": -650.34375
-          },
-          "TerritoryId": 818,
+          "Position": [463.74878, 391.7334, -650.34375],
           "InteractionType": "Combat",
           "Comment": "Attack Mnyiri, bring health below 50%, then use item",
           "EnemySpawnType": "OverworldEnemies",
@@ -75,8 +51,6 @@
             "Value": 50,
             "ItemId": 2002616
           },
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [
             {
               "Low": 1
@@ -89,12 +63,7 @@
           ]
         },
         {
-          "Position": {
-            "X": 441.4224,
-            "Y": 430.61417,
-            "Z": -871.17426
-          },
-          "TerritoryId": 818,
+          "Position": [441.4224, 430.61417, -871.17426],
           "InteractionType": "Combat",
           "Comment": "Attack Deep-sea Leech, bring health below 50%, then use item",
           "EnemySpawnType": "OverworldEnemies",
@@ -106,8 +75,6 @@
             "Value": 50,
             "ItemId": 2002616
           },
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [
             null,
             {
@@ -123,20 +90,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027761,
-          "Position": {
-            "X": 505.79077,
-            "Y": 348.35947,
-            "Z": -205.09656
-          },
-          "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

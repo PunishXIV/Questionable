@@ -1,60 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051207,
-          "Position": {
-            "X": 425.07043,
-            "Y": 118.935005,
-            "Z": 606.13403
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "Position": {
-            "X": 222.22293,
-            "Y": 22.315279,
-            "Z": 284.40256
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1051208,
-          "Position": {
-            "X": 210.92542,
-            "Y": 21.49294,
-            "Z": 246.6925
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
+          "Position": [210.92542, 21.49294, 246.6925],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 2014272,
-          "Position": {
-            "X": 133.53162,
-            "Y": 22.2323,
-            "Z": 295.9182
-          },
-          "TerritoryId": 1187,
+          "Position": [133.53162, 22.2323, 295.9182],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -65,45 +35,18 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "Position": {
-            "X": 150.55826,
-            "Y": 15.18635,
-            "Z": 247.66484
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "Comment": "Avoids combat"
-        },
-        {
           "DataId": 1051208,
-          "Position": {
-            "X": 210.92542,
-            "Y": 21.49294,
-            "Z": 246.6925
-          },
-          "TerritoryId": 1187,
+          "Position": [210.92542, 21.49294, 246.6925],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1051207,
-          "Position": {
-            "X": 425.07043,
-            "Y": 118.935005,
-            "Z": 606.13403
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

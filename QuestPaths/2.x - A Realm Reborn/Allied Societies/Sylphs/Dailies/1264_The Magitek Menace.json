@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "Disabled": true,
   "Comment": "This is a FATE Allied Society Quest\nThere are other FATEs that spawn in the\narea that may need to be cleared first\nbefore the correct FATE will spawn.\nThis quest requires manual interaction.",
@@ -7,24 +7,16 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "TerritoryId": 152,
           "InteractionType": "Instruction",
           "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
         },
         {
           "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Position": [47.01306, 6.0734644, 254.01685],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,43 +25,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": 37.71168,
-            "Y": 4.7303743,
-            "Z": 250.62769
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 37.71168,
-                  "Y": 4.7303743,
-                  "Z": 250.62769
-                },
-                "TerritoryId": 152,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Position": [47.01306, 6.0734644, 254.01685],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

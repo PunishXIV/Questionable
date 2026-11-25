@@ -1,78 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "Iskierka", "Date": "2026-07-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006457,
-          "Position": {
-            "X": -432.249,
-            "Y": 224.397,
-            "Z": -199.359
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002164,
-          "Position": {
-            "X": -559,
-            "Y": 209.391,
-            "Z": -422
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
+          "Position": [-559, 209.391, -422],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000729,
-          "KillEnemyDataIds": [387],
-          "Fly": true
+          "KillEnemyDataIds": [387]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006457,
-          "Position": {
-            "X": -432.249,
-            "Y": 224.397,
-            "Z": -199.359
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-432.249, 224.397, -199.359],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006457,
-          "Position": {
-            "X": -432.249,
-            "Y": 224.397,
-            "Z": -199.359
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

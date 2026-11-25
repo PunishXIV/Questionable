@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019863,
-          "Position": {
-            "X": 53.94055,
-            "Y": 207.1718,
-            "Z": -7.2786255
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019864,
-          "Position": {
-            "X": 82.38342,
-            "Y": 214.1,
-            "Z": -91.99664
-          },
-          "TerritoryId": 478,
+          "Position": [82.38342, 214.1, -91.99664],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1020988,
-          "Position": {
-            "X": 83.54309,
-            "Y": 214.13977,
-            "Z": -88.09039
-          },
-          "TerritoryId": 478,
+          "Position": [83.54309, 214.13977, -88.09039],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -53,12 +33,7 @@
         },
         {
           "DataId": 1020990,
-          "Position": {
-            "X": 67.76526,
-            "Y": 214.07404,
-            "Z": -94.95697
-          },
-          "TerritoryId": 478,
+          "Position": [67.76526, 214.07404, -94.95697],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -69,24 +44,20 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019864,
-          "Position": {
-            "X": 82.38342,
-            "Y": 214.1,
-            "Z": -91.99664
-          },
-          "TerritoryId": 478,
+          "Position": [82.38342, 214.1, -91.99664],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "TerritoryId": 612,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -95,9 +66,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [612]
-            },
             "StepIf": {
               "Item": {
                 "NotInInventory": false
@@ -107,32 +75,15 @@
         },
         {
           "DataId": 1019864,
-          "Position": {
-            "X": 82.38342,
-            "Y": 214.1,
-            "Z": -91.99664
-          },
+          "Position": [82.38342, 214.1, -91.99664],
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1019863,
-          "Position": {
-            "X": 53.94055,
-            "Y": 207.1718,
-            "Z": -7.2786255
-          },
-          "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

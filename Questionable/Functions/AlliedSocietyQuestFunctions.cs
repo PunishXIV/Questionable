@@ -1,18 +1,16 @@
 ﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Functions;
 
 [RegisterSingleton]
 internal sealed class AlliedSocietyQuestFunctions
 {
-    private readonly Dictionary<EAlliedSociety, byte> _alliedSocietyLastSeenRank = [];
+    private readonly Dictionary<EAlliedSociety, byte> _lastSeenRank = [];
     private readonly Dictionary<(uint NpcDataId, byte Seed, bool OutranksAll, bool RankedUp), List<QuestId>> _dailyQuests = [];
     private readonly ILogger<AlliedSocietyQuestFunctions> _logger;
     private readonly QuestData _questData;
     private readonly QuestRegistry _questRegistry;
-    private readonly Dictionary<EAlliedSociety, List<NpcData>> _questsByAlliedSociety = [];
+    private readonly Dictionary<EAlliedSociety, List<NpcData>> _npcsBySociety = [];
 
     public unsafe AlliedSocietyQuestFunctions(QuestData questData, QuestRegistry questRegistry, ILogger<AlliedSocietyQuestFunctions> logger)
     {
@@ -36,10 +34,10 @@ internal sealed class AlliedSocietyQuestFunctions
             {
                 NpcData npcData = new()
                 { IssuerDataId = issuerDataId, AllQuests = quests };
-                if (_questsByAlliedSociety.TryGetValue(alliedSociety, out List<NpcData>? existingNpcs))
+                if (_npcsBySociety.TryGetValue(alliedSociety, out List<NpcData>? existingNpcs))
                     existingNpcs.Add(npcData);
                 else
-                    _questsByAlliedSociety[alliedSociety] = [npcData];
+                    _npcsBySociety[alliedSociety] = [npcData];
             }
         }
     }
@@ -50,13 +48,13 @@ internal sealed class AlliedSocietyQuestFunctions
             _dailyQuests.Remove(item);
     }
 
-    public EAlliedSociety[] GetAlliedSocieties(bool all = false) =>
-        AlliedSocietyUnlockQuest
-            .Where(s => all || ((QuestInfo)_questData.GetQuestInfo(new QuestId(s.Value))).Expansion <= _questRegistry.CharacterExpansion)
+    public EAlliedSociety[] GetAlliedSocieties() =>
+        UnlockQuests
+            .Where(s => ((QuestInfo)_questData.GetQuestInfo(new QuestId(s.Value))).Expansion <= _questRegistry.CharacterExpansion)
             .Select(s => s.Key)
             .ToArray();
 
-    public static readonly Dictionary<EAlliedSociety, ushort> AlliedSocietyUnlockQuest = new()
+    public static readonly Dictionary<EAlliedSociety, ushort> UnlockQuests = new()
     {
         [EAlliedSociety.Amaljaa] = 1217,
         [EAlliedSociety.Sylphs] = 1252,
@@ -80,7 +78,7 @@ internal sealed class AlliedSocietyQuestFunctions
         [EAlliedSociety.Pelupelu] = 5193,
     };
 
-    public unsafe List<QuestId> GetAvailableAlliedSocietyQuests(EAlliedSociety alliedSociety)
+    public unsafe List<QuestId> GetAvailableQuests(EAlliedSociety alliedSociety)
     {
         byte rankData = QuestManager.Instance()->BeastReputation[(int)alliedSociety - 1].Rank;
         byte currentRank = (byte)(rankData & 0x7F);
@@ -90,11 +88,11 @@ internal sealed class AlliedSocietyQuestFunctions
         bool rankedUp = (rankData & 0x80) != 0;
         byte seed = QuestManager.Instance()->DailyQuestSeed;
         List<QuestId> result = [];
-        foreach (NpcData npcData in _questsByAlliedSociety[alliedSociety])
+        foreach (NpcData npcData in _npcsBySociety[alliedSociety])
         {
             bool outranksAll = npcData.AllQuests.All(x => currentRank > (byte)x.AlliedSocietyRank);
             (uint NpcDataId, byte seed, bool outranksAll, bool rankedUp) key = (NpcDataId: npcData.IssuerDataId, seed, outranksAll, rankedUp);
-            bool rankChanged = _alliedSocietyLastSeenRank.ContainsKey(alliedSociety) && _alliedSocietyLastSeenRank[alliedSociety] != currentRank;
+            bool rankChanged = _lastSeenRank.ContainsKey(alliedSociety) && _lastSeenRank[alliedSociety] != currentRank;
             if (rankChanged)
                 Reload();
             if (_dailyQuests.TryGetValue(key, out List<QuestId>? questIds))
@@ -106,7 +104,7 @@ internal sealed class AlliedSocietyQuestFunctions
 
                 _dailyQuests[key] = quests;
                 result.AddRange(quests);
-                _alliedSocietyLastSeenRank[alliedSociety] = currentRank;
+                _lastSeenRank[alliedSociety] = currentRank;
             }
         }
 
@@ -124,7 +122,7 @@ internal sealed class AlliedSocietyQuestFunctions
         Rng rng = new(seed);
         if (outranksAll)
         {
-            for (int i = 0, cnt = Math.Min(eligible.Count, 3); i < cnt; ++i)
+            for (int i = 0, count = Math.Min(eligible.Count, 3); i < count; ++i)
             {
                 int index = rng.Next(eligible.Count);
                 while (available.Contains(eligible[index]))
@@ -142,7 +140,7 @@ internal sealed class AlliedSocietyQuestFunctions
                 available.Add(eligible[firstExclusive + rng.Next(eligible.Count - firstExclusive)]);
             else
                 firstExclusive = eligible.Count;
-            for (int i = available.Count, cnt = Math.Min(firstExclusive, 3); i < cnt; ++i)
+            for (int i = available.Count, count = Math.Min(firstExclusive, 3); i < count; ++i)
             {
                 int index = rng.Next(firstExclusive);
                 while (available.Contains(eligible[index]))
@@ -155,6 +153,14 @@ internal sealed class AlliedSocietyQuestFunctions
         }
 
         return available.Select(x => (QuestId)x.QuestId).ToList();
+    }
+
+    // Rank None marks a society's story quests, not its dailies.
+    internal static EAlliedSocietyRank? GetHighestRank(IEnumerable<EAlliedSocietyRank> questRanks,
+        EAlliedSocietyRank currentRank)
+    {
+        EAlliedSocietyRank[] ranks = [.. questRanks.Where(x => x != EAlliedSocietyRank.None && x <= currentRank)];
+        return ranks.Length > 0 ? ranks.Max() : null;
     }
 
     private static bool IsEligible(QuestInfo questInfo, EAlliedSocietyRank currentRank, bool rankedUp) =>
@@ -174,7 +180,6 @@ internal sealed class AlliedSocietyQuestFunctions
             return (int)(S1 % range);
         }
 
-        // returns new value for s1
         private static uint Transform(uint s0, uint s1)
         {
             uint temp = s0 ^ (s0 << 11);

@@ -1,54 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042192,
-          "Position": {
-            "X": 200.48828,
-            "Y": 567.50006,
-            "Z": 242.78625
-          },
-          "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1043518,
-          "Position": {
-            "X": 456.32092,
-            "Y": 437.00073,
-            "Z": 315.69385
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+          "Position": [456.32092, 437.00073, 315.69385],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 2013076,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2616
-          },
-          "TerritoryId": 960,
+          "Position": [456.65674, 438.04077, 310.2616],
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -59,38 +36,18 @@
         },
         {
           "DataId": 2013034,
-          "Position": {
-            "X": 304.37158,
-            "Y": 483.48206,
-            "Z": 143.14478
-          },
-          "TerritoryId": 960,
+          "Position": [304.37158, 483.48206, 143.14478],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 1043421,
-          "Position": {
-            "X": 2.4261475,
-            "Y": 499.87805,
-            "Z": 46.036377
-          },
-          "TerritoryId": 1073,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960
-        },
-        {
           "DataId": 1043865,
-          "Position": {
-            "X": 301.8081,
-            "Y": 482.13644,
-            "Z": 165.02625
-          },
-          "TerritoryId": 960,
+          "Position": [301.8081, 482.13644, 165.02625],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -102,21 +59,16 @@
         },
         {
           "DataId": 1043586,
-          "Position": {
-            "X": 205.3711,
-            "Y": 567.50006,
-            "Z": 246.72314
-          },
-          "TerritoryId": 960,
+          "Position": [205.3711, 567.50006, 246.72314],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "TerritoryId": 960,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -129,7 +81,6 @@
           ]
         },
         {
-          "TerritoryId": 960,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -143,14 +94,8 @@
         },
         {
           "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
+          "Position": [456.65674, 438.04077, 310.2312],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -161,12 +106,7 @@
         },
         {
           "DataId": 1043865,
-          "Position": {
-            "X": 301.8081,
-            "Y": 482.13644,
-            "Z": 165.02625
-          },
-          "TerritoryId": 960,
+          "Position": [301.8081, 482.13644, 165.02625],
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
           "DialogueChoices": [
@@ -179,27 +119,18 @@
         },
         {
           "DataId": 1044190,
-          "Position": {
-            "X": 203.84521,
-            "Y": 567.50006,
-            "Z": 246.87573
-          },
-          "TerritoryId": 960,
+          "Position": [203.84521, 567.50006, 246.87573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1043864,
-          "Position": {
-            "X": 244.83093,
-            "Y": 564.8203,
-            "Z": 261.76843
-          },
-          "TerritoryId": 960,
+          "Position": [244.83093, 564.8203, 261.76843],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -211,52 +142,29 @@
         },
         {
           "DataId": 1043514,
-          "Position": {
-            "X": 303.82227,
-            "Y": 481.99442,
-            "Z": 154.83325
-          },
-          "TerritoryId": 960,
+          "Position": [303.82227, 481.99442, 154.83325],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1073,
       "Steps": [
         {
           "DataId": 1043521,
-          "Position": {
-            "X": 3.3721924,
-            "Y": 499.6105,
-            "Z": 34.195435
-          },
-          "TerritoryId": 1073,
+          "Position": [3.3721924, 499.6105, 34.195435],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1073,
       "Steps": [
         {
-          "DataId": 1043421,
-          "Position": {
-            "X": 2.4261475,
-            "Y": 499.87805,
-            "Z": 46.036377
-          },
-          "TerritoryId": 1073,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960
-        },
-        {
           "DataId": 1043514,
-          "Position": {
-            "X": 303.82227,
-            "Y": 481.99442,
-            "Z": 154.83325
-          },
+          "Position": [303.82227, 481.99442, 154.83325],
           "TerritoryId": 960,
           "InteractionType": "CompleteQuest"
         }

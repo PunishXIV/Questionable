@@ -1,55 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1032203,
-          "Position": {
-            "X": 10.849121,
-            "Y": 100.161,
-            "Z": -886.22876
-          },
-          "TerritoryId": 816,
+          "Position": [10.849121, 100.161, -886.22876],
           "InteractionType": "UseItem",
           "ItemId": 2002943,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               1
             ],null,null,null]
         },
         {
           "DataId": 1032202,
-          "Position": {
-            "X": 10.849121,
-            "Y": 100.161,
-            "Z": -886.22876
-          },
-          "TerritoryId": 816,
+          "Position": [10.849121, 100.161, -886.22876],
           "InteractionType": "UseItem",
           "ItemId": 2002943,
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               2
             ],null,null,null]
@@ -58,20 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

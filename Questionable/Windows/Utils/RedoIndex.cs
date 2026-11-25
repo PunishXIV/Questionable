@@ -13,7 +13,6 @@ internal sealed record RedoIndex(QuestRedoChapterUI Chapter, int Index)
             int index = Index + 1;
             if (Chapter.RowId.Equals(1)) // ARR part 1
             {
-                // handling for citystate starts numbering
                 if (index.InRange(22, 43)) // gridania
                     index -= 21;
                 if (index.InRange(43, 65)) // uldah

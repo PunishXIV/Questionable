@@ -1,81 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027741,
-          "Position": {
-            "X": -80.3239,
-            "Y": -19.1014,
-            "Z": 299.839
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -149.15567,
-            "Y": -17.420284,
-            "Z": 293.8361
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -237.4252,
-            "Y": -2.634516,
-            "Z": 325.70593
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2009800,
-          "Position": {
-            "X": -312.978,
-            "Y": 4.9966,
-            "Z": 86.4728
-          },
-          "TerritoryId": 817,
+          "Position": [-312.978, 4.9966, 86.4728],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002524,
           "KillEnemyDataIds": [
             11116
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027741,
-          "Position": {
-            "X": -80.3239,
-            "Y": -19.1014,
-            "Z": 299.839
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

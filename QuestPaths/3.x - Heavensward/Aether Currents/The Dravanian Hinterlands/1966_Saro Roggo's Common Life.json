@@ -1,41 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "TerritoryId": 478,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [399, 463, 478]}}
-        },
-        {
-          "DataId": 2005336,
-          "Position": {
-            "X": -488.79227,
-            "Y": 138.93335,
-            "Z": 741.0543
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1012141,
-          "Position": {
-            "X": 35.690796,
-            "Y": 38.43,
-            "Z": 12.985352
-          },
+          "Position": [35.690796, 38.43, 12.985352],
           "TerritoryId": 463,
           "InteractionType": "AcceptQuest"
         }
@@ -43,33 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "DataId": 2005337,
-          "Position": {
-            "X": 7.765594,
-            "Y": 38.9395,
-            "Z": -50.9989
-          },
-          "TerritoryId": 463,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 399,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                463
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2006061,
-          "Position": {
-            "X": -486.93066,
-            "Y": 137.40747,
-            "Z": 701.3198
-          },
-          "TerritoryId": 399,
+          "Position": [-486.93066, 137.40747, 701.3198],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -80,12 +32,7 @@
         },
         {
           "DataId": 2006062,
-          "Position": {
-            "X": -471.8548,
-            "Y": 137.40747,
-            "Z": 705.5619
-          },
-          "TerritoryId": 399,
+          "Position": [-471.8548, 137.40747, 705.5619],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -96,12 +43,7 @@
         },
         {
           "DataId": 2006063,
-          "Position": {
-            "X": -473.50275,
-            "Y": 137.40747,
-            "Z": 685.3893
-          },
-          "TerritoryId": 399,
+          "Position": [-473.50275, 137.40747, 685.3893],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -113,25 +55,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "DataId": 2005336,
-          "Position": {
-            "X": -488.79227,
-            "Y": 138.93335,
-            "Z": 741.0543
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 463
-        },
-        {
           "DataId": 1012141,
-          "Position": {
-            "X": 35.690796,
-            "Y": 38.43,
-            "Z": 12.985352
-          },
+          "Position": [35.690796, 38.43, 12.985352],
           "TerritoryId": 463,
           "InteractionType": "CompleteQuest"
         }

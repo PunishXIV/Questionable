@@ -1,64 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013018,
-          "Position": {
-            "X": 30.07544,
-            "Y": 50.99997,
-            "Z": -819.7299
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1013020,
-          "Position": {
-            "X": -58.79309,
-            "Y": -21.311453,
-            "Z": -3.982666
-          },
-          "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
-          "StopDistance": 1
+          "Position": [-58.79309, -21.311453, -3.982666],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": -368.91202,
-            "Y": -22.538002,
-            "Z": 386.9863
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1013028,
-          "Position": {
-            "X": -380.8805,
-            "Y": -23.064514,
-            "Z": 388.63196
-          },
-          "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-380.8805, -23.064514, 388.63196],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

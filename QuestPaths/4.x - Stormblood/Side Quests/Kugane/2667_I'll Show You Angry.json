@@ -1,34 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Fronti",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1022447,
-          "Position": {
-            "X": 114.488,
-            "Y": 12,
-            "Z": 53.1166
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] The Ruby Bazaar"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1019064,
-          "Position": {
-            "X": 59.2415,
-            "Y": 4,
-            "Z": 67.7075
-          },
-          "TerritoryId": 628,
+          "Position": [59.2415, 4, 67.7075],
           "InteractionType": "Emote",
           "Emote": "angry"
         }
@@ -36,15 +20,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1019064,
-          "Position": {
-            "X": 59.2415,
-            "Y": 4,
-            "Z": 67.7075
-          },
-          "TerritoryId": 628,
+          "Position": [59.2415, 4, 67.7075],
           "InteractionType": "Emote",
           "Emote": "angry"
         }
@@ -52,18 +32,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1022447,
-          "Position": {
-            "X": 114.488,
-            "Y": 12,
-            "Z": 53.1166
-          },
-          "TerritoryId": 628,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

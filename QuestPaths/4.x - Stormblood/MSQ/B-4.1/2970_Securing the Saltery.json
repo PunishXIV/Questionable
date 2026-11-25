@@ -1,20 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 1024045,
-          "Position": {
-            "X": -2.822998,
-            "Y": -2.0000012,
-            "Z": -17.166443
-          },
-          "StopDistance": 5,
-          "TerritoryId": 212,
+          "Position": [-2.822998, -2.0000012, -17.166443],
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
         }
@@ -22,116 +17,80 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024046,
-          "Position": {
-            "X": 592.70605,
-            "Y": 80.00001,
-            "Z": 618.6465
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "Position": [592.70605, 80.00001, 618.6465],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1023036,
-          "Position": {
-            "X": -285.23688,
-            "Y": 11.183244,
-            "Z": 188.83032
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "Position": [-285.23688, 11.183244, 188.83032],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024052,
-          "Position": {
-            "X": -238.54431,
-            "Y": 0.9244179,
-            "Z": 196.55139
-          },
-          "TerritoryId": 621,
+          "Position": [-238.54431, 0.9244179, 196.55139],
           "InteractionType": "Snipe",
-          "Comment": "Aim at jaw",
-          "Fly": true
+          "Comment": "Aim at jaw"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024340,
-          "Position": {
-            "X": -208.20941,
-            "Y": -0.3,
-            "Z": 207.6294
-          },
-          "StopDistance": 5,
-          "TerritoryId": 621,
+          "Position": [-208.20941, -0.3, 207.6294],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024053,
-          "Position": {
-            "X": 8.590759,
-            "Y": 5.3881354,
-            "Z": 282.7954
-          },
-          "TerritoryId": 621,
+          "Position": [8.590759, 5.3881354, 282.7954],
           "InteractionType": "Snipe",
-          "Fly": true,
           "Comment": "Aim at nearest eye"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024341,
-          "Position": {
-            "X": -3.5248413,
-            "Y": 3.1742485,
-            "Z": 249.34766
-          },
-          "StopDistance": 6,
-          "TerritoryId": 621,
+          "Position": [-3.5248413, 3.1742485, 249.34766],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1023036,
-          "Position": {
-            "X": -285.23688,
-            "Y": 11.183244,
-            "Z": 188.83032
-          },
-          "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-285.23688, 11.183244, 188.83032],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

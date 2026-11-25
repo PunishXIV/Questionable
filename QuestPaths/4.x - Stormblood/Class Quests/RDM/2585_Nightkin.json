@@ -1,125 +1,65 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021779,
-          "Position": {
-            "X": -5.44751,
-            "Y": 210.99998,
-            "Z": -39.658203
-          },
-          "StopDistance": 7,
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "Position": {
-            "X": -25.853794,
-            "Y": 210.99998,
-            "Z": 3.6528845
-          },
-          "TerritoryId": 478,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -20.601719,
-            "Y": 205.82156,
-            "Z": 23.937931
-          },
-          "TerritoryId": 478,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 1012133,
-          "Position": {
-            "X": -26.840637,
-            "Y": 206.49944,
-            "Z": 28.67163
-          },
-          "TerritoryId": 478,
+          "Position": [-26.840637, 206.49944, 28.67163],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1021779,
-          "Position": {
-            "X": -5.44751,
-            "Y": 210.99998,
-            "Z": -39.658203
-          },
-          "TerritoryId": 478,
+          "Position": [-5.44751, 210.99998, -39.658203],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1021783,
-          "Position": {
-            "X": 277.11902,
-            "Y": 232.541,
-            "Z": 785.5801
-          },
-          "TerritoryId": 399,
+          "Position": [277.11902, 232.541, 785.5801],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1021783,
-          "Position": {
-            "X": 277.11902,
-            "Y": 232.54102,
-            "Z": 785.5801
-          },
-          "StopDistance": 7,
-          "TerritoryId": 399,
+          "Position": [277.11902, 232.54102, 785.5801],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1021779,
-          "Position": {
-            "X": -5.44751,
-            "Y": 210.99998,
-            "Z": -39.658203
-          },
-          "TerritoryId": 478,
+          "Position": [-5.44751, 210.99998, -39.658203],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "NextQuestId": 2586
         }
       ]

@@ -1,24 +1,13 @@
 // Authored with LLM assistance, changes must be reviewed and owned by a human.
 // Initial version reviewed and owned by @Deckerz
 
-using System;
-using System.IO;
 using System.Text.Json;
 using Questionable.AutoGen;
 using Questionable.AutoGen.Generation;
 
 namespace Questionable.Tests.AutoGen;
 
-/// <summary>
-///     Shared game-data handle for the questpath generator tests.
-///     <para>
-///         These tests read the installed game's sqpack, which CI does not have. When no installation is
-///         found <see cref="Available"/> is false and every test in the collection returns early — the
-///         generator is only meaningfully testable against real game data, and a mocked
-///         <c>Quest</c>/<c>Level</c>/Lua corpus would test the mock rather than the derivation rules.
-///         Set <c>QUESTIONABLE_GAME_PATH</c> to point at a game folder explicitly.
-///     </para>
-/// </summary>
+// Generator tests need real sqpack; without an installation they are skipped.
 public sealed class GameDataFixture : IDisposable
 {
     internal const string GamePathEnvVar = "QUESTIONABLE_GAME_PATH";
@@ -33,7 +22,8 @@ public sealed class GameDataFixture : IDisposable
 
     public GameDataFixture()
     {
-        string? sqPack = FindSqPackDirectory();
+        string? sqPack = ResolveSqPackDirectory(
+            Environment.GetEnvironmentVariable(GamePathEnvVar), FindInstalledSqPackDirectory);
         if (sqPack == null)
             return;
 
@@ -42,10 +32,10 @@ public sealed class GameDataFixture : IDisposable
             GameData = new QuestGameData(sqPack);
             Factory = new QuestPathGeneratorFactory(GameData);
         }
-        catch (Exception e) when (e is IOException or InvalidDataException or UnauthorizedAccessException)
+        catch
         {
-            GameData = null;
-            Factory = null;
+            GameData?.Dispose();
+            throw;
         }
     }
 
@@ -54,7 +44,6 @@ public sealed class GameDataFixture : IDisposable
 
     public bool Available => GameData != null && Factory != null;
 
-    /// <summary>Fixed author, so generated output never depends on the machine's configuration.</summary>
     public const string Author = "TestBot";
 
     internal QuestPathAutoGenerator CreateGenerator() =>
@@ -62,13 +51,23 @@ public sealed class GameDataFixture : IDisposable
 
     public void Dispose() => GameData?.Dispose();
 
-    private static string? FindSqPackDirectory()
+    internal static string? ResolveSqPackDirectory(string? configured, Func<string?> discover)
     {
-        // An explicit path is authoritative: if it is set and wrong, fall back to nothing rather than silently
-        // testing against a different installation than the one asked for.
-        if (Environment.GetEnvironmentVariable(GamePathEnvVar) is { Length: > 0 } configured)
-            return IsGameRoot(configured) ? Path.Combine(configured, "game", "sqpack") : null;
+        if (!string.IsNullOrEmpty(configured))
+        {
+            if (!IsGameRoot(configured))
+                throw new InvalidOperationException(
+                    $"{GamePathEnvVar} points to an invalid FFXIV installation: '{configured}'. " +
+                    "Expected game/sqpack/ffxiv/0a0000.win32.index beneath this directory.");
 
+            return Path.Combine(configured, "game", "sqpack");
+        }
+
+        return discover();
+    }
+
+    internal static string? FindInstalledSqPackDirectory()
+    {
         if (TryFromXivLauncher() is { } launcherPath)
             return launcherPath;
 

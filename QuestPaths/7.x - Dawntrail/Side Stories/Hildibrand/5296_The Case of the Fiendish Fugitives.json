@@ -1,22 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1053627,
-          "Position": {
-            "X": -580.22437,
-            "Y": -0.89430946,
-            "Z": -521.5991
-          },
-          "TerritoryId": 1191,
+          "Position": [-580.22437, -0.89430946, -521.5991],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1254,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CHRHDB922_05296_SYSTEM_000_003",
@@ -27,11 +22,7 @@
         },
         {
           "DataId": 1053634,
-          "Position": {
-            "X": 90.22656,
-            "Y": 12.03999,
-            "Z": 147.08167
-          },
+          "Position": [90.22656, 12.03999, 147.08167],
           "TerritoryId": 1254,
           "InteractionType": "AcceptQuest"
         }
@@ -39,67 +30,45 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1053637,
-          "Position": {
-            "X": 232.47119,
-            "Y": 50.749866,
-            "Z": 210.193
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "Position": [232.47119, 50.749866, 210.193],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1053641,
-          "Position": {
-            "X": -255.51239,
-            "Y": 26.1,
-            "Z": 103.04407
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - Electrope Strike"
+          "Position": [-255.51239, 26.1, 103.04407],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1053646,
-          "Position": {
-            "X": -91.66095,
-            "Y": 46.00767,
-            "Z": 390.64624
-          },
-          "TerritoryId": 1191,
+          "Position": [-91.66095, 46.00767, 390.64624],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1053649,
-          "Position": {
-            "X": 113.63391,
-            "Y": 83.57817,
-            "Z": 552.20874
-          },
-          "TerritoryId": 1191,
+          "Position": [113.63391, 83.57817, 552.20874],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -112,38 +81,24 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1053650,
-          "Position": {
-            "X": 175.95166,
-            "Y": 83.2133,
-            "Z": 652.64355
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [175.95166, 83.2133, 652.64355],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1053652,
-          "Position": {
-            "X": 236.62158,
-            "Y": 50.749947,
-            "Z": 209.97937
-          },
-          "TerritoryId": 1186,
+          "Position": [236.62158, 50.749947, 209.97937],
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 5378,
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "NextQuestId": 5378
         }
       ]
     }

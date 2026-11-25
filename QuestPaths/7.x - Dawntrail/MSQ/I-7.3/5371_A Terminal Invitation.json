@@ -1,44 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1054569,
-          "Position": {
-            "X": -0.5340576,
-            "Y": 53.200012,
-            "Z": 768.27637
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1054576,
-          "Position": {
-            "X": -0.16790771,
-            "Y": 50.12495,
-            "Z": 364.8584
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-0.16790771, 50.12495, 364.8584],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1192,
       "Steps": [
         {
-          "TerritoryId": 1192,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1028,
@@ -52,13 +36,13 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1312,
       "Steps": [
         {
-          "TerritoryId": 1312,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1061,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
@@ -68,34 +52,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1054597,
-          "Position": {
-            "X": 5.8136597,
-            "Y": 50.12495,
-            "Z": 369.80237
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1192,
+          "Position": [5.8136597, 50.12495, 369.80237],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1054604,
-          "Position": {
-            "X": -145.06763,
-            "Y": 25.971825,
-            "Z": -495.38416
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true
+          "Position": [-145.06763, 25.971825, -495.38416],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

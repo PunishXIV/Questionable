@@ -1,84 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023164,
-          "Position": {
-            "X": -127.45862,
-            "Y": 41.197662,
-            "Z": 7.248047
-          },
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021565,
-          "Position": {
-            "X": 440.11584,
-            "Y": 114.254425,
-            "Z": 212.84802
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "Position": [440.11584, 114.254425, 212.84802],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2008764,
-          "Position": {
-            "X": 608.1482,
-            "Y": 48.02002,
-            "Z": 362.6306
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [608.1482, 48.02002, 362.6306],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023166,
-          "Position": {
-            "X": 607.3242,
-            "Y": 48.087296,
-            "Z": 364.79736
-          },
-          "StopDistance": 5,
-          "TerritoryId": 612,
+          "Position": [607.3242, 48.087296, 364.79736],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021565,
-          "Position": {
-            "X": 440.11584,
-            "Y": 114.254425,
-            "Z": 212.84802
-          },
-          "TerritoryId": 612,
+          "Position": [440.11584, 114.254425, 212.84802],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "NextQuestId": 2828
         }
       ]

@@ -1,14 +1,7 @@
-using Questionable.Model.Questing;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 
-/// <summary>
-///     Tracks which quest is currently being worked on. There are up to five quest "slots"
-///     (started / simulated / next / gathering / pending); this class owns those slots, the rules
-///     that pick the currently-active one, and the setters that mutate them. Extracted from
-///     <see cref="QuestController"/>.
-/// </summary>
 [RegisterSingleton]
 internal sealed class QuestProgressTracker(
     QuestFunctions questFunctions,
@@ -19,12 +12,11 @@ internal sealed class QuestProgressTracker(
     public QuestController.QuestProgress? StartedQuest { get; set; }
     public QuestController.QuestProgress? SimulatedQuest { get; set; }
     public QuestController.QuestProgress? NextQuest { get; set; }
-    public QuestController.QuestProgress? GatheringQuest { get; set; }
 
-    /// <summary>
-    ///     Used when accepting leves, as there's a small delay.
-    /// </summary>
+    // Leve acceptance is delayed.
     public QuestController.QuestProgress? PendingQuest { get; set; }
+
+    public QuestController.QuestProgress? DisplacedQuest { get; set; }
 
     public (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? CurrentQuestDetails
     {
@@ -34,8 +26,6 @@ internal sealed class QuestProgressTracker(
                 return (SimulatedQuest, QuestController.ECurrentQuestType.Simulated);
             if (NextQuest != null && questFunctions.IsReadyToAcceptQuest(NextQuest.Quest.Id))
                 return (NextQuest, QuestController.ECurrentQuestType.Next);
-            if (GatheringQuest != null)
-                return (GatheringQuest, QuestController.ECurrentQuestType.Gathering);
             if (StartedQuest != null)
                 return (StartedQuest, QuestController.ECurrentQuestType.Normal);
 
@@ -45,14 +35,13 @@ internal sealed class QuestProgressTracker(
 
     public QuestController.QuestProgress? CurrentQuest => CurrentQuestDetails?.Progress;
 
-    /// <summary>Clears every quest slot.</summary>
     public void Reset()
     {
         StartedQuest = null;
         NextQuest = null;
-        GatheringQuest = null;
         PendingQuest = null;
         SimulatedQuest = null;
+        DisplacedQuest = null;
     }
 
     public void SimulateQuest(IQuestInfo? questInfo, byte sequence, int step)
@@ -88,16 +77,6 @@ internal sealed class QuestProgressTracker(
             NextQuest = null;
     }
 
-    public void SetGatheringQuest(Quest? quest)
-    {
-        highlightObject.SetHighlight([]);
-        logger.LogInformation("GatheringQuest: {QuestId}", quest?.Id);
-        if (quest != null)
-            GatheringQuest = new(quest);
-        else
-            GatheringQuest = null;
-    }
-
     public void SetPendingQuest(QuestController.QuestProgress? quest)
     {
         highlightObject.SetHighlight([]);
@@ -105,13 +84,13 @@ internal sealed class QuestProgressTracker(
         PendingQuest = quest;
     }
 
-    public (QuestSequence? Sequence, QuestStep? Step, bool createTasks) GetNextStep()
+    public (QuestSequence? Sequence, QuestStep? Step, bool CreateTasks) GetNextStep()
     {
         if (CurrentQuest == null)
             return (null, null, false);
 
-        Quest q = CurrentQuest.Quest;
-        QuestSequence? seq = q.FindSequence(CurrentQuest.Sequence);
+        Quest quest = CurrentQuest.Quest;
+        QuestSequence? seq = quest.FindSequence(CurrentQuest.Sequence);
         if (seq == null)
             return (null, null, true);
 

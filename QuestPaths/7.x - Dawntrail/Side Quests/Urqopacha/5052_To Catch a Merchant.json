@@ -1,116 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051195,
-          "Position": {
-            "X": 383.29138,
-            "Y": -154.50243,
-            "Z": -420.49292
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 383.29138,
-                  "Y": -154.50243,
-                  "Z": -420.49292
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1051199,
-          "Position": {
-            "X": 442.95398,
-            "Y": -116.815155,
-            "Z": -178.63745
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+          "Position": [442.95398, -116.815155, -178.63745],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1051200,
-          "Position": {
-            "X": 563.83606,
-            "Y": -49.515564,
-            "Z": 49.54602
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+          "Position": [563.83606, -49.515564, 49.54602],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1048773,
-          "Position": {
-            "X": 576.2875,
-            "Y": -49.16388,
-            "Z": 37.00305
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+          "Position": [576.2875, -49.16388, 37.00305],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1051195,
-          "Position": {
-            "X": 383.29138,
-            "Y": -154.50243,
-            "Z": -420.49292
-          },
-          "TerritoryId": 1187,
+          "Position": [383.29138, -154.50243, -420.49292],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 383.29138,
-                  "Y": -154.50243,
-                  "Z": -420.49292
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          },
           "NextQuestId": 5053
         }
       ]

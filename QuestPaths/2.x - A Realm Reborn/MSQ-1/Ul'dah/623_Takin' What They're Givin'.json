@@ -1,43 +1,23 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001353,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.78235
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "TerritoryId": 140,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Western Thanalan - Horizon",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ]
+          "Aetheryte": "Western Thanalan - Horizon"
         },
         {
           "DataId": 1002065,
-          "Position": {
-            "X": 60.9292,
-            "Y": 45.14234,
-            "Z": -205.005
-          },
-          "TerritoryId": 140,
+          "Position": [60.9292, 45.14234, -205.005],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,42 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Boarskin Smithy's Gloves HQ\nAutocraft requires:\n 2x Boar Leather,\n 1x Steel Ingot,\n 1x Hippogryph Sinew",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 133,
           "ItemId": 3639,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,31 +26,18 @@
         },
         {
           "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "Position": [71.97681, 8, -166.52173],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1003674,
-          "Position": {
-            "X": 75.54736,
-            "Y": 6.1339955,
-            "Z": -90.62335
-          },
-          "TerritoryId": 133,
+          "Position": [75.54736, 6.1339955, -90.62335],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -87,18 +51,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

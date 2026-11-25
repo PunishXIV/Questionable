@@ -1,5 +1,3 @@
-using Dalamud.Bindings.ImGui;
-using Questionable.Model.Questing;
 namespace Questionable.Windows.Utils;
 
 [RegisterTransient]
@@ -9,34 +7,33 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
 
     public Predicate<Quest>? SuggestionPredicate { private get; set; }
     public Predicate<Quest>? DefaultPredicate { private get; set; }
-    public Action<Quest>? QuestSelected { private get; set; }
+    public Action<Quest>? OnSelect { private get; set; }
 
     public void DrawSelection()
     {
-        if (QuestSelected == null)
-            throw new InvalidOperationException("QuestSelected action must be set before drawing the quest selector.");
+        if (OnSelect == null)
+            throw new InvalidOperationException("OnSelect must be set before drawing the quest selector.");
 
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-        if (ImGui.BeginCombo("##QuestSelection", _L("Add Quest..."), ImGuiComboFlags.HeightLarge))
+        if (ImGui.BeginCombo("##QuestSelection", _L("Add quest..."), ImGuiComboFlags.HeightLarge))
         {
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-            bool addFirst = ImGui.InputTextWithHint("##", _L("Filter..."), ref _searchString, 256,
+            bool addFirst = ImGui.InputTextWithHint("##", _L("Quest name or ID..."), ref _searchString, 256,
                 ImGuiInputTextFlags.AutoSelectAll | ImGuiInputTextFlags.EnterReturnsTrue);
 
             IEnumerable<Quest> foundQuests;
             if (!string.IsNullOrEmpty(_searchString))
             {
-                bool DefaultPredicate(Quest x) => x.Info.Name.Contains(_searchString, StringComparison.CurrentCultureIgnoreCase);
+                bool MatchesName(Quest x) => x.Info.Name.Contains(_searchString, StringComparison.CurrentCultureIgnoreCase);
 
-                Func<Quest, bool> searchPredicate;
+                Func<Quest, bool> matches;
                 if (ElementId.TryFromString(_searchString, out ElementId? elementId))
-                    searchPredicate = x => DefaultPredicate(x) || x.Id == elementId;
+                    matches = x => MatchesName(x) || x.Id == elementId;
                 else
-                    searchPredicate = DefaultPredicate;
+                    matches = MatchesName;
 
                 foundQuests = questRegistry.AllQuests
-                    .Where(x => x.Id is not SatisfactionSupplyNpcId and not AlliedSocietyDailyId)
-                    .Where(searchPredicate);
+                    .Where(x => x.Id is not AlliedSocietyDailyId && matches(x));
             }
             else
                 foundQuests = questRegistry.AllQuests.Where(x => DefaultPredicate?.Invoke(x) ?? true);
@@ -46,10 +43,10 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
                 if (SuggestionPredicate != null && !SuggestionPredicate.Invoke(quest))
                     continue;
 
-                bool addThis = ImGui.Selectable(quest.Info.Name);
-                if (addThis || addFirst)
+                bool clicked = ImGui.Selectable(quest.Info.Name);
+                if (clicked || addFirst)
                 {
-                    QuestSelected(quest);
+                    OnSelect(quest);
 
                     if (addFirst)
                     {

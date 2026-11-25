@@ -1,83 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033872,
-          "Position": {
-            "X": -634.2717,
-            "Y": 35.86156,
-            "Z": -234.21082
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032532,
-          "Position": {
-            "X": -88.33453,
-            "Y": -19.033354,
-            "Z": 296.31494
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "Position": [-88.33453, -19.033354, 296.31494],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032532,
-          "Position": {
-            "X": -88.33453,
-            "Y": -19.033354,
-            "Z": 296.31494
-          },
-          "TerritoryId": 817,
+          "Position": [-88.33453, -19.033354, 296.31494],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1033878,
-          "Position": {
-            "X": -483.8178,
-            "Y": 45.586155,
-            "Z": -236.68274
-          },
-          "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "Position": [-483.8178, 45.586155, -236.68274],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1033881,
-          "Position": {
-            "X": -37.43042,
-            "Y": 4.583,
-            "Z": 3.982544
-          },
-          "TerritoryId": 819,
+          "Position": [-37.43042, 4.583, 3.982544],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -90,15 +60,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1033884,
-          "Position": {
-            "X": 26.230225,
-            "Y": 0,
-            "Z": 1.4190674
-          },
-          "TerritoryId": 819,
+          "Position": [26.230225, 0, 1.4190674],
           "InteractionType": "CompleteQuest"
         }
       ]

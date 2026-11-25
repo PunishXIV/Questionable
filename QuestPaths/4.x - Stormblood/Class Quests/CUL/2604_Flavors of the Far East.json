@@ -1,87 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44.000008,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1020143,
-          "Position": {
-            "X": -68.16211,
-            "Y": 41.99949,
-            "Z": -135.0271
-          },
-          "TerritoryId": 128,
+          "Position": [-68.16211, 41.99949, -135.0271],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 25.685099,
-            "Y": 50.999966,
-            "Z": -805.48645
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 30.655273,
-                  "Y": 50.999966,
-                  "Z": -822.07983
-                },
-                "TerritoryId": 156,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1020144,
-          "Position": {
-            "X": 30.655273,
-            "Y": 50.999966,
-            "Z": -822.07983
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [30.655273, 50.999966, -822.07983],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

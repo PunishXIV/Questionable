@@ -1,52 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046914,
-          "Position": {
-            "X": -806.3325,
-            "Y": 56.050728,
-            "Z": 134.44714
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1046916,
-          "Position": {
-            "X": 366.01807,
-            "Y": 130.34726,
-            "Z": 599.23694
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "Position": [366.01807, 130.34726, 599.23694],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1046916,
-          "Position": {
-            "X": 366.01807,
-            "Y": 130.34726,
-            "Z": 599.23694
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
+          "Position": [366.01807, 130.34726, 599.23694],
           "InteractionType": "CompleteQuest"
         }
       ]

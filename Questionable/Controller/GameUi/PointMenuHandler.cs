@@ -1,19 +1,14 @@
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Questionable.Model.Questing;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Handles the in-game "PointMenu" addon (used by quest steps that require picking a map point),
-///     picking the choice configured on the current quest step.
-/// </summary>
 [RegisterSingleton]
 internal sealed class PointMenuHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly QuestController _questController;
     private readonly TerritoryData _territoryData;
     private readonly IClientState _clientState;
@@ -21,7 +16,7 @@ internal sealed class PointMenuHandler : IDisposable
 
     public PointMenuHandler(
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         QuestController questController,
         TerritoryData territoryData,
         IClientState clientState,
@@ -40,23 +35,18 @@ internal sealed class PointMenuHandler : IDisposable
     public void Dispose() =>
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "PointMenu", PointMenuPostSetup);
 
-    private bool ShouldHandleUiInteractions =>
+    private bool ShouldHandleUi =>
         _questController.IsRunning ||
         _territoryData.IsQuestBattleInstance(_clientState.TerritoryType);
 
     private unsafe void PointMenuPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
         HandlePointMenu((AtkUnitBase*)args.Addon.Address);
     }
 
-    /// <summary>
-    ///     Handles a PointMenu that is already open when automation starts. Unlike the live addon
-    ///     callback this bypasses the <see cref="ShouldHandleUiInteractions"/> gate, matching the
-    ///     legacy "initial check" behaviour.
-    /// </summary>
     public unsafe void CheckExisting()
     {
         if (_gameGui.TryGetAddonByName("PointMenu", out AtkUnitBase* addonPointMenu))
@@ -75,7 +65,7 @@ internal sealed class PointMenuHandler : IDisposable
             return;
         }
 
-        QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+        QuestSequence? sequence = currentQuest.FindSequence();
         if (sequence == null)
             return;
 

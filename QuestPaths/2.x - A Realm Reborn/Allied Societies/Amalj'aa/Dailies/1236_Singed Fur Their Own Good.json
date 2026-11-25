@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "plogon_enjoyer",
     "alydev"
@@ -8,49 +8,26 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005551,
-          "Position": {
-            "X": 98.924194,
-            "Y": 15.29447,
-            "Z": -349.4469
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1005848,
-          "Position": {
-            "X": -101.487854,
-            "Y": 8.097177,
-            "Z": 403.28064
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "Position": [-101.487854, 8.097177, 403.28064],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2003352,
-          "Position": {
-            "X": -347.00543,
-            "Y": 13.504211,
-            "Z": 656.64136
-          },
-          "TerritoryId": 146,
+          "Position": [-347.00543, 13.504211, 656.64136],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
@@ -60,12 +37,7 @@
         },
         {
           "DataId": 2003353,
-          "Position": {
-            "X": -248.0965,
-            "Y": 2.8533936,
-            "Z": 675.95935
-          },
-          "TerritoryId": 146,
+          "Position": [-248.0965, 2.8533936, 675.95935],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
@@ -75,12 +47,7 @@
         },
         {
           "DataId": 2003354,
-          "Position": {
-            "X": -132.03638,
-            "Y": -1.449646,
-            "Z": 778.8052
-          },
-          "TerritoryId": 146,
+          "Position": [-132.03638, -1.449646, 778.8052],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
@@ -90,12 +57,7 @@
         },
         {
           "DataId": 2003355,
-          "Position": {
-            "X": -43.50354,
-            "Y": -0.3204956,
-            "Z": 759.4872
-          },
-          "TerritoryId": 146,
+          "Position": [-43.50354, -0.3204956, 759.4872],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16],
@@ -105,12 +67,7 @@
         },
         {
           "DataId": 2003356,
-          "Position": {
-            "X": 78.446655,
-            "Y": 14.328186,
-            "Z": 589.9595
-          },
-          "TerritoryId": 146,
+          "Position": [78.446655, 14.328186, 589.9595],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "RequiredQuestVariables": [null,null,null,[
@@ -119,12 +76,7 @@
         },
         {
           "DataId": 2003357,
-          "Position": {
-            "X": 179.9801,
-            "Y": 6.6376343,
-            "Z": 601.15967
-          },
-          "TerritoryId": 146,
+          "Position": [179.9801, 6.6376343, 601.15967],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4],
@@ -136,20 +88,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005551,
-          "Position": {
-            "X": 98.924194,
-            "Y": 15.29447,
-            "Z": -349.4469
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

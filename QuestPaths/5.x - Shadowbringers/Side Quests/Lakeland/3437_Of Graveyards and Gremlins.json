@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,72 +8,31 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027420,
-          "Position": {
-            "X": 702.38794,
-            "Y": 21.798542,
-            "Z": -81.34589
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 702.38794,
-                  "Y": 21.798542,
-                  "Z": -81.34589
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 2010682,
-          "Position": {
-            "X": 725.21545,
-            "Y": 22.140747,
-            "Z": -172.99158
-          },
-          "TerritoryId": 813,
+          "Position": [725.21545, 22.140747, -172.99158],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [11159, 11159],
           "$": "QW: 0 0 0 0 0 0 -> QW: 16 2(2) 0 0 0 64",
-          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2010683,
-          "Position": {
-            "X": 743.7704,
-            "Y": 22.842712,
-            "Z": -163.19525
-          },
-          "TerritoryId": 813,
+          "Position": [743.7704, 22.842712, -163.19525],
           "InteractionType": "Interact",
           "$": "QW: 16 2(2) 0 0 0 64 -> QW: 33(1) 2(2) 0 0 0 96",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 2010681,
-          "Position": {
-            "X": 762.9053,
-            "Y": 22.140747,
-            "Z": -168.20026
-          },
-          "TerritoryId": 813,
+          "Position": [762.9053, 22.140747, -168.20026],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [11159, 11159]
@@ -82,19 +41,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027420,
-          "Position": {
-            "X": 702.38794,
-            "Y": 21.798542,
-            "Z": -81.34589
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

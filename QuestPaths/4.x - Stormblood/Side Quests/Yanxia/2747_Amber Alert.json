@@ -1,91 +1,49 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "Position": {
-            "X": -297.51367,
-            "Y": 17.31996,
-            "Z": 508.2195
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1019298,
-          "Position": {
-            "X": -318.87692,
-            "Y": 17.974895,
-            "Z": 508.29004
-          },
-          "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25
+          "Position": [-318.87692, 17.974895, 508.29004],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019261,
-          "Position": {
-            "X": 403.00586,
-            "Y": 76.169815,
-            "Z": -148.8518
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "Position": [403.00586, 76.169815, -148.8518],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "Position": {
-            "X": -297.51367,
-            "Y": 17.31996,
-            "Z": 508.2195
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1019298,
-          "Position": {
-            "X": -318.87692,
-            "Y": 17.974895,
-            "Z": 508.29004
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "StopDistance": 0.25
+          "Position": [-318.87692, 17.974895, 508.29004],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019261,
-          "Position": {
-            "X": 403.00586,
-            "Y": 76.169815,
-            "Z": -148.8518
-          },
-          "TerritoryId": 614,
+          "Position": [403.00586, 76.169815, -148.8518],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai",
           "NextQuestId": 2740
         }
       ]

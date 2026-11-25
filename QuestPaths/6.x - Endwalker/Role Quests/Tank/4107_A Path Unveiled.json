@@ -1,51 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038411,
-          "Position": {
-            "X": -69.41333,
-            "Y": -0.5033642,
-            "Z": 5.0201416
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
-          "Position": {
-            "X": 11.687102,
-            "Y": 1.2724965,
-            "Z": -15.995083
-          },
-          "TerritoryId": 132,
-          "TargetTerritoryId": 133,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1038452,
-          "Position": {
-            "X": 16.250854,
-            "Y": 6.9444046,
-            "Z": -109.544556
-          },
+          "Position": [16.250854, 6.9444046, -109.544556],
           "TerritoryId": 133,
           "InteractionType": "Interact"
         }
@@ -53,18 +21,12 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1038454,
-          "Position": {
-            "X": -311.39087,
-            "Y": 20.991789,
-            "Z": 175.12769
-          },
-          "TerritoryId": 148,
+          "Position": [-311.39087, 20.991789, 175.12769],
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": false
           }
@@ -76,35 +38,23 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1038454,
-          "Position": {
-            "X": -311.39087,
-            "Y": 20.991789,
-            "Z": 175.12769
-          },
-          "TerritoryId": 148,
+          "Position": [-311.39087, 20.991789, 175.12769],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000460,
-          "Position": {
-            "X": -159.41101,
-            "Y": 4.054107,
-            "Z": -4.1047363
-          },
-          "TerritoryId": 133,
+          "Position": [-159.41101, 4.054107, -4.1047363],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -117,36 +67,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1038456,
-          "Position": {
-            "X": -161.48627,
-            "Y": 3.9593172,
-            "Z": -8.011047
-          },
-          "TerritoryId": 133,
+          "Position": [-161.48627, 3.9593172, -8.011047],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1038397,
-          "Position": {
-            "X": -178.97314,
-            "Y": 4.05,
-            "Z": -74.69299
-          },
-          "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "Position": [-178.97314, 4.05, -74.69299],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

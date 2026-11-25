@@ -1,51 +1,28 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041538,
-          "Position": {
-            "X": 158.19019,
-            "Y": 9.457411,
-            "Z": 253.34546
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041539,
-          "Position": {
-            "X": 672.9381,
-            "Y": 7.802258,
-            "Z": 48.05066
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [672.9381, 7.802258, 48.05066],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": 672.763,
-            "Y": 7.8688097,
-            "Z": 49.742996
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 961,
+          "Position": [672.763, 7.8688097, 49.742996],
           "InteractionType": "Emote",
           "Emote": "stretch"
         }
@@ -53,20 +30,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041538,
-          "Position": {
-            "X": 158.19019,
-            "Y": 9.457411,
-            "Z": 253.34546
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

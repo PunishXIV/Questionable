@@ -1,53 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013385,
-          "Position": {
-            "X": -158.37347,
-            "Y": 17,
-            "Z": -54.276367
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1013077,
-          "Position": {
-            "X": 147.53943,
-            "Y": -12.634913,
-            "Z": -26.199768
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "Position": [147.53943, -12.634913, -26.199768],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1013125,
-          "Position": {
-            "X": 148.60754,
-            "Y": -12.634913,
-            "Z": -13.443237
-          },
-          "TerritoryId": 419,
+          "Position": [148.60754, -12.634913, -13.443237],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -64,15 +41,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1013085,
-          "Position": {
-            "X": -805.53906,
-            "Y": -57.828876,
-            "Z": 157.64087
-          },
-          "TerritoryId": 401,
+          "Position": [-805.53906, -57.828876, 157.64087],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,67 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011020,
-          "Position": {
-            "X": -329.09137,
-            "Y": 12.899738,
-            "Z": 12.039368
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010982,
-          "Position": {
-            "X": 570.18384,
-            "Y": 20.637413,
-            "Z": 490.6233
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "Position": [570.18384, 20.637413, 490.6233],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010983,
-          "Position": {
-            "X": 594.7814,
-            "Y": 8.632993,
-            "Z": 601.77
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [594.7814, 8.632993, 601.77],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2005064,
-          "Position": {
-            "X": 602.9907,
-            "Y": 8.987488,
-            "Z": 577.66077
-          },
-          "TerritoryId": 137,
+          "Position": [602.9907, 8.987488, 577.66077],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -72,30 +46,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010983,
-          "Position": {
-            "X": 594.7814,
-            "Y": 8.632993,
-            "Z": 601.77
-          },
-          "TerritoryId": 137,
+          "Position": [594.7814, 8.632993, 601.77],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010897,
-          "Position": {
-            "X": 0.9613037,
-            "Y": -1.9957249,
-            "Z": -45.609253
-          },
-          "TerritoryId": 351,
+          "Position": [0.9613037, -1.9957249, -45.609253],
           "InteractionType": "CompleteQuest"
         }
       ]

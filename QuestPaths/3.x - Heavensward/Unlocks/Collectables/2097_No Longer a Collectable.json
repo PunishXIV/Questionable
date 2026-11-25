@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013395,
-          "Position": {
-            "X": 45.609253,
-            "Y": 31.195326,
-            "Z": -732.9061
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1001428,
-          "Position": {
-            "X": 116.80774,
-            "Y": 30.907087,
-            "Z": -359.63995
-          },
-          "StopDistance": 1,
-          "TerritoryId": 141,
+          "Position": [116.80774, 30.907087, -359.63995],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true,
           "NextQuestId": 2098
         }
       ]

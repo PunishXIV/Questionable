@@ -1,101 +1,49 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
 	"Author": "Gezah",
 	"LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence":
 	[
 	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1000691,
-			"Position":
-			{
-				"X": 71.97681,
-				"Y": 8,
-				"Z": -166.52173
-			},
-			"TerritoryId": 133,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Gridania",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Leatherworkers' Guild & Shaded Bower"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					132,
-					133
-					]
-				}
-			}
-		}
-		]
+	  "Sequence": 0,
+	  "Steps": []
 	},
 	{
 		"Sequence": 1,
+		"TerritoryId": 133,
 		"Steps":
 		[
 		{
 			"DataId": 1020929,
 			"Position":
-			{
-				"X": 141.71057,
-				"Y": 13.571404,
-				"Z": -90.44025
-			},
-			"TerritoryId": 133,
+			[141.71057, 13.571404, -90.44025],
 			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 2,
+		"TerritoryId": 132,
 		"Steps":
 		[
 		{
 			"DataId": 1020930,
 			"Position":
-			{
-				"X": 34.37854,
-				"Y": -8,
-				"Z": 109.69714
-			},
-			"TerritoryId": 132,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Gridania] Leatherworkers' Guild & Shaded Bower",
-			"[Gridania] Airship Landing"
-			]
+			[34.37854, -8, 109.69714],
+			"InteractionType": "Interact"
 		}
 		]
 	},
 	{
 		"Sequence": 255,
+		"TerritoryId": 133,
 		"Steps":
 		[
 		{
 			"DataId": 1020929,
 			"Position":
-			{
-				"X": 141.71057,
-				"Y": 13.571404,
-				"Z": -90.44025
-			},
-			"TerritoryId": 133,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Leatherworkers' Guild & Shaded Bower"
-			]
+			[141.71057, 13.571404, -90.44025],
+			"InteractionType": "CompleteQuest"
 		}
 		]
 	}

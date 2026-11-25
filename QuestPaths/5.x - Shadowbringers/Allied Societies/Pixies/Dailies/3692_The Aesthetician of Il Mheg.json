@@ -1,52 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -344.05838,
-            "Y": 45.450672,
-            "Z": 456.10266
-          },
-          "TerritoryId": 816,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 2010860,
-          "Position": {
-            "X": -340.38306,
-            "Y": 38.77307,
-            "Z": 434.07336
-          },
-          "TerritoryId": 816,
+          "Position": [-340.38306, 38.77307, 434.07336],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}
@@ -55,12 +22,7 @@
         },
         {
           "DataId": 2010861,
-          "Position": {
-            "X": -332.44836,
-            "Y": 44.47998,
-            "Z": 462.15002
-          },
-          "TerritoryId": 816,
+          "Position": [-332.44836, 44.47998, 462.15002],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 3}, {"Low": 4}, {"Low": 5}
@@ -69,51 +31,27 @@
         },
         {
           "DataId": 2010863,
-          "Position": {
-            "X": -293.08008,
-            "Y": 42.70996,
-            "Z": 463.61487
-          },
-          "TerritoryId": 816,
+          "Position": [-293.08008, 42.70996, 463.61487],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 4}, {"Low": 6}
             ],null,null,null,null
-          ],
-          "IgnoreDistanceToObject": true
+          ]
         },
         {
           "DataId": 2010862,
-          "Position": {
-            "X": -276.96655,
-            "Y": 42.893066,
-            "Z": 453.6659
-          },
-          "TerritoryId": 816,
+          "Position": [-276.96655, 42.893066, 453.6659],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 5}, {"Low": 6}
             ],null,null,null,null
-          ],
-          "IgnoreDistanceToObject": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

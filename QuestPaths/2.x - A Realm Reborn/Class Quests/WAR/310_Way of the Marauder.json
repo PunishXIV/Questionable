@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000926,
-          "Position": {
-            "X": -10.055725,
-            "Y": 44.999794,
-            "Z": -245.80762
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Marauders' Guild"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [128,129]}}
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
+          "Position": [-1.2055054, 44.999886, -255.8786],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

@@ -1,40 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002659,
-          "Position": {
-            "X": 532.86,
-            "Y": 88.9753,
-            "Z": -72.0989
-          },
-          "TerritoryId": 135,
+          "Position": [532.86, 88.9753, -72.0989],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "$": "auto: issuer 1002659 (Arenlona)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 2001488,
-          "Position": {
-            "X": 440.57,
-            "Y": 68.3146,
-            "Z": -176.038
-          },
-          "TerritoryId": 135,
+          "Position": [440.57, 68.3146, -176.038],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "ItemId": 2000438,
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [
@@ -46,18 +34,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002659,
-          "Position": {
-            "X": 532.86,
-            "Y": 88.9753,
-            "Z": -72.0989
-          },
-          "TerritoryId": 135,
+          "Position": [532.86, 88.9753, -72.0989],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "$": "auto: todo turn-in -> 1002659 (Arenlona)"
         }
       ]

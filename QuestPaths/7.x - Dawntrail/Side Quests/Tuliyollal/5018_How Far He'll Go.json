@@ -1,59 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048459,
-          "Position": {
-            "X": -394.43048,
-            "Y": 11,
-            "Z": 3.5552979
-          },
-          "TerritoryId": 1185,
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Dirigible Landing"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {"AethernetShortcutIf": {"InSameTerritory": true}}
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1050733,
-          "Position": {
-            "X": -16.83075,
-            "Y": -10.000011,
-            "Z": 93.12573
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Dirigible Landing",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "Position": [-16.83075, -10.000011, 93.12573],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1050734,
-          "Position": {
-            "X": 79.301025,
-            "Y": -17.964588,
-            "Z": 199.57275
-          },
-          "TerritoryId": 1185,
+          "Position": [79.301025, -17.964588, 199.57275],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -67,22 +38,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048459,
-          "Position": {
-            "X": -394.43048,
-            "Y": 11,
-            "Z": 3.5552979
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] Dirigible Landing"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,85 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Titanium Lump Hammer HQ // Autocraft requires: 2x Titanium Ingot, 1x Hallowed Chestnut Lumber, 1x Mythrite Ingot, 1x Wing Glue",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012509,
-          "Position": {
-            "X": -190.56995,
-            "Y": -12.548244,
-            "Z": -25.833557
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000997,
-          "Position": {
-            "X": -31.265808,
-            "Y": 44.5,
-            "Z": 185.53442
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [-31.265808, 44.5, 185.53442],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": 442.77185,
-            "Y": -0.9374202,
-            "Z": -63.946045
-          },
-          "TerritoryId": 154,
-          "Fly": true,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        },
-        {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 154,
           "ItemId": 11877,
           "ItemCount": 1,
           "SkipConditions": {
@@ -92,54 +48,25 @@
         },
         {
           "DataId": 1008945,
-          "Position": {
-            "X": 446.21176,
-            "Y": -0.9374065,
-            "Z": -67.034256
-          },
-          "TerritoryId": 154,
+          "Position": [446.21176, -0.9374065, -67.034256],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1012509,
-          "Position": {
-            "X": -190.56995,
-            "Y": -12.548244,
-            "Z": -25.833557
-          },
-          "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

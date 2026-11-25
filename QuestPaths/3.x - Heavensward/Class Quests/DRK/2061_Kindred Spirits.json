@@ -1,55 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013969,
-          "Position": {
-            "X": 104.234375,
-            "Y": 14.999986,
-            "Z": 40.787354
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1015038,
-          "Position": {
-            "X": 210.49817,
-            "Y": 302.2458,
-            "Z": -166.888
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "Position": [210.49817, 302.2458, -166.888],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1015039,
-          "Position": {
-            "X": 209.43005,
-            "Y": 302.2567,
-            "Z": -166.888
-          },
-          "TerritoryId": 155,
+          "Position": [209.43005, 302.2567, -166.888],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -59,101 +34,67 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1015040,
-          "Position": {
-            "X": 221.94238,
-            "Y": 222.00142,
-            "Z": 320.9734
-          },
-          "TerritoryId": 155,
+          "Position": [221.94238, 222.00142, 320.9734],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "Position": [-258.8083, -5.7735243, -27.267883],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1015043,
-          "Position": {
-            "X": 29.67871,
-            "Y": -7.8,
-            "Z": 89.61609
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "Position": [29.67871, -7.8, 89.61609],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1015432,
-          "Position": {
-            "X": 29.67871,
-            "Y": -7.8,
-            "Z": 89.61609
-          },
-          "TerritoryId": 132,
+          "Position": [29.67871, -7.8, 89.61609],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1015066,
-          "Position": {
-            "X": 47.440186,
-            "Y": -8.046949,
-            "Z": 110.73462
-          },
-          "StopDistance": 6,
-          "TerritoryId": 132,
+          "Position": [47.440186, -8.046949, 110.73462],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013969,
-          "Position": {
-            "X": 104.234375,
-            "Y": 14.999986,
-            "Z": 40.787354
-          },
-          "TerritoryId": 418,
+          "Position": [104.234375, 14.999986, 40.787354],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "NextQuestId": 2062
         }
       ]

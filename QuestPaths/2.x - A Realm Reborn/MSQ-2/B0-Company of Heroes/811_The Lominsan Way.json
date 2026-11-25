@@ -1,60 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006264,
-          "Position": {
-            "X": 710.90247,
-            "Y": 66.027,
-            "Z": -277.66846
-          },
-          "TerritoryId": 135,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1006265,
-          "Position": {
-            "X": 703.5171,
-            "Y": 65.78333,
-            "Z": -288.77704
-          },
-          "TerritoryId": 135,
+          "Position": [703.5171, 65.78333, -288.77704],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "DataId": 1000868,
-          "Position": {
-            "X": -192.00433,
-            "Y": 0.9999907,
-            "Z": 211.68835
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 137,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
-        },
-        {
-          "TerritoryId": 137,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Eastern La Noscea - Costa Del Sol",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"}}
@@ -62,25 +33,14 @@
         {
           "$": "Costa del Sol Taxi",
           "DataId": 1002718,
-          "Position": {
-            "X": 423.72778,
-            "Y": 18.523344,
-            "Z": 448.56934
-          },
-          "TerritoryId": 137,
+          "Position": [423.72778, 18.523344, 448.56934],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179677
         },
         {
           "DataId": 1006266,
-          "Position": {
-            "X": 560.35706,
-            "Y": 20.721315,
-            "Z": 455.89368
-          },
-          "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "Position": [560.35706, 20.721315, 455.89368],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

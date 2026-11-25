@@ -1,72 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048609,
-          "Position": {
-            "X": -10.696594,
-            "Y": 2.4000525,
-            "Z": -31.174255
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1045332,
-          "Position": {
-            "X": -639.704,
-            "Y": -27.177149,
-            "Z": 301.9912
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "Position": [-639.704, -27.177149, 301.9912],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": 807.9048,
-            "Y": 152.2857,
-            "Z": -243.60707
-          },
-          "TerritoryId": 961,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        },
-        {
-          "DataId": 2012293,
-          "Position": {
-            "X": 809.9336,
-            "Y": 151.81189,
-            "Z": -243.42719
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1025
-        },
-        {
           "DataId": 1048610,
-          "Position": {
-            "X": 93.94971,
-            "Y": -1E-11,
-            "Z": 61.020752
-          },
+          "Position": [93.94971, -1E-11, 61.020752],
           "TerritoryId": 1025,
           "InteractionType": "Interact"
         }
@@ -74,47 +32,34 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1025,
       "Steps": [
         {
           "DataId": 2014542,
-          "Position": {
-            "X": 104.57007,
-            "Y": -0.015319824,
-            "Z": 46.25
-          },
-          "TerritoryId": 1025,
+          "Position": [104.57007, -0.015319824, 46.25],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1025,
       "Steps": [
         {
           "DataId": 1048610,
-          "Position": {
-            "X": 93.94971,
-            "Y": -1E-11,
-            "Z": 61.020752
-          },
-          "TerritoryId": 1025,
+          "Position": [93.94971, -1E-11, 61.020752],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1045332,
-          "Position": {
-            "X": -639.704,
-            "Y": -27.177149,
-            "Z": 301.9912
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "Position": [-639.704, -27.177149, 301.9912],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

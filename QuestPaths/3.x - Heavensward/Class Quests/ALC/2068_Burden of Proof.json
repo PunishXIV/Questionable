@@ -1,93 +1,52 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Alchemist III!! Crafted Item: 1x Draconian Potion of Strength HQ // Autocraft requires: 1x Abalathian Rock Salt, 2x Dragon Blood, 2x Furymint, 2x Rue, 1x Duskborne Aethersand",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [156]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": -228.30505,
-            "Y": -3.8901305,
-            "Z": -544.6265
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1012565,
-          "Position": {
-            "X": -231.4336,
-            "Y": -3.985752,
-            "Z": -541.86316
-          },
-          "TerritoryId": 156,
+          "Position": [-231.4336, -3.985752, -541.86316],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1013673,
-          "Position": {
-            "X": 485.0995,
-            "Y": -51.141403,
-            "Z": 40.20752
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [485.0995, -51.141403, 40.20752],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [76.89014, 22.236717, -640.4364],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 156,
           "ItemId": 12622,
           "ItemCount": 1,
           "SkipConditions": {
@@ -100,12 +59,7 @@
         },
         {
           "DataId": 1012559,
-          "Position": {
-            "X": 78.23291,
-            "Y": 22.236717,
-            "Z": -640.0397
-          },
-          "TerritoryId": 156,
+          "Position": [78.23291, 22.236717, -640.0397],
           "InteractionType": "CompleteQuest"
         }
       ]

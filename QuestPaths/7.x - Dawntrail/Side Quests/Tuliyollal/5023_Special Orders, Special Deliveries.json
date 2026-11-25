@@ -1,49 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051034,
-          "Position": {
-            "X": 15.457336,
-            "Y": -10.00001,
-            "Z": 64.43884
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051036,
-          "Position": {
-            "X": -134.72198,
-            "Y": 45.35523,
-            "Z": 52.20105
-          },
-          "TerritoryId": 1185,
+          "Position": [-134.72198, 45.35523, 52.20105],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The Resplendent Quarter"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1051035,
-          "Position": {
-            "X": -104.38696,
-            "Y": 54.09999,
-            "Z": 19.33313
-          },
-          "TerritoryId": 1185,
+          "Position": [-104.38696, 54.09999, 19.33313],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -51,22 +27,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1051034,
-          "Position": {
-            "X": 15.457336,
-            "Y": -10.00001,
-            "Z": 64.43884
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] The Resplendent Quarter",
-            "[Tuliyollal] Aetheryte Plaza"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,6 +1,4 @@
-﻿using Questionable.Controller.Steps.Common;
-using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps.Shared;
+﻿namespace Questionable.Controller.Steps.Shared;
 
 internal static class WaitAtStart
 {
@@ -21,7 +19,7 @@ internal static class WaitAtStart
         public override string ToString() => $"Wait[S](seconds: {Delay.TotalSeconds})";
     }
 
-    internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>
+    internal sealed class WaitDelayExecutor : DelayedTaskExecutor<WaitDelay>
     {
         protected override bool StartInternal()
         {

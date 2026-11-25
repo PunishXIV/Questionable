@@ -1,9 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 using GameObject = FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject;
 
 namespace Questionable.Controller.Utils;
@@ -19,7 +16,7 @@ internal sealed class HighlightObject : IDisposable
     private readonly ILogger<HighlightObject> _logger;
     private readonly IObjectTable _objectTable;
     private DateTime _lastUpdateTime = DateTime.Now;
-    private uint[] _targetNpcDataId = [];
+    private uint[] _targetDataIds = [];
 
     public HighlightObject(
         IFramework framework,
@@ -35,20 +32,19 @@ internal sealed class HighlightObject : IDisposable
         _objectTable = objectTable;
         _dataManager = dataManager;
         _logger = logger;
-        _framework.Update += Framework_OnUpdate;
+        _framework.Update += OnFrameworkUpdate;
     }
 
-    public void Dispose() => _framework.Update -= Framework_OnUpdate;
+    public void Dispose() => _framework.Update -= OnFrameworkUpdate;
 
-    private void Framework_OnUpdate(IFramework framework)
+    private void OnFrameworkUpdate(IFramework framework)
     {
-        //we want to update every 300 ms
         if (DateTime.Now - _lastUpdateTime <= TimeSpan.FromMilliseconds(300))
             return;
 
         _lastUpdateTime = DateTime.Now;
 
-        if (!_configuration.Advanced.HighlightSelectedNpc || _targetNpcDataId.Length == 0)
+        if (!_configuration.Advanced.HighlightSelectedNpc || _targetDataIds.Length == 0)
             return;
 
         if (_condition[ConditionFlag.Occupied] || _condition[ConditionFlag.Occupied30] ||
@@ -63,51 +59,38 @@ internal sealed class HighlightObject : IDisposable
             ToggleHighlight(on: true);
     }
 
-    public void AddHighlight(uint Id,
+    public void AddHighlight(uint id,
                    [CallerFilePath] string file = "",
                  [CallerLineNumber] int line = 0)
     {
         _ = _framework.Run(() =>
         {
-            if (!_targetNpcDataId.Contains(Id))
+            if (!_targetDataIds.Contains(id))
             {
-                _logger.LogDebug("Adding {Id} to highlight ({Caller})", Id, $"{Path.GetFileName(file)}:{line}");
-                _targetNpcDataId = _targetNpcDataId.Append(Id).ToArray();
+                _logger.LogDebug("Adding {Id} to highlight ({Caller})", id, string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}"));
+                _targetDataIds = _targetDataIds.Append(id).ToArray();
             }
         });
     }
 
-    public void RemoveHighlight(uint Id,
-                   [CallerFilePath] string file = "",
-                 [CallerLineNumber] int line = 0)
-    {
-        _ = _framework.Run(() =>
-        {
-            _logger.LogDebug("Removing {Id} from highlight ({Caller})", Id, $"{Path.GetFileName(file)}:{line}");
-            _targetNpcDataId = _targetNpcDataId.Where(n => n != Id).ToArray();
-        });
-    }
-
-    public void HighlightQuestObjects(ElementId questId) => SetHighlight(_dataManager.GetExcelSheet<EObj>().Where(obj => obj.Data.Equals((uint)questId.Value)).Select(obj => obj.RowId).ToArray());
-
-    public void SetHighlight(uint[] Ids,
+    public void SetHighlight(uint[] ids,
                    [CallerFilePath] string file = "",
                  [CallerLineNumber] int line = 0)
     {
         _ = _framework.Run(() =>
         {
             ToggleHighlight(on: false);
-            if (_targetNpcDataId.Length == 0 && Ids.Length == 0)
+            if (_targetDataIds.Length == 0 && ids.Length == 0)
                 return;
-            _logger.LogDebug("Setting highlight to {Ids} ({Caller})", string.Join(',', Ids), $"{Path.GetFileName(file)}:{line}");
-            _targetNpcDataId = Ids;
+            _logger.LogDebug("Setting highlight to {Ids} ({Caller})", string.Join(',', ids), string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}"));
+            _targetDataIds = ids;
             ToggleHighlight(on: true);
         });
     }
 
     public unsafe void ToggleHighlight(bool on)
     {
-        if (_targetNpcDataId.All(n => n == 0))
+        if (_targetDataIds.All(n => n == 0))
             return;
 
         IGameObject[] gameObjects = _objectTable.Where(i =>
@@ -115,7 +98,7 @@ internal sealed class HighlightObject : IDisposable
             if (!i.IsValid())
                 return false;
             GameObject* obj = (GameObject*)i.Address;
-            return _targetNpcDataId.Contains(obj->BaseId);
+            return _targetDataIds.Contains(obj->BaseId);
         }).ToArray();
 
         if (gameObjects.Length == 0)

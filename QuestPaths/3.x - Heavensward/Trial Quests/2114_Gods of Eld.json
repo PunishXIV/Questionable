@@ -1,45 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012217,
-          "Position": {
-            "X": 25.925049,
-            "Y": 15.8650675,
-            "Z": 19.394226
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 2006287,
-          "Position": {
-            "X": 0.015197754,
-            "Y": -1.9990234,
-            "Z": -40.909485
-          },
-          "TerritoryId": 351,
+          "Position": [0.015197754, -1.9990234, -40.909485],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2230
         }

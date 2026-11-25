@@ -1,49 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031015,
-          "Position": {
-            "X": 530.51025,
-            "Y": 353.54364,
-            "Z": -244.00702
-          },
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1031016,
-          "Position": {
-            "X": 344.04517,
-            "Y": 342.69537,
-            "Z": -310.53644
-          },
-          "TerritoryId": 818,
+          "Position": [344.04517, 342.69537, -310.53644],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 2010463,
-          "Position": {
-            "X": 340.93237,
-            "Y": 342.67188,
-            "Z": -310.47534
-          },
-          "TerritoryId": 818,
+          "Position": [340.93237, 342.67188, -310.47534],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -56,12 +37,7 @@
         },
         {
           "DataId": 2010464,
-          "Position": {
-            "X": 341.5426,
-            "Y": 342.76343,
-            "Z": -308.70532
-          },
-          "TerritoryId": 818,
+          "Position": [341.5426, 342.76343, -308.70532],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -76,46 +52,33 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1031016,
-          "Position": {
-            "X": 344.04517,
-            "Y": 342.69537,
-            "Z": -310.53644
-          },
-          "TerritoryId": 818,
+          "Position": [344.04517, 342.69537, -310.53644],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1031017,
-          "Position": {
-            "X": 603.02124,
-            "Y": 348.01245,
-            "Z": -165.30103
-          },
-          "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "Position": [603.02124, 348.01245, -165.30103],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1031019,
-          "Position": {
-            "X": 505.88232,
-            "Y": 371.189,
-            "Z": -342.79395
-          },
-          "TerritoryId": 818,
+          "Position": [505.88232, 371.189, -342.79395],
           "InteractionType": "CompleteQuest"
         }
       ]

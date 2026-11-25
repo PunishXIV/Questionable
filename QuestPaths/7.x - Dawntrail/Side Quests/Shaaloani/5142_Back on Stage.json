@@ -1,130 +1,58 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051293,
-          "Position": {
-            "X": 245.89917,
-            "Y": 15.999965,
-            "Z": 758.1139
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1051294,
-          "Position": {
-            "X": 279.92664,
-            "Y": -4.184075,
-            "Z": 461.53955
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "Fly": true
+          "Position": [279.92664, -4.184075, 461.53955],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1051297,
-          "Position": {
-            "X": 470.84766,
-            "Y": 2.6501055,
-            "Z": 478.08032
-          },
-          "TerritoryId": 1190,
+          "Position": [470.84766, 2.6501055, 478.08032],
           "InteractionType": "Emote",
           "Emote": "dance",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": 364.1419,
-            "Y": 5.9295864,
-            "Z": 435.2963
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-              "Flying": "Locked"
-            }
-          },
-          "$": "Shaaloani Saloon Balcony"
-        },
-        {
           "DataId": 1051296,
-          "Position": {
-            "X": 369.92432,
-            "Y": 5.9371996,
-            "Z": 434.71423
-          },
-          "TerritoryId": 1190,
+          "Position": [369.92432, 5.9371996, 434.71423],
           "InteractionType": "Emote",
-          "StopDistance": 1,
           "Emote": "dance",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": 364.1419,
-            "Y": 5.9295864,
-            "Z": 435.2963
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-              "Flying": "Locked"
-            }
-          },
-          "$": "Shaaloani Saloon Balcony"
-        },
-        {
           "DataId": 1051298,
-          "Position": {
-            "X": 375.6007,
-            "Y": -1.619559,
-            "Z": 387.62476
-          },
-          "TerritoryId": 1190,
+          "Position": [375.6007, -1.619559, 387.62476],
           "InteractionType": "Emote",
           "Emote": "dance",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1051313,
-          "Position": {
-            "X": 279.469,
-            "Y": -4.1346755,
-            "Z": 460.28845
-          },
-          "TerritoryId": 1190,
+          "Position": [279.469, -4.1346755, 460.28845],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 5143
         }
       ]

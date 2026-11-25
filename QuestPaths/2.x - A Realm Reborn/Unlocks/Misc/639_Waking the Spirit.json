@@ -1,38 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "Comment": "Requires a DoH class at level 19 or higher",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 141,
       "Steps": [
         {
           "$": "May need possible consideration for non-flying route to avoid a possible A-rank?",
           "DataId": 1001427,
-          "Position": {
-            "X": 102.89148,
-            "Y": 30.941309,
-            "Z": -377.95074
-          },
-          "TerritoryId": 141,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "Position": [102.89148, 30.941309, -377.95074],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1001427,
-          "Position": {
-            "X": 102.89148,
-            "Y": 30.941309,
-            "Z": -377.95074
-          },
-          "TerritoryId": 141,
+          "Position": [102.89148, 30.941309, -377.95074],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 640
         }

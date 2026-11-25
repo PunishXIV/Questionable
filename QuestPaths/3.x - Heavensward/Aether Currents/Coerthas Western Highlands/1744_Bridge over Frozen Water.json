@@ -1,33 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011240,
-          "Position": {
-            "X": 493.15625,
-            "Y": 200.2377,
-            "Z": 663.01965
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": 419.65634,
-            "Y": 162.0455,
-            "Z": -176.55469
-          },
-          "TerritoryId": 397,
+          "Position": [419.65634, 162.0455, -176.55469],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -41,28 +26,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 524.6143,
-            "Y": 212.77472,
-            "Z": 703.436
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        },
-        {
-          "DataId": 1011240,
-          "Position": {
-            "X": 493.15625,
-            "Y": 200.2377,
-            "Z": 663.01965
-          },
-          "TerritoryId": 397,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,55 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020436,
-          "Position": {
-            "X": 40.57373,
-            "Y": 20.495369,
-            "Z": -648.73737
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1020439,
-          "Position": {
-            "X": -355.55048,
-            "Y": 7.9999094,
-            "Z": 38.712036
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "Position": [-355.55048, 7.9999094, 38.712036],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1020442,
-          "Position": {
-            "X": -357.65625,
-            "Y": 8.000015,
-            "Z": 45.822754
-          },
-          "StopDistance": 7,
-          "TerritoryId": 129,
+          "Position": [-357.65625, 8.000015, 45.822754],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -63,24 +38,20 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 680,
       "Steps": [
         {
           "DataId": 1020447,
-          "Position": {
-            "X": 5.0201416,
-            "Y": 21.347214,
-            "Z": -39.07837
-          },
-          "TerritoryId": 680,
+          "Position": [5.0201416, 21.347214, -39.07837],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 680,
       "Steps": [
         {
-          "TerritoryId": 680,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 238,
@@ -94,16 +65,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1020454,
-          "Position": {
-            "X": -123.09454,
-            "Y": -6.9999976,
-            "Z": -58.884644
-          },
-          "StopDistance": 6,
-          "TerritoryId": 628,
+          "Position": [-123.09454, -6.9999976, -58.884644],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://qstxiv.github.io/schema/common-classjob.json",
+  "$id": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json",
   "type": "string",
   "enum": [
     "Gladiator",

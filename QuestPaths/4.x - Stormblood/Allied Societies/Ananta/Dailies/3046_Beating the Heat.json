@@ -1,66 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -26.902342,
-            "Y": 56.092464,
-            "Z": 234.37491
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -26.902342,
-                  "Y": 56.092464,
-                  "Z": 234.37491
-                },
-                "TerritoryId": 612,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1024773,
-          "Position": {
-            "X": -28.33606,
-            "Y": 56.113926,
-            "Z": 236.25537
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "Position": [-28.33606, 56.113926, 236.25537],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2009327,
-          "Position": {
-            "X": -542.2294,
-            "Y": 44.052734,
-            "Z": 202.99072
-          },
-          "TerritoryId": 612,
+          "Position": [-542.2294, 44.052734, 202.99072],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [8581],
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -80,15 +43,9 @@
         },
         {
           "DataId": 2009328,
-          "Position": {
-            "X": -491.72202,
-            "Y": 55.252808,
-            "Z": -17.746277
-          },
-          "TerritoryId": 612,
+          "Position": [-491.72202, 55.252808, -17.746277],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "Fly": true,
           "KillEnemyDataIds": [8581],
           "RequiredQuestVariables": [
             null,
@@ -108,14 +65,8 @@
           ]
         },
         {
-          "Position": {
-            "X": -502.02115,
-            "Y": 71.42156,
-            "Z": -162.12122
-          },
-          "TerritoryId": 612,
+          "Position": [-502.02115, 71.42156, -162.12122],
           "InteractionType": "WalkTo",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -139,12 +90,7 @@
         },
         {
           "DataId": 2009329,
-          "Position": {
-            "X": -500.05344,
-            "Y": 72.129395,
-            "Z": -162.43237
-          },
-          "TerritoryId": 612,
+          "Position": [-500.05344, 72.129395, -162.43237],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [8581],
@@ -169,43 +115,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -26.902342,
-            "Y": 56.092464,
-            "Z": 234.37491
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -26.902342,
-                  "Y": 56.092464,
-                  "Z": 234.37491
-                },
-                "TerritoryId": 612,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1024773,
-          "Position": {
-            "X": -28.33606,
-            "Y": 56.113926,
-            "Z": 236.25537
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-28.33606, 56.113926, 236.25537],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

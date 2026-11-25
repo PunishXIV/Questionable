@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Comment": "Use VBM for autorotation, clams spawn at regular intervals",
       "Steps": [
         {
           "DataId": 1005946,
-          "Position": {
-            "X": -239.27673,
-            "Y": -42.130188,
-            "Z": 15.213196
-          },
-          "TerritoryId": 138,
-          "Fly": true,
+          "Position": [-239.27673, -42.130188, 15.213196],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -44,11 +26,7 @@
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": -813.22955,
-                  "Y": -41.763977,
-                  "Z": 670.3745
-                },
+                "Position": [-813.22955, -41.763977, 670.3745],
                 "TerritoryId": 138,
                 "MaximumDistance": 100
               }
@@ -57,12 +35,7 @@
         },
         {
           "DataId": 2003845,
-          "Position": {
-            "X": -813.22955,
-            "Y": -41.763977,
-            "Z": 670.3745
-          },
-          "TerritoryId": 138,
+          "Position": [-813.22955, -41.763977, 670.3745],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}
@@ -73,12 +46,7 @@
         },
         {
           "DataId": 2003853,
-          "Position": {
-            "X": -810.23883,
-            "Y": -41.763977,
-            "Z": 662.16516
-          },
-          "TerritoryId": 138,
+          "Position": [-810.23883, -41.763977, 662.16516],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 1}
@@ -89,12 +57,7 @@
         },
         {
           "DataId": 2003847,
-          "Position": {
-            "X": -803.9826,
-            "Y": -41.21466,
-            "Z": 675.2268
-          },
-          "TerritoryId": 138,
+          "Position": [-803.9826, -41.21466, 675.2268],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}
@@ -105,12 +68,7 @@
         },
         {
           "DataId": 2003854,
-          "Position": {
-            "X": -789.5781,
-            "Y": -41.36731,
-            "Z": 676.3561
-          },
-          "TerritoryId": 138,
+          "Position": [-789.5781, -41.36731, 676.3561],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 2}
@@ -121,12 +79,7 @@
         },
         {
           "DataId": 2003846,
-          "Position": {
-            "X": -800.7782,
-            "Y": -41.672424,
-            "Z": 690.7606
-          },
-          "TerritoryId": 138,
+          "Position": [-800.7782, -41.672424, 690.7606],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}
@@ -137,12 +90,7 @@
         },
         {
           "DataId": 2003848,
-          "Position": {
-            "X": -797.72644,
-            "Y": -41.703003,
-            "Z": 704.219
-          },
-          "TerritoryId": 138,
+          "Position": [-797.72644, -41.703003, 704.219],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}
@@ -153,12 +101,7 @@
         },
         {
           "DataId": 2003855,
-          "Position": {
-            "X": -790.12744,
-            "Y": -41.794495,
-            "Z": 708.5831
-          },
-          "TerritoryId": 138,
+          "Position": [-790.12744, -41.794495, 708.5831],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 3}
@@ -171,14 +114,10 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "TerritoryId": 138,
-          "Position": {
-            "X": -814.84705,
-            "Y": -42.154568,
-            "Z": 694.3312
-          },
+          "Position": [-814.84705, -42.154568, 694.3312],
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -186,27 +125,9 @@
           ]
         },
         {
-          "DataId": 1008802,
-          "Position": {
-            "X": -814.84705,
-            "Y": -42.154568,
-            "Z": 694.3312
-          },
-          "TerritoryId": 138,
-          "TargetTerritoryId": 138,
-          "InteractionType": "Interact"
-        },
-        {
           "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "Position": [-220.7218, -40.720844, 37.247192],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,111 +1,62 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009199,
-          "Position": {
-            "X": 149.43152,
-            "Y": -18.140299,
-            "Z": 99.22937
-          },
-          "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1009615,
-          "Position": {
-            "X": 26.443848,
-            "Y": -19.000004,
-            "Z": 111.528076
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "Position": [26.443848, -19.000004, 111.528076],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 175.1545,
-            "Y": 222.61827,
-            "Z": 354.20248
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1009616,
-          "Position": {
-            "X": 168.81055,
-            "Y": 223.03535,
-            "Z": 363.08838
-          },
-          "TerritoryId": 155,
+          "Position": [168.81055, 223.03535, 363.08838],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009617,
-          "Position": {
-            "X": 181.41443,
-            "Y": 229.05,
-            "Z": 327.77905
-          },
-          "TerritoryId": 155,
+          "Position": [181.41443, 229.05, 327.77905],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009219,
-          "Position": {
-            "X": 251.11768,
-            "Y": 222,
-            "Z": 366.2317
-          },
-          "TerritoryId": 155,
+          "Position": [251.11768, 222, 366.2317],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2004447,
-          "Position": {
-            "X": 172.93042,
-            "Y": 229.72449,
-            "Z": 331.8379
-          },
-          "TerritoryId": 155,
+          "Position": [172.93042, 229.72449, 331.8379],
           "InteractionType": "UseItem",
           "ItemId": 2001370
         }
@@ -113,50 +64,29 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009617,
-          "Position": {
-            "X": 181.41443,
-            "Y": 229.05,
-            "Z": 327.77905
-          },
-          "TerritoryId": 155,
+          "Position": [181.41443, 229.05, 327.77905],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009618,
-          "Position": {
-            "X": 161.39453,
-            "Y": 222.02899,
-            "Z": 340.81018
-          },
-          "TerritoryId": 155,
+          "Position": [161.39453, 222.02899, 340.81018],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1009199,
-          "Position": {
-            "X": 149.43152,
-            "Y": -18.140299,
-            "Z": 99.22937
-          },
-          "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

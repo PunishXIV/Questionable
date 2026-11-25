@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 1005116,
-          "Position": {
-            "X": 39.29187,
-            "Y": 1.2148079,
-            "Z": 0.8086548
-          },
-          "TerritoryId": 212,
+          "Position": [39.29187, 1.2148079, 0.8086548],
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
         }
@@ -21,50 +17,36 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1004584,
-          "Position": {
-            "X": -360.83014,
-            "Y": -55.35,
-            "Z": 145.49475
-          },
-          "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "Position": [-360.83014, -55.35, 145.49475],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 2001592,
-          "Position": {
-            "X": -356.71014,
-            "Y": -10.421997,
-            "Z": -242.51166
-          },
-          "TerritoryId": 145,
+          "Position": [-356.71014, -10.421997, -242.51166],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1005017,
-          "Position": {
-            "X": -63.157104,
-            "Y": -25.215523,
-            "Z": -554.6502
-          },
-          "TerritoryId": 146,
+          "Position": [-63.157104, -25.215523, -554.6502],
           "InteractionType": "Interact",
           "$": "Fun fact: This is underground in Southern Thanalan (including mobs, fates, etc.), and will build the navmesh for the entire zone"
         }
@@ -72,9 +54,9 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "TerritoryId": 146,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 56,
@@ -85,74 +67,22 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1005156,
-          "Position": {
-            "X": -372.73218,
-            "Y": -57.07999,
-            "Z": 151.04907
-          },
-          "TerritoryId": 145,
+          "Position": [-372.73218, -57.07999, 151.04907],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
-          "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212,
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
           "DataId": 1005012,
-          "Position": {
-            "X": 22.507019,
-            "Y": 0.9999986,
-            "Z": -2.02948
-          },
+          "Position": [22.507019, 0.9999986, -2.02948],
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest"
         }

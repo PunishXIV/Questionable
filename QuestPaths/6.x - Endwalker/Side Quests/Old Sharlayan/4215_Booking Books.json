@@ -1,62 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037139,
-          "Position": {
-            "X": -317.06726,
-            "Y": 19,
-            "Z": 48.844116
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "Position": {
-            "X": -265.8844,
-            "Y": 18.745457,
-            "Z": 44.893326
-          },
-          "TerritoryId": 962,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -258.26123,
-            "Y": 12.376022,
-            "Z": 53.92458
-          },
-          "TerritoryId": 962,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 1041289,
-          "Position": {
-            "X": -265.919,
-            "Y": 12.623348,
-            "Z": 102.86096
-          },
-          "TerritoryId": 962,
+          "Position": [-265.919, 12.623348, 102.86096],
           "InteractionType": "UseItem",
           "ItemId": 2003288,
           "GroundTarget": true,
@@ -64,12 +20,7 @@
         },
         {
           "DataId": 1041290,
-          "Position": {
-            "X": -291.49316,
-            "Y": 12.68306,
-            "Z": 127.45862
-          },
-          "TerritoryId": 962,
+          "Position": [-291.49316, 12.68306, 127.45862],
           "InteractionType": "UseItem",
           "ItemId": 2003288,
           "GroundTarget": true,
@@ -77,12 +28,7 @@
         },
         {
           "DataId": 1041291,
-          "Position": {
-            "X": -155.77942,
-            "Y": 11.71745,
-            "Z": -52.628357
-          },
-          "TerritoryId": 962,
+          "Position": [-155.77942, 11.71745, -52.628357],
           "InteractionType": "UseItem",
           "ItemId": 2003288,
           "GroundTarget": true,
@@ -90,12 +36,7 @@
         },
         {
           "DataId": 1041292,
-          "Position": {
-            "X": -147.50903,
-            "Y": 12.490502,
-            "Z": -87.052734
-          },
-          "TerritoryId": 962,
+          "Position": [-147.50903, 12.490502, -87.052734],
           "InteractionType": "UseItem",
           "ItemId": 2003288,
           "GroundTarget": true,
@@ -103,12 +44,7 @@
         },
         {
           "DataId": 1041293,
-          "Position": {
-            "X": -107.86603,
-            "Y": 18.024683,
-            "Z": -71.33594
-          },
-          "TerritoryId": 962,
+          "Position": [-107.86603, 18.024683, -71.33594],
           "InteractionType": "UseItem",
           "ItemId": 2003288,
           "GroundTarget": true,
@@ -118,22 +54,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037139,
-          "Position": {
-            "X": -317.06726,
-            "Y": 19,
-            "Z": 48.844116
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Baldesion Annex",
-            "[Old Sharlayan] The Studium"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

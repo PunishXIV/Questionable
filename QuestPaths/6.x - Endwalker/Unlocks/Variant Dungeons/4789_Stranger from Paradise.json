@@ -1,69 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1043624,
-          "Position": {
-            "X": 41.031494,
-            "Y": -15.646993,
-            "Z": 107.80493
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1045254,
-          "Position": {
-            "X": -550.042,
-            "Y": 11.402609,
-            "Z": 116.746704
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "Position": [-550.042, 11.402609, 116.746704],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1045255,
-          "Position": {
-            "X": 156.52553,
-            "Y": 1.8741739,
-            "Z": 782.1787
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "Position": [156.52553, 1.8741739, 782.1787],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "TerritoryId": 957,
           "Comment": "Clear Aloalo Island, queue from Pasasun",
           "InteractionType": "WaitForManualProgress"
         }
@@ -71,39 +41,18 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1045255,
-          "Position": {
-            "X": 155.41309,
-            "Y": 1.8741739,
-            "Z": 782.3147
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "Position": [155.41309, 1.8741739, 782.3147],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1043624,
-          "Position": {
-            "X": 41.031494,
-            "Y": -15.646993,
-            "Z": 107.80493
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

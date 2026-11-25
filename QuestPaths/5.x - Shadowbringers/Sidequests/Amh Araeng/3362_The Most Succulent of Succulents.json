@@ -1,40 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1027896,
-          "Position": {
-            "X": 316.915,
-            "Y": 1.44958,
-            "Z": -170.337
-          },
-          "TerritoryId": 815,
+          "Position": [316.915, 1.44958, -170.337],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: issuer 1027896 (Bhil Bil)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 2010131,
-          "Position": {
-            "X": 469.291,
-            "Y": -30.9301,
-            "Z": -217.609
-          },
-          "TerritoryId": 815,
+          "Position": [469.291, -30.9301, -217.609],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11098,
@@ -46,18 +34,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1027896,
-          "Position": {
-            "X": 316.915,
-            "Y": 1.44958,
-            "Z": -170.337
-          },
-          "TerritoryId": 815,
+          "Position": [316.915, 1.44958, -170.337],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: todo turn-in -> 1027896 (Bhil Bil)"
         }
       ]

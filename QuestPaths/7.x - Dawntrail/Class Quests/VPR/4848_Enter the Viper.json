@@ -1,75 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046333,
-          "Position": {
-            "X": -92.21033,
-            "Y": 3.9999995,
-            "Z": -99.321045
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1046334,
-          "Position": {
-            "X": 89.09741,
-            "Y": 12,
-            "Z": 49.484985
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "Position": [89.09741, 12, 49.484985],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1046336,
-          "Position": {
-            "X": -408.52985,
-            "Y": -55.904274,
-            "Z": 120.74463
-          },
-          "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "Position": [-408.52985, -55.904274, 120.74463],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1046337,
-          "Position": {
-            "X": 89.036255,
-            "Y": 12,
-            "Z": 47.287598
-          },
-          "TerritoryId": 131,
+          "Position": [89.036255, 12, 47.287598],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

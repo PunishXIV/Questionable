@@ -1,67 +1,44 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041861,
-          "Position": {
-            "X": 25.680908,
-            "Y": 2.3729992,
-            "Z": 9.811523
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1041862,
-          "Position": {
-            "X": -484.5197,
-            "Y": 139.84578,
-            "Z": 69.38269
-          },
-          "TerritoryId": 959,
+          "Position": [-484.5197, 139.84578, 69.38269],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "$": "TP to Bestways instead of Sinus so that ground pathing can still work"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 794,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1041862,
-          "Position": {
-            "X": -484.5197,
-            "Y": 139.84578,
-            "Z": 69.38269
-          },
-          "TerritoryId": 959,
+          "Position": [-484.5197, 139.84578, 69.38269],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "$": "TP to Bestways instead of Sinus so that ground pathing can still work"
         }
       ]

@@ -1,37 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1021519,
-          "Position": {
-            "X": 45.8696,
-            "Y": 20.9811,
-            "Z": -641.475
-          },
+          "Position": [45.8696, 20.9811, -641.475],
           "Comment": "Quest requires capturing low health enemies, lower level/lowered dps melee class needed",
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": 419.42535,
-            "Y": 0.42102414,
-            "Z": -674.90454
-          },
+          "Position": [419.42535, 0.42102414, -674.90454],
           "Comment": "Requires using an item on enemy below 50%,\nyou may need to switch to a lower level melee class\n to capture them properly.",
-          "TerritoryId": 613,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -41,17 +31,11 @@
             "ItemId": 2002281,
             "Condition": "Health%",
             "Value": 50
-          },
-          "Fly": true
+          }
         },
         {
-          "Position": {
-            "X": 447.7592,
-            "Y": 3.642196,
-            "Z": -594.10876
-          },
+          "Position": [447.7592, 3.642196, -594.10876],
           "Comment": "Requires using an item on enemy below 50%,\nyou may need to switch to a lower level melee class\n to capture them properly.",
-          "TerritoryId": 613,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -61,27 +45,13 @@
             "ItemId": 2002281,
             "Condition": "Health%",
             "Value": 50
-          },
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1021519,
-          "Position": {
-            "X": 45.8696,
-            "Y": 20.9811,
-            "Z": -641.475
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

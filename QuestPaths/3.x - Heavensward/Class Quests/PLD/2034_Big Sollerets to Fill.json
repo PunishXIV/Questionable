@@ -1,126 +1,80 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014054,
-          "Position": {
-            "X": 509.17822,
-            "Y": 212.5399,
-            "Z": 695.796
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014055,
-          "Position": {
-            "X": 173.69336,
-            "Y": 133.38922,
-            "Z": -413.47375
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [173.69336, 133.38922, -413.47375],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2005983,
-          "Position": {
-            "X": 108.07959,
-            "Y": 129.41174,
-            "Z": -403.52484
-          },
-          "TerritoryId": 397,
+          "Position": [108.07959, 129.41174, -403.52484],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2005980,
-          "Position": {
-            "X": 64.68298,
-            "Y": 128.61829,
-            "Z": -397.42126
-          },
-          "TerritoryId": 397,
+          "Position": [64.68298, 128.61829, -397.42126],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014055,
-          "Position": {
-            "X": 173.69336,
-            "Y": 133.38922,
-            "Z": -413.47375
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [173.69336, 133.38922, -413.47375],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2005981,
-          "Position": {
-            "X": 15.487854,
-            "Y": 106.09595,
-            "Z": -419.30273
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [15.487854, 106.09595, -419.30273],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2005982,
-          "Position": {
-            "X": -4.6845703,
-            "Y": 94.13281,
-            "Z": -506.15704
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-4.6845703, 94.13281, -506.15704],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": -134.89986,
-            "Y": 88.67885,
-            "Z": -576.3159
-          },
-          "TerritoryId": 397,
+          "Position": [-134.89986, 88.67885, -576.3159],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "Fly": true,
           "KillEnemyDataIds": [
             4360,
             4619
@@ -138,29 +92,19 @@
         },
         {
           "DataId": 1014058,
-          "Position": {
-            "X": -138.35364,
-            "Y": 88.59643,
-            "Z": -577.0504
-          },
-          "TerritoryId": 397,
+          "Position": [-138.35364, 88.59643, -577.0504],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014059,
-          "Position": {
-            "X": -788.02167,
-            "Y": 113.151276,
-            "Z": -589.807
-          },
-          "TerritoryId": 397,
+          "Position": [-788.02167, 113.151276, -589.807],
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -169,32 +113,23 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014064,
-          "Position": {
-            "X": -788.02167,
-            "Y": 113.151276,
-            "Z": -589.807
-          },
-          "TerritoryId": 397,
+          "Position": [-788.02167, 113.151276, -589.807],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1014065,
-          "Position": {
-            "X": 509.17822,
-            "Y": 212.5399,
-            "Z": 695.796
-          },
-          "TerritoryId": 397,
+          "Position": [509.17822, 212.5399, 695.796],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "NextQuestId": 2035
         }
       ]

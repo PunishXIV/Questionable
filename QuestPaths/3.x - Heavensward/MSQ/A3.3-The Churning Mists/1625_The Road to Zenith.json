@@ -1,33 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012682,
-          "Position": {
-            "X": 241.19922,
-            "Y": -42.249466,
-            "Z": 609.27747
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 305.3146,
-            "Y": -41.478928,
-            "Z": 327.0319
-          },
-          "TerritoryId": 400,
+          "Position": [305.3146, -41.478928, 327.0319],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -39,14 +24,10 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 208.34923,
-            "Y": -23.294632,
-            "Z": 165.22832
-          },
-          "TerritoryId": 400,
+          "Position": [208.34923, -23.294632, 165.22832],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -58,34 +39,17 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1012285,
-          "Position": {
-            "X": 247.11987,
-            "Y": -42.33362,
-            "Z": 565.3314
-          },
-          "TerritoryId": 400,
+          "Position": [247.11987, -42.33362, 565.3314],
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 1823,
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                1823
-              ]
-            }
-          }
+          "PickUpQuestId": 1823
         },
         {
           "DataId": 1013202,
-          "Position": {
-            "X": -79.88104,
-            "Y": -8.844478,
-            "Z": 206.22559
-          },
-          "TerritoryId": 400,
+          "Position": [-79.88104, -8.844478, 206.22559],
           "InteractionType": "CompleteQuest"
         }
       ]

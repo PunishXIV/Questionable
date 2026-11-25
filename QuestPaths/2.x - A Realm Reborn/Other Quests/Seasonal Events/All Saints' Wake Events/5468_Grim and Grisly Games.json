@@ -1,47 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1058686,
-          "Position": {
-            "X": -51.8476,
-            "Y": 6.5,
-            "Z": -88.5306
-          },
-          "TerritoryId": 133,
+          "Position": [-51.8476, 6.5, -88.5306],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: issuer 1058686 (Pattin)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1058689,
-          "Position": {
-            "X": -45.5734,
-            "Y": 6.1771,
-            "Z": -104.066
-          },
-          "TerritoryId": 133,
+          "Position": [-45.5734, 6.1771, -104.066],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1369,
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX202_05468_SYSTEM_000_021",
@@ -55,15 +37,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1369,
       "Steps": [
         {
           "DataId": 1058690,
-          "Position": {
-            "X": -54.8562,
-            "Y": 44.3783,
-            "Z": -86.2288
-          },
-          "TerritoryId": 1369,
+          "Position": [-54.8562, 44.3783, -86.2288],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058690 (Bea)"
         }
@@ -71,16 +49,12 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1369,
       "Steps": [
         {
           "$": "QW: (-) (1L) (-) (-) (-) (-)",
           "DataId": 1058691,
-          "Position": {
-            "X": 62.28433,
-            "Y": 39.28275,
-            "Z": -71.73069
-          },
-          "TerritoryId": 1369,
+          "Position": [62.28433, 39.28275, -71.73069],
           "InteractionType": "UseItem",
           "GroundTarget": true,
           "ItemId": 2003819
@@ -89,16 +63,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1369,
       "Steps": [
         {
           "DataId": 1058694,
-          "Position": {
-            "X": -6.9612155,
-            "Y": 30.506763,
-            "Z": -15.735224
-          },
-          "TerritoryId": 1369,
-          "StopDistance": 1,
+          "Position": [-6.9612155, 30.506763, -15.735224],
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -113,13 +82,7 @@
         },
         {
           "DataId": 1058697,
-          "Position": {
-            "X": 17.074984,
-            "Y": 27.797003,
-            "Z": 21.660215
-          },
-          "TerritoryId": 1369,
-          "StopDistance": 1,
+          "Position": [17.074984, 27.797003, 21.660215],
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -134,13 +97,7 @@
         },
         {
           "DataId": 1058696,
-          "Position": {
-            "X": 18.068731,
-            "Y": 23.458454,
-            "Z": 82.79231
-          },
-          "TerritoryId": 1369,
-          "StopDistance": 1,
+          "Position": [18.068731, 23.458454, 82.79231],
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -155,13 +112,7 @@
         },
         {
           "DataId": 1058698,
-          "Position": {
-            "X": -148.943,
-            "Y": 15.977499,
-            "Z": 103.98318
-          },
-          "TerritoryId": 1369,
-          "StopDistance": 1,
+          "Position": [-148.943, 15.977499, 103.98318],
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -176,13 +127,7 @@
         },
         {
           "DataId": 1058695,
-          "Position": {
-            "X": -51.269585,
-            "Y": 14.663007,
-            "Z": -18.691267
-          },
-          "TerritoryId": 1369,
-          "StopDistance": 1,
+          "Position": [-51.269585, 14.663007, -18.691267],
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -199,20 +144,12 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1058689,
-          "Position": {
-            "X": -45.5734,
-            "Y": 6.1771,
-            "Z": -104.066
-          },
-          "TerritoryId": 133,
+          "Position": [-45.5734, 6.1771, -104.066],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX202_05468_SYSTEM_000_021",
@@ -223,11 +160,7 @@
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": -55.5887,
-                  "Y": 44.3783,
-                  "Z": -84.8555
-                },
+                "Position": [-55.5887, 44.3783, -84.8555],
                 "TerritoryId": 1369,
                 "MaximumDistance": 50
               }
@@ -237,11 +170,7 @@
         },
         {
           "DataId": 1058704,
-          "Position": {
-            "X": -55.5887,
-            "Y": 44.3783,
-            "Z": -84.8555
-          },
+          "Position": [-55.5887, 44.3783, -84.8555],
           "TerritoryId": 1369,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058704 (Dodd)"
@@ -250,21 +179,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1058686,
-          "Position": {
-            "X": -51.8476,
-            "Y": 6.5,
-            "Z": -88.5306
-          },
-          "TerritoryId": 133,
+          "Position": [-51.8476, 6.5, -88.5306],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: todo turn-in -> 1058686 (Pattin)"
         }
       ]

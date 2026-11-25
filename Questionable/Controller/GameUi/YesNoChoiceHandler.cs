@@ -1,34 +1,26 @@
 using System.Text.RegularExpressions;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
-using Dalamud.Game.ClientState.Conditions;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Handles the in-game "SelectYesno" and "DifficultySelectYesNo" addons — answering quest
-///     dialogue prompts, travel confirmations, HQ-trade prompts and quest-battle difficulty selection.
-/// </summary>
 [RegisterSingleton]
 internal sealed class YesNoChoiceHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly QuestController _questController;
     private readonly AetheryteFunctions _aetheryteFunctions;
     private readonly BossModIpc _bossModIpc;
     private readonly TerritoryData _territoryData;
     private readonly IClientState _clientState;
     private readonly ITargetManager _targetManager;
-    private readonly ShopController _shopController;
-    private readonly GrandCompanyExchangeController _grandCompanyExchangeController;
     private readonly ChocoboNamingController _chocoboNamingController;
     private readonly Configuration _configuration;
     private readonly IChatGui _chatGui;
@@ -40,22 +32,22 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly ILogger<YesNoChoiceHandler> _logger;
 
     private readonly Regex _returnRegex;
-    private readonly Regex _purchaseItemRegex;
     private readonly Regex _ticketRegex;
+    private bool _ticketHintShown;
     private readonly Regex _hqTradeRegex;
     private readonly Regex _fcInviteRegex;
+    private readonly Regex[] _overCapRegexes;
+    private QuestBattleConfirmation? _questBattleConfirmation;
 
     public YesNoChoiceHandler(
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         QuestController questController,
         AetheryteFunctions aetheryteFunctions,
         BossModIpc bossModIpc,
         TerritoryData territoryData,
         IClientState clientState,
         ITargetManager targetManager,
-        ShopController shopController,
-        GrandCompanyExchangeController grandCompanyExchangeController,
         ChocoboNamingController chocoboNamingController,
         Configuration configuration,
         IChatGui chatGui,
@@ -76,8 +68,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _territoryData = territoryData;
         _clientState = clientState;
         _targetManager = targetManager;
-        _shopController = shopController;
-        _grandCompanyExchangeController = grandCompanyExchangeController;
         _chocoboNamingController = chocoboNamingController;
         _configuration = configuration;
         _chatGui = chatGui;
@@ -88,56 +78,63 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _condition = condition;
         _logger = logger;
 
-        _returnRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 196, addon => addon.Text, pluginLog)!;
-        _purchaseItemRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 3406, addon => addon.Text, pluginLog)!;
-        _ticketRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102686, addon => addon.Text, pluginLog)!;
-        _hqTradeRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102434, addon => addon.Text, pluginLog)!;
-        _fcInviteRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 2873, addon => addon.Text, pluginLog)!;
+        _returnRegex = dataManager.GetRegex<Addon>(196, addon => addon.Text, pluginLog)!;
+        _ticketRegex = dataManager.GetRegex<Addon>(102686, addon => addon.Text, pluginLog)!;
+        _hqTradeRegex = dataManager.GetRegex<Addon>(102434, addon => addon.Text, pluginLog)!;
+        _fcInviteRegex = dataManager.GetRegex<Addon>(2873, addon => addon.Text, pluginLog)!;
+        // Gil, company seals, tomestones and their combinations.
+        _overCapRegexes = new uint[] { 4474, 4605, 4606, 4607, 4609, 5648, 5841 }
+            .Select(row => dataManager.GetRegex<Addon>(row, addon => addon.Text, pluginLog))
+            .OfType<Regex>()
+            .ToArray();
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectYesno", SelectYesnoPostSetup);
-        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultySelectYesNoPostSetup);
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultyPostSetup);
+        _framework.Update += ConfirmNormalFallback;
+        _questController.AutomationTypeChanged += OnAutomationTypeChanged;
     }
 
     public void Dispose()
     {
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultySelectYesNoPostSetup);
+        _questBattleConfirmation = null;
+        _framework.Update -= ConfirmNormalFallback;
+        _questController.AutomationTypeChanged -= OnAutomationTypeChanged;
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultyPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "SelectYesno", SelectYesnoPostSetup);
     }
 
-    private bool ShouldHandleUiInteractions =>
-        _questController.IsRunning ||
-        _territoryData.IsQuestBattleInstance(_clientState.TerritoryType);
+    private bool ShouldHandleUi =>
+        !_questController.HasExternalOperation && !Steps.Shared.JobGear.Active && !Steps.Common.Mail.Active && !Steps.Shared.Repair.Active &&
+        (_questController.IsRunning || _territoryData.IsQuestBattleInstance(_clientState.TerritoryType));
 
     private unsafe void SelectYesnoPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
         HandleSelectYesno((AddonSelectYesno*)args.Addon.Address, checkAllSteps: false);
     }
 
-    private unsafe void DifficultySelectYesNoPostSetup(AddonEvent type, AddonArgs args)
+    private unsafe void DifficultyPostSetup(AddonEvent type, AddonArgs args)
     {
-        HandleDifficultySelectYesNo((AtkUnitBase*)args.Addon.Address, checkAllSteps: false);
+        HandleDifficultyYesNo((AtkUnitBase*)args.Addon.Address, checkAllSteps: false);
     }
 
-    /// <summary>
-    ///     Handles any SelectYesno / DifficultySelectYesNo addon already open when automation starts.
-    ///     Bypasses the <see cref="ShouldHandleUiInteractions"/> gate for SelectYesno, matching the
-    ///     legacy "initial check" behaviour.
-    /// </summary>
     public unsafe void CheckExisting()
     {
+        if (_questController.HasExternalOperation)
+            return;
+
         if (_gameGui.TryGetAddonByName("SelectYesno", out AddonSelectYesno* addonSelectYesno))
         {
             _logger.LogInformation("SelectYesno window is open");
             HandleSelectYesno(addonSelectYesno, checkAllSteps: true);
         }
 
-        if (_gameGui.TryGetAddonByName("DifficultySelectYesNo", out AtkUnitBase* addonDifficultySelectYesNo))
+        if (_gameGui.TryGetAddonByName("DifficultySelectYesNo", out AtkUnitBase* difficultyAddon))
         {
             _logger.LogInformation("DifficultySelectYesNo window is open");
-            HandleDifficultySelectYesNo(addonDifficultySelectYesNo, checkAllSteps: true);
+            HandleDifficultyYesNo(difficultyAddon, checkAllSteps: true);
         }
     }
 
@@ -148,21 +145,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return;
 
         _logger.LogTrace("Prompt: '{Prompt}'", actualPrompt);
-        if (_shopController.IsAwaitingYesNo && _purchaseItemRegex.IsMatch(actualPrompt))
-        {
-            addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
-            _shopController.IsAwaitingYesNo = false;
-            return;
-        }
-
-        if (_grandCompanyExchangeController.IsAwaitingYesNo)
-        {
-            _logger.LogInformation("Confirming Grand Company exchange purchase");
-            new AddonMaster.SelectYesno(addonSelectYesno).Yes();
-            _grandCompanyExchangeController.IsAwaitingYesNo = false;
-            return;
-        }
-
         if (_chocoboNamingController.IsAwaitingYesNo)
         {
             _logger.LogInformation("Confirming chocobo name");
@@ -190,31 +172,68 @@ internal sealed class YesNoChoiceHandler : IDisposable
         Quest quest = currentQuest.Quest;
         if (checkAllSteps)
         {
-            QuestSequence? sequence = quest.FindSequence(currentQuest.Sequence);
-            if (sequence != null &&
-                sequence.Steps.Any(step => HandleDefaultYesNo(addonSelectYesno, quest, step, step.DialogueChoices, actualPrompt)))
+            if (HandleExplicitQuestYesNo(addonSelectYesno, currentQuest, actualPrompt))
                 return true;
         }
-        else
-        {
-            QuestStep? step = quest.FindSequence(currentQuest.Sequence)?.FindStep(currentQuest.Step);
-            if (step != null && HandleDefaultYesNo(addonSelectYesno, quest, step, step.DialogueChoices, actualPrompt))
-                return true;
-        }
+
+        QuestStep? step = currentQuest.FindStep();
+        if (step != null && HandleDefaultYesNo(addonSelectYesno, quest, step, step.DialogueChoices, actualPrompt))
+            return true;
 
         if (HandleTravelYesNo(addonSelectYesno, currentQuest, actualPrompt))
             return true;
 
+        // After the travel checks: this takes any prompt during a quest battle step.
+        if (IsQuestBattleYesNo(quest.Id, step))
+        {
+            ConfirmQuestBattle(addonSelectYesno, quest, step!, actualPrompt);
+            return true;
+        }
+
         return false;
     }
+
+    // After a restart the player can already be in a later step's dialogue; only answer an explicit matching choice.
+    internal unsafe bool TryHandleStartupDialogue()
+    {
+        if (_questController.HasExternalOperation || _questController.StartedQuest is not { } quest ||
+            !_gameGui.TryGetAddonByName("SelectYesno", out AddonSelectYesno* addon) ||
+            !addon->AtkUnitBase.IsVisible || !new AddonMaster.SelectYesno(addon).IsAddonReady ||
+            addon->AtkUnitBase.AtkValues == null || addon->AtkUnitBase.AtkValuesCount == 0 ||
+            addon->YesButton == null || addon->YesButton->AtkComponentBase.OwnerNode == null || !addon->YesButton->IsEnabled)
+            return false;
+
+        string? prompt = AtkValueAdapter.ReadString(addon->AtkUnitBase.AtkValues[0]);
+        return prompt != null && HandleExplicitQuestYesNo(addon, quest, prompt);
+    }
+
+    private unsafe bool HandleExplicitQuestYesNo(AddonSelectYesno* addon, QuestController.QuestProgress progress, string prompt)
+    {
+        if (progress.FindSequence() is not { } sequence)
+            return false;
+
+        foreach (DialogueChoice choice in ExplicitYesNoChoices(sequence))
+        {
+            StringOrRegex? expected = _dialogueReferenceResolver.Resolve(progress.Quest, choice.ExcelSheet,
+                choice.Prompt, choice.PromptIsRegularExpression);
+            if (expected != null && DialogueReferenceResolver.IsMatch(prompt, expected) &&
+                HandleDefaultYesNo(addon, progress.Quest, null, [choice], prompt))
+                return true;
+        }
+        return false;
+    }
+
+    internal static IEnumerable<DialogueChoice> ExplicitYesNoChoices(QuestSequence sequence) =>
+        sequence.Steps.SelectMany(step => step.DialogueChoices)
+            .Where(choice => choice.Type == EDialogChoiceType.YesNo && choice.Prompt != null);
 
     private unsafe bool HandleDefaultYesNo(AddonSelectYesno* addonSelectYesno, Quest quest,
         QuestStep? step, List<DialogueChoice> dialogueChoices, string actualPrompt)
     {
         if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryteLocation })
         {
-            AetheryteRegistrationResult registrationResult = _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(aetheryteLocation);
-            if (registrationResult == AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable)
+            AetheryteRegistrationResult registrationResult = _aetheryteFunctions.CanRegisterFreeOrFavored(aetheryteLocation);
+            if (registrationResult == AetheryteRegistrationResult.FreeDestination)
             {
                 dialogueChoices =
                 [
@@ -228,7 +247,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
                     }
                 ];
             }
-            else if (registrationResult == AetheryteRegistrationResult.FavoredDestinationAvailable)
+            else if (registrationResult == AetheryteRegistrationResult.FavoredDestination)
             {
                 dialogueChoices =
                 [
@@ -250,7 +269,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
             if (dialogueChoice.Type != EDialogChoiceType.YesNo)
                 continue;
 
-            //force Yes if prompt is set to `null` while an answer is still given - basically means no key is available on sheets yet
+            // A null prompt with Yes means the sheet key isn't known yet.
             if (dialogueChoice.Prompt == null && dialogueChoice.Yes)
             {
                 _logger.LogInformation("Forcing Yes because no key for this prompt is currently available.");
@@ -258,11 +277,11 @@ internal sealed class YesNoChoiceHandler : IDisposable
                 return true;
             }
 
-            if (dialogueChoice.DataId != null && dialogueChoice.DataId != GameFunctions.GetBaseID(_targetManager.Target))
+            if (dialogueChoice.DataId != null && dialogueChoice.DataId != GameFunctions.GetBaseId(_targetManager.Target))
             {
                 _logger.LogDebug(
                     "Skipping entry in DialogueChoice expecting target dataId {ExpectedDataId}, actual target is {ActualTargetId}",
-                    dialogueChoice.DataId, GameFunctions.GetBaseID(_targetManager.Target));
+                    dialogueChoice.DataId, GameFunctions.GetBaseId(_targetManager.Target));
                 continue;
             }
 
@@ -275,29 +294,25 @@ internal sealed class YesNoChoiceHandler : IDisposable
                 continue;
             }
 
-            string notif = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} {(dialogueChoice.Yes ? "Yes" : "No")}";
-            if (_configuration.General.DontSkipCutscenes && !_configuration.General.DontShowAnswerSuggestions)
-                _toastGui.ShowQuest(notif);
-            _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
+            string message = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} {(dialogueChoice.Yes ? "Yes" : "No")}";
+            if (_configuration.General.DontSkipCutscenes)
+            {
+                _toastGui.ShowQuest(message);
+                _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
+            }
             _logger.LogInformation("Returning {YesNo} for '{Prompt}'", dialogueChoice.Yes ? "Yes" : "No", actualPrompt);
             if (!_configuration.General.DontSkipCutscenes)
                 addonSelectYesno->AtkUnitBase.FireCallbackInt(dialogueChoice.Yes ? 0 : 1);
             return true;
         }
 
-        if (CheckSinglePlayerDutyYesNo(quest.Id, step))
-        {
-            ConfirmSinglePlayerDutyStart(addonSelectYesno);
-            return true;
-        }
-
         return false;
     }
 
-    private bool CheckSinglePlayerDutyYesNo(ElementId questId, QuestStep? step)
+    private bool IsQuestBattleYesNo(ElementId questId, QuestStep? step)
     {
         if (step is { InteractionType: EInteractionType.SinglePlayerDuty } &&
-            _bossModIpc.IsConfiguredToRunSoloInstance(questId, step.SinglePlayerDutyOptions))
+            _bossModIpc.CanRunQuestBattle(questId, step.SinglePlayerDutyOptions))
         {
             // "Duty calls" yes/no. After a wipe the game uses DifficultySelectYesNo instead.
             _logger.LogInformation("SinglePlayerDutyYesNo: probably Single Player Duty");
@@ -308,37 +323,118 @@ internal sealed class YesNoChoiceHandler : IDisposable
     }
 
     // 823 requests the configured difficulty. Click Yes (Normal) if the duty does not start.
-    private unsafe void ConfirmSinglePlayerDutyStart(AddonSelectYesno* addonSelectYesno)
+    private unsafe void ConfirmQuestBattle(AddonSelectYesno* addonSelectYesno, Quest quest,
+        QuestStep step, string actualPrompt)
     {
+        QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
+        if (currentQuest == null || currentQuest.Quest.Id != quest.Id || currentQuest.FindStep() != step)
+            return;
+        if (_questBattleConfirmation is { } pending && pending.IsCurrent(currentQuest) && pending.Prompt == actualPrompt)
+            return;
+
+        _questBattleConfirmation = null;
         byte difficulty = _configuration.SinglePlayerDuties.RetryDifficulty;
         _logger.LogInformation("Requesting solo quest battle at difficulty {Difficulty}", difficulty);
 
-        if (!GameMain.ExecuteCommand((int)GameCommand.StartSoloQuestBattle, difficulty))
+        if (!GameMain.ExecuteCommand((int)GameCommand.StartQuestBattle, difficulty))
         {
-            _logger.LogInformation("StartSoloQuestBattle was rejected; confirming Yes (Normal)");
+            _logger.LogInformation("StartQuestBattle was rejected; confirming Yes (Normal)");
             addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
             return;
         }
 
-        _ = _framework.RunOnTick(ConfirmNormalIfDutyDidNotStart, TimeSpan.FromSeconds(2));
+        _questBattleConfirmation = new QuestBattleConfirmation(currentQuest, actualPrompt, DateTime.UtcNow);
     }
 
-    private unsafe void ConfirmNormalIfDutyDidNotStart()
+    private void OnAutomationTypeChanged(object? sender, AutomationEventArgs e)
     {
-        if (!_questController.IsRunning)
+        if (e.AutomationType == QuestController.EAutomationType.Manual)
+            _questBattleConfirmation = null;
+    }
+
+    private unsafe void ConfirmNormalFallback(IFramework framework)
+    {
+        if (_questBattleConfirmation is not { } confirmation)
             return;
 
-        // The duty prompt keeps OccupiedInCutSceneEvent set, so only loading or being in the duty blocks the confirmation.
-        if (_condition[ConditionFlag.BoundByDuty] ||
-            _condition[ConditionFlag.BetweenAreas])
+        QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
+        if (!_questController.IsRunning || _questController.HasExternalOperation ||
+            _condition[ConditionFlag.BoundByDuty] || !confirmation.IsCurrent(currentQuest))
+        {
+            _questBattleConfirmation = null;
+            return;
+        }
+
+        DateTime now = DateTime.UtcNow;
+        if (now < confirmation.NextCheckAt)
             return;
 
-        if (!_gameGui.TryGetAddonByName("SelectYesno", out AddonSelectYesno* addon) ||
-            !addon->AtkUnitBase.IsVisible)
-            return;
+        // The duty prompt can keep OccupiedInCutSceneEvent set, so only loading blocks the confirmation.
+        bool loading = _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51];
+        string? prompt = null;
+        bool ready = false;
+        if (_gameGui.TryGetAddonByName("SelectYesno", out AddonSelectYesno* addon))
+        {
+            if (addon->AtkUnitBase.AtkValues != null && addon->AtkUnitBase.AtkValuesCount > 0)
+                prompt = AtkValueAdapter.ReadString(addon->AtkUnitBase.AtkValues[0]);
+            ready = addon->AtkUnitBase.IsVisible && new AddonMaster.SelectYesno(addon).IsAddonReady &&
+                addon->YesButton != null && addon->YesButton->AtkComponentBase.OwnerNode != null &&
+                addon->YesButton->IsEnabled;
+        }
 
-        _logger.LogInformation("StartSoloQuestBattle did not enter the duty; confirming Yes (Normal)");
-        addon->AtkUnitBase.FireCallbackInt(0);
+        switch (confirmation.Check(now, currentQuest, prompt, ready, loading))
+        {
+            case QuestBattleConfirmation.Result.Wait:
+                return;
+            case QuestBattleConfirmation.Result.Confirm:
+                _questBattleConfirmation = null;
+                _logger.LogInformation("StartQuestBattle did not enter the duty; confirming Yes (Normal)");
+                addon->AtkUnitBase.FireCallbackInt(0);
+                return;
+            default:
+                _questBattleConfirmation = null;
+                _logger.LogInformation("Solo duty confirmation expired or its quest/dialog changed; leaving the dialog untouched");
+                return;
+        }
+    }
+
+    // Keep the fallback across cutscenes without keeping an addon pointer or replaying command 823.
+    internal sealed class QuestBattleConfirmation(QuestController.QuestProgress quest, string prompt, DateTime requestedAt)
+    {
+        internal enum Result
+        {
+            Wait,
+            Confirm,
+            Cancel
+        }
+
+        private readonly QuestController.StepProgress _step = quest.StepProgress;
+        private readonly DateTime _expiresAt = requestedAt.AddMinutes(2);
+        private bool _finished;
+        public string Prompt { get; } = prompt;
+        public DateTime NextCheckAt { get; private set; } = requestedAt.AddSeconds(2);
+
+        public bool IsCurrent(QuestController.QuestProgress? current) =>
+            current != null && ReferenceEquals(current, quest) && ReferenceEquals(current.StepProgress, _step);
+
+        public Result Check(DateTime now, QuestController.QuestProgress? current, string? actualPrompt, bool ready, bool loading)
+        {
+            if (_finished || now >= _expiresAt || !IsCurrent(current) ||
+                (actualPrompt != null && !string.Equals(actualPrompt, Prompt, StringComparison.Ordinal)))
+            {
+                _finished = true;
+                return Result.Cancel;
+            }
+            if (now < NextCheckAt)
+                return Result.Wait;
+
+            NextCheckAt = now.AddMilliseconds(500);
+            if (loading || !ready || actualPrompt == null)
+                return Result.Wait;
+
+            _finished = true;
+            return Result.Confirm;
+        }
     }
 
     private unsafe bool HandleTravelYesNo(AddonSelectYesno* addonSelectYesno,
@@ -354,8 +450,15 @@ internal sealed class YesNoChoiceHandler : IDisposable
 
         if (_ticketRegex.IsMatch(actualPrompt))
         {
-            _logger.LogInformation("Check UseTickets: {UseTickets}", _configuration.General.UseTickets);
-            addonSelectYesno->AtkUnitBase.FireCallbackInt(_configuration.General.UseTickets ? 0 : 1);
+            _logger.LogInformation("Paying gil instead of using an aetheryte ticket");
+            if (!_ticketHintShown)
+            {
+                _chatGui.Print(_L("Paid gil instead of using an aetheryte ticket. To use tickets, change 'Aetheryte Ticket Usage' in the game's Teleport settings."),
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+                _ticketHintShown = true;
+            }
+
+            addonSelectYesno->AtkUnitBase.FireCallbackInt(1);
             return true;
         }
 
@@ -366,6 +469,24 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return true;
         }
 
+        if (_questController.IsRunning && _overCapRegexes.Any(regex => regex.IsMatch(actualPrompt)))
+        {
+            if (_configuration.General.ConfirmCurrencyOverCap)
+            {
+                _logger.LogInformation("Confirming reward over the currency cap: {Prompt}", actualPrompt);
+                _chatGui.Print(_L("Confirmed going over a currency cap; the excess was discarded."), CommandHandler.MessageTag, CommandHandler.TagColor);
+                addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
+            }
+            else
+            {
+                _logger.LogInformation("Reward would go over the currency cap, stopping: {Prompt}", actualPrompt);
+                _chatGui.Print(_L("Stopped: this reward would go over a currency cap. Spend some first, or turn on 'Allow overcap' on the Questing settings page."), CommandHandler.MessageTag, CommandHandler.TagColor);
+                _questController.Stop("Currency over cap");
+            }
+
+            return true;
+        }
+
         if (_questController.IsRunning && _gameGui.TryGetAddonByName("HousingSelectBlock", out AtkUnitBase* _))
         {
             _logger.LogInformation("Automatically confirming ward selection");
@@ -373,7 +494,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return true;
         }
 
-        ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritoryFromQuestStep(currentQuest);
+        ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritory(currentQuest);
         if (targetTerritoryId != null &&
             _travelDestinationResolver.TryFindWarp(targetTerritoryId.Value, actualPrompt, out uint? warpId, out string? warpText))
         {
@@ -385,9 +506,9 @@ internal sealed class YesNoChoiceHandler : IDisposable
         return false;
     }
 
-    private unsafe void HandleDifficultySelectYesNo(AtkUnitBase* addonDifficultySelectYesNo, bool checkAllSteps)
+    private unsafe void HandleDifficultyYesNo(AtkUnitBase* difficultyAddon, bool checkAllSteps)
     {
-        if (!_questController.IsRunning)
+        if (!_questController.IsRunning || _questController.HasExternalOperation)
             return;
 
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
@@ -398,13 +519,13 @@ internal sealed class YesNoChoiceHandler : IDisposable
         bool autoConfirm;
         if (checkAllSteps)
         {
-            QuestSequence? sequence = quest.FindSequence(currentQuest.Sequence);
-            autoConfirm = sequence != null && sequence.Steps.Any(step => CheckSinglePlayerDutyYesNo(quest.Id, step));
+            QuestSequence? sequence = currentQuest.FindSequence();
+            autoConfirm = sequence != null && sequence.Steps.Any(step => IsQuestBattleYesNo(quest.Id, step));
         }
         else
         {
-            QuestStep? step = quest.FindSequence(currentQuest.Sequence)?.FindStep(currentQuest.Step);
-            autoConfirm = step != null && CheckSinglePlayerDutyYesNo(quest.Id, step);
+            QuestStep? step = currentQuest.FindStep();
+            autoConfirm = step != null && IsQuestBattleYesNo(quest.Id, step);
         }
 
         if (autoConfirm)
@@ -415,7 +536,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
                 new() { Type = AtkValueType.Int, Int = 0 },
                 new() { Type = AtkValueType.Int, Int = _configuration.SinglePlayerDuties.RetryDifficulty }
             };
-            addonDifficultySelectYesNo->FireCallback(2, selectChoice);
+            difficultyAddon->FireCallback(2, selectChoice);
         }
     }
 }

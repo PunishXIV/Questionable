@@ -1,139 +1,59 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1029893,
-          "Position": {
-            "X": -248.34064,
-            "Y": 21.086334,
-            "Z": 346.0287
-          },
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Wright",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -248.34064,
-                  "Y": 21.086334,
-                  "Z": 346.0287
-                },
-                "TerritoryId": 814,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": 173.40976,
-            "Y": 58.977684,
-            "Z": 883.3417
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Eulmore",
-              "InTerritory": [
-                820
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1029899,
-          "Position": {
-            "X": 34.561646,
-            "Y": 83.001076,
-            "Z": -67.00244
-          },
+          "Position": [34.561646, 83.001076, -67.00244],
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eulmore",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Eulmore"
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1029893,
-          "Position": {
-            "X": -248.34064,
-            "Y": 21.086334,
-            "Z": 346.0287
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Wright"
+          "Position": [-248.34064, 21.086334, 346.0287],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": 271.6878,
-            "Y": 7.1558237,
-            "Z": -197.58272
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Amh Araeng - Mord Souq"
-        },
-        {
           "DataId": 1029898,
-          "Position": {
-            "X": 270.37463,
-            "Y": 7.1558247,
-            "Z": -196.30737
-          },
-          "TerritoryId": 815,
+          "Position": [270.37463, 7.1558247, -196.30737],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1027876,
-          "Position": {
-            "X": 314.16797,
-            "Y": 1.4912677,
-            "Z": -255.60394
-          },
-          "TerritoryId": 815,
+          "Position": [314.16797, 1.4912677, -255.60394],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1029951,
-          "Position": {
-            "X": 303.82227,
-            "Y": 1.4685826,
-            "Z": -292.89697
-          },
-          "TerritoryId": 815,
+          "Position": [303.82227, 1.4685826, -292.89697],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -141,47 +61,32 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1029953,
-          "Position": {
-            "X": 241.19922,
-            "Y": 4.0297,
-            "Z": -289.601
-          },
-          "TerritoryId": 815,
+          "Position": [241.19922, 4.0297, -289.601],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 2009944,
-          "Position": {
-            "X": 476.18823,
-            "Y": -44.87683,
-            "Z": 229.96863
-          },
-          "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
-          "Fly": true
+          "Position": [476.18823, -44.87683, 229.96863],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": 555.85315,
-            "Y": -50.899147,
-            "Z": 322.2599
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 815,
+          "Position": [555.85315, -50.899147, 322.2599],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -192,42 +97,22 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1029957,
-          "Position": {
-            "X": 293.04944,
-            "Y": -42.796906,
-            "Z": 251.75854
-          },
-          "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [293.04944, -42.796906, 251.75854],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": 296.43002,
-            "Y": 1.4685829,
-            "Z": -289.11447
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq"
-        },
-        {
           "DataId": 1029959,
-          "Position": {
-            "X": 295.27722,
-            "Y": 1.4685827,
-            "Z": -290.18085
-          },
-          "TerritoryId": 815,
+          "Position": [295.27722, 1.4685827, -290.18085],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3246
         }

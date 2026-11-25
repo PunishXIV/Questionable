@@ -1,76 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030455,
-          "Position": {
-            "X": 54.09314,
-            "Y": 83.001076,
-            "Z": -74.540344
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1030456,
-          "Position": {
-            "X": 63.279175,
-            "Y": -4.0096626,
-            "Z": 145.28113
-          },
-          "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ]
+          "Position": [63.279175, -4.0096626, 145.28113],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1030455,
-          "Position": {
-            "X": 54.09314,
-            "Y": 83.001076,
-            "Z": -74.540344
-          },
-          "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Southeast Derelicts",
-            "[Eulmore] Aetheryte Plaza"
-          ]
+          "Position": [54.09314, 83.001076, -74.540344],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1030457,
-          "Position": {
-            "X": 63.370728,
-            "Y": -4.158061,
-            "Z": 143.93835
-          },
-          "TerritoryId": 820,
+          "Position": [63.370728, -4.158061, 143.93835],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ],
           "NextQuestId": 3517
         }
       ]

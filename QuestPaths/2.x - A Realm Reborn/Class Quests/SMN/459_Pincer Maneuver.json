@@ -1,152 +1,75 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000909,
-          "Position": {
-            "X": -326.37524,
-            "Y": 12.899658,
-            "Z": 9.994568
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1003505,
-          "Position": {
-            "X": -186.20587,
-            "Y": 16,
-            "Z": 56.931396
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
+          "Position": [-186.20587, 16, 56.931396],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000938,
-          "Position": {
-            "X": -4.654114,
-            "Y": 44.999847,
-            "Z": -241.84027
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "Position": [-4.654114, 44.999847, -241.84027],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000909,
-          "Position": {
-            "X": -326.37524,
-            "Y": 12.899658,
-            "Z": 9.994568
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "Position": [-326.37524, 12.899658, 9.994568],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 177.58797,
-            "Y": -41.12709,
-            "Z": 260.26315
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        },
-        {
           "DataId": 1005215,
-          "Position": {
-            "X": 178.66785,
-            "Y": -41.140213,
-            "Z": 261.61597
-          },
-          "TerritoryId": 138,
+          "Position": [178.66785, -41.140213, 261.61597],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 104.38023,
-            "Y": 68.15523,
-            "Z": 331.41037
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1005217,
-          "Position": {
-            "X": 103.74609,
-            "Y": 68.15523,
-            "Z": 329.45752
-          },
-          "TerritoryId": 135,
+          "Position": [103.74609, 68.15523, 329.45752],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 2002010,
-          "Position": {
-            "X": 108.384766,
-            "Y": 68.13147,
-            "Z": 351.61353
-          },
-          "TerritoryId": 135,
+          "Position": [108.384766, 68.13147, 351.61353],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true}
         }
@@ -154,20 +77,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000909,
-          "Position": {
-            "X": -326.37524,
-            "Y": 12.899658,
-            "Z": 9.994568
-          },
-          "TerritoryId": 129,
+          "Position": [-326.37524, 12.899658, 9.994568],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "NextQuestId": 460
         }
       ]

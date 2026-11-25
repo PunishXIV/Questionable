@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030295,
-          "Position": {
-            "X": -140.00159,
-            "Y": 352.35822,
-            "Z": -187.91486
-          },
-          "StopDistance": 5,
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030294,
-          "Position": {
-            "X": -142.13782,
-            "Y": 352.3582,
-            "Z": -189.47137
-          },
-          "TerritoryId": 814,
+          "Position": [-142.13782, 352.3582, -189.47137],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -43,25 +27,20 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030302,
-          "Position": {
-            "X": -173.44934,
-            "Y": 460.47067,
-            "Z": -797.3602
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Tomra"
+          "Position": [-173.44934, 460.47067, -797.3602],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "TerritoryId": 814,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 659,
@@ -75,28 +54,24 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 880,
       "Steps": [
         {
-          "TerritoryId": 880,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 666,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 880,
       "Steps": [
         {
           "DataId": 1030303,
-          "Position": {
-            "X": 109.23926,
-            "Y": 0.0140714925,
-            "Z": 108.72046
-          },
-          "TerritoryId": 880,
+          "Position": [109.23926, 0.0140714925, 108.72046],
           "InteractionType": "CompleteQuest"
         }
       ]

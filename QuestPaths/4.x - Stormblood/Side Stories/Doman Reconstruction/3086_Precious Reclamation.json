@@ -1,69 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1024791,
-          "Position": {
-            "X": 31.60144,
-            "Y": 0.26575702,
-            "Z": 28.915894
-          },
-          "TerritoryId": 759,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Doman Enclave"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006530,
-          "Position": {
-            "X": 21.927185,
-            "Y": 20.746975,
-            "Z": -682.06305
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [21.927185, 20.746975, -682.06305],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1025287,
-          "Position": {
-            "X": 64.34729,
-            "Y": 31.199963,
-            "Z": -754.0246
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [64.34729, 31.199963, -754.0246],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2009436,
-          "Position": {
-            "X": 70.05408,
-            "Y": 30.746826,
-            "Z": -722.86566
-          },
-          "TerritoryId": 156,
+          "Position": [70.05408, 30.746826, -722.86566],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

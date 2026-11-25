@@ -1,39 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Thaksin",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013651,
-          "Position": {
-            "X": -475.76105,
-            "Y": 155.8605,
-            "Z": -209.76581
-          },
-          "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 0.25,
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Prologue Gate (Western Hinterlands)"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1013655,
-          "Position": {
-            "X": -669.9169,
-            "Y": 154.30952,
-            "Z": 191.08862
-          },
-          "Fly": true,
-          "TerritoryId": 399,
-          "StopDistance": 0.25,
+          "Position": [-669.9169, 154.30952, 191.08862],
           "InteractionType": "Interact"
         }
       ]
@@ -41,17 +21,12 @@
     {
 
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 5047,
-          "Position": {
-            "X": -894.9264,
-            "Y": 215.16266,
-            "Z": 155.29102
-          },
-          "TerritoryId": 399,
+          "Position": [-894.9264, 215.16266, 155.29102],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             5047,
@@ -62,17 +37,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1013655,
-          "Position": {
-            "X": -669.9169,
-            "Y": 154.30952,
-            "Z": 191.08862
-          },
-          "Fly": true,
-          "TerritoryId": 399,
-          "StopDistance": 0.25,
+          "Position": [-669.9169, 154.30952, 191.08862],
           "InteractionType": "CompleteQuest"
         }
       ]

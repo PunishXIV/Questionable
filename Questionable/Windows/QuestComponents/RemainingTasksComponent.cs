@@ -1,7 +1,3 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
 [RegisterSingleton]
@@ -27,17 +23,17 @@ internal sealed class RemainingTasksComponent(
             for (int i = 0; i < Tasks.Count; i++)
             {
                 string task = isGathering ? $"G: {Tasks[i]}" : Tasks[i];
-                using var _wrap = ImRaii.TextWrapPos(0);
+                using var wrap = ImRaii.TextWrapPos(0);
                 if (i == 0 && questController.IsRunning)
                     ImGui.TextColored(QstTheme.Accent, Truncate(task));
                 else
                 {
-                    using ImRaii.DisabledDisposable _dis = ImRaii.Disabled();
+                    using ImRaii.DisabledDisposable disabled = ImRaii.Disabled();
                     ImGui.TextUnformatted(Truncate(task));
                 }
 
                 if (task.Length > MaxTaskLength && ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                    ImGui.SetTooltip(task);
+                    QstWidgets.Tooltip(task);
             }
         }
     }

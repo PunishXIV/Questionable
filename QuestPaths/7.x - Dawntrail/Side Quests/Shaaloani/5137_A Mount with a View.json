@@ -1,70 +1,36 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050653,
-          "Position": {
-            "X": -133.74536,
-            "Y": 16.289755,
-            "Z": -285.1454
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1050654,
-          "Position": {
-            "X": -509.05627,
-            "Y": 62.947567,
-            "Z": -438.68164
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-509.05627, 62.947567, -438.68164],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 2014056,
-          "Position": {
-            "X": -509.60556,
-            "Y": 62.91284,
-            "Z": -437.15576
-          },
-          "TerritoryId": 1190,
+          "Position": [-509.60556, 62.91284, -437.15576],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1050653,
-          "Position": {
-            "X": -133.74536,
-            "Y": 16.289755,
-            "Z": -285.1454
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

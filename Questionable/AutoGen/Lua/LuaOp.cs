@@ -3,7 +3,6 @@
 
 namespace Questionable.AutoGen.Lua;
 
-/// <summary>Lua 5.1 opcodes, in the order the reference implementation defines them.</summary>
 internal enum LuaOp
 {
     Move = 0,

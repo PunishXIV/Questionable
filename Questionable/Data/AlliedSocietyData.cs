@@ -1,25 +1,22 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Data;
 
 [SuppressMessage("Performance", "CA1822")]
 [RegisterSingleton]
 internal sealed class AlliedSocietyData
 {
-    public ReadOnlyDictionary<ushort, AlliedSocietyMountConfiguration> Mounts { get; } =
-        new Dictionary<ushort, AlliedSocietyMountConfiguration>
+    public ReadOnlyDictionary<ushort, AlliedSocietyMount> Mounts { get; } =
+        new Dictionary<ushort, AlliedSocietyMount>
         {
             { 23, new([1008327, 1005848, 1005860, 1005581], EAetheryteLocation.SouthernThanalanLittleAlaMhigo) }, // amaljaa
-            { 24, new([1052562, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }, // sylphs
+            { 24, new([1008334, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }, // sylphs
             { 66, new([1016093, 1016087], EAetheryteLocation.SeaOfCloudsOkZundu) }, //vanu
             { 79, new([1017031, 1016837, 1016838], EAetheryteLocation.DravanianForelandsAnyxTrine) }, //vath
             { 88, new([1017470, 1017432], EAetheryteLocation.ChurningMistsZenith) }, //moogle
             { 89, new([1017322], EAetheryteLocation.ChurningMistsZenith) }, //moogle
             { 137, new([1024218], EAetheryteLocation.RubySeaTamamizu) }, //Kojin  
-            { 147, new([1024777, 1024912], EAetheryteLocation.FringesPeeringStones) }, //ananta
-            { 165, new([1025610], EAetheryteLocation.AzimSteppeDhoroIloh) }, //namazu
+            { 147, new([1024775, 1024777, 1024900, 1024912], EAetheryteLocation.FringesPeeringStones) }, //ananta
+            { 165, new([1025610, 1025707], EAetheryteLocation.AzimSteppeDhoroIloh) }, //namazu
             { 210, new([1031811], EAetheryteLocation.IlMhegLydhaLran) }, //Pixie
             { 221, new([1032663], EAetheryteLocation.RaktikaFanow) }, //Qitari Done
             { 227, new([1033715], EAetheryteLocation.LakelandOstallImperative) }, //Dwarf
@@ -29,48 +26,16 @@ internal sealed class AlliedSocietyData
             { 369, new([1051798], EAetheryteLocation.KozamaukaDockPoga) }, //pelu
             { 391, new([1052562], EAetheryteLocation.YakTelMamook) }, //mamook
         }.AsReadOnly();
+    // Sylph 1257 has always been left out; Ixal 1569 Deliverance isn't a normal daily.
+    private static readonly ushort[] NotBatched = [1257, 1569];
 
-    public bool IsAlliedSocietyMount(ushort? mountId)
-    {
-        if (mountId is { } && Mounts.TryGetValue(mountId.Value, out AlliedSocietyMountConfiguration? mountConfig) && mountConfig is { })
-            return true;
-        return false;
-    }
-    public EAlliedSociety GetCommonAlliedSocietyTurnIn(ElementId elementId)
-    {
-        if (elementId is QuestId questId)
-        {
-            return questId.Value switch
-            {
-                >= 1222 and <= 1251 => EAlliedSociety.Amaljaa, //ARR
-                //>= 1494 and <= 1523 => EAlliedSociety.Ixal, // Ixal also has 1566,1567,1568
-                //>= 1566 and <= 1568 => EAlliedSociety.Ixal, // Ixal quests seem designed to be done sequentially and dont craft til 255
-                >= 1325 and <= 1344 => EAlliedSociety.Kobolds, // Kobolds 1364-1373
-                >= 1364 and <= 1373 => EAlliedSociety.Kobolds,
-                >= 1257 and <= 1286 and not 1257 => EAlliedSociety.Sylphs,
-                >= 2171 and <= 2200 => EAlliedSociety.VanuVanu, //HW
-                >= 2261 and <= 2280 => EAlliedSociety.Vath,
-                >= 2290 and <= 2319 => EAlliedSociety.Moogles,
-                >= 3042 and <= 3069 => EAlliedSociety.Ananta, //Storm 
-                >= 2979 and <= 3002 => EAlliedSociety.Kojin,
-                >= 3103 and <= 3130 => EAlliedSociety.Namazu,
-                >= 3902 and <= 3929 => EAlliedSociety.Dwarves, //SB
-                >= 3689 and <= 3716 => EAlliedSociety.Pixies,
-                >= 3806 and <= 3833 => EAlliedSociety.Qitari,
-                >= 4551 and <= 4578 => EAlliedSociety.Arkasodara, //EW
-                >= 4687 and <= 4714 => EAlliedSociety.Loporrits,
-                >= 4607 and <= 4634 => EAlliedSociety.Omicrons,
-                >= 5199 and <= 5226 => EAlliedSociety.Pelupelu, //Dawn
-                >= 5261 and <= 5288 => EAlliedSociety.MamoolJa,
-                >= 5336 and <= 5363 => EAlliedSociety.YokHuy,
-                var _ => EAlliedSociety.None
-            };
-        }
+    public EAlliedSociety GetCommonTurnIn(IQuestInfo? info) =>
+        info is QuestInfo { IsRepeatable: true, AlliedSociety: not EAlliedSociety.None, QuestId: QuestId id } quest &&
+        !NotBatched.Contains(id.Value)
+            ? quest.AlliedSociety
+            : EAlliedSociety.None;
 
-        return EAlliedSociety.None;
-    }
-
-    public void GetCommonAlliedSocietyNpcs(EAlliedSociety alliedSociety, out uint[] normalNpcs, out uint[] mountNpcs)
+    public void GetCommonNpcs(EAlliedSociety alliedSociety, out uint[] normalNpcs, out uint[] mountNpcs)
     {
         if (alliedSociety == EAlliedSociety.Ixal)
         {

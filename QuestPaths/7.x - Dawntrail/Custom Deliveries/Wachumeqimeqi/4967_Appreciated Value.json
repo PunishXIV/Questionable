@@ -1,57 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047095,
-          "Position": {
-            "X": 139.5437,
-            "Y": -13.99,
-            "Z": 10.60498
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2014440,
-          "Position": {
-            "X": -100.23657,
-            "Y": -19.882507,
-            "Z": 211.13904
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "Position": [-100.23657, -19.882507, 211.13904],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1052476,
-          "Position": {
-            "X": -100.175476,
-            "Y": -19.798239,
-            "Z": 209.73523
-          },
-          "TerritoryId": 1185,
+          "Position": [-100.175476, -19.798239, 209.73523],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -65,15 +38,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1047183,
-          "Position": {
-            "X": -194.93408,
-            "Y": 28,
-            "Z": -553.1548
-          },
-          "TerritoryId": 1191,
+          "Position": [-194.93408, 28, -553.1548],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -87,156 +56,93 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1047173,
-          "Position": {
-            "X": -284.10898,
-            "Y": 37.00003,
-            "Z": -575.62555
-          },
-          "TerritoryId": 1191,
-          "StopDistance": 1,
+          "Position": [-284.10898, 37.00003, -575.62555],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1047174,
-          "Position": {
-            "X": -138.35364,
-            "Y": 42.999657,
-            "Z": -663.2639
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-138.35364, 42.999657, -663.2639],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047095,
-          "Position": {
-            "X": 139.5437,
-            "Y": -13.99,
-            "Z": 10.60498
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "Position": [139.5437, -13.99, 10.60498],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047177,
-          "Position": {
-            "X": -272.54144,
-            "Y": -9.063631e-6,
-            "Z": 143.57214
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "Position": [-272.54144, -9.063631e-6, 143.57214],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047179,
-          "Position": {
-            "X": 109.147705,
-            "Y": 42,
-            "Z": -353.29218
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "Position": [109.147705, 42, -353.29218],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047133,
-          "Position": {
-            "X": 180.37683,
-            "Y": -13.99,
-            "Z": 1.9073486
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Brightploom Post",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "Position": [180.37683, -13.99, 1.9073486],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2014437,
-          "Position": {
-            "X": 166.8269,
-            "Y": -14.023071,
-            "Z": 3.2807007
-          },
-          "TerritoryId": 1185,
+          "Position": [166.8269, -14.023071, 3.2807007],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2014438,
-          "Position": {
-            "X": 203.05176,
-            "Y": -14.023071,
-            "Z": 11.642578
-          },
-          "TerritoryId": 1185,
+          "Position": [203.05176, -14.023071, 11.642578],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2014439,
-          "Position": {
-            "X": 232.95947,
-            "Y": -14.023071,
-            "Z": -9.99469
-          },
-          "TerritoryId": 1185,
+          "Position": [232.95947, -14.023071, -9.99469],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 10,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047095,
-          "Position": {
-            "X": 139.5437,
-            "Y": -13.99,
-            "Z": 10.60498
-          },
-          "TerritoryId": 1185,
+          "Position": [139.5437, -13.99, 10.60498],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -250,18 +156,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1047095,
-          "Position": {
-            "X": 139.5437,
-            "Y": -13.99,
-            "Z": 10.60498
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

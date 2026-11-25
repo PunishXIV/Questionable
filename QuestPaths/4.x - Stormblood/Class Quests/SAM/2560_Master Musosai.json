@@ -1,25 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "TerritoryId": 131,
           "InteractionType": "EquipItem",
           "ItemId": 20388,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            },
             "StepIf": {
               "Item": {
                 "NotInInventory": true
@@ -28,17 +19,11 @@
           }
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "CreateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "Position": {
-            "X": -89.28058,
-            "Y": 2.150006,
-            "Z": 59.739014
-          },
-          "TerritoryId": 131,
+          "Position": [-89.28058, 2.150006, 59.739014],
           "InteractionType": "UseItem",
           "DelaySecondsAtStart": 2,
           "ItemId": 20620,
@@ -51,106 +36,30 @@
           }
         },
         {
-          "TerritoryId": 131,
-          "InteractionType": "EquipItem",
-          "ItemId": 20460,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 131,
-          "InteractionType": "EquipItem",
-          "ItemId": 20461,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 131,
-          "InteractionType": "EquipItem",
-          "ItemId": 20462,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 131,
-          "InteractionType": "EquipItem",
-          "ItemId": 20463,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 131,
-          "InteractionType": "EquipItem",
-          "ItemId": 20464,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": true
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 131,
           "InteractionType": "EquipRecommended",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "UpdateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1023637,
-          "Position": {
-            "X": -89.28058,
-            "Y": 2.150006,
-            "Z": 59.739014
-          },
-          "TerritoryId": 131,
+          "Position": [-89.28058, 2.150006, 59.739014],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "TerritoryId": 131,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 1023637,
-          "Position": {
-            "X": -89.28058,
-            "Y": 2.150006,
-            "Z": 59.739014
-          },
-          "TerritoryId": 131,
+          "Position": [-89.28058, 2.150006, 59.739014],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true}
         }
@@ -158,16 +67,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1023637,
-          "Position": {
-            "X": -89.28058,
-            "Y": 2.150006,
-            "Z": 59.739014
-          },
-          "StopDistance": 5,
-          "TerritoryId": 131,
+          "Position": [-89.28058, 2.150006, 59.739014],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -181,20 +85,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1021835,
-          "Position": {
-            "X": 35.66028,
-            "Y": 6.9999986,
-            "Z": -82.993835
-          },
-          "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "Position": [35.66028, 6.9999986, -82.993835],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,66 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "UcanPatates",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006715,
-          "Position": {
-            "X": -170.67218,
-            "Y": 56.713512,
-            "Z": -255.9701
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -193.69008,
-            "Y": 55.59636,
-            "Z": -177.57457
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
-        },
-        {
           "DataId": 1007568,
-          "Position": {
-            "X": -183.88647,
-            "Y": 57.451885,
-            "Z": -143.93835
-          },
-          "TerritoryId": 152,
+          "Position": [-183.88647, 57.451885, -143.93835],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006715,
-          "Position": {
-            "X": -170.67218,
-            "Y": 56.713512,
-            "Z": -255.9701
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

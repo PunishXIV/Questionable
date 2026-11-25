@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1002388,
-          "Position": {
-            "X": 95.68933,
-            "Y": 40.250282,
-            "Z": 74.54028
-          },
-          "TerritoryId": 128,
+          "Position": [95.68933, 40.250282, 74.54028],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -20,19 +16,7 @@
               "Prompt": "TEXT_COMLIM101_02390_Q1_000_000",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128,
-                129
-              ]
-            }
-          }
+          ]
         }
       ]
     }

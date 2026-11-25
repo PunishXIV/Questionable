@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026804,
-          "Position": {
-            "X": -524.55945,
-            "Y": 8.698304,
-            "Z": -15.487976
-          },
-          "StopDistance": 7,
-          "TerritoryId": 621,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1026804,
-          "Position": {
-            "X": -524.55945,
-            "Y": 8.698304,
-            "Z": -15.487976
-          },
-          "StopDistance": 7,
-          "TerritoryId": 621,
+          "Position": [-524.55945, 8.698304, -15.487976],
           "InteractionType": "Interact",
           "TargetTerritoryId": 829,
           "DialogueChoices": [
@@ -43,11 +26,7 @@
         },
         {
           "DataId": 1026845,
-          "Position": {
-            "X": -476.67664,
-            "Y": 107.63,
-            "Z": 103.74609
-          },
+          "Position": [-476.67664, 107.63, 103.74609],
           "TerritoryId": 829,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
@@ -61,33 +40,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "TerritoryId": 156,
+          "Position": [21.133728, 22.323914, -631.281],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
           "TargetTerritoryId": 351
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1026990,
-          "Position": {
-            "X": -2.4262085,
-            "Y": 0,
-            "Z": -9.10968
-          },
-          "StopDistance": 7,
-          "TerritoryId": 351,
+          "Position": [-2.4262085, 0, -9.10968],
           "InteractionType": "CompleteQuest"
         }
       ]

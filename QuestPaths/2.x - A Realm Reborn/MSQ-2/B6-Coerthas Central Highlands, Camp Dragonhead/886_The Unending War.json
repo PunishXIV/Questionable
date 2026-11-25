@@ -1,69 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006372,
-          "Position": {
-            "X": 171.52661,
-            "Y": 222.69258,
-            "Z": 355.48938
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "$": "Unlock Observatory taxi",
           "DataId": 1006801,
-          "Position": {
-            "X": 231.25049,
-            "Y": 222.18736,
-            "Z": 316.57886
-          },
-          "TerritoryId": 155,
+          "Position": [231.25049, 222.18736, 316.57886],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179679
         },
         {
           "$": "Unlock Camp Dragonhead aetheryte now so that we can TP back in case we die",
-          "TerritoryId": 155,
-          "StopDistance": 5,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
           "$": "Camp Dragonhead taxi",
           "DataId": 1006802,
-          "Position": {
-            "X": 195.81897,
-            "Y": 302.34818,
-            "Z": -167.86456
-          },
-          "TerritoryId": 155,
+          "Position": [195.81897, 302.34818, -167.86456],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179680
         },
         {
-          "TerritoryId": 155,
           "InteractionType": "EquipRecommended"
         },
         {
-          "Position": {
-            "X": 48.65701,
-            "Y": 234.78163,
-            "Z": 348.13953
-          },
-          "StopDistance": 1,
-          "TerritoryId": 155,
+          "Position": [48.65701, 234.78163, 348.13953],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -73,57 +44,40 @@
         },
         {
           "DataId": 1006731,
-          "Position": {
-            "X": 52.231567,
-            "Y": 235.30933,
-            "Z": 347.85986
-          },
-          "TerritoryId": 155,
+          "Position": [52.231567, 235.30933, 347.85986],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006372,
-          "Position": {
-            "X": 171.52661,
-            "Y": 222.69258,
-            "Z": 355.48938
-          },
-          "TerritoryId": 155,
+          "Position": [171.52661, 222.69258, 355.48938],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006376,
-          "Position": {
-            "X": 195.3612,
-            "Y": 234.79839,
-            "Z": 419.3026
-          },
-          "TerritoryId": 155,
+          "Position": [195.3612, 234.79839, 419.3026],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006377,
-          "Position": {
-            "X": 200.97656,
-            "Y": 293.33,
-            "Z": 420.37073
-          },
-          "TerritoryId": 155,
+          "Position": [200.97656, 293.33, 420.37073],
           "InteractionType": "CompleteQuest"
         }
       ]

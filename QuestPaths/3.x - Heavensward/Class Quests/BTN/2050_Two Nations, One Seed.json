@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013240,
-          "Position": {
-            "X": -84.45868,
-            "Y": 8.05915,
-            "Z": 37.125122
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1013241,
-          "Position": {
-            "X": -670.8019,
-            "Y": -127.97377,
-            "Z": 639.9481
-          },
-          "TerritoryId": 401,
+          "Position": [-670.8019, -127.97377, 639.9481],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSHRV550_02050_Q1_000_000",
@@ -45,73 +27,45 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132, 133]
-            }
-          }
+          "Position": [-233.9361, 6.668152, -171.03839],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013240,
-          "Position": {
-            "X": -84.45868,
-            "Y": 8.05915,
-            "Z": 37.125122
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard"
+          "Position": [-84.45868, 8.05915, 37.125122],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1013245,
-          "Position": {
-            "X": -136.91925,
-            "Y": 14.55313,
-            "Z": -150.31665
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "Position": [-136.91925, 14.55313, -150.31665],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "TerritoryId": 400,
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 400,
-          "AetheryteShortcut": "The Churning Mists - Zenith",
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -130,31 +84,20 @@
         },
         {
           "DataId": 1013241,
-          "Position": {
-            "X": -670.8019,
-            "Y": -127.97377,
-            "Z": 639.9481
-          },
+          "Position": [-670.8019, -127.97377, 639.9481],
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013240,
-          "Position": {
-            "X": -84.45868,
-            "Y": 8.05915,
-            "Z": 37.125122
-          },
-          "TerritoryId": 418,
+          "Position": [-84.45868, 8.05915, 37.125122],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "NextQuestId": 2051
         }
       ]

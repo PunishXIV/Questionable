@@ -1,75 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1058144,
-          "Position": {
-            "X": -222.58337,
-            "Y": 0.000016570904,
-            "Z": 24.795776
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Nexus Arcade"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1056561,
-          "Position": {
-            "X": 25.375732,
-            "Y": 8.205902,
-            "Z": -640.1007
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "Position": [25.375732, 8.205902, -640.1007],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1056563,
-          "Position": {
-            "X": 754.20764,
-            "Y": -131.84293,
-            "Z": 495.29248
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "Position": [754.20764, -131.84293, 495.29248],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1048984,
-          "Position": {
-            "X": 673.06006,
-            "Y": -135.17874,
-            "Z": 577.47766
-          },
-          "TerritoryId": 1189,
+          "Position": [673.06006, -135.17874, 577.47766],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -81,14 +48,8 @@
         },
         {
           "DataId": 1048987,
-          "Position": {
-            "X": 596.97876,
-            "Y": -142.60623,
-            "Z": 441.7334
-          },
-          "TerritoryId": 1189,
+          "Position": [596.97876, -142.60623, 441.7334],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -100,14 +61,8 @@
         },
         {
           "DataId": 1048985,
-          "Position": {
-            "X": 583.33704,
-            "Y": -143.60632,
-            "Z": 703.7612
-          },
-          "TerritoryId": 1189,
+          "Position": [583.33704, -143.60632, 703.7612],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -121,96 +76,66 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1056566,
-          "Position": {
-            "X": 605.98157,
-            "Y": -137.17401,
-            "Z": 494.255
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [605.98157, -137.17401, 494.255],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2015068,
-          "Position": {
-            "X": 366.2064,
-            "Y": -157.8436,
-            "Z": 443.093
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [366.2064, -157.8436, 443.093],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2015069,
-          "Position": {
-            "X": 64.10357,
-            "Y": -176.0892,
-            "Z": 335.6374
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [64.10357, -176.0892, 335.6374],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2015070,
-          "Position": {
-            "X": -13.74171,
-            "Y": -158.7538,
-            "Z": 78.17385
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-13.74171, -158.7538, 78.17385],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1056581,
-          "Position": {
-            "X": -518.9441,
-            "Y": 19.487064,
-            "Z": 19.394226
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
-          "Fly": true
+          "Position": [-518.9441, 19.487064, 19.394226],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1053655,
-          "Position": {
-            "X": 231.64722,
-            "Y": 50.749847,
-            "Z": 210.25403
-          },
-          "TerritoryId": 1186,
+          "Position": [231.64722, 50.749847, 210.25403],
           "InteractionType": "CompleteQuest"
         }
       ]

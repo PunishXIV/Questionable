@@ -1,75 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039940,
-          "Position": {
-            "X": -371.29785,
-            "Y": 22.255,
-            "Z": 400.71716
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1039942,
-          "Position": {
-            "X": -462.57727,
-            "Y": 20.805109,
-            "Z": -340.68823
-          },
-          "TerritoryId": 958,
+          "Position": [-462.57727, 20.805109, -340.68823],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 2012006,
-          "Position": {
-            "X": -602.04474,
-            "Y": 34.286987,
-            "Z": -325.85645
-          },
-          "TerritoryId": 958,
+          "Position": [-602.04474, 34.286987, -325.85645],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818350
         },
         {
           "DataId": 1039946,
-          "Position": {
-            "X": -476.0052,
-            "Y": 10.889291,
-            "Z": -678.0652
-          },
-          "TerritoryId": 958,
+          "Position": [-476.0052, 10.889291, -678.0652],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1042016,
-          "Position": {
-            "X": -483.299,
-            "Y": 10.889291,
-            "Z": -677.4243
-          },
-          "TerritoryId": 958,
+          "Position": [-483.299, 10.889291, -677.4243],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -81,21 +53,16 @@
         },
         {
           "DataId": 2012112,
-          "Position": {
-            "X": -516.7163,
-            "Y": -190.02063,
-            "Z": -675.288
-          },
-          "TerritoryId": 958,
+          "Position": [-516.7163, -190.02063, -675.288],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "TerritoryId": 958,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 785,
@@ -109,16 +76,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1024,
       "Steps": [
         {
           "DataId": 1039969,
-          "Position": {
-            "X": 2.029419,
-            "Y": 0,
-            "Z": 33.585083
-          },
-          "StopDistance": 4,
-          "TerritoryId": 1024,
+          "Position": [2.029419, 0, 33.585083],
           "InteractionType": "CompleteQuest"
         }
       ]

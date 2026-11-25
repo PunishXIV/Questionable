@@ -1,68 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["JerryWester", "alydev"],
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1019468,
-          "Position": {
-            "X": 165.61469,
-            "Y": 13.02367,
-            "Z": -90.53424
-          },
-          "StopDistance": 1,
-          "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "Position": [165.61469, 13.02367, -90.53424],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1024136,
-          "Position": {
-            "X": -29.34314,
-            "Y": -0.1424195,
-            "Z": -124.52893
-          },
-          "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "StopDistance": 4
+          "Position": [-29.34314, -0.1424195, -124.52893],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1019442,
-          "Position": {
-            "X": 42.040672,
-            "Y": 0,
-            "Z": 26.21167
-          },
-          "TerritoryId": 635,
-          "StopDistance": 1,
+          "Position": [42.040672, 0, 26.21167],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179695
         },
         {
           "DataId": 2009050,
-          "Position": {
-            "X": 49.66809,
-            "Y": -0.015319824,
-            "Z": 58.182617
-          },
-          "TerritoryId": 635,
+          "Position": [49.66809, -0.015319824, 58.182617],
           "InteractionType": "CompleteQuest"
         }
       ]

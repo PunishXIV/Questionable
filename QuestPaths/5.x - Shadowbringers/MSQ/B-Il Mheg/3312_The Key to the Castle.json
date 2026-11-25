@@ -1,54 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030535,
-          "Position": {
-            "X": -355.30634,
-            "Y": 46.684208,
-            "Z": 482.0172
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030838,
-          "Position": {
-            "X": -285.90833,
-            "Y": 40.324036,
-            "Z": 444.41882
-          },
-          "TerritoryId": 816,
+          "Position": [-285.90833, 40.324036, 444.41882],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 3404
         },
         {
           "DataId": 2009828,
-          "Position": {
-            "X": 133.40955,
-            "Y": -0.015319824,
-            "Z": 455.9242
-          },
-          "TerritoryId": 816,
+          "Position": [133.40955, -0.015319824, 455.9242],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "TerritoryId": 816,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 649,
@@ -59,28 +39,19 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2010056,
-          "Position": {
-            "X": -231.4141,
-            "Y": 4.701926,
-            "Z": 160.8437
-          },
-          "TerritoryId": 816,
+          "Position": [-231.4141, 4.701926, 160.8437],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818270
         },
         {
           "DataId": 1031669,
-          "Position": {
-            "X": -300.0077,
-            "Y": 1.4994799,
-            "Z": 182.8794
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Mount": false
+          "Position": [-300.0077, 1.4994799, 182.8794],
+          "Mount": false,
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

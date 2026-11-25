@@ -1,97 +1,51 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050802,
-          "Position": {
-            "X": -153.09375,
-            "Y": 34.946026,
-            "Z": -581.0178
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -153.09375,
-                  "Y": 34.946026,
-                  "Z": -581.0178
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050809,
-          "Position": {
-            "X": -59.372925,
-            "Y": 42.99715,
-            "Z": -637.2626
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-59.372925, 42.99715, -637.2626],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050810,
-          "Position": {
-            "X": -44.480103,
-            "Y": 33.495888,
-            "Z": -306.99628
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-44.480103, 33.495888, -306.99628],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050810,
-          "Position": {
-            "X": 516.28033,
-            "Y": 145.60376,
-            "Z": 228.34976
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - Yyasulani Station"
+          "Position": [516.28033, 145.60376, 228.34976],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050806,
-          "Position": {
-            "X": -151.99518,
-            "Y": 34.94368,
-            "Z": -581.23145
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1191,
+          "Position": [-151.99518, 34.94368, -581.23145],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5163
         }

@@ -1,64 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1045249,
-          "Position": {
-            "X": -114.133,
-            "Y": 11.8,
-            "Z": -121.025
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 2013309,
-          "Position": {
-            "X": 35.2808,
-            "Y": 8,
-            "Z": 156.531
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Bokairo Inn",
-            "[Kugane] Thavnairian Consulate"
-          ]
+          "Position": [35.2808, 8, 156.531],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1045249,
-          "Position": {
-            "X": -114.133,
-            "Y": 11.8,
-            "Z": -121.025
-          },
-          "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] Thavnairian Consulate",
-            "[Kugane] Bokairo Inn"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

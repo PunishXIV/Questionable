@@ -1,6 +1,5 @@
 ﻿using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps;
 
 [RegisterSingleton]
@@ -26,11 +25,8 @@ internal sealed class TaskCreator
         if (!configuration.Advanced.Debug && quest.Root.Disabled && sequenceNumber.Equals(1))
         {
             var reason = (quest.Root.Comment ?? "<no reason specified>").Split('\n', 2)[0];
-            _chatGui.PrintError($"The quest '{quest.Info.Name}' has been marked as Disabled for the following reason: {reason}",
-                CommandHandler.MessageTag, CommandHandler.TagColor);
-            _chatGui.PrintError("We recommend you complete this quest manually, as the provided path may not run successfully.",
-                CommandHandler.MessageTag, CommandHandler.TagColor);
-            _chatGui.PrintError("Thank you for your patience as we expand QST's support to include this quest in a future update.",
+            _chatGui.Print(_LF("'{0}' is marked as disabled: {1}. Complete it manually; its path may not run correctly.",
+                    quest.Info.Name, reason.TrimEnd('.')),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
         }
 
@@ -38,21 +34,22 @@ internal sealed class TaskCreator
         {
             if (!quest.Root.Disabled &&
                 quest.FindSequence((byte)(sequenceNumber - 1)) is { } prevSequence &&
-                !prevSequence.Steps.Any(_step => _step is { InteractionType: EInteractionType.Duty or EInteractionType.SinglePlayerDuty }))
+                !prevSequence.Steps.Any(x => x is { InteractionType: EInteractionType.Duty or EInteractionType.SinglePlayerDuty }))
             {
                 _chatGui.PrintError(
                     $"Path for quest '{quest.Info.Name}' ({quest.Id}) does not contain sequence {sequenceNumber}, please report this: https://github.com/PunishXIV/Questionable/discussions/20",
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
 
-            newTasks = [new WaitAtEnd.WaitNextStepOrSequence()];
+            newTasks = [new WaitAtEnd.NextStepOrSequence()];
         }
         else if (step == null)
-            newTasks = [new WaitAtEnd.WaitNextStepOrSequence()];
+            newTasks = [new WaitAtEnd.NextStepOrSequence()];
         else
         {
             using IServiceScope scope = _serviceProvider.CreateScope();
-            newTasks = scope.ServiceProvider.GetRequiredService<IEnumerable<ITaskFactory>>()
+            List<ITaskFactory> factories = scope.ServiceProvider.GetRequiredService<IEnumerable<ITaskFactory>>().ToList();
+            newTasks = factories
                 .SelectMany(x =>
                 {
                     List<ITask> tasks = x.CreateAllTasks(quest, sequence, step).ToList();
@@ -71,19 +68,18 @@ internal sealed class TaskCreator
                 })
                 .ToList();
 
-            SinglePlayerDuty.StartSinglePlayerDuty? singlePlayerDutyTask = newTasks
-                .Where(y => y is SinglePlayerDuty.StartSinglePlayerDuty)
-                .Cast<SinglePlayerDuty.StartSinglePlayerDuty>()
+            QuestBattle.Start? questBattleTask = newTasks
+                .Where(y => y is QuestBattle.Start)
+                .Cast<QuestBattle.Start>()
                 .FirstOrDefault();
-            if (singlePlayerDutyTask != null &&
-                _territoryData.TryGetContentFinderCondition(singlePlayerDutyTask.ContentFinderConditionId,
-                    out TerritoryData.ContentFinderConditionData? cfcData))
+            if (questBattleTask != null &&
+                _territoryData.TryGetCfc(questBattleTask.CfcId,
+                    out TerritoryData.CfcData? cfcData))
             {
-                // if we have a single player duty in queue, we check if we're in the matching territory
-                // if yes, skip all steps before (e.g. teleporting, waiting for navmesh, moving, interacting)
+                // Resume queued solo duties in their instance instead of repeating travel steps.
                 if (_clientState.TerritoryType == cfcData.TerritoryId)
                 {
-                    int index = newTasks.IndexOf(singlePlayerDutyTask);
+                    int index = newTasks.IndexOf(questBattleTask);
                     _logger.LogWarning(
                         "Skipping {SkippedTaskCount} out of {TotalCount} tasks, questionable was started while in single player duty",
                         index + 1, newTasks.Count);
@@ -95,9 +91,9 @@ internal sealed class TaskCreator
                 }
             }
 
-            WaitAtEnd.WaitForTerritory? waitForTerritory = newTasks
-                .Where(y => y is WaitAtEnd.WaitForTerritory)
-                .Cast<WaitAtEnd.WaitForTerritory>()
+            WaitAtEnd.TerritoryEntered? waitForTerritory = newTasks
+                .Where(y => y is WaitAtEnd.TerritoryEntered)
+                .Cast<WaitAtEnd.TerritoryEntered>()
                 .FirstOrDefault();
             if (waitForTerritory != null &&
                 _clientState.TerritoryType == waitForTerritory.TerritoryId)
@@ -110,6 +106,23 @@ internal sealed class TaskCreator
                 _logger.LogInformation("Next actual task: {NextTask}, total tasks left: {RemainingTaskCount}",
                     newTasks.FirstOrDefault(),
                     newTasks.Count);
+            }
+
+            if (SwitchClassJob.EarlierSwitch(sequence, step) is { } switchStep)
+            {
+                List<ITask> switchTasks = factories.OfType<SwitchClassJob.Factory>().Single()
+                    .CreateAllTasks(quest, sequence, switchStep).ToList();
+                if (switchTasks.OfType<SwitchClassJob.Task>().FirstOrDefault() is { } switchTask &&
+                    !SwitchClassJob.IsCurrentJob(switchTask.ClassJob))
+                {
+                    _logger.LogInformation("Job changed since this sequence switched to {Job}, switching back", switchTask.ClassJob);
+                    newTasks.InsertRange(0, switchTasks);
+                }
+            }
+            else if (sequence.Sequence > 0 && SwitchClassJob.AcceptedJob(quest.Id, quest.Info.ClassJobs, quest.Info.Level) is { } acceptedJob)
+            {
+                _logger.LogInformation("{QuestId} was accepted as {Job}, switching back", quest.Id, acceptedJob);
+                newTasks.Insert(0, new SwitchClassJob.Task(acceptedJob));
             }
         }
 

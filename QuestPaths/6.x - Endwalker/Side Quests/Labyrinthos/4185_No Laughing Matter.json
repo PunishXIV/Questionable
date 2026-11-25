@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,18 +8,12 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1037492,
-          "Position": {
-            "X": -4.3794,
-            "Y": 170.403,
-            "Z": -735.714
-          },
-          "TerritoryId": 956,
+          "Position": [-4.3794, 170.403, -735.714],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -32,36 +26,18 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1039331,
-          "Position": {
-            "X": -394.974,
-            "Y": 203.152,
-            "Z": -816.74
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-394.974, 203.152, -816.74],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037492,
-          "Position": {
-            "X": -4.3794,
-            "Y": 170.403,
-            "Z": -735.714
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

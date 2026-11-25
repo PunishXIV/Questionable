@@ -1,21 +1,31 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Types;
-using ECommons.ExcelServices;
+﻿using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class SkipCondition
 {
-    internal sealed class Factory(Configuration configuration) : SimpleTaskFactory
+    internal static CraftingItem? GetItemTarget(ElementId questId, QuestStep step)
+    {
+        if (step.ItemId == null)
+            return null;
+
+        var target = new CraftingItem(step.ItemId.Value, step.ItemCount ?? 0, step.ItemQuality);
+        return step.InteractionType == EInteractionType.Craft && step.ItemCount is > 0
+            ? QuestCraftingRequirements.ResolveItem(questId, target)
+            : target;
+    }
+
+    internal sealed class Factory(AetheryteFunctions aetheryteFunctions) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             SkipStepConditions? skipConditions = step.SkipConditions?.StepIf;
             if (skipConditions is { Never: true })
                 return null;
+
+            IReadOnlyList<GatheredItem> fishAhead = Fish.FishAhead(sequence, step);
 
             if ((skipConditions == null || !skipConditions.HasSkipConditions()) &&
                 !QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags) &&
@@ -25,27 +35,32 @@ internal static class SkipCondition
                 step.NextQuestId == null &&
                 step.RequiredCurrentJob.Count == 0 &&
                 step.RequiredQuestAcceptedJob.Count == 0 &&
-                !(step.InteractionType == EInteractionType.AttuneAetherCurrent && configuration.Advanced.SkipAetherCurrents))
+                step.InteractionType != EInteractionType.AttuneAetherCurrent &&
+                !(step.InteractionType == EInteractionType.Interact && aetheryteFunctions.IsCosmicAethernet(step.DataId)) &&
+                fishAhead.Count == 0)
             {
                 return null;
             }
 
-            return new SkipTask(step, skipConditions ?? new(), quest.Id);
+            return new Task(step, skipConditions ?? new(), quest.Id, fishAhead);
         }
     }
 
-    internal sealed record SkipTask
+    internal sealed record Task
     (
         QuestStep Step,
         SkipStepConditions SkipConditions,
-        ElementId ElementId) : ITask
+        ElementId ElementId,
+        IReadOnlyList<GatheredItem>? FishAhead = null) : ITask
     {
         public override string ToString() => "CheckSkip";
     }
 
-    internal sealed class CheckSkip
+    private const uint FishingTackle = 33;
+
+    internal sealed class Executor
     (
-        ILogger<CheckSkip> logger,
+        ILogger<Executor> logger,
         Configuration configuration,
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
@@ -54,7 +69,8 @@ internal static class SkipCondition
         IObjectTable objectTable,
         ICondition condition,
         ExtraConditionUtils extraConditionUtils,
-        ClassJobUtils classJobUtils) : TaskExecutor<SkipTask>
+        ClassJobUtils classJobUtils,
+        IDataManager dataManager) : TaskExecutor<Task>
     {
         protected override bool Start()
         {
@@ -62,70 +78,93 @@ internal static class SkipCondition
             QuestStep step = Task.Step;
             ElementId elementId = Task.ElementId;
 
-            logger.LogInformation("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
+            logger.LogDebug("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
 
-            if (CheckFlyingCondition(step, skipConditions))
+            if (CheckFishInBags(step))
                 return true;
 
-            if (CheckUnlockedMountCondition(skipConditions))
+            if (CheckFlying(step, skipConditions))
                 return true;
 
-            if (CheckDivingCondition(skipConditions))
+            if (CheckChocobo(skipConditions))
                 return true;
 
-            if (CheckTerritoryCondition(skipConditions))
+            if (CheckDiving(skipConditions))
                 return true;
 
-            if (CheckQuestConditions(skipConditions))
+            if (CheckTerritory(skipConditions))
                 return true;
 
-            if (CheckTargetableCondition(step, skipConditions))
+            if (CheckQuests(skipConditions))
                 return true;
 
-            if (CheckNameplateCondition(step, skipConditions))
+            if (CheckTargetable(step, skipConditions))
                 return true;
 
-            if (CheckDutiesUnlockedCondition(skipConditions))
+            if (CheckNameplate(step, skipConditions))
                 return true;
 
-            if (CheckDutiesCompletedCondition(skipConditions))
+            if (CheckDutiesUnlocked(skipConditions))
                 return true;
 
-            if (CheckItemCondition(step, skipConditions))
+            if (CheckDutiesCompleted(skipConditions))
                 return true;
 
-            if (CheckAetheryteCondition(step, skipConditions))
+            if (CheckItem(step, skipConditions))
                 return true;
 
-            if (CheckAetherCurrentCondition(step))
+            if (CheckAetheryte(step, skipConditions))
                 return true;
 
-            if (CheckQuestWorkConditions(elementId, step))
+            if (CheckLevel(skipConditions))
                 return true;
 
-            if (CheckJobCondition(elementId, step))
+            if (CheckAetherCurrent(elementId, step, skipConditions))
                 return true;
 
-            if (CheckPositionCondition(skipConditions))
+            if (CheckQuestWork(elementId, step))
+                return true;
+
+            if (CheckJob(elementId, step))
+                return true;
+
+            if (CheckPosition(skipConditions))
                 return true;
 
             if (skipConditions.ExtraCondition != null && skipConditions.ExtraCondition != EExtraSkipCondition.None &&
-                extraConditionUtils.MatchesExtraCondition(skipConditions.ExtraCondition.Value))
+                extraConditionUtils.Matches(skipConditions.ExtraCondition.Value))
             {
                 logger.LogInformation("Skipping step, extra condition {ExtraCondition} matches", skipConditions.ExtraCondition);
                 return true;
             }
 
-            if (CheckPickUpTurnInQuestIds(step))
+            if (CheckPickUpTurnIn(step))
                 return true;
 
-            if (CheckTaxiStandUnlocked(step))
+            if (CheckTaxiStand(step))
                 return true;
 
             return false;
         }
 
-        private bool CheckFlyingCondition(QuestStep step, SkipStepConditions skipConditions)
+        // Only bait purchases go; a purchase the quest itself needs stays.
+        private bool CheckFishInBags(QuestStep step)
+        {
+            if (Task.FishAhead is not { Count: > 0 } fish ||
+                fish.Any(x => Fish.CountEligibleInInventory(x) < x.ItemCount))
+                return false;
+            if (step.InteractionType == EInteractionType.PurchaseItem &&
+                (step.ItemId is not { } itemId || !IsFishingTackle(itemId)))
+                return false;
+
+            logger.LogInformation("Skipping step, the fish it leads to are already in the inventory");
+            return true;
+        }
+
+        private bool IsFishingTackle(uint itemId) =>
+            dataManager.GetExcelSheet<Lumina.Excel.Sheets.Item>().GetRowOrDefault(itemId)?.ItemUICategory.RowId == FishingTackle;
+
+        private bool CheckFlying(QuestStep step, SkipStepConditions skipConditions)
         {
             if (skipConditions.Flying == ELockedSkipCondition.Unlocked &&
                 GameFunctions.IsFlyingUnlocked(step.TerritoryId))
@@ -144,7 +183,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckUnlockedMountCondition(SkipStepConditions skipConditions)
+        private unsafe bool CheckChocobo(SkipStepConditions skipConditions)
         {
             if (skipConditions.Chocobo == ELockedSkipCondition.Unlocked &&
                 PlayerState.Instance()->IsMountUnlocked(1))
@@ -156,7 +195,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckTerritoryCondition(SkipStepConditions skipConditions)
+        private bool CheckTerritory(SkipStepConditions skipConditions)
         {
             if (skipConditions.InTerritory.Count > 0 &&
                 skipConditions.InTerritory.Contains(clientState.TerritoryType))
@@ -175,7 +214,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckDivingCondition(SkipStepConditions skipConditions)
+        private bool CheckDiving(SkipStepConditions skipConditions)
         {
             if (skipConditions.Diving == true && condition[ConditionFlag.Diving])
             {
@@ -192,7 +231,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckQuestConditions(SkipStepConditions skipConditions)
+        private bool CheckQuests(SkipStepConditions skipConditions)
         {
             if (skipConditions.QuestsCompleted.Count > 0 &&
                 skipConditions.QuestsCompleted.All(questFunctions.IsQuestComplete))
@@ -211,7 +250,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckTargetableCondition(QuestStep step, SkipStepConditions skipConditions)
+        private bool CheckTargetable(QuestStep step, SkipStepConditions skipConditions)
         {
             if (skipConditions.NotTargetable &&
                 step is { DataId: not null })
@@ -235,7 +274,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckNameplateCondition(QuestStep step, SkipStepConditions skipConditions)
+        private unsafe bool CheckNameplate(QuestStep step, SkipStepConditions skipConditions)
         {
             if (skipConditions.NotNamePlateIconId.Count > 0 &&
                 step is { DataId: not null })
@@ -256,12 +295,12 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckDutiesUnlockedCondition(SkipStepConditions skipConditions)
+        private bool CheckDutiesUnlocked(SkipStepConditions skipConditions)
         {
             if (skipConditions.DutiesUnlocked.Count > 0)
             {
                 if (skipConditions.DutiesUnlocked.All(x =>
-                        gameFunctions.ContentFinderConditionToContentId.TryGetValue(x, out var contentId) &&
+                        gameFunctions.CfcToContentId.TryGetValue(x, out var contentId) &&
                         UIState.IsInstanceContentUnlocked(contentId)))
                     return true;
             }
@@ -269,12 +308,12 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckDutiesCompletedCondition(SkipStepConditions skipConditions)
+        private bool CheckDutiesCompleted(SkipStepConditions skipConditions)
         {
             if (skipConditions.DutiesCompleted.Count > 0)
             {
                 if (skipConditions.DutiesCompleted.All(x =>
-                        gameFunctions.ContentFinderConditionToContentId.TryGetValue(x, out var contentId) &&
+                        gameFunctions.CfcToContentId.TryGetValue(x, out var contentId) &&
                         UIState.IsInstanceContentCompleted(contentId)))
                     return true;
             }
@@ -282,41 +321,43 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckItemCondition(QuestStep step, SkipStepConditions skipConditions)
+        private unsafe bool CheckItem(QuestStep step, SkipStepConditions skipConditions)
         {
-            // Skip step if specified item is not in inventory (checks both NQ and HQ)
-            if (step is { ItemId: null })
+            CraftingItem? target = GetItemTarget(Task.ElementId, step);
+            if (target == null)
                 return false;
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
             int itemCount = 0;
-            switch (step.ItemQuality)
+            switch (target.Quality)
             {
                 case EItemQuality.NQ:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: false, checkEquipped: false);
+                    itemCount = inventoryManager->GetInventoryItemCount(target.ItemId, isHq: false, checkEquipped: false);
                     break;
                 case EItemQuality.HQ:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: true, checkEquipped: false);
+                    itemCount = inventoryManager->GetInventoryItemCount(target.ItemId, isHq: true, checkEquipped: false);
                     break;
                 case EItemQuality.Any:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: false, checkEquipped: false)
-                                + inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: true, checkEquipped: false);
+                    itemCount = inventoryManager->GetInventoryItemCount(target.ItemId, isHq: false, checkEquipped: false)
+                                + inventoryManager->GetInventoryItemCount(target.ItemId, isHq: true, checkEquipped: false);
+                    if (step.InteractionType == EInteractionType.Craft)
+                        itemCount += inventoryManager->GetInventoryItemCount(target.ItemId + 500000, isHq: false, checkEquipped: false);
                     break;
             }
 
             if (itemCount == 0 && skipConditions.Item is { NotInInventory: true })
             {
                 logger.LogInformation("Skipping step, no item with itemId {ItemId} in inventory",
-                    step.ItemId.Value);
+                    target.ItemId);
                 return true;
             }
 
             if (itemCount > 0 && skipConditions.Item is { NotInInventory: false })
             {
-                if (step.ItemCount != null && itemCount >= step.ItemCount)
+                if (step.ItemCount != null && itemCount >= target.ItemCount)
                 {
                     logger.LogInformation("Skipping step, item with itemId {ItemId} in inventory",
-                        step.ItemId.Value);
+                        target.ItemId);
                     return true;
                 }
             }
@@ -324,8 +365,15 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckAetheryteCondition(QuestStep step, SkipStepConditions skipConditions)
+        private bool CheckAetheryte(QuestStep step, SkipStepConditions skipConditions)
         {
+            if (step is { InteractionType: EInteractionType.Interact, DataId: { } crystal } &&
+                aetheryteFunctions.IsCosmicAethernetUnlocked(crystal) == true)
+            {
+                logger.LogInformation("Skipping step, as the Cosmic Exploration aethernet is unlocked");
+                return true;
+            }
+
             if (step is { Aetheryte: { } aetheryteLocation, InteractionType: EInteractionType.AttuneAetheryte } &&
                 aetheryteFunctions.IsAetheryteUnlocked(aetheryteLocation))
             {
@@ -344,7 +392,7 @@ internal static class SkipCondition
                 {
                     Aetheryte: { } favoredAetheryte, InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte
                 } &&
-                aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(favoredAetheryte) is AetheryteRegistrationResult.NotPossible)
+                aetheryteFunctions.CanRegisterFreeOrFavored(favoredAetheryte) is AetheryteRegistrationResult.NotPossible)
             {
                 logger.LogInformation("Skipping step, already registered all possible free or favored aetherytes");
                 return true;
@@ -367,32 +415,52 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckAetherCurrentCondition(QuestStep step)
+        private unsafe bool CheckLevel(SkipStepConditions skipConditions)
         {
-            if (step is { InteractionType: EInteractionType.AttuneAetherCurrent } &&
-                configuration.Advanced.SkipAetherCurrents)
+            if (skipConditions.LevelReached is not { } level || PlayerState.Instance()->CurrentLevel < level)
+                return false;
+
+            logger.LogInformation("Skipping step, as the current job is level {Level} or higher", level);
+            return true;
+        }
+
+        private bool CheckAetherCurrent(ElementId elementId, QuestStep step, SkipStepConditions skipConditions)
+        {
+            if (ShouldSkipForSetting(elementId, step, configuration.Advanced.SkipAetherCurrents))
             {
                 logger.LogInformation("Skipping step, as aether currents should be skipped");
                 return true;
             }
 
-            if (step is { DataId: not null, InteractionType: EInteractionType.AttuneAetherCurrent } &&
-                gameFunctions.IsAetherCurrentUnlocked(step.DataId.Value))
+            if (step is { AetherCurrentId: { } currentId, InteractionType: EInteractionType.AttuneAetherCurrent } &&
+                gameFunctions.IsAetherCurrentUnlocked(currentId))
             {
                 logger.LogInformation("Skipping step, as current is unlocked");
+                return true;
+            }
+
+            if (skipConditions.AetherCurrentUnlocked is { } waypointCurrent &&
+                gameFunctions.IsAetherCurrentUnlocked(waypointCurrent))
+            {
+                logger.LogInformation("Skipping step, as the current it leads to is unlocked");
                 return true;
             }
 
             return false;
         }
 
-        private bool CheckQuestWorkConditions(ElementId elementId, QuestStep step)
+        // A zone entry exists to collect currents, so the setting only skips them inside quests.
+        internal static bool ShouldSkipForSetting(ElementId elementId, QuestStep step, bool skipAetherCurrents) =>
+            skipAetherCurrents && step.InteractionType == EInteractionType.AttuneAetherCurrent &&
+            elementId is not AetherCurrentId;
+
+        private bool CheckQuestWork(ElementId elementId, QuestStep step)
         {
-            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(elementId);
+            QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(elementId);
             if (questWork != null)
             {
                 if (QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags) &&
-                    QuestWorkUtils.MatchesQuestWork(step.CompletionQuestVariablesFlags, questWork))
+                    QuestWorkUtils.Matches(step.CompletionQuestVariablesFlags, questWork))
                 {
                     logger.LogInformation("Skipping step, as quest variables match (step is complete)");
                     return true;
@@ -400,7 +468,7 @@ internal static class SkipCondition
 
                 if (step is { SkipConditions.StepIf: { } conditions })
                 {
-                    if (QuestWorkUtils.MatchesQuestWork(conditions.CompletionQuestVariablesFlags, questWork))
+                    if (QuestWorkUtils.Matches(conditions.CompletionQuestVariablesFlags, questWork))
                     {
                         logger.LogInformation("Skipping step, as quest variables match (step can be skipped)");
                         return true;
@@ -409,7 +477,7 @@ internal static class SkipCondition
 
                 if (step is { RequiredQuestVariables: { } requiredQuestVariables })
                 {
-                    if (!QuestWorkUtils.MatchesRequiredQuestWorkConfig(requiredQuestVariables, questWork, logger))
+                    if (!QuestWorkUtils.MatchesRequired(requiredQuestVariables, questWork, logger))
                     {
                         logger.LogInformation("Skipping step, as required variables do not match");
                         return true;
@@ -434,7 +502,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckJobCondition(ElementId elementId, QuestStep step)
+        private unsafe bool CheckJob(ElementId elementId, QuestStep step)
         {
             if (step is { RequiredCurrentJob.Count: > 0 })
             {
@@ -453,7 +521,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckPositionCondition(SkipStepConditions skipConditions)
+        private bool CheckPosition(SkipStepConditions skipConditions)
         {
             if (skipConditions.NearPosition is { } nearPosition &&
                 clientState.TerritoryType == nearPosition.TerritoryId)
@@ -480,7 +548,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckPickUpTurnInQuestIds(QuestStep step)
+        private bool CheckPickUpTurnIn(QuestStep step)
         {
             if (step.PickUpQuestId != null)
             {
@@ -490,7 +558,7 @@ internal static class SkipCondition
                     return true;
                 }
 
-                if (QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId) &&
+                if (step.PickUpQuestId is QuestId pickUpQuest && QuestData.AetherCurrentQuests.Contains(pickUpQuest) &&
                     (configuration.Advanced.SkipAetherCurrents ||
                      GameFunctions.IsFlyingUnlocked(step.TerritoryId))) // story skip apparently makes 1748 impossible to complete -alydev
                 {
@@ -517,7 +585,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckTaxiStandUnlocked(QuestStep step)
+        private unsafe bool CheckTaxiStand(QuestStep step)
         {
             UIState* uiState = UIState.Instance();
             if (step.TaxiStandId is not null)

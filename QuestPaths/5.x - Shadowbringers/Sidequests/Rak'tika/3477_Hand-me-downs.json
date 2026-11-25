@@ -1,52 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 332.38208,
-            "Y": 20.51081,
-            "Z": -215.36412
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1031395,
-          "Position": {
-            "X": 333.148,
-            "Y": 20.5108,
-            "Z": -213.277
-          },
-          "TerritoryId": 817,
+          "Position": [333.148, 20.5108, -213.277],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Fanow",
           "$": "auto: issuer 1031395 (hasty hunter)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031395,
-          "Position": {
-            "X": 160.557,
-            "Y": -3.1234,
-            "Z": -355.451
-          },
-          "TerritoryId": 817,
+          "Position": [160.557, -3.1234, -355.451],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Fanow",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -62,30 +38,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 332.38208,
-            "Y": 20.51081,
-            "Z": -215.36412
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1031395,
-          "Position": {
-            "X": 333.148,
-            "Y": 20.5108,
-            "Z": -213.277
-          },
-          "TerritoryId": 817,
+          "Position": [333.148, 20.5108, -213.277],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Fanow",
           "$": "auto: todo turn-in -> 1031395 (hasty hunter)"
         }
       ]

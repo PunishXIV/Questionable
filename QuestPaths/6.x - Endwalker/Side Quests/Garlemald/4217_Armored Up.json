@@ -1,62 +1,42 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "Comment": "Magitek armor does not yet automate reliably, manual interaction may be required -alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041122,
-          "Position": {
-            "X": 134.844,
-            "Y": -13.286316,
-            "Z": 649.8054
-          },
-          "TerritoryId": 958,
+          "Position": [134.844, -13.286316, 649.8054],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "this thing starts out in the boonies"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041119,
-          "Position": {
-            "X": 135.85095,
-            "Y": -17.135998,
-            "Z": 567.8645
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [135.85095, -17.135998, 567.8645],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041119,
-          "Position": {
-            "X": 135.85095,
-            "Y": -17.135998,
-            "Z": 567.8645
-          },
-          "TerritoryId": 958,
+          "Position": [135.85095, -17.135998, 567.8645],
           "InteractionType": "Interact"
         },
         {
-          "Position": {
-            "X": 73.64728,
-            "Y": -18.777306,
-            "Z": 527.2946
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 958,
+          "Position": [73.64728, -18.777306, 527.2946],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -66,13 +46,7 @@
           "$.0": "0 0 0 0 0 0 -> 16 64 0 0 0 128"
         },
         {
-          "Position": {
-            "X": 370.17212,
-            "Y": -18.937208,
-            "Z": 338.0957
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 958,
+          "Position": [370.17212, -18.937208, 338.0957],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -84,28 +58,17 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": 135.85095,
-            "Y": -17.135998,
-            "Z": 567.8645
-          },
-          "StopDistance": 2000,
-          "TerritoryId": 958,
-          "InteractionType": "None",
-          "Mount": false
+          "Position": [135.85095, -17.135998, 567.8645],
+          "Mount": false,
+          "InteractionType": "None"
         },
         {
           "DataId": 1041119,
-          "Position": {
-            "X": 135.85095,
-            "Y": -17.135998,
-            "Z": 567.8645
-          },
-          "TerritoryId": 958,
+          "Position": [135.85095, -17.135998, 567.8645],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 4218
         }
       ]

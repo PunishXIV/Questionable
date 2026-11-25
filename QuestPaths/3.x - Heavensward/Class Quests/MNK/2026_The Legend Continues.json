@@ -1,168 +1,105 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006749,
-          "Position": {
-            "X": -30.47229,
-            "Y": 13.599918,
-            "Z": 95.26196
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013971,
-          "Position": {
-            "X": 15.854065,
-            "Y": 28.620823,
-            "Z": -682.76495
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [15.854065, 28.620823, -682.76495],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013976,
-          "Position": {
-            "X": 95.87244,
-            "Y": -4.4635005,
-            "Z": -533.56226
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [95.87244, -4.4635005, -533.56226],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013977,
-          "Position": {
-            "X": 207.53784,
-            "Y": 18.12324,
-            "Z": -608.75867
-          },
-          "TerritoryId": 156,
+          "Position": [207.53784, 18.12324, -608.75867],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             777
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013977,
-          "Position": {
-            "X": 207.53784,
-            "Y": 18.12324,
-            "Z": -608.75867
-          },
-          "TerritoryId": 156,
+          "Position": [207.53784, 18.12324, -608.75867],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013978,
-          "Position": {
-            "X": 205.95093,
-            "Y": -22.991264,
-            "Z": -449.24084
-          },
-          "TerritoryId": 156,
+          "Position": [205.95093, -22.991264, -449.24084],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             4615
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013978,
-          "Position": {
-            "X": 205.95093,
-            "Y": -22.991264,
-            "Z": -449.24084
-          },
-          "TerritoryId": 156,
+          "Position": [205.95093, -22.991264, -449.24084],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1014111,
-          "Position": {
-            "X": 95.87244,
-            "Y": -4.4635005,
-            "Z": -533.56226
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [95.87244, -4.4635005, -533.56226],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013971,
-          "Position": {
-            "X": 15.854065,
-            "Y": 28.620823,
-            "Z": -682.76495
-          },
-          "TerritoryId": 156,
+          "Position": [15.854065, 28.620823, -682.76495],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2027
         }
       ]

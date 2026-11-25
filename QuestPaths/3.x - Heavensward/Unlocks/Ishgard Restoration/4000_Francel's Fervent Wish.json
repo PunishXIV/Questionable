@@ -1,82 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1035520,
-          "Position": {
-            "X": 19.943481,
-            "Y": 1.8347055E-07,
-            "Z": -158.92273
-          },
-          "StopDistance": 5,
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1035507,
-          "Position": {
-            "X": 48.41687,
-            "Y": -18.742718,
-            "Z": 6.576599
-          },
-          "TerritoryId": 886,
+          "Position": [48.41687, -18.742718, 6.576599],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 2011307,
-          "Position": {
-            "X": 49.94275,
-            "Y": -18.753357,
-            "Z": 10.910156
-          },
-          "TerritoryId": 886,
+          "Position": [49.94275, -18.753357, 10.910156],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 2011308,
-          "Position": {
-            "X": 215.62524,
-            "Y": -36.881104,
-            "Z": -3.5858765
-          },
-          "TerritoryId": 886,
+          "Position": [215.62524, -36.881104, -3.5858765],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mattock",
-            "[Firmament] Saint Roelle's Dais"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -89,15 +49,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 2011308,
-          "Position": {
-            "X": 215.62524,
-            "Y": -36.881104,
-            "Z": -3.5858765
-          },
-          "TerritoryId": 886,
+          "Position": [215.62524, -36.881104, -3.5858765],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -111,15 +67,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1035521,
-          "Position": {
-            "X": 207.599,
-            "Y": -40,
-            "Z": -13.290649
-          },
-          "TerritoryId": 886,
+          "Position": [207.599, -40, -13.290649],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4001
         }

@@ -1,60 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "Position": [391.94043, -119.58932, -235.04329],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024538,
-          "Position": {
-            "X": 703.7003,
-            "Y": 0.73878324,
-            "Z": -26.077698
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [703.7003, 0.73878324, -26.077698],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 2009241,
-          "Position": {
-            "X": 532.6465,
-            "Y": 0.99176025,
-            "Z": -201.2818
-          },
-          "TerritoryId": 613,
+          "Position": [532.6465, 0.99176025, -201.2818],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [{
             "DataId": 8234
           }],
-          "Fly": true,
           "CombatItemUse": {
             "Condition": "Incapacitated",
             "ItemId": 2002398
@@ -66,18 +48,12 @@
         },
         {
           "DataId": 2009240,
-          "Position": {
-            "X": 620.2334,
-            "Y": 0.10675049,
-            "Z": -315.9076
-          },
-          "TerritoryId": 613,
+          "Position": [620.2334, 0.10675049, -315.9076],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [{
             "DataId": 8233
           }],
-          "Fly": true,
           "CombatItemUse": {
             "Condition": "Incapacitated",
             "ItemId": 2002398
@@ -89,18 +65,12 @@
         },
         {
           "DataId": 2009239,
-          "Position": {
-            "X": 762.9358,
-            "Y": 0.44250488,
-            "Z": -286.7323
-          },
-          "TerritoryId": 613,
+          "Position": [762.9358, 0.44250488, -286.7323],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [{
             "DataId": 8232
           }],
-          "Fly": true,
           "CombatItemUse": {
             "Condition": "Incapacitated",
             "ItemId": 2002398
@@ -114,20 +84,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "Position": [391.94043, -119.58932, -235.04329],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,50 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": -611.4443,
-            "Y": 4.030203,
-            "Z": 520.76807
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
-        },
-        {
           "DataId": 2012880,
-          "Position": {
-            "X": -669.4896,
-            "Y": -36.42328,
-            "Z": 522.6367
-          },
-          "TerritoryId": 957,
+          "Position": [-669.4896, -36.42328, 522.6367],
           "InteractionType": "Interact",
-          "Fly": true,
-          "DisableNavmesh": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 4}
             ],null,null,null,null
@@ -52,15 +22,8 @@
         },
         {
           "DataId": 2012881,
-          "Position": {
-            "X": -652.4605,
-            "Y": -31.784546,
-            "Z": 554.46704
-          },
-          "TerritoryId": 957,
+          "Position": [-652.4605, -31.784546, 554.46704],
           "InteractionType": "Interact",
-          "Fly": true,
-          "DisableNavmesh": true,
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 3}
             ],null,null,null,null
@@ -68,14 +31,8 @@
         },
         {
           "DataId": 2012882,
-          "Position": {
-            "X": -729.9458,
-            "Y": -38.864807,
-            "Z": 600.5187
-          },
-          "TerritoryId": 957,
+          "Position": [-729.9458, -38.864807, 600.5187],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 3}
             ],null,null,null,null
@@ -83,14 +40,8 @@
         },
         {
           "DataId": 2012883,
-          "Position": {
-            "X": -746.0593,
-            "Y": -38.92578,
-            "Z": 597.0397
-          },
-          "TerritoryId": 957,
+          "Position": [-746.0593, -38.92578, 597.0397],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 4}
             ],null,null,null,null
@@ -100,20 +51,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,96 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031179,
-          "Position": {
-            "X": 353.84143,
-            "Y": 86.52623,
-            "Z": -691.2795
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 353.84143,
-                  "Y": 86.52623,
-                  "Z": -691.2795
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -65.72714,
-            "Y": 1.4000998,
-            "Z": -38.895847
-          },
-          "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
-        },
-        {
           "DataId": 2010715,
-          "Position": {
-            "X": -84.00098,
-            "Y": -86.56445,
-            "Z": -55.86328
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true,
-          "Fly": true
+          "Position": [-84.00098, -86.56445, -55.86328],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031179,
-          "Position": {
-            "X": 353.84143,
-            "Y": 86.52623,
-            "Z": -691.2795
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 353.84143,
-                  "Y": 86.52623,
-                  "Z": -691.2795
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,4 +1,4 @@
-﻿using Dalamud.Game.Gui.Toast;
+using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
 using I18N.DotNet;
 using Lumina.Excel.Sheets;
@@ -8,9 +8,9 @@ namespace Questionable;
 internal sealed class DalamudInitializer : IDisposable
 {
     private readonly Configuration _configuration;
+    private readonly ConfigurationLocalization _configurationLocalization;
     private readonly ConfigWindow _configWindow;
     private readonly IFramework _framework;
-    private readonly HighlightObject _highlightObject;
     private readonly ILogger<DalamudInitializer> _logger;
     private readonly MovementController _movementController;
     private readonly OneTimeSetupWindow _oneTimeSetupWindow;
@@ -23,7 +23,6 @@ internal sealed class DalamudInitializer : IDisposable
     private readonly WindowSystem _windowSystem;
     private bool _disposed;
     internal bool FlagGearUnequippable;
-    internal bool FlagUnableExecuteCommand;
 
     public DalamudInitializer(
         IDalamudPluginInterface pluginInterface,
@@ -38,12 +37,11 @@ internal sealed class DalamudInitializer : IDisposable
         QuestSelectionWindow questSelectionWindow,
         QuestValidationWindow questValidationWindow,
         JournalProgressWindow journalProgressWindow,
-        PriorityWindow priorityWindow,
         PathEditorWindow pathEditorWindow,
+        QuestReportsWindow questReportsWindow,
         IChatGui chatGui,
         IToastGui toastGui,
         Configuration configuration,
-        HighlightObject highlightObject,
         PartyWatchDog partyWatchDog,
         ILogger<DalamudInitializer> logger)
     {
@@ -58,10 +56,9 @@ internal sealed class DalamudInitializer : IDisposable
         _chatGui = chatGui;
         _toastGui = toastGui;
         _configuration = configuration;
-        _highlightObject = highlightObject;
         _partyWatchDog = partyWatchDog;
         _logger = logger;
-        SetupI18N(_configuration.General.Language);
+        _configurationLocalization = new(configuration, SetupI18N);
 
         _windowSystem.AddWindow(oneTimeSetupWindow);
         _windowSystem.AddWindow(questWindow);
@@ -70,8 +67,8 @@ internal sealed class DalamudInitializer : IDisposable
         _windowSystem.AddWindow(questSelectionWindow);
         _windowSystem.AddWindow(questValidationWindow);
         _windowSystem.AddWindow(journalProgressWindow);
-        _windowSystem.AddWindow(priorityWindow);
         _windowSystem.AddWindow(pathEditorWindow);
+        _windowSystem.AddWindow(questReportsWindow);
 
         _pluginInterface.UiBuilder.Draw += _windowSystem.Draw;
         _pluginInterface.UiBuilder.OpenMainUi += ToggleQuestWindow;
@@ -80,8 +77,6 @@ internal sealed class DalamudInitializer : IDisposable
         _toastGui.Toast += OnToast;
         _toastGui.ErrorToast += OnErrorToast;
         _toastGui.QuestToast += OnQuestToast;
-        _configuration.Advanced.AbandonQuestBeforeCompletion = false;
-        _configuration.Advanced.RemoveFromPriorityWhenAbandoned = false;
         if (_configuration.Advanced.StartMinimized)
             _questWindow.IsMinimized = true;
 
@@ -91,12 +86,11 @@ internal sealed class DalamudInitializer : IDisposable
 
     public void Dispose()
     {
-        // Idempotent: QuestionablePlugin.DisposeAsync calls this up-front to unhook Dalamud event
-        // sources before the DI container is disposed, and MS.DI then calls it again during the
-        // container's own disposal walk. Second call must be a no-op.
         if (_disposed)
             return;
         _disposed = true;
+
+        _configurationLocalization.Dispose();
 
         _toastGui.QuestToast -= OnQuestToast;
         _toastGui.ErrorToast -= OnErrorToast;
@@ -118,25 +112,40 @@ internal sealed class DalamudInitializer : IDisposable
         {
             _movementController.Update();
         }
-        catch (MovementController.PathfindingFailedException e)
+        catch (MovementController.PathfindingException e)
         {
-            _logger.LogError(e, $"PathfindingFailedException NeverFly:{_configuration.Advanced.NeverFly}");
-            if (_configuration.Advanced.NeverFly)
-                _chatGui.PrintError(_L("vnavmesh was not able to find a path. This may be due to the " +
-                    "'Disable flying' setting in QST config > Advanced. Please uncheck this if you expected this " +
-                    "to run fine.") + $" {e.Message}", CommandHandler.MessageTag, CommandHandler.TagColor);
+            _questController.RecordNavigationFailure(e);
+            _logger.LogError(e, "Navigation failed ({Reason}), quest {Quest}, NeverFly:{NeverFly}",
+                e.Reason, _questController.CurrentQuest?.ToString(), _configuration.Advanced.NeverFly);
+            string text = GetPathfindingError(e.Reason);
+            if (IsPlayerCaused(e.Reason))
+                _chatGui.Print(text, CommandHandler.MessageTag, CommandHandler.TagColor);
             else
-                _chatGui.PrintError(_LF("vnavmesh was not able to find a path! Please report this to " +
-                    "Questionable developers. {0}", _questController.CurrentQuest?.ToString() ?? "") + $" {e.Message}",
-                    CommandHandler.MessageTag, CommandHandler.TagColor);
+                _chatGui.PrintError(text, CommandHandler.MessageTag, CommandHandler.TagColor);
             _questController.Stop(_L("Pathfinding failed"));
         }
     }
+
+    // Movement another plugin is doing isn't a failed path.
+    internal static bool IsPlayerCaused(MovementController.PathfindingFailureReason reason) =>
+        reason is MovementController.PathfindingFailureReason.MovementBlocked;
+
+    internal static string GetPathfindingError(MovementController.PathfindingFailureReason reason) => reason switch
+    {
+        MovementController.PathfindingFailureReason.MovementBlocked =>
+            _L("Navigation stopped because another plugin is moving your character. Wait for it to finish before resuming QST."),
+        MovementController.PathfindingFailureReason.Unavailable =>
+            _L("Navigation stopped because MappingTheRealm is not available. Install or enable it on the Plugins page in settings, then resume QST."),
+        MovementController.PathfindingFailureReason.Cancelled =>
+            _L("Navigation stopped because MappingTheRealm cancelled the route. Resume QST when you're ready."),
+        _ => _L("MappingTheRealm couldn't finish the route. Use Stuck? to copy troubleshooting information if this keeps happening."),
+    };
 
     private void OnToast(ref SeString message, ref ToastOptions options, ref bool isHandled) => _logger.LogTrace("Normal Toast: {Message}", message);
 
     private void OnErrorToast(ref SeString message, ref bool isHandled)
     {
+        _logger.LogDebug("Error toast: {Message}", message.TextValue);
         if (DialogueReferenceResolver.IsMatch(
                 message.ToString(),
                 new(Svc.Data.GetExcelSheet<LogMessage>().GetRow(1951).Text.ToRegex())) // 'contains gear unequippable'
@@ -148,19 +157,6 @@ internal sealed class DalamudInitializer : IDisposable
         else if (FlagGearUnequippable)
         {
             FlagGearUnequippable = false;
-        }
-
-        if (DialogueReferenceResolver.IsMatch(
-                message.ToString(),
-                new(Svc.Data.GetExcelSheet<LogMessage>().GetRow(7777).Text.ToRegex())) // 'unable to execute command while in flight'
-            && _questController.IsRunning)
-        {
-            FlagUnableExecuteCommand = true;
-            _logger.LogDebug("Toast: UnableExecuteCommand");
-        }
-        else if (FlagUnableExecuteCommand)
-        {
-            FlagUnableExecuteCommand = false;
         }
 
         _logger.LogTrace("Error Toast: {Message}", message);

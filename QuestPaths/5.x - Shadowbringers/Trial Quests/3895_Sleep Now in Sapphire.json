@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032586,
-          "Position": {
-            "X": -505.42462,
-            "Y": 7.68313,
-            "Z": 51.621216
-          },
-          "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1026804,
-          "Position": {
-            "X": -524.55945,
-            "Y": 8.698304,
-            "Z": -15.487976
-          },
-          "TerritoryId": 621,
+          "Position": [-524.55945, 8.698304, -15.487976],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -43,67 +26,47 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 829,
       "Steps": [
         {
           "DataId": 1033626,
-          "Position": {
-            "X": -484.42816,
-            "Y": 107.63,
-            "Z": 136.5835
-          },
-          "TerritoryId": 829,
+          "Position": [-484.42816, 107.63, 136.5835],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 829,
       "Steps": [
         {
           "DataId": 1032851,
-          "Position": {
-            "X": -481.3764,
-            "Y": 107.63,
-            "Z": 122.78931
-          },
-          "TerritoryId": 829,
+          "Position": [-481.3764, 107.63, 122.78931],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 829,
       "Steps": [
         {
           "DataId": 1032851,
-          "Position": {
-            "X": -481.3764,
-            "Y": 107.63,
-            "Z": 122.78931
-          },
-          "TerritoryId": 829,
+          "Position": [-481.3764, 107.63, 122.78931],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 829,
       "Steps": [
         {
           "DataId": 1032851,
-          "Position": {
-            "X": -481.3764,
-            "Y": 107.63,
-            "Z": 122.78931
-          },
-          "StopDistance": 5,
-          "TerritoryId": 829,
+          "Position": [-481.3764, 107.63, 122.78931],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Index": 1
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true, "Index": 1},
           "DialogueChoices": [
             {
               "Type": "List",
@@ -119,88 +82,44 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 919,
       "Steps": [
         {
           "DataId": 1033629,
-          "Position": {
-            "X": -0.3204956,
-            "Y": 41,
-            "Z": 17.56311
-          },
-          "TerritoryId": 919,
+          "Position": [-0.3204956, 41, 17.56311],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 919,
       "Steps": [
         {
           "DataId": 1033632,
-          "Position": {
-            "X": 50.94983,
-            "Y": 35,
-            "Z": 60.440918
-          },
-          "TerritoryId": 919,
+          "Position": [50.94983, 35, 60.440918],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 919,
       "Steps": [
         {
           "DataId": 1033635,
-          "Position": {
-            "X": 5.2643433,
-            "Y": 41,
-            "Z": 9.811523
-          },
-          "TerritoryId": 919,
+          "Position": [5.2643433, 41, 9.811523],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 919,
       "Steps": [
         {
-          "DataId": 1033636,
-          "Position": {
-            "X": -5.5390625,
-            "Y": 41.019974,
-            "Z": 25.680908
-          },
-          "TerritoryId": 919,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 621,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                919
-              ]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -507.93283,
-            "Y": 7.6638765,
-            "Z": 52.09985
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
-        },
-        {
           "DataId": 1032586,
-          "Position": {
-            "X": -505.42462,
-            "Y": 7.68313,
-            "Z": 51.621216
-          },
+          "Position": [-505.42462, 7.68313, 51.621216],
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3980

@@ -1,140 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023167,
-          "Position": {
-            "X": 313.28296,
-            "Y": 324.51355,
-            "Z": 362.4475
-          },
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1023168,
-          "Position": {
-            "X": 357.07642,
-            "Y": 325.1959,
-            "Z": 333.5775
-          },
-          "TerritoryId": 620,
+          "Position": [357.07642, 325.1959, 333.5775],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1023169,
-          "Position": {
-            "X": -199.35913,
-            "Y": 258.90652,
-            "Z": 780.9109
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "Position": [-199.35913, 258.90652, 780.9109],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "DataId": 1021557,
-          "Position": {
-            "X": -130.02216,
-            "Y": 305.38147,
-            "Z": 189.71533
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 620,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Lochs - Porta Praetoria"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 1.7183262,
-            "Y": 317.60666,
-            "Z": 141.11252
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Lochs - Porta Praetoria"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -791.2012,
-            "Y": 46.3994,
-            "Z": -15.904689
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Lochs - Porta Praetoria"
-            },
-            "StepIf": {
-              "AetheryteLocked": "Lochs - Porta Praetoria"
-            }
-          }
-        },
-        {
           "DataId": 1023168,
-          "Position": {
-            "X": 357.07642,
-            "Y": 325.1959,
-            "Z": 333.5775
-          },
-          "TerritoryId": 620,
+          "Position": [357.07642, 325.1959, 333.5775],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 364.314,
-            "Y": 326.0898,
-            "Z": 338.17725
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "DataId": 1023167,
-          "Position": {
-            "X": 313.28296,
-            "Y": 324.51355,
-            "Z": 362.4475
-          },
-          "TerritoryId": 620,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,57 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Bronze Spatha,\n 1x Spiked Bronze Labrys\nAutocraft requires:\n 4x Bronze Ingot,\n 1x Hard Leather,\n 1x Ram Horn,\n 1x Ash Lumber",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000997,
-          "Position": {
-            "X": -31.265808,
-            "Y": 44.5,
-            "Z": 185.53442
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001005,
-          "Position": {
-            "X": -52.35376,
-            "Y": 42.500134,
-            "Z": 211.5968
-          },
-          "TerritoryId": 128,
+          "Position": [-52.35376, 42.500134, 211.5968],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 1605,
           "ItemCount": 1,
           "SkipConditions": {
@@ -64,7 +37,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 1753,
           "ItemCount": 1,
           "SkipConditions": {
@@ -77,18 +49,9 @@
         },
         {
           "DataId": 1001005,
-          "Position": {
-            "X": -52.35376,
-            "Y": 42.500134,
-            "Z": 211.5968
-          },
-          "TerritoryId": 128,
+          "Position": [-52.35376, 42.500134, 211.5968],
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

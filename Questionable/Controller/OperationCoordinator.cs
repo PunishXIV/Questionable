@@ -1,0 +1,96 @@
+namespace Questionable.Controller;
+
+[RegisterSingleton]
+internal sealed class OperationCoordinator : IOperationContext
+{
+    private readonly IReadOnlyList<IOperationProvider> _providers;
+    private readonly MovementController _movementController;
+    private readonly ILogger<OperationCoordinator> _logger;
+
+    public OperationCoordinator(
+        IEnumerable<IOperationProvider> providers,
+        MovementController movementController,
+        ILogger<OperationCoordinator> logger)
+    {
+        _providers = providers.OrderBy(x => x.Order).ToList();
+        IOperationProvider? duplicate = _providers.GroupBy(x => x.Order).FirstOrDefault(x => x.Count() > 1)?.First();
+        if (duplicate != null)
+            throw new InvalidOperationException(string.Create(CultureInfo.InvariantCulture, $"Operation providers share order {duplicate.Order}"));
+        _movementController = movementController;
+        _logger = logger;
+    }
+
+    public IReadOnlyList<IOperationProvider> Providers => _providers;
+    public bool HasOperation => _providers.Any(x => x.HasOperation);
+    public string? BlockReason => _providers.Select(x => x.BlockReason).FirstOrDefault(x => x != null);
+
+    public bool HasMovingOperation => _providers.Any(x => x.MovesCharacter && x.HasOperation);
+
+    public bool MayBeMovingCharacter() => _providers.Any(x => x.MayBeMovingCharacter());
+
+    public IOperationProvider? GetProvider(ITaskExecutor? executor) => _providers.FirstOrDefault(x => x.HandlesExecutor(executor));
+
+    public bool HandlesPlayerDeath(ITaskExecutor? executor) => _providers.Any(x => x.HandlesPlayerDeath(executor));
+
+    public bool Update(IExternalOperationHost host)
+    {
+        // Check unfinished plugin work even while stopped, occupied or logged out.
+        bool blocked = false;
+        foreach (IOperationProvider provider in _providers)
+            blocked |= provider.Update(host, this);
+        return blocked;
+    }
+
+    public bool CancelAll(Func<bool> resetQueue)
+    {
+        bool stopMovement = _movementController.Destination != null || HasMovingOperation;
+        foreach (IOperationProvider provider in _providers)
+            provider.Abandon();
+        bool success = resetQueue();
+
+        foreach (IOperationProvider provider in _providers)
+            success &= provider.Cancel(this);
+        if (stopMovement)
+            success &= TryCleanup(_movementController.Stop, "movement");
+
+        // A provider can still be cleaning up without having failed; don't queue replacements yet.
+        return success && !HasOperation;
+    }
+
+    bool IOperationContext.TryCleanup(Action cleanup, string operation) => TryCleanup(cleanup, operation);
+
+    private bool TryCleanup(Action cleanup, string operation)
+    {
+        try
+        {
+            cleanup();
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Unable to stop {Operation}", operation);
+            return false;
+        }
+    }
+
+    public bool CanPrepareQuestTasks(out string? reason)
+    {
+        reason = null;
+        if (HasOperation)
+            return false;
+
+        reason = _providers.Select(x => x.GetStartBlockReason()).FirstOrDefault(x => x != null);
+        return reason == null;
+    }
+
+    public bool TryConfirmIdle(IOperationProvider provider, IExternalOperationHost host) =>
+        provider.TryConfirmIdle(host, this);
+
+    public bool CanUpdateTask(ITaskExecutor? executor) => _providers.All(x => x.CanUpdateTask(executor));
+
+    public OperationPill? GetTitleBarPill()
+    {
+        OperationPill?[] pills = _providers.Select(x => x.GetTitleBarPill()).ToArray();
+        return pills.FirstOrDefault(x => x is { NeedsCheck: true }) ?? pills.FirstOrDefault(x => x != null);
+    }
+}

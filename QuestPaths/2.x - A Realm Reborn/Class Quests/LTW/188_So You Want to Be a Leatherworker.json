@@ -1,31 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000352,
-          "Position": {
-            "X": 65.69006,
-            "Y": 8,
-            "Z": -147.41742
-          },
-          "TerritoryId": 133,
+          "Position": [65.69006, 8, -147.41742],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

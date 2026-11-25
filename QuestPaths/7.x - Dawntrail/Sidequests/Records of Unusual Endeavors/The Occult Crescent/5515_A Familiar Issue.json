@@ -1,34 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1278,
       "Steps": [
         {
-          "DataId": 1053611,
-          "Position": {
-            "X": -77.958374,
-            "Y": 5,
-            "Z": -15.396423
-          },
-          "TerritoryId": 1278,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1346,
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Phantom Village"
-          ],
-          "Comment": "This requires queueing into Occult Crescent: North Horn, so isn't started automatically"
-        },
-        {
           "DataId": 1059627,
-          "Position": {
-            "X": 875.578,
-            "Y": 258.5,
-            "Z": 864.439
-          },
+          "Position": [875.578, 258.5, 864.439],
           "TerritoryId": 1346,
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1059627 (Ketenramm)"
@@ -37,24 +18,15 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1346,
       "Steps": [
         {
-          "Position": {
-            "X": 875.578,
-            "Y": 258.5,
-            "Z": 864.439
-          },
-          "TerritoryId": 1346,
+          "Position": [875.578, 258.5, 864.439],
           "InteractionType": "Instruction",
           "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest.\nAll steps in this quest path are for reference only and should never be left unattended."
         },
         {
-          "Position": {
-            "X": -168.8346,
-            "Y": 70.092285,
-            "Z": -840.9868
-          },
-          "TerritoryId": 1346,
+          "Position": [-168.8346, 70.092285, -840.9868],
           "InteractionType": "WaitForManualProgress",
           "Comment": "Complete the critical engagement Lost in the Wind"
         }
@@ -62,15 +34,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1346,
       "Steps": [
         {
           "DataId": 1059626,
-          "Position": {
-            "X": 877.365,
-            "Y": 258.5,
-            "Z": 865.178
-          },
-          "TerritoryId": 1346,
+          "Position": [877.365, 258.5, 865.178],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1059626 (Archive)"
         }

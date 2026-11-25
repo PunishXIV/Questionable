@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,46 +8,17 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041316,
-          "Position": {
-            "X": 17.2274,
-            "Y": -17.5304,
-            "Z": -215.564
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": -604.12726,
-            "Y": -16.640757,
-            "Z": 783.93506
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1041317,
-          "Position": {
-            "X": -602.478,
-            "Y": -16.6873,
-            "Z": 784.892
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
+          "Position": [-602.478, -16.6873, 784.892],
           "Mount": false,
+          "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
               "Never": true
@@ -58,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041317,
-          "Position": {
-            "X": -602.478,
-            "Y": -16.6873,
-            "Z": 784.892
-          },
-          "TerritoryId": 956,
+          "Position": [-602.478, -16.6873, 784.892],
           "InteractionType": "Emote",
           "Emote": "soothe"
         }
@@ -74,20 +41,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041316,
-          "Position": {
-            "X": 17.2274,
-            "Y": -17.5304,
-            "Z": -215.564
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

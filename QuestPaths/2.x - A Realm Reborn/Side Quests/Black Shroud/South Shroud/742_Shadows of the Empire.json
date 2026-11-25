@@ -1,55 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "croizat",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000598,
-          "Position": {
-            "X": -170.82477,
-            "Y": 9.964111,
-            "Z": -84.153564
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2001955,
-          "Position": {
-            "X": -97.70355,
-            "Y": 11.673096,
-            "Z": -84.00098
-          },
-          "TerritoryId": 153,
+          "Position": [-97.70355, 11.673096, -84.00098],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [63]
         },
         {
-          "Position": {
-            "X": -111.3334,
-            "Y": 1.7872865,
-            "Z": -60.205475
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2001956,
-          "Position": {
-            "X": -110.03284,
-            "Y": 1.9989014,
-            "Z": -57.053528
-          },
-          "TerritoryId": 153,
-          "StopDistance": 5,
+          "Position": [-110.03284, 1.9989014, -57.053528],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [63]
@@ -58,18 +28,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000598,
-          "Position": {
-            "X": -170.82477,
-            "Y": 9.964111,
-            "Z": -84.153564
-          },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

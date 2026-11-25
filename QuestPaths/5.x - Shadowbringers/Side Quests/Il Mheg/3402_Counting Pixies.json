@@ -1,64 +1,29 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030262,
-          "Position": {
-            "X": -350.60657,
-            "Y": 45.053513,
-            "Z": 408.83496
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -350.60657,
-                  "Y": 45.053513,
-                  "Z": 408.83496
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030271,
-          "Position": {
-            "X": -549.82837,
-            "Y": 48.51715,
-            "Z": 201.31226
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-549.82837, 48.51715, 201.31226],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2010157,
-          "Position": {
-            "X": -546.53235,
-            "Y": 48.386353,
-            "Z": 202.56348
-          },
-          "TerritoryId": 816,
+          "Position": [-546.53235, 48.386353, 202.56348],
           "InteractionType": "Snipe",
           "Comment": "Three pixies visible, plus one\nup here, answer is four"
         }
@@ -66,15 +31,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030271,
-          "Position": {
-            "X": -549.82837,
-            "Y": 48.51715,
-            "Z": 201.31226
-          },
-          "TerritoryId": 816,
+          "Position": [-549.82837, 48.51715, 201.31226],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -88,33 +49,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1030262,
-          "Position": {
-            "X": -350.60657,
-            "Y": 45.053513,
-            "Z": 408.83496
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -350.60657,
-                  "Y": 45.053513,
-                  "Z": 408.83496
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

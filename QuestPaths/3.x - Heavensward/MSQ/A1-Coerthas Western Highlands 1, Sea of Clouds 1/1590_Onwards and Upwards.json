@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "JerryWester",
     "Kiarra"
@@ -8,29 +8,11 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011217,
-          "Position": {
-            "X": 17.990356,
-            "Y": 16.009666,
-            "Z": -9.567444
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
-        },
-        {
           "DataId": 1012329,
-          "Position": {
-            "X": -7.309082,
-            "Y": 0.0035869647,
-            "Z": -0.5036011
-          },
+          "Position": [-7.309082, 0.0035869647, -0.5036011],
           "TerritoryId": 433,
           "InteractionType": "AcceptQuest"
         }
@@ -38,34 +20,14 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 2005334,
-          "Position": {
-            "X": -0.001443714,
-            "Y": 1.1515,
-            "Z": 13.2236
-          },
-          "TerritoryId": 433,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
-        {
-          "Position": {
-            "X": 150.12646,
-            "Y": -12.623478,
-            "Z": -11.738641
-          },
-          "TerritoryId": 419,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "Position": [150.12646, -12.623478, -11.738641],
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1012353,
-          "TerritoryId": 419,
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -82,46 +44,32 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1012351,
-          "Position": {
-            "X": -731.1971,
-            "Y": -105.26523,
-            "Z": 470.54248
-          },
-          "TerritoryId": 401,
+          "Position": [-731.1971, -105.26523, 470.54248],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "TerritoryId": 401,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "The Sea of Clouds - Camp Cloudtop"
         },
         {
           "DataId": 1012303,
-          "Position": {
-            "X": -630.5791,
-            "Y": -119.631645,
-            "Z": 484.33655
-          },
-          "TerritoryId": 401,
+          "Position": [-630.5791, -119.631645, 484.33655],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179694
         },
         {
           "DataId": 1011952,
-          "Position": {
-            "X": -277.63788,
-            "Y": -184.59735,
-            "Z": 741.60376
-          },
-          "TerritoryId": 401,
+          "Position": [-277.63788, -184.59735, 741.60376],
           "InteractionType": "CompleteQuest"
         }
       ]

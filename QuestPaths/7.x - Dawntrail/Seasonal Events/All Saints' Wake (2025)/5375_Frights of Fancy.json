@@ -1,87 +1,39 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1054483,
-          "Position": {
-            "X": -50.003845,
-            "Y": 6.5,
-            "Z": -88.426025
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1054484,
-          "Position": {
-            "X": -55.680176,
-            "Y": 6.2813034,
-            "Z": -106.004456
-          },
-          "TerritoryId": 133,
+          "Position": [-55.680176, 6.2813034, -106.004456],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1305,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX101_05375_EVENTAREA_WARP_000_031",
               "Yes": true,
               "Type": "YesNo"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133,
-                1305
-              ]
-            }
-          }
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1054484,
-          "Position": {
-            "X": -55.680176,
-            "Y": 6.2813034,
-            "Z": -106.004456
-          },
-          "TerritoryId": 133,
+          "Position": [-55.680176, 6.2813034, -106.004456],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1305,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX101_05375_EVENTAREA_WARP_000_031",
@@ -90,13 +42,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133,
-                1305
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1305
@@ -106,11 +51,7 @@
         },
         {
           "DataId": 1054485,
-          "Position": {
-            "X": 68.436646,
-            "Y": 0,
-            "Z": -0.045776367
-          },
+          "Position": [68.436646, 0, -0.045776367],
           "TerritoryId": 1305,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -125,21 +66,14 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1305,
       "Steps": [
         {
           "DataId": 1054484,
-          "Position": {
-            "X": -55.680176,
-            "Y": 6.2813034,
-            "Z": -106.004456
-          },
+          "Position": [-55.680176, 6.2813034, -106.004456],
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1305,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX101_05375_EVENTAREA_WARP_000_031",
@@ -148,13 +82,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133,
-                1305
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1305
@@ -165,12 +92,7 @@
         {
           "$": "5375 → 3 - QW: 0 0    0 0    0 0",
           "DataId": 1054489,
-          "Position": {
-            "X": 14.785889,
-            "Y": 17,
-            "Z": 105.85181
-          },
-          "TerritoryId": 1305,
+          "Position": [14.785889, 17, 105.85181],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -180,12 +102,7 @@
         {
           "$": "5375 → 3 - QW: 1(1) 0    0 0    0 64",
           "DataId": 1054486,
-          "Position": {
-            "X": 4.2266846,
-            "Y": 17,
-            "Z": 11.947815
-          },
-          "TerritoryId": 1305,
+          "Position": [4.2266846, 17, 11.947815],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -196,21 +113,14 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1305,
       "Steps": [
         {
           "DataId": 1054484,
-          "Position": {
-            "X": -55.680176,
-            "Y": 6.2813034,
-            "Z": -106.004456
-          },
+          "Position": [-55.680176, 6.2813034, -106.004456],
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1305,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX101_05375_EVENTAREA_WARP_000_031",
@@ -219,13 +129,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133,
-                1305
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1305
@@ -236,12 +139,7 @@
         {
           "$": "5375 → 4 - QW: 0 0    0 0    0 0",
           "DataId": 1054488,
-          "Position": {
-            "X": 9.109558,
-            "Y": 0,
-            "Z": 100.02283
-          },
-          "TerritoryId": 1305,
+          "Position": [9.109558, 0, 100.02283],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -251,12 +149,7 @@
         {
           "$": "5375 → 4 - QW: 1(1) 0    0 0    0 32",
           "DataId": 1054487,
-          "Position": {
-            "X": -43.86969,
-            "Y": 0,
-            "Z": -5.8442383
-          },
-          "TerritoryId": 1305,
+          "Position": [-43.86969, 0, -5.8442383],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -266,12 +159,7 @@
         {
           "$": "5375 → 4 - QW: 0 0    0 0    0 0",
           "DataId": 1054490,
-          "Position": {
-            "X": -54.795166,
-            "Y": 0,
-            "Z": -29.58728
-          },
-          "TerritoryId": 1305,
+          "Position": [-54.795166, 0, -29.58728],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -282,21 +170,13 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1054484,
-          "Position": {
-            "X": -55.680176,
-            "Y": 6.2813034,
-            "Z": -106.004456
-          },
-          "TerritoryId": 133,
+          "Position": [-55.680176, 6.2813034, -106.004456],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1305,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX101_05375_EVENTAREA_WARP_000_031",
@@ -305,13 +185,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133,
-                1305
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1305
@@ -321,11 +194,7 @@
         },
         {
           "DataId": 1054485,
-          "Position": {
-            "X": 68.436646,
-            "Y": 0,
-            "Z": -0.045776367
-          },
+          "Position": [68.436646, 0, -0.045776367],
           "TerritoryId": 1305,
           "InteractionType": "Interact"
         }
@@ -333,84 +202,24 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1305,
       "Steps": [
         {
           "$": "5375 → 6 - QW: 0 0    0 0    0 0",
-          "DataId": 2014838,
-          "Position": {
-            "X": 83.84827,
-            "Y": 1.5715942,
-            "Z": -0.045776367
-          },
-          "TerritoryId": 1305,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 133,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                1305
-              ]
-            }
-          }
-        },
-        {
-          "$": "5375 → 6 - QW: 0 0    0 0    0 0",
           "DataId": 1054483,
-          "Position": {
-            "X": -50.003845,
-            "Y": 6.5,
-            "Z": -88.426025
-          },
+          "Position": [-50.003845, 6.5, -88.426025],
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "Position": {
-            "X": -52.903076,
-            "Y": 6.8124895,
-            "Z": -123.39978
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo",
-          "StopDistance": 3,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1054477,
-          "Position": {
-            "X": -52.903076,
-            "Y": 6.8124895,
-            "Z": -123.39978
-          },
-          "TerritoryId": 133,
+          "Position": [-52.903076, 6.8124895, -123.39978],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -419,17 +228,8 @@
         },
         {
           "DataId": 1054491,
-          "Position": {
-            "X": -317.21985,
-            "Y": 7.3121967,
-            "Z": -200.763
-          },
-          "TerritoryId": 133,
+          "Position": [-317.21985, 7.3121967, -200.763],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Botanists' Guild"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 4}
@@ -439,51 +239,13 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "TerritoryId": 133,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -316.40543,
-                  "Y": 7.0605173,
-                  "Z": -198.20206
-                },
-                "TerritoryId": 133,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1054483,
-          "Position": {
-            "X": -50.003845,
-            "Y": 6.5,
-            "Z": -88.426025
-          },
-          "TerritoryId": 133,
+          "Position": [-50.003845, 6.5, -88.426025],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
-          "NextQuestId": 5376,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
+          "NextQuestId": 5376
         }
       ]
     }

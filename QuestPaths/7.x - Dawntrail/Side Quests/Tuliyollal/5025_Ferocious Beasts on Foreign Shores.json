@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051039,
-          "Position": {
-            "X": 17.593567,
-            "Y": -17.942173,
-            "Z": 153.06323
-          },
-          "TerritoryId": 1185,
+          "Position": [17.593567, -17.942173, 153.06323],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,41 +23,18 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051040,
-          "Position": {
-            "X": -169.93976,
-            "Y": 59.999985,
-            "Z": -54.703613
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] The Resplendent Quarter"
-          ]
+          "Position": [-169.93976, 59.999985, -54.703613],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1051039,
-          "Position": {
-            "X": 17.593567,
-            "Y": -17.942173,
-            "Z": 153.06323
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] The Resplendent Quarter",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

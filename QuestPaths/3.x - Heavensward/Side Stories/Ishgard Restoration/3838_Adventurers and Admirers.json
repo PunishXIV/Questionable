@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {
     "Username": "alydev",
@@ -8,214 +8,40 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 39.627686,
-                  "Y": -20.000002,
-                  "Z": 48.996704
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1032788,
-          "Position": {
-            "X": 39.627686,
-            "Y": -20.000002,
-            "Z": 48.996704
-          },
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "Sprint": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
-            }
-          }
-        },
         {
           "$": "3838 → 1 - QW: 0 0    0 0    0 0",
           "DataId": 1032791,
-          "Position": {
-            "X": -64.4389,
-            "Y": 10.0549,
-            "Z": -112.90161
-          },
-          "TerritoryId": 419,
+          "Position": [-64.4389, 10.0549, -112.90161],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 886,
       "Steps": [
         {
-          "TerritoryId": 419,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] Aetheryte Plaza"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -64.4389,
-                  "Y": 10.0549,
-                  "Z": -112.90161
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 39.627686,
-                  "Y": -20.000002,
-                  "Z": 48.996704
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1032788,
-          "Position": {
-            "X": 39.627686,
-            "Y": -20.000002,
-            "Z": 48.996704
-          },
-          "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "Sprint": true
+          "Position": [39.627686, -20.000002, 48.996704],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 39.627686,
-                  "Y": -20.000002,
-                  "Z": 48.996704
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
         {
           "$": "3838 → 255 - QW: 0 0    0 0    0 0",
           "DataId": 1032793,
-          "Position": {
-            "X": 125.993774,
-            "Y": -30,
-            "Z": 83.9093
-          },
-          "TerritoryId": 886,
-          "InteractionType": "CompleteQuest",
-          "Sprint": true
+          "Position": [125.993774, -30, 83.9093],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

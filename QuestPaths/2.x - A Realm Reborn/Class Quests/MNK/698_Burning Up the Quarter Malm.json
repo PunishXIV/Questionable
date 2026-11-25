@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "Comment": "Requires manual interaction",
   "Interruptible": false,
@@ -7,75 +7,39 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1003817,
-          "Position": {
-            "X": -74.57086,
-            "Y": 1.9999951,
-            "Z": -42.404846
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 2001798,
-          "Position": {
-            "X": -107.9017,
-            "Y": 4.989685,
-            "Z": -105.4603
-          },
-          "TerritoryId": 130,
+          "Position": [-107.9017, 4.989685, -105.4603],
           "InteractionType": "Action",
           "Action": "Bootshine"
         },
         {
           "DataId": 2001799,
-          "Position": {
-            "X": -105.6365,
-            "Y": 4.9655,
-            "Z": -107.5618
-          },
-          "TerritoryId": 130,
+          "Position": [-105.6365, 4.9655, -107.5618],
           "InteractionType": "Action",
           "Action": "Bootshine"
         },
         {
           "DataId": 2001800,
-          "Position": {
-            "X": -77.62268,
-            "Y": 5.0201416,
-            "Z": -128.893
-          },
-          "TerritoryId": 130,
+          "Position": [-77.62268, 5.0201416, -128.893],
           "InteractionType": "Action",
           "Action": "Bootshine"
         },
         {
           "DataId": 2001801,
-          "Position": {
-            "X": -74.60144,
-            "Y": 4.8981323,
-            "Z": -130.69354
-          },
-          "TerritoryId": 130,
+          "Position": [-74.60144, 4.8981323, -130.69354],
           "InteractionType": "Action",
           "Action": "Bootshine"
         },
         {
           "DataId": 2001802,
-          "Position": {
-            "X": -71.42755,
-            "Y": 5.0201416,
-            "Z": -132.34149
-          },
-          "TerritoryId": 130,
+          "Position": [-71.42755, 5.0201416, -132.34149],
           "InteractionType": "Action",
           "Action": "Bootshine"
         }
@@ -83,55 +47,26 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1003817,
-          "Position": {
-            "X": -74.57086,
-            "Y": 1.9999951,
-            "Z": -42.404846
-          },
-          "TerritoryId": 130,
+          "Position": [-74.57086, 1.9999951, -42.404846],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -210.32118,
-            "Y": 21.582167,
-            "Z": -94.337494
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Comment": "Use Bootshine / True Strike / Snap Punch combo three times",
+          "Position": [-210.32118, 21.582167, -94.337494],
+          "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             771
           ],
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "CombatDelaySecondsAtStart": 0,
-          "$": "Will stop once 3 Qiqirn Shellsweppers get hit by Snap Punch since it will move on to the next sequence"
-        },
-        {
-          "Position": {
-            "X": -210.32118,
-            "Y": 21.582167,
-            "Z": -94.337494
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WaitForManualProgress",
-          "Comment": "Use Bootshine / True Strike / Snap Punch combo three times",
-          "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [
-            771
-          ],
-          "Mount": false,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "CombatDelaySecondsAtStart": 0,
           "$": "Will stop once 3 Qiqirn Shellsweppers get hit by Snap Punch since it will move on to the next sequence"
         }
@@ -139,25 +74,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -118.55462,
-            "Y": 8.216448,
-            "Z": -82.81951
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1003817,
-          "Position": {
-            "X": -74.57086,
-            "Y": 1.9999951,
-            "Z": -42.404846
-          },
+          "Position": [-74.57086, 1.9999951, -42.404846],
           "TerritoryId": 130,
-          "AetheryteShortcut": "Ul'dah",
           "InteractionType": "CompleteQuest",
           "NextQuestId": 558
         }

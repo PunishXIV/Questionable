@@ -1,79 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012592,
-          "Position": {
-            "X": 459.15918,
-            "Y": 162.51204,
-            "Z": -524.651
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": 454.75964,
-            "Y": 164.27075,
-            "Z": -535.00354
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (outside)"
-        },
-        {
-          "Position": {
-            "X": 454.9128,
-            "Y": 164.30827,
-            "Z": -542.1735
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (inside)",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 2005432,
-          "Position": {
-            "X": 450.85828,
-            "Y": 164.29382,
-            "Z": -544.79285
-          },
-          "TerritoryId": 397,
+          "Position": [450.85828, 164.29382, -544.79285],
           "InteractionType": "Interact",
           "$": "0 0 0 0 0 0 -> 1 16 0 0 0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2005433,
-          "Position": {
-            "X": 443.50342,
-            "Y": 157.48828,
-            "Z": -559.47205
-          },
-          "TerritoryId": 397,
+          "Position": [443.50342, 157.48828, -559.47205],
           "InteractionType": "Interact",
           "$": "1 16 0 0 0 128 -> 2 32 0 0 0 192",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2005434,
-          "Position": {
-            "X": 466.7887,
-            "Y": 157.39673,
-            "Z": -540.8561
-          },
-          "TerritoryId": 397,
+          "Position": [466.7887, 157.39673, -540.8561],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -81,15 +35,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1012601,
-          "Position": {
-            "X": 452.41467,
-            "Y": 157.40831,
-            "Z": -542.8397
-          },
-          "TerritoryId": 397,
+          "Position": [452.41467, 157.40831, -542.8397],
           "InteractionType": "CompleteQuest"
         }
       ]

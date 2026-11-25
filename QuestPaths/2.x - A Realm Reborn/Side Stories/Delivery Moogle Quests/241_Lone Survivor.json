@@ -1,160 +1,62 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009153,
-          "Position": {
-            "X": -39.108948,
-            "Y": 20,
-            "Z": 5.416931
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true
-        },
-        {
           "DataId": 1006312,
-          "Position": {
-            "X": -369.0395,
-            "Y": 54.28071,
-            "Z": 441.24512
-          },
-          "TerritoryId": 137,
+          "Position": [-369.0395, 54.28071, 441.24512],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -250.51706,
-            "Y": 48.854584,
-            "Z": 462.12476
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2004858,
-          "Position": {
-            "X": -252.76575,
-            "Y": 49.66809,
-            "Z": 460.71558
-          },
-          "TerritoryId": 137,
+          "Position": [-252.76575, 49.66809, 460.71558],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006312,
-          "Position": {
-            "X": -369.0395,
-            "Y": 54.28071,
-            "Z": 441.24512
-          },
-          "TerritoryId": 137,
+          "Position": [-369.0395, 54.28071, 441.24512],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -133.36604,
-            "Y": 70.192245,
-            "Z": 746.02716
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 570.5895,
-            "Y": 95.61268,
-            "Z": -497.8778
-          },
+          "Position": [570.5895, 95.61268, -497.8778],
           "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "RestartNavigationIfCancelled": true
+          "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 569.87854,
-            "Y": 95.62417,
-            "Z": -498.10028
-          },
-          "TerritoryId": 135,
+          "Position": [569.87854, 95.62417, -498.10028],
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -165,12 +67,7 @@
         },
         {
           "DataId": 1010370,
-          "Position": {
-            "X": 569.87854,
-            "Y": 95.62417,
-            "Z": -498.10028
-          },
-          "TerritoryId": 135,
+          "Position": [569.87854, 95.62417, -498.10028],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

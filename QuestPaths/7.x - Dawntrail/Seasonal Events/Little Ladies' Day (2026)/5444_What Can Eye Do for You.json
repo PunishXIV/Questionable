@@ -1,49 +1,29 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1056476,
-          "Position": {
-            "X": -35.1416,
-            "Y": 5.000001,
-            "Z": -130.38837
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1057901,
-          "Position": {
-            "X": -33.951355,
-            "Y": 5.0000005,
-            "Z": -130.87665
-          },
-          "TerritoryId": 130,
+          "Position": [-33.951355, 5.0000005, -130.87665],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1057909,
-          "Position": {
-            "X": 29.984009,
-            "Y": 4.0999947,
-            "Z": -152.63605
-          },
-          "TerritoryId": 130,
+          "Position": [29.984009, 4.0999947, -152.63605],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -56,12 +36,7 @@
         },
         {
           "DataId": 1057906,
-          "Position": {
-            "X": 33.6156,
-            "Y": 3.9999995,
-            "Z": -140.91711
-          },
-          "TerritoryId": 130,
+          "Position": [33.6156, 3.9999995, -140.91711],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -76,15 +51,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1057911,
-          "Position": {
-            "X": 10.36084,
-            "Y": 7.9999804,
-            "Z": -109.26984
-          },
-          "TerritoryId": 130,
+          "Position": [10.36084, 7.9999804, -109.26984],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -97,12 +68,7 @@
         },
         {
           "DataId": 1057912,
-          "Position": {
-            "X": 15.396301,
-            "Y": 6.999997,
-            "Z": -82.993835
-          },
-          "TerritoryId": 130,
+          "Position": [15.396301, 6.999997, -82.993835],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -117,81 +83,60 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1058069,
-          "Position": {
-            "X": -15.121765,
-            "Y": 7.999998,
-            "Z": -112.81
-          },
-          "TerritoryId": 130,
+          "Position": [-15.121765, 7.999998, -112.81],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1057902,
-          "Position": {
-            "X": -12.100403,
-            "Y": 7.999999,
-            "Z": -110.76526
-          },
-          "TerritoryId": 130,
+          "Position": [-12.100403, 7.999999, -110.76526],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 130,
       "Steps": [
         {
-          "TerritoryId": 130,
           "InteractionType": "SwitchClass",
           "TargetClass": "ConfiguredCombatJob"
         },
         {
           "DataId": 1056476,
-          "Position": {
-            "X": -35.1416,
-            "Y": 5.000001,
-            "Z": -130.38837
-          },
-          "TerritoryId": 130,
+          "Position": [-35.1416, 5.000001, -130.38837],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 130,
       "Steps": [
         {
           "Comment": "Fate required here.\nTalk to the handmaiden to get costume.\n Shoot the performers with the actions.",
           "DataId": 1055771,
-          "Position": {
-            "X": -37.369385,
-            "Y": 5.0000005,
-            "Z": -130.14423
-          },
-          "TerritoryId": 130,
+          "Position": [-37.369385, 5.0000005, -130.14423],
           "InteractionType": "WaitForManualProgress"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1056476,
-          "Position": {
-            "X": -35.1416,
-            "Y": 5.000001,
-            "Z": -130.38837
-          },
-          "TerritoryId": 130,
+          "Position": [-35.1416, 5.000001, -130.38837],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5238
         }

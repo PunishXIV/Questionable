@@ -1,68 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Walnut Lumber HQ\nAutocraft requires:\n 3x Walnut Log",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000162,
-          "Position": {
-            "X": -77.958374,
-            "Y": -3.6953027,
-            "Z": 53.08606
-          },
-          "TerritoryId": 132,
+          "Position": [-77.958374, -3.6953027, 53.08606],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": false}}}
         },
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ]
+          "Position": [-44.87683, -1.2500024, 56.839844],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

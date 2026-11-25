@@ -1,52 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006381,
-          "Position": {
-            "X": 173.004,
-            "Y": 222,
-            "Z": 314.353
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002604,
-          "Position": {
-            "X": 256.27515,
-            "Y": 222.21704,
-            "Z": 309.0714
-          },
-          "TerritoryId": 155,
+          "Position": [256.27515, 222.21704, 309.0714],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002604,
-          "Position": {
-            "X": 256.28,
-            "Y": 222.219,
-            "Z": 309.089
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
+          "Position": [256.28, 222.219, 309.089],
           "InteractionType": "Emote",
           "Emote": "rally"
         }
@@ -54,16 +32,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002604,
-          "Position": {
-            "X": 256.28,
-            "Y": 222.219,
-            "Z": 309.089
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
+          "Position": [256.28, 222.219, 309.089],
           "InteractionType": "Emote",
           "Emote": "soothe"
         }
@@ -71,16 +44,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002604,
-          "Position": {
-            "X": 256.28,
-            "Y": 222.219,
-            "Z": 309.089
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
+          "Position": [256.28, 222.219, 309.089],
           "InteractionType": "Emote",
           "Emote": "cheer"
         }
@@ -88,16 +56,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002604,
-          "Position": {
-            "X": 256.28,
-            "Y": 222.219,
-            "Z": 309.089
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
+          "Position": [256.28, 222.219, 309.089],
           "InteractionType": "Emote",
           "Emote": "blowkiss"
         }
@@ -105,16 +68,11 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002604,
-          "Position": {
-            "X": 256.28,
-            "Y": 222.219,
-            "Z": 309.089
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
+          "Position": [256.28, 222.219, 309.089],
           "InteractionType": "Emote",
           "Emote": "goodbye"
         }
@@ -122,20 +80,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006381,
-          "Position": {
-            "X": 173.004,
-            "Y": 222,
-            "Z": 314.353
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

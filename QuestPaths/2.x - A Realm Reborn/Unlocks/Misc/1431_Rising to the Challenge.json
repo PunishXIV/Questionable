@@ -1,58 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005411,
-          "Position": {
-            "X": 13.412659,
-            "Y": 40.2,
-            "Z": -13.260071
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003598,
-          "Position": {
-            "X": -12.069946,
-            "Y": 40.00053,
-            "Z": 11.459534
-          },
-          "TerritoryId": 128,
+          "Position": [-12.069946, 40.00053, 11.459534],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1005410,
-          "Position": {
-            "X": -182.45215,
-            "Y": 1.9999955,
-            "Z": 208.75867
-          },
-          "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "Position": [-182.45215, 1.9999955, 208.75867],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,133 +1,86 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030800,
-          "Position": {
-            "X": -396.68878,
-            "Y": 417.51825,
-            "Z": -657.9232
-          },
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Tomra"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030789,
-          "Position": {
-            "X": -262.83667,
-            "Y": 21.717266,
-            "Z": 369.64978
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Wright"
+          "Position": [-262.83667, 21.717266, 369.64978],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030787,
-          "Position": {
-            "X": -408.80444,
-            "Y": 417.2132,
-            "Z": -631.7388
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Tomra"
+          "Position": [-408.80444, 417.2132, -631.7388],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030791,
-          "Position": {
-            "X": -165.27051,
-            "Y": 352.35822,
-            "Z": -206.16473
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-165.27051, 352.35822, -206.16473],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 2010309,
-          "Position": {
-            "X": -109.69714,
-            "Y": 353.50574,
-            "Z": -181.65869
-          },
-          "TerritoryId": 814,
+          "Position": [-109.69714, 353.50574, -181.65869],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030803,
-          "Position": {
-            "X": -149.46216,
-            "Y": 352.35822,
-            "Z": -199.29816
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-149.46216, 352.35822, -199.29816],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030789,
-          "Position": {
-            "X": -262.83667,
-            "Y": 21.717266,
-            "Z": 369.64978
-          },
-          "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Wright"
+          "Position": [-262.83667, 21.717266, 369.64978],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030788,
-          "Position": {
-            "X": -531.02924,
-            "Y": 415.2066,
-            "Z": -567.4983
-          },
-          "TerritoryId": 814,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Kholusia - Tomra"
+          "Position": [-531.02924, 415.2066, -567.4983],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

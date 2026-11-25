@@ -1,24 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "chika", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1058493,
-          "Position": {
-            "X": -228.802,
-            "Y": 0,
-            "Z": 120.807
-          },
-          "TerritoryId": 1185,
+          "Position": [-228.802, 0, 120.807],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The For'ard Cabins"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL410_05462_Q1_000_001",
@@ -32,36 +24,24 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051741,
-          "Position": {
-            "X": 746.4866,
-            "Y": 15.431515,
-            "Z": -201.73956
-          },
-          "TerritoryId": 1188,
-          "StopDistance": 1,
+          "Position": [746.4866, 15.431515, -201.73956],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
           "$": "auto: todo location -> 1051741 (Wawkesa)"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1054636,
-          "Position": {
-            "X": 506.706,
-            "Y": 142.25,
-            "Z": 800.229
-          },
-          "TerritoryId": 1187,
+          "Position": [506.706, 142.25, 800.229],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL410_05462_Q3_000_001",
@@ -69,32 +49,17 @@
               "Type": "List"
             }
           ],
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: todo location -> 1054636 (Fahrafahr); hands over ITEM0=2003816"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "DataId": 1054640,
-          "Position": {
-            "X": 496.11658,
-            "Y": 142.24991,
-            "Z": 801.6022
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1297
-        },
-        {
           "DataId": 1058495,
-          "Position": {
-            "X": -0.300652,
-            "Y": 0.4,
-            "Z": 148.344
-          },
+          "Position": [-0.300652, 0.4, 148.344],
           "TerritoryId": 1297,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058495 (Ryoqor Terteh)"
@@ -103,15 +68,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1054636,
-          "Position": {
-            "X": 506.706,
-            "Y": 142.25,
-            "Z": 800.229
-          },
-          "TerritoryId": 1187,
+          "Position": [506.706, 142.25, 800.229],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1054636 (Fahrafahr)"
         }
@@ -119,33 +80,23 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052561,
-          "Position": {
-            "X": 578.149,
-            "Y": -144.885,
-            "Z": 721.85
-          },
-          "TerritoryId": 1189,
+          "Position": [578.149, -144.885, 721.85],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "$": "auto: todo location -> 1052561 (Ruvoll Ja); hands over ITEM0=2003816"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051710,
-          "Position": {
-            "X": 822.629,
-            "Y": 17.1026,
-            "Z": -263.203
-          },
-          "TerritoryId": 1188,
+          "Position": [822.629, 17.1026, -263.203],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5463,
           "DialogueChoices": [
@@ -155,7 +106,6 @@
               "Type": "List"
             }
           ],
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
           "$": "auto: todo turn-in -> 1051710 (Liplu)"
         }
       ]

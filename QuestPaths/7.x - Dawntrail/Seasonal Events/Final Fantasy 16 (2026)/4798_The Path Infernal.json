@@ -1,99 +1,55 @@
-{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+﻿{
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046050,
-          "Position": {
-            "X": -146.138,
-            "Y": 4.1097,
-            "Z": -33.1762
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1046055,
-          "Position": {
-            "X": -30.1977,
-            "Y": 10.2693,
-            "Z": -258.137
-          },
-          "TerritoryId": 133,
+          "Position": [-30.1977, 10.2693, -258.137],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           },
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Lancers' Guild"
-          ]
+          "$": "auto: todo location -> 1046055 (Clive)"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "Position": {
-            "X": -30.0239,
-            "Y": 35.298462,
-            "Z": -258.165
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "Position": [-30.0239, 35.298462, -258.165],
+          "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1046054,
-          "Position": {
-            "X": 434.172,
-            "Y": 7.74215,
-            "Z": 152.174
-          },
-          "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "Position": [434.172, 7.74215, 152.174],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1046052,
-          "Position": {
-            "X": 433.423,
-            "Y": 7.74111,
-            "Z": 151.393
-          },
-          "TerritoryId": 145,
+          "Position": [433.423, 7.74111, 151.393],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESSXT103_04798_Q1_000_085",
@@ -106,63 +62,35 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": 395.15833,
-            "Y": -8.069527,
-            "Z": 202.0083
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Mount": false,
-          "Sprint": false
+          "DataId": 1046053,
+          "Position": [432.0592, 7.2534957, 152.33081],
+          "InteractionType": "Interact"
         },
         {
-          "Position": {
-            "X": 377.9299,
-            "Y": -17.379961,
-            "Z": 262.46588
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
+          "DataId": 1046053,
+          "Position": [457.37253, -3.6998415, 283.26285],
           "Mount": false,
-          "Sprint": false,
-          "DelaySecondsAtStart": 1
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046052,
-          "Position": {
-            "X": 457.37253,
-            "Y": -3.6998415,
-            "Z": 283.26285
-          },
-          "TerritoryId": 145,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": false,
-          "Mount": false,
-          "Sprint": false,
-          "DelaySecondsAtStart": 2
+          "Position": [457.37253, -3.6998415, 283.26285],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1046056,
-          "Position": {
-            "X": 461.156,
-            "Y": -4.92405,
-            "Z": 275.812
-          },
-          "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
+          "Position": [461.156, -4.92405, 275.812],
           "Mount": false,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,0 +1,76 @@
+using Dalamud.Plugin.Services;
+using Microsoft.Extensions.Logging.Abstractions;
+using NSubstitute;
+using Questionable.Controller;
+using Questionable.Controller.CombatModules;
+using Questionable.Controller.Steps;
+using Questionable.Model.Questing;
+using Questionable.Tests.TestData;
+using Xunit;
+
+namespace Questionable.Tests.Steps;
+
+public sealed class ItemUseModuleTests
+{
+    private readonly ICombatModule _rotation = Substitute.For<ICombatModule>();
+    private readonly ItemUseModule _module;
+    private readonly CombatController.CombatData _data = CombatTestData.Create(itemUse: new CombatItemUse { ItemId = 1 });
+
+    public ItemUseModuleTests()
+    {
+        var services = Substitute.For<IServiceProvider>();
+        services.GetService(typeof(IEnumerable<ICombatModule>)).Returns(new ICombatModule[] { _rotation });
+        _rotation.CanHandleFight(_data).Returns(true);
+        _rotation.Start(_data).Returns(true);
+        _rotation.Pause().Returns(true);
+        _rotation.Resume().Returns(true);
+        _rotation.Stop().Returns(true);
+        _module = new ItemUseModule(services, Substitute.For<ICondition>(), null!, NullLogger<ItemUseModule>.Instance);
+        Assert.True(_module.CanHandleFight(_data));
+    }
+
+    [Fact]
+    public void RejectedStart_KeepsDelegateForRollback()
+    {
+        _rotation.Start(_data).Returns(false);
+        Assert.Throws<TaskException>(() => _module.Start(_data));
+        Assert.True(_module.Stop());
+        _rotation.Received(1).Stop();
+    }
+
+    [Fact]
+    public void RejectedRestart_KeepsRotationStopped()
+    {
+        Assert.True(_module.Start(_data));
+        _module.StopRotation();
+        _rotation.Resume().Returns(false);
+        Assert.Throws<TaskException>(() => _module.StartRotation());
+        _rotation.Stop().Returns(false);
+        Assert.False(_module.Stop());
+        _rotation.Stop().Returns(true);
+        Assert.True(_module.Stop());
+    }
+
+    [Fact]
+    public void PauseFailure_BlocksItemUse()
+    {
+        Assert.True(_module.Start(_data));
+        _rotation.Pause().Returns(false);
+        Assert.Throws<TaskException>(() => _module.StopRotation());
+        _rotation.Stop().Returns(false);
+        Assert.False(_module.Stop());
+        _rotation.Stop().Returns(true);
+        Assert.True(_module.Stop());
+    }
+
+    [Fact]
+    public void ControlCheck_VerifiesPausedRotation()
+    {
+        Assert.True(_module.Start(_data));
+        _rotation.When(x => x.VerifyActive()).Do(_ => throw new TaskException("lease cancelled"));
+        Assert.Throws<TaskException>(() => _module.VerifyActive());
+        _module.StopRotation();
+        Assert.Throws<TaskException>(() => _module.VerifyActive());
+        _rotation.Received(2).VerifyActive();
+    }
+}

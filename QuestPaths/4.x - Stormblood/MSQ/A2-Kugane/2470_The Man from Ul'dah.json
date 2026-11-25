@@ -1,61 +1,38 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020450,
-          "Position": {
-            "X": -124.52893,
-            "Y": -6.9999976,
-            "Z": -55.832825
-          },
-          "StopDistance": 6,
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1020455,
-          "Position": {
-            "X": -63.34027,
-            "Y": -2.711526,
-            "Z": -58.396362
-          },
-          "StopDistance": 5,
-          "TerritoryId": 628,
+          "Position": [-63.34027, -2.711526, -58.396362],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "TerritoryId": 628,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Kugane] Shiokaze Hostelry"
         },
         {
-          "TerritoryId": 628,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kugane"
         },
         {
           "DataId": 1020460,
-          "Position": {
-            "X": 17.92926,
-            "Y": -1.5668043E-05,
-            "Z": -41.21466
-          },
-          "TerritoryId": 628,
+          "Position": [17.92926, -1.5668043E-05, -41.21466],
           "InteractionType": "CompleteQuest"
         }
       ]

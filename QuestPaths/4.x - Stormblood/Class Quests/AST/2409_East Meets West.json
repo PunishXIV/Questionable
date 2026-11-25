@@ -1,74 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "kaiser",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012222,
-          "Position": {
-            "X": 202.38037,
-            "Y": -5.3999662,
-            "Z": -58.9151
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 202.38037,
-                  "Y": -5.3999662,
-                  "Z": -58.9151
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1021184,
-          "Position": {
-            "X": 191.9126,
-            "Y": 234.44899,
-            "Z": 402.45667
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [191.9126, 234.44899, 402.45667],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1021187,
-          "Position": {
-            "X": -1.9990234,
-            "Y": 0.74534994,
-            "Z": 360.25012
-          },
-          "TerritoryId": 153,
+          "Position": [-1.9990234, 0.74534994, 360.25012],
           "InteractionType": "Interact",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -81,34 +38,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1021191,
-          "Position": {
-            "X": 195.1781,
-            "Y": -5.3999624,
-            "Z": -67.06348
-          },
-          "TerritoryId": 419,
+          "Position": [195.1781, -5.3999624, -67.06348],
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 195.1781,
-                  "Y": -5.3999624,
-                  "Z": -67.06348
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 100
-              }
-            }
-          },
           "NextQuestId": 2410
         }
       ]

@@ -1,62 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["Cacahuetes", "Friendly"],
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "InteractionType": "EquipItem",
           "ItemId": 2571,
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000857,
-          "Position": {
-            "X": -165.27051,
-            "Y": 5.2500057,
-            "Z": 164.29382
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+          "Position": [-165.27051, 5.2500057, 164.29382],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001016,
-          "Position": {
-            "X": -42.679565,
-            "Y": 39.999947,
-            "Z": 119.920654
-          },
-          "TerritoryId": 128,
+          "Position": [-42.679565, 39.999947, 119.920654],
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 262186
@@ -73,17 +55,9 @@
         },
         {
           "DataId": 1000857,
-          "Position": {
-            "X": -165.27051,
-            "Y": 5.2500057,
-            "Z": 164.29382
-          },
+          "Position": [-165.27051, 5.2500057, 164.29382],
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "NextQuestId": 3843,
           "Comment": "Complete quest"
         }

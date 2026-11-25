@@ -1,90 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["liza", "pot0to"],
   "Interruptible": false,
   "LastChecked": {"Username": "Shorkolate", "Date": "2026-06-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001708,
-          "Position": {
-            "X": -250.3548,
-            "Y": 18,
-            "Z": 80.88806
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001710,
-          "Position": {
-            "X": -240.2533,
-            "Y": 18.8,
-            "Z": 86.900024
-          },
-          "TerritoryId": 130,
+          "Position": [-240.2533, 18.8, 86.900024],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "TerritoryId": 130,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                141
-              ],
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
-            },
-            "AethernetShortcutIf": {
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -62.183617,
-            "Y": -3.6582246,
-            "Z": 145.88391
-          },
-          "InteractionType": "WalkTo",
-          "TerritoryId": 141,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 149.07747,
-            "Y": -2,
-            "Z": -225.21188
-          },
-          "TerritoryId": 141,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true,
+          "Position": [149.07747, -2, -225.21188],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -102,20 +42,12 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001710,
-          "Position": {
-            "X": -240.2533,
-            "Y": 18.8,
-            "Z": 86.900024
-          },
-          "TerritoryId": 130,
+          "Position": [-240.2533, 18.8, 86.900024],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -128,71 +60,49 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 2001511,
-          "Position": {
-            "X": -366.29285,
-            "Y": -34.989014,
-            "Z": 293.56824
-          },
-          "TerritoryId": 145,
+          "Position": [-366.29285, -34.989014, 293.56824],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             166,
             1238
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          ]
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 2001498,
-          "Position": {
-            "X": -366.29285,
-            "Y": -34.989014,
-            "Z": 293.56824
-          },
-          "TerritoryId": 145,
+          "Position": [-366.29285, -34.989014, 293.56824],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001710,
-          "Position": {
-            "X": -240.2533,
-            "Y": 18.8,
-            "Z": 86.900024
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "Position": [-240.2533, 18.8, 86.900024],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001708,
-          "Position": {
-            "X": -250.3548,
-            "Y": 18,
-            "Z": 80.88806
-          },
-          "TerritoryId": 130,
+          "Position": [-250.3548, 18, 80.88806],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 350
         }

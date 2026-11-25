@@ -1,52 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009153,
-          "Position": {
-            "X": -39.108948,
-            "Y": 20,
-            "Z": 5.416931
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1006331,
-          "Position": {
-            "X": -144.15204,
-            "Y": 64.989944,
-            "Z": -209.88788
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+          "Position": [-144.15204, 64.989944, -209.88788],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009726,
-          "Position": {
-            "X": -280.8728,
-            "Y": 62.620903,
-            "Z": -201.9837
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 180,
+          "Position": [-280.8728, 62.620903, -201.9837],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -54,112 +32,79 @@
             2865,
             2866
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
         },
         {
           "DataId": 1009726,
-          "Position": {
-            "X": -280.8728,
-            "Y": 62.620903,
-            "Z": -201.9837
-          },
-          "TerritoryId": 180,
+          "Position": [-280.8728, 62.620903, -201.9837],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1006331,
-          "Position": {
-            "X": -144.15204,
-            "Y": 64.989944,
-            "Z": -209.88788
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-144.15204, 64.989944, -209.88788],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009729,
-          "Position": {
-            "X": -108.72058,
-            "Y": 64.30314,
-            "Z": -220.38611
-          },
-          "TerritoryId": 180,
+          "Position": [-108.72058, 64.30314, -220.38611],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009730,
-          "Position": {
-            "X": -145.8305,
-            "Y": 64.83713,
-            "Z": -209.24695
-          },
-          "TerritoryId": 180,
+          "Position": [-145.8305, 64.83713, -209.24695],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009732,
-          "Position": {
-            "X": -439.59723,
-            "Y": 50.90922,
-            "Z": -319.69183
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-439.59723, 50.90922, -319.69183],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1009753,
-          "Position": {
-            "X": -107.408325,
-            "Y": 64.38365,
-            "Z": -223.62103
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+          "Position": [-107.408325, 64.38365, -223.62103],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1006331,
-          "Position": {
-            "X": -144.15204,
-            "Y": 64.989944,
-            "Z": -209.88788
-          },
-          "TerritoryId": 180,
+          "Position": [-144.15204, 64.989944, -209.88788],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 33
         }

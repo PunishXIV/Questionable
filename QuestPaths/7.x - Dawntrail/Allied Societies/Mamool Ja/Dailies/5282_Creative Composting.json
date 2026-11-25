@@ -1,102 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052562,
-          "Position": {
-            "X": 482.59705,
-            "Y": -150.00002,
-            "Z": 786.70935
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "Position": [482.59705, -150.00002, 786.70935],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2014730,
-          "Position": {
-            "X": 370.29065,
-            "Y": -156.69495,
-            "Z": 707.9728
-          },
-          "TerritoryId": 1189,
+          "Position": [370.29065, -156.69495, 707.9728],
           "InteractionType": "Action",
           "Action": "Shrouded Luminescence",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2014728,
-          "Position": {
-            "X": 377.4319,
-            "Y": -150.53027,
-            "Z": 803.952
-          },
-          "TerritoryId": 1189,
+          "Position": [377.4319, -150.53027, 803.952],
           "InteractionType": "Action",
           "Action": "Shrouded Luminescence",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2014729,
-          "Position": {
-            "X": 283.4668,
-            "Y": -151.26276,
-            "Z": 796.8108
-          },
-          "TerritoryId": 1189,
+          "Position": [283.4668, -151.26276, 796.8108],
           "InteractionType": "Action",
           "Action": "Shrouded Luminescence",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

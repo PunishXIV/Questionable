@@ -1,64 +1,38 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000100,
-          "Position": {
-            "X": 25.872286,
-            "Y": -8.000001,
-            "Z": 115.7687
-          },
-          "StopDistance": 1,
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "TerritoryId": 148,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Central Shroud - Bentbranch Meadows",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ]
+          "Aetheryte": "Central Shroud - Bentbranch Meadows"
         },
         {
           "DataId": 1002980,
-          "Position": {
-            "X": 22.934265,
-            "Y": -8,
-            "Z": 84.97742
-          },
-          "TerritoryId": 148,
+          "Position": [22.934265, -8, 84.97742],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179657
         },
         {
           "DataId": 1004612,
-          "Position": {
-            "X": -114.94629,
-            "Y": -39.702168,
-            "Z": 335.46948
-          },
-          "TerritoryId": 148,
+          "Position": [-114.94629, -39.702168, 335.46948],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "TerritoryId": 148,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 2,
@@ -69,20 +43,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000100,
-          "Position": {
-            "X": 25.872286,
-            "Y": -8.000001,
-            "Z": 115.7687
-          },
-          "StopDistance": 1,
-          "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

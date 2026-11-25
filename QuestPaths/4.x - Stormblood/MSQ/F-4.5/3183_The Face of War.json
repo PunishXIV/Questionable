@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "liza",
     "JerryWester"
@@ -8,27 +8,11 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 621,
       "Steps": [
         {
-          "DataId": 1026958,
-          "Position": {
-            "X": -524.55945,
-            "Y": 8.698304,
-            "Z": -15.487976
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 829,
-          "Fly": true
-        },
-        {
           "DataId": 1026823,
-          "Position": {
-            "X": -468.925,
-            "Y": 107.62999,
-            "Z": 130.9071
-          },
-          "StopDistance": 6,
+          "Position": [-468.925, 107.62999, 130.9071],
           "TerritoryId": 829,
           "InteractionType": "AcceptQuest"
         }
@@ -36,9 +20,9 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 829,
       "Steps": [
         {
-          "TerritoryId": 829,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 611,
@@ -52,31 +36,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 829,
       "Steps": [
         {
           "DataId": 1026845,
-          "Position": {
-            "X": -476.67664,
-            "Y": 107.63,
-            "Z": 103.74609
-          },
-          "StopDistance": 7,
-          "TerritoryId": 829,
+          "Position": [-476.67664, 107.63, 103.74609],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1026846,
-          "Position": {
-            "X": -1.6022339,
-            "Y": 0,
-            "Z": -9.658997
-          },
-          "TerritoryId": 351,
+          "Position": [-1.6022339, 0, -9.658997],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,43 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006454,
-          "Position": {
-            "X": -168.84113,
-            "Y": 304.1538,
-            "Z": -328.66406
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006454,
-          "Position": {
-            "X": -168.84113,
-            "Y": 304.1538,
-            "Z": -328.66406
-          },
-          "TerritoryId": 155,
+          "Position": [-168.84113, 304.1538, -328.66406],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "7.5.6.5",
-            "Notes": [
-              "AI doesn't move after starting the instance, so enemies won't be triggered",
-              "(First Barrier) If the player is too far south, after being stunned by Vishap's roar, AI doesn't move out of the AOE and dies to the Cauterize"
-            ]
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -46,30 +24,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1010978,
-          "Position": {
-            "X": -157.57996,
-            "Y": 304.1538,
-            "Z": -314.53424
-          },
-          "TerritoryId": 155,
+          "Position": [-157.57996, 304.1538, -314.53424],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010897,
-          "Position": {
-            "X": 0.9613037,
-            "Y": -1.9957249,
-            "Z": -45.609253
-          },
-          "TerritoryId": 351,
+          "Position": [0.9613037, -1.9957249, -45.609253],
           "InteractionType": "CompleteQuest"
         }
       ]

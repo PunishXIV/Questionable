@@ -1,80 +1,39 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026852,
-          "Position": {
-            "X": 63.126587,
-            "Y": 14.005002,
-            "Z": 89.86035
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          },
-          "StopDistance":  5
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1045580,
-          "Position": {
-            "X": -11.215393,
-            "Y": 14.000013,
-            "Z": 18.417542
-          },
-          "TerritoryId": 131,
+          "Position": [-11.215393, 14.000013, 18.417542],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1045578,
-          "Position": {
-            "X": 0.9613037,
-            "Y": 15.000003,
-            "Z": -6.4851074
-          },
-          "TerritoryId": 131,
+          "Position": [0.9613037, 15.000003, -6.4851074],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1045579,
-          "Position": {
-            "X": 16.372864,
-            "Y": 14.000015,
-            "Z": -16.342468
-          },
-          "TerritoryId": 131,
+          "Position": [16.372864, 14.000015, -16.342468],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1026937,
-          "Position": {
-            "X": 65.7511,
-            "Y": 14.005002,
-            "Z": 90.440186
-          },
-          "TerritoryId": 131,
+          "Position": [65.7511, 14.005002, 90.440186],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4774
         }

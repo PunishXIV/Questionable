@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028925,
-          "Position": {
-            "X": 60.105225,
-            "Y": -3.047831E-07,
-            "Z": 1.6021729
-          },
-          "TerritoryId": 819,
+          "Position": [60.105225, -3.047831E-07, 1.6021729],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,15 +23,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1030533,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
+          "Position": [117.997925, 14.649025, 7.156433],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -49,79 +41,48 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028925,
-          "Position": {
-            "X": 60.105225,
-            "Y": -3.047831E-07,
-            "Z": 1.6021729
-          },
-          "TerritoryId": 819,
+          "Position": [60.105225, -3.047831E-07, 1.6021729],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028926,
-          "Position": {
-            "X": -4.1047363,
-            "Y": -7.700001,
-            "Z": 138.47559
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "Position": [-4.1047363, -7.700001, 138.47559],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "Position": {
-            "X": 16.119648,
-            "Y": -4.2178187,
-            "Z": 176.1683
-          },
-          "TerritoryId": 819,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "TerritoryId": 819,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Crystarium] The Pendants"
         },
         {
           "DataId": 1028927,
-          "Position": {
-            "X": 62.546753,
-            "Y": 1.716012,
-            "Z": 249.13391
-          },
-          "TerritoryId": 819,
+          "Position": [62.546753, 1.716012, 249.13391],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1030610,
-          "Position": {
-            "X": 65.11023,
-            "Y": 1.7160122,
-            "Z": 249.7749
-          },
-          "StopDistance": 7,
-          "TerritoryId": 819,
+          "Position": [65.11023, 1.7160122, 249.7749],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -135,20 +96,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1030533,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
+          "Position": [117.997925, 14.649025, 7.156433],
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -159,11 +112,7 @@
         },
         {
           "DataId": 1028923,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.0530548E-13,
-            "Z": -6.0273438
-          },
+          "Position": [-0.015319824, -1.0530548E-13, -6.0273438],
           "TerritoryId": 844,
           "InteractionType": "CompleteQuest"
         }

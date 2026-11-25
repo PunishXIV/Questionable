@@ -1,34 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1049443,
-          "Position": {
-            "X": -177.56934,
-            "Y": 29.999998,
-            "Z": -601.15967
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
-          "Position": {
-            "X": 352.85733,
-            "Y": 82.089386,
-            "Z": -355.71875
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1191,
+          "Position": [352.85733, 82.089386, -355.71875],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -39,35 +23,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1050664,
-          "Position": {
-            "X": 354.3297,
-            "Y": 82.042984,
-            "Z": -355.7641
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1191,
+          "Position": [354.3297, 82.042984, -355.7641],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1049443,
-          "Position": {
-            "X": -177.56934,
-            "Y": 29.999998,
-            "Z": -601.15967
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

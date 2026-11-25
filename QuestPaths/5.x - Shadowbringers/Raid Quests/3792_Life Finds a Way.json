@@ -1,31 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "DataId": 2009985,
-          "Position": {
-            "X": 385.0918,
-            "Y": -63.279236,
-            "Z": 511.49768
-          },
-          "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 878,
-          "Fly": true,
-          "SkipConditions": {"StepIf": {"InTerritory": [878]}}
-        },
-        {
           "DataId": 1032602,
-          "Position": {
-            "X": -6.7597656,
-            "Y": -2.1008885,
-            "Z": -8.560364
-          },
-          "StopDistance": 5,
+          "Position": [-6.7597656, -2.1008885, -8.560364],
           "TerritoryId": 878,
           "InteractionType": "AcceptQuest"
         }
@@ -33,42 +16,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1030091,
-          "Position": {
-            "X": 380.97205,
-            "Y": -64.31066,
-            "Z": 511.2229
-          },
-          "TerritoryId": 815,
+          "Position": [380.97205, -64.31066, 511.2229],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": 268.15204,
-            "Y": 7.1558266,
-            "Z": -237.94643
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
-          "Fly": true
-        },
-        {
           "DataId": 1032590,
-          "Position": {
-            "X": 265.3086,
-            "Y": 7.1558266,
-            "Z": -237.78137
-          },
-          "StopDistance": 4,
-          "TerritoryId": 815,
+          "Position": [265.3086, 7.1558266, -237.78137],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3793
         }

@@ -1,71 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Anonymous", "Date": "2026-09-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "DataId": 1019043,
-          "Position": {
-            "X": -43.656128,
-            "Y": 15.000004,
-            "Z": 46.52478
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 628,
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [736],
-              "NearPosition": {
-                "Position": {
-                  "X": -59.098206,
-                  "Y": 79.05602,
-                  "Z": 45.303955
-                },
-                "TerritoryId": 628,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1024156,
-          "Position": {
-            "X": -59.098206,
-            "Y": 79.05602,
-            "Z": 45.303955
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 735,
-          "SkipConditions": { "StepIf": { "InTerritory": [735, 736] } }
-        },
-        {
-          "DataId": 2009042,
-          "Position": {
-            "X": 34.073364,
-            "Y": 1.6021729,
-            "Z": -1.7853394
-          },
-          "TerritoryId": 735,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 736,
-          "SkipConditions": { "StepIf": { "InTerritory": [736] } }
-        },
-        {
           "DataId": 1024142,
-          "Position": {
-            "X": -15.365906,
-            "Y": -1.1998292,
-            "Z": -4.837158
-          },
+          "Position": [-15.365906, -1.1998292, -4.837158],
           "TerritoryId": 736,
           "InteractionType": "AcceptQuest"
         }
@@ -76,9 +20,9 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 736,
       "Steps": [
         {
-          "TerritoryId": 736,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 281,
@@ -92,31 +36,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 735,
       "Steps": [
         {
           "DataId": 1024146,
-          "Position": {
-            "X": -11.001831,
-            "Y": -3.094841e-6,
-            "Z": -6.8513794
-          },
-          "TerritoryId": 735,
+          "Position": [-11.001831, -3.094841e-6, -6.8513794],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1024149,
-          "Position": {
-            "X": -42.25226,
-            "Y": 15.000004,
-            "Z": 42.557373
-          },
-          "StopDistance": 7,
-          "TerritoryId": 628,
+          "Position": [-42.25226, 15.000004, 42.557373],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3089
         }

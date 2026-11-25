@@ -1,142 +1,74 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011916,
-          "Position": {
-            "X": 470.02356,
-            "Y": -49.89133,
-            "Z": 20.370789
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 470.88556,
-            "Y": -51.141403,
-            "Z": 36.143986
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1011928,
-          "Position": {
-            "X": 73.19751,
-            "Y": -49.19563,
-            "Z": -139.05548
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [73.19751, -49.19563, -139.05548],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011935,
-          "Position": {
-            "X": -285.63367,
-            "Y": 39.04305,
-            "Z": 53.72693
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Position": [-285.63367, 39.04305, 53.72693],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 379.64865,
-            "Y": -69.42944,
-            "Z": 695.1956
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "$": "Moglin"
-        },
-        {
           "DataId": 1012077,
-          "Position": {
-            "X": 381.70435,
-            "Y": -66.84979,
-            "Z": 700.86194
-          },
-          "StopDistance": 8,
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "IgnoreDistanceToObject": true
+          "Position": [381.70435, -66.84979, 700.86194],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 2007019,
-          "Position": {
-            "X": -261.03613,
-            "Y": 30.350098,
-            "Z": 559.0447
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-261.03613, 30.350098, 559.0447],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 2007020,
-          "Position": {
-            "X": -6.2714844,
-            "Y": 30.014404,
-            "Z": 23.453125
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "Position": [-6.2714844, 30.014404, 23.453125],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1017123,
-          "Position": {
-            "X": 12.924377,
-            "Y": 33.999996,
-            "Z": -39.32251
-          },
-          "TerritoryId": 131,
+          "Position": [12.924377, 33.999996, -39.32251],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1478
         }

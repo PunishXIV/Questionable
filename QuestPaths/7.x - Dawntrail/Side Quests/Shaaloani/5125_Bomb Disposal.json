@@ -1,70 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1049373,
-          "Position": {
-            "X": -375.66187,
-            "Y": 18.211061,
-            "Z": -114.21387
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 2014075,
-          "Position": {
-            "X": -446.06702,
-            "Y": 17.868286,
-            "Z": 34.286987
-          },
-          "TerritoryId": 1190,
+          "Position": [-446.06702, 17.868286, 34.286987],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [17734],
-          "Fly": true
+          "KillEnemyDataIds": [17734]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1049373,
-          "Position": {
-            "X": -375.66187,
-            "Y": 18.211061,
-            "Z": -114.21387
-          },
-          "TerritoryId": 1190,
+          "Position": [-375.66187, 18.211061, -114.21387],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "$": "There's a big crater here that's hard to navigate out of. So we teleport out if we fall into it during combat.",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -446.90082,
-                  "Y": 14.171233,
-                  "Z": 51.690197
-                },
-                "TerritoryId": 1190,
-                "MaximumDistance": 15
-              }
-            }
-          }
+          "$": "There's a big crater here that's hard to navigate out of. So we teleport out if we fall into it during combat."
         }
       ]
     }

@@ -1,76 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006400,
-          "Position": {
-            "X": 263.832,
-            "Y": 303.1,
-            "Z": -195.777
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 731,
-          "Position": {
-            "X": 345.38794,
-            "Y": 305.0518,
-            "Z": -314.38165
-          },
-          "TerritoryId": 155,
+          "Position": [345.38794, 305.0518, -314.38165],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [731],
-          "Fly": true
+          "KillEnemyDataIds": [731]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006400,
-          "Position": {
-            "X": 263.832,
-            "Y": 303.1,
-            "Z": -195.777
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [263.832, 303.1, -195.777],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006400,
-          "Position": {
-            "X": 263.832,
-            "Y": 303.1,
-            "Z": -195.777
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

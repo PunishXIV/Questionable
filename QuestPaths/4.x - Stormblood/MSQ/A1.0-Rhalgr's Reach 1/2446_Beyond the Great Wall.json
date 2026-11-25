@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1018330,
-          "Position": {
-            "X": -4.196289,
-            "Y": 0.018040119,
-            "Z": -6.6377563
-          },
-          "TerritoryId": 351,
+          "Position": [-4.196289, 0.018040119, -6.6377563],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -21,48 +17,33 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1020284,
-          "Position": {
-            "X": -3.3112793,
-            "Y": 0.018040119,
-            "Z": -6.881897
-          },
-          "TerritoryId": 351,
+          "Position": [-3.3112793, 0.018040119, -6.881897],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1020300,
-          "Position": {
-            "X": 24.795776,
-            "Y": 6.1891203,
-            "Z": 401.9989
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "Position": [24.795776, 6.1891203, 401.9989],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1020303,
-          "Position": {
-            "X": 26.962646,
-            "Y": 6.1844764,
-            "Z": 400.99182
-          },
-          "StopDistance": 7,
-          "TerritoryId": 152,
+          "Position": [26.962646, 6.1844764, 400.99182],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -76,41 +57,21 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "TerritoryId": 612,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Fringes - Castrum Oriens"
         },
         {
           "DataId": 1019512,
-          "Position": {
-            "X": -603.357,
-            "Y": 130.18283,
-            "Z": -470.63403
-          },
-          "TerritoryId": 612,
+          "Position": [-603.357, 130.18283, -470.63403],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179696
         },
         {
-          "Position": {
-            "X": -612.8515,
-            "Y": 130,
-            "Z": -506.81757
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1020304,
-          "Position": {
-            "X": -606.7445,
-            "Y": 130,
-            "Z": -506.95053
-          },
-          "StopDistance": 7,
-          "TerritoryId": 612,
+          "Position": [-606.7445, 130, -506.95053],
           "InteractionType": "CompleteQuest"
         }
       ]

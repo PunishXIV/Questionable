@@ -1,38 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001605,
-          "Position": {
-            "X": 94.46863,
-            "Y": 0.34075314,
-            "Z": -272.60242
-          },
-          "TerritoryId": 141,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 353,
-          "Position": {
-            "X": 112.41321,
-            "Y": 28.93967,
-            "Z": -37.277832
-          },
-          "TerritoryId": 141,
+          "Position": [112.41321, 28.93967, -37.277832],
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             352,
@@ -40,13 +23,7 @@
           ]
         },
         {
-          "Position": {
-            "X": 125.61467,
-            "Y": 29.092033,
-            "Z": -14.67918
-          },
-          "StopDistance": 1,
-          "TerritoryId": 141,
+          "Position": [125.61467, 29.092033, -14.67918],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -57,38 +34,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 131.78122,
-            "Y": 20.119337,
-            "Z": -115.27284
-          },
-          "TerritoryId": 141,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 127.7017,
-            "Y": -0.15994573,
-            "Z": -161.89238
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
-          "DataId": 1001605,
-          "Position": {
-            "X": 94.46863,
-            "Y": 0.34075314,
-            "Z": -272.60242
-          },
-          "TerritoryId": 141,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

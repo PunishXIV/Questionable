@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,80 +8,39 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030713,
-          "Position": {
-            "X": 324.5747,
-            "Y": 15.679742,
-            "Z": -47.348755
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 324.5747,
-                  "Y": 15.679742,
-                  "Z": -47.348755
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 600
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 532.2697,
-            "Y": 4.507798,
-            "Z": -53.42271
-          },
-          "TerritoryId": 813,
+          "Position": [532.2697, 4.507798, -53.42271],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [11146],
-          "Fly": true
+          "KillEnemyDataIds": [11146]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1030715,
-          "Position": {
-            "X": 530.84607,
-            "Y": 4.5006847,
-            "Z": -54.24591
-          },
-          "TerritoryId": 813,
+          "Position": [530.84607, 4.5006847, -54.24591],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
           "DataId": 1030712,
-          "Position": {
-            "X": 778.1948,
-            "Y": 23.037851,
-            "Z": -65.78168
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [778.1948, 23.037851, -65.78168],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,38 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005412,
-          "Position": {
-            "X": -108.14075,
-            "Y": 18.000334,
-            "Z": -0.22894287
-          },
-          "TerritoryId": 129,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 248.49304,
-            "Y": -11.838913,
-            "Z": 97.45935
-          },
-          "TerritoryId": 138,
+          "Position": [248.49304, -11.838913, 97.45935],
           "InteractionType": "Combat",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             397
@@ -40,29 +21,19 @@
         },
         {
           "DataId": 1005413,
-          "Position": {
-            "X": 248.49304,
-            "Y": -11.838913,
-            "Z": 97.45935
-          },
-          "TerritoryId": 138,
+          "Position": [248.49304, -11.838913, 97.45935],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1003275,
-          "Position": {
-            "X": -147.1123,
-            "Y": 18.2,
-            "Z": 14.358704
-          },
-          "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "Position": [-147.1123, 18.2, 14.358704],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

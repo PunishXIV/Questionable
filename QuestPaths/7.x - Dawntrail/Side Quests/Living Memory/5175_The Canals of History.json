@@ -1,62 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050620,
-          "Position": {
-            "X": -733.79114,
-            "Y": 0.007321423,
-            "Z": 518.33374
-          },
-          "TerritoryId": 1192,
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
-          "Fly": true,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1192,
       "Steps": [
         {
-          "Position": {
-            "X": -549.43896,
-            "Y": 20.09976,
-            "Z": 630.3976
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked",
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                128
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2013901,
-          "Position": {
-            "X": -515.9838,
-            "Y": -0.015319824,
-            "Z": 625.14685
-          },
-          "TerritoryId": 1192,
+          "Position": [-515.9838, -0.015319824, 625.14685],
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -68,14 +26,8 @@
         },
         {
           "DataId": 2013902,
-          "Position": {
-            "X": -496.78802,
-            "Y": 0.045776367,
-            "Z": 668.72656
-          },
-          "TerritoryId": 1192,
+          "Position": [-496.78802, 0.045776367, 668.72656],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -87,14 +39,8 @@
         },
         {
           "DataId": 2013903,
-          "Position": {
-            "X": -424.2771,
-            "Y": -0.10687256,
-            "Z": 660.7003
-          },
-          "TerritoryId": 1192,
+          "Position": [-424.2771, -0.10687256, 660.7003],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -108,19 +54,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1050620,
-          "Position": {
-            "X": -733.79114,
-            "Y": 0.007321423,
-            "Z": 518.33374
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

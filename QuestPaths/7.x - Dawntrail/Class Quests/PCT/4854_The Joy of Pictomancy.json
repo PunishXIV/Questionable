@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1049794,
-          "Position": {
-            "X": -158.98376,
-            "Y": 4.51273,
-            "Z": -45.63977
-          },
-          "TerritoryId": 133,
+          "Position": [-158.98376, 4.51273, -45.63977],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -20,66 +16,39 @@
               "Prompt": "TEXT_KINGBB201_04854_Q1_000_000",
               "Answer": "TEXT_KINGBB201_04854_A1_000_002"
             }
-          ],
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Sequence": 1,
-      "Steps": [
-        {
-          "DataId": 2013738,
-          "Position": {
-            "X": -6.9123535,
-            "Y": -1.4191895,
-            "Z": 5.508484
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Aetheryte Plaza"
           ]
         }
       ]
     },
     {
+      "Sequence": 1,
+      "TerritoryId": 132,
+      "Steps": [
+        {
+          "DataId": 2013738,
+          "Position": [-6.9123535, -1.4191895, 5.508484],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1049795,
-          "Position": {
-            "X": 54.306763,
-            "Y": -8.321841,
-            "Z": 94.13281
-          },
-          "TerritoryId": 132,
+          "Position": [54.306763, -8.321841, 94.13281],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1049795,
-          "Position": {
-            "X": 54.306763,
-            "Y": -8.321841,
-            "Z": 94.13281
-          },
-          "TerritoryId": 132,
+          "Position": [54.306763, -8.321841, 94.13281],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4855
         }

@@ -1,67 +1,31 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "Disabled": true,
   "Comment": "This is a FATE Allied Society Quest\nThere are other FATEs that spawn in the\narea that may need to be cleared first\nbefore the correct FATE will spawn.\nThis quest requires manual interaction.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "TerritoryId": 180,
           "InteractionType": "Instruction",
           "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
         },
         {
           "DataId": 1005930,
-          "Position": {
-            "X": 12.558105,
-            "Y": 16.159302,
-            "Z": -176.5622
-          },
-          "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "Position": [12.558105, 16.159302, -176.5622],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 110.73922,
-            "Y": 28.232178,
-            "Z": -598.52014
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 26.993164,
-                  "Y": 21.49987,
-                  "Z": -780.087
-                },
-                "TerritoryId": 180,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 2828,
-          "Position": {
-            "X": 26.993164,
-            "Y": 21.49987,
-            "Z": -780.087
-          },
-          "TerritoryId": 180,
+          "Position": [26.993164, 21.49987, -780.087],
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
           "KillEnemyDataIds": [
@@ -70,16 +34,8 @@
         },
         {
           "DataId": 1005930,
-          "Position": {
-            "X": 12.558105,
-            "Y": 16.159302,
-            "Z": -176.5622
-          },
-          "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "Position": [12.558105, 16.159302, -176.5622],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

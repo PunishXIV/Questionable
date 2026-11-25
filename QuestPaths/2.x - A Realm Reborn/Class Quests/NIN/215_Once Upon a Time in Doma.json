@@ -1,22 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "xan",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010601,
-          "Position": {
-            "X": -14.755493,
-            "Y": 41.39178,
-            "Z": 258.13684
-          },
-          "TerritoryId": 137,
+          "Position": [-14.755493, 41.39178, 258.13684],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -26,51 +21,18 @@
         },
         {
           "DataId": 1010139,
-          "Position": {
-            "X": -33.218933,
-            "Y": -24.674446,
-            "Z": 257.98413
-          },
-          "TerritoryId": 137,
+          "Position": [-33.218933, -24.674446, 257.98413],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "DataId": 2004966,
-          "Position": {
-            "X": -16.128845,
-            "Y": -23.300598,
-            "Z": 258.13684
-          },
-          "TerritoryId": 137,
-          "TargetTerritoryId": 137,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -6.8438888,
-                  "Y": 39.451496,
-                  "Z": 259.44324
-                },
-                "TerritoryId": 137,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 2004928,
-          "Position": {
-            "X": -10.605103,
-            "Y": 41.397705,
-            "Z": 267.87207
-          },
-          "TerritoryId": 137,
+          "Position": [-10.605103, 41.397705, 267.87207],
           "InteractionType": "Action",
           "Action": "Raiton"
         }
@@ -78,31 +40,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010615,
-          "Position": {
-            "X": -8.529846,
-            "Y": 39.569904,
-            "Z": 260.8529
-          },
-          "TerritoryId": 137,
+          "Position": [-8.529846, 39.569904, 260.8529],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2004929,
-          "Position": {
-            "X": -10.605103,
-            "Y": 41.397705,
-            "Z": 267.87207
-          },
-          "StopDistance": 7,
-          "TerritoryId": 137,
+          "Position": [-10.605103, 41.397705, 267.87207],
           "InteractionType": "Action",
           "Action": "Katon"
         }
@@ -110,93 +63,47 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010615,
-          "Position": {
-            "X": -8.529846,
-            "Y": 39.569904,
-            "Z": 260.8529
-          },
-          "TerritoryId": 137,
+          "Position": [-8.529846, 39.569904, 260.8529],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 138,
       "Steps": [
         {
-"Position": {
-            "X": 406.15826,
-            "Y": 28.205755,
-            "Z": -7.3764772
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
-            "StepIf": { "InTerritory": [139] }
-          }
-        },
-        {
-          "Position": {
-            "X": 407.71924,
-            "Y": 32.11566,
-            "Z": -14.989758
-          },
-          "TerritoryId": 138,
-          "TargetTerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
-            "StepIf": { "InTerritory": [139] }
-          }
-        },
-        {
           "DataId": 1010618,
-          "Position": {
-            "X": -570.82477,
-            "Y": -1.4935175,
-            "Z": -12.619263
-          },
+          "Position": [-570.82477, -1.4935175, -12.619263],
           "TerritoryId": 139,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1010618,
-          "Position": {
-            "X": -570.82477,
-            "Y": -1.4935175,
-            "Z": -12.619263
-          },
-          "TerritoryId": 139,
+          "Position": [-570.82477, -1.4935175, -12.619263],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010601,
-          "Position": {
-            "X": -14.755493,
-            "Y": 41.39178,
-            "Z": 258.13684
-          },
-          "TerritoryId": 137,
+          "Position": [-14.755493, 41.39178, 258.13684],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -206,12 +113,7 @@
         },
         {
           "DataId": 1010139,
-          "Position": {
-            "X": -33.218933,
-            "Y": -24.674446,
-            "Z": 257.98413
-          },
-          "TerritoryId": 137,
+          "Position": [-33.218933, -24.674446, 257.98413],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 216
         }

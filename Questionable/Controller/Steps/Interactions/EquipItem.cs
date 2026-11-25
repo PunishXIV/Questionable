@@ -1,7 +1,4 @@
-﻿using Dalamud.Game.Text.SeStringHandling;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Interactions;
@@ -15,7 +12,7 @@ internal static class EquipItem
             if (step.InteractionType != EInteractionType.EquipItem)
                 return null;
             if (!step.ItemId.HasValue)
-                throw new ArgumentNullException(nameof(step.ItemId));
+                throw new ArgumentException($"{nameof(step.ItemId)} is missing", nameof(step));
 
             return new Task(step.ItemId.Value);
         }
@@ -26,13 +23,11 @@ internal static class EquipItem
         public override string ToString() => $"Equip({ItemId})";
     }
 
-    internal sealed class DoEquip
+    internal sealed class Executor
     (
         IDataManager dataManager,
-        ILogger<DoEquip> logger) : TaskExecutor<Task>, IToastAware
+        ILogger<Executor> logger) : EquipmentSlots.GearExecutor<Task>(dataManager)
     {
-        private const int MaxAttempts = 3;
-
         private static readonly IReadOnlyList<InventoryType> SourceInventoryTypes =
         [
             InventoryType.ArmoryMainHand,
@@ -56,76 +51,21 @@ internal static class EquipItem
             InventoryType.Inventory4
         ];
 
-        private int _attempts;
-        private DateTime _continueAt = DateTime.MaxValue;
-        private Item? _item;
-        private List<ushort> _targetSlots = null!;
+        protected override uint ItemId => Task.ItemId;
+        protected override string FailureText => "Unable to equip gear.";
 
-        public override unsafe ETaskResult Update()
+        protected override unsafe bool IsDone(InventoryManager* inventoryManager) =>
+            EquipmentSlots.IsEquipped(inventoryManager, TargetSlots, Task.ItemId);
+
+        protected override unsafe void Move(InventoryManager* inventoryManager)
         {
-            if (DateTime.Now < _continueAt)
-                return ETaskResult.StillRunning;
-
-            InventoryManager* inventoryManager = InventoryManager.Instance();
-            if (inventoryManager == null)
-                return ETaskResult.StillRunning;
-
-            foreach (ushort x in _targetSlots)
-            {
-                InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, x);
-                if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
-                    return ETaskResult.TaskComplete;
-            }
-
-            Equip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return ETaskResult.StillRunning;
-        }
-
-        public bool OnErrorToast(SeString message)
-        {
-            string? insufficientArmoryChestSpace = DataManagerAdapter.GetString<LogMessage>(dataManager, 709, x => x.Text);
-            if (GameFunctions.GameStringEquals(message.TextValue, insufficientArmoryChestSpace))
-                _attempts = MaxAttempts;
-
-            return false;
-        }
-
-        public override bool ShouldInterruptOnDamage() => true;
-
-        protected override bool Start()
-        {
-            _item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(Task.ItemId) ??
-                    throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
-            _targetSlots = GetEquipSlot(_item) ?? throw new InvalidOperationException("Not a piece of equipment");
-
-            Equip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return true;
-        }
-
-        private unsafe void Equip()
-        {
-            ++_attempts;
-            if (_attempts > MaxAttempts)
-                throw new TaskException("Unable to equip gear.");
-
-            InventoryManager* inventoryManager = InventoryManager.Instance();
-            if (inventoryManager == null)
+            if (inventoryManager->GetInventoryContainer(InventoryType.EquippedItems) == null)
                 return;
 
-            InventoryContainer* equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
-            if (equippedContainer == null)
-                return;
-
-            foreach (ushort slot in _targetSlots)
+            if (IsDone(inventoryManager))
             {
-                InventoryItem* itemSlot = equippedContainer->GetInventorySlot(slot);
-                if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
-                {
-                    logger.LogInformation("Already equipped {Item}, skipping step", _item?.Name.ToString());
-                    return;
-                }
+                logger.LogInformation("Already equipped {Item}, skipping step", Item.Name.ToString(null, CultureInfo.InvariantCulture));
+                return;
             }
 
             foreach (InventoryType sourceInventoryType in SourceInventoryTypes)
@@ -146,14 +86,13 @@ internal static class EquipItem
                     if (sourceItem == null || sourceItem->ItemId != Task.ItemId)
                         continue;
 
-                    // Move the item to the first available slot
-                    ushort targetSlot = _targetSlots
+                    ushort targetSlot = TargetSlots
                         .Where(x =>
                         {
                             InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, x);
                             return itemSlot == null || itemSlot->ItemId == 0;
                         })
-                        .Concat(_targetSlots).First();
+                        .Concat(TargetSlots).First();
 
                     logger.LogInformation(
                         "Equipping item from {SourceInventory}, {SourceSlot} to {TargetInventory}, {TargetSlot}",
@@ -161,26 +100,12 @@ internal static class EquipItem
 
                     int result = inventoryManager->MoveItemSlot(sourceInventoryType, sourceSlot,
                         InventoryType.EquippedItems, targetSlot, a6: true);
-                    logger.LogInformation("MoveItemSlot result: {Result}", result);
+                    logger.LogDebug("MoveItemSlot result: {Result}", result);
                     return;
                 }
             }
 
             throw new TaskException($"Could not equip item {Task.ItemId}.");
-        }
-
-        private static List<ushort>? GetEquipSlot(Item? item)
-        {
-            if (item == null)
-                return [];
-            return item.Value.EquipSlotCategory.RowId switch
-            {
-                >= 1 and <= 11 => [(ushort)(item.Value.EquipSlotCategory.RowId - 1)],
-                12 => [11, 12], // rings
-                13 => [0],
-                17 => [13], // soul crystal
-                var _ => null
-            };
         }
     }
 }

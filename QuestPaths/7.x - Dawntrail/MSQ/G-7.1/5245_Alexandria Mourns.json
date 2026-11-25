@@ -1,33 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "DataId": 1048083,
-          "Position": {
-            "X": 302.05237,
-            "Y": 51.199978,
-            "Z": 205.0354
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
-          "TargetTerritoryId": 1207
-        },
-        {
           "DataId": 1052185,
-          "Position": {
-            "X": -4.837158,
-            "Y": -3.632158E-08,
-            "Z": 5.996765
-          },
+          "Position": [-4.837158, -3.632158E-08, 5.996765],
           "TerritoryId": 1207,
           "InteractionType": "AcceptQuest"
         }
@@ -35,53 +17,23 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1207,
       "Steps": [
         {
-          "DataId": 2014102,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 0.99176025,
-            "Z": 16.03717
-          },
-          "TerritoryId": 1207,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1186,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                1186
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1052191,
-          "Position": {
-            "X": 20.248657,
-            "Y": 38.0566,
-            "Z": -388.90674
-          },
+          "Position": [20.248657, 38.0566, -388.90674],
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] Resolution"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1052198,
-          "Position": {
-            "X": -303.2426,
-            "Y": 9.519508,
-            "Z": 51.80432
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1186,
+          "Position": [-303.2426, 9.519508, 51.80432],
           "InteractionType": "CompleteQuest"
         }
       ]

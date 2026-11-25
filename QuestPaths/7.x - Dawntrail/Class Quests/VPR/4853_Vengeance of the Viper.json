@@ -1,59 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046371,
-          "Position": {
-            "X": 205.06592,
-            "Y": 8.660461,
-            "Z": -71.70221
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 2014381,
-          "Position": {
-            "X": -64.59149,
-            "Y": -0.5036011,
-            "Z": 7.7667847
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "Position": [-64.59149, -0.5036011, 7.7667847],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1046388,
-          "Position": {
-            "X": -275.01337,
-            "Y": 27.017544,
-            "Z": 636.8047
-          },
-          "TerritoryId": 146,
+          "Position": [-275.01337, 27.017544, 636.8047],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "Notes": ["Galeripper attack is not dodged"]
-          },
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+            "Enabled": true
+          }
         }
       ]
     },
@@ -62,32 +37,23 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1046391,
-          "Position": {
-            "X": -414.87756,
-            "Y": -0.4116819,
-            "Z": 747.7378
-          },
-          "TerritoryId": 146,
+          "Position": [-414.87756, -0.4116819, 747.7378],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1046393,
-          "Position": {
-            "X": 204.48608,
-            "Y": 8.565186,
-            "Z": -71.488525
-          },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "Position": [204.48608, 8.565186, -71.488525],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,135 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032518,
-          "Position": {
-            "X": -641.8402,
-            "Y": 3.1716232,
-            "Z": 19.69934
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1027757,
-          "Position": {
-            "X": 609.7047,
-            "Y": 350.3518,
-            "Z": -197.95532
-          },
-          "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "Position": [609.7047, 350.3518, -197.95532],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "Position": {
-            "X": -475.38354,
-            "Y": 400.55338,
-            "Z": -779.4299
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -559.0543,
-            "Y": 394.95718,
-            "Z": -611.97614
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -681.43286,
-            "Y": 404.5379,
-            "Z": -693.3609
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -675.946,
-            "Y": 408.10754,
-            "Z": -711.8061
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -423.6145,
-            "Y": 393.0597,
-            "Z": -823.20044
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2010814,
-          "Position": {
-            "X": -422.47656,
-            "Y": 393.9115,
-            "Z": -824.094
-          },
-          "TerritoryId": 818,
+          "Position": [-422.47656, 393.9115, -824.094],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1027757,
-          "Position": {
-            "X": 609.7047,
-            "Y": 350.3518,
-            "Z": -197.95532
-          },
-          "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "Position": [609.7047, 350.3518, -197.95532],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

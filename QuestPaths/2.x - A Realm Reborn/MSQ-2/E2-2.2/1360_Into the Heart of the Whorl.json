@@ -1,38 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1008803,
-          "Position": {
-            "X": -418.90594,
-            "Y": -35.708496,
-            "Z": -400.50354
-          },
-          "StopDistance": 5,
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1001029,
-          "Position": {
-            "X": 9.170593,
-            "Y": 20.999403,
-            "Z": -15.213318
-          },
-          "TerritoryId": 129,
+          "Position": [9.170593, 20.999403, -15.213318],
           "InteractionType": "Interact",
           "TargetTerritoryId": 198,
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -43,11 +26,7 @@
         },
         {
           "DataId": 1002694,
-          "Position": {
-            "X": -0.045776367,
-            "Y": 1.6001425,
-            "Z": -7.0039062
-          },
+          "Position": [-0.045776367, 1.6001425, -7.0039062],
           "TerritoryId": 198,
           "InteractionType": "Interact"
         }
@@ -55,18 +34,13 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1001029,
-          "Position": {
-            "X": 9.170593,
-            "Y": 20.999403,
-            "Z": -15.213318
-          },
-          "TerritoryId": 129,
+          "Position": [9.170593, 20.999403, -15.213318],
           "InteractionType": "Interact",
           "TargetTerritoryId": 198,
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -77,11 +51,7 @@
         },
         {
           "DataId": 1008679,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 1.6041331,
-            "Z": -3.830017
-          },
+          "Position": [-1.2055054, 1.6041331, -3.830017],
           "TerritoryId": 198,
           "InteractionType": "Interact"
         }
@@ -89,40 +59,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 198,
       "Steps": [
         {
-          "DataId": 2001835,
-          "Position": {
-            "X": 0.0235393,
-            "Y": 2.330988,
-            "Z": 9.8216
-          },
-          "TerritoryId": 198,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "SkipConditions": {"StepIf": {"NotInTerritory": [198]}}
-        },
-        {
-          "Position": {
-            "X": 709.16064,
-            "Y": 66.00693,
-            "Z": -285.91016
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
-        },
-        {
           "DataId": 1008692,
-          "Position": {
-            "X": 712.8556,
-            "Y": 66.027,
-            "Z": -279.07227
-          },
+          "Position": [712.8556, 66.027, -279.07227],
           "TerritoryId": 135,
           "InteractionType": "Interact"
         }
@@ -130,39 +71,9 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 706.98395,
-            "Y": 66.00693,
-            "Z": -286.78662
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 152.25397,
-            "Y": 14.095841,
-            "Z": 668.4288
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            }
-          }
-        },
-        {
-          "TerritoryId": 135,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Lower La Noscea - Moraby Drydocks",
           "SkipConditions": {
@@ -173,39 +84,13 @@
         },
         {
           "DataId": 1002720,
-          "Position": {
-            "X": 49.271362,
-            "Y": 29.315498,
-            "Z": 605.27954
-          },
-          "TerritoryId": 135,
+          "Position": [49.271362, 29.315498, 605.27954],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179675
         },
         {
-          "Position": {
-            "X": 156.7082,
-            "Y": 8.973654,
-            "Z": 584.51135
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Lower La Noscea - Moraby Drydocks"
-            }
-          }
-        },
-        {
           "DataId": 1008693,
-          "Position": {
-            "X": 155.47412,
-            "Y": 8.973654,
-            "Z": 584.1306
-          },
-          "TerritoryId": 135,
+          "Position": [155.47412, 8.973654, 584.1306],
           "InteractionType": "CompleteQuest"
         }
       ]

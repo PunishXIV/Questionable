@@ -1,164 +1,103 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "AnimaMachinae",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1044402,
-          "Position": {
-            "X": -193.89642,
-            "Y": -49.19972,
-            "Z": -262.13477
-          },
-          "TerritoryId": 959,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 2013281,
-          "Position": {
-            "X": -330.19,
-            "Y": 105.1499,
-            "Z": 554.5586
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum"
+          "Position": [-330.19, 105.1499, 554.5586],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044942,
-          "Position": {
-            "X": -331.838,
-            "Y": 105.39431,
-            "Z": 551.2322
-          },
-          "TerritoryId": 959,
+          "Position": [-331.838, 105.39431, 551.2322],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044931,
-          "Position": {
-            "X": 148.30237,
-            "Y": -49.589592,
-            "Z": -361.77618
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "Position": [148.30237, -49.589592, -361.77618],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044402,
-          "Position": {
-            "X": -193.89642,
-            "Y": -49.19972,
-            "Z": -262.13477
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-193.89642, -49.19972, -262.13477],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044944,
-          "Position": {
-            "X": -463.55383,
-            "Y": -157.99237,
-            "Z": -513.3593
-          },
-          "TerritoryId": 959,
+          "Position": [-463.55383, -157.99237, -513.3593],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64
           ]
         },
         {
           "DataId": 1044945,
-          "Position": {
-            "X": -540.1236,
-            "Y": -167.8502,
-            "Z": -620.63025
-          },
-          "TerritoryId": 959,
+          "Position": [-540.1236, -167.8502, -620.63025],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32
           ]
         },
         {
           "DataId": 1044943,
-          "Position": {
-            "X": -414.54187,
-            "Y": -158.1177,
-            "Z": -639.9481
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-414.54187, -158.1177, -639.9481],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044947,
-          "Position": {
-            "X": -145.70844,
-            "Y": -49.19972,
-            "Z": -271.5343
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "Position": [-145.70844, -49.19972, -271.5343],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "Craft",
           "ItemId": 38849,
           "ItemCount": 1
         },
         {
           "DataId": 1044947,
-          "Position": {
-            "X": -145.70844,
-            "Y": -49.19972,
-            "Z": -271.5343
-          },
-          "TerritoryId": 959,
+          "Position": [-145.70844, -49.19972, -271.5343],
           "InteractionType": "CompleteQuest"
         }
       ]

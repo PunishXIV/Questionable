@@ -1,53 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006467,
-          "Position": {
-            "X": -437.94922,
-            "Y": 211.17,
-            "Z": -245.7771
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -398.1833,
-            "Y": 193.72365,
-            "Z": -330.6203
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -495.94693,
-            "Y": 149.93378,
-            "Z": -258.90088
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2002170,
-          "Position": {
-            "X": -488.6702,
-            "Y": 150.1029,
-            "Z": -318.71527
-          },
-          "TerritoryId": 155,
+          "Position": [-488.6702, 150.1029, -318.71527],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -56,45 +22,25 @@
         },
         {
           "DataId": 2002170,
-          "Position": {
-            "X": -488.6702,
-            "Y": 150.1029,
-            "Z": -318.71527
-          },
-          "TerritoryId": 155,
+          "Position": [-488.6702, 150.1029, -318.71527],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002590,
-          "Position": {
-            "X": -488.6702,
-            "Y": 150.65222,
-            "Z": -317.79968
-          },
-          "TerritoryId": 155,
+          "Position": [-488.6702, 150.65222, -317.79968],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006467,
-          "Position": {
-            "X": -437.94922,
-            "Y": 211.17,
-            "Z": -245.7771
-          },
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

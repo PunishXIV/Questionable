@@ -1,140 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006520,
-          "Position": {
-            "X": -699.51935,
-            "Y": 242.184,
-            "Z": 373.495
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006522,
-          "Position": {
-            "X": -694.42285,
-            "Y": 300.96927,
-            "Z": 372.1521
-          },
-          "TerritoryId": 155,
+          "Position": [-694.42285, 300.96927, 372.1521],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -692.2779,
-            "Y": 242.18399,
-            "Z": 366.4715
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -478.3551,
-                  "Y": 288.4877,
-                  "Z": 168.01697
-                },
-                "TerritoryId": 155,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -688.1699,
-            "Y": 241.99994,
-            "Z": 355.80283
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)",
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -478.3551,
-                  "Y": 288.4877,
-                  "Z": 168.01697
-                },
-                "TerritoryId": 155,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1006525,
-          "Position": {
-            "X": -478.3551,
-            "Y": 288.4877,
-            "Z": 168.01697
-          },
-          "TerritoryId": 155,
+          "Position": [-478.3551, 288.4877, 168.01697],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": -688.1699,
-            "Y": 241.99994,
-            "Z": 355.80283
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -692.2779,
-            "Y": 242.18399,
-            "Z": 366.4715
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)",
-          "DisableNavmesh": true
-        },
-        {
-          "DataId": 1006520,
-          "Position": {
-            "X": -699.51935,
-            "Y": 242.184,
-            "Z": 373.495
-          },
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

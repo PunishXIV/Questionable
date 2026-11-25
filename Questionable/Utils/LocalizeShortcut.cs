@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Lumina.Excel.Sheets;
+﻿using Lumina.Excel.Sheets;
 
 namespace Questionable.Utils;
 
@@ -7,8 +6,8 @@ namespace Questionable.Utils;
 internal static class LocalizeShortcut
 {
     private static bool _debug;
-    private static IDataManager _dataManager;
-    private static IClientState _clientState;
+    private static IDataManager _dataManager = null!;
+    private static IClientState _clientState = null!;
 
     internal static void Initialize(Configuration configuration, IDataManager dataManager, IClientState clientState)
     {
@@ -19,18 +18,18 @@ internal static class LocalizeShortcut
 
     internal static string _L(I18N.DotNet.PlainString input)
     {
-        var outp = I18N.DotNet.GlobalLocalizer.Localize(input);
+        var output = I18N.DotNet.GlobalLocalizer.Localize(input);
         if (_debug)
-            return $"{{{outp}}}";
-        return outp;
+            return $"{{{output}}}";
+        return output;
     }
 
     internal static string _LF(string input, params object[] args)
     {
-        var outp = I18N.DotNet.GlobalLocalizer.LocalizeFormat(input, args);
+        var output = I18N.DotNet.GlobalLocalizer.LocalizeFormat(input, args);
         if (_debug)
-            return $"{{{outp}}}";
-        return outp;
+            return $"{{{output}}}";
+        return output;
     }
 
     private static readonly Dictionary<(Type, uint), string> _translatedStrings = [];
@@ -52,6 +51,8 @@ internal static class LocalizeShortcut
             FittingShopCategory fittingShopCategory => fittingShopCategory.Name.ToMacroString(),
             ContentRoulette contentRoulette => contentRoulette.Name.ToMacroString(),
             HowTo howTo => howTo.Name.ToMacroString(),
+            Achievement achievement => achievement.Name.ToMacroString(),
+            Mount mount => mount.Singular.ToMacroString(),
             _ => throw new InvalidOperationException($"No known Name/Text mapping for {typeof(T).Name}")
         };
         _translatedStrings[(typeof(T), rowId)] = value;

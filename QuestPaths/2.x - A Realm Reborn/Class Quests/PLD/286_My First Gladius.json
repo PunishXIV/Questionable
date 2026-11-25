@@ -1,16 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "EquipItem",
           "ItemId": 1601,
-          "TerritoryId": 131,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -21,64 +21,29 @@
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 131,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 131,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 131,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": ["[Ul'dah] Aetheryte Plaza","[Ul'dah] Gladiators' Guild"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [130,131]}}
+          "Position": [-94.529724, 6.4999976, 39.81079],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": 45.13088,
-            "Y": 3.889354,
-            "Z": -166.51999
-          },
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                141
-              ]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -116.10664,
-            "Y": 10.801613,
-            "Z": 276.979
-          },
-          "TerritoryId": 141,
+          "Position": [-116.10664, 10.801613, 276.979],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -105,12 +70,7 @@
           ]
         },
         {
-          "Position": {
-            "X": 39.635372,
-            "Y": 3.2401803,
-            "Z": 273.41232
-          },
-          "TerritoryId": 141,
+          "Position": [39.635372, 3.2401803, 273.41232],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -134,22 +94,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

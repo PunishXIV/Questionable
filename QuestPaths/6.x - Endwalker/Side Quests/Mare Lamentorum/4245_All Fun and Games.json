@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "Disabled": true,
   "Comment": "Cutscene event in seq 2 unsupported",
@@ -7,52 +7,37 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "Instruction",
           "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
         },
         {
           "DataId": 1041797,
-          "Position": {
-            "X": -39.68878,
-            "Y": -132.94643,
-            "Z": -543.23645
-          },
-          "TerritoryId": 959,
+          "Position": [-39.68878, -132.94643, -543.23645],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1041798,
-          "Position": {
-            "X": -500.41965,
-            "Y": -154.95404,
-            "Z": -610.3151
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "Position": [-500.41965, -154.95404, -610.3151],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 2012595,
-          "Position": {
-            "X": -499.38205,
-            "Y": -154.95538,
-            "Z": -608.69763
-          },
-          "TerritoryId": 959,
+          "Position": [-499.38205, -154.95538, -608.69763],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -66,18 +51,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041797,
-          "Position": {
-            "X": -39.68878,
-            "Y": -132.94643,
-            "Z": -543.23645
-          },
-          "TerritoryId": 959,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

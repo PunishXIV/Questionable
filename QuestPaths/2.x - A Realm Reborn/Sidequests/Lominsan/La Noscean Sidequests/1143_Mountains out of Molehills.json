@@ -1,52 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1003359,
-          "Position": {
-            "X": 263.691,
-            "Y": -4.19629,
-            "Z": 202.167
-          },
-          "TerritoryId": 138,
+          "Position": [263.691, -4.19629, 202.167],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "$": "auto: issuer 1003359 (S'nairoh)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 263.62125,
-            "Y": -5.2462654,
-            "Z": 207.80981
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": 265.9542,
-              "Y": -22.750002,
-              "Z": 221.74113
-            }
-          }
-        },
-        {
           "DataId": 206,
-          "Position": {
-            "X": 244.58679,
-            "Y": -13.952617,
-            "Z": 117.50964
-          },
-          "TerritoryId": 138,
+          "Position": [244.58679, -13.952617, 117.50964],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -58,17 +33,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1003359,
-          "Position": {
-            "X": 263.691,
-            "Y": -4.19629,
-            "Z": 202.167
-          },
-          "TerritoryId": 138,
+          "Position": [263.691, -4.19629, 202.167],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "$": "auto: todo turn-in -> 1003359 (S'nairoh)"
         }
       ]

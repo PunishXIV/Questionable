@@ -1,85 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013074,
-          "Position": {
-            "X": 304.3412,
-            "Y": 483.48206,
-            "Z": 143.11438
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {"StepIf": {"InTerritory": [1073]}},
-          "TargetTerritoryId": 1073
-        },
-        {
           "DataId": 1044059,
-          "Position": {
-            "X": -15.304871,
-            "Y": 494.9991,
-            "Z": -68.16211
-          },
+          "Position": [-15.304871, 494.9991, -68.16211],
           "TerritoryId": 1073,
           "InteractionType": "Interact"
         }
@@ -87,9 +28,9 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1073,
       "Steps": [
         {
-          "TerritoryId": 1073,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -102,7 +43,6 @@
           ]
         },
         {
-          "TerritoryId": 1073,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -116,63 +56,18 @@
         },
         {
           "DataId": 1044059,
-          "Position": {
-            "X": -15.304871,
-            "Y": 494.9991,
-            "Z": -68.16211
-          },
-          "TerritoryId": 1073,
+          "Position": [-15.304871, 494.9991, -68.16211],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            }
-          }
-        },
-        {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "CompleteQuest"
         }
       ]

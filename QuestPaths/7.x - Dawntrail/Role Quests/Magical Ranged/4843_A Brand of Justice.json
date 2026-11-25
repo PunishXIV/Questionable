@@ -1,144 +1,89 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048331,
-          "Position": {
-            "X": 214.03821,
-            "Y": 5.2600574,
-            "Z": 628.3817
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1048332,
-          "Position": {
-            "X": 52.506226,
-            "Y": -5.20688E-07,
-            "Z": -54.154297
-          },
-          "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han"
+          "Position": [52.506226, -5.20688E-07, -54.154297],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1048340,
-          "Position": {
-            "X": -186.69415,
-            "Y": 4.0499983,
-            "Z": -108.11017
-          },
-          "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "Position": [-186.69415, 4.0499983, -108.11017],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1048332,
-          "Position": {
-            "X": 52.506226,
-            "Y": -5.20688E-07,
-            "Z": -54.154297
-          },
-          "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Hall of the Radiant Host",
-            "[Radz-at-Han] Aetheryte Plaza"
-          ]
+          "Position": [52.506226, -5.20688E-07, -54.154297],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1048343,
-          "Position": {
-            "X": -336.53772,
-            "Y": 52.243706,
-            "Z": -165.05688
-          },
-          "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "Position": [-336.53772, 52.243706, -165.05688],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": -427.5108,
-            "Y": -0.015813708,
-            "Z": -710.37146
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 957,
+          "Position": [-427.5108, -0.015813708, -710.37146],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17625
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1048344,
-          "Position": {
-            "X": -419.028,
-            "Y": 0.06509568,
-            "Z": -710.9331
-          },
-          "StopDistance": 7,
-          "TerritoryId": 957,
+          "Position": [-419.028, 0.06509568, -710.9331],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1048331,
-          "Position": {
-            "X": 214.03821,
-            "Y": 5.2600574,
-            "Z": 628.3817
-          },
-          "TerritoryId": 957,
+          "Position": [214.03821, 5.2600574, 628.3817],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "NextQuestId": 4844
         }
       ]

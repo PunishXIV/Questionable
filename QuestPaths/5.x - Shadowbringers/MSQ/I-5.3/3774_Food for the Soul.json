@@ -1,75 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032081,
-          "Position": {
-            "X": -2.4262085,
-            "Y": 0,
-            "Z": -9.10968
-          },
-          "TerritoryId": 351,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 26.789001,
-            "Y": 54.865185,
-            "Z": -770.47614
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1033818,
-          "Position": {
-            "X": 24.551636,
-            "Y": 50.99997,
-            "Z": -815.18274
-          },
-          "TerritoryId": 156,
+          "Position": [24.551636, 50.99997, -815.18274],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "DataId": 1027230,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
-          "TargetTerritoryId": 844
-        },
-        {
           "DataId": 1033819,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 0,
-            "Z": -4.043701
-          },
+          "Position": [-0.015319824, 0, -4.043701],
           "TerritoryId": 844,
           "InteractionType": "Interact"
         }
@@ -77,16 +32,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1033822,
-          "Position": {
-            "X": 39.6886,
-            "Y": -6.9874797E-13,
-            "Z": -0.83929443
-          },
-          "StopDistance": 5,
-          "TerritoryId": 819,
+          "Position": [39.6886, -6.9874797E-13, -0.83929443],
           "InteractionType": "CompleteQuest"
         }
       ]

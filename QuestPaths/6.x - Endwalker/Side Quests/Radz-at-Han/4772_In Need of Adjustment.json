@@ -1,45 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1043891,
-          "Position": {
-            "X": 41.33667,
-            "Y": -24.693443,
-            "Z": -201.67853
-          },
-          "TerritoryId": 963,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] The High Crucible of Al-Kimiya"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "Disabled": true,
           "DataId": 1043892,
-          "Position": {
-            "X": 48.325317,
-            "Y": -0.0003188569,
-            "Z": -12.802368
-          },
-          "TerritoryId": 963,
+          "Position": [48.325317, -0.0003188569, -12.802368],
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Radz-at-Han] The High Crucible of Al-Kimiya",
-            "[Radz-at-Han] Aetheryte Plaza"
-          ],
           "ItemId": 40322,
           "ItemCount": 3,
           "SkipConditions": {
@@ -52,18 +28,8 @@
         },
         {
           "DataId": 1043891,
-          "Position": {
-            "X": 41.33667,
-            "Y": -24.693443,
-            "Z": -201.67853
-          },
-          "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] The High Crucible of Al-Kimiya"
-          ]
+          "Position": [41.33667, -24.693443, -201.67853],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

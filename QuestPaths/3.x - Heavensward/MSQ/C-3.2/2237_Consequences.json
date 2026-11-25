@@ -1,88 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "erdelf", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016580,
-          "Position": {
-            "X": 416.5254,
-            "Y": 217.95142,
-            "Z": 754.20764
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": 528.9199,
-            "Y": 217.95137,
-            "Z": 773.3327
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1016069,
-          "Position": {
-            "X": 540.3677,
-            "Y": 217.90826,
-            "Z": 769.0393
-          },
-          "TerritoryId": 397,
+          "Position": [540.3677, 217.90826, 769.0393],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": 528.9199,
-            "Y": 217.95137,
-            "Z": 773.3327
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1016581,
-          "Position": {
-            "X": 477.37842,
-            "Y": 223.92603,
-            "Z": 872.6787
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [477.37842, 223.92603, 872.6787],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1016579,
-          "Position": {
-            "X": 507.16406,
-            "Y": 217.95152,
-            "Z": 769.9243
-          },
-          "TerritoryId": 397,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [507.16406, 217.95152, 769.9243],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

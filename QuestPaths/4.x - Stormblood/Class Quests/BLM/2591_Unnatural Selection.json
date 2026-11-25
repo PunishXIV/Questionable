@@ -1,138 +1,79 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006752,
-          "Position": {
-            "X": 87.5105,
-            "Y": 18,
-            "Z": 113.725464
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1021086,
-          "Position": {
-            "X": 326.10046,
-            "Y": 11.181234,
-            "Z": -8.743469
-          },
-          "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          "Position": [326.10046, 11.181234, -8.743469],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1021090,
-          "Position": {
-            "X": 7.2174683,
-            "Y": 115.514336,
-            "Z": -720.7599
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "Fly": true
+          "Position": [7.2174683, 115.514336, -720.7599],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 2007936,
-          "Position": {
-            "X": -284.93176,
-            "Y": 66.20886,
-            "Z": -679.07227
-          },
-          "TerritoryId": 620,
+          "Position": [-284.93176, 66.20886, -679.07227],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7234
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1021092,
-          "Position": {
-            "X": -266.4073,
-            "Y": 76.297005,
-            "Z": -623.1022
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-266.4073, 76.297005, -623.1022],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1006753,
-          "Position": {
-            "X": 325.063,
-            "Y": 11.236564,
-            "Z": -6.2105103
-          },
-          "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          "Position": [325.063, 11.236564, -6.2105103],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1006752,
-          "Position": {
-            "X": 87.5105,
-            "Y": 18,
-            "Z": 113.725464
-          },
-          "TerritoryId": 131,
+          "Position": [87.5105, 18, 113.725464],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "NextQuestId": 2592
         }
       ]

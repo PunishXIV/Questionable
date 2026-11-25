@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Starr",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011145,
-          "Position": {
-            "X": -65.38495,
-            "Y": 0.06979119,
-            "Z": 0.8086548
-          },
-          "TerritoryId": 144,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gold Saucer"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 144,
       "Steps": [
         {
           "DataId": 1025176,
-          "Position": {
-            "X": 57.99951,
-            "Y": 3.9997258,
-            "Z": 64.774536
-          },
-          "TerritoryId": 144,
+          "Position": [57.99951, 3.9997258, 64.774536],
           "InteractionType": "CompleteQuest"
         }
       ]

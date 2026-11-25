@@ -1,94 +1,36 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050652,
-          "Position": {
-            "X": 622.4917,
-            "Y": -17.334448,
-            "Z": -441.42828
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
-          "Position": {
-            "X": 528.5589,
-            "Y": -18.217268,
-            "Z": -243.5277
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 557.73425,
-            "Y": -71.68169,
-            "Z": -220.66245
-          },
-          "TerritoryId": 1190,
+          "Position": [557.73425, -71.68169, -220.66245],
           "InteractionType": "UseItem",
-          "ItemId": 2003590,
-          "Fly": true,
-          "DisableNavmesh": true
+          "ItemId": 2003590
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 2014055,
-          "Position": {
-            "X": 568.0475,
-            "Y": -77.16492,
-            "Z": -219.92828
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "Position": [568.0475, -77.16492, -219.92828],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 528.5589,
-            "Y": -18.217268,
-            "Z": -243.5277
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "Fly": true,
-          "DisableNavmesh": true
-        },
-        {
-          "DataId": 1050652,
-          "Position": {
-            "X": 622.4917,
-            "Y": -17.334448,
-            "Z": -441.42828
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

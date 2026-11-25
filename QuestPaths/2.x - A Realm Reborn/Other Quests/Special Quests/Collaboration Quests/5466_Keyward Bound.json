@@ -1,39 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["alydev", "OmegaJackie"],
   "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 144,
       "Steps": [
         {
           "DataId": 1058756,
-          "Position": {
-            "X": -33.7745,
-            "Y": 0,
-            "Z": 45.1991
-          },
-          "TerritoryId": 144,
+          "Position": [-33.7745, 0, 45.1991],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Entrance & Card Squares"
-          ],
           "$": "auto: issuer 1058756 (catlike mammet)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 144,
       "Steps": [
         {
           "DataId": 1058754,
-          "Position": {
-            "X": 0.804425,
-            "Y": 3.98254,
-            "Z": 61.2062
-          },
-          "TerritoryId": 144,
+          "Position": [0.804425, 3.98254, 61.2062],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1360,
           "$": "auto: todo location -> 1058754 (W'zazanh)"
@@ -42,15 +30,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1360,
       "Steps": [
         {
           "DataId": 1058752,
-          "Position": {
-            "X": -13.6017,
-            "Y": 0.332853,
-            "Z": -28.1275
-          },
-          "TerritoryId": 1360,
+          "Position": [-13.6017, 0.332853, -28.1275],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

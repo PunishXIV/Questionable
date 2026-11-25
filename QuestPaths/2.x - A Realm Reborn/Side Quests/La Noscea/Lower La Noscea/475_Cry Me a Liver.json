@@ -1,44 +1,19 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002605,
-          "Position": {
-            "X": 277.943,
-            "Y": 45.143738,
-            "Z": 33.64612
-          },
-          "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [135] }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 160.76929,
-            "Y": 33.85845,
-            "Z": 73.79036
-          },
-          "TerritoryId": 135,
+          "Position": [160.76929, 33.85845, 73.79036],
           "InteractionType": "Combat",
-          "Fly": true,
-          "Land": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -46,46 +21,29 @@
               "MinimumKillCount": 3
             }
           ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [135] }
-          },
           "$": "included aetheryte shortcut in case this quest is accepted and then done later; it's a long hike from Moraby Drydocks"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002605,
-          "Position": {
-            "X": 277.943,
-            "Y": 45.143738,
-            "Z": 33.64612
-          },
-          "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [277.943, 45.143738, 33.64612],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002571,
-          "Position": {
-            "X": 548.63806,
-            "Y": 89.289055,
-            "Z": -74.32672
-          },
-          "TerritoryId": 135,
+          "Position": [548.63806, 89.289055, -74.32672],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 476
         }
       ]

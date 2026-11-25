@@ -1,78 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021517,
-          "Position": {
-            "X": 85.09949,
-            "Y": 41.112656,
-            "Z": -717.89124
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1021513,
-          "Position": {
-            "X": 41.000854,
-            "Y": 21.22528,
-            "Z": -634.0276
-          },
-          "TerritoryId": 613,
+          "Position": [41.000854, 21.22528, -634.0276],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": 97.741745,
-            "Y": 0.95900655,
-            "Z": -790.4652
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1022959,
-          "Position": {
-            "X": 88.36499,
-            "Y": 5.006782,
-            "Z": -862.3331
-          },
-          "TerritoryId": 613,
+          "Position": [88.36499, 5.006782, -862.3331],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1021517,
-          "Position": {
-            "X": 85.09949,
-            "Y": 41.112656,
-            "Z": -717.89124
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

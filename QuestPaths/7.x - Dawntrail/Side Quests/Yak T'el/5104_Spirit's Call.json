@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048987,
-          "Position": {
-            "X": 596.97876,
-            "Y": -142.60623,
-            "Z": 441.7334
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051053,
-          "Position": {
-            "X": 257.1908,
-            "Y": -165.78062,
-            "Z": 146.74597
-          },
-          "TerritoryId": 1189,
+          "Position": [257.1908, -165.78062, 146.74597],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -42,122 +26,55 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": 272.75598,
-            "Y": -161.77667,
-            "Z": 117.129616
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": 255.7041,
-            "Y": -161.34225,
-            "Z": 101.95002
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "DataId": 1051053,
+          "Position": [218.3051, -160.72849, 78.95244],
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1051053,
-          "Position": {
-            "X": 218.3051,
-            "Y": -160.72849,
-            "Z": 78.95244
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true
+          "Position": [168.0448, -158.83824, 31.171473],
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1051053,
-          "Position": {
-            "X": 168.0448,
-            "Y": -158.83824,
-            "Z": 31.171473
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true
+          "Position": [144.163, -156.25887, -57.818764],
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
-          "DataId": 1051053,
-          "Position": {
-            "X": 144.163,
-            "Y": -156.25887,
-            "Z": -57.818764
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": 83.32947,
-            "Y": -157.21858,
-            "Z": -67.64331
-          },
-          "StopDistance": 1,
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "Position": [83.32947, -157.21858, -67.64331],
+          "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051054,
-          "Position": {
-            "X": 83.32947,
-            "Y": -157.21858,
-            "Z": -67.64331
-          },
-          "TerritoryId": 1189,
+          "Position": [83.32947, -157.21858, -67.64331],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2014259,
-          "Position": {
-            "X": 65.049194,
-            "Y": -184.1612,
-            "Z": -70.237305
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true,
-          "Mount": false
+          "Position": [65.049194, -184.1612, -70.237305],
+          "Mount": false,
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048987,
-          "Position": {
-            "X": 596.97876,
-            "Y": -142.60623,
-            "Z": 441.7334
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

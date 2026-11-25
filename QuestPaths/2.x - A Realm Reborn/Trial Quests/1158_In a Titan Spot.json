@@ -1,63 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
-          "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212,
-          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
-        },
-        {
           "DataId": 1007533,
-          "Position": {
-            "X": -0.80877686,
-            "Y": -3,
-            "Z": -47.80658
-          },
+          "Position": [-0.80877686, -3, -47.80658],
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
@@ -66,142 +18,27 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003281,
-          "Position": {
-            "X": 97.520386,
-            "Y": 40.248554,
-            "Z": 81.1322
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [97.520386, 40.248554, 81.1322],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 287.2875,
-            "Y": 41.545933,
-            "Z": -200.75758
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
-        },
-        {
-          "Position": {
-            "X": 285.82883,
-            "Y": 42.26685,
-            "Z": -203.32939
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 180,
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
-        },
-        {
-          "Position": {
-            "X": -114.35803,
-            "Y": 64.464615,
-            "Z": -217.34372
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
-        },
-        {
-          "TerritoryId": 180,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
         },
         {
-          "Position": {
-            "X": 71.55255,
-            "Y": 59.83099,
-            "Z": -516.4647
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 111.73484,
-            "Y": 23.613834,
-            "Z": -611.87823
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 109.77451,
-            "Y": 23.459608,
-            "Z": -619.86304
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 84.102905,
-            "Y": 28.170393,
-            "Z": -716.35504
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 161.06644,
-            "Y": 26.61216,
-            "Z": -712.6371
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 176.3917,
-            "Y": 29.076319,
-            "Z": -652.8805
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 143.06934,
-            "Y": 23.642702,
-            "Z": -656.43506
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2002583,
-          "Position": {
-            "X": 144.39612,
-            "Y": 29.037842,
-            "Z": -622.4918
-          },
-          "TerritoryId": 180,
+          "Position": [144.39612, 29.037842, -622.4918],
           "InteractionType": "CompleteQuest"
         }
       ]

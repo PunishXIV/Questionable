@@ -1,51 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014405,
-          "Position": {
-            "X": 69.62683,
-            "Y": 53.404236,
-            "Z": 201.5564
-          },
-          "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Epilogue Gate (Eastern Hinterlands)"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1014409,
-          "Position": {
-            "X": -41.519836,
-            "Y": 100.89075,
-            "Z": -181.99438
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-41.519836, 100.89075, -181.99438],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1014402,
-          "Position": {
-            "X": -42.37433,
-            "Y": 100.87579,
-            "Z": -183.21509
-          },
-          "TerritoryId": 399,
+          "Position": [-42.37433, 100.87579, -183.21509],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2249
         }

@@ -1,41 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038500,
-          "Position": {
-            "X": -357.83936,
-            "Y": 21.84602,
-            "Z": -91.32526
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1038500,
-          "Position": {
-            "X": -357.83936,
-            "Y": 21.84602,
-            "Z": -91.32526
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

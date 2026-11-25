@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009976,
-          "Position": {
-            "X": 261.58533,
-            "Y": 302.19598,
-            "Z": -223.10223
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1008969,
-          "Position": {
-            "X": 0.99176025,
-            "Y": -1.9957249,
-            "Z": -45.700806
-          },
-          "TerritoryId": 351,
+          "Position": [0.99176025, -1.9957249, -45.700806],
           "InteractionType": "CompleteQuest"
         }
       ]

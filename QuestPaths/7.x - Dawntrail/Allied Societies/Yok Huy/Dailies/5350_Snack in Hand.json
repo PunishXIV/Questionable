@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "alydev",
     "stoat33"
@@ -8,26 +8,16 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
+                "Position": [493.2173, 142.24991, 783.0471],
                 "TerritoryId": 1187,
                 "MaximumDistance": 20
               }
@@ -36,40 +26,28 @@
         },
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1055804,
-          "Position": {
-            "X": 366.10962,
-            "Y": 129.04724,
-            "Z": 645.8075
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "Fly": true,
-          "StopDistance": 4
+          "Position": [366.10962, 129.04724, 645.8075],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 1187,
           "ItemId": 46228,
           "ItemCount": 1,
           "SkipConditions": {
@@ -82,39 +60,23 @@
         },
         {
           "DataId": 1055804,
-          "Position": {
-            "X": 366.10962,
-            "Y": 129.04724,
-            "Z": 645.8075
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "StopDistance": 4
+          "Position": [366.10962, 129.04724, 645.8075],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
+                "Position": [493.2173, 142.24991, 783.0471],
                 "TerritoryId": 1187,
                 "MaximumDistance": 20
               }
@@ -123,12 +85,7 @@
         },
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "CompleteQuest"
         }
       ]

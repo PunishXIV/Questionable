@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "skiaz",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006331,
-          "Position": {
-            "X": -145.56262,
-            "Y": 64.85822,
-            "Z": -209.15851
-          },
-          "TerritoryId": 180,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2269,
-          "Position": {
-            "X": -268.5741,
-            "Y": 64.49246,
-            "Z": -322.04163
-          },
-          "TerritoryId": 180,
+          "Position": [-268.5741, 64.49246, -322.04163],
           "InteractionType": "Combat",
           "KillEnemyDataIds": [
             2269
@@ -40,27 +23,13 @@
             "ItemId": 2000670,
             "Condition": "Health%",
             "Value": 30
-          },
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006331,
-          "Position": {
-            "X": -145.56262,
-            "Y": 64.85822,
-            "Z": -209.15851
-          },
-          "TerritoryId": 180,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

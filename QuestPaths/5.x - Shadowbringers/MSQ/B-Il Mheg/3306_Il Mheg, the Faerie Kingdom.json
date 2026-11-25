@@ -1,66 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1028956,
-          "Position": {
-            "X": -635.76715,
-            "Y": 126.0163,
-            "Z": 697.444
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1028970,
-          "Position": {
-            "X": -370.41278,
-            "Y": 47.988583,
-            "Z": 497.3982
-          },
-          "TerritoryId": 816,
+          "Position": [-370.41278, 47.988583, 497.3982],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "TerritoryId": 816,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Il Mheg - Lydha Lran"
         },
         {
           "DataId": 2010636,
-          "Position": {
-            "X": -432.08972,
-            "Y": 64.1947,
-            "Z": 549.8893
-          },
-          "TerritoryId": 816,
+          "Position": [-432.08972, 64.1947, 549.8893],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179716
         },
         {
           "DataId": 2009816,
-          "Position": {
-            "X": -382.8031,
-            "Y": 60.746094,
-            "Z": 530.5714
-          },
-          "TerritoryId": 816,
+          "Position": [-382.8031, 60.746094, 530.5714],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -79,15 +53,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1028970,
-          "Position": {
-            "X": -370.41278,
-            "Y": 47.988583,
-            "Z": 497.3982
-          },
-          "TerritoryId": 816,
+          "Position": [-370.41278, 47.988583, 497.3982],
           "InteractionType": "CompleteQuest"
         }
       ]

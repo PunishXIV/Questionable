@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "alydev",
     "Kiarra"
@@ -8,26 +8,16 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
+                "Position": [493.2173, 142.24991, 783.0471],
                 "TerritoryId": 1187,
                 "MaximumDistance": 20
               }
@@ -36,39 +26,24 @@
         },
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "$": "Recovery",
           "DataId": 1055817,
-          "Position": {
-            "X": 458.15198,
-            "Y": 114.935,
-            "Z": 657.3739
-          },
-          "TerritoryId": 1187,
-          "Fly": true,
+          "Position": [458.15198, 114.935, 657.3739],
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 458.15198,
-                  "Y": 114.935,
-                  "Z": 657.3739
-                },
+                "Position": [458.15198, 114.935, 657.3739],
                 "TerritoryId": 1187,
                 "MaximumDistance": 20
               }
@@ -77,22 +52,17 @@
         },
         {
           "DataId": 1055817,
-          "Position": {
-            "X": 458.15198,
-            "Y": 114.935,
-            "Z": 657.3739
-          },
-          "TerritoryId": 1187,
+          "Position": [458.15198, 114.935, 657.3739],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 1187,
           "ItemId": 46212,
           "ItemCount": 3,
           "SkipConditions": {
@@ -105,40 +75,23 @@
         },
         {
           "DataId": 1055817,
-          "Position": {
-            "X": 458.15198,
-            "Y": 114.935,
-            "Z": 657.3739
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "Position": [458.15198, 114.935, 657.3739],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
+                "Position": [493.2173, 142.24991, 783.0471],
                 "TerritoryId": 1187,
                 "MaximumDistance": 20
               }
@@ -147,12 +100,7 @@
         },
         {
           "DataId": 1054635,
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
+          "Position": [493.2173, 142.24991, 783.0471],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014850,
-          "Position": {
-            "X": 634.51587,
-            "Y": 10.474376,
-            "Z": 77.50049
-          },
-          "StopDistance": 7,
-          "TerritoryId": 402,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 1012829,
-          "Position": {
-            "X": 641.90125,
-            "Y": 13.840106,
-            "Z": 506.95044
-          },
-          "TerritoryId": 402,
+          "Position": [641.90125, 13.840106, 506.95044],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 1012827,
-          "Position": {
-            "X": 228.22913,
-            "Y": 14.933587,
-            "Z": 553.97876
-          },
-          "TerritoryId": 402,
+          "Position": [228.22913, 14.933587, 553.97876],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -60,36 +40,26 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 1012827,
-          "Position": {
-            "X": 228.22913,
-            "Y": 14.933587,
-            "Z": 553.97876
-          },
-          "TerritoryId": 402,
+          "Position": [228.22913, 14.933587, 553.97876],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 1012834,
-          "Position": {
-            "X": -197.86377,
-            "Y": -102.78301,
-            "Z": 456.53467
-          },
-          "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true
+          "Position": [-197.86377, -102.78301, 456.53467],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

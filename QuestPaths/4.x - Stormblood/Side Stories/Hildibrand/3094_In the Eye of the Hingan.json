@@ -1,98 +1,63 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1024708,
-          "Position": {
-            "X": 98.83264,
-            "Y": 4.0000014,
-            "Z": 103.471436
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025885,
-          "Position": {
-            "X": 26.443848,
-            "Y": 6.024561,
-            "Z": -118.57788
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Rakuza District"
-          ]
+          "Position": [26.443848, 6.024561, -118.57788],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025887,
-          "Position": {
-            "X": -62.790894,
-            "Y": 6.0295854,
-            "Z": -171.19104
-          },
-          "TerritoryId": 628,
+          "Position": [-62.790894, 6.0295854, -171.19104],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025891,
-          "Position": {
-            "X": -45.059937,
-            "Y": 10.503964,
-            "Z": -191.79071
-          },
-          "TerritoryId": 628,
+          "Position": [-45.059937, 10.503964, -191.79071],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025887,
-          "Position": {
-            "X": -62.790894,
-            "Y": 6.0295854,
-            "Z": -171.19104
-          },
-          "TerritoryId": 628,
+          "Position": [-62.790894, 6.0295854, -171.19104],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025893,
-          "Position": {
-            "X": -60.41046,
-            "Y": 6.0110765,
-            "Z": -168.41382
-          },
-          "TerritoryId": 628,
+          "Position": [-60.41046, 6.0110765, -168.41382],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3095
         }

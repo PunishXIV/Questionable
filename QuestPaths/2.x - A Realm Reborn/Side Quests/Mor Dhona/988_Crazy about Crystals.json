@@ -1,39 +1,28 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Raitono",
   "LastChecked": {"Username": "Raitono", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006543,
-          "Position": {
-            "X": 29.599,
-            "Y": 26.3335,
-            "Z": -703.665
-          },
-          "TerritoryId": 156,
+          "Position": [29.599, 26.3335, -703.665],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "$": "auto: issuer 1006543 (Npah Tayuun)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2002206,
-          "Position": {
-            "X": -58.6515,
-            "Y": 16.2416,
-            "Z": -611.525
-          },
-          "TerritoryId": 156,
+          "Position": [-58.6515, 16.2416, -611.525],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             27
@@ -42,14 +31,8 @@
         },
         {
           "DataId": 2002207,
-          "Position": {
-            "X": -99.1047,
-            "Y": 6.5405,
-            "Z": -674.132
-          },
-          "TerritoryId": 156,
+          "Position": [-99.1047, 6.5405, -674.132],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             27
@@ -60,17 +43,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006543,
-          "Position": {
-            "X": 29.599,
-            "Y": 26.3335,
-            "Z": -703.665
-          },
-          "TerritoryId": 156,
+          "Position": [29.599, 26.3335, -703.665],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "$": "auto: todo turn-in -> 1006543 (Npah Tayuun)"
         }
       ]

@@ -1,37 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["liza", "alydev"],
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000972,
-          "Position": {
-            "X": 20.279175,
-            "Y": 40.19993,
-            "Z": -6.1189575
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] The Aftcastle"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [128]}}
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1005411,
-          "Position": {
-            "X": 13.412659,
-            "Y": 40.2,
-            "Z": -13.260071
-          },
-          "TerritoryId": 128,
+          "Position": [13.412659, 40.2, -13.260071],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1431,
           "SkipConditions": {
@@ -44,108 +26,59 @@
         },
         {
           "DataId": 1003621,
-          "Position": {
-            "X": -192.0653,
-            "Y": 0.9999907,
-            "Z": 208.66711
-          },
+          "Position": [-192.0653, 0.9999907, 208.66711],
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "DataId": 1000868,
-          "Position": {
-            "X": -192.00433,
-            "Y": 0.9999907,
-            "Z": 211.68835
-          },
-          "StopDistance": 7,
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 138,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                138
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 138,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Western La Noscea - Aleport"
         },
         {
           "DataId": 1002723,
-          "Position": {
-            "X": 298.63428,
-            "Y": -25.004364,
-            "Z": 233.14258
-          },
-          "TerritoryId": 138,
+          "Position": [298.63428, -25.004364, 233.14258],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179672
         },
         {
           "DataId": 1017075,
-          "Position": {
-            "X": 356.5575,
-            "Y": -15.97664,
-            "Z": 136.73608
-          },
-          "TerritoryId": 138,
+          "Position": [356.5575, -15.97664, 136.73608],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1004472,
-          "Position": {
-            "X": 335.40857,
-            "Y": 9.635179,
-            "Z": 17.135864
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "Position": [335.40857, 9.635179, 17.135864],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "TerritoryId": 138,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Western La Noscea - Swiftperch"
         },
         {
           "DataId": 1002722,
-          "Position": {
-            "X": 667.68884,
-            "Y": 9.882242,
-            "Z": 487.32727
-          },
-          "TerritoryId": 138,
+          "Position": [667.68884, 9.882242, 487.32727],
           "InteractionType": "UnlockTaxiStand",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
           "TaxiStandId": 1179671
         },
         {
-          "TerritoryId": 138,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 4,
@@ -156,22 +89,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000972,
-          "Position": {
-            "X": 20.279175,
-            "Y": 40.19993,
-            "Z": -6.1189575
-          },
-          "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

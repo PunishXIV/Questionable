@@ -10,7 +10,7 @@ namespace Questionable.Tests.Steps;
 public sealed class GatheredItemDeserializationTests
 {
     [Fact]
-    public void MinimalItem_OmittedOptionalFieldsDeserializeToZero()
+    public void MinimalItem_OmittedFieldsAreZero()
     {
         const string json = """
         {
@@ -25,11 +25,10 @@ public sealed class GatheredItemDeserializationTests
         Assert.Equal(20, item.ItemCount);
         Assert.Equal(0u, item.AlternativeItemId);
         Assert.Equal((ushort)0, item.Collectability);
-        Assert.Null(item.FishingOptions);
     }
 
     [Fact]
-    public void WithCollectability_ExplicitValueRoundTrips()
+    public void Collectability_RoundTrips()
     {
         const string json = """
         {
@@ -48,7 +47,7 @@ public sealed class GatheredItemDeserializationTests
     }
 
     [Fact]
-    public void GatherStep_MinimalItemsToGatherFlowThroughFactory()
+    public void GatherStep_MinimalItemsReachFactory()
     {
         const string json = """
         {
@@ -67,7 +66,7 @@ public sealed class GatheredItemDeserializationTests
         var (quest, sequence, _) = QuestTestData.FactoryContext(new QuestId(2621), 4, step!);
         var factory = new Gather.Factory();
 
-        var task = factory.CreateAllTasks(quest, sequence, step!).OfType<Gather.DelayedGatheringTask>().Single();
+        var task = factory.CreateAllTasks(quest, sequence, step!).OfType<Gather.Task>().Single();
 
         Assert.Equal(17945u, task.GatheredItem.ItemId);
         Assert.Equal(20, task.GatheredItem.ItemCount);
@@ -76,7 +75,7 @@ public sealed class GatheredItemDeserializationTests
     }
 
     [Fact]
-    public void FishStep_OmittedCollectabilityDefaultsToZeroWithFishingOptions()
+    public void FishStep_OldFishingOptionsIgnored()
     {
         const string json = """
         {
@@ -106,13 +105,5 @@ public sealed class GatheredItemDeserializationTests
         Assert.Equal(3, item.ItemCount);
         Assert.Equal((ushort)0, item.Collectability);
         Assert.Equal(0u, item.AlternativeItemId);
-        Assert.NotNull(item.FishingOptions);
-        Assert.Equal(28634u, item.FishingOptions.BaitId);
-        Assert.NotNull(item.FishingOptions.HookType);
-        Assert.NotNull(item.FishingOptions.HookType.Normal);
-        Assert.True(item.FishingOptions.HookType.Normal.Value.Hookset!.Weak);
-        Assert.Null(item.FishingOptions.HookType.Normal.Value.Hookset!.Strong);
-        Assert.Null(item.FishingOptions.HookType.Double);
-        Assert.Null(item.FishingOptions.HookType.Triple);
     }
 }

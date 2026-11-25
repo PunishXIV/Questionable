@@ -1,37 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037060,
-          "Position": {
-            "X": 25.894531,
-            "Y": -15.646991,
-            "Z": 99.68713
-          },
-          "StopDistance": 5,
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1037059,
-          "Position": {
-            "X": 35.202515,
-            "Y": -15.646992,
-            "Z": 102.4032
-          },
-          "StopDistance": 7,
-          "TerritoryId": 962,
+          "Position": [35.202515, -15.646992, 102.4032],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4178
         }

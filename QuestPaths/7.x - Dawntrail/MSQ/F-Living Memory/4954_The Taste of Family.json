@@ -1,92 +1,57 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047929,
-          "Position": {
-            "X": 345.2964,
-            "Y": 26.972605,
-            "Z": -296.37604
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1192,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047932,
-          "Position": {
-            "X": 605.0659,
-            "Y": 27.724148,
-            "Z": -184.77148
-          },
-          "TerritoryId": 1192,
+          "Position": [605.0659, 27.724148, -184.77148],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047937,
-          "Position": {
-            "X": 586.8772,
-            "Y": 27.574875,
-            "Z": -195.20868
-          },
-          "TerritoryId": 1192,
+          "Position": [586.8772, 27.574875, -195.20868],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047944,
-          "Position": {
-            "X": 665.5221,
-            "Y": 24.999493,
-            "Z": -266.55988
-          },
-          "TerritoryId": 1192,
+          "Position": [665.5221, 24.999493, -266.55988],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "TerritoryId": 1192,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Living Memory - Leynode Pyro"
         },
         {
           "DataId": 1047943,
-          "Position": {
-            "X": 653.7117,
-            "Y": 24.999493,
-            "Z": -303.18152
-          },
-          "TerritoryId": 1192,
+          "Position": [653.7117, 24.999493, -303.18152],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1047942,
-          "Position": {
-            "X": 634.14966,
-            "Y": 24.999489,
-            "Z": -292.77484
-          },
-          "TerritoryId": 1192,
+          "Position": [634.14966, 24.999489, -292.77484],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -94,15 +59,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047945,
-          "Position": {
-            "X": 514.7324,
-            "Y": 24.978758,
-            "Z": -126.57361
-          },
-          "TerritoryId": 1192,
+          "Position": [514.7324, 24.978758, -126.57361],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -116,47 +77,34 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047946,
-          "Position": {
-            "X": 501.45715,
-            "Y": 25.314697,
-            "Z": -140.39832
-          },
-          "TerritoryId": 1192,
+          "Position": [501.45715, 25.314697, -140.39832],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047939,
-          "Position": {
-            "X": 605.4933,
-            "Y": 27.724146,
-            "Z": -184.13062
-          },
-          "TerritoryId": 1192,
+          "Position": [605.4933, 27.724146, -184.13062],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1047947,
-          "Position": {
-            "X": 700.6179,
-            "Y": 27.99997,
-            "Z": -305.98926
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Living Memory - Leynode Pyro"
+          "Position": [700.6179, 27.99997, -305.98926],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

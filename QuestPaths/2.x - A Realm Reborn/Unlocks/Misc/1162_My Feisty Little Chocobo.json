@@ -1,120 +1,60 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002754,
-          "Position": {
-            "X": -219.22644,
-            "Y": 20.923328,
-            "Z": 338.4298
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000471,
-          "Position": {
-            "X": -60.471558,
-            "Y": 0.19999865,
-            "Z": 6.301941
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "Position": [-60.471558, 0.19999865, 6.301941],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2001467,
-          "Position": {
-            "X": -44.419067,
-            "Y": 1.4190674,
-            "Z": -36.850586
-          },
-          "TerritoryId": 148,
+          "Position": [-44.419067, 1.4190674, -36.850586],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000471,
-          "Position": {
-            "X": -60.471558,
-            "Y": 0.19999865,
-            "Z": 6.301941
-          },
-          "TerritoryId": 148,
+          "Position": [-60.471558, 0.19999865, 6.301941],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "TerritoryId": 148,
           "InteractionType": "UseItem",
           "ItemId": 4868
         },
         {
-          "Position": {
-            "X": -50.086567,
-            "Y": -9.536743e-7,
-            "Z": -18.283287
-          },
-          "TerritoryId": 148,
+          "Position": [-301.59653, 62.76247, -52.496593],
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -50.086567,
-                  "Y": -9.536743e-7,
-                  "Z": -18.283287
-                },
-                "TerritoryId": 148,
-                "MaximumDistance": 40
-              },
-              "Flying": "Locked"
-            }
-          }
+          "ItemId": 4868
         },
         {
-          "Position": {
-            "X": -301.59653,
-            "Y": 62.76247,
-            "Z": -52.496593
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "ItemId": 4868,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -301.59653,
-            "Y": 62.76247,
-            "Z": -52.496593
-          },
-          "TerritoryId": 148,
+          "Position": [-301.59653, 62.76247, -52.496593],
           "InteractionType": "Combat",
           "ComplexCombatData": [
             {
@@ -128,16 +68,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000220,
-          "Position": {
-            "X": 15.749301,
-            "Y": -8.011559,
-            "Z": -13.498969
-          },
-          "TerritoryId": 148,
-          "StopDistance": 1,
+          "Position": [15.749301, -8.011559, -13.498969],
           "InteractionType": "PurchaseItem",
           "ItemId": 4868,
           "ItemCount": 99,
@@ -145,7 +80,6 @@
             "ExcelSheet": "GilShop",
             "Key": 262773
           },
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -156,14 +90,8 @@
         },
         {
           "DataId": 1000471,
-          "Position": {
-            "X": -60.471558,
-            "Y": 0.19999865,
-            "Z": 6.301941
-          },
-          "TerritoryId": 148,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "Position": [-60.471558, 0.19999865, 6.301941],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

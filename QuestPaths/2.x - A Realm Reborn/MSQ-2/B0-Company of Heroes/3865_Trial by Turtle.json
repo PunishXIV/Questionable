@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006279,
-          "Position": {
-            "X": -231.4336,
-            "Y": 21.512743,
-            "Z": 339.49792
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2002646,
-          "Position": {
-            "X": -68.711426,
-            "Y": 1.296936,
-            "Z": 301.74707
-          },
-          "TerritoryId": 153,
+          "Position": [-68.711426, 1.296936, 301.74707],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [1888]
@@ -38,90 +22,37 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2002574,
-          "Position": {
-            "X": -68.711426,
-            "Y": 1.296936,
-            "Z": 301.74707
-          },
-          "TerritoryId": 153,
+          "Position": [-68.711426, 1.296936, 301.74707],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -219.94328,
-            "Y": 21.050707,
-            "Z": 343.71066
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1006279,
-          "Position": {
-            "X": -231.4336,
-            "Y": 21.512743,
-            "Z": 339.49792
-          },
-          "TerritoryId": 153,
+          "Position": [-231.4336, 21.512743, 339.49792],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -180.60515,
-            "Y": 17.857697,
-            "Z": -278.74887
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
-        },
-        {
-          "Position": {
-            "X": -183.61136,
-            "Y": 3.5857017,
-            "Z": -248.78667
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
-          "DataId": 1004596,
-          "Position": {
-            "X": -471.27496,
-            "Y": -2.650424,
-            "Z": 95.628296
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 146
-        },
-        {
-          "TerritoryId": 146,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Southern Thanalan - Forgotten Springs"
         },
         {
           "DataId": 1004917,
-          "Position": {
-            "X": -358.6328,
-            "Y": 8.469424,
-            "Z": 422.4154
-          },
-          "TerritoryId": 146,
+          "Position": [-358.6328, 8.469424, 422.4154],
           "InteractionType": "CompleteQuest"
         }
       ]

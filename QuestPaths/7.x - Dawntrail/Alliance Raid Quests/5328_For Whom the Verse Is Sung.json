@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1054326,
-          "Position": {
-            "X": -40.116028,
-            "Y": -4.257869,
-            "Z": 574.18164
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054331,
-          "Position": {
-            "X": -322.80463,
-            "Y": 18.201778,
-            "Z": -97.88666
-          },
-          "TerritoryId": 1190,
+          "Position": [-322.80463, 18.201778, -97.88666],
           "InteractionType": "CompleteQuest"
         }
       ]

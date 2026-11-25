@@ -1,82 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001708,
-          "Position": {
-            "X": -250.3548,
-            "Y": 18,
-            "Z": 80.88806
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001709,
-          "Position": {
-              "X": -240.4975,
-              "Y": 18.7,
-              "Z": 85.58777
-          },
-          "TerritoryId": 130,
+          "Position": [-240.4975, 18.7, 85.58777],
           "InteractionType": "Interact"
         }
       ]
     },
     {
         "Sequence": 2,
+        "TerritoryId": 140,
         "Steps": [
           {
             "DataId": 2001468,
-            "Position": {
-                "X": -87.38843,
-                "Y": 50.614136,
-                "Z": 315.6023
-            },
-            "TerritoryId": 140,
+            "Position": [-87.38843, 50.614136, 315.6023],
             "InteractionType": "UseItem",
-            "ItemId": 2000414,
-            "AetheryteShortcut": "Ul'dah",
-            "AethernetShortcut": [
-              "[Ul'dah] Thaumaturges' Guild",
-              "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-            ],
-            "SkipConditions": {
-              "AetheryteShortcutIf": {
-                "InTerritory": [
-                  140
-                ]
-              }
-            }
+            "ItemId": 2000414
           }
         ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 2001469,
-          "Position": {
-              "X": -74.96759,
-              "Y": 53.238647,
-              "Z": 336.78186
-          },
-          "TerritoryId": 140,
+          "Position": [-74.96759, 53.238647, 336.78186],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -87,45 +48,23 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -253.97243,
-            "Y": 33.2412,
-            "Z": 408.68488
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1002027,
-          "Position": {
-              "X": -255.23767,
-              "Y": 33.238777,
-              "Z": 407.27856
-          },
-          "TerritoryId": 140,
+          "Position": [-255.23767, 33.238777, 407.27856],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001709,
-          "Position": {
-              "X": -240.4975,
-              "Y": 18.7,
-              "Z": 85.58777
-          },
-          "TerritoryId": 130,
+          "Position": [-240.4975, 18.7, 85.58777],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "NextQuestId": 349
         }
       ]

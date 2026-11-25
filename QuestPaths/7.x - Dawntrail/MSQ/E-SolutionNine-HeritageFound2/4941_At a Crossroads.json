@@ -1,106 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048112,
-          "Position": {
-            "X": -464.8051,
-            "Y": 8.080162,
-            "Z": 315.4497
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1048113,
-          "Position": {
-            "X": -468.71143,
-            "Y": 7.866031,
-            "Z": 315.4497
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1191,
+          "Position": [-468.71143, 7.866031, 315.4497],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1049505,
-          "Position": {
-            "X": -209.85736,
-            "Y": 7.49638,
-            "Z": 595.9104
-          },
-          "TerritoryId": 1191,
+          "Position": [-209.85736, 7.49638, 595.9104],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 5159
         },
         {
           "DataId": 1048099,
-          "Position": {
-            "X": -606.5919,
-            "Y": -2.2030723,
-            "Z": -486.6255
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "Position": [-606.5919, -2.2030723, -486.6255],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1049501,
-          "Position": {
-            "X": -592.7062,
-            "Y": -2.4803436,
-            "Z": -489.28055
-          },
-          "TerritoryId": 1191,
+          "Position": [-592.7062, -2.4803436, -489.28055],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 5156
         },
         {
           "DataId": 1048116,
-          "Position": {
-            "X": -296.71173,
-            "Y": 31.884527,
-            "Z": -671.77844
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "Position": [-296.71173, 31.884527, -671.77844],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1048120,
-          "Position": {
-            "X": -298.7259,
-            "Y": 31.838512,
-            "Z": -672.5719
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1191,
+          "Position": [-298.7259, 31.838512, -672.5719],
           "InteractionType": "CompleteQuest"
         }
       ]

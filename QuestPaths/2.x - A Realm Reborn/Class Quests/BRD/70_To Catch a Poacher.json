@@ -1,72 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -166.19086,
-            "Y": 8.399985,
-            "Z": -64.10584
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          },
-          "$": "Buscarron SE steps",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
-        },
-        {
           "DataId": 1000590,
-          "Position": {
-            "X": -165.9419,
-            "Y": 9.869227,
-            "Z": -81.34589
-          },
-          "TerritoryId": 153,
+          "Position": [-165.9419, 9.869227, -81.34589],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2000949,
-          "Position": {
-            "X": -258.9914,
-            "Y": 10.330261,
-            "Z": -46.00598
-          },
-          "TerritoryId": 153,
+          "Position": [-258.9914, 10.330261, -46.00598],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -79,12 +38,7 @@
         },
         {
           "DataId": 2000948,
-          "Position": {
-            "X": -270.00848,
-            "Y": 15.487854,
-            "Z": -91.17267
-          },
-          "TerritoryId": 153,
+          "Position": [-270.00848, 15.487854, -91.17267],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -97,12 +51,7 @@
         },
         {
           "DataId": 2000947,
-          "Position": {
-            "X": -318.07434,
-            "Y": 18.936401,
-            "Z": -165.11792
-          },
-          "TerritoryId": 153,
+          "Position": [-318.07434, 18.936401, -165.11792],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -117,15 +66,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2001105,
-          "Position": {
-            "X": -173.02203,
-            "Y": 9.872559,
-            "Z": -78.690796
-          },
-          "TerritoryId": 153,
+          "Position": [-173.02203, 9.872559, -78.690796],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -144,24 +89,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -192.12004,
-            "Y": 8.180927,
-            "Z": -65.00513
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2000136,
-          "Position": {
-            "X": -295.85718,
-            "Y": 23.575134,
-            "Z": -192.34003
-          },
-          "TerritoryId": 153,
+          "Position": [-295.85718, 23.575134, -192.34003],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -171,36 +103,23 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1000590,
-          "Position": {
-            "X": -165.9419,
-            "Y": 9.869227,
-            "Z": -81.34589
-          },
-          "TerritoryId": 153,
+          "Position": [-165.9419, 9.869227, -81.34589],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "StopDistance": 7,
-          "TerritoryId": 132,
+          "Position": [209.55212, 0.9999819, 35.01941],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
           "NextQuestId": 71
         }
       ]

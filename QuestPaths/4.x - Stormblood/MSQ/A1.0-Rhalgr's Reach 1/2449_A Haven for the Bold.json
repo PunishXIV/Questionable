@@ -1,100 +1,63 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020332,
-          "Position": {
-            "X": 164.90417,
-            "Y": 13.023668,
-            "Z": -91.50836
-          },
-          "StopDistance": 7,
-          "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1020339,
-          "Position": {
-            "X": 95.2926,
-            "Y": 1.2333723,
-            "Z": -78.23309
-          },
-          "TerritoryId": 635,
+          "Position": [95.2926, 1.2333723, -78.23309],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1020345,
-          "Position": {
-            "X": -1.8463745,
-            "Y": 2.6970465,
-            "Z": -68.833435
-          },
-          "TerritoryId": 635,
+          "Position": [-1.8463745, 2.6970465, -68.833435],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1020346,
-          "Position": {
-            "X": -117.60132,
-            "Y": 0.5980477,
-            "Z": -65.812195
-          },
-          "TerritoryId": 635,
+          "Position": [-117.60132, 0.5980477, -65.812195],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1020344,
-          "Position": {
-            "X": 86.65588,
-            "Y": 0,
-            "Z": 88.70068
-          },
-          "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Western Rhalgr's Reach",
-            "[Rhalgr's Reach] Aetheryte Plaza"
-          ]
+          "Position": [86.65588, 0, 88.70068],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1020347,
-          "Position": {
-            "X": 59.67798,
-            "Y": -8.1507994E-13,
-            "Z": -4.0742188
-          },
-          "TerritoryId": 635,
+          "Position": [59.67798, -8.1507994E-13, -4.0742188],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,41 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "TerritoryId": 478,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [399, 463, 478]}}
-        },
-        {
-          "DataId": 2005336,
-          "Position": {
-            "X": -488.79227,
-            "Y": 138.93335,
-            "Z": 741.0543
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1012138,
-          "Position": {
-            "X": 19.272095,
-            "Y": 38.43,
-            "Z": 15.854065
-          },
+          "Position": [19.272095, 38.43, 15.854065],
           "TerritoryId": 463,
           "InteractionType": "AcceptQuest"
         }
@@ -43,56 +17,34 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1012422,
-          "Position": {
-            "X": -475.79156,
-            "Y": 137.42972,
-            "Z": 701.4724
-          },
-          "StopDistance": 7,
-          "TerritoryId": 399,
+          "Position": [-475.79156, 137.42972, 701.4724],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012380,
-          "Position": {
-            "X": 124.46777,
-            "Y": 24.458836,
-            "Z": 0.47296143
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "Position": [124.46777, 24.458836, 0.47296143],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1013163,
-          "Position": {
-            "X": 167.0404,
-            "Y": -14.313367,
-            "Z": 51.285522
-          },
-          "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "Position": [167.0404, -14.313367, 51.285522],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

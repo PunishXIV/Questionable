@@ -1,130 +1,58 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": 220.82336,
-            "Y": -28.335487,
-            "Z": 336.9016
-          },
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1000764,
-          "Position": {
-            "X": 218.89062,
-            "Y": -28.252495,
-            "Z": 338.39917
-          },
-          "TerritoryId": 154,
+          "Position": [218.89062, -28.252495, 338.39917],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2000883,
-          "Position": {
-            "X": 325.1848,
-            "Y": -5.217115,
-            "Z": 390.488
-          },
-          "TerritoryId": 154,
+          "Position": [325.1848, -5.217115, 390.488],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             294
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": 220.82336,
-            "Y": -28.335487,
-            "Z": 336.9016
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1000764,
-          "Position": {
-            "X": 218.89062,
-            "Y": -28.252495,
-            "Z": 338.39917
-          },
-          "TerritoryId": 154,
+          "Position": [218.89062, -28.252495, 338.39917],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
+          "Position": [-258.8083, -5.7735243, -27.267883],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "NextQuestId": 91
         }
       ]

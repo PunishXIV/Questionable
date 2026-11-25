@@ -1,33 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "DataId": 1048083,
-          "Position": {
-            "X": 302.05237,
-            "Y": 51.199978,
-            "Z": 205.0354
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
-          "TargetTerritoryId": 1207
-        },
-        {
           "DataId": 1054616,
-          "Position": {
-            "X": -0.6256714,
-            "Y": -4.656613E-08,
-            "Z": 6.8512573
-          },
+          "Position": [-0.6256714, -4.656613E-08, 6.8512573],
           "TerritoryId": 1207,
           "InteractionType": "AcceptQuest"
         }
@@ -35,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1207,
       "Steps": [
         {
           "DataId": 1054616,
-          "Position": {
-            "X": -0.6256714,
-            "Y": -4.656613E-08,
-            "Z": 6.8512573
-          },
-          "TerritoryId": 1207,
+          "Position": [-0.6256714, -4.656613E-08, 6.8512573],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -57,57 +35,34 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1054618,
-          "Position": {
-            "X": 1.296936,
-            "Y": 50.12499,
-            "Z": 704.7378
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1192,
+          "Position": [1.296936, 50.12499, 704.7378],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1054624,
-          "Position": {
-            "X": -105.638245,
-            "Y": 100.04267,
-            "Z": -202.47198
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Vollok Shoonsa"
-          ]
+          "Position": [-105.638245, 100.04267, -202.47198],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1054628,
-          "Position": {
-            "X": -23.941406,
-            "Y": 38.0566,
-            "Z": -389.0288
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Resolution"
-          ]
+          "Position": [-23.941406, 38.0566, -389.0288],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011952,
-          "Position": {
-            "X": -277.63788,
-            "Y": -184.59735,
-            "Z": 741.60376
-          },
-          "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1012354,
-          "Position": {
-            "X": -284.38245,
-            "Y": -185.08519,
-            "Z": 732.2346
-          },
-          "TerritoryId": 401,
+          "Position": [-284.38245, -185.08519, 732.2346],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -43,33 +27,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1012355,
-          "Position": {
-            "X": -285.11487,
-            "Y": -185.0477,
-            "Z": 735.40857
-          },
-          "TerritoryId": 401,
+          "Position": [-285.11487, -185.0477, 735.40857],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1011952,
-          "Position": {
-            "X": -277.63788,
-            "Y": -184.59735,
-            "Z": 741.60376
-          },
-          "TerritoryId": 401,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

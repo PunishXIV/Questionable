@@ -1,37 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006270,
-          "Position": {
-            "X": 603.2654,
-            "Y": 23.936245,
-            "Z": 455.95483
-          },
-          "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": 382.43933,
-            "Y": 27.669134,
-            "Z": 375.51086
-          },
-          "TerritoryId": 137,
+          "Position": [382.43933, 27.669134, 375.51086],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000651,
           "GroundTarget": true,
@@ -50,14 +32,8 @@
           ]
         },
         {
-          "Position": {
-            "X": 367.33734,
-            "Y": 29.420153,
-            "Z": 352.66434
-          },
-          "TerritoryId": 137,
+          "Position": [367.33734, 29.420153, 352.66434],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000651,
           "GroundTarget": true,
@@ -76,14 +52,8 @@
           ]
         },
         {
-          "Position": {
-            "X": 379.3584,
-            "Y": 30.50811,
-            "Z": 314.0945
-          },
-          "TerritoryId": 137,
+          "Position": [379.3584, 30.50811, 314.0945],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000651,
           "GroundTarget": true,
@@ -105,20 +75,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006270,
-          "Position": {
-            "X": 603.2654,
-            "Y": 23.936245,
-            "Z": 455.95483
-          },
-          "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,59 +1,18 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051894,
-          "Position": {
-            "X": 0.869751,
-            "Y": 14.000016,
-            "Z": -21.591614
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "Position": {
-            "X": -9.184601,
-            "Y": 9.999999,
-            "Z": -35.359993
-          },
-          "TerritoryId": 131,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                130
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1051895,
-          "Position": {
-            "X": -25.0401,
-            "Y": 4.9999785,
-            "Z": -131.45648
-          },
+          "Position": [-25.0401, 4.9999785, -131.45648],
           "TerritoryId": 130,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -88,53 +47,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1051899,
-          "Position": {
-            "X": -53.421875,
-            "Y": 18,
-            "Z": 60.16626
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "Position": [-53.421875, 18, 60.16626],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1051884,
-          "Position": {
-            "X": -35.111023,
-            "Y": 5.000001,
-            "Z": -130.35785
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "Position": [-35.111023, 5.000001, -130.35785],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1051901,
-          "Position": {
-            "X": -33.859802,
-            "Y": 5.0000005,
-            "Z": -130.6325
-          },
-          "TerritoryId": 130,
+          "Position": [-33.859802, 5.0000005, -130.6325],
           "InteractionType": "CompleteQuest"
         }
       ]

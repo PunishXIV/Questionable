@@ -1,86 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050707,
-          "Position": {
-            "X": -183.73395,
-            "Y": 10.893587,
-            "Z": -584.2832
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2014172,
-          "Position": {
-            "X": -70.96979,
-            "Y": 6.515503,
-            "Z": -496.2692
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-70.96979, 6.515503, -496.2692],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": {
-            "X": 623.9169,
-            "Y": 46.050114,
-            "Z": -526.32715
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 2014173,
-          "Position": {
-            "X": 670.5576,
-            "Y": 42.923584,
-            "Z": -515.55664
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [670.5576, 42.923584, -515.55664],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1050707,
-          "Position": {
-            "X": -183.73395,
-            "Y": 10.893587,
-            "Z": -584.2832
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

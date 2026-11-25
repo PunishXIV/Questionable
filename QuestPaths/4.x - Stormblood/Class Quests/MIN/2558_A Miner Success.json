@@ -1,70 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019863,
-          "Position": {
-            "X": 53.94055,
-            "Y": 207.1718,
-            "Z": -7.2786255
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019867,
-          "Position": {
-            "X": 81.49841,
-            "Y": 214.1,
-            "Z": -92.94275
-          },
-          "TerritoryId": 478,
+          "Position": [81.49841, 214.1, -92.94275],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002298,
-          "Position": {
-            "X": -18.997498,
-            "Y": 6.2,
-            "Z": 157.42725
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "Position": [-18.997498, 6.2, 157.42725],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "TerritoryId": 620,
           "InteractionType": "Gather",
           "Comment": "Up from 8am-10am,8pm-10pm ET\nAbandon gathering node or finish gathering manually",
           "ItemsToGather": [
@@ -83,79 +52,52 @@
         },
         {
           "DataId": 1019867,
-          "Position": {
-            "X": 81.49841,
-            "Y": 214.1,
-            "Z": -92.94275
-          },
+          "Position": [81.49841, 214.1, -92.94275],
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1019872,
-          "Position": {
-            "X": -500.78586,
-            "Y": 145.72894,
-            "Z": -371.8166
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "Position": [-500.78586, 145.72894, -371.8166],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1019876,
-          "Position": {
-            "X": -500.78586,
-            "Y": 145.72894,
-            "Z": -371.8166
-          },
-          "TerritoryId": 399,
+          "Position": [-500.78586, 145.72894, -371.8166],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1019877,
-          "Position": {
-            "X": -548.6381,
-            "Y": 155.90462,
-            "Z": -511.3451
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-548.6381, 155.90462, -511.3451],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002298,
-          "Position": {
-            "X": -18.997498,
-            "Y": 6.2,
-            "Z": 157.42725
-          },
-          "TerritoryId": 131,
+          "Position": [-18.997498, 6.2, 157.42725],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {
@@ -163,18 +105,7 @@
               "Answer": "TEXT_CLSMIN700_02558_A1_000_001",
               "Type": "List"
             }
-          ],
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          ]
         }
       ]
     }

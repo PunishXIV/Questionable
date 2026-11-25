@@ -1,44 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038551,
-          "Position": {
-            "X": -348.539,
-            "Y": 21.846,
-            "Z": -79.9565
-          },
-          "TerritoryId": 962,
+          "Position": [-348.539, 21.846, -79.9565],
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1038551 (T'laqa Tia)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1037054,
-          "Position": {
-            "X": 79.11792,
-            "Y": 5.1499996,
-            "Z": -46.52478
-          },
-          "TerritoryId": 962,
+          "Position": [79.11792, 5.1499996, -46.52478],
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Aetheryte Plaza"
-          ],
           "ItemId": 36592,
           "ItemCount": 99,
           "SkipConditions": {
@@ -49,41 +33,22 @@
           }
         },
         {
-          "Position": {
-            "X": -529.66943,
-            "Y": 2.5854268,
-            "Z": 24.55191
-          },
+          "Position": [-529.66943, 2.5854268, 24.55191],
           "TerritoryId": 957,
-          "StopDistance": 1,
           "InteractionType": "Fish",
-          "AetheryteShortcut": "Thavnair - Great Work",
           "ItemsToGather": [
             {
               "ItemId": 35605,
               "ItemCount": 6,
-              "Collectability": 133,
-              "FishingOptions": {
-                "BaitId": 36592,
-                "HookType": { "Normal": { "Strong": true } }
-              }
+              "Collectability": 133
             }
           ],
           "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "DataId": 1038551,
-          "Position": {
-            "X": -348.539,
-            "Y": 21.846,
-            "Z": -79.9565
-          },
-          "TerritoryId": 962,
+          "Position": [-348.539, 21.846, -79.9565],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
         }
       ]

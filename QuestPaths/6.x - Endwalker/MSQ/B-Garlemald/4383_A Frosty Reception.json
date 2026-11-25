@@ -1,36 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038824,
-          "Position": {
-            "X": 750.97266,
-            "Y": 69.99991,
-            "Z": 534.78296
-          },
-          "TerritoryId": 621,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1038825,
-          "Position": {
-            "X": 742.5803,
-            "Y": 69.99999,
-            "Z": 539.6046
-          },
-          "TerritoryId": 621,
+          "Position": [742.5803, 69.99999, 539.6046],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "A Frosty Reception",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           },
@@ -55,83 +39,59 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "StopDistance": 7,
-          "TerritoryId": 958,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Garlemald - Camp Broken Glass"
         },
         {
           "DataId": 1038826,
-          "Position": {
-            "X": -399.31335,
-            "Y": 22.03761,
-            "Z": 454.45935
-          },
-          "TerritoryId": 958,
+          "Position": [-399.31335, 22.03761, 454.45935],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1038836,
-          "Position": {
-            "X": -439.9939,
-            "Y": 22.000002,
-            "Z": 497.79492
-          },
-          "TerritoryId": 958,
+          "Position": [-439.9939, 22.000002, 497.79492],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1038835,
-          "Position": {
-            "X": -366.17078,
-            "Y": 22,
-            "Z": 514.4884
-          },
-          "TerritoryId": 958,
+          "Position": [-366.17078, 22, 514.4884],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1038828,
-          "Position": {
-            "X": -334.5846,
-            "Y": 23.803606,
-            "Z": 404.65393
-          },
-          "StopDistance": 7,
-          "TerritoryId": 958,
+          "Position": [-334.5846, 23.803606, 404.65393],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1038837,
-          "Position": {
-            "X": -353.41425,
-            "Y": 22.717295,
-            "Z": 435.62976
-          },
-          "StopDistance": 5,
-          "TerritoryId": 958,
+          "Position": [-353.41425, 22.717295, 435.62976],
           "InteractionType": "CompleteQuest"
         }
       ]

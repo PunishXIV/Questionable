@@ -1,6 +1,4 @@
-﻿using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
+﻿using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -13,7 +11,7 @@ internal static class AethernetShard
             if (step.InteractionType != EInteractionType.AttuneAethernetShard)
                 return null;
             if (!step.AethernetShard.HasValue)
-                throw new ArgumentNullException(nameof(step.AethernetShard));
+                throw new ArgumentException($"{nameof(step.AethernetShard)} is missing", nameof(step));
 
             return new Attune(step.AethernetShard.Value);
         }
@@ -25,12 +23,14 @@ internal static class AethernetShard
         public override string ToString() => $"AttuneAethernetShard({AetheryteLocation})";
     }
 
-    internal sealed class DoAttune
+    internal sealed class AttuneExecutor
     (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
-        ILogger<DoAttune> logger) : TaskExecutor<Attune>
+        ILogger<AttuneExecutor> logger) : TaskExecutor<Attune>
     {
+        private readonly InteractRetry _retry = new(DateTime.Now);
+
         protected override bool Start()
         {
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
@@ -47,9 +47,12 @@ internal static class AethernetShard
 
         public override ETaskResult Update()
         {
-            return aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
+                return ETaskResult.TaskComplete;
+
+            if (_retry.Due(DateTime.Now, gameFunctions.IsOccupied()))
+                gameFunctions.InteractWith((uint)Task.AetheryteLocation, ObjectKind.Aetheryte);
+            return ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => true;

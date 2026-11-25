@@ -1,46 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011215,
-          "Position": {
-            "X": -145.37274,
-            "Y": 14.80313,
-            "Z": -129.25922
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                427
-              ]
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419,
-                427
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1012266,
-          "Position": {
-            "X": -7.950012,
-            "Y": 0.20000005,
-            "Z": -10.51355
-          },
+          "Position": [-7.950012, 0.20000005, -10.51355],
           "TerritoryId": 427,
           "InteractionType": "AcceptQuest"
         }
@@ -48,25 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 427,
       "Steps": [
         {
-          "DataId": 2005332,
-          "Position": {
-            "X": -5.012468,
-            "Y": 1.1515,
-            "Z": 11.86189
-          },
-          "TerritoryId": 427,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
-        {
           "DataId": 1015977,
-          "Position": {
-            "X": -177.35565,
-            "Y": 15.06314,
-            "Z": -174.36487
-          },
+          "Position": [-177.35565, 15.06314, -174.36487],
           "TerritoryId": 419,
           "InteractionType": "Interact"
         }
@@ -74,40 +29,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1015941,
-          "Position": {
-            "X": -175.34143,
-            "Y": 15.063141,
-            "Z": -171.09949
-          },
-          "TerritoryId": 419,
+          "Position": [-175.34143, 15.063141, -171.09949],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011215,
-          "Position": {
-            "X": -145.37274,
-            "Y": 14.80313,
-            "Z": -129.25922
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427
-        },
-        {
           "DataId": 1015944,
-          "Position": {
-            "X": 6.94281,
-            "Y": 0.22499956,
-            "Z": 7.4310913
-          },
+          "Position": [6.94281, 0.22499956, 7.4310913],
           "TerritoryId": 427,
           "InteractionType": "Interact"
         }
@@ -115,65 +52,27 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 2005332,
-          "Position": {
-            "X": -5.0202637,
-            "Y": 1.1443481,
-            "Z": 11.856201
-          },
-          "TerritoryId": 427,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
-        {
           "DataId": 1015949,
-          "Position": {
-            "X": -62.180542,
-            "Y": -4.734931,
-            "Z": -36.514893
-          },
-          "TerritoryId": 419,
+          "Position": [-62.180542, -4.734931, -36.514893],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1015947,
-          "Position": {
-            "X": -228.99219,
-            "Y": -20.034918,
-            "Z": -77.073364
-          },
-          "TerritoryId": 419,
+          "Position": [-228.99219, -20.034918, -77.073364],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011215,
-          "Position": {
-            "X": -145.37274,
-            "Y": 14.80313,
-            "Z": -129.25922
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427,
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
-        },
-        {
           "DataId": 1015952,
-          "Position": {
-            "X": -1.3886108,
-            "Y": 0.20000005,
-            "Z": -9.903137
-          },
+          "Position": [-1.3886108, 0.20000005, -9.903137],
           "TerritoryId": 427,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2155

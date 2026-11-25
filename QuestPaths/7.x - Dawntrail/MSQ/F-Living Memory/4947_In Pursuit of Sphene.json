@@ -1,56 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047804,
-          "Position": {
-            "X": 121.66016,
-            "Y": 42,
-            "Z": -343.0686
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047806,
-          "Position": {
-            "X": -179.55298,
-            "Y": 120.75,
-            "Z": -332.87555
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1185,
+          "Position": [-179.55298, 120.75, -332.87555],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047809,
-          "Position": {
-            "X": -47.56244,
-            "Y": -10.00001,
-            "Z": 97.21521
-          },
-          "TerritoryId": 1185,
+          "Position": [-47.56244, -10.00001, 97.21521],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
           "Comment": "Stops at the place where you can buy Lv99 gear"
         }
       ]

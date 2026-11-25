@@ -1,129 +1,59 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": -137.7745,
-            "Y": 10.010047,
-            "Z": 278.79453
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "Fly": true
-        },
-        {
-          "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "StopDistance": 4,
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1028418,
-          "Position": {
-            "X": -242.26752,
-            "Y": -4,
-            "Z": 1.2054443
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "Position": [-242.26752, -4, 1.2054443],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1028419,
-          "Position": {
-            "X": -19.058533,
-            "Y": -32.58833,
-            "Z": 307.1488
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
+          "Position": [-19.058533, -32.58833, 307.1488],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1028423,
-          "Position": {
-            "X": -62.974,
-            "Y": -36.839226,
-            "Z": 473.3806
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-62.974, -36.839226, 473.3806],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1028424,
-          "Position": {
-            "X": -19.85205,
-            "Y": -34.365856,
-            "Z": 416.76965
-          },
-          "StopDistance": 7,
-          "TerritoryId": 148,
+          "Position": [-19.85205, -34.365856, 416.76965],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": -137.7745,
-            "Y": 10.010047,
-            "Z": 278.79453
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "Fly": true
-        },
-        {
-          "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "StopDistance": 4,
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

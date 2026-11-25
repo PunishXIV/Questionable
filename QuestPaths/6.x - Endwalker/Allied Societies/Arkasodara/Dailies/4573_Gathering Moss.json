@@ -1,108 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": 96.680695,
-            "Y": 38.981216,
-            "Z": 249.31558
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "DataId": 2012907,
-          "Position": {
-            "X": 95.140015,
-            "Y": -29.404175,
-            "Z": 183.94751
-          },
-          "TerritoryId": 957,
+          "Position": [95.140015, -29.404175, 183.94751],
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 2012906,
-          "Position": {
-            "X": 74.84546,
-            "Y": -35.41626,
-            "Z": 212.05457
-          },
-          "TerritoryId": 957,
+          "Position": [74.84546, -35.41626, 212.05457],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2012905,
-          "Position": {
-            "X": 132.7992,
-            "Y": -25.558899,
-            "Z": 206.74438
-          },
-          "TerritoryId": 957,
+          "Position": [132.7992, -25.558899, 206.74438],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 110.10968,
-            "Y": 5.2216215,
-            "Z": 201.52365
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "Mount": true,
-          "Fly": true
-        },
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

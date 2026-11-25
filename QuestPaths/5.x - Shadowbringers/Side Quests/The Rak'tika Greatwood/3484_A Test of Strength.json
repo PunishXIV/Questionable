@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -9,209 +9,95 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 349.69202,
-            "Y": 7.4945126,
-            "Z": -127.00523
-          },
-          "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1027714,
-          "Position": {
-            "X": 349.5078,
-            "Y": 7.4945126,
-            "Z": -124.80359
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "Position": [349.5078, 7.4945126, -124.80359],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 557.04913,
-            "Y": 26.807156,
-            "Z": 138.81181
-          },
-          "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1031401,
-          "Position": {
-            "X": 556.75586,
-            "Y": 26.861193,
-            "Z": 139.8794
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [556.75586, 26.861193, 139.8794],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 249.18459,
-            "Y": -66.52561,
-            "Z": -123.772446
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 249.18459,
-            "Y": -66.52561,
-            "Z": -123.772446
-          },
-          "TerritoryId": 817,
+          "Position": [249.18459, -66.52561, -123.772446],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11168
           ],
-          "CombatDelaySecondsAtStart": 0,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 0
         },
         {
           "DataId": 2010723,
-          "Position": {
-            "X": 241.35193,
-            "Y": -66.331055,
-            "Z": -122.453674
-          },
-          "TerritoryId": 817,
+          "Position": [241.35193, -66.331055, -122.453674],
+          "Mount": false,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 5,
-          "Fly": true,
-          "Mount": false
+          "DelaySecondsAtStart": 5
         },
         {
-          "Position": {
-            "X": 102.04852,
-            "Y": 38.524307,
-            "Z": -160.11539
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 102.04852,
-            "Y": 38.524307,
-            "Z": -160.11539
-          },
-          "TerritoryId": 817,
+          "Position": [102.04852, 38.524307, -160.11539],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11169
           ],
-          "CombatDelaySecondsAtStart": 0,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 0
         },
         {
           "DataId": 2010724,
-          "Position": {
-            "X": 99.77869,
-            "Y": 38.651123,
-            "Z": -156.17609
-          },
-          "TerritoryId": 817,
+          "Position": [99.77869, 38.651123, -156.17609],
+          "Mount": false,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 5,
-          "Fly": true,
-          "Mount": false
+          "DelaySecondsAtStart": 5
         },
         {
-          "Position": {
-            "X": 628.8899,
-            "Y": 12.333022,
-            "Z": -382.83636
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 628.8899,
-            "Y": 12.333022,
-            "Z": -382.83636
-          },
-          "TerritoryId": 817,
+          "Position": [628.8899, 12.333022, -382.83636],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11170
           ],
-          "CombatDelaySecondsAtStart": 0,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 0
         },
         {
-          "Position": {
-            "X": 628.8899,
-            "Y": 12.333022,
-            "Z": -382.83636
-          },
-          "TerritoryId": 817,
+          "Position": [628.8899, 12.333022, -382.83636],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11149
           ],
-          "CombatDelaySecondsAtStart": 5,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 5
         },
         {
           "DataId": 2010725,
-          "Position": {
-            "X": 630.3043,
-            "Y": 11.856201,
-            "Z": -387.50293
-          },
-          "TerritoryId": 817,
+          "Position": [630.3043, 11.856201, -387.50293],
+          "Mount": false,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 5,
-          "Fly": true,
-          "Mount": false
+          "DelaySecondsAtStart": 5
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027714,
-          "Position": {
-            "X": 349.5078,
-            "Y": 7.4945126,
-            "Z": -124.80359
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,51 +1,29 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050643,
-          "Position": {
-            "X": -250.56848,
-            "Y": 22.956224,
-            "Z": -140.30676
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1050644,
-          "Position": {
-            "X": -525.81067,
-            "Y": 29.416107,
-            "Z": -174.09027
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-525.81067, 29.416107, -174.09027],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 2014050,
-          "Position": {
-            "X": -527.1229,
-            "Y": 29.526123,
-            "Z": -175.64667
-          },
-          "StopDistance": 4,
-          "TerritoryId": 1190,
+          "Position": [-527.1229, 29.526123, -175.64667],
           "InteractionType": "Emote",
           "Emote": "respect"
         }
@@ -53,15 +31,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1050644,
-          "Position": {
-            "X": -525.81067,
-            "Y": 29.416107,
-            "Z": -174.09027
-          },
-          "TerritoryId": 1190,
+          "Position": [-525.81067, 29.416107, -174.09027],
           "InteractionType": "CompleteQuest"
         }
       ]

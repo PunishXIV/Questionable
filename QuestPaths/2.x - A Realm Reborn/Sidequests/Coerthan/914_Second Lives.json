@@ -1,84 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006430,
-          "Position": {
-            "X": 207.325,
-            "Y": 310.002,
-            "Z": -297.373
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 459.90317,
-            "Y": 303.8891,
-            "Z": -244.9968
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 207.325,
-                  "Y": 310.002,
-                  "Z": -297.373
-                },
-                "TerritoryId": 155,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 458.56174,
-            "Y": 251.5449,
-            "Z": -234.30656
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 459.90317,
-                  "Y": 303.8891,
-                  "Z": -244.9968
-                },
-                "TerritoryId": 155,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 2002414,
-          "Position": {
-            "X": 456.62622,
-            "Y": 249.80542,
-            "Z": -239.39886
-          },
-          "TerritoryId": 155,
+          "Position": [456.62622, 249.80542, -239.39886],
           "InteractionType": "Interact",
-          "StopDistance": 4,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -90,14 +26,8 @@
         },
         {
           "DataId": 2002409,
-          "Position": {
-            "X": 476.00513,
-            "Y": 247.45557,
-            "Z": -285.66418
-          },
-          "TerritoryId": 155,
+          "Position": [476.00513, 247.45557, -285.66418],
           "InteractionType": "Interact",
-          "StopDistance": 4,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -108,34 +38,9 @@
           ]
         },
         {
-          "Position": {
-            "X": 487.73697,
-            "Y": 248.64696,
-            "Z": -279.76614
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": 489.87454,
-              "Y": 250.22758,
-              "Z": -281.01483
-            }
-          },
-          "StopDistance": 1,
-          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
-        },
-        {
           "DataId": 2002410,
-          "Position": {
-            "X": 497.52026,
-            "Y": 252.52148,
-            "Z": -289.63153
-          },
-          "TerritoryId": 155,
+          "Position": [497.52026, 252.52148, -289.63153],
           "InteractionType": "Interact",
-          "StopDistance": 4,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -147,14 +52,8 @@
         },
         {
           "DataId": 2002413,
-          "Position": {
-            "X": 489.2804,
-            "Y": 249.04248,
-            "Z": -322.46893
-          },
-          "TerritoryId": 155,
+          "Position": [489.2804, 249.04248, -322.46893],
           "InteractionType": "Interact",
-          "StopDistance": 4,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -166,14 +65,8 @@
         },
         {
           "DataId": 2002412,
-          "Position": {
-            "X": 464.3778,
-            "Y": 250.87354,
-            "Z": -329.8543
-          },
-          "TerritoryId": 155,
+          "Position": [464.3778, 250.87354, -329.8543],
           "InteractionType": "Interact",
-          "StopDistance": 4,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -185,33 +78,14 @@
         },
         {
           "DataId": 2002411,
-          "Position": {
-            "X": 445.12085,
-            "Y": 252.49097,
-            "Z": -299.27527
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "StopDistance": 4
+          "Position": [445.12085, 252.49097, -299.27527],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006430,
-          "Position": {
-            "X": 207.325,
-            "Y": 310.002,
-            "Z": -297.373
-          },
-          "StopDistance": 2,
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

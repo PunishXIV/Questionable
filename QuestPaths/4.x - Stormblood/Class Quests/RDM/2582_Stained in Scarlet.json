@@ -1,175 +1,111 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021482,
-          "Position": {
-            "X": -94.92645,
-            "Y": 48.01958,
-            "Z": -31.570984
-          },
-          "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1021484,
-          "Position": {
-            "X": 3.3721924,
-            "Y": 50.266228,
-            "Z": -770.1076
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "Position": [3.3721924, 50.266228, -770.1076],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1021486,
-          "Position": {
-            "X": 54.642456,
-            "Y": 20.4949,
-            "Z": -671.3207
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [54.642456, 20.4949, -671.3207],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1021487,
-          "Position": {
-            "X": 94.56018,
-            "Y": 20.33949,
-            "Z": -609.4606
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [94.56018, 20.33949, -609.4606],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 175.10304,
-            "Y": 10.336163,
-            "Z": -584.578
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 156,
+          "Position": [175.10304, 10.336163, -584.578],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7223
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 2},
           null,null,null,null,null]
         },
         {
           "DataId": 1021489,
-          "Position": {
-            "X": 176.3789,
-            "Y": 9.963035,
-            "Z": -583.64233
-          },
-          "TerritoryId": 156,
+          "Position": [176.3789, 9.963035, -583.64233],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 210.32977,
-            "Y": -17.479898,
-            "Z": -470.8124
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 156,
+          "Position": [210.32977, -17.479898, -470.8124],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7224
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
         },
         {
           "DataId": 1021490,
-          "Position": {
-            "X": 211.56628,
-            "Y": -17.612108,
-            "Z": -469.50488
-          },
-          "TerritoryId": 156,
+          "Position": [211.56628, -17.612108, -469.50488],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2008526,
-          "Position": {
-            "X": 376.82153,
-            "Y": -17.563171,
-            "Z": -343.67902
-          },
-          "TerritoryId": 156,
+          "Position": [376.82153, -17.563171, -343.67902],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "Notes": [
-              "VBM does not switch target fireball, ally dies consistently"
-            ]
-          },
-          "Fly": true
+            "Enabled": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1021493,
-          "Position": {
-            "X": 55.557983,
-            "Y": 20.485168,
-            "Z": -672.5719
-          },
-          "TerritoryId": 156,
+          "Position": [55.557983, 20.485168, -672.5719],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2583
         }
       ]

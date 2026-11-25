@@ -1,20 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "InteractionType": "EquipItem",
           "ItemId": 4550,
-          "TerritoryId": 128,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -25,74 +21,28 @@
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 128,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 128,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 128,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1006757,
-          "Position": {
-            "X": -4.4709473,
-            "Y": 44.999886,
-            "Z": -250.56848
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "Position": [-4.4709473, 44.999886, -250.56848],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 287.2875,
-            "Y": 41.545933,
-            "Z": -200.75758
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
-        },
-        {
-          "Position": {
-            "X": 285.82883,
-            "Y": 42.26685,
-            "Z": -203.32939
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 180,
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
-        },
-        {
-          "Position": {
-            "X": -114.35803,
-            "Y": 64.464615,
-            "Z": -217.34372
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
-        },
-        {
-          "TerritoryId": 180,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {
@@ -103,73 +53,25 @@
         },
         {
           "DataId": 2002380,
-          "Position": {
-            "X": -337.73785,
-            "Y": 59.519302,
-            "Z": -120.80934
-          },
-          "StopDistance": 1,
-          "Fly": true,
-          "TerritoryId": 180,
+          "Position": [-337.73785, 59.519302, -120.80934],
           "InteractionType": "Interact",
-          "IgnoreDistanceToObject": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2002379,
-          "Position": {
-            "X": -276.0923,
-            "Y": 64.0467,
-            "Z": -197.56392
-          },
-          "TerritoryId": 180,
-          "StopDistance": 1,
+          "Position": [-276.0923, 64.0467, -197.56392],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
-          "Position": {
-            "X": -295.46515,
-            "Y": 70.620026,
-            "Z": -271.55838
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Jump",
-          "StopDistance": 0.25,
-          "JumpDestination": {
-            "Position": {
-              "X": -304.04395,
-              "Y": 65.77775,
-              "Z": -264.9213
-            },
-            "TerritoryId": 180
-          },
-          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
-        },
-        {
           "DataId": 2002382,
-          "Position": {
-            "X": -326.9142,
-            "Y": 64.60336,
-            "Z": -267.98495
-          },
-          "StopDistance": 1,
-          "Fly": true,
-          "TerritoryId": 180,
+          "Position": [-326.9142, 64.60336, -267.98495],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
           "DataId": 2002381,
-          "Position": {
-            "X": -360.0172,
-            "Y": 65.166664,
-            "Z": -312.24045
-          },
-          "StopDistance": 1,
-          "Fly": true,
-          "TerritoryId": 180,
+          "Position": [-360.0172, 65.166664, -312.24045],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         }
@@ -177,36 +79,23 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2002383,
-          "Position": {
-            "X": -437.94922,
-            "Y": 51.377075,
-            "Z": -321.24823
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-437.94922, 51.377075, -321.24823],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1006757,
-          "Position": {
-            "X": -4.4709473,
-            "Y": 44.999886,
-            "Z": -250.56848
-          },
-          "TerritoryId": 128,
+          "Position": [-4.4709473, 44.999886, -250.56848],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 1099
         }
       ]

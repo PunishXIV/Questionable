@@ -1,109 +1,66 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030818,
-          "Position": {
-            "X": -28.641174,
-            "Y": -24.631424,
-            "Z": 318.98987
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1030827,
-          "Position": {
-            "X": -438.46802,
-            "Y": -0.3,
-            "Z": 725.1239
-          },
-          "TerritoryId": 817,
+          "Position": [-438.46802, -0.3, 725.1239],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11153
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1030827,
-          "Position": {
-            "X": -438.46802,
-            "Y": -0.3,
-            "Z": 725.1239
-          },
-          "TerritoryId": 817,
+          "Position": [-438.46802, -0.3, 725.1239],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -500.49435,
-            "Y": 7.3168135,
-            "Z": 93.674324
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 817,
+          "Position": [-500.49435, 7.3168135, 93.674324],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11154
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 2010522,
-          "Position": {
-            "X": -501.5488,
-            "Y": 7.461609,
-            "Z": 96.94055
-          },
-          "StopDistance": 4,
-          "TerritoryId": 817,
+          "Position": [-501.5488, 7.461609, 96.94055],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1030818,
-          "Position": {
-            "X": -28.641174,
-            "Y": -24.631424,
-            "Z": 318.98987
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

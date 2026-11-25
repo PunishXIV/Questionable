@@ -1,100 +1,57 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031811,
-          "Position": {
-            "X": -442.46588,
-            "Y": 70.686165,
-            "Z": 573.69336
-          },
-          "TerritoryId": 816,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Position": [-442.46588, 70.686165, 573.69336],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2010922,
-          "Position": {
-            "X": -27.878296,
-            "Y": 30.44165,
-            "Z": -505.39407
-          },
-          "TerritoryId": 816,
+          "Position": [-27.878296, 30.44165, -505.39407],
           "InteractionType": "Action",
           "Action": "Siphon Snout",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2010923,
-          "Position": {
-            "X": -53.025208,
-            "Y": 55.954834,
-            "Z": -671.29016
-          },
-          "TerritoryId": 816,
+          "Position": [-53.025208, 55.954834, -671.29016],
           "InteractionType": "Action",
           "Action": "Siphon Snout",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -53.025208,
-            "Y": 55.954834,
-            "Z": -671.29016
-          },
-          "StopDistance": 100,
-          "TerritoryId": 816,
+          "Position": [-53.025208, 55.954834, -671.29016],
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 2,
-          "Fly": true,
           "$": "Teleport won't work without a delay"
         },
         {
           "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "Position": [-454.3069, 71.43217, 575.1278],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

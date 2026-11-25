@@ -1,63 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1036352,
-          "Position": {
-            "X": -679.92676,
-            "Y": -41.30151,
-            "Z": 429.00732
-          },
-          "TerritoryId": 402,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1036368,
-          "Position": {
-            "X": -137.56012,
-            "Y": 4.1,
-            "Z": -109.819214
-          },
-          "StopDistance": 5,
-          "TerritoryId": 130,
+          "Position": [-137.56012, 4.1, -109.819214],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1036374,
-          "Position": {
-            "X": -25.0401,
-            "Y": 83.19998,
-            "Z": 10.452393
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ]
+          "Position": [-25.0401, 83.19998, 10.452393],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
-          "TerritoryId": 130,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 777,
@@ -71,16 +47,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1036376,
-          "Position": {
-            "X": -20.065674,
-            "Y": 83.2,
-            "Z": 15.121643
-          },
-          "StopDistance": 7,
-          "TerritoryId": 130,
+          "Position": [-20.065674, 83.2, 15.121643],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,52 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050693,
-          "Position": {
-            "X": 398.70288,
-            "Y": 122.54732,
-            "Z": 523.4912
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1050694,
-          "Position": {
-            "X": -22.720703,
-            "Y": 54.759686,
-            "Z": 522.88086
-          },
-          "TerritoryId": 1187,
+          "Position": [-22.720703, 54.759686, 522.88086],
           "InteractionType": "Emote",
-          "Emote": "soothe",
-          "Fly": true
+          "Emote": "soothe"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1050694,
-          "Position": {
-            "X": -22.720703,
-            "Y": 54.759686,
-            "Z": 522.88086
-          },
-          "TerritoryId": 1187,
+          "Position": [-22.720703, 54.759686, 522.88086],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_KINGZB108_05048_SAYTODO_000_100"
@@ -56,21 +35,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1050693,
-          "Position": {
-            "X": 398.70288,
-            "Y": 122.54732,
-            "Z": 523.4912
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

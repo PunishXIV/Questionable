@@ -1,124 +1,76 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031839,
-          "Position": {
-            "X": 95.628296,
-            "Y": 1.490116e-8,
-            "Z": 204.11987
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031843,
-          "Position": {
-            "X": 152.48328,
-            "Y": 0.21766767,
-            "Z": 655.4512
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "Position": [152.48328, 0.21766767, 655.4512],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031845,
-          "Position": {
-            "X": -200.09155,
-            "Y": 2.2048368,
-            "Z": 737.8804
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-200.09155, 2.2048368, 737.8804],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 234.24565,
-            "Y": 10.83118,
-            "Z": 738.46594
-          },
-          "StopDistance": 1,
-          "TerritoryId": 813,
+          "Position": [234.24565, 10.83118, 738.46594],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [11437],
-          "Fly": true
+          "KillEnemyDataIds": [11437]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031847,
-          "Position": {
-            "X": 231.92188,
-            "Y": 9.887029,
-            "Z": 726.74133
-          },
-          "StopDistance": 7,
-          "TerritoryId": 813,
+          "Position": [231.92188, 9.887029, 726.74133],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031846,
-          "Position": {
-            "X": -204.76086,
-            "Y": 2.4649847,
-            "Z": 739.9557
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-204.76086, 2.4649847, 739.9557],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031808,
-          "Position": {
-            "X": -461.53967,
-            "Y": 72.51729,
-            "Z": 586.48047
-          },
-          "TerritoryId": 816,
+          "Position": [-461.53967, 72.51729, 586.48047],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -134,15 +86,11 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 889,
       "Steps": [
         {
           "DataId": 1031850,
-          "Position": {
-            "X": 55.588623,
-            "Y": -1.6532946,
-            "Z": 48.599854
-          },
-          "TerritoryId": 889,
+          "Position": [55.588623, -1.6532946, 48.599854],
           "InteractionType": "Interact"
         }
       ]
@@ -152,33 +100,23 @@
     },
     {
       "Sequence": 10,
+      "TerritoryId": 890,
       "Steps": [
         {
           "DataId": 1032348,
-          "Position": {
-            "X": -18.295654,
-            "Y": 6.8822618,
-            "Z": -67.338135
-          },
-          "TerritoryId": 890,
+          "Position": [-18.295654, 6.8822618, -67.338135],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031806,
-          "Position": {
-            "X": -464.59143,
-            "Y": 71.76874,
-            "Z": 573.8766
-          },
-          "TerritoryId": 816,
+          "Position": [-464.59143, 71.76874, 573.8766],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

@@ -1,36 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Shorkolate", "Date": "2026-05-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "DataId": 2014433,
-          "Position": {
-            "X": -528.37415,
-            "Y": -152.20874,
-            "Z": 671.13745
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1264,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                1264
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1051964,
-          "Position": {
-            "X": 0.56451416,
-            "Y": 41.999973,
-            "Z": -5.2339478
-          },
+          "Position": [0.56451416, 41.999973, -5.2339478],
           "TerritoryId": 1264,
           "InteractionType": "AcceptQuest"
         }
@@ -38,89 +17,55 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051967,
-          "Position": {
-            "X": 564.72107,
-            "Y": -131.41925,
-            "Z": 609.21643
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "Position": [564.72107, -131.41925, 609.21643],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2014464,
-          "Position": {
-            "X": -412.2835,
-            "Y": 2.9754639,
-            "Z": -57.846985
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Dirigible Landing"
-          ]
+          "Position": [-412.2835, 2.9754639, -57.846985],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051971,
-          "Position": {
-            "X": -414.69446,
-            "Y": 3,
-            "Z": -55.10034
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1185,
+          "Position": [-414.69446, 3, -55.10034],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051971,
-          "Position": {
-            "X": 93.53023,
-            "Y": -14,
-            "Z": 50.456287
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Dirigible Landing",
-            "[Tuliyollal] Aetheryte Plaza"
-          ]
+          "Position": [93.53023, -14, 50.456287],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051972,
-          "Position": {
-            "X": 123.79639,
-            "Y": -14,
-            "Z": 27.115234
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1185,
+          "Position": [123.79639, -14, 27.115234],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5236
         }

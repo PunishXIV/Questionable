@@ -1,5 +1,6 @@
 ﻿using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 namespace Questionable.Controller.GameUi;
 
@@ -8,14 +9,14 @@ internal sealed class HelpUiController : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
     private readonly IFramework _framework;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly ILogger<HelpUiController> _logger;
     private readonly QuestController _questController;
 
     public HelpUiController(
         QuestController questController,
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         IFramework framework,
         ILogger<HelpUiController> logger)
     {
@@ -25,32 +26,36 @@ internal sealed class HelpUiController : IDisposable
         _framework = framework;
         _logger = logger;
 
-        _questController.AutomationTypeChanged += CloseHelpWindowsWhenStartingQuests;
+        _questController.AutomationTypeChanged += CloseHelpWindows;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "AkatsukiNote", UnendingCodexPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "ContentsTutorial", ContentsTutorialPostSetup);
-        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpWindowPostSetup);
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, ActiveHelpAddons, ActiveHelpPostSetup);
     }
+
+    private static readonly string[] ActiveHelpAddons = ["HowTo", "HowToNotice"];
 
 
     public void Dispose()
     {
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, ActiveHelpAddons, ActiveHelpPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpWindowPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "ContentsTutorial", ContentsTutorialPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "AkatsukiNote", UnendingCodexPostSetup);
 
-        _questController.AutomationTypeChanged -= CloseHelpWindowsWhenStartingQuests;
+        _questController.AutomationTypeChanged -= CloseHelpWindows;
     }
 
-    private unsafe void CloseHelpWindowsWhenStartingQuests(object sender, QuestController.EAutomationType e)
+    private unsafe void CloseHelpWindows(object? sender, AutomationEventArgs e)
     {
-        if (e is QuestController.EAutomationType.Manual)
+        if (e.AutomationType is QuestController.EAutomationType.Manual)
             return;
 
         if (_gameGui.TryGetAddonByName("Guide", out AtkUnitBase* addonGuide))
@@ -76,6 +81,34 @@ internal sealed class HelpUiController : IDisposable
             _logger.LogInformation("JobHudNotice window is open");
             JobHudNoticePostSetup(addonJobHudNotice);
         }
+
+        foreach (string addonName in ActiveHelpAddons)
+            CloseActiveHelp(addonName);
+    }
+
+    private void ActiveHelpPostSetup(AddonEvent type, AddonArgs args)
+    {
+        if (_questController.IsRunning || _questController.AutomationType != QuestController.EAutomationType.Manual)
+        {
+            // Closing during setup doesn't stick (see EventTutorial), so wait a frame.
+            string addonName = args.AddonName;
+            _framework.RunOnTick(() => CloseActiveHelp(addonName));
+        }
+    }
+
+    // A closed addon's id gets reused; the agent then refreshed the Crafting Log as its notice and crashed (Sub Alt 18:14).
+    private unsafe void CloseActiveHelp(string addonName)
+    {
+        if (!_gameGui.TryGetAddonByName(addonName, out AtkUnitBase* addon) || !addon->IsVisible)
+            return;
+
+        AgentInterface* agent = AgentModule.Instance()->GetAgentByInternalId(
+            addonName == "HowToNotice" ? AgentId.HowToNotice : AgentId.HowTo);
+        if (agent == null || !agent->IsAgentActive())
+            return;
+
+        _logger.LogInformation("Closing {AddonName} window", addonName);
+        agent->Hide();
     }
 
     private unsafe void UnendingCodexPostSetup(AddonEvent type, AddonArgs args)
@@ -100,10 +133,8 @@ internal sealed class HelpUiController : IDisposable
         addon->FireCallbackInt(13);
     }
 
-    /// <summary>
-    ///     Opened e.g. the first time you open the duty finder window during Sastasha.
-    /// </summary>
-    private unsafe void MultipleHelpWindowPostSetup(AddonEvent type, AddonArgs args)
+    // The game can open this when Duty Finder is first opened during Sastasha.
+    private unsafe void MultipleHelpPostSetup(AddonEvent type, AddonArgs args)
     {
         if (_questController.StartedQuest?.Quest.Id.Value == 245)
         {
@@ -142,7 +173,6 @@ internal sealed class HelpUiController : IDisposable
     {
         if (_questController.IsRunning || _questController.AutomationType != QuestController.EAutomationType.Manual)
         {
-            // TODO Verify that this actually works; in initial testing it didn't close the window.
             _framework.RunOnTick(() =>
             {
                 if (_gameGui.TryGetAddonByName("EventTutorial", out AtkUnitBase* addonEventTutorial))

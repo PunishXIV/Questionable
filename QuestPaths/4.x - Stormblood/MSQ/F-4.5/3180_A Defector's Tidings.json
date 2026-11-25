@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1026781,
-          "Position": {
-            "X": -478.41614,
-            "Y": 137.42972,
-            "Z": 696.9557
-          },
-          "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Prologue Gate (Western Hinterlands)"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1024065,
-          "Position": {
-            "X": 749.9961,
-            "Y": 70.139626,
-            "Z": 522.88086
-          },
-          "TerritoryId": 621,
+          "Position": [749.9961, 70.139626, 522.88086],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -45,33 +27,23 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1026783,
-          "Position": {
-            "X": 747.12744,
-            "Y": 69.99995,
-            "Z": 521.599
-          },
-          "StopDistance": 5,
-          "TerritoryId": 621,
+          "Position": [747.12744, 69.99995, 521.599],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 759,
       "Steps": [
         {
           "DataId": 1024974,
-          "Position": {
-            "X": -10.330383,
-            "Y": 0.19997318,
-            "Z": 12.893799
-          },
-          "TerritoryId": 759,
+          "Position": [-10.330383, 0.19997318, 12.893799],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -83,11 +55,7 @@
         },
         {
           "DataId": 1026784,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 0.021091362,
-            "Z": -3.0060425
-          },
+          "Position": [-0.015319824, 0.021091362, -3.0060425],
           "TerritoryId": 744,
           "InteractionType": "CompleteQuest"
         }

@@ -1,52 +1,22 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-27"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1002296,
-          "Position": {
-            "X": -139.42175,
-            "Y": 4.019726,
-            "Z": 205.0354
-          },
-          "TerritoryId": 141,
+          "Position": [-139.42175, 4.019726, 205.0354],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
           "KillEnemyDataIds": [
             1245
           ]
@@ -55,61 +25,34 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1002296,
-          "Position": {
-            "X": -139.42175,
-            "Y": 4.019726,
-            "Z": 205.0354
-          },
-          "TerritoryId": 141,
+          "Position": [-139.42175, 4.019726, 205.0354],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "Position": [-94.529724, 6.4999976, 39.81079],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2001756,
-          "Position": {
-            "X": 27.206787,
-            "Y": 12.985352,
-            "Z": 51.83484
-          },
-          "TerritoryId": 141,
+          "Position": [27.206787, 12.985352, 51.83484],
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -118,43 +61,29 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1003945,
-          "Position": {
-            "X": 24.917969,
-            "Y": 13,
-            "Z": 50.156372
-          },
-          "StopDistance": 5,
-          "TerritoryId": 141,
+          "Position": [24.917969, 13, 50.156372],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "DialogueChoices": [
             {
               "Type": "List",
               "Prompt": "TEXT_CLSGLA101_00288_Q1_000_160",
               "Answer": "TEXT_CLSGLA101_00288_A1_000_161"
             }
-          ],
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
           ],
           "NextQuestId": 262
         }

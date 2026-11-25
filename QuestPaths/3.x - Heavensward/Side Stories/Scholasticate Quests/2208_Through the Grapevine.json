@@ -1,46 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011215,
-          "Position": {
-            "X": -145.37274,
-            "Y": 14.80313,
-            "Z": -129.25922
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                427
-              ]
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419,
-                427
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1017874,
-          "Position": {
-            "X": 6.42395,
-            "Y": 0.22499956,
-            "Z": -6.149414
-          },
+          "Position": [6.42395, 0.22499956, -6.149414],
           "TerritoryId": 427,
           "InteractionType": "AcceptQuest"
         }
@@ -48,108 +17,56 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 427,
       "Steps": [
         {
-          "DataId": 2005332,
-          "Position": {
-            "X": -5.0202637,
-            "Y": 1.1443481,
-            "Z": 11.856201
-          },
-          "TerritoryId": 427,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
-        {
           "DataId": 1017879,
-          "Position": {
-            "X": 56.10742,
-            "Y": 11.965071,
-            "Z": 38.92566
-          },
+          "Position": [56.10742, 11.965071, 38.92566],
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1015976,
-          "Position": {
-            "X": -122.51471,
-            "Y": 14.553129,
-            "Z": -166.97955
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "Position": [-122.51471, 14.553129, -166.97955],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012167,
-          "Position": {
-            "X": 27.66455,
-            "Y": -11.992287,
-            "Z": 47.86743
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] The Brume"
-          ]
+          "Position": [27.66455, -11.992287, 47.86743],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1018087,
-          "Position": {
-            "X": 99.168335,
-            "Y": -22.000004,
-            "Z": 49.210327
-          },
-          "TerritoryId": 418,
+          "Position": [99.168335, -22.000004, 49.210327],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1011192,
-          "Position": {
-            "X": 88.36499,
-            "Y": 15.094684,
-            "Z": 31.296265
-          },
-          "TerritoryId": 418,
+          "Position": [88.36499, 15.094684, 31.296265],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1015976,
-          "Position": {
-            "X": -122.51471,
-            "Y": 14.553129,
-            "Z": -166.97955
-          },
-          "TerritoryId": 419,
+          "Position": [-122.51471, 14.553129, -166.97955],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
           "NextQuestId": 2209
         }
       ]

@@ -1,89 +1,57 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050878,
-          "Position": {
-            "X": 475.30322,
-            "Y": 18.197147,
-            "Z": -326.95508
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050879,
-          "Position": {
-            "X": 595.7274,
-            "Y": 18.8562,
-            "Z": -85.55737
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [595.7274, 18.8562, -85.55737],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": 705.4334,
-            "Y": 28.302685,
-            "Z": 2.3153868
-          },
-          "StopDistance": 1,
-          "TerritoryId": 1189,
+          "Position": [705.4334, 28.302685, 2.3153868],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17671,
             17672
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050881,
-          "Position": {
-            "X": 595.6052,
-            "Y": 18.84498,
-            "Z": -85.55737
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [595.6052, 18.84498, -85.55737],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050882,
-          "Position": {
-            "X": -408.31616,
-            "Y": 20.383144,
-            "Z": -399.28284
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "Position": [-408.31616, 20.383144, -399.28284],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

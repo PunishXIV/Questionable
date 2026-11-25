@@ -1,42 +1,27 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Game.Text;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
 internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration)
 {
-    protected const char DutyClipboardSeparator = ';';
-    protected const char DutyWhitelistPrefix = '+';
-    protected const char DutyBlacklistPrefix = '-';
-
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
 
     protected readonly string[] SupportedCfcOptions =
     [
-        $"{SeIconChar.Circle.ToIconChar()} " + _L("Enabled (Default)"),
+        $"{SeIconChar.Circle.ToIconChar()} " + _L("Enabled (default)"),
         $"{SeIconChar.Circle.ToIconChar()} " + _L("Enabled"),
         $"{SeIconChar.Cross.ToIconChar()} " + _L("Disabled")
     ];
 
     protected readonly string[] UnsupportedCfcOptions =
     [
-        $"{SeIconChar.Cross.ToIconChar()} " + _L("Disabled (Default)"),
+        $"{SeIconChar.Cross.ToIconChar()} " + _L("Disabled (default)"),
         $"{SeIconChar.Circle.ToIconChar()} " + _L("Enabled"),
         $"{SeIconChar.Cross.ToIconChar()} " + _L("Disabled")
     ];
 
     protected Configuration Configuration { get; } = configuration;
 
-    public abstract void DrawTab();
-
     protected void Save() => _pluginInterface.SavePluginConfig(Configuration);
 
-    /// <summary>
-    ///     Draws an ImGui combo that maps a configuration value to/from an entry in <paramref name="values"/>.
-    ///     If the current value is not in <paramref name="values"/>, resets to <paramref name="values"/>[0] and saves.
-    /// </summary>
     protected void DrawComboOption<T>(string label, T[] values, string[] labels, Func<T> get, Action<T> set)
     {
         if (values.Length == 0)
@@ -55,6 +40,23 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             set(values[index]);
             Save();
         }
+    }
+
+    protected bool DrawCheckbox(string label, Func<bool> get, Action<bool> set, string? help = null)
+    {
+        bool value = get();
+        if (ImGui.Checkbox(label, ref value))
+        {
+            set(value);
+            Save();
+        }
+
+        if (help != null)
+        {
+            ImGuiComponents.HelpMarker(help);
+        }
+
+        return value;
     }
 
     protected static string FormatLevel(int level, bool includePrefix = true)
@@ -87,5 +89,21 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             _L("While testing, the following issues have been found:"));
         foreach (string note in notes)
             ImGui.BulletText(note);
+    }
+
+    protected void DrawResetButton(HashSet<uint> whitelisted, HashSet<uint> blacklisted)
+    {
+        using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Undo, _L("Reset to default")))
+            {
+                whitelisted.Clear();
+                blacklisted.Clear();
+                Save();
+            }
+        }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+            QstWidgets.Tooltip(_L("Hold CTRL to enable this button."));
     }
 }

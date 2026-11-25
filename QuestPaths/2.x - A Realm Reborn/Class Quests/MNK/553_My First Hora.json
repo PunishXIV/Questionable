@@ -1,16 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "InteractionType": "EquipItem",
           "ItemId": 1680,
-          "TerritoryId": 130,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -21,42 +21,29 @@
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 130,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 130,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 130,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1003817,
-          "Position": {
-            "X": -74.57086,
-            "Y": 1.9999951,
-            "Z": -42.404846
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "Position": [-74.57086, 1.9999951, -42.404846],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -126.59337,
-            "Y": 11.159969,
-            "Z": 276.25775
-          },
-          "TerritoryId": 141,
+          "Position": [-126.59337, 11.159969, 276.25775],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -71,19 +58,10 @@
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null],
-          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0"
         },
         {
-          "Position": {
-            "X": -126.59337,
-            "Y": 11.159969,
-            "Z": 276.25775
-          },
-          "TerritoryId": 141,
+          "Position": [-126.59337, 11.159969, 276.25775],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -105,12 +83,7 @@
           "$": "19 0  0 0  0 0 -> 35 48  0 0  0 0"
         },
         {
-          "Position": {
-            "X": 32.007893,
-            "Y": 5.8527403,
-            "Z": 299.76016
-          },
-          "TerritoryId": 141,
+          "Position": [32.007893, 5.8527403, 299.76016],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -134,16 +107,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1003817,
-          "Position": {
-            "X": -74.57086,
-            "Y": 1.9999951,
-            "Z": -42.404846
-          },
-          "TerritoryId": 130,
-          "AetheryteShortcut": "Ul'dah",
+          "Position": [-74.57086, 1.9999951, -42.404846],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 554
         }

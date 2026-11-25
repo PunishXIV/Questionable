@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,66 +8,23 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027349,
-          "Position": {
-            "X": 52.658813,
-            "Y": 2.1036942,
-            "Z": 646.78406
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 52.658813,
-                  "Y": 2.1036942,
-                  "Z": 646.78406
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 600
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031117,
-          "Position": {
-            "X": -254.26111,
-            "Y": 0.56188357,
-            "Z": 752.01025
-          },
-          "TerritoryId": 813,
+          "Position": [-254.26111, 0.56188357, 752.01025],
           "InteractionType": "Emote",
-          "Emote": "furious",
-          "Fly": true
+          "Emote": "furious"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027349,
-          "Position": {
-            "X": 52.658813,
-            "Y": 2.1036942,
-            "Z": 646.78406
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,43 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011911,
-          "Position": {
-            "X": -279.56055,
-            "Y": 127.08131,
-            "Z": 13.595764
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1013746,
-          "Position": {
-            "X": -87.815735,
-            "Y": 87.188995,
-            "Z": -735.04236
-          },
-          "TerritoryId": 397,
+          "Position": [-87.815735, 87.188995, -735.04236],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "TerritoryId": 397,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 36,
@@ -48,19 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1011911,
-          "Position": {
-            "X": -279.56055,
-            "Y": 127.08131,
-            "Z": 13.595764
-          },
-          "TerritoryId": 397,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

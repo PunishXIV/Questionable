@@ -1,43 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1040478,
-          "Position": {
-            "X": -406.9734,
-            "Y": -220.18355,
-            "Z": 304.1886
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040487,
-          "Position": {
-            "X": -234.6991,
-            "Y": -224.38274,
-            "Z": 349.01953
-          },
-          "TerritoryId": 956,
+          "Position": [-234.6991, -224.38274, 349.01953],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "TerritoryId": 956,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 786,
@@ -51,9 +36,9 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1030,
       "Steps": [
         {
-          "TerritoryId": 1030,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 790,
@@ -67,36 +52,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040503,
-          "Position": {
-            "X": -221.4237,
-            "Y": -224.3827,
-            "Z": 364.40063
-          },
-          "TerritoryId": 956,
+          "Position": [-221.4237, -224.3827, 364.40063],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038588,
-          "Position": {
-            "X": -101.76245,
-            "Y": 4.357494,
-            "Z": 0.7476196
-          },
-          "StopDistance": 5,
-          "TerritoryId": 962,
+          "Position": [-101.76245, 4.357494, 0.7476196],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Rostra",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

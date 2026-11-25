@@ -1,8 +1,5 @@
-using Dalamud.Game.ClientState.Conditions;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using Questionable.Controller.Steps.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class UpdateGearset
@@ -27,22 +24,20 @@ internal static class UpdateGearset
         public override string ToString() => $"UpdateGearset({TargetClass?.ToString() ?? "current"})";
     }
 
-    internal sealed class UpdateGearsetExecutor
+    internal sealed class Executor
     (
         IClientState clientState,
         ICondition condition,
-        ILogger<UpdateGearsetExecutor> logger) : AbstractDelayedTaskExecutor<Task>
+        ILogger<Executor> logger) : DelayedTaskExecutor<Task>(TimeSpan.FromSeconds(1))
     {
         protected override unsafe bool StartInternal()
         {
-            // Safety check: ensure player is logged in
             if (!clientState.IsLoggedIn)
             {
                 logger.LogWarning("Cannot update gearset: player is not logged in");
                 throw new TaskException("Player is not logged in");
             }
 
-            // Safety check: ensure gearset module is available
             RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
             if (gearsetModule == null)
             {
@@ -50,70 +45,52 @@ internal static class UpdateGearset
                 throw new TaskException("Gearset system is not available");
             }
 
-            // Safety check: ensure player is not in combat
             if (condition[ConditionFlag.InCombat])
             {
                 logger.LogWarning("Cannot update gearset: player is in combat");
                 throw new TaskException("Cannot update gearset while in combat");
             }
 
-            // Determine which gearset to update
-            int gearsetId;
-            if (Task.TargetClass.HasValue)
+            // The game's current set can belong to another job after an EquipItem job change; never update that one.
+            byte job = Task.TargetClass is { } target
+                ? (byte)target
+                : FFXIVClientStructs.FFXIV.Client.Game.UI.PlayerState.Instance()->CurrentClassJobId;
+            byte?[] jobsBySlot = new byte?[100];
+            for (int i = 0; i < jobsBySlot.Length; ++i)
             {
-                // Find gearset by class/job
-                logger.LogInformation("Looking for gearset with job {ClassJob}", Task.TargetClass.Value);
-
-                bool found = false;
-                gearsetId = -1;
-
-                for (int i = 0; i < 100; ++i)
-                {
-                    RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
-                    if (gearset != null &&
-                        gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) &&
-                        gearset->ClassJob == (byte)Task.TargetClass.Value)
-                    {
-                        gearsetId = i;
-                        found = true;
-                        logger.LogInformation("Found gearset {GearsetId} for job {ClassJob}", gearsetId, Task.TargetClass.Value);
-                        break;
-                    }
-                }
-
-                if (!found)
-                {
-                    logger.LogError("No gearset found for {ClassJob}", Task.TargetClass.Value);
-                    throw new TaskException($"No gearset found for {Task.TargetClass.Value}");
-                }
-            }
-            else
-            {
-                // Update the currently equipped gearset
-                // CurrentGearsetIndex is -1 if no gearset is equipped
-                gearsetId = gearsetModule->CurrentGearsetIndex;
-
-                if (gearsetId < 0)
-                {
-                    logger.LogError("No gearset is currently equipped");
-                    throw new TaskException("No gearset is currently equipped");
-                }
-
-                logger.LogInformation("Updating currently equipped gearset {GearsetId}", gearsetId);
+                RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
+                if (gearset != null && gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists))
+                    jobsBySlot[i] = gearset->ClassJob;
             }
 
-            // Update the gearset with currently equipped gear
-            // This will overwrite the gearset at the specified slot with current gear
+            int gearsetId = PickGearset(jobsBySlot, job, gearsetModule->CurrentGearsetIndex);
+            if (gearsetId < 0)
+            {
+                logger.LogError("No gearset found for job {ClassJob}", job);
+                throw new NeedsPlayerException($"No gear set found for {(Job)job}");
+            }
+
+            logger.LogInformation("Updating gearset {GearsetId} for job {ClassJob}", gearsetId, (Job)job);
             int result = gearsetModule->UpdateGearset(gearsetId);
 
             if (result < 0)
             {
                 logger.LogError("Failed to update gearset {GearsetId}", gearsetId);
-                throw new TaskException($"Failed to update gearset {gearsetId}");
+                throw new TaskException(string.Create(CultureInfo.InvariantCulture, $"Failed to update gearset {gearsetId}"));
             }
 
             logger.LogInformation("Successfully updated gearset {GearsetId}", gearsetId);
             return true;
+        }
+
+        internal static int PickGearset(IReadOnlyList<byte?> jobsBySlot, byte job, int current)
+        {
+            if (current >= 0 && current < jobsBySlot.Count && jobsBySlot[current] == job)
+                return current;
+            for (int i = 0; i < jobsBySlot.Count; ++i)
+                if (jobsBySlot[i] == job)
+                    return i;
+            return -1;
         }
 
         protected override ETaskResult UpdateInternal() => ETaskResult.TaskComplete;

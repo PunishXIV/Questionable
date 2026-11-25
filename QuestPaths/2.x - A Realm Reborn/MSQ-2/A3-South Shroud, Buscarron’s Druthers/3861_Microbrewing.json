@@ -1,53 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006193,
-          "Position": {
-            "X": -334.0658,
-            "Y": -0.81366825,
-            "Z": 148.91272
-          },
-          "TerritoryId": 139,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "Position": {
-            "X": -421.19717,
-            "Y": -2.5932822,
-            "Z": 150.81766
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -523.5316,
-            "Y": 6.5687256,
-            "Z": 49.144527
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -585.1562,
-            "Y": -1.1847447,
-            "Z": -2.186262
-          },
-          "TerritoryId": 139,
+          "Position": [-585.1562, -1.1847447, -2.186262],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -63,38 +28,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": -523.5316,
-            "Y": 6.5687256,
-            "Z": 49.144527
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -421.19717,
-            "Y": -2.5932822,
-            "Z": 150.81766
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "DataId": 1006193,
-          "Position": {
-            "X": -334.0658,
-            "Y": -0.81366825,
-            "Z": 148.91272
-          },
-          "TerritoryId": 139,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

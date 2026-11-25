@@ -1,55 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1044289,
-          "Position": {
-            "X": 465.81213,
-            "Y": -17.44166,
-            "Z": 707.3014
-          },
-          "StopDistance": 5,
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 2013239,
-          "Position": {
-            "X": -347.40216,
-            "Y": 54.97815,
-            "Z": -64.89667
-          },
-          "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "Position": [-347.40216, 54.97815, -64.89667],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1044290,
-          "Position": {
-            "X": -212.63446,
-            "Y": 15.260341,
-            "Z": 460.34937
-          },
-          "TerritoryId": 957,
+          "Position": [-212.63446, 15.260341, 460.34937],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -63,42 +38,28 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1037648,
-          "Position": {
-            "X": -562.005,
-            "Y": 9.817466,
-            "Z": -585.1987
-          },
-          "TerritoryId": 957,
+          "Position": [-562.005, 9.817466, -585.1987],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1037647,
-          "Position": {
-            "X": -588.83044,
-            "Y": 9.81748,
-            "Z": -590.08167
-          },
-          "TerritoryId": 957,
+          "Position": [-588.83044, 9.81748, -590.08167],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1037646,
-          "Position": {
-            "X": -568.99365,
-            "Y": 9.817484,
-            "Z": -569.8787
-          },
-          "TerritoryId": 957,
+          "Position": [-568.99365, 9.817484, -569.8787],
           "InteractionType": "CompleteQuest"
         }
       ]

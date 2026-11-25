@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": [
     "Cacahuetes",
     "liza"
@@ -9,162 +9,78 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -482.67407,
-            "Y": 9.16599,
-            "Z": 207.46878
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        },
-        {
           "DataId": 1000767,
-          "Position": {
-            "X": -483.42108,
-            "Y": 10.130882,
-            "Z": 209.46057
-          },
-          "TerritoryId": 152,
+          "Position": [-483.42108, 10.130882, 209.46057],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2001229,
-          "Position": {
-            "X": -510.6432,
-            "Y": 6.301941,
-            "Z": 35.78235
-          },
-          "TerritoryId": 152,
+          "Position": [-510.6432, 6.301941, 35.78235],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             295
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -482.67407,
-            "Y": 9.16599,
-            "Z": 207.46878
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1000767,
-          "Position": {
-            "X": -483.42108,
-            "Y": 10.130882,
-            "Z": 209.46057
-          },
-          "TerritoryId": 152,
+          "Position": [-483.42108, 10.130882, 209.46057],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2001230,
-          "Position": {
-            "X": -510.76526,
-            "Y": 6.1798096,
-            "Z": 35.568726
-          },
-          "TerritoryId": 152,
+          "Position": [-510.76526, 6.1798096, 35.568726],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
-          },
-          "Fly": true
+            "Enabled": true
+          }
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -482.67407,
-            "Y": 9.16599,
-            "Z": 207.46878
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1000767,
-          "Position": {
-            "X": -483.42108,
-            "Y": 10.130882,
-            "Z": 209.46057
-          },
-          "TerritoryId": 152,
+          "Position": [-483.42108, 10.130882, 209.46057],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
+          "Position": [-258.8083, -5.7735243, -27.267883],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "NextQuestId": 92
         }
       ]

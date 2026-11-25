@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,68 +8,28 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1028279,
-          "Position": {
-            "X": 715.053,
-            "Y": 21.41357,
-            "Z": -26.93219
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 715.053,
-                  "Y": 21.41357,
-                  "Z": -26.93219
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 409.02563,
-            "Y": 5.1029873,
-            "Z": 33.891514
-          },
-          "TerritoryId": 813,
+          "Position": [409.02563, 5.1029873, 33.891514],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [10367],
-          "Fly": true
+          "KillEnemyDataIds": [10367]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027842,
-          "Position": {
-            "X": 71.488525,
-            "Y": 1.490116E-08,
-            "Z": 181.84167
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "Position": [71.488525, 1.490116E-08, 181.84167],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

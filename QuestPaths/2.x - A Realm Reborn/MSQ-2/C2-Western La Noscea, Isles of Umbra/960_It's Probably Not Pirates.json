@@ -1,104 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006497,
-          "Position": {
-            "X": 321.1565,
-            "Y": -18.197807,
-            "Z": 276.5697
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 326.6569,
-            "Y": -11.008737,
-            "Z": 254.36206
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 318.07245,
-            "Y": -15.190072,
-            "Z": 253.42027
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "DataId": 1006500,
-          "Position": {
-            "X": 321.1565,
-            "Y": -15.187395,
-            "Z": 253.52856
-          },
-          "StopDistance": 5,
-          "TerritoryId": 138,
+          "Position": [321.1565, -15.187395, 253.52856],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": {
-            "X": 317.62387,
-            "Y": -15.190073,
-            "Z": 252.21808
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": 313.6114,
-              "Y": -24.333132,
-              "Z": 252.43187
-            }
-          }
-        },
-        {
           "DataId": 1006499,
-          "Position": {
-            "X": 260.88342,
-            "Y": -24.975,
-            "Z": 249.04248
-          },
-          "TerritoryId": 138,
+          "Position": [260.88342, -24.975, 249.04248],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1006498,
-          "Position": {
-            "X": 178.78992,
-            "Y": -41.131824,
-            "Z": 257.16016
-          },
-          "TerritoryId": 138,
+          "Position": [178.78992, -41.131824, 257.16016],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -106,28 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 293.98203,
-            "Y": -24.988865,
-            "Z": 240.63774
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "$": "Aleport Crates"
-        },
-        {
-          "DataId": 1006497,
-          "Position": {
-            "X": 321.1565,
-            "Y": -18.197807,
-            "Z": 276.5697
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

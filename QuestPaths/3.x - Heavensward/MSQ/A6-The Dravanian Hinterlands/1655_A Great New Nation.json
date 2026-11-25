@@ -1,44 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012406,
-          "Position": {
-            "X": 587.45703,
-            "Y": -50.811344,
-            "Z": 69.16907
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": -793.8348,
-            "Y": -122.09079,
-            "Z": 577.7538
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
-        },
-        {
-          "Position": {
-            "X": -802.08453,
-            "Y": -122.82994,
-            "Z": 577.8909
-          },
-          "TerritoryId": 398,
+          "Position": [-802.08453, -122.82994, 577.8909],
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 399
         }
@@ -46,47 +20,28 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 2006205,
-          "Position": {
-            "X": 729.21326,
-            "Y": 134.93542,
-            "Z": 150.89636
-          },
-          "TerritoryId": 399,
+          "Position": [729.21326, 134.93542, 150.89636],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818083
         },
         {
           "DataId": 2006208,
-          "Position": {
-            "X": 98.89368,
-            "Y": 73.07532,
-            "Z": -174.36487
-          },
-          "TerritoryId": 399,
+          "Position": [98.89368, 73.07532, -174.36487],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818086
         },
         {
           "DataId": 2005697,
-          "Position": {
-            "X": -50.21753,
-            "Y": 100.694214,
-            "Z": -203.02136
-          },
-          "TerritoryId": 399,
+          "Position": [-50.21753, 100.694214, -203.02136],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179689
         },
         {
-          "Position": {
-            "X": -229.85187,
-            "Y": 107.00484,
-            "Z": -632.70197
-          },
-          "TerritoryId": 399,
+          "Position": [-229.85187, 107.00484, -632.70197],
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 478
         }
@@ -94,20 +49,15 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "TerritoryId": 478,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Idyllshire"
         },
         {
           "DataId": 1012097,
-          "Position": {
-            "X": 73.3501,
-            "Y": 205.88956,
-            "Z": 23.483582
-          },
-          "TerritoryId": 478,
+          "Position": [73.3501, 205.88956, 23.483582],
           "InteractionType": "CompleteQuest"
         }
       ]

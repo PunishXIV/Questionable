@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1040159,
-          "Position": {
-            "X": 473.1975,
-            "Y": -17.131165,
-            "Z": 49.66809
-          },
-          "StopDistance": 5,
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040160,
-          "Position": {
-            "X": 265.156,
-            "Y": 46.937138,
-            "Z": 790.70715
-          },
-          "TerritoryId": 961,
+          "Position": [265.156, 46.937138, 790.70715],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -44,45 +27,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 844,
       "Steps": [
         {
           "DataId": 2009758,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 1.0223389,
-            "Z": 14.206055
-          },
-          "TerritoryId": 844,
+          "Position": [-0.015319824, 1.0223389, 14.206055],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "DataId": 2011936,
-          "Position": {
-            "X": -108.56799,
-            "Y": 5.0201416,
-            "Z": 4.5318604
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
-          "TargetTerritoryId": 987
-        },
-        {
           "DataId": 1040161,
-          "Position": {
-            "X": -0.35101318,
-            "Y": 1.9073486E-06,
-            "Z": -3.3417358
-          },
+          "Position": [-0.35101318, 1.9073486E-06, -3.3417358],
           "TerritoryId": 987,
           "InteractionType": "CompleteQuest"
         }

@@ -1,47 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019985,
-          "Position": {
-            "X": -797.3602,
-            "Y": 48.41823,
-            "Z": 149.64526
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 2007853,
-          "Position": {
-            "X": -838.9868,
-            "Y": 52.017944,
-            "Z": 38.010254
-          },
-          "TerritoryId": 613,
+          "Position": [-838.9868, 52.017944, 38.010254],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "TerritoryId": 613,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 243,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
@@ -51,50 +36,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": -596.66895,
-            "Y": -45.822067,
-            "Z": -272.77194
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -625.9836,
-            "Y": -0.5999986,
-            "Z": -278.578
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "RestartNavigationIfCancelled": false
-        },
-        {
           "DataId": 1019987,
-          "Position": {
-            "X": -727.657,
-            "Y": 0.3198316,
-            "Z": -316.88416
-          },
-          "TerritoryId": 613,
+          "Position": [-727.657, 0.3198316, -316.88416],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019988,
-          "Position": {
-            "X": -761.83716,
-            "Y": 4.763445,
-            "Z": -455.2224
-          },
-          "TerritoryId": 613,
+          "Position": [-761.83716, 4.763445, -455.2224],
           "InteractionType": "CompleteQuest"
         }
       ]

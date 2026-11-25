@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000590,
-          "Position": {
-            "X": -165.9419,
-            "Y": 9.869227,
-            "Z": -81.34589
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1006199,
-          "Position": {
-            "X": -141.71057,
-            "Y": 6.568114,
-            "Z": -23.178528
-          },
-          "TerritoryId": 153,
+          "Position": [-141.71057, 6.568114, -23.178528],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1006201,
-          "Position": {
-            "X": -65.4765,
-            "Y": 4.3282256,
-            "Z": -27.237366
-          },
-          "TerritoryId": 153,
+          "Position": [-65.4765, 4.3282256, -27.237366],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -55,55 +35,32 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1006201,
-          "Position": {
-            "X": -65.4765,
-            "Y": 4.3282256,
-            "Z": -27.237366
-          },
-          "TerritoryId": 153,
+          "Position": [-65.4765, 4.3282256, -27.237366],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1006203,
-          "Position": {
-            "X": 32.700073,
-            "Y": 10.692124,
-            "Z": -12.985474
-          },
-          "TerritoryId": 153,
+          "Position": [32.700073, 10.692124, -12.985474],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "AI will kill initial adds before the boss, but not switch target whenever new enemies spawn; all NPCs need to be killed for the duty to complete"
-            ]
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000590,
-          "Position": {
-            "X": -165.9419,
-            "Y": 9.869227,
-            "Z": -81.34589
-          },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

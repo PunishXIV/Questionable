@@ -1,39 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019519,
-          "Position": {
-            "X": -613.092,
-            "Y": 129.992,
-            "Z": -529.839
-          },
-          "TerritoryId": 612,
+          "Position": [-613.092, 129.992, -529.839],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: issuer 1019519 (Serpent Marshal Brookstone)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019519,
-          "Position": {
-            "X": -283.642,
-            "Y": 65.5611,
-            "Z": 91.8643
-          },
-          "TerritoryId": 612,
+          "Position": [-283.642, 65.5611, 91.8643],
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             6590
@@ -44,18 +33,12 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1022754,
-          "Position": {
-            "X": -281.70657,
-            "Y": 40.309155,
-            "Z": 201.19339
-          },
-          "TerritoryId": 612,
-          "StopDistance": 1,
+          "Position": [-281.70657, 40.309155, 201.19339],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_STMBDZ109_02659_CHOICE1Q1_000_011",
@@ -64,20 +47,12 @@
             }
           ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "$": "auto: todo area 8y from lua ACTOR1 -> 1022754 (serpent recruit)"
         },
         {
           "DataId": 1022755,
-          "Position": {
-            "X": -289.90027,
-            "Y": 44.038303,
-            "Z": -21.669342
-          },
-          "TerritoryId": 612,
-          "StopDistance": 1,
+          "Position": [-289.90027, 44.038303, -21.669342],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_STMBDZ109_02659_CHOICE1Q1_000_017",
@@ -92,17 +67,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019519,
-          "Position": {
-            "X": -613.092,
-            "Y": 129.992,
-            "Z": -529.839
-          },
-          "TerritoryId": 612,
+          "Position": [-613.092, 129.992, -529.839],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo turn-in -> 1019519 (Serpent Marshal Brookstone)"
         }
       ]

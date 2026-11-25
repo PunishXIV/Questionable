@@ -1,141 +1,85 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1054773,
-          "Position": {
-            "X": -329.21344,
-            "Y": 18.02224,
-            "Z": -137.28546
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054775,
-          "Position": {
-            "X": -236.13336,
-            "Y": -0.8372388,
-            "Z": 247.11987
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "Position": [-236.13336, -0.8372388, 247.11987],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054775,
-          "Position": {
-            "X": -236.13336,
-            "Y": -0.8372388,
-            "Z": 247.11987
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "Position": [-236.13336, -0.8372388, 247.11987],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054777,
-          "Position": {
-            "X": -186.81628,
-            "Y": 1.8614321,
-            "Z": 303.42554
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-186.81628, 1.8614321, 303.42554],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054778,
-          "Position": {
-            "X": -127.6723,
-            "Y": 1.5186902,
-            "Z": 336.7207
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-127.6723, 1.5186902, 336.7207],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054779,
-          "Position": {
-            "X": -168.29181,
-            "Y": -1.8273239,
-            "Z": 402.7008
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-168.29181, -1.8273239, 402.7008],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054780,
-          "Position": {
-            "X": -111.28406,
-            "Y": -7.4034004,
-            "Z": 529.9
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "Position": [-111.28406, -7.4034004, 529.9],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 1190,
       "Steps": [
         {
-          "TerritoryId": 1190,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
-        },
-        {
           "DataId": 2014867,
-          "Position": {
-            "X": -214.12988,
-            "Y": -39.871887,
-            "Z": 659.8153
-          },
-          "TerritoryId": 1190,
+          "Position": [-214.12988, -39.871887, 659.8153],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -149,14 +93,8 @@
         },
         {
           "DataId": 2014868,
-          "Position": {
-            "X": -273.82324,
-            "Y": -44.38855,
-            "Z": 627.25244
-          },
-          "TerritoryId": 1190,
+          "Position": [-273.82324, -44.38855, 627.25244],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -170,109 +108,53 @@
         },
         {
           "DataId": 2014869,
-          "Position": {
-            "X": -286.18298,
-            "Y": -45.91449,
-            "Z": 624.567
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-286.18298, -45.91449, 624.567],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1054782,
-          "Position": {
-            "X": -186.69415,
-            "Y": -33.644463,
-            "Z": 658.50305
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "Position": [-186.69415, -33.644463, 658.50305],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 1190,
       "Steps": [
         {
-          "Position": {
-            "X": 474.54605,
-            "Y": 3.0852077,
-            "Z": 465.45132
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 488.0598,
-                  "Y": 3.2202392,
-                  "Z": 484.03137
-                },
-                "TerritoryId": 1190,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        },
-        {
           "DataId": 1051501,
-          "Position": {
-            "X": 488.0598,
-            "Y": 3.2202392,
-            "Z": 484.03137
-          },
-          "TerritoryId": 1190,
+          "Position": [488.0598, 3.2202392, 484.03137],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 10,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1051501,
-          "Position": {
-            "X": 488.0598,
-            "Y": 3.2202392,
-            "Z": 484.03137
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "Position": [488.0598, 3.2202392, 484.03137],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1053655,
-          "Position": {
-            "X": 231.64722,
-            "Y": 50.749847,
-            "Z": 210.25403
-          },
-          "TerritoryId": 1186,
+          "Position": [231.64722, 50.749847, 210.25403],
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 5446,
-          "Fly": true,
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "NextQuestId": 5446
         }
       ]
     }

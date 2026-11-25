@@ -15,11 +15,8 @@ public enum EIssueType
     QuestDisabled,
     UnexpectedAcceptQuestStep,
     UnexpectedCompleteQuestStep,
-    InvalidAethernetShortcut,
     InvalidExcelRef,
-    ClassQuestWithoutAetheryteShortcut,
     DuplicateSinglePlayerInstance,
     UnusedSinglePlayerInstance,
-    InvalidChatMessage,
-    InvalidAcceptQuestTerritory
+    InvalidChatMessage
 }

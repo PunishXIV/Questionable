@@ -1,94 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033717,
-          "Position": {
-            "X": -286.82385,
-            "Y": 17.772081,
-            "Z": 444.23596
-          },
-          "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Kholusia - Wright"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1033720,
-          "Position": {
-            "X": 79.81995,
-            "Y": 35.999687,
-            "Z": -148.27197
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "Position": [79.81995, 35.999687, -148.27197],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1033722,
-          "Position": {
-            "X": -13.473755,
-            "Y": 19.999794,
-            "Z": -155.13855
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "Position": [-13.473755, 19.999794, -155.13855],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1033723,
-          "Position": {
-            "X": -349.63,
-            "Y": 100.1054,
-            "Z": -605.27966
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Ostall Imperative"
+          "Position": [-349.63, 100.1054, -605.27966],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1033727,
-          "Position": {
-            "X": -601.8616,
-            "Y": 65.60101,
-            "Z": -419.9131
-          },
-          "TerritoryId": 813,
+          "Position": [-601.8616, 65.60101, -419.9131],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -101,21 +60,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "TerritoryId": 813,
           "InteractionType": "Craft",
           "ItemId": 31137,
           "ItemCount": 1
         },
         {
           "DataId": 1033727,
-          "Position": {
-            "X": -601.8616,
-            "Y": 65.60101,
-            "Z": -419.9131
-          },
-          "TerritoryId": 813,
+          "Position": [-601.8616, 65.60101, -419.9131],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,130 +1,76 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020527,
-          "Position": {
-            "X": -612.0852,
-            "Y": 130,
-            "Z": -504.02078
-          },
-          "StopDistance": 5,
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1020311,
-          "Position": {
-            "X": -481.2848,
-            "Y": 96.387344,
-            "Z": -341.26807
-          },
-          "TerritoryId": 612,
+          "Position": [-481.2848, 96.387344, -341.26807],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2007965,
-          "Position": {
-            "X": -487.26636,
-            "Y": 76.70703,
-            "Z": -249.56134
-          },
-          "TerritoryId": 612,
+          "Position": [-487.26636, 76.70703, -249.56134],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818133
         },
         {
           "DataId": 1020316,
-          "Position": {
-            "X": -213.51953,
-            "Y": 59.159065,
-            "Z": -531.426
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "Position": [-213.51953, 59.159065, -531.426],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -124.70333,
-            "Y": 58.571022,
-            "Z": -581.12805
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2007967,
-          "Position": {
-            "X": 155.84033,
-            "Y": 53.3302,
-            "Z": -499.44305
-          },
-          "TerritoryId": 612,
+          "Position": [155.84033, 53.3302, -499.44305],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818135
         },
         {
           "DataId": 1020321,
-          "Position": {
-            "X": 447.77588,
-            "Y": 61.497482,
-            "Z": -543.72473
-          },
-          "TerritoryId": 612,
+          "Position": [447.77588, 61.497482, -543.72473],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": 484.6969,
-            "Y": 61.72069,
-            "Z": -558.6724
-          },
-          "TerritoryId": 612,
+          "Position": [484.6969, 61.72069, -558.6724],
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 635,
-          "DisableNavmesh": true,
           "$": "Navmesh rebuilds here because the wall disappears, this skips waiting for that rebuild until later"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 635,
       "Steps": [
         {
           "DataId": 1020329,
-          "Position": {
-            "X": -32.974792,
-            "Y": 18.045086,
-            "Z": 129.41174
-          },
-          "TerritoryId": 635,
+          "Position": [-32.974792, 18.045086, 129.41174],
           "InteractionType": "CompleteQuest"
         }
       ]

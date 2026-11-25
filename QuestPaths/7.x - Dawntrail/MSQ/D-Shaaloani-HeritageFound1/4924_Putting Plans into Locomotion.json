@@ -1,94 +1,59 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047084,
-          "Position": {
-            "X": -167.07104,
-            "Y": 15.74114,
-            "Z": -359.39575
-          },
-          "StopDistance": 7,
-          "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1047089,
-          "Position": {
-            "X": -142.77869,
-            "Y": 15.869456,
-            "Z": -314.22906
-          },
-          "TerritoryId": 1190,
+          "Position": [-142.77869, 15.869456, -314.22906],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1047090,
-          "Position": {
-            "X": -144.09094,
-            "Y": 15.900455,
-            "Z": -311.54346
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1190,
+          "Position": [-144.09094, 15.900455, -311.54346],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 1047355,
-          "Position": {
-            "X": -83.42114,
-            "Y": 16.538801,
-            "Z": -235.64508
-          },
-          "TerritoryId": 1190,
+          "Position": [-83.42114, 16.538801, -235.64508],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1190,
       "Steps": [
         {
           "DataId": 2013959,
-          "Position": {
-            "X": -63.21814,
-            "Y": 18.844849,
-            "Z": -174.85315
-          },
-          "TerritoryId": 1190,
+          "Position": [-63.21814, 18.844849, -174.85315],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818451
         },
         {
           "DataId": 1046991,
-          "Position": {
-            "X": -315.5719,
-            "Y": 18.834728,
-            "Z": -178.88159
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "Position": [-315.5719, 18.834728, -178.88159],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,46 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "DataId": 1036632,
-          "Position": {
-            "X": 115.098755,
-            "Y": 8,
-            "Z": 15.396301
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131,
-                971
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                971
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1036629,
-          "Position": {
-            "X": 0.77819824,
-            "Y": 0.014807776,
-            "Z": -1.9684448
-          },
+          "Position": [0.77819824, 0.014807776, -1.9684448],
           "TerritoryId": 971,
           "InteractionType": "AcceptQuest"
         }
@@ -48,107 +17,55 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1036641,
-          "Position": {
-            "X": -149.95044,
-            "Y": 14.004999,
-            "Z": 54.8562
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "Position": [-149.95044, 14.004999, 54.8562],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1036642,
-          "Position": {
-            "X": -151.1712,
-            "Y": 15.982788,
-            "Z": 302.2965
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          "Position": [-151.1712, 15.982788, 302.2965],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -66.87344,
-            "Y": -3.6581912,
-            "Z": 179.7406
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1036644,
-          "Position": {
-            "X": -68.10101,
-            "Y": -3.6581912,
-            "Z": 179.61389
-          },
-          "TerritoryId": 141,
+          "Position": [-68.10101, -3.6581912, 179.61389],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1040918,
-          "Position": {
-            "X": -59.891724,
-            "Y": -3.6582541,
-            "Z": 147.72253
-          },
-          "TerritoryId": 141,
+          "Position": [-59.891724, -3.6582541, 147.72253],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
-          "DataId": 1036632,
-          "Position": {
-            "X": 115.098755,
-            "Y": 8,
-            "Z": 15.396301
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
-        },
-        {
           "DataId": 1036629,
-          "Position": {
-            "X": 0.77819824,
-            "Y": 0.014807776,
-            "Z": -1.9684448
-          },
+          "Position": [0.77819824, 0.014807776, -1.9684448],
           "TerritoryId": 971,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

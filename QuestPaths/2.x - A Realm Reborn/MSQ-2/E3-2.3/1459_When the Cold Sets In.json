@@ -1,229 +1,101 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006384,
-          "Position": {
-            "X": 263.5996,
-            "Y": 303.1,
-            "Z": -199.96954
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 240.43533,
-            "Y": 303.94617,
-            "Z": -200.04732
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -423.6362,
-            "Y": 266.62988,
-            "Z": -205.92511
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006444,
-          "Position": {
-            "X": -432.9748,
-            "Y": 233.47266,
-            "Z": -199.6643
-          },
-          "TerritoryId": 155,
+          "Position": [-432.9748, 233.47266, -199.6643],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -431.37878,
-            "Y": 259.79306,
-            "Z": -194.97882
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -423.87833,
-            "Y": 266.9849,
-            "Z": -205.68484
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": false
-        },
-        {
-          "Position": {
-            "X": -429.45197,
-            "Y": 217.99948,
-            "Z": -296.54102
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1009081,
-          "Position": {
-            "X": -413.93152,
-            "Y": 224.99988,
-            "Z": -298.2987
-          },
-          "TerritoryId": 155,
+          "Position": [-413.93152, 224.99988, -298.2987],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -429.70523,
-            "Y": 217.9995,
-            "Z": -297.22086
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -701.3538,
-            "Y": 224.22969,
-            "Z": -31.912737
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 155,
+          "Position": [-701.3538, 224.22969, -31.912737],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             3119,
             3120
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009087,
-          "Position": {
-            "X": -868.13153,
-            "Y": 226.16986,
-            "Z": 8.132996
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-868.13153, 226.16986, 8.132996],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009087,
-          "Position": {
-            "X": -868.13153,
-            "Y": 226.16986,
-            "Z": 8.132996
-          },
-          "TerritoryId": 155,
+          "Position": [-868.13153, 226.16986, 8.132996],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -427.42563,
-            "Y": 265.09998,
-            "Z": -211.80003
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006444,
-          "Position": {
-            "X": -432.9748,
-            "Y": 233.47266,
-            "Z": -199.6643
-          },
-          "TerritoryId": 155,
+          "Position": [-432.9748, 233.47266, -199.6643],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 241.14075,
-            "Y": 303,
-            "Z": -200.08086
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        },
-        {
           "DataId": 1006384,
-          "Position": {
-            "X": 263.5996,
-            "Y": 303.1,
-            "Z": -199.96954
-          },
-          "TerritoryId": 155,
+          "Position": [263.5996, 303.1, -199.96954],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006530,
-          "Position": {
-            "X": 21.927185,
-            "Y": 20.746975,
-            "Z": -682.06305
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [21.927185, 20.746975, -682.06305],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

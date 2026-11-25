@@ -1,79 +1,17 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027673,
-          "Position": {
-            "X": -106.43583,
-            "Y": 108.39998,
-            "Z": -840.68567
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -106.43583,
-                  "Y": 108.39998,
-                  "Z": -840.68567
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -208.01585,
-            "Y": 93.95745,
-            "Z": -798.679
-          },
-          "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -147.16849,
-            "Y": 82.71202,
-            "Z": -735.21466
-          },
-          "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -133.04337,
-            "Y": 65.32452,
-            "Z": -668.47845
-          },
-          "TerritoryId": 816,
-          "InteractionType": "None",
-          "DisableNavmesh": true,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -111.79012,
-            "Y": 56.679848,
-            "Z": -665.1558
-          },
-          "TerritoryId": 816,
+          "Position": [-111.79012, 56.679848, -665.1558],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "CompletionQuestVariablesFlags": [
@@ -86,90 +24,30 @@
               "DataId": 10255,
               "MinimumKillCount": 1
             }
-          ],
-          "Fly": true
+          ]
         },
         {
-          "Position": {
-            "X": -48.470287,
-            "Y": 47.403774,
-            "Z": -602.753
-          },
-          "TerritoryId": 816,
+          "Position": [-48.470287, 47.403774, -602.753],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [10265],
-          "Fly": true
+          "KillEnemyDataIds": [10265]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -130.71318,
-            "Y": 65.82463,
-            "Z": -680.729
-          },
-          "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -151.2964,
-            "Y": 67.730545,
-            "Z": -714.6202
-          },
-          "TerritoryId": 816,
-          "InteractionType": "None",
-          "DisableNavmesh": true,
-          "Fly": true
-        },
-        {
           "DataId": 1030701,
-          "Position": {
-            "X": -183.94751,
-            "Y": 80.33522,
-            "Z": -745.449
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-183.94751, 80.33522, -745.449],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027673,
-          "Position": {
-            "X": -106.43583,
-            "Y": 108.39998,
-            "Z": -840.68567
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -106.43583,
-                  "Y": 108.39998,
-                  "Z": -840.68567
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

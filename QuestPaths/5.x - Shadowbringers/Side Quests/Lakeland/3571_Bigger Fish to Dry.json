@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,92 +8,36 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027403,
-          "Position": {
-            "X": -40.878906,
-            "Y": 1.3483406,
-            "Z": 676.63074
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -40.878906,
-                  "Y": 1.3483406,
-                  "Z": 676.63074
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 600
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1027423,
-          "Position": {
-            "X": -8.743469,
-            "Y": 1.3487628,
-            "Z": 674.464
-          },
-          "TerritoryId": 813,
+          "Position": [-8.743469, 1.3487628, 674.464],
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25,
           "$": "QW: 0 0 48 0 0 0 -> QW: 17(1) 0 32 0 0 32",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 1027408,
-          "Position": {
-            "X": 70.66455,
-            "Y": 0.44237545,
-            "Z": 631.9523
-          },
-          "TerritoryId": 813,
+          "Position": [70.66455, 0.44237545, 631.9523],
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "QW: 17(1) 0 32 0 0 32 -> QW: 33(1) 16 16 0 0 96",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 1027409,
-          "Position": {
-            "X": -125.597046,
-            "Y": 9.572956,
-            "Z": 689.906
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-125.597046, 9.572956, 689.906],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027403,
-          "Position": {
-            "X": -40.878906,
-            "Y": 1.3483406,
-            "Z": 676.63074
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,51 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1005524,
-          "Position": {
-            "X": 27.29834,
-            "Y": 21.271448,
-            "Z": -635.98083
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "Position": [27.29834, 21.271448, -635.98083],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1008697,
-          "Position": {
-            "X": -339.10126,
-            "Y": -22.49097,
-            "Z": 431.38782
-          },
-          "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "Position": [-339.10126, -22.49097, 431.38782],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

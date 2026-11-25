@@ -1,61 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000926,
-          "Position": {
-            "X": -10.055725,
-            "Y": 44.999794,
-            "Z": -245.80762
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 128,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 128,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 128,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
+          "Position": [-1.2055054, 44.999886, -255.8786],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -69,14 +40,10 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 134,
       "Steps": [
         {
-          "Position": {
-            "X": 31.662792,
-            "Y": 44.020653,
-            "Z": 146.94322
-          },
-          "TerritoryId": 134,
+          "Position": [31.662792, 44.020653, 146.94322],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -88,21 +55,12 @@
           null,null,null,null,null]
             }
           ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ],
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
         },
         {
-          "Position": {
-            "X": 74.15681,
-            "Y": 45.953808,
-            "Z": 169.73499
-          },
-          "TerritoryId": 134,
+          "Position": [74.15681, 45.953808, 169.73499],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -123,12 +81,7 @@
           ]
         },
         {
-          "Position": {
-            "X": 74.15681,
-            "Y": 45.953808,
-            "Z": 169.73499
-          },
-          "TerritoryId": 134,
+          "Position": [74.15681, 45.953808, 169.73499],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -152,20 +105,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
+          "Position": [-1.2055054, 44.999886, -255.8786],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 313
         }
       ]

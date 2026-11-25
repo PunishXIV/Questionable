@@ -1,13 +1,9 @@
+using Dalamud.Interface.Utility;
 using System.Collections.ObjectModel;
 using System.Reflection;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
 using Dalamud.Interface.Textures.TextureWraps;
-using Dalamud.Interface.Utility.Raii;
 using Dalamud.Utility;
 using ECommons.ImGuiMethods;
-using Questionable.Model.Common;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
 [RegisterSingleton]
@@ -16,7 +12,6 @@ internal sealed class PluginConfigComponent
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     CombatController combatController,
-    UiUtils uiUtils,
     ICommandManager commandManager,
     IChatGui chatGui,
     IFramework framework,
@@ -27,13 +22,13 @@ internal sealed class PluginConfigComponent
     private const string NightmareXivRepositoryUrl =
         "https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json";
 
-    private static readonly string[] NightmareXivRepositoryAlternates =
+    private static readonly string[] NightmareXivMirrors =
     [
         "https://raw.githubusercontent.com/NightmareXIV/MyDalamudPlugins/main/pluginmaster.json"
     ];
 
     private const string PunishRepositoryUrl = "https://love.puni.sh/ment.json";
-    private static readonly string[] PunishRepositoryAlternates =
+    private static readonly string[] PunishMirrors =
     [
         "https://puni.sh/api/plugins"
     ];
@@ -42,7 +37,6 @@ internal sealed class PluginConfigComponent
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
     private readonly Configuration _configuration = configuration;
     private readonly CombatController _combatController = combatController;
-    private readonly UiUtils _uiUtils = uiUtils;
     private readonly ICommandManager _commandManager = commandManager;
     private readonly IChatGui _chatGui = chatGui;
     private readonly IFramework _framework = framework;
@@ -57,7 +51,7 @@ internal sealed class PluginConfigComponent
                 ECombatModule.BossMod,
                 new("Boss Mod",
                     "BossMod",
-                    "Automates all kinds of combat and interaction in overworld and duty content",
+                    _L("Combat and boss mechanics"),
                     new("https://github.com/awgil/ffxiv_bossmod"),
                     new("https://puni.sh/api/repository/veyn"),
                     "/vbm")
@@ -66,17 +60,17 @@ internal sealed class PluginConfigComponent
                 ECombatModule.WrathCombo,
                 new("Wrath Combo",
                     "WrathCombo",
-                    string.Empty,
+                    _L("Combat rotations (compatibility)"),
                     new("https://github.com/PunishXIV/WrathCombo"),
                     new(PunishRepositoryUrl),
                     "/wrath",
-                    AlternateRepositoryUrls: PunishRepositoryAlternates)
+                    MirrorUrls: PunishMirrors)
             },
             {
                 ECombatModule.RotationSolverReborn,
                 new("Rotation Solver Reborn",
                     "RotationSolver",
-                    string.Empty,
+                    _L("Combat rotations (compatibility)"),
                     new("https://github.com/FFXIV-CombatReborn/RotationSolverReborn"),
                     new(
                         "https://raw.githubusercontent.com/FFXIV-CombatReborn/CombatRebornRepo/main/pluginmaster.json"),
@@ -88,53 +82,86 @@ internal sealed class PluginConfigComponent
     [
         new("vnavmesh",
             "vnavmesh",
-            _L("vnavmesh handles the navigation within a zone, moving your character to the next quest-related objective."),
+            _L("Navigation mesh MappingTheRealm walks on"),
             new("https://github.com/awgil/ffxiv_navmesh/"),
             new("https://puni.sh/api/repository/veyn"),
             "/vnav"),
-        new("Lifestream",
-            "Lifestream",
-            _L("Used to travel to aethernet shards in cities."),
-            new("https://github.com/NightmareXIV/Lifestream"),
-            new(NightmareXivRepositoryUrl),
-            "/lifestream",
-            AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
+        new("MappingTheRealm",
+            "MappingTheRealm",
+            _L("Moving to quest objectives, in any zone"),
+            new("https://github.com/Knightmore"),
+            new("https://puni.sh/api/repository/knightmore")),
         new("TextAdvance",
             "TextAdvance",
-            _L("Automatically accepts and turns in quests, skips cutscenes and dialogue."),
+            _L("Accepting and turning in quests, skipping dialogue"),
             new("https://github.com/NightmareXIV/TextAdvance"),
             new(NightmareXivRepositoryUrl),
             "/at c",
-            AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
-        //CombatPlugins[ECombatModule.BossMod]
+            MirrorUrls: NightmareXivMirrors),
     ];
 
     private readonly IReadOnlyList<PluginInfo> _recommendedPlugins =
     [
         new("Artisan",
             "Artisan",
-            _L("Automates crafting"),
+            _L("Crafting quests"),
             new("https://github.com/PunishXIV/Artisan"),
             new(PunishRepositoryUrl),
             "/artisan",
-            AlternateRepositoryUrls: PunishRepositoryAlternates),
+            MirrorUrls: PunishMirrors),
+        new("Gather & Chill",
+            "GatherChill",
+            _L("Gathering quests and the gathering journal"),
+            new("https://github.com/LeontopodiumNivale14/Gather-Chill"),
+            new("https://puni.sh/api/repository/ice"),
+            "/gatherchill"),
+        new("Knightshopper",
+            "Knightshopper",
+            _L("Buying quest items (allow Questionable in its settings)"),
+            new("https://github.com/Knightmore"),
+            new("https://puni.sh/api/repository/knightmore")),
         new("AutoDuty",
             "AutoDuty",
-            _L("Automates duties"),
+            _L("Dungeons and trials"),
             new("https://github.com/erdelf/AutoDuty"),
             new("https://puni.sh/api/repository/erdelf"),
             "/ad"),
-        new("AutoHook",
-            "AutoHook",
-            _L("Automates fishing"),
-            new("https://github.com/PunishXIV/AutoHook"),
+        new("WahTools",
+            "WahTools",
+            _L("Fishing quests (Feesh)"),
+            new("https://git.wahapp.com/wah/WahTools"),
+            new("https://puni.sh/api/repository/wah"),
+            "/feesh"),
+        new("AutoRetainer",
+            "AutoRetainer",
+            _L("Questing on several characters in a row"),
+            new("https://github.com/PunishXIV/AutoRetainer"),
             new(PunishRepositoryUrl),
-            "/autohook",
-            AlternateRepositoryUrls: PunishRepositoryAlternates),
+            "/ays",
+            MirrorUrls: PunishMirrors),
+        new("Lifestream",
+            "Lifestream",
+            _L("Going home after a run, and switching characters"),
+            new("https://github.com/NightmareXIV/Lifestream"),
+            new(NightmareXivRepositoryUrl),
+            "/lifestream",
+            MirrorUrls: NightmareXivMirrors),
+        new("Satisfy",
+            "vsatisfy",
+            _L("Custom deliveries"),
+            new("https://github.com/awgil/ffxiv_satisfy"),
+            new("https://puni.sh/api/repository/veyn"),
+            "/vsatisfy"),
+        new("Mogmail",
+            "Mogmail",
+            _L("Claiming Mog Station and reward mail"),
+            new("https://github.com/Nexaii/Mogmail"),
+            new("https://puni.sh/api/repository/nexai"),
+            "/mogmail"),
         new("CBT (formerly known as Automaton)",
             "Automaton",
-            _L("Automaton is a collection of automation-related tweaks."),
-            new("https://github.com/Jaksuhn/Automaton"),
+            _L("Stormblood sniping tasks"),
+            new("https://github.com/Jaksuhn/ffxiv-bundleoftweaks"),
             new("https://puni.sh/api/repository/croizat"),
             "/cbt",
             [
@@ -143,307 +170,257 @@ internal sealed class PluginConfigComponent
                     () => automatonIpc.IsAutoSnipeEnabled,
                     () => automatonIpc.SetAutoSnipeEnabled(true))
             ]),
-        //new("MogMail",
-        //    "Mogmail",
-        //    _L("Claim mailed items during QST operation"),
-        //    new("https://github.com/Nexaii/Mogmail"),
-        //    new("https://puni.sh/api/plugins/nexai"),
-        //    "/mogmail"),
         new("NotificationMaster",
             "NotificationMaster",
-            _L("Sends a configurable out-of-game notification if a quest requires manual actions."),
+            _L("Notifications outside the game"),
             new("https://github.com/NightmareXIV/NotificationMaster"),
             null,
             "/pnotify"),
         new("Pandora's Box",
             "PandorasBox",
-            _L("Pandora's Box is a collection of tweaks."),
+            _L("Active time maneuvers"),
             new("https://github.com/PunishXIV/PandorasBox"),
             new(PunishRepositoryUrl),
             "/pandora",
             [
                 new(_L("'Auto Active Time Maneuver' enabled"),
-                    _L("Automatically completes active time maneuvers in single player instances, trials and raids"),
+                    _L("Automatically completes active time maneuvers in quest battles, trials and raids"),
                     () => pandorasBoxIpc.IsAutoActiveTimeManeuverEnabled,
                     () => pandorasBoxIpc.SetAutoActiveTimeManeuverEnabled(enabled: true))
             ],
-            AlternateRepositoryUrls: PunishRepositoryAlternates),
+            MirrorUrls: PunishMirrors),
         new("Stylist",
             "Stylist",
-            _L("Gear manager"),
+            _L("Equipping gear upgrades"),
             new("https://github.com/NightmareXIV/Stylist"),
             new(NightmareXivRepositoryUrl),
             "/stylist c",
-            AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
-        new("SelectString",
-            "SelectString",
-            "Select items in menus via 0-9 keys rather than mouse",
-            new("https://github.com/NightmareXIV/SelectString"),
-            new(NightmareXivRepositoryUrl),
-            "/ss",
-            AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
+            MirrorUrls: NightmareXivMirrors),
         new("QuestMap",
             "QuestMap",
-            "Explore quests and their rewards.",
+            _L("'View in Quest Map' buttons (quest info and quest graph)"),
             new("https://github.com/GemPlugins/QuestMap"),
             null,
             "/quests"),
     ];
 
-    public override void DrawTab()
+    public void DrawPage()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Dependencies") + "###Plugins");
-        if (!tab)
-            return;
-
         Draw(out bool allRequiredInstalled);
 
         ImGui.Spacing();
-        ImGui.Separator();
-        ImGui.Spacing();
-
         if (allRequiredInstalled)
             ImGui.TextColored(QstTheme.Success, _L("All required plugins are installed."));
         else
-        {
-            ImGui.TextColored(QstTheme.Danger,
-                _L("Required plugins are missing, Questionable will not work properly."));
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
-                InstallMissingRequiredPlugins();
-        }
+            ImGui.TextColored(QstTheme.Danger, _L("Required plugins are missing, Questionable will not work properly."));
     }
 
-    public void Draw(out bool allRequiredInstalled)
+    public void Draw(out bool allRequiredInstalled, bool combatPicker = false)
     {
-        float checklistPadding;
-        using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        allRequiredInstalled = !HasMissingRequiredPlugins() && IsCombatPluginReady();
+        if (combatPicker)
         {
-            checklistPadding = ImGui.CalcTextSize(FontAwesomeIcon.Check.ToIconString()).X +
-                               ImGui.GetStyle().ItemSpacing.X;
+            ImGui.SetNextItemWidth(250 * ImGuiHelpers.GlobalScale);
+            DrawCombatPicker();
+            ImGui.Separator();
         }
 
-        allRequiredInstalled = !HasMissingRequiredPlugins() && IsSelectedCombatPluginReady();
-        ImGui.SetNextItemOpen(isOpen: true, ImGuiCond.Once);
-        if (QstWidgets.SectionHeader(_L("Required plugins:"), "RequiredPlugins", defaultOpen: false))
-        {
-            using (ImRaii.PushIndent())
-            {
-                DrawInstallAllRequiredButton();
-                foreach (PluginInfo plugin in RequiredPlugins)
-                    DrawPlugin(plugin, checklistPadding);
-            }
-        }
+        ECombatModule combatModule = _configuration.General.CombatModule;
+        List<PluginInfo> required = [.. RequiredPlugins];
+        if (combatModule != ECombatModule.None)
+            required.Add(CombatPlugins[combatModule]);
+        List<PluginInfo> optional =
+            [.. CombatPlugins.Where(x => x.Key != combatModule).Select(x => x.Value), .. _recommendedPlugins];
 
-        if (QstWidgets.SectionHeader(_L("Rotation/Automation plugins:"), "RotationPlugins", defaultOpen: false))
-        {
-            using (ImRaii.Disabled(_combatController.IsRunning))
-            {
-                using (ImRaii.PushIndent())
-                {
-                    if (ImGui.RadioButton(_L("No rotation/combat plugin\n(combat must be done manually)"),
-                        _configuration.General.CombatModule == ECombatModule.None))
-                    {
-                        _configuration.General.CombatModule = ECombatModule.None;
-                        _pluginInterface.SavePluginConfig(_configuration);
-                    }
-
-                    DrawCombatPlugin(ECombatModule.BossMod, checklistPadding);
-                }
-
-                ImGui.TextWrapped(_L("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:"));
-                using (ImRaii.PushIndent())
-                {
-                    DrawCombatPlugin(ECombatModule.WrathCombo, checklistPadding);
-                    DrawCombatPlugin(ECombatModule.RotationSolverReborn, checklistPadding);
-                }
-            }
-        }
-
-        if (QstWidgets.SectionHeader(_L("Recommended/niche plugins:"), "NichePlugins", defaultOpen: false))
-        {
-            using (ImRaii.PushIndent())
-            {
-                foreach (PluginInfo plugin in _recommendedPlugins)
-                    DrawPlugin(plugin, checklistPadding);
-            }
-        }
+        // The setup window sizes itself to its content, so the table needs a width of its own there.
+        DrawTable(required, optional, combatPicker ? 620 * ImGuiHelpers.GlobalScale : 0);
     }
 
-    private void AddConfigClickable(IExposedPlugin? installedPlugin, PluginInfo plugin)
+    internal void DrawCombatPicker()
     {
-        if (installedPlugin != null && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
+        ECombatModule[] modules =
+            [ECombatModule.None, ECombatModule.BossMod, ECombatModule.WrathCombo, ECombatModule.RotationSolverReborn];
+        string[] labels =
+            [.. modules.Select(x => x == ECombatModule.None ? _L("None (fight yourself)") : CombatPlugins[x].DisplayName)];
+        using (ImRaii.Disabled(_combatController.IsRunning))
         {
-            if (ImGui.IsItemHovered())
+            int index = Math.Max(0, Array.IndexOf(modules, _configuration.General.CombatModule));
+            if (ImGui.Combo(_L("Combat plugin") + "###CombatPlugin", ref index, labels, labels.Length))
             {
-                ImGui.SetTooltip(_L("Open Config"));
-                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-            }
-            if (ImGui.IsItemClicked())
-                _commandManager.ProcessCommand(plugin.ConfigCommand);
-
-        }
-    }
-
-    private bool DrawPlugin(PluginInfo plugin, float checklistPadding)
-    {
-        using (ImRaii.PushId("plugin_" + plugin.DisplayName))
-        {
-            IExposedPlugin? installedPlugin = FindInstalledPlugin(plugin, requireLoaded: false);
-            bool isLoaded = installedPlugin is { IsLoaded: true };
-            string label = plugin.DisplayName;
-            if (installedPlugin != null)
-                label += $" v{installedPlugin.Version}";
-
-            ImGui.BeginGroup();
-            if (installedPlugin != null && installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) && (installedPlugin.Manifest.Author.Contains("AtmoOmen")))
-                plugin = new(
-                    plugin.DisplayName,
-                    plugin.InternalName,
-                    plugin.Details,
-                    new("https://github.com/AtmoOmen/ffxiv_navmesh-cn"),
-                    new("https://gh.atmoomen.top/DalamudPlugins/main/pluginmaster.json"),
-                    plugin.ConfigCommand
-                );
-            _uiUtils.ChecklistItem(label, isLoaded);
-
-            DrawPluginDetails(plugin, checklistPadding, installedPlugin);
-            ImGui.EndGroup();
-            AddConfigClickable(installedPlugin, plugin);
-            return isLoaded;
-        }
-    }
-
-    private bool DrawCombatPlugin(ECombatModule combatModule, float checklistPadding)
-    {
-        ImGui.Spacing();
-
-        PluginInfo plugin = CombatPlugins[combatModule];
-        using (ImRaii.PushId("plugin_" + plugin.DisplayName))
-        {
-            IExposedPlugin? installedPlugin = FindInstalledPlugin(plugin, requireLoaded: false);
-            bool isLoaded = installedPlugin is { IsLoaded: true };
-            string label = plugin.DisplayName;
-            if (installedPlugin != null)
-                label += $" v{installedPlugin.Version}";
-
-            if (ImGui.RadioButton(label, _configuration.General.CombatModule == combatModule))
-            {
-                _configuration.General.CombatModule = combatModule;
+                _configuration.General.CombatModule = modules[index];
                 _pluginInterface.SavePluginConfig(_configuration);
             }
-
-            ImGui.SameLine(0);
-            using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-            {
-                Vector4 iconColor = isLoaded ? QstTheme.Success : QstTheme.Danger;
-                FontAwesomeIcon icon = isLoaded ? FontAwesomeIcon.Check : FontAwesomeIcon.Times;
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.TextColored(iconColor, icon.ToIconString());
-            }
-            AddConfigClickable(installedPlugin, plugin);
-
-            DrawPluginDetails(plugin, checklistPadding, installedPlugin, blurb: false);
-            return isLoaded || _configuration.General.CombatModule != combatModule;
         }
+
+        ImGuiComponents.HelpMarker(_L("Questionable is built and tested with Boss Mod. Wrath Combo and Rotation Solver Reborn are there for compatibility and testing."));
+
+        if (!IsCombatPluginReady())
+            ImGui.TextColored(QstTheme.Danger, _LF("{0} isn't installed or loaded; install it on the Plugins page.",
+                CombatPlugins[_configuration.General.CombatModule].DisplayName));
     }
 
-    private void DrawPluginDetails(PluginInfo plugin, float checklistPadding, IExposedPlugin? installedPlugin,
-        bool blurb = true)
+    private void DrawTable(List<PluginInfo> required, List<PluginInfo> optional, float width)
     {
+        using ImRaii.TableDisposable table = ImRaii.Table("Plugins", 3,
+            ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersInnerH | ImGuiTableFlags.SizingStretchProp,
+            new Vector2(width, 0));
+        if (!table)
+            return;
+
+        ImGui.TableSetupColumn("##Status", ImGuiTableColumnFlags.WidthFixed, ImGui.GetFrameHeight());
+        ImGui.TableSetupColumn("##Plugin", ImGuiTableColumnFlags.WidthStretch);
+        ImGui.TableSetupColumn("##Actions", ImGuiTableColumnFlags.WidthFixed);
+
+        DrawGroup(_L("Required"), required, installAll: true);
+        DrawGroup(_L("Optional"), optional, installAll: false);
+    }
+
+    private void DrawGroup(string label, List<PluginInfo> plugins, bool installAll)
+    {
+        ImGui.TableNextRow();
+        ImGui.TableNextColumn();
+        ImGui.TableNextColumn();
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextColored(QstTheme.Accent, label);
+        ImGui.TableNextColumn();
+        if (installAll && HasMissingRequiredPlugins())
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
+                InstallMissingPlugins();
+            if (ImGui.IsItemHovered())
+                QstWidgets.Tooltip(_L("Adds missing repositories and installs required plugins."));
+        }
+
+        foreach (PluginInfo plugin in plugins)
+            DrawRow(plugin);
+    }
+
+    private void DrawRow(PluginInfo plugin)
+    {
+        using ImRaii.IdDisposable id = ImRaii.PushId("plugin_" + plugin.DisplayName);
+        IExposedPlugin? installedPlugin = FindInstalledPlugin(plugin, requireLoaded: false);
         bool isLoaded = installedPlugin is { IsLoaded: true };
-        using (ImRaii.PushIndent(checklistPadding))
-        {
-            if (!string.IsNullOrEmpty(plugin.Details) && blurb)
-                ImGui.TextWrapped(plugin.Details);
-
-            bool allDetailsOk = true;
-            if (plugin.DetailsToCheck != null)
-            {
-                foreach (PluginDetailInfo detail in plugin.DetailsToCheck)
-                {
-                    bool detailOk = detail.Predicate();
-                    allDetailsOk &= detailOk;
-
-                    _uiUtils.ChecklistItem(detail.DisplayName, isLoaded && detailOk);
-                    if (!string.IsNullOrEmpty(detail.Details))
-                    {
-                        using (ImRaii.PushIndent(checklistPadding))
-                        {
-                            ImGui.TextWrapped(detail.Details);
-                        }
-                    }
-                }
-            }
-
-            ImGui.Spacing();
-
-            if (isLoaded)
-            {
-                bool canEnableRecommended = !allDetailsOk && HasEnableableRecommendedOptions(plugin);
-                if (canEnableRecommended)
-                {
-                    bool enabling = _enablingOptions.Contains(plugin.InternalName);
-                    using (ImRaii.Disabled(enabling))
-                    {
-                        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ToggleOn,
-                                enabling ? _L("Enabling...") : _L("Enable recommended options")))
-                            StartEnableRecommendedOptions(plugin);
-                    }
-
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_LF("Enable the recommended options for {0}.", plugin.DisplayName));
-                }
-
-                if (!allDetailsOk && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
-                {
-                    if (canEnableRecommended)
-                        ImGui.SameLine();
-
-                    ImRaii.ColorDisposable? color = null;
-                    if (!allDetailsOk)
-                        color = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
-                    if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Cog))
-                        _commandManager.ProcessCommand(plugin.ConfigCommand);
-                    color?.Dispose();
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Open Config"));
-                }
-            }
-            else if (installedPlugin != null)
-            {
-                ImGui.TextColored(QstTheme.Amber, _L("Installed but not loaded"));
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plug, _L("Open installer")))
-                    _pluginInterface.OpenPluginInstallerTo(PluginInstallerOpenKind.InstalledPlugins, plugin.DisplayName);
-            }
-            else
-            {
-                DrawInstallButtons(plugin);
-            }
-        }
-    }
-
-    private static bool PluginImageButton(PluginInfo plugin, float size, bool isInstalled, bool isActive)
-    {
-        string url = $"https://qstxiv.github.io/icons/{plugin.InternalName}.png";
-        if (ThreadLoadImageHandler.TryGetTextureWrap(url, out IDalamudTextureWrap? logo))
-        {
-            return ImGui.ImageButton(
-                logo.Handle,
-                new(size.Scale(), size.Scale()),
-                2,
-                isInstalled ? QstTheme.Success : QstTheme.Danger,
-                isActive ? Vector4.One : new(0.5f, 0.5f, 0.5f, 1f)
+        if (installedPlugin != null && installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) &&
+            installedPlugin.Manifest.Author.Contains("AtmoOmen", StringComparison.Ordinal))
+            plugin = new(
+                plugin.DisplayName,
+                plugin.InternalName,
+                plugin.Details,
+                new("https://github.com/AtmoOmen/ffxiv_navmesh-cn"),
+                new("https://gh.atmoomen.top/DalamudPlugins/main/pluginmaster.json"),
+                plugin.ConfigCommand
             );
-        }
 
-        return false;
+        bool allDetailsOk = plugin.DetailsToCheck?.All(x => x.Predicate()) ?? true;
+
+        ImGui.TableNextRow();
+        ImGui.TableNextColumn();
+        DrawStatus(isLoaded);
+
+        ImGui.TableNextColumn();
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextUnformatted(installedPlugin != null
+            ? $"{plugin.DisplayName} v{installedPlugin.Version}"
+            : plugin.DisplayName);
+        if (installedPlugin != null && !isLoaded)
+            ImGui.TextColored(QstTheme.Amber, _L("Installed but not loaded"));
+        else
+            DrawNote(plugin.Details);
+
+        ImGui.TableNextColumn();
+        DrawActions(plugin, installedPlugin, isLoaded, allDetailsOk);
+
+        if (plugin.DetailsToCheck == null)
+            return;
+
+        foreach (PluginDetailInfo detail in plugin.DetailsToCheck)
+        {
+            ImGui.TableNextRow();
+            ImGui.TableNextColumn();
+            ImGui.TableNextColumn();
+            using (ImRaii.PushIndent())
+            {
+                DrawStatus(isLoaded && detail.Predicate());
+                ImGui.SameLine();
+                ImGui.TextUnformatted(detail.DisplayName);
+                DrawNote(detail.Details);
+            }
+
+            ImGui.TableNextColumn();
+        }
     }
 
-    public void InstallMissingRequiredPlugins()
-        => _ = InstallMissingRequiredPluginsAsync();
+    private static void DrawNote(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return;
 
-    private async Task InstallMissingRequiredPluginsAsync()
+        using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted))
+            ImGui.TextWrapped(text);
+    }
+
+    private void DrawStatus(bool ok)
+    {
+        using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        {
+            ImGui.AlignTextToFramePadding();
+            ImGui.TextColored(ok ? QstTheme.Success : QstTheme.Danger,
+                (ok ? FontAwesomeIcon.Check : FontAwesomeIcon.Times).ToIconString());
+        }
+    }
+
+    private void DrawActions(PluginInfo plugin, IExposedPlugin? installedPlugin, bool isLoaded, bool allDetailsOk)
+    {
+        if (isLoaded)
+        {
+            bool sameLine = false;
+            if (!allDetailsOk && CanEnableOptions(plugin))
+            {
+                bool enabling = _enablingOptions.Contains(plugin.InternalName);
+                using (ImRaii.Disabled(enabling))
+                {
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ToggleOn,
+                            enabling ? _L("Enabling...") : _L("Enable recommended options")))
+                        StartEnableOptions(plugin);
+                }
+
+                if (ImGui.IsItemHovered())
+                    QstWidgets.Tooltip(_LF("Enable the recommended options for {0}.", plugin.DisplayName));
+                sameLine = true;
+            }
+
+            bool hasCommand = plugin.ConfigCommand is { } command && command.StartsWith('/');
+            if (hasCommand || installedPlugin!.HasConfigUi || installedPlugin.HasMainUi)
+            {
+                if (sameLine)
+                    ImGui.SameLine();
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Cog, allDetailsOk ? null : QstTheme.Accent))
+                {
+                    if (hasCommand)
+                        _commandManager.ProcessCommand(plugin.ConfigCommand!);
+                    else if (installedPlugin!.HasConfigUi)
+                        installedPlugin.OpenConfigUi();
+                    else
+                        installedPlugin!.OpenMainUi();
+                }
+
+                if (ImGui.IsItemHovered())
+                    QstWidgets.Tooltip(_L("Open settings"));
+            }
+        }
+        else if (installedPlugin != null)
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plug, _L("Open installer")))
+                _pluginInterface.OpenPluginInstallerTo(PluginInstallerOpenKind.InstalledPlugins, plugin.DisplayName);
+        }
+        else
+            DrawInstallButtons(plugin);
+    }
+
+    public void InstallMissingPlugins()
+        => _ = InstallMissingAsync();
+
+    private async Task InstallMissingAsync()
     {
         foreach (PluginInfo plugin in RequiredPlugins)
             await TryInstallIfMissingAsync(plugin).ConfigureAwait(false);
@@ -471,50 +448,16 @@ internal sealed class PluginConfigComponent
     private bool HasMissingRequiredPlugins()
         => RequiredPlugins.Any(plugin => FindInstalledPlugin(plugin, requireLoaded: true) == null);
 
-    private bool IsSelectedCombatPluginReady()
+    private bool IsCombatPluginReady()
     {
         ECombatModule combatModule = _configuration.General.CombatModule;
         return combatModule == ECombatModule.None
                || FindInstalledPlugin(CombatPlugins[combatModule], requireLoaded: true) != null;
     }
 
-    private void DrawInstallAllRequiredButton()
-    {
-        if (!HasMissingRequiredPlugins())
-            return;
-
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
-            InstallMissingRequiredPlugins();
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Adds missing repositories and installs required plugins."));
-
-        ImGui.Spacing();
-    }
-
     private void DrawInstallButtons(PluginInfo plugin)
     {
         bool installing = _installingPlugins.Contains(plugin.InternalName);
-        bool repoAdded = IsRepositoryAdded(plugin);
-        bool firstButton = true;
-
-        if (!repoAdded && plugin.DalamudRepositoryUri != null)
-        {
-            using (ImRaii.Disabled(installing))
-            {
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, _L("Add repository")))
-                    TryAddRepository(plugin);
-            }
-
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_LF("Add {0} to Custom Plugin Repositories.", plugin.DalamudRepositoryUri));
-
-            firstButton = false;
-        }
-
-        if (!firstButton)
-            ImGui.SameLine();
-
         using (ImRaii.Disabled(installing))
         {
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download,
@@ -523,43 +466,51 @@ internal sealed class PluginConfigComponent
         }
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_LF("Install {0} from its plugin repository.", plugin.DisplayName));
+            QstWidgets.Tooltip(_LF("Install {0} from its plugin repository.", plugin.DisplayName));
 
         ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Globe, _L("Open Website")))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Globe, _L("Open website")))
             Util.OpenLink(plugin.WebsiteUri.ToString());
     }
 
-    private static bool IsRepositoryAdded(PluginInfo plugin)
-        => plugin.RepositoryUrls.Any(DalamudReflector.HasRepo);
-
-    private void TryAddRepository(PluginInfo plugin)
+    // Match URLs without query strings so authenticated puni.sh repositories are reused.
+    private string? FindConfiguredRepository(PluginInfo plugin)
     {
-        if (plugin.DalamudRepositoryUri == null)
-            return;
+        List<string> configured = GetRepositoryUrls();
+        return plugin.RepositoryUrls.Select(url => FindMatchingRepository(configured, url)).FirstOrDefault(x => x != null);
+    }
 
-        string repoUrl = plugin.DalamudRepositoryUri.ToString();
-        if (DalamudReflector.HasRepo(repoUrl) || repoUrl.Equals(DalamudOfficialRepo, StringComparison.Ordinal))
+    internal static string? FindMatchingRepository(IEnumerable<string> configuredUrls, string repoUrl)
+        => configuredUrls.FirstOrDefault(configured => IsSameRepository(configured, repoUrl));
+
+    internal static bool IsSameRepository(string a, string b)
+        => string.Equals(WithoutQuery(a), WithoutQuery(b), StringComparison.OrdinalIgnoreCase);
+
+    private static string WithoutQuery(string url)
+    {
+        int query = url.IndexOf('?', StringComparison.Ordinal);
+        return (query >= 0 ? url[..query] : url).Trim().TrimEnd('/');
+    }
+
+    private List<string> GetRepositoryUrls()
+    {
+        try
         {
-            _chatGui.Print(_LF("{0} repository is already added.", plugin.DisplayName), CommandHandler.MessageTag,
-                CommandHandler.TagColor);
-            return;
-        }
+            object config = DalamudReflector.GetService("Dalamud.Configuration.Internal.DalamudConfiguration");
+            if (config.GetFoP("ThirdRepoList") is not System.Collections.IEnumerable repos)
+                return [];
 
-        DalamudReflector.AddRepo(repoUrl, enabled: true);
-        DalamudReflector.SaveDalamudConfig();
-        DalamudReflector.ReloadPluginMasters();
-        _chatGui.Print(_LF("Added {0} repository.", plugin.DisplayName), CommandHandler.MessageTag,
-            CommandHandler.TagColor);
+            return repos.Cast<object>().Select(repo => repo.GetFoP("Url") as string).OfType<string>().ToList();
+        }
+        catch (Exception e)
+        {
+            _logger.LogDebug(e, "Could not read the configured plugin repositories");
+            return [];
+        }
     }
 
     private async Task StartInstallAsync(PluginInfo plugin)
     {
-        //if (plugin.DalamudRepositoryUri == null)
-        //{
-        //    _pluginInterface.OpenPluginInstallerTo(PluginInstallerOpenKind.AllPlugins, plugin.DisplayName);
-        //    return;
-        //}
 
         if (IsPluginPresent(plugin.InternalName))
         {
@@ -573,7 +524,7 @@ internal sealed class PluginConfigComponent
         if (!_installingPlugins.Add(plugin.InternalName))
             return;
 
-        string repoUrl = plugin.RepositoryUrls.FirstOrDefault(DalamudReflector.HasRepo)
+        string repoUrl = FindConfiguredRepository(plugin)
                          ?? plugin.DalamudRepositoryUri?.ToString()
                          ?? DalamudOfficialRepo;
         try
@@ -582,7 +533,7 @@ internal sealed class PluginConfigComponent
             {
                 _chatGui.Print(_LF("Installed {0}.", plugin.DisplayName), CommandHandler.MessageTag,
                     CommandHandler.TagColor);
-                await EnableRecommendedOptionsAsync(plugin).ConfigureAwait(false);
+                await EnableOptionsAsync(plugin).ConfigureAwait(false);
             }
             else if (IsPluginPresent(plugin.InternalName))
             {
@@ -605,12 +556,12 @@ internal sealed class PluginConfigComponent
                 return;
             }
 
-            if (TryRemoveOrphanedPluginFiles(plugin.InternalName, out string? leftoverPath)
+            if (TryRemoveLeftoverFiles(plugin.InternalName, out string? leftoverPath)
                 && await InstallFromRepositoryAsync(repoUrl, plugin.InternalName).ConfigureAwait(false))
             {
                 _chatGui.Print(_LF("Removed leftover {0} files and installed the plugin.", plugin.DisplayName),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
-                await EnableRecommendedOptionsAsync(plugin).ConfigureAwait(false);
+                await EnableOptionsAsync(plugin).ConfigureAwait(false);
                 return;
             }
 
@@ -652,11 +603,7 @@ internal sealed class PluginConfigComponent
         return false;
     }
 
-    /// <summary>
-    ///     ECommons <c>AddPlugin</c> hard-codes <c>InstallPluginAsync</c> arguments. Dalamud added an
-    ///     optional <c>inheritedWorkingPluginId</c> parameter; reflection still requires it, which
-    ///     throws "Parameter count mismatch". Bind the live method's parameters by name instead.
-    /// </summary>
+    // ECommons' AddPlugin reflection throws "Parameter count mismatch" on Dalamud's optional parameter; bind by name.
     private async Task<bool> InstallFromRepositoryAsync(string repoUrl, string internalName)
     {
         var plugins = await DalamudReflector.GetPluginMaster(repoUrl).ConfigureAwait(false);
@@ -681,7 +628,7 @@ internal sealed class PluginConfigComponent
         DalamudReflector.ReloadPluginMasters();
 
         if (!IsPluginPresent(internalName))
-            TryRemoveOrphanedPluginFiles(internalName, out _);
+            TryRemoveLeftoverFiles(internalName, out _);
 
         object pluginManager = DalamudReflector.GetPluginManager();
         MethodInfo? installMethod = pluginManager.GetType()
@@ -731,10 +678,24 @@ internal sealed class PluginConfigComponent
     }
 
     private IExposedPlugin? FindInstalledPlugin(PluginInfo pluginInfo, bool requireLoaded = true)
+        => FindInstalledPlugin(_pluginInterface.InstalledPlugins, pluginInfo.InternalName, requireLoaded);
+
+    internal static IExposedPlugin? FindInstalledPlugin(IEnumerable<IExposedPlugin> installedPlugins, string internalName,
+        bool requireLoaded = true)
     {
-        return _pluginInterface.InstalledPlugins.FirstOrDefault(x =>
-            string.Equals(x.InternalName, pluginInfo.InternalName, StringComparison.OrdinalIgnoreCase)
-            && (!requireLoaded || x.IsLoaded));
+        IExposedPlugin? installedPlugin = null;
+        foreach (IExposedPlugin plugin in installedPlugins)
+        {
+            if (!string.Equals(plugin.InternalName, internalName, StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            if (plugin.IsLoaded)
+                return plugin;
+
+            installedPlugin ??= plugin;
+        }
+
+        return requireLoaded ? null : installedPlugin;
     }
 
     private bool IsPluginPresent(string internalName)
@@ -765,9 +726,9 @@ internal sealed class PluginConfigComponent
         return false;
     }
 
-    private bool TryRemoveOrphanedPluginFiles(string internalName, out string? pluginDir)
+    private bool TryRemoveLeftoverFiles(string internalName, out string? pluginDir)
     {
-        pluginDir = GetInstalledPluginDirectory(internalName);
+        pluginDir = GetPluginDirectory(internalName);
         if (pluginDir == null || !Directory.Exists(pluginDir))
             return true;
 
@@ -788,7 +749,7 @@ internal sealed class PluginConfigComponent
         }
     }
 
-    private string? GetInstalledPluginDirectory(string internalName)
+    private string? GetPluginDirectory(string internalName)
     {
         try
         {
@@ -798,7 +759,8 @@ internal sealed class PluginConfigComponent
             {
                 DirectoryInfo info => info.FullName,
                 string path => path,
-                _ => directory?.GetFoP("FullName") as string
+                null => null,
+                _ => directory.GetFoP("FullName") as string
             };
             if (string.IsNullOrEmpty(root))
                 return null;
@@ -832,7 +794,7 @@ internal sealed class PluginConfigComponent
         Uri? DalamudRepositoryUri,
         string? ConfigCommand = null,
         List<PluginDetailInfo>? DetailsToCheck = null,
-        string[]? AlternateRepositoryUrls = null)
+        string[]? MirrorUrls = null)
     {
         public IReadOnlyList<string> RepositoryUrls
         {
@@ -841,26 +803,26 @@ internal sealed class PluginConfigComponent
                 if (DalamudRepositoryUri == null)
                     return [];
 
-                if (AlternateRepositoryUrls is { Length: > 0 })
-                    return [DalamudRepositoryUri.ToString(), .. AlternateRepositoryUrls];
+                if (MirrorUrls is { Length: > 0 })
+                    return [DalamudRepositoryUri.ToString(), .. MirrorUrls];
 
                 return [DalamudRepositoryUri.ToString()];
             }
         }
     }
 
-    private static bool HasEnableableRecommendedOptions(PluginInfo plugin)
+    private static bool CanEnableOptions(PluginInfo plugin)
         => plugin.DetailsToCheck?.Any(detail => detail.Enable != null) == true;
 
-    private void StartEnableRecommendedOptions(PluginInfo plugin)
+    private void StartEnableOptions(PluginInfo plugin)
     {
-        if (!HasEnableableRecommendedOptions(plugin) || _enablingOptions.Contains(plugin.InternalName))
+        if (!CanEnableOptions(plugin) || _enablingOptions.Contains(plugin.InternalName))
             return;
 
-        _ = EnableRecommendedOptionsAsync(plugin);
+        _ = EnableOptionsAsync(plugin);
     }
 
-    private async Task EnableRecommendedOptionsAsync(PluginInfo plugin)
+    private async Task EnableOptionsAsync(PluginInfo plugin)
     {
         if (!_enablingOptions.Add(plugin.InternalName))
             return;
@@ -900,7 +862,7 @@ internal sealed class PluginConfigComponent
 
             _logger.LogWarning("Could not enable recommended options for {Plugin}", plugin.InternalName);
             _chatGui.PrintError(
-                _LF("Could not enable recommended options on {0}. Open the plugin config to enable them.",
+                _LF("Could not enable recommended options on {0}. Open the plugin's settings to enable them.",
                     plugin.DisplayName),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
         }

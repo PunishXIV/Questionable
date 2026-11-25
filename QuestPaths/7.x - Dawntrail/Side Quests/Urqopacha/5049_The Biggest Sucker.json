@@ -1,113 +1,65 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048731,
-          "Position": {
-            "X": 464.71338,
-            "Y": 131.25926,
-            "Z": 690.66907
-          },
-          "StopDistance": 1,
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1050697,
-          "Position": {
-            "X": 190.4784,
-            "Y": 18.978786,
-            "Z": 210.49817
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [190.4784, 18.978786, 210.49817],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "Position": {
-            "X": 238.52116,
-            "Y": 47.201637,
-            "Z": 78.30595
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 1187,
+          "Position": [238.52116, 47.201637, 78.30595],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17650
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": 173.96666,
-            "Y": 56.288116,
-            "Z": -18.299652
-          },
-          "TerritoryId": 1187,
+          "Position": [173.96666, 56.288116, -18.299652],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17650
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1050698,
-          "Position": {
-            "X": 97.642456,
-            "Y": 38.62021,
-            "Z": -35.81299
-          },
-          "TerritoryId": 1187,
+          "Position": [97.642456, 38.62021, -35.81299],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17651
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048731,
-          "Position": {
-            "X": 464.71338,
-            "Y": 131.25926,
-            "Z": 690.66907
-          },
-          "StopDistance": 1,
-          "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

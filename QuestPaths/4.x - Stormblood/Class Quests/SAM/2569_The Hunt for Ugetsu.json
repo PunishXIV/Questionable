@@ -1,133 +1,86 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1022184,
-          "Position": {
-            "X": 129.71692,
-            "Y": 15,
-            "Z": -157.61047
-          },
-          "StopDistance": 5,
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1022204,
-          "Position": {
-            "X": 537.01074,
-            "Y": 70.39123,
-            "Z": 25.375732
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "Fly": true
+          "Position": [537.01074, 70.39123, 25.375732],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 2008443,
-          "Position": {
-            "X": 255.02393,
-            "Y": 7.7667847,
-            "Z": 458.5182
-          },
-          "TerritoryId": 614,
+          "Position": [255.02393, 7.7667847, 458.5182],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7497
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 2008444,
-          "Position": {
-            "X": 152.57495,
-            "Y": 13.626221,
-            "Z": 425.55872
-          },
-          "TerritoryId": 614,
+          "Position": [152.57495, 13.626221, 425.55872],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7498
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 2008445,
-          "Position": {
-            "X": 64.43884,
-            "Y": 10.788086,
-            "Z": 444.23596
-          },
-          "TerritoryId": 614,
+          "Position": [64.43884, 10.788086, 444.23596],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7496
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1022205,
-          "Position": {
-            "X": 175.2804,
-            "Y": 5.1901503,
-            "Z": 522.33154
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [175.2804, 5.1901503, 522.33154],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1022205,
-          "Position": {
-            "X": 175.2804,
-            "Y": 5.1901503,
-            "Z": 522.33154
-          },
-          "TerritoryId": 614,
+          "Position": [175.2804, 5.1901503, 522.33154],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -141,15 +94,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1022184,
-          "Position": {
-            "X": 129.71692,
-            "Y": 15,
-            "Z": -157.61047
-          },
-          "TerritoryId": 628,
+          "Position": [129.71692, 15, -157.61047],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2570
         }

@@ -1,84 +1,46 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "kaiser",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1044402,
-          "Position": {
-            "X": -193.89642,
-            "Y": -49.19972,
-            "Z": -262.13477
-          },
-          "TerritoryId": 959,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                959
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044953,
-          "Position": {
-            "X": -340.53564,
-            "Y": 104.34723,
-            "Z": 531.3954
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum"
+          "Position": [-340.53564, 104.34723, 531.3954],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044955,
-          "Position": {
-            "X": -161.36414,
-            "Y": -49.19972,
-            "Z": -288.4718
-          },
-          "TerritoryId": 959,
-          "StopDistance": 5,
+          "Position": [-161.36414, -49.19972, -288.4718],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "Craft",
           "ItemId": 38851,
           "ItemCount": 1
         },
         {
           "DataId": 1044955,
-          "Position": {
-            "X": -161.36414,
-            "Y": -49.19972,
-            "Z": -288.4718
-          },
-          "TerritoryId": 959,
+          "Position": [-161.36414, -49.19972, -288.4718],
           "InteractionType": "CompleteQuest"
         }
       ]

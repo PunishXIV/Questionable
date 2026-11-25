@@ -1,49 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027716,
-          "Position": {
-            "X": 494.9873,
-            "Y": -6.555339,
-            "Z": -224.93329
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031001,
-          "Position": {
-            "X": 167.71179,
-            "Y": -20,
-            "Z": -471.00024
-          },
-          "TerritoryId": 817,
+          "Position": [167.71179, -20, -471.00024],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 168.35954,
-            "Y": -20,
-            "Z": -483.02176
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 817,
+          "Position": [168.35954, -20, -483.02176],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -55,35 +35,18 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031001,
-          "Position": {
-            "X": 167.71179,
-            "Y": -20,
-            "Z": -471.00024
-          },
-          "StopDistance": 7,
-          "TerritoryId": 817,
+          "Position": [167.71179, -20, -471.00024],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027716,
-          "Position": {
-            "X": 494.9873,
-            "Y": -6.555339,
-            "Z": -224.93329
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,28 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "skiaz",
   "Disabled": true,
   "Comment": "This is a FATE Allied Society Quest\nThere are other FATEs that spawn in the\narea that may need to be cleared first\nbefore the correct FATE will spawn.\nThis quest requires manual interaction.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "TerritoryId": 146,
           "InteractionType": "Instruction",
           "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
         },
         {
           "DataId": 1005552,
-          "Position": {
-            "X": 86.92553,
-            "Y": 15.260843,
-            "Z": -355.6889
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "Position": [86.92553, 15.260843, -355.6889],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,30 +24,18 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": 547.38745,
-            "Y": 7.599617,
-            "Z": -36.96097
-          },
-          "TerritoryId": 146,
+          "Position": [547.38745, 7.599617, -36.96097],
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
-          "KillEnemyDataIds": [2501],
-          "Fly": true
+          "KillEnemyDataIds": [2501]
         },
         {
           "DataId": 1005552,
-          "Position": {
-            "X": 86.92553,
-            "Y": 15.260843,
-            "Z": -355.6889
-          },
-          "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "Position": [86.92553, 15.260843, -355.6889],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

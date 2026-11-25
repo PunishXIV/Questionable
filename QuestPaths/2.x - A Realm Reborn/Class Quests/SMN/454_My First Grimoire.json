@@ -1,16 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "InteractionType": "EquipItem",
           "ItemId": 2142,
-          "TerritoryId": 129,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -21,45 +21,29 @@
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000909,
-          "Position": {
-            "X": -326.37524,
-            "Y": 12.899658,
-            "Z": 9.994568
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "Position": [-326.37524, 12.899658, 9.994568],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": -1.5568014,
-            "Y": 66.12121,
-            "Z": 102.35001
-          },
-          "TerritoryId": 135,
+          "Position": [-1.5568014, 66.12121, 102.35001],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -80,22 +64,13 @@
           null,null,null,null,null]
             }
           ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
           "CompletionQuestVariablesFlags": [
             {"Low": 3}, {"Low": 3},
           null,null,null,null
           ]
         },
         {
-          "Position": {
-            "X": 157.63565,
-            "Y": 38.01287,
-            "Z": 48.92973
-          },
-          "TerritoryId": 135,
+          "Position": [157.63565, 38.01287, 48.92973],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -109,7 +84,6 @@
               ]
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             {"High": 3},
@@ -120,20 +94,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000909,
-          "Position": {
-            "X": -326.37524,
-            "Y": 12.899658,
-            "Z": 9.994568
-          },
-          "TerritoryId": 129,
+          "Position": [-326.37524, 12.899658, 9.994568],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "NextQuestId": 455
         }
       ]

@@ -1,61 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000251,
-          "Position": {
-            "X": 147.08167,
-            "Y": 15.5,
-            "Z": -267.99426
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 133,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 133,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 133,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -69,14 +40,10 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 97.18397,
-            "Y": 17.128555,
-            "Z": -269.5008
-          },
-          "TerritoryId": 148,
+          "Position": [97.18397, 17.128555, -269.5008],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -91,19 +58,10 @@
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null],
-          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ]
+          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0"
         },
         {
-          "Position": {
-            "X": 119.449745,
-            "Y": 17.399649,
-            "Z": -259.6467
-          },
-          "TerritoryId": 148,
+          "Position": [119.449745, 17.399649, -259.6467],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -125,12 +83,7 @@
           "$": "19 0  0 0  0 0 -> 35 48  0 0  0 0"
         },
         {
-          "Position": {
-            "X": 126.943115,
-            "Y": 2.910592,
-            "Z": -180.54787
-          },
-          "TerritoryId": 148,
+          "Position": [126.943115, 2.910592, -180.54787],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -155,19 +108,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 47
         }

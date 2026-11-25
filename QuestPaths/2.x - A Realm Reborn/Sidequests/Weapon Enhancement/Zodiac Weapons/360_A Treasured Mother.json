@@ -1,61 +1,38 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006981,
-          "Position": {
-            "X": 25.711426,
-            "Y": 28.999966,
-            "Z": -738.21625
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006981,
-          "Position": {
-            "X": 25.711426,
-            "Y": 28.999966,
-            "Z": -738.21625
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "Position": [25.711426, 28.999966, -738.21625],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1010811,
-          "Position": {
-            "X": 645.2583,
-            "Y": 5.6312623,
-            "Z": 551.59827
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
-          "Fly": true
+          "Position": [645.2583, 5.6312623, 551.59827],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -64,7 +41,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -73,7 +49,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -85,26 +60,20 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1010811,
-          "Position": {
-            "X": 645.2583,
-            "Y": 5.6312623,
-            "Z": 551.59827
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
-          "Fly": true
+          "Position": [645.2583, 5.6312623, 551.59827],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "DutyOptions": {
             "Enabled": true,
@@ -115,37 +84,18 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1010811,
-          "Position": {
-            "X": 645.2583,
-            "Y": 5.6312623,
-            "Z": 551.59827
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
-          "Fly": true
+          "Position": [645.2583, 5.6312623, 551.59827],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006981,
-          "Position": {
-            "X": 25.711426,
-            "Y": 28.999966,
-            "Z": -738.21625
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps.Shared;
+﻿namespace Questionable.Controller.Steps.Shared;
 
 internal static class StepDisabled
 {
@@ -10,16 +9,16 @@ internal static class StepDisabled
             if (!step.Disabled)
                 return null;
 
-            return new SkipRemainingTasks();
+            return new Task();
         }
     }
 
-    internal sealed class SkipRemainingTasks : ITask
+    internal sealed class Task : ITask
     {
         public override string ToString() => "StepDisabled";
     }
 
-    internal sealed class SkipDisabledStepsExecutor(ILogger<SkipRemainingTasks> logger) : TaskExecutor<SkipRemainingTasks>
+    internal sealed class Executor(ILogger<Executor> logger) : TaskExecutor<Task>
     {
         protected override bool Start() => true;
 

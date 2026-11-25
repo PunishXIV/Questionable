@@ -36,9 +36,36 @@ From `CONTRIBUTING.md`: Questionable does not want scope creep. Before writing c
 
 - **Confirmation before mutation.** Do not run `edit`, `write`, or side-effecting `bash` (git commits, pushes, package installs, formatters that rewrite files, build artifacts) without explicit in-turn permission from the user. Read-only inspection (`ls`, `grep`, `find`, `read`, `git status`/`diff`/`log`) does not require confirmation.
 - **Respect the build setup.** Questionable is a Dalamud plugin. Any `dotnet build`/`format`/`test` invocation that touches `Questionable.csproj` (or projects that reference it, e.g. `Questionable.Tests`) must pass `-p:DalamudLibPath=<path>`. See `.github/workflows/release.yml` for the canonical setup.
-- **Do not touch generated data bundles** (`QuestPaths/**`, `GatheringPaths/**`) unless the task is explicitly about them.
+- **Do not touch generated data bundles** (`QuestPaths/**`) unless the task is explicitly about them.
 - **Formatting.** If you run `dotnet format`, run it once against `Questionable.sln` with `-p:DalamudLibPath=...` and `--severity info`, matching CI. Do not add `--verify-no-changes` semantics to unrelated PRs.
 - **Commit messages and PR bodies** should describe what changed and why, in the human's voice, and must include the AI-usage disclosure noted above.
+
+## Naming
+
+Applies to new and changed code in `Questionable` and `Questionable.Tests`.
+
+- **Short and plain.** Aim for 25 characters or fewer in plugin code. Use everyday words, not jargon such as *owned*, *owner*, *reconcile*, *retain*, *submit* or *detach*.
+- **Don't repeat context.** A nested type or member drops words its container already says: `Craft.Executor`, not `Craft.CraftTaskExecutor`. A container with one task uses `Task` + `Executor`; with several, pair `XTask` with `XExecutor`.
+- **Abbreviations.** Only `Cfc` (ContentFinderCondition), `Ipc`, `Id` and `Ui`, in that casing (`QuestId`, not `QuestID`). Spell everything else out (`MainScenario`, not `Msq`).
+- **Quest battles.** Call solo duties `QuestBattle` in plugin code. Model names such as `EInteractionType.SinglePlayerDuty` stay as they are.
+- **Tests.** Name test methods `Subject_Result` in 40 characters or fewer, e.g. `RejectedCancel_RetriesSamePurchase`. Name a test class after the type it tests (`OperationCoordinatorTests`).
+- **Never rename** these; saved data, other plugins or the game depend on them:
+  - `Configuration` properties and nested config classes (Dalamud's serializer stores type names).
+  - Public names in `Questionable.Model` and the other projects, and JSON property names.
+  - `QuestionableIpc` endpoints and bare `[EzIPC]`/`[EzIPCEvent]` members.
+  - Enum values saved or sent to other plugins by name.
+  - I18N keys, ImGui IDs and window names.
+  - Names from Dalamud, Lumina and FFXIVClientStructs.
+
+## UI consistency
+
+Applies to every window, tab and widget in `Questionable`, without the human having to ask.
+
+- **Every card, button, toggle, dropdown and bar looks the same everywhere.** Reuse `QstWidgets` (`Card`, `Chip`, `RailButton`, `SegmentToggle`, `ThinProgressBar`, ...), the `ImGuiComponentsLocal` icon buttons and `QstTheme` colours (`Text`, `TextMuted`, `Amber`, `Accent`, ...).
+- **Look before you draw.** Search how QST already draws that kind of thing and copy it. Don't style a raw ImGui widget inline when a house version exists (e.g. a plain `ImGui.ProgressBar`, a `Selectable` used as a button, hand-picked alpha for muted text).
+- **One meaning per colour or highlight.** Don't make one element carry several signals (picked, bonus, clickable) through overlapping colours and backgrounds.
+- **Hover text** goes through `QstWidgets.Tooltip`, which wraps long text; plain `ImGui.SetTooltip` never wraps.
+- **Nothing fits?** Propose a new widget in `QstWidgets` rather than one-off styling.
 
 ## When to stop and hand back
 

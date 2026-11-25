@@ -1,56 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
-          "DataId": 1051711,
-          "Position": {
-            "X": 770.7179,
-            "Y": 12.84657,
-            "Z": -263.99634
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
-          "InteractionType": "None",
-          "TerritoryId": 1188,
-          "Fly": true,
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
-        },
-        {
           "DataId": 1052301,
-          "Position": {
-            "X": 218.94374,
-            "Y": 13.147079,
-            "Z": -523.25415
-          },
-          "TerritoryId": 1188,
+          "Position": [218.94374, 13.147079, -523.25415],
           "InteractionType": "Interact",
-          "StopDistance": 2,
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 4}
@@ -58,16 +22,8 @@
         },
         {
           "DataId": 1052300,
-          "Position": {
-            "X": 208.64929,
-            "Y": 19.334402,
-            "Z": -588.99615
-          },
-          "TerritoryId": 1188,
+          "Position": [208.64929, 19.334402, -588.99615],
           "InteractionType": "Interact",
-          "StopDistance": 2,
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 8}
@@ -75,45 +31,14 @@
         },
         {
           "DataId": 1052302,
-          "Position": {
-            "X": 171.03833,
-            "Y": 10.17552,
-            "Z": -602.6246
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "StopDistance": 2,
-          "Fly": true,
-          "Land": true
+          "Position": [171.03833, 10.17552, -602.6246],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
-          "DataId": 1051711,
-          "Position": {
-            "X": 770.7179,
-            "Y": 12.84657,
-            "Z": -263.99634
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

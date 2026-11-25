@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1047034,
-          "Position": {
-            "X": 66.666626,
-            "Y": -14,
-            "Z": 26.504883
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2014033,
-          "Position": {
-            "X": 65.659546,
-            "Y": -14.023071,
-            "Z": 25.680908
-          },
-          "TerritoryId": 1185,
+          "Position": [65.659546, -14.023071, 25.680908],
           "InteractionType": "Snipe",
           "Comment": "Inspect Helm, Corpse, Weapon"
         }
@@ -36,35 +21,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047036,
-          "Position": {
-            "X": -180.07172,
-            "Y": 120.795235,
-            "Z": -346.2425
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] Vollok Shoonsa"
-          ]
+          "Position": [-180.07172, 120.795235, -346.2425],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1170,
       "Steps": [
         {
           "DataId": 1047037,
-          "Position": {
-            "X": 1.296936,
-            "Y": 3.095488,
-            "Z": -64.9577
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1170,
+          "Position": [1.296936, 3.095488, -64.9577],
           "InteractionType": "CompleteQuest"
         }
       ]

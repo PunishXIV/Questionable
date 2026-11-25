@@ -1,60 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.5000024,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 2008101,
-          "Position": {
-            "X": -82.44458,
-            "Y": 1.9378662,
-            "Z": 60.77661
-          },
-          "TerritoryId": 131,
+          "Position": [-82.44458, 1.9378662, 60.77661],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1021271,
-          "Position": {
-            "X": -87.174866,
-            "Y": 1.9499679,
-            "Z": 57.358643
-          },
-          "TerritoryId": 131,
+          "Position": [-87.174866, 1.9499679, 57.358643],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -67,31 +37,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1021275,
-          "Position": {
-            "X": -84.67236,
-            "Y": 1.9500066,
-            "Z": 60.868164
-          },
-          "StopDistance": 5,
-          "TerritoryId": 131,
+          "Position": [-84.67236, 1.9500066, 60.868164],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.5000024,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.5000024, 39.81079],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2573
         }

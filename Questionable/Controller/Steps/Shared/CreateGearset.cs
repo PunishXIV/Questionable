@@ -1,7 +1,4 @@
-using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using Questionable.Controller.Steps.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class CreateGearset
@@ -22,22 +19,20 @@ internal static class CreateGearset
         public override string ToString() => "CreateGearset";
     }
 
-    internal sealed class CreateGearsetExecutor
+    internal sealed class Executor
     (
         IClientState clientState,
         ICondition condition,
-        ILogger<CreateGearsetExecutor> logger) : AbstractDelayedTaskExecutor<Task>
+        ILogger<Executor> logger) : DelayedTaskExecutor<Task>(TimeSpan.FromSeconds(1))
     {
         protected override unsafe bool StartInternal()
         {
-            // Safety check: ensure player is logged in
             if (!clientState.IsLoggedIn)
             {
                 logger.LogWarning("Cannot create gearset: player is not logged in");
                 throw new TaskException("Player is not logged in");
             }
 
-            // Safety check: ensure gearset module is available
             RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
             if (gearsetModule == null)
             {
@@ -45,24 +40,38 @@ internal static class CreateGearset
                 throw new TaskException("Gearset system is not available");
             }
 
-            // Safety check: ensure player is not in combat
             if (condition[ConditionFlag.InCombat])
             {
                 logger.LogWarning("Cannot create gearset: player is in combat");
                 throw new TaskException("Cannot create gearset while in combat");
             }
 
-            // Create the gearset with currently equipped gear
-            // This will automatically:
-            // - Use the player's current job for the gearset
-            // - Name it based on the current job (e.g., "Culinarian", "Paladin")
-            // - Find the next available slot (0-99)
+            byte job = FFXIVClientStructs.FFXIV.Client.Game.UI.PlayerState.Instance()->CurrentClassJobId;
+            for (int i = 0; i < 100; ++i)
+            {
+                RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
+                if (gearset != null && gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) &&
+                    gearset->ClassJob == job)
+                {
+                    // Equipping a job's weapon leaves another job's set marked as current; switch to this job's set.
+                    if (gearsetModule->CurrentGearsetIndex == i)
+                    {
+                        logger.LogInformation("Gearset {GearsetId} already exists for the current job", i);
+                        return false;
+                    }
+
+                    logger.LogInformation("Switching to gearset {GearsetId}, which already exists for the current job", i);
+                    gearsetModule->EquipGearset(i);
+                    return true;
+                }
+            }
+
             int gearsetId = gearsetModule->CreateGearset();
 
             if (gearsetId < 0)
             {
                 logger.LogError("Failed to create gearset (all slots may be full)");
-                throw new TaskException("Failed to create gearset - all slots may be full");
+                throw new NeedsPlayerException("Failed to create gearset - all slots may be full");
             }
 
             logger.LogInformation("Successfully created gearset in slot {GearsetId}", gearsetId);

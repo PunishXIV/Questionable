@@ -1,72 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1019168,
-          "Position": {
-            "X": 501.33508,
-            "Y": 34.0062,
-            "Z": 781.70435
-          },
-          "TerritoryId": 613,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019154,
-          "Position": {
-            "X": 829.1294,
-            "Y": 5.9230084,
-            "Z": 859.739
-          },
-          "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ]
+          "Position": [829.1294, 5.9230084, 859.739],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": 595.4312,
-            "Y": -0.26869023,
-            "Z": 800.52985
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 459.92212,
-            "Y": -0.19133466,
-            "Z": 672.5903
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1022745,
-          "Position": {
-            "X": 288.6853,
-            "Y": -0.5,
-            "Z": 393.78955
-          },
-          "TerritoryId": 613,
+          "Position": [288.6853, -0.5, 393.78955],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -77,21 +35,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1019154,
-          "Position": {
-            "X": 829.1294,
-            "Y": 5.9230084,
-            "Z": 859.739
-          },
-          "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ]
+          "Position": [829.1294, 5.9230084, 859.739],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

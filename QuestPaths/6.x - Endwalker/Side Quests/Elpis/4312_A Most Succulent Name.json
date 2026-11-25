@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041841,
-          "Position": {
-            "X": -526.1769,
-            "Y": 148.06625,
-            "Z": -163.22583
-          },
-          "TerritoryId": 961,
+          "Position": [-526.1769, 148.06625, -163.22583],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -20,23 +16,17 @@
               "Prompt": "TEXT_AKTKZH017_04312_Q1_000_000",
               "Answer": "TEXT_AKTKZH017_04312_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041842,
-          "Position": {
-            "X": -481.77313,
-            "Y": 172.34233,
-            "Z": 35.294067
-          },
-          "TerritoryId": 961,
+          "Position": [-481.77313, 172.34233, 35.294067],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -44,22 +34,16 @@
               "Prompt": "TEXT_AKTKZH017_04312_Q2_000_000",
               "Answer": "TEXT_AKTKZH017_04312_A2_000_001"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": -480.1935,
-            "Y": 172.11751,
-            "Z": 34.781628
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 961,
+          "Position": [-480.1935, 172.11751, 34.781628],
           "InteractionType": "Emote",
           "Emote": "think"
         }
@@ -67,31 +51,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041843,
-          "Position": {
-            "X": -719.9359,
-            "Y": 146.80272,
-            "Z": -89.79938
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-719.9359, 146.80272, -89.79938],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041846,
-          "Position": {
-            "X": -719.5392,
-            "Y": 146.5275,
-            "Z": -91.26422
-          },
-          "TerritoryId": 961,
+          "Position": [-719.5392, 146.5275, -91.26422],
           "InteractionType": "Emote",
           "Emote": "think",
           "DialogueChoices": [
@@ -106,20 +81,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041841,
-          "Position": {
-            "X": -526.1769,
-            "Y": 148.06625,
-            "Z": -163.22583
-          },
-          "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

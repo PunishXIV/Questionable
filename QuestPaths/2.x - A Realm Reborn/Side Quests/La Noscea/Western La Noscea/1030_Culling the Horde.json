@@ -1,39 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006617,
-          "Position": {
-            "X": 66.4251,
-            "Y": -3.1182418,
-            "Z": 50.53437
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": -121.50578,
-            "Y": -27.151733,
-            "Z": 28.13903
-          },
-          "TerritoryId": 138,
+          "Position": [-121.50578, -27.151733, 28.13903],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             765,
@@ -45,22 +25,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006617,
-          "Position": {
-            "X": 66.4251,
-            "Y": -3.1182418,
-            "Z": 50.53437
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

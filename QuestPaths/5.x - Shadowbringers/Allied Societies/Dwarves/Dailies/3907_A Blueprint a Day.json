@@ -1,67 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033712,
-          "Position": {
-            "X": -615.86487,
-            "Y": 65.602264,
-            "Z": -423.87152
-          },
-          "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1034115,
-          "Position": {
-            "X": 732.3567,
-            "Y": 21.798542,
-            "Z": -77.62268
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Lakeland - Fort Jobb"
-            }
-          }
+          "Position": [732.3567, 21.798542, -77.62268],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "TerritoryId": 813,
           "InteractionType": "Craft",
           "ItemId": 31155,
           "ItemCount": 2
         },
         {
           "DataId": 1033712,
-          "Position": {
-            "X": -615.73865,
-            "Y": 65.602264,
-            "Z": -423.84705
-          },
-          "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "Position": [-615.73865, 65.602264, -423.84705],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

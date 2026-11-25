@@ -1,63 +1,32 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "epinephren@github",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006637,
-          "Position": {
-            "X": 39.597046,
-            "Y": 4.107584,
-            "Z": 421.1947
-          },
-          "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 2002253,
-          "Position": {
-            "X": -60.013794,
-            "Y": 2.9144287,
-            "Z": 353.99402
-          },
-          "TerritoryId": 147,
+          "Position": [-60.013794, 2.9144287, 353.99402],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2002255,
-          "Position": {
-            "X": -12.436096,
-            "Y": 14.572327,
-            "Z": 302.72363
-          },
-          "TerritoryId": 147,
+          "Position": [-12.436096, 14.572327, 302.72363],
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2002254,
-          "Position": {
-            "X": -77.195435,
-            "Y": -2.7924194,
-            "Z": 299.58032
-          },
-          "TerritoryId": 147,
+          "Position": [-77.195435, -2.7924194, 299.58032],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [188]
         }
@@ -65,18 +34,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1006637,
-          "Position": {
-            "X": 39.597046,
-            "Y": 4.107584,
-            "Z": 421.1947
-          },
-          "TerritoryId": 147,
+          "Position": [39.597046, 4.107584, 421.1947],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
-          "Fly": true,
           "NextQuestId": 1041
         }
       ]

@@ -27,6 +27,8 @@ public sealed class SkipStepConditions
 
     public EAetheryteLocation? AetheryteLocked { get; set; }
     public EAetheryteLocation? AetheryteUnlocked { get; set; }
+    public uint? AetherCurrentUnlocked { get; set; }
+    public byte? LevelReached { get; set; }
     public NearPositionCondition? NearPosition { get; set; }
     public NearPositionCondition? NotNearPosition { get; set; }
     public EExtraSkipCondition? ExtraCondition { get; set; }
@@ -50,6 +52,8 @@ public sealed class SkipStepConditions
                NotNamePlateIconId.Count > 0 ||
                AetheryteLocked != null ||
                AetheryteUnlocked != null ||
+               AetherCurrentUnlocked != null ||
+               LevelReached != null ||
                NearPosition != null ||
                NotNearPosition != null ||
                ExtraCondition != null ||
@@ -74,6 +78,8 @@ public sealed class SkipStepConditions
             NotNamePlateIconId.Count > 0 ? $"{nameof(NotNamePlateIconId)}: {string.Join(" ", NotNamePlateIconId)}" : null,
             AetheryteLocked != null ? $"{nameof(AetheryteLocked)}: {AetheryteLocked}" : null,
             AetheryteUnlocked != null ? $"{nameof(AetheryteUnlocked)}: {AetheryteUnlocked}" : null,
+            AetherCurrentUnlocked != null ? $"{nameof(AetherCurrentUnlocked)}: {AetherCurrentUnlocked}" : null,
+            LevelReached != null ? $"{nameof(LevelReached)}: {LevelReached}" : null,
             NearPosition != null ? $"{nameof(NearPosition)}: {NearPosition}" : null,
             NotNearPosition != null ? $"{nameof(NotNearPosition)}: {NotNearPosition}" : null,
             ExtraCondition != null ? $"{nameof(ExtraCondition)}: {ExtraCondition}" : null,

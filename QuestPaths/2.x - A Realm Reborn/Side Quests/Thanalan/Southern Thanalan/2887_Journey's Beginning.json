@@ -1,52 +1,30 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023371,
-          "Position": {
-            "X": -228.90063,
-            "Y": 26.138351,
-            "Z": -348.4093
-          },
-          "TerritoryId": 146,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023372,
-          "Position": {
-            "X": -677.9431,
-            "Y": 129.99673,
-            "Z": -509.20883
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "Position": [-677.9431, 129.99673, -509.20883],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": 569.2682,
-            "Y": 45.351055,
-            "Z": 357.9308
-          },
-          "TerritoryId": 612,
+          "Position": [569.2682, 45.351055, 357.9308],
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [7549]
         }
@@ -54,43 +32,24 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1023376,
-          "Position": {
-            "X": 569.2682,
-            "Y": 45.351055,
-            "Z": 357.9308
-          },
-          "TerritoryId": 612,
+          "Position": [569.2682, 45.351055, 357.9308],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 621,
       "Steps": [
         {
-          "Position": {
-            "X": -789.1566,
-            "Y": 47.421898,
-            "Z": -17.166004
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
-        },
-        {
           "DataId": 1023383,
-          "Position": {
-            "X": 330.03735,
-            "Y": 324.3033,
-            "Z": 397.39062
-          },
+          "Position": [330.03735, 324.3033, 397.39062],
           "TerritoryId": 620,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

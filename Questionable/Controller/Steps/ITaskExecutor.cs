@@ -15,7 +15,7 @@ internal interface ITaskExecutor
 
     ETaskResult Update();
 
-    internal interface IStoppableTaskExecutor : ITaskExecutor
+    internal interface IStoppable : ITaskExecutor
     {
         void StopNow();
     }

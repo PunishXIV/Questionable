@@ -1,47 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1010218,
-          "Position": {
-            "X": 319.44763,
-            "Y": -36.353825,
-            "Z": 346.76123
-          },
-          "StopDistance": 5,
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 593.2056,
-            "Y": 43.88314,
-            "Z": 304.65137
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1010228,
-          "Position": {
-            "X": 594.1709,
-            "Y": 43.893982,
-            "Z": 303.76135
-          },
-          "TerritoryId": 138,
+          "Position": [594.1709, 43.893982, 303.76135],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -54,31 +27,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "DataId": 1009944,
-          "Position": {
-            "X": -152.66656,
-            "Y": 2.8562405,
-            "Z": 243.18298
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
-        },
-        {
           "DataId": 1009943,
-          "Position": {
-            "X": -153.36847,
-            "Y": -129.4397,
-            "Z": 265.88843
-          },
-          "StopDistance": 7,
-          "TerritoryId": 129,
+          "Position": [-153.36847, -129.4397, 265.88843],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 146
         }

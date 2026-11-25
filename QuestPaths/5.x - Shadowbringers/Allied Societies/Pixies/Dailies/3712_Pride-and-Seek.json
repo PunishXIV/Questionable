@@ -1,47 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": 67.35126,
-            "Y": 102.935814,
-            "Z": -799.43896
-          },
-          "TerritoryId": 816,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "Fly": true
-        },
-        {
           "DataId": 1032208,
-          "Position": {
-            "X": 68.89441,
-            "Y": 103.07577,
-            "Z": -797.05505
-          },
-          "TerritoryId": 816,
+          "Position": [68.89441, 103.07577, -797.05505],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANPIX124_03712_SAYTODO_000_030"
@@ -51,20 +23,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

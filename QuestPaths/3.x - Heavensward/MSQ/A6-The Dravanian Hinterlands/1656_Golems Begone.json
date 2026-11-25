@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012097,
-          "Position": {
-            "X": 73.3501,
-            "Y": 205.88956,
-            "Z": 23.483582
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012410,
-          "Position": {
-            "X": 71.732666,
-            "Y": 205.62819,
-            "Z": 26.901611
-          },
-          "StopDistance": 7,
-          "TerritoryId": 478,
+          "Position": [71.732666, 205.62819, 26.901611],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1014413,
-          "Position": {
-            "X": -42.008118,
-            "Y": 205.79572,
-            "Z": 3.4332886
-          },
-          "TerritoryId": 478,
+          "Position": [-42.008118, 205.79572, 3.4332886],
           "InteractionType": "Say",
           "$": "0 0 0 0 0 0 -> 1 0 0 0 0 64",
           "ChatMessage": {
@@ -54,12 +34,7 @@
         },
         {
           "DataId": 1012413,
-          "Position": {
-            "X": -69.230286,
-            "Y": 205.88773,
-            "Z": -68.61987
-          },
-          "TerritoryId": 478,
+          "Position": [-69.230286, 205.88773, -68.61987],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_HEAVNA607_01656_SAYTODO_000"
@@ -70,25 +45,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "TerritoryId": 478,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Idyllshire] West Idyllshire"
         },
         {
           "DataId": 1012097,
-          "Position": {
-            "X": 73.3501,
-            "Y": 205.88956,
-            "Z": 23.483582
-          },
-          "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Idyllshire] West Idyllshire",
-            "[Idyllshire] Aetheryte Plaza"
-          ]
+          "Position": [73.3501, 205.88956, 23.483582],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

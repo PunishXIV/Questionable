@@ -1,56 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006617,
-          "Position": {
-            "X": 66.4251,
-            "Y": -3.1182418,
-            "Z": 50.53437
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006626,
-          "Position": {
-            "X": 26.565918,
-            "Y": -10.28117,
-            "Z": -83.390564
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [26.565918, -10.28117, -83.390564],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 768,
-          "Position": {
-            "X": -73.03337,
-            "Y": -26.130816,
-            "Z": -89.219406
-          },
-          "TerritoryId": 138,
+          "Position": [-73.03337, -26.130816, -89.219406],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             768
@@ -60,22 +35,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006617,
-          "Position": {
-            "X": 66.4251,
-            "Y": -3.1182418,
-            "Z": 50.53437
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

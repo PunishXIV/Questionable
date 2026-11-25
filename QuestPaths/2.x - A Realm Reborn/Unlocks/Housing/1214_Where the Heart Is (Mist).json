@@ -1,60 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002579,
-          "Position": {
-            "X": 508.01855,
-            "Y": 79.171745,
-            "Z": -61.96692
-          },
-          "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1005529,
-          "Position": {
-            "X": 593.225,
-            "Y": 61.734455,
-            "Z": -113.96973
-          },
-          "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [593.225, 61.734455, -113.96973],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 598.26843,
-            "Y": 61.502148,
-            "Z": -105
-          },
-          "TerritoryId": 135,
+          "Position": [598.26843, 61.502148, -105],
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 339,
           "DialogueChoices": [
@@ -70,49 +39,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 339,
       "Steps": [
         {
           "DataId": 1005881,
-          "Position": {
-            "X": -18.631348,
-            "Y": 49.025185,
-            "Z": -113.42035
-          },
-          "TerritoryId": 339,
+          "Position": [-18.631348, 49.025185, -113.42035],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 339,
       "Steps": [
         {
-          "Position": {
-            "X": -9.527806,
-            "Y": 50.23951,
-            "Z": -129.5499
-          },
-          "TerritoryId": 339,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                339
-              ]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -9.739164,
-            "Y": 48.345356,
-            "Z": -171
-          },
-          "TerritoryId": 339,
+          "Position": [-9.739164, 48.345356, -171],
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 135,
-          "DisableNavmesh": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -131,25 +74,9 @@
         },
         {
           "DataId": 1002579,
-          "Position": {
-            "X": 508.01855,
-            "Y": 79.171745,
-            "Z": -61.96692
-          },
+          "Position": [508.01855, 79.171745, -61.96692],
           "TerritoryId": 135,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,46 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013227,
-          "Position": {
-            "X": 14.877502,
-            "Y": 16.009666,
-            "Z": -4.196289
-          },
-          "StopDistance": 5,
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1014720,
-          "Position": {
-            "X": 13.809326,
-            "Y": 15.96505,
-            "Z": -13.870483
-          },
-          "StopDistance": 7,
-          "TerritoryId": 419,
+          "Position": [13.809326, 15.96505, -13.870483],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1874
         },
         {
           "DataId": 1011223,
-          "Position": {
-            "X": 114.579956,
-            "Y": 24.412834,
-            "Z": -11.062805
-          },
+          "Position": [114.579956, 24.412834, -11.062805],
           "TerritoryId": 418,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -49,19 +28,11 @@
               "Prompt": "TEXT_HEAVNA405_01641_SCENE00020_EVENTAREA_WARP_YESNO_TITLE",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
           ]
         },
         {
           "DataId": 1013183,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 0.019999694,
-            "Z": -6.302063
-          },
+          "Position": [-0.015319824, 0.019999694, -6.302063],
           "TerritoryId": 428,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

@@ -1,78 +1,51 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051265,
-          "Position": {
-            "X": -444.78522,
-            "Y": 122.89024,
-            "Z": 342.8855
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1048850,
-          "Position": {
-            "X": -472.5567,
-            "Y": 121.77377,
-            "Z": 271.229
-          },
-          "TerritoryId": 1188,
+          "Position": [-472.5567, 121.77377, 271.229],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051263,
-          "Position": {
-            "X": -521.0193,
-            "Y": 121.63345,
-            "Z": 319.38647
-          },
-          "TerritoryId": 1188,
+          "Position": [-521.0193, 121.63345, 319.38647],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051265,
-          "Position": {
-            "X": -444.78522,
-            "Y": 122.89024,
-            "Z": 342.8855
-          },
-          "TerritoryId": 1188,
+          "Position": [-444.78522, 122.89024, 342.8855],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051263,
-          "Position": {
-            "X": -521.0193,
-            "Y": 121.63345,
-            "Z": 319.38647
-          },
-          "TerritoryId": 1188,
+          "Position": [-521.0193, 121.63345, 319.38647],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5087
         }

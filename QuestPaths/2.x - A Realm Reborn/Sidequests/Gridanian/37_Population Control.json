@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000195,
-          "Position": {
-            "X": 197.436,
-            "Y": -0.015306,
-            "Z": 57.1145
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Gridania] Aetheryte Plaza","[Gridania] Archers' Guild"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 47,
-          "Position": {
-            "X": 130.5409,
-            "Y": 5.402053,
-            "Z": -186.75519
-          },
-          "TerritoryId": 148,
+          "Position": [130.5409, 5.402053, -186.75519],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [47]
         }
@@ -39,19 +22,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000195,
-          "Position": {
-            "X": 197.436,
-            "Y": -0.015306,
-            "Z": 57.1145
-          },
-          "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Gridania] Aetheryte Plaza","[Gridania] Archers' Guild"]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

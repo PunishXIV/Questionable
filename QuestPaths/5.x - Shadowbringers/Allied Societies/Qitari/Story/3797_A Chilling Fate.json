@@ -1,43 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "chika", "Date": "2026-08-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032735,
-          "Position": {
-            "X": 803.7993,
-            "Y": -45.924515,
-            "Z": -217.94464
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032659,
-          "Position": {
-            "X": 802.79236,
-            "Y": -45.91779,
-            "Z": -218.58557
-          },
-          "TerritoryId": 817,
+          "Position": [802.79236, -45.91779, -218.58557],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -50,7 +35,6 @@
           ]
         },
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -64,29 +48,18 @@
         },
         {
           "DataId": 1032862,
-          "Position": {
-            "X": 777.06555,
-            "Y": -45.76794,
-            "Z": -209.21649
-          },
-          "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "Position": [777.06555, -45.76794, -209.21649],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032659,
-          "Position": {
-            "X": 802.79236,
-            "Y": -45.91779,
-            "Z": -218.58557
-          },
-          "TerritoryId": 817,
+          "Position": [802.79236, -45.91779, -218.58557],
           "InteractionType": "CompleteQuest"
         }
       ]

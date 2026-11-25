@@ -1,40 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012884,
-          "Position": {
-            "X": 111.46704,
-            "Y": 5.935669,
-            "Z": -294.36182
-          },
-          "TerritoryId": 957,
+          "Position": [111.46704, 5.935669, -294.36182],
           "InteractionType": "UseItem",
           "ItemId": 2003420,
-          "Fly": true,
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
           "RequiredQuestVariables": [null,[
               19
             ],null,null,null,null
@@ -42,15 +23,9 @@
         },
         {
           "DataId": 2012885,
-          "Position": {
-            "X": 108.17114,
-            "Y": 8.224609,
-            "Z": -373.22046
-          },
-          "TerritoryId": 957,
+          "Position": [108.17114, 8.224609, -373.22046],
           "InteractionType": "UseItem",
           "ItemId": 2003420,
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               18
             ],null,null,null,null
@@ -58,15 +33,9 @@
         },
         {
           "DataId": 2012886,
-          "Position": {
-            "X": 135.91211,
-            "Y": 6.4850464,
-            "Z": -327.5349
-          },
-          "TerritoryId": 957,
+          "Position": [135.91211, 6.4850464, -327.5349],
           "InteractionType": "UseItem",
           "ItemId": 2003420,
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               17
             ],null,null,null,null
@@ -76,15 +45,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012884,
-          "Position": {
-            "X": 111.46704,
-            "Y": 5.935669,
-            "Z": -294.36182
-          },
-          "TerritoryId": 957,
+          "Position": [111.46704, 5.935669, -294.36182],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,[
               0
@@ -92,12 +57,7 @@
         },
         {
           "DataId": 2012885,
-          "Position": {
-            "X": 108.17114,
-            "Y": 8.224609,
-            "Z": -373.22046
-          },
-          "TerritoryId": 957,
+          "Position": [108.17114, 8.224609, -373.22046],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,[
               64
@@ -105,12 +65,7 @@
         },
         {
           "DataId": 2012886,
-          "Position": {
-            "X": 135.91211,
-            "Y": 6.4850464,
-            "Z": -327.5349
-          },
-          "TerritoryId": 957,
+          "Position": [135.91211, 6.4850464, -327.5349],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,[
               128
@@ -120,19 +75,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

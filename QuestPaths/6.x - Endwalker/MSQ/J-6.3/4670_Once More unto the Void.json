@@ -1,79 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039645,
-          "Position": {
-            "X": -338.33832,
-            "Y": 55,
-            "Z": -68.40625
-          },
-          "StopDistance": 5,
-          "TerritoryId": 963,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1043821,
-          "Position": {
-            "X": 3.3721924,
-            "Y": 26.999998,
-            "Z": 37.216675
-          },
-          "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Meghaduta",
-            "[Radz-at-Han] Kama"
-          ]
+          "Position": [3.3721924, 26.999998, 37.216675],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1044293,
-          "Position": {
-            "X": -346.12042,
-            "Y": 55,
-            "Z": -66.17847
-          },
-          "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Kama",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "Position": [-346.12042, 55, -66.17847],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1044293,
-          "Position": {
-            "X": -346.12042,
-            "Y": 55,
-            "Z": -66.17847
-          },
-          "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "Position": [-346.12042, 55, -66.17847],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

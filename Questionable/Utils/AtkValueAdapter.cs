@@ -10,7 +10,7 @@ internal static class AtkValueAdapter
             return null;
 
         if (value.String.HasValue)
-            return MemoryHelper.ReadSeStringNullTerminated(new(value.String)).WithCertainMacroCodeReplacements();
+            return MemoryHelper.ReadSeStringNullTerminated(new(value.String)).WithMacrosReplaced();
 
         return null;
     }

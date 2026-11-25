@@ -1,34 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "DataId": 1011217,
-          "Position": {
-            "X": 17.990356,
-            "Y": 16.009666,
-            "Z": -9.567444
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
-        },
-        {
           "DataId": 1017721,
-          "Position": {
-            "X": 2.0598755,
-            "Y": 0.022254245,
-            "Z": -1.3275757
-          },
-          "StopDistance": 5,
+          "Position": [2.0598755, 0.022254245, -1.3275757],
           "TerritoryId": 433,
           "InteractionType": "AcceptQuest"
         }
@@ -36,64 +17,46 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1017723,
-          "Position": {
-            "X": 248.40149,
-            "Y": 302,
-            "Z": -260.85297
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [248.40149, 302, -260.85297],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1017725,
-          "Position": {
-            "X": 603.6315,
-            "Y": 331.42905,
-            "Z": -306.508
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [603.6315, 331.42905, -306.508],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 182,
-            "Enabled": true,
-            "TestedAutoDutyVersion": "0.0.0.319",
-            "TestedBossModVersion": "7.5.1.5"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1017724,
-          "Position": {
-            "X": 601.9531,
-            "Y": 331.81714,
-            "Z": -308.8579
-          },
-          "StopDistance": 7,
-          "TerritoryId": 155,
+          "Position": [601.9531, 331.81714, -308.8579],
           "InteractionType": "CompleteQuest"
         }
       ]

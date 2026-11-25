@@ -1,39 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2010900,
-          "Position": {
-            "X": 787.92993,
-            "Y": 187.33496,
-            "Z": 174.33423
-          },
-          "TerritoryId": 816,
+          "Position": [787.92993, 187.33496, 174.33423],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
               2
             ],null,null
@@ -41,14 +22,8 @@
         },
         {
           "DataId": 2010899,
-          "Position": {
-            "X": 783.2302,
-            "Y": 187.30444,
-            "Z": 151.995
-          },
-          "TerritoryId": 816,
+          "Position": [783.2302, 187.30444, 151.995],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
               1
             ],null,null
@@ -56,14 +31,8 @@
         },
         {
           "DataId": 2010898,
-          "Position": {
-            "X": 765.8655,
-            "Y": 187.30444,
-            "Z": 163.53088
-          },
-          "TerritoryId": 816,
+          "Position": [765.8655, 187.30444, 163.53088],
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
               3
             ],null,null
@@ -73,20 +42,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031809,
-          "Position": {
-            "X": -454.3069,
-            "Y": 71.43217,
-            "Z": 575.1278
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

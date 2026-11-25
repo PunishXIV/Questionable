@@ -1,83 +1,55 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1002626,
-          "Position": {
-            "X": 207.2633,
-            "Y": 112.860374,
-            "Z": -222.43079
-          },
-          "TerritoryId": 134,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1002633,
-          "Position": {
-            "X": 232.56274,
-            "Y": 113.07393,
-            "Z": -240.2533
-          },
-          "TerritoryId": 134,
+          "Position": [232.56274, 113.07393, -240.2533],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1002645,
-          "Position": {
-            "X": -144.27411,
-            "Y": 20.32,
-            "Z": -336.32416
-          },
-          "TerritoryId": 134,
+          "Position": [-144.27411, 20.32, -336.32416],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1002646,
-          "Position": {
-            "X": -58.762512,
-            "Y": 12.537111,
-            "Z": -410.94073
-          },
-          "TerritoryId": 134,
+          "Position": [-58.762512, 12.537111, -410.94073],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1002647,
-          "Position": {
-            "X": -34.866882,
-            "Y": 10.902258,
-            "Z": -432.15082
-          },
-          "TerritoryId": 134,
+          "Position": [-34.866882, 10.902258, -432.15082],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           }
         }
       ]
@@ -87,60 +59,34 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 134,
       "Steps": [
         {
-          "Position": {
-            "X": 205.08835,
-            "Y": 111.9045,
-            "Z": -245.44336
-          },
-          "TerritoryId": 134,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
-        },
-        {
           "DataId": 1002626,
-          "Position": {
-            "X": 207.2633,
-            "Y": 112.860374,
-            "Z": -222.43079
-          },
-          "TerritoryId": 134,
+          "Position": [207.2633, 112.860374, -222.43079],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1002626,
-          "Position": {
-            "X": 207.2633,
-            "Y": 112.860374,
-            "Z": -222.43079
-          },
-          "TerritoryId": 134,
+          "Position": [207.2633, 112.860374, -222.43079],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000972,
-          "Position": {
-            "X": 20.279175,
-            "Y": 40.19993,
-            "Z": -6.1189575
-          },
-          "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [20.279175, 40.19993, -6.1189575],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,52 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039336,
-          "Position": {
-            "X": -175.61609,
-            "Y": 7.84433,
-            "Z": 68.92493
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039328,
-          "Position": {
-            "X": -152.3919,
-            "Y": -16.147,
-            "Z": 209.46057
-          },
-          "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Baldesion Annex",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "Position": [-152.3919, -16.147, 209.46057],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039328,
-          "Position": {
-            "X": -152.3919,
-            "Y": -16.147,
-            "Z": 209.46057
-          },
-          "TerritoryId": 962,
+          "Position": [-152.3919, -16.147, 209.46057],
           "InteractionType": "Emote",
           "Emote": "poke"
         }
@@ -54,23 +31,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1039336,
-          "Position": {
-            "X": -175.61609,
-            "Y": 7.84433,
-            "Z": 68.92493
-          },
-          "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

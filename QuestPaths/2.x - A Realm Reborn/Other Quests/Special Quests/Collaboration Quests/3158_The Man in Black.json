@@ -1,65 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1026849,
-          "Position": {
-            "X": -132.445,
-            "Y": 3.98254,
-            "Z": -75.0313
-          },
-          "TerritoryId": 130,
+          "Position": [-132.445, 3.98254, -75.0313],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "$": "auto: issuer 1026849 (Kipih Jakkya)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2009661,
-          "Position": {
-            "X": -68.8889,
-            "Y": -5.56609,
-            "Z": 30.4511
-          },
-          "TerritoryId": 141,
+          "Position": [-68.8889, -5.56609, 30.4511],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "$": "auto: todo location -> 2009661 (destination)"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "Comment": "Skip step if fate is already up",
           "DataId": 9513,
-          "Position": {
-            "X": 220.6317,
-            "Y": -5.2627745,
-            "Z": -36.87684
-          },
-          "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [220.6317, -5.2627745, -36.87684],
+          "InteractionType": "Interact"
         },
         {
-          "Position": {
-            "X": 293.42755,
-            "Y": -15.606048,
-            "Z": -16.912613
-          },
-          "TerritoryId": 141,
+          "Position": [293.42755, -15.606048, -16.912613],
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
           "KillEnemyDataIds": [9514, 9515]
@@ -68,52 +47,36 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 2009662,
-          "Position": {
-            "X": 115.827,
-            "Y": 0.811487,
-            "Z": -143.108
-          },
-          "TerritoryId": 141,
+          "Position": [115.827, 0.811487, -143.108],
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "$": "auto: todo location -> 2009662 (destination)"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1026850,
-          "Position": {
-            "X": -5.16432,
-            "Y": -2.08258,
-            "Z": -183.364
-          },
-          "TerritoryId": 141,
+          "Position": [-5.16432, -2.08258, -183.364],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "$": "auto: todo location -> 1026850 (Cid)"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1026849,
-          "Position": {
-            "X": -132.445,
-            "Y": 3.98254,
-            "Z": -75.0313
-          },
-          "TerritoryId": 130,
+          "Position": [-132.445, 3.98254, -75.0313],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "NextQuestId": 3159,
           "$": "auto: todo turn-in -> 1026849 (Kipih Jakkya)"
         }

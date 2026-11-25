@@ -1,57 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001217,
-          "Position": {
-            "X": -140.85602,
-            "Y": 18.199999,
-            "Z": 17.013733
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1001203,
-          "Position": {
-            "X": -156.6034,
-            "Y": 18.2,
-            "Z": 20.920044
-          },
-          "TerritoryId": 129,
+          "Position": [-156.6034, 18.2, 20.920044],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1001208,
-          "Position": {
-            "X": -228.16821,
-            "Y": 16,
-            "Z": 50.644653
-          },
-          "TerritoryId": 129,
+          "Position": [-228.16821, 16, 50.644653],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1003254,
-          "Position": {
-            "X": -246.60114,
-            "Y": 16.199999,
-            "Z": 37.125122
-          },
-          "TerritoryId": 129,
+          "Position": [-246.60114, 16.199999, 37.125122],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -59,15 +33,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1003272,
-          "Position": {
-            "X": -262.92822,
-            "Y": 16.2,
-            "Z": 51.407593
-          },
-          "TerritoryId": 129,
+          "Position": [-262.92822, 16.2, 51.407593],
           "InteractionType": "CompleteQuest"
         }
       ]

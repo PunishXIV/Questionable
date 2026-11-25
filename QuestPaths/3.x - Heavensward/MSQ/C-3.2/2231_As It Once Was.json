@@ -1,115 +1,65 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "erdelf", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012580,
-          "Position": {
-            "X": 16.006714,
-            "Y": 16.009666,
-            "Z": -3.189148
-          },
-          "StopDistance": 7,
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1016531,
-          "Position": {
-            "X": -323.99487,
-            "Y": 11.999983,
-            "Z": 44.96826
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "Position": [-323.99487, 11.999983, 44.96826],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1010388,
-          "Position": {
-            "X": 40.482178,
-            "Y": 20.495,
-            "Z": -650.96515
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [40.482178, 20.495, -650.96515],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1016541,
-          "Position": {
-            "X": 2.1514893,
-            "Y": 0,
-            "Z": -7.4921875
-          },
-          "TerritoryId": 351,
+          "Position": [2.1514893, 0, -7.4921875],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1016538,
-          "Position": {
-            "X": 14.572327,
-            "Y": 0,
-            "Z": -9.964172
-          },
-          "TerritoryId": 351,
+          "Position": [14.572327, 0, -9.964172],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1016540,
-          "Position": {
-            "X": 31.967651,
-            "Y": -1,
-            "Z": -4.196289
-          },
-          "TerritoryId": 351,
+          "Position": [31.967651, -1, -4.196289],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         },
         {
           "DataId": 1016543,
-          "Position": {
-            "X": 33.0968,
-            "Y": -1,
-            "Z": 5.7526245
-          },
-          "TerritoryId": 351,
+          "Position": [33.0968, -1, 5.7526245],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
           "DataId": 1016542,
-          "Position": {
-            "X": 36.27063,
-            "Y": -0.25946045,
-            "Z": 2.4871826
-          },
-          "StopDistance": 5,
-          "TerritoryId": 351,
+          "Position": [36.27063, -0.25946045, 2.4871826],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -117,15 +67,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1016535,
-          "Position": {
-            "X": -2.6704102,
-            "Y": 0,
-            "Z": -5.2644043
-          },
-          "TerritoryId": 351,
+          "Position": [-2.6704102, 0, -5.2644043],
           "InteractionType": "CompleteQuest"
         }
       ]

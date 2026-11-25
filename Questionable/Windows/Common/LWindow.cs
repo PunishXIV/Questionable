@@ -1,5 +1,3 @@
-using Dalamud.Bindings.ImGui;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.Common;
 
 public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiWindowFlags.None, bool forceMainWindow = false) : Window(windowName, flags, forceMainWindow)
@@ -7,6 +5,41 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
     protected const int TitleBarButtonPriority = -100;
 
     protected static readonly Vector2 TitleBarIconOffset = new(2, 2);
+
+    private static readonly (string Name, string Url)[] Contributors =
+    [
+        ("aly", "https://ko-fi.com/alydev"),
+        ("Kagekazu", "https://ko-fi.com/kagekazu"),
+    ];
+
+    private bool _openCredits;
+
+    protected void AddSponsorButton() => TitleBarButtons.Add(new()
+    {
+        Icon = FontAwesomeIcon.Heart,
+        IconOffset = TitleBarIconOffset,
+        Click = _ => _openCredits = true,
+        Priority = TitleBarButtonPriority,
+        ShowTooltip = () => QstWidgets.Tooltip(_L("Who makes Questionable")),
+    });
+
+    private void DrawCredits()
+    {
+        if (_openCredits)
+        {
+            ImGui.OpenPopup("##Credits");
+            _openCredits = false;
+        }
+
+        using ImRaii.PopupDisposable popup = ImRaii.Popup("##Credits");
+        if (!popup)
+            return;
+
+        ImGui.TextUnformatted(_L("Questionable is written by:"));
+        foreach ((string name, string url) in Contributors)
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExternalLinkAlt, name))
+                Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
+    }
 
     private bool _initializedConfig;
     private bool _wasCollapsedLastFrame;
@@ -42,9 +75,9 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     private void LoadWindowConfig()
     {
-        if (this is IPersistableWindowConfig pwc)
+        if (this is IPersistableWindowConfig persistable)
         {
-            WindowConfig? config = pwc.WindowConfig;
+            WindowConfig? config = persistable.WindowConfig;
             if (config != null)
             {
                 if (AllowPinning)
@@ -62,9 +95,9 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     private void UpdateWindowConfig()
     {
-        if (this is IPersistableWindowConfig pwc && !ImGui.IsAnyMouseDown())
+        if (this is IPersistableWindowConfig persistable && !ImGui.IsAnyMouseDown())
         {
-            WindowConfig? config = pwc.WindowConfig;
+            WindowConfig? config = persistable.WindowConfig;
             if (config != null)
             {
                 bool changed = false;
@@ -87,7 +120,7 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
                 }
 
                 if (changed)
-                    pwc.SaveWindowConfig();
+                    persistable.SaveWindowConfig();
             }
         }
     }
@@ -126,6 +159,7 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
         _wasCollapsedLastFrame = false;
 
         DrawContent();
+        DrawCredits();
     }
 
     public abstract void DrawContent();

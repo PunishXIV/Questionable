@@ -1,31 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -38,7 +24,6 @@
           ]
         },
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -52,16 +37,8 @@
         },
         {
           "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
+          "Position": [788.5046, -45.827076, -216.96419],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

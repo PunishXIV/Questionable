@@ -1,70 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020520,
-          "Position": {
-            "X": 235.85864,
-            "Y": 4.456162,
-            "Z": -382.8031
-          },
-          "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020521,
-          "Position": {
-            "X": 188.34204,
-            "Y": 5.069492,
-            "Z": -414.99963
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [188.34204, 5.069492, -414.99963],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1023092,
-          "Position": {
-            "X": 442.64893,
-            "Y": 58.867764,
-            "Z": -171.31305
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "Position": [442.64893, 58.867764, -171.31305],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020232,
-          "Position": {
-            "X": 337.27014,
-            "Y": 31.034986,
-            "Z": 206.43921
-          },
-          "TerritoryId": 614,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [337.27014, 31.034986, 206.43921],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

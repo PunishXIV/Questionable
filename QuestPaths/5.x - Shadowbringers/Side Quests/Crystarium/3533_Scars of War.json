@@ -1,81 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1030679,
-          "Position": {
-            "X": 64.07251,
-            "Y": 1.7078,
-            "Z": 231.40308
-          },
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1030689,
-          "Position": {
-            "X": -657.5875,
-            "Y": 50.950245,
-            "Z": -217.76147
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "Fly": true
+          "Position": [-657.5875, 50.950245, -217.76147],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1027411,
-          "Position": {
-            "X": -771.1452,
-            "Y": 51.501152,
-            "Z": -212.32928
-          },
-          "TerritoryId": 813,
+          "Position": [-771.1452, 51.501152, -212.32928],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1027382,
-          "Position": {
-            "X": -765.92664,
-            "Y": 61.720478,
-            "Z": -304.1886
-          },
-          "TerritoryId": 813,
+          "Position": [-765.92664, 61.720478, -304.1886],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1030689,
-          "Position": {
-            "X": -657.5875,
-            "Y": 50.950245,
-            "Z": -217.76147
-          },
-          "TerritoryId": 813,
+          "Position": [-657.5875, 50.950245, -217.76147],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3534
         }
       ]

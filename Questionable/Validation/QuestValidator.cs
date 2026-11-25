@@ -1,6 +1,4 @@
-﻿using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using static Questionable.Utils.CacheUtils;
+﻿using static Questionable.Utils.CacheUtils;
 namespace Questionable.Validation;
 
 [RegisterSingleton]
@@ -9,7 +7,7 @@ internal sealed class QuestValidator
     private readonly ILogger<QuestValidator> _logger;
     private readonly IReadOnlyList<IQuestValidator> _validators;
 
-    private List<ValidationIssue> _validationIssues = [];
+    private List<ValidationIssue> _issues = [];
 
     public QuestValidator(IEnumerable<IQuestValidator> validators, ILogger<QuestValidator> logger)
     {
@@ -20,17 +18,17 @@ internal sealed class QuestValidator
             string.Join(", ", _validators.Select(x => x.GetType().Name)));
     }
 
-    public IReadOnlyList<ValidationIssue> Issues => _validationIssues;
+    public IReadOnlyList<ValidationIssue> Issues => _issues;
     private CachedValue<int> _errorCount = new(ttlSeconds: 1);
     public volatile bool Running;
-    public int IssueCount => _validationIssues.Count;
-    public int ErrorCount => _errorCount.Get(() => _validationIssues.Count(x => x.Severity == EIssueSeverity.Error));
+    public int IssueCount => _issues.Count;
+    public int ErrorCount => _errorCount.Get(() => _issues.Count(x => x.Severity == EIssueSeverity.Error));
 
     public void Reset()
     {
         foreach (IQuestValidator validator in _validators)
             validator.Reset();
-        _validationIssues.Clear();
+        _issues.Clear();
     }
 
     public void Validate(IEnumerable<Quest> quests)
@@ -42,10 +40,9 @@ internal sealed class QuestValidator
                 if (Running)
                     return;
                 Running = true;
-                _validationIssues.Clear();
+                _issues = [];
 
                 List<ValidationIssue> issues = [];
-                Dictionary<EAlliedSociety, int> disabledTribeQuests = [];
                 foreach (Quest quest in quests)
                 {
                     foreach (IQuestValidator validator in _validators)
@@ -54,26 +51,12 @@ internal sealed class QuestValidator
                         {
                             foreach (ValidationIssue issue in validator.Validate(quest))
                             {
-                                /*
-                                var level = issue.Severity == EIssueSeverity.Error
-                                    ? LogLevel.Warning
-                                    : LogLevel.Debug;
-                                _logger.Log(level,
-                                    "Validation failed: {QuestId} ({QuestName}) / {QuestSequence} / {QuestStep} - {Description}",
-                                    issue.ElementId, quest.Info.Name, issue.Sequence, issue.Step, issue.Description);
-                                */
-                                //if (issue.Type == EIssueType.QuestDisabled && quest.Info.AlliedSociety != EAlliedSociety.None)
-                                //{
-                                //    disabledTribeQuests.TryAdd(quest.Info.AlliedSociety, 0);
-                                //    disabledTribeQuests[quest.Info.AlliedSociety]++;
-                                //}
-                                //else
                                 issues.Add(issue);
                             }
                         }
                         catch (ArgumentException e)
                         {
-                            _logger.LogError(e, $"Unable to validate {quest.Info.QuestId} {quest.Info.Name}");
+                            _logger.LogError(e, "Unable to validate {QuestId} {Name}", quest.Info.QuestId, quest.Info.Name);
                         }
                     }
                 }
@@ -83,13 +66,12 @@ internal sealed class QuestValidator
                     .Select(x => x.ElementId)
                     .ToList();
 
-                _validationIssues = issues
+                _issues = issues
                     .Where(x => !disabledQuests.Contains(x.ElementId) || x.Type == EIssueType.QuestDisabled)
                     .OrderBy(x => x.ElementId)
                     .ThenBy(x => x.Sequence)
                     .ThenBy(x => x.Step)
                     .ThenBy(x => x.Description)
-                    .Concat(DisabledTribesAsIssues(disabledTribeQuests))
                     .ToList();
             }
             catch (Exception e)
@@ -100,21 +82,5 @@ internal sealed class QuestValidator
         }, CancellationToken.None, TaskCreationOptions.LongRunning, TaskScheduler.Default);
     }
 
-    public List<ValidationIssue> GetIssues(ElementId elementId) => _validationIssues.Where(x => x.ElementId == elementId).ToList();
-
-    private static IEnumerable<ValidationIssue> DisabledTribesAsIssues(Dictionary<EAlliedSociety, int> disabledTribeQuests)
-    {
-        return disabledTribeQuests
-            .OrderBy(x => x.Key)
-            .Select(x => new ValidationIssue
-            {
-                ElementId = null,
-                Sequence = null,
-                Step = null,
-                AlliedSociety = x.Key,
-                Type = EIssueType.QuestDisabled,
-                Severity = EIssueSeverity.None,
-                Description = _LF("{0} disabled quest(s)", x.Value)
-            });
-    }
+    public List<ValidationIssue> GetIssues(ElementId elementId) => _issues.Where(x => x.ElementId == elementId).ToList();
 }

@@ -1,50 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1008693,
-          "Position": {
-            "X": 155.47412,
-            "Y": 8.973654,
-            "Z": 584.1306
-          },
-          "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "TerritoryId": 135,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 72,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1001029,
-          "Position": {
-            "X": 9.170593,
-            "Y": 20.999403,
-            "Z": -15.213318
-          },
-          "TerritoryId": 129,
+          "Position": [9.170593, 20.999403, -15.213318],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -55,11 +38,7 @@
         },
         {
           "DataId": 1002694,
-          "Position": {
-            "X": -0.045776367,
-            "Y": 1.6001425,
-            "Z": -7.0039062
-          },
+          "Position": [-0.045776367, 1.6001425, -7.0039062],
           "TerritoryId": 198,
           "InteractionType": "CompleteQuest"
         }

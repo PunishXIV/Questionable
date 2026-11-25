@@ -1,49 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031777,
-          "Position": {
-            "X": 25.864014,
-            "Y": 82.78213,
-            "Z": 24.734863
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "DataId": 1027230,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
-          "TargetTerritoryId": 844
-        },
-        {
           "DataId": 1032121,
-          "Position": {
-            "X": 0.045776367,
-            "Y": -5.996435E-14,
-            "Z": -5.5390625
-          },
+          "Position": [0.045776367, -5.996435E-14, -5.5390625],
           "TerritoryId": 844,
           "InteractionType": "Interact"
         }
@@ -51,20 +21,14 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1032081,
-          "Position": {
-            "X": -2.4262085,
-            "Y": 0,
-            "Z": -9.10968
-          },
-          "TerritoryId": 351,
+          "Position": [-2.4262085, 0, -9.10968],
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Estinien vs. Arch Ultima",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           },
           "$": "This doesn't have a duty confirmation dialog, so we're treating TEXT_LUCKMG110_03682_Q1_100_125 as one"
         }
@@ -72,16 +36,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1032081,
-          "Position": {
-            "X": -2.4262085,
-            "Y": 0,
-            "Z": -9.10968
-          },
-          "StopDistance": 5,
-          "TerritoryId": 351,
+          "Position": [-2.4262085, 0, -9.10968],
           "InteractionType": "CompleteQuest"
         }
       ]

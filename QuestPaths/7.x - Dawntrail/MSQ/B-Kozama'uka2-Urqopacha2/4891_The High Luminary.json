@@ -1,28 +1,17 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046851,
-          "Position": {
-            "X": -412.13092,
-            "Y": 113.87041,
-            "Z": 550.7439
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
-          "TerritoryId": 1187,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 824,
@@ -36,28 +25,18 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 2013931,
-          "Position": {
-            "X": 70.17627,
-            "Y": 0.6560669,
-            "Z": 746.4254
-          },
-          "TerritoryId": 1187,
+          "Position": [70.17627, 0.6560669, 746.4254],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818411
         },
         {
           "DataId": 1046864,
-          "Position": {
-            "X": 403.31128,
-            "Y": 122.535,
-            "Z": 614.8928
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "Position": [403.31128, 122.535, 614.8928],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

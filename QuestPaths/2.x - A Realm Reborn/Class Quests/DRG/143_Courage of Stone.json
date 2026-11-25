@@ -1,62 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["Cacahuetes", "liza"],
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [133]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 502.843,
-            "Y": 43.200996,
-            "Z": -32.464188
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 148,
+          "Position": [502.843, 43.200996, -32.464188],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "FinishCombatIfAny",
-          "KillEnemyDataIds": [],
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ]
+          "KillEnemyDataIds": []
         },
         {
           "DataId": 142,
-          "Position": {
-            "X": 514.06104,
-            "Y": 44.169823,
-            "Z": -42.008118
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 148,
+          "Position": [514.06104, 44.169823, -42.008118],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [142],
@@ -67,43 +31,21 @@
             null,
             null,
             null
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2000967,
-          "Position": {
-            "X": 514.8546,
-            "Y": 43.808594,
-            "Z": -48.630554
-          },
-          "TerritoryId": 148,
+          "Position": [514.8546, 43.808594, -48.630554],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 211.82181,
-            "Y": 23.457642,
-            "Z": 163.4502
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 211.82294,
-            "Y": 23.458103,
-            "Z": 157.57333
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 148,
+          "Position": [211.82294, 23.458103, 157.57333],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [21],
@@ -117,56 +59,19 @@
           ]
         },
         {
-          "Position": {
-            "X": 211.82181,
-            "Y": 23.457642,
-            "Z": 163.4502
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 215.99133,
-                  "Y": 23.575134,
-                  "Z": 153.2157
-                },
-                "TerritoryId": 148,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 2000918,
-          "Position": {
-            "X": 215.99133,
-            "Y": 23.575134,
-            "Z": 153.2157
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "Position": [215.99133, 23.575134, 153.2157],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 55
         }

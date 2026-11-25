@@ -1,121 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 455.38995,
-            "Y": -23.982193,
-            "Z": 106.70966
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Churning Mists - Moghome"
-        },
-        {
-          "DataId": 1014442,
-          "Position": {
-            "X": 455.28345,
-            "Y": -24.191578,
-            "Z": 109.05615
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014445,
-          "Position": {
-            "X": 455.2528,
-            "Y": -24.093994,
-            "Z": 109.88013
-          },
-          "TerritoryId": 400,
+          "Position": [455.2528, -24.093994, 109.88013],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014442,
-          "Position": {
-            "X": 455.28345,
-            "Y": -24.191578,
-            "Z": 109.05615
-          },
-          "TerritoryId": 400,
+          "Position": [455.28345, -24.191578, 109.05615],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1012084,
-          "Position": {
-            "X": 225.54358,
-            "Y": 6.9602013,
-            "Z": 709.34607
-          },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "Fly": true
+          "Position": [225.54358, 6.9602013, 709.34607],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 391.38687,
-            "Y": -27.748926,
-            "Z": 113.191864
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1014446,
-          "Position": {
-            "X": 389.7306,
-            "Y": -27.420471,
-            "Z": 114.06116
-          },
-          "TerritoryId": 400,
+          "Position": [389.7306, -27.420471, 114.06116],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1012082,
-          "Position": {
-            "X": 381.70435,
-            "Y": -69.41491,
-            "Z": 691.5541
-          },
-          "TerritoryId": 400,
+          "Position": [381.70435, -69.41491, 691.5541],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "Fly": true,
           "NextQuestId": 1863
         }
       ]

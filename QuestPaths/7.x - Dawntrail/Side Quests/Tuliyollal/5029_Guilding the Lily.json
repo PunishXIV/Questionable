@@ -1,76 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048537,
-          "Position": {
-            "X": -61.753296,
-            "Y": 99.99999,
-            "Z": -188.98297
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046521,
-          "Position": {
-            "X": -46.616333,
-            "Y": -17.97287,
-            "Z": 180.3158
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Vollok Shoonsa",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "Position": [-46.616333, -17.97287, 180.3158],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1048547,
-          "Position": {
-            "X": -39.35309,
-            "Y": -17.972866,
-            "Z": 198.38245
-          },
-          "TerritoryId": 1185,
+          "Position": [-39.35309, -17.972866, 198.38245],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1048418,
-          "Position": {
-            "X": -54.154297,
-            "Y": -17.972868,
-            "Z": 198.44348
-          },
-          "TerritoryId": 1185,
+          "Position": [-54.154297, -17.972868, 198.44348],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1048546,
-          "Position": {
-            "X": -60.83777,
-            "Y": -17.972868,
-            "Z": 197.07019
-          },
-          "TerritoryId": 1185,
+          "Position": [-60.83777, -17.972868, 197.07019],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -78,22 +44,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048537,
-          "Position": {
-            "X": -61.753296,
-            "Y": 99.99999,
-            "Z": -188.98297
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] Vollok Shoonsa"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

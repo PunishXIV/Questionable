@@ -1,34 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038635,
-          "Position": {
-            "X": -487.1443,
-            "Y": 49.161343,
-            "Z": 153.42944
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038638,
-          "Position": {
-            "X": -230.6402,
-            "Y": 27.619656,
-            "Z": 23.727722
-          },
-          "TerritoryId": 957,
+          "Position": [-230.6402, 27.619656, 23.727722],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -39,77 +24,56 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038638,
-          "Position": {
-            "X": -230.6402,
-            "Y": 27.619656,
-            "Z": 23.727722
-          },
-          "TerritoryId": 957,
+          "Position": [-230.6402, 27.619656, 23.727722],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038639,
-          "Position": {
-            "X": -15.030151,
-            "Y": 84.48873,
-            "Z": -71.000244
-          },
-          "TerritoryId": 957,
+          "Position": [-15.030151, 84.48873, -71.000244],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2011954,
-          "Position": {
-            "X": 31.60144,
-            "Y": 90.22656,
-            "Z": -154.65027
-          },
-          "TerritoryId": 957,
+          "Position": [31.60144, 90.22656, -154.65027],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038641,
-          "Position": {
-            "X": 34.62268,
-            "Y": 90.26942,
-            "Z": -159.80774
-          },
-          "TerritoryId": 957,
+          "Position": [34.62268, 90.26942, -159.80774],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038631,
-          "Position": {
-            "X": -510.7958,
-            "Y": 11.975282,
-            "Z": 117.69275
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "Position": [-510.7958, 11.975282, 117.69275],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

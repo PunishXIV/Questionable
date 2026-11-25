@@ -1,78 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038588,
-          "Position": {
-            "X": -101.76245,
-            "Y": 4.357494,
-            "Z": 0.7476196
-          },
-          "StopDistance": 5,
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "DataId": 1039550,
-          "Position": {
-            "X": -620.7218,
-            "Y": -27.670597,
-            "Z": 302.17432
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          },
-          "TargetTerritoryId": 956
-        },
-        {
-          "Position": {
-            "X": -431.53903,
-            "Y": -220.1193,
-            "Z": 301.76364
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1039827,
-          "Position": {
-            "X": -323.38446,
-            "Y": -224.2727,
-            "Z": 301.56396
-          },
-          "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": false
+          "Position": [-323.38446, -224.2727, 301.56396],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1039847,
-          "Position": {
-            "X": -334.92035,
-            "Y": -224.19772,
-            "Z": 311.9402
-          },
-          "TerritoryId": 956,
+          "Position": [-334.92035, -224.19772, 311.9402],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -86,16 +38,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1039852,
-          "Position": {
-            "X": -376.1197,
-            "Y": 80.7959,
-            "Z": 607.6904
-          },
-          "StopDistance": 5,
-          "TerritoryId": 960,
+          "Position": [-376.1197, 80.7959, 607.6904],
           "InteractionType": "CompleteQuest"
         }
       ]

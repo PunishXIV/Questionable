@@ -1,71 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042599,
-          "Position": {
-            "X": 31.998047,
-            "Y": 5.1499996,
-            "Z": -67.73486
-          },
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 2013108,
-          "Position": {
-            "X": -75.70001,
-            "Y": -4.7455444,
-            "Z": -27.664612
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "Position": [-75.70001, -4.7455444, -27.664612],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1011952,
-          "Position": {
-            "X": -277.63788,
-            "Y": -184.59735,
-            "Z": 741.60376
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true
+          "Position": [-277.63788, -184.59735, 741.60376],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 2007074,
-          "Position": {
-            "X": -815.8236,
-            "Y": -87.26642,
-            "Z": -834.3175
-          },
-          "TerritoryId": 401,
+          "Position": [-815.8236, -87.26642, -834.3175],
           "InteractionType": "Interact",
           "TargetTerritoryId": 567
         }
@@ -73,52 +43,34 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1042605,
-          "Position": {
-            "X": 72.46509,
-            "Y": 203.98001,
-            "Z": 125.993774
-          },
-          "TerritoryId": 478,
+          "Position": [72.46509, 203.98001, 125.993774],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1042608,
-          "Position": {
-            "X": -9.323303,
-            "Y": 206.49942,
-            "Z": 38.77307
-          },
-          "TerritoryId": 478,
+          "Position": [-9.323303, 206.49942, 38.77307],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1042609,
-          "Position": {
-            "X": -49.149292,
-            "Y": 209.18335,
-            "Z": -103.01367
-          },
-          "TerritoryId": 478,
+          "Position": [-49.149292, 209.18335, -103.01367],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1042610,
-          "Position": {
-            "X": 56.961792,
-            "Y": 214.19846,
-            "Z": -81.43744
-          },
-          "TerritoryId": 478,
+          "Position": [56.961792, 214.19846, -81.43744],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -126,80 +78,33 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1042605,
-          "Position": {
-            "X": -30.20218,
-            "Y": 214.49994,
-            "Z": 91.81962
-          },
-          "StopDistance": 1,
-          "TerritoryId": 478,
+          "Position": [-30.20218, 214.49994, 91.81962],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1042613,
-          "Position": {
-            "X": -22.38501,
-            "Y": 203.69724,
-            "Z": 93.18677
-          },
-          "TerritoryId": 478,
+          "Position": [-22.38501, 203.69724, 93.18677],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 567,
       "Steps": [
         {
-          "DataId": 2007074,
-          "Position": {
-            "X": -814.71765,
-            "Y": -88.38223,
-            "Z": -834.3627
-          },
-          "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true,
-          "TargetTerritoryId": 567
-        },
-        {
-          "DataId": 2007080,
-          "Position": {
-            "X": 18.1734,
-            "Y": -14.755493,
-            "Z": 26.840576
-          },
-          "TerritoryId": 567,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 567
-        },
-        {
-          "DataId": 2007075,
-          "Position": {
-            "X": 22.323914,
-            "Y": 3.5552979,
-            "Z": -18.814392
-          },
-          "TerritoryId": 567,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 568
-        },
-        {
           "DataId": 2013110,
-          "Position": {
-            "X": -1.8158569,
-            "Y": 0.015197754,
-            "Z": 5.1727905
-          },
+          "Position": [-1.8158569, 0.015197754, 5.1727905],
           "TerritoryId": 568,
           "InteractionType": "Interact"
         }
@@ -207,32 +112,23 @@
     },
     {
       "Sequence": 9,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1042611,
-          "Position": {
-            "X": -75.48645,
-            "Y": -4.734931,
-            "Z": -26.901672
-          },
-          "TerritoryId": 419,
+          "Position": [-75.48645, -4.734931, -26.901672],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1042599,
-          "Position": {
-            "X": 31.998047,
-            "Y": 5.1499996,
-            "Z": -67.73486
-          },
-          "TerritoryId": 962,
+          "Position": [31.998047, 5.1499996, -67.73486],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
           "NextQuestId": 4662
         }
       ]

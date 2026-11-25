@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000856,
-          "Position": {
-            "X": -154.26854,
-            "Y": 3.9999998,
-            "Z": 200.34163
-          },
-          "StopDistance": 1,
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "Comment": "Purchase bait",
           "DataId": 1019513,
-          "Position": {
-            "X": -634.18024,
-            "Y": 130.086,
-            "Z": -526.0853
-          },
-          "TerritoryId": 612,
+          "Position": [-634.18024, 130.086, -526.0853],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -49,66 +32,40 @@
         },
         {
           "DataId": 1021396,
-          "Position": {
-            "X": -229.78564,
-            "Y": 60.06992,
-            "Z": -635.7367
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-229.78564, 60.06992, -635.7367],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -225.24942,
-            "Y": 58.571022,
-            "Z": -632.3732
-          },
-          "TerritoryId": 612,
+          "Position": [-225.24942, 58.571022, -632.3732],
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
               "ItemId": 17949,
-              "ItemCount": 3,
-              "FishingOptions": {
-                "BaitId": 20613,
-                "HookType": {"Normal": {"Weak": true}}
-              }
+              "ItemCount": 3
             }
           ]
         },
         {
           "DataId": 1021396,
-          "Position": {
-            "X": -229.762,
-            "Y": 60.0685,
-            "Z": -635.712
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-229.762, 60.0685, -635.712],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000856,
-          "Position": {
-            "X": -154.26854,
-            "Y": 3.9999998,
-            "Z": 200.34163
-          },
-          "StopDistance": 1,
-          "TerritoryId": 129,
+          "Position": [-154.26854, 3.9999998, 200.34163],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSFSH630_02896_Q1_000_000",

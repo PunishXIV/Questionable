@@ -1,67 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012100,
-          "Position": {
-            "X": 106.737,
-            "Y": 207.263,
-            "Z": 85.4047
-          },
-          "TerritoryId": 478,
+          "Position": [106.737, 207.263, 85.4047],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012100 (Woolnix)"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "Position": {
-            "X": 147.99205,
-            "Y": 207,
-            "Z": 116.32817
-          },
-          "TerritoryId": 478,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 399,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [399],
-              "NotNearPosition": {
-                "Position": {
-                  "X": 147.99205,
-                  "Y": 207,
-                  "Z": 116.32817
-                },
-                "TerritoryId": 478,
-                "MaximumDistance": 60
-              }
-            }
-          }
-        },
-        {
           "DataId": 1012100,
-          "Position": {
-            "X": -187.03804,
-            "Y": 101.59906,
-            "Z": -525.0579
-          },
+          "Position": [-187.03804, 101.59906, -525.0579],
           "TerritoryId": 399,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [4018],
           "CompletionQuestVariablesFlags": [{"Low": 3},null,null,null,null,null]
@@ -70,17 +32,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012100,
-          "Position": {
-            "X": 106.737,
-            "Y": 207.263,
-            "Z": 85.4047
-          },
-          "TerritoryId": 478,
+          "Position": [106.737, 207.263, 85.4047],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012100 (Woolnix)"
         }
       ]

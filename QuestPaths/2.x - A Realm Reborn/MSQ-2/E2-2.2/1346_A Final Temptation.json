@@ -1,61 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1008597,
-          "Position": {
-            "X": 57.66382,
-            "Y": 44.999996,
-            "Z": -220.93542
-          },
-          "TerritoryId": 140,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western Thanalan - Horizon"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1002058,
-          "Position": {
-            "X": 59.616943,
-            "Y": 45.157562,
-            "Z": -215.89996
-          },
-          "StopDistance": 7,
-          "TerritoryId": 140,
+          "Position": [59.616943, 45.157562, -215.89996],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": 175.90674,
-            "Y": 52.66078,
-            "Z": -53.850098
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2003561,
-          "Position": {
-            "X": 175.06665,
-            "Y": 52.628296,
-            "Z": -51.651794
-          },
-          "TerritoryId": 140,
+          "Position": [175.06665, 52.628296, -51.651794],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -67,32 +36,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1008598,
-          "Position": {
-            "X": 140.45923,
-            "Y": 55.321606,
-            "Z": -33.066345
-          },
-          "TerritoryId": 140,
+          "Position": [140.45923, 55.321606, -33.066345],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1002058,
-          "Position": {
-            "X": 59.616943,
-            "Y": 45.157562,
-            "Z": -215.89996
-          },
-          "TerritoryId": 140,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [59.616943, 45.157562, -215.89996],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

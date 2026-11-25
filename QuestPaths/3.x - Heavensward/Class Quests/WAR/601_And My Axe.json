@@ -1,61 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013279,
-          "Position": {
-            "X": 441.70276,
-            "Y": 8.670496,
-            "Z": 18.814331
-          },
-          "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1013316,
-          "Position": {
-            "X": 398.97766,
-            "Y": 8.611752,
-            "Z": 46.28064
-          },
-          "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [398.97766, 8.611752, 46.28064],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013316,
-          "Position": {
-            "X": 398.97766,
-            "Y": 8.611752,
-            "Z": 46.28064
-          },
-          "TerritoryId": 139,
+          "Position": [398.97766, 8.611752, 46.28064],
           "InteractionType": "Emote",
           "Emote": "slap"
         }
@@ -63,53 +32,36 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006614,
-          "Position": {
-            "X": 65.87317,
-            "Y": -3.1181886,
-            "Z": 61.41748
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "Position": [65.87317, -3.1181886, 61.41748],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1013312,
-          "Position": {
-            "X": -118.88306,
-            "Y": -25.500666,
-            "Z": 42.374268
-          },
-          "TerritoryId": 138,
+          "Position": [-118.88306, -25.500666, 42.374268],
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1013329,
-          "Position": {
-            "X": -109.9718,
-            "Y": -24.72433,
-            "Z": 63.553833
-          },
-          "TerritoryId": 138,
+          "Position": [-109.9718, -24.72433, 63.553833],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2900
         }

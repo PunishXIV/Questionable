@@ -1,84 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1033868,
-          "Position": {
-            "X": 19.57727,
-            "Y": 82.78207,
-            "Z": 48.53894
-          },
-          "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1033872,
-          "Position": {
-            "X": -634.2717,
-            "Y": 35.86156,
-            "Z": -234.21082
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "Position": [-634.2717, 35.86156, -234.21082],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027690,
-          "Position": {
-            "X": 452.9945,
-            "Y": 87.48282,
-            "Z": -691.9814
-          },
-          "StopDistance": 5,
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+          "Position": [452.9945, 87.48282, -691.9814],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -221.27931,
-            "Y": 55.081436,
-            "Z": -553.9665
-          },
-          "TerritoryId": 816,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1033872,
-          "Position": {
-            "X": -634.2717,
-            "Y": 35.86156,
-            "Z": -234.21082
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [-634.2717, 35.86156, -234.21082],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,58 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006757,
-          "Position": {
-            "X": -4.4709473,
-            "Y": 44.999886,
-            "Z": -250.56848
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": -260.8949,
-            "Y": -17.148405,
-            "Z": -346.92633
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
           "DataId": 2002715,
-          "Position": {
-            "X": -259.02197,
-            "Y": -15.762573,
-            "Z": -344.71655
-          },
-          "StopDistance": 4.5,
-          "TerritoryId": 156,
+          "Position": [-259.02197, -15.762573, -344.71655],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -64,133 +26,72 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2002716,
-          "Position": {
-            "X": -259.02197,
-            "Y": -15.94574,
-            "Z": -344.71655
-          },
-          "StopDistance": 4.5,
-          "TerritoryId": 156,
+          "Position": [-259.02197, -15.94574, -344.71655],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "Position": [157.36621, 7.7920074, 98.924194],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.200003,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "Position": [-25.162231, 12.200003, 110.795654],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000691,
-          "Position": {
-            "X": 71.97681,
-            "Y": 8,
-            "Z": -166.52173
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "Position": [71.97681, 8, -166.52173],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000357,
-          "Position": {
-            "X": 68.314575,
-            "Y": 8.199997,
-            "Z": -170.51965
-          },
-          "TerritoryId": 133,
+          "Position": [68.314575, 8.199997, -170.51965],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "DataId": 1006757,
-          "Position": {
-            "X": -4.4709473,
-            "Y": 44.999886,
-            "Z": -250.56848
-          },
-          "TerritoryId": 128,
-          "InteractionType": "EquipItem",
-          "ItemId": 2905,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 128,
-          "InteractionType": "EquipItem",
-          "ItemId": 3689
-        },
-        {
-          "TerritoryId": 128,
-          "InteractionType": "EquipItem",
-          "ItemId": 3466
-        },
-        {
-          "TerritoryId": 128,
-          "InteractionType": "EquipItem",
-          "ItemId": 3897
+          "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006757,
-          "Position": {
-            "X": -4.4709473,
-            "Y": 44.999886,
-            "Z": -250.56848
-          },
-          "TerritoryId": 128,
+          "Position": [-4.4709473, 44.999886, -250.56848],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1101
         }

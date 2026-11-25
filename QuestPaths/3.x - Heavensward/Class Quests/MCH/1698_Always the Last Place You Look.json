@@ -1,55 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1014745,
-          "Position": {
-            "X": -205.82898,
-            "Y": 45.803963,
-            "Z": 517.20447
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true
+          "Position": [-205.82898, 45.803963, 517.20447],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1014748,
-          "Position": {
-            "X": -233.66144,
-            "Y": 44.330624,
-            "Z": 519.09656
-          },
-          "TerritoryId": 137,
+          "Position": [-233.66144, 44.330624, 519.09656],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -60,24 +35,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": -235.98387,
-            "Y": 44.330624,
-            "Z": 540.6855
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1014749,
-          "Position": {
-            "X": -234.02765,
-            "Y": 44.330624,
-            "Z": 539.81836
-          },
-          "TerritoryId": 137,
+          "Position": [-234.02765, 44.330624, 539.81836],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -88,15 +50,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1014745,
-          "Position": {
-            "X": -205.82898,
-            "Y": 45.803963,
-            "Z": 517.20447
-          },
-          "TerritoryId": 137,
+          "Position": [-205.82898, 45.803963, 517.20447],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -107,50 +65,34 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1014745,
-          "Position": {
-            "X": -205.82898,
-            "Y": 45.803963,
-            "Z": 517.20447
-          },
-          "TerritoryId": 137,
+          "Position": [-205.82898, 45.803963, 517.20447],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1014748,
-          "Position": {
-            "X": -233.66144,
-            "Y": 44.330624,
-            "Z": 519.09656
-          },
-          "TerritoryId": 137,
+          "Position": [-233.66144, 44.330624, 519.09656],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1014577,
-          "Position": {
-            "X": -154.31458,
-            "Y": 16.999992,
-            "Z": -53.3609
-          },
-          "TerritoryId": 418,
+          "Position": [-154.31458, 16.999992, -53.3609],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1699
         }
       ]

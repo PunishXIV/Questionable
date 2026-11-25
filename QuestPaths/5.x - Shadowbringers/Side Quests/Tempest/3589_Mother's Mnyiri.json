@@ -1,32 +1,17 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1031019,
-          "Position": {
-            "X": 505.88232,
-            "Y": 371.189,
-            "Z": -342.79395
-          },
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 818,
       "Steps": [
         {
-          "Position": {
-            "X": 410.2937,
-            "Y": 374.61343,
-            "Z": -573.46985
-          },
-          "TerritoryId": 818,
+          "Position": [410.2937, 374.61343, -573.46985],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -34,59 +19,35 @@
               "DataId": 10318,
               "MinimumKillCount": 1
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1031019,
-          "Position": {
-            "X": 505.88232,
-            "Y": 371.189,
-            "Z": -342.79395
-          },
-          "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "Position": [505.88232, 371.189, -342.79395],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 818,
       "Steps": [
         {
           "DataId": 1031017,
-          "Position": {
-            "X": 603.02124,
-            "Y": 348.01245,
-            "Z": -165.30103
-          },
-          "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [603.02124, 348.01245, -165.30103],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1031019,
-          "Position": {
-            "X": 505.88232,
-            "Y": 371.189,
-            "Z": -342.79395
-          },
-          "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

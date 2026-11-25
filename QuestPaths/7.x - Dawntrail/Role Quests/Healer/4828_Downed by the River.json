@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046290,
-          "Position": {
-            "X": -114.091736,
-            "Y": 20,
-            "Z": 111.436646
-          },
-          "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1046317,
-          "Position": {
-            "X": 570.18384,
-            "Y": 20.721313,
-            "Z": 451.34656
-          },
-          "TerritoryId": 137,
+          "Position": [570.18384, 20.721313, 451.34656],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -44,31 +27,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1046317,
-          "Position": {
-            "X": 570.18384,
-            "Y": 20.721313,
-            "Z": 451.34656
-          },
-          "TerritoryId": 137,
+          "Position": [570.18384, 20.721313, 451.34656],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2013561,
-          "Position": {
-            "X": -220.44714,
-            "Y": 35.78235,
-            "Z": 268.05518
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 137,
+          "Position": [-220.44714, 35.78235, 268.05518],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -76,71 +50,51 @@
             17615,
             17616
           ],
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true,
           "Comment": "two waves of enemies"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1046318,
-          "Position": {
-            "X": -98.95477,
-            "Y": 34.20764,
-            "Z": 220.44702
-          },
-          "TerritoryId": 137,
+          "Position": [-98.95477, 34.20764, 220.44702],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1046318,
-          "Position": {
-            "X": -98.95477,
-            "Y": 34.20764,
-            "Z": 220.44702
-          },
-          "TerritoryId": 137,
+          "Position": [-98.95477, 34.20764, 220.44702],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1046317,
-          "Position": {
-            "X": 570.18384,
-            "Y": 20.721313,
-            "Z": 451.34656
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "Position": [570.18384, 20.721313, 451.34656],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1046290,
-          "Position": {
-            "X": -114.091736,
-            "Y": 20,
-            "Z": 111.436646
-          },
-          "TerritoryId": 129,
+          "Position": [-114.091736, 20, 111.436646],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "NextQuestId": 4829
         }
       ]

@@ -1,112 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021349,
-          "Position": {
-            "X": -43.930786,
-            "Y": 209.23637,
-            "Z": -90.77594
-          },
-          "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ]
+          "Position": [-233.9361, 6.668152, -171.03839],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021358,
-          "Position": {
-            "X": -599.54224,
-            "Y": 130,
-            "Z": -483.32953
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "Position": [-599.54224, 130, -483.32953],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1021359,
-          "Position": {
-            "X": -262.25684,
-            "Y": 256.97177,
-            "Z": 695.52136
-          },
-          "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "Position": [-262.25684, 256.97177, 695.52136],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1021591,
-          "Position": {
-            "X": -277.82104,
-            "Y": 258.90652,
-            "Z": 782.77246
-          },
-          "TerritoryId": 620,
+          "Position": [-277.82104, 258.90652, 782.77246],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1021595,
-          "Position": {
-            "X": -232.50171,
-            "Y": 258.90652,
-            "Z": 783.505
-          },
-          "TerritoryId": 620,
+          "Position": [-232.50171, 258.90652, 783.505],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1020870,
-          "Position": {
-            "X": -218.61603,
-            "Y": 257.52652,
-            "Z": 737.1786
-          },
-          "TerritoryId": 620,
+          "Position": [-218.61603, 257.52652, 737.1786],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -114,28 +66,23 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1022381,
-          "Position": {
-            "X": -243.12207,
-            "Y": 257.52652,
-            "Z": 744.0145
-          },
-          "TerritoryId": 620,
+          "Position": [-243.12207, 257.52652, 744.0145],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
-          "TerritoryId": 478,
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 478,
           "InteractionType": "Gather",
           "Comment": "This item is gatherable at 4am/pm ET with Perception > 690",
           "ItemsToGather": [
@@ -147,18 +94,8 @@
         },
         {
           "DataId": 1021349,
-          "Position": {
-            "X": -43.930786,
-            "Y": 209.23637,
-            "Z": -90.77594
-          },
-          "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
+          "Position": [-43.930786, 209.23637, -90.77594],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,75 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051061,
-          "Position": {
-            "X": -407.79742,
-            "Y": 28.068892,
-            "Z": -360.55542
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051062,
-          "Position": {
-            "X": -489.5247,
-            "Y": -29.96456,
-            "Z": -94.83484
-          },
-          "TerritoryId": 1189,
+          "Position": [-489.5247, -29.96456, -94.83484],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17664,
             17665
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051062,
-          "Position": {
-            "X": -489.5247,
-            "Y": -29.96456,
-            "Z": -94.83484
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "StopDistance": 7
+          "Position": [-489.5247, -29.96456, -94.83484],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1051061,
-          "Position": {
-            "X": -407.79742,
-            "Y": 28.068892,
-            "Z": -360.55542
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

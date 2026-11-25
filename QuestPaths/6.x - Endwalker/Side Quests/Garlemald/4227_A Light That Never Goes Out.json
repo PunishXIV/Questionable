@@ -1,76 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037782,
-          "Position": {
-            "X": 545.2506,
-            "Y": -36.61608,
-            "Z": -230.24347
-          },
-          "TerritoryId": 958,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": 539.7576,
-            "Y": -36.65,
-            "Z": -237.16893
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "$": "tries to fly through subway car roof otherwise"
-        },
-        {
           "DataId": 2012049,
-          "Position": {
-            "X": 301.86914,
-            "Y": 10.788086,
-            "Z": -540.79504
-          },
-          "TerritoryId": 958,
+          "Position": [301.86914, 10.788086, -540.79504],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "$": "0 0 0 0 0 0 -> 16 17 0 0 0 128",
-          "Fly": true
+          "$": "0 0 0 0 0 0 -> 16 17 0 0 0 128"
         },
         {
           "DataId": 2012050,
-          "Position": {
-            "X": 295.49097,
-            "Y": 11.306824,
-            "Z": -500.26703
-          },
-          "TerritoryId": 958,
+          "Position": [295.49097, 11.306824, -500.26703],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037782,
-          "Position": {
-            "X": 545.2506,
-            "Y": -36.61608,
-            "Z": -230.24347
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

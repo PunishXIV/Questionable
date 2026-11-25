@@ -6,18 +6,22 @@ namespace Questionable.External;
 [RegisterSingleton]
 internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterface, Configuration configuration) : Ipc
 {
-    public override string InternalName => "vnavmesh";
+    public override string InternalName => "NotificationMaster";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && Enabled, fallback: false);
     private readonly NotificationMasterApi _api = new(pluginInterface);
 
     public bool Enabled => _api.IsIPCReady();
 
+    public static string SoundFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Media");
+
     public void Notify(string message)
     {
         var config = configuration.Notifications;
-        if (!config.Enabled || !Enabled)
+        if (!config.Enabled || !Enabled || config.OnlyWhenUnfocused && _api.IsGameWindowActivated())
             return;
+
+        PlaySound(config.Sound);
 
         if (config.ShowTrayMessage)
             _api.DisplayTrayNotification("Questionable", message);
@@ -30,5 +34,11 @@ internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterf
     {
         if (configuration.Notifications.NotifyOnCriticalFailure)
             Notify(message);
+    }
+
+    public void PlaySound(string sound)
+    {
+        if (!string.IsNullOrEmpty(sound))
+            _api.PlaySound(Path.Combine(SoundFolder, sound));
     }
 }

@@ -1,53 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013135,
-          "Position": {
-            "X": 207.58165,
-            "Y": -3.148354,
-            "Z": 42.04371
-          },
-          "TerritoryId": 139,
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013138,
-          "Position": {
-            "X": 404.19617,
-            "Y": -2.6082127,
-            "Z": 212.1156
-          },
-          "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [404.19617, -2.6082127, 212.1156],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013138,
-          "Position": {
-            "X": 404.19617,
-            "Y": -2.6082127,
-            "Z": 212.1156
-          },
-          "TerritoryId": 139,
+          "Position": [404.19617, -2.6082127, 212.1156],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_JOBSCH560_01674_SYSTEM_100_023"
@@ -57,15 +34,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013138,
-          "Position": {
-            "X": 404.19617,
-            "Y": -2.6082127,
-            "Z": 212.1156
-          },
-          "TerritoryId": 139,
+          "Position": [404.19617, -2.6082127, 212.1156],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_JOBSCH560_01674_SYSTEM_100_023"
@@ -75,39 +48,29 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013139,
-          "Position": {
-            "X": 700.9536,
-            "Y": -0.50953937,
-            "Z": 133.28748
-          },
-          "TerritoryId": 139,
+          "Position": [700.9536, -0.50953937, 133.28748],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterEmote",
           "KillEnemyDataIds": [
             4400,
             4401
           ],
-          "Emote": "laugh",
-          "Fly": true
+          "Emote": "laugh"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013138,
-          "Position": {
-            "X": 404.19617,
-            "Y": -2.6082127,
-            "Z": 212.1156
-          },
-          "TerritoryId": 139,
+          "Position": [404.19617, -2.6082127, 212.1156],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1675
         }
       ]

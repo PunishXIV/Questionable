@@ -1,76 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052565,
-          "Position": {
-            "X": 706.69104,
-            "Y": -133.174,
-            "Z": 530.7545
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052566,
-          "Position": {
-            "X": 535.3932,
-            "Y": -150,
-            "Z": 749.20264
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [535.3932, -150, 749.20264],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": 562.12634,
-            "Y": -137.174,
-            "Z": 563.6532
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1052568,
-          "Position": {
-            "X": 562.46277,
-            "Y": -137.17401,
-            "Z": 565.1482
-          },
-          "TerritoryId": 1189,
+          "Position": [562.46277, -137.17401, 565.1482],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052569,
-          "Position": {
-            "X": 561.94385,
-            "Y": -137.17401,
-            "Z": 561.9745
-          },
-          "TerritoryId": 1189,
+          "Position": [561.94385, -137.17401, 561.9745],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -83,12 +48,7 @@
         },
         {
           "DataId": 1053754,
-          "Position": {
-            "X": 559.8688,
-            "Y": -137.174,
-            "Z": 563.9581
-          },
-          "TerritoryId": 1189,
+          "Position": [559.8688, -137.174, 563.9581],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -101,12 +61,7 @@
         },
         {
           "DataId": 1053755,
-          "Position": {
-            "X": 564.6599,
-            "Y": -137.174,
-            "Z": 563.8971
-          },
-          "TerritoryId": 1189,
+          "Position": [564.6599, -137.174, 563.8971],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -121,41 +76,31 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1053756,
-          "Position": {
-            "X": 686.48804,
-            "Y": -137.17401,
-            "Z": 552.697
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [686.48804, -137.17401, 552.697],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052566,
-          "Position": {
-            "X": 535.3932,
-            "Y": -150,
-            "Z": 749.20264
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [535.3932, -150, 749.20264],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -168,7 +113,6 @@
           ]
         },
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -182,15 +126,8 @@
         },
         {
           "DataId": 1052566,
-          "Position": {
-            "X": 535.3932,
-            "Y": -150,
-            "Z": 749.20264
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "Position": [535.3932, -150, 749.20264],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

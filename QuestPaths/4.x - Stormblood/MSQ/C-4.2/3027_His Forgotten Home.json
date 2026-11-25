@@ -1,98 +1,55 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1024971,
-          "Position": {
-            "X": 6.0272217,
-            "Y": 0,
-            "Z": 18.631226
-          },
-          "TerritoryId": 759,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Doman Enclave"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1024980,
-          "Position": {
-            "X": -276.26465,
-            "Y": 53.240116,
-            "Z": -368.8869
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - House of the Fierce",
-          "Fly": true
+          "Position": [-276.26465, 53.240116, -368.8869],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1024983,
-          "Position": {
-            "X": -260.60883,
-            "Y": 53.217503,
-            "Z": -645.594
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-260.60883, 53.217503, -645.594],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "Position": {
-            "X": -347.07507,
-            "Y": 1.2300062,
-            "Z": -345.90344
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1024986,
-          "Position": {
-            "X": -348.9281,
-            "Y": 1.230035,
-            "Z": -344.13672
-          },
-          "TerritoryId": 614,
+          "Position": [-348.9281, 1.230035, -344.13672],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1024989,
-          "Position": {
-            "X": 464.10315,
-            "Y": 17.720512,
-            "Z": 301.59448
-          },
-          "StopDistance": 5,
-          "TerritoryId": 614,
+          "Position": [464.10315, 17.720512, 301.59448],
           "InteractionType": "CompleteQuest"
         }
       ]

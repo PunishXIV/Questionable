@@ -1,68 +1,29 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "DataId": 1036127,
-          "Position": {
-            "X": -116.92993,
-            "Y": 0,
-            "Z": -137.31598
-          },
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] Western Risensong Quarter"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1036493,
-          "Position": {
-            "X": -60.227356,
-            "Y": -4.146993E-05,
-            "Z": -16.06781
-          },
-          "TerritoryId": 886,
+          "Position": [-60.227356, -4.146993E-05, -16.06781],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1036494,
-          "Position": {
-            "X": -98.77167,
-            "Y": 0,
-            "Z": -131.51752
-          },
-          "TerritoryId": 886,
+          "Position": [-98.77167, 0, -131.51752],
           "InteractionType": "CompleteQuest"
         }
       ]

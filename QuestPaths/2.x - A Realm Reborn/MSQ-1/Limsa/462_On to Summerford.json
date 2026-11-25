@@ -1,51 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": ["liza", "alydev"],
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000972,
-          "Position": {
-            "X": 20.279175,
-            "Y": 40.19993,
-            "Z": -6.1189575
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] The Aftcastle"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [128]}}
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 134,
       "Steps": [
         {
-          "TerritoryId": 134,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Middle La Noscea - Summerford Farms",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ]
+          "Aetheryte": "Middle La Noscea - Summerford Farms"
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "RegisterFreeOrFavoredAetheryte",
           "Aetheryte": "Middle La Noscea - Summerford Farms"
         },
         {
           "DataId": 1002626,
-          "Position": {
-            "X": 207.2633,
-            "Y": 112.860374,
-            "Z": -222.43079
-          },
-          "TerritoryId": 134,
+          "Position": [207.2633, 112.860374, -222.43079],
           "InteractionType": "CompleteQuest"
         }
       ]

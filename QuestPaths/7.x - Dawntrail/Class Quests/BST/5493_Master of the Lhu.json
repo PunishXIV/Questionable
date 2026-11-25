@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "Comment": "Assign Opo-opo to First Battlehorn, and Flying trap to Second Battlehorn\nSummon Opo-opo, enter combat with target dummy, use Tempered Release\nRepeat for Flying trap",
+          "DataId": 1059323,
+          "Position": [107.636, 20.557869, -75.573],
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            19456
+          ],
+          "$": "auto: lua overworld enemies -> 19456"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [107.636, 20.557869, -75.573],
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            19456
+          ],
+          "$": "auto: lua overworld enemies -> 19456"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": [119.923, -7.00342, -87.4736],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 5000000,
+          "Position": [-163.504, 0.993473, -19.7391],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 5000000"
+        },
+        {
+          "Position": [-163.504, 0.3189, -19.7391],
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            20059
+          ],
+          "$": "auto: lua enemies spawn here -> 20059"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059329,
+          "Position": [-161.059, 0.901358, -29.1296],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059329 (Lauda)"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059333,
+          "Position": [-160.874, 0.922115, -29.4097],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059333 (Lauda)"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059325,
+          "Position": [72.2791, -6.47596, -117.274],
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "TerritoryId": 148,
+      "Steps": [
+        {
+          "DataId": 1059325,
+          "Position": [72.2791, -6.47596, -117.274],
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1059325 (J'yhuh Tia)"
+        }
+      ]
+    }
+  ]
+}

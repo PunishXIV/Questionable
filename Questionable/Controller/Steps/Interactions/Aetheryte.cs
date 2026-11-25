@@ -1,7 +1,5 @@
 ﻿using Dalamud.Game.ClientState.Objects.Enums;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Aetheryte
@@ -13,8 +11,8 @@ internal static class Aetheryte
             if (step.InteractionType != EInteractionType.AttuneAetheryte)
                 return null;
             if (!step.Aetheryte.HasValue)
-                throw new ArgumentNullException(nameof(step.Aetheryte));
-            if (aetheryteFunctions.IsAetheryteUnlocked(step.Aetheryte.Value))
+                throw new ArgumentException($"{nameof(step.Aetheryte)} is missing", nameof(step));
+            if (aetheryteFunctions.IsAetheryteUnlocked(step.Aetheryte.Value) && step.SkipConditions?.StepIf?.Never != true)
                 return null;
 
             return new Attune(step.Aetheryte.Value, step.SkipConditions?.StepIf);
@@ -27,12 +25,14 @@ internal static class Aetheryte
         public override string ToString() => $"AttuneAetheryte({AetheryteLocation})";
     }
 
-    internal sealed class DoAttune
+    internal sealed class AttuneExecutor
     (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
-        ILogger<DoAttune> logger) : TaskExecutor<Attune>
+        ILogger<AttuneExecutor> logger) : TaskExecutor<Attune>
     {
+        private readonly InteractRetry _retry = new(DateTime.Now);
+
         protected override bool Start()
         {
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation) || (Task.SkipStepConditions != null && Task.SkipStepConditions.Never))
@@ -50,9 +50,12 @@ internal static class Aetheryte
 
         public override ETaskResult Update()
         {
-            return aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
+                return ETaskResult.TaskComplete;
+
+            if (_retry.Due(DateTime.Now, gameFunctions.IsOccupied()))
+                gameFunctions.InteractWith((uint)Task.AetheryteLocation, ObjectKind.Aetheryte);
+            return ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => true;

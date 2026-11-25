@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1051369,
-          "Position": {
-            "X": 357.83923,
-            "Y": -156.11935,
-            "Z": -386.43475
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1051370,
-          "Position": {
-            "X": 302.02173,
-            "Y": -163.4447,
-            "Z": -420.34027
-          },
-          "TerritoryId": 1187,
+          "Position": [302.02173, -163.4447, -420.34027],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1051371,
-          "Position": {
-            "X": 303.02893,
-            "Y": -163.416,
-            "Z": -421.53052
-          },
-          "TerritoryId": 1187,
+          "Position": [303.02893, -163.416, -421.53052],
           "InteractionType": "CompleteQuest"
         }
       ]

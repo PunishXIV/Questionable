@@ -1,46 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1021647,
-          "Position": {
-            "X": -169.482,
-            "Y": 0.9213525,
-            "Z": 817.0748
-          },
-          "TerritoryId": 622,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
-          "Position": {
-            "X": -161.8687,
-            "Y": 0.59802794,
-            "Z": 855.427
-          },
-          "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "TargetTerritoryId": 614,
-          "SkipConditions": { "StepIf": { "InTerritory": [614] } }
-        },
-        {
           "DataId": 1021652,
-          "Position": {
-            "X": 508.32373,
-            "Y": 14.072665,
-            "Z": -856.199
-          },
+          "Position": [508.32373, 14.072665, -856.199],
           "TerritoryId": 614,
           "InteractionType": "Interact"
         }
@@ -48,36 +22,26 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1021692,
-          "Position": {
-            "X": 330.76978,
-            "Y": 23.266533,
-            "Z": -542.56506
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [330.76978, 23.266533, -542.56506],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "TerritoryId": 614,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Yanxia - House of the Fierce"
         },
         {
           "DataId": 1020519,
-          "Position": {
-            "X": 173.78503,
-            "Y": 5.16971,
-            "Z": -417.41058
-          },
-          "TerritoryId": 614,
+          "Position": [173.78503, 5.16971, -417.41058],
           "InteractionType": "CompleteQuest"
         }
       ]

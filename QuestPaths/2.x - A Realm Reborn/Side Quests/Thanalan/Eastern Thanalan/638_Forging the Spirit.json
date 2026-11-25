@@ -1,37 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1001426,
-          "Position": {
-            "X": 123.33862,
-            "Y": 30.999996,
-            "Z": -384.9394
-          },
-          "TerritoryId": 141,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1001426,
-          "Position": {
-            "X": 123.33862,
-            "Y": 30.999996,
-            "Z": -384.9394
-          },
-          "TerritoryId": 141,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

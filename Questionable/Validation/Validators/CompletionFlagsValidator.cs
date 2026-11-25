@@ -1,12 +1,10 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Validation.Validators;
+﻿namespace Questionable.Validation.Validators;
 
 [RegisterSingleton<IQuestValidator, CompletionFlagsValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class CompletionFlagsValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        // this maybe should check for skipconditions, but this applies to one quest only atm
         if (quest.Id.Value == 5149)
             yield break;
 

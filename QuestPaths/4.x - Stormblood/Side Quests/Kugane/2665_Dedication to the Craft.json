@@ -1,69 +1,36 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Fronti",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023300,
-          "Position": {
-            "X": -34.8364,
-            "Y": 4.25726,
-            "Z": 59.2202
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Kogane Dori Markets"]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023301,
-          "Position": {
-            "X": -17.593689,
-            "Y": 5.9604554,
-            "Z": -147.35645
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Kugane] Kogane Dori Markets", "[Kugane] Rakuza District"]
+          "Position": [-17.593689, 5.9604554, -147.35645],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023302,
-          "Position": {
-            "X": -13.01593,
-            "Y": 10.503965,
-            "Z": -192.34003
-          },
-          "TerritoryId": 628,
+          "Position": [-13.01593, 10.503965, -192.34003],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1023300,
-          "Position": {
-            "X": -34.8364,
-            "Y": 4.25726,
-            "Z": 59.2202
-          },
-          "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Kugane] Rakuza District", "[Kugane] Kogane Dori Markets"]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

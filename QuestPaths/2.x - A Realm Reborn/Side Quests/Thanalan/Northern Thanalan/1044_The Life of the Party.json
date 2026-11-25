@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "epinephren@github",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006643,
-          "Position": {
-            "X": 22.049255,
-            "Y": 48.638203,
-            "Z": -15.823608
-          },
-          "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1006653,
-          "Position": {
-            "X": -176.53168,
-            "Y": 58.349014,
-            "Z": -69.93213
-          },
-          "TerritoryId": 147,
+          "Position": [-176.53168, 58.349014, -69.93213],
           "InteractionType": "UseItem",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
           "ItemId": 2000789,
           "CompletionQuestVariablesFlags": [
             null,
@@ -44,12 +27,7 @@
         },
         {
           "DataId": 1006656,
-          "Position": {
-            "X": -193.40814,
-            "Y": 70.47306,
-            "Z": -123.52179
-          },
-          "TerritoryId": 147,
+          "Position": [-193.40814, 70.47306, -123.52179],
           "InteractionType": "UseItem",
           "ItemId": 2000789,
           "CompletionQuestVariablesFlags": [
@@ -63,15 +41,9 @@
         },
         {
           "DataId": 1006655,
-          "Position": {
-            "X": -147.87524,
-            "Y": 74.84546,
-            "Z": -190.60046
-          },
-          "TerritoryId": 147,
+          "Position": [-147.87524, 74.84546, -190.60046],
           "InteractionType": "UseItem",
           "ItemId": 2000789,
-          "StopDistance": 1,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -83,15 +55,9 @@
         },
         {
           "DataId": 1006654,
-          "Position": {
-            "X": -88.822815,
-            "Y": 67.87925,
-            "Z": -174.02917
-          },
-          "TerritoryId": 147,
+          "Position": [-88.822815, 67.87925, -174.02917],
           "InteractionType": "UseItem",
           "ItemId": 2000789,
-          "StopDistance": 1,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -105,19 +71,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006643,
-          "Position": {
-            "X": 22.049255,
-            "Y": 48.638203,
-            "Z": -15.823608
-          },
-          "TerritoryId": 147,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

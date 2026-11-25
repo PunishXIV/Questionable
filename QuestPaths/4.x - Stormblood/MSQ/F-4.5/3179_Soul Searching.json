@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1025549,
-          "Position": {
-            "X": 1.4800415,
-            "Y": -1.1041565E-05,
-            "Z": -11.734253
-          },
-          "TerritoryId": 351,
+          "Position": [1.4800415, -1.1041565E-05, -11.734253],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -21,36 +17,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1026781,
-          "Position": {
-            "X": -478.41614,
-            "Y": 137.42972,
-            "Z": 696.9557
-          },
-          "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "Fly": true
+          "Position": [-478.41614, 137.42972, 696.9557],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1026781,
-          "Position": {
-            "X": -478.41614,
-            "Y": 137.42972,
-            "Z": 696.9557
-          },
-          "TerritoryId": 399,
+          "Position": [-478.41614, 137.42972, 696.9557],
           "InteractionType": "CompleteQuest"
         }
       ]

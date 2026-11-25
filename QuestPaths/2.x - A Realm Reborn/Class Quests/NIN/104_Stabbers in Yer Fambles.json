@@ -1,16 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "InteractionType": "EquipItem",
           "ItemId": 7952,
-          "TerritoryId": 129,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -21,33 +21,21 @@
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1009944,
-          "Position": {
-            "X": -152.66656,
-            "Y": 2.8562405,
-            "Z": 243.18298
-          },
-          "TerritoryId": 129,
+          "Position": [-152.66656, 2.8562405, 243.18298],
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -56,27 +44,18 @@
         },
         {
           "DataId": 1009943,
-          "Position": {
-            "X": -153.36847,
-            "Y": -129.4397,
-            "Z": 265.88843
-          },
-          "StopDistance": 7,
-          "TerritoryId": 129,
+          "Position": [-153.36847, -129.4397, 265.88843],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 2004936,
-          "Position": {
-            "X": -151.90363,
-            "Y": -128.16058,
-            "Z": 256.8551
-          },
+          "Position": [-151.90363, -128.16058, 256.8551],
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
@@ -90,12 +69,7 @@
           }
         },
         {
-          "Position": {
-            "X": 31.662792,
-            "Y": 44.020653,
-            "Z": 146.94322
-          },
-          "TerritoryId": 134,
+          "Position": [31.662792, 44.020653, 146.94322],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -107,21 +81,12 @@
           null,null,null,null,null]
             }
           ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ],
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
         },
         {
-          "Position": {
-            "X": 74.15681,
-            "Y": 45.953808,
-            "Z": 169.73499
-          },
-          "TerritoryId": 134,
+          "Position": [74.15681, 45.953808, 169.73499],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -142,12 +107,7 @@
           ]
         },
         {
-          "Position": {
-            "X": 5.6626997,
-            "Y": 42.625427,
-            "Z": 55.983746
-          },
-          "TerritoryId": 134,
+          "Position": [5.6626997, 42.625427, 55.983746],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -171,31 +131,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "DataId": 1009944,
-          "Position": {
-            "X": -152.66656,
-            "Y": 2.8562405,
-            "Z": 243.18298
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
-        },
-        {
           "DataId": 1009943,
-          "Position": {
-            "X": -153.36847,
-            "Y": -129.4397,
-            "Z": 265.88843
-          },
-          "StopDistance": 7,
-          "TerritoryId": 129,
+          "Position": [-153.36847, -129.4397, 265.88843],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 110
         }

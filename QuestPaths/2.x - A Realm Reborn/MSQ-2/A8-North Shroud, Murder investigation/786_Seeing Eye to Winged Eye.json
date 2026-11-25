@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006242,
-          "Position": {
-            "X": 16.403442,
-            "Y": -44.865616,
-            "Z": 264.54565
-          },
-          "StopDistance": 7,
-          "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2001982,
-          "Position": {
-            "X": -260.0901,
-            "Y": -56.38214,
-            "Z": 307.60657
-          },
-          "TerritoryId": 154,
+          "Position": [-260.0901, -56.38214, 307.60657],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -41,19 +24,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006242,
-          "Position": {
-            "X": 16.403442,
-            "Y": -44.865616,
-            "Z": 264.54565
-          },
-          "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

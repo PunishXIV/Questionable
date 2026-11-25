@@ -1,35 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1038969,
-          "Position": {
-            "X": -104.478516,
-            "Y": 3.8989394,
-            "Z": 7.003784
-          },
-          "StopDistance": 5,
-          "TerritoryId": 962,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 2011936,
-          "Position": {
-            "X": -108.5617,
-            "Y": 5.0504,
-            "Z": 4.55803
-          },
-          "TerritoryId": 962,
+          "Position": [-108.5617, 5.0504, 4.55803],
           "InteractionType": "Interact",
           "TargetTerritoryId": 987
         }
@@ -37,15 +21,10 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": 0,
-            "Y": 0,
-            "Z": 0
-          },
-          "TerritoryId": 957,
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Position": [0, 0, 0],
           "InteractionType": "WalkTo",
           "Comment": "Quest automatically progresses once teleported to Yedlihmad"
         }
@@ -53,24 +32,20 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038978,
-          "Position": {
-            "X": 202.34985,
-            "Y": 1.7699993,
-            "Z": 757.71716
-          },
-          "TerritoryId": 957,
+          "Position": [202.34985, 1.7699993, 757.71716],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "TerritoryId": 957,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 789,
@@ -84,16 +59,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1038992,
-          "Position": {
-            "X": 4.6539917,
-            "Y": -1.9999963,
-            "Z": 93.492065
-          },
-          "StopDistance": 5,
-          "TerritoryId": 963,
+          "Position": [4.6539917, -1.9999963, 93.492065],
           "InteractionType": "CompleteQuest"
         }
       ]

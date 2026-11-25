@@ -1,59 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020379,
-          "Position": {
-            "X": 85.40466,
-            "Y": 118.15579,
-            "Z": -719.96643
-          },
-          "StopDistance": 5,
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "Position": {
-            "X": -98.166626,
-            "Y": 104.979965,
-            "Z": -480.49606
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2008681,
-          "Position": {
-            "X": -257.70966,
-            "Y": 102.311646,
-            "Z": -381.36877
-          },
-          "TerritoryId": 620,
+          "Position": [-257.70966, 102.311646, -381.36877],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
-          "Position": {
-            "X": -281.2972,
-            "Y": 104.584076,
-            "Z": -359.10394
-          },
-          "TerritoryId": 620,
+          "Position": [-281.2972, 104.584076, -359.10394],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -64,45 +34,16 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 2007978,
-          "Position": {
-            "X": -271.2597,
-            "Y": 157.91565,
-            "Z": -280.2625
-          },
-          "TerritoryId": 620,
+          "Position": [-271.2597, 157.91565, -280.2625],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818151
         },
         {
-          "Position": {
-            "X": -270.3264,
-            "Y": 202.14117,
-            "Z": -232.75537
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -270.3756,
-            "Y": 200.71988,
-            "Z": -237.96118
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
-          "Position": {
-            "X": -281.3983,
-            "Y": 200.71988,
-            "Z": -294.9439
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 620,
+          "Position": [-281.3983, 200.71988, -294.9439],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -114,30 +55,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020380,
-          "Position": {
-            "X": -281.5138,
-            "Y": 200.71988,
-            "Z": -294.0871
-          },
-          "TerritoryId": 620,
+          "Position": [-281.5138, 200.71988, -294.0871],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1020382,
-          "Position": {
-            "X": -284.596,
-            "Y": 200.71988,
-            "Z": -287.2511
-          },
-          "TerritoryId": 620,
+          "Position": [-284.596, 200.71988, -287.2511],
           "InteractionType": "CompleteQuest"
         }
       ]

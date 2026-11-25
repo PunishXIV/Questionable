@@ -1,115 +1,72 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "skiaz",
   "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1024771,
-          "Position": {
-              "X": 12.008789,
-              "Y": 55.97821,
-              "Z": 237.96448
-          },
-          "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1024924,
-          "Position": {
-              "X": 143.26697,
-              "Y": 40.296085,
-              "Z": 410.23877
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [143.26697, 40.296085, 410.23877],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1024929,
-          "Position": {
-              "X": 120.46985,
-              "Y": 48.569233,
-              "Z": 596.15466
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [120.46985, 48.569233, 596.15466],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1024934,
-          "Position": {
-              "X": 274.95227,
-              "Y": 38.278767,
-              "Z": 343.00745
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [274.95227, 38.278767, 343.00745],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1024934,
-          "Position": {
-              "X": 274.95227,
-              "Y": 38.278767,
-              "Z": 343.00745
-          },
-          "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [274.95227, 38.278767, 343.00745],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1024934,
-          "Position": {
-              "X": 274.95227,
-              "Y": 38.278767,
-              "Z": 343.00745
-          },
-          "TerritoryId": 612,
+          "Position": [274.95227, 38.278767, 343.00745],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": false
-          },
-          "Comment": "Solo Duty"
+          }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1024952,
-          "Position": {
-              "X": 12.008789,
-              "Y": 55.97821,
-              "Z": 237.96448
-          },
-          "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "Position": [12.008789, 55.97821, 237.96448],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

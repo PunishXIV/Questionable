@@ -1,79 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1008329,
-          "Position": {
-            "X": 175.86023,
-            "Y": 8.627428,
-            "Z": 204.18091
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Position": [175.86023, 8.627428, 204.18091],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "Comment": "Reacquiring status",
           "DataId": 1008329,
-          "Position": {
-            "X": 175.86023,
-            "Y": 8.627428,
-            "Z": 204.18091
-          },
-          "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Position": [175.86023, 8.627428, 204.18091],
+          "InteractionType": "Interact"
         },
         {
           "Comment": "#1 *",
           "DataId": 2003079,
-          "Position": {
-            "X": 225.78772,
-            "Y": 5.996765,
-            "Z": 181.78064
-          },
-          "TerritoryId": 152,
+          "Position": [225.78772, 5.996765, 181.78064],
           "InteractionType": "Interact"
         },
         {
           "Comment": "2 4",
           "DataId": 2003303,
-          "Position": {
-            "X": 267.96362,
-            "Y": -0.16790771,
-            "Z": 168.9325
-          },
-          "TerritoryId": 152,
+          "Position": [267.96362, -0.16790771, 168.9325],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 2},{"High": 4}
@@ -83,23 +47,13 @@
         {
           "Comment": "#2 *",
           "DataId": 2003301,
-          "Position": {
-            "X": 220.29443,
-            "Y": -1.4801636,
-            "Z": 100.48059
-          },
-          "TerritoryId": 152,
+          "Position": [220.29443, -1.4801636, 100.48059],
           "InteractionType": "Interact"
         },
         {
           "Comment": "#5 3",
           "DataId": 2003080,
-          "Position": {
-            "X": 278.58386,
-            "Y": -4.0066406,
-            "Z": 36.545288
-          },
-          "TerritoryId": 152,
+          "Position": [278.58386, -4.0066406, 36.545288],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 3}
@@ -108,12 +62,7 @@
         {
           "Comment": "2 3",
           "DataId": 2003304,
-          "Position": {
-            "X": 302.87634,
-            "Y": -5.3865356,
-            "Z": 60.715576
-          },
-          "TerritoryId": 152,
+          "Position": [302.87634, -5.3865356, 60.715576],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 2},{"High": 3}
@@ -123,12 +72,7 @@
         {
           "Comment": "#5 3 5",
           "DataId": 2003080,
-          "Position": {
-            "X": 278.58386,
-            "Y": -4.3066406,
-            "Z": 36.545288
-          },
-          "TerritoryId": 152,
+          "Position": [278.58386, -4.3066406, 36.545288],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 3},{"High": 5}
@@ -137,12 +81,7 @@
         {
           "Comment": "3 5",
           "DataId": 2003077,
-          "Position": {
-            "X": 315.9685,
-            "Y": -6.8513794,
-            "Z": -16.70868
-          },
-          "TerritoryId": 152,
+          "Position": [315.9685, -6.8513794, -16.70868],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 3},{"High": 5}
@@ -151,7 +90,6 @@
         },
         {
           "Comment": "Reacquiring status",
-          "TerritoryId": 152,
           "InteractionType": "StatusOff",
           "Status": "Transparent",
           "RequiredQuestVariables": [null,null,null,null,[
@@ -161,28 +99,16 @@
         {
           "Comment": "Reacquiring status",
           "DataId": 1008329,
-          "Position": {
-            "X": 175.86023,
-            "Y": 8.127428,
-            "Z": 204.18091
-          },
-          "TerritoryId": 152,
+          "Position": [175.86023, 8.127428, 204.18091],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 5}
-          ],null],
-          "Fly": true
+          ],null]
         },
         {
           "Comment": "#1 5",
           "DataId": 2003079,
-          "Position": {
-            "X": 225.78772,
-            "Y": 5.596765,
-            "Z": 181.78064
-          },
-          "TerritoryId": 152,
+          "Position": [225.78772, 5.596765, 181.78064],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 5}
@@ -191,12 +117,7 @@
         {
           "Comment": "#2 5",
           "DataId": 2003301,
-          "Position": {
-            "X": 220.29443,
-            "Y": -1.0801636,
-            "Z": 100.48059
-          },
-          "TerritoryId": 152,
+          "Position": [220.29443, -1.0801636, 100.48059],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 5}
@@ -205,12 +126,7 @@
         {
           "Comment": "#3 1 4 5",
           "DataId": 2003081,
-          "Position": {
-            "X": 175.24988,
-            "Y": -0.22894287,
-            "Z": 57.328125
-          },
-          "TerritoryId": 152,
+          "Position": [175.24988, -0.22894287, 57.328125],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 1},{"High": 4},{"High": 5}
@@ -219,12 +135,7 @@
         {
           "Comment": "#6 1 5",
           "DataId": 2003302,
-          "Position": {
-            "X": 222.79688,
-            "Y": -2.7314453,
-            "Z": -17.227417
-          },
-          "TerritoryId": 152,
+          "Position": [222.79688, -2.7314453, -17.227417],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 1},{"High": 5}
@@ -233,12 +144,7 @@
         {
           "Comment": "1",
           "DataId": 2003078,
-          "Position": {
-            "X": 232.62378,
-            "Y": -4.501404,
-            "Z": -59.15924
-          },
-          "TerritoryId": 152,
+          "Position": [232.62378, -4.501404, -59.15924],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 1}
@@ -248,12 +154,7 @@
         {
           "Comment": "#6 1",
           "DataId": 2003302,
-          "Position": {
-            "X": 222.79688,
-            "Y": -2.7314453,
-            "Z": -17.227417
-          },
-          "TerritoryId": 152,
+          "Position": [222.79688, -2.7314453, -17.227417],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 1}
@@ -262,12 +163,7 @@
         {
           "Comment": "1",
           "DataId": 2003075,
-          "Position": {
-            "X": 126.75659,
-            "Y": 3.0670166,
-            "Z": 19.912964
-          },
-          "TerritoryId": 152,
+          "Position": [126.75659, 3.0670166, 19.912964],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 1}
@@ -277,12 +173,7 @@
         {
           "Comment": "#4 4 5",
           "DataId": 2003082,
-          "Position": {
-            "X": 97.67297,
-            "Y": 7.1259155,
-            "Z": -7.9194946
-          },
-          "TerritoryId": 152,
+          "Position": [97.67297, 7.1259155, -7.9194946],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 4},{"High": 5}
@@ -291,12 +182,7 @@
         {
           "Comment": "4 5",
           "DataId": 2003076,
-          "Position": {
-            "X": -19.150085,
-            "Y": 19.33313,
-            "Z": -11.490112
-          },
-          "TerritoryId": 152,
+          "Position": [-19.150085, 19.33313, -11.490112],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 4},{"High": 5}
@@ -307,24 +193,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "TerritoryId": 152,
           "InteractionType": "StatusOff",
           "Status": "Transparent"
         },
         {
           "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "Position": [47.01306, 6.0734644, 254.01685],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

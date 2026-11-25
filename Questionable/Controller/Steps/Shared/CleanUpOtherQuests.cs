@@ -1,18 +1,17 @@
-﻿using Questionable.Model.Questing;
-using static Questionable.Controller.Steps.Common.NextQuest;
+﻿using static Questionable.Controller.Steps.Common.NextQuest;
 
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class CleanUpOtherQuests
 {
-    internal sealed class CleanUpOtherQuestsFactory(QuestFunctions questFunctions, QuestController questController, QuestRegistry questRegistry) : SimpleTaskFactory
+    internal sealed class Factory(QuestFunctions questFunctions, QuestController questController, QuestRegistry questRegistry) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.CleanUpOtherQuests)
                 return null;
 
-            var priorityQuests = questFunctions.NextPriorityQuestsThatCanBeAccepted;
+            var priorityQuests = questFunctions.NextPriorityQuests;
             if (priorityQuests.Count == 0)
                 return null;
 
@@ -23,7 +22,6 @@ internal static class CleanUpOtherQuests
             if (priorityQuestId == null)
                 return null;
 
-            // don't start a second priority quest until the first one is resolved
             if (questController.StartedQuest != null && priorityQuestId.Equals(quest.Id))
                 return null;
 

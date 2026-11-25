@@ -1,150 +1,49 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -146.86935,
-            "Y": 8.006159,
-            "Z": 268.78055
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": -137.77051,
-              "Y": 7.7094107,
-              "Z": 275.28036
-            },
-            "DelaySeconds": 0.75
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "NearPosition": {
-                "Position": {
-                  "X": -139.45221,
-                  "Y": 8.712891,
-                  "Z": 281.69678
-                },
-                "MaximumDistance": 3,
-                "TerritoryId": 153
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "TerritoryId": 153,
+          "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1007861,
-          "Position": {
-            "X": -138.59778,
-            "Y": 8.561184,
-            "Z": 281.2085
-          },
-          "StopDistance": 5,
-          "TerritoryId": 153,
+          "Position": [-138.59778, 8.561184, 281.2085],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": 47.682095,
-            "Y": 9.470074,
-            "Z": -98.02502
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 153,
-          "InteractionType": "Jump",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "JumpDestination": {
-            "Position": {
-              "X": 51.224842,
-              "Y": 9.313359,
-              "Z": -104.32791
-            },
-            "DelaySeconds": 0.2
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 1007853,
-          "Position": {
-            "X": 53.72693,
-            "Y": 8.86706,
-            "Z": -111.25354
-          },
-          "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [53.72693, 8.86706, -111.25354],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": 47.682095,
-            "Y": 9.470074,
-            "Z": -98.02502
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
-        },
-        {
           "DataId": 2002403,
-          "Position": {
-            "X": 151.53735,
-            "Y": 18.112427,
-            "Z": -127.30603
-          },
-          "TerritoryId": 153,
+          "Position": [151.53735, 18.112427, -127.30603],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -158,75 +57,18 @@
         },
         {
           "DataId": 2002403,
-          "Position": {
-            "X": 151.53735,
-            "Y": 18.112427,
-            "Z": -127.30603
-          },
-          "TerritoryId": 153,
+          "Position": [151.53735, 18.112427, -127.30603],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -146.86935,
-            "Y": 8.006159,
-            "Z": 268.78055
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": -137.77051,
-              "Y": 7.7094107,
-              "Z": 275.28036
-            },
-            "DelaySeconds": 0.75
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "NearPosition": {
-                "Position": {
-                  "X": -139.45221,
-                  "Y": 8.712891,
-                  "Z": 281.69678
-                },
-                "MaximumDistance": 3,
-                "TerritoryId": 153
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "TerritoryId": 153,
+          "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1084
         }

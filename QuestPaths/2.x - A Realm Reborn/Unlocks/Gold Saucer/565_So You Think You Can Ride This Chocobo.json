@@ -1,49 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Starr",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1010472,
-          "Position": {
-            "X": -53.26935,
-            "Y": 0.3093315,
-            "Z": 69.41321
-          },
-          "TerritoryId": 148,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 388,
       "Steps": [
         {
           "DataId": 1010464,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.8903663E-06,
-            "Z": -65.61273
-          },
-          "TerritoryId": 388,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Chocobo Square"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                388,
-                144
-              ]
-            }
-          }
+          "Position": [-0.015319824, -1.8903663E-06, -65.61273],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

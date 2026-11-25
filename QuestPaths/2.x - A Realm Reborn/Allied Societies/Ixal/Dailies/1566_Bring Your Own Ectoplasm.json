@@ -1,28 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1009216,
-          "Position": {
-            "X": 164.35486,
-            "Y": -22.797548,
-            "Z": 114.64099
-          },
-          "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "TerritoryId": 154,
@@ -30,14 +17,8 @@
           "TargetClass": "ConfiguredCombatJob"
         },
         {
-          "Position": {
-            "X": 581.92236,
-            "Y": 282.2539,
-            "Z": -304.58823
-          },
-          "TerritoryId": 155,
+          "Position": [581.92236, 282.2539, -304.58823],
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -45,71 +26,50 @@
               "MinimumKillCount": 1,
               "CompletionQuestVariablesFlags": [null,1,null,null,null,null]
             }
-          ],
-          "Fly": true
+          ]
         },
         {
-          "Position": {
-            "X": 581.92236,
-            "Y": 282.2539,
-            "Z": -304.58823
-          },
-          "TerritoryId": 155,
+          "Position": [581.92236, 282.2539, -304.58823],
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
               "DataId": 3241,
               "MinimumKillCount": 1
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009221,
-          "Position": {
-            "X": 202.13623,
-            "Y": 301.99976,
-            "Z": -253.55927
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [202.13623, 301.99976, -253.55927],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "SwitchClass",
           "TargetClass": "QuestStartJob"
         },
         {
-          "TerritoryId": 155,
           "InteractionType": "Craft",
           "ItemId": 8125,
           "ItemCount": 2
         },
         {
           "DataId": 1009216,
-          "Position": {
-            "X": 164.35486,
-            "Y": -22.797548,
-            "Z": 114.64099
-          },
+          "Position": [164.35486, -22.797548, 114.64099],
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

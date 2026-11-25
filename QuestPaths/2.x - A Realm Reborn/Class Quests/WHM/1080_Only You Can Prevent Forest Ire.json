@@ -1,54 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -146.86935,
-            "Y": 8.006159,
-            "Z": 268.78055
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": -137.77051,
-              "Y": 7.7094107,
-              "Z": 275.28036
-            },
-            "DelaySeconds": 0.75
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "NearPosition": {
-                "Position": {
-                  "X": -139.45221,
-                  "Y": 8.712891,
-                  "Z": 281.69678
-                },
-                "MaximumDistance": 3,
-                "TerritoryId": 153
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
+          "Position": [-139.04318, 8.522301, 280.0128],
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -56,140 +18,49 @@
           }
         },
         {
-          "TerritoryId": 153,
           "InteractionType": "EquipItem",
           "ItemId": 4547
         },
         {
-          "TerritoryId": 153,
           "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "TerritoryId": 153,
+          "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "DataId": 1000171,
-          "Position": {
-            "X": -114.366455,
-            "Y": -7.351947,
-            "Z": 94.52954
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 148,
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                132
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2002392,
-          "Position": {
-            "X": -416.5561,
-            "Y": 60.990234,
-            "Z": -148.63812
-          },
-          "TerritoryId": 148,
+          "Position": [-416.5561, 60.990234, -148.63812],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             1937
           ],
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] White Wolf Gate (Central Shroud)"
-          ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
         },
         {
           "DataId": 2002392,
-          "Position": {
-            "X": -416.5561,
-            "Y": 60.990234,
-            "Z": -148.63812
-          },
-          "TerritoryId": 148,
+          "Position": [-416.5561, 60.990234, -148.63812],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -146.86935,
-            "Y": 8.006159,
-            "Z": 268.78055
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "InteractionType": "Jump",
-          "JumpDestination": {
-            "Position": {
-              "X": -137.77051,
-              "Y": 7.7094107,
-              "Z": 275.28036
-            },
-            "DelaySeconds": 0.75
-          },
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked",
-              "NearPosition": {
-                "Position": {
-                  "X": -139.45221,
-                  "Y": 8.712891,
-                  "Z": 281.69678
-                },
-                "MaximumDistance": 3,
-                "TerritoryId": 153
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "TerritoryId": 153,
+          "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1081
         }

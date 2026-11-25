@@ -1,60 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 145,
       "Steps": [
         {
           "$": "Switch to combat job",
           "InteractionType": "SwitchClass",
-          "TargetClass": "ConfiguredCombatJob",
-          "TerritoryId": 145
+          "TargetClass": "ConfiguredCombatJob"
         },
         {
           "Comment": "Accept Trial Leve",
           "DataId": 1001799,
-          "Position": {
-            "X": -377.12762,
-            "Y": -57.16929,
-            "Z": 128.19795
-          },
-          "TerritoryId": 145,
+          "Position": [-377.12762, -57.16929, 128.19795],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": -416.65176,
-            "Y": -44.156845,
-            "Z": 153.43155
-          },
-          "TerritoryId": 145,
+          "Position": [-416.65176, -44.156845, 153.43155],
           "InteractionType": "Instruction",
-          "Fly": true,
           "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1001799,
-          "Position": {
-            "X": -378.176,
-            "Y": -57.3269,
-            "Z": 129.279
-          },
-          "TerritoryId": 145,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

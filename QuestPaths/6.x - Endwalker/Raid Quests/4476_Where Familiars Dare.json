@@ -1,52 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041271,
-          "Position": {
-            "X": 542.5039,
-            "Y": 7.6627564,
-            "Z": 50.91931
-          },
-          "TerritoryId": 961,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041272,
-          "Position": {
-            "X": 228.19861,
-            "Y": 7.3858566,
-            "Z": 239.94812
-          },
-          "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          "Position": [228.19861, 7.3858566, 239.94812],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041273,
-          "Position": {
-            "X": 808.3772,
-            "Y": 152.22246,
-            "Z": -240.4975
-          },
-          "TerritoryId": 961,
+          "Position": [808.3772, 152.22246, -240.4975],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -59,9 +37,9 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1025,
       "Steps": [
         {
-          "TerritoryId": 1025,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 808,
@@ -72,16 +50,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1025,
       "Steps": [
         {
           "DataId": 1041501,
-          "Position": {
-            "X": 101.51831,
-            "Y": -9.999997E-12,
-            "Z": 101.60974
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1025,
+          "Position": [101.51831, -9.999997E-12, 101.60974],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4477
         }

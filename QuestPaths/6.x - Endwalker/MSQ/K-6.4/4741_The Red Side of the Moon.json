@@ -1,87 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1045611,
-          "Position": {
-            "X": 160.87585,
-            "Y": -49.589592,
-            "Z": -618.46344
-          },
-          "StopDistance": 7,
-          "TerritoryId": 959,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1045919,
-          "Position": {
-            "X": -200.45782,
-            "Y": 59.021378,
-            "Z": 418.69226
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
-          "Fly": true
+          "Position": [-200.45782, 59.021378, 418.69226],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1162,
       "Steps": [
         {
-          "DataId": 2013362,
-          "Position": {
-            "X": -103.68875,
-            "Y": 51.560005,
-            "Z": 392.18155
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1162,
-          "Fly": true,
-          "StopDistance": 2
-        },
-        {
           "DataId": 2013354,
-          "Position": {
-            "X": -2.7314453,
-            "Y": 73.8689,
-            "Z": 638.0254
-          },
-          "TerritoryId": 1162,
+          "Position": [-2.7314453, 73.8689, 638.0254],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2013355,
-          "Position": {
-            "X": -44.87683,
-            "Y": 66.57507,
-            "Z": 547.6615
-          },
-          "TerritoryId": 1162,
+          "Position": [-44.87683, 66.57507, 547.6615],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2013356,
-          "Position": {
-            "X": 69.29114,
-            "Y": 56.71765,
-            "Z": 472.19043
-          },
-          "TerritoryId": 1162,
+          "Position": [69.29114, 56.71765, 472.19043],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -89,27 +44,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "DataId": 2013362,
-          "Position": {
-            "X": -103.68875,
-            "Y": 51.560005,
-            "Z": 392.18155
-          },
-          "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 1162,
-          "Fly": true,
-          "StopDistance": 2
-        },
-        {
           "DataId": 1045479,
-          "Position": {
-            "X": 4.043579,
-            "Y": 58.561604,
-            "Z": 424.97888
-          },
+          "Position": [4.043579, 58.561604, 424.97888],
           "TerritoryId": 1162,
           "InteractionType": "CompleteQuest"
         }

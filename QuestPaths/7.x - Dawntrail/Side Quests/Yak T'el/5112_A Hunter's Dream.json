@@ -1,89 +1,56 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050874,
-          "Position": {
-            "X": -508.87314,
-            "Y": 29.61908,
-            "Z": -350.1183
-          },
-          "TerritoryId": 1189,
+          "Position": [-508.87314, 29.61908, -350.1183],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
           "DialogueChoices": [
             {
               "Type": "List",
               "Prompt": "TEXT_KINGZD203_05112_Q1_000_000",
               "Answer": "TEXT_KINGZD203_05112_A1_000_001"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -508.87314,
-                  "Y": 29.61908,
-                  "Z": -350.1183
-                },
-                "TerritoryId": 1189,
-                "MaximumDistance": 250
-              }
-            }
-          }
+          ]
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050877,
-          "Position": {
-            "X": -39.871887,
-            "Y": 0.35915944,
-            "Z": -312.1233
-          },
-          "StopDistance": 1,
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-39.871887, 0.35915944, -312.1233],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 2014144,
-          "Position": {
-            "X": -43.10681,
-            "Y": 0.503479,
-            "Z": -312.36743
-          },
-          "TerritoryId": 1189,
+          "Position": [-43.10681, 0.503479, -312.36743],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050878,
-          "Position": {
-            "X": 475.30322,
-            "Y": 18.197147,
-            "Z": -326.95508
-          },
-          "TerritoryId": 1189,
+          "Position": [475.30322, 18.197147, -326.95508],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 5113
         }
       ]

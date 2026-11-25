@@ -1,96 +1,61 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Theo",
   "LastChecked": {"Username": "chika", "Date": "2026-07-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1052561,
-          "Position": {
-            "X": 578.14905,
-            "Y": -144.88388,
-            "Z": 721.8279
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1050891,
-          "Position": {
-            "X": 662.8672,
-            "Y": -137.17401,
-            "Z": 556.115
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [662.8672, -137.17401, 556.115],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1053765,
-          "Position": {
-            "X": -256.21423,
-            "Y": 1.9912608E-05,
-            "Z": 98.527466
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The Resplendent Quarter"
-          ]
+          "Position": [-256.21423, 1.9912608E-05, 98.527466],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1053767,
-          "Position": {
-            "X": -219.2569,
-            "Y": 39.99999,
-            "Z": -10.8797
-          },
-          "TerritoryId": 1185,
+          "Position": [-219.2569, 39.99999, -10.8797],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1053770,
-          "Position": {
-            "X": 528.4962,
-            "Y": -150,
-            "Z": 739.89465
-          },
-          "TerritoryId": 1189,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "Position": [528.4962, -150, 739.89465],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -103,7 +68,6 @@
           ]
         },
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -117,15 +81,8 @@
         },
         {
           "DataId": 1053790,
-          "Position": {
-            "X": 578.33215,
-            "Y": -144.9379,
-            "Z": 723.81165
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "Position": [578.33215, -144.9379, 723.81165],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,46 +1,22 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1039402,
-          "Position": {
-            "X": 741.0239,
-            "Y": 70,
-            "Z": 510.61267
-          },
-          "StopDistance": 6,
-          "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1039431,
-          "Position": {
-            "X": 735.25586,
-            "Y": 70,
-            "Z": 437.33875
-          },
-          "StopDistance": 7,
-          "TerritoryId": 621,
+          "Position": [735.25586, 70, 437.33875],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.1.1.8",
-            "Notes": [
-              "AI doesn't target boss",
-              "AI doesn't heal NPCs"
-            ]
+            "Enabled": true
           }
         }
       ]
@@ -50,36 +26,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1039432,
-          "Position": {
-            "X": 606.1035,
-            "Y": 80.000015,
-            "Z": 623.77356
-          },
-          "TerritoryId": 621,
+          "Position": [606.1035, 80.000015, 623.77356],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1039411,
-          "Position": {
-            "X": -182.20801,
-            "Y": 4.06,
-            "Z": -80.73547
-          },
-          "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "Position": [-182.20801, 4.06, -80.73547],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

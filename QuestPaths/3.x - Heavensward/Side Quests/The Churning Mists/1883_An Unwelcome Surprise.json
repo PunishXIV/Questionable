@@ -1,52 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013566,
-          "Position": {
-            "X": -753.59735,
-            "Y": 285.65656,
-            "Z": -168.65796
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1013570,
-          "Position": {
-            "X": -556.4203,
-            "Y": 266.003,
-            "Z": -673.7926
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-556.4203, 266.003, -673.7926],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": -563.9427,
-            "Y": 257.29318,
-            "Z": -610.3686
-          },
-          "TerritoryId": 400,
+          "Position": [-563.9427, 257.29318, -610.3686],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -55,7 +32,6 @@
               "MinimumKillCount": 3
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
@@ -64,15 +40,10 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": -568.1701,
-            "Y": 258.0283,
-            "Z": -651.9808
-          },
-          "StopDistance": 100,
-          "TerritoryId": 400,
+          "Position": [-568.1701, 258.0283, -651.9808],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -87,18 +58,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1013570,
-          "Position": {
-            "X": -556.4203,
-            "Y": 266.003,
-            "Z": -673.7926
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 400,
+          "Position": [-556.4203, 266.003, -673.7926],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1884
         }
       ]

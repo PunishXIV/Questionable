@@ -1,36 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1041747,
-          "Position": {
-            "X": 56.65674,
-            "Y": -0.0004196167,
-            "Z": -24.765442
-          },
-          "TerritoryId": 963,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1040741,
-          "Position": {
-            "X": 418.265,
-            "Y": 3.43257,
-            "Z": -210.4372
-          },
-          "TerritoryId": 957,
+          "Position": [418.265, 3.43257, -210.4372],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
           "NextQuestId": 5005
         }
       ]

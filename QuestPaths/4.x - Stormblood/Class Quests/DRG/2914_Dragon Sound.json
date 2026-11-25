@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1022560,
-          "Position": {
-            "X": 528.4656,
-            "Y": -19.450546,
-            "Z": 273.33484
-          },
-          "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Reunion"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1022562,
-          "Position": {
-            "X": -494.3466,
-            "Y": 71.278076,
-            "Z": -509.51404
-          },
-          "TerritoryId": 622,
+          "Position": [-494.3466, 71.278076, -509.51404],
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -40,16 +23,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1022562,
-          "Position": {
-            "X": -494.3466,
-            "Y": 71.278076,
-            "Z": -509.51404
-          },
-          "StopDistance": 7,
-          "TerritoryId": 622,
+          "Position": [-494.3466, 71.278076, -509.51404],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,72 +8,22 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027750,
-          "Position": {
-            "X": -24.7349,
-            "Y": -25.3453,
-            "Z": 305.592
-          },
-          "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -62.337532,
-            "Y": -19.236605,
-            "Z": 305.17218
-          },
-          "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -128.89526,
-            "Y": 18.205256,
-            "Z": 717.1751
-          },
-          "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 2010658,
-          "Position": {
-            "X": -127.61127,
-            "Y": 18.875366,
-            "Z": 719.87476
-          },
-          "TerritoryId": 817,
+          "Position": [-127.61127, 18.875366, 719.87476],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1027750,
-          "Position": {
-            "X": -24.7349,
-            "Y": -25.3453,
-            "Z": 305.592
-          },
-          "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

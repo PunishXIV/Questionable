@@ -1,105 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1004576,
-          "Position": {
-            "X": -141.64954,
-            "Y": 4.1,
-            "Z": -114.67157
-          },
-          "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006217,
-          "Position": {
-            "X": -181.04828,
-            "Y": 28.214073,
-            "Z": -402.02948
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "Position": [-181.04828, 28.214073, -402.02948],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -150.9585,
-            "Y": 43.717075,
-            "Z": -345.03116
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 91.463745,
-            "Y": 10.278164,
-            "Z": -461.99072
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2002919,
-          "Position": {
-            "X": 90.958984,
-            "Y": 9.994568,
-            "Z": -460.41046
-          },
-          "TerritoryId": 146,
+          "Position": [90.958984, 9.994568, -460.41046],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": 107.40087,
-            "Y": 15.010546,
-            "Z": -360.9872
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Southern Thanalan, Hamujj Gah Cave"
-        },
-        {
           "DataId": 1005553,
-          "Position": {
-            "X": 122.6062,
-            "Y": 16.402647,
-            "Z": -362.11188
-          },
-          "TerritoryId": 146,
+          "Position": [122.6062, 16.402647, -362.11188],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "NextQuestId": 1218
         }
       ]

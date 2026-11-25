@@ -1,64 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
-  "Comment": "Crafted Item:\n 1x Smoked Raptor HQ\nAutocraft requires:\n 1x Raptor Shank,1 Sun Lemon (Sahagin 28g)\nWill buy rest from Jossy",
+  "Comment": "Crafted Item:\n 1x Smoked Raptor HQ\nAutocraft requires:\n 1x Raptor Shank,1 Sun Lemon (Sahagin 28g)\nBuys the rest",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44.000008,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000956,
-          "Position": {
-            "X": -52.658936,
-            "Y": 42.699993,
-            "Z": -160.23505
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "Position": [-52.658936, 42.699993, -160.23505],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003249,
-          "Position": {
-            "X": -62.912964,
-            "Y": 42.29963,
-            "Z": -164.75171
-          },
-          "TerritoryId": 128,
+          "Position": [-62.912964, 42.29963, -164.75171],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -76,12 +43,7 @@
         },
         {
           "DataId": 1003249,
-          "Position": {
-            "X": -62.912964,
-            "Y": 42.29963,
-            "Z": -164.75171
-          },
-          "TerritoryId": 128,
+          "Position": [-62.912964, 42.29963, -164.75171],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -99,12 +61,7 @@
         },
         {
           "DataId": 1003249,
-          "Position": {
-            "X": -62.912964,
-            "Y": 42.29963,
-            "Z": -164.75171
-          },
-          "TerritoryId": 128,
+          "Position": [-62.912964, 42.29963, -164.75171],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -122,13 +79,8 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 4857,
           "ItemCount": 1,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -139,7 +91,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 4847,
           "ItemCount": 1,
           "SkipConditions": {
@@ -152,7 +103,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 4645,
           "ItemCount": 1,
           "SkipConditions": {
@@ -165,31 +115,18 @@
         },
         {
           "DataId": 1000973,
-          "Position": {
-            "X": -91.233765,
-            "Y": 40.999992,
-            "Z": -154.77228
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "Position": [-91.233765, 40.999992, -154.77228],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000973,
-          "Position": {
-            "X": -91.233765,
-            "Y": 40.999992,
-            "Z": -154.77228
-          },
-          "TerritoryId": 128,
+          "Position": [-91.233765, 40.999992, -154.77228],
           "InteractionType": "Interact",
           "AllowHighQuality": true
         }
@@ -197,15 +134,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000947,
-          "Position": {
-            "X": -54.64258,
-            "Y": 44.000008,
-            "Z": -151.23218
-          },
-          "TerritoryId": 128,
+          "Position": [-54.64258, 44.000008, -151.23218],
           "InteractionType": "CompleteQuest",
           "AllowHighQuality": true
         }

@@ -1,47 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "erdelf", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016590,
-          "Position": {
-            "X": 501.97595,
-            "Y": 217.95152,
-            "Z": 762.72217
-          },
-          "StopDistance": 7,
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "DataId": 1009973,
-          "Position": {
-            "X": 264.91187,
-            "Y": 302.26236,
-            "Z": -223.71259
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "TargetTerritoryId": 395
-        },
-        {
           "DataId": 2006864,
-          "Position": {
-            "X": -2.7924194,
-            "Y": -0.015319824,
-            "Z": 0.10675049
-          },
+          "Position": [-2.7924194, -0.015319824, 0.10675049],
           "TerritoryId": 395,
           "InteractionType": "Interact"
         }
@@ -49,35 +21,23 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 395,
       "Steps": [
         {
           "DataId": 1016591,
-          "Position": {
-            "X": -2.02948,
-            "Y": 0.014982708,
-            "Z": 4.562378
-          },
-          "TerritoryId": 395,
+          "Position": [-2.02948, 0.014982708, 4.562378],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1013227,
-          "Position": {
-            "X": 14.877502,
-            "Y": 16.009666,
-            "Z": -4.196289
-          },
-          "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "Position": [14.877502, 16.009666, -4.196289],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

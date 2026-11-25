@@ -1,109 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016597,
-          "Position": {
-            "X": -266.71252,
-            "Y": -20.034918,
-            "Z": -66.42261
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "Position": {
-            "X": -258.68442,
-            "Y": -20.03493,
-            "Z": -66.1965
-          },
-          "TerritoryId": 419,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
-        },
-        {
           "DataId": 1011207,
-          "Position": {
-            "X": -258.8083,
-            "Y": -20.03509,
-            "Z": -63.553833
-          },
-          "TerritoryId": 419,
+          "Position": [-258.8083, -20.03509, -63.553833],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": -226.53459,
-            "Y": -16.134916,
-            "Z": -51.93084
-          },
-          "TerritoryId": 419,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 1011202,
-          "Position": {
-            "X": -228.10712,
-            "Y": -16.034918,
-            "Z": -49.912292
-          },
-          "TerritoryId": 419,
+          "Position": [-228.10712, -16.034918, -49.912292],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": -205.36649,
-            "Y": -16.134916,
-            "Z": -51.418564
-          },
-          "TerritoryId": 419,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
-        },
-        {
           "DataId": 1011204,
-          "Position": {
-            "X": -203.6012,
-            "Y": -16.034918,
-            "Z": -53.23877
-          },
-          "TerritoryId": 419,
+          "Position": [-203.6012, -16.034918, -53.23877],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -111,82 +33,56 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012180,
-          "Position": {
-            "X": -174.18176,
-            "Y": -12.555469,
-            "Z": -21.561035
-          },
-          "TerritoryId": 419,
+          "Position": [-174.18176, -12.555469, -21.561035],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1015596,
-          "Position": {
-            "X": 15.915161,
-            "Y": 15.96505,
-            "Z": -0.22894287
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Last Vigil"
-          ]
+          "Position": [15.915161, 15.96505, -0.22894287],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 2006709,
-          "Position": {
-            "X": 38.80359,
-            "Y": 16.494995,
-            "Z": -31.204712
-          },
-          "TerritoryId": 419,
+          "Position": [38.80359, 16.494995, -31.204712],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1011231,
-          "Position": {
-            "X": 503.1051,
-            "Y": 217.95148,
-            "Z": 790.2189
-          },
-          "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "Position": [503.1051, 217.95148, 790.2189],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2006753,
-          "Position": {
-            "X": -217.05963,
-            "Y": 88.09033,
-            "Z": -585.2598
-          },
-          "TerritoryId": 397,
+          "Position": [-217.05963, 88.09033, -585.2598],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2227
         }
       ]

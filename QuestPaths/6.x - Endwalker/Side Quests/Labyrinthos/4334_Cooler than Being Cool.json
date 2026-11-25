@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,57 +8,14 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": -681.62787,
-            "Y": -27.599773,
-            "Z": 302.4099
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true
-        },
-        {
-          "DataId": 1037593,
-          "Position": {
-            "X": -628.167,
-            "Y": -27.6706,
-            "Z": 308.615
-          },
-          "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "Mount": false,
-          "Sprint": false
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
-          "Position": {
-            "X": -681.62787,
-            "Y": -27.599773,
-            "Z": 302.4099
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true,
-          "Mount": false,
-          "Sprint": false
-        },
-        {
-          "Position": {
-            "X": -234.355,
-            "Y": -31.4335,
-            "Z": 757.53
-          },
-          "TerritoryId": 956,
+          "Position": [-234.355, -31.4335, 757.53],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -69,40 +26,13 @@
               "RewardItemId": 2003322,
               "RewardItemCount": 2
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": -681.62787,
-            "Y": -27.599773,
-            "Z": 302.4099
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true
-        },
-        {
-          "DataId": 1037593,
-          "Position": {
-            "X": -628.167,
-            "Y": -27.6706,
-            "Z": 308.615
-          },
-          "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "Mount": false,
-          "Sprint": false
-        }
-      ]
+      "Steps": []
     }
   ]
 }

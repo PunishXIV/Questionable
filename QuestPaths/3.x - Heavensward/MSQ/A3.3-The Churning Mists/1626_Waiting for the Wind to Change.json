@@ -1,80 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013202,
-          "Position": {
-            "X": -79.88104,
-            "Y": -8.844478,
-            "Z": 206.22559
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 2005699,
-          "Position": {
-            "X": -50.43109,
-            "Y": -8.896057,
-            "Z": 146.53235
-          },
-          "TerritoryId": 400,
+          "Position": [-50.43109, -8.896057, 146.53235],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179691
         },
         {
           "DataId": 2006217,
-          "Position": {
-            "X": -93.7973,
-            "Y": -6.7597656,
-            "Z": 223.83447
-          },
-          "StopDistance": 5,
-          "TerritoryId": 400,
+          "Position": [-93.7973, -6.7597656, 223.83447],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818100
         },
         {
-          "Position": {
-            "X": -263.82666,
-            "Y": 24.845102,
-            "Z": 446.3256
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1012759,
-          "Position": {
-            "X": -258.5031,
-            "Y": 30.373112,
-            "Z": 562.27966
-          },
-          "TerritoryId": 400,
+          "Position": [-258.5031, 30.373112, 562.27966],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": -233.69716,
-            "Y": -12.69435,
-            "Z": 322.77405
-          },
-          "TerritoryId": 400,
+          "Position": [-233.69716, -12.69435, 322.77405],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -83,12 +44,7 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": -92.774055,
-            "Y": -5.1304445,
-            "Z": 379.861
-          },
-          "TerritoryId": 400,
+          "Position": [-92.774055, -5.1304445, 379.861],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -100,24 +56,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": -250.59578,
-            "Y": 19.834919,
-            "Z": 438.27606
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1012757,
-          "Position": {
-            "X": -261.82965,
-            "Y": 30.373112,
-            "Z": 557.94604
-          },
-          "TerritoryId": 400,
+          "Position": [-261.82965, 30.373112, 557.94604],
           "InteractionType": "CompleteQuest"
         }
       ]

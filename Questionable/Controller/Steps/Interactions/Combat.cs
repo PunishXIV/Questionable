@@ -1,21 +1,22 @@
-﻿using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
+﻿using Questionable.Controller.Steps.Shared;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Combat
 {
     internal sealed class Factory() : ITaskFactory
     {
+        private const ushort Mount128Id = 128;
+        private const ushort Mount147Id = 147;
+
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Combat)
                 yield break;
             if (!step.EnemySpawnType.HasValue)
-                throw new ArgumentNullException(nameof(step.EnemySpawnType));
+                throw new ArgumentException($"{nameof(step.EnemySpawnType)} is missing", nameof(step));
 
-            if (GameFunctions.GetMountId() != Mount128Module.MountId &&
-                GameFunctions.GetMountId() != Mount147Module.MountId)
+            if (GameFunctions.GetMountId() != Mount128Id &&
+                GameFunctions.GetMountId() != Mount147Id)
             {
                 yield return new MountStep.UnmountTask();
             }
@@ -28,7 +29,7 @@ internal static class Combat
             {
                 case EEnemySpawnType.AfterInteraction:
                     if (!step.DataId.HasValue)
-                        throw new ArgumentNullException(nameof(step.DataId));
+                        throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
 
                     yield return new Interact.Task(step.DataId.Value, quest, EInteractionType.None, SkipMarkerCheck: true);
                     yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(delayAfter));
@@ -37,7 +38,7 @@ internal static class Combat
 
                 case EEnemySpawnType.AfterItemUse:
                     if (!step.ItemId.HasValue)
-                        throw new ArgumentNullException(nameof(step.ItemId));
+                        throw new ArgumentException($"{nameof(step.ItemId)} is missing", nameof(step));
 
                     if (step.GroundTarget == true)
                     {
@@ -49,7 +50,7 @@ internal static class Combat
                         else
                         {
                             if (!step.Position.HasValue)
-                                throw new ArgumentNullException(nameof(step.Position));
+                                throw new ArgumentException($"{nameof(step.Position)} is missing", nameof(step));
 
                             yield return new UseItem.UseOnPosition(quest.Id, step.Position.Value, step.ItemId.Value,
                                 step.CompletionQuestVariablesFlags, StartingCombat: true);
@@ -72,20 +73,20 @@ internal static class Combat
 
                 case EEnemySpawnType.AfterAction:
                     if (!step.DataId.HasValue)
-                        throw new ArgumentNullException(nameof(step.DataId));
+                        throw new ArgumentException($"{nameof(step.DataId)} is missing", nameof(step));
                     if (!step.Action.HasValue)
-                        throw new ArgumentNullException(nameof(step.Action));
+                        throw new ArgumentException($"{nameof(step.Action)} is missing", nameof(step));
 
                     if (!step.Action.Value.RequiresMount())
                         yield return new MountStep.UnmountTask();
-                    yield return new ActionStep.UseOnObject(step.DataId.Value, Quest: null, step.Action.Value, CompletionQuestVariablesFlags: null);
+                    yield return new ActionStep.UseOnObject(step.DataId.Value, Quest: null, step.Action.Value, CompletionFlags: null);
                     yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(delayAfter));
                     yield return CreateTask(quest, sequence, step);
                     break;
 
                 case EEnemySpawnType.AfterEmote:
                     if (!step.Emote.HasValue)
-                        throw new ArgumentNullException(nameof(step.Emote));
+                        throw new ArgumentException($"{nameof(step.Emote)} is missing", nameof(step));
 
                     yield return new MountStep.UnmountTask();
                     if (step.DataId != null)
@@ -100,7 +101,6 @@ internal static class Combat
                     if (step.CombatDelaySecondsAtStart == null)
                         yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(delayAfter));
 
-                    // automatically triggered when entering area, i.e. only unmount
                     yield return CreateTask(quest, sequence, step);
                     break;
 
@@ -118,7 +118,7 @@ internal static class Combat
         private static Task CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (!step.EnemySpawnType.HasValue)
-                throw new ArgumentNullException(nameof(step.EnemySpawnType));
+                throw new ArgumentException($"{nameof(step.EnemySpawnType)} is missing", nameof(step));
 
             bool isLastStep = sequence.Steps[^1] == step;
             return CreateTask(quest.Id,
@@ -136,7 +136,7 @@ internal static class Combat
             bool isLastStep,
             EEnemySpawnType enemySpawnType,
             IList<uint> killEnemyDataIds,
-            IList<QuestWorkValue?> completionQuestVariablesFlags,
+            IList<QuestWorkValue?> completionFlags,
             IList<ComplexCombatData> complexCombatData,
             CombatItemUse? combatItemUse)
         {
@@ -144,26 +144,53 @@ internal static class Combat
             {
                 ElementId = elementId,
                 Sequence = sequence,
-                CompletionQuestVariablesFlags = completionQuestVariablesFlags,
+                CompletionQuestVariablesFlags = completionFlags,
                 SpawnType = enemySpawnType,
                 KillEnemyDataIds = killEnemyDataIds.ToList(),
                 ComplexCombatDatas = complexCombatData.ToList(),
                 CombatItemUse = combatItemUse
-            }, completionQuestVariablesFlags, isLastStep);
+            }, completionFlags, isLastStep);
         }
+    }
+
+    internal sealed record CheckAfterInterruption : ITask
+    {
+        public override string ToString() => "Check combat after interruption";
+    }
+
+    internal sealed class CheckAfterInterruptionExecutor(ICondition condition)
+        : TaskExecutor<CheckAfterInterruption>, ITaskExecutor.IExtraTaskCreator
+    {
+        protected override bool Start() => true;
+
+        public override ETaskResult Update() => ETaskResult.CreateNewTasks;
+
+        public IEnumerable<ITask> CreateExtraTasks()
+        {
+            if (!condition[ConditionFlag.InCombat])
+                yield break;
+
+            if (condition[ConditionFlag.Mounted])
+                yield return new MountStep.UnmountTask();
+
+            yield return Factory.CreateTask(elementId: null, -1, isLastStep: false,
+                EEnemySpawnType.FinishCombatIfAny, [], [], [], combatItemUse: null);
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record Task
     (
         CombatController.CombatData CombatData,
-        IList<QuestWorkValue?> CompletionQuestVariableFlags,
+        IList<QuestWorkValue?> CompletionFlags,
         bool IsLastStep) : ITask
     {
         public override string ToString()
         {
             if (CombatData.SpawnType == EEnemySpawnType.FinishCombatIfAny)
                 return "HandleCombat(wait: not in combat, optional)";
-            if (QuestWorkUtils.HasCompletionFlags(CompletionQuestVariableFlags))
+            if (QuestWorkUtils.HasCompletionFlags(CompletionFlags))
                 return "HandleCombat(wait: QW flags)";
             if (IsLastStep)
                 return "HandleCombat(wait: next sequence)";
@@ -172,9 +199,10 @@ internal static class Combat
         }
     }
 
-    internal sealed class HandleCombat
+    internal sealed class Executor
     (
-        CombatController combatController) : TaskExecutor<Task>
+        CombatController combatController,
+        IQuestGameState gameState) : TaskExecutor<Task>
     {
         private CombatController.EStatus _status = CombatController.EStatus.NotStarted;
 
@@ -186,22 +214,20 @@ internal static class Combat
             if (_status != CombatController.EStatus.Complete)
                 return ETaskResult.StillRunning;
 
-            // if our quest step has any completion flags, we need to check if they are set
-            if (QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariableFlags) &&
+            if (QuestWorkUtils.HasCompletionFlags(Task.CompletionFlags) &&
                 Task.CombatData.ElementId is QuestId questId)
             {
-                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(questId);
+                QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(questId);
                 if (questWork == null)
                     return ETaskResult.StillRunning;
 
-                if (QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariableFlags, questWork))
+                if (QuestWorkUtils.Matches(Task.CompletionFlags, questWork))
                     return ETaskResult.TaskComplete;
 
                 return ETaskResult.StillRunning;
             }
 
-            // the last step, by definition, can only be progressed by the game recognizing we're in a new sequence,
-            // so this is an indefinite wait
+            // The last step only progresses when the game moves to a new sequence, so this waits indefinitely.
             if (Task.IsLastStep)
                 return ETaskResult.StillRunning;
 

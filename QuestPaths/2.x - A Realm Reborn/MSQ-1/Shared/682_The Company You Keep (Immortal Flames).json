@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 1004883,
-          "Position": {
-            "X": 37.88806,
-            "Y": 1.2000012,
-            "Z": 4.135132
-          },
-          "TerritoryId": 212,
+          "Position": [37.88806, 1.2000012, 4.135132],
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -28,17 +24,12 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1002391,
-          "Position": {
-            "X": -144.39618,
-            "Y": 4.1,
-            "Z": -107.22516
-          },
-          "TerritoryId": 130,
+          "Position": [-144.39618, 4.1, -107.22516],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -51,37 +42,26 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1004887,
-          "Position": {
-            "X": 160.7843,
-            "Y": 54.85158,
-            "Z": -45.609253
-          },
-          "TerritoryId": 140,
+          "Position": [160.7843, 54.85158, -45.609253],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292"
-          },
-          "AetheryteShortcut": "Western Thanalan - Horizon"
+            "Enabled": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1002391,
-          "Position": {
-            "X": -144.39618,
-            "Y": 4.1,
-            "Z": -107.22516
-          },
-          "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "Position": [-144.39618, 4.1, -107.22516],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

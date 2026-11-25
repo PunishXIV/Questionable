@@ -1,29 +1,17 @@
-using System.Diagnostics.CodeAnalysis;
-using ECommons.ExcelServices;
-using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Gathering;
-using Questionable.Model.Questing;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Resolves travel destinations for interaction handlers: the target territory of the current
-///     quest step, and the warp entry matching a given prompt. Shared by the dialogue-choice and
-///     yes/no interaction handlers.
-/// </summary>
 [RegisterSingleton]
 internal sealed class TravelDestinationResolver(
-    IClientState clientState,
-    GatheringPointRegistry gatheringPointRegistry,
     IDataManager dataManager,
-    ILogger<TravelDestinationResolver> logger)
+    ILogger<TravelDestinationResolver> logger,
+    IClientState? clientState = null)
 {
-    public unsafe ushort? FindTargetTerritoryFromQuestStep(QuestController.QuestProgress currentQuest)
+    public ushort? FindTargetTerritory(QuestController.QuestProgress currentQuest)
     {
-        // this can be triggered either manually (in which case we should increase the step counter), or automatically
-        // (in which case it is ~1 frame later, and the step counter has already been increased)
-        QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+        // Manual triggers need the step count increased; automatic ones come a frame later, already counted.
+        QuestSequence? sequence = currentQuest.FindSequence();
         if (sequence == null)
             return null;
 
@@ -33,28 +21,6 @@ internal sealed class TravelDestinationResolver(
             logger.LogTrace("FindTargetTerritoryFromQuestStep (current): {CurrentTerritory}, {TargetTerritory}",
                 step.TerritoryId,
                 step.TargetTerritoryId);
-        }
-
-        if (step != null && (step.TerritoryId != clientState.TerritoryType || step.TargetTerritoryId == null) &&
-            step.InteractionType == EInteractionType.Gather)
-        {
-            if (gatheringPointRegistry.TryGetGatheringPointId(step.ItemsToGather[0].ItemId,
-                    (Job?)PlayerState.Instance()->CurrentClassJobId ?? Job.ADV,
-                    out GatheringPointId? gatheringPointId) &&
-                gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? root))
-            {
-                foreach (QuestStep gatheringStep in root.Steps)
-                {
-                    if (gatheringStep.TerritoryId == clientState.TerritoryType && gatheringStep.TargetTerritoryId != null)
-                    {
-                        logger.LogTrace(
-                            "FindTargetTerritoryFromQuestStep (gathering): {CurrentTerritory}, {TargetTerritory}",
-                            gatheringStep.TerritoryId,
-                            gatheringStep.TargetTerritoryId);
-                        return gatheringStep.TargetTerritoryId;
-                    }
-                }
-            }
         }
 
         if (step == null || step.TargetTerritoryId == null)
@@ -83,8 +49,8 @@ internal sealed class TravelDestinationResolver(
     public bool TryFindWarp(ushort targetTerritoryId, string actualPrompt, [NotNullWhen(true)] out uint? warpId,
         [NotNullWhen(true)] out string? warpText)
     {
-        // Override for island sanc, this is not good and should be cleaner
-        if (targetTerritoryId == 1055)
+        // Island Sanctuary workaround; off once on the island, where it would answer every menu.
+        if (targetTerritoryId == 1055 && clientState?.TerritoryType != 1055)
         {
             warpId = 131497;
             warpText = actualPrompt;
@@ -94,8 +60,8 @@ internal sealed class TravelDestinationResolver(
             .Where(x => x.RowId > 0 && x.TerritoryType.RowId == targetTerritoryId);
         foreach (Warp entry in warps)
         {
-            string excelName = entry.Name.WithCertainMacroCodeReplacements();
-            string excelQuestion = entry.Question.WithCertainMacroCodeReplacements();
+            string excelName = entry.Name.WithMacrosReplaced();
+            string excelQuestion = entry.Question.WithMacrosReplaced();
 
             if (!string.IsNullOrEmpty(excelQuestion) && GameFunctions.GameStringEquals(excelQuestion, actualPrompt))
             {

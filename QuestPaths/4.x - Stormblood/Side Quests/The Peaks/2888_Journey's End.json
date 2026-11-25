@@ -1,51 +1,30 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023383,
-          "Position": {
-            "X": 330.03735,
-            "Y": 324.3033,
-            "Z": 397.39062
-          },
-          "TerritoryId": 620,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1023387,
-          "Position": {
-            "X": -717.0062,
-            "Y": 57.999996,
-            "Z": -26.535461
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "Position": [-717.0062, 57.999996, -26.535461],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 621,
       "Steps": [
         {
-          "Position": {
-            "X": -108.56799,
-            "Y": 10.860042,
-            "Z": 566.5521
-          },
-          "TerritoryId": 621,
+          "Position": [-108.56799, 10.860042, 566.5521],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [7550]
         }
@@ -53,33 +32,23 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1023391,
-          "Position": {
-            "X": -108.56799,
-            "Y": 10.860042,
-            "Z": 566.5521
-          },
-          "TerritoryId": 621,
+          "Position": [-108.56799, 10.860042, 566.5521],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1023395,
-          "Position": {
-            "X": 567.77295,
-            "Y": 70,
-            "Z": 571.1909
-          },
-          "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "Position": [567.77295, 70, 571.1909],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -1,37 +1,18 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000263,
-          "Position": {
-            "X": 141.55786,
-            "Y": 15.5,
-            "Z": -274.43353
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 112.12561,
-            "Y": 16.504576,
-            "Z": -268.8553
-          },
-          "TerritoryId": 148,
+          "Position": [112.12561, 16.504576, -268.8553],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -42,43 +23,13 @@
             {"Low": 6},
           null,null,null,null,null]
             }
-          ],
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
           ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 129.21268,
-            "Y": 25.16017,
-            "Z": -318.4288
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 132,
-          "SkipConditions": {"StepIf": {"InTerritory": [132,133]}}
-        },
-        {
-          "DataId": 1000263,
-          "Position": {
-            "X": 141.55786,
-            "Y": 15.5,
-            "Z": -274.43353
-          },
-          "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ]
-        }
-      ]
+      "Steps": []
     }
   ]
 }

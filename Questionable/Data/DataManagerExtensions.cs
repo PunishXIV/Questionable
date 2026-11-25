@@ -22,7 +22,7 @@ public static class DataManagerExtensions
         IPluginLog? pluginLog = null)
     where T : struct, IExcelRow<T>
     {
-        string? text = dataManager.GetSeString(rowId, mapper)?.WithCertainMacroCodeReplacements();
+        string? text = dataManager.GetSeString(rowId, mapper)?.WithMacrosReplaced();
 
         pluginLog?.Verbose($"{typeof(T).Name}.{rowId} => {text}");
         return text;
@@ -52,7 +52,7 @@ public static class DataManagerExtensions
         })), RegexOptions.CultureInvariant, matchTimeout: TimeSpan.FromMilliseconds(1000));
     }
 
-    public static string WithCertainMacroCodeReplacements(this ReadOnlySeString text)
+    public static string WithMacrosReplaced(this ReadOnlySeString text)
     {
         return string.Join("", text.Select(payload =>
         {

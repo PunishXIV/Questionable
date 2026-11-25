@@ -1,53 +1,24 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
-          "DataId": 1051711,
-          "Position": {
-            "X": 770.7179,
-            "Y": 12.84657,
-            "Z": -263.99634
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2014500,
-          "Position": {
-            "X": -217.15118,
-            "Y": 109.57495,
-            "Z": 562.005
-          },
-          "TerritoryId": 1188,
+          "Position": [-217.15118, 109.57495, 562.005],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             18175
           ],
-          "AetheryteShortcut": "Kozama'uka - Earthenshire",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 1}
             ],null,null,null]
@@ -55,36 +26,24 @@
 
         {
           "DataId": 2014501,
-          "Position": {
-            "X": -171.95392,
-            "Y": 109.57495,
-            "Z": 652.09424
-          },
-          "TerritoryId": 1188,
+          "Position": [-171.95392, 109.57495, 652.09424],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             18175
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 2}
             ],null,null,null]
         },
         {
           "DataId": 2014502,
-          "Position": {
-            "X": -126.756714,
-            "Y": 109.57495,
-            "Z": 765.68225
-          },
-          "TerritoryId": 1188,
+          "Position": [-126.756714, 109.57495, 765.68225],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             18175
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 3}
             ],null,null,null]
@@ -93,30 +52,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
-          "DataId": 1051711,
-          "Position": {
-            "X": 770.7179,
-            "Y": 12.84657,
-            "Z": -263.99634
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

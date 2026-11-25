@@ -1,54 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1046521,
-          "Position": {
-            "X": -46.616333,
-            "Y": -17.97287,
-            "Z": 180.3158
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2014140,
-          "Position": {
-            "X": -30.960571,
-            "Y": -17.47168,
-            "Z": 191.36328
-          },
-          "TerritoryId": 1185,
+          "Position": [-30.960571, -17.47168, 191.36328],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1050871,
-          "Position": {
-            "X": -51.895935,
-            "Y": -17.97287,
-            "Z": 182.7268
-          },
-          "TerritoryId": 1185,
+          "Position": [-51.895935, -17.97287, 182.7268],
           "InteractionType": "CompleteQuest"
         }
       ]

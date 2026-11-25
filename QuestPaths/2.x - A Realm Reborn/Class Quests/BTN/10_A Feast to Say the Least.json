@@ -1,44 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "TerritoryId": 146,
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 146,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -56,67 +32,31 @@
         },
         {
           "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Sequence": 2,
-      "Steps": [
-        {
-          "DataId": 1000774,
-          "Position": {
-            "X": -299.7025,
-            "Y": 7.3063827,
-            "Z": -168.84113
-          },
+          "Position": [-233.9361, 6.668152, -171.03839],
           "TerritoryId": 133,
           "InteractionType": "Interact"
         }
       ]
     },
     {
+      "Sequence": 2,
+      "TerritoryId": 133,
+      "Steps": [
+        {
+          "DataId": 1000774,
+          "Position": [-299.7025, 7.3063827, -168.84113],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
+          "Position": [-233.9361, 6.668152, -171.03839],
           "InteractionType": "CompleteQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          },
           "NextQuestId": 11
         }
       ]

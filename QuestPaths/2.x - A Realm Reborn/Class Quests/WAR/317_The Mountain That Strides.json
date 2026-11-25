@@ -1,136 +1,70 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1002682,
-          "Position": {
-            "X": -86.930725,
-            "Y": 40.999992,
-            "Z": -153.91785
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "Position": [-86.930725, 40.999992, -153.91785],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002112,
-          "Position": {
-            "X": 561.6693,
-            "Y": 89.783,
-            "Z": -81.52899
-          },
-          "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "Fly": true
+          "Position": [561.6693, 89.783, -81.52899],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002683,
-          "Position": {
-            "X": 559.6245,
-            "Y": 89.783,
-            "Z": -80.1557
-          },
-          "TerritoryId": 135,
+          "Position": [559.6245, 89.783, -80.1557],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1002113,
-          "Position": {
-            "X": 312.45886,
-            "Y": -24.483091,
-            "Z": 212.84802
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "Position": [312.45886, -24.483091, 212.84802],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2000289,
-          "Position": {
-            "X": 348.34814,
-            "Y": -18.60083,
-            "Z": 168.3833
-          },
-          "TerritoryId": 138,
+          "Position": [348.34814, -18.60083, 168.3833],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": 297.38306,
-            "Y": -14.2977295,
-            "Z": 148.85168
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2000290,
-          "Position": {
-            "X": 297.38306,
-            "Y": -14.2977295,
-            "Z": 148.85168
-          },
-          "TerritoryId": 138,
+          "Position": [297.38306, -14.2977295, 148.85168],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "DelaySecondsAtStart": 5
@@ -139,69 +73,37 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1002684,
-          "Position": {
-            "X": 299.1836,
-            "Y": 0.7139131,
-            "Z": 86.10657
-          },
-          "TerritoryId": 138,
+          "Position": [299.1836, 0.7139131, 86.10657],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1"
+            "Enabled": true
           }
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 550.8155,
-            "Y": 89.77024,
-            "Z": -69.45165
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "Fly": true,
-          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
-        },
-        {
           "DataId": 1002112,
-          "Position": {
-            "X": 561.6693,
-            "Y": 89.783,
-            "Z": -81.52899
-          },
-          "TerritoryId": 135,
+          "Position": [561.6693, 89.783, -81.52899],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
+          "Position": [-1.2055054, 44.999886, -255.8786],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 318
         }
       ]

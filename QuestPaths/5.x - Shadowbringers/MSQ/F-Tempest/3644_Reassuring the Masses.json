@@ -1,98 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1027231,
-          "Position": {
-            "X": 65.35437,
-            "Y": 1.7160122,
-            "Z": 249.83594
-          },
-          "StopDistance": 7,
-          "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027224,
-          "Position": {
-            "X": -57.358704,
-            "Y": -7.4820004,
-            "Z": 118.08948
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "Position": [-57.358704, -7.4820004, 118.08948],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027248,
-          "Position": {
-            "X": -30.807983,
-            "Y": -0.64999914,
-            "Z": -51.438232
-          },
-          "TerritoryId": 819,
+          "Position": [-30.807983, -0.64999914, -51.438232],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027226,
-          "Position": {
-            "X": -61.84485,
-            "Y": -17.72202,
-            "Z": -266.2547
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "Position": [-61.84485, -17.72202, -266.2547],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027232,
-          "Position": {
-            "X": -9.323303,
-            "Y": 20.1973,
-            "Z": -136.52252
-          },
-          "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "Position": [-9.323303, 20.1973, -136.52252],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

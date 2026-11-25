@@ -1,57 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1037673,
-          "Position": {
-            "X": -517.0215,
-            "Y": 11.975277,
-            "Z": 100.541626
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039370,
-          "Position": {
-            "X": -106.21808,
-            "Y": 95.53504,
-            "Z": -700.4959
-          },
-          "TerritoryId": 957,
+          "Position": [-106.21808, 95.53504, -700.4959],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1039368,
-          "Position": {
-            "X": -65.07977,
-            "Y": 89.860886,
-            "Z": -659.8764
-          },
-          "TerritoryId": 957,
+          "Position": [-65.07977, 89.860886, -659.8764],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1039369,
-          "Position": {
-            "X": -66.14789,
-            "Y": 89.4264,
-            "Z": -635.8892
-          },
-          "TerritoryId": 957,
+          "Position": [-66.14789, 89.4264, -635.8892],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -59,20 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1037673,
-          "Position": {
-            "X": -517.0215,
-            "Y": 11.975277,
-            "Z": 100.541626
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

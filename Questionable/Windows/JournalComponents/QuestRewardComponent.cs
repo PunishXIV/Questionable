@@ -1,14 +1,8 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Game.Text;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
 using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common.Ui;
+using Questionable.Model.Questing.Converter;
 namespace Questionable.Windows.JournalComponents;
 
 [RegisterSingleton]
@@ -16,10 +10,8 @@ internal sealed class QuestRewardComponent
 (
     QuestRegistry questRegistry,
     QuestData questData,
-    QuestTooltipComponent questTooltipComponent,
+    JournalTable journalTable,
     QuestFunctions questFunctions,
-    QuestJournalUtils questJournalUtils,
-    UiUtils uiUtils,
     AetheryteData aetheryteData,
     AetheryteFunctions aetheryteFunctions,
     IDataManager dataManager,
@@ -28,11 +20,12 @@ internal sealed class QuestRewardComponent
     private bool _showEventRewards;
     private bool _hideUnobtainable;
     private bool _hideCompleted;
+    private List<QuestInfo>? _mentorQuests;
     private volatile uint _generation;
     private OrderedDictionary<EAetheryteLocation, List<QuestInfo>> _aetheryteUnlocks = [];
     private enum ELoadState { NotStarted, Loading, Ready }
     private volatile ELoadState _aetheryteLoadState = ELoadState.NotStarted;
-    internal void RefreshCounts()
+    internal void ClearCache()
     {
         _generation++;
         _aetheryteUnlocks = [];
@@ -40,24 +33,21 @@ internal sealed class QuestRewardComponent
         _taxiStandUnlockQuests = [];
     }
 
-    public void DrawItemRewards()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Unlocks"));
-        if (!tab)
-            return;
-
         ImGui.Checkbox(_L("Show rewards from seasonal event quests"), ref _showEventRewards);
-        ImGui.Checkbox(_L("Hide Unobtainable Quests"), ref _hideUnobtainable);
+        ImGui.Checkbox(_L("Hide unobtainable quests"), ref _hideUnobtainable);
         ImGui.Checkbox(_L("Hide unlocked items"), ref _hideCompleted);
         ImGui.Spacing();
 
         ImGui.BulletText(
-            _L("Only untradeable items are listed (e.g. the Wind-up Airship can be sold on the market board)."));
+            _L("Tradeable items (like the Wind-up Airship) aren't listed."));
 
         DrawAetheryteGroup();
         DrawChocoboPorterGroup();
         DrawGroup(_L("Duties"), EItemRewardType.Duty);
         DrawGroup(_L("Fashion Accessories"), EItemRewardType.FashionAccessory);
+        DrawMentorRoulette();
         DrawGroup(_L("Minions"), EItemRewardType.Minion);
         DrawGroup(_L("Mounts"), EItemRewardType.Mount);
         DrawGroup(_L("Orchestrion Rolls"), EItemRewardType.OrchestrionRoll);
@@ -76,26 +66,31 @@ internal sealed class QuestRewardComponent
         if (!ImGui.CollapsingHeader($"{_T<Addon>(2730)}###RewardChocoboPorter"))
             return;
         var total = 0;
-        var uistate = UIState.Instance();
+        var uiState = UIState.Instance();
         if (_taxiStandUnlockQuests.Count == 0)
         {
-            Dictionary<uint, List<Domain.Quest>> tmp = [];
+            Dictionary<uint, List<Domain.Quest>> standQuests = [];
             foreach (Domain.Quest quest in questRegistry.AllQuests)
-                foreach (var (Sequence, StepId, Step) in quest.AllSteps())
-                    if (Step.InteractionType is EInteractionType.UnlockTaxiStand && Step.TaxiStandId != null)
-                        if (tmp.TryGetValue(Step.TaxiStandId.Value, out var value))
+                foreach (var (_, _, step) in quest.AllSteps())
+                    if (step.InteractionType is EInteractionType.UnlockTaxiStand && step.TaxiStandId != null)
+                        if (standQuests.TryGetValue(step.TaxiStandId.Value, out var value))
                             value.Add(quest);
                         else
-                            tmp[Step.TaxiStandId.Value] = [quest];
-            _taxiStandUnlockQuests = tmp;
+                            standQuests[step.TaxiStandId.Value] = [quest];
+            _taxiStandUnlockQuests = standQuests;
         }
+
+        using ImRaii.TableDisposable table = journalTable.Begin("RewardChocoboPorter");
+        if (!table)
+            return;
 
         foreach (ChocoboTaxiStand taxiStand in _taxiStands)
         {
             if (_excludedTaxiStands.Contains(taxiStand.RowId))
                 continue;
-            var complete = uistate->IsChocoboTaxiStandUnlocked(taxiStand.RowId);
+            var complete = uiState->IsChocoboTaxiStandUnlocked(taxiStand.RowId);
             if (_hideCompleted && complete) continue;
+            JournalTable.BeginRow();
             ImGui.Text(taxiStand.PlaceName.ToMacroString());
             if (ImGui.IsItemHovered())
                 ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
@@ -107,29 +102,18 @@ internal sealed class QuestRewardComponent
                     bool isUnobtainable = questFunctions.IsQuestUnobtainable(quest.Id);
                     if (_hideUnobtainable && isUnobtainable)
                         continue;
-                    var q = quest.GetQuestInfo();
-                    bool isEventQuest = q.IsSeasonalEvent;
+                    var info = quest.GetQuestInfo();
+                    bool isEventQuest = info.IsSeasonalEvent;
                     if (!_showEventRewards && isEventQuest)
                         continue;
                     using var _ = ImRaii.PushId($"###{(int)taxiStand.RowId}-{quest.Id.Value}");
-                    (Vector4 color, FontAwesomeIcon icon, string status) = uiUtils.GetQuestStyle(quest.Id);
-                    if (uiUtils.ChecklistItem(q.Name, color, icon, iconOverride: QuestJournalUtils.GetIconOverride(q, icon)))
-                    {
-                        using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-                        ImGui.Text(_LF("Obtained from: {0}", q.Name));
-                        using (ImRaii.PushIndent())
-                        {
-                            questTooltipComponent.DrawInner(q, showItemRewards: false);
-                        }
-                    }
-                    questJournalUtils.ShowContextMenu(q, quest, nameof(QuestRewardComponent));
+                    journalTable.QuestRow(info, nameof(QuestRewardComponent));
                 }
 
-            ImGui.Separator();
             total++;
         }
         if (total == 0)
-            ImGui.Text(_L("No results"));
+            DrawNoResults();
     }
 
     private void DrawAetheryteGroup()
@@ -147,6 +131,10 @@ internal sealed class QuestRewardComponent
                 ImGui.Text(_L("Loading..."));
                 return;
         }
+        using ImRaii.TableDisposable table = journalTable.Begin("RewardAetheryte");
+        if (!table)
+            return;
+
         var total = 0;
         foreach (EAetheryteLocation aetheryteLocation in AetheryteData.Aetherytes)
         {
@@ -158,40 +146,27 @@ internal sealed class QuestRewardComponent
                 continue;
             if (_hideCompleted && aetheryteFunctions.IsAetheryteUnlocked(aetheryteLocation))
                 continue;
-            if (!AetheryteConverter.Values.TryGetValue(aetheryteLocation, out string? aetheryteName))
-                aetheryteName = aetheryteLocation.ToString();
-            ImGui.Text(aetheryteName);
-            if (ImGui.IsItemHovered() && aetheryteData.TerritoryIds.TryGetValue(aetheryteLocation, out var tId))
+            JournalTable.BeginRow();
+            ImGui.Text(AetheryteName(aetheryteLocation));
+            if (ImGui.IsItemHovered() && aetheryteData.TerritoryIds.TryGetValue(aetheryteLocation, out var territoryId))
             {
-                ImGui.SetTooltip(TerritoryData.GetNameAndId(tId));
+                QstWidgets.Tooltip(TerritoryData.GetNameAndId(territoryId));
             }
-            foreach (QuestInfo q in results)
+            foreach (QuestInfo info in results)
             {
-                bool isEventQuest = q.IsSeasonalEvent;
+                bool isEventQuest = info.IsSeasonalEvent;
                 if (!_showEventRewards && isEventQuest)
                     continue;
-                bool isUnobtainable = questFunctions.IsQuestUnobtainable(q.QuestId);
+                bool isUnobtainable = questFunctions.IsQuestUnobtainable(info.QuestId);
                 if (_hideUnobtainable && isUnobtainable)
                     continue;
-                using var _ = ImRaii.PushId($"###{(int)aetheryteLocation}-{q.QuestId.Value}");
-                (Vector4 color, FontAwesomeIcon icon, string status) = uiUtils.GetQuestStyle(q.QuestId);
-                if (uiUtils.ChecklistItem(q.Name, color, icon, iconOverride: QuestJournalUtils.GetIconOverride(q, icon)))
-                {
-                    using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-                    ImGui.Text(_LF("Obtained from: {0}", q.Name));
-                    using (ImRaii.PushIndent())
-                    {
-                        questTooltipComponent.DrawInner(q, showItemRewards: false);
-                    }
-                }
-                questRegistry.TryGetQuest(q.QuestId, out Domain.Quest? quest);
-                questJournalUtils.ShowContextMenu(q, quest, nameof(QuestRewardComponent));
+                using var _ = ImRaii.PushId($"###{(int)aetheryteLocation}-{info.QuestId.Value}");
+                journalTable.QuestRow(info, nameof(QuestRewardComponent));
             }
-            ImGui.Separator();
             total++;
         }
         if (total == 0)
-            ImGui.Text(_L("No results"));
+            DrawNoResults();
     }
 
     private void DrawGroup(string label, EItemRewardType type)
@@ -199,91 +174,96 @@ internal sealed class QuestRewardComponent
         if (!ImGui.CollapsingHeader($"{label}###Reward{type}"))
             return;
 
+        using ImRaii.TableDisposable table = journalTable.Begin($"Reward{type}", owned: true);
+        if (!table)
+            return;
+
+        int total = 0;
         if (type is EItemRewardType.Duty)
         {
-            var resultsDuties = questRegistry.AllQuests
+            var dutyQuests = questRegistry.AllQuests
                     .Where(x => x.Id is QuestId &&
                            ((QuestInfo)x.Info).CfcUnlock != null &&
                            !questFunctions.IsQuestUnobtainable(x.Id))
                     .OrderBy(x => x.Id.Value).ToList();
-            if (resultsDuties.Count == 0)
-                ImGui.Text(_L("No results"));
-            foreach (QuestInfo q in resultsDuties.Select(x => (QuestInfo)x.Info))
-            {
-                ContentFinderCondition cfc = q.CfcUnlock!.Value;
-                if (cfc.Name.ByteLength == 0)
-                    continue;
-                string name = $"{cfc.Name.ToDalamudString()} ({cfc.RowId})";
-                bool complete = questFunctions.IsQuestComplete(q.QuestId);
-                if (_hideCompleted && complete)
-                    continue;
-                Vector4 color = !questRegistry.IsKnownQuest(q.QuestId)
-                    ? QstTheme.TextMuted
-                    : complete
-                        ? QstTheme.Success
-                        : QstTheme.Danger;
-                FontAwesomeIcon icon = complete ? FontAwesomeIcon.Check : FontAwesomeIcon.Times;
-                if (uiUtils.ChecklistItem(name, color, icon, iconOverride: QuestJournalUtils.GetIconOverride(q, icon)))
-                {
-                    using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-                    ImGui.Text(_LF("Obtained from: {0}", q.Name));
-                    using (ImRaii.PushIndent())
-                    {
-                        questTooltipComponent.DrawInner(q, showItemRewards: false);
-                    }
-                }
-                questRegistry.TryGetQuest(q.QuestId, out Domain.Quest? quest);
-                questJournalUtils.ShowContextMenu(q, quest, nameof(QuestRewardComponent));
-            }
-            return;
+            total = DrawDutyRows(dutyQuests.Select(x => (QuestInfo)x.Info));
         }
-
-        var results = questData.RedeemableItems.Where(x => x.Type == type)
-            .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
-        var total = 0;
-
-        foreach (ItemReward item in results)
+        else
         {
-            if (questData.TryGetQuestInfo(item.ElementId, out IQuestInfo? questInfo))
+            foreach (ItemReward item in questData.RedeemableItems.Where(x => x.Type == type)
+                         .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase))
             {
+                if (!questData.TryGetQuestInfo(item.ElementId, out IQuestInfo? questInfo))
+                    continue;
                 bool isEventQuest = questInfo is QuestInfo { IsSeasonalEvent: true };
                 if (!_showEventRewards && isEventQuest)
                     continue;
-                bool isUnobtainable = questFunctions.IsQuestUnobtainable(item.ElementId);
-                if (_hideUnobtainable && isUnobtainable)
+                if (_hideUnobtainable && questFunctions.IsQuestUnobtainable(item.ElementId))
                     continue;
-
-                string name = item.Name;
-                if (isEventQuest)
-                    name += $" {SeIconChar.Clock.ToIconString()}";
-
                 bool complete = item.IsUnlocked();
                 if (_hideCompleted && complete)
                     continue;
-                Vector4 color = !questRegistry.IsKnownQuest(item.ElementId)
-                    ? QstTheme.TextMuted
-                    : complete
-                        ? QstTheme.Success
-                        : QstTheme.Danger;
-                FontAwesomeIcon icon = complete ? FontAwesomeIcon.Check : FontAwesomeIcon.Times;
-                if (uiUtils.ChecklistItem(name, color, icon, iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)questInfo, icon)))
-                {
-                    using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-                    if (item.Type is not EItemRewardType.TripleTriadCard)
-                        ImGui.Text(_LF("Obtained from: {0}", questInfo.Name));
-                    using (ImRaii.PushIndent())
-                    {
-                        questTooltipComponent.DrawInner(questInfo, showItemRewards: false);
-                    }
-                }
-                questRegistry.TryGetQuest(questInfo.QuestId, out Domain.Quest? quest);
-                questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestRewardComponent));
+                string name = isEventQuest ? $"{item.Name} {SeIconChar.Clock.ToIconString()}" : item.Name;
+                // One quest can give several items; without this their rows share one right-click menu.
+                using var id = ImRaii.PushId((int)item.ItemId);
+                journalTable.QuestRow(questInfo, nameof(QuestRewardComponent), name, complete);
                 total++;
             }
         }
+
         if (total == 0)
-            ImGui.Text(_L("No results"));
+            DrawNoResults();
     }
+
+    private void DrawMentorRoulette()
+    {
+        if (!ImGui.CollapsingHeader(_L("Duty Roulette: Mentor") + "###RewardMentorRoulette"))
+            return;
+
+        using ImRaii.TableDisposable table = journalTable.Begin("RewardMentorRoulette");
+        if (!table)
+            return;
+
+        _mentorQuests ??=
+        [
+            .. questData.GetAll().OfType<QuestInfo>()
+                .Where(x => x.QuestId is QuestId && x.CfcUnlock is { MentorRoulette: true })
+                .OrderBy(x => x.QuestId.Value)
+        ];
+        if (DrawDutyRows(_mentorQuests.Where(x => !questFunctions.IsQuestUnobtainable(x.QuestId))) == 0)
+            DrawNoResults();
+    }
+
+    private int DrawDutyRows(IEnumerable<QuestInfo> quests)
+    {
+        int total = 0;
+        foreach (QuestInfo info in quests)
+        {
+            ContentFinderCondition cfc = info.CfcUnlock!.Value;
+            if (cfc.Name.ByteLength == 0)
+                continue;
+            bool complete = questFunctions.IsQuestComplete(info.QuestId);
+            if (_hideCompleted && complete)
+                continue;
+            journalTable.QuestRow(info, nameof(QuestRewardComponent), $"{cfc.Name.ToDalamudString()} ({cfc.RowId})", complete);
+            total++;
+        }
+
+        return total;
+    }
+
+    internal static string AetheryteName(EAetheryteLocation location) =>
+        AetheryteConverter.Values.TryGetValue(location, out string? name) ||
+        AethernetShardConverter.Values.TryGetValue(location, out name)
+            ? name
+            : location.ToString();
+
+    private static void DrawNoResults()
+    {
+        JournalTable.BeginRow();
+        ImGui.Text(_L("No results"));
+    }
+
     private void StartAetheryteBuild()
     {
         var currentGeneration = _generation;
@@ -293,17 +273,17 @@ internal sealed class QuestRewardComponent
             logger.LogInformation("StartAetheryteBuild{Generation}", currentGeneration);
             try
             {
-                var dict = new OrderedDictionary<EAetheryteLocation, List<QuestInfo>>();
-                foreach (EAetheryteLocation loc in AetheryteData.Aetherytes)
+                var unlocks = new OrderedDictionary<EAetheryteLocation, List<QuestInfo>>();
+                foreach (EAetheryteLocation location in AetheryteData.Aetherytes)
                 {
-                    if (loc is EAetheryteLocation.None) continue;
-                    dict[loc] = obtainableQuests
-                        .Where(x => x.AllSteps().Any(a =>
-                            (a.Step.InteractionType is EInteractionType.AttuneAetheryte && a.Step.Aetheryte.Equals(loc)) ||
-                            (a.Step.InteractionType is EInteractionType.AttuneAethernetShard && a.Step.AethernetShard.Equals(loc))))
+                    if (location is EAetheryteLocation.None) continue;
+                    unlocks[location] = obtainableQuests
+                        .Where(x => x.AllSteps().Any(entry =>
+                            (entry.Step.InteractionType is EInteractionType.AttuneAetheryte && entry.Step.Aetheryte.Equals(location)) ||
+                            (entry.Step.InteractionType is EInteractionType.AttuneAethernetShard && entry.Step.AethernetShard.Equals(location))))
                         .Select(x => (QuestInfo)x.Info)
                         .ToList();
-                    logger.LogTrace("AetheryteBuild{Generation}: Found {Count} for {Loc}", currentGeneration, dict[loc].Count, loc);
+                    logger.LogTrace("AetheryteBuild{Generation}: Found {Count} for {Loc}", currentGeneration, unlocks[location].Count, location);
                     Thread.MemoryBarrier();
                     if (_generation != currentGeneration)
                     {
@@ -313,7 +293,7 @@ internal sealed class QuestRewardComponent
                 }
                 if (_generation == currentGeneration)
                 {
-                    _aetheryteUnlocks = dict;
+                    _aetheryteUnlocks = unlocks;
                     _aetheryteLoadState = ELoadState.Ready;
                 }
                 else

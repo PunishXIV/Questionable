@@ -1,89 +1,50 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1006975,
-          "Position": {
-            "X": 32.822144,
-            "Y": 21.25273,
-            "Z": -635.46204
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "Position": [32.822144, 21.25273, -635.46204],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003282,
-          "Position": {
-            "X": -3.03656,
-            "Y": 48.168007,
-            "Z": -261.70752
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "Position": [-3.03656, 48.168007, -261.70752],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005064,
-          "Position": {
-            "X": 335.01172,
-            "Y": 10.595109,
-            "Z": 3.9215698
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "Position": [335.01172, 10.595109, 3.9215698],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "TerritoryId": 138,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 28,
-            "Enabled": false,
+            "Enabled": true,
             "LowPriority": true
           }
         }
@@ -91,35 +52,23 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005064,
-          "Position": {
-            "X": 335.01172,
-            "Y": 10.595109,
-            "Z": 3.9215698
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "Position": [335.01172, 10.595109, 3.9215698],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1010359,
-          "Position": {
-            "X": 206.68335,
-            "Y": -24.996658,
-            "Z": 242.05383
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "Position": [206.68335, -24.996658, 242.05383],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

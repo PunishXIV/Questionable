@@ -1,37 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1050634,
-          "Position": {
-            "X": -181.62811,
-            "Y": 30.999819,
-            "Z": 22.079773
-          },
-          "TerritoryId": 1192,
-          "AetheryteShortcut": "Living Memory - Leynode Aero",
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1050635,
-          "Position": {
-            "X": -201.83112,
-            "Y": 29.999939,
-            "Z": -124.28479
-          },
-          "TerritoryId": 1192,
+          "Position": [-201.83112, 29.999939, -124.28479],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -44,17 +27,12 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1050636,
-          "Position": {
-            "X": -410.5135,
-            "Y": 30.49998,
-            "Z": -131.94476
-          },
-          "TerritoryId": 1192,
+          "Position": [-410.5135, 30.49998, -131.94476],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -67,17 +45,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1192,
       "Steps": [
         {
           "DataId": 1050813,
-          "Position": {
-            "X": -277.76,
-            "Y": 54.31037,
-            "Z": -382.58948
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Living Memory - Leynode Aero"
+          "Position": [-277.76, 54.31037, -382.58948],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

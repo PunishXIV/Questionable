@@ -1,38 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005939,
-          "Position": {
-              "X": -246.27802,
-              "Y": -41.834713,
-              "Z": 53.050713
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": -194.0164,
-            "Y": -42.30825,
-            "Z": -278.38858
-          },
-          "TerritoryId": 138,
+          "Position": [-194.0164, -42.30825, -278.38858],
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -42,12 +23,7 @@
           ]
         },
         {
-          "Position": {
-            "X": -194.0164,
-            "Y": -42.30825,
-            "Z": -278.38858
-          },
-          "TerritoryId": 138,
+          "Position": [-194.0164, -42.30825, -278.38858],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001271,
@@ -58,21 +34,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005939,
-          "Position": {
-              "X": -246.27802,
-              "Y": -41.834713,
-              "Z": 53.050713
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

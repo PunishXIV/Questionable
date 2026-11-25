@@ -1,59 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Anonymous", "Date": "2026-09-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "DataId": 1019043,
-          "Position": {
-            "X": -43.656128,
-            "Y": 15.000004,
-            "Z": 46.52478
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 628,
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [736],
-              "NearPosition": {
-                "Position": {
-                  "X": -59.098206,
-                  "Y": 79.05602,
-                  "Z": 45.303955
-                },
-                "TerritoryId": 628,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1024156,
-          "Position": {
-            "X": -59.098206,
-            "Y": 79.05602,
-            "Z": 45.303955
-          },
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 735,
-          "SkipConditions": { "StepIf": { "InTerritory": [735] } }
-        },
-        {
           "DataId": 1026029,
-          "Position": {
-            "X": 1.3274536,
-            "Y": 0.05124623,
-            "Z": 1.9683228
-          },
+          "Position": [1.3274536, 0.05124623, 1.9683228],
           "TerritoryId": 735,
           "InteractionType": "AcceptQuest"
         }
@@ -64,102 +20,55 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 735,
       "Steps": [
         {
           "DataId": 1026029,
-          "Position": {
-            "X": 1.3274536,
-            "Y": 0.05124623,
-            "Z": 1.9683228
-          },
-          "TerritoryId": 735,
+          "Position": [1.3274536, 0.05124623, 1.9683228],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006305,
-          "Position": {
-            "X": 10.60498,
-            "Y": 71.47817,
-            "Z": -16.617126
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "Position": [10.60498, 71.47817, -16.617126],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006305,
-          "Position": {
-            "X": 10.60498,
-            "Y": 71.47817,
-            "Z": -16.617126
-          },
-          "TerritoryId": 137,
+          "Position": [10.60498, 71.47817, -16.617126],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006312,
-          "Position": {
-            "X": -369.0395,
-            "Y": 54.28071,
-            "Z": 441.24512
-          },
-          "TerritoryId": 137,
+          "Position": [-369.0395, 54.28071, 441.24512],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "DataId": 1024156,
-          "Position": {
-            "X": -59.098206,
-            "Y": 79.05602,
-            "Z": 45.303955
-          },
-          "StopDistance": 7,
-          "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 735,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Airship Landing"
-          ]
-        },
-        {
           "DataId": 1026029,
-          "Position": {
-            "X": 1.3274536,
-            "Y": 0.05124623,
-            "Z": 1.9683228
-          },
+          "Position": [1.3274536, 0.05124623, 1.9683228],
           "TerritoryId": 735,
           "InteractionType": "CompleteQuest"
         }

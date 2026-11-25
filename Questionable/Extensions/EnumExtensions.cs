@@ -6,19 +6,19 @@ internal static class EnumExtensions
 {
     public static string ToFormattedText(this Enum value)
     {
-        var stringVal = value.ToString();
-        var bld = new StringBuilder();
+        var text = value.ToString();
+        var builder = new StringBuilder();
 
-        for (var i = 0; i < stringVal.Length; i++)
+        for (var i = 0; i < text.Length; i++)
         {
-            if (char.IsUpper(stringVal[i]))
+            if (char.IsUpper(text[i]))
             {
-                bld.Append(' ');
+                builder.Append(' ');
             }
 
-            bld.Append(stringVal[i]);
+            builder.Append(text[i]);
         }
 
-        return bld.ToString().Trim();
+        return builder.ToString().Trim();
     }
 }

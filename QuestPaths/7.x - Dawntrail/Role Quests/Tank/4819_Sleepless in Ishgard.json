@@ -1,120 +1,77 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048255,
-          "Position": {
-            "X": 39.475098,
-            "Y": 23.979128,
-            "Z": -48.05072
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006433,
-          "Position": {
-            "X": 202.80762,
-            "Y": 309.07346,
-            "Z": -220.69128
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "Position": [202.80762, 309.07346, -220.69128],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1048260,
-          "Position": {
-            "X": 39.017212,
-            "Y": 208.71985,
-            "Z": 410.26917
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [39.017212, 208.71985, 410.26917],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -20.404095,
-            "Y": 200.07019,
-            "Z": 519.84406
-          },
-          "TerritoryId": 155,
+          "Position": [-20.404095, 200.07019, 519.84406],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17605
-          ],
-          "Fly": false
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1048261,
-          "Position": {
-            "X": -19.424805,
-            "Y": 197.58359,
-            "Z": 527.5502
-          },
-          "TerritoryId": 155,
+          "Position": [-19.424805, 197.58359, 527.5502],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1050461,
-          "Position": {
-            "X": 87.20532,
-            "Y": 23.979128,
-            "Z": -1.7243042
-          },
-          "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "Position": [87.20532, 23.979128, -1.7243042],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1048255,
-          "Position": {
-            "X": 39.475098,
-            "Y": 23.979128,
-            "Z": -48.05072
-          },
-          "TerritoryId": 418,
+          "Position": [39.475098, 23.979128, -48.05072],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4820
         }

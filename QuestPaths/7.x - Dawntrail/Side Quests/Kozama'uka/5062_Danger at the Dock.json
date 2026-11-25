@@ -1,59 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048781,
-          "Position": {
-            "X": -213.09229,
-            "Y": 6.2771482,
-            "Z": -510.70422
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2014196,
-          "Position": {
-            "X": 819.6382,
-            "Y": 14.084045,
-            "Z": -312.21484
-          },
-          "TerritoryId": 1188,
+          "Position": [819.6382, 14.084045, -312.21484],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17657,
             17658
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048781,
-          "Position": {
-            "X": -213.09229,
-            "Y": 6.2771482,
-            "Z": -510.70422
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

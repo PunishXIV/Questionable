@@ -1,93 +1,50 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013584,
-          "Position": {
-            "X": 58.91504,
-            "Y": -50.325172,
-            "Z": -146.95972
-          },
-          "StopDistance": 7,
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1012657,
-          "Position": {
-            "X": -248.64581,
-            "Y": -30.095806,
-            "Z": 102.22009
-          },
-          "StopDistance": 7,
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "Position": [-248.64581, -30.095806, 102.22009],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2006201,
-          "Position": {
-            "X": -480.30823,
-            "Y": -5.996826,
-            "Z": -425.28424
-          },
-          "TerritoryId": 398,
+          "Position": [-480.30823, -5.996826, -425.28424],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 2006201,
-          "Position": {
-            "X": -480.30823,
-            "Y": -5.996826,
-            "Z": -425.28424
-          },
-          "TerritoryId": 398,
+          "Position": [-480.30823, -5.996826, -425.28424],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818074
         },
         {
-          "Position": {
-            "X": -467.55936,
-            "Y": -11.599176,
-            "Z": -445.6323
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "Mount": true
-        },
-        {
           "DataId": 2005448,
-          "Position": {
-            "X": -688.38025,
-            "Y": 4.8981323,
-            "Z": -794.88824
-          },
-          "TerritoryId": 398,
+          "Position": [-688.38025, 4.8981323, -794.88824],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "TerritoryId": 398,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 37,
@@ -101,15 +58,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1012661,
-          "Position": {
-            "X": 240.31421,
-            "Y": -42.317062,
-            "Z": 615.1063
-          },
-          "TerritoryId": 400,
+          "Position": [240.31421, -42.317062, 615.1063],
           "InteractionType": "CompleteQuest"
         }
       ]

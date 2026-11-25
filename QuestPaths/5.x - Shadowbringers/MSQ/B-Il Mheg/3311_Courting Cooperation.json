@@ -1,20 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1029017,
-          "Position": {
-            "X": -645.01416,
-            "Y": 35.86156,
-            "Z": -223.10223
-          },
-          "StopDistance": 5,
-          "TerritoryId": 816,
+          "Position": [-645.01416, 35.86156, -223.10223],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -28,25 +23,16 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030618,
-          "Position": {
-            "X": -613.39746,
-            "Y": 36.54754,
-            "Z": -215.41168
-          },
-          "TerritoryId": 816,
+          "Position": [-613.39746, 36.54754, -215.41168],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 3398
         },
         {
-          "Position": {
-            "X": -629.64935,
-            "Y": 35.484062,
-            "Z": -173.54001
-          },
-          "TerritoryId": 816,
+          "Position": [-629.64935, 35.484062, -173.54001],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -62,32 +48,23 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1029017,
-          "Position": {
-            "X": -645.01416,
-            "Y": 35.86156,
-            "Z": -223.10223
-          },
-          "TerritoryId": 816,
+          "Position": [-645.01416, 35.86156, -223.10223],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030535,
-          "Position": {
-            "X": -355.30634,
-            "Y": 46.684208,
-            "Z": 482.0172
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+          "Position": [-355.30634, 46.684208, 482.0172],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

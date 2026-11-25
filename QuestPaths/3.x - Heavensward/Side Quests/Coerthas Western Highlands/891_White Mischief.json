@@ -1,47 +1,24 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "epinephren@github",
   "LastChecked":{"Username": "alydev", "Date": "2026-03-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006385,
-          "Position": {
-            "X": 241.50452,
-            "Y": 222.25885,
-            "Z": 325.45972
-          },
-          "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002112,
-          "Position": {
-            "X": -21.805176,
-            "Y": 207.17163,
-            "Z": 447.37915
-          },
-          "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-21.805176, 207.17163, 447.37915],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1911,
-          "Position": {
-            "X": -22.351383,
-            "Y": 207.15007,
-            "Z": 447.1283
-          },
-          "TerritoryId": 155,
+          "Position": [-22.351383, 207.15007, 447.1283],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -52,20 +29,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1006385,
-          "Position": {
-            "X": 241.50452,
-            "Y": 222.25885,
-            "Z": 325.45972
-          },
-          "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

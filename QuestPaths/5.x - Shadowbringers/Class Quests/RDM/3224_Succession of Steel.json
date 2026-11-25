@@ -1,70 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1023610,
-          "Position": {
-            "X": 55.313843,
-            "Y": 20.397943,
-            "Z": -676.3562
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1028372,
-          "Position": {
-            "X": 599.23694,
-            "Y": 80.00001,
-            "Z": 623.07153
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "Position": [599.23694, 80.00001, 623.07153],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1028374,
-          "Position": {
-            "X": 274.76917,
-            "Y": 10.572342,
-            "Z": -543.05334
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [274.76917, 10.572342, -543.05334],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1028379,
-          "Position": {
-            "X": 81.49841,
-            "Y": 10,
-            "Z": -574.2123
-          },
-          "TerritoryId": 621,
+          "Position": [81.49841, 10, -574.2123],
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKBC015_03224_Q1_000_100",
@@ -77,99 +49,69 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1030849,
-          "Position": {
-            "X": 124.40674,
-            "Y": 10,
-            "Z": -515.58716
-          },
-          "TerritoryId": 621,
+          "Position": [124.40674, 10, -515.58716],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [10834, 10835],
-          "Fly": true
+          "KillEnemyDataIds": [10834, 10835]
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1028374,
-          "Position": {
-            "X": 274.76917,
-            "Y": 10.572342,
-            "Z": -543.05334
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [274.76917, 10.572342, -543.05334],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1028376,
-          "Position": {
-            "X": -790.7988,
-            "Y": 78.22368,
-            "Z": -699.5804
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "Fly": true
+          "Position": [-790.7988, 78.22368, -699.5804],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1028377,
-          "Position": {
-            "X": 51.346558,
-            "Y": 24.662476,
-            "Z": -787.9301
-          },
-          "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [51.346558, 24.662476, -787.9301],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 621,
       "Steps": [
         {
           "DataId": 1028377,
-          "Position": {
-            "X": 51.346558,
-            "Y": 24.662476,
-            "Z": -787.9301
-          },
-          "TerritoryId": 621,
+          "Position": [51.346558, 24.662476, -787.9301],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1030677,
-          "Position": {
-            "X": 55.313843,
-            "Y": 20.397943,
-            "Z": -676.3562
-          },
-          "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "Position": [55.313843, 20.397943, -676.3562],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

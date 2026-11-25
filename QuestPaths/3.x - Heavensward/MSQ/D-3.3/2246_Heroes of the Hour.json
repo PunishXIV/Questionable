@@ -1,86 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "erdelf", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1016589,
-          "Position": {
-            "X": 7.4005737,
-            "Y": 1.2791227,
-            "Z": 104.35632
-          },
-          "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1017024,
-          "Position": {
-            "X": 110.03284,
-            "Y": 24.383236,
-            "Z": -6.4851074
-          },
-          "TerritoryId": 418,
+          "Position": [110.03284, 24.383236, -6.4851074],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1011217,
-          "Position": {
-            "X": 17.990356,
-            "Y": 16.009666,
-            "Z": -9.567444
-          },
-          "TerritoryId": 419,
+          "Position": [17.990356, 16.009666, -9.567444],
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 433,
       "Steps": [
         {
-          "DataId": 2005334,
-          "Position": {
-            "X": -0.001443714,
-            "Y": 1.1515,
-            "Z": 13.2236
-          },
-          "TerritoryId": 433,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
-        {
           "DataId": 1012380,
-          "Position": {
-            "X": 124.46777,
-            "Y": 24.458836,
-            "Z": 0.47296143
-          },
+          "Position": [124.46777, 24.458836, 0.47296143],
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

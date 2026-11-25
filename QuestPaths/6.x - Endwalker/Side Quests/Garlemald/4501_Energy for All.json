@@ -1,90 +1,66 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041761,
-          "Position": {
-            "X": 414.51123,
-            "Y": -18.808798,
-            "Z": 613.1837
-          },
-          "TerritoryId": 958,
+          "Position": [414.51123, -18.808798, 613.1837],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "you should be in range right away, but if you aren't then you might be 700 yalms away back at camp"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 2012329,
-          "Position": {
-            "X": 376.82153,
-            "Y": -18.875488,
-            "Z": 512.65735
-          },
-          "TerritoryId": 958,
+          "Position": [376.82153, -18.875488, 512.65735],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14094,
             14095
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041760,
-          "Position": {
-            "X": 413.87048,
-            "Y": -18.81719,
-            "Z": 612.05444
-          },
-          "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [413.87048, -18.81719, 612.05444],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041761,
-          "Position": {
-            "X": 414.51123,
-            "Y": -18.808798,
-            "Z": 613.1837
-          },
-          "TerritoryId": 958,
+          "Position": [414.51123, -18.808798, 613.1837],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040963,
-          "Position": {
-            "X": -325.27655,
-            "Y": 22.462305,
-            "Z": 450.49194
-          },
-          "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "Position": [-325.27655, 22.462305, 450.49194],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

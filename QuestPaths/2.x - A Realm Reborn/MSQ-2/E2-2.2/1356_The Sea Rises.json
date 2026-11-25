@@ -1,37 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1008542,
-          "Position": {
-            "X": 0.8086548,
-            "Y": -1.9957249,
-            "Z": -42.557434
-          },
-          "TerritoryId": 351,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1001029,
-          "Position": {
-            "X": 9.170593,
-            "Y": 20.999403,
-            "Z": -15.213318
-          },
-          "TerritoryId": 129,
+          "Position": [9.170593, 20.999403, -15.213318],
           "InteractionType": "Interact",
           "TargetTerritoryId": 198,
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_GAIUSE212_01356_Q1_000_1",
@@ -42,11 +26,7 @@
         },
         {
           "DataId": 1002694,
-          "Position": {
-            "X": -0.045776367,
-            "Y": 1.6001425,
-            "Z": -7.0039062
-          },
+          "Position": [-0.045776367, 1.6001425, -7.0039062],
           "TerritoryId": 198,
           "InteractionType": "Interact"
         }
@@ -54,36 +34,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 256.67426,
-            "Y": 1.7067826,
-            "Z": 216.63573
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
-        },
-        {
-          "Position": {
-            "X": 62.872204,
-            "Y": -3.1182384,
-            "Z": 61.10103
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006614,
-          "Position": {
-            "X": 65.87317,
-            "Y": -3.1181886,
-            "Z": 61.41748
-          },
-          "TerritoryId": 138,
+          "Position": [65.87317, -3.1181886, 61.41748],
           "InteractionType": "CompleteQuest"
         }
       ]

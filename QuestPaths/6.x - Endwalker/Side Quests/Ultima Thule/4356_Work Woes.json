@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,74 +8,42 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1041660,
-          "Position": {
-            "X": 482.365,
-            "Y": 437.001,
-            "Z": 311.945
-          },
-          "TerritoryId": 960,
+          "Position": [482.365, 437.001, 311.945],
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",
               "Prompt": "TEXT_AKTKZK003_04356_Q1_000_100",
               "Answer": "TEXT_AKTKZK003_04356_A2_000_100"
             }
-          ],
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 482.365,
-                  "Y": 437.001,
-                  "Z": 311.945
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          ]
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1041660,
-          "Position": {
-            "X": 482.365,
-            "Y": 437.001,
-            "Z": 311.945
-          },
-          "TerritoryId": 960,
+          "Position": [482.365, 437.001, 311.945],
           "InteractionType": "Emote",
-          "Emote": "dance",
-          "Fly": true,
-          "StopDistance": 5
+          "Emote": "dance"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1041661,
-          "Position": {
-            "X": 618.8,
-            "Y": 440.463,
-            "Z": 381.421
-          },
-          "TerritoryId": 960,
+          "Position": [618.8, 440.463, 381.421],
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -88,34 +56,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1041660,
-          "Position": {
-            "X": 482.365,
-            "Y": 437.001,
-            "Z": 311.945
-          },
-          "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 482.365,
-                  "Y": 437.001,
-                  "Z": 311.945
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

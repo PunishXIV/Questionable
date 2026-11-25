@@ -1,23 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000859,
-          "Position": {
-            "X": -166.76587,
-            "Y": 4.5496645,
-            "Z": 150.04187
-          },
-          "TerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
+          "Position": [-166.76587, 4.5496645, 150.04187],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -29,12 +21,7 @@
         },
         {
           "DataId": 1000859,
-          "Position": {
-            "X": -166.76587,
-            "Y": 4.5496645,
-            "Z": 150.04187
-          },
-          "TerritoryId": 129,
+          "Position": [-166.76587, 4.5496645, 150.04187],
           "InteractionType": "AcceptQuest"
         }
       ]

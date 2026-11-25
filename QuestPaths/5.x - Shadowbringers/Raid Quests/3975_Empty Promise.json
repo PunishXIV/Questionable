@@ -1,52 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1032590,
-          "Position": {
-            "X": 265.3086,
-            "Y": 7.1558266,
-            "Z": -237.78137
-          },
-          "StopDistance": 4,
-          "TerritoryId": 815,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1034507,
-          "Position": {
-            "X": 381.9486,
-            "Y": -64.35385,
-            "Z": 511.13135
-          },
-          "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
-          "Fly": true
+          "Position": [381.9486, -64.35385, 511.13135],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1034508,
-          "Position": {
-            "X": 380.66675,
-            "Y": -64.28985,
-            "Z": 510.58203
-          },
-          "TerritoryId": 815,
+          "Position": [380.66675, -64.28985, 510.58203],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3976
         }

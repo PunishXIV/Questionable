@@ -1,77 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1013279,
-          "Position": {
-            "X": 441.70276,
-            "Y": 8.670496,
-            "Z": 18.814331
-          },
-          "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1013339,
-          "Position": {
-            "X": 396.16992,
-            "Y": 8.113181,
-            "Z": 48.142212
-          },
-          "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [396.16992, 8.113181, 48.142212],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1014284,
-          "Position": {
-            "X": 384.2068,
-            "Y": -0.39099246,
-            "Z": 65.90369
-          },
-          "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [384.2068, -0.39099246, 65.90369],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1014284,
-          "Position": {
-            "X": 384.2068,
-            "Y": -0.39099246,
-            "Z": 65.90369
-          },
-          "TerritoryId": 139,
+          "Position": [384.2068, -0.39099246, 65.90369],
           "InteractionType": "Emote",
           "Emote": "slap"
         }
@@ -79,92 +43,60 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013304,
-          "Position": {
-            "X": 347.37158,
-            "Y": 3.0454707,
-            "Z": -9.445435
-          },
-          "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [347.37158, 3.0454707, -9.445435],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013310,
-          "Position": {
-            "X": 354.63477,
-            "Y": 23.944334,
-            "Z": -133.44019
-          },
-          "TerritoryId": 139,
+          "Position": [354.63477, 23.944334, -133.44019],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             4404,
             4405
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013310,
-          "Position": {
-            "X": 354.63477,
-            "Y": 23.944334,
-            "Z": -133.44019
-          },
-          "TerritoryId": 139,
+          "Position": [354.63477, 23.944334, -133.44019],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1013307,
-          "Position": {
-            "X": 281.69678,
-            "Y": 38.53493,
-            "Z": -176.74524
-          },
-          "TerritoryId": 139,
+          "Position": [281.69678, 38.53493, -176.74524],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1013279,
-          "Position": {
-            "X": 441.70276,
-            "Y": 8.670496,
-            "Z": 18.814331
-          },
-          "TerritoryId": 139,
+          "Position": [441.70276, 8.670496, 18.814331],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 601
         }

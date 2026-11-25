@@ -1,57 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011236,
-          "Position": {
-            "X": 446.00586,
-            "Y": 217.95142,
-            "Z": 764.06494
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "Position": {
-            "X": 464.90463,
-            "Y": 203.4332,
-            "Z": 679.09424
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1011241,
-          "Position": {
-            "X": 501.7318,
-            "Y": 164.19402,
-            "Z": 301.13672
-          },
-          "TerritoryId": 397,
+          "Position": [501.7318, 164.19402, 301.13672],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
-          "TerritoryId": 397,
-          "Position": {
-            "X": 462.2118,
-            "Y": 164.57632,
-            "Z": 301.1987
-          },
+          "Position": [462.2118, 164.57632, 301.1987],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -66,15 +38,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1011241,
-          "Position": {
-            "X": 501.7318,
-            "Y": 164.19402,
-            "Z": 301.13672
-          },
-          "TerritoryId": 397,
+          "Position": [501.7318, 164.19402, 301.13672],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,52 +1,23 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006750,
-          "Position": {
-            "X": 16.464417,
-            "Y": 6.750492,
-            "Z": -7.3396606
-          },
-          "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 72.586075,
-            "Y": 226.66864,
-            "Z": 382.17618
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
-        {
           "DataId": 2002373,
-          "Position": {
-            "X": 72.098755,
-            "Y": 227.19153,
-            "Z": 380.84985
-          },
-          "TerritoryId": 155,
+          "Position": [72.098755, 227.19153, 380.84985],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.1.8"
+            "Enabled": true
           },
           "ItemId": 2000953
         }
@@ -54,15 +25,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1007891,
-          "Position": {
-            "X": 70.17627,
-            "Y": 226.72212,
-            "Z": 381.30762
-          },
-          "TerritoryId": 155,
+          "Position": [70.17627, 226.72212, 381.30762],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1713
         }

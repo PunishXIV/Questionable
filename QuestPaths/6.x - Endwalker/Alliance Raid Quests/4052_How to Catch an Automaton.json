@@ -1,21 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1036044,
-          "Position": {
-            "X": 652.7046,
-            "Y": 297.47797,
-            "Z": -171.03839
-          },
-          "TerritoryId": 814,
+          "Position": [652.7046, 297.47797, -171.03839],
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Tomra",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -28,14 +22,10 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "Position": {
-            "X": 552.4747,
-            "Y": 294.7846,
-            "Z": -137.54712
-          },
-          "TerritoryId": 814,
+          "Position": [552.4747, 294.7846, -137.54712],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -45,26 +35,13 @@
             "ItemId": 2003071,
             "Condition": "Health%",
             "Value": 30
-          },
-          "Fly": true
+          }
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1036044,
-          "Position": {
-            "X": 652.7046,
-            "Y": 297.47797,
-            "Z": -171.03839
-          },
-          "TerritoryId": 814,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

@@ -1,95 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012294,
-          "Position": {
-            "X": 366.4148,
-            "Y": 20.214104,
-            "Z": 756.7101
-          },
-          "TerritoryId": 402,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 402,
       "Steps": [
         {
-          "Position": {
-            "X": 505.4667,
-            "Y": 16.87959,
-            "Z": 751.14856
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "can get stuck on the spire structure when trying to land. could land elsewhere but we want to start with this one because it's the first on foot, so if done before flying unlocked that would necessitate walking directly past it.",
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
-        },
-        {
           "DataId": 2005900,
-          "Position": {
-            "X": 506.76733,
-            "Y": 16.861145,
-            "Z": 750.24023
-          },
-          "TerritoryId": 402,
+          "Position": [506.76733, 16.861145, 750.24023],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2005903,
-          "Position": {
-            "X": 544.64014,
-            "Y": 15.945618,
-            "Z": 760.61633
-          },
-          "TerritoryId": 402,
+          "Position": [544.64014, 15.945618, 760.61633],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         },
         {
           "DataId": 2005899,
-          "Position": {
-            "X": 545.4031,
-            "Y": 20.2182,
-            "Z": 802.8534
-          },
-          "TerritoryId": 402,
+          "Position": [545.4031, 20.2182, 802.8534],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2005902,
-          "Position": {
-            "X": 614.6791,
-            "Y": 20.2182,
-            "Z": 758.938
-          },
-          "TerritoryId": 402,
+          "Position": [614.6791, 20.2182, 758.938],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
           "DataId": 2005901,
-          "Position": {
-            "X": 605.3406,
-            "Y": 15.945618,
-            "Z": 708.06433
-          },
-          "TerritoryId": 402,
+          "Position": [605.3406, 15.945618, 708.06433],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -97,19 +45,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1012294,
-          "Position": {
-            "X": 366.4148,
-            "Y": 20.214104,
-            "Z": 756.7101
-          },
-          "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

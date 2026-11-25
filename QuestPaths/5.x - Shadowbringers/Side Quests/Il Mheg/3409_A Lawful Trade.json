@@ -1,52 +1,19 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1028044,
-          "Position": {
-            "X": 71.46892,
-            "Y": 110.75986,
-            "Z": -882.7626
-          },
-          "TerritoryId": 816,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 69.7489,
-                  "Y": 110.69292,
-                  "Z": -883.69574
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1028052,
-          "Position": {
-            "X": -381.09412,
-            "Y": 58.71793,
-            "Z": 554.2534
-          },
-          "TerritoryId": 816,
+          "Position": [-381.09412, 58.71793, 554.2534],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -59,102 +26,43 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2010189,
-          "Position": {
-            "X": -426.7796,
-            "Y": 36.484253,
-            "Z": 331.80737
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-426.7796, 36.484253, 331.80737],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010186,
-          "Position": {
-            "X": -411.00177,
-            "Y": 18.600708,
-            "Z": 209.18591
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-411.00177, 18.600708, 209.18591],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010185,
-          "Position": {
-            "X": -428.4276,
-            "Y": 21.164185,
-            "Z": 207.20227
-          },
-          "TerritoryId": 816,
+          "Position": [-428.4276, 21.164185, 207.20227],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2010184,
-          "Position": {
-            "X": -450.6142,
-            "Y": 12.924377,
-            "Z": 27.725586
-          },
-          "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-450.6142, 12.924377, 27.725586],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010187,
-          "Position": {
-            "X": -468.46722,
-            "Y": 15.6710205,
-            "Z": 8.743347
-          },
-          "TerritoryId": 816,
+          "Position": [-468.46722, 15.6710205, 8.743347],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2010188,
-          "Position": {
-            "X": -460.19684,
-            "Y": 7.370056,
-            "Z": -21.896729
-          },
-          "TerritoryId": 816,
+          "Position": [-460.19684, 7.370056, -21.896729],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1028044,
-          "Position": {
-            "X": 71.46892,
-            "Y": 110.75986,
-            "Z": -882.7626
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 71.46892,
-                  "Y": 110.75986,
-                  "Z": -882.7626
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

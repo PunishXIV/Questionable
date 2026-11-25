@@ -1,73 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1006747,
-          "Position": {
-            "X": -20.828613,
-            "Y": 29.999964,
-            "Z": -2.4262085
-          },
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 2002347,
-          "Position": {
-            "X": 175.82971,
-            "Y": -10.452454,
-            "Z": 84.91638
-          },
-          "TerritoryId": 145,
+          "Position": [175.82971, -10.452454, 84.91638],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             383
           ],
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
           "Comment": "The Level 50 mob Gatling may be nearby causing the AI to use AoE attacks and hit it"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1006747,
-          "Position": {
-            "X": -20.828613,
-            "Y": 29.999964,
-            "Z": -2.4262085
-          },
-          "TerritoryId": 131,
+          "Position": [-20.828613, 29.999964, -2.4262085],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
           "NextQuestId": 1058
         }
       ]

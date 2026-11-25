@@ -1,18 +1,14 @@
-{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+﻿{
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1046043,
-          "Position": {
-            "X": -117.614,
-            "Y": 4,
-            "Z": -67.1382
-          },
-          "TerritoryId": 130,
+          "Position": [-117.614, 4, -67.1382],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESSXT101_04796_Q3_100_001",
@@ -21,39 +17,28 @@
               "PromptIsRegularExpression": true
             }
           ],
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1046044,
-          "Position": {
-            "X": 346.337,
-            "Y": -6.97824,
-            "Z": 151.914
-          },
-          "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "Position": [346.337, -6.97824, 151.914],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 2013582,
-          "Position": {
-            "X": 347.245,
-            "Y": -6.66511,
-            "Z": 155.074
-          },
-          "TerritoryId": 145,
+          "Position": [347.245, -6.66511, 155.074],
           "InteractionType": "Interact",
           "Mount": false
         }
@@ -61,31 +46,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 2013507,
-          "Position": {
-            "X": -85.62081,
-            "Y": 41,
-            "Z": 66.82838
-          },
-          "TerritoryId": 131,
-          "StopDistance": 1,
+          "Position": [-85.62081, 41, 66.82838],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1046046,
-          "Position": {
-            "X": -86.8969,
-            "Y": 41,
-            "Z": 66.1701
-          },
-          "TerritoryId": 131,
+          "Position": [-86.8969, 41, 66.1701],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4797
         } 

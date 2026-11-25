@@ -1,59 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048728,
-          "Position": {
-            "X": 439.8108,
-            "Y": 112.435,
-            "Z": 669.6116
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 2014130,
-          "Position": {
-            "X": 438.651,
-            "Y": 103.80713,
-            "Z": 299.33618
-          },
-          "TerritoryId": 1187,
+          "Position": [438.651, 103.80713, 299.33618],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 2014129,
-          "Position": {
-            "X": 466.23938,
-            "Y": 106.767334,
-            "Z": 244.67834
-          },
-          "TerritoryId": 1187,
+          "Position": [466.23938, 106.767334, 244.67834],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2014131,
-          "Position": {
-            "X": 486.6255,
-            "Y": 112.71838,
-            "Z": 271.13745
-          },
-          "TerritoryId": 1187,
+          "Position": [486.6255, 112.71838, 271.13745],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -61,20 +33,7 @@
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1048728,
-          "Position": {
-            "X": 439.8108,
-            "Y": 112.435,
-            "Z": 669.6116
-          },
-          "StopDistance": 5,
-          "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
-        }
-      ]
+      "Steps": []
     }
   ]
 }

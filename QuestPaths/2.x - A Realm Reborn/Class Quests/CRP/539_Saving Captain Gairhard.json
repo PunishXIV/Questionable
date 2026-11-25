@@ -1,53 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!! Crafted Item:\n 1x Crab Bow HQ with 1x Savage Aim Materia III,\n 1x Rosewood Lumber HQ\nAutocraft requires:\n 1x Oak Composite Bow,\n 1x Aldgoat Horn,\n 1x Green Megalocrab Shell,\n 1x Red Coral,\n 3x Rosewood Log",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000162,
-          "Position": {
-            "X": -77.958374,
-            "Y": -3.6953027,
-            "Z": 53.08606
-          },
-          "TerritoryId": 132,
+          "Position": [-77.958374, -3.6953027, 53.08606],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132,
           "ItemId": 5376,
           "ItemCount": 1,
           "SkipConditions": {
@@ -60,22 +37,17 @@
         },
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
+          "Position": [-44.87683, -1.2500024, 56.839844],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 132,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132,
           "ItemId": 1942,
           "ItemCount": 1,
           "SkipConditions": {
@@ -88,54 +60,26 @@
         },
         {
           "DataId": 1003072,
-          "Position": {
-            "X": 162.005,
-            "Y": -27.841274,
-            "Z": 309.95642
-          },
+          "Position": [162.005, -27.841274, 309.95642],
           "TerritoryId": 154,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000125,
-          "Position": {
-            "X": -56.26001,
-            "Y": -0.50339824,
-            "Z": -0.16790771
-          },
-          "TerritoryId": 132,
+          "Position": [-56.26001, -0.50339824, -0.16790771],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
-          "AetheryteShortcut": "Gridania",
-          "InteractionType": "CompleteQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     }
   ]
 }

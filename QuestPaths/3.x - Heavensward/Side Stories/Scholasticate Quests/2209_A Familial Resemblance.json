@@ -1,147 +1,63 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "pot0to",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1015976,
-          "Position": {
-            "X": -122.51471,
-            "Y": 14.553129,
-            "Z": -166.97955
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 427,
       "Steps": [
         {
-          "DataId": 1011215,
-          "Position": {
-            "X": -145.37274,
-            "Y": 14.80313,
-            "Z": -129.25922
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 427
-        },
-        {
           "DataId": 1018161,
-          "Position": {
-            "X": -8.590881,
-            "Y": 0.024999563,
-            "Z": 3.9520264
-          },
-          "TerritoryId": 427,
+          "Position": [-8.590881, 0.024999563, 3.9520264],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1017877,
-          "Position": {
-            "X": -5.44751,
-            "Y": 0.024999565,
-            "Z": -2.2736206
-          },
-          "TerritoryId": 427,
+          "Position": [-5.44751, 0.024999565, -2.2736206],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1017875,
-          "Position": {
-            "X": -1.236023,
-            "Y": 0.024999565,
-            "Z": -4.8982544
-          },
-          "TerritoryId": 427,
+          "Position": [-1.236023, 0.024999565, -4.8982544],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1018008,
-          "Position": {
-            "X": 5.1727905,
-            "Y": 0.22499956,
-            "Z": 0.32037354
-          },
-          "TerritoryId": 427,
+          "Position": [5.1727905, 0.22499956, 0.32037354],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1017876,
-          "Position": {
-            "X": 8.743347,
-            "Y": 0.20000005,
-            "Z": 2.670288
-          },
-          "TerritoryId": 427,
+          "Position": [8.743347, 0.20000005, 2.670288],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 427,
       "Steps": [
         {
-          "DataId": 2005332,
-          "Position": {
-            "X": -5.0202637,
-            "Y": 1.1443481,
-            "Z": 11.856201
-          },
-          "TerritoryId": 427,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 419
-        },
-        {
           "DataId": 1017883,
-          "Position": {
-            "X": 94.77368,
-            "Y": -4.73493,
-            "Z": -37.979797
-          },
+          "Position": [94.77368, -4.73493, -37.979797],
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1015976,
-          "Position": {
-            "X": -122.51471,
-            "Y": 14.553129,
-            "Z": -166.97955
-          },
-          "TerritoryId": 419,
+          "Position": [-122.51471, 14.553129, -166.97955],
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
           "NextQuestId": 2210
         }
       ]

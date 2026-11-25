@@ -1,86 +1,50 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011917,
-          "Position": {
-            "X": 535.30164,
-            "Y": -51.340645,
-            "Z": 65.293335
-          },
-          "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1014496,
-          "Position": {
-            "X": 481.8036,
-            "Y": -50.857147,
-            "Z": -5.2339478
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [481.8036, -50.857147, -5.2339478],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1014494,
-          "Position": {
-            "X": 479.7893,
-            "Y": -50.83053,
-            "Z": -5.722229
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [479.7893, -50.83053, -5.722229],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Remaclon",
           "DataId": 1011919,
-          "Position": {
-            "X": 497.82556,
-            "Y": -49.790283,
-            "Z": 11.825684
-          },
-          "TerritoryId": 398,
+          "Position": [497.82556, -49.790283, 11.825684],
           "InteractionType": "Interact",
-          "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "$": "Path to building/Marchechamp",
-          "Position": {
-            "X": 471.40442,
-            "Y": -51.141407,
-            "Z": 36.84344
-          },
-          "TerritoryId": 398,
+          "Position": [471.40442, -51.141407, 36.84344],
+          "Mount": false,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -90,76 +54,33 @@
         {
           "$": "Marcechamp",
           "DataId": 1011916,
-          "Position": {
-            "X": 470.02356,
-            "Y": -49.89133,
-            "Z": 20.370789
-          },
-          "TerritoryId": 398,
+          "Position": [470.02356, -49.89133, 20.370789],
+          "Mount": false,
           "InteractionType": "Interact",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "$": "Path out of building",
-          "Position": {
-            "X": 471.40442,
-            "Y": -51.141407,
-            "Z": 36.84344
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Mount": false,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 470.02356,
-                  "Y": -49.89133,
-                  "Z": 20.370789
-                },
-                "TerritoryId": 398,
-                "MaximumDistance": 5
-              }
-            }
-          }
         },
         {
           "$": "Loupard",
           "DataId": 1011917,
-          "Position": {
-            "X": 535.30164,
-            "Y": -51.340645,
-            "Z": 65.293335
-          },
-          "TerritoryId": 398,
+          "Position": [535.30164, -51.340645, 65.293335],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Path out of building (if Marchechamp was the last one you did)",
-          "Position": {
-            "X": 471.40442,
-            "Y": -51.141407,
-            "Z": 36.84344
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
+          "Position": [471.40442, -51.141407, 36.84344],
           "Mount": false,
+          "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": 470.02356,
-                  "Y": -49.89133,
-                  "Z": 20.370789
-                },
+                "Position": [470.02356, -49.89133, 20.370789],
                 "TerritoryId": 398,
                 "MaximumDistance": 5
               }
@@ -168,81 +89,52 @@
         },
         {
           "DataId": 1014494,
-          "Position": {
-            "X": 479.7893,
-            "Y": -50.83053,
-            "Z": -5.722229
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [479.7893, -50.83053, -5.722229],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1014495,
-          "Position": {
-            "X": 665.8884,
-            "Y": -24.489628,
-            "Z": -289.17377
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [665.8884, -24.489628, -289.17377],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2006141,
-          "Position": {
-            "X": 664.57605,
-            "Y": -24.27716,
-            "Z": -289.02118
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShdortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [664.57605, -24.27716, -289.02118],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1014495,
-          "Position": {
-            "X": 665.8884,
-            "Y": -24.489628,
-            "Z": -289.17377
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "Position": [665.8884, -24.489628, -289.17377],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1014494,
-          "Position": {
-            "X": 479.7893,
-            "Y": -50.83053,
-            "Z": -5.722229
-          },
-          "TerritoryId": 398,
+          "Position": [479.7893, -50.83053, -5.722229],
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "NextQuestId": 1783
         }
       ]

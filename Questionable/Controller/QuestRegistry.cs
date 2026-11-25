@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -9,23 +7,21 @@ using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.AutoGen.Plugin;
-using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 using static Questionable.Domain.QuestInfo;
 using static Questionable.Utils.CacheUtils;
 using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Controller;
 
-// TODO: refactor — heavy nesting (29 lines indented ≥6 levels, max indent ~8 levels).
 [RegisterSingleton]
-internal sealed class QuestRegistry
+internal sealed class QuestRegistry : IDisposable
 {
     private readonly IChatGui _chatGui;
-    private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _contentFinderConditionIds = [];
-    private readonly IDataManager _dataManager;
+    private readonly IFramework _framework;
+    private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _cfcSteps = [];
     private readonly JsonSchemaValidator _jsonSchemaValidator;
     private readonly ILogger<QuestRegistry> _logger;
-    private readonly List<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)> _lowPriorityContentFinderConditionQuests = [];
+    private readonly List<(uint CfcId, ElementId QuestId, int Sequence)> _lowPriorityCfcQuests = [];
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestData _questData;
     private readonly Dictionary<ElementId, Quest> _quests = [];
@@ -35,7 +31,7 @@ internal sealed class QuestRegistry
 
     private readonly ICallGateProvider<object> _reloadDataIpc;
     private readonly TerritoryData _territoryData;
-    private EExpansionVersion _characterExpansion;
+    private CancellationTokenSource? _projectLoad;
 
     public QuestRegistry(
         IDalamudPluginInterface pluginInterface,
@@ -46,9 +42,10 @@ internal sealed class QuestRegistry
         TerritoryData territoryData,
         Configuration configuration,
         DraftQuestPathService draftQuestPathService,
-        IDataManager dataManager,
+        IFramework framework,
         IChatGui chatGui)
     {
+        _framework = framework;
         _pluginInterface = pluginInterface;
         _questData = questData;
         _questValidator = questValidator;
@@ -56,17 +53,13 @@ internal sealed class QuestRegistry
         _logger = logger;
         _territoryData = territoryData;
         _chatGui = chatGui;
-        _dataManager = dataManager;
         _configuration = configuration;
         _draftQuestPathService = draftQuestPathService;
         _reloadDataIpc = _pluginInterface.GetIpcProvider<object>("Questionable.ReloadData");
-        unsafe
-        {
-            _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
-        }
     }
 
-    public EExpansionVersion CharacterExpansion => _characterExpansion;
+    // Read live: QST loads before login, when the game still reports A Realm Reborn.
+    public unsafe EExpansionVersion CharacterExpansion => (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
 
     public IEnumerable<Quest> AllQuests => _quests.Values;
     private CachedValue<int> _count = new(ttlSeconds: 1);
@@ -75,20 +68,24 @@ internal sealed class QuestRegistry
     public int ValidationIssueCount => _questValidator.IssueCount;
     public int ValidationErrorCount => _questValidator.ErrorCount;
 
-    public IReadOnlyList<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)>
-        LowPriorityContentFinderConditionQuests => _lowPriorityContentFinderConditionQuests;
+    public IReadOnlyList<(uint CfcId, ElementId QuestId, int Sequence)>
+        LowPriorityCfcQuests => _lowPriorityCfcQuests;
 
     public event EventHandler? Reloaded;
 
-    public void Reload()
+    public void Reload() => Reload(projectInBackground: false);
+
+    // At game start, reading the project folder can take longer than Dalamud waits for a plugin to load.
+    public void Reload(bool projectInBackground)
     {
+        _projectLoad?.Cancel();
+        _projectLoad = null;
         _questValidator.Reset();
         _quests.Clear();
-        _contentFinderConditionIds.Clear();
-        _lowPriorityContentFinderConditionQuests.Clear();
+        _cfcSteps.Clear();
+        _lowPriorityCfcQuests.Clear();
 
-        if (!LoadQuestsFromDownloadedBundle())
-            //LoadQuestsFromAssembly();
+        if (!LoadFromBundle())
             _logger.LogWarning("Bundled quests were not loaded, we have no quests!");
         if (_configuration.Advanced.Debug || Svc.PluginInterface.IsDev
 #if DEBUG
@@ -96,20 +93,42 @@ internal sealed class QuestRegistry
 #endif
         )
         {
-            LoadQuestsFromProjectDirectory();
-
-            try
+            // The user folder overrides project paths, so in the background case it waits for them.
+            if (projectInBackground && GetProjectDirectory() is { } projectDirectory)
+                StartProjectLoad(projectDirectory);
+            else
             {
-                var _ = LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
-                    Quest.ESource.UserDirectory);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e,
-                    "Failed to load all quests from user directory (some may have been successfully loaded)");
+                LoadFromProject();
+                LoadFromUserDirectory();
             }
         }
 
+        FinishReload();
+    }
+
+    public void Dispose()
+    {
+        _projectLoad?.Cancel();
+        _projectLoad?.Dispose();
+        _projectLoad = null;
+    }
+
+    private void LoadFromUserDirectory()
+    {
+        try
+        {
+            var _ = LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
+                Quest.ESource.UserDirectory);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e,
+                "Failed to load all quests from user directory (some may have been successfully loaded)");
+        }
+    }
+
+    private void FinishReload()
+    {
         LoadCfcIds();
         ValidateQuests();
         Reloaded?.Invoke(this, EventArgs.Empty);
@@ -119,46 +138,13 @@ internal sealed class QuestRegistry
         }
         catch (Exception e)
         {
-            // why does this even throw
             _logger.LogWarning(e, "Error during Reload.SendMessage IPC");
         }
 
         _logger.LogInformation("Loaded {Count} quests in total", _quests.Count);
-        unsafe
-        {
-            _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
-        }
     }
 
-    [Conditional("RELEASE")]
-    private void LoadQuestsFromAssembly()
-    {
-        _logger.LogInformation("Loading quests from assembly");
-
-        foreach ((ElementId questId, QuestRoot questRoot) in AssemblyQuestLoader.Quests)
-        {
-            try
-            {
-                IQuestInfo questInfo = _questData.GetQuestInfo(questId);
-                Quest quest = new()
-                {
-                    Id = questId,
-                    Root = questRoot,
-                    Info = questInfo,
-                    Source = Quest.ESource.Assembly
-                };
-                _quests[quest.Id] = quest;
-            }
-            catch (Exception e)
-            {
-                _logger.LogWarning("Not loading unknown quest {QuestId} from assembly: {Message}", questId, e.Message);
-            }
-        }
-
-        _logger.LogInformation("Loaded {Count} quests from assembly", _quests.Count);
-    }
-
-    private void LoadQuestsFromProjectDirectory()
+    private void LoadFromProject()
     {
         DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
         if (solutionDirectory != null)
@@ -189,15 +175,95 @@ internal sealed class QuestRegistry
         }
     }
 
-    /// <summary>
-    ///     Loads quests from a downloaded path bundle (<c>{ConfigDirectory}/PathData/bundle.zip</c>)
-    ///     if one is present. Entries here override the compiled baseline but are themselves
-    ///     overridden by the hand-authored user directory. A single bad entry is skipped rather
-    ///     than aborting the rest of the bundle.
-    /// </summary>
-    private bool LoadQuestsFromDownloadedBundle()
+    private DirectoryInfo? GetProjectDirectory()
     {
-        string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
+        DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
+        if (solutionDirectory == null)
+            return null;
+
+        DirectoryInfo directory = new(Path.Combine(solutionDirectory.FullName, "QuestPaths"));
+        return directory.Exists ? directory : null;
+    }
+
+    private void StartProjectLoad(DirectoryInfo projectDirectory)
+    {
+        CancellationTokenSource load = new();
+        CancellationToken token = load.Token;
+        _projectLoad = load;
+        _logger.LogDebug("Loading quests from the project directory in the background");
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                List<ParsedQuest> quests = ReadProject(projectDirectory, token);
+                await _framework.RunOnFrameworkThread(() => ApplyProject(quests, load)).ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+            {
+            }
+            catch (Exception e) when (!token.IsCancellationRequested)
+            {
+                _logger.LogError(e, "Failed to load quests from project directory");
+                _ = _framework.RunOnFrameworkThread(() => _chatGui.PrintError(
+                    $"Unable to load quests from the project folder - {e.GetType().Name}: {e.Message}",
+                    CommandHandler.MessageTag, CommandHandler.TagColor));
+            }
+        }, token);
+    }
+
+    // Reading thousands of separate files is the slow part at game start, so it stays off the game thread.
+    internal static List<ParsedQuest> ReadProject(DirectoryInfo projectDirectory, CancellationToken token)
+    {
+        List<ParsedQuest> quests = [];
+        foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
+        {
+            DirectoryInfo directory = new(Path.Combine(projectDirectory.FullName, expansionFolder));
+            if (directory.Exists)
+                ReadDirectory(directory, quests, token);
+        }
+
+        return quests;
+    }
+
+    private static void ReadDirectory(DirectoryInfo directory, List<ParsedQuest> quests, CancellationToken token)
+    {
+        foreach (FileInfo fileInfo in directory.GetFiles("*.json"))
+        {
+            token.ThrowIfCancellationRequested();
+            try
+            {
+                using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
+                if (ParseQuest(fileInfo.Name, stream) is { } quest)
+                    quests.Add(quest);
+            }
+            catch (Exception e) when (e is not OperationCanceledException)
+            {
+                throw new InvalidDataException($"Unable to load file {fileInfo.FullName}", e);
+            }
+        }
+
+        foreach (DirectoryInfo childDirectory in directory.GetDirectories())
+            ReadDirectory(childDirectory, quests, token);
+    }
+
+    // A newer reload or an unload drops a result that arrives late.
+    private void ApplyProject(List<ParsedQuest> quests, CancellationTokenSource load)
+    {
+        if (_projectLoad != load || load.IsCancellationRequested)
+            return;
+
+        _projectLoad = null;
+        load.Dispose();
+        foreach (ParsedQuest quest in quests)
+            AddQuest(quest, Quest.ESource.ProjectDirectory);
+        _logger.LogInformation("Loaded {Count} quests from project directory", quests.Count);
+        LoadFromUserDirectory();
+        FinishReload();
+    }
+
+    private bool LoadFromBundle()
+    {
+        string bundlePath = PathDataBundle.GetFilePath(_pluginInterface);
         if (!File.Exists(bundlePath))
             return false;
 
@@ -211,7 +277,7 @@ internal sealed class QuestRegistry
                 return false;
             }
 
-            // Gate A: never load a bundle that needs a newer plugin than this one.
+            // Never load a bundle that needs a newer plugin than this one.
             if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
             {
                 _logger.LogWarning(
@@ -242,7 +308,7 @@ internal sealed class QuestRegistry
             }
 
             _logger.LogInformation("Loaded {Loaded} quests from downloaded path bundle (data version {DataVersion}){Failed}",
-                loaded, manifest.DataVersion, failed > 0 ? $", {failed} skipped" : string.Empty);
+                loaded, manifest.DataVersion, failed > 0 ? string.Create(CultureInfo.InvariantCulture, $", {failed} skipped") : string.Empty);
         }
         catch (Exception e)
         {
@@ -256,33 +322,27 @@ internal sealed class QuestRegistry
     {
         foreach (Quest quest in _quests.Values)
         {
-            foreach (QuestSequence dutySequence in quest.AllSequences())
+            foreach ((QuestSequence sequence, int _, QuestStep step) in quest.AllSteps())
             {
-                foreach (QuestStep dutyStep in dutySequence.Steps.Where(x =>
-                    x.InteractionType is EInteractionType.Duty or EInteractionType.SinglePlayerDuty))
+                if (step is { InteractionType: EInteractionType.Duty, DutyOptions: { } dutyOptions })
                 {
-                    if (dutyStep is { InteractionType: EInteractionType.Duty, DutyOptions: { } dutyOptions })
+                    _cfcSteps[dutyOptions.ContentFinderConditionId] = (quest.Id, step);
+                    if (dutyOptions.LowPriority)
                     {
-                        _contentFinderConditionIds[dutyOptions.ContentFinderConditionId] = (quest.Id, dutyStep);
-                        if (dutyOptions.LowPriority)
-                        {
-                            _lowPriorityContentFinderConditionQuests.Add((dutyOptions.ContentFinderConditionId,
-                                quest.Id, dutySequence.Sequence));
-                        }
+                        _lowPriorityCfcQuests.Add((dutyOptions.ContentFinderConditionId,
+                            quest.Id, sequence.Sequence));
                     }
-                    else if (dutyStep.InteractionType == EInteractionType.SinglePlayerDuty &&
-                             _territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id,
-                                 dutyStep.SinglePlayerDutyIndex, out TerritoryData.ContentFinderConditionData? cfcData))
-                    {
-                        _contentFinderConditionIds[cfcData.ContentFinderConditionId] = (quest.Id, dutyStep);
-                    }
+                }
+                else if (step.InteractionType == EInteractionType.SinglePlayerDuty &&
+                         _territoryData.TryGetQuestBattleCfc(quest.Id,
+                             step.SinglePlayerDutyIndex, out TerritoryData.CfcData? cfcData))
+                {
+                    _cfcSteps[cfcData.Id] = (quest.Id, step);
                 }
             }
         }
     }
 
-    // The compiled baseline and downloaded bundles are validated by CI before publication, so
-    // only the hand-authored user directory (and dev project directory) is validated at runtime.
     private void ValidateQuests() => _questValidator.Validate(_quests.Values
         .Where(x => x.Source is not (Quest.ESource.Assembly or Quest.ESource.DownloadedBundle))
         .ToList());
@@ -291,27 +351,39 @@ internal sealed class QuestRegistry
     {
         if (source == Quest.ESource.UserDirectory)
             _logger.LogTrace("Loading quest from '{FileName}'", fileName);
+        if (ParseQuest(fileName, stream) is { } quest)
+            AddQuest(quest, source);
+    }
+
+    internal sealed record ParsedQuest(ElementId QuestId, JsonNode Node, QuestRoot Root);
+
+    private static ParsedQuest? ParseQuest(string fileName, Stream stream)
+    {
+        // Custom delivery paths (S*) were dropped in 2.0, but older downloaded bundles still carry them.
         ElementId? questId = ExtractQuestIdFromName(fileName);
-        if (questId == null)
-            return;
+        if (questId is null or SatisfactionSupplyNpcId)
+            return null;
 
         JsonNode questNode = JsonNode.Parse(stream)!;
+        return new ParsedQuest(questId, questNode, questNode.Deserialize<QuestRoot>()!);
+    }
 
-        // Downloaded bundles are trusted (CI-validated + checksum-verified); only runtime-loaded
-        // hand-authored data is schema-validated here.
+    private void AddQuest(ParsedQuest parsed, Quest.ESource source)
+    {
         if (source != Quest.ESource.DownloadedBundle)
-            _jsonSchemaValidator.Enqueue(questId, questNode);
+            _jsonSchemaValidator.Enqueue(parsed.QuestId, parsed.Node);
 
-        QuestRoot questRoot = questNode.Deserialize<QuestRoot>()!;
-        IQuestInfo questInfo = _questData.GetQuestInfo(questId);
-        Quest quest = new()
+        IQuestInfo info = _questData.GetQuestInfo(parsed.QuestId);
+        if (!ImplicitSteps.Fill(parsed.Root, info))
+            _logger.LogWarning("Quest {QuestId} has an empty sequence the game data can't fill", parsed.QuestId);
+
+        _quests[parsed.QuestId] = new Quest
         {
-            Id = questId,
-            Root = questRoot,
-            Info = questInfo,
+            Id = parsed.QuestId,
+            Root = parsed.Root,
+            Info = info,
             Source = source
         };
-        _quests[quest.Id] = quest;
     }
 
     private uint LoadFromDirectory(DirectoryInfo directory, Quest.ESource source,
@@ -320,7 +392,7 @@ internal sealed class QuestRegistry
         uint count = 0;
         if (!directory.Exists)
         {
-            _logger.LogInformation("Not loading quests from {DirectoryName} (doesn't exist)", directory);
+            _logger.LogDebug("Not loading quests from {DirectoryName} (doesn't exist)", directory);
             return count;
         }
 
@@ -364,8 +436,9 @@ internal sealed class QuestRegistry
     public List<QuestInfo> GetKnownClassJobQuests(Job classJob, bool includeRoleQuests = true)
     {
         List<QuestInfo> allQuests = [.. _questData.GetClassJobQuests(classJob, includeRoleQuests)];
-        if (classJob.AsJob() != classJob)
-            allQuests.AddRange(_questData.GetClassJobQuests(classJob.AsJob(), includeRoleQuests));
+        Job followUp = ClassJobUtils.FollowUpJob(classJob, _configuration.General.ArcanistJob);
+        if (followUp != classJob)
+            allQuests.AddRange(_questData.GetClassJobQuests(followUp, includeRoleQuests));
 
         if (classJob.Equals(Job.FSH) && allQuests.Any(x => x.QuestId.Value.Equals(2898)))
             allQuests.Insert(allQuests.IndexOf(x => x.QuestId.Value.Equals(2898)), (QuestInfo)_questData.GetQuestInfo(new QuestId(2922)));
@@ -375,18 +448,9 @@ internal sealed class QuestRegistry
             .ToList();
     }
 
-    public bool TryGetQuestByContentFinderConditionId(uint cfcId, out IQuestInfo? questInfo)
+    public bool TryGetDutyByCfcId(uint cfcId, [NotNullWhen(true)] out DutyOptions? dutyOptions)
     {
-        if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId qId, QuestStep step) value) &&
-                _questData.TryGetQuestInfo(value.qId, out questInfo))
-            return questInfo != null;
-        questInfo = null;
-        return false;
-    }
-
-    public bool TryGetDutyByContentFinderConditionId(uint cfcId, [NotNullWhen(true)] out DutyOptions? dutyOptions)
-    {
-        if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId QuestId, QuestStep Step) value))
+        if (_cfcSteps.TryGetValue(cfcId, out (ElementId QuestId, QuestStep Step) value))
         {
             dutyOptions = value.Step.DutyOptions;
             return dutyOptions != null;
@@ -401,129 +465,107 @@ internal sealed class QuestRegistry
     public static string GetFilename(QuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
     public static QuestRoot CreateQuestRoot(QuestInfo info)
     {
-        QuestSequence seq0 = new()
-        {
-            Sequence = 0,
-            Steps = [
-                    new QuestStep(
-                        EInteractionType.AcceptQuest,
-                        info.IssuerDataId,
-                        info.IssuerLocation.Position,
-                        info.IssuerLocation.Territory.RowId
-                    ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(info.IssuerLocation.Territory.RowId) ? true : null
-                    }
-                ]
-        };
-        List<QuestSequence> sequences = [seq0];
+        List<QuestSequence> sequences =
+        [
+            new()
+            {
+                Sequence = 0,
+                Steps = [CreateStep(EInteractionType.AcceptQuest, info.IssuerDataId, info.IssuerLocation.Position,
+                    info.IssuerLocation.Territory.RowId)]
+            }
+        ];
         Svc.Log.Debug($"NumSequences: {info.NumSequences}");
         for (var i = 0; i <= info.NumSequences; i++)
         {
-            SheetLevel? level = i < info.ToDoLocations.Count ? info.ToDoLocations[i] : null;
-            if (level?.Position == null || i == 255)
+            if (i == 255 || i >= info.ToDoLocations.Count)
                 continue;
+
+            SheetLevel level = info.ToDoLocations[i];
+            uint objectId = level.Object.RowId;
             sequences.Add(new QuestSequence
             {
                 Sequence = (byte)(i + 1),
-                Steps = [
-                    new QuestStep(
-                        level?.Object != null && level?.Object.RowId != 0 ? EInteractionType.Interact : EInteractionType.WalkTo,
-                        level?.Object.RowId != 0 ? level?.Object.RowId : null,
-                        level?.Position + new System.Numerics.Vector3(0,level?.Object.RowId == 0 ? 30 : 0,0),
-                        level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId
-                    ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId) ? true : null
-                    }
-                ]
+                Steps = [CreateStep(objectId != 0 ? EInteractionType.Interact : EInteractionType.WalkTo,
+                    objectId != 0 ? objectId : null,
+                    level.Position + new System.Numerics.Vector3(0, objectId == 0 ? 30 : 0, 0),
+                    level.Territory.RowId)]
             });
         }
-        QuestSequence seq255 = new()
+
+        SheetLevel completion = info.ToDoLocations[^1];
+        sequences.Add(new QuestSequence
         {
             Sequence = 255,
-            Steps = [
-                    new QuestStep(
-                        EInteractionType.CompleteQuest,
-                        info.ToDoLocations[^1].Object.RowId,
-                        info.ToDoLocations[^1].Position,
-                        info.ToDoLocations[^1].Territory.RowId
-                    ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(info.ToDoLocations[^1].Territory.RowId) ? true : null
-                    }
-                ]
-        };
-        sequences.Add(seq255);
-        var name = "Anonymous";
-        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
-        if (pluginConfig is Configuration config)
-            name = config.General.DisplayName;
+            Steps = [CreateStep(EInteractionType.CompleteQuest, completion.Object.RowId, completion.Position,
+                completion.Territory.RowId)]
+        });
+        var name = Configuration.Instance().General.DisplayName;
         return new QuestRoot()
         {
             Author = [name],
             QuestSequence = sequences
         };
     }
+    private static QuestStep CreateStep(EInteractionType interactionType, uint? dataId,
+        System.Numerics.Vector3? position, uint territoryId) =>
+        new(interactionType, dataId, position, territoryId);
+
     public static string GetQuestPathsDirectory()
     {
-        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
-        if (pluginConfig is Configuration config && config.Advanced.Debug && Svc.PluginInterface.IsDev)
+        if (Configuration.Instance().Advanced.Debug && Svc.PluginInterface.IsDev)
             return Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths");
         return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
     }
     public static string? GetFullPath(IQuestInfo info, bool withFilename = true) => GetFullPath((QuestInfo)info, withFilename);
     public static string? GetFullPath(QuestInfo info, bool withFilename = true)
     {
-        var filename = GetFilename(info);
-        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
-        if (pluginConfig is Configuration config && config.Advanced.Debug && Svc.PluginInterface.IsDev)
+        string folder;
+        if (Configuration.Instance().Advanced.Debug && Svc.PluginInterface.IsDev)
         {
-            DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
-            if (targetFolder == null)
-                return null;
-            string? path = "";
-            if (info.JournalGenre != null && info.JournalGenre != uint.MaxValue)
-            {
-                var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
-                path = $"{genre.Name}";
-                Svc.Log.Debug($"Genre: {genre.Name}");
-                if (genre.JournalCategory.ValueNullable != null)
-                {
-                    var category = genre.JournalCategory.Value;
-                    Svc.Log.Debug($"Category: {category.Name}");
-                    if (category.Name != genre.Name)
-                        path = Path.Combine($"{category.Name}", path);
-                    if (category.JournalSection.ValueNullable != null)
-                    {
-                        var section = category.JournalSection.Value;
-                        Svc.Log.Debug($"Section: {section.Name}");
-                        if (section.Name != category.Name)
-                        {
-                            var catPath = $"{category.Name}".Replace($"{section.Name}", "").Trim();
-                            path = Path.Combine($"{section.Name}", catPath, category.Name != genre.Name ? $"{genre.Name}" : "");
-                        }
-                    }
-                }
-            }
-            if (path == null || path.Length == 0)
-            {
-                if (withFilename)
-                    return Path.Combine(targetFolder.FullName, "Unsorted", filename);
-                return Path.Combine(targetFolder.FullName, "Unsorted");
-            }
-            if (withFilename)
-                return Path.Combine(targetFolder.FullName, path, filename);
-            return Path.Combine(targetFolder.FullName, path);
+            DirectoryInfo expansionFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName,
+                "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
+            string journalPath = GetJournalPath(info);
+            folder = Path.Combine(expansionFolder.FullName, journalPath.Length == 0 ? "Unsorted" : journalPath);
         }
-        if (withFilename)
-            return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests", filename);
-        return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+        else
+            folder = Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+
+        return withFilename ? Path.Combine(folder, GetFilename(info)) : folder;
+    }
+
+    private static string GetJournalPath(QuestInfo info)
+    {
+        if (info.JournalGenre == null || info.JournalGenre == uint.MaxValue)
+            return string.Empty;
+
+        var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
+        string path = string.Create(CultureInfo.InvariantCulture, $"{genre.Name}");
+        Svc.Log.Debug(string.Create(CultureInfo.InvariantCulture, $"Genre: {genre.Name}"));
+        if (genre.JournalCategory.ValueNullable is not { } category)
+            return path;
+
+        Svc.Log.Debug(string.Create(CultureInfo.InvariantCulture, $"Category: {category.Name}"));
+        if (category.Name != genre.Name)
+            path = Path.Combine(string.Create(CultureInfo.InvariantCulture, $"{category.Name}"), path);
+        if (category.JournalSection.ValueNullable is not { } section)
+            return path;
+
+        Svc.Log.Debug(string.Create(CultureInfo.InvariantCulture, $"Section: {section.Name}"));
+        if (section.Name != category.Name)
+        {
+            var catPath = string.Create(CultureInfo.InvariantCulture, $"{category.Name}").Replace(string.Create(CultureInfo.InvariantCulture, $"{section.Name}"), "", StringComparison.Ordinal).Trim();
+            path = Path.Combine(string.Create(CultureInfo.InvariantCulture, $"{section.Name}"), catPath, category.Name != genre.Name ? string.Create(CultureInfo.InvariantCulture, $"{genre.Name}") : "");
+        }
+
+        return path;
     }
     public static (bool, FileInfo?, string) CreatePath(IQuestInfo info) => CreatePath((QuestInfo)info);
-    public static (bool, FileInfo?, string) CreatePath(QuestInfo info, Quest? quest = null, bool dryrun = false)
+    public static (bool, FileInfo?, string) CreatePath(QuestInfo info, Quest? quest = null, bool dryRun = false)
     {
         var path = GetFullPath(info);
         if (path == null)
             return (false, null, "No directory path returned");
-        if (!dryrun)
+        if (!dryRun)
         {
             var dirName = Path.GetDirectoryName(path);
             if (dirName == null)
@@ -532,43 +574,20 @@ internal sealed class QuestRegistry
         }
         FileInfo file = new(path);
         FileStream? stream = null;
-        if (!dryrun)
+        if (!dryRun)
             if (!file.Exists)
                 stream = file.Create();
         stream ??= file.OpenRead();
         if (stream.Length > 0)
             return (true, file, "Path already exists");
         stream.Dispose();
-        if (!dryrun)
+        if (!dryRun)
         {
-            JsonObject? jsonNode;
-            JsonObject newNode;
-            if (quest == null)
-            {
-                jsonNode = (JsonObject)JsonSerializer.SerializeToNode(CreateQuestRoot(info), JsonOptions.Default)!;
-                newNode = new()
-                {
-                    {
-                        "$schema",
-                        "https://qstxiv.github.io/schema/quest-v1.json"
-                    }
-                };
-                foreach ((string key, JsonNode? value) in jsonNode)
-                    newNode.Add(key, value?.DeepClone());
-            }
-            else
-            {
-                newNode = (JsonObject)JsonSerializer.SerializeToNode(quest.Root, JsonOptions.Default)!;
-            }
-            using FileStream writeStream = file.OpenWrite();
-            using Utf8JsonWriter writer = new(writeStream, new()
-            {
-                Encoder = JsonOptions.Default.Encoder,
-                Indented = JsonOptions.Default.WriteIndented
-            });
-            newNode.WriteTo(writer, JsonOptions.Default);
+            JsonObject node = (JsonObject)JsonSerializer.SerializeToNode(quest?.Root ?? CreateQuestRoot(info),
+                JsonOptions.Default)!;
+            File.WriteAllText(file.FullName, QuestPathJson.Write(node, JsonOptions.Default));
         }
-        return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
+        return (true, file, $"File created{(dryRun ? " (dry run)" : "")}");
     }
 
     public static (bool Success, string Message) SaveUserPath(QuestInfo info, QuestRoot root)
@@ -578,34 +597,12 @@ internal sealed class QuestRegistry
         string path = Path.Combine(directory, GetFilename(info));
 
         JsonObject serialized = (JsonObject)JsonSerializer.SerializeToNode(root, JsonOptions.Default)!;
-        JsonObject withSchema = new()
-        {
-            {
-                "$schema",
-                "https://qstxiv.github.io/schema/quest-v1.json"
-            }
-        };
-        foreach ((string key, JsonNode? value) in serialized)
-            withSchema.Add(key, value?.DeepClone());
-
-        using (FileStream stream = new(path, FileMode.Create))
-        using (Utf8JsonWriter writer = new(stream, new()
-        {
-            Encoder = JsonOptions.Default.Encoder,
-            Indented = JsonOptions.Default.WriteIndented
-        }))
-        {
-            withSchema.WriteTo(writer, JsonOptions.Default);
-        }
+        File.WriteAllText(path, QuestPathJson.Write(serialized, JsonOptions.Default));
 
         Svc.Log.Information($"Saved user quest path to {path}");
         return (true, path);
     }
 
-    public static string OpenEditorDescription = _L("Clicking this button writes the quest path to a file and opens it in your default text editor.") +
-               _L("After making a change, click Reload Data below.") + "\n" +
-               _L("To revert to the official version, delete the file and click Reload Data again.") + "\n" +
-               _L("Left click: Open this quest in your default .json text editor\nRight click: Open Quests folder");
     public static (bool, string) OpenEditor(IQuestInfo info) => OpenEditor((QuestInfo)info);
     public static (bool, string) OpenEditor(QuestInfo info) => OpenEditor(GetFilename(info), info);
     public (bool, string) OpenEditor(ushort questId)
@@ -646,9 +643,7 @@ internal sealed class QuestRegistry
     public static (bool, string) OpenEditor(string filename, QuestInfo info, Quest? quest = null)
     {
         var parentDirectory = GetQuestPathsDirectory();
-        DirectoryInfo? targetFolder = Directory.CreateDirectory(parentDirectory);
-        if (targetFolder == null)
-            return (false, "couldn't find QuestPaths folder");
+        DirectoryInfo targetFolder = Directory.CreateDirectory(parentDirectory);
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
         if (file == null)
         {
@@ -684,8 +679,8 @@ internal sealed class QuestRegistry
     {
         foreach (FileInfo file in root.GetFiles())
         {
-            if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase) || // if filename match case insensitive
-                file.Name.StartsWith(filename[..(filename.IndexOf('_') + 1)])) // if ID at start of filename match
+            if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase) ||
+                file.Name.StartsWith(filename[..(filename.IndexOf('_', StringComparison.Ordinal) + 1)], StringComparison.Ordinal))
                 return file;
         }
 

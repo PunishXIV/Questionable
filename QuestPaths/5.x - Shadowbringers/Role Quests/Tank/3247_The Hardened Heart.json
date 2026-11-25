@@ -1,77 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1029963,
-          "Position": {
-            "X": 61.020752,
-            "Y": 100.95007,
-            "Z": -872.4651
-          },
-          "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 61.020752,
-                  "Y": 100.95007,
-                  "Z": -872.4651
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 100
-              }
-            }
-          },
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1029967,
-          "Position": {
-            "X": -68.40625,
-            "Y": 105.29414,
-            "Z": -251.88074
-          },
-          "TerritoryId": 816,
+          "Position": [-68.40625, 105.29414, -251.88074],
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "AI doesn't pull enemies when spawning into the instance"
-            ]
-          },
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1029963,
-          "Position": {
-            "X": 61.020752,
-            "Y": 100.95007,
-            "Z": -872.4651
-          },
-          "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

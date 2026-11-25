@@ -1,48 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": 459.61847,
-            "Y": 7.3659906,
-            "Z": 22.413525
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true
-        },
-        {
           "DataId": 2012895,
-          "Position": {
-            "X": 461.8142,
-            "Y": 9.262146,
-            "Z": 24.2771
-          },
-          "StopDistance": 5,
-          "TerritoryId": 957,
+          "Position": [461.8142, 9.262146, 24.2771],
           "InteractionType": "UseItem",
           "ItemId": 2003407,
           "GroundTarget": true
@@ -51,35 +22,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012897,
-          "Position": {
-            "X": 458.39624,
-            "Y": 7.4005737,
-            "Z": 23.788818
-          },
-          "TerritoryId": 957,
+          "Position": [458.39624, 7.4005737, 23.788818],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

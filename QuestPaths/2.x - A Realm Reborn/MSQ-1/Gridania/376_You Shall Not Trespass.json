@@ -1,69 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1000470,
-          "Position": {
-            "X": -59.006653,
-            "Y": -0.010835781,
-            "Z": 26.41333
-          },
-          "TerritoryId": 148,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": -61.749943,
-            "Y": 0.9481318,
-            "Z": -38.52144
-          },
-          "TerritoryId": 148,
-          "InteractionType": "Jump",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "JumpDestination": {
-            "Position": {
-              "X": -67.083466,
-              "Y": -4.478065,
-              "Z": -45.204926
-            },
-            "StopDistance": 3
-          }
-        },
-        {
           "DataId": 1000748,
-          "Position": {
-            "X": -125.230774,
-            "Y": 4.1573725,
-            "Z": -43.595093
-          },
-          "TerritoryId": 148,
+          "Position": [-125.230774, 4.1573725, -43.595093],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": -171.87439,
-            "Y": 1.7183347,
-            "Z": -70.586975
-          },
-          "TerritoryId": 148,
+          "Position": [-171.87439, 1.7183347, -70.586975],
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -78,16 +39,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000748,
-          "Position": {
-            "X": -125.230774,
-            "Y": 4.1573725,
-            "Z": -43.595093
-          },
-          "TerritoryId": 148,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "Position": [-125.230774, 4.1573725, -43.595093],
           "InteractionType": "CompleteQuest"
         }
       ]

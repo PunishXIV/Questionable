@@ -1,126 +1,56 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1020524,
-          "Position": {
-            "X": 173.20508,
-            "Y": 5.1910434,
-            "Z": -433.24945
-          },
-          "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "Position": {
-            "X": 318.10266,
-            "Y": 24.931192,
-            "Z": -494.28577
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 77.23522,
-            "Y": 32.751614,
-            "Z": -517.566
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Unlocked"
-            }
-          }
-        },
-        {
           "DataId": 2007932,
-          "Position": {
-            "X": -162.70697,
-            "Y": 53.20813,
-            "Z": -558.80066
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-162.70697, 53.20813, -558.80066],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020244,
-          "Position": {
-            "X": -241.99286,
-            "Y": 53.217506,
-            "Z": -653.193
-          },
-          "StopDistance": 5,
-          "TerritoryId": 614,
+          "Position": [-241.99286, 53.217506, -653.193],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
-          "Position": {
-            "X": -364.42896,
-            "Y": 1.2300289,
-            "Z": -363.52563
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1020247,
-          "Position": {
-            "X": -366.3844,
-            "Y": 1.2300524,
-            "Z": -362.5086
-          },
-          "TerritoryId": 614,
+          "Position": [-366.3844, 1.2300524, -362.5086],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019267,
-          "Position": {
-            "X": 276.17297,
-            "Y": 8.117117,
-            "Z": -404.10468
-          },
-          "TerritoryId": 614,
+          "Position": [276.17297, 8.117117, -404.10468],
           "InteractionType": "UnlockTaxiStand",
-          "AetheryteShortcut": "Yanxia - House of the Fierce",
           "TaxiStandId": 1179706
         },
         {
-          "TerritoryId": 614,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 241,
@@ -134,16 +64,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020248,
-          "Position": {
-            "X": -390.28003,
-            "Y": 30.646172,
-            "Z": -455.86328
-          },
-          "StopDistance": 7,
-          "TerritoryId": 614,
+          "Position": [-390.28003, 30.646172, -455.86328],
           "InteractionType": "CompleteQuest"
         }
       ]

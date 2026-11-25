@@ -1,100 +1,63 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "Iskierka", "Date": "2026-07-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005937,
-          "Position": {
-            "X": -238.02551,
-            "Y": -40.828262,
-            "Z": 68.28406
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006614,
-          "Position": {
-            "X": 65.87317,
-            "Y": -3.1181886,
-            "Z": 61.41748
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [65.87317, -3.1181886, 61.41748],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005937,
-          "Position": {
-            "X": -238.02551,
-            "Y": -40.828262,
-            "Z": 68.28406
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-238.02551, -40.828262, 68.28406],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2004024,
-          "Position": {
-            "X": -412.95496,
-            "Y": -39.047913,
-            "Z": -229.72461
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-412.95496, -39.047913, -229.72461],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005937,
-          "Position": {
-            "X": -238.02551,
-            "Y": -40.828262,
-            "Z": 68.28406
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-238.02551, -40.828262, 68.28406],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005946,
-          "Position": {
-            "X": -239.27673,
-            "Y": -42.130188,
-            "Z": 15.213196
-          },
-          "TerritoryId": 138,
+          "Position": [-239.27673, -42.130188, 15.213196],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -108,14 +71,10 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": -919.11914,
-            "Y": -31.760002,
-            "Z": 820.28955
-          },
-          "TerritoryId": 138,
+          "Position": [-919.11914, -31.760002, 820.28955],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -127,15 +86,11 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1008922,
-          "Position": {
-            "X": -914.8852,
-            "Y": -31.75,
-            "Z": 811.6426
-          },
-          "TerritoryId": 138,
+          "Position": [-914.8852, -31.75, 811.6426],
           "InteractionType": "UseItem",
           "ItemId": 2001295
         }
@@ -143,51 +98,34 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1008923,
-          "Position": {
-            "X": 321.85852,
-            "Y": -36.32501,
-            "Z": 350.1792
-          },
-          "TerritoryId": 138,
+          "Position": [321.85852, -36.32501, 350.1792],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005937,
-          "Position": {
-            "X": -238.02551,
-            "Y": -40.828262,
-            "Z": 68.28406
-          },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-238.02551, -40.828262, 68.28406],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003281,
-          "Position": {
-            "X": 97.520386,
-            "Y": 40.248554,
-            "Z": 81.1322
-          },
-          "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "Position": [97.520386, 40.248554, 81.1322],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

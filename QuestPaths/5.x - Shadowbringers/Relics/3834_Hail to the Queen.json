@@ -1,53 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "Anonymous", "Date": "2026-09-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1018994,
-          "Position": {
-            "X": 49.240845,
-            "Y": 4.0000005,
-            "Z": 55.77173
-          },
-          "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ]
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "DataId": 1019070,
-          "Position": {
-            "X": 151.20166,
-            "Y": 14.7757225,
-            "Z": 95.78088
-          },
-          "TerritoryId": 628,
-          "TargetTerritoryId": 639,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] The Ruby Bazaar"
-          ]
-        },
-        {
           "DataId": 1020622,
-          "Position": {
-            "X": 0.045776367,
-            "Y": 0,
-            "Z": -2.3041382
-          },
+          "Position": [0.045776367, 0, -2.3041382],
           "TerritoryId": 639,
           "InteractionType": "Interact"
         }
@@ -55,47 +21,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1032866,
-          "Position": {
-            "X": 274.1283,
-            "Y": 8.18297,
-            "Z": -409.8421
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "Position": [274.1283, 8.18297, -409.8421],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1032867,
-          "Position": {
-            "X": -258.53363,
-            "Y": 53.217503,
-            "Z": -644.8921
-          },
-          "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-258.53363, 53.217503, -644.8921],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1032868,
-          "Position": {
-            "X": -258.59473,
-            "Y": 53.217506,
-            "Z": -644.8616
-          },
-          "TerritoryId": 614,
+          "Position": [-258.59473, 53.217506, -644.8616],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3835
         }

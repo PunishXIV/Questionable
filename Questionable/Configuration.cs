@@ -1,99 +1,95 @@
-using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Dalamud.Configuration;
-using Dalamud.Game.Text;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable;
 
 internal sealed class Configuration : IPluginConfiguration
 {
-    internal static Configuration Instance()
-    {
-        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
-        if (pluginConfig is Configuration config)
-            return config;
-        throw new Exception(_L("Could not get plugin config"));
-    }
+    private static Configuration? _runtimeInstance;
+
+    // GetPluginConfig deserializes the base settings without activating a profile.
+    internal static Configuration Instance() => Volatile.Read(ref _runtimeInstance)
+        ?? throw new InvalidOperationException("Runtime configuration has not been initialized.");
+
+    internal static void InitializeRuntime(Configuration configuration) =>
+        Interlocked.Exchange(ref _runtimeInstance, configuration);
+
+    internal static void ClearRuntime(Configuration configuration) =>
+        Interlocked.CompareExchange(ref _runtimeInstance, null, configuration);
     #region Serialised data
-    // Variables that are not affected by profile switches
     public const int PluginSetupVersion = 5;
     public const int PluginConfigVersion = 2;
     public int PluginSetupCompleteVersion { get; set; }
-    // Persisted base sections
+#pragma warning disable IDE1006 // Configuration members are never renamed (AGENTS.md naming rules).
     [JsonProperty(nameof(General))] private GeneralConfiguration _general { get; } = new();
     [JsonProperty(nameof(Stop))] private StopConfiguration _stop { get; } = new();
     [JsonProperty(nameof(Duties))] private DutyConfiguration _duties { get; } = new();
     [JsonProperty(nameof(SinglePlayerDuties))] private SinglePlayerDutyConfiguration _singlePlayerDuties { get; } = new();
     [JsonProperty(nameof(Notifications))] private NotificationConfiguration _notifications { get; } = new();
     [JsonProperty(nameof(Advanced))] private AdvancedConfiguration _advanced { get; } = new();
+#pragma warning restore IDE1006
     public WindowConfig DebugWindowConfig { get; } = new();
     public WindowConfig ConfigWindowConfig { get; } = new();
+    public WindowConfig JournalWindowConfig { get; } = new();
     public PriorityConfiguration Priority { get; } = new();
+    public CharacterConfiguration Characters { get; } = new();
+    public JobGearConfiguration JobGear { get; } = new();
+    public ReportConfiguration Reports { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
+    public JournalConfiguration Journal { get; } = new();
+    public DailiesConfiguration Dailies { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
 
-    /// <summary>
-    /// One-time flag: the release that defaulted auto-redeem off forces it off once on first load,
-    /// then never touches <see cref="AdvancedConfiguration.AutoRedeemRewardItems"/> again.
-    /// </summary>
     public bool AutoRedeemOffResetApplied { get; set; }
+    public bool StepRefreshResetApplied { get; set; }
+    public bool ProblemStopApplied { get; set; }
+    public bool ClaimMailOnApplied { get; set; }
 
-    // --- Persisted profile data ---
-    /// <summary>
-    /// Named profiles. Each profile is a sparse patch — only fields that differ from
-    /// the base configuration are stored. Sections and fields absent from the patch
-    /// fall through to the base values transparently.
-    /// </summary>
     public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
 
-    /// <summary>
-    /// Maps a character's PlayerState.ContentId to a named profile in
-    /// <see cref="Profiles"/>. Characters with no entry use the base configuration.
-    /// </summary>
     public Dictionary<string, string> CharacterProfiles { get; set; } = [];
     #endregion
 
     internal bool IsPluginSetupComplete() => PluginSetupCompleteVersion == PluginSetupVersion;
     internal void MarkPluginSetupComplete() => PluginSetupCompleteVersion = PluginSetupVersion;
 
-    // Public configuration surface; falls through to the base configuration when no profile is active
-    [JsonIgnore] public GeneralConfiguration General => _activeProfileGeneral ?? _general;
-    [JsonIgnore] public StopConfiguration Stop => _activeProfileStop ?? _stop;
-    [JsonIgnore] public DutyConfiguration Duties => _activeProfileDuties ?? _duties;
-    [JsonIgnore] public SinglePlayerDutyConfiguration SinglePlayerDuties => _activeProfileSinglePlayerDuties ?? _singlePlayerDuties;
-    [JsonIgnore] public NotificationConfiguration Notifications => _activeProfileNotifications ?? _notifications;
-    [JsonIgnore] public AdvancedConfiguration Advanced => _activeProfileAdvanced ?? _advanced;
+    [JsonIgnore] public GeneralConfiguration General => _activeGeneral ?? _general;
+    [JsonIgnore] public StopConfiguration Stop => _activeStop ?? _stop;
+    [JsonIgnore] public DutyConfiguration Duties => _activeDuties ?? _duties;
+    [JsonIgnore] public SinglePlayerDutyConfiguration SinglePlayerDuties => _activeQuestBattles ?? _singlePlayerDuties;
+    [JsonIgnore] public NotificationConfiguration Notifications => _activeNotifications ?? _notifications;
+    [JsonIgnore] public AdvancedConfiguration Advanced => _activeAdvanced ?? _advanced;
 
-    /// <summary>
-    /// Returns the base (non-profiled) instance of a section for use in the
-    /// config UI when editing base values.
-    /// </summary>
     internal GeneralConfiguration BaseGeneral => _general;
-    internal StopConfiguration BaseStop => _stop;
-    internal DutyConfiguration BaseDuties => _duties;
-    internal SinglePlayerDutyConfiguration BaseSinglePlayerDuties => _singlePlayerDuties;
-    internal NotificationConfiguration BaseNotifications => _notifications;
     internal AdvancedConfiguration BaseAdvanced => _advanced;
 
     #region Character Profiles
-    // Runtime-only merged section code (never serialised)
-    [JsonIgnore] private GeneralConfiguration? _activeProfileGeneral;
-    [JsonIgnore] private StopConfiguration? _activeProfileStop;
-    [JsonIgnore] private DutyConfiguration? _activeProfileDuties;
-    [JsonIgnore] private SinglePlayerDutyConfiguration? _activeProfileSinglePlayerDuties;
-    [JsonIgnore] private NotificationConfiguration? _activeProfileNotifications;
-    [JsonIgnore] private AdvancedConfiguration? _activeProfileAdvanced;
+    internal event EventHandler? LanguageChanged;
 
-    /// <summary>
-    /// Activates the profile associated with the given character content ID, merging
-    /// it over the base configuration. Pass null or an unmapped ID to revert to base.
-    /// </summary>
+    internal void SetLanguage(string language)
+    {
+        string previousLanguage = General.Language;
+        General.Language = language;
+        NotifyLanguageChanged(previousLanguage);
+    }
+
+    private void NotifyLanguageChanged(string previousLanguage)
+    {
+        if (!string.Equals(previousLanguage, General.Language, StringComparison.OrdinalIgnoreCase))
+            LanguageChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    [JsonIgnore] private GeneralConfiguration? _activeGeneral;
+    [JsonIgnore] private StopConfiguration? _activeStop;
+    [JsonIgnore] private DutyConfiguration? _activeDuties;
+    [JsonIgnore] private SinglePlayerDutyConfiguration? _activeQuestBattles;
+    [JsonIgnore] private NotificationConfiguration? _activeNotifications;
+    [JsonIgnore] private AdvancedConfiguration? _activeAdvanced;
+
     internal void ActivateForCharacter(string contentId)
     {
         if (!CharacterProfiles.TryGetValue(contentId, out var profileName) ||
@@ -106,10 +102,6 @@ internal sealed class Configuration : IPluginConfiguration
         ApplyPatches(profileName, patches);
     }
 
-    /// <summary>
-    /// Activates a named profile directly, regardless of current character.
-    /// Useful for preview/testing in the config UI.
-    /// </summary>
     internal void ActivateProfile(string profileName)
     {
         if (!Profiles.TryGetValue(profileName, out var patches))
@@ -121,72 +113,95 @@ internal sealed class Configuration : IPluginConfiguration
         ApplyPatches(profileName, patches);
     }
 
-    /// <summary>
-    /// Reverts to the base configuration (no profile active).
-    /// </summary>
     internal void ClearActiveProfile()
     {
+        string previousLanguage = General.Language;
+        CaptureActiveProfile();
         ActiveProfileName = null;
-        _activeProfileGeneral = null;
-        _activeProfileStop = null;
-        _activeProfileDuties = null;
-        _activeProfileSinglePlayerDuties = null;
-        _activeProfileNotifications = null;
-        _activeProfileAdvanced = null;
+        _activeGeneral = null;
+        _activeStop = null;
+        _activeDuties = null;
+        _activeQuestBattles = null;
+        _activeNotifications = null;
+        _activeAdvanced = null;
+        NotifyLanguageChanged(previousLanguage);
     }
 
-    /// <summary>
-    /// Returns the name of the currently active profile, or null if using base config.
-    /// </summary>
     [JsonIgnore] internal string? ActiveProfileName { get; private set; }
 
     private void ApplyPatches(string profileName, Dictionary<string, JObject> patches)
     {
+        string previousLanguage = General.Language;
+        CaptureActiveProfile();
         ActiveProfileName = profileName;
-        _activeProfileGeneral = MergeSection(_general, patches, "General");
-        _activeProfileStop = MergeSection(_stop, patches, "Stop");
-        _activeProfileDuties = MergeSection(_duties, patches, "Duties");
-        _activeProfileSinglePlayerDuties = MergeSection(_singlePlayerDuties, patches, "SinglePlayerDuties");
-        _activeProfileNotifications = MergeSection(_notifications, patches, "Notifications");
-        _activeProfileAdvanced = MergeSection(_advanced, patches, "Advanced");
+        _activeGeneral = MergeSection(_general, patches, "General");
+        _activeStop = MergeSection(_stop, patches, "Stop");
+        _activeDuties = MergeSection(_duties, patches, "Duties");
+        _activeQuestBattles = MergeSection(_singlePlayerDuties, patches, "SinglePlayerDuties");
+        _activeNotifications = MergeSection(_notifications, patches, "Notifications");
+        _activeAdvanced = MergeSection(_advanced, patches, "Advanced");
+        NotifyLanguageChanged(previousLanguage);
     }
 
-    /// <summary>
-    /// Serialises <paramref name="base"/> to a JObject, merges the patch for
-    /// <paramref name="sectionKey"/> on top, and deserialises the result.
-    /// Returns null (fall-through to base) if the section is absent from the patch.
-    /// </summary>
-    private static T? MergeSection<T>(T @base, Dictionary<string, JObject> patches, string sectionKey)
+    private static T MergeSection<T>(T @base, Dictionary<string, JObject> patches, string sectionKey)
         where T : class
     {
-        if (!patches.TryGetValue(sectionKey, out var patch))
-            return null;
-
         var merged = JObject.FromObject(@base);
-        merged.Merge(patch, new JsonMergeSettings
+        if (patches.TryGetValue(sectionKey, out var patch))
         {
-            MergeArrayHandling = MergeArrayHandling.Replace,
-            MergeNullValueHandling = MergeNullValueHandling.Merge,
-        });
-        return merged.ToObject<T>();
+            merged.Merge(patch, new JsonMergeSettings
+            {
+                MergeArrayHandling = MergeArrayHandling.Replace,
+                MergeNullValueHandling = MergeNullValueHandling.Merge,
+            });
+        }
+
+        return merged.ToObject<T>()!;
     }
 
-    /// <summary>
-    /// Creates a new empty (no-op) profile with the given name.
-    /// </summary>
+    [OnSerializing]
+    internal void CaptureActiveProfile(StreamingContext context = default)
+    {
+        if (ActiveProfileName == null || !Profiles.TryGetValue(ActiveProfileName, out var patches))
+            return;
+
+        CapturePatch(patches, "General", _general, _activeGeneral);
+        CapturePatch(patches, "Stop", _stop, _activeStop);
+        CapturePatch(patches, "Duties", _duties, _activeDuties);
+        CapturePatch(patches, "SinglePlayerDuties", _singlePlayerDuties, _activeQuestBattles);
+        CapturePatch(patches, "Notifications", _notifications, _activeNotifications);
+        CapturePatch(patches, "Advanced", _advanced, _activeAdvanced);
+    }
+
+    private static void CapturePatch<T>(Dictionary<string, JObject> patches, string sectionKey, T @base, T? active)
+        where T : class
+    {
+        if (active == null)
+            return;
+
+        JObject baseJson = JObject.FromObject(@base);
+        JObject patch = [];
+        foreach (JProperty property in JObject.FromObject(active).Properties())
+        {
+            if (!JToken.DeepEquals(property.Value, baseJson[property.Name]))
+                patch[property.Name] = property.Value.DeepClone();
+        }
+
+        if (patch.Count == 0)
+            patches.Remove(sectionKey);
+        else
+            patches[sectionKey] = patch;
+    }
+
     internal void CreateProfile(string profileName)
     {
         Profiles.TryAdd(profileName, []);
     }
 
-    /// <summary>
-    /// Removes a profile and any character bindings that reference it.
-    /// </summary>
     internal void DeleteProfile(string profileName)
     {
         Profiles.Remove(profileName);
 
-        // Clean up any character bindings pointing at the deleted profile
         var toRemove = new List<string>();
         foreach (var (charId, name) in CharacterProfiles)
             if (name == profileName)
@@ -197,51 +212,98 @@ internal sealed class Configuration : IPluginConfiguration
         if (ActiveProfileName == profileName)
             ClearActiveProfile();
     }
+
+    internal bool RenameProfile(string oldName, string newName)
+    {
+        if (oldName == newName || Profiles.ContainsKey(newName) || !Profiles.Remove(oldName, out var patches))
+            return false;
+
+        Profiles[newName] = patches;
+        foreach (var charId in CharacterProfiles.Where(x => x.Value == oldName).Select(x => x.Key).ToList())
+            CharacterProfiles[charId] = newName;
+
+        if (ActiveProfileName == oldName)
+            ActiveProfileName = newName;
+        return true;
+    }
+
+    internal void AssignProfile(string contentId, string? profileName)
+    {
+        if (profileName == null || !Profiles.ContainsKey(profileName))
+            CharacterProfiles.Remove(contentId);
+        else
+            CharacterProfiles[contentId] = profileName;
+    }
+
+    internal string? GetProfileForCharacter(string contentId) =>
+        CharacterProfiles.TryGetValue(contentId, out var profileName) && Profiles.ContainsKey(profileName)
+            ? profileName
+            : null;
     #endregion
 
     #region Variables
+    // Saved by name in RewardOrder and RewardRulesOff.
+    internal enum ERewardRule
+    {
+        UnownedCollectible,
+        GearUpgrade,
+        Coffer,
+        AllaganPieces,
+        VendorValue,
+    }
+
     internal sealed class GeneralConfiguration
     {
-        // Preferences
         public string Language { get; set; } = "en";
-        public ECombatModule CombatModule { get; set; } = ECombatModule.None;
+        public ECombatModule CombatModule { get; set; } = ECombatModule.BossMod;
         public uint MountId { get; set; } = 1;
+        public int MountDistance { get; set; } = 50;
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
         public Job CombatJob { get; set; } = Job.ADV;
-        public Job CraftingJob { get; set; } = Job.CRP;
-        public Job GatheringJob { get; set; } = Job.MIN;
+        public Job ArcanistJob { get; set; } = Job.SMN;
+        public Job CraftingJob { get; set; } = Job.ADV;
+        public Job GatheringJob { get; set; } = Job.ADV;
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
         public string ChocoboName { get; set; } = string.Empty;
+        public bool SummonChocobo { get; set; }
+        public bool CollectJobGear { get; set; } = true;
         public string DisplayName { get; set; } = "Anonymous";
-        // UI
         public bool UseEscToCancelQuesting { get; set; } = true;
+        public bool StopOnPlayerMove { get; set; }
         public bool UseQuestionableTheme { get; set; } = true;
         public bool ShowIncompleteSeasonalEvents { get; set; } = true;
         public bool ShowCompleteSeasonalEvents { get; set; }
         public bool QuestIcons { get; set; } = true;
-        public bool HideSponsorButton { get; set; }
         public bool HideRemainingTasks { get; set; }
         public bool HideInAllInstances { get; set; } = true;
         public bool HidePatch { get; set; }
         public bool HideQuestStartedJob { get; set; }
         public bool HideThingsNotAvailable { get; set; }
         public bool HideQuestRequiredLevel { get; set; }
-        // Questing
         public bool ConfigureTextAdvance { get; set; } = true;
         public bool DontSkipCutscenes { get; set; }
         public bool DontShowAnswerSuggestions { get; set; }
         public bool SkipLowPriorityDuties { get; set; }
         public bool UseTickets { get; set; }
+        public bool ConfirmCurrencyOverCap { get; set; }
         public bool SameJobThroughoutQuest { get; set; }
         public bool IgnoreNextQuestIfPrioSet { get; set; }
-        // Unimplemented/hidden
         public bool TitleBarPillCenter { get; set; } = true;
-        public bool DismissedReportWarning { get; set; }
-        public bool ReportsDisabled { get; set; }
-        public string ReportMessage { get; set; } = "";
-        public bool ClaimMail { get; set; }
+        public bool ClaimMail { get; set; } = true;
+        public List<uint> DeliveryNpcs { get; set; } = [];
+        public Dictionary<uint, EDeliveryItem> DeliveryItems { get; set; } = [];
+
+        public EDeliveryItem DeliveryItemFor(uint npc) => DeliveryItems.GetValueOrDefault(npc, EDeliveryItem.Gather);
+        public bool RunNoviceHall { get; set; } = true;
+        public bool SendRetainers { get; set; }
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
+        public int AutoStepRefreshMaxTries { get; set; } = 3;
+        public int DeathLimit { get; set; } = 5;
+        public List<ERewardRule> RewardOrder { get; set; } = [];
+        public HashSet<ERewardRule> RewardRulesOff { get; set; } = [];
+        public bool RepairGear { get; set; } = true;
+        public int RepairBelowPercent { get; set; } = 30;
     }
 
     internal sealed class StopConfiguration
@@ -256,15 +318,95 @@ internal sealed class Configuration : IPluginConfiguration
 
         public bool LevelToStopAfter { get; set; }
         public int TargetLevel { get; set; } = 50;
+        public bool PriorityListEmpty { get; set; }
         public bool RunCommandAfterStop { get; set; }
-        public string CommandAfterStop { get; set; } = "/li auto";
+        public string CommandAfterStop { get; set; } = "";
         public bool RemoveWhenCompleteConditionMet { get; set; }
+        public bool RunAfterProblemStop { get; set; }
+        public EEndAction EndAction { get; set; }
+        public EDestination Destination { get; set; }
+        public int WaitSeconds { get; set; }
+
+        // A list, so a profile replaces it as a whole when merged.
+        public List<StopPreset> PresetsAfterQuest { get; set; } = [];
+
+        internal string? GetPreset(ElementId questId)
+        {
+            string id = questId.ToString();
+            return PresetsAfterQuest.FirstOrDefault(x => x.QuestId == id)?.Preset;
+        }
+
+        internal void SetPreset(ElementId questId, string? preset)
+        {
+            string id = questId.ToString();
+            PresetsAfterQuest.RemoveAll(x => x.QuestId == id);
+            if (preset != null)
+                PresetsAfterQuest.Add(new StopPreset { QuestId = id, Preset = preset });
+        }
+    }
+
+    // Outside the profiles: the player's answer and the admin token belong to this install.
+    internal sealed class ReportConfiguration
+    {
+        public bool? Share { get; set; }
+        public bool ShowCounts { get; set; } = true;
+        public string AdminToken { get; set; } = string.Empty;
+        public bool ReportProjectPaths { get; set; }
+    }
+
+    // Outside the profile sections, so each character keeps its own record.
+    internal sealed class JobGearConfiguration
+    {
+        // Content id to the sets already collected, as "<job>:<level>".
+        public Dictionary<string, List<string>> Collected { get; set; } = [];
+    }
+
+    internal sealed class CharacterConfiguration
+    {
+        public List<ulong> EnabledIds { get; set; } = [];
+    }
+
+    internal sealed class StopPreset
+    {
+        public string QuestId { get; set; } = string.Empty;
+        public string Preset { get; set; } = string.Empty;
+    }
+
+    // Values are Satisfy's run kinds: 0 craft, 1 gather, 2 fish.
+    internal enum EDeliveryItem
+    {
+        Craft,
+        Gather,
+        Fish,
+    }
+
+    internal enum EEndAction
+    {
+        None,
+        LogOut,
+        CloseGame,
+    }
+
+    // Where Lifestream takes the character after a run; each maps to a /li command.
+    internal enum EDestination
+    {
+        None,
+        HomeWorld,
+        Auto,
+        Inn,
+        PrivateEstate,
+        FreeCompany,
+        Apartment,
+        GrandCompany,
     }
 
     internal sealed class DutyConfiguration
     {
         public bool RunInstancedContentWithAutoDuty { get; set; }
         public bool RunUnsynced { get; set; } = true;
+        public int UnsyncLevelGap { get; set; } = 15;
+        public bool SetAsideManualDuties { get; set; } = true;
+        public bool CatchUpForStory { get; set; }
         public HashSet<uint> WhitelistedDutyCfcIds { get; set; } = [];
         public HashSet<uint> BlacklistedDutyCfcIds { get; set; } = [];
         public Dictionary<string, bool> ExpansionHeaderStates { get; set; } = [];
@@ -273,6 +415,8 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class SinglePlayerDutyConfiguration
     {
         public bool RunSoloInstancesWithBossMod { get; set; }
+        public bool RetryOnFailure { get; set; } = true;
+        public int MaxAttempts { get; set; } = 5;
 
         [SuppressMessage("Performance", "CA1822", Justification = "Will be fixed when no longer WIP")]
         public byte RetryDifficulty => 2;
@@ -290,6 +434,9 @@ internal sealed class Configuration : IPluginConfiguration
         public bool FlashTaskbar { get; set; }
         public bool NotifyOnStopCondition { get; set; }
         public bool NotifyOnCriticalFailure { get; set; } = true;
+        public bool NotifyOnRequestedStop { get; set; }
+        public string Sound { get; set; } = string.Empty;
+        public bool OnlyWhenUnfocused { get; set; }
     }
 
     internal sealed class AdvancedConfiguration
@@ -308,7 +455,6 @@ internal sealed class Configuration : IPluginConfiguration
         public bool ShowActionManager { get; set; }
         public bool ShowNewGamePlus { get; set; }
         public bool ShowHoveredItem { get; set; }
-        public bool DisableAutoDutyBareMode { get; set; }
         public bool SkipAetherCurrents { get; set; }
         public bool SkipClassJobQuests { get; set; }
         public bool SkipARealmRebornHardModePrimals { get; set; }
@@ -316,8 +462,9 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SkipFeistyLittleChocobo { get; set; }
         public bool StopMSQ { get; set; }
         public bool PreventQuestCompletion { get; set; }
-        public bool AbandonQuestBeforeCompletion { get; set; }
-        public bool RemoveFromPriorityWhenAbandoned { get; set; }
+        public bool SkipCraftworksDelivery { get; set; }
+        [JsonIgnore] public bool AbandonQuestBeforeCompletion { get; set; }
+        [JsonIgnore] public bool RemoveFromPriorityWhenAbandoned { get; set; }
         public bool ShowWindowOnStart { get; set; }
         public bool StartMinimized { get; set; }
         public bool OpenEditor { get; set; }
@@ -325,17 +472,13 @@ internal sealed class Configuration : IPluginConfiguration
         public bool Debug { get; set; }
         public bool DebugLocalisation { get; set; }
 
-        /// <summary>
-        ///     Gates the experimental questpath auto-generation (Journal Progress right-click). Generated paths
-        ///     are unreviewed machine drafts and must not be run unattended.
-        /// </summary>
+        // Generated paths are unreviewed drafts and must not run unattended.
         public bool AllowPathGeneration { get; set; }
         public bool AutoRedeemRewardItems { get; set; }
         public HashSet<uint> AutoRedeemItemBlacklist { get; set; } = [];
-        public bool BMRestoreMovement { get; set; }
     }
 
-    internal void ApplyAutoRedeemRewardItemsInitialReset()
+    internal void ResetAutoRedeem()
     {
         _advanced.AutoRedeemRewardItems = false;
 
@@ -350,23 +493,81 @@ internal sealed class Configuration : IPluginConfiguration
         }
     }
 
+    // The old auto refresh was hidden in 2025 with some users' saved value still on.
+    internal void ResetAutoStepRefresh()
+    {
+        _general.AutoStepRefreshEnabled = false;
+
+        foreach (Dictionary<string, JObject> profile in Profiles.Values)
+        {
+            if (!profile.TryGetValue(nameof(General), out JObject? generalPatch))
+                continue;
+
+            generalPatch.Remove(nameof(GeneralConfiguration.AutoStepRefreshEnabled));
+            if (!generalPatch.HasValues)
+                profile.Remove(nameof(General));
+        }
+    }
+
+    // The stop command used to run after problem stops too; keep that for setups that already use it.
+    internal void KeepProblemStop()
+    {
+        _stop.RunAfterProblemStop = _stop.RunCommandAfterStop;
+
+        foreach (Dictionary<string, JObject> profile in Profiles.Values)
+        {
+            if (profile.TryGetValue(nameof(Stop), out JObject? stopPatch) &&
+                stopPatch.Value<bool?>(nameof(StopConfiguration.RunCommandAfterStop)) is { } runCommand &&
+                runCommand != _stop.RunAfterProblemStop)
+                stopPatch[nameof(StopConfiguration.RunAfterProblemStop)] = runCommand;
+        }
+    }
+
+    // Claiming reward mail was saved as off while it had no setting; it is on by default now.
+    internal void TurnOnClaimMail()
+    {
+        _general.ClaimMail = true;
+
+        foreach (Dictionary<string, JObject> profile in Profiles.Values)
+        {
+            if (!profile.TryGetValue(nameof(General), out JObject? generalPatch))
+                continue;
+
+            generalPatch.Remove(nameof(GeneralConfiguration.ClaimMail));
+            if (!generalPatch.HasValues)
+                profile.Remove(nameof(General));
+        }
+    }
+
     internal sealed class PriorityConfiguration
     {
         public Dictionary<string, List<string>> Presets { get; set; } = [];
+        public bool AddPresetsToList { get; set; }
+    }
+
+    internal sealed class JournalConfiguration
+    {
+        public bool AvailableOnly { get; set; }
+        public bool BlueOnly { get; set; }
+        public bool HideNoPaths { get; set; }
+        public bool HideCompleted { get; set; }
+        public bool HideUnobtainable { get; set; }
+        public bool HideRepeatable { get; set; }
+    }
+
+    internal sealed class DailiesConfiguration
+    {
+        public List<EAlliedSociety> Societies { get; set; } = [];
     }
 
     internal sealed class PathDataConfiguration
     {
-        /// <summary>Whether to automatically download newer quest/gathering path bundles.</summary>
         public bool AutoUpdate { get; set; } = true;
 
-        /// <summary>Data version of the path bundle currently in <c>{ConfigDirectory}/PathData/</c>; 0 if none.</summary>
         public long InstalledDataVersion { get; set; }
 
-        /// <summary>Plugin version that downloaded the current bundle; used to discard it after a plugin update.</summary>
         public string? BundlePluginVersion { get; set; }
 
-        /// <summary>When the updater last checked for a newer bundle.</summary>
         public DateTimeOffset? LastCheck { get; set; }
     }
     #endregion
@@ -377,7 +578,7 @@ internal sealed class Configuration : IPluginConfiguration
         public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
             bool hasExistingValue, JsonSerializer serializer)
         {
-            string? value = reader.Value?.ToString();
+            string? value = reader.Value is { } raw ? Convert.ToString(raw, CultureInfo.InvariantCulture) : null;
             return value != null ? ElementId.FromString(value) : null;
         }
     }

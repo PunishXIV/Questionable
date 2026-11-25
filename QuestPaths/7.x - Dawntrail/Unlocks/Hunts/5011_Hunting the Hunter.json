@@ -1,104 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1048541,
-          "Position": {
-            "X": 23.5141,
-            "Y": -14,
-            "Z": 137.40747
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1049457,
-          "Position": {
-            "X": -223.92621,
-            "Y": 30,
-            "Z": -603.11285
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "Position": [-223.92621, 30, -603.11285],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "Position": {
-            "X": -65.20557,
-            "Y": 38.80659,
-            "Z": -459.1674
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Resolution"
-          ]
-        },
-        {
           "DataId": 1049180,
-          "Position": {
-            "X": -67.27704,
-            "Y": 38.80659,
-            "Z": -459.22028
-          },
-          "TerritoryId": 1186,
+          "Position": [-67.27704, 38.80659, -459.22028],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1051415,
-          "Position": {
-            "X": -400.351,
-            "Y": 14.029996,
-            "Z": 112.26062
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Resolution",
-            "[Solution Nine] Residential Sector"
-          ]
+          "Position": [-400.351, 14.029996, 112.26062],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1048541,
-          "Position": {
-            "X": 23.5141,
-            "Y": -14,
-            "Z": 137.40747
-          },
-          "TerritoryId": 1185,
+          "Position": [23.5141, -14, 137.40747],
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
           "NextQuestId": 5012
         }
       ]

@@ -1,38 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
-          },
-          "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "Comment": "Shifty Crone",
           "DataId": 1008303,
-          "Position": {
-            "X": 201.67847,
-            "Y": 3.594169,
-            "Z": 127.092285
-          },
-          "TerritoryId": 152,
+          "Position": [201.67847, 3.594169, 127.092285],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
@@ -42,18 +24,12 @@
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
-          ],
-          "Fly": true
+          ]
         },
         {
           "Comment": "Shifty Brute",
           "DataId": 1008305,
-          "Position": {
-            "X": 189.92896,
-            "Y": -1.1231554,
-            "Z": 86.13721
-          },
-          "TerritoryId": 152,
+          "Position": [189.92896, -1.1231554, 86.13721],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
@@ -63,18 +39,12 @@
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
-          ],
-          "Fly": true
+          ]
         },
         {
           "Comment": "Shifty Codger",
           "DataId": 1008302,
-          "Position": {
-            "X": 218.70752,
-            "Y": -2.6175609,
-            "Z": 86.533936
-          },
-          "TerritoryId": 152,
+          "Position": [218.70752, -2.6175609, 86.533936],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
@@ -84,36 +54,24 @@
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
-          ],
-          "Fly": true
+          ]
         },
         {
           "Comment": "Suspicious Object",
           "DataId": 2003039,
-          "Position": {
-            "X": 244.92249,
-            "Y": -1.2664795,
-            "Z": 100.51111
-          },
-          "TerritoryId": 152,
+          "Position": [244.92249, -1.2664795, 100.51111],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
-          ],
-          "Fly": true
+          ]
         },
         {
           "Comment": "Suspicious Object",
           "DataId": 2003038,
-          "Position": {
-            "X": 290.6616,
-            "Y": -4.996854,
-            "Z": 51.885204
-          },
-          "TerritoryId": 152,
+          "Position": [290.6616, -4.996854, 51.885204],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
@@ -123,18 +81,12 @@
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
-          ],
-          "Fly": true
+          ]
         },
         {
           "Comment": "Suspicious Object",
           "DataId": 2003037,
-          "Position": {
-            "X": 287.32123,
-            "Y": -5.6284122,
-            "Z": 29.403198
-          },
-          "TerritoryId": 152,
+          "Position": [287.32123, -5.6284122, 29.403198],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
@@ -144,20 +96,13 @@
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
-          ],
-          "Fly": true
+          ]
         },
         {
           "Comment": "Shifty Youth",
           "DataId": 1008304,
-          "Position": {
-            "X": 218.01799,
-            "Y": -3.255565,
-            "Z": -7.2904935
-          },
-          "TerritoryId": 152,
+          "Position": [218.01799, -3.255565, -7.2904935],
           "InteractionType": "Combat",
-          "StopDistance": 1,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -166,28 +111,13 @@
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
-          },
-          "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     }
   ]
 }

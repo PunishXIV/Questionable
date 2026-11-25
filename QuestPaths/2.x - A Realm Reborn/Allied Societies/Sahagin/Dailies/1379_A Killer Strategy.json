@@ -1,42 +1,31 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Censored",
   "Disabled": true,
   "Comment": "This is a FATE Allied Society Quest\nThere are other FATEs that spawn in the\narea that may need to be cleared first\nbefore the correct FATE will spawn.\nThis quest requires manual interaction.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "TerritoryId": 138,
           "InteractionType": "Instruction",
           "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
         },
         {
           "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "Position": [-220.7218, -40.720844, 37.247192],
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2147,
-          "Position": {
-            "X": -143.67775,
-            "Y": -32.78761,
-            "Z": -122.891304
-          },
-          "TerritoryId": 138,
+          "Position": [-143.67775, -32.78761, -122.891304],
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
           "KillEnemyDataIds": [
@@ -44,7 +33,6 @@
             2147
           ],
           "ItemId": 7798,
-          "Fly": true,
           "Comment": "Do the FATE, or click Skip if you have the item",
           "SkipConditions": {
             "StepIf": {
@@ -56,15 +44,8 @@
         },
         {
           "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "Position": [-220.7218, -40.720844, 37.247192],
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

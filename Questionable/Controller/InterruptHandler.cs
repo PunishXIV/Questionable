@@ -1,18 +1,18 @@
-﻿using System.Runtime.InteropServices;
-using Dalamud.Hooking;
+﻿using Dalamud.Hooking;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
+using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using JetBrains.Annotations;
 namespace Questionable.Controller;
 
 [RegisterSingleton]
-internal sealed unsafe class InterruptHandler : IDisposable
+internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSource
 {
     private readonly IClientState _clientState;
     private readonly IFramework _framework;
     private readonly ILogger<InterruptHandler> _logger;
     private readonly IObjectTable _objectTable;
-    private readonly Hook<ProcessActionEffect> _processActionEffectHook;
+    private readonly Hook<ActionEffectHandler.Delegates.Receive> _processActionEffectHook;
     private readonly TerritoryData _territoryData;
 
     public InterruptHandler(IGameInteropProvider gameInteropProvider, IClientState clientState,
@@ -24,7 +24,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
         _framework = framework;
         _logger = logger;
         _processActionEffectHook =
-            gameInteropProvider.HookFromAddress<ProcessActionEffect>(ActionEffectHandler.Addresses.Receive.Value,
+            gameInteropProvider.HookFromAddress<ActionEffectHandler.Delegates.Receive>(ActionEffectHandler.Addresses.Receive.Value,
                 HandleProcessActionEffect);
         _processActionEffectHook.Enable();
     }
@@ -40,24 +40,57 @@ internal sealed unsafe class InterruptHandler : IDisposable
 
     public event EventHandler? Interrupted;
 
+    public ActionConfirmations Confirmations { get; } = new();
+
+    internal sealed record ActionRequest(byte Type, uint ActionId, uint? TargetId, ushort? SourceSequence = null);
+
+    internal sealed class ActionConfirmations
+    {
+        private readonly Queue<(ushort Sequence, byte Type, uint ActionId, uint[] Targets, long Version)> _effects = new();
+        public long Version { get; private set; }
+
+        public void Observe(ushort sequence, byte type = (byte)ActionType.Action, uint actionId = 0, params uint[] targets)
+        {
+            if (sequence == 0)
+                return;
+
+            _effects.Enqueue((sequence, type, actionId, targets, ++Version));
+            while (_effects.Count > 32)
+                _effects.Dequeue();
+        }
+
+        public bool Contains(ActionRequest request, long afterVersion) =>
+            _effects.Any(effect => effect.Version > afterVersion &&
+                (request.SourceSequence is { } sequence
+                    ? effect.Sequence == sequence
+                    : request.ActionId != 0 && effect.Type == request.Type && effect.ActionId == request.ActionId &&
+                      (request.TargetId == null || effect.Targets.Contains(request.TargetId.Value))));
+    }
+
     private void HandleProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
-        EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail)
+        ActionEffectHandler.Header* effectHeader, ActionEffectHandler.TargetEffects* effects, GameObjectId* targetIds)
     {
         try
         {
+            // A non-zero source sequence means the client requested the action (not an auto-attack).
+            if (sourceId == _objectTable[0]?.EntityId && effectHeader->SourceSequence != 0)
+            {
+                uint[] targets = new uint[effectHeader->NumTargets];
+                for (int i = 0; i < targets.Length; ++i)
+                    targets[i] = targetIds[i].ObjectId;
+                Confirmations.Observe(effectHeader->SourceSequence, effectHeader->ActionType,
+                    effectHeader->ActionId, targets);
+            }
+
             if (!_territoryData.IsDutyInstance(_clientState.TerritoryType))
             {
-                for (int i = 0; i < effectHeader->TargetCount; i++)
+                for (int i = 0; i < effectHeader->NumTargets; i++)
                 {
-                    uint targetId = (uint)(effectTail[i] & uint.MaxValue);
-                    EffectEntry* effect = effectArray + 8 * i;
-
-                    if (targetId == _objectTable[0]?.GameObjectId &&
-                        effect->Type is EActionEffectType.Damage or EActionEffectType.BlockedDamage
-                            or EActionEffectType.ParriedDamage)
+                    if (targetIds[i].ObjectId == _objectTable[0]?.GameObjectId &&
+                        FindDamage(effects[i].Effects) is { } damage)
                     {
                         _logger.LogTrace("Damage action effect on self, from {SourceId} ({EffectType})", sourceId,
-                            effect->Type);
+                            damage);
                         Interrupted?.Invoke(this, EventArgs.Empty);
                         break;
                     }
@@ -70,47 +103,20 @@ internal sealed unsafe class InterruptHandler : IDisposable
         }
         finally
         {
-            _processActionEffectHook.Original(sourceId, sourceCharacter, pos, effectHeader, effectArray, effectTail);
+            _processActionEffectHook.Original(sourceId, sourceCharacter, pos, effectHeader, effects, targetIds);
         }
     }
 
-    private delegate void ProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
-        EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail);
-
-    [StructLayout(LayoutKind.Explicit)]
-    private struct EffectEntry
+    private static EActionEffectType? FindDamage(Span<ActionEffectHandler.Effect> slots)
     {
-        [FieldOffset(0)] public EActionEffectType Type;
-        [FieldOffset(1)] public byte Param0;
-        [FieldOffset(2)] public byte Param1;
-        [FieldOffset(3)] public byte Param2;
-        [FieldOffset(4)] public byte Mult;
-        [FieldOffset(5)] public byte Flags;
-        [FieldOffset(6)] public ushort Value;
-
-        public readonly byte AttackType => (byte)(Param1 & 0xF);
-
-        public override readonly string ToString()
+        foreach (ActionEffectHandler.Effect slot in slots)
         {
-            return
-                $"Type: {Type}, p0: {Param0:D3}, p1: {Param1:D3}, p2: {Param2:D3} 0x{Param2:X2} '{Convert.ToString(Param2, 2).PadLeft(8, '0')}', mult: {Mult:D3}, flags: {Flags:D3} | {Convert.ToString(Flags, 2).PadLeft(8, '0')}, value: {Value:D6} ATTACK TYPE: {AttackType}";
+            if ((EActionEffectType)slot.Type is EActionEffectType.Damage or EActionEffectType.BlockedDamage
+                or EActionEffectType.ParriedDamage)
+                return (EActionEffectType)slot.Type;
         }
-    }
 
-    [StructLayout(LayoutKind.Explicit)]
-    private struct EffectHeader
-    {
-        [FieldOffset(0)] public ulong AnimationTargetId;
-        [FieldOffset(8)] public uint ActionID;
-        [FieldOffset(12)] public uint GlobalEffectCounter;
-        [FieldOffset(16)] public float AnimationLockTime;
-        [FieldOffset(20)] public uint SomeTargetID;
-        [FieldOffset(24)] public ushort SourceSequence;
-        [FieldOffset(26)] public ushort Rotation;
-        [FieldOffset(28)] public ushort AnimationId;
-        [FieldOffset(30)] public byte Variation;
-        [FieldOffset(31)] public ActionType ActionType;
-        [FieldOffset(33)] public byte TargetCount;
+        return null;
     }
 
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
@@ -143,7 +149,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
         ComboSucceed = 28,
         Retaliation = 29,
         Knockback = 32,
-        Attract1 = 33, //Here is an issue bout knockback. some is 32 some is 33.
+        Attract1 = 33, // Some knockbacks use 33 instead of 32.
         Attract2 = 34,
         Mount = 40,
         FullResistStatus = 52,

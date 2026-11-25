@@ -1,20 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010858,
-          "Position": {
-            "X": -1.9074707,
-            "Y": 0,
-            "Z": -3.1281738
-          },
-          "StopDistance": 7,
-          "TerritoryId": 351,
+          "Position": [-1.9074707, 0, -3.1281738],
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -22,80 +17,55 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010890,
-          "Position": {
-            "X": 31.967651,
-            "Y": -1,
-            "Z": 2.9144287
-          },
-          "TerritoryId": 351,
+          "Position": [31.967651, -1, 2.9144287],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010860,
-          "Position": {
-            "X": 2.822876,
-            "Y": -1.995725,
-            "Z": -41.24518
-          },
-          "StopDistance": 7,
-          "TerritoryId": 351,
+          "Position": [2.822876, -1.995725, -41.24518],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 351,
       "Steps": [
         {
           "DataId": 1010858,
-          "Position": {
-            "X": -1.9074707,
-            "Y": 0,
-            "Z": -3.1281738
-          },
-          "TerritoryId": 351,
+          "Position": [-1.9074707, 0, -3.1281738],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1010861,
-          "Position": {
-            "X": -63.523376,
-            "Y": 46.999992,
-            "Z": 25.192627
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "Position": [-63.523376, 46.999992, 25.192627],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1006646,
-          "Position": {
-            "X": -29.953552,
-            "Y": 46.99734,
-            "Z": 32.547485
-          },
-          "StopDistance": 5,
-          "TerritoryId": 147,
+          "Position": [-29.953552, 46.99734, 32.547485],
           "InteractionType": "CompleteQuest"
         }
       ]

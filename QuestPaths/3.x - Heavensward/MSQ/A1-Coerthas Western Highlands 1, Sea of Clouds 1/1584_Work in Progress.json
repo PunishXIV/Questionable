@@ -1,50 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1011231,
-          "Position": {
-            "X": 503.1051,
-            "Y": 217.95148,
-            "Z": 790.2189
-          },
-          "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1011236,
-          "Position": {
-            "X": 446.00586,
-            "Y": 217.95142,
-            "Z": 764.06494
-          },
-          "TerritoryId": 397,
+          "Position": [446.00586, 217.95142, 764.06494],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2005403,
-          "Position": {
-            "X": 430.5067,
-            "Y": 225.0027,
-            "Z": 800.9321
-          },
-          "TerritoryId": 397,
+          "Position": [430.5067, 225.0027, 800.9321],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -55,12 +35,7 @@
         },
         {
           "DataId": 2005404,
-          "Position": {
-            "X": 552.39185,
-            "Y": 228.3512,
-            "Z": 725.9784
-          },
-          "TerritoryId": 397,
+          "Position": [552.39185, 228.3512, 725.9784],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -71,12 +46,7 @@
         },
         {
           "DataId": 2005405,
-          "Position": {
-            "X": 421.59143,
-            "Y": 212.69543,
-            "Z": 708.1559
-          },
-          "TerritoryId": 397,
+          "Position": [421.59143, 212.69543, 708.1559],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -88,15 +58,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1011236,
-          "Position": {
-            "X": 446.00586,
-            "Y": 217.95142,
-            "Z": 764.06494
-          },
-          "TerritoryId": 397,
+          "Position": [446.00586, 217.95142, 764.06494],
           "InteractionType": "CompleteQuest"
         }
       ]

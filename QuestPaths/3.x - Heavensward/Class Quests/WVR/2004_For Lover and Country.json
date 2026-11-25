@@ -1,106 +1,57 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Holy Rainbow Hat of Healing HQ // Autocraft requires: 3x Holy Rainbow Cloth, 1x Rainbow Thread, 1x Mythrite Nugget",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1012548,
-          "Position": {
-            "X": 86.1676,
-            "Y": -4.734931,
-            "Z": -30.47229
-          },
-          "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012551,
-          "Position": {
-            "X": -14.938599,
-            "Y": 15.965064,
-            "Z": -41.73346
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Last Vigil"
-          ]
+          "Position": [-14.938599, 15.965064, -41.73346],
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1012550,
-          "Position": {
-            "X": 4.409851,
-            "Y": 15.965048,
-            "Z": 11.520508
-          },
-          "TerritoryId": 419,
+          "Position": [4.409851, 15.965048, 11.520508],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012548,
-          "Position": {
-            "X": 86.1676,
-            "Y": -4.734931,
-            "Z": -30.47229
-          },
-          "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "Position": [86.1676, -4.734931, -30.47229],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "Position": [157.36621, 7.7920074, 98.924194],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 10881,
           "ItemCount": 1,
           "SkipConditions": {
@@ -113,17 +64,9 @@
         },
         {
           "DataId": 1012548,
-          "Position": {
-            "X": 86.1676,
-            "Y": -4.734931,
-            "Z": -30.47229
-          },
+          "Position": [86.1676, -4.734931, -30.47229],
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

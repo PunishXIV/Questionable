@@ -1,218 +1,99 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1010601,
-          "Position": {
-            "X": -14.755493,
-            "Y": 41.39178,
-            "Z": 258.13684
-          },
-          "TerritoryId": 137,
+          "Position": [-14.755493, 41.39178, 258.13684],
           "InteractionType": "Interact",
           "TargetTerritoryId": 137,
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {"StepIf": {"ExtraCondition": "DockStorehouse"}}
         },
         {
           "DataId": 1010139,
-          "Position": {
-            "X": -33.218933,
-            "Y": -24.674446,
-            "Z": 257.98413
-          },
-          "TerritoryId": 137,
+          "Position": [-33.218933, -24.674446, 257.98413],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1030049,
-          "Position": {
-            "X": -349.50793,
-            "Y": 57.270435,
-            "Z": -393.0572
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+          "Position": [-349.50793, 57.270435, -393.0572],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2010173,
-          "Position": {
-            "X": -310.0786,
-            "Y": 5.5999756,
-            "Z": -564.0803
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-310.0786, 5.5999756, -564.0803],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": -302.34204,
-            "Y": 4.9819174,
-            "Z": -570.3643
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -308.3169,
-            "Y": 5.7642717,
-            "Z": -571.4899
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -307.55157,
-            "Y": 10.247091,
-            "Z": -571.51746
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "DisableNavmesh": true,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -304.1348,
-            "Y": 10.674036,
-            "Z": -572.1407
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "DisableNavmesh": true,
-          "Fly": true
-        },
-        {
           "DataId": 2010175,
-          "Position": {
-            "X": -302.72375,
-            "Y": 9.750427,
-            "Z": -578.02704
-          },
-          "TerritoryId": 180,
+          "Position": [-302.72375, 9.750427, -578.02704],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": -306.7621,
-            "Y": 5.7733507,
-            "Z": -570.97736
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -302.3223,
-            "Y": 4.976821,
-            "Z": -570.7108
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2010180,
-          "Position": {
-            "X": -349.50793,
-            "Y": 57.236572,
-            "Z": -393.0572
-          },
-          "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "Position": [-349.50793, 57.236572, -393.0572],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 137,
       "Steps": [
         {
-          "DataId": 1010601,
-          "Position": {
-            "X": -14.755493,
-            "Y": 41.39178,
-            "Z": 258.13684
-          },
-          "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 137,
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
-        },
-        {
           "DataId": 1010139,
-          "Position": {
-            "X": -33.218933,
-            "Y": -24.674446,
-            "Z": 257.98413
-          },
-          "TerritoryId": 137,
+          "Position": [-33.218933, -24.674446, 257.98413],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 2010181,
-          "Position": {
-            "X": -77.28699,
-            "Y": 40.97046,
-            "Z": -138.78088
-          },
-          "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "Position": [-77.28699, 40.97046, -138.78088],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1030053,
-          "Position": {
-            "X": -153.67358,
-            "Y": -129.4397,
-            "Z": 264.60657
-          },
-          "TerritoryId": 129,
+          "Position": [-153.67358, -129.4397, 264.60657],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,70 +1,33 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Skiaz",
   "LastChecked":{"Username": "alydev", "Date": "2026-05-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Steps": [
-        {
-          "DataId": 1017320,
-          "Position": {
-            "X": -342.15308,
-            "Y": 59.03801,
-            "Z": 315.14453
-          },
-          "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
-        }
-      ]
+      "Steps": []
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1017170,
-          "Position": {
-            "X": -344.22827,
-            "Y": 59.038006,
-            "Z": 317.1587
-          },
-          "TerritoryId": 400,
+          "Position": [-344.22827, 59.038006, 317.1587],
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1017173,
-          "Position": {
-            "X": -363.82086,
-            "Y": 60.896187,
-            "Z": 306.38586
-          },
-          "TerritoryId": 400,
+          "Position": [-363.82086, 60.896187, 306.38586],
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         }
       ]
     },
     {
       "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1017320,
-          "Position": {
-            "X": -342.15308,
-            "Y": 59.03801,
-            "Z": 315.14453
-          },
-          "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Churning Mists - Zenith"
-        }
-      ]
+      "Steps": []
     }
   ]
 }
