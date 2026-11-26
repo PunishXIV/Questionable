@@ -15,6 +15,7 @@ internal static class Mail
     private static HashSet<uint>? _moogleIds;
     // The game's purchase-letter count can stay up with an empty mailbox.
     private static uint? _countWhenEmpty;
+    private static ulong? _countFor;
 
     // Quest dialogue and yes/no handling stay out of the mailbox while this is set.
     internal static bool Active { get; private set; }
@@ -65,6 +66,12 @@ internal static class Mail
 
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
+            if (CharacterRun.CurrentId != _countFor)
+            {
+                _countFor = CharacterRun.CurrentId;
+                _countWhenEmpty = null;
+            }
+
             if (MogmailIpc.RewardLetters is { } letters && letters < _countWhenEmpty)
                 _countWhenEmpty = letters;
 

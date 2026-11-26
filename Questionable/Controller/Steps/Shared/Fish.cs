@@ -77,7 +77,7 @@ internal static class Fish
                 throw new TaskException(reason);
 
             int missing = item.ItemCount - CountEligibleInInventory(item);
-            FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), out string message);
+            FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), item.Collectability, out string message);
             if (result is FeeshStartResult.Started or FeeshStartResult.Uncertain)
                 _operationId = _state.Id;
             if (result != FeeshStartResult.Started || !_operationId.HasValue)

@@ -19,6 +19,7 @@ internal sealed class FeeshIpc : Ipc, IDisposable
 
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
     [EzIPC("Feesh.Catch")] private readonly Func<uint, int, bool> _catch = null!;
+    [EzIPC("Feesh.CatchCollectable")] private readonly Func<uint, int, int, bool> _catchCollectable = null!;
     [EzIPC("Feesh.CatchStatus")] private readonly Func<string> _catchStatus = null!;
     [EzIPC("Feesh.Stop")] private readonly Func<bool> _stop = null!;
     [EzIPC("Feesh.ReleaseHeldFish")] private readonly Func<bool> _releaseHeldFish = null!;
@@ -39,7 +40,7 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     public bool? GetBusy() => Read(_isBusy);
 
     // Catch takes how many more to catch, and keeps them from being discarded until released.
-    public FeeshStartResult StartCatch(uint fishId, int additionalCount, out string message)
+    public FeeshStartResult StartCatch(uint fishId, int additionalCount, int minCollectability, out string message)
     {
         message = "";
         if (_operation.HasOperation)
@@ -60,8 +61,11 @@ internal sealed class FeeshIpc : Ipc, IDisposable
 
         try
         {
-            _logger.LogInformation("Requesting {Count} additional {FishId} from Feesh", additionalCount, fishId);
-            if (!_catch(fishId, additionalCount))
+            _logger.LogInformation("Requesting {Count} additional {FishId} from Feesh (collectability {Min})",
+                additionalCount, fishId, minCollectability);
+            if (!(minCollectability > 0
+                    ? _catchCollectable(fishId, additionalCount, minCollectability)
+                    : _catch(fishId, additionalCount)))
             {
                 _operation.RejectRequest(id);
                 return GetBusy() == true ? FeeshStartResult.Busy : FeeshStartResult.Refused;

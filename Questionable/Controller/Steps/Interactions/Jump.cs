@@ -38,21 +38,25 @@ internal static class Jump
 
     internal abstract class ExecutorBase<T>
     (
-        MovementController movementController,
+        NavmeshIpc navmesh,
         IObjectTable objectTable,
-        IFramework framework) : TaskExecutor<T>
+        IFramework framework) : TaskExecutor<T>, ITaskExecutor.IStoppable
     where T : class, IJumpTask
     {
+        private DateTime _startedAt = DateTime.MaxValue;
+
+        protected NavmeshIpc Navmesh => navmesh;
+
         protected override bool Start()
         {
             float stopDistance = Task.Destination.CalculateStopDistance();
             if ((objectTable[0]!.Position - Task.Destination.Position).Length() <= stopDistance)
                 return false;
 
-            movementController.NavigateTo(EMovementType.Quest, Task.DataId, [Task.Destination.Position], new()
-            {
-                StopDistance = Task.Destination.StopDistance ?? stopDistance,
-            });
+            // MappingTheRealm only follows the navmesh and can't jump; the run-up has to be a straight line.
+            if (!navmesh.MoveStraight(Task.Destination.Position))
+                throw new TaskException("vnavmesh couldn't start the run-up for the jump");
+            _startedAt = DateTime.Now;
             framework.RunOnTick(() =>
                 {
                     unsafe
@@ -66,24 +70,29 @@ internal static class Jump
 
         public override ETaskResult Update()
         {
-            if (movementController.IsPathRunning)
-                return ETaskResult.StillRunning;
+            if (objectTable[0] is { } player &&
+                (player.Position - Task.Destination.Position).Length() <= Task.Destination.CalculateStopDistance())
+            {
+                navmesh.Stop();
+                return ETaskResult.TaskComplete;
+            }
 
-            DateTime movementStartedAt = movementController.StartedAt;
-            if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(1) >= DateTime.Now)
+            if (navmesh.GetPathRunning() == true || _startedAt.AddSeconds(1) >= DateTime.Now)
                 return ETaskResult.StillRunning;
 
             return ETaskResult.TaskComplete;
         }
+
+        public void StopNow() => navmesh.Stop();
 
         public override bool ShouldInterruptOnDamage() => true;
     }
 
     internal sealed class SingleExecutor
     (
-        MovementController movementController,
+        NavmeshIpc navmesh,
         IObjectTable objectTable,
-        IFramework framework) : ExecutorBase<SingleTask>(movementController, objectTable, framework);
+        IFramework framework) : ExecutorBase<SingleTask>(navmesh, objectTable, framework);
 
     internal sealed record RepeatedTask
     (
@@ -96,12 +105,12 @@ internal static class Jump
 
     internal sealed class RepeatedExecutor
     (
-        MovementController movementController,
+        NavmeshIpc navmesh,
         IObjectTable objectTable,
         IFramework framework,
         ICondition condition,
         ILogger<RepeatedExecutor> logger)
-        : ExecutorBase<RepeatedTask>(movementController, objectTable, framework)
+        : ExecutorBase<RepeatedTask>(navmesh, objectTable, framework)
     {
         private readonly IObjectTable _objectTable = objectTable;
         private int _attempts;
@@ -124,6 +133,7 @@ internal static class Jump
             if ((player.Position - Task.Destination.Position).Length() <= stopDistance ||
                 player.Position.Y >= Task.Destination.Position.Y - 0.5f)
             {
+                Navmesh.Stop();
                 return ETaskResult.TaskComplete;
             }
 

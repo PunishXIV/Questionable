@@ -18,14 +18,39 @@ internal static class BetweenQuests
         acceptOnly.Any(isAccepted) && acceptOnly.Any(isReady);
 
     // No reset on success: a detour that fails on and off still fades out over a long session.
-    internal sealed class Backoff
+    // Per character: one character's failure kept the next ones of a list run from the detour.
+    internal sealed class Backoff(Func<ulong?>? character = null)
     {
+        private readonly Func<ulong?> _character = character ?? (() => CharacterRun.CurrentId);
+        private ulong? _for;
         private int _failures;
         private DateTime _until = DateTime.MinValue;
 
-        public bool Waiting => DateTime.Now < _until;
+        public bool Waiting
+        {
+            get
+            {
+                ForCurrent();
+                return DateTime.Now < _until;
+            }
+        }
 
-        public void Failed() => _until = DateTime.Now + Delay(_failures++);
+        public void Failed()
+        {
+            ForCurrent();
+            _until = DateTime.Now + Delay(_failures++);
+        }
+
+        private void ForCurrent()
+        {
+            ulong? current = _character();
+            if (current == _for)
+                return;
+
+            _for = current;
+            _failures = 0;
+            _until = DateTime.MinValue;
+        }
 
         internal static TimeSpan Delay(int failures) => TimeSpan.FromMinutes(30 * (1 << Math.Min(failures, 4)));
     }
