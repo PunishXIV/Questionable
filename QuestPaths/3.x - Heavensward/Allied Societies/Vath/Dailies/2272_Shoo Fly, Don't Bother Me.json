@@ -30,6 +30,7 @@
       "TerritoryId": 398,
       "Steps": [
         {
+          "DataId": 2006924,
           "Position": [-190.26477, -104.73892, 512.932],
           "InteractionType": "Action",
           "Action": "Fumigate"
@@ -41,12 +42,14 @@
       "TerritoryId": 398,
       "Steps": [
         {
+          "DataId": 2006925,
           "Position": [-13.443237, -129.2623, 712.21484],
           "InteractionType": "Action",
           "Action": "Fumigate",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
+          "DataId": 2006926,
           "Position": [45.151367, -132.12938, 685.7556],
           "InteractionType": "Action",
           "Action": "Fumigate",
