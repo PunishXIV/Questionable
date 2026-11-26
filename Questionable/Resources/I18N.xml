@@ -9380,7 +9380,7 @@ Right click: Copy without .json</Value>
     <Value lang="en">Boss Mod Reborn is loaded. Questionable doesn't work with it, so combat and quest battles can fail. Disable Boss Mod Reborn and use Boss Mod instead.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <!-- DEPRECATED -->
     <Key>WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable.</Key>
     <Value lang="en">WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable.</Value>
   </Entry>
@@ -9628,5 +9628,13 @@ Right click: Copy without .json</Value>
     <!-- Found in: ../Questionable/Controller/WigglyQuestSwitch.cs -->
     <Key>WigglyQuest is switched off while Questionable runs; it comes back on when Questionable stops.</Key>
     <Value lang="en">WigglyQuest is switched off while Questionable runs; it comes back on when Questionable stops.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>All characters</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Mixed</Key>
   </Entry>
 </I18N>
