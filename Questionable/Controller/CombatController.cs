@@ -163,7 +163,6 @@ internal sealed class CombatController : IDisposable
                     IGameObject? lastTarget = _objectTable.FirstOrDefault(x => x.GameObjectId == _lastTargetId);
                     if (lastTarget != null)
                     {
-                        // Wait until the game cleans up the target.
                         if (lastTarget.IsDead)
                         {
                             ElementId? elementId = _currentFight.Data.ElementId;
@@ -487,7 +486,7 @@ internal sealed class CombatController : IDisposable
 
     private void MoveToTarget(IGameObject gameObject)
     {
-        // A route of ours fights Boss Mod's own movement and fails, which stops the quest (1204 FATE, Sub Alt 11-24).
+        // A route of ours fights Boss Mod's own movement and fails, which stops the quest (1204 FATE).
         IGameObject? player = _objectTable[0];
         if (player == null || _currentFight?.Module.MovesPlayer == true)
             return;

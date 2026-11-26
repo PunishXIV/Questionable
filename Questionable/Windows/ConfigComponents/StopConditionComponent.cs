@@ -13,7 +13,6 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly UiUtils _uiUtils;
     private readonly PriorityPresets _presets;
     private readonly Configuration.EEndAction[] _endActions = Enum.GetValues<Configuration.EEndAction>();
-    // Lifestream's /li auto picks the estate, apartment or inn from its own settings.
     private static readonly Configuration.EDestination[] Destinations =
     [
         Configuration.EDestination.None, Configuration.EDestination.HomeWorld,

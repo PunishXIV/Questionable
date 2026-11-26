@@ -160,7 +160,6 @@ internal static class QstWidgets
 
     internal sealed record MenuPage(string Group, string Id, string Label, FontAwesomeIcon Icon);
 
-    // Draws the menu on the left and opens the page area on the right; dispose after drawing the page.
     public static ImRaii.ChildDisposable SideMenu(string id, IReadOnlyList<MenuPage> pages, ref string selected)
     {
         float scale = ImGuiHelpers.GlobalScale;

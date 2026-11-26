@@ -328,7 +328,6 @@ internal sealed class QuestFunctions
                 currentQuest = (QuestId)potentialQuests.Single().QuestId;
         }
 
-        // if the MSQ is hidden, we generally ignore it
         if (IsQuestAccepted(currentQuest) && state.GetQuestProgress(currentQuest.Value)!.IsHidden)
             return (QuestReference.NoQuest(MainScenarioQuestState.Available), ("Quest accepted but hidden"));
 

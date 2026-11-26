@@ -402,6 +402,10 @@ internal sealed class CommandHandler : IDisposable
                 _questStarter.RunCustomDeliveries();
                 break;
 
+            case "mail":
+                _questStarter.ClaimMail();
+                break;
+
             case "":
                 _questWindow.ToggleOrUncollapse();
                 break;
@@ -431,6 +435,7 @@ internal sealed class CommandHandler : IDisposable
         _L("/qst handle-interrupt - makes Questionable fight now, e.g. after you pulled enemies yourself"),
         _L("/qst redeem - redeems all reward items in your inventory"),
         _L("/qst deliveries - has Satisfy do this week's custom deliveries"),
+        _L("/qst mail - claims your Mog Station and reward mail through Mogmail"),
     ];
 
     private void PrintHelp(string[] lines)

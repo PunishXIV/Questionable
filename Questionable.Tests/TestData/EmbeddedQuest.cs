@@ -6,7 +6,6 @@ using System.Reflection;
 
 namespace Questionable.Tests.TestData;
 
-// Embedded resource names use the repository-relative path with forward slashes.
 public sealed class EmbeddedQuest
 {
     public EmbeddedQuest(string manifestName)

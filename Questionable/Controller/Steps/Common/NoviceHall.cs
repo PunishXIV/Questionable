@@ -48,7 +48,10 @@ internal static class NoviceHall
                 !Wanted((Job)playerState->CurrentClassJobId, playerState->CurrentLevel, HasRing()))
                 return [];
 
-            if (!Exercises.All(x => autoDuty.CanRunDuty(new DutyOptions { ContentFinderConditionId = x, Enabled = true })))
+            // AutoDuty only knows it has a path; the game refuses a locked exercise ("Unable to use at this time").
+            if (!Exercises.All(x => autoDuty.CanRunDuty(new DutyOptions { ContentFinderConditionId = x, Enabled = true }) &&
+                                    gameFunctions.CfcToContentId.TryGetValue(x, out uint content) &&
+                                    UIState.IsInstanceContentUnlocked(content)))
                 return [];
 
             logger.LogInformation("Running the Hall of the Novice exercises for the Neophyte's Ring");

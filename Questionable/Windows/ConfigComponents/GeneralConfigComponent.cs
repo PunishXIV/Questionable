@@ -406,7 +406,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                            ImGui.GetStyle().ItemSpacing.X * 2;
 
         DrawCheckbox(_L("Send out between quests"), () => general.SendRetainers, value => general.SendRetainers = value);
-        // Each works alone: one pass at the start, then questing without AutoRetainer (Discord, Me 11-25).
+        // Each works alone: one pass at the start, then questing without AutoRetainer.
         DrawCheckbox(_L("Send out when you start questing"), () => general.RetainersOnStart,
             value => general.RetainersOnStart = value);
 

@@ -40,6 +40,7 @@ public sealed class CommandHandlerTests
     [InlineData("cleanup")]
     [InlineData("handle-interrupt")]
     [InlineData("redeem")]
+    [InlineData("mail")]
     [InlineData("validation")]
     [InlineData("debug")]
     [InlineData("debugmode")]

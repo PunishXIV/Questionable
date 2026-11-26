@@ -44,7 +44,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
             .Append(currentLevel)
             .Max();
 
-    // Busy means in a duty or waiting on another plugin: the stop waits so neither is left half done.
     public static bool IsLevelStopDue(int level, int target, bool running, bool busy) =>
         running && !busy && level >= target;
 
@@ -98,7 +97,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
                currentStep.TerritoryId != (previous.TargetTerritoryId ?? previous.TerritoryId);
     }
 
-    // Both halves of a city are one aethernet hop apart.
     private static readonly uint[][] Cities = [[128, 129], [130, 131], [132, 133], [418, 419]];
 
     internal static bool IsSameCity(uint a, uint? b) =>

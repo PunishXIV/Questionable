@@ -176,7 +176,6 @@ internal static class JobGear
                     logger.LogInformation("Collected level {Level} job gear", Task.Level);
                 }
 
-                // An open shop keeps the player occupied, which pauses the tasks after this one.
                 if (CloseShop() && DateTime.Now < _giveUpAt)
                     return ETaskResult.StillRunning;
 
@@ -229,7 +228,6 @@ internal static class JobGear
             return ETaskResult.StillRunning;
         }
 
-        // The job gear vendors open the free "Rewards" shop; DailyRoutines' OptimizedFreeShop claims the same way.
         private unsafe ETaskResult TakeFromFreeShop(List<uint> missing)
         {
             AgentFreeShop* agent = AgentFreeShop.Instance();

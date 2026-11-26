@@ -277,7 +277,6 @@ internal static class Duty
         public override string ToString() => $"SetAside({QuestId}, {CfcId})";
     }
 
-    // Selection skips the quest from the next update on, which replaces the queue with the next quest's tasks.
     internal sealed class SetAsideExecutor(TerritoryData territoryData, IChatGui chatGui, ILogger<SetAsideExecutor> logger)
         : TaskExecutor<SetAsideTask>
     {

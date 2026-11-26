@@ -96,7 +96,6 @@ public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, IT
 
         foreach (QuestSequence handSequence in hand.QuestSequence)
         {
-            // Compare the final targeted interaction; earlier targets can be navigation waypoints.
             uint? target = handSequence.Steps.LastOrDefault(x => x.DataId is > 0)?.DataId;
             if (target == null)
                 continue;

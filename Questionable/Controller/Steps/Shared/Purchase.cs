@@ -136,7 +136,6 @@ internal static class Purchase
             if (_knightshopperIpc.GetBusy() != false)
                 throw new NeedsPlayerException("Knightshopper is busy or unavailable; finish its current work before buying quest items");
 
-            // Drop pending Questionable paths before the provider takes over navigation.
             _movementController.Stop();
             KnightshopperIpc.EStartResult result =
                 _knightshopperIpc.Buy(Task.Currency, Task.ItemId, (uint)Task.ItemCount, out _, out string message);

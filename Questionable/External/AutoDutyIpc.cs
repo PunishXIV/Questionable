@@ -95,7 +95,6 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
     protected override void CancelWork() => CancelRun();
     protected override void ObserveIdle() => PollOperation();
 
-    // AutoDuty owns its death and retry behaviour while it runs our duty.
     public override bool HandlesPlayerDeath(ITaskExecutor? executor) => HandlesExecutor(executor);
 
     public override bool MayBeMovingCharacter() => _ipc.IsAvailable() && _ipc.GetStopped() != true;
@@ -293,13 +292,11 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
     public void Dispose()
     {
         _dutyState.DutyCompleted -= _dutyCompleted;
-        // A refused run or failed setup would leave AutoDuty on our profile.
         if (HasOperation)
             SwitchProfileBack();
     }
 }
 
-// AutoDuty's Run/Stop API provides no remote operation ID.
 [RegisterSingleton]
 internal sealed class AutoDutyState(TimeProvider? timeProvider = null)
     : PluginOperationState("AutoDuty", "running a duty", timeProvider)

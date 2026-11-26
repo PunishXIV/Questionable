@@ -22,7 +22,6 @@ internal sealed class RedoComponent
     private string _filter = "";
     public void Draw()
     {
-        // Prevent ng+ activation if ng+ unlock quest is incomplete
         if (redoUtil.IsLocked)
         {
             bool locked = true;

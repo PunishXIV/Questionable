@@ -135,7 +135,8 @@ internal static class Travel
                 return;
             }
 
-            // MappingTheRealm routes to the object whenever it gets an id, even with a position.
+            // By id, MappingTheRealm plans to its cached spot and ends at the live object; with a position it plans
+            // to that position and only looks for the id on the way.
             _route = _escort
                 ? mappingTheRealm.Travel(Task.TerritoryId, Task.Position, null)
                 : mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
@@ -214,7 +215,7 @@ internal static class Travel
             if (clientState.TerritoryType != _zone)
             {
                 _zone = clientState.TerritoryType;
-                // A restart after MappingTheRealm's own teleport cancelled its next aethernet step (Sub Alt 19:06).
+                // A restart after MappingTheRealm's own teleport cancelled its next aethernet step.
                 if (KeepsRoute(_route is { IsCompleted: false }, mappingTheRealm.GetPathing() == true))
                     return ETaskResult.StillRunning;
 
@@ -251,15 +252,18 @@ internal static class Travel
                     return ETaskResult.StillRunning;
             }
 
-            // By-id lookups fail for objects MappingTheRealm hasn't indexed (rock 2001481); each retry can cost a teleport.
-            if (_route is { IsFaulted: true } && UseId && Task.Position != null && _retries++ < 1)
+            // By-id lookups fail before moving for objects MappingTheRealm hasn't indexed (rock 2001481); each retry can cost a teleport.
+            // A route that moved and then failed stays failed, and a retry from on top of the NPC hides why (Il Mheg 1030271).
+            if (_route is { IsFaulted: true } byId && !_started && UseId && Task.Position != null && _retries++ < 1)
             {
+                logger.LogInformation("MappingTheRealm couldn't route to {DataId} ({Reason}), trying the step's position",
+                    Task.DataId, byId.Exception!.GetBaseException().Message);
                 _byPosition = true;
                 Restart(TimeSpan.Zero);
                 return ETaskResult.StillRunning;
             }
 
-            if (_route is { IsFaulted: true } failed && _retries++ < 1)
+            if (_route is { IsFaulted: true } failed && !_started && _retries++ < 1)
             {
                 logger.LogWarning("MappingTheRealm route failed ({Reason}), waiting for the navmesh and trying again",
                     failed.Exception!.GetBaseException().Message);

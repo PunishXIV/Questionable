@@ -96,7 +96,7 @@ internal sealed class HelpUiController : IDisposable
         }
     }
 
-    // A closed addon's id gets reused; the agent then refreshed the Crafting Log as its notice and crashed (Sub Alt 18:14).
+    // A closed addon's id gets reused; the agent then refreshed the Crafting Log as its notice and crashed.
     private unsafe void CloseActiveHelp(string addonName)
     {
         if (!_gameGui.TryGetAddonByName(addonName, out AtkUnitBase* addon) || !addon->IsVisible)

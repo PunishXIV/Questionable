@@ -27,6 +27,17 @@ public sealed class InteractTests
     public void DetourBackoff_DoublesUpToEightHours(int failures, int minutes) =>
         Assert.Equal(TimeSpan.FromMinutes(minutes), Questionable.Controller.Steps.Shared.BetweenQuests.Backoff.Delay(failures));
 
+    [Fact]
+    public void DetourBackoff_PerCharacter()
+    {
+        ulong character = 1;
+        var backoff = new Questionable.Controller.Steps.Shared.BetweenQuests.Backoff(() => character);
+        backoff.Failed();
+        Assert.True(backoff.Waiting);
+        character = 2;
+        Assert.False(backoff.Waiting);
+    }
+
     [Theory]
     [InlineData(Questionable.Model.Questing.EInteractionType.CompleteQuest, true, true)]
     [InlineData(Questionable.Model.Questing.EInteractionType.CompleteQuest, false, false)]

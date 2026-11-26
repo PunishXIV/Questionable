@@ -819,7 +819,6 @@ internal sealed partial class ActiveQuestComponent
         {
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play, QstTheme.Accent))
             {
-                // Choosing an unaccepted quest permits aetheryte travel.
                 if (questProgressInfo == null)
                     questController.SetNextQuest(currentQuest.Quest);
 

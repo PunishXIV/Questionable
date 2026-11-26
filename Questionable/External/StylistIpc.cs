@@ -34,7 +34,6 @@ internal sealed class StylistIpc : Ipc, IDisposable
     {
         try
         {
-            // Let Stylist re-equip changed gear according to its settings, rather than forcing every check.
             _updateGearset(true, null);
             return true;
         }

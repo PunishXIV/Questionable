@@ -141,7 +141,6 @@ internal sealed class QuestData
             1210,
             1204
         ]).FromNumericListOfQuests();
-    // The MSQ quests that pass each zone's field currents; the zone entry opens once all of them are done.
     internal static readonly IReadOnlyDictionary<ushort, ushort[]> AetherCurrentZoneQuests = new Dictionary<ushort, ushort[]>
     {
         [397] = [1604, 1606, 1608],
@@ -331,6 +330,9 @@ internal sealed class QuestData
         AddPreviousQuest(new(4163), new(4398));
         AddPreviousQuest(new(4165), new(4438));
         AddPreviousQuest(new(4473), new(inscrutableTastes));
+        // The game's three previous-quest slots hold the crafter faculties; the gatherer ones are required too.
+        AddPreviousQuest(new(4474), new(4159));
+        AddPreviousQuest(new(4474), new(4166));
         AddPreviousQuest(new(4650), new(2374));
         AddPreviousQuest(new(4662), new(3166));
         AddPreviousQuest(new(4761), new(4032));
@@ -448,7 +450,6 @@ internal sealed class QuestData
                 itemsByCard.TryAdd(item.AdditionalData.RowId, item);
         }
 
-        // Keep the first matching item and the card sheet's order, as the per-quest lookup did.
         return cards.Where(card => itemsByCard.ContainsKey(card.RowId))
             .ToLookup(card => card.Quest.RowId, card => itemsByCard[card.RowId]);
     }

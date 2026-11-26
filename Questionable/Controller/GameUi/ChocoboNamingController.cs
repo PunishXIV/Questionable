@@ -6,7 +6,6 @@ using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace Questionable.Controller.GameUi;
 
-// Chocobo naming requires InputString followed by SelectYesno.
 [RegisterSingleton]
 internal sealed unsafe class ChocoboNamingController : IDisposable
 {

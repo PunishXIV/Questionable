@@ -32,7 +32,6 @@ internal sealed class QuestScriptAnalysis
 
     internal bool HasScript { get; private init; }
 
-    // Only declared by quests where you use the item on something, not by ones that hand it to an NPC.
     internal bool UsesEventItems { get; private set; }
 
 
@@ -46,7 +45,6 @@ internal sealed class QuestScriptAnalysis
         {
             string name = function.Name!;
 
-            // A script that can use event items declares this; without it, items are handed over, not used.
             bool isUsableItems = string.Equals(name, "IsEventItemUsable", StringComparison.OrdinalIgnoreCase);
             if (isUsableItems)
                 analysis.UsesEventItems = true;

@@ -131,7 +131,6 @@ internal static class RedeemRewardItems
 
         protected override bool Start()
         {
-            // A coffer needs a free inventory slot. If there's none we can't open it, so skip.
             if (Task.ItemReward.Type is EItemRewardType.Coffer && GameFunctions.GetFreeInventorySlots() < 1)
             {
                 logger.LogDebug("item is coffer, but no inv slots");
@@ -229,7 +228,6 @@ internal static class RedeemRewardItems
             return used && Task.ItemReward.Type is EItemRewardType.Coffer ? ETaskResult.CreateNewTasks : ETaskResult.TaskComplete;
         }
 
-        // Other coffers are still queued, so only what the coffer gave is added.
         public IEnumerable<ITask> CreateExtraTasks() =>
             CreateTasks(questData, dataManager, overrideConfig: true)
                 .Where(x => x is Task { ItemReward.Type: not EItemRewardType.Coffer });

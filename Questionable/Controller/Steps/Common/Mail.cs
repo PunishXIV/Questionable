@@ -13,8 +13,9 @@ internal static class Mail
     private const uint MoogleTalk = 720898;
     private static readonly BetweenQuests.Backoff Retry = new();
     private static HashSet<uint>? _moogleIds;
-    // The game's purchase-letter count can stay up with an empty mailbox (main log 11-23 10:07).
+    // The game's purchase-letter count can stay up with an empty mailbox.
     private static uint? _countWhenEmpty;
+    private static ulong? _countFor;
 
     // Quest dialogue and yes/no handling stay out of the mailbox while this is set.
     internal static bool Active { get; private set; }
@@ -45,10 +46,32 @@ internal static class Mail
         IObjectTable objectTable,
         IDataManager dataManager,
         QuestPriorityManager priorityManager,
+        IQuestGameState gameState,
         ILogger<Factory> logger) : ITaskFactory
     {
+        // /qst mail: the player asked, so it may travel to the grand company's city.
+        public List<ITask>? CommandTasks()
+        {
+            if (!mogmail.IsInstalled)
+                return null;
+
+            HashSet<uint> moogleIds = MoogleIds(dataManager);
+            if (objectTable.FirstOrDefault(x => moogleIds.Contains(x.BaseId)) is { } nearby)
+                return [new Travel.Task(clientState.TerritoryType, nearby.Position, nearby.BaseId), new Take(nearby.BaseId)];
+
+            Moogle moogle = CityMoogles.FirstOrDefault(x => x.TerritoryId == clientState.TerritoryType) ??
+                            CityMoogles[gameState.GrandCompany switch { 2 => 1, 3 => 2, _ => 0 }];
+            return [new Travel.Task(moogle.TerritoryId, moogle.Position, moogle.NpcId), new Take(moogle.NpcId)];
+        }
+
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
+            if (CharacterRun.CurrentId != _countFor)
+            {
+                _countFor = CharacterRun.CurrentId;
+                _countWhenEmpty = null;
+            }
+
             if (MogmailIpc.RewardLetters is { } letters && letters < _countWhenEmpty)
                 _countWhenEmpty = letters;
 
@@ -65,7 +88,7 @@ internal static class Mail
                 return Claim(new Moogle(EAetheryteLocation.None, nearby.BaseId, clientState.TerritoryType, nearby.Position));
             }
 
-            // Mail comes in batches; travelling to a city for each one costs a teleport every time (erdelf, 11-25).
+            // Mail comes in batches; travelling to a city for each one costs a teleport every time.
             if (CityMoogles.FirstOrDefault(x => x.TerritoryId == clientState.TerritoryType) is not { } moogle)
                 return [];
 

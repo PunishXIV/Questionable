@@ -35,7 +35,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private const int CompletedStep = QuestStepPlanner.CompletedStep;
 
-    // Extra grace after the game's animation lock.
     private const float AnimationLockGraceSeconds = 1f;
 
     // The quest-accept addon can fail to appear at sequence 0/step 0.
@@ -236,7 +235,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     // Combat can end before quest actions are safe again.
     private DateTime _safeAnimationEnd = DateTime.MinValue;
-    private bool _wigglyQuest;
     private DateTime? _journalSince;
     private DateTime? _emptySince;
     private (ITask? Task, DateTime Since) _acceptWait;
@@ -334,18 +332,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     internal const string FinishedReason = "Finished";
 
-    // Event quest paths have no next-quest data, so an event quest run picks each next quest itself.
     internal Func<Quest?>? NextInChain { get; set; }
 
     public string StopReason { get; private set; } = "";
 
-    // Problem kind name, "Finished", or "" for any other stop.
     public string StopKind { get; private set; } = "";
 
     public event EventHandler<StopEventArgs>? Stopped;
     public event EventHandler<QuestCompletedEventArgs>? QuestCompleted;
 
-    // A long walk to the giver used up the 15 s before the accept was even tried (182, Sub Alt 17:50:43).
+    // A long walk to the giver used up the 15 s before the accept was even tried (182).
     internal static DateTime AcceptStallStart(DateTime stepStart, DateTime? waitStart) =>
         waitStart is { } wait && wait > stepStart ? wait : stepStart;
 
@@ -432,7 +428,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public Configuration.EEndAction? EndActionOnce { get; set; }
 
-    // Set when an attune finishes; the stop waits for the next update so the step isn't cut mid-task.
     internal bool AttuneStopDue { get; private set; }
 
     public string? DebugState { get; private set; }
@@ -492,31 +487,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         DebugState = null;
     }
 
-    // WigglyQuest drives the same character and quests, so nothing of ours may run next to it.
-    internal bool BlockedByWigglyQuest()
-    {
-        if (EzThrottler.Throttle("WigglyQuest", 1000))
-            _wigglyQuest = IPCSubscriber.IsInstalled("WigglyQuest");
-        return _wigglyQuest;
-    }
-
-    internal static void PrintWigglyQuestBlock() =>
-        Svc.Chat.PrintError(_L("WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable."),
-            CommandHandler.MessageTag, CommandHandler.TagColor);
-
     public void Update()
     {
-        if (BlockedByWigglyQuest())
-        {
-            if (IsRunning || AutomationType != EAutomationType.Manual)
-            {
-                Stop("WigglyQuest is loaded");
-                PrintWigglyQuestBlock();
-            }
-
-            return;
-        }
-
         if (_dailies != null && !_clientState.IsLoggedIn)
             Stop("Logged out during dailies");
         // Success can replace the outcome task before its next update; observe it independently.
@@ -731,7 +703,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             if (questToRun == null)
             {
-                // /qst redeem and /qst jobgear queue tasks while no quest is active.
                 _manualTasks &= IsRunning;
                 if (_manualTasks && AutomationType == EAutomationType.Manual)
                 {
@@ -848,7 +819,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         _priorityManager.Import(quests);
         _stopPolicy.ReportPresetLoaded(quest, name, StopAfterCurrentQuest);
-        // The next characters of a list run need the same stop quest.
         if (stop.RemoveWhenCompleteConditionMet && !_stopPolicy.IsListRun)
             _stopPolicy.RemoveStopQuest(quest.Id);
 
@@ -857,7 +827,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private bool TryGetQuestToRun(QuestChoice choice, out QuestProgress? questToRun)
     {
-        // A wait left from an earlier journal frame would let the next one switch at once (5290, Sub Alt 17:50:43).
+        // A wait left from an earlier journal frame would let the next one switch at once (5290).
         if (choice.Source != EQuestSource.Journal)
             _journalSince = null;
 
@@ -889,7 +859,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                     return false;
                 }
 
-                // A quest done on accept (guild join 183) empties the journal for a frame before the next appears (Sub Alt 20:13).
+                // A quest done on accept (guild join 183) empties the journal for a frame before the next appears.
                 _emptySince ??= DateTime.Now;
                 if (QuestSelectionController.IsSettling(_emptySince.Value, DateTime.Now))
                     return false;
@@ -918,10 +888,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return true;
     }
 
-    // The next priority quest unlocks a frame after a turn-in, so the journal's quest would win that frame (2012 level stop, Sub Alt 17:01).
+    // The next priority quest unlocks a frame after a turn-in, so the journal's quest would win that frame (2012 level stop).
     private bool ShouldSettle(QuestChoice choice)
     {
-        // The journal can show another quest for under a second and QST switched job for it (Sub Alt 11-22 20:50, 11-23 10:27).
+        // The journal can show another quest for under a second and QST switched job for it.
         if (choice.Source != EQuestSource.Journal ||
             (StartedQuest == null && !_priorityManager.Quests.Any(x => !_questFunctions.IsQuestComplete(x.Id))))
         {
@@ -929,7 +899,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return false;
         }
 
-        // The second can run out during the turn-in cutscene, before the next quest can unlock (Sub Alt 18:23:08).
+        // The second can run out during the turn-in cutscene, before the next quest can unlock.
         if (_gameFunctions.IsOccupied())
         {
             _journalSince = null;
@@ -997,7 +967,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                     }
 
                     CheckNextTasks("Different Quest");
-                    // CheckNextTasks stops a manual run with its own label.
                     if (finished)
                         StopReason = FinishedReason;
                 }
@@ -1206,10 +1175,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     internal void StopFinished(string label) => Stop(label, clearQuest: true, finished: true);
 
-    // /qst stop and other plugins: a stop someone asked for, not a problem.
     public void StopRequested(string label) => Stop(label, clearQuest: true, requested: true);
 
-    // AutoRetainer's pass: questing resumes afterwards, so the after-run actions and stop options stay.
     internal void StopForPass(string label) => Stop(label, clearQuest: true, pass: true);
 
     private void Stop(string label, bool clearQuest, string? policyReason = null, bool finished = false,
@@ -1405,7 +1372,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
     }
 
-    // A manual provider stop clears only its block; it never resumes questing.
     public bool TryConfirmIdle(IOperationProvider provider) => _externalOperations.TryConfirmIdle(provider, this);
 
     protected override void UpdateCurrentTask()
@@ -1635,7 +1601,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     internal static bool ContinuesAfterSkip(EAutomationType automation, int? stepBefore, int? stepAfter) =>
         automation != EAutomationType.Manual && stepAfter != null && stepAfter != stepBefore;
 
-    // A skip is the player saying the step is done: a running quest carries on, an idle one only moves the step.
     private void SkipToNextStep(ElementId elementId, byte sequence, string label)
     {
         QuestProgress? current = CurrentQuest;
@@ -1652,7 +1617,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return;
         }
 
-        // Same as a finished step: drop the old tasks and plan the new one.
         ExecuteNextStep();
     }
 

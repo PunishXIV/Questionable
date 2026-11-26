@@ -76,7 +76,6 @@ internal sealed class TaskCreator
                 _territoryData.TryGetCfc(questBattleTask.CfcId,
                     out TerritoryData.CfcData? cfcData))
             {
-                // Resume queued solo duties in their instance instead of repeating travel steps.
                 if (_clientState.TerritoryType == cfcData.TerritoryId)
                 {
                     int index = newTasks.IndexOf(questBattleTask);

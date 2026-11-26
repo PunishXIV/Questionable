@@ -111,7 +111,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         }
     }
 
-    // Another plugin can pause TextAdvance even while we control it; Accept then waits forever (Henchman, 11-22).
+    // Another plugin can pause TextAdvance even while we control it; Accept then waits forever.
     private void WarnIfPaused()
     {
         // MappingTheRealm pauses TextAdvance while it walks, and teleports pause it briefly.

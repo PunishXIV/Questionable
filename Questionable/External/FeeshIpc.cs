@@ -19,6 +19,7 @@ internal sealed class FeeshIpc : Ipc, IDisposable
 
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
     [EzIPC("Feesh.Catch")] private readonly Func<uint, int, bool> _catch = null!;
+    [EzIPC("Feesh.CatchCollectable")] private readonly Func<uint, int, int, bool> _catchCollectable = null!;
     [EzIPC("Feesh.CatchStatus")] private readonly Func<string> _catchStatus = null!;
     [EzIPC("Feesh.Stop")] private readonly Func<bool> _stop = null!;
     [EzIPC("Feesh.ReleaseHeldFish")] private readonly Func<bool> _releaseHeldFish = null!;
@@ -39,7 +40,7 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     public bool? GetBusy() => Read(_isBusy);
 
     // Catch takes how many more to catch, and keeps them from being discarded until released.
-    public FeeshStartResult StartCatch(uint fishId, int additionalCount, out string message)
+    public FeeshStartResult StartCatch(uint fishId, int additionalCount, int minCollectability, out string message)
     {
         message = "";
         if (_operation.HasOperation)
@@ -60,8 +61,11 @@ internal sealed class FeeshIpc : Ipc, IDisposable
 
         try
         {
-            _logger.LogInformation("Requesting {Count} additional {FishId} from Feesh", additionalCount, fishId);
-            if (!_catch(fishId, additionalCount))
+            _logger.LogInformation("Requesting {Count} additional {FishId} from Feesh (collectability {Min})",
+                additionalCount, fishId, minCollectability);
+            if (!(minCollectability > 0
+                    ? _catchCollectable(fishId, additionalCount, minCollectability)
+                    : _catch(fishId, additionalCount)))
             {
                 _operation.RejectRequest(id);
                 return GetBusy() == true ? FeeshStartResult.Busy : FeeshStartResult.Refused;
@@ -292,7 +296,6 @@ internal sealed class FeeshProvider(FeeshIpc feeshIpc, FishingState operation)
         return busy == true || (busy == null && feeshIpc.IsAvailable());
     }
 
-    // Fish Feesh can't catch keep their travel for manual fishing.
     public override bool HandlesTravel(QuestStep step) => Fish.IsHandledByFeesh(step, feeshIpc);
 
     public override OperationStatusView? GetStatusView() => StatusView(
@@ -305,7 +308,6 @@ internal sealed class FeeshProvider(FeeshIpc feeshIpc, FishingState operation)
     public override OperationPill? GetTitleBarPill() =>
         TitleBarPill(_L("Check Feesh"), _L("Fishing"), _L("Stopping fishing"));
 
-    // WahTools drives the character while busy.
     public override string? GetStartBlockReason() =>
         feeshIpc.IsAvailable() && feeshIpc.GetBusy() != false
             ? _L("Feesh is busy or its status is unavailable. Finish its current work before starting questing.")

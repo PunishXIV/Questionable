@@ -126,7 +126,6 @@ internal sealed class BossModIpc : Ipc, IDisposable
     {
         PresetDefinition definition = PresetDefinitions[preset];
         ClearObstacleMaps();
-        // The first use writes QST's copy over a leftover or edited one; later uses only replace a missing one.
         if (!_written.Contains(definition.Name) || _getPreset(definition.Name) == null)
         {
             if (!_createPreset(definition.Content, true))
@@ -332,7 +331,6 @@ internal sealed class BossModIpc : Ipc, IDisposable
             if (session.PresetPending)
             {
                 string? current = _getActivePreset();
-                // GetActive returns null for both an empty list and multiple active presets.
                 bool multiplePresets = ActivePresetCount() > 1;
                 if (!multiplePresets &&
                     (string.Equals(current, session.ExpectedPreset, StringComparison.Ordinal) ||
@@ -357,7 +355,6 @@ internal sealed class BossModIpc : Ipc, IDisposable
             MarkFailed(session, e);
         }
 
-        // Settings are restored even if restoring the preset failed.
         bool settingsRestored = !session.ProviderLost && RestoreSettings(session);
         if (session.ProviderLost || session.ControlLost || session.PresetPending || !settingsRestored)
             return false;
@@ -465,7 +462,6 @@ internal sealed class BossModIpc : Ipc, IDisposable
 
     private sealed class Session(bool questBattle)
     {
-        // Settings-only movement work does not snapshot a preset until one is acquired.
         public string? PreviousPreset { get; set; }
         public bool HasPresetSnapshot { get; set; }
         public string? ExpectedPreset { get; set; }

@@ -28,7 +28,6 @@ internal sealed class PriorityPresets(
         Experimental,
     }
 
-    // Short is the name under its group heading; Name is shown everywhere else.
     internal sealed record Preset(string Key, string Name, List<ElementId> Quests, EGroup Group = EGroup.Story,
         string? Short = null, string? Hint = null);
 
@@ -303,7 +302,6 @@ internal sealed class PriorityPresets(
             .SelectMany(t => GetZoneEntry(t).Concat(QuestData.AetherCurrentQuestsByTerritory.GetValueOrDefault(t, [])))
             .ToList();
 
-        // The zone's field currents come right before its current quests.
         static IEnumerable<ElementId> GetZoneEntry(uint territory) =>
             QuestData.AetherCurrentZoneQuests.ContainsKey((ushort)territory) ? [new AetherCurrentId((ushort)territory)] : [];
     }

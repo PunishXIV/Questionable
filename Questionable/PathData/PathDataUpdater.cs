@@ -239,7 +239,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
             Status = _L("Path data is up to date");
             return;
         }
-        
+
         if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
         {
             _logger.LogInformation("Newer path data is available but requires a newer plugin version");

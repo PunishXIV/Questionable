@@ -21,10 +21,8 @@ internal static class Fish
         }
     }
 
-    // Feesh switches job and travels itself. It can't be asked about one fish; it refuses unknown ones when the catch starts.
     public static bool IsHandledByFeesh(QuestStep step, FeeshIpc feeshIpc) =>
         step is { InteractionType: EInteractionType.Fish, ItemsToGather.Count: > 0 } &&
-        step.ItemsToGather.All(item => item.Collectability == 0) &&
         feeshIpc.IsAvailable();
 
     internal sealed record Task(Quest Quest, GatheredItem? GatheredItem,
@@ -79,7 +77,7 @@ internal static class Fish
                 throw new TaskException(reason);
 
             int missing = item.ItemCount - CountEligibleInInventory(item);
-            FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), out string message);
+            FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), item.Collectability, out string message);
             if (result is FeeshStartResult.Started or FeeshStartResult.Uncertain)
                 _operationId = _state.Id;
             if (result != FeeshStartResult.Started || !_operationId.HasValue)
@@ -96,8 +94,6 @@ internal static class Fish
 
         private string? UnsupportedReason(GatheredItem item)
         {
-            if (item.Collectability > 0)
-                return $"Feesh can't catch collectable fish yet. Fish {ItemName(item.ItemId)} (collectability {item.Collectability}) manually, then restart Questionable.";
             if (!_feeshIpc.IsAvailable())
                 return "Fishing needs Feesh from WahTools. Install it or fish manually, then restart Questionable.";
             return null;

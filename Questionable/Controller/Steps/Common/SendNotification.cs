@@ -65,7 +65,6 @@ internal static class SendNotification
 
         private static XivChatEntry CreateChatMessage(string text, XivChatType chatType)
         {
-            // Sender-aware channels display the tag differently.
             if (HasSender(chatType))
             {
                 return new()

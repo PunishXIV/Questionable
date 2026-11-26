@@ -61,7 +61,6 @@ internal static class SwitchClassJob
         public override string ToString() => $"SwitchJob({ClassJob})";
     }
 
-    // Waits for the game to report the new job, so the next step doesn't run on the old one.
     internal sealed class Executor(ClassJobUtils classJobUtils) : DelayedTaskExecutor<Task>(TimeSpan.Zero)
     {
         protected override unsafe bool StartInternal()
@@ -77,7 +76,7 @@ internal static class SwitchClassJob
         {
             if (PlayerState.Instance()->CurrentClassJobId == (uint)Task.ClassJob)
                 return ETaskResult.TaskComplete;
-            // A shop or event still closing isn't a failed switch (Do dailies stopped on 'Could not switch to CRP', 11-25).
+            // A shop or event still closing isn't a failed switch.
             if (!ClassJobUtils.CanSwitchJob)
             {
                 _giveUpAt = null;

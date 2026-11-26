@@ -13,6 +13,7 @@ internal sealed class NavmeshIpc : Ipc, IDisposable
     [EzIPC("Nav.PathfindInProgress")] private readonly Func<bool> _pathfindInProgress = null!;
     [EzIPC("SimpleMove.PathfindAndMoveTo")] private readonly Func<Vector3, bool, bool> _pathfindAndMoveTo = null!;
     [EzIPC("Path.Stop")] private readonly Action _pathStop = null!;
+    [EzIPC("Path.MoveTo")] private readonly Action<List<Vector3>, bool> _pathMoveTo = null!;
 
     public NavmeshIpc()
     {
@@ -28,6 +29,12 @@ internal sealed class NavmeshIpc : Ipc, IDisposable
     public bool? GetPathfindInProgress() => ReadOptional(() => _pathfindInProgress());
     public bool WalkTo(Vector3 destination) => IpcInvoke.SafeFunc(() => _pathfindAndMoveTo(destination, false), fallback: false);
     public void Stop() => IpcInvoke.SafeAction(() => _pathStop());
+
+    public bool MoveStraight(Vector3 destination) => IpcInvoke.SafeFunc(() =>
+    {
+        _pathMoveTo([destination], false);
+        return true;
+    }, fallback: false);
 
     private static bool? ReadOptional(Func<bool> read)
     {
