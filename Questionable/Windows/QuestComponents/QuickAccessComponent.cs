@@ -135,7 +135,7 @@ internal sealed class QuickAccessComponent
     {
         bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.LifeRing,
             _L("Stuck?"),
-            _L("Copies troubleshooting information to the clipboard and saves a zip with the recent log, for a report in #questionable-issues"),
+            _L("Saves a zip with troubleshooting information and the recent log, to attach to a report in #questionable-issues"),
             tint: QstTheme.SpecialButton,
             enabled: objectTable[0] != null,
             showLabel: showLabel);
@@ -143,10 +143,6 @@ internal sealed class QuickAccessComponent
         {
             TroubleshootingReport.Input input = BuildReport();
             string report = TroubleshootingReport.Build(input);
-            ImGui.SetClipboardText(report);
-            chatGui.Print(_L("Troubleshooting information has been copied to clipboard. " +
-                "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information."),
-                CommandHandler.MessageTag, CommandHandler.TagColor);
             // Reading a whole dalamud.log takes a moment; WahTools exports off the game thread too.
             if (Interlocked.Exchange(ref _exporting, 1) == 0)
                 Task.Run(() => WriteReportFile(report, input.PrivateTexts));
@@ -179,7 +175,7 @@ internal sealed class QuickAccessComponent
 
             Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
             Svc.Framework.RunOnFrameworkThread(() => chatGui.Print(
-                _LF("Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm and vnavmesh: {0}", file),
+                _LF("Troubleshooting zip saved: {0}. Create a new thread in #questionable-issues on https://discord.gg/punishxiv, describe the problem and attach this zip from the folder that just opened.", file),
                 CommandHandler.MessageTag, CommandHandler.TagColor));
         }
         catch (Exception e)

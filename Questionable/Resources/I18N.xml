@@ -9501,8 +9501,8 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm and vnavmesh: {0}</Key>
-    <Value lang="en">Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm and vnavmesh: {0}</Value>
+    <Key>Troubleshooting zip saved: {0}. Create a new thread in #questionable-issues on https://discord.gg/punishxiv, describe the problem and attach this zip from the folder that just opened.</Key>
+    <Value lang="en">Troubleshooting zip saved: {0}. Create a new thread in #questionable-issues on https://discord.gg/punishxiv, describe the problem and attach this zip from the folder that just opened.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -9531,8 +9531,8 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Copies troubleshooting information to the clipboard and saves a zip with the recent log, for a report in #questionable-issues</Key>
-    <Value lang="en">Copies troubleshooting information to the clipboard and saves a zip with the recent log, for a report in #questionable-issues</Value>
+    <Key>Saves a zip with troubleshooting information and the recent log, to attach to a report in #questionable-issues</Key>
+    <Value lang="en">Saves a zip with troubleshooting information and the recent log, to attach to a report in #questionable-issues</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -9623,5 +9623,10 @@ Right click: Copy without .json</Value>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <Key>/qst mail - claims your Mog Station and reward mail through Mogmail</Key>
     <Value lang="en">/qst mail - claims your Mog Station and reward mail through Mogmail</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/WigglyQuestSwitch.cs -->
+    <Key>WigglyQuest is switched off while Questionable runs; it comes back on when Questionable stops.</Key>
+    <Value lang="en">WigglyQuest is switched off while Questionable runs; it comes back on when Questionable stops.</Value>
   </Entry>
 </I18N>

@@ -235,7 +235,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     // Combat can end before quest actions are safe again.
     private DateTime _safeAnimationEnd = DateTime.MinValue;
-    private bool _wigglyQuest;
     private DateTime? _journalSince;
     private DateTime? _emptySince;
     private (ITask? Task, DateTime Since) _acceptWait;
@@ -488,31 +487,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         DebugState = null;
     }
 
-    // WigglyQuest drives the same character and quests, so nothing of ours may run next to it.
-    internal bool BlockedByWigglyQuest()
-    {
-        if (EzThrottler.Throttle("WigglyQuest", 1000))
-            _wigglyQuest = IPCSubscriber.IsInstalled("WigglyQuest");
-        return _wigglyQuest;
-    }
-
-    internal static void PrintWigglyQuestBlock() =>
-        Svc.Chat.PrintError(_L("WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable."),
-            CommandHandler.MessageTag, CommandHandler.TagColor);
-
     public void Update()
     {
-        if (BlockedByWigglyQuest())
-        {
-            if (IsRunning || AutomationType != EAutomationType.Manual)
-            {
-                Stop("WigglyQuest is loaded");
-                PrintWigglyQuestBlock();
-            }
-
-            return;
-        }
-
         if (_dailies != null && !_clientState.IsLoggedIn)
             Stop("Logged out during dailies");
         // Success can replace the outcome task before its next update; observe it independently.

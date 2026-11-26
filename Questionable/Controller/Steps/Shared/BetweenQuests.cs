@@ -7,8 +7,10 @@ internal static class BetweenQuests
     internal static bool IsAcceptStep(QuestStep step, bool questAccepted) =>
         step is { InteractionType: EInteractionType.AcceptQuest, Position: not null } && !questAccepted;
 
+    // Event quests are a short run of their own; a detour in the middle of one isn't what anyone asked for.
     internal static bool CanDetour(Quest quest, QuestStep step, QuestFunctions questFunctions, ICondition condition,
         GameFunctions gameFunctions, QuestPriorityManager priorityManager) =>
+        quest.Info is not QuestInfo { IsSeasonalEvent: true } &&
         !priorityManager.IsManualRun && !priorityManager.IsDailiesRun && IsAcceptStep(step, questFunctions.IsQuestAccepted(quest.Id)) && !IsBusy(condition, gameFunctions) &&
         !IsAcceptAllUnderway([.. priorityManager.AcceptOnlyQuests.Select(x => x.Id)], questFunctions.IsQuestAccepted,
             x => questFunctions.IsReadyToAcceptQuest(x, ignoreLevel: true));

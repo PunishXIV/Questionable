@@ -70,7 +70,8 @@ internal static class SkipCondition
         ICondition condition,
         ExtraConditionUtils extraConditionUtils,
         ClassJobUtils classJobUtils,
-        IDataManager dataManager) : TaskExecutor<Task>
+        IDataManager dataManager,
+        FeeshIpc feeshIpc) : TaskExecutor<Task>
     {
         protected override bool Start()
         {
@@ -149,6 +150,14 @@ internal static class SkipCondition
 
         private bool CheckFishInBags(QuestStep step)
         {
+            // Feesh buys its own bait; buying it first only costs gil and a trip.
+            if (Task.FishAhead is { Count: > 0 } && step.InteractionType == EInteractionType.PurchaseItem &&
+                step.ItemId is { } bait && IsFishingTackle(bait) && feeshIpc.IsAvailable())
+            {
+                logger.LogInformation("Skipping the bait purchase, Feesh buys its own");
+                return true;
+            }
+
             if (Task.FishAhead is not { Count: > 0 } fish ||
                 fish.Any(x => Fish.CountEligibleInInventory(x) < x.ItemCount))
                 return false;

@@ -330,6 +330,9 @@ internal sealed class QuestData
         AddPreviousQuest(new(4163), new(4398));
         AddPreviousQuest(new(4165), new(4438));
         AddPreviousQuest(new(4473), new(inscrutableTastes));
+        // The game's three previous-quest slots hold the crafter faculties; the gatherer ones are required too.
+        AddPreviousQuest(new(4474), new(4159));
+        AddPreviousQuest(new(4474), new(4166));
         AddPreviousQuest(new(4650), new(2374));
         AddPreviousQuest(new(4662), new(3166));
         AddPreviousQuest(new(4761), new(4032));

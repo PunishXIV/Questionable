@@ -111,12 +111,6 @@ internal sealed class CharacterRun : IDisposable
         if (!CanStart)
             return;
 
-        if (_questController.BlockedByWigglyQuest())
-        {
-            QuestController.PrintWigglyQuestBlock();
-            return;
-        }
-
         if (!_autoRetainer.IsReady())
         {
             PrintError(_L("AutoRetainer is needed to run on several characters."));

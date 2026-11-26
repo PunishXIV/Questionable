@@ -26,9 +26,6 @@ internal sealed class QuestStarter(
 
     public bool CanStartQuest(string label)
     {
-        if (WigglyQuestBlocks(label))
-            return false;
-
         if (questController.CanPrepareQuestTasks())
         {
             if (bossMod.IsRebornInstalled())
@@ -42,16 +39,6 @@ internal sealed class QuestStarter(
         logger.LogWarning("Quest start {Label} blocked: {Reason}", label, reason);
         chatGui.Print(reason, CommandHandler.MessageTag, CommandHandler.TagColor);
         return false;
-    }
-
-    private bool WigglyQuestBlocks(string label)
-    {
-        if (!questController.BlockedByWigglyQuest())
-            return false;
-
-        logger.LogWarning("{Label} blocked: WigglyQuest is loaded", label);
-        QuestController.PrintWigglyQuestBlock();
-        return true;
     }
 
     public void Start(string label)
@@ -141,9 +128,6 @@ internal sealed class QuestStarter(
 
     public void ClaimMail()
     {
-        if (WigglyQuestBlocks("Mail"))
-            return;
-
         if (questController.IsRunning)
         {
             chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
@@ -170,9 +154,6 @@ internal sealed class QuestStarter(
 
     public void RedeemRewards(bool dry = false)
     {
-        if (WigglyQuestBlocks("Redeem"))
-            return;
-
         if (questController.IsRunning)
         {
             chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
@@ -201,9 +182,6 @@ internal sealed class QuestStarter(
 
     public void RunCustomDeliveries()
     {
-        if (WigglyQuestBlocks("Custom deliveries"))
-            return;
-
         if (questController.IsRunning)
         {
             chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
@@ -239,9 +217,6 @@ internal sealed class QuestStarter(
 
     public void CollectJobGear(int? level)
     {
-        if (WigglyQuestBlocks("Job gear"))
-            return;
-
         if (questController.IsRunning)
         {
             chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
