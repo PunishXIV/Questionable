@@ -198,7 +198,6 @@ internal static class QuestBattle
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    // Retry if leaving a solo duty does not advance the quest within the grace period.
     internal sealed record WaitForOutcome(
         uint CfcId,
         ElementId QuestId,

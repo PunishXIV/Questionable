@@ -204,7 +204,7 @@ internal sealed class GatheringController(
     ICondition condition,
     IDataManager dataManager)
 {
-    // Gather & Chill can circle nodes it never finds valid (Latex on a Lv1 Botanist, Sub Alt 18:34); QST waited forever.
+    // Gather & Chill can circle nodes it never finds valid (Latex on a Lv1 Botanist); QST waited forever.
     internal static readonly TimeSpan NoProgressLimit = TimeSpan.FromMinutes(5);
 
     public enum EStatus

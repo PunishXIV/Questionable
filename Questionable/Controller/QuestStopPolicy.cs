@@ -159,7 +159,6 @@ internal sealed class QuestStopPolicy
         _ending = null;
     }
 
-    // CharacterRun calls this every frame; each part runs once, only when nothing is travelling.
     internal void Update(DateTime now)
     {
         while (_ending is { } ending && now >= ending.ReadyAt && !_isTraveling())

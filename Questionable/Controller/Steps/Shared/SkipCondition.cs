@@ -147,7 +147,6 @@ internal static class SkipCondition
             return false;
         }
 
-        // Only bait purchases go; a purchase the quest itself needs stays.
         private bool CheckFishInBags(QuestStep step)
         {
             if (Task.FishAhead is not { Count: > 0 } fish ||
@@ -449,7 +448,6 @@ internal static class SkipCondition
             return false;
         }
 
-        // A zone entry exists to collect currents, so the setting only skips them inside quests.
         internal static bool ShouldSkipForSetting(ElementId elementId, QuestStep step, bool skipAetherCurrents) =>
             skipAetherCurrents && step.InteractionType == EInteractionType.AttuneAetherCurrent &&
             elementId is not AetherCurrentId;

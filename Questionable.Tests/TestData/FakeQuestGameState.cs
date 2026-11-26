@@ -129,7 +129,6 @@ internal sealed class FakeQuestCatalog : IQuestCatalog
     public IReadOnlyList<QuestInfo> GetKnownClassJobQuests(Job classJob) => ClassJobQuests;
 }
 
-// QuestInfo is normally built from a Lumina row; tests fill its backing fields directly.
 internal static class TestQuestInfo
 {
     public static QuestInfo Create(ushort id, string? name = null, ushort level = 1, bool mainScenario = false,

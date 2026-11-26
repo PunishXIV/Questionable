@@ -19,7 +19,6 @@ internal sealed class JobGearData(IDataManager dataManager)
 
     private readonly Dictionary<(uint NpcId, Job Job), GearSet?> _sets = [];
 
-    // Each vendor has one shop per role; the job's pieces are found by the items' job category.
     public GearSet? GetSet(Vendor vendor, Job job)
     {
         if (_sets.TryGetValue((vendor.NpcId, job), out GearSet? known))

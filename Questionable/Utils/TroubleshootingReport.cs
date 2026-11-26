@@ -41,7 +41,6 @@ internal static class TroubleshootingReport
         const string logTitle = "\n\nRecent log:";
         SortedList<int, string> lines = [];
         int used = head.Length + logTitle.Length;
-        // Errors first, then warnings, then the newest of the rest; printed in time order.
         foreach ((RecentLog.Entry entry, int index) in input.Log.Select((x, i) => (x, i))
                      .OrderByDescending(x => x.x.Level).ThenByDescending(x => x.i))
         {

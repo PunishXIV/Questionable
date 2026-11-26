@@ -148,6 +148,9 @@ internal sealed class ProfilesConfigComponent
         ImGui.TableHeadersRow();
 
         string[] profiles = ProfileNames();
+        if (canTick && characters.Count > 1)
+            DrawAllRow(characters, profiles);
+
         foreach ((string contentId, string name) in characters)
         {
             using var id = ImRaii.PushId(contentId);
@@ -185,6 +188,46 @@ internal sealed class ProfilesConfigComponent
                     Configuration.ActivateForCharacter(contentId);
                 Save();
             }
+        }
+    }
+
+    private void DrawAllRow(List<(string ContentId, string Name)> characters, string[] profiles)
+    {
+        using var id = ImRaii.PushId("All");
+        ImGui.TableNextRow();
+
+        ImGui.TableNextColumn();
+        List<ulong> ids = [.. characters.Select(x => ulong.Parse(x.ContentId, CultureInfo.InvariantCulture))];
+        bool all = ids.All(Configuration.Characters.EnabledIds.Contains);
+        if (ImGui.Checkbox("##Ticked", ref all))
+        {
+            Configuration.Characters.EnabledIds.RemoveAll(ids.Contains);
+            if (all)
+                Configuration.Characters.EnabledIds.AddRange(ids);
+            Save();
+        }
+
+        ImGui.TableNextColumn();
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextColored(QstTheme.TextMuted, _L("All characters"));
+
+        ImGui.TableNextColumn();
+        string[] picked = [.. characters.Select(x => Configuration.GetProfileForCharacter(x.ContentId) ?? DefaultLabel).Distinct()];
+        ImGui.SetNextItemWidth(-1);
+        using var combo = ImRaii.Combo("##Profile", picked.Length == 1 ? picked[0] : _L("Mixed"));
+        if (!combo)
+            return;
+
+        foreach (string profile in profiles)
+        {
+            if (!ImGui.Selectable(profile, picked.Length == 1 && picked[0] == profile))
+                continue;
+
+            foreach ((string contentId, _) in characters)
+                Configuration.AssignProfile(contentId, profile == DefaultLabel ? null : profile);
+            if (ProfileController.CurrentContentId is { } current && characters.Any(x => x.ContentId == current))
+                Configuration.ActivateForCharacter(current);
+            Save();
         }
     }
 

@@ -201,7 +201,6 @@ internal sealed class CharacterRun : IDisposable
                     return;
                 }
 
-                // Logged out (title screen) falls through to the change.
                 if (_clientState.IsLoggedIn && !IsPlayerReady())
                     return;
 

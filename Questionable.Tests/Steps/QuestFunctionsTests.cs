@@ -138,7 +138,6 @@ public sealed class QuestFunctionsTests
         Assert.False(_functions.CanBeDoneWithoutTeleport(Travels([.. shroud, new() { TerritoryId = 130 }])));
     }
 
-    // Way of the Marauder starts in Upper Decks while a new character is still in the opening zone.
     [Fact]
     public void WithoutTeleport_StartsHere()
     {
@@ -164,7 +163,6 @@ public sealed class QuestFunctionsTests
         // 132 -> 133 and 130 -> 131 are city halves.
         Assert.Equal(500, _functions.GetTeleportCost(Travels(
             new() { TerritoryId = 133 }, new() { TerritoryId = 140 }, new() { TerritoryId = 130 }, new() { TerritoryId = 131 })));
-        // A door step already lands in 130.
         Assert.Equal(300, _functions.GetTeleportCost(Travels(
             new() { TerritoryId = 140, TargetTerritoryId = 130 }, new() { TerritoryId = 130 })));
     }
@@ -313,7 +311,6 @@ public sealed class QuestFunctionsTests
         Assert.Equal(MainScenarioQuestState.LoadingScreen, _functions.GetMainScenarioQuest().Item1.State);
     }
 
-    // Amalj'aa dailies 1222 and 1223, both in progress; the one whose stage is in this zone goes first.
     [Theory]
     [InlineData(147u, 1223)]
     [InlineData(999u, 1222)]
@@ -352,7 +349,6 @@ public sealed class QuestFunctionsTests
         Assert.Equal(new QuestId(expected), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
     }
 
-    // Ixal 1518 only talks to an Ixal npc in Coerthas (155); 1503 fights in North Shroud (154).
     [Theory]
     [InlineData(154u, 1503)]
     [InlineData(155u, 1518)]
@@ -372,7 +368,6 @@ public sealed class QuestFunctionsTests
         Assert.Equal(new QuestId(expected), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
     }
 
-    // 1223 has its materials (stage 255, craft not done); it beats 1222's stage in this zone.
     [Fact]
     public void SocietyCraft_BeforeOtherDailies()
     {

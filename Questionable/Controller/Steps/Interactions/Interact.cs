@@ -31,7 +31,6 @@ internal static class Interact
         if (acceptableJobs.Contains(preferred))
             return preferred;
 
-        // Auto: the caller lists jobs highest level first.
         if (preferred == Job.ADV && acceptableJobs.FirstOrDefault(x => craft ? x is >= Job.CRP and <= Job.CUL : !gather || x is Job.MIN or Job.BTN or Job.FSH) is var best &&
             best != Job.ADV)
             return best;
@@ -202,7 +201,6 @@ internal static class Interact
         private bool _reportedWrongJob;
         private ushort _unequipItem;
 
-        // Process a possible cancellation from combat before the next step.
         private bool _delayedFinalCheck;
 
         public Quest? Quest => Task.Quest;
@@ -264,7 +262,7 @@ internal static class Interact
             // While flying, dismount only makes the mount land.
             if (mounted && !isGatheringPoint && condition[ConditionFlag.InFlight])
             {
-                // The game refuses an interaction in the air, and QST would only notice through the stuck handling (Asha, 11-25).
+                // The game refuses an interaction in the air, and QST would only notice through the stuck handling.
                 if (_landingTries++ >= 20)
                 {
                     logger.LogWarning("Still flying near {DataId} after trying to land, travelling to it again", Task.DataId);

@@ -168,7 +168,6 @@ internal sealed class MovementController
         }
     }
 
-    // MappingTheRealm only cancels a route Questionable started, so other plugins' travel is never cut.
     public void Stop()
     {
         bool ours = _route != null;

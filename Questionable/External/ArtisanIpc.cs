@@ -213,7 +213,6 @@ internal enum ArtisanStatus
 {
     Unavailable,
     Idle,
-    // Busy with setup/cleanup, but neither a list nor endurance is active yet.
     Queued,
     Busy,
     Paused,
@@ -221,7 +220,6 @@ internal enum ArtisanStatus
     Stopped,
 }
 
-// Artisan cannot identify or cancel requests, so uncertain work requires user confirmation.
 [RegisterSingleton<IOperationProvider, ArtisanProvider>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class ArtisanProvider(
     ArtisanIpc artisanIpc,

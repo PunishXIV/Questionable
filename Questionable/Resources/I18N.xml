@@ -9501,8 +9501,8 @@ Right click: Copy without .json</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm, vnavmesh and the other plugins it uses: {0}</Key>
-    <Value lang="en">Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm, vnavmesh and the other plugins it uses: {0}</Value>
+    <Key>Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm and vnavmesh: {0}</Key>
+    <Value lang="en">Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm and vnavmesh: {0}</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -9603,5 +9603,25 @@ Right click: Copy without .json</Value>
     <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>A Realm Reborn societies take only as many as the number next to them.</Key>
     <Value lang="en">A Realm Reborn societies take only as many as the number next to them.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStarter.cs -->
+    <Key>Claiming mail needs Mogmail.</Key>
+    <Value lang="en">Claiming mail needs Mogmail.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStarter.cs -->
+    <Key>No mail waiting.</Key>
+    <Value lang="en">No mail waiting.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStarter.cs -->
+    <Key>Claiming your mail.</Key>
+    <Value lang="en">Claiming your mail.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
+    <Key>/qst mail - claims your Mog Station and reward mail through Mogmail</Key>
+    <Value lang="en">/qst mail - claims your Mog Station and reward mail through Mogmail</Value>
   </Entry>
 </I18N>

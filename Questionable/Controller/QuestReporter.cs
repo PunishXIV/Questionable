@@ -144,7 +144,6 @@ internal sealed class QuestReporter
             ? EProblemKind.PlayerStopped
             : null);
 
-    // Only the published paths; drafts and local edits would skew the counts.
     internal static bool CanReport(Quest.ESource source, bool projectPaths) =>
         source is Quest.ESource.Assembly or Quest.ESource.DownloadedBundle ||
         (projectPaths && source == Quest.ESource.ProjectDirectory);
@@ -152,7 +151,6 @@ internal sealed class QuestReporter
     internal static string Fingerprint(QuestRoot root) =>
         Convert.ToHexStringLower(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(root)))[..16];
 
-    // The Worker salts this again, so stored values can't be matched back to a character.
     internal static string CharacterHash(string contentId) =>
         Convert.ToHexStringLower(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes($"qst-character:{contentId}")));
 

@@ -784,7 +784,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
         public bool IsGridaniaStart => CfcId is 296 or 297 or 299 or 298;
         public bool IsUldahStart => CfcId is 335 or 312 or 337 or 336;
 
-        // Post-EW/DT role quests.
         public bool IsOtherRoleQuest => CfcId is 845 or 1016;
     }
 }

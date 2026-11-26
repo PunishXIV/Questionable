@@ -47,7 +47,6 @@ internal sealed class DailiesController(
         Start(configuration.Dailies.Societies);
     }
 
-    // Other plugins pass their own list; the journal's ticked societies stay as they are.
     public bool Start(IReadOnlyList<EAlliedSociety> societies)
     {
         if (!CanStart || societies.Count == 0 || !questStarter.CanStartQuest(_L("Do dailies")))
@@ -219,7 +218,7 @@ internal sealed class DailiesController(
             status, plan.FinishedDailies, plan.FinishedStories, plan.Skipped.Count, plan.Blocked.Count);
     }
 
-    // A Realm Reborn societies offer three dailies per rank; without a cap one of them takes all 12 allowances (Me, Kage 11-25).
+    // A Realm Reborn societies offer three dailies per rank; without a cap one of them takes all 12 allowances.
     internal const int ArrDailies = 3;
 
     internal static bool IsArr(EAlliedSociety society) => society is >= EAlliedSociety.Amaljaa and <= EAlliedSociety.Ixal;

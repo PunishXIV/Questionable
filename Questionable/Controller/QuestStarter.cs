@@ -11,6 +11,7 @@ internal sealed class QuestStarter(
     QuestData questData,
     QuestStopPolicy stopPolicy,
     JobGear.Factory jobGear,
+    Steps.Common.Mail.Factory mail,
     SatisfyIpc satisfy,
     CustomDeliveries customDeliveries,
     BossModIpc bossMod,
@@ -70,7 +71,6 @@ internal sealed class QuestStarter(
         questController.ExecuteNextStep();
     }
 
-    // Play after a stopped single-quest run (IPC event quests) continues only that quest or chain, not the lists.
     public bool ResumesSingle => questController.NextInChain != null ||
         _single is { } id && id.Equals(questController.CurrentQuest?.Quest.Id);
 
@@ -80,7 +80,6 @@ internal sealed class QuestStarter(
         if (chain?.Invoke() is { } next)
             questController.SetNextQuest(next);
         else
-            // The event quests were finished some other way.
             chain = questController.NextInChain = null;
 
         if (chain == null && !(_single is { } id && id.Equals(questController.CurrentQuest?.Quest.Id)))
@@ -140,6 +139,35 @@ internal sealed class QuestStarter(
             tracker.SimulateQuest(quest, sequence, step);
     }
 
+    public void ClaimMail()
+    {
+        if (WigglyQuestBlocks("Mail"))
+            return;
+
+        if (questController.IsRunning)
+        {
+            chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
+        if (mail.CommandTasks() is not { } tasks)
+        {
+            chatGui.PrintError(_L("Claiming mail needs Mogmail."), CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
+        if (MogmailIpc.RewardLetters is 0)
+        {
+            chatGui.Print(_L("No mail waiting."), CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
+        stopPolicy.CancelEnding();
+        foreach (ITask task in tasks)
+            questController.UnsafeEnqueueManualTask(task);
+        chatGui.Print(_L("Claiming your mail."), CommandHandler.MessageTag, CommandHandler.TagColor);
+    }
+
     public void RedeemRewards(bool dry = false)
     {
         if (WigglyQuestBlocks("Redeem"))
@@ -171,7 +199,6 @@ internal sealed class QuestStarter(
         logger.LogInformation("Tasks created by redeem: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
     }
 
-    // Satisfy refuses NPCs that are locked or done, and any once the 12 weekly deliveries are used up.
     public void RunCustomDeliveries()
     {
         if (WigglyQuestBlocks("Custom deliveries"))

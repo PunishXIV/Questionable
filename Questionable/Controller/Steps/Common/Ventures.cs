@@ -41,7 +41,6 @@ internal static class Ventures
         public override string ToString() => "RetainerPass";
     }
 
-    // RetainerPass stops questing on the next frame and starts it again after the pass.
     internal sealed class Executor(RetainerPass pass) : TaskExecutor<Task>
     {
         protected override bool Start() => pass.Begin();

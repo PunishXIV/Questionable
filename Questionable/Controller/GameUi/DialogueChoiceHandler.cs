@@ -185,7 +185,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
             return;
         }
 
-        // 'Daily Quests' for society dailies; not set for normal selections.
         string? title = AtkValueAdapter.ReadString(addonSelectIconString->AtkValues[0]);
 
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;

@@ -256,7 +256,6 @@ internal sealed class ClassJobUtils
 
     public static bool CanSwitchJob => !SwitchBlockers.Any(x => Svc.Condition[x]);
 
-    // True when a gear set exists; the change itself waits until the game allows it.
     public unsafe bool SwitchJob(Job classJob)
     {
         if (PlayerState.Instance()->CurrentClassJobId == (uint)classJob)

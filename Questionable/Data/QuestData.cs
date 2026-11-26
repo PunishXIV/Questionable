@@ -141,7 +141,6 @@ internal sealed class QuestData
             1210,
             1204
         ]).FromNumericListOfQuests();
-    // The MSQ quests that pass each zone's field currents; the zone entry opens once all of them are done.
     internal static readonly IReadOnlyDictionary<ushort, ushort[]> AetherCurrentZoneQuests = new Dictionary<ushort, ushort[]>
     {
         [397] = [1604, 1606, 1608],
@@ -448,7 +447,6 @@ internal sealed class QuestData
                 itemsByCard.TryAdd(item.AdditionalData.RowId, item);
         }
 
-        // Keep the first matching item and the card sheet's order, as the per-quest lookup did.
         return cards.Where(card => itemsByCard.ContainsKey(card.RowId))
             .ToLookup(card => card.Quest.RowId, card => itemsByCard[card.RowId]);
     }

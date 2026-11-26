@@ -292,7 +292,6 @@ internal sealed class FeeshProvider(FeeshIpc feeshIpc, FishingState operation)
         return busy == true || (busy == null && feeshIpc.IsAvailable());
     }
 
-    // Fish Feesh can't catch keep their travel for manual fishing.
     public override bool HandlesTravel(QuestStep step) => Fish.IsHandledByFeesh(step, feeshIpc);
 
     public override OperationStatusView? GetStatusView() => StatusView(
@@ -305,7 +304,6 @@ internal sealed class FeeshProvider(FeeshIpc feeshIpc, FishingState operation)
     public override OperationPill? GetTitleBarPill() =>
         TitleBarPill(_L("Check Feesh"), _L("Fishing"), _L("Stopping fishing"));
 
-    // WahTools drives the character while busy.
     public override string? GetStartBlockReason() =>
         feeshIpc.IsAvailable() && feeshIpc.GetBusy() != false
             ? _L("Feesh is busy or its status is unavailable. Finish its current work before starting questing.")

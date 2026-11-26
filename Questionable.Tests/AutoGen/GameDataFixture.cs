@@ -7,7 +7,6 @@ using Questionable.AutoGen.Generation;
 
 namespace Questionable.Tests.AutoGen;
 
-// Generator tests need real sqpack; without an installation they are skipped.
 public sealed class GameDataFixture : IDisposable
 {
     internal const string GamePathEnvVar = "QUESTIONABLE_GAME_PATH";

@@ -16,7 +16,6 @@ internal interface IQuestGameState : IPrerequisiteState
     uint SocietyAllowances { get; }
     IReadOnlyList<(ushort Id, ushort Phase)> ActiveFestivals { get; }
 
-    // Normal quests in to-do list order.
     IReadOnlyList<ushort> TrackedQuestIds { get; }
     IReadOnlyList<(ushort QuestId, byte Sequence, bool IsHidden)> NormalQuests { get; }
     bool IsReadyToTurnIn(string questName);

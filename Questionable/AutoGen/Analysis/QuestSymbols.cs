@@ -45,7 +45,6 @@ internal sealed class QuestSymbols
         if (byte.TryParse(suffix, out byte sequence))
             return sequence;
 
-        // Some scripts alias a sequence through the symbol table instead of naming it inline.
         return Value(symbol) is { } value && value <= 255 ? (byte)value : null;
     }
 

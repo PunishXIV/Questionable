@@ -74,7 +74,6 @@ internal static class CraftingBatch
              (item.Quality == EItemQuality.Any && item.ItemCount > previous.ItemCount)))
             return false;
 
-        // These are inventory thresholds, not quantities to craft again for each path step.
         outputs[item.ItemId] = new CraftingItem(item.ItemId, Math.Max(previous.ItemCount, item.ItemCount),
             previous.Quality == EItemQuality.Any ? item.Quality : previous.Quality);
         return true;
@@ -94,7 +93,6 @@ internal static class CraftingBatch
         if (skip == null || skip.Never)
             return false;
 
-        // Already having the items doesn't skip the batch.
         return skip.Item is { NotInInventory: true } ||
                skip.CompletionQuestVariablesFlags.Any(x => x != null) ||
                skip.Flying != null || skip.Chocobo != null || skip.Diving != null || skip.NotTargetable ||

@@ -53,7 +53,7 @@ internal sealed class CraftworksSupplyController : IDisposable
         HandleSupply(addon);
     }
 
-    // The first Studium delivery opens the game's help on top, and the hand-over made under it is lost (4158, Censored 11-25).
+    // The first Studium delivery opens the game's help on top, and the hand-over made under it is lost (4158).
     private void HelpClosed(AddonEvent type, AddonArgs args)
     {
         if (ShouldHandleUi)

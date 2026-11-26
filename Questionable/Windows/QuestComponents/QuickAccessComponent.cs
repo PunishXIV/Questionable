@@ -156,9 +156,8 @@ internal sealed class QuickAccessComponent
     private int _exporting;
     private static readonly string[] LogFiles = ["dalamud.old.log", "dalamud.log"];
 
-    private static readonly string[] LoggedPlugins = ["Questionable", .. QuestReporter.TrackedPlugins];
+    private static readonly string[] LoggedPlugins = ["Questionable", "MappingTheRealm", "vnavmesh"];
 
-    // Like WahTools' Export log: a zip in the plugin's config folder, selected in Explorer.
     private void WriteReportFile(string report, IReadOnlyList<string> privateTexts)
     {
         try
@@ -180,7 +179,7 @@ internal sealed class QuickAccessComponent
 
             Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
             Svc.Framework.RunOnFrameworkThread(() => chatGui.Print(
-                _LF("Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm, vnavmesh and the other plugins it uses: {0}", file),
+                _LF("Also attach this zip from the folder that just opened; it has the recent log of Questionable, MappingTheRealm and vnavmesh: {0}", file),
                 CommandHandler.MessageTag, CommandHandler.TagColor));
         }
         catch (Exception e)

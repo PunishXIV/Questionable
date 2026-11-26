@@ -211,7 +211,6 @@ internal sealed class QuestRegistry : IDisposable
         }, token);
     }
 
-    // Reading thousands of separate files is the slow part at game start, so it stays off the game thread.
     internal static List<ParsedQuest> ReadProject(DirectoryInfo projectDirectory, CancellationToken token)
     {
         List<ParsedQuest> quests = [];
@@ -277,7 +276,6 @@ internal sealed class QuestRegistry : IDisposable
                 return false;
             }
 
-            // Never load a bundle that needs a newer plugin than this one.
             if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
             {
                 _logger.LogWarning(

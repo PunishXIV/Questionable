@@ -1,18 +1,2 @@
-- Feature: Custom Deliveries shows the scrips your ticked deliveries give and warns before you overcap -Kage
-- Feature: Choose a combat job for allied society quests, or let it pick your lowest-level one to level alt jobs; the next other quest switches back to your preferred combat job -Kage
-- Feature: AutoRetainer has its own settings page: send retainers and/or submarines for all characters through multi-mode, or just this character's retainers at a summoning bell of your choice (city, inn or house), when you start questing, between quests, or both -Kage
-- Feature: The quest window shows when a required plugin is missing -Kage
-- Feature: The Priority Quests list shows up to 20 quests -Kage
-- Feature: The troubleshooting button also saves a zip with the recent log of Questionable and the plugins it uses, and opens its folder; attach it to your report -Kage
-- Bug fix: Mail is only claimed when you're already in a city; Questionable no longer teleports just for mail -Kage
-- Bug fix: Do dailies takes three dailies per A Realm Reborn society by default instead of spending all 12 allowances on one; set your own number next to each society -Kage
-- Bug fix: Job changes wait until the game allows them, so no more 'unable to change classes' spam and Do dailies no longer stops on it -Kage
-- Bug fix: Talking to an NPC while flying no longer leaves Questionable waiting; it lands and tries again -Kage
-- Bug fix: Studium deliveries carry on after the game's first-time help window -Kage
-- Bug fix: 'Target is not in range' now makes Questionable move closer and try again -Kage
-- Bug fix: The TextAdvance paused warning no longer shows for plugins Questionable uses, and names the plugin when it does -Kage
-- Bug fix: Moving to a quest giver from the journal no longer breaks the window when no path is found -Kage
-- Bug fix: Allied society names no longer get squeezed out in a narrow journal window -Kage
-- Bug fix: Troubleshooting reports keep the errors, even after a long session -Kage
-- Removed: 'Add all to Priority Quests' on allied societies; use Do dailies instead -Kage
-- Removed: the completed-quests list on Stuck?'s right click and /qst clearlog; quest reports replace them -Kage
+- Feature: /qst mail claims your Mog Station and reward mail on demand, e.g. from AutoRetainer's post-processing -Kage
+- Bug fix: Quests that need collectable fish (e.g. Giant Aetherlouse) are fished through Feesh instead of stopping -Kage

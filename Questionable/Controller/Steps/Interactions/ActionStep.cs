@@ -140,7 +140,6 @@ internal static class ActionStep
             if (_confirmed)
                 return checkCompletionFlags();
 
-            // if the quest already progressed, don't use the action again even if we missed the confirmation
             if (HasCompletionFlags() && checkCompletionFlags() == ETaskResult.TaskComplete)
                 return ETaskResult.TaskComplete;
 

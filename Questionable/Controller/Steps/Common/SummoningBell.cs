@@ -4,7 +4,6 @@ using Questionable.Controller.Steps.Shared;
 using static Questionable.Controller.Steps.ITaskExecutor;
 namespace Questionable.Controller.Steps.Common;
 
-// Sends only this character's retainers, the way AutoDuty does: open a bell, let AutoRetainer work, close it.
 internal static class SummoningBell
 {
     internal sealed record Bell(uint TerritoryId, uint DataId, Vector3 Position);
@@ -45,7 +44,6 @@ internal static class SummoningBell
 
     internal static bool Waiting => Retry.Waiting;
 
-    // The chosen city's bell; for Nearest the one in this zone, else the one in your grand company's city.
     internal static Bell Pick(uint preference, uint territoryId, byte grandCompany) =>
         Bells.FirstOrDefault(x => x.TerritoryId == preference) ??
         Bells.FirstOrDefault(x => x.TerritoryId == territoryId) ??
@@ -65,7 +63,6 @@ internal static class SummoningBell
         public override string ToString() => string.Create(CultureInfo.InvariantCulture, $"GoToBell({Place})");
     }
 
-    // Lifestream gets you into the inn room or the house; the bell is somewhere inside.
     internal sealed class ReachExecutor(
         LifestreamIpc lifestream,
         GameFunctions gameFunctions,

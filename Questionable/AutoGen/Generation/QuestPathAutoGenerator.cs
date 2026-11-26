@@ -237,7 +237,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             step.InteractionType = EInteractionType.Combat;
             step.EnemySpawnType = EEnemySpawnType.AfterInteraction;
 
-            // The schema allows exactly one of the two enemy lists.
             if (step.ComplexCombatData.Count > 0)
             {
                 foreach (uint enemy in enemies.Where(x => !step.ComplexCombatData.Exists(y => y.DataId == x)))
@@ -363,7 +362,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             if (symbols.Value(symbol) is not { } itemId || itemId == 0)
                 continue;
 
-            // IsEventItemUsable names the exact sequence the item is used in.
             List<SequenceHint> usableAt =
             [
                 .. analysis.Hints.Values
@@ -592,7 +590,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         if (todoTexts.Count == 0)
             return;
 
-        // The TODO_nn number lines up with the position in TodoParams, which is what names the sequence.
         for (int i = 0; i < quest.TodoParams.Count && i < todoTexts.Count; i++)
         {
             if (quest.TodoParams[i].ToDoCompleteSeq != number)

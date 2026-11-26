@@ -26,7 +26,6 @@ internal sealed class QuestGameData : IDisposable
 
     private readonly Dictionary<uint, Dictionary<uint, List<Vector3>>> _layerPlacements = [];
 
-    // Quest actors are usually in planevent; map-marker actors can be in the other files.
     private static readonly string[] LayerFiles = ["planevent", "planmap", "planlive"];
 
     internal QuestGameData(string sqPackDirectory)
@@ -95,7 +94,6 @@ internal sealed class QuestGameData : IDisposable
         if (underscore < 0 || underscore + 4 > id.Length)
             return null;
 
-        // game_script/quest/<first three digits of the quest number>/<Id>.luab
         string folder = id.Substring(underscore + 1, 3);
         var file = _gameData.GetFile($"game_script/quest/{folder}/{id}.luab");
         if (file == null)

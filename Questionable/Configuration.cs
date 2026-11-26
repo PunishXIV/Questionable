@@ -394,7 +394,6 @@ internal sealed class Configuration : IPluginConfiguration
         CloseGame,
     }
 
-    // Where Lifestream takes the character after a run; each maps to a /li command.
     internal enum EDestination
     {
         None,
@@ -479,7 +478,6 @@ internal sealed class Configuration : IPluginConfiguration
         public bool Debug { get; set; }
         public bool DebugLocalisation { get; set; }
 
-        // Generated paths are unreviewed drafts and must not run unattended.
         public bool AllowPathGeneration { get; set; }
         public bool AutoRedeemRewardItems { get; set; }
         public HashSet<uint> AutoRedeemItemBlacklist { get; set; } = [];

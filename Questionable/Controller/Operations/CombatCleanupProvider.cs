@@ -21,7 +21,6 @@ internal sealed class CombatCleanupProvider(
 
     public bool HandlesExecutor(ITaskExecutor? executor) => false;
 
-    // BossMod owns death and retry behaviour during a solo duty it runs for us.
     public bool HandlesPlayerDeath(ITaskExecutor? executor) => bossModIpc.HasQuestBattle;
 
     public bool MayBeMovingCharacter() => false;

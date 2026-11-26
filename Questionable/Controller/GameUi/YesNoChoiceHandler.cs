@@ -82,7 +82,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _ticketRegex = dataManager.GetRegex<Addon>(102686, addon => addon.Text, pluginLog)!;
         _hqTradeRegex = dataManager.GetRegex<Addon>(102434, addon => addon.Text, pluginLog)!;
         _fcInviteRegex = dataManager.GetRegex<Addon>(2873, addon => addon.Text, pluginLog)!;
-        // Gil, company seals, tomestones and their combinations.
         _overCapRegexes = new uint[] { 4474, 4605, 4606, 4607, 4609, 5648, 5841 }
             .Select(row => dataManager.GetRegex<Addon>(row, addon => addon.Text, pluginLog))
             .OfType<Regex>()
@@ -398,7 +397,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         }
     }
 
-    // Keep the fallback across cutscenes without keeping an addon pointer or replaying command 823.
     internal sealed class QuestBattleConfirmation(QuestController.QuestProgress quest, string prompt, DateTime requestedAt)
     {
         internal enum Result

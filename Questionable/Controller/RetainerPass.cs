@@ -18,7 +18,7 @@ internal sealed class RetainerPass : IDisposable
     }
 
     private static readonly TimeSpan Gap = TimeSpan.FromMinutes(30);
-    // Alts' ventures finish minutes apart, so without a wait every accept started another pass (Sub Alt 17:20-17:30).
+    // Alts' ventures finish minutes apart, so without a wait every accept started another pass.
     private static readonly TimeSpan MinGap = TimeSpan.FromMinutes(10);
     private static readonly TimeSpan PassTimeout = TimeSpan.FromHours(2);
     // AutoRetainer may refuse to turn multi-mode on (e.g. in a duty); then the pass counts as done.
@@ -71,14 +71,12 @@ internal sealed class RetainerPass : IDisposable
         _questStarter.Started += OnStarted;
     }
 
-    // The between-quests pass waits for the next accept; retainers back at the start go first.
     private void OnStarted(object? sender, EventArgs e)
     {
         if (_questController.IsDailiesRun || _condition[ConditionFlag.InCombat] ||
             _condition[ConditionFlag.BoundByDuty] || !IsDue(onStart: true))
             return;
 
-        // The bell run is a between-quests detour; the next step's tasks pick it up.
         if (_configuration.General.RetainersAtBell)
             StartPending = true;
         else
@@ -131,7 +129,6 @@ internal sealed class RetainerPass : IDisposable
                     PassType))
             return true;
 
-        // Checking every character is a handful of calls; not on every step.
         _nextPass = DateTime.Now + TimeSpan.FromMinutes(1);
         return false;
     }
@@ -233,7 +230,6 @@ internal sealed class RetainerPass : IDisposable
                     return;
                 }
 
-                // Logged out (title screen) falls through to the change.
                 if (_clientState.IsLoggedIn && !IsPlayerReady())
                     return;
 
