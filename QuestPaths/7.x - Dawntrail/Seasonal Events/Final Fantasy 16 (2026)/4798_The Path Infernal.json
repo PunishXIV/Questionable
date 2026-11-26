@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/QuestPaths/quest-v2.json",
   "Author": "Kiarra",
   "QuestSequence": [
@@ -12,7 +12,11 @@
       "Steps": [
         {
           "DataId": 1046055,
-          "Position": [-30.1977, 10.2693, -258.137],
+          "Position": [
+            -30.1977,
+            10.2693,
+            -258.137
+          ],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -26,7 +30,11 @@
       "TerritoryId": 133,
       "Steps": [
         {
-          "Position": [-30.0239, 35.298462, -258.165],
+          "Position": [
+            -30.0239,
+            35.298462,
+            -258.165
+          ],
           "InteractionType": "WalkTo"
         }
       ]
@@ -37,7 +45,11 @@
       "Steps": [
         {
           "DataId": 1046054,
-          "Position": [434.172, 7.74215, 152.174],
+          "Position": [
+            434.172,
+            7.74215,
+            152.174
+          ],
           "InteractionType": "Interact"
         }
       ]
@@ -48,7 +60,11 @@
       "Steps": [
         {
           "DataId": 1046052,
-          "Position": [433.423, 7.74111, 151.393],
+          "Position": [
+            433.423,
+            7.74111,
+            151.393
+          ],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -62,23 +78,46 @@
     },
     {
       "Sequence": 5,
-      "TerritoryId": 145,
       "Steps": [
         {
-          "DataId": 1046053,
-          "Position": [432.0592, 7.2534957, 152.33081],
-          "InteractionType": "Interact"
+          "Position": {
+            "X": 395.15833,
+            "Y": -8.069527,
+            "Z": 202.0083
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
+          "Mount": false,
+          "Sprint": false
         },
         {
-          "DataId": 1046053,
-          "Position": [457.37253, -3.6998415, 283.26285],
+          "Position": {
+            "X": 377.9299,
+            "Y": -17.379961,
+            "Z": 262.46588
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
           "Mount": false,
-          "InteractionType": "WalkTo"
+          "Sprint": false,
+          "DelaySecondsAtStart": 1
         },
         {
           "DataId": 1046052,
-          "Position": [457.37253, -3.6998415, 283.26285],
-          "InteractionType": "Interact"
+          "Position": {
+            "X": 457.37253,
+            "Y": -3.6998415,
+            "Z": 283.26285
+          },
+          "TerritoryId": 145,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": false,
+          "Mount": false,
+          "Sprint": false,
+          "DelaySecondsAtStart": 2
         }
       ]
     },
@@ -88,7 +127,11 @@
       "Steps": [
         {
           "DataId": 1046056,
-          "Position": [461.156, -4.92405, 275.812],
+          "Position": [
+            461.156,
+            -4.92405,
+            275.812
+          ],
           "Mount": false,
           "InteractionType": "CompleteQuest"
         }
