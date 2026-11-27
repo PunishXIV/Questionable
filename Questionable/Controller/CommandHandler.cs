@@ -39,6 +39,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly ITargetManager _targetManager;
     private readonly DailiesController _dailiesController;
     private readonly NavCheck _navCheck;
+    private readonly WhatsNewWindow _whatsNewWindow;
 
     private IReadOnlyList<uint> _lastUnlockLinks = [];
 
@@ -69,10 +70,12 @@ internal sealed class CommandHandler : IDisposable
         EventInfoComponent eventInfoComponent,
         OpenQuestCleanUp openQuestCleanUp,
         DailiesController dailiesController,
-        NavCheck navCheck)
+        NavCheck navCheck,
+        WhatsNewWindow whatsNewWindow)
     {
         _dailiesController = dailiesController;
         _navCheck = navCheck;
+        _whatsNewWindow = whatsNewWindow;
         _commandManager = commandManager;
         _chatGui = chatGui;
         _questController = questController;
@@ -238,6 +241,10 @@ internal sealed class CommandHandler : IDisposable
 
             case "validation":
                 _questValidationWindow.ToggleOrUncollapse();
+                break;
+
+            case "whatsnew":
+                _whatsNewWindow.ShowAll();
                 break;
 
             case "d2qwh":
@@ -436,6 +443,7 @@ internal sealed class CommandHandler : IDisposable
         _L("/qst redeem - redeems all reward items in your inventory"),
         _L("/qst deliveries - has Satisfy do this week's custom deliveries"),
         _L("/qst mail - claims your Mog Station and reward mail through Mogmail"),
+        _L("/qst whatsnew - shows what changed in recent updates"),
     ];
 
     private void PrintHelp(string[] lines)

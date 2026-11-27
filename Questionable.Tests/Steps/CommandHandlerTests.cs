@@ -42,6 +42,7 @@ public sealed class CommandHandlerTests
     [InlineData("redeem")]
     [InlineData("mail")]
     [InlineData("validation")]
+    [InlineData("whatsnew")]
     [InlineData("debug")]
     [InlineData("debugmode")]
     public void PlayerCommands_StayOpen(string subcommand) => Assert.False(CommandHandler.NeedsDebug(subcommand));

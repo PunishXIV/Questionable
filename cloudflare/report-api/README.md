@@ -55,7 +55,7 @@ PowerShell for a random salt: `$b = [byte[]]::new(32); [Security.Cryptography.Ra
 
 Problem kinds: `stuck`, `deaths`, `questBattle`, `missingPath`, `playerStopped`, `wrongTarget`, `other`.
 
-The v2 status has `worked`, `total`, `recentWorked`, `recentProblems`, `lastReportAt`, `lastWorkedAt`, `fifthWorkedAt`, `lastProblemAt` and `verifiedAt`. Missing timestamps are null. Recent counts use an inclusive 30-day window. A manual stop is ignored before choosing each character's latest meaningful report, so it cannot erase earlier evidence. Resolved problems remain in the totals/history but are not unresolved problems and never become successful runs.
+The v2 status has `worked`, `total`, `recentWorked`, `recentProblems`, `lastReportAt`, `lastWorkedAt`, `fifthWorkedAt`, `lastProblemAt`, `lastProblemVersion` and `verifiedAt`. Missing timestamps are null. `lastProblemVersion` is the Questionable version sent with the newest unresolved problem, or null; the status page shows it for quests with issues. Recent counts use an inclusive 30-day window. A manual stop is ignored before choosing each character's latest meaningful report, so it cannot erase earlier evidence. Resolved problems remain in the totals/history but are not unresolved problems and never become successful runs.
 
 The client gives recent unresolved problems priority over verification, then uses five recent successful character reports or a verification within 30 days for green. Older or insufficient reports are orange; no evidence is grey. `fifthWorkedAt` and `lastProblemAt` let the client age those decisions accurately between refreshes.
 

@@ -17,6 +17,7 @@ export interface PathStatus {
   lastWorkedAt: number | null;
   fifthWorkedAt: number | null;
   lastProblemAt: number | null;
+  lastProblemVersion: string | null;
   verifiedAt: number | null;
 }
 
@@ -84,6 +85,11 @@ export async function getStatus(env: Env, now?: number): Promise<Response> {
       SELECT quest_id, path_hash, created_at,
         ROW_NUMBER() OVER (PARTITION BY quest_id, path_hash ORDER BY created_at DESC, id DESC) AS position
       FROM latest WHERE worked = 1
+    ), problem AS (
+      SELECT quest_id, path_hash,
+        CASE WHEN json_valid(versions) THEN json_extract(versions, '$.Questionable') END AS version,
+        ROW_NUMBER() OVER (PARTITION BY quest_id, path_hash ORDER BY created_at DESC, id DESC) AS position
+      FROM latest WHERE worked = 0 AND resolved_at IS NULL
     ), counts AS (
       SELECT quest_id, path_hash, SUM(worked) AS worked, COUNT(*) AS total,
         SUM(CASE WHEN worked = 1 AND created_at >= ?1 THEN 1 ELSE 0 END) AS recentWorked,
@@ -100,11 +106,12 @@ export async function getStatus(env: Env, now?: number): Promise<Response> {
     SELECT k.quest_id, k.path_hash, COALESCE(c.worked, 0) AS worked, COALESCE(c.total, 0) AS total,
       COALESCE(c.recentWorked, 0) AS recentWorked, COALESCE(c.recentProblems, 0) AS recentProblems,
       h.lastReportAt, c.lastWorkedAt, s.created_at AS fifthWorkedAt, c.lastProblemAt,
-      v.verified_at AS verifiedAt
+      p.version AS lastProblemVersion, v.verified_at AS verifiedAt
     FROM keys k
     LEFT JOIN counts c USING (quest_id, path_hash)
     LEFT JOIN history h USING (quest_id, path_hash)
     LEFT JOIN success s ON s.quest_id = k.quest_id AND s.path_hash = k.path_hash AND s.position = 5
+    LEFT JOIN problem p ON p.quest_id = k.quest_id AND p.path_hash = k.path_hash AND p.position = 1
     LEFT JOIN verifications v USING (quest_id, path_hash)`)
     .bind(cutoff).all<StatusRow>();
 

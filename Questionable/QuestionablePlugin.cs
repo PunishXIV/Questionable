@@ -176,6 +176,10 @@ public sealed class QuestionablePlugin(
         }
 
         var configuration = savedConfig ?? new Configuration();
+       
+        if (savedConfig == null)
+            configuration.WhatsNewVersion = WhatsNew.Current;
+
         if (!configuration.AutoRedeemOffResetApplied)
         {
             configuration.ResetAutoRedeem();

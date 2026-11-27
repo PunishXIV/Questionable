@@ -101,7 +101,10 @@ function render() {
     } else {
       const table = document.createElement("table");
       const head = table.createTHead().insertRow();
-      for (const label of ["Quest", "ID", "Why", "Worked / total", "Recent problems", "Last report"]) {
+      const problems = group.key === "problems";
+      const labels = ["Quest", "ID", "Why", "Worked / total", "Recent problems", "Last report"];
+      if (problems) labels.push("QST version");
+      for (const label of labels) {
         const th = document.createElement("th");
         th.textContent = label;
         head.append(th);
@@ -115,6 +118,7 @@ function render() {
         cell(tr, r.s.worked + " / " + r.s.total, "num");
         cell(tr, String(r.s.recentProblems), "num");
         cell(tr, ago(r.s.lastReportAt));
+        if (problems) cell(tr, r.s.lastProblemVersion || "–", "num");
       }
       section.append(table);
     }

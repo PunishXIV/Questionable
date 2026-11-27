@@ -352,6 +352,23 @@ describe("report status", () => {
     expect(repeated.worked).toBe(5);
   });
 
+  it("shows the version of the newest open problem", async () => {
+    await post(report(CHARACTER_A, PATH_1, "problem", { kind: "stuck", versions: { Questionable: "16.0.0.1" } }));
+    await post(report(CHARACTER_B, PATH_1, "problem", { kind: "stuck", versions: { Questionable: "16.0.0.2" } }));
+    await post(report(CHARACTER_A, PATH_2, "worked", { versions: { Questionable: "16.0.0.2" } }));
+    const byVersion = "json_extract(versions, '$.Questionable') = ?";
+    await env.DB.prepare(`UPDATE report_events SET created_at = created_at - 1000 WHERE ${byVersion}`)
+      .bind("16.0.0.1").run();
+
+    const health = (await status()).quests["1190"];
+    expect(health[PATH_1].lastProblemVersion).toBe("16.0.0.2");
+    expect(health[PATH_2].lastProblemVersion).toBeNull();
+
+    await env.DB.prepare(`UPDATE report_events SET resolved_at = 1, resolved_by = 'test' WHERE worked = 0 AND ${byVersion}`)
+      .bind("16.0.0.2").run();
+    expect((await status()).quests["1190"][PATH_1].lastProblemVersion).toBe("16.0.0.1");
+  });
+
   it("keeps older evidence but counts recent problems only inside the thirty-day boundary", async () => {
     await post(report(CHARACTER_A, PATH_1, "problem", { kind: "stuck" }));
     const now = 1_000 * DAY;
