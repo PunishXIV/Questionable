@@ -1,1 +1,9 @@
 - Bug fix: Studium, Crystarium and Wachumeqimeqi deliveries hand over the items and deliver by themselves -Kage
+- Feature: Error messages in chat show the time, and for a failed step the quest, sequence and step, so reports can be matched to the log -Kage
+- Feature: What's new now also lists the between-quest detours that start on (job gear, repairs, Hall of the Novice, setting aside duties, quest battle retries) and the option to share quest results, each with its switch -Kage
+- Bug fix: The troubleshooting zip has Questionable's recent log even after a long session, when Dalamud's own log is full, and leaves out repetitive lines; it also has your MappingTheRealm travel settings -Kage
+- Feature: When a quest step fails or Questionable stops on a problem, it saves a troubleshooting zip right away (at most one every 5 minutes, the last 10 are kept), so a report has the log from when it happened -Kage
+- Bug fix: Steps that only said not to mount (e.g. Shadows Uncast) travel with MappingTheRealm again; walking on foot is kept for following an NPC -Kage
+- Feature: If you share quest results, the troubleshooting zip from an error is uploaded too and chat shows a report code to mention in #questionable-issues; names are removed and zips are deleted after 30 days -Kage
+- Bug fix: Allied society dailies that put you on a quest mount (e.g. Sanuwa Samba) no longer teleport and lose the mount on the way to the next target -Kage
+- Bug fix: In a character list, characters that already reached a stop quest (accepted it, or finished it before) are skipped instead of standing still or running past it in a new session -Kage

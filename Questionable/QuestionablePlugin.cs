@@ -142,7 +142,7 @@ public sealed class QuestionablePlugin(
         serviceCollection.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Trace)
             .ClearProviders()
             .AddDalamudLogger(pluginLog, t => LogCategory(t, namespaces)));
-        serviceCollection.AddSingleton<RecentLog>();
+        serviceCollection.AddSingleton(_ => new RecentLog(t => LogCategory(t, namespaces)));
         serviceCollection.AddSingleton<ILoggerProvider>(x => x.GetRequiredService<RecentLog>());
 
         // Dalamud services supplied to the plugin constructor - Injectio can't discover these.
@@ -245,6 +245,7 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<CharacterRun>();
         serviceProvider.GetRequiredService<RetainerPass>();
         serviceProvider.GetRequiredService<WigglyQuestSwitch>();
+        serviceProvider.GetRequiredService<ErrorZip>();
         serviceProvider.GetRequiredService<BossModPresetCleanup>();
         // MovementController.Dispose reads this; resolve it now so unloading never reaches into a disposed container.
         _ = serviceProvider.GetRequiredService<Lazy<OperationCoordinator>>().Value;

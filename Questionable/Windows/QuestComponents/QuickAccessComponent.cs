@@ -23,6 +23,7 @@ internal sealed class QuickAccessComponent
     ICondition condition,
     ITargetManager targetManager,
     RecentLog recentLog,
+    ReportApi reportApi,
     AutoRetainerIpc autoRetainer,
     IChatGui chatGui,
     IDalamudPluginInterface pluginInterface)
@@ -140,43 +141,64 @@ internal sealed class QuickAccessComponent
             enabled: objectTable[0] != null,
             showLabel: showLabel);
         if (leftClicked)
-        {
-            TroubleshootingReport.Input input = BuildReport();
-            string report = TroubleshootingReport.Build(input);
-            // Reading a whole dalamud.log takes a moment; WahTools exports off the game thread too.
-            if (Interlocked.Exchange(ref _exporting, 1) == 0)
-                Task.Run(() => WriteReportFile(report, input.PrivateTexts));
-        }
+            Export(auto: false);
     }
 
+    internal void Export(bool auto)
+    {
+        // Retry loops fail the same way over and over; one zip covers them.
+        if (objectTable[0] == null || auto && DateTime.Now - _lastAutoExport < AutoExportGap)
+            return;
+
+        TroubleshootingReport.Input input = BuildReport();
+        string report = TroubleshootingReport.Build(input);
+        string? contentId = ProfileController.CurrentContentId;
+        Upload? upload = auto && Configuration.Instance().Reports.Share == true && contentId != null
+            ? new(QuestReporter.CharacterHash(contentId), questController.CurrentQuest?.Quest.Id.ToString())
+            : null;
+        if (auto)
+            _lastAutoExport = DateTime.Now;
+        // Reading a whole dalamud.log takes a moment; WahTools exports off the game thread too.
+        if (Interlocked.Exchange(ref _exporting, 1) == 0)
+            Task.Run(() => WriteReportFile(report, input.PrivateTexts, contentId, auto, upload));
+    }
+
+    private sealed record Upload(string Character, string? Quest);
+
+    private static readonly TimeSpan AutoExportGap = TimeSpan.FromMinutes(5);
+    private const int AutoExportsKept = 10;
+    private DateTime _lastAutoExport = DateTime.MinValue;
     private int _exporting;
     private static readonly string[] LogFiles = ["dalamud.old.log", "dalamud.log"];
 
     private static readonly string[] LoggedPlugins = ["Questionable", "MappingTheRealm", "vnavmesh"];
 
-    private void WriteReportFile(string report, IReadOnlyList<string> privateTexts)
+    private async Task WriteReportFile(string report, IReadOnlyList<string> privateTexts, string? contentId, bool auto,
+        Upload? upload)
     {
         try
         {
-            string? root = pluginInterface.ConfigDirectory.Parent?.Parent?.FullName;
-            // The old log is the previous session, e.g. one that crashed; WahTools exports both too.
-            List<string> entries = root == null
-                ? []
-                : [.. LogFiles.Select(x => Path.Combine(root, x)).Where(File.Exists)
-                    .SelectMany(x => DalamudLog.Read(x, LoggedPlugins))];
-            DirectoryInfo folder = pluginInterface.ConfigDirectory.CreateSubdirectory("reports");
-            string file = Path.Combine(folder.FullName,
-                string.Create(CultureInfo.InvariantCulture, $"Questionable-{DateTime.Now:yyyy-MM-dd-HHmmss}.zip"));
-            using (ZipArchive zip = ZipFile.Open(file, ZipArchiveMode.Create))
+            (DirectoryInfo folder, string file) = SaveZip(report, privateTexts, contentId, auto);
+            if (auto)
             {
-                AddText(zip, "report.txt", report);
-                AddText(zip, "dalamud-questionable.log", TroubleshootingReport.LogText(entries, privateTexts));
+                foreach (FileInfo old in folder.GetFiles("Questionable-error-*.zip").OrderByDescending(x => x.Name, StringComparer.Ordinal).Skip(AutoExportsKept))
+                    old.Delete();
+                string? code = upload == null
+                    ? null
+                    : await reportApi.UploadZipAsync(await File.ReadAllBytesAsync(file).ConfigureAwait(false), upload.Character,
+                        upload.Quest, typeof(QuickAccessComponent).Assembly.GetName().Version!.ToString(4)).ConfigureAwait(false);
+                string message = code != null
+                    ? _LF("Uploaded a troubleshooting zip for this error, report code {0}. If you report it in #questionable-issues, mention this code. A copy is saved in {1}", code, file)
+                    : _LF("Saved a troubleshooting zip for this error: {0}. If you report it in #questionable-issues, attach this zip.", file);
+                await Svc.Framework.RunOnFrameworkThread(() => chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor))
+                    .ConfigureAwait(false);
+                return;
             }
 
             Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
-            Svc.Framework.RunOnFrameworkThread(() => chatGui.Print(
+            await Svc.Framework.RunOnFrameworkThread(() => chatGui.Print(
                 _LF("Troubleshooting zip saved: {0}. Create a new thread in #questionable-issues on https://discord.gg/punishxiv, describe the problem and attach this zip from the folder that just opened.", file),
-                CommandHandler.MessageTag, CommandHandler.TagColor));
+                CommandHandler.MessageTag, CommandHandler.TagColor)).ConfigureAwait(false);
         }
         catch (Exception e)
         {
@@ -185,6 +207,51 @@ internal sealed class QuickAccessComponent
         finally
         {
             Interlocked.Exchange(ref _exporting, 0);
+        }
+    }
+
+    private (DirectoryInfo Folder, string File) SaveZip(string report, IReadOnlyList<string> privateTexts, string? contentId, bool auto)
+    {
+        string? root = pluginInterface.ConfigDirectory.Parent?.Parent?.FullName;
+        // The old log is the previous session, e.g. one that crashed; WahTools exports both too.
+        List<string> entries = root == null
+            ? []
+            : [.. LogFiles.Select(x => Path.Combine(root, x)).Where(File.Exists)
+                .SelectMany(x => DalamudLog.Read(x, LoggedPlugins))];
+        if (root != null && DalamudLog.IsFull(Path.Combine(root, "dalamud.log")))
+            entries.Insert(0, "dalamud.log reached Dalamud's 100 MB limit and stopped growing, so it misses this session's recent lines; questionable-recent.log has Questionable's own. Restarting the game starts a new log.");
+        DirectoryInfo folder = pluginInterface.ConfigDirectory.CreateSubdirectory("reports");
+        string file = Path.Combine(folder.FullName,
+            string.Create(CultureInfo.InvariantCulture, $"Questionable-{(auto ? "error-" : "")}{DateTime.Now:yyyy-MM-dd-HHmmss}.zip"));
+        using (ZipArchive zip = ZipFile.Open(file, ZipArchiveMode.Create))
+        {
+            AddText(zip, "report.txt", report);
+            AddText(zip, "dalamud-questionable.log", TroubleshootingReport.LogText(entries, privateTexts));
+            AddText(zip, "questionable-recent.log", TroubleshootingReport.LogText(recentLog.GetLines(), privateTexts));
+            if (TravelSettings(contentId) is { } travel)
+                AddText(zip, "mappingtherealm-settings.txt", travel);
+        }
+
+        return (folder, file);
+    }
+
+    private string? TravelSettings(string? contentId)
+    {
+        try
+        {
+            string? folder = pluginInterface.ConfigDirectory.Parent?.FullName;
+            string path = Path.Combine(folder ?? "", "MappingTheRealm.json");
+            if (folder == null || !File.Exists(path))
+                return null;
+
+            using FileStream stream = new(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+            using StreamReader reader = new(stream);
+            return TroubleshootingReport.TravelSettings(reader.ReadToEnd(), contentId);
+        }
+        catch (Exception e)
+        {
+            Svc.Log.Warning(e, "Couldn't read MappingTheRealm's settings for the troubleshooting zip");
+            return null;
         }
     }
 

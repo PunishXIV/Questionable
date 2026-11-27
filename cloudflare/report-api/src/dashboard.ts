@@ -11,6 +11,7 @@ export const DASHBOARD = `<!doctype html>
   @media (prefers-color-scheme: dark) { :root { --bg: #161615; --card: #20201e; --text: #ecece8; --muted: #9a9a93;
     --line: #34342f; --red: #f87171; --amber: #fbbf24; --green: #4ade80; } }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, sans-serif; }
   main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
   h1 { font-size: 20px; margin: 0 0 4px; }
@@ -32,6 +33,8 @@ export const DASHBOARD = `<!doctype html>
   td.num { font-variant-numeric: tabular-nums; }
   tr:last-child td { border-bottom: 0; }
   .empty { padding: 12px 14px; }
+  .pad { padding: 12px 14px; margin: 0; }
+  button.chip:disabled { opacity: .5; cursor: default; }
 </style>
 </head>
 <body>
@@ -45,6 +48,22 @@ export const DASHBOARD = `<!doctype html>
     <input id="search" type="search" placeholder="Search quest name or ID" aria-label="Search quests">
   </div>
   <div id="lists"></div>
+  <section id="admin">
+    <h2>Uploaded troubleshooting zips</h2>
+    <form class="bar pad" id="admin-login">
+      <input id="token" type="password" placeholder="Admin or viewer token" autocomplete="off" aria-label="Admin or viewer token">
+      <button class="chip" type="submit">Sign in</button>
+    </form>
+    <div id="admin-body" hidden>
+      <form class="bar pad" id="zip-filter">
+        <input id="zip-quest" type="search" placeholder="Quest ID" aria-label="Quest ID">
+        <input id="zip-code" type="search" placeholder="Report code" aria-label="Report code">
+        <button class="chip" type="submit">Show</button>
+        <button class="chip" type="button" id="zip-signout">Sign out</button>
+      </form>
+      <div id="zip-list" class="empty muted">Loading…</div>
+    </div>
+  </section>
 </main>
 <script>
 const DAY = 86400000, RECENT_DAYS = 30;
@@ -126,16 +145,124 @@ function render() {
   }
 }
 
-async function loadNames(quests) {
-  const ids = quests.filter(q => /^\\d+$/.test(q)).map(q => 65536 + Number(q));
+async function loadNames(quests, after = render) {
+  const ids = [...new Set(quests)].filter(q => /^\\d+$/.test(q) && !(q in names)).map(q => 65536 + Number(q));
   for (let i = 0; i < ids.length; i += 200) {
     try {
       const reply = await fetch("https://v2.xivapi.com/api/sheet/Quest?limit=500&fields=Name&rows=" + ids.slice(i, i + 200).join(","));
       for (const row of (await reply.json()).rows) names[String(row.row_id - 65536)] = row.fields.Name;
     } catch { return; }
-    render();
+    after();
   }
 }
+
+// Admin box: the token stays in this tab only.
+let token = null, zips = [];
+try { token = sessionStorage.getItem("qst-token"); } catch {}
+
+function remember(value) {
+  token = value;
+  try { value ? sessionStorage.setItem("qst-token", value) : sessionStorage.removeItem("qst-token"); } catch {}
+  document.getElementById("admin-login").hidden = !!value;
+  document.getElementById("admin-body").hidden = !value;
+}
+
+function renderZips() {
+  const list = document.getElementById("zip-list");
+  if (zips.length === 0) {
+    list.className = "empty muted";
+    list.textContent = "No uploaded zips.";
+    return;
+  }
+  const table = document.createElement("table");
+  const head = table.createTHead().insertRow();
+  for (const label of ["Code", "Quest", "ID", "Problem", "QST version", "Size", "Uploaded", ""]) {
+    const th = document.createElement("th");
+    th.textContent = label;
+    head.append(th);
+  }
+  const body = table.createTBody();
+  for (const z of zips) {
+    const tr = body.insertRow();
+    cell(tr, z.code, "num");
+    cell(tr, z.quest_id ? names[z.quest_id] || "–" : "No quest", "name");
+    cell(tr, z.quest_id || "–", "num");
+    cell(tr, z.kind || "–");
+    cell(tr, z.version || "–", "num");
+    cell(tr, Math.max(1, Math.round(z.size / 1024)) + " KB", "num");
+    cell(tr, new Date(z.created_at).toLocaleString());
+    const button = document.createElement("button");
+    button.className = "chip";
+    button.type = "button";
+    button.textContent = "Download";
+    button.addEventListener("click", () => download(z.code, button));
+    tr.insertCell().append(button);
+  }
+  list.className = "";
+  list.replaceChildren(table);
+}
+
+async function adminFetch(path) {
+  const reply = await fetch(path, { headers: { Authorization: "Bearer " + token } });
+  if (reply.status === 401) {
+    remember(null);
+    document.getElementById("token").placeholder = "That token was not accepted";
+    throw new Error("unauthorized");
+  }
+  if (!reply.ok) throw new Error(String(reply.status));
+  return reply;
+}
+
+async function loadZips() {
+  const list = document.getElementById("zip-list");
+  const quest = document.getElementById("zip-quest").value.trim();
+  const code = document.getElementById("zip-code").value.trim().toUpperCase();
+  const query = code ? "?code=" + encodeURIComponent(code) : quest ? "?quest=" + encodeURIComponent(quest) : "";
+  list.className = "empty muted";
+  list.textContent = "Loading…";
+  try {
+    zips = (await (await adminFetch("/v2/admin/logs" + query)).json()).zips;
+    renderZips();
+    loadNames(zips.map(z => z.quest_id).filter(Boolean), renderZips);
+  } catch (e) {
+    if (e.message !== "unauthorized") list.textContent = "Could not load the zips (" + e.message + ").";
+  }
+}
+
+async function download(code, button) {
+  button.disabled = true;
+  try {
+    const blob = await (await adminFetch("/v2/admin/logs/" + encodeURIComponent(code))).blob();
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "QST-" + code + ".zip";
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(link.href), 10000);
+  } catch (e) {
+    if (e.message !== "unauthorized") button.textContent = "Failed (" + e.message + ")";
+  } finally {
+    button.disabled = false;
+  }
+}
+
+document.getElementById("admin-login").addEventListener("submit", event => {
+  event.preventDefault();
+  const value = document.getElementById("token").value.trim();
+  document.getElementById("token").value = "";
+  if (!value) return;
+  remember(value);
+  loadZips();
+});
+document.getElementById("zip-filter").addEventListener("submit", event => {
+  event.preventDefault();
+  loadZips();
+});
+document.getElementById("zip-signout").addEventListener("click", () => {
+  remember(null);
+  zips = [];
+});
+remember(token);
+if (token) loadZips();
 
 async function load() {
   const summary = document.getElementById("summary");

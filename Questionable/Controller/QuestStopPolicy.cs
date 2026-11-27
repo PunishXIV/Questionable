@@ -371,7 +371,14 @@ internal sealed class QuestStopPolicy
 
     private void Print(string message) => _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
 
-    private void PrintError(string message) => _chatGui.PrintError(message, CommandHandler.MessageTag, CommandHandler.TagColor);
+    public event EventHandler? ErrorShown;
+
+    private void PrintError(string message)
+    {
+        _chatGui.PrintError(_LF("[{0}] {1}", DateTime.Now.ToString("HH:mm:ss", CultureInfo.InvariantCulture), message),
+            CommandHandler.MessageTag, CommandHandler.TagColor);
+        ErrorShown?.Invoke(this, EventArgs.Empty);
+    }
 
     private void TryRun(Action action, string operation)
     {

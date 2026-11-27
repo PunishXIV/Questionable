@@ -264,7 +264,7 @@ internal abstract class MiniTaskController<T> : IDisposable
         if (e is NeedsPlayerException)
         {
             _logger.LogInformation("{TaskName} needs the player: {Reason}", task.ToString(), e.Message);
-            _chatGui.Print(e.Message, CommandHandler.MessageTag, CommandHandler.TagColor);
+            _chatGui.Print(InChat(e.Message), CommandHandler.MessageTag, CommandHandler.TagColor);
             return e.Message;
         }
 
@@ -279,9 +279,21 @@ internal abstract class MiniTaskController<T> : IDisposable
             ? _LF("Could not start '{0}': {1}.", task, reason)
             : _LF("Could not complete '{0}': {1}.", task, reason);
         _chatGui.PrintError(
-            _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
+            InChat(_LF("{0} Please check /xllog for more details.", msg)), CommandHandler.MessageTag, CommandHandler.TagColor);
+        OnErrorShown();
         return msg;
     }
+
+    protected virtual void OnErrorShown()
+    {
+    }
+
+    // The time matches dalamud.log, so a report's chat line can be found in its log.
+    private string InChat(string message) => FailedIn is { } where
+        ? _LF("[{0}] {1}: {2}", DateTime.Now.ToString("HH:mm:ss", CultureInfo.InvariantCulture), where, message)
+        : _LF("[{0}] {1}", DateTime.Now.ToString("HH:mm:ss", CultureInfo.InvariantCulture), message);
+
+    protected virtual string? FailedIn => null;
 
     protected virtual void OnTaskFailure(Exception exception, ITask task)
     {

@@ -496,7 +496,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            ImGuiComponents.HelpMarker(_L("After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. Never your character's name, account or IP address. Kept for 180 days."));
+            ImGuiComponents.HelpMarker(_L("After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. When a quest errors, it also uploads the troubleshooting zip (Questionable's logs and settings, with your character names removed), kept for 30 days. Never your account or IP address. Reports are kept for 180 days."));
         }
     }
 

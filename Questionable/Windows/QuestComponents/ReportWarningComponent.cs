@@ -8,6 +8,7 @@ internal sealed class ReportWarningComponent(Configuration configuration, IDalam
         ImGui.TextColored(QstTheme.Accent, _L("Help fix quest paths?"));
         ImGui.TextWrapped(_L("Questionable can send a short report after each quest it runs: whether the path worked, or where and why it stopped. Everyone then sees how often each quest's path works."));
         ImGui.TextWrapped(_L("A report has the quest, the step, what went wrong, the versions of Questionable, its path data and the plugins it uses, and its last ten actions. It never has your character's name, your account or your IP address. Reports are kept for 180 days."));
+        ImGui.TextWrapped(_L("When a quest errors, it also uploads the troubleshooting zip: Questionable's recent log, settings and where you were, with your character names removed. You get a report code to mention in Discord. Zips are kept for 30 days."));
 
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Yes, share"), QstTheme.SuccessButton))
             Answer(true);

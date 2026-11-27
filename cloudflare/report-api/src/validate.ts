@@ -24,7 +24,7 @@ export interface Report {
 
 export type Validation = { ok: true; report: Report } | { ok: false; error: string };
 
-const CHARACTER = /^[0-9a-f]{64}$/;
+export const CHARACTER = /^[0-9a-f]{64}$/;
 // QST element ids (ElementId.ToString): "1190", "S12", "U3", "N4", "C5", "A5x3".
 // Quest numbers fit in 16 bits; longer ones would only pad the status list.
 export const QUEST = /^[A-Z]?\d{1,5}(x\d{1,3})?$/;

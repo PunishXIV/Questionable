@@ -27,6 +27,29 @@ public sealed class ReportApiTests
         Task.FromResult(new HttpResponseMessage(code) { Content = new StringContent(body, Encoding.UTF8, "application/json") });
 
     [Fact]
+    public async Task ZipUpload_SendsZipAndReadsCode()
+    {
+        using ReportApi api = Api(async request =>
+        {
+            Assert.Equal("/v2/logs", request.RequestUri!.AbsolutePath);
+            Assert.Equal("?character=abc&version=16.0.0.3&quest=1130", request.RequestUri.Query);
+            Assert.Equal("application/zip", request.Content!.Headers.ContentType!.MediaType);
+            Assert.Equal([1, 2, 3], await request.Content.ReadAsByteArrayAsync());
+            return await Response("""{"code":"K7Q2M9"}""");
+        });
+        Assert.Equal("K7Q2M9", await api.UploadZipAsync([1, 2, 3], "abc", "1130", "16.0.0.3"));
+    }
+
+    [Theory]
+    [InlineData("""{"code":"K7Q2M9"}""", HttpStatusCode.TooManyRequests)]
+    [InlineData("""{"code":"<script>"}""", HttpStatusCode.OK)]
+    public async Task ZipUpload_RefusedOrOddCode_IsNull(string body, HttpStatusCode code)
+    {
+        using ReportApi api = Api(_ => Response(body, code));
+        Assert.Null(await api.UploadZipAsync([1], "abc", null, "16.0.0.3"));
+    }
+
+    [Fact]
     public async Task Status_UsesVersionTwo()
     {
         using ReportApi api = Api(request =>
