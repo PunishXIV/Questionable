@@ -9857,4 +9857,14 @@ Right click: Copy without .json</Value>
     <Key>Needs a 16-character code and at least one ticked part.</Key>
     <Value lang="en">Needs a 16-character code and at least one ticked part.</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Config Share only works on your home world, in a city or an inn.</Key>
+    <Value lang="en">Config Share only works on your home world, in a city or an inn.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/CharacterRun.cs -->
+    <Key>Shared settings skipped on {0}: couldn't get to a city or inn on the home world.</Key>
+    <Value lang="en">Shared settings skipped on {0}: couldn't get to a city or inn on the home world.</Value>
+  </Entry>
 </I18N>

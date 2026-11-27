@@ -27,6 +27,7 @@ internal sealed class CharacterRun : IDisposable
     private readonly QuestController _questController;
     private readonly QuestStarter _questStarter;
     private readonly ConfigShare _configShare;
+    private readonly ICommandManager _commandManager;
     private readonly QuestStopPolicy _stopPolicy;
     private readonly IClientState _clientState;
     private readonly IObjectTable _objectTable;
@@ -39,10 +40,11 @@ internal sealed class CharacterRun : IDisposable
     private int _index;
     private DateTime _nextTry;
     private DateTime _deadline;
+    private int _shareTrips;
 
     public CharacterRun(Configuration configuration, AutoRetainerIpc autoRetainer, LifestreamIpc lifestream,
         NotificationMasterIpc notifications, QuestController questController, QuestStarter questStarter,
-        ConfigShare configShare, QuestStopPolicy stopPolicy, IClientState clientState, IObjectTable objectTable, ICondition condition,
+        ConfigShare configShare, ICommandManager commandManager, QuestStopPolicy stopPolicy, IClientState clientState, IObjectTable objectTable, ICondition condition,
         IFramework framework, IChatGui chatGui, ILogger<CharacterRun> logger)
     {
         _configuration = configuration;
@@ -52,6 +54,7 @@ internal sealed class CharacterRun : IDisposable
         _questController = questController;
         _questStarter = questStarter;
         _configShare = configShare;
+        _commandManager = commandManager;
         _stopPolicy = stopPolicy;
         _clientState = clientState;
         _objectTable = objectTable;
@@ -141,6 +144,7 @@ internal sealed class CharacterRun : IDisposable
 
         if (queue[0].ContentId == CurrentId)
         {
+            _shareTrips = 0;
             State = EState.Starting;
             _nextTry = DateTime.Now;
             _deadline = DateTime.Now + Timeout;
@@ -215,6 +219,7 @@ internal sealed class CharacterRun : IDisposable
                 if (!IsCurrent(target) || !IsPlayerReady())
                     return;
 
+                _shareTrips = 0;
                 State = EState.Starting;
                 _nextTry = now + SettleTime;
                 _deadline = now + Timeout;
@@ -225,15 +230,49 @@ internal sealed class CharacterRun : IDisposable
                     break;
 
                 // Shared settings first; Config Share's own steps can take longer than one try.
-                if (_configShare.IsBusy || (_configShare.Due(target.ContentId) && _configShare.Apply()))
+                if (_configShare.IsBusy || _lifestream.IsBusy)
                 {
                     _deadline = now + Timeout;
                     break;
                 }
 
+                if (_configShare.Due(target.ContentId) && !TryApplyShare(target, now))
+                    break;
+
                 BeginQuesting();
                 break;
         }
+    }
+
+    // False while the shared settings still need a trip or are being applied.
+    private bool TryApplyShare(Character target, DateTime now)
+    {
+        if (_configShare.OnHomeWorld && ConfigShare.InSanctuary)
+        {
+            if (!_configShare.Apply())
+            {
+                _configShare.Skip(target.ContentId);
+                return true;
+            }
+
+            _deadline = now + Timeout;
+            return false;
+        }
+
+        if (_shareTrips++ >= 3)
+        {
+            _configShare.Skip(target.ContentId);
+            PrintError(_LF("Shared settings skipped on {0}: couldn't get to a city or inn on the home world.", target.Name));
+            return true;
+        }
+
+        if (!_configShare.OnHomeWorld)
+            _commandManager.ProcessCommand("/li");
+        else
+            _lifestream.GoInside(LifestreamIpc.EPropertyType.Inn);
+        _nextTry = now + SettleTime;
+        _deadline = now + Timeout;
+        return false;
     }
 
     private void BeginQuesting()

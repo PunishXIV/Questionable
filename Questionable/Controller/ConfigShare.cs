@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Text;
+using Dalamud.Game.ClientState.Objects.SubKinds;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -71,6 +72,12 @@ internal sealed unsafe class ConfigShare : IDisposable
     public string? Status { get; private set; }
     public bool IsBusy => _pending != null;
 
+    // The game refuses Config Share outside a sanctuary or away from the home world.
+    public bool OnHomeWorld => _objectTable[0] is IPlayerCharacter player && player.CurrentWorld.RowId == player.HomeWorld.RowId;
+    public static bool InSanctuary => TerritoryInfo.Instance()->InSanctuary;
+
+    public void Skip(ulong contentId) => _tried.Add(contentId);
+
     internal static string[] CategoryLabels =>
     [
         _L("HUD layout"),
@@ -97,6 +104,12 @@ internal sealed unsafe class ConfigShare : IDisposable
         Configuration.CharacterConfiguration settings = _configuration.Characters;
         if (IsBusy || !IsValid(settings.ShareCode, settings.ShareCategories) || _objectTable[0] == null)
             return false;
+
+        if (!OnHomeWorld || !InSanctuary)
+        {
+            Status = _L("Config Share only works on your home world, in a city or an inn.");
+            return false;
+        }
 
         _tried.Add(PlayerState.Instance()->ContentId);
         _pending = (settings.ShareCode, settings.ShareCategories);
