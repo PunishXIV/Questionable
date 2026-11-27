@@ -1,1 +1,1 @@
-- Bug fix: Studium, Crystarium and Wachumeqimeqi deliveries hand over the items and deliver by themselves, without the mouse or the item menu -Kage
+- Bug fix: Studium, Crystarium and Wachumeqimeqi deliveries hand over the items and deliver by themselves -Kage
