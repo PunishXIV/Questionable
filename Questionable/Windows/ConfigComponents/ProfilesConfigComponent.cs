@@ -9,7 +9,8 @@ internal sealed class ProfilesConfigComponent
     Configuration configuration,
     IObjectTable objectTable,
     AutoRetainerIpc autoRetainer,
-    CharacterRun characterRun) : ConfigComponent(pluginInterface, configuration)
+    CharacterRun characterRun,
+    ConfigShare configShare) : ConfigComponent(pluginInterface, configuration)
 {
     private string _newProfileName = string.Empty;
     private string _renameTo = string.Empty;
@@ -28,6 +29,56 @@ internal sealed class ProfilesConfigComponent
             DrawCreateProfile();
         using (QstWidgets.TitledCard(_L("Characters")))
             DrawCharacters();
+        using (QstWidgets.TitledCard(_L("Shared settings")))
+            DrawShare();
+    }
+
+    private void DrawShare()
+    {
+        Configuration.CharacterConfiguration settings = Configuration.Characters;
+        ImGui.TextColored(QstTheme.TextMuted, _L("Copies settings from a Config Share code onto your characters: make the code with the game's Config Share on the character to copy from. This overwrites the ticked parts on each character and can't be undone."));
+
+        bool apply = settings.ApplyShare;
+        if (ImGui.Checkbox(_L("Apply to each character in the list"), ref apply))
+        {
+            settings.ApplyShare = apply;
+            Save();
+        }
+
+        ImGuiComponents.HelpMarker(_L("Before questing on a character, Questionable downloads the code's settings once. A new code is applied again."));
+
+        string code = settings.ShareCode;
+        ImGui.SetNextItemWidth(200 * ImGuiHelpers.GlobalScale);
+        if (ImGui.InputText(_L("Share code"), ref code, 16))
+        {
+            settings.ShareCode = code.Trim();
+            Save();
+        }
+
+        string[] labels = ConfigShare.CategoryLabels;
+        for (int i = 0; i < labels.Length; i++)
+        {
+            uint bit = 1u << i;
+            bool ticked = (settings.ShareCategories & bit) != 0;
+            if (ImGui.Checkbox(labels[i] + "###ShareCategory" + i, ref ticked))
+            {
+                settings.ShareCategories = ticked ? settings.ShareCategories | bit : settings.ShareCategories & ~bit;
+                Save();
+            }
+        }
+
+        using (ImRaii.Disabled(configShare.IsBusy || !ConfigShare.IsValid(settings.ShareCode, settings.ShareCategories) ||
+                               objectTable[0] == null))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Apply to this character now")))
+                configShare.Apply();
+        }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+            QstWidgets.Tooltip(_L("Needs a 16-character code and at least one ticked part."));
+
+        if (configShare.Status is { } status)
+            ImGui.TextColored(QstTheme.TextMuted, status);
     }
 
     private void DrawEditedProfile()

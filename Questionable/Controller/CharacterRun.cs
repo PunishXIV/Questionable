@@ -26,6 +26,7 @@ internal sealed class CharacterRun : IDisposable
     private readonly NotificationMasterIpc _notifications;
     private readonly QuestController _questController;
     private readonly QuestStarter _questStarter;
+    private readonly ConfigShare _configShare;
     private readonly QuestStopPolicy _stopPolicy;
     private readonly IClientState _clientState;
     private readonly IObjectTable _objectTable;
@@ -41,7 +42,7 @@ internal sealed class CharacterRun : IDisposable
 
     public CharacterRun(Configuration configuration, AutoRetainerIpc autoRetainer, LifestreamIpc lifestream,
         NotificationMasterIpc notifications, QuestController questController, QuestStarter questStarter,
-        QuestStopPolicy stopPolicy, IClientState clientState, IObjectTable objectTable, ICondition condition,
+        ConfigShare configShare, QuestStopPolicy stopPolicy, IClientState clientState, IObjectTable objectTable, ICondition condition,
         IFramework framework, IChatGui chatGui, ILogger<CharacterRun> logger)
     {
         _configuration = configuration;
@@ -50,6 +51,7 @@ internal sealed class CharacterRun : IDisposable
         _notifications = notifications;
         _questController = questController;
         _questStarter = questStarter;
+        _configShare = configShare;
         _stopPolicy = stopPolicy;
         _clientState = clientState;
         _objectTable = objectTable;
@@ -138,7 +140,11 @@ internal sealed class CharacterRun : IDisposable
         Print(_LF("Character list started with {0} character(s).", queue.Count));
 
         if (queue[0].ContentId == CurrentId)
-            BeginQuesting();
+        {
+            State = EState.Starting;
+            _nextTry = DateTime.Now;
+            _deadline = DateTime.Now + Timeout;
+        }
         else
             Leave();
     }
@@ -215,8 +221,17 @@ internal sealed class CharacterRun : IDisposable
                 break;
 
             case EState.Starting:
-                if (IsCurrent(target) && IsPlayerReady() && _questController.CanPrepareQuestTasks())
-                    BeginQuesting();
+                if (!IsCurrent(target) || !IsPlayerReady() || !_questController.CanPrepareQuestTasks())
+                    break;
+
+                // Shared settings first; Config Share's own steps can take longer than one try.
+                if (_configShare.IsBusy || (_configShare.Due(target.ContentId) && _configShare.Apply()))
+                {
+                    _deadline = now + Timeout;
+                    break;
+                }
+
+                BeginQuesting();
                 break;
         }
     }

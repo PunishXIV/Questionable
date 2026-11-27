@@ -11,3 +11,6 @@
 - Bug fix: When the chosen combat plugin doesn't take a fight, the message names it and asks you to check it's loaded, instead of saying no combat plugin is set up -Kage
 - Bug fix: Rotation Solver Reborn works as the combat plugin again with its latest version (it gave "No combat plugin is set up" in every fight) -Kage
 - Bug fix: If enemies attack while a solo duty is starting (e.g. Operation Archon), Questionable fights them and then starts the duty again instead of waiting -Kage
+- Feature: Do dailies hands in FATE dailies once you've done the FATE yourself, along with the other dailies -Kage
+- Feature: Profiles page, Shared settings: a character list can apply a Config Share code (HUD, hotbars, keybinds, macros and more) to each character once before questing, or apply it to the current character with a button -Kage
+- Bug fix: Allied society dailies done on an earlier day no longer count as finished, so a stop after the current quest no longer ends the run right after accepting them -Kage

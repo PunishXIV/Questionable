@@ -136,6 +136,18 @@ public sealed class DailiesSafetyTests
     }
 
     [Fact]
+    public void DisabledFate_TurnInOnceDone()
+    {
+        Quest quest = Load(1336, EAlliedSociety.Kobolds, repeatable: true);
+        Assert.False(_functions.OnlyTurnInLeft(quest, 255));
+        _state.Accepted.Add(1336);
+        Assert.False(_functions.OnlyTurnInLeft(quest, 255));
+        _state.ReadyToTurnIn.Add(quest.Info.Name);
+        Assert.True(_functions.OnlyTurnInLeft(quest, 255));
+        Assert.False(_functions.OnlyTurnInLeft(quest, 0));
+    }
+
+    [Fact]
     public void ManualDaily_IsNotAutomatic()
     {
         Quest quest = _catalog.Add(TestQuestInfo.Create(1516).With(nameof(QuestInfo.AlliedSociety), EAlliedSociety.Ixal)

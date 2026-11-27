@@ -375,6 +375,10 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class CharacterConfiguration
     {
         public List<ulong> EnabledIds { get; set; } = [];
+        public bool ApplyShare { get; set; }
+        public string ShareCode { get; set; } = string.Empty;
+        public uint ShareCategories { get; set; }
+        public Dictionary<ulong, string> ShareApplied { get; set; } = [];
     }
 
     internal sealed class StopPreset

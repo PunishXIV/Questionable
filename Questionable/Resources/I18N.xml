@@ -9737,4 +9737,124 @@ Right click: Copy without .json</Value>
     <Key>In use</Key>
     <Value lang="en">In use</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>HUD layout</Key>
+    <Value lang="en">HUD layout</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared macros</Key>
+    <Value lang="en">Shared macros</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>UI settings, controls, keybinds and log filters</Key>
+    <Value lang="en">UI settings, controls, keybinds and log filters</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Saved UI data</Key>
+    <Value lang="en">Saved UI data</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Hotbars</Key>
+    <Value lang="en">Hotbars</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Character macros</Key>
+    <Value lang="en">Character macros</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>System settings</Key>
+    <Value lang="en">System settings</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Applying shared settings...</Key>
+    <Value lang="en">Applying shared settings...</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the character changed or logged out.</Key>
+    <Value lang="en">Shared settings not applied: the character changed or logged out.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game's Config Share window didn't answer.</Key>
+    <Value lang="en">Shared settings not applied: the game's Config Share window didn't answer.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game showed a Config Share message; read it in the game.</Key>
+    <Value lang="en">Shared settings not applied: the game showed a Config Share message; read it in the game.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: close the game's Config Share window first.</Key>
+    <Value lang="en">Shared settings not applied: close the game's Config Share window first.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game couldn't open Config Share.</Key>
+    <Value lang="en">Shared settings not applied: the game couldn't open Config Share.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game didn't ask to confirm the download.</Key>
+    <Value lang="en">Shared settings not applied: the game didn't ask to confirm the download.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the download confirmation changed.</Key>
+    <Value lang="en">Shared settings not applied: the download confirmation changed.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game reported a download error; read its message.</Key>
+    <Value lang="en">Shared settings not applied: the game reported a download error; read its message.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings applied.</Key>
+    <Value lang="en">Shared settings applied.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Shared settings</Key>
+    <Value lang="en">Shared settings</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Copies settings from a Config Share code onto your characters: make the code with the game's Config Share on the character to copy from. This overwrites the ticked parts on each character and can't be undone.</Key>
+    <Value lang="en">Copies settings from a Config Share code onto your characters: make the code with the game's Config Share on the character to copy from. This overwrites the ticked parts on each character and can't be undone.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Apply to each character in the list</Key>
+    <Value lang="en">Apply to each character in the list</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Before questing on a character, Questionable downloads the code's settings once. A new code is applied again.</Key>
+    <Value lang="en">Before questing on a character, Questionable downloads the code's settings once. A new code is applied again.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Share code</Key>
+    <Value lang="en">Share code</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Apply to this character now</Key>
+    <Value lang="en">Apply to this character now</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Needs a 16-character code and at least one ticked part.</Key>
+    <Value lang="en">Needs a 16-character code and at least one ticked part.</Value>
+  </Entry>
 </I18N>

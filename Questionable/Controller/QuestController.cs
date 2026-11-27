@@ -1650,7 +1650,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         public bool InDuty => controller._condition[ConditionFlag.BoundByDuty];
         public bool BetweenAreas => controller._condition[ConditionFlag.BetweenAreas] || controller._condition[ConditionFlag.BetweenAreas51];
         public bool IsAccepted(ElementId questId) => controller._questFunctions.IsQuestAccepted(questId);
-        public bool IsComplete(ElementId questId) => controller._questFunctions.IsQuestComplete(questId);
+        // A daily's permanent completion bit stays set from earlier days; stops must use today's flag.
+        public bool IsComplete(ElementId questId) => controller._questFunctions.IsPriorityQuestDone(questId);
         public bool IsReadyToAccept(ElementId questId, bool ignoreLevel = false) =>
             controller._questFunctions.IsReadyToAcceptQuest(questId, ignoreLevel);
         public bool HasClassJobAtQuestLevel(ElementId questId) => controller._questFunctions.HasClassJobAtQuestLevel(questId);
