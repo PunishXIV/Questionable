@@ -7,3 +7,7 @@
 - Feature: If you share quest results, the troubleshooting zip from an error is uploaded too and chat shows a report code to mention in #questionable-issues; names are removed and zips are deleted after 30 days -Kage
 - Bug fix: Allied society dailies that put you on a quest mount (e.g. Sanuwa Samba) no longer teleport and lose the mount on the way to the next target -Kage
 - Bug fix: In a character list, characters that already reached a stop quest (accepted it, or finished it before) are skipped instead of standing still or running past it in a new session -Kage
+- Change: The Plugins page lists the combat plugins in their own group and marks the one in use, instead of moving it between Required and Optional -Kage
+- Bug fix: When the chosen combat plugin doesn't take a fight, the message names it and asks you to check it's loaded, instead of saying no combat plugin is set up -Kage
+- Bug fix: Rotation Solver Reborn works as the combat plugin again with its latest version (it gave "No combat plugin is set up" in every fight) -Kage
+- Bug fix: If enemies attack while a solo duty is starting (e.g. Operation Archon), Questionable fights them and then starts the duty again instead of waiting -Kage

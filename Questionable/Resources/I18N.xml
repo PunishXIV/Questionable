@@ -9732,4 +9732,9 @@ Right click: Copy without .json</Value>
     <Key>This character is already at the stop quest '{0}', moving on.</Key>
     <Value lang="en">This character is already at the stop quest '{0}', moving on.</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
+    <Key>In use</Key>
+    <Value lang="en">In use</Value>
+  </Entry>
 </I18N>

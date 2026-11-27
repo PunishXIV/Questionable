@@ -1,6 +1,4 @@
 using System.ComponentModel;
-using System.Reflection;
-using System.Runtime.Loader;
 using Dalamud.Plugin.Ipc;
 
 namespace Questionable.External;
@@ -10,240 +8,64 @@ internal sealed class RotationSolverRebornIpc : Ipc
 {
     private readonly Configuration _configuration;
     private readonly ILogger<RotationSolverRebornIpc> _logger;
-    private readonly IFramework _framework;
     private readonly ICallGateSubscriber<StateCommandType, object> _changeMode;
-    private readonly ICallGateSubscriber<string, object> _test;
-    private object? _controlled;
-    private StateCommandType _previousMode;
-    private StateCommandType _expectedMode = StateCommandType.Henched;
-    private StateCommandType? _transitionFrom;
-    private bool _controlLost;
-    private bool _cleanupFailureLogged;
-    private long _nextVerificationAt;
+    private bool _controlling;
 
     public RotationSolverRebornIpc(IDalamudPluginInterface pluginInterface, Configuration configuration,
-        ILogger<RotationSolverRebornIpc> logger, IFramework framework)
+        ILogger<RotationSolverRebornIpc> logger)
     {
         _configuration = configuration;
         _logger = logger;
-        _framework = framework;
         _changeMode = pluginInterface.GetIpcSubscriber<StateCommandType, object>("RotationSolverReborn.ChangeOperatingMode");
-        _test = pluginInterface.GetIpcSubscriber<string, object>("RotationSolverReborn.Test");
     }
 
     public override string InternalName => "RotationSolver";
-    public override Version? GetVersion() => FindProvider()?.GetType().Assembly.GetName().Version;
+    public override Version? GetVersion() => IPCUtils.IPCSubscriber.Version(InternalName);
     public bool IsEnabled => _configuration.General.CombatModule == ECombatModule.RotationSolverReborn && IsReady();
 
-    public override bool IsReady()
-    {
-        try
-        {
-            EnsureFrameworkThread();
-            object? provider = FindProvider();
-            if (provider == null || !_changeMode.HasAction)
-                return false;
-            _ = ReadMode(provider);
-            return true;
-        }
-        catch (Exception e)
-        {
-            _logger.LogDebug(e, "RotationSolverReborn is unavailable or its mode cannot be read");
-            return false;
-        }
-    }
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => _changeMode.HasAction, fallback: false);
 
+    // Henched: RSR runs the rotation and Questionable picks the targets, as Henchman, AutoDuty and BOCCHI use it.
     public bool RotationAuto()
     {
-        if (_configuration.General.CombatModule != ECombatModule.RotationSolverReborn || _controlled != null)
+        if (!IsEnabled)
             return false;
 
-        try
-        {
-            EnsureFrameworkThread();
-            object? provider = FindProvider();
-            if (provider == null || !_changeMode.HasAction)
-                return false;
-            _test.InvokeAction("Validate RSR is callable from Questionable");
-            StateCommandType previous = ReadMode(provider);
-            // These modes belong to another plugin; do not borrow its rotation.
-            if (previous is StateCommandType.Henched or StateCommandType.AutoDuty)
-                return false;
-            _previousMode = previous;
-            _expectedMode = StateCommandType.Henched;
-            _transitionFrom = null;
-            _controlLost = false;
-            _cleanupFailureLogged = false;
-            _controlled = provider;
-            _changeMode.InvokeAction(StateCommandType.Henched);
-            VerifyActiveCore();
-            _nextVerificationAt = 0;
-            return true;
-        }
-        catch (Exception e)
-        {
-            _logger.LogWarning(e, "Could not start RotationSolverReborn combat");
-            return false;
-        }
+        _controlling = SetMode(StateCommandType.Henched);
+        return _controlling;
     }
 
     public bool RotationPause() => SetMode(StateCommandType.Off);
 
     public bool RotationResume() => SetMode(StateCommandType.Henched);
 
-    private bool SetMode(StateCommandType mode)
-    {
-        try
-        {
-            EnsureFrameworkThread();
-            VerifyActiveCore();
-            _transitionFrom = _expectedMode;
-            _expectedMode = mode;
-            // Keep both possible states until readback succeeds: IPC may apply and then throw.
-            _changeMode.InvokeAction(mode);
-            if (ReadMode(_controlled!) != mode)
-                throw new TaskException("RotationSolverReborn rejected the combat item rotation change.");
-            _transitionFrom = null;
-            _nextVerificationAt = 0;
-            return true;
-        }
-        catch (Exception e)
-        {
-            _logger.LogWarning(e, "Could not change RotationSolverReborn mode for combat item use");
-            return false;
-        }
-    }
-
     public bool RotationStop()
     {
-        if (_controlled == null)
+        if (!_controlling)
             return true;
-        try
-        {
-            EnsureFrameworkThread();
-            object? provider = FindProvider();
-            if (provider == null)
-            {
-                _controlLost = true;
-                return false;
-            }
-            if (!ReferenceEquals(_controlled, provider))
-            {
-                // The old RSR is gone; don't restore its snapshot into the new one.
-                _controlled = null;
-                return true;
-            }
-            StateCommandType current = ReadMode(provider);
-            if (current != _expectedMode && current != _transitionFrom)
-            {
-                // A manual change (or an already-completed rollback) takes precedence.
-                _controlled = null;
-                return true;
-            }
-            if (_controlLost)
-                return false;
 
-            _changeMode.InvokeAction(_previousMode);
-            if (ReadMode(provider) != _previousMode)
-                return false;
-            _controlled = null;
-            return true;
-        }
-        catch (Exception e)
-        {
-            if (!_cleanupFailureLogged)
-            {
-                _logger.LogWarning(e, "Could not restore RotationSolverReborn mode; retaining cleanup for retry");
-                _cleanupFailureLogged = true;
-            }
-            return false;
-        }
+        _controlling = !SetMode(StateCommandType.Off);
+        return !_controlling;
     }
 
     public void VerifyActive()
     {
-        EnsureFrameworkThread();
-        if (_controlled == null || _controlLost)
-            throw new TaskException("RotationSolverReborn combat control was lost.");
-        // HasAction is cheap and catches endpoint removal without reflection or logging each frame.
-        if (!_changeMode.HasAction)
-        {
-            _controlLost = true;
+        if (_controlling && !IsReady())
             throw new TaskException("RotationSolverReborn is no longer available.");
-        }
-        long now = Environment.TickCount64;
-        if (now >= _nextVerificationAt)
-        {
-            VerifyActiveCore();
-            _nextVerificationAt = now + 250;
-        }
     }
 
-    private void VerifyActiveCore()
+    private bool SetMode(StateCommandType mode)
     {
-        object? provider = FindProvider();
-        if (_controlled == null || provider == null || !ReferenceEquals(provider, _controlled))
+        try
         {
-            _controlLost = true;
-            throw new TaskException("RotationSolverReborn disappeared or was replaced.");
+            _changeMode.InvokeAction(mode);
+            return true;
         }
-        if (_controlLost || ReadMode(provider) != _expectedMode)
+        catch (Exception e)
         {
-            _controlLost = true;
-            throw new TaskException("RotationSolverReborn combat control was lost.");
+            _logger.LogWarning(e, "Could not switch RotationSolverReborn to {Mode}", mode);
+            return false;
         }
-    }
-
-    private void EnsureFrameworkThread()
-    {
-        // Never wait on the framework thread from elsewhere; failed off-thread cleanup is retried by CombatController's poll.
-        if (!_framework.IsInFrameworkUpdateThread)
-            throw new TaskException("Rotation control must run on the framework thread; cleanup remains pending.");
-    }
-
-    private static object? FindProvider() =>
-        DalamudReflector.TryGetDalamudPlugin("RotationSolver", out var plugin, suppressErrors: false, ignoreCache: true)
-            ? plugin
-            : null;
-
-    internal static StateCommandType ReadMode(object provider)
-    {
-        // RSR has no GetOperatingMode IPC and AutorotationActive is false without a player; read RSCommands.ApplyState's flags.
-        Type state = ResolveModeType(provider.GetType().Assembly);
-        bool Read(string name) => state.GetProperty(name, BindingFlags.Static | BindingFlags.Public)?.GetValue(null) as bool?
-            ?? throw new TaskException($"RotationSolverReborn mode property {name} is unavailable.");
-
-        bool enabled = Read("State");
-        bool manual = Read("IsManual");
-        bool henched = Read("IsHenched");
-        bool autoDuty = Read("IsAutoDuty");
-        bool targetOnly = Read("IsTargetOnly");
-        if (state.GetProperty("IsPvPStateEnabled", BindingFlags.Static | BindingFlags.Public)?.GetValue(null) is true)
-            throw new TaskException("RotationSolverReborn PvP mode cannot be used for quest combat.");
-        if (!enabled && !manual)
-            return StateCommandType.Off;
-        if (!enabled)
-            throw new TaskException("RotationSolverReborn mode is inconsistent.");
-        return henched ? StateCommandType.Henched : autoDuty ? StateCommandType.AutoDuty :
-            targetOnly ? StateCommandType.TargetOnly : manual ? StateCommandType.Manual : StateCommandType.Auto;
-    }
-
-    internal static Type ResolveModeType(Assembly providerAssembly)
-    {
-        const string typeName = "RotationSolver.Basic.DataCenter";
-        if (providerAssembly.GetType(typeName) is { } localType)
-            return localType;
-
-        // Resolve the type only in the provider's own load context; a reloaded instance can share the name.
-        AssemblyName? reference = providerAssembly.GetReferencedAssemblies()
-            .FirstOrDefault(x => x.Name == "RotationSolver.Basic");
-        if (reference != null && AssemblyLoadContext.GetLoadContext(providerAssembly) is { } context)
-        {
-            Assembly? companion = context.Assemblies.FirstOrDefault(x => x.GetName().FullName == reference.FullName);
-            if (companion?.GetType(typeName) is { } companionType)
-                return companionType;
-        }
-        throw new TaskException("This RotationSolverReborn version does not expose readable mode state.");
     }
 
     public enum StateCommandType : byte

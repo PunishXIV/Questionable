@@ -111,6 +111,8 @@ internal sealed class YesNoChoiceHandler : IDisposable
         if (!ShouldHandleUi)
             return;
 
+        // A newly opened dialog is a new start attempt (e.g. after an attack cancelled the last one); only re-checks of an open one may skip it.
+        _questBattleConfirmation = null;
         HandleSelectYesno((AddonSelectYesno*)args.Addon.Address, checkAllSteps: false);
     }
 

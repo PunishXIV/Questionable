@@ -33,6 +33,8 @@ internal sealed class CombatController : IDisposable
     private readonly QuestFunctions _questFunctions;
     private readonly IFramework _framework;
     private readonly ITargetManager _targetManager;
+    private readonly Configuration _configuration;
+    private readonly IDalamudPluginInterface _pluginInterface;
 
     private CurrentFight? _currentFight;
     private ICombatModule? _pendingCleanup;
@@ -51,8 +53,12 @@ internal sealed class CombatController : IDisposable
         QuestFunctions questFunctions,
         ChatFunctions chatFunctions,
         IFramework framework,
+        Configuration configuration,
+        IDalamudPluginInterface pluginInterface,
         ILogger<CombatController> logger)
     {
+        _configuration = configuration;
+        _pluginInterface = pluginInterface;
         _modules = [.. combatModules];
         logger.LogInformation("Combat modules registered (in order): {Modules}",
             string.Join(", ", _modules.Select(x => x.GetType().Name)));
@@ -70,6 +76,28 @@ internal sealed class CombatController : IDisposable
     }
 
     public bool IsRunning => _currentFight != null;
+
+    private static readonly Dictionary<ECombatModule, (string Name, string InternalName)> CombatPlugins = new()
+    {
+        [ECombatModule.BossMod] = ("Boss Mod", "BossMod"),
+        [ECombatModule.WrathCombo] = ("Wrath Combo", "WrathCombo"),
+        [ECombatModule.RotationSolverReborn] = ("Rotation Solver Reborn", "RotationSolver"),
+    };
+
+    internal static string NoModuleMessage(ECombatModule picked) => CombatPlugins.TryGetValue(picked, out var plugin)
+        ? $"{plugin.Name} is the combat plugin, but it didn't take this fight. Check that it's installed and loaded on the Plugins page."
+        : "No combat plugin is set up for this fight. Pick one on the Basics page.";
+
+    private void LogNoModule()
+    {
+        ECombatModule picked = _configuration.General.CombatModule;
+        if (!CombatPlugins.TryGetValue(picked, out var plugin))
+            return;
+
+        IExposedPlugin? installed = _pluginInterface.InstalledPlugins.FirstOrDefault(x => x.InternalName == plugin.InternalName);
+        _logger.LogWarning("Combat plugin {Plugin} didn't take the fight: installed {Installed}, loaded {Loaded}, version {Version}",
+            plugin.Name, installed != null, installed?.IsLoaded == true, installed?.Version);
+    }
     public bool HasPendingCleanup => _pendingCleanup != null;
     public string? BlockReason { get; private set; }
 
@@ -92,7 +120,10 @@ internal sealed class CombatController : IDisposable
             combatModule = _modules.OfType<ItemUseModule>().FirstOrDefault(x => x.CanHandleFight(combatData));
         combatModule ??= _modules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
-            throw new NeedsPlayerException("No combat plugin is set up for this fight. Pick one on the Basics page.");
+        {
+            LogNoModule();
+            throw new NeedsPlayerException(NoModuleMessage(_configuration.General.CombatModule));
+        }
         _logger.LogInformation("Combat module: {CombatModule}", combatModule);
 
         // Record cleanup first: a throwing or rejected start can still hold resources.

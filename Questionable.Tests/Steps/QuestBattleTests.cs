@@ -1,3 +1,6 @@
+using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Plugin.Services;
+using NSubstitute;
 using Questionable.Controller.Steps.Interactions;
 using Xunit;
 
@@ -17,4 +20,14 @@ public sealed class QuestBattleTests
     [InlineData(99, 10)]
     public void RetryOn_ClampsTheSetting(int saved, int expected) =>
         Assert.Equal(expected, QuestBattle.AttemptLimit(retry: true, maxAttempts: saved));
+
+    [Theory]
+    [InlineData(false, true)]
+    [InlineData(true, false)]
+    public void StartWait_InterruptsOnlyOutside(bool inDuty, bool expected)
+    {
+        var condition = Substitute.For<ICondition>();
+        condition[ConditionFlag.BoundByDuty].Returns(inDuty);
+        Assert.Equal(expected, new QuestBattle.StartExecutor(condition).ShouldInterruptOnDamage());
+    }
 }

@@ -54,7 +54,8 @@ internal sealed class ExternalOperationFixture : IDisposable
         Movement = new(MappingTheRealm, Client, null!, null!, Objects,
             Framework, new Lazy<OperationCoordinator>(() => Coordinator!), NullLogger<MovementController>.Instance);
         Combat = new(combatModules ?? [], Movement, Substitute.For<ITargetManager>(), Objects,
-            Condition, Client, null!, null!, Framework, NullLogger<CombatController>.Instance);
+            Condition, Client, null!, null!, Framework, new Configuration(), Substitute.For<Dalamud.Plugin.IDalamudPluginInterface>(),
+            NullLogger<CombatController>.Instance);
         GatheringController = new(Gather, Gathering, Movement, Condition, Substitute.For<IDataManager>());
         _dutyProvider = new(AutoDuty, new Configuration(), null!, NullLogger<AutoDutyProvider>.Instance,
             new(), Client, Condition, Substitute.For<IDutyState>(), Navmesh);
