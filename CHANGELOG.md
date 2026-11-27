@@ -1,11 +1,1 @@
-- Feature: /qst mail claims your Mog Station and reward mail on demand, e.g. from AutoRetainer's post-processing -Kage
-- Feature: The Profiles page has an All characters row to tick every character or give them all one profile -Kage
-- Bug fix: Quests that need collectable fish (e.g. Giant Aetherlouse) are fished through Feesh at the collectability the quest needs, instead of stopping -Kage
-- Bug fix: The Hall of the Novice detour skips characters who haven't unlocked it -Kage
-- Bug fix: In a character list run, mail and other between-quest stops that failed on one character are no longer skipped on the next ones -Kage
-- Bug fix: When MappingTheRealm can't finish a route, Questionable shows its real error instead of retrying from on top of the NPC -Kage
-- Bug fix: The troubleshooting zip only holds the Questionable, MappingTheRealm and vnavmesh logs, so reports are smaller and easier to read; the Stuck? button no longer copies to the clipboard, attach the zip instead -Kage
-- Bug fix: Quest steps that need a jump (e.g. The Sword in the Stone) run straight at the ledge again instead of walking around it -Kage
-- Bug fix: Fishing quests no longer buy bait first when Feesh does the fishing; Feesh buys its own -Kage
-- Bug fix: Seasonal event quests no longer stop for mail, repairs, job gear, retainers or the Hall of the Novice in between -Kage
-- Bug fix: The Meeting of Minds now waits for the gatherer Studium quests (The Culture of Love, Pastures New) too, so it no longer shows as available too early -Kage
+- Bug fix: Studium, Crystarium and Wachumeqimeqi deliveries hand over the items and deliver by themselves, without the mouse or the item menu -Kage
