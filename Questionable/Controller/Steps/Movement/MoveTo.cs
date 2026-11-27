@@ -60,7 +60,7 @@ internal static class MoveTo
             }
 
             yield return Travel.CanTravel(step)
-                ? new Travel.Task(step.TerritoryId, destination, Travel.InteractTarget(step), Travel.StopRange(step), step.Mount == false,
+                ? new Travel.Task(step.TerritoryId, destination, Travel.InteractTarget(step), Travel.StopRange(step), Travel.Follows(step),
                     step is { InteractionType: EInteractionType.WalkTo, Mount: false } ? step.DataId : null)
                 : new MoveTask(step, destination);
         }

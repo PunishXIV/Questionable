@@ -225,15 +225,9 @@ internal sealed class PluginConfigComponent
             ImGui.Separator();
         }
 
-        ECombatModule combatModule = _configuration.General.CombatModule;
-        List<PluginInfo> required = [.. RequiredPlugins];
-        if (combatModule != ECombatModule.None)
-            required.Add(CombatPlugins[combatModule]);
-        List<PluginInfo> optional =
-            [.. CombatPlugins.Where(x => x.Key != combatModule).Select(x => x.Value), .. _recommendedPlugins];
-
         // The setup window sizes itself to its content, so the table needs a width of its own there.
-        DrawTable(required, optional, combatPicker ? 620 * ImGuiHelpers.GlobalScale : 0);
+        DrawTable(CombatPlugins.GetValueOrDefault(_configuration.General.CombatModule),
+            combatPicker ? 620 * ImGuiHelpers.GlobalScale : 0);
     }
 
     internal void DrawCombatPicker()
@@ -259,7 +253,7 @@ internal sealed class PluginConfigComponent
                 CombatPlugins[_configuration.General.CombatModule].DisplayName));
     }
 
-    private void DrawTable(List<PluginInfo> required, List<PluginInfo> optional, float width)
+    private void DrawTable(PluginInfo? pickedCombat, float width)
     {
         using ImRaii.TableDisposable table = ImRaii.Table("Plugins", 3,
             ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersInnerH | ImGuiTableFlags.SizingStretchProp,
@@ -271,11 +265,12 @@ internal sealed class PluginConfigComponent
         ImGui.TableSetupColumn("##Plugin", ImGuiTableColumnFlags.WidthStretch);
         ImGui.TableSetupColumn("##Actions", ImGuiTableColumnFlags.WidthFixed);
 
-        DrawGroup(_L("Required"), required, installAll: true);
-        DrawGroup(_L("Optional"), optional, installAll: false);
+        DrawGroup(_L("Required"), RequiredPlugins, installAll: true);
+        DrawGroup(_L("Combat"), [.. CombatPlugins.Values], installAll: false, pickedCombat);
+        DrawGroup(_L("Optional"), _recommendedPlugins, installAll: false);
     }
 
-    private void DrawGroup(string label, List<PluginInfo> plugins, bool installAll)
+    private void DrawGroup(string label, IReadOnlyList<PluginInfo> plugins, bool installAll, PluginInfo? picked = null)
     {
         ImGui.TableNextRow();
         ImGui.TableNextColumn();
@@ -292,10 +287,10 @@ internal sealed class PluginConfigComponent
         }
 
         foreach (PluginInfo plugin in plugins)
-            DrawRow(plugin);
+            DrawRow(plugin, ReferenceEquals(plugin, picked));
     }
 
-    private void DrawRow(PluginInfo plugin)
+    private void DrawRow(PluginInfo plugin, bool picked = false)
     {
         using ImRaii.IdDisposable id = ImRaii.PushId("plugin_" + plugin.DisplayName);
         IExposedPlugin? installedPlugin = FindInstalledPlugin(plugin, requireLoaded: false);
@@ -322,6 +317,12 @@ internal sealed class PluginConfigComponent
         ImGui.TextUnformatted(installedPlugin != null
             ? $"{plugin.DisplayName} v{installedPlugin.Version}"
             : plugin.DisplayName);
+        if (picked)
+        {
+            ImGui.SameLine();
+            QstWidgets.Chip(_L("In use"), QstTheme.Accent);
+        }
+
         if (installedPlugin != null && !isLoaded)
             ImGui.TextColored(QstTheme.Amber, _L("Installed but not loaded"));
         else

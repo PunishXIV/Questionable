@@ -150,6 +150,50 @@ public sealed class TroubleshootingReportTests
     }
 
     [Fact]
+    public void DalamudLog_DropsNoise()
+    {
+        const string log = "2026-11-26 22:49:19.993 +01:00 [INF] [vnavmesh] Legacy mode is now enabled\n" +
+                           "2026-11-27 00:40:12.324 +01:00 [DBG] [vnavmesh] BGPart:\n" +
+                           "   part data\n" +
+                           "2026-11-27 00:40:13.000 +01:00 [DBG] [Questionable] [EzIPC Subscriber] Attempting to assign IPC method to X\n" +
+                           "2026-11-27 00:40:14.000 +01:00 [ERR] [vnavmesh] path failed\n";
+
+        Assert.Equal(["2026-11-27 00:40:14.000 +01:00 [ERR] [vnavmesh] path failed"],
+            DalamudLog.Filter(log.Split('\n'), ["vnavmesh", "Questionable"]));
+    }
+
+    [Fact]
+    public void RecentLog_LinesKeepDebug()
+    {
+        using RecentLog log = new(x => x[(x.LastIndexOf('.') + 1)..]);
+        ILogger logger = log.CreateLogger("Questionable.Controller.QuestController");
+
+        logger.LogTrace("too chatty");
+        logger.LogDebug("step {Step}", 2);
+
+        string line = Assert.Single(log.GetLines());
+        Assert.Matches(@"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3} [+-]\d{2}:\d{2} \[DBG\] \[Questionable\] QuestController: step 2$", line);
+        Assert.Empty(log.GetEntries());
+    }
+
+    [Fact]
+    public void TravelSettings_OnlyListedRows()
+    {
+        const string json = """
+            {"$type": "X", "Version": 1, "UseMount": true, "MountId": 1, "MinRunDistance": 30,
+             "CharacterSettings": {"$type": "Y", "111": {"UseMount": false, "MaxWalkDistance": 9999}, "222": {"UseMount": true}}}
+            """;
+
+        string text = TroubleshootingReport.TravelSettings(json, "111");
+
+        Assert.Contains("General:\n  UseMount: true\n  MountId: 1\n  MinRunDistance: 30\n", text, StringComparison.Ordinal);
+        Assert.Contains("This character:\n  UseMount: false\n  MaxWalkDistance: 9999\n", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("222", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("111", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("Version", text, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void ReportFile_HidesNames() =>
         Assert.DoesNotContain("Alt Name", TroubleshootingReport.LogText(
             ["[Questionable] Coming back to Alt Name@World"], ["Alt Name"]), StringComparison.Ordinal);

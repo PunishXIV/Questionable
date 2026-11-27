@@ -346,6 +346,31 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
+    public void ReachedStop_AcceptedOrDone()
+    {
+        Quest accept = NewQuest(80), after = NewQuest(81), preset = NewQuest(82);
+        _configuration.Stop.QuestsToStopWhenAccepted.Add(accept.Id);
+        _configuration.Stop.QuestsToStopAfter.Add(after.Id);
+        _configuration.Stop.QuestsToStopAfter.Add(preset.Id);
+        _configuration.Stop.SetPreset(preset.Id, "next list");
+        _state.Complete.Add(preset.Id);
+
+        Assert.Null(_selection.ReachedStopQuest(_state));
+        _configuration.Stop.Enabled = true;
+        Assert.Null(_selection.ReachedStopQuest(_state));
+
+        _state.Accepted.Add(after.Id);
+        Assert.Null(_selection.ReachedStopQuest(_state));
+        _state.Complete.Add(after.Id);
+        Assert.Null(_selection.ReachedStopQuest(_state));
+        _state.Accepted.Remove(after.Id);
+        Assert.Equal(after.Id, _selection.ReachedStopQuest(_state));
+
+        _state.Accepted.Add(accept.Id);
+        Assert.Equal(accept.Id, _selection.ReachedStopQuest(_state));
+    }
+
+    [Fact]
     public void StopPoint_NotWhileQuestUnfinished()
     {
         QuestProgress started = Progress(70);

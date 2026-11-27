@@ -67,7 +67,7 @@ internal sealed class HighlightObject : IDisposable
         {
             if (!_targetDataIds.Contains(id))
             {
-                _logger.LogDebug("Adding {Id} to highlight ({Caller})", id, string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}"));
+                _logger.LogTrace("Adding {Id} to highlight ({Caller})", id, string.Create(CultureInfo.InvariantCulture, $"{Path.GetFileName(file)}:{line}"));
                 _targetDataIds = _targetDataIds.Append(id).ToArray();
             }
         });

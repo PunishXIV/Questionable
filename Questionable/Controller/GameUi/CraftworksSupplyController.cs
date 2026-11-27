@@ -1,124 +1,172 @@
-﻿using Dalamud.Game.Addon.Lifecycle;
-using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+﻿using Callback = ECommons.Automation.Callback;
 using ECommons.UIHelpers.AddonMasterImplementations;
-using FFXIVClientStructs.FFXIV.Client.UI;
+using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 namespace Questionable.Controller.GameUi;
 
 [RegisterSingleton]
 internal sealed class CraftworksSupplyController : IDisposable
 {
-    private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IFramework _framework;
-    private readonly GameGuiAdapter _gameGui;
-    private readonly ILogger<CraftworksSupplyController> _logger;
-    private readonly QuestController _questController;
+    private static readonly (string Addon, AgentId Agent, int ItemValue)[] Windows =
+    [
+        ("HugeCraftworksSupply", AgentId.HugeCraftworksSupply, 9),
+        ("SharlayanCraftworksSupply", AgentId.SharlayanCraftworksSupply, 8),
+        ("BankaCraftworksSupply", AgentId.BankaCraftworksSupply, 8),
+    ];
 
-    public CraftworksSupplyController(QuestController questController, IAddonLifecycle addonLifecycle,
-        GameGuiAdapter gameGui, IFramework framework,
+    private static readonly string[] HelpAddons = ["HowTo", "HowToNotice"];
+    private static readonly TimeSpan DeliverWait = TimeSpan.FromSeconds(5);
+
+    private readonly QuestController _questController;
+    private readonly GameGuiAdapter _gameGui;
+    private readonly IFramework _framework;
+    private readonly ILogger<CraftworksSupplyController> _logger;
+    private readonly HashSet<(InventoryType, short)> _handed = [];
+    private DateTime _deliveredAt;
+    private int _tries;
+
+    public CraftworksSupplyController(QuestController questController, GameGuiAdapter gameGui, IFramework framework,
         ILogger<CraftworksSupplyController> logger)
     {
         _questController = questController;
-        _addonLifecycle = addonLifecycle;
         _gameGui = gameGui;
         _framework = framework;
         _logger = logger;
-
-        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "ContextIconMenu", ContextIconMenuPostOpen);
-        _addonLifecycle.RegisterListener(AddonEvent.PostRefresh, "ContextIconMenu", ContextIconMenuPostOpen);
-        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "BankaCraftworksSupply",
-            SupplyPostSetup);
-        _addonLifecycle.RegisterListener(AddonEvent.PreFinalize, HelpAddons, HelpClosed);
+        _framework.Update += Update;
     }
 
-    private static readonly string[] HelpAddons = ["HowTo", "HowToNotice"];
+    internal readonly record struct Candidate(InventoryType Container, short Slot, bool Hq, ushort Collectability);
 
-    private bool ShouldHandleUi => _questController.IsRunning;
+    internal static Candidate? Pick(IEnumerable<Candidate> items, IReadOnlySet<(InventoryType, short)> handed) =>
+        items.Where(x => !handed.Contains((x.Container, x.Slot)))
+            .OrderByDescending(x => x.Hq)
+            .ThenByDescending(x => x.Collectability)
+            .Cast<Candidate?>()
+            .FirstOrDefault();
 
-    public void Dispose()
+    private unsafe void Update(IFramework framework)
     {
-        _addonLifecycle.UnregisterListener(AddonEvent.PreFinalize, HelpAddons, HelpClosed);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "BankaCraftworksSupply",
-            SupplyPostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostRefresh, "ContextIconMenu", ContextIconMenuPostOpen);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "ContextIconMenu", ContextIconMenuPostOpen);
-    }
-
-    private unsafe void SupplyPostSetup(AddonEvent type, AddonArgs args)
-    {
-        if (!ShouldHandleUi)
+        if (!_questController.IsRunning || !EzThrottler.Throttle("CraftworksSupply", 700))
             return;
 
-        AtkUnitBase* addon = (AtkUnitBase*)args.Addon.Address;
-        HandleSupply(addon);
-    }
-
-    // The first Studium delivery opens the game's help on top, and the hand-over made under it is lost (4158).
-    private void HelpClosed(AddonEvent type, AddonArgs args)
-    {
-        if (ShouldHandleUi)
-            _framework.RunOnTick(HandleSupply, TimeSpan.FromMilliseconds(100));
-    }
-
-    private unsafe void HandleSupply()
-    {
-        if (_gameGui.TryGetAddonByName("BankaCraftworksSupply", out AtkUnitBase* addon))
-            HandleSupply(addon);
-    }
-
-    private unsafe void HandleSupply(AtkUnitBase* addon)
-    {
-        AddonMaster.BankaCraftworksSupply master = new(addon);
-        if (master.FirstUnfilledSlot is { } slot)
+        // The first delivery opens the game's help on top, and a hand-over made under it is lost (4158).
+        foreach (string help in HelpAddons)
         {
-            _logger.LogInformation("Selecting an item for slot {Slot}", slot);
-            master.TryHandOver(slot);
+            if (_gameGui.TryGetAddonByName(help, out AtkUnitBase* helpAddon) && helpAddon->IsVisible)
+                return;
         }
-        else
+
+        if (TryGetReady("HugeCraftworksSupplyResult", out AtkUnitBase* result))
         {
-            _logger.LogInformation("Confirming turn-in");
-            master.Deliver();
+            Callback.Fire(result, true, 0);
+            return;
         }
-    }
 
-    private unsafe void ContextIconMenuPostOpen(AddonEvent type, AddonArgs args)
-    {
-        if (!ShouldHandleUi)
-            return;
-
-        _framework.RunOnTick(() =>
+        foreach (var window in Windows)
         {
-            if (ShouldHandleUi && _gameGui.TryGetAddonByName("ContextIconMenu", out AtkUnitBase* addon))
-                PickSupplyItem((AddonContextIconMenu*)addon);
-        });
-    }
-
-    private unsafe void PickSupplyItem(AddonContextIconMenu* addonContextIconMenu)
-    {
-        if (!addonContextIconMenu->IsVisible)
-            return;
-
-        ushort parentId = addonContextIconMenu->BlockedParentId;
-        if (parentId == 0)
-            return;
-
-        AtkUnitBase* parentAddon = AtkStage.Instance()->RaptureAtkUnitManager->GetAddonById(parentId);
-        if (string.Equals(parentAddon->NameString, "BankaCraftworksSupply", StringComparison.Ordinal))
-        {
-            _logger.LogInformation("Picking item for {AddonName}", parentAddon->NameString);
-            AtkValue* selectSlot = stackalloc AtkValue[]
+            if (TryGetReady(window.Addon, out AtkUnitBase* addon))
             {
-                new() { Type = AtkValueType.Int, Int = 0 },
-                new() { Type = AtkValueType.Int, Int = 0 /* slot */ },
-                new() { Type = AtkValueType.UInt, UInt = 20802 /* probably the item's icon */ },
-                new() { Type = AtkValueType.UInt, UInt = 0 },
-                new() { Type = 0, Int = 0 }
-            };
-            addonContextIconMenu->FireCallback(5, selectSlot);
-            addonContextIconMenu->Close(fireCallback: true);
-            _framework.RunOnTick(HandleSupply, TimeSpan.FromMilliseconds(50));
+                Handle(window.Addon, window.Agent, window.ItemValue, addon);
+                return;
+            }
         }
-        else
-            _logger.LogTrace("Ignoring contextmenu event for {AddonName}", parentAddon->NameString);
+
+        _handed.Clear();
+        _deliveredAt = default;
+        _tries = 0;
     }
+
+    private unsafe bool TryGetReady(string name, out AtkUnitBase* addon) =>
+        _gameGui.TryGetAddonByName(name, out addon) && AddonUtils.IsAddonReady(addon) && addon->IsVisible;
+
+    private unsafe void Handle(string name, AgentId agentId, int itemValue, AtkUnitBase* addon)
+    {
+        if (TryGetReady("InputNumeric", out AtkUnitBase* numeric))
+        {
+            AddonMaster.InputNumeric input = new(numeric);
+            input.Ok((int)input.Max);
+            return;
+        }
+
+        if (_deliveredAt != default)
+        {
+            if (DateTime.Now - _deliveredAt < DeliverWait)
+                return;
+
+            if (_tries >= 2)
+            {
+                if (_tries++ == 2)
+                    _logger.LogWarning("{Addon} is still open after delivering twice; leaving it", name);
+                return;
+            }
+
+            Deliver(name, addon);
+            return;
+        }
+
+        if (addon->AtkValuesCount <= itemValue ||
+            addon->AtkValues[itemValue].Type is not (AtkValueType.Int or AtkValueType.UInt))
+            return;
+
+        // Collectables come as id + 500000, HQ items as id + 1000000.
+        uint itemId = addon->AtkValues[itemValue].UInt % 500_000;
+        if (itemId == 0)
+            return;
+
+        if (Pick(Candidates(itemId), _handed) is { } item)
+        {
+            _handed.Add((item.Container, item.Slot));
+            _logger.LogInformation("Handing over item {ItemId} from {Container}/{Slot} to {Addon}", itemId,
+                item.Container, item.Slot, name);
+            AgentInterface* agent = AgentModule.Instance()->GetAgentByInternalId(agentId);
+            if (agent == null)
+                return;
+
+            // All three agents keep their InventoryContextEvent at +0x28 (constructors, game 2026.11.03).
+            ((AgentInventoryContext.InventoryContextEvent*)((byte*)agent + 0x28))
+                ->HandleCallback((uint)item.Slot, item.Container, 0, 0);
+            return;
+        }
+
+        if (_handed.Count == 0)
+        {
+            if (EzThrottler.Throttle("CraftworksSupplyEmpty", 10_000))
+                _logger.LogWarning("{Addon} wants item {ItemId}, but none is in the bags", name, itemId);
+            return;
+        }
+
+        Deliver(name, addon);
+    }
+
+    private unsafe void Deliver(string name, AtkUnitBase* addon)
+    {
+        _logger.LogInformation("Delivering {Addon} ({Count} items handed over)", name, _handed.Count);
+        Callback.Fire(addon, true, 0);
+        _deliveredAt = DateTime.Now;
+        _tries++;
+    }
+
+    private static unsafe List<Candidate> Candidates(uint itemId)
+    {
+        List<Candidate> candidates = [];
+        InventoryManager* inventoryManager = InventoryManager.Instance();
+        for (InventoryType type = InventoryType.Inventory1; type <= InventoryType.Inventory4; ++type)
+        {
+            InventoryContainer* container = inventoryManager->GetInventoryContainer(type);
+            if (container == null)
+                continue;
+
+            for (int i = 0; i < container->Size; ++i)
+            {
+                InventoryItem* item = container->GetInventorySlot(i);
+                if (item != null && item->ItemId == itemId)
+                    candidates.Add(new(type, item->Slot, item->IsHighQuality(), item->SpiritbondOrCollectability));
+            }
+        }
+
+        return candidates;
+    }
+
+    public void Dispose() => _framework.Update -= Update;
 }

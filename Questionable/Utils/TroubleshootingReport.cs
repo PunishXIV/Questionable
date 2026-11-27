@@ -55,6 +55,34 @@ internal static class TroubleshootingReport
         return Prompt + head + log + End;
     }
 
+    private static readonly string[] TravelRows =
+    [
+        "UseMount", "UseFlight", "MountId", "UseSprint", "MinRunDistance", "MinMountDistance", "MaxWalkDistance",
+        "MinimumGilReserve", "UseAetherytes", "UseAethernet", "UseWarps", "UseChocoboPorter", "UseConnectionCheck",
+        "UseMountRoulette",
+    ];
+
+    // Only these rows: the rest of MappingTheRealm's file has other characters' ids.
+    internal static string TravelSettings(string json, string? contentId)
+    {
+        JObject config = JObject.Parse(json);
+        StringBuilder text = new("MappingTheRealm travel settings\n");
+        AddTravelRows(text, "General", config);
+        if (contentId != null && config["CharacterSettings"]?[contentId] is JObject character)
+            AddTravelRows(text, "This character", character);
+        return text.ToString();
+    }
+
+    private static void AddTravelRows(StringBuilder text, string title, JObject settings)
+    {
+        text.Append('\n').Append(title).Append(":\n");
+        foreach (string row in TravelRows)
+        {
+            if (settings[row] is { } value)
+                text.Append("  ").Append(row).Append(": ").Append(value.ToString(Newtonsoft.Json.Formatting.None)).Append('\n');
+        }
+    }
+
     internal static string LogText(IEnumerable<string> logEntries, IReadOnlyList<string> privateTexts) =>
         string.Join('\n', logEntries.Select(x => Scrub(x, privateTexts)));
 

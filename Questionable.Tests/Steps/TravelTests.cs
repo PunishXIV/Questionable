@@ -1,4 +1,5 @@
 using Questionable.Controller.Steps.Movement;
+using Questionable.Model.Questing;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -22,4 +23,13 @@ public sealed class TravelTests
     [InlineData(false, true, false)]
     public void KeepsRoute_OnlyWhileMtrRuns(bool routeOpen, bool pathing, bool expected) =>
         Assert.Equal(expected, Travel.Executor.KeepsRoute(routeOpen, pathing));
+
+    [Theory]
+    [InlineData(EInteractionType.WalkTo, false, true)]
+    [InlineData(EInteractionType.WaitForNpcAtPosition, false, true)]
+    [InlineData(EInteractionType.WalkTo, null, false)]
+    [InlineData(EInteractionType.AcceptQuest, false, false)]
+    [InlineData(EInteractionType.Interact, false, false)]
+    public void Follows_OnlyNoMountFollowSteps(EInteractionType type, bool? mount, bool expected) =>
+        Assert.Equal(expected, Travel.Follows(new QuestStep { InteractionType = type, Mount = mount }));
 }

@@ -8,6 +8,17 @@ internal static class DalamudLog
 {
     private static readonly Regex Header = new(@"^(\d{4}-\d{2}-\d{2} )?\d{2}:\d{2}:\d{2}\.\d{3}", RegexOptions.Compiled);
 
+    // Logged constantly and never what a report is about.
+    private static readonly string[] Noise =
+    [
+        "[vnavmesh] Legacy mode is now",
+        "[vnavmesh] BGPart:",
+        "[EzIPC Subscriber] Attempting to assign IPC method",
+    ];
+
+    // Dalamud's file sink has a 100 MB limit and no rollover: past it nothing more is written.
+    internal static bool IsFull(string path) => File.Exists(path) && new FileInfo(path).Length >= 100L * 1024 * 1024;
+
     internal static List<string> Read(string path, IReadOnlyCollection<string> plugins)
     {
         // Dalamud keeps the file open for writing.
@@ -34,7 +45,8 @@ internal static class DalamudLog
                     entries.Add(current.ToString());
                 // Dalamud's own load and unload errors for a plugin are tagged LocalPlugin; WahTools keeps those too.
                 current = plugins.Any(x => line.Contains($"[{x}]", StringComparison.Ordinal) ||
-                                           line.Contains("[LocalPlugin]", StringComparison.Ordinal) && line.Contains(x, StringComparison.Ordinal))
+                                           line.Contains("[LocalPlugin]", StringComparison.Ordinal) && line.Contains(x, StringComparison.Ordinal)) &&
+                          !Noise.Any(x => line.Contains(x, StringComparison.Ordinal))
                     ? new(line)
                     : null;
             }

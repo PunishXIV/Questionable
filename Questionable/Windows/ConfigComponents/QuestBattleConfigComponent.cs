@@ -26,7 +26,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
     private readonly IDataManager _dataManager;
     private readonly ClassJobUtils _classJobUtils;
     private readonly ILogger<QuestBattleConfigComponent> _logger;
-    private readonly HashSet<ElementId> _reportedUnknown = [];
 
     private ImmutableDictionary<EAetheryteLocation, List<BattleInfo>> _startingCityBattles =
         ImmutableDictionary<EAetheryteLocation, List<BattleInfo>>.Empty;
@@ -212,8 +211,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             return (true, foundStep.SinglePlayerDutyOptions ?? options);
         }
 
-        if (_reportedUnknown.Add(questId))
-            _logger.LogDebug("Disabling quest battle for quest {QuestId}, unknown quest", questId);
         return (false, options);
     }
 

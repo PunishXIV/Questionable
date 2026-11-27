@@ -139,8 +139,9 @@ internal sealed class DailiesController(
                     x.InteractionType == EInteractionType.Craft && x.ItemId is { } itemId &&
                     questFunctions.HasCraftMaterials(itemId)) == true;
                 bool hasJob = questFunctions.HasClassJobAtQuestLevel(id);
-                string? blocked = unavailable ?? GetBlockReason(quest, info, accepted, hasJob,
-                    quest != null && questFunctions.NeedsPlayer(quest));
+                bool turnInReady = accepted && quest != null && questFunctions.OnlyTurnInLeft(quest, sequence);
+                string? blocked = unavailable ?? (turnInReady ? null : GetBlockReason(quest, info, accepted, hasJob,
+                    quest != null && questFunctions.NeedsPlayer(quest)));
                 bool manualBattle = !info.IsRepeatable && quest != null && quest.AllSteps().Any(x =>
                     x.Sequence.Sequence >= sequence && x.Step.InteractionType == EInteractionType.SinglePlayerDuty &&
                     !bossMod.CanRunQuestBattle(id, x.Step.SinglePlayerDutyOptions));

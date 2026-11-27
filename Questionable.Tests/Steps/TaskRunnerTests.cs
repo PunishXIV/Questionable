@@ -196,7 +196,8 @@ public sealed class TaskRunnerTests
         Assert.Equal("Attune to the aetheryte first.", Assert.Single(fixture.Notifications));
         Assert.DoesNotContain(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
         var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "Print");
-        Assert.Equal("Attune to the aetheryte first.", Convert.ToString(chat.GetArguments()[0], CultureInfo.InvariantCulture));
+        Assert.Matches(@"^\[\d{2}:\d{2}:\d{2}\] Attune to the aetheryte first\.$",
+            Convert.ToString(chat.GetArguments()[0], CultureInfo.InvariantCulture));
         Assert.DoesNotContain(fixture.Log.Entries, x => x.Level == LogLevel.Error);
     }
 

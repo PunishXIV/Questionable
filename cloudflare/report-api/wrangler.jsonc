@@ -34,6 +34,21 @@
 				"limit": 30,
 				"period": 60
 			}
+		},
+		// Zip uploads; the binding only counts per 10 or 60 seconds.
+		{
+			"name": "ZIP_IP_LIMITER",
+			"namespace_id": "2003",
+			"simple": {
+				"limit": 1,
+				"period": 60
+			}
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "ZIPS",
+			"bucket_name": "qst-report-zips"
 		}
 	],
 	"d1_databases": [

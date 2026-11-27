@@ -6307,8 +6307,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. Never your character's name, account or IP address. Kept for 180 days.</Key>
-    <Value lang="en">After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. Never your character's name, account or IP address. Kept for 180 days.</Value>
+    <Key>After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. When a quest errors, it also uploads the troubleshooting zip (Questionable's logs and settings, with your character names removed), kept for 30 days. Never your account or IP address. Reports are kept for 180 days.</Key>
+    <Value lang="en">After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. When a quest errors, it also uploads the troubleshooting zip (Questionable's logs and settings, with your character names removed), kept for 30 days. Never your account or IP address. Reports are kept for 180 days.</Value>
     <Value lang="ja-jp">クエスト実行後、経路の成否を送信します。停止時はステップ、問題、プラグインのバージョン、直近10件の操作も送信します。キャラクター名、アカウント、IPアドレスは送信しません。保存期間は180日です。</Value>
     <Value lang="zh-cn">Questionable 每次完成任务后会发送路线是否成功。若停止，还会发送步骤、问题、插件版本和最近十次操作。不会发送角色名、账号或IP地址。保留180天。</Value>
     <Value lang="zh-tw">Questionable 每次完成任務後會傳送路線是否成功。若停止，還會傳送步驟、問題、外掛版本和最近十次操作。不會傳送角色名稱、帳號或IP位址。保留180天。</Value>
@@ -9380,7 +9380,7 @@ Right click: Copy without .json</Value>
     <Value lang="en">Boss Mod Reborn is loaded. Questionable doesn't work with it, so combat and quest battles can fail. Disable Boss Mod Reborn and use Boss Mod instead.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <!-- DEPRECATED -->
     <Key>WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable.</Key>
     <Value lang="en">WigglyQuest is loaded. It controls your character and quests too, so Questionable won't do anything while it's loaded. Disable WigglyQuest to use Questionable.</Value>
   </Entry>
@@ -9628,5 +9628,243 @@ Right click: Copy without .json</Value>
     <!-- Found in: ../Questionable/Controller/WigglyQuestSwitch.cs -->
     <Key>WigglyQuest is switched off while Questionable runs; it comes back on when Questionable stops.</Key>
     <Value lang="en">WigglyQuest is switched off while Questionable runs; it comes back on when Questionable stops.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>All characters</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Mixed</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/MiniTaskController.cs -->
+    <Key>[{0}] {1}: {2}</Key>
+    <Value lang="en">[{0}] {1}: {2}</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/MiniTaskController.cs -->
+    <Key>[{0}] {1}</Key>
+    <Value lang="en">[{0}] {1}</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestController.cs -->
+    <Key>{0} ({1}, sequence {2}, step {3})</Key>
+    <Value lang="en">{0} ({1}, sequence {2}, step {3})</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Free job gear is collected for you</Key>
+    <Value lang="en">Free job gear is collected for you</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Between quests, Questionable fetches the free level 80, 89 and 99 job gear once its shop is unlocked and it beats what you wear, then equips your best gear.</Key>
+    <Value lang="en">Between quests, Questionable fetches the free level 80, 89 and 99 job gear once its shop is unlocked and it beats what you wear, then equips your best gear.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Gear is repaired for you</Key>
+    <Value lang="en">Gear is repaired for you</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Between quests, gear below the set condition is repaired with Dark Matter when one of your crafters can, otherwise at a mender for gil.</Key>
+    <Value lang="en">Between quests, gear below the set condition is repaired with Dark Matter when one of your crafters can, otherwise at a mender for gil.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>The Hall of the Novice is run for you</Key>
+    <Value lang="en">The Hall of the Novice is run for you</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Between quests, Questionable runs the Hall of the Novice through AutoDuty for the Neophyte's Ring once its exercises are unlocked.</Key>
+    <Value lang="en">Between quests, Questionable runs the Hall of the Novice through AutoDuty for the Neophyte's Ring once its exercises are unlocked.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Quests waiting on your own duties are set aside</Key>
+    <Value lang="en">Quests waiting on your own duties are set aside</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>A quest that needs a duty you run yourself is put aside, and Questionable carries on with other quests.</Key>
+    <Value lang="en">A quest that needs a duty you run yourself is put aside, and Questionable carries on with other quests.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Failed quest battles are retried</Key>
+    <Value lang="en">Failed quest battles are retried</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>When a quest battle run by Boss Mod fails, Questionable starts it again.</Key>
+    <Value lang="en">When a quest battle run by Boss Mod fails, Questionable starts it again.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Help fix quest paths</Key>
+    <Value lang="en">Help fix quest paths</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/WhatsNew.cs -->
+    <Key>Questionable can send whether each quest's path worked, or where and why it stopped, so everyone sees how often a path works. When a quest errors, it also uploads the troubleshooting zip (logs and settings, your character names removed) and gives you a report code. Never your account or IP address. This also applies if you already share.</Key>
+    <Value lang="en">Questionable can send whether each quest's path worked, or where and why it stopped, so everyone sees how often a path works. When a quest errors, it also uploads the troubleshooting zip (logs and settings, your character names removed) and gives you a report code. Never your account or IP address. This also applies if you already share.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <Key>Saved a troubleshooting zip for this error: {0}. If you report it in #questionable-issues, attach this zip.</Key>
+    <Value lang="en">Saved a troubleshooting zip for this error: {0}. If you report it in #questionable-issues, attach this zip.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ReportWarningComponent.cs -->
+    <Key>When a quest errors, it also uploads the troubleshooting zip: Questionable's recent log, settings and where you were, with your character names removed. You get a report code to mention in Discord. Zips are kept for 30 days.</Key>
+    <Value lang="en">When a quest errors, it also uploads the troubleshooting zip: Questionable's recent log, settings and where you were, with your character names removed. You get a report code to mention in Discord. Zips are kept for 30 days.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
+    <Key>Uploaded a troubleshooting zip for this error, report code {0}. If you report it in #questionable-issues, mention this code. A copy is saved in {1}</Key>
+    <Value lang="en">Uploaded a troubleshooting zip for this error, report code {0}. If you report it in #questionable-issues, mention this code. A copy is saved in {1}</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStarter.cs -->
+    <Key>This character is already at the stop quest '{0}', moving on.</Key>
+    <Value lang="en">This character is already at the stop quest '{0}', moving on.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
+    <Key>In use</Key>
+    <Value lang="en">In use</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>HUD layout</Key>
+    <Value lang="en">HUD layout</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared macros</Key>
+    <Value lang="en">Shared macros</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>UI settings, controls, keybinds and log filters</Key>
+    <Value lang="en">UI settings, controls, keybinds and log filters</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Saved UI data</Key>
+    <Value lang="en">Saved UI data</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Hotbars</Key>
+    <Value lang="en">Hotbars</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Character macros</Key>
+    <Value lang="en">Character macros</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>System settings</Key>
+    <Value lang="en">System settings</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Applying shared settings...</Key>
+    <Value lang="en">Applying shared settings...</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the character changed or logged out.</Key>
+    <Value lang="en">Shared settings not applied: the character changed or logged out.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game's Config Share window didn't answer.</Key>
+    <Value lang="en">Shared settings not applied: the game's Config Share window didn't answer.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game showed a Config Share message; read it in the game.</Key>
+    <Value lang="en">Shared settings not applied: the game showed a Config Share message; read it in the game.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: close the game's Config Share window first.</Key>
+    <Value lang="en">Shared settings not applied: close the game's Config Share window first.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game couldn't open Config Share.</Key>
+    <Value lang="en">Shared settings not applied: the game couldn't open Config Share.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game didn't ask to confirm the download.</Key>
+    <Value lang="en">Shared settings not applied: the game didn't ask to confirm the download.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the download confirmation changed.</Key>
+    <Value lang="en">Shared settings not applied: the download confirmation changed.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings not applied: the game reported a download error; read its message.</Key>
+    <Value lang="en">Shared settings not applied: the game reported a download error; read its message.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Shared settings applied.</Key>
+    <Value lang="en">Shared settings applied.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Shared settings</Key>
+    <Value lang="en">Shared settings</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Copies settings from a Config Share code onto your characters: make the code with the game's Config Share on the character to copy from. This overwrites the ticked parts on each character and can't be undone.</Key>
+    <Value lang="en">Copies settings from a Config Share code onto your characters: make the code with the game's Config Share on the character to copy from. This overwrites the ticked parts on each character and can't be undone.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Apply to each character in the list</Key>
+    <Value lang="en">Apply to each character in the list</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Before questing on a character, Questionable downloads the code's settings once. A new code is applied again.</Key>
+    <Value lang="en">Before questing on a character, Questionable downloads the code's settings once. A new code is applied again.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Share code</Key>
+    <Value lang="en">Share code</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Apply to this character now</Key>
+    <Value lang="en">Apply to this character now</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
+    <Key>Needs a 16-character code and at least one ticked part.</Key>
+    <Value lang="en">Needs a 16-character code and at least one ticked part.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/ConfigShare.cs -->
+    <Key>Config Share only works on your home world, in a city or an inn.</Key>
+    <Value lang="en">Config Share only works on your home world, in a city or an inn.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/CharacterRun.cs -->
+    <Key>Shared settings skipped on {0}: couldn't get to a city or inn on the home world.</Key>
+    <Value lang="en">Shared settings skipped on {0}: couldn't get to a city or inn on the home world.</Value>
   </Entry>
 </I18N>

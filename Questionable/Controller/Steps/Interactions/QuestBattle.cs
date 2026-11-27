@@ -116,7 +116,8 @@ internal static class QuestBattle
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        // An attack outside cancels the start; fight it, then the entry is clicked again (4521).
+        public override bool ShouldInterruptOnDamage() => !condition[ConditionFlag.BoundByDuty];
 
         internal static bool CanConfirmEntry(uint requestedContent, uint poppedContent, bool regularDuty) =>
             requestedContent != 0 && regularDuty && poppedContent == requestedContent;

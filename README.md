@@ -250,6 +250,10 @@ This can be done through `/xlplugins` in the chat.
 <td align="left">Opens the Quest Validation window.</td>
 </tr>
 <tr>
+<td align="left"><code>/qst whatsnew</code></td>
+<td align="left">Shows what changed in recent updates, with the settings each change touched.</td>
+</tr>
+<tr>
 <td align="left"><code>/qst cleanup</code></td>
 <td align="left">Adds every quest you already have open to the priority list, finished ones first.</td>
 </tr>

@@ -45,6 +45,32 @@ internal sealed class ReportApi : IDisposable
         }
     }
 
+    // Returns the code players quote in Discord, or null when the upload failed.
+    public async Task<string?> UploadZipAsync(byte[] zip, string character, string? quest, string version)
+    {
+        try
+        {
+            string query = $"/v2/logs?character={Uri.EscapeDataString(character)}&version={Uri.EscapeDataString(version)}" +
+                           (quest != null ? $"&quest={Uri.EscapeDataString(quest)}" : "");
+            using ByteArrayContent content = new(zip);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/zip");
+            using HttpResponseMessage response = await _http.PostAsync(new Uri(query, UriKind.Relative), content).ConfigureAwait(false);
+            if (!response.IsSuccessStatusCode)
+            {
+                logger.LogWarning("Troubleshooting zip upload was refused: {Status}", (int)response.StatusCode);
+                return null;
+            }
+
+            string? code = (await response.Content.ReadFromJsonAsync<ZipReply>(Json).ConfigureAwait(false))?.Code;
+            return code is { Length: 6 } && code.All(char.IsAsciiLetterOrDigit) ? code : null;
+        }
+        catch (Exception e) when (e is HttpRequestException or TaskCanceledException or JsonException)
+        {
+            logger.LogWarning("Could not upload the troubleshooting zip: {Message}", e.Message);
+            return null;
+        }
+    }
+
     // The server only skips its cache for an admin token.
     public async Task<StatusReply?> GetStatusAsync(string? adminToken = null)
     {
@@ -178,6 +204,8 @@ internal sealed class ReportApi : IDisposable
         bool Current = true);
 
     internal sealed record AdminPage(long Snapshot, List<AdminReport> Reports);
+
+    internal sealed record ZipReply(string Code);
 
     internal sealed record StatusReply(long At, Dictionary<string, Dictionary<string, PathReports>> Quests);
 

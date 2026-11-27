@@ -1,4 +1,5 @@
 import { DASHBOARD } from "./dashboard";
+import { downloadZip, listZips, postZip, pruneZips } from "./logs";
 import { validateReport } from "./validate";
 import { getCachedStatus, getReportPage, resetStatusCache, resolveReport, verifyPath } from "./status";
 
@@ -104,17 +105,21 @@ async function postReport(request: Request, env: Env): Promise<Response> {
   return json({ ok: true });
 }
 
-async function findAdmin(request: Request, env: Env): Promise<string | null> {
+interface Admin {
+  name: string;
+  role: string;
+}
+
+async function findAdmin(request: Request, env: Env): Promise<Admin | null> {
   const header = request.headers.get("Authorization");
   if (!header?.startsWith("Bearer ")) {
     return null;
   }
 
   const tokenHash = await sha256Hex(header.slice("Bearer ".length).trim());
-  const admin = await env.DB.prepare("SELECT name FROM admins WHERE token_hash = ?")
+  return await env.DB.prepare("SELECT name, role FROM admins WHERE token_hash = ?")
     .bind(tokenHash)
-    .first<{ name: string }>();
-  return admin?.name ?? null;
+    .first<Admin>();
 }
 
 export async function prune(env: Env, now: number): Promise<void> {
@@ -144,6 +149,7 @@ export async function prune(env: Env, now: number): Promise<void> {
       .bind(now - RETENTION_DAYS * DAY_MS),
   ]);
   await resetStatusCache();
+  await pruneZips(env, now);
 }
 
 export default {
@@ -152,6 +158,14 @@ export default {
     try {
       if (url.pathname === "/v1/reports" && request.method === "POST") {
         return await postReport(request, env);
+      }
+
+      if (url.pathname === "/v2/logs" && request.method === "POST") {
+        if (!env.CHARACTER_SALT) {
+          return json({ error: "not configured" }, 503);
+        }
+        const limited = await rateLimited(env.ZIP_IP_LIMITER, request);
+        return limited ?? await postZip(request, env, url, character => sha256Hex(`${env.CHARACTER_SALT}:${character}`));
       }
 
       if (url.pathname === "/" && request.method === "GET") {
@@ -184,7 +198,16 @@ export default {
         if (url.pathname === "/v2/admin/reports" && request.method === "GET") {
           return await getReportPage(env, url.searchParams.get("quest"));
         }
+        if (url.pathname === "/v2/admin/logs" && request.method === "GET") {
+          return await listZips(env, url.searchParams.get("quest"), url.searchParams.get("code"));
+        }
+        if (url.pathname.startsWith("/v2/admin/logs/") && request.method === "GET") {
+          return await downloadZip(env, url.pathname.slice("/v2/admin/logs/".length).toUpperCase());
+        }
         if (request.method === "POST" && (url.pathname === "/v2/admin/resolve" || url.pathname === "/v2/admin/verify")) {
+          if (admin.role !== "admin") {
+            return json({ error: "read-only token" }, 403);
+          }
           const text = await readBody(request);
           if (text === null) {
             return json({ error: "too large" }, 413);
@@ -196,8 +219,8 @@ export default {
             return json({ error: "invalid json" }, 400);
           }
           return url.pathname.endsWith("/resolve")
-            ? await resolveReport(env, admin, body)
-            : await verifyPath(env, admin, body);
+            ? await resolveReport(env, admin.name, body)
+            : await verifyPath(env, admin.name, body);
         }
       }
 

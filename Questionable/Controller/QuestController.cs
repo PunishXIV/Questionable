@@ -303,6 +303,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _taskCreator = taskCreator;
         _questBattleConfig = questBattleConfig;
         _stopPolicy = stopPolicy;
+        _stopPolicy.ErrorShown += (_, _) => OnErrorShown();
         _stuckWatch = stuckWatch;
         _storyCatchUp = storyCatchUp;
         _presets = presets;
@@ -1175,6 +1176,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     internal void StopFinished(string label) => Stop(label, clearQuest: true, finished: true);
 
+    internal (ElementId Id, string Name)? ReachedStopQuest() =>
+        _selection.ReachedStopQuest(SelectionState) is { } id
+            ? (id, _questRegistry.TryGetQuest(id, out Quest? quest) ? quest.Info.Name : id.ToString())
+            : null;
+
     public void StopRequested(string label) => Stop(label, clearQuest: true, requested: true);
 
     internal void StopForPass(string label) => Stop(label, clearQuest: true, pass: true);
@@ -1424,6 +1430,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             RecordNavigationFailure(navigationFailure, task.ToString());
     }
 
+    public event EventHandler? ErrorShown;
+
+    protected override void OnErrorShown() => ErrorShown?.Invoke(this, EventArgs.Empty);
+
+    protected override string? FailedIn => CurrentQuest is { } q
+        ? _LF("{0} ({1}, sequence {2}, step {3})", q.Quest.Info.Name, q.Quest.Id, q.Sequence, q.Step)
+        : null;
+
     protected override bool TryHandleTaskFailure(Exception exception, ITask task) =>
         CanRetryDaily(exception) && TryDailyFailure(exception.Message);
 
@@ -1636,7 +1650,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         public bool InDuty => controller._condition[ConditionFlag.BoundByDuty];
         public bool BetweenAreas => controller._condition[ConditionFlag.BetweenAreas] || controller._condition[ConditionFlag.BetweenAreas51];
         public bool IsAccepted(ElementId questId) => controller._questFunctions.IsQuestAccepted(questId);
-        public bool IsComplete(ElementId questId) => controller._questFunctions.IsQuestComplete(questId);
+        // A daily's permanent completion bit stays set from earlier days; stops must use today's flag.
+        public bool IsComplete(ElementId questId) => controller._questFunctions.IsPriorityQuestDone(questId);
         public bool IsReadyToAccept(ElementId questId, bool ignoreLevel = false) =>
             controller._questFunctions.IsReadyToAcceptQuest(questId, ignoreLevel);
         public bool HasClassJobAtQuestLevel(ElementId questId) => controller._questFunctions.HasClassJobAtQuestLevel(questId);

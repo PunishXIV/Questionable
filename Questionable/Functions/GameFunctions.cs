@@ -317,7 +317,6 @@ internal sealed unsafe partial class GameFunctions
 
         if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 23) == 0)
         {
-            logger.LogDebug("Attempting to unmount...");
             if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23))
             {
                 logger.LogDebug("Unmounted");

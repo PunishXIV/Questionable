@@ -442,6 +442,10 @@ internal sealed class QuestFunctions
 
     private bool IsReadyToCompleteQuest(Quest quest) => state.IsReadyToTurnIn(quest.Info.Name);
 
+    // Disabled FATE dailies are done by hand; once the game shows the turn-in, Questionable can hand them in.
+    public bool OnlyTurnInLeft(Quest quest, byte sequence) =>
+        quest.Root.Disabled && sequence == 255 && IsQuestAccepted(quest.Id) && IsReadyToCompleteQuest(quest);
+
     private CachedValue<List<ElementId>> _openQuests = new(ttlSeconds: 2);
 
     public List<ElementId> OpenQuests => _openQuests.Get(GetOpenQuests);

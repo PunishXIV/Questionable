@@ -50,6 +50,9 @@ internal sealed class Configuration : IPluginConfiguration
     public bool ProblemStopApplied { get; set; }
     public bool ClaimMailOnApplied { get; set; }
 
+    // Last version whose What's New entries were shown; null for users from before the window existed.
+    public string? WhatsNewVersion { get; set; }
+
     public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
 
     public Dictionary<string, string> CharacterProfiles { get; set; } = [];
@@ -372,6 +375,10 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class CharacterConfiguration
     {
         public List<ulong> EnabledIds { get; set; } = [];
+        public bool ApplyShare { get; set; }
+        public string ShareCode { get; set; } = string.Empty;
+        public uint ShareCategories { get; set; }
+        public Dictionary<ulong, string> ShareApplied { get; set; } = [];
     }
 
     internal sealed class StopPreset

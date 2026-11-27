@@ -1,11 +1,15 @@
-- Feature: /qst mail claims your Mog Station and reward mail on demand, e.g. from AutoRetainer's post-processing -Kage
-- Feature: The Profiles page has an All characters row to tick every character or give them all one profile -Kage
-- Bug fix: Quests that need collectable fish (e.g. Giant Aetherlouse) are fished through Feesh at the collectability the quest needs, instead of stopping -Kage
-- Bug fix: The Hall of the Novice detour skips characters who haven't unlocked it -Kage
-- Bug fix: In a character list run, mail and other between-quest stops that failed on one character are no longer skipped on the next ones -Kage
-- Bug fix: When MappingTheRealm can't finish a route, Questionable shows its real error instead of retrying from on top of the NPC -Kage
-- Bug fix: The troubleshooting zip only holds the Questionable, MappingTheRealm and vnavmesh logs, so reports are smaller and easier to read; the Stuck? button no longer copies to the clipboard, attach the zip instead -Kage
-- Bug fix: Quest steps that need a jump (e.g. The Sword in the Stone) run straight at the ledge again instead of walking around it -Kage
-- Bug fix: Fishing quests no longer buy bait first when Feesh does the fishing; Feesh buys its own -Kage
-- Bug fix: Seasonal event quests no longer stop for mail, repairs, job gear, retainers or the Hall of the Novice in between -Kage
-- Bug fix: The Meeting of Minds now waits for the gatherer Studium quests (The Culture of Love, Pastures New) too, so it no longer shows as available too early -Kage
+- Feature: A What's new window shows settings that changed in recent updates, each with its switch; open it again with /qst whatsnew -Kage
+- Feature: Do dailies hands in FATE dailies once you've done the FATE yourself, along with the other dailies -Kage
+- Feature: Profiles page, Shared settings: a character list can apply a Config Share code (HUD, hotbars, keybinds, macros and more) to each character once before questing, going to the home world and an inn first since the game needs that; a button applies it to the current character -Kage
+- Feature: When a quest step fails or Questionable stops on a problem, it saves a troubleshooting zip right away (at most one every 5 minutes, the last 10 are kept); if you share quest results it's uploaded too and chat shows a report code to mention in #questionable-issues -Kage
+- Feature: Error messages in chat show the time, and for a failed step the quest, sequence and step -Kage
+- Change: The Plugins page lists the combat plugins in their own group and marks the one in use -Kage
+- Bug fix: Rotation Solver Reborn works as the combat plugin again with its latest version (it gave "No combat plugin is set up" in every fight) -Kage
+- Bug fix: Studium, Crystarium and Wachumeqimeqi deliveries hand over the items and deliver by themselves -Kage
+- Bug fix: Allied society dailies done on an earlier day no longer count as finished, so a stop after the current quest no longer ends the run right after accepting them -Kage
+- Bug fix: Allied society dailies that put you on a quest mount (e.g. Sanuwa Samba) no longer teleport and lose the mount -Kage
+- Bug fix: If enemies attack while a solo duty is starting (e.g. Operation Archon), Questionable fights them and then starts the duty again -Kage
+- Bug fix: In a character list, characters that already reached a stop quest are skipped instead of standing still or running past it -Kage
+- Bug fix: Steps that only said not to mount (e.g. Shadows Uncast) travel with MappingTheRealm again; walking is kept for following an NPC -Kage
+- Bug fix: When the chosen combat plugin doesn't take a fight, the message names it and asks you to check it's loaded -Kage
+- Bug fix: The troubleshooting zip has Questionable's recent log even when Dalamud's own log is full, leaves out repetitive lines, and includes your MappingTheRealm travel settings -Kage

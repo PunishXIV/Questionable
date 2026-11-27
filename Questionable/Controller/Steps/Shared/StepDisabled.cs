@@ -2,11 +2,12 @@
 
 internal static class StepDisabled
 {
-    internal sealed class Factory : SimpleTaskFactory
+    internal sealed class Factory(QuestFunctions questFunctions) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (!step.Disabled)
+            if (!step.Disabled && (step.InteractionType == EInteractionType.CompleteQuest ||
+                                   !questFunctions.OnlyTurnInLeft(quest, sequence.Sequence)))
                 return null;
 
             return new Task();

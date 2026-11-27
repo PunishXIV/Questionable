@@ -8,6 +8,10 @@ internal static class Travel
     // Territory 1 marks steps that must not travel.
     internal static bool CanTravel(QuestStep step) => step.TerritoryId != 1;
 
+    // Older paths say Mount: false for a short hop too; only following an NPC needs the vnav walk.
+    internal static bool Follows(QuestStep step) =>
+        step is { Mount: false, InteractionType: EInteractionType.WalkTo or EInteractionType.WaitForNpcAtPosition };
+
     // An aetheryte's base id is its Aetheryte row; its own position is inside the crystal.
     internal static uint? InteractTarget(QuestStep step) => step.InteractionType switch
     {
@@ -27,7 +31,8 @@ internal static class Travel
     }
 
     internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, NavmeshIpc navmesh, IClientState clientState,
-        ICondition condition, IObjectTable objectTable, GameFunctions gameFunctions, ILogger<Executor> logger)
+        ICondition condition, IObjectTable objectTable, GameFunctions gameFunctions, AlliedSocietyData alliedSocietyData,
+        ILogger<Executor> logger)
         : TaskExecutor<Task>, IStoppable
     {
         private const float VnavArrival = 3f;
@@ -112,6 +117,16 @@ internal static class Travel
                 return;
 
             _waiting = false;
+            // MappingTheRealm teleports when that's quicker, and a teleport takes away a society's quest mount (2178).
+            if (GameFunctions.GetMountId() is { } mount && alliedSocietyData.Mounts.ContainsKey(mount) &&
+                clientState.TerritoryType == Task.TerritoryId && Task.Position is { } mounted)
+            {
+                if (!navmesh.MoveTo(mounted, condition[ConditionFlag.InFlight]))
+                    throw new TaskException("vnavmesh couldn't find a path on the quest mount");
+                _vnavSince = DateTime.Now;
+                return;
+            }
+
             // MappingTheRealm mounts and flies whenever it can; follow and stealth steps fail when you outrun the NPC.
             if (Task.Walk && clientState.TerritoryType == Task.TerritoryId && Task.Position is { } walkTo)
             {

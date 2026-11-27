@@ -36,6 +36,17 @@
       ]
     },
     {
+      "Sequence": 3,
+      "TerritoryId": 959,
+      "Steps": [
+        {
+          "DataId": 1046035,
+          "Position": [649.08, 146.747, 137.481],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
       "Sequence": 255,
       "TerritoryId": 959,
       "Steps": [

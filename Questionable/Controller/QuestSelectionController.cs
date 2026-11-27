@@ -33,6 +33,17 @@ internal sealed class QuestSelectionController(Configuration configuration)
         return stopAfterCurrentQuest ? EStopPoint.AfterCurrentQuest : null;
     }
 
+    // The rules fire on accepting or finishing; a character list also visits characters that got there earlier.
+    public ElementId? ReachedStopQuest(IQuestSelectionState state)
+    {
+        Configuration.StopConfiguration stop = configuration.Stop;
+        if (!stop.Enabled)
+            return null;
+
+        return stop.QuestsToStopWhenAccepted.FirstOrDefault(x => state.IsAccepted(x) || state.IsComplete(x)) ??
+               stop.QuestsToStopAfter.FirstOrDefault(x => stop.GetPreset(x) == null && state.IsComplete(x) && !state.IsAccepted(x));
+    }
+
     public static QuestChoice Choose(QuestSelectionContext context) => Rules.Select(x => x.Offer(context)).First(x => x != null)!;
 
     public static bool IsLevelTooHigh(int playerLevel, Quest quest) => playerLevel < quest.Info.Level;

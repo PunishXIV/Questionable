@@ -52,18 +52,12 @@ internal static class QuestWorkUtils
         QuestProgressInfo questWork, ILogger logger)
     {
         if (requiredQuestVariables.Count != 6 || requiredQuestVariables.All(x => x == null || x.Count == 0))
-        {
-            logger.LogDebug("No RequiredQW defined");
             return true;
-        }
 
         for (int i = 0; i < 6; ++i)
         {
             if (requiredQuestVariables[i] == null)
-            {
-                logger.LogDebug("No RequiredQW {Index} defined", i);
                 continue;
-            }
 
             byte high = (byte)(questWork.Variables[i] >> 4);
             byte low = (byte)(questWork.Variables[i] & 0xF);

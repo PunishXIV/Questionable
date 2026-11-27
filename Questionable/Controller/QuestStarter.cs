@@ -53,6 +53,15 @@ internal sealed class QuestStarter(
         _single = null;
         questController.NextInChain = null;
         questController.AutomationType = EAutomationType.Automatic;
+        if (stopPolicy.IsListRun && questController.ReachedStopQuest() is { } reached)
+        {
+            logger.LogInformation("Stop quest {QuestId} already reached, next character", reached.Id);
+            chatGui.Print(_LF("This character is already at the stop quest '{0}', moving on.", reached.Name),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+            questController.StopFinished($"Stop quest [{reached.Id}] already reached");
+            return;
+        }
+
         // Before the first step's tasks are made, so a start-of-questing detour can join them.
         Started?.Invoke(this, EventArgs.Empty);
         questController.ExecuteNextStep();
