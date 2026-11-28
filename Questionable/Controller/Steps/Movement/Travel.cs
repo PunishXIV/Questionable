@@ -17,7 +17,10 @@ internal static class Travel
     {
         EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte => (uint?)step.Aetheryte,
         EInteractionType.AttuneAethernetShard => (uint?)step.AethernetShard,
-        EInteractionType.WalkTo or EInteractionType.Jump => null,
+        // The NPC walks off and turns untargetable; the step waits at its position (4885).
+        EInteractionType.WalkTo or EInteractionType.Jump or EInteractionType.WaitForNpcAtPosition => null,
+        // The fight only spawns once the player stands in its area, short of the target's interaction range (799).
+        EInteractionType.Combat when step.EnemySpawnType == EEnemySpawnType.AutoOnEnterArea => null,
         _ => step.DataId,
     };
 

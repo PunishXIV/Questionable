@@ -7,3 +7,6 @@
 - Bug fix: Travel no longer stops with an error when it ends right next to the NPC but the NPC can't be targeted, for example when the quest was already handed in on the way -Kage
 - Bug fix: The character list waits with shared settings until a new character has reached its starting city, and tries the inn only once, so it no longer fills the chat with red errors -Kage
 - Bug fix: When Stylist stays busy, Questionable now skips that gear update and keeps questing instead of stopping -Kage
+- Bug fix: Fights that start when you walk into an area now go to the spot itself instead of stopping at the target, for example Power of Deduction -Kage
+- Bug fix: Steps that wait for a walking NPC now go to the waiting spot instead of chasing the NPC, for example Lost Promise -Kage
+- Bug fix: A Brother's Duty now follows from the hiding spots instead of walking right up to the NPC -Kage

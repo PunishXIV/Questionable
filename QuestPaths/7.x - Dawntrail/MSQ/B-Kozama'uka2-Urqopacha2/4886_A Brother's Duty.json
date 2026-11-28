@@ -61,7 +61,6 @@
       "TerritoryId": 1188,
       "Steps": [
         {
-          "DataId": 1046654,
           "Position": [367.16077, 109.99999, 285.20248],
           "Mount": false,
           "InteractionType": "WalkTo"
@@ -74,7 +73,6 @@
           "NpcWaitDistance": 1
         },
         {
-          "DataId": 1046654,
           "Position": [401.49612, 110.34416, 358.39096],
           "Mount": false,
           "InteractionType": "WalkTo"
@@ -87,7 +85,6 @@
           "NpcWaitDistance": 1
         },
         {
-          "DataId": 1046654,
           "Position": [431.14557, 110.30115, 445.72592],
           "Mount": false,
           "InteractionType": "WalkTo",
@@ -101,7 +98,6 @@
           "NpcWaitDistance": 1
         },
         {
-          "DataId": 1046654,
           "Position": [414.60312, 111.47869, 583.3106],
           "Mount": false,
           "InteractionType": "WalkTo"
@@ -114,7 +110,6 @@
           "NpcWaitDistance": 1
         },
         {
-          "DataId": 1046654,
           "Position": [337.6815, 110.679726, 659.7985],
           "Mount": false,
           "InteractionType": "WalkTo"
@@ -127,7 +122,6 @@
           "NpcWaitDistance": 1
         },
         {
-          "DataId": 1046654,
           "Position": [260.1857, 113.90375, 718.9069],
           "Mount": false,
           "InteractionType": "WalkTo"
@@ -140,7 +134,6 @@
           "NpcWaitDistance": 1
         },
         {
-          "DataId": 1046654,
           "Position": [302.6931, 117.88865, 758.6998],
           "Mount": false,
           "InteractionType": "WalkTo"

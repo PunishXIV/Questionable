@@ -25,6 +25,15 @@ public sealed class TravelTests
         Assert.Equal(expected, Travel.Executor.KeepsRoute(routeOpen, pathing));
 
     [Theory]
+    [InlineData(EInteractionType.Interact, null, true)]
+    [InlineData(EInteractionType.WaitForNpcAtPosition, null, false)]
+    [InlineData(EInteractionType.Combat, EEnemySpawnType.AutoOnEnterArea, false)]
+    [InlineData(EInteractionType.Combat, EEnemySpawnType.AfterInteraction, true)]
+    public void InteractTarget_OnlyWhereTheTargetMatters(EInteractionType type, EEnemySpawnType? spawn, bool byId) =>
+        Assert.Equal(byId ? 1007541u : null,
+            Travel.InteractTarget(new QuestStep { InteractionType = type, EnemySpawnType = spawn, DataId = 1007541 }));
+
+    [Theory]
     [InlineData(0.15f, true)]
     [InlineData(2.9f, true)]
     [InlineData(5f, false)]
