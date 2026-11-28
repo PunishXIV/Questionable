@@ -25,6 +25,13 @@ public sealed class TravelTests
         Assert.Equal(expected, Travel.Executor.KeepsRoute(routeOpen, pathing));
 
     [Theory]
+    [InlineData(0.15f, true)]
+    [InlineData(2.9f, true)]
+    [InlineData(5f, false)]
+    public void FailedRoute_NextToTarget_Arrives(float gap, bool expected) =>
+        Assert.Equal(expected, Travel.Executor.CloseEnough(new(10, 0, 10), new(10, gap, 10)));
+
+    [Theory]
     [InlineData(true, 0, true)]
     [InlineData(true, 14, true)]
     [InlineData(true, 15, false)]

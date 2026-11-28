@@ -86,6 +86,18 @@ public sealed class InteractJobSelectionTests
         Assert.Equal(expected, Interact.SocietyJobSwitch([Job.WAR, Job.DRG, Job.PLD], current, society, societyJob,
             lowest, () => Job.WAR));
 
+    [Theory]
+    [InlineData(Job.FSH, EAlliedSociety.None, true)]
+    [InlineData(Job.CRP, EAlliedSociety.None, true)]
+    [InlineData(Job.WAR, EAlliedSociety.None, false)]
+    [InlineData(Job.FSH, EAlliedSociety.Namazu, false)]
+    public void StoryQuest_OnGatherer_NeedsCombat(Job current, EAlliedSociety society, bool expected) =>
+        Assert.Equal(expected, Interact.NeedsCombatJob(current, [Job.WAR, Job.CRP, Job.FSH], society));
+
+    [Fact]
+    public void GathererOnlyQuest_KeepsGatherer() =>
+        Assert.False(Interact.NeedsCombatJob(Job.FSH, [Job.MIN, Job.BTN, Job.FSH], EAlliedSociety.None));
+
     [Fact]
     public void LowestCombatJob_SkipsCrafters() =>
         Assert.Equal(Job.PLD, Interact.LowestCombatJob([Job.WAR, Job.CRP, Job.PLD, Job.DRG],

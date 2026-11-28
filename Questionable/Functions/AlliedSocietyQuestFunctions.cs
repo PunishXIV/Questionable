@@ -99,7 +99,11 @@ internal sealed class AlliedSocietyQuestFunctions
                 result.AddRange(questIds);
             else
             {
-                List<QuestId> quests = CalculateAvailableQuests(npcData.AllQuests, seed, outranksAll, currentRank, rankedUp);
+                List<QuestId> quests = [];
+                foreach ((byte rank, bool newRank) in Pools(currentRank, rankedUp))
+                    quests.AddRange(CalculateAvailableQuests(npcData.AllQuests, seed,
+                        npcData.AllQuests.All(x => rank > (byte)x.AlliedSocietyRank), rank, newRank));
+                quests = [.. quests.Distinct()];
                 _logger.LogInformation("Available for {Tribe} (Seed: {Seed}, Issuer: {IssuerId}, RankedUp: {RankedUp}): {Quests}", alliedSociety, seed, npcData.IssuerDataId, rankedUp, string.Join(", ", quests));
 
                 _dailyQuests[key] = quests;
@@ -110,6 +114,10 @@ internal sealed class AlliedSocietyQuestFunctions
 
         return result;
     }
+
+    // On a rank-up day the giver still offers the set rolled at reset with the old rank, next to the new rank's quests.
+    internal static List<(byte Rank, bool NewRank)> Pools(byte currentRank, bool rankedUp) =>
+        rankedUp && currentRank > 1 ? [((byte)(currentRank - 1), false), (currentRank, true)] : [(currentRank, false)];
 
     private static List<QuestId> CalculateAvailableQuests(List<QuestInfo> allQuests, byte seed, bool outranksAll,
         byte currentRank, bool rankedUp)

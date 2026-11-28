@@ -2,3 +2,6 @@
 - Change: The debug quest sim is easier to use: /qst sim opens a window with every step to start from, Skip goes on to the next sequence after a sequence's last step, and /qst sim <id> starts where you are in the quest -Kage
 - Change: When Boss Mod and Boss Mod Reborn are both loaded, Boss Mod Reborn is switched off while Questionable runs and comes back on when it stops. This fixes fights failing with "Unable to read BossMod setting" -Kage
 - Bug fix: Travel no longer fails with "MappingTheRealm is already executing a route" right after stopping and starting, or when a step is retried -Kage
+- Bug fix: On the day an allied society ranks up, Questionable now also takes the quests from the old rank instead of looping at the quest giver -Kage
+- Bug fix: A character left on a crafter or gatherer now switches to a combat job before taking a story quest, and no longer gets switched back to that crafter or gatherer for the quest's fights -Kage
+- Bug fix: Travel no longer stops with an error when it ends right next to the NPC but the NPC can't be targeted, for example when the quest was already handed in on the way -Kage

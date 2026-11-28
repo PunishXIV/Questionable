@@ -36,6 +36,7 @@ internal static class Travel
         : TaskExecutor<Task>, IStoppable
     {
         private const float VnavArrival = 3f;
+        private const float NearTarget = 3.5f;
         private static readonly TimeSpan BusyWait = TimeSpan.FromSeconds(15);
 
         private Route? _route;
@@ -226,6 +227,17 @@ internal static class Travel
 
         internal static bool KeepsRoute(bool routeOpen, bool pathing) => routeOpen && pathing;
 
+        internal static bool CloseEnough(Vector3 here, Vector3 target) => Vector3.Distance(here, target) <= NearTarget;
+
+        private bool AtTarget()
+        {
+            Vector3? target = Task.DataId is { } id && gameFunctions.FindObjectByDataId(id) is { } found
+                ? found.Position
+                : Task.Position;
+            return clientState.TerritoryType == Task.TerritoryId && target is { } goal &&
+                objectTable[0]?.Position is { } here && CloseEnough(here, goal);
+        }
+
         // A stopped route runs on until its teleport or aethernet step ends, and MappingTheRealm refuses a new one until then.
         internal static bool WaitsForOldRoute(bool pathing, TimeSpan waited) => pathing && waited < BusyWait;
 
@@ -270,6 +282,14 @@ internal static class Travel
                 _idleSince ??= DateTime.Now;
                 if (DateTime.Now - _idleSince < TimeSpan.FromSeconds(3))
                     return ETaskResult.StillRunning;
+            }
+
+            // The quest can be handed in on the way, or the NPC turns untargetable next to the player (2490, 4252).
+            if (_route is { IsFaulted: true } beside && AtTarget())
+            {
+                logger.LogInformation("MappingTheRealm's route failed next to the target, carrying on ({Reason})",
+                    beside.Exception!.GetBaseException().Message);
+                return ETaskResult.TaskComplete;
             }
 
             // By-id lookups fail before moving for objects MappingTheRealm hasn't indexed (rock 2001481); each retry can cost a teleport.

@@ -53,6 +53,11 @@ internal static class Interact
         return back != Job.ADV && back != current && acceptableJobs.Contains(back) ? back : null;
     }
 
+    // A crafter or gatherer can take most story quests, but the quest's fights then fail (Operation Archon on FSH).
+    internal static bool NeedsCombatJob(Job current, IReadOnlyList<Job> questJobs, EAlliedSociety society) =>
+        society == EAlliedSociety.None && current is >= Job.CRP and <= Job.FSH &&
+        questJobs.Any(x => x is not (>= Job.CRP and <= Job.FSH or Job.ADV));
+
     internal static Job LowestCombatJob(IEnumerable<Job> acceptableJobs, Func<Job, short> level) =>
         acceptableJobs.Where(x => x is not (>= Job.CRP and <= Job.FSH)).OrderBy(level).FirstOrDefault();
 
@@ -435,8 +440,12 @@ internal static class Interact
                 Job? societySwitch = SocietyJobSwitch(acceptableJobs, playerJob, Task.Quest.Info.AlliedSociety,
                     lowest ? LowestCombatJob(acceptableJobs, gameState.GetClassJobLevel) : configuration.General.SocietyCombatJob,
                     lowest, () => classJobUtils.LookupConfiguredJob(EExtendedClassJob.ConfiguredCombatJob));
-                if (!acceptableJobs.Contains(playerJob) || societySwitch != null)
+                bool needsCombat = jobGearSets.Count > 0 &&
+                    NeedsCombatJob(playerJob, acceptableJobs, Task.Quest.Info.AlliedSociety);
+                if (!acceptableJobs.Contains(playerJob) || societySwitch != null || needsCombat)
                 {
+                    if (needsCombat)
+                        acceptableJobs = [.. acceptableJobs.Where(x => x is not (>= Job.CRP and <= Job.FSH))];
                     Job firstJob = acceptableJobs[0];
                     Job candidate = societySwitch ?? SelectQuestJob(acceptableJobs, configuration,
                         Task.Quest.Info.AlliedSociety, firstJob.IsCrafter(), firstJob.IsGatherer());
@@ -469,7 +478,8 @@ internal static class Interact
                 configuration.General.SameJobThroughoutQuest)
             {
                 Job requiredJob = classJobUtils.LookupQuestStartJob(Task.Quest.Id);
-                if (requiredJob != Job.ADV && (Job)completionPlayer.ClassJob.Value.RowId != requiredJob)
+                if (requiredJob != Job.ADV && (Job)completionPlayer.ClassJob.Value.RowId != requiredJob &&
+                    !NeedsCombatJob(requiredJob, Task.Quest.Info.ClassJobs, Task.Quest.Info.AlliedSociety))
                 {
                     logger.LogInformation("Quest {QuestId} should be continued as {RequiredJob}, switching from {CurrentJob}",
                         Task.Quest.Id, requiredJob, (Job)completionPlayer.ClassJob.Value.RowId);
