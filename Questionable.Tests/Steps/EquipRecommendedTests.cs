@@ -21,14 +21,14 @@ public sealed class EquipRecommendedTests
     public EquipRecommendedTests()
     {
         _configuration.General.GearsetUpdateSource = EGearsetUpdateSource.Stylist;
-        _executor = new(null!, _condition, _configuration, null!,
+        _executor = new(Substitute.For<IChatGui>(), _condition, _configuration, null!,
             NullLogger<EquipRecommended.EquipExecutor>.Instance, _clock);
     }
 
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void BusyStylist_TimesOutWithoutNewRequest(bool submitted)
+    public void BusyStylist_SkipsAfter30Seconds(bool submitted)
     {
         if (submitted)
             Assert.Equal(ETaskResult.StillRunning, Update(busy: false));
@@ -37,10 +37,8 @@ public sealed class EquipRecommendedTests
         _clock.Advance(TimeSpan.FromMilliseconds(29999));
         Assert.Equal(ETaskResult.StillRunning, Update(busy: true));
         _clock.Advance(TimeSpan.FromMilliseconds(1));
-        var error = Assert.Throws<NeedsPlayerException>(() => Update(busy: true));
+        Assert.Equal(ETaskResult.TaskComplete, Update(busy: true));
 
-        Assert.Contains("Stylist stayed busy for 30 seconds", error.Message, System.StringComparison.Ordinal);
-        Assert.Contains("restart Questionable", error.Message, System.StringComparison.Ordinal);
         Assert.Equal(submitted ? 1 : 0, _requests);
         Assert.Equal(EGearsetUpdateSource.Stylist, _configuration.General.GearsetUpdateSource);
     }
