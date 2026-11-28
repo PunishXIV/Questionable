@@ -36,6 +36,7 @@ internal static class Travel
         : TaskExecutor<Task>, IStoppable
     {
         private const float VnavArrival = 3f;
+        private static readonly TimeSpan BusyWait = TimeSpan.FromSeconds(15);
 
         private Route? _route;
         private bool _started;
@@ -113,7 +114,8 @@ internal static class Travel
         // A route started while vnavmesh (re)loads its mesh fails.
         private void TryGo()
         {
-            if (DateTime.Now < _readyAfter || !navmesh.IsReady())
+            if (DateTime.Now < _readyAfter || !navmesh.IsReady() ||
+                WaitsForOldRoute(mappingTheRealm.GetPathing() == true, DateTime.Now - _readyAfter))
                 return;
 
             _waiting = false;
@@ -223,6 +225,9 @@ internal static class Travel
         }
 
         internal static bool KeepsRoute(bool routeOpen, bool pathing) => routeOpen && pathing;
+
+        // A stopped route runs on until its teleport or aethernet step ends, and MappingTheRealm refuses a new one until then.
+        internal static bool WaitsForOldRoute(bool pathing, TimeSpan waited) => pathing && waited < BusyWait;
 
         public override ETaskResult Update()
         {

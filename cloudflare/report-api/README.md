@@ -64,6 +64,7 @@ PowerShell for a random salt: `$b = [byte[]]::new(32); [Security.Cryptography.Ra
 | `POST /v2/logs?character=&quest=&kind=&version=` | players | Body: the zip (must contain `report.txt`, at most 10 MB); `quest`, `kind` and `version` are optional. Returns `{ code }`. 1 per minute per IP. |
 | `GET /v2/admin/logs` | admins, viewers | `{ zips }`: newest 100; `?quest=<quest>` for one quest, `?code=<code>` for one zip. |
 | `GET /v2/admin/logs/<code>` | admins, viewers | The zip as a download. |
+| `DELETE /v2/admin/logs/<code>` | admins | Deletes the zip and its row; 404 if it's already gone. |
 
 Viewers can use the read-only admin routes; resolve and verify answer 403.
 

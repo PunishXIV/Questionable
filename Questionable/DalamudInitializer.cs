@@ -39,6 +39,7 @@ internal sealed class DalamudInitializer : IDisposable
         JournalProgressWindow journalProgressWindow,
         PathEditorWindow pathEditorWindow,
         QuestReportsWindow questReportsWindow,
+        QuestSimWindow questSimWindow,
         WhatsNewWindow whatsNewWindow,
         IChatGui chatGui,
         IToastGui toastGui,
@@ -70,6 +71,7 @@ internal sealed class DalamudInitializer : IDisposable
         _windowSystem.AddWindow(journalProgressWindow);
         _windowSystem.AddWindow(pathEditorWindow);
         _windowSystem.AddWindow(questReportsWindow);
+        _windowSystem.AddWindow(questSimWindow);
         _windowSystem.AddWindow(whatsNewWindow);
 
         _pluginInterface.UiBuilder.Draw += _windowSystem.Draw;

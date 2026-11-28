@@ -7,6 +7,7 @@ namespace Questionable.Controller;
 [RegisterSingleton]
 internal sealed class QuestStarter(
     QuestController questController,
+    MovementController movementController,
     QuestProgressTracker tracker,
     QuestData questData,
     QuestStopPolicy stopPolicy,
@@ -28,7 +29,7 @@ internal sealed class QuestStarter(
     {
         if (questController.CanPrepareQuestTasks())
         {
-            if (bossMod.IsRebornInstalled())
+            if (bossMod.RebornWithoutBossMod())
                 chatGui.PrintError(_L("Boss Mod Reborn is loaded. Questionable doesn't work with it, so combat and quest battles can fail. Disable Boss Mod Reborn and use Boss Mod instead."),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             return true;
@@ -149,7 +150,7 @@ internal sealed class QuestStarter(
             return;
         }
 
-        if (MogmailIpc.RewardLetters is 0)
+        if (!Mail.HasMail())
         {
             chatGui.Print(_L("No mail waiting."), CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
@@ -251,5 +252,15 @@ internal sealed class QuestStarter(
         if (questController.HasExternalOperation)
             return;
         tracker.StopSimulate();
+    }
+
+    public void ClearSimulation()
+    {
+        bool hadExternalOperation = questController.HasExternalOperation;
+        StopSimulate();
+
+        if (!hadExternalOperation && !questController.HasExternalOperation)
+            movementController.Stop();
+        questController.Stop(_L("Clear sim"));
     }
 }

@@ -167,6 +167,8 @@ function remember(value) {
   document.getElementById("admin-body").hidden = !value;
 }
 
+const KIND_LABELS = { path: "Path", mtr: "MTR", death: "Death", step: "Failed step", other: "Other" };
+
 function renderZips() {
   const list = document.getElementById("zip-list");
   if (zips.length === 0) {
@@ -187,7 +189,7 @@ function renderZips() {
     cell(tr, z.code, "num");
     cell(tr, z.quest_id ? names[z.quest_id] || "–" : "No quest", "name");
     cell(tr, z.quest_id || "–", "num");
-    cell(tr, z.kind || "–");
+    cell(tr, KIND_LABELS[z.kind] || "–");
     cell(tr, z.version || "–", "num");
     cell(tr, Math.max(1, Math.round(z.size / 1024)) + " KB", "num");
     cell(tr, new Date(z.created_at).toLocaleString());
@@ -196,14 +198,20 @@ function renderZips() {
     button.type = "button";
     button.textContent = "Download";
     button.addEventListener("click", () => download(z.code, button));
-    tr.insertCell().append(button);
+    const remove = document.createElement("button");
+    remove.className = "chip";
+    remove.type = "button";
+    remove.textContent = "Delete";
+    remove.addEventListener("click", () => removeZip(z.code, remove));
+    const actions = tr.insertCell();
+    actions.append(button, " ", remove);
   }
   list.className = "";
   list.replaceChildren(table);
 }
 
-async function adminFetch(path) {
-  const reply = await fetch(path, { headers: { Authorization: "Bearer " + token } });
+async function adminFetch(path, method = "GET") {
+  const reply = await fetch(path, { method, headers: { Authorization: "Bearer " + token } });
   if (reply.status === 401) {
     remember(null);
     document.getElementById("token").placeholder = "That token was not accepted";
@@ -241,6 +249,19 @@ async function download(code, button) {
   } catch (e) {
     if (e.message !== "unauthorized") button.textContent = "Failed (" + e.message + ")";
   } finally {
+    button.disabled = false;
+  }
+}
+
+async function removeZip(code, button) {
+  if (!confirm("Delete zip " + code + " for good?")) return;
+  button.disabled = true;
+  try {
+    await adminFetch("/v2/admin/logs/" + encodeURIComponent(code), "DELETE");
+    zips = zips.filter(z => z.code !== code);
+    renderZips();
+  } catch (e) {
+    if (e.message !== "unauthorized") button.textContent = e.message === "403" ? "Read-only token" : "Failed (" + e.message + ")";
     button.disabled = false;
   }
 }

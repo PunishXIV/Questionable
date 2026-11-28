@@ -122,6 +122,9 @@ internal sealed class BossModIpc : Ipc, IDisposable
         return _rebornInstalled;
     }
 
+    // With Boss Mod also loaded, Reborn is switched off while Questionable runs.
+    public bool RebornWithoutBossMod() => IsRebornInstalled() && GetVersion() == null;
+
     private PresetDefinition AddPreset(EPreset preset)
     {
         PresetDefinition definition = PresetDefinitions[preset];
@@ -229,6 +232,9 @@ internal sealed class BossModIpc : Ipc, IDisposable
             return _session;
         }
 
+        // Reborn answers Boss Mod's IPC names too, and its replies fail the setting reads (AIConfig.Enabled).
+        if (IsRebornInstalled())
+            throw new TaskException("Boss Mod Reborn is loaded and answers Boss Mod's calls. Disable Boss Mod Reborn and use Boss Mod.");
         if (!ProviderAvailable())
             throw new TaskException("BossMod is unavailable.");
         if (ActivePresetCount() > 1)

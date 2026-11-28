@@ -44,6 +44,7 @@ internal sealed class Configuration : IPluginConfiguration
     public DailiesConfiguration Dailies { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
     public int WigglyQuestOffIn { get; set; }
+    public int BossModRebornOffIn { get; set; }
 
     public bool AutoRedeemOffResetApplied { get; set; }
     public bool StepRefreshResetApplied { get; set; }

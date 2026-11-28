@@ -15,6 +15,7 @@ internal sealed class QuestJournalUtils
     IGameGui gameGui,
     PathEditorWindow pathEditorWindow,
     QuestReportsWindow questReportsWindow,
+    QuestSimWindow questSimWindow,
     RedoUtil redoUtil,
     DraftQuestPathService draftQuestPathService)
 {
@@ -198,7 +199,7 @@ internal sealed class QuestJournalUtils
             }
 
             if (ImGui.MenuItem(_L("Sim quest")))
-                questStarter.SimulateQuest(questInfo, 0, 0);
+                questSimWindow.Open(quest);
         }
     }
 

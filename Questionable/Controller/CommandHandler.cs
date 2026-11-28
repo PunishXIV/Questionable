@@ -31,6 +31,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestSelectionWindow _questSelectionWindow;
+    private readonly QuestSimWindow _questSimWindow;
     private readonly QuestValidationWindow _questValidationWindow;
     private readonly QuestWindow _questWindow;
     private readonly QuestData _questData;
@@ -57,6 +58,7 @@ internal sealed class CommandHandler : IDisposable
         OneTimeSetupWindow oneTimeSetupWindow,
         QuestWindow questWindow,
         QuestSelectionWindow questSelectionWindow,
+        QuestSimWindow questSimWindow,
         JournalProgressWindow journalProgressWindow,
         QueueComponent queueComponent,
         QuestValidationWindow questValidationWindow,
@@ -89,6 +91,7 @@ internal sealed class CommandHandler : IDisposable
         _oneTimeSetupWindow = oneTimeSetupWindow;
         _questWindow = questWindow;
         _questSelectionWindow = questSelectionWindow;
+        _questSimWindow = questSimWindow;
         _journalProgressWindow = journalProgressWindow;
         _queueComponent = queueComponent;
         _questValidationWindow = questValidationWindow;
@@ -139,7 +142,7 @@ internal sealed class CommandHandler : IDisposable
                 {
                     _chatGui.Print(_L("/qst do <questId> - highlights the specified quest in the debug overlay (requires debug overlay to be enabled)"), MessageTag, TagColor);
                     _chatGui.Print(_L("/qst do - clears the highlighted quest in the debug overlay (requires debug overlay to be enabled)"), MessageTag, TagColor);
-                    _chatGui.Print(_L("/qst sim <questId> [sequence] [step] - simulates the specified quest (or clears it if no questId is specified)"), MessageTag, TagColor);
+                    _chatGui.Print(_L("/qst sim [questId] [sequence] [step] - simulates the quest, from where you are if no sequence is given (opens the quest sim window if no questId is given)"), MessageTag, TagColor);
                     _chatGui.Print(_L("/qst mountid - prints information about your current mount"), MessageTag, TagColor);
                     _chatGui.Print(_L("/qst jobgear [80|89|99] - collects the free job gear for your current job now, even if you have better gear"), MessageTag, TagColor);
                 }
@@ -554,7 +557,11 @@ internal sealed class CommandHandler : IDisposable
             {
                 byte sequenceId = 0;
                 int stepId = 0;
-                if (arguments.Length >= 2 && byte.TryParse(arguments[1], out byte parsedSequence))
+                if (arguments.Length == 1 && _questFunctions.IsQuestAccepted(questId) &&
+                    _questFunctions.GetQuestProgressInfo(questId)?.Sequence is { } real &&
+                    quest.FindSequence(real) != null)
+                    sequenceId = real;
+                else if (arguments.Length >= 2 && byte.TryParse(arguments[1], out byte parsedSequence))
                 {
                     QuestSequence? sequence = quest.FindSequence(parsedSequence);
                     if (sequence != null)
@@ -576,12 +583,7 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.PrintError(_LF("Unknown quest {0}.", questId), MessageTag, TagColor);
         }
         else
-        {
-            _questStarter.StopSimulate();
-            _chatGui.Print(_questController.SimulatedQuest == null
-                ? _L("Cleared simulated quest.")
-                : _L("Wait for the external operation to stop, then clear the simulated quest again."), MessageTag, TagColor);
-        }
+            _questSimWindow.Open(null);
     }
 
     private void PrintMountId()

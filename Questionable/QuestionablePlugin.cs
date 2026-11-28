@@ -244,7 +244,7 @@ public sealed class QuestionablePlugin(
         _questController = serviceProvider.GetRequiredService<QuestController>();
         serviceProvider.GetRequiredService<CharacterRun>();
         serviceProvider.GetRequiredService<RetainerPass>();
-        serviceProvider.GetRequiredService<WigglyQuestSwitch>();
+        serviceProvider.GetRequiredService<PluginSwitch>();
         serviceProvider.GetRequiredService<ErrorZip>();
         serviceProvider.GetRequiredService<BossModPresetCleanup>();
         // MovementController.Dispose reads this; resolve it now so unloading never reaches into a disposed container.

@@ -1,4 +1,4 @@
-import { CHARACTER, PROBLEM_KINDS, QUEST } from "./validate";
+import { CHARACTER, QUEST } from "./validate";
 
 export const MAX_ZIP_BYTES = 10 * 1024 * 1024;
 export const ZIP_RETENTION_DAYS = 30;
@@ -7,6 +7,7 @@ const LIST_LIMIT = 100;
 // No 0/O, 1/I/L: players read the code off the chat and type it into Discord.
 const CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 const VERSION = /^\d{1,5}(\.\d{1,5}){1,3}$/;
+export const ZIP_KINDS = ["path", "mtr", "death", "step", "other"] as const;
 
 export interface ZipRow {
   code: string;
@@ -72,7 +73,7 @@ export async function postZip(request: Request, env: Env, url: URL,
   const kind = url.searchParams.get("kind");
   const version = url.searchParams.get("version");
   if ((quest !== null && !QUEST.test(quest)) || !CHARACTER.test(character) ||
-    (kind !== null && !(PROBLEM_KINDS as readonly string[]).includes(kind)) ||
+    (kind !== null && !(ZIP_KINDS as readonly string[]).includes(kind)) ||
     (version !== null && !VERSION.test(version))) {
     return json({ error: "invalid parameters" }, 400);
   }
@@ -133,6 +134,16 @@ export async function downloadZip(env: Env, code: string): Promise<Response> {
       "Content-Disposition": `attachment; filename="QST-${code}.zip"`,
     },
   });
+}
+
+export async function deleteZip(env: Env, code: string): Promise<Response> {
+  if (!/^[A-Z0-9]{6}$/.test(code)) {
+    return json({ error: "not found" }, 404);
+  }
+  // Object first: a row left behind is still pruned after 30 days, an orphaned object never is.
+  await env.ZIPS.delete(code);
+  const { meta } = await env.DB.prepare("DELETE FROM zips WHERE code = ?").bind(code).run();
+  return meta.changes > 0 ? json({ deleted: code }) : json({ error: "not found" }, 404);
 }
 
 export async function pruneZips(env: Env, now: number): Promise<void> {

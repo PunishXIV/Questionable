@@ -280,11 +280,11 @@ internal abstract class MiniTaskController<T> : IDisposable
             : _LF("Could not complete '{0}': {1}.", task, reason);
         _chatGui.PrintError(
             InChat(_LF("{0} Please check /xllog for more details.", msg)), CommandHandler.MessageTag, CommandHandler.TagColor);
-        OnErrorShown();
+        OnErrorShown(e.Message.StartsWith("MappingTheRealm", StringComparison.Ordinal) ? EErrorKind.MappingTheRealm : EErrorKind.Step);
         return msg;
     }
 
-    protected virtual void OnErrorShown()
+    protected virtual void OnErrorShown(EErrorKind kind)
     {
     }
 

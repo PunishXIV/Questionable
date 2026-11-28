@@ -878,18 +878,14 @@ internal sealed partial class ActiveQuestComponent
         {
             rowEmpty = true;
             // Hidden on a sequence's last step, where skipping only leaves QST waiting for the game.
-            if (QuestController.CanSkipStep(currentQuest))
+            if (questController.CanSkipStep())
             {
                 bool colored = currentStep is { InteractionType: EInteractionType.Instruction }
                                && questController.HasCurrentTaskMatching(out WaitAtEnd.NextStepOrSequence? _);
                 using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Success, colored))
                 {
                     if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ArrowCircleRight, _L("Skip")))
-                    {
-                        if (!questController.HasExternalOperation)
-                            movementController.Stop();
-                        questController.Skip(currentQuest.Quest.Id, currentQuest.Sequence);
-                    }
+                        questController.SkipStep();
                 }
 
                 if (ImGui.IsItemHovered())
@@ -997,15 +993,12 @@ internal sealed partial class ActiveQuestComponent
         {
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Minus))
             {
-                movementController.Stop();
-                questController.Stop("Sim-");
-
                 byte oldSequence = simulatedQuest.Sequence;
                 byte newSequence = simulatedQuest.Quest.Root.QuestSequence
                     .Select(x => x.Sequence)
                     .LastOrDefault(x => x < oldSequence, byte.MinValue);
 
-                questController.SimulatedQuest.SetSequence(newSequence);
+                questController.MoveSimulation(newSequence, 0);
             }
         }
 
@@ -1014,15 +1007,12 @@ internal sealed partial class ActiveQuestComponent
         {
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
             {
-                movementController.Stop();
-                questController.Stop("Sim+");
-
                 byte oldSequence = simulatedQuest.Sequence;
                 byte newSequence = simulatedQuest.Quest.Root.QuestSequence
                     .Select(x => x.Sequence)
                     .FirstOrDefault(x => x > oldSequence, byte.MaxValue);
 
-                simulatedQuest.SetSequence(newSequence);
+                questController.MoveSimulation(newSequence, 0);
             }
         }
 
@@ -1036,43 +1026,19 @@ internal sealed partial class ActiveQuestComponent
             using (ImRaii.Disabled(questController.HasExternalOperation || simulatedQuest.Step == 0))
             {
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Minus))
-                {
-                    movementController.Stop();
-                    questController.Stop("SimStep-");
-
-                    simulatedQuest.SetStep(Math.Min(simulatedQuest.Step - 1,
-                        simulatedSequence.Steps.Count - 1));
-                }
+                    questController.MoveSimulation(simulatedQuest.Sequence,
+                        Math.Min(simulatedQuest.Step - 1, simulatedSequence.Steps.Count - 1));
             }
 
             ImGui.SameLine();
-            using (ImRaii.Disabled(questController.HasExternalOperation || simulatedQuest.Step >= simulatedSequence.Steps.Count))
+            using (ImRaii.Disabled(questController.HasExternalOperation || !questController.CanSkipStep()))
             {
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
-                {
-                    movementController.Stop();
-                    questController.Stop("SimStep+");
-
-                    simulatedQuest.SetStep(
-                        simulatedQuest.Step == simulatedSequence.Steps.Count - 1
-                            ? 255
-                            : (simulatedQuest.Step + 1));
-                }
+                    questController.SkipStep();
             }
 
-            if (ImGui.Button(_L("Skip current task")))
-                questController.SkipSimulatedTask();
-
-            ImGui.SameLine();
             if (ImGui.Button(_L("Clear sim")))
-            {
-                bool hadExternalOperation = questController.HasExternalOperation;
-                questStarter.StopSimulate();
-
-                if (!hadExternalOperation && !questController.HasExternalOperation)
-                    movementController.Stop();
-                questController.Stop(_L("Clear sim"));
-            }
+                questStarter.ClearSimulation();
         }
     }
 

@@ -160,7 +160,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             string missing = _pluginConfigComponent.MissingRequiredPlugins();
             if (missing.Length != 0)
                 notices.Add(_LF("Required plugins are missing: {0}. Install them on the Plugins page in settings.", missing));
-            if (_bossModIpc.IsRebornInstalled())
+            if (_bossModIpc.RebornWithoutBossMod())
                 notices.Add(_L("Questionable is not compatible with Boss Mod Reborn!"));
             if (notices.Count != 0)
             {

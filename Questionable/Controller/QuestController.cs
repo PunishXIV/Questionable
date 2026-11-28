@@ -303,7 +303,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _taskCreator = taskCreator;
         _questBattleConfig = questBattleConfig;
         _stopPolicy = stopPolicy;
-        _stopPolicy.ErrorShown += (_, _) => OnErrorShown();
+        _stopPolicy.ErrorShown += (_, e) => OnErrorShown(e.Kind);
         _stuckWatch = stuckWatch;
         _storyCatchUp = storyCatchUp;
         _presets = presets;
@@ -1430,9 +1430,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             RecordNavigationFailure(navigationFailure, task.ToString());
     }
 
-    public event EventHandler? ErrorShown;
+    public event EventHandler<ProblemEventArgs>? ErrorShown;
 
-    protected override void OnErrorShown() => ErrorShown?.Invoke(this, EventArgs.Empty);
+    protected override void OnErrorShown(EErrorKind kind) => ErrorShown?.Invoke(this, new ProblemEventArgs(kind));
 
     protected override string? FailedIn => CurrentQuest is { } q
         ? _LF("{0} ({1}, sequence {2}, step {3})", q.Quest.Info.Name, q.Quest.Id, q.Sequence, q.Step)
@@ -1568,10 +1568,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     internal static bool CanSkipStep(QuestProgress? current) =>
         current != null && current.FindStep() != current.FindSequence()?.Steps.LastOrDefault();
 
-    public bool CanSkipStep() => CanSkipStep(CurrentQuest);
+    public bool CanSkipStep() =>
+        SimulatedQuest is { } sim ? QuestStepPlanner.NextStep(sim) != null : CanSkipStep(CurrentQuest);
 
     public bool SkipStep()
     {
+        if (SimulatedQuest is { } sim)
+            return QuestStepPlanner.NextStep(sim) is { } next && MoveSimulation(next.Sequence, next.Step);
+
         if (CurrentQuest is not { } current || !CanSkipStep(current))
             return false;
 
@@ -1634,12 +1638,31 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         ExecuteNextStep();
     }
 
-    public void SkipSimulatedTask()
+    // A full Stop would run the stop policy (notifications, stop commands) on every sim move.
+    public bool MoveSimulation(byte sequence, int step)
     {
-        if (HasExternalOperation)
-            Stop("Skip simulated task during external operation");
-        else
-            CancelCurrentTask();
+        lock (_progressLock)
+        {
+            if (SimulatedQuest is not { } sim)
+                return false;
+
+            if (HasExternalOperation)
+            {
+                Stop("Sim move during external operation");
+                return false;
+            }
+
+            sim.SetSequence(sequence, step);
+            if (AutomationType != EAutomationType.Manual)
+                ExecuteNextStep();
+            else
+            {
+                ClearTasksInternal();
+                _movementController.Stop();
+            }
+
+            return true;
+        }
     }
 
     private QuestSlots Slots => new(StartedQuest, NextQuest, SimulatedQuest);

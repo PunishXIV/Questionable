@@ -25,6 +25,14 @@ public sealed class TravelTests
         Assert.Equal(expected, Travel.Executor.KeepsRoute(routeOpen, pathing));
 
     [Theory]
+    [InlineData(true, 0, true)]
+    [InlineData(true, 14, true)]
+    [InlineData(true, 15, false)]
+    [InlineData(false, 0, false)]
+    public void OldRoute_WaitsUpTo15Seconds(bool pathing, int seconds, bool expected) =>
+        Assert.Equal(expected, Travel.Executor.WaitsForOldRoute(pathing, TimeSpan.FromSeconds(seconds)));
+
+    [Theory]
     [InlineData(EInteractionType.WalkTo, false, true)]
     [InlineData(EInteractionType.WaitForNpcAtPosition, false, true)]
     [InlineData(EInteractionType.WalkTo, null, false)]

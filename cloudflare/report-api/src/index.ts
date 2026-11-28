@@ -1,5 +1,5 @@
 import { DASHBOARD } from "./dashboard";
-import { downloadZip, listZips, postZip, pruneZips } from "./logs";
+import { deleteZip, downloadZip, listZips, postZip, pruneZips } from "./logs";
 import { validateReport } from "./validate";
 import { getCachedStatus, getReportPage, resetStatusCache, resolveReport, verifyPath } from "./status";
 
@@ -203,6 +203,12 @@ export default {
         }
         if (url.pathname.startsWith("/v2/admin/logs/") && request.method === "GET") {
           return await downloadZip(env, url.pathname.slice("/v2/admin/logs/".length).toUpperCase());
+        }
+        if (url.pathname.startsWith("/v2/admin/logs/") && request.method === "DELETE") {
+          if (admin.role !== "admin") {
+            return json({ error: "read-only token" }, 403);
+          }
+          return await deleteZip(env, url.pathname.slice("/v2/admin/logs/".length).toUpperCase());
         }
         if (request.method === "POST" && (url.pathname === "/v2/admin/resolve" || url.pathname === "/v2/admin/verify")) {
           if (admin.role !== "admin") {

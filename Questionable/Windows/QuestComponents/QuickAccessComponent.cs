@@ -144,7 +144,7 @@ internal sealed class QuickAccessComponent
             Export(auto: false);
     }
 
-    internal void Export(bool auto)
+    internal void Export(bool auto, EErrorKind? kind = null)
     {
         // Retry loops fail the same way over and over; one zip covers them.
         if (objectTable[0] == null || auto && DateTime.Now - _lastAutoExport < AutoExportGap)
@@ -154,7 +154,8 @@ internal sealed class QuickAccessComponent
         string report = TroubleshootingReport.Build(input);
         string? contentId = ProfileController.CurrentContentId;
         Upload? upload = auto && Configuration.Instance().Reports.Share == true && contentId != null
-            ? new(QuestReporter.CharacterHash(contentId), questController.CurrentQuest?.Quest.Id.ToString())
+            ? new(QuestReporter.CharacterHash(contentId), questController.CurrentQuest?.Quest.Id.ToString(),
+                kind is { } error ? ErrorName(error) : null)
             : null;
         if (auto)
             _lastAutoExport = DateTime.Now;
@@ -163,7 +164,16 @@ internal sealed class QuickAccessComponent
             Task.Run(() => WriteReportFile(report, input.PrivateTexts, contentId, auto, upload));
     }
 
-    private sealed record Upload(string Character, string? Quest);
+    private sealed record Upload(string Character, string? Quest, string? Kind);
+
+    internal static string ErrorName(EErrorKind kind) => kind switch
+    {
+        EErrorKind.Path => "path",
+        EErrorKind.MappingTheRealm => "mtr",
+        EErrorKind.Death => "death",
+        EErrorKind.Step => "step",
+        _ => "other",
+    };
 
     private static readonly TimeSpan AutoExportGap = TimeSpan.FromMinutes(5);
     private const int AutoExportsKept = 10;
@@ -186,7 +196,7 @@ internal sealed class QuickAccessComponent
                 string? code = upload == null
                     ? null
                     : await reportApi.UploadZipAsync(await File.ReadAllBytesAsync(file).ConfigureAwait(false), upload.Character,
-                        upload.Quest, typeof(QuickAccessComponent).Assembly.GetName().Version!.ToString(4)).ConfigureAwait(false);
+                        upload.Quest, upload.Kind, typeof(QuickAccessComponent).Assembly.GetName().Version!.ToString(4)).ConfigureAwait(false);
                 string message = code != null
                     ? _LF("Uploaded a troubleshooting zip for this error, report code {0}. If you report it in #questionable-issues, mention this code. A copy is saved in {1}", code, file)
                     : _LF("Saved a troubleshooting zip for this error: {0}. If you report it in #questionable-issues, attach this zip.", file);

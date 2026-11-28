@@ -14,7 +14,7 @@ internal sealed class ErrorZip : IDisposable
         _questController.ErrorShown += OnError;
     }
 
-    private void OnError(object? sender, EventArgs e) => _quickAccess.Export(auto: true);
+    private void OnError(object? sender, ProblemEventArgs e) => _quickAccess.Export(auto: true, e.Kind);
 
     public void Dispose() => _questController.ErrorShown -= OnError;
 }

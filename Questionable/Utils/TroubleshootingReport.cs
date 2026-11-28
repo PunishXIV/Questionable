@@ -7,13 +7,10 @@ namespace Questionable.Utils;
 
 internal static class TroubleshootingReport
 {
-    // Discord's limit is 2000; the rest is left for the player's description.
     internal const int MaxLength = 1700;
     private const int MaxLineLength = 400;
     private const int MaxLogLineLength = 160;
     private const int MaxSettingsLength = 400;
-    private const string Prompt = "What went wrong: (describe it here)\n```text\n";
-    private const string End = "\n```";
 
     internal sealed record Input
     {
@@ -35,8 +32,7 @@ internal static class TroubleshootingReport
         if (input.Settings.Count > 0)
             body.Append(DescribeSettings(input.Settings.Select(x => Scrub(x, input.PrivateTexts)).ToList())).Append('\n');
 
-        int budget = MaxLength - Prompt.Length - End.Length;
-        string head = Shorten(body.ToString().TrimEnd(), budget);
+        string head = Shorten(body.ToString().TrimEnd(), MaxLength);
 
         const string logTitle = "\n\nRecent log:";
         SortedList<int, string> lines = [];
@@ -45,14 +41,14 @@ internal static class TroubleshootingReport
                      .OrderByDescending(x => x.x.Level).ThenByDescending(x => x.i))
         {
             string line = $"-{Age(input.NowUtc - entry.Time)} {LevelTag(entry.Level)} {Clean(entry.Message, MaxLogLineLength)}";
-            if (used + line.Length + 1 > budget)
+            if (used + line.Length + 1 > MaxLength)
                 continue;
             lines.Add(index, line);
             used += line.Length + 1;
         }
 
         string log = lines.Count == 0 ? "" : logTitle + "\n" + string.Join('\n', lines.Values);
-        return Prompt + head + log + End;
+        return head + log;
     }
 
     private static readonly string[] TravelRows =
@@ -170,7 +166,7 @@ internal static class TroubleshootingReport
                 text = text.Replace(privateText, "(hidden)", StringComparison.OrdinalIgnoreCase);
         }
 
-        return text.Replace("```", "'''", StringComparison.Ordinal);
+        return text;
     }
 
     private static string FirstLine(string text)

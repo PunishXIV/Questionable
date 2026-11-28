@@ -29,6 +29,18 @@ internal static class QuestStepPlanner
             return new(EStepAdvance.OtherSequence);
         return new(EStepAdvance.Advanced, current.Step + 1 < sequence.Steps.Count ? current.Step + 1 : CompletedStep);
     }
+
+    // A sim never gets its sequence from the game, so past a sequence's last step it goes to the next one.
+    public static (byte Sequence, int Step)? NextStep(QuestProgress progress)
+    {
+        if (progress.FindSequence() is { } sequence && progress.Step + 1 < sequence.Steps.Count)
+            return (progress.Sequence, progress.Step + 1);
+
+        QuestSequence? next = progress.Quest.Root.QuestSequence
+            .Where(x => x.Sequence > progress.Sequence)
+            .MinBy(x => x.Sequence);
+        return next == null ? null : (next.Sequence, 0);
+    }
 }
 
 internal enum EStepState

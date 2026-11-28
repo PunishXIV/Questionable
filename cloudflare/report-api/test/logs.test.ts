@@ -39,7 +39,7 @@ const DOTNET_ZIP = Uint8Array.from(atob(
   "UEsDBBQAAAAIAEi3e11050NrJgAAACYAAAAKAAAAcmVwb3J0LnR4dAsMDlEoMzTTMwBCY4WS1OIShZzMvFSFtPwihaLUgvyiEr2SihIAUEsDBBQAAAAIAEi3e132sR+QMwAAADQAAAAYAAAAZGFsYW11ZC1xdWVzdGlvbmFibGUubG9nCwwOUSgzNNMzAEJjhZLU4hKFnMy8VIW0/CKFlMScxNzSFN3CUqBwZn5eYlJOql5OfjoAUEsDBBQAAAAIAEi3e108qVElMgAAADMAAAAXAAAAcXVlc3Rpb25hYmxlLXJlY2VudC5sb2cLDA5RKDM00zMAQmOFktTiEoWczLxUhbT8IoXCUiA3Mz8vMSknVbcoNTk1r0QvJz8dAFBLAQIUABQAAAAIAEi3e11050NrJgAAACYAAAAKAAAAAAAAAAAAAAAAAAAAAAByZXBvcnQudHh0UEsBAhQAFAAAAAgASLd7XfaxH5AzAAAANAAAABgAAAAAAAAAAAAAAAAATgAAAGRhbGFtdWQtcXVlc3Rpb25hYmxlLmxvZ1BLAQIUABQAAAAIAEi3e108qVElMgAAADMAAAAXAAAAAAAAAAAAAAAAALcAAABxdWVzdGlvbmFibGUtcmVjZW50LmxvZ1BLBQYAAAAAAwADAMMAAAAeAQAAAAA="),
   c => c.charCodeAt(0));
 
-function upload(body: BodyInit, query = `quest=1130&character=${CHARACTER}&kind=stuck&version=16.0.0.3`): Promise<Response> {
+function upload(body: BodyInit, query = `quest=1130&character=${CHARACTER}&kind=mtr&version=16.0.0.3`): Promise<Response> {
   return exports.default.fetch(`https://reports.test/v2/logs?${query}`, {
     method: "POST",
     headers: { "Content-Type": "application/zip", "CF-Connecting-IP": `zip-${++requestNumber}` },
@@ -83,7 +83,7 @@ describe("zip uploads", () => {
 
     const row = await env.DB.prepare("SELECT quest_id, kind, version, size, character FROM zips WHERE code = ?")
       .bind(code).first<{ quest_id: string; kind: string; version: string; size: number; character: string }>();
-    expect(row).toMatchObject({ quest_id: "1130", kind: "stuck", version: "16.0.0.3", size: QST_ZIP.byteLength });
+    expect(row).toMatchObject({ quest_id: "1130", kind: "mtr", version: "16.0.0.3", size: QST_ZIP.byteLength });
     expect(row!.character).toBe(await sha256Hex(`test-salt:${CHARACTER}`));
     expect(new Uint8Array(await (await env.ZIPS.get(code))!.arrayBuffer())).toEqual(QST_ZIP);
   });
@@ -104,7 +104,7 @@ describe("zip uploads", () => {
   });
 
   it("accepts a zip without a quest", async () => {
-    const response = await upload(DOTNET_ZIP, `character=${CHARACTER}&kind=stuck`);
+    const response = await upload(DOTNET_ZIP, `character=${CHARACTER}&kind=step`);
     expect(response.status).toBe(200);
     const { code } = await response.json<{ code: string }>();
     expect(await env.DB.prepare("SELECT quest_id FROM zips WHERE code = ?").bind(code).first<string>("quest_id")).toBeNull();
@@ -139,6 +139,18 @@ describe("zip admin", () => {
 
   it("needs a token", async () => {
     expect((await admin("/v2/admin/logs", "wrong")).status).toBe(401);
+  });
+
+  it("lets admins, not viewers, delete a zip", async () => {
+    const { code } = await (await upload(QST_ZIP)).json<{ code: string }>();
+    const viewer = await token("knightmore", "viewer");
+    const owner = await token("kage", "admin");
+
+    expect((await admin(`/v2/admin/logs/${code}`, viewer, { method: "DELETE" })).status).toBe(403);
+    expect((await admin(`/v2/admin/logs/${code.toLowerCase()}`, owner, { method: "DELETE" })).status).toBe(200);
+    expect(await env.ZIPS.get(code)).toBeNull();
+    expect((await env.DB.prepare("SELECT code FROM zips").all()).results).toHaveLength(0);
+    expect((await admin(`/v2/admin/logs/${code}`, owner, { method: "DELETE" })).status).toBe(404);
   });
 
   it("keeps viewers from resolving or verifying", async () => {

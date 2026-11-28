@@ -46,12 +46,13 @@ internal sealed class ReportApi : IDisposable
     }
 
     // Returns the code players quote in Discord, or null when the upload failed.
-    public async Task<string?> UploadZipAsync(byte[] zip, string character, string? quest, string version)
+    public async Task<string?> UploadZipAsync(byte[] zip, string character, string? quest, string? kind, string version)
     {
         try
         {
             string query = $"/v2/logs?character={Uri.EscapeDataString(character)}&version={Uri.EscapeDataString(version)}" +
-                           (quest != null ? $"&quest={Uri.EscapeDataString(quest)}" : "");
+                           (quest != null ? $"&quest={Uri.EscapeDataString(quest)}" : "") +
+                           (kind != null ? $"&kind={Uri.EscapeDataString(kind)}" : "");
             using ByteArrayContent content = new(zip);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/zip");
             using HttpResponseMessage response = await _http.PostAsync(new Uri(query, UriKind.Relative), content).ConfigureAwait(false);

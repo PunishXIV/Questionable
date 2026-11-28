@@ -49,7 +49,6 @@ public sealed class TroubleshootingReportTests
         string report = TroubleshootingReport.Build(new() { Facts = facts, Settings = settings, NowUtc = Now });
 
         Assert.True(report.Length <= TroubleshootingReport.MaxLength, $"Length was {report.Length}");
-        Assert.EndsWith("```", report, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -67,15 +66,6 @@ public sealed class TroubleshootingReportTests
         Assert.DoesNotContain("some player", report, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain(@"C:\Users\kage", report, StringComparison.OrdinalIgnoreCase);
         Assert.Contains("(hidden)", report, StringComparison.Ordinal);
-    }
-
-    [Fact]
-    public void LogText_CannotBreakCodeBlock()
-    {
-        string report = TroubleshootingReport.Build(new() { Log = [Line(1, "before ``` after\nsecond line")], NowUtc = Now });
-
-        Assert.Equal(2, report.Split("```").Length - 1);
-        Assert.DoesNotContain("second line", report, StringComparison.Ordinal);
     }
 
     [Fact]

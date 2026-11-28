@@ -261,7 +261,7 @@ internal sealed class QuestStopPolicy
     }
 
     public void ReportPresetMissing(Quest quest) =>
-        PrintError(_LF("The preset chosen for '{0}' no longer exists, stopping instead.", quest.Info.Name));
+        PrintError(_LF("The preset chosen for '{0}' no longer exists, stopping instead.", quest.Info.Name), EErrorKind.Other);
 
     public void ReportStopAfterQuest(Quest quest)
     {
@@ -317,11 +317,11 @@ internal sealed class QuestStopPolicy
 
     public void ReportNoSequence(QuestProgress progress) =>
         PrintError(_LF("Stopped: no path for '{0}' sequence {1}. Try 'Reload data' or report it with Stuck?",
-            progress.Quest.Info.Name, progress.Sequence));
+            progress.Quest.Info.Name, progress.Sequence), EErrorKind.Path);
 
     public void ReportNoStep(QuestProgress progress) =>
         PrintError(_LF("Stopped: no path for '{0}' sequence {1} step {2}. Try 'Reload data' or report it with Stuck?",
-            progress.Quest.Info.Name, progress.Sequence, progress.Step));
+            progress.Quest.Info.Name, progress.Sequence, progress.Step), EErrorKind.Path);
 
     public void ReportMissingCurrents(Quest quest, IReadOnlyList<uint> missing)
     {
@@ -330,7 +330,7 @@ internal sealed class QuestStopPolicy
                 .Where(x => x.Step.AetherCurrentId is { } id && missing.Contains(id))
                 .Select(x => string.Create(CultureInfo.InvariantCulture, $"{x.Step.AetherCurrentId} at {x.Step.Position}"))));
         PrintError(_LF("Stopped: {0} aether current(s) in '{1}' are still not attuned. See /xllog for where they are.",
-            missing.Count, quest.Info.Name));
+            missing.Count, quest.Info.Name), EErrorKind.Other);
     }
 
     public void ReportStuckRetry(QuestProgress current, int seconds, int attempt, int maxTries)
@@ -344,18 +344,18 @@ internal sealed class QuestStopPolicy
     {
         _logger.LogWarning("Still stuck after {Retries} retries (quest: {QuestId})", retries, quest.Id);
         PrintError(_LF("Stopped: still stuck on '{0}' after {1} retries. Report it with Stuck? if it keeps happening.",
-            quest.Info.Name, retries));
+            quest.Info.Name, retries), EErrorKind.Step);
     }
 
     public void ReportDeathLimit(int deaths) =>
-        PrintError(_LF("Stopped: you died {0} times on this step.", deaths));
+        PrintError(_LF("Stopped: you died {0} times on this step.", deaths), EErrorKind.Death);
 
     public void ReportTasksFailed(Exception e, QuestProgress? current)
     {
         _logger.LogError(e, "Failed to create tasks [{QuestId}, {Sequence}, {Step}]",
             current?.Quest.Id, current?.Sequence, current?.Step);
         string message = _L("Couldn't start the next quest step, stopping.") + " " + _L("Try 'Reload data', or report it with Stuck?");
-        PrintError(message);
+        PrintError(message, EErrorKind.Other);
         _notifyOnFailure(message);
     }
 
@@ -371,13 +371,13 @@ internal sealed class QuestStopPolicy
 
     private void Print(string message) => _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
 
-    public event EventHandler? ErrorShown;
+    public event EventHandler<ProblemEventArgs>? ErrorShown;
 
-    private void PrintError(string message)
+    private void PrintError(string message, EErrorKind kind)
     {
         _chatGui.PrintError(_LF("[{0}] {1}", DateTime.Now.ToString("HH:mm:ss", CultureInfo.InvariantCulture), message),
             CommandHandler.MessageTag, CommandHandler.TagColor);
-        ErrorShown?.Invoke(this, EventArgs.Empty);
+        ErrorShown?.Invoke(this, new ProblemEventArgs(kind));
     }
 
     private void TryRun(Action action, string operation)

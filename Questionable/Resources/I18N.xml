@@ -92,15 +92,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <Key>/qst sim &lt;questId&gt; [sequence] [step] - simulates the specified quest (or clears it if no questId is specified)</Key>
-    <Value lang="en">/qst sim &lt;questId&gt; [sequence] [step] - simulates the specified quest (or clears it if no questId is specified)</Value>
-    <Value lang="ja-jp">/qst sim &lt;questId&gt; [sequence] [step] - 指定クエストをシミュレート（questId省略時はクリア）</Value>
-    <Value lang="zh-cn">/qst sim &lt;questId&gt; [sequence] [step] - 模拟指定任务（未指定 questId 时清除）</Value>
-    <Value lang="zh-tw">/qst sim &lt;questId&gt; [sequence] [step] - 模擬指定任務（未指定 questId 時清除）</Value>
-    <!--<Value lang="ko">/qst sim &lt;questId&gt; [sequence] [step] - 지정된 퀘스트 시뮬레이션 (questId가 지정되지 않은 경우 지움)</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <Key>/qst which - shows all quests starting with your selected target</Key>
     <Value lang="en">/qst which - shows all quests starting with your selected target</Value>
     <Value lang="ja-jp">/qst which - 現在のターゲットから始まるすべてのクエストを表示</Value>
@@ -269,15 +260,6 @@
     <Value lang="zh-cn">正在模拟任务 {0} ({1})。</Value>
     <Value lang="zh-tw">正在模擬任務 {0} ({1})。</Value>
     <!--<Value lang="ko">퀘스트 {0} ({1})를 시뮬레이션 중입니다.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <Key>Cleared simulated quest.</Key>
-    <Value lang="en">Cleared simulated quest.</Value>
-    <Value lang="ja-jp">シミュレートクエストをクリアしました。</Value>
-    <Value lang="zh-cn">已清除模拟任务。</Value>
-    <Value lang="zh-tw">已清除模擬任務。</Value>
-    <!--<Value lang="ko">시뮬레이션된 퀘스트를 지웠습니다.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
@@ -2649,15 +2631,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <Key>Skip current task</Key>
-    <Value lang="en">Skip current task</Value>
-    <Value lang="ja-jp">現在のタスクをスキップ</Value>
-    <Value lang="zh-cn">跳过当前任务</Value>
-    <Value lang="zh-tw">跳過目前任務</Value>
-    <!--<Value lang="ko">현재 작업 건너뛰기</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Clear sim</Key>
     <Value lang="en">Clear sim</Value>
     <Value lang="ja-jp">シムをクリア</Value>
@@ -4778,14 +4751,6 @@
     <Value lang="ja-jp">現在のクエストはありません。</Value>
     <Value lang="zh-cn">当前没有任务。</Value>
     <Value lang="zh-tw">目前沒有任務。</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <Key>Wait for the external operation to stop, then clear the simulated quest again.</Key>
-    <Value lang="en">Wait for the external operation to stop, then clear the simulated quest again.</Value>
-    <Value lang="ja-jp">外部操作が停止してから、再度シミュレーションクエストを解除してください。</Value>
-    <Value lang="zh-cn">请等待外部操作停止，再清除模拟任务。</Value>
-    <Value lang="zh-tw">請等待外部操作停止，再清除模擬任務。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/DailiesController.cs -->
@@ -9625,7 +9590,7 @@ Right click: Copy without .json</Value>
     <Value lang="en">/qst mail - claims your Mog Station and reward mail through Mogmail</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/WigglyQuestSwitch.cs -->
+    <!-- Found in: ../Questionable/Controller/PluginSwitch.cs -->
     <Key>WigglyQuest is switched off while Questionable runs; it comes back on when Questionable stops.</Key>
     <Value lang="en">WigglyQuest is switched off while Questionable runs; it comes back on when Questionable stops.</Value>
   </Entry>
@@ -9866,5 +9831,55 @@ Right click: Copy without .json</Value>
     <!-- Found in: ../Questionable/Controller/CharacterRun.cs -->
     <Key>Shared settings skipped on {0}: couldn't get to a city or inn on the home world.</Key>
     <Value lang="en">Shared settings skipped on {0}: couldn't get to a city or inn on the home world.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
+    <Key>/qst sim [questId] [sequence] [step] - simulates the quest, from where you are if no sequence is given (opens the quest sim window if no questId is given)</Key>
+    <Value lang="en">/qst sim [questId] [sequence] [step] - simulates the quest, from where you are if no sequence is given (opens the quest sim window if no questId is given)</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSimWindow.cs -->
+    <Key>Quest sim</Key>
+    <Value lang="en">Quest sim</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSimWindow.cs -->
+    <Key>Quest name or ID</Key>
+    <Value lang="en">Quest name or ID</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSimWindow.cs -->
+    <Key>Not accepted yet: start the sim in sequence 0 to accept it.</Key>
+    <Value lang="en">Not accepted yet: start the sim in sequence 0 to accept it.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSimWindow.cs -->
+    <Key>you are here</Key>
+    <Value lang="en">you are here</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSimWindow.cs -->
+    <Key>The sim is here</Key>
+    <Value lang="en">The sim is here</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSimWindow.cs -->
+    <Key>Interaction</Key>
+    <Value lang="en">Interaction</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSimWindow.cs -->
+    <Key>Target</Key>
+    <Value lang="en">Target</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestSimWindow.cs -->
+    <Key>Start sim here. Press Play in the Questionable window to run it.</Key>
+    <Value lang="en">Start sim here. Press Play in the Questionable window to run it.</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/PluginSwitch.cs -->
+    <Key>Boss Mod Reborn is switched off while Questionable runs; it comes back on when Questionable stops.</Key>
+    <Value lang="en">Boss Mod Reborn is switched off while Questionable runs; it comes back on when Questionable stops.</Value>
   </Entry>
 </I18N>
