@@ -40,11 +40,13 @@ internal sealed class CharacterRun : IDisposable
     private int _index;
     private DateTime _nextTry;
     private DateTime _deadline;
+    private readonly AetheryteFunctions _aetheryteFunctions;
     private int _shareTrips;
+    private bool _innTried;
 
     public CharacterRun(Configuration configuration, AutoRetainerIpc autoRetainer, LifestreamIpc lifestream,
         NotificationMasterIpc notifications, QuestController questController, QuestStarter questStarter,
-        ConfigShare configShare, ICommandManager commandManager, QuestStopPolicy stopPolicy, IClientState clientState, IObjectTable objectTable, ICondition condition,
+        ConfigShare configShare, AetheryteFunctions aetheryteFunctions, ICommandManager commandManager, QuestStopPolicy stopPolicy, IClientState clientState, IObjectTable objectTable, ICondition condition,
         IFramework framework, IChatGui chatGui, ILogger<CharacterRun> logger)
     {
         _configuration = configuration;
@@ -54,6 +56,7 @@ internal sealed class CharacterRun : IDisposable
         _questController = questController;
         _questStarter = questStarter;
         _configShare = configShare;
+        _aetheryteFunctions = aetheryteFunctions;
         _commandManager = commandManager;
         _stopPolicy = stopPolicy;
         _clientState = clientState;
@@ -145,6 +148,7 @@ internal sealed class CharacterRun : IDisposable
         if (queue[0].ContentId == CurrentId)
         {
             _shareTrips = 0;
+            _innTried = false;
             State = EState.Starting;
             _nextTry = DateTime.Now;
             _deadline = DateTime.Now + Timeout;
@@ -220,6 +224,7 @@ internal sealed class CharacterRun : IDisposable
                     return;
 
                 _shareTrips = 0;
+                _innTried = false;
                 State = EState.Starting;
                 _nextTry = now + SettleTime;
                 _deadline = now + Timeout;
@@ -236,7 +241,7 @@ internal sealed class CharacterRun : IDisposable
                     break;
                 }
 
-                if (_configShare.Due(target.ContentId) && !TryApplyShare(target, now))
+                if (_configShare.Due(target.ContentId) && LeftStartingArea() && !TryApplyShare(target, now))
                     break;
 
                 BeginQuesting();
@@ -244,32 +249,58 @@ internal sealed class CharacterRun : IDisposable
         }
     }
 
+    // A new character has no city or inn to go to until it reaches its starting city; it gets the settings on a later run.
+    private bool LeftStartingArea() =>
+        _aetheryteFunctions.IsAetheryteUnlocked(EAetheryteLocation.Limsa) ||
+        _aetheryteFunctions.IsAetheryteUnlocked(EAetheryteLocation.Gridania) ||
+        _aetheryteFunctions.IsAetheryteUnlocked(EAetheryteLocation.Uldah);
+
+    internal enum EShareTrip
+    {
+        Apply,
+        Skip,
+        HomeWorld,
+        Inn,
+    }
+
+    // One inn try: Lifestream answers a locked inn in red each time.
+    internal static EShareTrip ShareTrip(bool homeWorld, bool sanctuary, int trips, bool innTried) =>
+        homeWorld && sanctuary ? EShareTrip.Apply
+        : trips >= 3 || innTried ? EShareTrip.Skip
+        : homeWorld ? EShareTrip.Inn
+        : EShareTrip.HomeWorld;
+
     // False while the shared settings still need a trip or are being applied.
     private bool TryApplyShare(Character target, DateTime now)
     {
-        if (_configShare.OnHomeWorld && ConfigShare.InSanctuary)
+        switch (ShareTrip(_configShare.OnHomeWorld, ConfigShare.InSanctuary, _shareTrips, _innTried))
         {
-            if (!_configShare.Apply())
-            {
+            case EShareTrip.Apply:
+                if (!_configShare.Apply())
+                {
+                    _configShare.Skip(target.ContentId);
+                    return true;
+                }
+
+                _deadline = now + Timeout;
+                return false;
+
+            case EShareTrip.Skip:
                 _configShare.Skip(target.ContentId);
+                Print(_LF("Shared settings skipped on {0}: couldn't get to a city or inn on the home world.", target.Name));
                 return true;
-            }
 
-            _deadline = now + Timeout;
-            return false;
+            case EShareTrip.HomeWorld:
+                _commandManager.ProcessCommand("/li");
+                break;
+
+            default:
+                _lifestream.GoInside(LifestreamIpc.EPropertyType.Inn);
+                _innTried = true;
+                break;
         }
 
-        if (_shareTrips++ >= 3)
-        {
-            _configShare.Skip(target.ContentId);
-            PrintError(_LF("Shared settings skipped on {0}: couldn't get to a city or inn on the home world.", target.Name));
-            return true;
-        }
-
-        if (!_configShare.OnHomeWorld)
-            _commandManager.ProcessCommand("/li");
-        else
-            _lifestream.GoInside(LifestreamIpc.EPropertyType.Inn);
+        _shareTrips++;
         _nextTry = now + SettleTime;
         _deadline = now + Timeout;
         return false;

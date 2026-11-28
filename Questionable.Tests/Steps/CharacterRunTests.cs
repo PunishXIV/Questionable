@@ -41,4 +41,14 @@ public sealed class CharacterRunTests
     [InlineData(false, 0, 3, null)]
     public void Next_NeedsContinueAndMore(bool canContinue, int index, int count, int? expected) =>
         Assert.Equal(expected, CharacterRun.NextIndex(canContinue, index, count));
+
+    [Theory]
+    [InlineData(true, true, 0, false, 0)]
+    [InlineData(false, false, 0, false, 2)]
+    [InlineData(true, false, 1, false, 3)]
+    [InlineData(true, false, 2, true, 1)]
+    [InlineData(false, false, 3, false, 1)]
+    public void ShareTrip_TriesTheInnOnce(bool homeWorld, bool sanctuary, int trips, bool innTried,
+        int expected) =>
+        Assert.Equal(expected, (int)CharacterRun.ShareTrip(homeWorld, sanctuary, trips, innTried));
 }

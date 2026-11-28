@@ -5,3 +5,4 @@
 - Bug fix: On the day an allied society ranks up, Questionable now also takes the quests from the old rank instead of looping at the quest giver -Kage
 - Bug fix: A character left on a crafter or gatherer now switches to a combat job before taking a story quest, and no longer gets switched back to that crafter or gatherer for the quest's fights -Kage
 - Bug fix: Travel no longer stops with an error when it ends right next to the NPC but the NPC can't be targeted, for example when the quest was already handed in on the way -Kage
+- Bug fix: The character list waits with shared settings until a new character has reached its starting city, and tries the inn only once, so it no longer fills the chat with red errors -Kage
