@@ -141,6 +141,32 @@ describe("zip admin", () => {
     expect((await admin("/v2/admin/logs", "wrong")).status).toBe(401);
   });
 
+  it("filters by problem and pages past 100", async () => {
+    const viewer = await token("knightmore", "viewer");
+    const rows = [];
+    for (let i = 0; i < 101; i++) {
+      // Two zips share each millisecond, so the cursor has to tell them apart.
+      rows.push(env.DB.prepare("INSERT INTO zips (code, character, quest_id, kind, version, size, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)")
+        .bind(`Z${String(i).padStart(5, "0")}`, "c", "1130", i % 2 === 0 ? "mtr" : null, "16.0.0.4", 1, 1000 + Math.floor(i / 2)));
+    }
+    await env.DB.batch(rows);
+
+    const first = await (await admin("/v2/admin/logs", viewer)).json<{ zips: { code: string }[]; next: string | null }>();
+    expect(first.zips).toHaveLength(100);
+    expect(first.next).not.toBeNull();
+    const second = await (await admin(`/v2/admin/logs?before=${first.next}`, viewer)).json<{ zips: { code: string }[]; next: string | null }>();
+    expect(second.zips).toHaveLength(1);
+    expect(second.next).toBeNull();
+    expect(new Set([...first.zips, ...second.zips].map(x => x.code)).size).toBe(101);
+
+    const mtr = await (await admin("/v2/admin/logs?kind=mtr", viewer)).json<{ zips: { code: string }[] }>();
+    expect(mtr.zips).toHaveLength(51);
+    const none = await (await admin("/v2/admin/logs?kind=none", viewer)).json<{ zips: { code: string }[] }>();
+    expect(none.zips).toHaveLength(50);
+    expect((await admin("/v2/admin/logs?kind=stuck", viewer)).status).toBe(400);
+    expect((await admin("/v2/admin/logs?before=oops", viewer)).status).toBe(400);
+  });
+
   it("lets admins, not viewers, delete a zip", async () => {
     const { code } = await (await upload(QST_ZIP)).json<{ code: string }>();
     const viewer = await token("knightmore", "viewer");

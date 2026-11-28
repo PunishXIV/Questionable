@@ -36,7 +36,8 @@
         {
           "DataId": 1048605,
           "Position": [-358.38867, 19.728025, -105.02789],
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5240
         }
       ]
     }

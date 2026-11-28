@@ -86,8 +86,7 @@
         {
           "DataId": 1047120,
           "Position": [165.852, -13.98, 18.3505],
-          "InteractionType": "CompleteQuest",
-          "$": "auto: todo turn-in -> 1047120 (Pameka)"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

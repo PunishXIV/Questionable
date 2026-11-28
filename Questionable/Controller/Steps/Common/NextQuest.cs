@@ -6,7 +6,7 @@ internal static class NextQuest
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (step.InteractionType != EInteractionType.CompleteQuest)
+            if (!EndsQuest(quest, sequence, step))
                 return null;
 
             if (step.NextQuestId == null)
@@ -24,6 +24,13 @@ internal static class NextQuest
             return new SetQuestTask(step.NextQuestId, quest.Id);
         }
     }
+
+    // Some quests end on their last talk and have no hand-in step; that step carries the link (4996, 5000).
+    internal static bool EndsQuest(Quest quest, QuestSequence sequence, QuestStep step) =>
+        step.InteractionType == EInteractionType.CompleteQuest ||
+        quest.FindSequence(255) is not { Steps.Count: > 0 } &&
+        sequence == quest.Root.QuestSequence.Where(x => x.Steps.Count > 0).MaxBy(x => x.Sequence) &&
+        step == sequence.Steps[^1];
 
     internal sealed record SetQuestTask(ElementId NextQuestId, ElementId CurrentQuestId) : ITask
     {

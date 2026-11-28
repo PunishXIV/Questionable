@@ -50,8 +50,7 @@
         {
           "DataId": 1047109,
           "Position": [155.056, -13.98, 2.99969],
-          "InteractionType": "CompleteQuest",
-          "$": "auto: todo turn-in -> 1047109 (Xeerol Ja)"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

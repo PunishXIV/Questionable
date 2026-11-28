@@ -62,7 +62,7 @@ PowerShell for a random salt: `$b = [byte[]]::new(32); [Security.Cryptography.Ra
 | `POST /v2/admin/resolve` | admins | `{ quest, id }`; resolves that report ID only, preserving history. |
 | `POST /v2/admin/verify` | admins | `{ quest, path, snapshot }`; records verification and atomically resolves that path's problems through the viewed snapshot. Newer reports stay open. |
 | `POST /v2/logs?character=&quest=&kind=&version=` | players | Body: the zip (must contain `report.txt`, at most 10 MB); `quest`, `kind` and `version` are optional. Returns `{ code }`. 1 per minute per IP. |
-| `GET /v2/admin/logs` | admins, viewers | `{ zips }`: newest 100; `?quest=<quest>` for one quest, `?code=<code>` for one zip. |
+| `GET /v2/admin/logs` | admins, viewers | `{ zips, next }`: newest 100; `?quest=<quest>`, `?kind=path\|mtr\|death\|step\|other\|none` (none = no problem sent), `?before=<next>` for the next page; `?code=<code>` for one zip. |
 | `GET /v2/admin/logs/<code>` | admins, viewers | The zip as a download. |
 | `DELETE /v2/admin/logs/<code>` | admins | Deletes the zip and its row; 404 if it's already gone. |
 

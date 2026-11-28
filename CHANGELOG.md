@@ -10,3 +10,6 @@
 - Bug fix: Fights that start when you walk into an area now go to the spot itself instead of stopping at the target, for example Power of Deduction -Kage
 - Bug fix: Steps that wait for a walking NPC now go to the waiting spot instead of chasing the NPC, for example Lost Promise -Kage
 - Bug fix: A Brother's Duty now follows from the hiding spots instead of walking right up to the NPC -Kage
+- Bug fix: The Wachumeqimeqi fishing and metalworking quests and two other Dawntrail delivery chains now go on to the next quest in the chain -Kage
+- Bug fix: Allied society story quests that open as soon as you reach a rank, like the Qitari stela quests, no longer show as locked -Kage
+- Change: Eight Studium and Wachumeqimeqi crafting quests now gather and craft their own materials first, as long as you have the gathering and crafting jobs for it -Kage

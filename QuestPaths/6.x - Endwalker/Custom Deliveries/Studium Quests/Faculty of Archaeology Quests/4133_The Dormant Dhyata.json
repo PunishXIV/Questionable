@@ -21,6 +21,58 @@
       "TerritoryId": 962,
       "Steps": [
         {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Miner"
+        },
+        {
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 27703,
+              "ItemCount": 24
+            },
+            {
+              "ItemId": 12534,
+              "ItemCount": 6
+            },
+            {
+              "ItemId": 27702,
+              "ItemCount": 24
+            },
+            {
+              "ItemId": 12531,
+              "ItemCount": 6
+            },
+            {
+              "ItemId": 27696,
+              "ItemCount": 48
+            },
+            {
+              "ItemId": 5106,
+              "ItemCount": 12
+            }
+          ]
+        },
+        {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "QuestStartJob"
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 27714,
+          "ItemCount": 6
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 27715,
+          "ItemCount": 6
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 27706,
+          "ItemCount": 12
+        },
+        {
           "InteractionType": "Craft",
           "ItemId": 35588,
           "ItemCount": 6,

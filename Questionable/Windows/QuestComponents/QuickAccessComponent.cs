@@ -222,10 +222,10 @@ internal sealed class QuickAccessComponent
 
     private (DirectoryInfo Folder, string File) SaveZip(string report, IReadOnlyList<string> privateTexts, string? contentId, bool auto)
     {
-        string? root = pluginInterface.ConfigDirectory.Parent?.Parent?.FullName;
+        string? root = DalamudLog.FindFolder(pluginInterface.ConfigDirectory.Parent?.Parent?.FullName, File.Exists);
         // The old log is the previous session, e.g. one that crashed; WahTools exports both too.
         List<string> entries = root == null
-            ? []
+            ? ["No dalamud.log was found next to Questionable's settings or in its logs folder; questionable-recent.log has Questionable's own lines."]
             : [.. LogFiles.Select(x => Path.Combine(root, x)).Where(File.Exists)
                 .SelectMany(x => DalamudLog.Read(x, LoggedPlugins))];
         if (root != null && DalamudLog.IsFull(Path.Combine(root, "dalamud.log")))

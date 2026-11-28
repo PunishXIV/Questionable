@@ -35,8 +35,7 @@
           "DataId": 1047120,
           "Position": [165.852, -13.98, 18.3505],
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 4981,
-          "$": "auto: todo turn-in -> 1047120 (Pameka)"
+          "NextQuestId": 4981
         }
       ]
     }

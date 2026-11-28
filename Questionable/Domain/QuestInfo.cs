@@ -89,6 +89,8 @@ internal sealed class QuestInfo : IQuestInfo
         AlliedSociety = (EAlliedSociety)quest.BeastTribe.RowId;
         AlliedSocietyQuestGroup = quest.DailyQuestPool;
         AlliedSocietyRank = (EAlliedSocietyRank)quest.BeastReputationRank.RowId;
+        // 65535: a rank-up quest that needs a full bar at its rank; 0: open as soon as the rank is reached (Qitari stelae 3800-3805).
+        NeedsFullReputation = quest.BeastReputationValue == ushort.MaxValue;
         SocietyRepValue = quest.ReputationReward;
         ClassJobs = QuestInfoUtils.AsList(quest.ClassJobCategory0.ValueNullable!);
         ClassJobCategory = quest.ClassJobCategory0.Value;
@@ -139,6 +141,7 @@ internal sealed class QuestInfo : IQuestInfo
     public EGrandCompanyRank GrandCompanyRank { get; }
     public byte AlliedSocietyQuestGroup { get; }
     public EAlliedSocietyRank AlliedSocietyRank { get; }
+    public bool NeedsFullReputation { get; }
     public ushort SocietyRepValue { get; }
     public uint Experience { get; }
     public uint Gil { get; }

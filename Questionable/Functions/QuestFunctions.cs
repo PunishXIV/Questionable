@@ -918,7 +918,8 @@ internal sealed class QuestFunctions
     {
         QuestInfo questInfo = (QuestInfo)catalog.GetQuestInfo(questId);
         (EAlliedSocietyRank currentRank, ushort currentRep, ushort neededRep) = GetRankAndReputation(questInfo.AlliedSociety);
-        return currentRank > questInfo.AlliedSocietyRank || currentRep >= neededRep;
+        return currentRank > questInfo.AlliedSocietyRank ||
+               currentRank == questInfo.AlliedSocietyRank && (!questInfo.NeedsFullReputation || currentRep >= neededRep);
     }
 
     public (EAlliedSocietyRank, ushort, ushort) GetRankAndReputation(EAlliedSociety alliedSociety) =>

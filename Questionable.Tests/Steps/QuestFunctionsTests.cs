@@ -168,14 +168,18 @@ public sealed class QuestFunctionsTests
     }
 
     [Theory]
-    [InlineData(2, 100, 100, false)]
-    [InlineData(2, 99, 100, true)]
-    [InlineData(3, 0, 100, false)]
-    public void SocietyStory_NeedsRankOrReputation(int rank, int reputation, int needed, bool locked)
+    [InlineData(2, 100, 100, true, false)]
+    [InlineData(2, 99, 100, true, true)]
+    [InlineData(3, 0, 100, true, false)]
+    [InlineData(1, 100, 100, true, true)]
+    [InlineData(2, 0, 100, false, false)]
+    [InlineData(1, 0, 100, false, true)]
+    public void SocietyStory_NeedsRankOrReputation(int rank, int reputation, int needed, bool fullBar, bool locked)
     {
         _catalog.Add(TestQuestInfo.Create(1)
             .With(nameof(QuestInfo.AlliedSociety), EAlliedSociety.Amaljaa)
-            .With(nameof(QuestInfo.AlliedSocietyRank), EAlliedSocietyRank.Recognized));
+            .With(nameof(QuestInfo.AlliedSocietyRank), EAlliedSocietyRank.Recognized)
+            .With(nameof(QuestInfo.NeedsFullReputation), fullBar));
         _state.AlliedSocieties[(byte)EAlliedSociety.Amaljaa] = ((byte)rank, (ushort)reputation, (ushort)needed);
 
         string[] expected = locked ? ["Society reputation"] : [];

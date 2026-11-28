@@ -21,6 +21,36 @@
       "TerritoryId": 962,
       "Steps": [
         {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Botanist"
+        },
+        {
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 27824,
+              "ItemCount": 40
+            },
+            {
+              "ItemId": 27783,
+              "ItemCount": 6
+            },
+            {
+              "ItemId": 27785,
+              "ItemCount": 6
+            }
+          ]
+        },
+        {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "QuestStartJob"
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 27839,
+          "ItemCount": 24
+        },
+        {
           "InteractionType": "Craft",
           "ItemId": 35596,
           "ItemCount": 6,

@@ -112,15 +112,49 @@ export async function postZip(request: Request, env: Env, url: URL,
   return json({ error: "internal error" }, 500);
 }
 
-export async function listZips(env: Env, quest: string | null, code: string | null): Promise<Response> {
+export async function listZips(env: Env, params: URLSearchParams): Promise<Response> {
   const columns = "code, quest_id, kind, version, size, created_at";
-  const query = code !== null
-    ? env.DB.prepare(`SELECT ${columns} FROM zips WHERE code = ?`).bind(code.toUpperCase())
-    : quest !== null
-      ? env.DB.prepare(`SELECT ${columns} FROM zips WHERE quest_id = ? ORDER BY created_at DESC LIMIT ?`).bind(quest, LIST_LIMIT)
-      : env.DB.prepare(`SELECT ${columns} FROM zips ORDER BY created_at DESC LIMIT ?`).bind(LIST_LIMIT);
-  const { results } = await query.all<ZipRow>();
-  return json({ zips: results });
+  const code = params.get("code");
+  if (code !== null) {
+    const { results } = await env.DB.prepare(`SELECT ${columns} FROM zips WHERE code = ?`).bind(code.toUpperCase()).all<ZipRow>();
+    return json({ zips: results });
+  }
+
+  const where: string[] = [];
+  const binds: (string | number)[] = [];
+  const quest = params.get("quest");
+  if (quest !== null) {
+    where.push("quest_id = ?");
+    binds.push(quest);
+  }
+  // "none" lists zips from clients that didn't send a problem yet.
+  const kind = params.get("kind");
+  if (kind === "none") {
+    where.push("kind IS NULL");
+  } else if (kind !== null) {
+    if (!(ZIP_KINDS as readonly string[]).includes(kind)) {
+      return json({ error: "invalid parameters" }, 400);
+    }
+    where.push("kind = ?");
+    binds.push(kind);
+  }
+  // created_at:code of the last zip on the previous page; the code keeps zips from the same millisecond apart.
+  const before = params.get("before");
+  if (before !== null) {
+    const match = /^(\d{1,15}):([A-Z0-9]{6})$/.exec(before);
+    if (!match) {
+      return json({ error: "invalid parameters" }, 400);
+    }
+    const at = Number(match[1]);
+    where.push("(created_at < ? OR (created_at = ? AND code < ?))");
+    binds.push(at, at, match[2]);
+  }
+
+  const filter = where.length > 0 ? `WHERE ${where.join(" AND ")}` : "";
+  const { results } = await env.DB.prepare(
+    `SELECT ${columns} FROM zips ${filter} ORDER BY created_at DESC, code DESC LIMIT ?`).bind(...binds, LIST_LIMIT).all<ZipRow>();
+  const last = results.at(-1);
+  return json({ zips: results, next: results.length === LIST_LIMIT && last ? `${last.created_at}:${last.code}` : null });
 }
 
 export async function downloadZip(env: Env, code: string): Promise<Response> {

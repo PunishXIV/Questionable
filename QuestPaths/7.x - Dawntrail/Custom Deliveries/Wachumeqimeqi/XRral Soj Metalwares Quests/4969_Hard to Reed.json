@@ -21,6 +21,59 @@
       "TerritoryId": 1185,
       "Steps": [
         {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Miner"
+        },
+        {
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 36166,
+              "ItemCount": 60
+            },
+            {
+              "ItemId": 27703,
+              "ItemCount": 12
+            },
+            {
+              "ItemId": 36181,
+              "ItemCount": 24
+            }
+          ]
+        },
+        {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Botanist"
+        },
+        {
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 36194,
+              "ItemCount": 30
+            }
+          ]
+        },
+        {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "QuestStartJob"
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 36172,
+          "ItemCount": 12
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 36189,
+          "ItemCount": 6
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 36200,
+          "ItemCount": 6
+        },
+        {
           "InteractionType": "Craft",
           "ItemId": 43887,
           "ItemCount": 6,
@@ -35,7 +88,7 @@
           "DataId": 1047135,
           "Position": [180.407, -13.9926, 1.98725],
           "InteractionType": "CompleteQuest",
-          "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
+          "NextQuestId": 4970
         }
       ]
     }

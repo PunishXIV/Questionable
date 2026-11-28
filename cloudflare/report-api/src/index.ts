@@ -199,7 +199,7 @@ export default {
           return await getReportPage(env, url.searchParams.get("quest"));
         }
         if (url.pathname === "/v2/admin/logs" && request.method === "GET") {
-          return await listZips(env, url.searchParams.get("quest"), url.searchParams.get("code"));
+          return await listZips(env, url.searchParams);
         }
         if (url.pathname.startsWith("/v2/admin/logs/") && request.method === "GET") {
           return await downloadZip(env, url.pathname.slice("/v2/admin/logs/".length).toUpperCase());

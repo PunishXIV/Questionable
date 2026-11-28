@@ -22,10 +22,15 @@ export const DASHBOARD = `<!doctype html>
   .chip[aria-pressed="true"] { border-color: currentColor; }
   .chip b { font-variant-numeric: tabular-nums; }
   .red { color: var(--red); } .amber { color: var(--amber); } .green { color: var(--green); }
-  input { flex: 1 1 200px; min-width: 0; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px;
+  input, select { flex: 1 1 200px; min-width: 0; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px;
     background: var(--card); color: var(--text); font: inherit; }
   section { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin-top: 16px; overflow-x: auto; }
   h2 { font-size: 15px; margin: 0; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  h2.toggle { cursor: pointer; user-select: none; }
+  h2.toggle::before { content: "▾  "; }
+  section.collapsed h2.toggle::before { content: "▸  "; }
+  section.collapsed > :not(h2) { display: none !important; }
+  section.collapsed h2 { border-bottom: none; }
   table { width: 100%; border-collapse: collapse; }
   th, td { text-align: left; padding: 7px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
   th { font-weight: 600; color: var(--muted); font-size: 12px; }
@@ -58,10 +63,20 @@ export const DASHBOARD = `<!doctype html>
       <form class="bar pad" id="zip-filter">
         <input id="zip-quest" type="search" placeholder="Quest ID" aria-label="Quest ID">
         <input id="zip-code" type="search" placeholder="Report code" aria-label="Report code">
+        <select id="zip-kind" aria-label="Problem">
+          <option value="">Any problem</option>
+          <option value="mtr">MTR</option>
+          <option value="path">Path</option>
+          <option value="death">Death</option>
+          <option value="step">Failed step</option>
+          <option value="other">Other</option>
+          <option value="none">Not set</option>
+        </select>
         <button class="chip" type="submit">Show</button>
         <button class="chip" type="button" id="zip-signout">Sign out</button>
       </form>
       <div id="zip-list" class="empty muted">Loading…</div>
+      <div class="bar pad"><button class="chip" type="button" id="zip-more" hidden>Load more</button></div>
     </div>
   </section>
 </main>
@@ -112,6 +127,7 @@ function render() {
     h2.textContent = group.title + " (" + visible.length + ")";
     h2.title = group.note;
     section.append(h2);
+    foldable(section, h2, group.key);
     if (visible.length === 0) {
       const empty = document.createElement("div");
       empty.className = "empty muted";
@@ -157,7 +173,36 @@ async function loadNames(quests, after = render) {
 }
 
 // Admin box: the token stays in this tab only.
-let token = null, zips = [];
+let token = null, zips = [], nextPage = null;
+
+// Remembered per browser; the lists are rebuilt on every search, so the state can't live on the elements.
+let folded = new Set();
+try { folded = new Set(JSON.parse(localStorage.getItem("qst-folded") || "[]")); } catch {}
+
+function foldable(section, heading, key) {
+  heading.classList.add("toggle");
+  heading.tabIndex = 0;
+  heading.setAttribute("role", "button");
+  const apply = () => {
+    section.classList.toggle("collapsed", folded.has(key));
+    heading.setAttribute("aria-expanded", String(!folded.has(key)));
+  };
+  const flip = () => {
+    folded.has(key) ? folded.delete(key) : folded.add(key);
+    try { localStorage.setItem("qst-folded", JSON.stringify([...folded])); } catch {}
+    apply();
+  };
+  heading.addEventListener("click", flip);
+  heading.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      flip();
+    }
+  });
+  apply();
+}
+
+foldable(document.getElementById("admin"), document.querySelector("#admin > h2"), "zips");
 try { token = sessionStorage.getItem("qst-token"); } catch {}
 
 function remember(value) {
@@ -221,19 +266,35 @@ async function adminFetch(path, method = "GET") {
   return reply;
 }
 
-async function loadZips() {
+async function loadZips(more = false) {
   const list = document.getElementById("zip-list");
+  const moreButton = document.getElementById("zip-more");
   const quest = document.getElementById("zip-quest").value.trim();
   const code = document.getElementById("zip-code").value.trim().toUpperCase();
-  const query = code ? "?code=" + encodeURIComponent(code) : quest ? "?quest=" + encodeURIComponent(quest) : "";
-  list.className = "empty muted";
-  list.textContent = "Loading…";
+  const kind = document.getElementById("zip-kind").value;
+  const params = new URLSearchParams();
+  if (code) params.set("code", code);
+  else {
+    if (quest) params.set("quest", quest);
+    if (kind) params.set("kind", kind);
+    if (more && nextPage) params.set("before", nextPage);
+  }
+  if (more) moreButton.disabled = true;
+  else {
+    list.className = "empty muted";
+    list.textContent = "Loading…";
+  }
   try {
-    zips = (await (await adminFetch("/v2/admin/logs" + query)).json()).zips;
+    const page = await (await adminFetch("/v2/admin/logs" + (params.size ? "?" + params : ""))).json();
+    zips = more ? zips.concat(page.zips) : page.zips;
+    nextPage = page.next || null;
+    moreButton.hidden = !nextPage;
     renderZips();
     loadNames(zips.map(z => z.quest_id).filter(Boolean), renderZips);
   } catch (e) {
     if (e.message !== "unauthorized") list.textContent = "Could not load the zips (" + e.message + ").";
+  } finally {
+    moreButton.disabled = false;
   }
 }
 
@@ -278,9 +339,12 @@ document.getElementById("zip-filter").addEventListener("submit", event => {
   event.preventDefault();
   loadZips();
 });
+document.getElementById("zip-more").addEventListener("click", () => loadZips(true));
 document.getElementById("zip-signout").addEventListener("click", () => {
   remember(null);
   zips = [];
+  nextPage = null;
+  document.getElementById("zip-more").hidden = true;
 });
 remember(token);
 if (token) loadZips();

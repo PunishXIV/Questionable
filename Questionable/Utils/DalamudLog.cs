@@ -16,6 +16,10 @@ internal static class DalamudLog
         "[EzIPC Subscriber] Attempting to assign IPC method",
     ];
 
+    // XIVLauncher writes dalamud.log next to pluginConfigs; XIVLauncher.Core (Linux, Steam Deck) writes it to logs/.
+    internal static string? FindFolder(string? root, Func<string, bool> exists) =>
+        root == null ? null : new[] { root, Path.Combine(root, "logs") }.FirstOrDefault(x => exists(Path.Combine(x, "dalamud.log")));
+
     // Dalamud's file sink has a 100 MB limit and no rollover: past it nothing more is written.
     internal static bool IsFull(string path) => File.Exists(path) && new FileInfo(path).Length >= 100L * 1024 * 1024;
 

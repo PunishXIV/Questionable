@@ -132,7 +132,7 @@ internal sealed class QuestTooltipComponent
             ImGui.Text(_LF("Society: {0}", questInfo.AlliedSociety));
 
         if (info.AlliedSocietyRank != EAlliedSocietyRank.None)
-            ImGui.Text(_LF("Rank: {0}{1}", info.AlliedSocietyRank, (!info.IsRepeatable ? " (maxed)" : "")));
+            ImGui.Text(_LF("Rank: {0}{1}", info.AlliedSocietyRank, (info.NeedsFullReputation ? " (maxed)" : "")));
 
         DrawQuestUnlocks(questInfo, 0, showItemRewards);
     }
