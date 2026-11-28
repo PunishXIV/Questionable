@@ -22,7 +22,8 @@
       "Steps": [
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "Miner"
+          "TargetClass": "Miner",
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Gather",
@@ -39,11 +40,13 @@
               "ItemId": 36181,
               "ItemCount": 24
             }
-          ]
+          ],
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "Botanist"
+          "TargetClass": "Botanist",
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Gather",
@@ -52,26 +55,31 @@
               "ItemId": 36194,
               "ItemCount": 30
             }
-          ]
+          ],
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "QuestStartJob"
+          "TargetClass": "QuestStartJob",
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",
           "ItemId": 36172,
-          "ItemCount": 12
+          "ItemCount": 12,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",
           "ItemId": 36189,
-          "ItemCount": 6
+          "ItemCount": 6,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",
           "ItemId": 36200,
-          "ItemCount": 6
+          "ItemCount": 6,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",

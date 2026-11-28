@@ -22,7 +22,8 @@
       "Steps": [
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "Miner"
+          "TargetClass": "Miner",
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Gather",
@@ -51,26 +52,31 @@
               "ItemId": 19957,
               "ItemCount": 6
             }
-          ]
+          ],
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "QuestStartJob"
+          "TargetClass": "QuestStartJob",
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",
           "ItemId": 43998,
-          "ItemCount": 6
+          "ItemCount": 6,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",
           "ItemId": 44008,
-          "ItemCount": 6
+          "ItemCount": 6,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",
           "ItemId": 43997,
-          "ItemCount": 6
+          "ItemCount": 6,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",

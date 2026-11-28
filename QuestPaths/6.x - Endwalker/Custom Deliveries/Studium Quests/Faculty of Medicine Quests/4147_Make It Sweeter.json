@@ -22,7 +22,8 @@
       "Steps": [
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "Botanist"
+          "TargetClass": "Botanist",
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Gather",
@@ -39,16 +40,19 @@
               "ItemId": 27785,
               "ItemCount": 6
             }
-          ]
+          ],
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "QuestStartJob"
+          "TargetClass": "QuestStartJob",
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",
           "ItemId": 27839,
-          "ItemCount": 24
+          "ItemCount": 24,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "Craft",
